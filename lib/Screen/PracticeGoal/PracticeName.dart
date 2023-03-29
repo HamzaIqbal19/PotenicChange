@@ -1,0 +1,344 @@
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
+import 'package:potenic_app/utils/app_dimensions.dart';
+
+class PracticeName extends StatefulWidget {
+  final String title;
+  final String Circletitle;
+  // final String message;
+
+  PracticeName(this.title,this.Circletitle);
+
+  @override
+  State<PracticeName> createState() => _PracticeNameState();
+}
+
+class _PracticeNameState extends State<PracticeName> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.transparent,
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+          child: AppBar(
+            elevation: 0,
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: false,
+            leading: Center(
+              // alignment: Alignment.center,
+              child: IconButton(
+                icon: Image.asset(
+                  'assets/images/Back.png',
+                  width: AppDimensions.height10 * 3,
+                  height: AppDimensions.height10 * 3,
+                  fit: BoxFit.contain,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                  // Navigator.pushReplacement(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => HomeScreen(),
+                  //   ),
+                  // );
+                  // Add code for performing close action
+                },
+              ),
+            ),
+            actions: [
+              Center(
+                // alignment: Alignment.center,
+                child: IconButton(
+                  icon: Image.asset(
+                    'assets/images/Close.png',
+                    width: AppDimensions.height10 * 3.0,
+                    height: AppDimensions.height10 * 3.0,
+                    fit: BoxFit.contain,
+                  ),
+                  onPressed: () {
+                    // Navigator.pushReplacement(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => HomeScreen(),
+                    //   ),
+                    // );
+                    // Add code for performing close action
+                  },
+                ),
+              ),
+            ],
+          )),
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/Categories.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SingleChildScrollView(
+            reverse: true,
+            physics: ClampingScrollPhysics(),
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.3),
+                  child: Center(
+                    child: Text(
+                      "Practice Creation 2/3",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: AppDimensions.height10 * 1.8,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10 * 0.5,
+                ),
+                Container(
+                  child: Center(
+                    child: Text(
+                      "Control my anger",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: AppDimensions.height10 * 2.2,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10 * 1.7,
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+
+              width: AppDimensions.height10 * 10.4,
+              height: AppDimensions.height10 *11.2,
+              padding: EdgeInsets.only(
+
+              left: AppDimensions.height10 * 0.5,
+              right: AppDimensions.height10 * 0.5),
+                        child: Image.asset(
+                          "assets/images/createprac.png",
+                          fit: BoxFit.contain,
+                        )),
+                    Container(
+                      child: Center(
+                        child: Text(
+                          widget.title,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xFF156F6D),
+                            fontSize: AppDimensions.height10 * 2.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+
+                ),
+
+                SizedBox(
+                  height: AppDimensions.height10 * 4.6,
+                ),
+                Container(
+                  child: Center(
+                    child: Text(
+                      "Practice Name",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        fontSize: AppDimensions.height10 * 2.8,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10 * 1.0,
+                ),
+                Container(
+                  height: AppDimensions.height10 * 2.2,
+                  width: AppDimensions.height10 * 24.4,
+                  child: Center(
+                    child: Text(
+                      "Enter the name of your practice",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+
+                          fontSize: AppDimensions.height10 * 1.8,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFFFFFFFF)),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10 * 3.4,
+                ),
+                Container(
+                  height: AppDimensions.height10 * 10.5,
+                  width: AppDimensions.height10*36.0,
+                  padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8, left: AppDimensions.height10*2.0,right: AppDimensions.height10*3.5),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Colors.white, width: 2),
+                      borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                  child: TextFormField(
+                      decoration:  InputDecoration(
+
+                          hintText: widget.title,
+                          hintStyle: TextStyle(
+                              fontSize: AppDimensions.height10 * 2.4,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFFFA9934)),
+
+                          focusedBorder: const OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent)),
+                          enabledBorder: const OutlineInputBorder(
+                              borderSide:
+                              BorderSide(color: Colors.transparent)))),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10 * 0.5,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left:AppDimensions.height10*3.6,right:AppDimensions.height10*25.6 ),
+                  child: Row(
+                    children: [
+                      Center(
+                        child: Text(
+                          "Character count:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                            fontSize: AppDimensions.height10 * 1.4,
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          "50",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                            fontSize: AppDimensions.height10 * 1.4,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10 * 0.1,
+                ),
+                Container(
+                  height: AppDimensions.height10 * 4.2,
+                  width:  AppDimensions.height10 * 34.7,
+                  // padding: EdgeInsets.only(right:AppDimensions.height10*1.5),
+                  child: Center(
+                    child: Text(
+                      "You can change your goal statement later by going into your Dashboard. ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontSize: AppDimensions.height10 * 1.6,
+                      ),
+                    ),
+                  ),
+                ),
+
+
+                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
+                  height: AppDimensions.height10 * 26.3,
+                ):SizedBox(
+                  height: AppDimensions.height10 * 9.6,
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      // color: Colors.blue,
+                        width: AppDimensions.height10 * 5.0,
+                        height: AppDimensions.height10 * 5.0,
+
+                        child: Image.asset(
+                          "assets/images/Moreactions.png",
+                          fit: BoxFit.contain,
+                        )),
+
+                    GestureDetector(
+
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PracticeRoutine(),
+                          ),
+                        );
+                      },
+
+                      child:   Container(
+                        height: AppDimensions.height10*5,
+                        width: AppDimensions.height10*31.3,
+                        decoration:  BoxDecoration(
+                          // color: Color(0xFFFF7D50),
+                          border: Border.all(color: Colors.transparent),
+                          gradient: const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
+                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                        ),
+                        child:  Center(
+                          child:  Text(
+                            "Next",
+                            style:  TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 1.6,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(
+                  height: AppDimensions.height10 * 2.5,
+                ),
+
+                Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+              ],
+            ),
+          )
+
+        ],
+      ),
+
+
+    );
+  }
+}
