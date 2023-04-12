@@ -283,7 +283,7 @@ class _emotionsState extends State<emotions> {
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                      height: AppDimensions.height10 * 50,
+                      height: AppDimensions.height10 * 5.0,
                       width: AppDimensions.height10 * 14.3,
                       margin:
                           EdgeInsets.only(right: AppDimensions.height10 * 1.2),
@@ -312,19 +312,17 @@ class _emotionsState extends State<emotions> {
                       height: AppDimensions.height10 * 5.0,
                       width: AppDimensions.height10 * 17.0,
                       decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xffFCC10D),
-                              Color(0xffFDA210),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 5.0),
-                          border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
-                              color: Colors.transparent)),
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color(0xffFCC10D),
+                            Color(0xffFDA210),
+                          ],
+                        ),
+                        borderRadius:
+                            BorderRadius.circular(AppDimensions.height10 * 5.0),
+                      ),
                       child: Container(
                         child: widget.summary
                             ? TextButton(

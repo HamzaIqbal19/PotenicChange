@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
 import 'goal_menu_missed_session.dart';
 
@@ -50,7 +51,7 @@ class menu_behaviour extends StatelessWidget {
             children: [
               Container(
                 width: AppDimensions.height10 * 30.4,
-                height: AppDimensions.height10 * 18.2,
+                height: AppDimensions.height10 * 18.6,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10 * 4.2,
                     bottom: AppDimensions.height10 * 3.2),
@@ -97,7 +98,7 @@ class menu_behaviour extends StatelessWidget {
                                             'assets/images/Ellipse pearl.png'),
                                         fit: BoxFit.contain)),
                                 child: Align(
-                                    alignment: const Alignment(0, 1.25),
+                                    alignment: const Alignment(0, 1.125),
                                     child: Container(
                                       height: AppDimensions.height10 * 0.98,
                                       width: AppDimensions.height10 * 0.967,
@@ -122,7 +123,7 @@ class menu_behaviour extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Count temper\nepisodes ',
+                                    'Count temper episodes ',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                         color: Color(0xffffffff),
@@ -130,6 +131,7 @@ class menu_behaviour extends StatelessWidget {
                                         fontWeight: FontWeight.w600),
                                   ),
                                   Container(
+                                    height: AppDimensions.height10 * 2.5,
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10 * 0.6),
                                     child: Text(
@@ -154,7 +156,7 @@ class menu_behaviour extends StatelessWidget {
               Container(
                 width: AppDimensions.height10 * 32.0,
                 height: AppDimensions.height10 * 2.6,
-                margin: EdgeInsets.only(bottom: 20),
+                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 2.0),
                 child: Text(
                   'What do you want to do?',
                   textAlign: TextAlign.center,
@@ -166,12 +168,13 @@ class menu_behaviour extends StatelessWidget {
               ),
               Container(
                 width: AppDimensions.height10 * 21.1,
-                height: AppDimensions.height10 * 20.0,
+                height: AppDimensions.height10 * 11.8,
+                // color: Colors.amber,
                 child: Row(
                   children: [
                     Container(
                       width: AppDimensions.height10 * 9.6,
-                      height: AppDimensions.height10 * 10.8,
+                      height: AppDimensions.height10 * 11.8,
                       //margin: EdgeInsets.only(bottom: 19),
                       child: Column(
                         children: [
@@ -200,7 +203,15 @@ class menu_behaviour extends StatelessWidget {
                                     ))),
                           ),
                           Text(
-                            'Veiw/Edit\nsession',
+                            'Veiw/Edit',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10 * 1.6,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          Text(
+                            'session',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
@@ -212,7 +223,7 @@ class menu_behaviour extends StatelessWidget {
                     ),
                     Container(
                       width: AppDimensions.height10 * 9.3,
-                      height: AppDimensions.height10 * 10.8,
+                      height: AppDimensions.height10 * 11.8,
                       //margin: EdgeInsets.only(bottom: 19),
                       child: Column(
                         children: [
@@ -253,7 +264,15 @@ class menu_behaviour extends StatelessWidget {
                                     )),
                               )),
                           Text(
-                            'Missed\nsession',
+                            'Missed',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10 * 1.6,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          Text(
+                            'session',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
@@ -289,55 +308,64 @@ class menu_behaviour extends StatelessWidget {
                           width: AppDimensions.height10 * 3.0,
                         )),
                   ),
-                  Column(
-                    children: [
-                      Container(
-                        height: AppDimensions.height10 * 4.4,
-                        width: AppDimensions.height10 * 36.0,
-                        margin: EdgeInsets.only(
-                            bottom: AppDimensions.height10 * 1.2),
-                        child: Column(children: [
-                          Container(
-                            child: Text(
-                              'Practice Assessment',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xfff5f5f5)),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10 * 0.8),
-                            child: Text(
-                              'You can evaluate your progress in -19 active days.',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xfff5f5f5)),
-                            ),
-                          )
-                        ]),
-                      ),
-                      Column(
+                  Align(
+                    alignment: Alignment(0, -1),
+                    child: Container(
+                      width: AppDimensions.height10 * 36.0,
+                      height: AppDimensions.height10 * 18.8,
+                      child: Column(
                         children: [
                           Container(
+                            height: AppDimensions.height10 * 4.4,
+                            width: AppDimensions.height10 * 36.0,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10 * 1.2),
-                            child: button_feilds(
-                              feild_text: 'Progress report',
-                              icon_viible: false,
-                              text_color: 0xff828282,
-                            ),
+                            child: Column(children: [
+                              Container(
+                                height: AppDimensions.height10 * 1.9,
+                                child: Text(
+                                  'Practice Assessment',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xfff5f5f5)),
+                                ),
+                              ),
+                              Container(
+                                height: AppDimensions.height10 * 1.7,
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10 * 0.8),
+                                child: Text(
+                                  'You can evaluate your progress in -19 active days.',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.4,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xfff5f5f5)),
+                                ),
+                              )
+                            ]),
                           ),
-                          button_feilds(
-                            feild_text: 'Practice score (-/5)',
-                            icon_viible: false,
-                            text_color: 0xff828282,
-                          )
+                          Column(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    bottom: AppDimensions.height10 * 1.2),
+                                child: button_feilds(
+                                  feild_text: 'Progress report',
+                                  icon_viible: false,
+                                  text_color: 0xff828282,
+                                ),
+                              ),
+                              button_feilds(
+                                feild_text: 'Practice score (-/5)',
+                                icon_viible: false,
+                                text_color: 0xff828282,
+                              )
+                            ],
+                          ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
                 ]),
               ),
@@ -392,55 +420,6 @@ class menu_behaviour extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class button_feilds extends StatelessWidget {
-  final String feild_text;
-  final bool icon_viible;
-  final int text_color;
-  const button_feilds(
-      {super.key,
-      required this.feild_text,
-      required this.icon_viible,
-      required this.text_color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-          left: AppDimensions.height10 * 0.8,
-          right: AppDimensions.height10 * 0.8),
-      height: AppDimensions.height10 * 6.0,
-      width: AppDimensions.height10 * 36.0,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
-          color: Colors.white),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          TextButton(
-              onPressed: () {},
-              child: Text(
-                feild_text,
-                style: TextStyle(
-                  color: Color(text_color),
-                  fontSize: AppDimensions.height10 * 1.8,
-                  fontWeight: FontWeight.w500,
-                ),
-              )),
-          Container(
-              width: AppDimensions.height10 * 2.4,
-              margin: EdgeInsets.only(right: AppDimensions.height10 * 2.391),
-              child: icon_viible
-                  ? Icon(
-                      Icons.arrow_forward,
-                      color: Color(0xff646464),
-                    )
-                  : Container())
-        ],
       ),
     );
   }

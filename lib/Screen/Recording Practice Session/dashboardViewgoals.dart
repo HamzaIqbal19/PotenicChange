@@ -298,6 +298,7 @@ class dashBoard extends StatelessWidget {
                     ),
                     Divider(
                       height: AppDimensions.height10 * 0.1,
+                      thickness: AppDimensions.height10 * 0.1,
                       color: Colors.white,
                     ),
                     Container(
@@ -322,7 +323,7 @@ class dashBoard extends StatelessWidget {
                       top: AppDimensions.height10 * 2.9,
                       bottom: AppDimensions.height10 * 1.2,
                       right: AppDimensions.height10 * 7.3,
-                      left: 23),
+                      left: AppDimensions.height10 * 2.3),
                   child: Stack(children: [
                     Align(
                       alignment: Alignment.topRight,
@@ -359,7 +360,7 @@ class dashBoard extends StatelessWidget {
                       ),
                     ),
                     Align(
-                      alignment: Alignment(0.9, 1),
+                      alignment: Alignment(0.9, 0.9),
                       child: GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -423,7 +424,7 @@ class dashBoard extends StatelessWidget {
                   )),
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10 * 3.4,
-                      right: AppDimensions.height10 * 2.63),
+                      right: AppDimensions.height10 * 2.665),
                   //color: Colors.blue,
                   child: Stack(children: [
                     Align(
@@ -478,7 +479,7 @@ class dashBoard extends StatelessWidget {
                                 left: AppDimensions.height10 * 3.4,
                                 bottom: AppDimensions.height10 * 1.2),
                             child: Text(
-                              "You have an extra 20% chance of success if you have a support buddy. Have you got one?",
+                              "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
                               // textAlign: TextAlign.left,
 
                               style: TextStyle(

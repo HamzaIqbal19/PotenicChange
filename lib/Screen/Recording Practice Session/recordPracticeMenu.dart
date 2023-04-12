@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../Widgets/menu_buttons.dart';
+
 class practiceMenu extends StatelessWidget {
   const practiceMenu({super.key});
 
@@ -90,7 +92,7 @@ class practiceMenu extends StatelessWidget {
                             ),
                           ),
                           Align(
-                            alignment: Alignment(-0.4, -0.2),
+                            alignment: Alignment(-0.395, -0.2),
                             child: Container(
                               height: AppDimensions.height10 * 4.9,
                               width: AppDimensions.height10 * 4.9,
@@ -103,7 +105,7 @@ class practiceMenu extends StatelessWidget {
                             ),
                           ),
                           Align(
-                            alignment: Alignment(1, -0.3),
+                            alignment: Alignment(1.1, -0.3),
                             child: Container(
                               width: AppDimensions.height10 * 10.6,
                               height: AppDimensions.height10 * 2.4,
@@ -138,7 +140,7 @@ class practiceMenu extends StatelessWidget {
               Container(
                 width: AppDimensions.height10 * 9.36,
                 height: AppDimensions.height10 * 12.0,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.9),
+                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1),
                 child: Column(
                   children: [
                     Container(
@@ -288,6 +290,7 @@ class practiceMenu extends StatelessWidget {
               ),
               Container(
                 height: AppDimensions.height10 * 28.0,
+                width: AppDimensions.height10 * 36.0,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10 * 2.5,
                     top: AppDimensions.height10 * 3.0),
@@ -328,55 +331,6 @@ class practiceMenu extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class button_feilds extends StatelessWidget {
-  final String feild_text;
-  final bool icon_viible;
-  final int text_color;
-  const button_feilds(
-      {super.key,
-      required this.feild_text,
-      required this.icon_viible,
-      required this.text_color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-          left: AppDimensions.height10 * 0.8,
-          right: AppDimensions.height10 * 0.8),
-      height: AppDimensions.height10 * 6.0,
-      width: AppDimensions.height10 * 36.0,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
-          color: Colors.white),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          TextButton(
-              onPressed: () {},
-              child: Text(
-                feild_text,
-                style: TextStyle(
-                  color: Color(text_color),
-                  fontSize: AppDimensions.height10 * 1.8,
-                  fontWeight: FontWeight.w500,
-                ),
-              )),
-          Container(
-              width: AppDimensions.height10 * 2.4,
-              margin: EdgeInsets.only(right: AppDimensions.height10 * 2.391),
-              child: icon_viible
-                  ? Icon(
-                      Icons.arrow_forward,
-                      color: Color(0xff646464),
-                    )
-                  : Container())
-        ],
       ),
     );
   }

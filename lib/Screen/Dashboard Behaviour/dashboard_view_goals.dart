@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_noPast_session.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_session.dart';
 
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/mult_circles.dart';
@@ -12,27 +14,34 @@ class view_goals extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:
-            AppBar(backgroundColor: Colors.transparent, elevation: 0, actions: [
-          Row(
-            children: [
-              IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(
-                    'assets/images/Add goal.png',
-                    height: AppDimensions.height10 * 2.1,
-                    width: AppDimensions.height10 * 2.1,
-                  )),
-              IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(
-                    'assets/images/calendar_month_black_24dp 1.png',
-                    height: AppDimensions.height10 * 2.1,
-                    width: AppDimensions.height10 * 2.1,
-                  )),
-            ],
-          )
-        ]),
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            actions: [
+              Row(
+                children: [
+                  Container(
+                    margin:
+                        EdgeInsets.only(right: AppDimensions.height10 * 1.7),
+                    child: Image.asset(
+                      'assets/images/Add goal.png',
+                      height: AppDimensions.height10 * 2.0,
+                      width: AppDimensions.height10 * 2.1,
+                    ),
+                  ),
+                  Container(
+                    margin:
+                        EdgeInsets.only(right: AppDimensions.height10 * 1.32),
+                    child: Image.asset(
+                      'assets/images/calendar_month_black_24dp 1.png',
+                      height: AppDimensions.height10 * 2.4,
+                      width: AppDimensions.height10 * 2.4,
+                    ),
+                  ),
+                ],
+              )
+            ]),
         extendBodyBehindAppBar: true,
         extendBody: true,
         bottomNavigationBar: Navigation_Bar(
@@ -46,7 +55,7 @@ class view_goals extends StatelessWidget {
               ),
             ),
             width: double.infinity,
-            height: AppDimensions.height10 * 78.2,
+            height: AppDimensions.height10 * 79.8,
             child: SizedBox(
                 width: double.infinity,
                 height: AppDimensions.height10 * 19.2,
@@ -59,173 +68,230 @@ class view_goals extends StatelessWidget {
                         child: SizedBox(
                           height: AppDimensions.height10 * 19.2,
                           width: AppDimensions.height10 * 45.7,
-                          child: Row(
+                          child: Stack(
                             children: [
-                              Container(
-                                height: AppDimensions.height10 * 7.9,
-                                width: AppDimensions.height10 * 7.9,
-                                margin: const EdgeInsets.only(top: 84),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border:
-                                      Border.all(width: 3, color: Colors.white),
-                                  gradient: const LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Color.fromRGBO(187, 185, 174, 1),
-                                        Color.fromRGBO(206, 194, 149, 1)
-                                      ]),
-                                ),
-                                child: Container(
-                                    margin: const EdgeInsets.only(top: 11.52),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const Text(
-                                          'MON',
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white),
-                                        ),
-                                        const Text(
-                                          '02.06',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                        Container(
-                                            height: 27,
-                                            width: 27,
-                                            margin: const EdgeInsets.only(
-                                                top: 3.32),
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                            ),
-                                            child: DottedBorder(
-                                              borderType: BorderType.Circle,
-                                              color: Colors.white,
-                                              child: const Center(
-                                                child: Text(
-                                                  '0/0',
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.white),
-                                                ),
-                                              ),
-                                            ))
-                                      ],
-                                    )),
-                              ),
-                              Container(
-                                height: 192,
-                                width: 188,
-                                margin:
-                                    EdgeInsets.only(left: 55.5, right: 55.5),
-                                child: Container(
-                                  height: 138.1,
-                                  width: 132.65,
-                                  decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/Asset 10 2.png'),
-                                          fit: BoxFit.cover)),
-                                  child: Stack(children: [
-                                    Align(
-                                      alignment: Alignment(0.185, 0.215),
-                                      child: Container(
-                                        height: 13,
-                                        width: 13,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            gradient: LinearGradient(colors: [
-                                              Color(0xfff1e39a),
-                                              Color(0xffEEDD96)
-                                            ])),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment(0, 0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const Text(
-                                            'TUE',
-                                            style: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(0xff5B74A6)),
-                                          ),
-                                          const Text(
-                                            '02.07',
-                                            style: TextStyle(
-                                                color: Color(0xff5B74A6),
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                          Container(
-                                              height: 25,
-                                              width: 25,
-                                              margin:
-                                                  const EdgeInsets.only(top: 2),
-                                              decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Colors.white),
-                                              child: Center(
-                                                child: Text(
-                                                  '0/2',
-                                                  style: TextStyle(
-                                                      fontSize: 10,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Color(0xff5B74A6)),
-                                                ),
-                                              )),
-                                        ],
-                                      ),
-                                    ),
-                                  ]),
-                                ),
-                                //color: Colors.blue,
-                              ),
-                              Container(
-                                  height: 79,
-                                  width: 79,
-                                  margin: const EdgeInsets.only(
-                                    top: 84,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 3, color: Colors.white),
-                                    color: Colors.white,
-                                  ),
+                              Align(
+                                alignment: Alignment(-1, 1),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                no_past_session()));
+                                  },
                                   child: Container(
-                                      margin: const EdgeInsets.only(top: 11.52),
-                                      child: Column(
+                                    height: AppDimensions.height10 * 7.9,
+                                    width: AppDimensions.height10 * 7.9,
+                                    //margin: const EdgeInsets.only(top: 84),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          width: 3, color: Colors.white),
+                                      gradient: const LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color(0xffF5F1E0),
+                                            Color(0xffEDDC97)
+                                          ]),
+                                    ),
+                                    child: Container(
+                                        padding: EdgeInsets.only(
+                                            top: AppDimensions.height10 * 1),
+                                        alignment: Alignment.center,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10 * 1.7,
+
+                                              // color: Colors.blue,
+                                              child: Text(
+                                                'MON',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10 *
+                                                            1.2,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Color(0xff5B74A6)),
+                                              ),
+                                            ),
+                                            Container(
+                                              //width: AppDimensions.height10 * 4.0,
+                                              height:
+                                                  AppDimensions.height10 * 1.7,
+                                              // color: Colors.amber,
+                                              child: Text(
+                                                '02.06',
+                                                style: TextStyle(
+                                                    color: Color(0xff5B74A6),
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize:
+                                                        AppDimensions.height10 *
+                                                            1.7),
+                                              ),
+                                            ),
+                                            Container(
+                                                height: AppDimensions.height10 *
+                                                    2.7,
+                                                width: AppDimensions.height10 *
+                                                    2.7,
+                                                //  margin: const EdgeInsets.only(top: 3.32),
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Color(0xff156F6D)),
+                                                child: Center(
+                                                  child: Text(
+                                                    '0/0',
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: Colors.white),
+                                                  ),
+                                                ))
+                                          ],
+                                        )),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment(0, 0),
+                                child: Container(
+                                  height: AppDimensions.height10 * 19.2,
+                                  width: AppDimensions.height10 * 18.8,
+                                  // margin: EdgeInsets.only(left: 55.5, right: 55.5),
+                                  child: Container(
+                                    height: AppDimensions.height10 * 13.81,
+                                    width: AppDimensions.height10 * 13.265,
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/Asset 10 2.png'),
+                                            fit: BoxFit.cover)),
+                                    child: Stack(children: [
+                                      Align(
+                                        alignment: Alignment(0.185, 0.215),
+                                        child: Container(
+                                          height: AppDimensions.height10 * 1.3,
+                                          width: AppDimensions.height10 * 1.3,
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              gradient: LinearGradient(colors: [
+                                                Color(0xfff1e39a),
+                                                Color(0xffEEDD96)
+                                              ])),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment(0, 0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'TUE',
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.4,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Color(0xff5B74A6)),
+                                            ),
+                                            Text(
+                                              '02.07',
+                                              style: TextStyle(
+                                                  color: Color(0xff5B74A6),
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.3,
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                            Container(
+                                                height: AppDimensions.height10 *
+                                                    2.5,
+                                                width: AppDimensions.height10 *
+                                                    2.5,
+                                                // margin: const EdgeInsets.only(top: 2),
+                                                decoration: const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Colors.white),
+                                                child: Center(
+                                                  child: Text(
+                                                    '0/2',
+                                                    style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            Color(0xff5B74A6)),
+                                                  ),
+                                                )),
+                                          ],
+                                        ),
+                                      ),
+                                    ]),
+                                  ),
+                                  //color: Colors.blue,
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment(1, 1),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                no_planned_session()));
+                                  },
+                                  child: Container(
+                                      height: AppDimensions.height10 * 7.9,
+                                      width: AppDimensions.height10 * 7.9,
+                                      // margin: const EdgeInsets.only(
+                                      //   top: 84,
+                                      // ),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              width: 3, color: Colors.white),
+                                          gradient: LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Color(0xffFBF9EF),
+                                                Color(0xffF8F3DA)
+                                              ])),
+                                      child: Container(
+                                          //margin: const EdgeInsets.only(top: 11.52),
+                                          child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          const Text(
+                                          Text(
                                             'MON',
                                             style: TextStyle(
-                                                fontSize: 12,
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.2,
                                                 fontWeight: FontWeight.w600,
                                                 color: Color(0xff5B74A6)),
                                           ),
-                                          const Text(
+                                          Text(
                                             '03.07',
                                             style: TextStyle(
                                                 color: Color(0xff5B74A6)),
                                           ),
                                           Container(
-                                            height: 27,
-                                            width: 27,
-                                            margin: const EdgeInsets.only(
-                                                top: 3.32),
+                                            height:
+                                                AppDimensions.height10 * 2.7,
+                                            width: AppDimensions.height10 * 2.7,
+                                            //margin: const EdgeInsets.only(top: 3.32),
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                               border: Border.all(
@@ -233,12 +299,14 @@ class view_goals extends StatelessWidget {
                                                   color: Colors.white),
                                             ),
                                             child: Container(
-                                                width: 17,
-                                                height: 15,
-                                                margin: const EdgeInsets.only(
-                                                    top: 3.32),
+                                                width: AppDimensions.height10 *
+                                                    1.7,
+                                                height: AppDimensions.height10 *
+                                                    1.5,
+                                                // margin:
+                                                //     const EdgeInsets.only(top: 3.32),
                                                 // margin: const EdgeInsets.only(left: 1),
-                                                child: const Center(
+                                                child: Center(
                                                   child: Text(
                                                     '0/2',
                                                     style: TextStyle(
@@ -252,6 +320,8 @@ class view_goals extends StatelessWidget {
                                           )
                                         ],
                                       ))),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -301,7 +371,7 @@ class view_goals extends StatelessWidget {
                         },
                         child: Center(
                             child: align_circles(
-                          asset_1: 'assets/images/oraange_sun.png',
+                          asset_1: 'assets/images/image3.png',
                           s_circle_text: 'Count\ntemper\nepisodes',
                           asset_2: 'assets/images/Ellipse pearl.png',
                           head_text: 'Control my anger',
@@ -354,7 +424,7 @@ class view_goals extends StatelessWidget {
                       ),
                       Center(
                           child: align_circles(
-                        asset_1: 'assets/images/oraange_sun.png',
+                        asset_1: 'assets/images/image3.png',
                         s_circle_text: 'Count\ndown',
                         asset_2: 'assets/images/Ellipse purple.png',
                         head_text: 'Control my anger',
@@ -406,7 +476,7 @@ class view_goals extends StatelessWidget {
                       ),
                       Center(
                           child: align_circles(
-                        asset_1: 'assets/images/oraange_sun.png',
+                        asset_1: 'assets/images/image3.png',
                         s_circle_text: 'Meditation',
                         asset_2: 'assets/images/Ellipse 158.png',
                         head_text: 'Control my anger',
@@ -422,7 +492,7 @@ class view_goals extends StatelessWidget {
                       )),
                       Center(
                           child: align_circles(
-                        asset_1: 'assets/images/oraange_sun.png',
+                        asset_1: 'assets/images/image3.png',
                         s_circle_text: 'Meditation',
                         asset_2: 'assets/images/Ellipse 158.png',
                         head_text: 'Control my anger',
@@ -508,7 +578,7 @@ class view_goals extends StatelessWidget {
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10 * 10.8,
                             bottom: AppDimensions.height10 * 14.7),
-                        height: AppDimensions.height10 * 8.1,
+                        height: AppDimensions.height10 * 14.1,
                         width: AppDimensions.height10 * 25.1,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
