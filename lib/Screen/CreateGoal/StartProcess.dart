@@ -29,27 +29,21 @@ class _StartProcessState extends State<StartProcess> {
           automaticallyImplyLeading: false,
           actions: [
 
-            CircleAvatar(
-              radius: 18,
-              backgroundColor: const Color(0xffffffff),
-              child: Center(
-                // alignment: Alignment.center,
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.close,
-                    size: 16,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
-                      ),
-                    );
-                    // Add code for performing close action
-                  },
+            Center(
+              // alignment: Alignment.center,
+
+
+              child: IconButton(
+                icon: Image.asset(
+                  'assets/images/Close.png',
+                  width: AppDimensions.height10*2.8,
+                  height: AppDimensions.height10*2.8,
+                  fit: BoxFit.cover,
                 ),
+                onPressed: () {
+                  Navigator.pop(context);
+                  // Add code for performing close action
+                },
               ),
             ),
             SizedBox(width: AppDimensions.width10,)

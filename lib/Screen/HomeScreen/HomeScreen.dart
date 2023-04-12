@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: AppDimensions.height10 * 8.2,
+                  height: AppDimensions.height10 * 7.0,
                 ),
                 Center(
                   child: Image(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:potenic_app/Screen/splash/splash_page.dart';

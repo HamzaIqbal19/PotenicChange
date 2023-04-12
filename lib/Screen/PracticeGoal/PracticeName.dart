@@ -95,7 +95,7 @@ class _PracticeNameState extends State<PracticeName> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.3),
+                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
                   child: Center(
                     child: Text(
                       "Practice Creation 2/3",
@@ -123,7 +123,7 @@ class _PracticeNameState extends State<PracticeName> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.7,
+                  height: AppDimensions.height10 ,
                 ),
 
                 Row(
@@ -131,13 +131,10 @@ class _PracticeNameState extends State<PracticeName> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-
+                        margin: EdgeInsets.only(left:AppDimensions.height10*1.0,right:AppDimensions.height10*1.0),
               width: AppDimensions.height10 * 10.4,
               height: AppDimensions.height10 *11.2,
-              padding: EdgeInsets.only(
 
-              left: AppDimensions.height10 * 0.5,
-              right: AppDimensions.height10 * 0.5),
                         child: Image.asset(
                           "assets/images/createprac.png",
                           fit: BoxFit.contain,
@@ -160,7 +157,7 @@ class _PracticeNameState extends State<PracticeName> {
                 ),
 
                 SizedBox(
-                  height: AppDimensions.height10 * 4.6,
+                  height: AppDimensions.height10 * 1.6,
                 ),
                 Container(
                   child: Center(
@@ -197,9 +194,10 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10 * 3.4,
                 ),
                 Container(
+
                   height: AppDimensions.height10 * 10.5,
                   width: AppDimensions.height10*36.0,
-                  padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8, left: AppDimensions.height10*2.0,right: AppDimensions.height10*3.5),
+                  padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8,),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
@@ -223,8 +221,14 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10 * 0.5,
                 ),
                 Container(
-                  padding: EdgeInsets.only(left:AppDimensions.height10*3.6,right:AppDimensions.height10*25.6 ),
+                  // width: AppDimensions.height10*12.3,
+                  width:  AppDimensions.height10 * 34.7,
+
+
+                  margin: EdgeInsets.only(right:AppDimensions.height10*1.3),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Center(
                         child: Text(
@@ -238,7 +242,7 @@ class _PracticeNameState extends State<PracticeName> {
                       ),
                       Center(
                         child: Text(
-                          "50",
+                          "80",
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
@@ -255,10 +259,11 @@ class _PracticeNameState extends State<PracticeName> {
                 Container(
                   height: AppDimensions.height10 * 4.2,
                   width:  AppDimensions.height10 * 34.7,
-                  // padding: EdgeInsets.only(right:AppDimensions.height10*1.5),
+
+                  margin: EdgeInsets.only(right:AppDimensions.height10*1.3),
                   child: Center(
                     child: Text(
-                      "You can change your goal statement later by going into your Dashboard. ",
+                      "You can change the name of your practice later by going into your Dashboard.  ",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,

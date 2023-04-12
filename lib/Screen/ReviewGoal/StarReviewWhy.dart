@@ -1,23 +1,19 @@
 
 
-
-
-
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
+import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
+import 'package:potenic_app/Widgets/review_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-// ignore: camel_case_types
-class Goal_Identity extends StatefulWidget {
-  const Goal_Identity({Key? key}) : super(key: key);
+class StarReviewWhy extends StatefulWidget {
+  const StarReviewWhy({Key? key}) : super(key: key);
 
   @override
-  State<Goal_Identity> createState() => _Goal_IdentityState();
+  State<StarReviewWhy> createState() => _StarReviewWhyState();
 }
 
-// ignore: camel_case_types
-class _Goal_IdentityState extends State<Goal_Identity> {
+class _StarReviewWhyState extends State<StarReviewWhy> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,35 +48,35 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 },
               ),
             ),
-            actions: [
-              Center(
-                // alignment: Alignment.center,
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Close.png',
-                    width: AppDimensions.height10 * 3.0,
-                    height: AppDimensions.height10 * 3.0,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () {
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
-                    //   ),
-                    // );
-                    // Add code for performing close action
-                  },
-                ),
-              ),
-            ],
+            // actions: [
+            //   Center(
+            //     // alignment: Alignment.center,
+            //     child: IconButton(
+            //       icon: Image.asset(
+            //         'assets/images/Close.png',
+            //         width: AppDimensions.height10 * 3.0,
+            //         height: AppDimensions.height10 * 3.0,
+            //         fit: BoxFit.contain,
+            //       ),
+            //       onPressed: () {
+            //         // Navigator.pushReplacement(
+            //         //   context,
+            //         //   MaterialPageRoute(
+            //         //     builder: (context) => HomeScreen(),
+            //         //   ),
+            //         // );
+            //         // Add code for performing close action
+            //       },
+            //     ),
+            //   ),
+            // ],
           )),
       body: Stack(
         children: [
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
+                image: AssetImage("assets/images/GoalReviewBg.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -94,84 +90,69 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                   padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
                   child: Center(
                     child: Text(
-                      "Star Creation 4/5",
+                      "View and edit mode",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: Color(0xFF437296),
                         fontSize: AppDimensions.height10 * 1.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.5,
+                  height: AppDimensions.height10 * 0.6,
                 ),
                 Container(
                   child: Center(
                     child: Text(
-                      "Control my anger",
+                      "Control My Anger",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.2,
+                        color: Color(0xFF437296),
+                        fontSize: AppDimensions.height10 * 2.0,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.9,
-                ),
-                Container(
-                  // color: Colors.blue,
-                    width: AppDimensions.height10 * 10.4,
-                    height: AppDimensions.height10 * 7.6,
-                    padding: EdgeInsets.only(
-
-                        left: AppDimensions.height10 * 1.5,
-                        right: AppDimensions.height10 * 1.5),
-                    child: Image.asset(
-                      "assets/images/image3.png",
-                      fit: BoxFit.contain,
-                    )),
-                SizedBox(
-                  height: AppDimensions.height10*1.0,
+                  height: AppDimensions.height10 * 4.0,
                 ),
                 Container(
                   child: Center(
                     child: Text(
-                      "New Identity Statement",
+                      "The Why",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: Color(0xFF437296),
                         fontSize: AppDimensions.height10 * 2.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.0,
+                  height: AppDimensions.height10 * 0.8,
                 ),
                 Container(
-
-                  height: AppDimensions.height10 * 7.5,
+                  height: AppDimensions.height10 * 4.6,
                   width: AppDimensions.height10 * 37.2,
                   child: Center(
                     child: Text(
-                      "What positive statements can you think of \n to help you own your goal & your new \n identity?  ",
+                      "Why pursuing this goal is important to \n you? ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
 
                           fontSize: AppDimensions.height10 * 1.8,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFFFFFFFF)),
+                        color: Color(0xFF437296),),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: AppDimensions.height10 * 3.4,
                 ),
+                reviewbox(),
 
-                backbox(),
+
 
 
 
@@ -188,15 +169,36 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      // color: Colors.blue,
-                        width: AppDimensions.height10 * 5.0,
-                        height: AppDimensions.height10 * 5.0,
+                    GestureDetector(
 
-                        child: Image.asset(
-                          "assets/images/Moreactions.png",
-                          fit: BoxFit.contain,
-                        )),
+                      onTap: (){
+
+                      },
+
+                      child:   Container(
+                        height: AppDimensions.height10*5,
+                        width: AppDimensions.height10*10.0,
+                        decoration:  BoxDecoration(
+                          // color: Color(0xFFFF7D50),
+                          border: Border.all(color: Color(0xFF282828)),
+                          // gradient: const LinearGradient(
+                          //     begin: Alignment.topCenter,
+                          //     end: Alignment.bottomCenter,
+                          //     colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
+                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                        ),
+                        child:  Center(
+                          child:  Text(
+                            "Reset",
+                            style:  TextStyle(
+                              color: Color(0xFF282828),
+                              fontSize: AppDimensions.height10 * 1.6,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
 
                     GestureDetector(
 
@@ -204,26 +206,26 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Visualising(),
+                            builder: (context) => ActivateStar(),
                           ),
                         );
                       },
 
                       child:   Container(
                         height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*31.3,
+                        width: AppDimensions.height10*26.2,
                         decoration:  BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
+                              colors: [Color(0xFF282828), Color(0xFF282828)]),
                           borderRadius: const BorderRadius.all(Radius.circular(50.0)),
                         ),
                         child:  Center(
                           child:  Text(
-                            "Next",
+                            "Save",
                             style:  TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10 * 1.6,

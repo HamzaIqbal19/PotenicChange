@@ -70,7 +70,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children:<Widget> [
-                    SizedBox(height:AppDimensions.height10 * 8.02,),
+                    SizedBox(height:AppDimensions.height10 * 7.0,),
                     Center(
                       child: Image(
                         // color: Colors.orange,

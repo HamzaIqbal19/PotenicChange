@@ -216,7 +216,7 @@ class _LoginPageState extends State<LoginPage> {
                               label: Row(
                                 children: [
                                   Expanded(
-                                      child:Text('  Sign up with Google',style: TextStyle(
+                                      child:Text('  Sign in with Google',style: TextStyle(
                                         color:  Colors.black45,
                                         fontSize:  AppDimensions.height10 *1.8,
                                         fontWeight: FontWeight.w600,
@@ -281,9 +281,9 @@ class _LoginPageState extends State<LoginPage> {
                         icon: Image.asset("assets/images/fb.png", width: 0.0,height: 0.0,),
                         label: Center(
                             child:Text('New account',style: TextStyle(
-                              color:  Colors.black45,
-                              fontSize:  AppDimensions.font16 - 2,
-                              fontWeight: FontWeight.w700,
+                              color:  const Color(0xFF8C648A),
+                              fontSize:  AppDimensions.height10*1.6,
+                              fontWeight: FontWeight.w600,
                             ),)),
                       ),
                     ),

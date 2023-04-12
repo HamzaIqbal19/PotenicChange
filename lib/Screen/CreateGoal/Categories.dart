@@ -179,7 +179,7 @@ class _CategoriesState extends State<Categories> {
                     ),
                   );
                 },
-              child:circles(circle_text: "View all goals", circle_color1: 0xFFFC854F,circle_color2: 0xFFFAA960, circle_border: 3.0, circle_bordercolor: 0xFFFFFFFF, circle_height: AppDimensions.height10*10.0, circle_width: AppDimensions.height10*10.0, textfont: AppDimensions.height10*1.6, textcolor: 0xFFFFFFFF),
+              child:circles(circle_text: "View all \n goals", circle_color1: 0xFFFC854F,circle_color2: 0xFFFAA960, circle_border: 3.0, circle_bordercolor: 0xFFFFFFFF, circle_height: AppDimensions.height10*10.0, circle_width: AppDimensions.height10*10.0, textfont: AppDimensions.height10*1.6, textcolor: 0xFFFFFFFF),
               )
 
 

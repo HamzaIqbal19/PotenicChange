@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
+import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -109,7 +110,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                       Container(
 
                         child: Center(
-                          child: Text("You’ve created your first personal development goal and have taken the initial key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you achieve this goal. You’ll be able to assess  how effective it’s been for you and if it’s not  working, you can change it to another practice. ",
+                          child: Text("You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not  working, you can change it to another \n practice. ",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
@@ -127,13 +128,24 @@ class _GoalFinishedState extends State<GoalFinished> {
 
               Stack(
                 children: [
-                  Container(
-                    child: Image(
-                      image: const AssetImage('assets/images/anger.png'),
-                      height: AppDimensions.height10 * 38.1,
-                      width: AppDimensions.height10 * 35.3,
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => StarReview(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      child: Image(
+                        image: const AssetImage('assets/images/anger.png'),
+                        height: AppDimensions.height10 * 38.1,
+                        width: AppDimensions.height10 * 35.3,
+                      ),
                     ),
                   ),
+
                   Positioned(
                     top: 0,
                     bottom: 0,

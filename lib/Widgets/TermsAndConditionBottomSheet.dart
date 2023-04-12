@@ -155,7 +155,8 @@ void termsSheet(context) {
                   width:AppDimensions.height10*13.0,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
-                      border: Border(),
+
+                      border: Border.all(color: Colors.white),
                       color: Color.fromRGBO(250, 153, 52, 1)),
                   child: TextButton(
                     onPressed: () =>
@@ -170,14 +171,15 @@ void termsSheet(context) {
                             titlePadding: const EdgeInsets.all(0.0),
                             title: Container(
                               
-                              // color:Colors.orange,
+
                               margin: EdgeInsets.only(top: AppDimensions.height10*1.9, right:AppDimensions.height10* 1.6, left: AppDimensions.height10*1.6, bottom: AppDimensions.height10*0),
                               height: AppDimensions.height10*4.9,
                               width: AppDimensions.height10*23.8,
                               child: Text(
-                                "Potenic wants to use your Google account to sign in",
+                                "Potenic wants to use your \n Google account to sign in",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
+                                  fontFamily: "Laila",
                                   fontSize:  AppDimensions.height10*1.7,
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -187,13 +189,14 @@ void termsSheet(context) {
                             content: Container(
                                 // color:Colors.red,
                               margin: EdgeInsets.only(bottom: AppDimensions.height10*1.9, left:AppDimensions.height10* 1.6, right: AppDimensions.height10*1.6),
-                              height: AppDimensions.height10*3.7,
+                              height: AppDimensions.height10*3.2,
                               width: AppDimensions.height10*23.8,
                               child: Text(
-                                "This allows the app and website to share information about you.",
+                                "This allows the app and website to \n share information about you.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: AppDimensions.height10*1.3,
+                                  fontFamily: "Laila",
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -202,33 +205,35 @@ void termsSheet(context) {
                               Column(
                                 children: [
                                   Container(
-                                    height: 44,
+                                    height: AppDimensions.height10*4.4,
                                     width: double.infinity,
-                                    color: Color.fromRGBO(0, 122, 255, 1),
+                                    color:const Color.fromRGBO(0, 122, 255, 1),
                                     child: TextButton(
                                       onPressed: () {},
-                                      child: const Text(
+                                      child:  Text(
                                         'Continue',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 17,
+                                            fontSize: AppDimensions.height10*1.7,
+                                            fontFamily: "Laila",
                                             fontWeight: FontWeight.w400),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: 44,
-                                    width: 270,
+                                    height: AppDimensions.height10*4.4,
+                                    width: AppDimensions.height10*27.0,
                                     child: TextButton(
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: const Text(
+                                      child:  Text(
                                         'Cancel',
                                         style: TextStyle(
-                                          fontSize: 17,
+                                          fontSize: AppDimensions.height10*1.7,
+                                          fontFamily: "Laila",
                                           fontWeight: FontWeight.w400,
-                                          color: Color.fromRGBO(0, 122, 255, 1),
+                                          color: const Color.fromRGBO(0, 122, 255, 1),
                                         ),
                                       ),
                                     ),

@@ -63,7 +63,21 @@ class _SignUpPageState extends State<SignUpPage> {
               centerTitle: true,
               backgroundColor: Colors.transparent,
               automaticallyImplyLeading:false,
-
+              // leading: Center(
+              //   // alignment: Alignment.center,
+              //   child: IconButton(
+              //     icon: Image.asset(
+              //       'assets/images/Back.png',
+              //       width: AppDimensions.height10 * 3,
+              //       height: AppDimensions.height10 * 3,
+              //       fit: BoxFit.contain,
+              //     ),
+              //     onPressed: () {
+              //       Navigator.pop(context);
+              //       // Add code for performing close action
+              //     },
+              //   ),
+              // ),
               actions: [
                 Center(
                   // alignment: Alignment.center,
@@ -182,7 +196,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 children: [
                                   Expanded(
                                     // alignment: Alignment.centerLeft,
-                                      child:Text('  Email and Password',style: TextStyle(
+                                      child:Text('  Sign up with email',style: TextStyle(
                                         color: const Color(0xFFFFFFFF),
                                         fontSize:  AppDimensions.height10 *1.8,
                                         fontWeight: FontWeight.w600,
@@ -279,7 +293,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         icon: Image.asset("assets/images/fb.png", width: 0.0,height: 0.0,),
                         label: Center(
                             child:Text('I already have an account',style: TextStyle(
-                              color:  Colors.black45,
+                              color:  const Color(0xFF8C648A),
                               fontSize:  AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
                             ),)),

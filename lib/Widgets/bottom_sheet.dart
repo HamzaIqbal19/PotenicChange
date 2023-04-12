@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -70,6 +71,7 @@ void bottom_sheet(context) {
                  Container(
                    width: AppDimensions.height10*36.0,
                   height: AppDimensions.height10*8.0,
+
                   child: TextField(
                     style:   TextStyle(
                       fontWeight: FontWeight.w600,
@@ -79,7 +81,7 @@ void bottom_sheet(context) {
                     decoration: InputDecoration(
                         filled: true,
                         fillColor:const  Color.fromRGBO(0, 0, 0, 0.1),
-                        hintText: "Enter your goal name",
+                        hintText: "  Enter your goal name ",
                         hintStyle:  TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: AppDimensions.height10*2.4,
@@ -147,11 +149,13 @@ void bottom_sheet(context) {
                         ),
                       );
                     },
-                    child: const Text(
+                    child:  Text(
                       'Save',
                       style: TextStyle(
+                        fontFamily: "Laila",
+                        fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: 16,
+                        fontSize: AppDimensions.height10*1.6,
                       ),
                     )),
               ),
@@ -165,11 +169,13 @@ void bottom_sheet(context) {
                           width: 2, color: Color.fromARGB(209, 250, 154, 52))),
                   child: TextButton(
                       onPressed: () {},
-                      child: const Text(
+                      child:  Text(
                         'Cancel',
                         style: TextStyle(
-                          color: Color.fromARGB(209, 250, 154, 52),
-                          fontSize: 16,
+                          fontFamily: "Laila",
+                          fontWeight: FontWeight.w600,
+                          color: const Color.fromARGB(209, 250, 154, 52),
+                          fontSize: AppDimensions.height10*1.6,
                         ),
                       )))
             ],
@@ -186,13 +192,15 @@ class DropdownButtonExample extends StatefulWidget {
 }
 
 class _DropdownButtonExampleState extends State<DropdownButtonExample> {
+
+
   String dropdownValue = categories.first;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: AppDimensions.height10*36,
-      // height: AppDimensions.height10*8.0,
+      height: AppDimensions.height10*8.0,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius: BorderRadius.circular(AppDimensions.height10*1.8),
@@ -201,9 +209,9 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
         padding: const EdgeInsets.only(left: 8, right: 8),
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 5),
-              child: Align(
+             Padding(
+              padding: EdgeInsets.only(top: 5,left: AppDimensions.height10*1.6),
+              child:const Align(
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Category:',
@@ -216,18 +224,22 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
                     ),
                   )),
             ),
-            DropdownButton<String>(
+            DropdownButton2<String>(
               value: dropdownValue,
               isExpanded: true,
-              iconSize: AppDimensions.height10*4.4,
-              iconEnabledColor: Color.fromARGB(209, 250, 154, 52),
+              iconStyleData:IconStyleData(
+                iconSize: AppDimensions.height10*4.0,
+                iconEnabledColor: Color(0xFFFA9934)
+              ),
               underline: Container(),
-              elevation: 16,
+              // elevation: 16,
               style:  TextStyle(
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w400,
                   fontSize: AppDimensions.height10*2.4,
                   fontFamily: "Laila",
-                  color: const Color.fromARGB(209, 250, 154, 52)),
+                  color: const Color.fromARGB(209, 250, 154, 52)
+
+              ),
               onChanged: (String? value) {
                 // This is called when the user selects an item.
                 setState(() {

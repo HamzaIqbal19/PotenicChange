@@ -214,7 +214,7 @@ class _GoalNameState extends State<GoalName> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.3),
+                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
                   child: Center(
                     child: Text(
                       "Star Creation 2/5",
@@ -242,15 +242,14 @@ class _GoalNameState extends State<GoalName> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.7,
+                  height: AppDimensions.height10 * 1.9,
                 ),
                 Container(
                   // color: Colors.blue,
                     width: AppDimensions.height10 * 10.4,
-                    height: AppDimensions.height10 * 11.2,
+                    height: AppDimensions.height10 * 7.6,
                     padding: EdgeInsets.only(
-                        top: AppDimensions.height10 * 1.9,
-                        bottom: AppDimensions.height10 * 1.9,
+
                         left: AppDimensions.height10 * 1.5,
                         right: AppDimensions.height10 * 1.5),
                     child: Image.asset(
@@ -276,7 +275,7 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10 * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 2.2,
+                  height: AppDimensions.height10 * 7.5,
                   width: AppDimensions.height10 * 24.4,
                   child: Center(
                     child: Text(
@@ -294,7 +293,7 @@ class _GoalNameState extends State<GoalName> {
                 Container(
                   height: AppDimensions.height10 * 10.5,
                   width: AppDimensions.height10*36.0,
-                  padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8, left: AppDimensions.height10*2.0,right: AppDimensions.height10*3.5),
+                  padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8, left: AppDimensions.height10*0.0,right: AppDimensions.height10*0.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
@@ -318,8 +317,14 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10 * 0.5,
                 ),
                 Container(
-                  padding: EdgeInsets.only(left:AppDimensions.height10*3.6,right:AppDimensions.height10*25.6 ),
+                  // width: AppDimensions.height10*12.3,
+                  width:  AppDimensions.height10 * 34.7,
+                  margin: EdgeInsets.only(right:AppDimensions.height10*1.3),
+
+                  padding: EdgeInsets.only(left:AppDimensions.height10*0.1,right:AppDimensions.height10*20.1 ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Center(
                         child: Text(
@@ -350,10 +355,11 @@ class _GoalNameState extends State<GoalName> {
                 Container(
                   height: AppDimensions.height10 * 4.2,
                   width:  AppDimensions.height10 * 34.7,
-                  // padding: EdgeInsets.only(right:AppDimensions.height10*1.5),
+
+                  margin: EdgeInsets.only(right:AppDimensions.height10*1.3),
                   child: Center(
                     child: Text(
-                      "You can change your goal statement later by going into your Dashboard. ",
+                      "You can change the name of your practice later by going into your Dashboard.  ",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,

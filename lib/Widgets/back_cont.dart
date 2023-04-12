@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/utils/app_constants.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -6,9 +7,17 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 // import 'package:potenic_app/utils/icons.dart';
 
 
-class backbox extends StatelessWidget {
+class backbox extends StatefulWidget {
+
 
   const backbox({super.key});
+
+  @override
+  State<backbox> createState() => _backboxState();
+}
+
+class _backboxState extends State<backbox> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +50,16 @@ class backbox extends StatelessWidget {
                 ),
               ),
               Container(
-                    padding:const  EdgeInsets.only(left: 15),
+                    padding:  EdgeInsets.only(left: AppDimensions.height10*2.0,right:AppDimensions.height10*23.6 ),
                     child: Row(
-                      children: const [
+                      children:  [
                         Center(
                           child: Text(
                             "Character count:",
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              color: Color(0xFF464646),
-                              fontSize: 14,
+                              color: const Color(0xFF464646),
+                              fontSize: AppDimensions.height10*1.3,
                             ),
                           ),
                         ),
@@ -59,8 +68,8 @@ class backbox extends StatelessWidget {
                             "200",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFF464646),
-                              fontSize: 14,
+                              color: const Color(0xFF464646),
+                              fontSize: AppDimensions.height10*1.3,
                             ),
                           ),
                         ),
@@ -103,65 +112,91 @@ class backbox extends StatelessWidget {
   }
 }
 
-class inner_text extends StatelessWidget {
-  final TextEditingController body_text = TextEditingController();
-  final TextEditingController heading_text = TextEditingController();
+class inner_text extends StatefulWidget {
   final String circle_text;
 
 
   inner_text(this.circle_text, {super.key});
+
+  @override
+  State<inner_text> createState() => _inner_textState();
+}
+
+class _inner_textState extends State<inner_text> {
+  final TextEditingController body_text = TextEditingController();
+
+  final TextEditingController heading_text = TextEditingController();
+
+  late FocusNode _focusNode;
+
+
+
+
+  void initState() {
+    super.initState();
+    _focusNode = FocusNode()..addListener(_onFocus);
+  }
+
+  void _onFocus() {
+    setState((){});
+  }
 
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: AppDimensions.height10*17.9,
-      width: 360,
-      padding: const EdgeInsets.only(top: 10, bottom: 1, left: 10, right: 60),
+      width: AppDimensions.height10*34.0,
+      padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: 1, left:AppDimensions.height10, right: AppDimensions.height10*6.0),
       decoration: BoxDecoration(
-          gradient: const LinearGradient(
+          gradient:_focusNode.hasFocus? const LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Color(0xFFEFBEB2), Color(0xFFFEAA897)]),
+              colors: [Color(0xFFEFBEB2), Color(0xFFFEAA897)]
+
+              ):const LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xFFEECDC5), Color(0xFFF6E0DB)]),
           // color: Colors.white,
 
           border: Border.all(color: Colors.white, width: 2),
-          borderRadius: const BorderRadius.all(Radius.circular(18))),
+          borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
 
-            height: AppDimensions.height10*2.6,
-            width: 261,
-            child:  Text(
-              circle_text,
-              textAlign: TextAlign.start,
-              style:  TextStyle(
-                color: const Color(0xFFFFFFFF),
+              height: AppDimensions.height10*3.6,
+              width:AppDimensions.height10* 26.9,
+              child: Text("Reason1",style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: _focusNode.hasFocus? const Color(0xFFFFFFFF):const Color(0xFF828282),
                 fontSize: AppDimensions.height10*2.2,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-          TextFormField(
+              ))),
+          SizedBox(height: AppDimensions.height10*0.9,),
+      Container(
+
+        height: AppDimensions.height10*2.6,
+        width:AppDimensions.height10* 26.9,
+         child: CupertinoTextField(
+              placeholder: "I want to achieve this goal because...",
+              placeholderStyle:TextStyle(
+                  fontSize: AppDimensions.height10*1.6,
+                  fontWeight: FontWeight.w500,
+                  color: const Color(0xFF828282)),
               controller: body_text,
-              maxLines: 3,
+            focusNode: _focusNode,
+              maxLines: 4,
               style: const TextStyle(
                   fontWeight: FontWeight.w500,
                   color:  Color(0xFFFFFFFF)
 
               ),
-              decoration: InputDecoration(
-                  hintText: "I want to achieve this goal to be in control of my anger and to regain control of my life.I want to achieve this goal to be in control of my anger and to regain control of my life. sgdka bskdva asvduasv dvau vsjhdva avdjhasv adva duascyd davda ",
-                  hintStyle: TextStyle(
-                      fontSize: AppDimensions.height10*1.6,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF828282)),
-                  focusedBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent)),
-                  enabledBorder: const OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.transparent)))),
+                decoration: const BoxDecoration(
+                color: Colors.transparent,
+                ),
+          )),
         ],
       ),
     );
@@ -177,7 +212,7 @@ FloatingActionButton add_reason = FloatingActionButton(
   child:  Icon(
     Icons.add,
     color: Colors.white,
-    size: 35,
+    size: AppDimensions.height10*3.5,
   ),
   shape: RoundedRectangleBorder(
       side: BorderSide(width: 3, color: Colors.white),

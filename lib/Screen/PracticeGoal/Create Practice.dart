@@ -43,12 +43,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                 ),
                 onPressed: () {
                   Navigator.pop(context);
-                  // Navigator.pushReplacement(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => HomeScreen(),
-                  //   ),
-                  // );
+
                   // Add code for performing close action
                 },
               ),
@@ -93,7 +88,7 @@ class _CreatePracticeState extends State<CreatePractice> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: AppDimensions.height10 * 5.3),
+                padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
                 child: Center(
                   child: Text(
                     "Practice Creation 1/3",
@@ -125,12 +120,12 @@ class _CreatePracticeState extends State<CreatePractice> {
              Container(
                height: AppDimensions.height10*11.2,
                width: AppDimensions.height10*10.4,
-               margin: EdgeInsets.only(left:AppDimensions.height10*9.0,right:AppDimensions.height10*22.0),
+               margin: EdgeInsets.only(left:AppDimensions.height10*9.0,right:AppDimensions.height10*17.0),
                // color:Colors.blue,
                child: Image.asset(
                  'assets/images/createprac.png',
-                 height: AppDimensions.height10*11.2,
-                 width: AppDimensions.height10*10.4,
+                 height: AppDimensions.height10*7.9,
+                 width: AppDimensions.height10*7.9,
                  fit: BoxFit.contain,
                ),
              ),

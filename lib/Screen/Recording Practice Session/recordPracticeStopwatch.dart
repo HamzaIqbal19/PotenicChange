@@ -38,8 +38,8 @@ class clocks extends StatelessWidget {
             )
           ]),
       extendBodyBehindAppBar: true,
-      body: Container(
-        decoration: BoxDecoration(
+      body:  Container(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -109,7 +109,7 @@ class clocks extends StatelessWidget {
                             'Skip',
                             style: TextStyle(
                                 color: Color(0xffFA9934),
-                                fontSize: 16,
+                                fontSize: AppDimensions.height10*1.6,
                                 fontWeight: FontWeight.w600),
                           ))),
                   Container(
@@ -127,7 +127,7 @@ class clocks extends StatelessWidget {
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10 * 5.0),
                           border:
-                              Border.all(width: 2, color: Colors.transparent)),
+                              Border.all(width: AppDimensions.height10*0.2, color: Colors.transparent)),
                       child: TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -139,7 +139,7 @@ class clocks extends StatelessWidget {
                             'Finished Practice',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 16,
+                                fontSize: AppDimensions.height10*1.6,
                                 fontWeight: FontWeight.w600),
                           )))
                 ]),
@@ -297,27 +297,31 @@ class _watch_timeState extends State<watch_time> {
                                 linePosition: LinePosition.bottom,
                                 color: Colors.white,
                                 dash: [2, 2]),
-                        child: clock_state
-                            ? Text(
+                        child:
+                        // clock_state
+                        //     ?
+                        //
+                        Text(
                                 duration,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: AppDimensions.height10 * 4.6,
                                     fontWeight: FontWeight.w300),
                               )
-                            : TextFieldTapRegion(
-                                onTapInside: (event) {
-                                  showCupertinoModalPopup<void>(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return _buildContainer(timerPicker());
-                                      });
-                                },
-                                child: Text(duration,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: AppDimensions.height10 * 4.6,
-                                        fontWeight: FontWeight.w300))),
+
+                            // : TextFieldTapRegion(
+                            //     onTapInside: (event) {
+                            //       showCupertinoModalPopup<void>(
+                            //           context: context,
+                            //           builder: (BuildContext context) {
+                            //             return _buildContainer(timerPicker());
+                            //           });
+                            //     },
+                            //     child: Text(duration,
+                            //         style: TextStyle(
+                            //             color: Colors.white,
+                            //             fontSize: AppDimensions.height10 * 4.6,
+                            //             fontWeight: FontWeight.w300))),
                       ),
                     )),
               ),
