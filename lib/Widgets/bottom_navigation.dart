@@ -29,7 +29,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
               end: Alignment.bottomCenter,
               //transform: GradientRotation(3.14159),
               colors: [Color(0xffD9B4B4), Color(0xffD9B4B4)]))
-          : BoxDecoration(color: Colors.transparent),
+          : BoxDecoration(shape: BoxShape.rectangle, color: Colors.transparent),
       //height: 77,
       width: AppDimensions.height10 * 30.5,
       padding: EdgeInsets.only(

@@ -5,7 +5,6 @@ import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:potenic_app/Screen/splash/splash_page.dart';
 
-
 Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
           child: child!,
         );
       },
-
       home: const SplashPage(),
       debugShowCheckedModeBanner: false,
     );

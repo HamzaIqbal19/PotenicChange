@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -529,7 +530,12 @@ class _practice_summaryState extends State<practice_summary> {
                             BorderRadius.circular(AppDimensions.height10 * 5.0),
                       ),
                       child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => view_goals()));
+                          },
                           child: Text(
                             'Save Practice',
                             style: TextStyle(
@@ -562,7 +568,7 @@ class _practice_summaryState extends State<practice_summary> {
 
 Widget _buildBottomPicker(Widget picker) {
   return Container(
-    height: AppDimensions.height10 * 33.3,
+    height: AppDimensions.height10 * 30.3,
     padding: EdgeInsets.only(top: AppDimensions.height10 * 0.60),
     color: CupertinoColors.white,
     child: DefaultTextStyle(

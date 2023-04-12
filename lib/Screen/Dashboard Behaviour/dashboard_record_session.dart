@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_practice_summary.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -8,19 +9,22 @@ class record_session extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(backgroundColor: Colors.transparent, elevation: 0, actions: [
-        Center(
-          child: IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                'assets/images/Close.png',
-                width: AppDimensions.height10 * 2.6,
-                height: AppDimensions.height10 * 2.6,
-                fit: BoxFit.cover,
-              )),
-        )
-      ]),
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          actions: [
+            Center(
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/images/Close.png',
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
+                    fit: BoxFit.cover,
+                  )),
+            )
+          ]),
       extendBodyBehindAppBar: true,
       body: Container(
         decoration: BoxDecoration(
@@ -70,8 +74,8 @@ class record_session extends StatelessWidget {
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/oraange_sun.png'),
+                                    image:
+                                        AssetImage('assets/images/image3.png'),
                                     colorFilter: ColorFilter.mode(
                                         Color.fromRGBO(0, 0, 0, 0.5),
                                         BlendMode.dstATop),
@@ -104,27 +108,36 @@ class record_session extends StatelessWidget {
                             EdgeInsets.only(left: AppDimensions.height10 * 2.9),
                         child: Row(
                           children: [
-                            Container(
-                              height: AppDimensions.height10 * 13.8,
-                              width: AppDimensions.height10 * 13.8,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 1.0),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Ellipse 158.png'),
-                                    fit: BoxFit.cover),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Meditation',
-                                  style: TextStyle(
-                                      fontFamily: 'laila',
-                                      fontSize: AppDimensions.height10 * 1.8,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
-                                  textAlign: TextAlign.center,
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            record_summary()));
+                              },
+                              child: Container(
+                                height: AppDimensions.height10 * 13.8,
+                                width: AppDimensions.height10 * 13.8,
+                                margin: EdgeInsets.only(
+                                    right: AppDimensions.height10 * 1.0),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/Ellipse 158.png'),
+                                      fit: BoxFit.cover),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Meditation',
+                                    style: TextStyle(
+                                        fontFamily: 'laila',
+                                        fontSize: AppDimensions.height10 * 1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
                             ),

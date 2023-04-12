@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 
+import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
 
 class missed_Menu extends StatelessWidget {
@@ -49,7 +51,7 @@ class missed_Menu extends StatelessWidget {
             children: [
               Container(
                 width: AppDimensions.height10 * 30.4,
-                height: AppDimensions.height10 * 18.2,
+                height: AppDimensions.height10 * 18.6,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10 * 4.2,
                     bottom: AppDimensions.height10 * 3.2),
@@ -97,16 +99,35 @@ class missed_Menu extends StatelessWidget {
                                         fit: BoxFit.contain)),
                               )),
                           Align(
-                            alignment: Alignment(1, -0.3),
+                            alignment: Alignment(1.9, 0),
                             child: Container(
-                              width: AppDimensions.height10 * 10.6,
-                              height: AppDimensions.height10 * 2.4,
-                              child: Text(
-                                'Meditation',
-                                style: TextStyle(
-                                    color: Color(0xff156F6D),
-                                    fontSize: AppDimensions.height10 * 2.0,
-                                    fontWeight: FontWeight.w600),
+                              width: AppDimensions.height10 * 14.0,
+                              height: AppDimensions.height10 * 14.6,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Count temper episodes ',
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                        color: Color(0xffffffff),
+                                        fontSize: AppDimensions.height10 * 2.0,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Container(
+                                    height: AppDimensions.height10 * 2.5,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10 * 0.6),
+                                    child: Text(
+                                      'Missed',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xffFE6624)),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),
@@ -129,56 +150,70 @@ class missed_Menu extends StatelessWidget {
                       color: Color(0xff437296)),
                 ),
               ),
-              Container(
-                width: AppDimensions.height10 * 9.36,
-                height: AppDimensions.height10 * 11.7,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.9),
-                child: Column(
-                  children: [
-                    Container(
-                      width: AppDimensions.height10 * 7.9,
-                      height: AppDimensions.height10 * 7.9,
-                      decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color(0xffFCC10D),
-                                Color(0xffFDA210),
-                              ]),
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              width: AppDimensions.height10 * 0.3,
-                              color: Colors.white)),
-                      child: Center(
-                          child: GestureDetector(
-                        onTap: () {},
-                        child: Icon(
-                          Icons.add_task,
-                          color: Colors.white,
-                          fill: 1.0,
-                          size: AppDimensions.height10 * 2.8,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => view_goals()));
+                },
+                child: Container(
+                  width: AppDimensions.height10 * 9.36,
+                  height: AppDimensions.height10 * 12.0,
+                  margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.9),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: AppDimensions.height10 * 7.0,
+                        height: AppDimensions.height10 * 7.0,
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xffFCC10D),
+                                  Color(0xffFDA210),
+                                ]),
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(AppDimensions.height10 * 13.9)),
+                            border: Border.all(
+                                width: AppDimensions.height10 * 0.3,
+                                color: Colors.white)),
+                        child: Center(
+                            child: GestureDetector(
+                          onTap: () {},
+                          child: Icon(
+                            Icons.add_task,
+                            color: Colors.white,
+                            fill: AppDimensions.height10 * 0.10,
+                            size: AppDimensions.height10 * 2.8,
+                          ),
+                        )),
+                      ),
+                      Container(
+                        // color: Colors.red,
+                        height: AppDimensions.height10 * 4.921,
+                        width: AppDimensions.height10 * 9.36,
+                        child: Text(
+                          'Record\npractice',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 1.6,
+                              fontWeight: FontWeight.w500),
                         ),
-                      )),
-                    ),
-                    Text(
-                      'Record\npractice',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10 * 1.6,
-                          fontWeight: FontWeight.w500),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(
-                width: AppDimensions.height10 * 36.0,
-                child: Divider(
-                  thickness: AppDimensions.height10 * 0.1,
-                  height: AppDimensions.height10 * 0.1,
-                  color: Colors.white,
-                ),
-              ),
+              // SizedBox(
+              //   width: AppDimensions.height10 * 36.0,
+              //   child: Divider(
+              //     thickness: AppDimensions.height10 * 0.1,
+              //     height: AppDimensions.height10 * 0.1,
+              //     color: Colors.white,
+              //   ),
+              // ),
               Container(
                 width: AppDimensions.height10 * 41.3,
                 height: AppDimensions.height10 * 22.9,
@@ -194,59 +229,69 @@ class missed_Menu extends StatelessWidget {
                           width: AppDimensions.height10 * 3.0,
                         )),
                   ),
-                  Column(
-                    children: [
-                      Container(
-                        height: AppDimensions.height10 * 4.4,
-                        width: AppDimensions.height10 * 36.0,
-                        margin: EdgeInsets.only(
-                            bottom: AppDimensions.height10 * 1.2),
-                        child: Column(children: [
-                          Container(
-                            child: Text(
-                              'Practice Assessment',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xfff5f5f5)),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 8),
-                            child: Text(
-                              'You can evaluate your progress in -19 active days.',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xfff5f5f5)),
-                            ),
-                          )
-                        ]),
-                      ),
-                      Column(
+                  Align(
+                    alignment: Alignment(0, -1),
+                    child: Container(
+                      width: AppDimensions.height10 * 36.0,
+                      height: AppDimensions.height10 * 18.8,
+                      child: Column(
                         children: [
                           Container(
+                            height: AppDimensions.height10 * 4.4,
+                            width: AppDimensions.height10 * 36.0,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10 * 1.2),
-                            child: button_feilds(
-                              feild_text: 'Progress report',
-                              icon_viible: false,
-                              text_color: 0xff828282,
-                            ),
+                            child: Column(children: [
+                              Container(
+                                height: AppDimensions.height10 * 1.9,
+                                child: Text(
+                                  'Practice Assessment',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w700,
+                                      color: Color(0xfff5f5f5)),
+                                ),
+                              ),
+                              Container(
+                                height: AppDimensions.height10 * 1.7,
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10 * 0.8),
+                                child: Text(
+                                  'You can evaluate your progress in -19 active days.',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.4,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xfff5f5f5)),
+                                ),
+                              )
+                            ]),
                           ),
-                          button_feilds(
-                            feild_text: 'Practice score (-/5)',
-                            icon_viible: false,
-                            text_color: 0xff828282,
-                          )
+                          Column(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    bottom: AppDimensions.height10 * 1.2),
+                                child: button_feilds(
+                                  feild_text: 'Progress report',
+                                  icon_viible: false,
+                                  text_color: 0xff828282,
+                                ),
+                              ),
+                              button_feilds(
+                                feild_text: 'Practice score (-/5)',
+                                icon_viible: false,
+                                text_color: 0xff828282,
+                              )
+                            ],
+                          ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
                 ]),
               ),
               Container(
-                margin: EdgeInsets.only(top: 21),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.1),
                 width: AppDimensions.height10 * 36.0,
                 child: Divider(
                   thickness: AppDimensions.height10 * 0.1,
@@ -296,54 +341,6 @@ class missed_Menu extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class button_feilds extends StatelessWidget {
-  final String feild_text;
-  final bool icon_viible;
-  final int text_color;
-  const button_feilds(
-      {super.key,
-      required this.feild_text,
-      required this.icon_viible,
-      required this.text_color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-          left: AppDimensions.height10 * 0.8,
-          right: AppDimensions.height10 * 0.8),
-      height: AppDimensions.height10 * 6.0,
-      width: AppDimensions.height10 * 36.0,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.white),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          TextButton(
-              onPressed: () {},
-              child: Text(
-                feild_text,
-                style: TextStyle(
-                  color: Color(text_color),
-                  fontSize: AppDimensions.height10 * 1.8,
-                  fontWeight: FontWeight.w500,
-                ),
-              )),
-          Container(
-              width: AppDimensions.height10 * 2.4,
-              margin: EdgeInsets.only(right: AppDimensions.height10 * 2.391),
-              child: icon_viible
-                  ? Icon(
-                      Icons.arrow_forward,
-                      color: Color(0xff646464),
-                    )
-                  : Container())
-        ],
       ),
     );
   }

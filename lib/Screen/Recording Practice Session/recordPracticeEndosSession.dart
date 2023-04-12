@@ -322,10 +322,7 @@ class endofSession extends StatelessWidget {
                             EdgeInsets.only(left: AppDimensions.height10 * 0.3),
                         child: IconButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => feelingsAfter()));
+                              Navigator.pop(context);
                             },
                             icon: Icon(
                               Icons.edit_note,

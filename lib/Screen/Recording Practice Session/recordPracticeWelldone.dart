@@ -44,15 +44,18 @@ class welldone_splashState extends State<welldone_splash> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Center(
-            child: Text(
-          'Meditation Session',
-          style: TextStyle(
-              fontSize: AppDimensions.height10 * 2.0,
-              fontWeight: FontWeight.w600,
-              fontFamily: 'laila',
-              color: Colors.white),
-        )),
+        title: Container(
+          margin: EdgeInsets.only(top: AppDimensions.height10 * 1.3),
+          child: Center(
+              child: Text(
+            'Meditation Session',
+            style: TextStyle(
+                fontSize: AppDimensions.height10 * 2.0,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'laila',
+                color: Colors.white),
+          )),
+        ),
       ),
       extendBodyBehindAppBar: true,
       body: Container(

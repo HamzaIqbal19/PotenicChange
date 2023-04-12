@@ -19,19 +19,22 @@ class _record_summaryState extends State<record_summary> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(elevation: 0, backgroundColor: Colors.transparent, actions: [
-        Center(
-          child: IconButton(
-              onPressed: () {},
-              icon: Image.asset(
-                'assets/images/Close.png',
-                width: AppDimensions.height10 * 2.6,
-                height: AppDimensions.height10 * 2.6,
-                fit: BoxFit.cover,
-              )),
-        )
-      ]),
+      appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          actions: [
+            Center(
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/images/Close.png',
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
+                    fit: BoxFit.cover,
+                  )),
+            )
+          ]),
       extendBodyBehindAppBar: true,
       body: Container(
         width: double.infinity,
@@ -87,7 +90,7 @@ class _record_summaryState extends State<record_summary> {
                     // color: const Color(0xff7c94b6),
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage('assets/images/oraange_sun.png'),
+                        image: AssetImage('assets/images/image3.png'),
                         colorFilter: ColorFilter.mode(
                             Color.fromRGBO(0, 0, 0, 0.5), BlendMode.dstATop),
                         fit: BoxFit.cover)),
@@ -172,7 +175,7 @@ class _record_summaryState extends State<record_summary> {
                     Container(
                         //margin: EdgeInsets.only(left: 92, right: 66),
                         height: AppDimensions.height10 * 2.6,
-                        width: AppDimensions.height10 * 22.0,
+                        width: AppDimensions.height10 * 20.0,
                         child: Text(
                           date_time,
                           textAlign: TextAlign.center,
@@ -196,31 +199,31 @@ class _record_summaryState extends State<record_summary> {
                                       setState(() {
                                         if (newDateTime.weekday == 2) {
                                           setState(() {
-                                            day = 'Tuesday';
+                                            day = 'Tue';
                                           });
                                         } else if (newDateTime.weekday == 3) {
                                           setState(() {
-                                            day = 'Wednesday';
+                                            day = 'Wed';
                                           });
                                         } else if (newDateTime.weekday == 4) {
                                           setState(() {
-                                            day = 'Thursday';
+                                            day = 'Thur';
                                           });
                                         } else if (newDateTime.weekday == 5) {
                                           setState(() {
-                                            day = 'Friday';
+                                            day = 'Fri';
                                           });
                                         } else if (newDateTime.weekday == 6) {
                                           setState(() {
-                                            day = 'Saturday';
+                                            day = 'Sat';
                                           });
                                         } else if (newDateTime.weekday == 7) {
                                           setState(() {
-                                            day = 'Sunday';
+                                            day = 'Sun';
                                           });
                                         } else {
                                           setState(() {
-                                            day = 'Monday';
+                                            day = 'Mon';
                                           });
                                         }
                                       });
@@ -281,51 +284,48 @@ class _record_summaryState extends State<record_summary> {
                 width: AppDimensions.height10 * 13.4,
                 height: AppDimensions.height10 * 13.4,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 3.3),
-                alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
                         width: AppDimensions.height10 * 0.2,
                         color: Colors.white),
                     color: Colors.transparent),
-                child: Stack(children: [
-                  Center(
-                    child: Text(
-                      'I felt good',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                          fontFamily: 'Laila'),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment(0, 0.8),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => emotions(
-                                      summary: true,
-                                    )));
-                      },
-                      child: Container(
-                          height: AppDimensions.height10 * 2.0,
-                          width: AppDimensions.height10 * 2.0,
-                          padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.transparent,
-                              border:
-                                  Border.all(width: 1, color: Colors.white)),
-                          child: ImageIcon(
-                            AssetImage('assets/images/edit_icon.png'),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => emotions(
+                                        summary: true,
+                                      )));
+                        },
+                        child: Container(
+                            height: AppDimensions.height10 * 2.8,
+                            width: AppDimensions.height10 * 2.8,
+                            padding:
+                                EdgeInsets.all(AppDimensions.height10 * 0.5),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.transparent,
+                                border:
+                                    Border.all(width: 1, color: Colors.white)),
+                            child: ImageIcon(
+                              AssetImage('assets/images/edit_icon.png'),
+                              color: Colors.white,
+                            )),
+                      ),
+                      Text(
+                        'Update',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.6,
+                            fontWeight: FontWeight.w500,
                             color: Colors.white,
-                          )),
-                    ),
-                  )
-                ]),
+                            fontFamily: 'Laila'),
+                      ),
+                    ]),
               ),
               Container(
                 width: AppDimensions.height10 * 32.6,
@@ -355,44 +355,42 @@ class _record_summaryState extends State<record_summary> {
               Container(
                 width: AppDimensions.height10 * 13.4,
                 height: AppDimensions.height10 * 13.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.7),
-                alignment: Alignment.center,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.3),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
                         width: AppDimensions.height10 * 0.2,
                         color: Colors.white),
                     color: Colors.transparent),
-                child: Stack(children: [
-                  Center(
-                    child: Text(
-                      '“I feel focused\n& good”',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                          fontFamily: 'Laila'),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment(0, 0.8),
-                    child: Container(
-                        height: AppDimensions.height10 * 2.0,
-                        width: AppDimensions.height10 * 2.0,
-                        padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.transparent,
-                            border: Border.all(
-                                width: AppDimensions.height10 * 0.1,
-                                color: Colors.white)),
-                        child: ImageIcon(
-                          AssetImage('assets/images/edit_icon.png'),
-                          color: Colors.white,
-                        )),
-                  )
-                ]),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                            height: AppDimensions.height10 * 2.8,
+                            width: AppDimensions.height10 * 2.8,
+                            padding:
+                                EdgeInsets.all(AppDimensions.height10 * 0.5),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.transparent,
+                                border:
+                                    Border.all(width: 1, color: Colors.white)),
+                            child: ImageIcon(
+                              AssetImage('assets/images/edit_icon.png'),
+                              color: Colors.white,
+                            )),
+                      ),
+                      Text(
+                        'Update',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.6,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontFamily: 'Laila'),
+                      ),
+                    ]),
               ),
               Container(
                 width: AppDimensions.height10 * 32.6,
@@ -412,44 +410,43 @@ class _record_summaryState extends State<record_summary> {
               ),
               Container(
                 width: AppDimensions.height10 * 13.4,
-                height: AppDimensions.height10 * 13.2,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.6),
-                alignment: Alignment.center,
+                height: AppDimensions.height10 * 13.4,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.3),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(width: 2, color: Colors.white),
+                    border: Border.all(
+                        width: AppDimensions.height10 * 0.2,
+                        color: Colors.white),
                     color: Colors.transparent),
-                child: Stack(children: [
-                  Center(
-                    child: Text(
-                      'Good, I liked it',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          fontFamily: 'Poppins'),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment(0, 0.8),
-                    child: Container(
-                      height: AppDimensions.height10 * 2.0,
-                      width: AppDimensions.height10 * 2.0,
-                      padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.transparent,
-                          border: Border.all(
-                              width: AppDimensions.height10 * 0.1,
-                              color: Colors.white)),
-                      child: ImageIcon(
-                        AssetImage('assets/images/edit_icon.png'),
-                        color: Colors.white,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                            height: AppDimensions.height10 * 2.8,
+                            width: AppDimensions.height10 * 2.8,
+                            padding:
+                                EdgeInsets.all(AppDimensions.height10 * 0.5),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.transparent,
+                                border:
+                                    Border.all(width: 1, color: Colors.white)),
+                            child: ImageIcon(
+                              AssetImage('assets/images/edit_icon.png'),
+                              color: Colors.white,
+                            )),
                       ),
-                    ),
-                  )
-                ]),
+                      Text(
+                        'Update',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.6,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            fontFamily: 'Laila'),
+                      ),
+                    ]),
               ),
               Container(
                 width: AppDimensions.height10 * 38.3,
