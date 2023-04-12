@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/pages/dashboard/recordPracticeFellingAftr.dart';
-import 'package:flutter_ui/pages/dashboard/recordPracticeSummary.dart';
-import 'package:flutter_ui/utilities/app_contants.dart';
-import 'package:flutter_ui/utilities/backDecor.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
+
+import '../../utils/app_dimensions.dart';
 
 class endofSession extends StatelessWidget {
   const endofSession({super.key});
@@ -15,13 +15,11 @@ class endofSession extends StatelessWidget {
           elevation: 0,
           leading: Center(
             child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+                onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/BTN Back.png',
-                  width: 26,
-                  height: 26,
+                  'assets/images/Back.png',
+                  width: AppDimensions.height10 * 2.6,
+                  height: AppDimensions.height10 * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -31,8 +29,8 @@ class endofSession extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: 26,
-                    height: 26,
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -41,7 +39,7 @@ class endofSession extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(Appconstants.bg_image_dashboard),
+          image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -53,57 +51,60 @@ class endofSession extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: 186,
-                height: 24,
-                margin: EdgeInsets.only(bottom: 105, top: 43),
+                width: AppDimensions.height10 * 18.6,
+                height: AppDimensions.height10 * 2.4,
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10 * 10.5,
+                    top: AppDimensions.height10 * 4.3),
                 alignment: Alignment.center,
                 child: Text(
                   'Meditation Session',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: AppDimensions.height10 * 2.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
               ),
               Container(
-                width: 359,
-                height: 148,
+                width: AppDimensions.height10 * 35.9,
+                height: AppDimensions.height10 * 14.8,
                 alignment: Alignment.center,
-                margin: EdgeInsets.only(bottom: 83),
+                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 8.3),
                 child: Text(
                   'How did the practice go?',
                   style: TextStyle(
-                      fontSize: 28,
+                      fontSize: AppDimensions.height10 * 2.8,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: 52),
-                height: 154,
+                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 5.2),
+                height: AppDimensions.height10 * 15.4,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
                     Container(
-                      height: 134,
-                      width: 134,
-                      margin: EdgeInsets.only(right: 15),
+                      height: AppDimensions.height10 * 13.4,
+                      width: AppDimensions.height10 * 13.4,
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
                           gradient: RadialGradient(
-                            radius: 0.5,
+                            // radius: 0.5,
                             colors: <Color>[
-                              Color(0xFFBDA7C2), // yellow sun
-                              Color(0xFFB38FB4), // blue sky
+                              Color(0xFFBDA7C2).withOpacity(0.19), // yellow sun
+                              Color(0xFFB38FB4).withOpacity(.81), // blue sky
                             ],
                           )),
                       child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -116,25 +117,26 @@ class endofSession extends StatelessWidget {
                               ])),
                     ),
                     Container(
-                      height: 134,
-                      width: 134,
+                      height: AppDimensions.height10 * 13.4,
+                      width: AppDimensions.height10 * 13.4,
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(right: 15),
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
                           gradient: RadialGradient(
-                            radius: 0.5,
+                            // radius: 0.5,
                             colors: <Color>[
-                              Color(0xFFBDA7C2), // yellow sun
-                              Color(0xFFB38FB4), // blue sky
+                              Color(0xFFBDA7C2).withOpacity(0.19), // yellow sun
+                              Color(0xFFB38FB4).withOpacity(.81), // blue sky
                             ],
                           )),
                       child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -149,25 +151,26 @@ class endofSession extends StatelessWidget {
                               ])),
                     ),
                     Container(
-                      height: 134,
-                      width: 134,
+                      height: AppDimensions.height10 * 13.4,
+                      width: AppDimensions.height10 * 13.4,
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(right: 15),
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
                           gradient: RadialGradient(
-                            radius: 0.5,
+                            //radius: 0.5,
                             colors: <Color>[
-                              Color(0xFFBDA7C2), // yellow sun
-                              Color(0xFFB38FB4), // blue sky
+                              Color(0xFFBDA7C2).withOpacity(0.19), // yellow sun
+                              Color(0xFFB38FB4).withOpacity(.81), // blue sky
                             ],
                           )),
                       child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -181,25 +184,26 @@ class endofSession extends StatelessWidget {
                               ])),
                     ),
                     Container(
-                      height: 134,
-                      width: 134,
+                      height: AppDimensions.height10 * 13.4,
+                      width: AppDimensions.height10 * 13.4,
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(right: 15),
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
                           gradient: RadialGradient(
-                            radius: 0.5,
+                            // radius: 0.5,
                             colors: <Color>[
-                              Color(0xFFBDA7C2), // yellow sun
-                              Color(0xFFB38FB4), // blue sky
+                              Color(0xFFBDA7C2).withOpacity(0.19), // yellow sun
+                              Color(0xFFB38FB4).withOpacity(.81), // blue sky
                             ],
                           )),
                       child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -214,34 +218,39 @@ class endofSession extends StatelessWidget {
                               ])),
                     ),
                     Container(
-                      height: 154,
-                      width: 154,
-                      margin: EdgeInsets.only(right: 15),
+                      height: AppDimensions.height10 * 15.4,
+                      width: AppDimensions.height10 * 15.4,
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(width: 2, color: Colors.white),
+                        border: Border.all(
+                            width: AppDimensions.height10 * 0.2,
+                            color: Colors.white),
                       ),
                       child: Container(
-                        height: 134,
-                        width: 134,
+                        height: AppDimensions.height10 * 13.4,
+                        width: AppDimensions.height10 * 13.4,
                         alignment: Alignment.center,
-                        margin:
-                            EdgeInsets.symmetric(vertical: 9, horizontal: 9),
+                        margin: EdgeInsets.symmetric(
+                            vertical: AppDimensions.height10 * 0.9,
+                            horizontal: AppDimensions.height10 * 0.9),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width: 1, color: Colors.white),
                             gradient: RadialGradient(
-                              radius: 0.5,
+                              // radius: 0.5,
                               colors: <Color>[
-                                Color(0xFFBDA7C2), // yellow sun
-                                Color(0xFFB38FB4), // blue sky
+                                Color(0xFFBDA7C2)
+                                    .withOpacity(0.19), // yellow sun
+                                Color(0xFFB38FB4).withOpacity(.81), // blue sky
                               ],
                             )),
                         child: RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.white,
                                 ),
@@ -256,25 +265,27 @@ class endofSession extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: 134,
-                      width: 134,
+                      height: AppDimensions.height10 * 13.4,
+                      width: AppDimensions.height10 * 13.4,
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(right: 15),
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
                           gradient: RadialGradient(
-                            radius: 0.5,
-                            colors: <Color>[
-                              Color(0xFFBDA7C2), // yellow sun
-                              Color(0xFFB38FB4), // blue sky
+                            //radius: 0.5,
+
+                            colors: [
+                              Color(0xFFBDA7C2).withOpacity(0.19), // yellow sun
+                              Color(0xFFB38FB4).withOpacity(.81), // blue sky
                             ],
                           )),
                       child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                fontSize: 16,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -290,22 +301,25 @@ class endofSession extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 76,
-                height: 76,
-                margin: EdgeInsets.only(bottom: 101),
+                width: AppDimensions.height10 * 7.6,
+                height: AppDimensions.height10 * 7.6,
+                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 10.1),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 50,
-                      height: 50,
+                      width: AppDimensions.height10 * 5.0,
+                      height: AppDimensions.height10 * 5.0,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(width: 2, color: Colors.white)),
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.2,
+                              color: Colors.white)),
                       child: Container(
-                        height: 27,
-                        width: 27,
-                        margin: EdgeInsets.only(left: 3),
+                        height: AppDimensions.height10 * 2.7,
+                        width: AppDimensions.height10 * 2.7,
+                        margin:
+                            EdgeInsets.only(left: AppDimensions.height10 * 0.3),
                         child: IconButton(
                             onPressed: () {
                               Navigator.push(
@@ -321,13 +335,14 @@ class endofSession extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: 76,
-                      height: 19,
-                      margin: EdgeInsets.only(top: 6),
+                      width: AppDimensions.height10 * 7.6,
+                      height: AppDimensions.height10 * 1.9,
+                      margin:
+                          EdgeInsets.only(top: AppDimensions.height10 * 0.6),
                       child: Text(
                         'Add Notes',
                         style: TextStyle(
-                            fontSize: 16,
+                            fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w500,
                             color: Colors.white),
                       ),
@@ -336,9 +351,9 @@ class endofSession extends StatelessWidget {
                 ),
               ),
               Container(
-                  height: 50,
-                  width: 254,
-                  margin: EdgeInsets.only(bottom: 63),
+                  height: AppDimensions.height10 * 5.0,
+                  width: AppDimensions.height10 * 25.4,
+                  margin: EdgeInsets.only(bottom: AppDimensions.height10 * 6.3),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                         begin: Alignment.topCenter,
@@ -347,18 +362,21 @@ class endofSession extends StatelessWidget {
                           Color(0xffFCC10D),
                           Color(0xffFDA210),
                         ]),
-                    borderRadius: BorderRadius.circular(50),
+                    borderRadius:
+                        BorderRadius.circular(AppDimensions.height10 * 5.0),
                   ),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => summary()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => practice_summary()));
                     },
                     child: Text(
                       'Summary',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 16,
+                          fontSize: AppDimensions.height10 * 1.6,
                           fontWeight: FontWeight.w600),
                     ),
                   ))

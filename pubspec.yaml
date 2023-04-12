@@ -43,6 +43,8 @@ dependencies:
   shared_preferences: ^2.0.15
   flutter_switch: ^0.3.2
   simple_gradient_text: 1.2.4
+  dotted_border: ^2.0.0+3
+  dotted_decoration: ^2.0.0
 
 
 

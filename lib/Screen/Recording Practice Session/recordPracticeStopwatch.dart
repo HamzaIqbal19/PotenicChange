@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui/pages/dashboard/recordPracticeWelldone.dart';
-import 'package:flutter_ui/utilities/app_contants.dart';
+
 import 'package:flutter/cupertino.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
-import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+import 'package:dotted_decoration/dotted_decoration.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
+
+import '../../utils/app_dimensions.dart';
 
 class clocks extends StatelessWidget {
   const clocks({super.key});
@@ -18,9 +19,9 @@ class clocks extends StatelessWidget {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/BTN Back.png',
-                  width: 26,
-                  height: 26,
+                  'assets/images/Back.png',
+                  width: AppDimensions.height10 * 2.6,
+                  height: AppDimensions.height10 * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -30,8 +31,8 @@ class clocks extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: 26,
-                    height: 26,
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -40,7 +41,7 @@ class clocks extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(Appconstants.bg_image_dashboard),
+          image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -52,55 +53,49 @@ class clocks extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: 186,
-                height: 24,
-                margin: EdgeInsets.only(bottom: 105),
+                width: AppDimensions.height10 * 18.6,
+                height: AppDimensions.height10 * 2.4,
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10 * 10.5,
+                    top: AppDimensions.height10 * 4.6),
                 alignment: Alignment.center,
                 child: Text(
                   'Meditation Session',
                   style: TextStyle(
-                      fontSize: 20,
+                      fontSize: AppDimensions.height10 * 2.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
               ),
               Container(
-                width: 359,
-                height: 148,
+                width: AppDimensions.height10 * 35.9,
+                height: AppDimensions.height10 * 14.8,
                 alignment: Alignment.center,
                 // margin: EdgeInsets.only(bottom: 86),
-                child: Column(
-                  children: [
-                    Text(
-                      'Do you need a timer for',
-                      style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white),
-                    ),
-                    Text(
-                      ' your practice?',
-                      style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white),
-                    )
-                  ],
+                child: Text(
+                  'Do you need a timer for\nyour practice',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10 * 2.8,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white),
                 ),
               ),
               Container(child: watch_time()),
               Container(
-                width: 325,
-                height: 60,
+                width: AppDimensions.height10 * 32.5,
+                height: AppDimensions.height10 * 6.0,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                      height: 50,
-                      width: 106,
-                      margin: EdgeInsets.only(right: 10),
+                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10 * 10.6,
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.0),
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 5.0),
                           border:
                               Border.all(width: 2, color: Color(0xffFA9934))),
                       child: TextButton(
@@ -118,8 +113,8 @@ class clocks extends StatelessWidget {
                                 fontWeight: FontWeight.w600),
                           ))),
                   Container(
-                      height: 50,
-                      width: 207,
+                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10 * 20.7,
                       decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             begin: Alignment.topCenter,
@@ -129,7 +124,8 @@ class clocks extends StatelessWidget {
                               Color(0xffFDA210),
                             ],
                           ),
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 5.0),
                           border:
                               Border.all(width: 2, color: Colors.transparent)),
                       child: TextButton(
@@ -174,17 +170,17 @@ class _watch_timeState extends State<watch_time> {
   Widget build(BuildContext context) {
     return Column(children: [
       Container(
-        height: 35.01,
-        width: 272.72,
+        height: AppDimensions.height10 * 3.501,
+        width: AppDimensions.height10 * 26.6,
         alignment: Alignment.center,
         child: Row(
           children: [
             Container(
-              width: 133,
+              width: AppDimensions.height10 * 13.3,
               decoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(
-                          width: 2,
+                          width: AppDimensions.height10 * 0.2,
                           color:
                               clock_state ? Color(0xff437296) : Colors.white))),
               child: Center(
@@ -198,19 +194,23 @@ class _watch_timeState extends State<watch_time> {
                   },
                   child: clock_state
                       ? Container(
+                          // width: AppDimensions.height10 * 5.4,
+                          height: AppDimensions.height10 * 2.2,
                           child: Text(
                             'Stopwatch',
                             style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
+                                fontSize: AppDimensions.height10 * 1.6,
+                                fontWeight: FontWeight.w500,
                                 color: Color(0xff437296)),
                           ),
                         )
                       : Container(
+                          //width: AppDimensions.height10 * 5.4,
+                          height: AppDimensions.height10 * 2.2,
                           child: Text(
                             'Stopwatch',
                             style: TextStyle(
-                                fontSize: 18,
+                                fontSize: AppDimensions.height10 * 1.8,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white),
                           ),
@@ -219,11 +219,11 @@ class _watch_timeState extends State<watch_time> {
               ),
             ),
             Container(
-              width: 133,
+              width: AppDimensions.height10 * 13.3,
               decoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(
-                          width: 2,
+                          width: AppDimensions.height10 * 0.2,
                           color:
                               clock_state ? Colors.white : Color(0xff437296)))),
               // padding: EdgeInsets.only(left: 10),
@@ -237,16 +237,20 @@ class _watch_timeState extends State<watch_time> {
                     },
                     child: clock_state
                         ? Container(
+                            height: AppDimensions.height10 * 2.4,
+                            // width: AppDimensions.height10 * 5.4,
                             child: Text('Timer',
                                 style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700,
+                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontWeight: FontWeight.w500,
                                     color: Colors.white)),
                           )
                         : Container(
+                            height: AppDimensions.height10 * 2.4,
+                            // width: AppDimensions.height10 * 5.4,
                             child: Text('Timer',
                                 style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: AppDimensions.height10 * 1.6,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xff437296))),
                           )),
@@ -256,58 +260,72 @@ class _watch_timeState extends State<watch_time> {
         ),
       ),
       Container(
-        height: 345,
-        width: 345,
-        margin: EdgeInsets.only(bottom: 64, top: 21),
+        height: AppDimensions.height10 * 34.5,
+        width: AppDimensions.height10 * 34.5,
+        margin: EdgeInsets.only(
+            bottom: AppDimensions.height10 * 6.4,
+            top: AppDimensions.height10 * 2.1),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(width: 2, color: Colors.white),
+          border: Border.all(
+              width: AppDimensions.height10 * 0.2, color: Colors.white),
         ),
         child: Container(
-          height: 285.65,
-          width: 285.65,
-          margin: EdgeInsets.all(30),
+          height: AppDimensions.height10 * 28.565,
+          width: AppDimensions.height10 * 28.565,
+          margin: EdgeInsets.all(AppDimensions.height10 * 3.0),
           decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(width: 2, color: Colors.white)),
+              border: Border.all(
+                  width: AppDimensions.height10 * 0.2, color: Colors.white)),
           child: Stack(
             children: [
               //timer
-              Positioned(
-                right: 79,
-                left: 78,
-                top: 79,
+              Align(
+                alignment: Alignment(0, -0.4),
                 child: Container(
-                    height: 72,
-                    width: 128,
-                    // color: Colors.blue,
-                    child: clock_state
-                        ? Text(
-                            duration,
-                            style: TextStyle(
+                    height: AppDimensions.height10 * 7.2,
+                    width: AppDimensions.height10 * 12.8,
+                    child: Center(
+                      child: Container(
+                        decoration: clock_state
+                            ? BoxDecoration(
+                                shape: BoxShape.rectangle,
+                              )
+                            : DottedDecoration(
+                                shape: Shape.line,
+                                linePosition: LinePosition.bottom,
                                 color: Colors.white,
-                                fontSize: 46,
-                                fontWeight: FontWeight.w300),
-                          )
-                        : TextFieldTapRegion(
-                            onTapInside: (event) {
-                              showCupertinoModalPopup<void>(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return _buildContainer(timerPicker());
-                                  });
-                            },
-                            child: Text(duration,
+                                dash: [2, 2]),
+                        child: clock_state
+                            ? Text(
+                                duration,
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 46,
-                                    fontWeight: FontWeight.w300)))),
+                                    fontSize: AppDimensions.height10 * 4.6,
+                                    fontWeight: FontWeight.w300),
+                              )
+                            : TextFieldTapRegion(
+                                onTapInside: (event) {
+                                  showCupertinoModalPopup<void>(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return _buildContainer(timerPicker());
+                                      });
+                                },
+                                child: Text(duration,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: AppDimensions.height10 * 4.6,
+                                        fontWeight: FontWeight.w300))),
+                      ),
+                    )),
               ),
               //play button
               Positioned(
-                right: 97,
-                left: 97,
-                bottom: 20,
+                right: AppDimensions.height10 * 9.7,
+                left: AppDimensions.height10 * 9.7,
+                bottom: AppDimensions.height10 * 2.0,
                 child: InkWell(
                   onTap: () {
                     setState(() {
@@ -320,44 +338,48 @@ class _watch_timeState extends State<watch_time> {
                     });
                   },
                   child: Container(
-                    height: 91,
-                    width: 91,
+                    height: AppDimensions.height10 * 9.1,
+                    width: AppDimensions.height10 * 9.1,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
-                        border: Border.all(width: 5, color: Color(0xffFEBD0F))),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          child: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(
-                                'assets/images/start_icon.png',
-                                width: 18,
-                                height: 27,
-                                fit: BoxFit.cover,
-                              )),
-                        ),
-                        Container(
-                          width: 32,
-                          height: 22,
-                          child: Text(button_text,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xffFFA511))),
-                        )
-                      ],
+                        border: Border.all(
+                            width: AppDimensions.height10 * 0.5,
+                            color: Color(0xffFEBD0F))),
+                    child: Container(
+                      height: AppDimensions.height10 * 7,
+                      width: AppDimensions.height10 * 7,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        // crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            child: Image.asset(
+                              'assets/images/start_icon.png',
+                              width: AppDimensions.height10 * 1.8,
+                              height: AppDimensions.height10 * 2.7,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Container(
+                            width: AppDimensions.height10 * 3.5,
+                            height: AppDimensions.height10 * 2.2,
+                            child: Text(button_text,
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xffFFA511))),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
               //reset button
               Positioned(
-                right: 27,
-                bottom: 56,
+                right: AppDimensions.height10 * 2.7,
+                bottom: AppDimensions.height10 * 5.6,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -365,8 +387,8 @@ class _watch_timeState extends State<watch_time> {
                     });
                   },
                   child: Container(
-                    height: 56,
-                    width: 56,
+                    height: AppDimensions.height10 * 5.6,
+                    width: AppDimensions.height10 * 5.6,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
@@ -376,13 +398,13 @@ class _watch_timeState extends State<watch_time> {
                       children: [
                         Icon(
                           Icons.refresh,
-                          size: 18,
+                          size: AppDimensions.height10 * 1.8,
                           color: Color(0xffFEAD10),
                         ),
                         Text(
                           'Reset',
                           style: TextStyle(
-                              fontSize: 12,
+                              fontSize: AppDimensions.height10 * 1.2,
                               fontWeight: FontWeight.w400,
                               color: Color(0xffFFA511)),
                         )
@@ -421,13 +443,13 @@ class _watch_timeState extends State<watch_time> {
 
   Widget _buildContainer(Widget picker) {
     return Container(
-      height: 303,
-      padding: const EdgeInsets.only(top: 6.0),
+      height: AppDimensions.height10 * 30.3,
+      padding: EdgeInsets.only(top: AppDimensions.height10 * 0.60),
       color: CupertinoColors.white,
       child: Column(
         children: [
           Container(
-            height: 40,
+            height: AppDimensions.height10 * 3.8,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -438,14 +460,29 @@ class _watch_timeState extends State<watch_time> {
                         Navigator.pop(context);
                       });
                     },
-                    child: Text('Cancel')),
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10 * 1.4,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff2F80ED)),
+                    )),
                 TextButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Done'))
+                    child: Text(
+                      'Done',
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10 * 1.4,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff2F80ED)),
+                    ))
               ],
             ),
+          ),
+          Divider(
+            height: AppDimensions.height10 * 0.1,
           ),
           DefaultTextStyle(
             style: const TextStyle(

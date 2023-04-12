@@ -1,10 +1,9 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+
+import '../Recording Practice Session/dashboardViewgoals.dart';
 
 class PracticeFinished extends StatefulWidget {
   const PracticeFinished({Key? key}) : super(key: key);
@@ -67,7 +66,6 @@ class _PracticeFinishedState extends State<PracticeFinished> {
               },
             ),
           ),
-
         ],
       ),
       body: Stack(
@@ -80,15 +78,16 @@ class _PracticeFinishedState extends State<PracticeFinished> {
               ),
             ),
           ),
-
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: AppDimensions.height10*8.9,),
+              SizedBox(
+                height: AppDimensions.height10 * 8.9,
+              ),
               Container(
-                width:AppDimensions.height10*20.7,
-                height: AppDimensions.height10*7.2,
+                width: AppDimensions.height10 * 20.7,
+                height: AppDimensions.height10 * 7.2,
                 // padding: EdgeInsets.only(top: AppDimensions.height10 * 10),
                 child: Center(
                   child: GradientText(
@@ -100,8 +99,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       fontSize: AppDimensions.height10 * 3,
                     ),
                     colors: [
-                     const Color(0xFFFA9934),
-                     const Color(0xFFEDD15E).withOpacity(0.90),
+                      const Color(0xFFFA9934),
+                      const Color(0xFFEDD15E).withOpacity(0.90),
                     ],
                   ),
                 ),
@@ -110,14 +109,15 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 height: AppDimensions.height10 * 2.2,
               ),
               Container(
-                // color: Colors.black,
+                  // color: Colors.black,
                   height: AppDimensions.height10 * 5.1,
                   width: AppDimensions.height10 * 34.0,
                   child: Column(
                     children: [
                       Container(
                         child: Center(
-                          child: Text("Please review and continue ",
+                          child: Text(
+                            "Please review and continue ",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -127,10 +127,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                           ),
                         ),
                       ),
-
                     ],
                   )),
-
               SizedBox(
                 height: AppDimensions.height10 * 5.7,
               ),
@@ -150,17 +148,17 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                     right: 0,
                     child: Align(
                       // alignment: Alignment.bottomCenter,
-                      alignment: Alignment(0.19,AppDimensions.height10*0.016+1),
+                      alignment:
+                          Alignment(0.19, AppDimensions.height10 * 0.016 + 1),
                       //heightFactor: 0.5,
                       child: Container(
-                        height: AppDimensions.height10*17.5,
-                        width:  AppDimensions.height10*17.5,
+                        height: AppDimensions.height10 * 17.5,
+                        width: AppDimensions.height10 * 17.5,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child:
-                        GestureDetector(
-                          onTap: (){
+                        child: GestureDetector(
+                          onTap: () {
                             // Navigator.push(
                             //   context,
                             //   MaterialPageRoute(
@@ -169,20 +167,17 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                             // );
                           },
                           child: Image(
-                            image: const AssetImage('assets/images/practicefinal.png'),
+                            image: const AssetImage(
+                                'assets/images/practicefinal.png'),
                             height: AppDimensions.height10 * 17.5,
                             width: AppDimensions.height10 * 17.5,
                           ),
                         ),
-
                       ),
                     ),
                   )
-
                 ],
               ),
-
-
               SizedBox(
                 height: AppDimensions.height10 * 13.7,
               ),
@@ -190,42 +185,39 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    // color: Colors.blue,
+                      // color: Colors.blue,
                       width: AppDimensions.height10 * 5.0,
                       height: AppDimensions.height10 * 5.0,
-
                       child: Image.asset(
                         "assets/images/Moreactions.png",
                         fit: BoxFit.contain,
                       )),
-
                   GestureDetector(
-
-                    onTap: (){
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => Visualising(),
-                      //   ),
-                      // );
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => dashBoard(),
+                        ),
+                      );
                     },
-
-                    child:   Container(
-                      height: AppDimensions.height10*5,
-                      width: AppDimensions.height10*31.3,
-                      decoration:  BoxDecoration(
+                    child: Container(
+                      height: AppDimensions.height10 * 5,
+                      width: AppDimensions.height10 * 31.3,
+                      decoration: BoxDecoration(
                         // color: Color(0xFFFF7D50),
                         border: Border.all(color: Colors.transparent),
                         gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                        borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50.0)),
                       ),
-                      child:  Center(
-                        child:  Text(
+                      child: Center(
+                        child: Text(
                           "Next",
-                          style:  TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w600,
@@ -236,7 +228,6 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                   ),
                 ],
               ),
-
             ],
           )
         ],

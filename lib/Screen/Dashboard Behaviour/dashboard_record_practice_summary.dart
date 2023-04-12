@@ -1,19 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-import '../../utilities/app_contants.dart';
+import '../../utils/app_dimensions.dart';
+import '../Recording Practice Session/recordPracticeEmotions.dart';
 
-class summary extends StatelessWidget {
-  const summary({super.key});
+class record_summary extends StatefulWidget {
+  const record_summary({super.key});
+
+  @override
+  State<record_summary> createState() => _record_summaryState();
+}
+
+class _record_summaryState extends State<record_summary> {
+  String date_time = 'Now';
+  String time = 'Am';
+  String day = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:
+          AppBar(elevation: 0, backgroundColor: Colors.transparent, actions: [
+        Center(
+          child: IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                'assets/images/Close.png',
+                width: AppDimensions.height10 * 2.6,
+                height: AppDimensions.height10 * 2.6,
+                fit: BoxFit.cover,
+              )),
+        )
+      ]),
+      extendBodyBehindAppBar: true,
       body: Container(
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage(Appconstants.bg_image_dashboard),
+          image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
         )),
         child: SingleChildScrollView(
@@ -21,15 +46,15 @@ class summary extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: 334,
-                height: 34,
+                width: AppDimensions.height10 * 33.4,
+                height: AppDimensions.height10 * 3.4,
                 // color: Colors.amber,
-                margin: const EdgeInsets.only(top: 60),
-                child: const Center(
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
+                child: Center(
                   child: Text(
                     'Your Practice Summary',
                     style: TextStyle(
-                        fontSize: 28,
+                        fontSize: AppDimensions.height10 * 2.8,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                         fontFamily: 'Laila'),
@@ -37,16 +62,16 @@ class summary extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 232,
-                height: 38,
+                width: AppDimensions.height10 * 23.2,
+                height: AppDimensions.height10 * 3.8,
                 //  color: Colors.red,
-                margin: const EdgeInsets.only(top: 5),
-                child: const Center(
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 0.5),
+                child: Center(
                   child: Text(
                     'Well done for recording\nyour practice!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 16,
+                        fontSize: AppDimensions.height10 * 1.6,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                         fontFamily: 'Laila'),
@@ -54,10 +79,10 @@ class summary extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 268,
-                height: 268,
+                width: AppDimensions.height10 * 26.8,
+                height: AppDimensions.height10 * 26.8,
                 //color: Colors.amber,
-                margin: const EdgeInsets.only(top: 24),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.4),
                 decoration: const BoxDecoration(
                     // color: const Color(0xff7c94b6),
                     shape: BoxShape.circle,
@@ -72,7 +97,7 @@ class summary extends StatelessWidget {
                       child: Text(
                         'Control my anger',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: AppDimensions.height10 * 2.0,
                             fontWeight: FontWeight.w600,
                             color: Color(0xff5B74A6)),
                       )),
@@ -82,18 +107,20 @@ class summary extends StatelessWidget {
                         '“I am someone who is in\n control of my anger”',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 16,
+                            fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff5B74A6))),
                   ),
                   Align(
-                    alignment: const Alignment(0, 0.8),
+                    alignment: const Alignment(0, 1),
                     child: Container(
-                      height: 138,
-                      width: 138,
+                      height: AppDimensions.height10 * 13.8,
+                      width: AppDimensions.height10 * 13.8,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(width: 5, color: Colors.white),
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.5,
+                              color: Colors.white),
                           gradient: const RadialGradient(
                             // radius: 0.5,
                             colors: <Color>[
@@ -102,12 +129,12 @@ class summary extends StatelessWidget {
                             ],
                           )),
                       child: Stack(children: [
-                        const Center(
+                        Center(
                             child: Text(
                           'Meditation',
                           style: TextStyle(
                               color: Color(0xff1A481C),
-                              fontSize: 18,
+                              fontSize: AppDimensions.height10 * 1.8,
                               fontWeight: FontWeight.w500,
                               fontFamily: 'Laila'),
                         )),
@@ -130,11 +157,12 @@ class summary extends StatelessWidget {
                 ]),
               ),
               Container(
-                width: 268,
-                height: 50,
-                margin: const EdgeInsets.only(top: 40),
+                width: AppDimensions.height10 * 26.8,
+                height: AppDimensions.height10 * 5.0,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
+                    borderRadius:
+                        BorderRadius.circular(AppDimensions.height10 * 1.8),
                     border: Border.all(width: 1, color: Colors.white),
                     color: Colors.transparent),
                 child: Row(
@@ -142,37 +170,98 @@ class summary extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        margin: EdgeInsets.only(left: 92, right: 66),
-                        height: 26,
-                        width: 51,
+                        //margin: EdgeInsets.only(left: 92, right: 66),
+                        height: AppDimensions.height10 * 2.6,
+                        width: AppDimensions.height10 * 22.0,
                         child: Text(
-                          'Now',
+                          date_time,
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 22,
+                            fontSize: AppDimensions.height10 * 2.0,
                             fontFamily: 'Laila',
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
                           ),
                         )),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showCupertinoModalPopup(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return _buildBottomPicker(CupertinoDatePicker(
+                                  mode: CupertinoDatePickerMode.dateAndTime,
+                                  //initialDateTime: date_time,
+                                  onDateTimeChanged: (DateTime newDateTime) {
+                                    if (mounted) {
+                                      setState(() {
+                                        if (newDateTime.weekday == 2) {
+                                          setState(() {
+                                            day = 'Tuesday';
+                                          });
+                                        } else if (newDateTime.weekday == 3) {
+                                          setState(() {
+                                            day = 'Wednesday';
+                                          });
+                                        } else if (newDateTime.weekday == 4) {
+                                          setState(() {
+                                            day = 'Thursday';
+                                          });
+                                        } else if (newDateTime.weekday == 5) {
+                                          setState(() {
+                                            day = 'Friday';
+                                          });
+                                        } else if (newDateTime.weekday == 6) {
+                                          setState(() {
+                                            day = 'Saturday';
+                                          });
+                                        } else if (newDateTime.weekday == 7) {
+                                          setState(() {
+                                            day = 'Sunday';
+                                          });
+                                        } else {
+                                          setState(() {
+                                            day = 'Monday';
+                                          });
+                                        }
+                                      });
+                                      setState(() {
+                                        if (newDateTime.hour > 11) {
+                                          setState(() {
+                                            time = 'Pm';
+                                          });
+                                        } else {
+                                          setState(() {
+                                            time = 'Am';
+                                            //print(time);
+                                          });
+                                        }
+                                      });
+                                      setState(() => date_time =
+                                          " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                                      print(
+                                          "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                                    }
+                                  }));
+                            },
+                          );
+                        },
                         icon: Icon(
                           Icons.arrow_drop_down,
                           color: Colors.white,
-                          size: 30,
+                          size: AppDimensions.height10 * 3.0,
                         ))
                   ],
                 ),
               ),
               Container(
-                width: 326,
-                height: 48,
-                margin: const EdgeInsets.only(top: 40),
+                width: AppDimensions.height10 * 32.6,
+                height: AppDimensions.height10 * 4.8,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                 child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: AppDimensions.height10 * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
@@ -189,26 +278,22 @@ class summary extends StatelessWidget {
                         ])),
               ),
               Container(
-                width: 134,
-                height: 134,
-                margin: const EdgeInsets.only(top: 33),
+                width: AppDimensions.height10 * 13.4,
+                height: AppDimensions.height10 * 13.4,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.3),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(width: 2, color: Colors.white),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xffFA8552),
-                          Color(0xffFAA960),
-                        ])),
+                    border: Border.all(
+                        width: AppDimensions.height10 * 0.2,
+                        color: Colors.white),
+                    color: Colors.transparent),
                 child: Stack(children: [
                   Center(
                     child: Text(
                       'I felt good',
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: AppDimensions.height10 * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                           fontFamily: 'Laila'),
@@ -216,31 +301,42 @@ class summary extends StatelessWidget {
                   ),
                   Align(
                     alignment: Alignment(0, 0.8),
-                    child: Container(
-                        height: 20,
-                        width: 20,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.transparent,
-                            border: Border.all(width: 1, color: Colors.white)),
-                        child: ImageIcon(
-                          AssetImage('assets/images/edit_icon.png'),
-                          color: Colors.white,
-                        )),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => emotions(
+                                      summary: true,
+                                    )));
+                      },
+                      child: Container(
+                          height: AppDimensions.height10 * 2.0,
+                          width: AppDimensions.height10 * 2.0,
+                          padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent,
+                              border:
+                                  Border.all(width: 1, color: Colors.white)),
+                          child: ImageIcon(
+                            AssetImage('assets/images/edit_icon.png'),
+                            color: Colors.white,
+                          )),
+                    ),
                   )
                 ]),
               ),
               Container(
-                width: 326,
-                height: 48,
+                width: AppDimensions.height10 * 32.6,
+                height: AppDimensions.height10 * 4.8,
 //color: Colors.amber,
-                margin: const EdgeInsets.only(top: 30),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
                 child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: AppDimensions.height10 * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
@@ -257,27 +353,23 @@ class summary extends StatelessWidget {
                         ])),
               ),
               Container(
-                width: 134,
-                height: 134,
-                margin: const EdgeInsets.only(top: 37),
+                width: AppDimensions.height10 * 13.4,
+                height: AppDimensions.height10 * 13.4,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.7),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(width: 2, color: Colors.white),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xffFA8552),
-                          Color(0xffFAA960),
-                        ])),
+                    border: Border.all(
+                        width: AppDimensions.height10 * 0.2,
+                        color: Colors.white),
+                    color: Colors.transparent),
                 child: Stack(children: [
                   Center(
                     child: Text(
                       '“I feel focused\n& good”',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: AppDimensions.height10 * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                           fontFamily: 'Laila'),
@@ -286,13 +378,15 @@ class summary extends StatelessWidget {
                   Align(
                     alignment: Alignment(0, 0.8),
                     child: Container(
-                        height: 20,
-                        width: 20,
-                        padding: EdgeInsets.all(5),
+                        height: AppDimensions.height10 * 2.0,
+                        width: AppDimensions.height10 * 2.0,
+                        padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.transparent,
-                            border: Border.all(width: 1, color: Colors.white)),
+                            border: Border.all(
+                                width: AppDimensions.height10 * 0.1,
+                                color: Colors.white)),
                         child: ImageIcon(
                           AssetImage('assets/images/edit_icon.png'),
                           color: Colors.white,
@@ -301,38 +395,15 @@ class summary extends StatelessWidget {
                 ]),
               ),
               Container(
-                width: 360,
-                height: 73,
-                margin: const EdgeInsets.only(top: 20),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white),
+                width: AppDimensions.height10 * 32.6,
+                height: AppDimensions.height10 * 2.4,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
                 child: Center(
-                  child: Container(
-                    margin: EdgeInsets.only(left: 20, right: 20),
-                    height: 38,
-                    width: 320,
-                    child: Text(
-                      'This session works for me, it clears my head and makes me feel positive :)',
-                      style: TextStyle(
-                          color: Color(0xff646464),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Laila'),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                width: 326,
-                height: 24,
-                margin: const EdgeInsets.only(top: 30),
-                child: const Center(
                   child: Text(
                     'How did the practice go?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: AppDimensions.height10 * 2.0,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                         fontFamily: 'Laila'),
@@ -340,27 +411,21 @@ class summary extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 134,
-                height: 132,
-                margin: const EdgeInsets.only(top: 26),
+                width: AppDimensions.height10 * 13.4,
+                height: AppDimensions.height10 * 13.2,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.6),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(width: 2, color: Colors.white),
-                    gradient: const RadialGradient(
-                      radius: 0.5,
-                      colors: <Color>[
-                        Color(0xFFBDA7C2), // yellow sun
-                        Color(0xFFB38FB4), // blue sky
-                      ],
-                    )),
+                    color: Colors.transparent),
                 child: Stack(children: [
                   Center(
                     child: Text(
                       'Good, I liked it',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: AppDimensions.height10 * 1.6,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
                           fontFamily: 'Poppins'),
@@ -369,13 +434,15 @@ class summary extends StatelessWidget {
                   Align(
                     alignment: Alignment(0, 0.8),
                     child: Container(
-                      height: 20,
-                      width: 20,
-                      padding: EdgeInsets.all(5),
+                      height: AppDimensions.height10 * 2.0,
+                      width: AppDimensions.height10 * 2.0,
+                      padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.transparent,
-                          border: Border.all(width: 1, color: Colors.white)),
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.1,
+                              color: Colors.white)),
                       child: ImageIcon(
                         AssetImage('assets/images/edit_icon.png'),
                         color: Colors.white,
@@ -385,19 +452,21 @@ class summary extends StatelessWidget {
                 ]),
               ),
               Container(
-                width: 383,
-                height: 50,
+                width: AppDimensions.height10 * 38.3,
+                height: AppDimensions.height10 * 5.0,
 //color: Colors.red,
-                margin: const EdgeInsets.only(top: 64),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 6.4),
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                      height: 50,
-                      width: 157,
-                      margin: const EdgeInsets.only(right: 14),
+                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10 * 15.7,
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.4),
                       decoration: BoxDecoration(
                         color: const Color(0xff464646),
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius:
+                            BorderRadius.circular(AppDimensions.height10 * 5.0),
                       ),
                       child: TextButton(
                           onPressed: () {},
@@ -410,12 +479,13 @@ class summary extends StatelessWidget {
                                 color: Colors.white,
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 8),
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 0.8),
                                 child: Text(
                                   'Delete',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 16,
+                                      fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w700,
                                       fontFamily: 'Arial'),
                                 ),
@@ -423,8 +493,8 @@ class summary extends StatelessWidget {
                             ],
                           ))),
                   Container(
-                      height: 50,
-                      width: 212,
+                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10 * 21.2,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           begin: Alignment.topCenter,
@@ -434,28 +504,32 @@ class summary extends StatelessWidget {
                             Color(0xffFDA210),
                           ],
                         ),
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius:
+                            BorderRadius.circular(AppDimensions.height10 * 5.0),
                       ),
                       child: TextButton(
                           onPressed: () {},
-                          child: const Text(
+                          child: Text(
                             'Save Practice',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 16,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Poppins'),
                           )))
                 ]),
               ),
               Container(
-                width: 170,
-                height: 5,
+                width: AppDimensions.height10 * 17.0,
+                height: AppDimensions.height10 * 0.5,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.height10 * 5.0),
                 ),
-                margin: const EdgeInsets.only(top: 37, bottom: 50),
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 3.7,
+                    bottom: AppDimensions.height10 * 5.0),
               )
             ],
           ),
@@ -463,4 +537,26 @@ class summary extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildBottomPicker(Widget picker) {
+  return Container(
+    height: AppDimensions.height10 * 21.6,
+    padding: EdgeInsets.only(top: AppDimensions.height10 * 0.60),
+    color: CupertinoColors.white,
+    child: DefaultTextStyle(
+      style: TextStyle(
+        color: CupertinoColors.black,
+        fontSize: AppDimensions.height10 * 2.20,
+      ),
+      child: GestureDetector(
+        // Blocks taps from propagating to the modal sheet and popping.
+        onTap: () {},
+        child: SafeArea(
+          top: false,
+          child: picker,
+        ),
+      ),
+    ),
+  );
 }
