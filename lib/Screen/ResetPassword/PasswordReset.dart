@@ -1,53 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
-import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
+import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
+import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-class Loginemailandpassword extends StatefulWidget {
+class PasswordReset extends StatefulWidget {
+  const PasswordReset({Key? key}) : super(key: key);
+
   @override
-  _LoginemailandpasswordState createState() => _LoginemailandpasswordState();
+  State<PasswordReset> createState() => _PasswordResetState();
 }
 
-class _LoginemailandpasswordState extends State<Loginemailandpassword> {
-  // controllers
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  final formKey = GlobalKey<FormState>();
-  bool isPasswordNotVisible = true;
-  var errorMsg, jsonResponse;
-  bool rememberMe = true;
-  bool boolean = true;
-  var token;
-  var accountFlag;
-  var sessionRoute;
-
-  late SharedPreferences _prefs;
-  setEmail(email) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString('email', email);
-    print("SetEmail: $email");
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  late bool checkBool;
-  booleanValue(value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('bool', value);
-  }
-
+class _PasswordResetState extends State<PasswordReset> {
   @override
   Widget build(BuildContext context) {
-    // return WillPopScope(
-    //     onWillPop: () async => false,
-    // =>
-    // SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
     return Scaffold(
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
@@ -58,21 +24,21 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
               centerTitle: true,
               backgroundColor: Colors.transparent,
               automaticallyImplyLeading: false,
-              leading: Center(
-                // alignment: Alignment.center,
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Back.png',
-                    width: AppDimensions.height10 * 3,
-                    height: AppDimensions.height10 * 3,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    // Add code for performing close action
-                  },
-                ),
-              ),
+              // leading: Center(
+              //   // alignment: Alignment.center,
+              //   child: IconButton(
+              //     icon: Image.asset(
+              //       'assets/images/Back.png',
+              //       width: AppDimensions.height10 * 3,
+              //       height: AppDimensions.height10 * 3,
+              //       fit: BoxFit.contain,
+              //     ),
+              //     onPressed: () {
+              //       Navigator.pop(context);
+              //       // Add code for performing close action
+              //     },
+              //   ),
+              // ),
               actions: [
                 Center(
                   // alignment: Alignment.center,
@@ -111,7 +77,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: AppDimensions.height10 * 8.2,
+                  height: AppDimensions.height10 * 8.02,
                 ),
                 Center(
                   child: GestureDetector(
@@ -128,7 +94,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                 Container(
                   height: AppDimensions.height10 * 3.9,
                   child: Text(
-                    "Log in",
+                    "Reset your password",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
@@ -137,29 +103,29 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 4.2),
+                SizedBox(height: AppDimensions.height10 * 0.9),
 
                 // SizedBox(height: AppDimensions.height0),
                 Container(
                   height: AppDimensions.height10 * 26 + 6,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         height: AppDimensions.height10 * 1.7,
-                        padding:
-                            EdgeInsets.only(left: AppDimensions.height10 * 1.2),
+                        // padding:  EdgeInsets.only(left:AppDimensions.height10*1.2),
                         child: Text(
-                          "Your sign in details are incorrect, please try again",
+                          "Please enter your registered email to get a new password",
+                          textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: const Color(0xFFFE6624),
+                            color: const Color(0xFFFFFFFF),
                             fontSize: AppDimensions.height10 * 1.4,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),
-                      SizedBox(height: AppDimensions.height10),
+                      SizedBox(height: AppDimensions.height10 * 1.6),
                       Container(
                           height: AppDimensions.height10 * 6,
                           width: AppDimensions.height10 * 36.0,
@@ -190,32 +156,32 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                 margin: EdgeInsets.only(
                                   left: AppDimensions.height10 * 2.0,
                                 ),
-                                width: AppDimensions.height10 * 36.0,
+                                width: AppDimensions.height10 * 20.9,
                                 height: AppDimensions.height10 * 2.2,
                                 child: TextFormField(
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         contentPadding: EdgeInsets.zero,
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.always,
                                         hintText: "JohnSmith@yahoo.com",
-                                        hintStyle: TextStyle(
-                                          color: const Color(0xFF8C648A),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize:
-                                              AppDimensions.height10 * 1.8,
-                                        ),
-                                        focusedBorder: const OutlineInputBorder(
+                                        hintStyle: TextStyle(color: Color(0xFF8C648A)),
+                                        focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
+                                        enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.transparent)))),
                               )
                             ],
                           )),
+                      SizedBox(height: AppDimensions.height10 * 0.3),
                       Container(
+                        // color: Colors.blue,
                         height: AppDimensions.height10 * 1.7,
                         width: AppDimensions.height10 * 23.3,
-                        padding:
-                            EdgeInsets.only(left: AppDimensions.height10 * 1.2),
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10 * 4.4,
+                            right: AppDimensions.height10 * 15.6),
                         child: Text(
                           "Ooops! Needs to be an email format",
                           style: TextStyle(
@@ -225,76 +191,13 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                           ),
                         ),
                       ),
-                      SizedBox(height: AppDimensions.height10),
-                      Container(
-                        height: AppDimensions.height10 * 6,
-                        width: AppDimensions.height10 * 36.0,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.white, width: 2),
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(AppDimensions.height10 * 1.8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                  bottom: AppDimensions.height10 * 0.5),
-                              width: AppDimensions.height10 * 6.3,
-                              height: AppDimensions.height10 * 1.7,
-                              child: Text(
-                                "Password",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF282828),
-                                    fontSize: AppDimensions.height10 * 1.4),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                              ),
-                              width: AppDimensions.height10 * 36.0,
-                              height: AppDimensions.height10 * 2.2,
-                              child: TextFormField(
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.zero,
-                                      hintText: "*******",
-                                      hintStyle: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: AppDimensions.height10 * 1.8,
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)))),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding:
-                            EdgeInsets.only(left: AppDimensions.height10 * 1.2),
-                        child: Text(
-                          "Minimum 8 characters",
-                          style: TextStyle(
-                            color: const Color(0xFFFE6624),
-                            fontSize: AppDimensions.height10 * 1.4,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: AppDimensions.height10 + 1),
+                      SizedBox(height: AppDimensions.height10 * 1.1),
                       Container(
                           height: AppDimensions.height10 * 2.2,
                           width: AppDimensions.height10 * 26.1,
-                          padding: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.2),
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10 * 3.6,
+                              right: AppDimensions.height10 * 15.6),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -304,17 +207,21 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => PasswordReset(),
+                                      builder: (context) =>
+                                          Loginemailandpassword(),
                                     ),
                                   );
                                 },
                                 child: Container(
+                                  width: AppDimensions.height10 * 12.6,
+                                  height: AppDimensions.height10 * 2.2,
                                   child: Text(
-                                    "Forgot Password",
+                                    "Login",
+                                    textAlign: TextAlign.start,
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       color: const Color(0xFFFFFFFF),
-                                      fontSize: AppDimensions.font16 - 2,
+                                      fontSize: AppDimensions.height10 * 1.4,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -349,7 +256,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => StartProcess(),
+                          builder: (context) => EmailSent(),
                         ),
                       );
                     },
@@ -360,7 +267,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                     ),
                     label: Center(
                         child: Text(
-                      'Log In',
+                      'Reset password',
                       style: TextStyle(
                         color: const Color(0xFF8C648A),
                         fontSize: AppDimensions.height10 * 1.6,
@@ -375,6 +282,5 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
             ),
           ],
         ));
-    // );
   }
 }

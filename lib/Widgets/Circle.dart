@@ -51,7 +51,7 @@ class circles extends StatelessWidget {
             circle_text,textAlign: TextAlign.center,style: TextStyle(
             fontSize: textfont,
             color: Color(textcolor),
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w500,
 
           ),
           ),

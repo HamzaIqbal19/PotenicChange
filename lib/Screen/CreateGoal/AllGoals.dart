@@ -150,9 +150,7 @@ class _AllGoalsState extends State<AllGoals> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              width: AppDimensions.height10 * 3.6,
-                            ),
+
                             Container(
                               padding: EdgeInsets.only(
                                   top: AppDimensions.height10 * 0.4),
@@ -168,7 +166,7 @@ class _AllGoalsState extends State<AllGoals> {
                                   textcolor: 0),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10 * 1.24,
+                              width: AppDimensions.height10 * 0.8,
                             ),
                             Container(
                               // color: Colors.yellow,
@@ -288,6 +286,9 @@ class _AllGoalsState extends State<AllGoals> {
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: AppDimensions.height10 * 3.1,
+                    ),
                     Column(
                       children: [
                         Row(
@@ -312,13 +313,13 @@ class _AllGoalsState extends State<AllGoals> {
                                   textcolor: 0),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10 * 1.24,
+                              width: AppDimensions.height10 * 0.8,
                             ),
                             Container(
                               // color: Colors.yellow,
                               height: AppDimensions.height10 * 2.4,
                               child: Text(
-                                "Self Control ",
+                                "Happiness & Wellbeing ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,

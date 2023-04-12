@@ -16,8 +16,12 @@ class GoalWhy extends StatefulWidget {
 }
 
 class _GoalWhyState extends State<GoalWhy> {
+
+  late inner_text InnerText;
+  
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
@@ -150,7 +154,7 @@ class _GoalWhyState extends State<GoalWhy> {
                   height: AppDimensions.height10 * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 4.9,
+                  height: AppDimensions.height10 * 7.5,
                   width: AppDimensions.height10 * 37.2,
                   child: Center(
                     child: Text(

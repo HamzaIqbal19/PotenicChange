@@ -93,7 +93,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.3),
+                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
                   child: Center(
                     child: Text(
                       "Practice Creation 3/3",
@@ -121,7 +121,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.7,
+                  height: AppDimensions.height10 ,
                 ),
 
                 Row(
@@ -129,8 +129,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        width: AppDimensions.height10 * 7.9,
-                        height: AppDimensions.height10 * 7.9,
+                        margin: EdgeInsets.only(left:AppDimensions.height10*1.0,right:AppDimensions.height10*1.0),
+                        width: AppDimensions.height10 * 10.4,
+                        height: AppDimensions.height10 *11.2,
 
                         child: Image.asset(
                           "assets/images/createprac.png",
@@ -175,21 +176,57 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   height: AppDimensions.height10 -2,
                 ),
 
-                Container(
-                  height: AppDimensions.height10*8.6,
-                  width: AppDimensions.height10*37.2,
-                  child: Center(
-                    child: Text(
-                      "It’s important to set a consistent routine that works for you. Please select time slots for 3 or more days. ",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+
+
+         Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           children: [
+             Container(
+                        height: AppDimensions.height10*8.6,
+                        width: AppDimensions.height10*37.2,
+                        child: Center(
+                          child: Text.rich(
+                            textAlign: TextAlign.center,
+                            TextSpan(
+                              text: 'It’s important to set a consistent routine that works for you. Please select time slots\n ',
+
+                              style: TextStyle(
+                                color: const Color(0xFFFFFFFF),
+                                fontSize: AppDimensions.height10 *1.8,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              children: <TextSpan>[
+
+                                TextSpan(
+                                    text: 'for 3 or more days.',
+
+                                    style: TextStyle(
+
+                                      color: const Color(0xFFFFFFFF),
+                                      fontSize: AppDimensions.height10 *1.8,
+                                      fontWeight: FontWeight.w700,
+                                    )),
+                                // can add more TextSpans here...
+
+
+
+                                // can add more TextSpans here...
+
+
+                                // can add more TextSpans here...
+                              ],
+                            ),
+
+
+                          ),
+
+                        ),
                       ),
-                    ),
-                  ),
-                ),
+           ],
+         ),
+
+
+
                 SizedBox(
                   height: AppDimensions.height10 * 2.1,
                 ),

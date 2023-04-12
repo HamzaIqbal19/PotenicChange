@@ -118,7 +118,7 @@ class _GoalCategoryState extends State<GoalCategory> {
               SizedBox(
                 height: AppDimensions.height10 * 2.7,
               ),
-             circles(circle_text: widget.Circletitle, circle_color1: 0xFFFC854F, circle_color2: 0xFFFAA960, circle_border: 3, circle_bordercolor: 0xFFFFFFF, circle_height: AppDimensions.height10*13.4, circle_width: AppDimensions.height10*13.4, textfont: AppDimensions.height10*1.6, textcolor: 0XFFFFFFFF),
+             circles(circle_text: widget.Circletitle, circle_color1: 0xFFFC854F, circle_color2: 0xFFFAA960, circle_border: 3, circle_bordercolor: 0xFFFFFFFF, circle_height: AppDimensions.height10*13.4, circle_width: AppDimensions.height10*13.4, textfont: AppDimensions.height10*1.6, textcolor: 0XFFFFFFFF),
               SizedBox(
                 height: AppDimensions.height10 * 1.6,
               ),

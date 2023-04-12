@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:potenic_app/Screen/splash/splash_page.dart';
@@ -24,12 +25,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.grey, fontFamily: "Laila"),
       builder: (context, child) {
         return MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 0.91),
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 0.88),
           child: child!,
         );
       },
 
-      home: const SplashPage(),
+      home: const GoalFinished(),
       debugShowCheckedModeBanner: false,
     );
   }
