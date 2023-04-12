@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 
 import '../../utils/app_dimensions.dart';
 
+bool note_check = false;
+
 class feelingsAfter extends StatelessWidget {
-  const feelingsAfter({super.key});
+  final bool summary;
+
+  const feelingsAfter({super.key, required this.summary});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,9 @@ class feelingsAfter extends StatelessWidget {
           elevation: 0,
           leading: Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon: Image.asset(
                   'assets/images/Back.png',
                   width: AppDimensions.height10 * 2.6,
@@ -69,9 +76,11 @@ class feelingsAfter extends StatelessWidget {
               Container(
                 width: AppDimensions.height10 * 35.9,
                 height: AppDimensions.height10 * 14.8,
-                alignment: Alignment.center,
+                // alignment: Alignment.center,
                 margin: EdgeInsets.only(bottom: AppDimensions.height10 * 8.7),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'How do you feel',
@@ -222,7 +231,7 @@ class feelingsAfter extends StatelessWidget {
                           color: Color(0xffFF7C42),
                         ),
                         child: Text(
-                          'I feel excited\nand good in\ntmyself',
+                          'I feel excited\nand good in\nmyself',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
@@ -235,7 +244,12 @@ class feelingsAfter extends StatelessWidget {
                   ]),
                 ),
               ),
-              addNotes()
+              addNotes(
+                state_: summary,
+              ),
+              Padding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom))
             ],
           ),
         ),
@@ -245,8 +259,10 @@ class feelingsAfter extends StatelessWidget {
 }
 
 class addNotes extends StatefulWidget {
+  final bool state_;
   const addNotes({
     super.key,
+    required this.state_,
   });
 
   @override
@@ -254,8 +270,6 @@ class addNotes extends StatefulWidget {
 }
 
 class _addNotesState extends State<addNotes> {
-  bool note_check = false;
-
   int icon_color = 0xffffffff;
   int back_color = 0x000000ff;
   @override
@@ -323,12 +337,14 @@ class _addNotesState extends State<addNotes> {
             child: note_check
                 ? Container(
                     margin: EdgeInsets.only(top: AppDimensions.height10 * 1.0),
-                    child: notes())
+                    child: notes(
+                      state: widget.state_,
+                    ))
                 : Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10 * 10.1,
                         bottom: AppDimensions.height10 * 4.4),
-                    child: next_botton(),
+                    child: next_botton(state: widget.state_),
                   ))
         // Container(margin: EdgeInsets.only(top: 10), child: notes()),
 
@@ -340,7 +356,8 @@ class _addNotesState extends State<addNotes> {
 }
 
 class notes extends StatelessWidget {
-  const notes({super.key});
+  final bool state;
+  const notes({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -355,19 +372,21 @@ class notes extends StatelessWidget {
               color: Colors.white),
           child: Column(
             children: [
-              TextFormField(
-                // maxLines: 4,
-                decoration: InputDecoration(
-                    hintText: 'Add notes here',
-                    hintStyle: TextStyle(
-                      fontSize: AppDimensions.height10 * 1.6,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff646464),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent)),
-                    enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent))),
+              Container(
+                child: TextField(
+                  // maxLines: 4,
+                  decoration: InputDecoration(
+                      hintText: 'Add notes here',
+                      hintStyle: TextStyle(
+                        fontSize: AppDimensions.height10 * 1.6,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff646464),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent)),
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent))),
+                ),
               ),
               SizedBox(
                 height: AppDimensions.height10 * 1.4,
@@ -403,14 +422,25 @@ class notes extends StatelessWidget {
             margin: EdgeInsets.only(
                 top: AppDimensions.height10 * 4.6,
                 bottom: AppDimensions.height10 * 2.6),
-            child: next_botton()),
+            child: next_botton(
+              state: state,
+            )),
+        note_check
+            ? SizedBox(
+                // height: AppDimensions.height10 * 2.6,
+                child: Container(
+                  color: Colors.amber,
+                ),
+              )
+            : Container()
       ],
     );
   }
 }
 
 class next_botton extends StatelessWidget {
-  const next_botton({super.key});
+  final bool state;
+  const next_botton({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -428,18 +458,38 @@ class next_botton extends StatelessWidget {
               ]),
           borderRadius: BorderRadius.circular(AppDimensions.height10 * 5.0),
         ),
-        child: TextButton(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => endofSession()));
-          },
-          child: Text(
-            'Next',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: AppDimensions.height10 * 1.6,
-                fontWeight: FontWeight.w600),
-          ),
-        ));
+        child: state
+            ? TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => practice_summary()));
+                },
+                child: Text(
+                  'Update Summary',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: AppDimensions.height10 * 1.6,
+                      fontWeight: FontWeight.w600),
+                ),
+              )
+            : TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => endofSession(
+                                summary: false,
+                              )));
+                },
+                child: Text(
+                  'Next',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: AppDimensions.height10 * 1.6,
+                      fontWeight: FontWeight.w600),
+                ),
+              ));
   }
 }

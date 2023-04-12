@@ -438,6 +438,22 @@ class view_goals extends StatelessWidget {
                         is_right: true,
                         s_circle_text_col: 0xffffffff,
                       )),
+                      Center(
+                          child: align_circles(
+                        asset_1: 'assets/images/blue_sun.png',
+                        s_circle_text: 'Meditation',
+                        asset_2: 'assets/images/Ellipse 158.png',
+                        head_text: 'Control my anger',
+                        body_text:
+                            '“I am someone who is in\n control of my anger”',
+                        body_text_color: 0xff5B74A6,
+                        head_text_color: 0xff5B74A6,
+                        body_text_size: AppDimensions.height10 * 1.6,
+                        head_text_size: AppDimensions.height10 * 2.0,
+                        enable_icon: false,
+                        is_right: false,
+                        s_circle_text_col: 0xffFFFFFF,
+                      )),
                       Container(
                         width: AppDimensions.height10 * 35.6,
                         height: AppDimensions.height10 * 4.2,
@@ -474,22 +490,6 @@ class view_goals extends StatelessWidget {
                           )
                         ]),
                       ),
-                      Center(
-                          child: align_circles(
-                        asset_1: 'assets/images/image3.png',
-                        s_circle_text: 'Meditation',
-                        asset_2: 'assets/images/Ellipse 158.png',
-                        head_text: 'Control my anger',
-                        body_text:
-                            '“I am someone who is in\n control of my anger”',
-                        body_text_color: 0xff5B74A6,
-                        head_text_color: 0xff5B74A6,
-                        body_text_size: AppDimensions.height10 * 1.6,
-                        head_text_size: AppDimensions.height10 * 2.0,
-                        enable_icon: false,
-                        is_right: false,
-                        s_circle_text_col: 0xffFFFFFF,
-                      )),
                       Center(
                           child: align_circles(
                         asset_1: 'assets/images/image3.png',

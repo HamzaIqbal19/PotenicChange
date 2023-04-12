@@ -5,7 +5,9 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import '../../utils/app_dimensions.dart';
 
 class endofSession extends StatelessWidget {
-  const endofSession({super.key});
+  final bool summary;
+
+  const endofSession({super.key, required this.summary});
 
   @override
   Widget build(BuildContext context) {
@@ -362,21 +364,37 @@ class endofSession extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(AppDimensions.height10 * 5.0),
                   ),
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => practice_summary()));
-                    },
-                    child: Text(
-                      'Summary',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10 * 1.6,
-                          fontWeight: FontWeight.w600),
-                    ),
-                  ))
+                  child: summary
+                      ? TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => practice_summary()));
+                          },
+                          child: Text(
+                            'Update Summary',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10 * 1.6,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        )
+                      : TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => practice_summary()));
+                          },
+                          child: Text(
+                            'Summary',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10 * 1.6,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ))
             ],
           ),
         ),

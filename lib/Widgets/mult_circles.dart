@@ -80,13 +80,24 @@ class align_circles extends StatelessWidget {
             child: Stack(
               children: [
                 Align(
-                    alignment: Alignment(0, -0.4),
-                    child: Text(
-                      head_text,
-                      style: TextStyle(
-                          fontSize: head_text_size,
-                          fontWeight: FontWeight.w600,
-                          color: Color(head_text_color)),
+                    alignment: Alignment(0, -0.5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10 * 0),
+                          width: AppDimensions.height10 * 19.9,
+                          child: Text(
+                            head_text,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: head_text_size,
+                                fontWeight: FontWeight.w600,
+                                color: Color(head_text_color)),
+                          ),
+                        ),
+                      ],
                     )),
                 Align(
                   alignment: Alignment(0, -0.1),

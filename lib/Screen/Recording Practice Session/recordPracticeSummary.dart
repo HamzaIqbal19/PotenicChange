@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -80,7 +82,7 @@ class _practice_summaryState extends State<practice_summary> {
                         fit: BoxFit.cover)),
                 child: Stack(children: [
                   Align(
-                      alignment: Alignment(0, -0.5),
+                      alignment: Alignment(0, -0.55),
                       child: Text(
                         'Control my anger',
                         style: TextStyle(
@@ -89,7 +91,7 @@ class _practice_summaryState extends State<practice_summary> {
                             color: Color(0xff5B74A6)),
                       )),
                   Align(
-                    alignment: Alignment(0, -0.2),
+                    alignment: Alignment(0, -0.15),
                     child: Text(
                         '“I am someone who is in\n control of my anger”',
                         textAlign: TextAlign.center,
@@ -99,7 +101,7 @@ class _practice_summaryState extends State<practice_summary> {
                             color: Color(0xff5B74A6))),
                   ),
                   Align(
-                    alignment: const Alignment(0, 1),
+                    alignment: const Alignment(0, 0.875),
                     child: Container(
                       height: AppDimensions.height10 * 13.8,
                       width: AppDimensions.height10 * 13.8,
@@ -371,18 +373,29 @@ class _practice_summaryState extends State<practice_summary> {
                   ),
                   Align(
                     alignment: Alignment(0, 0.8),
-                    child: Container(
-                        height: AppDimensions.height10 * 2.0,
-                        width: AppDimensions.height10 * 2.0,
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.transparent,
-                            border: Border.all(width: 1, color: Colors.white)),
-                        child: ImageIcon(
-                          AssetImage('assets/images/edit_icon.png'),
-                          color: Colors.white,
-                        )),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => feelingsAfter(
+                                      summary: true,
+                                    )));
+                      },
+                      child: Container(
+                          height: AppDimensions.height10 * 2.0,
+                          width: AppDimensions.height10 * 2.0,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent,
+                              border:
+                                  Border.all(width: 1, color: Colors.white)),
+                          child: ImageIcon(
+                            AssetImage('assets/images/edit_icon.png'),
+                            color: Colors.white,
+                          )),
+                    ),
                   )
                 ]),
               ),
@@ -399,8 +412,8 @@ class _practice_summaryState extends State<practice_summary> {
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10 * 2.0,
                         right: AppDimensions.height10 * 2.0),
-                    height: AppDimensions.height10 * 3.8,
-                    width: AppDimensions.height10 * 32.0,
+                    height: AppDimensions.height10 * 3.9,
+                    width: AppDimensions.height10 * 32.5,
                     child: Text(
                       'This session works for me, it clears my head and makes me feel positive :)',
                       style: TextStyle(
@@ -457,17 +470,27 @@ class _practice_summaryState extends State<practice_summary> {
                   ),
                   Align(
                     alignment: Alignment(0, 0.8),
-                    child: Container(
-                      height: AppDimensions.height10 * 2.0,
-                      width: AppDimensions.height10 * 2.0,
-                      padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.transparent,
-                          border: Border.all(width: 1, color: Colors.white)),
-                      child: ImageIcon(
-                        AssetImage('assets/images/edit_icon.png'),
-                        color: Colors.white,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => endofSession(
+                                      summary: true,
+                                    )));
+                      },
+                      child: Container(
+                        height: AppDimensions.height10 * 2.0,
+                        width: AppDimensions.height10 * 2.0,
+                        padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.transparent,
+                            border: Border.all(width: 1, color: Colors.white)),
+                        child: ImageIcon(
+                          AssetImage('assets/images/edit_icon.png'),
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   )

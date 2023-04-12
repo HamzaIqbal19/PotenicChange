@@ -170,7 +170,7 @@ class _watch_timeState extends State<watch_time> {
   Widget build(BuildContext context) {
     return Column(children: [
       Container(
-        height: AppDimensions.height10 * 3.501,
+        height: AppDimensions.height10 * 4.501,
         width: AppDimensions.height10 * 26.6,
         alignment: Alignment.center,
         child: Row(
@@ -194,8 +194,8 @@ class _watch_timeState extends State<watch_time> {
                   },
                   child: clock_state
                       ? Container(
-                          // width: AppDimensions.height10 * 5.4,
-                          height: AppDimensions.height10 * 2.2,
+                          //width: AppDimensions.height10 * 9.2,
+                          height: AppDimensions.height10 * 2.4,
                           child: Text(
                             'Stopwatch',
                             style: TextStyle(
@@ -206,7 +206,7 @@ class _watch_timeState extends State<watch_time> {
                         )
                       : Container(
                           //width: AppDimensions.height10 * 5.4,
-                          height: AppDimensions.height10 * 2.2,
+                          height: AppDimensions.height10 * 2.4,
                           child: Text(
                             'Stopwatch',
                             style: TextStyle(

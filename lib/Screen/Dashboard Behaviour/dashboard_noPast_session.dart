@@ -159,8 +159,8 @@ class no_past_session extends StatelessWidget {
                                                 view_goals()));
                                   },
                                   child: Container(
-                                    height: 79,
-                                    width: 79,
+                                    height: AppDimensions.height10 * 7.9,
+                                    width: AppDimensions.height10 * 7.9,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
@@ -333,6 +333,9 @@ class no_past_session extends StatelessWidget {
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: AppDimensions.height10 * 1.4,
                       ),
                       GestureDetector(
                         onTap: () {

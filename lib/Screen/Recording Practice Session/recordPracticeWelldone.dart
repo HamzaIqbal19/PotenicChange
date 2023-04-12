@@ -32,7 +32,9 @@ class welldone_splashState extends State<welldone_splash> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => feelingsAfter(),
+        builder: (context) => feelingsAfter(
+          summary: false,
+        ),
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/recordPracticeEmotions.dart';
@@ -366,7 +368,13 @@ class _record_summaryState extends State<record_summary> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      feelingsAfter(summary: true)));
+                        },
                         child: Container(
                             height: AppDimensions.height10 * 2.8,
                             width: AppDimensions.height10 * 2.8,
@@ -422,7 +430,13 @@ class _record_summaryState extends State<record_summary> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      endofSession(summary: true)));
+                        },
                         child: Container(
                             height: AppDimensions.height10 * 2.8,
                             width: AppDimensions.height10 * 2.8,
@@ -457,37 +471,24 @@ class _record_summaryState extends State<record_summary> {
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
                       height: AppDimensions.height10 * 5.0,
-                      width: AppDimensions.height10 * 15.7,
+                      width: AppDimensions.height10 * 14.3,
                       margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.4),
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.2),
                       decoration: BoxDecoration(
-                        color: const Color(0xff464646),
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 5.0),
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 5.0),
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.2,
+                              color: Color(0xffFA9934))),
                       child: TextButton(
                           onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 0.8),
-                                child: Text(
-                                  'Delete',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: AppDimensions.height10 * 1.6,
-                                      fontWeight: FontWeight.w700,
-                                      fontFamily: 'Arial'),
-                                ),
-                              ),
-                            ],
+                          child: Text(
+                            'Reset',
+                            style: TextStyle(
+                                color: Color(0xffFA9934),
+                                fontSize: AppDimensions.height10 * 1.6,
+                                fontWeight: FontWeight.w600),
                           ))),
                   Container(
                       height: AppDimensions.height10 * 5.0,

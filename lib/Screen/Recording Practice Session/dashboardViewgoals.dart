@@ -80,8 +80,6 @@ class dashBoard extends StatelessWidget {
                                   ]),
                             ),
                             child: Container(
-                                padding: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 1),
                                 alignment: Alignment.center,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -103,6 +101,8 @@ class dashBoard extends StatelessWidget {
                                     Container(
                                       //width: AppDimensions.height10 * 4.0,
                                       height: AppDimensions.height10 * 1.7,
+                                      margin: EdgeInsets.only(
+                                          bottom: AppDimensions.height10 * 0.5),
                                       // color: Colors.amber,
                                       child: Text(
                                         '02.06',
@@ -114,8 +114,8 @@ class dashBoard extends StatelessWidget {
                                       ),
                                     ),
                                     Container(
-                                        height: AppDimensions.height10 * 2.7,
-                                        width: AppDimensions.height10 * 2.7,
+                                        height: AppDimensions.height10 * 2.5,
+                                        width: AppDimensions.height10 * 2.5,
                                         //  margin: const EdgeInsets.only(top: 3.32),
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
@@ -127,7 +127,9 @@ class dashBoard extends StatelessWidget {
                                             child: Text(
                                               '0/0',
                                               style: TextStyle(
-                                                  fontSize: 10,
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.0,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.white),
                                             ),
@@ -197,7 +199,9 @@ class dashBoard extends StatelessWidget {
                                             child: Text(
                                               '0/2',
                                               style: TextStyle(
-                                                  fontSize: 10,
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.0,
                                                   fontWeight: FontWeight.w400,
                                                   color: Color(0xff5B74A6)),
                                             ),
@@ -252,7 +256,8 @@ class dashBoard extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                          width: 1, color: Colors.white),
+                                          width: AppDimensions.height10 * 0.1,
+                                          color: Colors.white),
                                     ),
                                     child: Container(
                                         width: AppDimensions.height10 * 1.7,
@@ -264,7 +269,9 @@ class dashBoard extends StatelessWidget {
                                           child: Text(
                                             '0/2',
                                             style: TextStyle(
-                                                fontSize: 10,
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.0,
                                                 fontWeight: FontWeight.w400,
                                                 color: Color(0xff5B74A6)),
                                           ),
