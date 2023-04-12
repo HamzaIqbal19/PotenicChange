@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         );
       },
 
-      home: const GoalFinished(),
+      home: const SplashPage(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,14 +1,7 @@
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
-
-
-
 
 class PracticeRoutine extends StatefulWidget {
   const PracticeRoutine({Key? key}) : super(key: key);
@@ -18,8 +11,7 @@ class PracticeRoutine extends StatefulWidget {
 }
 
 class _PracticeRoutineState extends State<PracticeRoutine> {
-
-  bool buttonActive=false;
+  bool buttonActive = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,15 +115,16 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 SizedBox(
                   height: AppDimensions.height10 ,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
+
                         margin: EdgeInsets.only(left:AppDimensions.height10*1.0,right:AppDimensions.height10*1.0),
                         width: AppDimensions.height10 * 10.4,
                         height: AppDimensions.height10 *11.2,
+
 
                         child: Image.asset(
                           "assets/images/createprac.png",
@@ -151,15 +144,13 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       ),
                     ),
                   ],
-
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.3,
                 ),
                 Container(
-                  height: AppDimensions.height10*3.4,
-                  width: AppDimensions.height10*36.4,
+                  height: AppDimensions.height10 * 3.4,
+                  width: AppDimensions.height10 * 36.4,
                   child: Center(
                     child: Text(
                       "Your routine commitment",
@@ -173,11 +164,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 -2,
+                  height: AppDimensions.height10 - 2,
                 ),
-
-
-
          Column(
            mainAxisAlignment: MainAxisAlignment.center,
            children: [
@@ -221,6 +209,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           ),
 
                         ),
+
                       ),
            ],
          ),
@@ -230,35 +219,20 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 SizedBox(
                   height: AppDimensions.height10 * 2.1,
                 ),
-
-
                 Container(
                   color: Colors.transparent,
-                  height: AppDimensions.height10*38,
-                  width: AppDimensions.height10*40.4,
+                  height: AppDimensions.height10 * 38,
+                  width: AppDimensions.height10 * 40.4,
                   child: schedule(),
-
                 ),
-
-
-
-
-
-
                 SizedBox(
                   height: AppDimensions.height10 * 5.6,
                 ),
-
-
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-
-
                     GestureDetector(
-
-                      onTap: (){
+                      onTap: () {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -266,27 +240,35 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           ),
                         );
                       },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*31.3,
-                        decoration:  BoxDecoration(
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 31.3,
+                        decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
 
-                          gradient:buttonActive==true? const  LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]):const  LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFF828282), Color(0xFF828282)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          gradient: buttonActive == true
+                              ? const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                      Color(0xFFFCC10D),
+                                      Color(0xFFFDA210)
+                                    ])
+                              : const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                      Color(0xFF828282),
+                                      Color(0xFF828282)
+                                    ]),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        child:  Center(
-                          child:  Text(
+                        child: Center(
+                          child: Text(
                             "More than 2 days selected - Next",
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
@@ -297,20 +279,17 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.5,
                 ),
-
-                Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           )
-
         ],
       ),
-
-
     );
   }
 }

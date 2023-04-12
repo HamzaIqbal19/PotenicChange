@@ -3,7 +3,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/ReviewPractice/ViewGoal.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/review_habits_dashboard/dashboard.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -162,12 +163,12 @@ class _ActivateStarState extends State<ActivateStar> {
                         child:
                         GestureDetector(
                           onTap: (){
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => dashBoard(),
-                            //   ),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => dashBoard(),
+                              ),
+                            );
                           },
 
                           child: Image(

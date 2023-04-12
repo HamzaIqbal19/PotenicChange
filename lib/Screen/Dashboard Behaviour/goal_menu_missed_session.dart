@@ -1,0 +1,350 @@
+import 'package:flutter/material.dart';
+
+import '../../utils/app_dimensions.dart';
+
+class missed_Menu extends StatelessWidget {
+  const missed_Menu({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          // title: Align(
+          //   alignment: Alignment.center,
+          //   child: Text(
+          //     'Practice Menu',
+          //     style: TextStyle(
+          //         color: Colors.white,
+          //         fontSize: 20,
+          //         fontWeight: FontWeight.w600),
+          //   ),
+          // ),
+          actions: [
+            Center(
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/images/Close.png',
+                    width: 26,
+                    height: 26,
+                    fit: BoxFit.cover,
+                  )),
+            )
+          ]),
+      extendBodyBehindAppBar: true,
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage('assets/images/Mask Group.png'),
+          fit: BoxFit.cover,
+        )),
+        width: double.infinity,
+        height: double.infinity,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                width: AppDimensions.height10 * 30.4,
+                height: AppDimensions.height10 * 18.2,
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 4.2,
+                    bottom: AppDimensions.height10 * 3.2),
+                child: Column(
+                  children: [
+                    Text(
+                      'Practice Menu',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10 * 2.0,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Container(
+                      width: AppDimensions.height10 * 21.0,
+                      height: AppDimensions.height10 * 11.2,
+                      margin:
+                          EdgeInsets.only(top: AppDimensions.height10 * 4.6),
+                      // color: Colors.blue,
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment(-1, 0),
+                            child: Container(
+                              width: AppDimensions.height10 * 10.4,
+                              height: AppDimensions.height10 * 11.2,
+                              decoration: BoxDecoration(
+                                // color: Colors.amber,
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/Group 9398.png'),
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                          ),
+                          Align(
+                              alignment: Alignment(-0.4, -0.2),
+                              child: Container(
+                                height: AppDimensions.height10 * 5.0,
+                                width: AppDimensions.height10 * 4.6,
+                                decoration: BoxDecoration(
+                                    //color: Colors.amber,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Med Habit Practice (1).png'),
+                                        fit: BoxFit.contain)),
+                              )),
+                          Align(
+                            alignment: Alignment(1, -0.3),
+                            child: Container(
+                              width: AppDimensions.height10 * 10.6,
+                              height: AppDimensions.height10 * 2.4,
+                              child: Text(
+                                'Meditation',
+                                style: TextStyle(
+                                    color: Color(0xff156F6D),
+                                    fontSize: AppDimensions.height10 * 2.0,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10 * 32.0,
+                height: AppDimensions.height10 * 2.6,
+                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 2.7),
+                child: Text(
+                  'What do you want to do?',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10 * 2.2,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff437296)),
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10 * 9.36,
+                height: AppDimensions.height10 * 11.7,
+                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.9),
+                child: Column(
+                  children: [
+                    Container(
+                      width: AppDimensions.height10 * 7.9,
+                      height: AppDimensions.height10 * 7.9,
+                      decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color(0xffFCC10D),
+                                Color(0xffFDA210),
+                              ]),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.3,
+                              color: Colors.white)),
+                      child: Center(
+                          child: GestureDetector(
+                        onTap: () {},
+                        child: Icon(
+                          Icons.add_task,
+                          color: Colors.white,
+                          fill: 1.0,
+                          size: AppDimensions.height10 * 2.8,
+                        ),
+                      )),
+                    ),
+                    Text(
+                      'Record\npractice',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10 * 1.6,
+                          fontWeight: FontWeight.w500),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: AppDimensions.height10 * 36.0,
+                child: Divider(
+                  thickness: AppDimensions.height10 * 0.1,
+                  height: AppDimensions.height10 * 0.1,
+                  color: Colors.white,
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10 * 41.3,
+                height: AppDimensions.height10 * 22.9,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                child: Stack(children: [
+                  Align(
+                    alignment: Alignment(1, -1.3),
+                    child: IconButton(
+                        onPressed: () {},
+                        icon: Image.asset(
+                          'assets/images/ic_info_outline.png',
+                          height: AppDimensions.height10 * 3.0,
+                          width: AppDimensions.height10 * 3.0,
+                        )),
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        height: AppDimensions.height10 * 4.4,
+                        width: AppDimensions.height10 * 36.0,
+                        margin: EdgeInsets.only(
+                            bottom: AppDimensions.height10 * 1.2),
+                        child: Column(children: [
+                          Container(
+                            child: Text(
+                              'Practice Assessment',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xfff5f5f5)),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 8),
+                            child: Text(
+                              'You can evaluate your progress in -19 active days.',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xfff5f5f5)),
+                            ),
+                          )
+                        ]),
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensions.height10 * 1.2),
+                            child: button_feilds(
+                              feild_text: 'Progress report',
+                              icon_viible: false,
+                              text_color: 0xff828282,
+                            ),
+                          ),
+                          button_feilds(
+                            feild_text: 'Practice score (-/5)',
+                            icon_viible: false,
+                            text_color: 0xff828282,
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ]),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 21),
+                width: AppDimensions.height10 * 36.0,
+                child: Divider(
+                  thickness: AppDimensions.height10 * 0.1,
+                  height: AppDimensions.height10 * 0.1,
+                  color: Colors.white,
+                ),
+              ),
+              Container(
+                height: AppDimensions.height10 * 28.0,
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10 * 2.5,
+                    top: AppDimensions.height10 * 3.0),
+                child: Column(
+                  children: [
+                    button_feilds(
+                      feild_text: 'View practice progress',
+                      icon_viible: true,
+                      text_color: 0xff646464,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10 * 1.0,
+                          top: AppDimensions.height10 * 1.0),
+                      child: button_feilds(
+                        feild_text: 'View practice settings',
+                        icon_viible: true,
+                        text_color: 0xff646464,
+                      ),
+                    ),
+                    Container(
+                      margin:
+                          EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                      child: button_feilds(
+                        feild_text: 'Veiw upcoming schedules',
+                        icon_viible: true,
+                        text_color: 0xff646464,
+                      ),
+                    ),
+                    button_feilds(
+                      feild_text: 'Practice assesment history',
+                      icon_viible: true,
+                      text_color: 0xff646464,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class button_feilds extends StatelessWidget {
+  final String feild_text;
+  final bool icon_viible;
+  final int text_color;
+  const button_feilds(
+      {super.key,
+      required this.feild_text,
+      required this.icon_viible,
+      required this.text_color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(
+          left: AppDimensions.height10 * 0.8,
+          right: AppDimensions.height10 * 0.8),
+      height: AppDimensions.height10 * 6.0,
+      width: AppDimensions.height10 * 36.0,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), color: Colors.white),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          TextButton(
+              onPressed: () {},
+              child: Text(
+                feild_text,
+                style: TextStyle(
+                  color: Color(text_color),
+                  fontSize: AppDimensions.height10 * 1.8,
+                  fontWeight: FontWeight.w500,
+                ),
+              )),
+          Container(
+              width: AppDimensions.height10 * 2.4,
+              margin: EdgeInsets.only(right: AppDimensions.height10 * 2.391),
+              child: icon_viible
+                  ? Icon(
+                      Icons.arrow_forward,
+                      color: Color(0xff646464),
+                    )
+                  : Container())
+        ],
+      ),
+    );
+  }
+}
