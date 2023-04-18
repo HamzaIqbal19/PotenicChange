@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 
+import '../Screen/captureHurdles/captureHurdles_whatHurdles.dart';
 import '../utils/app_dimensions.dart';
 
 class Navigation_Bar extends StatefulWidget {
@@ -89,23 +91,31 @@ class Navigation_BarState extends State<Navigation_Bar> {
               ),
               label: 'Inspiration'),
           BottomNavigationBarItem(
-              icon: Container(
-                width: AppDimensions.height10 * 6.0,
-                height: AppDimensions.height10 * 6.0,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+              icon: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => hurdles_splash()));
+                },
                 child: Container(
-                  height: AppDimensions.height10 * 2.612,
-                  width: AppDimensions.height10 * 3.318,
-                  padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
-                  child: ImageIcon(
-                    AssetImage('assets/images/hurdle_icon.png'),
-                    //size: ,
-                    color: Colors.white,
+                  width: AppDimensions.height10 * 6.0,
+                  height: AppDimensions.height10 * 6.0,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                  child: Container(
+                    height: AppDimensions.height10 * 2.612,
+                    width: AppDimensions.height10 * 3.318,
+                    padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
+                    child: ImageIcon(
+                      AssetImage('assets/images/hurdle_icon.png'),
+                      //size: ,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

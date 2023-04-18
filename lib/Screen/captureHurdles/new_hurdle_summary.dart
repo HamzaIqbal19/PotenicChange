@@ -1,0 +1,414 @@
+import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart';
+
+import 'package:simple_gradient_text/simple_gradient_text.dart';
+import '../../utils/app_dimensions.dart';
+
+class new_hurdles_summary extends StatefulWidget {
+  const new_hurdles_summary({super.key});
+
+  @override
+  State<new_hurdles_summary> createState() => _new_hurdles_summaryState();
+}
+
+class _new_hurdles_summaryState extends State<new_hurdles_summary> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/practicebackground.png'),
+                fit: BoxFit.cover)),
+        child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: AppDimensions.height10 * 31.8,
+                  height: AppDimensions.height10 * 3.4,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10 * 5.0,
+                      bottom: AppDimensions.height10 * 0.5),
+                  child: GradientText(
+                    'Your Hurdle Summary',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: AppDimensions.height10 * 2.8,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  ),
+                ),
+                Container(
+                  width: AppDimensions.height10 * 23.2,
+                  height: AppDimensions.height10 * 3.8,
+                  margin:
+                      EdgeInsets.only(bottom: AppDimensions.height10 * 3.765),
+                  child: GradientText(
+                    'Below is an overview of your\nfaced hurdles',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: AppDimensions.height10 * 1.6,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  ),
+                ),
+                Container(
+                  width: AppDimensions.height10 * 19.6,
+                  height: AppDimensions.height10 * 19.6,
+                  margin:
+                      EdgeInsets.only(bottom: AppDimensions.height10 * 3.828),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/black_hole.png'))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: AppDimensions.height10 * 7.1,
+                        height: AppDimensions.height10 * 1.9,
+                        child: Text(
+                          'Husband',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 1.6,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                      Container(
+                        // width: AppDimensions.height10 * 1571,
+                        // height: AppDimensions.height10 * 1.7,
+                        child: Text(
+                          'Makes a mistake',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 1.4,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  width: AppDimensions.height10 * 32.6,
+                  height: AppDimensions.height10 * 2.4,
+                  child: Center(
+                    child: Text(
+                      'Current feelings and thoughts',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10 * 2.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+                Container(
+                  // width: AppDimensions.height10 * 41.4,
+                  height: AppDimensions.height10 * 14.7,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.6),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Container(
+                          height: AppDimensions.height10 * 14.5,
+                          width: AppDimensions.height10 * 14.5,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xff546096),
+                                    Color(0xff54A7BC)
+                                  ])),
+                          child: Center(
+                            child: Text(
+                              'I just expect him to make mistakes all the time',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: AppDimensions.height10 * 14.5,
+                          width: AppDimensions.height10 * 14.5,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xff546096),
+                                    Color(0xff54A7BC)
+                                  ])),
+                          child: Center(
+                            child: Text(
+                              'I get so frustrated when he makes simple mistake',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: AppDimensions.height10 * 14.5,
+                          width: AppDimensions.height10 * 14.5,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xff546096),
+                                    Color(0xff54A7BC)
+                                  ])),
+                          child: Center(
+                            child: Text(
+                              'I see the mistake and think ‘not again’ ‘it’s so obvious’.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: AppDimensions.height10 * 14.5,
+                          width: AppDimensions.height10 * 14.5,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xff546096),
+                                    Color(0xff54A7BC)
+                                  ])),
+                          child: Center(
+                            child: Text(
+                              'I have an extra big child to look after.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                    height: AppDimensions.height10 * 2.0,
+                    width: AppDimensions.height10 * 2.0,
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 3.3),
+                    padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                        border: Border.all(width: 1, color: Colors.white)),
+                    child: ImageIcon(
+                      AssetImage('assets/images/edit_icon.png'),
+                      color: Colors.white,
+                      //size: 10,
+                    )),
+                Container(
+                  width: AppDimensions.height10 * 32.6,
+                  height: AppDimensions.height10 * 2.4,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                  child: Center(
+                    child: Text(
+                      'Positive actions',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10 * 2.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: AppDimensions.height10 * 14.5,
+                  width: AppDimensions.height10 * 14.5,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 3.9),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          width: AppDimensions.height10 * 0.1,
+                          color: Colors.white),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/Ellipse 161.png'))),
+                  child: Center(
+                    child: Text(
+                      'I will leave him to it\ninstead of trying to\nsolve it for him',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10 * 1.4,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+                Container(
+                    height: AppDimensions.height10 * 2.0,
+                    width: AppDimensions.height10 * 2.0,
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                    padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                        border: Border.all(width: 1, color: Colors.white)),
+                    child: ImageIcon(
+                      AssetImage('assets/images/edit_icon.png'),
+                      color: Colors.white,
+                      //size: 10,
+                    )),
+                Container(
+                  width: AppDimensions.height10 * 32.6,
+                  height: AppDimensions.height10 * 2.4,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                  child: Center(
+                    child: Text(
+                      'Positive thoughts',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10 * 2.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: AppDimensions.height10 * 14.5,
+                  width: AppDimensions.height10 * 14.5,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 3.9),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          width: AppDimensions.height10 * 0.1,
+                          color: Colors.white),
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/Ellipse 161.png'))),
+                  child: Center(
+                    child: Text(
+                      'Remember that he\nis good to me and\ntreats me with\nrespect.',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10 * 1.4,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ),
+                Container(
+                    height: AppDimensions.height10 * 2.0,
+                    width: AppDimensions.height10 * 2.0,
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                    padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.transparent,
+                        border: Border.all(width: 1, color: Colors.white)),
+                    child: ImageIcon(
+                      AssetImage('assets/images/edit_icon.png'),
+                      color: Colors.white,
+                      //size: 10,
+                    )),
+                Container(
+                    width: AppDimensions.height10 * 37.8,
+                    height: AppDimensions.height10 * 5.0,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 4.2,
+                        bottom: AppDimensions.height10 * 5.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              height: AppDimensions.height10 * 5.0,
+                              width: AppDimensions.height10 * 15.7,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10 * 1.4),
+                              decoration: BoxDecoration(
+                                color: const Color(0xff464646),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10 * 5.0),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.delete,
+                                        color: Colors.white,
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            left: AppDimensions.height10 * 0.8),
+                                        child: Text(
+                                          'Delete',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.6,
+                                              fontWeight: FontWeight.w700,
+                                              fontFamily: 'Arial'),
+                                        ),
+                                      ),
+                                    ],
+                                  ))),
+                          Container(
+                              height: AppDimensions.height10 * 5.0,
+                              width: AppDimensions.height10 * 19.7,
+                              decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xffFCC10D),
+                                    Color(0xffFDA210),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10 * 5.0),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                new_hurdles()));
+                                  },
+                                  child: Text(
+                                    'Save Practice',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: AppDimensions.height10 * 1.6,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Poppins'),
+                                  ))),
+                        ])),
+              ],
+            )),
+      ),
+    );
+  }
+}
