@@ -76,6 +76,21 @@ class landing_hurdles extends StatelessWidget {
                         color: Colors.white,
                         fontFamily: 'laila')),
               ),
+              Container(
+                width: AppDimensions.height10 * 19.6,
+                height: AppDimensions.height10 * 25.0,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/Blackhole.png'))),
+                child: Align(
+                  alignment: Alignment(-0.075, -0.48),
+                  child: Icon(
+                    Icons.add,
+                    size: AppDimensions.height10 * 5.6,
+                    color: Color(0xFFFFFFFFF),
+                  ),
+                ),
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -87,9 +102,9 @@ class landing_hurdles extends StatelessWidget {
                   width: AppDimensions.height10 * 19.6,
                   height: AppDimensions.height10 * 19.6,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 24.3,
-                      left: AppDimensions.height10 * 1.6,
-                      right: AppDimensions.height10 * 17.2),
+                      top: AppDimensions.height10 * 1.6,
+                      left: AppDimensions.height10 * 3.106,
+                      right: AppDimensions.height10 * 18.6),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -194,8 +209,23 @@ class landing_hurdles_2 extends StatelessWidget {
                           fontFamily: 'laila')),
                 ),
                 Container(
+                  width: AppDimensions.height10 * 19.6,
+                  height: AppDimensions.height10 * 25.0,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/Blackhole.png'))),
+                  child: Align(
+                    alignment: Alignment(-0.075, -0.48),
+                    child: Icon(
+                      Icons.add,
+                      size: AppDimensions.height10 * 5.6,
+                      color: Color(0xFFFFFFFFF),
+                    ),
+                  ),
+                ),
+                Container(
                   margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 24.3,
+                    top: AppDimensions.height10 * 1.6,
                   ),
                   child: Column(
                     children: [
@@ -657,15 +687,14 @@ class hurdle_menu extends StatelessWidget {
           fit: BoxFit.cover,
         )),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: AppDimensions.height10 * 19.6,
-              height: AppDimensions.height10 * 19.6,
-              // margin: EdgeInsets.only(
-              //     top: AppDimensions.height10 * 24.3,
-              //     left: AppDimensions.height10 * 1.6,
-              //     right: AppDimensions.height10 * 17.2),
+              width: AppDimensions.height10 * 17.62,
+              height: AppDimensions.height10 * 17.33,
+              margin: EdgeInsets.only(
+                top: AppDimensions.height10 * 11.255,
+              ),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -685,8 +714,10 @@ class hurdle_menu extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    // width: AppDimensions.height10 * 1571,
-                    // height: AppDimensions.height10 * 1.7,
+                    width: AppDimensions.height10 * 7.471,
+                    height: AppDimensions.height10 * 4.38,
+                    margin:
+                        EdgeInsets.only(top: AppDimensions.height10 * 0.773),
                     child: Text(
                       'Makes a\nmistake',
                       textAlign: TextAlign.center,
@@ -701,8 +732,8 @@ class hurdle_menu extends StatelessWidget {
             ),
             Container(
               width: AppDimensions.height10 * 32.0,
-              height: AppDimensions.height10 * 3.6,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
+              height: AppDimensions.height10 * 2.6,
+              margin: EdgeInsets.only(top: AppDimensions.height10 * 7.313),
               child: Center(
                   child: Text(
                 'What do you want to do?',
@@ -819,6 +850,9 @@ class hurdle_menu extends StatelessWidget {
                     width: AppDimensions.height10 * 36.0,
                     height: AppDimensions.height10 * 6.0,
                     decoration: BoxDecoration(
+                        border: Border.all(
+                            width: AppDimensions.height10 * 0.1,
+                            color: Color(0xFFFFFFFF)),
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
                         color: Color(0xff464646)),

@@ -29,11 +29,11 @@ class _summary_hurdlesState extends State<summary_hurdles> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: AppDimensions.height10 * 36.4,
+                  width: AppDimensions.height10 * 35.4,
                   height: AppDimensions.height10 * 9.3,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10 * 5.0,
-                      bottom: AppDimensions.height10 * 3.39),
+                      bottom: AppDimensions.height10 * 3.349),
                   child: GradientText(
                     'Well done for capturing your hurdle',
                     textAlign: TextAlign.center,
@@ -110,7 +110,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                 ),
                 Container(
                   width: AppDimensions.height10 * 32.6,
-                  height: AppDimensions.height10 * 4.8,
+                  height: AppDimensions.height10 * 5.2,
                   child: Center(
                     child: Text(
                       'Your current\nthoughts and feelings',
@@ -144,7 +144,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                   ])),
                           child: Center(
                             child: Text(
-                              'I just expect him to make mistakes all the time',
+                              'I just expect him to\nmake mistakes all\nthe time',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
@@ -167,7 +167,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                   ])),
                           child: Center(
                             child: Text(
-                              'I get so frustrated when he makes simple mistake',
+                              'I get so frustrated\nwhen he makes\nsimple mistake',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
@@ -190,7 +190,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                   ])),
                           child: Center(
                             child: Text(
-                              'I see the mistake and think ‘not again’ ‘it’s so obvious’.',
+                              'I see the mistake\nand think ‘not again’\n‘it’s so obvious’.',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
@@ -242,7 +242,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                     )),
                 Container(
                   width: AppDimensions.height10 * 32.6,
-                  height: AppDimensions.height10 * 4.8,
+                  height: AppDimensions.height10 * 5.2,
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
                   child: Center(
                     child: Text(
@@ -364,7 +364,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                     )),
                 Container(
                   width: AppDimensions.height10 * 32.6,
-                  height: AppDimensions.height10 * 4.8,
+                  height: AppDimensions.height10 * 5.2,
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
                   child: Center(
                     child: Text(
@@ -430,7 +430,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                               height: AppDimensions.height10 * 5.0,
                               width: AppDimensions.height10 * 15.7,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 1.4),
+                                  right: AppDimensions.height10 * 2.4),
                               decoration: BoxDecoration(
                                 color: const Color(0xff464646),
                                 borderRadius: BorderRadius.circular(
@@ -495,20 +495,31 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                   ))),
                         ])),
                 Container(
-                  // width: AppDimensions.height10 * 40.6,
+                  // width: AppDimensions.height10 * 34.0,
                   height: AppDimensions.height10 * 2.2,
                   // color: Colors.amber,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 3.1,
-                      bottom: AppDimensions.height10 * 2.2),
-                  child: Center(
-                    child: Text(
-                      'Coming soon ‘Add positive alternatives’',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.8,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
-                    ),
+                    top: AppDimensions.height10 * 3.1,
+                    bottom: AppDimensions.height10 * 2.2,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Coming soon ',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.8,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      ),
+                      Text(
+                        '‘Add positive alternatives’',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.8,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white),
+                      )
+                    ],
                   ),
                 ),
                 Container(
@@ -516,7 +527,10 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                   height: AppDimensions.height10 * 0.5,
                   margin:
                       EdgeInsets.only(bottom: AppDimensions.height10 * 11.8),
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.height10 * 2.0),
+                      color: Color(0xFFFFFFFF).withOpacity(0.3)),
                 )
               ],
             )),

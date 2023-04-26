@@ -27,8 +27,8 @@ class _select_hurdleState extends State<select_hurdle> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10 * 3.0,
+                  height: AppDimensions.height10 * 3.0,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -82,242 +82,222 @@ class _select_hurdleState extends State<select_hurdle> {
           ]),
       extendBodyBehindAppBar: true,
       body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/practicebackground.png'),
-                  fit: BoxFit.cover)),
-          child: Stack(children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: AppDimensions.height10 * 34.3,
-                      height: AppDimensions.height10 * 7.3,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 18.0),
-                      child: Center(
-                        child: GradientText(
-                          'What or who has\ntriggered your hurdle?',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: AppDimensions.height10 * 2.8,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          colors: [Color(0xffFA9934), Color(0xffEDD15E)],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 3.9),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: AppDimensions.height10 * 14.1,
-                            height: AppDimensions.height10 * 14.1,
-                            margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 5.1,
-                              right: AppDimensions.height10 * 4.5,
-                            ),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 2, color: Colors.white)),
-                            padding:
-                                EdgeInsets.all(AppDimensions.height10 * 0.5),
-                            child: Container(
-                              height: AppDimensions.height10 * 13.1,
-                              width: AppDimensions.height10 * 13.1,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width: AppDimensions.height10 * 0.1,
-                                      color: Colors.white),
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Color(0xffBE3FC6),
-                                        Color(0xff642445)
-                                      ])),
-                              child: Center(
-                                child: Text(
-                                  'People /\n person',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: AppDimensions.height10 * 1.6,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: AppDimensions.height10 * 13.1,
-                            width: AppDimensions.height10 * 13.1,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width: AppDimensions.height10 * 0.1,
-                                    color: Colors.white),
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xffBE3FC6),
-                                      Color(0xff642445)
-                                    ])),
-                            child: Center(
-                              child: Text(
-                                'Negative\nthought',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 1.6,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 5.8,
-                          right: AppDimensions.height10 * 5.1,
-                          top: AppDimensions.height10 * 1.0,
-                          bottom: AppDimensions.height10 * 2.0),
-                      child: Row(children: [
-                        Container(
-                          height: AppDimensions.height10 * 13.1,
-                          width: AppDimensions.height10 * 13.1,
-                          margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 4.5,
-                          ),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                  width: AppDimensions.height10 * 0.1,
-                                  color: Colors.white),
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color(0xffBE3FC6),
-                                    Color(0xff642445)
-                                  ])),
-                          child: Center(
-                            child: Text(
-                              'Place',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: AppDimensions.height10 * 13.1,
-                          width: AppDimensions.height10 * 13.1,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                  width: AppDimensions.height10 * 0.1,
-                                  color: Colors.white),
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color(0xffBE3FC6),
-                                    Color(0xff642445)
-                                  ])),
-                          child: Center(
-                            child: Text(
-                              'Event',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
-                      ]),
-                    ),
-                    Container(
-                      height: AppDimensions.height10 * 13.1,
-                      width: AppDimensions.height10 * 13.1,
-                      margin: EdgeInsets.only(
-                        right: AppDimensions.height10 * 22,
-                        left: AppDimensions.height10 * 5.8,
-                      ),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                              width: AppDimensions.height10 * 0.1,
-                              color: Colors.white),
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xffBE3FC6), Color(0xff642445)])),
-                      child: Center(
-                        child: Text(
-                          'Other',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                    ),
-                  ]),
+        width: double.infinity,
+        height: double.infinity,
+        // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/practicebackground.png'),
+                fit: BoxFit.cover)),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Container(
+            width: AppDimensions.height10 * 33.7,
+            height: AppDimensions.height10 * 7.3,
+            margin: EdgeInsets.only(top: AppDimensions.height10 * 18.0),
+            child: Center(
+              //slight width issue
+              child: GradientText(
+                'What or who has\ntriggered your hurdle?',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: AppDimensions.height10 * 2.8,
+                  fontWeight: FontWeight.w700,
+                ),
+                colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+              ),
             ),
-            Positioned(
-                right: AppDimensions.height10 * 8.0,
-                left: AppDimensions.height10 * 8.0,
-                bottom: AppDimensions.height10 * 4.1,
-                top: AppDimensions.height10 * 77.2,
-                child: Align(
+          ),
+          Container(
+            margin: EdgeInsets.only(top: AppDimensions.height10 * 2.9),
+            child: Row(
+              children: [
+                Container(
+                  width: AppDimensions.height10 * 14.1,
+                  height: AppDimensions.height10 * 14.1,
+                  margin: EdgeInsets.only(
+                    left: AppDimensions.height10 * 5.1,
+                    right: AppDimensions.height10 * 4.5,
+                  ),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(width: 2, color: Colors.white)),
+                  padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
                   child: Container(
-                    width: AppDimensions.height10 * 25.4,
-                    height: AppDimensions.height10 * 5.0,
+                    height: AppDimensions.height10 * 13.1,
+                    width: AppDimensions.height10 * 13.1,
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            width: AppDimensions.height10 * 0.1,
+                            color: Colors.white),
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xffBE3FC6), Color(0xff642445)])),
+                    child: Center(
+                      child: Text(
+                        'People /\n person',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: AppDimensions.height10 * 1.6,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: AppDimensions.height10 * 13.1,
+                  width: AppDimensions.height10 * 13.1,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          width: AppDimensions.height10 * 0.1,
+                          color: Colors.white),
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xffBE3FC6), Color(0xff642445)])),
+                  child: Center(
+                    child: Text(
+                      'Negative\nthought',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10 * 1.6,
+                          fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(
+                left: AppDimensions.height10 * 5.8,
+                right: AppDimensions.height10 * 5.1,
+                top: AppDimensions.height10 * 1.0,
+                bottom: AppDimensions.height10 * 2.0),
+            child: Row(children: [
+              Container(
+                height: AppDimensions.height10 * 13.1,
+                width: AppDimensions.height10 * 13.1,
+                margin: EdgeInsets.only(
+                  right: AppDimensions.height10 * 4.5,
+                ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        width: AppDimensions.height10 * 0.1,
+                        color: Colors.white),
+                    gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xffFCC10D),
-                          Color(0xffFDA210),
-                        ],
-                      ),
-                      borderRadius:
-                          BorderRadius.circular(AppDimensions.height10 * 5.0),
-                    ),
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => hurdle_name()));
-                        },
-                        child: Text(
-                          'Next',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.6,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
-                        )),
+                        colors: [Color(0xffBE3FC6), Color(0xff642445)])),
+                child: Center(
+                  child: Text(
+                    'Place',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: AppDimensions.height10 * 1.6,
+                        fontWeight: FontWeight.w500),
                   ),
-                ))
-          ])),
+                ),
+              ),
+              Container(
+                height: AppDimensions.height10 * 13.1,
+                width: AppDimensions.height10 * 13.1,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        width: AppDimensions.height10 * 0.1,
+                        color: Colors.white),
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0xffBE3FC6), Color(0xff642445)])),
+                child: Center(
+                  child: Text(
+                    'Event',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: AppDimensions.height10 * 1.6,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+            ]),
+          ),
+          Container(
+            height: AppDimensions.height10 * 13.1,
+            width: AppDimensions.height10 * 13.1,
+            margin: EdgeInsets.only(
+              right: AppDimensions.height10 * 22.9,
+              left: AppDimensions.height10 * 5.1,
+            ),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                    width: AppDimensions.height10 * 0.1, color: Colors.white),
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Color(0xffBE3FC6), Color(0xff642445)])),
+            child: Center(
+              child: Text(
+                'Other',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: AppDimensions.height10 * 1.6,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
+          Container(
+            width: AppDimensions.height10 * 25.4,
+            height: AppDimensions.height10 * 5.0,
+            margin: EdgeInsets.only(
+                top: AppDimensions.height10 * 8.2,
+                bottom: AppDimensions.height10 * 2.6),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xffFCC10D),
+                  Color(0xffFDA210),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(AppDimensions.height10 * 5.0),
+            ),
+            child: TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => hurdle_name()));
+                },
+                child: Text(
+                  'Next',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10 * 1.6,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
+                )),
+          ),
+          Container(
+            width: AppDimensions.height10 * 17.0,
+            height: AppDimensions.height10 * 0.5,
+            margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+            decoration: BoxDecoration(
+                borderRadius:
+                    BorderRadius.circular(AppDimensions.height10 * 2.0),
+                color: Color(0xFFFFFFFF).withOpacity(0.3)),
+          )
+        ]),
+      ),
     );
   }
 }

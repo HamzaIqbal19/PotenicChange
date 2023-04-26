@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 
 import '../Screen/captureHurdles/captureHurdles_whatHurdles.dart';
@@ -121,25 +122,31 @@ class Navigation_BarState extends State<Navigation_Bar> {
               ),
               label: 'Hurdle'),
           BottomNavigationBarItem(
-            icon: Container(
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10 * 2.0, right: 0),
-              width: AppDimensions.height10 * 4.0,
-              height: AppDimensions.height10 * 4.0,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => your_goals_menu()));
+              },
               child: Container(
-                  height: AppDimensions.height10 * 1.889,
-                  width: AppDimensions.height10 * 2.444,
-                  padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
-                  child: ImageIcon(
-                    AssetImage('assets/images/menu_icon.png'),
-                    color: Colors.white,
-                  )),
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 2.0, right: 0),
+                width: AppDimensions.height10 * 4.0,
+                height: AppDimensions.height10 * 4.0,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                child: Container(
+                    height: AppDimensions.height10 * 1.889,
+                    width: AppDimensions.height10 * 2.444,
+                    padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
+                    child: ImageIcon(
+                      AssetImage('assets/images/menu_icon.png'),
+                      color: Colors.white,
+                    )),
+              ),
             ),
             label: 'Menu',
           ),

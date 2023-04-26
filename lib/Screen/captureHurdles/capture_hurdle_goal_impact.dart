@@ -212,6 +212,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                         margin:
                             EdgeInsets.only(top: AppDimensions.height10 * 8.7),
                         child: Center(
+                          //Text alingment changes
                           child: GradientText(
                             'Which goals\nare impacted?',
                             textAlign: TextAlign.center,
@@ -229,7 +230,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10 * 2.1,
                             right: AppDimensions.height10 * 19.8,
-                            top: AppDimensions.height10 * 2.0),
+                            top: AppDimensions.height10 * 2.9),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width: 2, color: Colors.white)),
@@ -270,7 +271,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             top: AppDimensions.height10 * 2.0),
                         child: Center(
                           child: Text(
-                            'Active goals',
+                            'Active Goals',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 2.0,
                                 fontWeight: FontWeight.w600,
@@ -350,7 +351,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             left: AppDimensions.height10 * 2.8),
                         child: Center(
                           child: Text(
-                            'Inactive goals',
+                            'Inactive Goals',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 2.0,
                                 fontWeight: FontWeight.w600,
@@ -489,7 +490,9 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
             Container(
               width: AppDimensions.height10 * 25.4,
               height: AppDimensions.height10 * 5.0,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 3.3),
+              margin: EdgeInsets.only(
+                  top: AppDimensions.height10 * 3.3,
+                  bottom: AppDimensions.height10 * 2.6),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
                   begin: Alignment.topCenter,
@@ -517,6 +520,15 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                         fontWeight: FontWeight.w600,
                         color: Colors.white),
                   )),
+            ),
+            Container(
+              width: AppDimensions.height10 * 17.0,
+              height: AppDimensions.height10 * 0.5,
+              margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+              decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
             )
           ])),
     );
