@@ -331,20 +331,16 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                 SizedBox(height: AppDimensions.height10 * 5.0),
 
                 Container(
-                  height: AppDimensions.height10 * 4.4,
-                  width: AppDimensions.height10 * 26.7,
-                  // padding: EdgeInsets.only(left:AppDimensions.height10*0.8,top:AppDimensions.height10*1.6,right: AppDimensions.height10*0.8),
+                  height: AppDimensions.height10*5,
+                  width: AppDimensions.height10*25.4,
+                  decoration:const BoxDecoration(
+                      borderRadius:  BorderRadius.all(Radius.circular(40.0)),
 
-                  child: OutlinedButton.icon(
-                    // <-- OutlinedButton
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFFFFFF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 5.0),
-                      ),
-                      //<-- SEE HERE
-                    ),
+                      gradient:  LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xFFFFFFFF), Color(0xFFFFFFFF)])),
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -353,20 +349,18 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                         ),
                       );
                     },
-                    icon: Image.asset(
-                      "assets/images/fb.png",
-                      width: 0.0,
-                      height: 0.0,
-                    ),
-                    label: Center(
-                        child: Text(
-                      'Log In',
-                      style: TextStyle(
-                        color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10 * 1.6,
+                    style: ElevatedButton.styleFrom(primary: Colors.transparent, shadowColor: Colors.transparent),
+                    child: Text('Login',
+                      textAlign: TextAlign.center,
+                      style:
+                      TextStyle(
                         fontWeight: FontWeight.w600,
+                        color: Color(0xFF8C648A),
+                        fontSize: AppDimensions.height10*1.8,
+
                       ),
-                    )),
+
+                    ),
                   ),
                 ),
                 // SizedBox(height: AppDimensions.height120+90),

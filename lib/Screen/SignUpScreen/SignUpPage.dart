@@ -270,7 +270,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(height: AppDimensions.height10*28.4),
                     SizedBox(
                       height: AppDimensions.height10 * 5,
-                      width: AppDimensions.screenWidth-100,
+                      width: AppDimensions.height10*29.3,
 
                       child:OutlinedButton.icon( // <-- OutlinedButton
                         style: OutlinedButton.styleFrom(
@@ -294,7 +294,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         label: Center(
                             child:Text('I already have an account',style: TextStyle(
                               color:  const Color(0xFF8C648A),
-                              fontSize:  AppDimensions.height10 * 1.6,
+                              fontSize:  AppDimensions.height10 * 1.8,
                               fontWeight: FontWeight.w600,
                             ),)),
                       ),

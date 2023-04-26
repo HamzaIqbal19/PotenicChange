@@ -150,7 +150,7 @@ class _EmailSentState extends State<EmailSent> {
                     label: Center(
                         child:Text('Go to Home page',style: TextStyle(
                           color:  const Color(0xFF8C648A),
-                          fontSize:  AppDimensions.height10 *1.6,
+                          fontSize:  AppDimensions.height10 *1.8,
                           fontWeight: FontWeight.w600,
                         ),)),
                   ),

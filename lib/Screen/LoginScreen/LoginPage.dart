@@ -259,7 +259,7 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(height: AppDimensions.height10*28.4),
                     SizedBox(
                       height: AppDimensions.height10 * 5,
-                      width: AppDimensions.screenWidth-100,
+                      width: AppDimensions.height10*29.3,
 
                       child:OutlinedButton.icon( // <-- OutlinedButton
                         style: OutlinedButton.styleFrom(
@@ -282,7 +282,7 @@ class _LoginPageState extends State<LoginPage> {
                         label: Center(
                             child:Text('New account',style: TextStyle(
                               color:  const Color(0xFF8C648A),
-                              fontSize:  AppDimensions.height10*1.6,
+                              fontSize:  AppDimensions.height10*1.9,
                               fontWeight: FontWeight.w600,
                             ),)),
                       ),

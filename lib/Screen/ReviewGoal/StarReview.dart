@@ -807,7 +807,7 @@ class _inner_textState extends State<inner_text> {
     return Container(
       height: AppDimensions.height10*11.0,
       width: AppDimensions.height10*36.0,
-      padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: 1, left:AppDimensions.height10, right: AppDimensions.height10*6.0),
+      padding:  EdgeInsets.only(top: AppDimensions.height10*0.5, bottom: 1, left:AppDimensions.height10, right: AppDimensions.height10*6.0),
       decoration: BoxDecoration(
           gradient:_focusNode.hasFocus? const LinearGradient(
               begin: Alignment.topCenter,
@@ -827,7 +827,7 @@ class _inner_textState extends State<inner_text> {
         children: [
           Container(
 
-              height: AppDimensions.height10*3.6,
+              height: AppDimensions.height10*2.0,
               width:AppDimensions.height10* 26.9,
               child: Text("${widget.circle_text}",style: TextStyle(
                 fontWeight: FontWeight.w500,
@@ -837,7 +837,7 @@ class _inner_textState extends State<inner_text> {
           SizedBox(height: AppDimensions.height10*0.9,),
           Container(
 
-              height: AppDimensions.height10*2.6,
+              height: AppDimensions.height10*3.5,
               width:AppDimensions.height10* 26.9,
               child: CupertinoTextField(
                 placeholder: "I want to achieve this goal because...",
