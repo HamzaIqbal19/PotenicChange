@@ -33,7 +33,7 @@ class your_goals_menu extends StatelessWidget {
             'Menu',
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontSize: AppDimensions.height10 * 2.0,
+                fontSize: AppDimensions.height10 * 2.4,
                 fontWeight: FontWeight.w600,
                 color: Colors.white),
           ),

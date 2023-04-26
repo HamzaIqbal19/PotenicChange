@@ -74,6 +74,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             Container(
                               // width: AppDimensions.height10 * 1571,
                               // height: AppDimensions.height10 * 1.7,
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10 * 0.6),
                               child: Text(
                                 'Makes a mistake',
                                 style: TextStyle(

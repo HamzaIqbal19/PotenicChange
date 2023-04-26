@@ -99,7 +99,7 @@ class add_your_practice extends StatelessWidget {
           Container(
             width: AppDimensions.height10 * 32.0,
             height: AppDimensions.height10 * 2.6,
-            margin: EdgeInsets.only(top: AppDimensions.height10 * 1.4),
+            margin: EdgeInsets.only(top: AppDimensions.height10 * 0),
             child: Center(
               child: Text(
                 'What do you want to do?',

@@ -78,7 +78,7 @@ class landing_hurdles extends StatelessWidget {
               ),
               Container(
                 width: AppDimensions.height10 * 19.6,
-                height: AppDimensions.height10 * 25.0,
+                height: AppDimensions.height10 * 23.0,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/Blackhole.png'))),
@@ -102,7 +102,7 @@ class landing_hurdles extends StatelessWidget {
                   width: AppDimensions.height10 * 19.6,
                   height: AppDimensions.height10 * 19.6,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 1.6,
+                      top: AppDimensions.height10 * 5.242,
                       left: AppDimensions.height10 * 3.106,
                       right: AppDimensions.height10 * 18.6),
                   decoration: BoxDecoration(
@@ -126,6 +126,8 @@ class landing_hurdles extends StatelessWidget {
                       Container(
                         // width: AppDimensions.height10 * 1571,
                         // height: AppDimensions.height10 * 1.7,
+                        margin:
+                            EdgeInsets.only(top: AppDimensions.height10 * 0.6),
                         child: Text(
                           'Makes a mistake',
                           style: TextStyle(
@@ -656,12 +658,15 @@ class hurdle_menu extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: Text(
-          'Menu',
-          style: TextStyle(
-              fontSize: AppDimensions.height10 * 2.0,
-              fontWeight: FontWeight.w600,
-              color: Color(0xfffbfbfb)),
+        title: Container(
+          margin: EdgeInsets.only(top: AppDimensions.height10 * 0.5),
+          child: Text(
+            'Menu',
+            style: TextStyle(
+                fontSize: AppDimensions.height10 * 2.0,
+                fontWeight: FontWeight.w600,
+                color: Color(0xfffbfbfb)),
+          ),
         ),
         centerTitle: true,
         actions: [

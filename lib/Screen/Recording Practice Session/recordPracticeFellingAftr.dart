@@ -52,8 +52,8 @@ class feelingsAfter extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
-          //   physics: const ClampingScrollPhysics(),
-          scrollDirection: Axis.vertical,
+          physics: ClampingScrollPhysics(),
+          //scrollDirection: Axis.vertical,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             //crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -61,9 +61,7 @@ class feelingsAfter extends StatelessWidget {
               Container(
                 width: AppDimensions.height10 * 18.6,
                 height: AppDimensions.height10 * 2.4,
-                margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 10.5,
-                    top: AppDimensions.height10 * 4.6),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.6),
                 alignment: Alignment.center,
                 child: Text(
                   'Meditation Session',
@@ -73,11 +71,18 @@ class feelingsAfter extends StatelessWidget {
                       color: Colors.white),
                 ),
               ),
+              MediaQuery.of(context).viewInsets.bottom == 0
+                  ? SizedBox(
+                      height: AppDimensions.height10 * 10.5,
+                    )
+                  : SizedBox(
+                      height: AppDimensions.height10 * 0,
+                    ),
               Container(
                 width: AppDimensions.height10 * 35.9,
                 height: AppDimensions.height10 * 14.8,
                 // alignment: Alignment.center,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 8.7),
+
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -111,6 +116,13 @@ class feelingsAfter extends StatelessWidget {
                   ],
                 ),
               ),
+              MediaQuery.of(context).viewInsets.bottom == 0
+                  ? SizedBox(
+                      height: AppDimensions.height10 * 8.7,
+                    )
+                  : SizedBox(
+                      height: AppDimensions.height10 * 0,
+                    ),
               Container(
                 margin: EdgeInsets.only(bottom: AppDimensions.height10 * 6.3),
                 height: AppDimensions.height10 * 13.7,
@@ -247,9 +259,9 @@ class feelingsAfter extends StatelessWidget {
               addNotes(
                 state_: summary,
               ),
-              Padding(
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom))
+              // Padding(
+              //     padding: EdgeInsets.only(
+              //         bottom: MediaQuery.of(context).viewInsets.bottom))
             ],
           ),
         ),
@@ -345,7 +357,8 @@ class _addNotesState extends State<addNotes> {
                         top: AppDimensions.height10 * 10.1,
                         bottom: AppDimensions.height10 * 4.4),
                     child: next_botton(state: widget.state_),
-                  ))
+                  )),
+
         // Container(margin: EdgeInsets.only(top: 10), child: notes()),
 
         // //next button

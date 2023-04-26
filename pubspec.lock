@@ -57,6 +57,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  custom_switch:
+    dependency: "direct main"
+    description:
+      name: custom_switch
+      sha256: "72d2ad3cc47cb89a59e0726bb4502531adb4dcb7edb75f1e1d4d7ba6618a474a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   dotted_border:
     dependency: "direct main"
     description:

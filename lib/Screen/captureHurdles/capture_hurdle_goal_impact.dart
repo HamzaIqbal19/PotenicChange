@@ -192,6 +192,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/practicebackground.png'),
+                  colorFilter: ColorFilter.mode(
+                      Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                   fit: BoxFit.cover)),
           child: Column(children: [
             Container(

@@ -139,9 +139,11 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                             Color(0xff546096),
                                             Color(0xff54A7BC)
                                           ])),
-                                  child: SizedBox(
-                                    width: AppDimensions.height10 * 17.813,
+                                  child: Container(
+                                    width: AppDimensions.height10 * 16.813,
                                     height: AppDimensions.height10 * 6.83,
+                                    decoration:
+                                        BoxDecoration(shape: BoxShape.circle),
                                     child: Center(
                                       child: TextField(
                                         expands: true,
@@ -258,6 +260,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         height: AppDimensions.height10 * 5.0,
                         width: AppDimensions.height10 * 16.7,
                         margin: EdgeInsets.only(
+                            top: AppDimensions.height10 * 1.0,
                             bottom: AppDimensions.height10 * 1.0),
                         decoration: BoxDecoration(
                           gradient: const LinearGradient(

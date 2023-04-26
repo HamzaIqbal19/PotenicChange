@@ -74,7 +74,7 @@ class hurdles_splashState extends State<hurdles_splash> {
               Container(
                 width: AppDimensions.height10 * 35.1,
                 height: AppDimensions.height10 * 8.3,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 8.7),
+                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 3.7),
                 child: Text(
                     'Use this space to capture obstacles that\nmay hold you back from achieving your\npersonal growth goals.',
                     textAlign: TextAlign.center,
@@ -93,8 +93,8 @@ class hurdles_splashState extends State<hurdles_splash> {
                   );
                 },
                 child: Container(
-                  width: AppDimensions.height10 * 67.5,
-                  height: AppDimensions.height10 * 40.0,
+                  width: AppDimensions.height10 * 61.5,
+                  height: AppDimensions.height10 * 45.0,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/Blackhole.png'))),

@@ -476,7 +476,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           ),
                                         ),
                                         Align(
-                                          alignment: Alignment(1, 0.8),
+                                          alignment: Alignment(1, 0.3),
                                           child: Container(
                                             height:
                                                 AppDimensions.height10 * 5.5,
@@ -825,6 +825,7 @@ class goal_card extends StatelessWidget {
                             '“I am someone who is in\ncontrol of my anger”',
                             textAlign: TextAlign.center,
                             style: TextStyle(
+                                fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xFF5B74A6))),

@@ -113,7 +113,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               Container(
                 width: AppDimensions.height10 * 32.0,
                 height: AppDimensions.height10 * 2.6,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 1.4),
+                // margin: EdgeInsets.only(top: AppDimensions.height10 * 1.4),
                 child: Center(
                   child: Text(
                     'What do you want to do?',
@@ -149,8 +149,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 7.7,
-                            height: AppDimensions.height10 * 7.6,
+                            width: AppDimensions.height10 * 8.1,
+                            height: AppDimensions.height10 * 8.1,
                             margin: EdgeInsets.only(
                                 right: AppDimensions.height10 * 1.6),
                             decoration: BoxDecoration(
@@ -159,6 +159,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     AssetImage('assets/images/Nebula Pie.png'),
                               ),
                               // color: Colors.amber,
+                            ),
+                            child: Center(
+                              child: Text(
+                                '-',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.8),
+                              ),
                             ),
                           ),
                           Container(
@@ -236,12 +243,30 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       child: Container(
                         width: AppDimensions.height10 * 15.7,
                         height: AppDimensions.height10 * 1.3,
-                        child: Text(
-                          'Next score needed in -00 days',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.1,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff828282)),
+                        child: Row(
+                          children: [
+                            Text(
+                              'Next score needed in ',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.1,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff828282)),
+                            ),
+                            Text(
+                              '-00',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.1,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff828282)),
+                            ),
+                            Text(
+                              ' days',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.1,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff828282)),
+                            ),
+                          ],
                         ),
                       ),
                     ),

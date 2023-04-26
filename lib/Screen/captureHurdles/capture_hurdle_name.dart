@@ -180,10 +180,11 @@ class _hurdle_nameState extends State<hurdle_name> {
                                 ),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 1.0,
-                                      //  right: AppDimensions.height10 * 10.0,
-                                      top: AppDimensions.height10 * 0.6),
-                                  height: AppDimensions.height10 * 2.2,
+                                    left: AppDimensions.height10 * 2.1,
+                                    //  right: AppDimensions.height10 * 10.0,
+                                    // top: AppDimensions.height10 * 0.6
+                                  ),
+                                  height: AppDimensions.height10 * 2.4,
                                   //width: AppDimensions.height10 * 30.5,
                                   child: Center(
                                     child: TextFormField(
@@ -205,6 +206,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xffB353C9)),
                                       decoration: InputDecoration(
+                                          contentPadding: EdgeInsets.zero,
                                           hintText: 'Enter Name',
                                           hintStyle: TextStyle(
                                               fontSize: AppDimensions.height10 *
@@ -267,7 +269,10 @@ class _hurdle_nameState extends State<hurdle_name> {
                         height: AppDimensions.height10 * 5.0,
                         width: AppDimensions.height10 * 25.4,
                         margin: EdgeInsets.only(
-                            bottom: AppDimensions.height10 * 2.6),
+                            bottom:
+                                MediaQuery.of(context).viewInsets.bottom == 0
+                                    ? AppDimensions.height10 * 2.6
+                                    : AppDimensions.height10 * 1.0),
                         decoration: BoxDecoration(
                           gradient: button_state
                               ? LinearGradient(
