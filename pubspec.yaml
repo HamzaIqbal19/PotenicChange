@@ -47,6 +47,7 @@ dependencies:
   dotted_border: ^2.0.0+3
   dotted_decoration: ^2.0.0
   custom_switch: ^0.0.1
+  url_launcher: ^6.1.10
 
 
 

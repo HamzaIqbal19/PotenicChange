@@ -59,7 +59,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.8,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFFFFFFFF).withOpacity(0.5)),
+                              color: const Color(0xFFFFFFFF).withOpacity(0.5)),
                         ),
                       ),
                     ),
@@ -75,7 +75,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.8,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFFFFFFFF)),
+                              color: const Color(0xFFFFFFFF)),
                         ),
                       ),
                     )
@@ -93,14 +93,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.8,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFFFFFFFF)),
+                          color: const Color(0xFFFFFFFF)),
                     ),
                   ),
                 )
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -121,7 +121,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 3.0,
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFFFFFFFF)),
+                        color: const Color(0xFFFFFFFF)),
                   ),
                 ),
               ),
@@ -137,7 +137,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.8,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFFFFFFFF)),
+                          color: const Color(0xFFFFFFFF)),
                     ),
                     widget.isActive
                         ? Text(
@@ -145,14 +145,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.8,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xFF156F6D)),
+                                color: const Color(0xFF156F6D)),
                           )
                         : Text(
                             'Inactive',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.8,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xFFDE7A11)),
+                                color: const Color(0xFFDE7A11)),
                           )
                   ],
                 ),
@@ -167,7 +167,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     Container(
                       width: AppDimensions.height10 * 11.4,
                       height: AppDimensions.height10 * 11.4,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -181,7 +181,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF437296)),
+                                  color: const Color(0xFF437296)),
                             ),
                           ),
                           Container(
@@ -195,7 +195,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 2.8,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xFF464646)),
+                                  color: const Color(0xFF464646)),
                             ),
                           )
                         ],
@@ -204,7 +204,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     Container(
                       width: AppDimensions.height10 * 11.4,
                       height: AppDimensions.height10 * 11.4,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -218,7 +218,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF437296)),
+                                  color: const Color(0xFF437296)),
                             ),
                           ),
                           Container(
@@ -235,7 +235,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 2.0,
                                       fontWeight: FontWeight.w600,
-                                      color: Color(0xFF464646)),
+                                      color: const Color(0xFF464646)),
                                 ),
                                 Text(
                                   '/5',
@@ -243,7 +243,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.0,
                                       fontWeight: FontWeight.w300,
-                                      color: Color(0xFF464646)),
+                                      color: const Color(0xFF464646)),
                                 ),
                               ],
                             ),
@@ -264,7 +264,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 2.4,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFFFFFFFF)),
+                          color: const Color(0xFFFFFFFF)),
                     ),
                   )),
               Container(
@@ -272,8 +272,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 height: AppDimensions.height10 * 10.0,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 4.9),
                 decoration: BoxDecoration(
-                    color: color1 ? Colors.transparent : Color(0xFF828282),
-                    border: Border(
+                    color:
+                        color1 ? Colors.transparent : const Color(0xFF828282),
+                    border: const Border(
                         top: BorderSide(color: Color(0xFFFFFFFF), width: 1),
                         bottom:
                             BorderSide(color: Color(0xFFFFFFFF), width: 1))),
@@ -284,7 +285,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       height: AppDimensions.height10 * 5.4,
                       margin:
                           EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                         image: AssetImage('assets/images/Ellipse 158.png'),
                         fit: BoxFit.cover,
@@ -306,7 +307,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                           Container(
@@ -317,7 +318,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFFFFFF))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10 * 0.5),
@@ -327,7 +328,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               AppDimensions.height10 * 1.0,
                                           fontWeight: FontWeight.w300,
                                           // fontFamily: 'Poppins',
-                                          color: Color(0xFFF6F6F6))),
+                                          color: const Color(0xFFF6F6F6))),
                                 ),
                               ],
                             ),
@@ -394,7 +395,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -402,14 +403,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     4.2,
                                                 width: double.infinity,
-                                                color: Color(0xFF007AFF),
+                                                color: const Color(0xFF007AFF),
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
                                                     'No',
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0xFFFFFFFF),
+                                                        color: const Color(
+                                                            0xFFFFFFFF),
                                                         fontSize: AppDimensions
                                                                 .height10 *
                                                             1.7,
@@ -423,7 +424,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -442,8 +443,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         fontFamily: "Laila",
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        color:
-                                                            Color(0xFF007AFF)),
+                                                        color: const Color(
+                                                            0xFF007AFF)),
                                                   ),
                                                 ),
                                               ),
@@ -451,7 +452,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -465,7 +466,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               height: AppDimensions.height10 * 1.6,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10 * 10.6),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image:
                                           AssetImage('assets/images/bin.png'))),
@@ -482,8 +483,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     height: AppDimensions.height10 * 3.4,
                                     valueFontSize: 12.0,
                                     toggleSize: 18.0,
-                                    activeColor: Color(0xFFFA9934),
-                                    inactiveColor: Color(0xFF2F3A4B),
+                                    activeColor: const Color(0xFFFA9934),
+                                    inactiveColor: const Color(0xFF2F3A4B),
                                     value: status1,
                                     onToggle: (val) {
                                       setState(() {
@@ -502,7 +503,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       onTap: () {},
                                       child: Image.asset(
                                         'assets/images/BTN Back.png',
-                                        color: Color(0xFFFFFFFF),
+                                        color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10 * 2.6,
                                         //height: AppDimensions.height10 * 2.6,
                                         fit: BoxFit.cover,
@@ -518,8 +519,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: BoxDecoration(
-                    color: color2 ? Colors.transparent : Color(0xFF828282),
-                    border: Border(
+                    color:
+                        color2 ? Colors.transparent : const Color(0xFF828282),
+                    border: const Border(
                         bottom:
                             BorderSide(color: Color(0xFFFFFFFF), width: 1))),
                 child: Row(
@@ -529,7 +531,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       height: AppDimensions.height10 * 5.4,
                       margin:
                           EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                         image: AssetImage('assets/images/Ellipse purple.png'),
                         fit: BoxFit.cover,
@@ -551,7 +553,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                           Container(
@@ -562,7 +564,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFFFFFF))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10 * 0.5),
@@ -572,7 +574,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               AppDimensions.height10 * 1.0,
                                           fontWeight: FontWeight.w300,
                                           // fontFamily: 'Poppins',
-                                          color: Color(0xFFF6F6F6))),
+                                          color: const Color(0xFFF6F6F6))),
                                 ),
                               ],
                             ),
@@ -639,7 +641,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -647,14 +649,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     4.2,
                                                 width: double.infinity,
-                                                color: Color(0xFF007AFF),
+                                                color: const Color(0xFF007AFF),
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
                                                     'No',
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0xFFFFFFFF),
+                                                        color: const Color(
+                                                            0xFFFFFFFF),
                                                         fontSize: AppDimensions
                                                                 .height10 *
                                                             1.7,
@@ -668,7 +670,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -687,8 +689,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         fontFamily: "Laila",
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        color:
-                                                            Color(0xFF007AFF)),
+                                                        color: const Color(
+                                                            0xFF007AFF)),
                                                   ),
                                                 ),
                                               ),
@@ -696,7 +698,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -710,7 +712,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               height: AppDimensions.height10 * 1.6,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10 * 10.6),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image:
                                           AssetImage('assets/images/bin.png'))),
@@ -727,8 +729,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     height: AppDimensions.height10 * 3.4,
                                     valueFontSize: 12.0,
                                     toggleSize: 18.0,
-                                    activeColor: Color(0xFFFA9934),
-                                    inactiveColor: Color(0xFF2F3A4B),
+                                    activeColor: const Color(0xFFFA9934),
+                                    inactiveColor: const Color(0xFF2F3A4B),
                                     value: status2,
                                     onToggle: (val) {
                                       setState(() {
@@ -747,7 +749,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       onTap: () {},
                                       child: Image.asset(
                                         'assets/images/BTN Back.png',
-                                        color: Color(0xFFFFFFFF),
+                                        color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10 * 2.6,
                                         //height: AppDimensions.height10 * 2.6,
                                         fit: BoxFit.cover,
@@ -763,8 +765,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: BoxDecoration(
-                    color: color3 ? Colors.transparent : Color(0xFF828282),
-                    border: Border(
+                    color:
+                        color3 ? Colors.transparent : const Color(0xFF828282),
+                    border: const Border(
                         bottom:
                             BorderSide(color: Color(0xFFFFFFFF), width: 1))),
                 child: Row(
@@ -774,7 +777,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       height: AppDimensions.height10 * 5.4,
                       margin:
                           EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                         image: AssetImage('assets/images/Ellipse orange.png'),
                         fit: BoxFit.contain,
@@ -796,7 +799,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                           Container(
@@ -807,7 +810,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFFFFFF))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10 * 0.5),
@@ -817,7 +820,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               AppDimensions.height10 * 1.0,
                                           fontWeight: FontWeight.w300,
                                           // fontFamily: 'Poppins',
-                                          color: Color(0xFFF6F6F6))),
+                                          color: const Color(0xFFF6F6F6))),
                                 ),
                               ],
                             ),
@@ -884,7 +887,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -892,14 +895,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     4.2,
                                                 width: double.infinity,
-                                                color: Color(0xFF007AFF),
+                                                color: const Color(0xFF007AFF),
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
                                                     'No',
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0xFFFFFFFF),
+                                                        color: const Color(
+                                                            0xFFFFFFFF),
                                                         fontSize: AppDimensions
                                                                 .height10 *
                                                             1.7,
@@ -913,7 +916,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -932,8 +935,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         fontFamily: "Laila",
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        color:
-                                                            Color(0xFF007AFF)),
+                                                        color: const Color(
+                                                            0xFF007AFF)),
                                                   ),
                                                 ),
                                               ),
@@ -941,7 +944,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -955,7 +958,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               height: AppDimensions.height10 * 1.6,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10 * 10.6),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image:
                                           AssetImage('assets/images/bin.png'))),
@@ -972,8 +975,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     height: AppDimensions.height10 * 3.4,
                                     valueFontSize: 12.0,
                                     toggleSize: 18.0,
-                                    activeColor: Color(0xFFFA9934),
-                                    inactiveColor: Color(0xFF2F3A4B),
+                                    activeColor: const Color(0xFFFA9934),
+                                    inactiveColor: const Color(0xFF2F3A4B),
                                     value: status3,
                                     onToggle: (val) {
                                       setState(() {
@@ -992,7 +995,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       onTap: () {},
                                       child: Image.asset(
                                         'assets/images/BTN Back.png',
-                                        color: Color(0xFFFFFFFF),
+                                        color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10 * 2.6,
                                         //height: AppDimensions.height10 * 2.6,
                                         fit: BoxFit.cover,
@@ -1008,8 +1011,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: BoxDecoration(
-                    color: color4 ? Colors.transparent : Color(0xFF828282),
-                    border: Border(
+                    color:
+                        color4 ? Colors.transparent : const Color(0xFF828282),
+                    border: const Border(
                         bottom:
                             BorderSide(color: Color(0xFFFFFFFF), width: 1))),
                 child: Row(
@@ -1019,7 +1023,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       height: AppDimensions.height10 * 5.4,
                       margin:
                           EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                         image: AssetImage('assets/images/Ellipse 158.png'),
                         fit: BoxFit.cover,
@@ -1041,7 +1045,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                           Container(
@@ -1052,7 +1056,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFFFFFF))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10 * 0.5),
@@ -1062,7 +1066,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               AppDimensions.height10 * 1.0,
                                           fontWeight: FontWeight.w300,
                                           // fontFamily: 'Poppins',
-                                          color: Color(0xFFF6F6F6))),
+                                          color: const Color(0xFFF6F6F6))),
                                 ),
                               ],
                             ),
@@ -1129,7 +1133,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1137,14 +1141,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     4.2,
                                                 width: double.infinity,
-                                                color: Color(0xFF007AFF),
+                                                color: const Color(0xFF007AFF),
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
                                                     'No',
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0xFFFFFFFF),
+                                                        color: const Color(
+                                                            0xFFFFFFFF),
                                                         fontSize: AppDimensions
                                                                 .height10 *
                                                             1.7,
@@ -1158,7 +1162,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1177,8 +1181,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         fontFamily: "Laila",
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        color:
-                                                            Color(0xFF007AFF)),
+                                                        color: const Color(
+                                                            0xFF007AFF)),
                                                   ),
                                                 ),
                                               ),
@@ -1186,7 +1190,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1200,7 +1204,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               height: AppDimensions.height10 * 1.6,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10 * 10.6),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image:
                                           AssetImage('assets/images/bin.png'))),
@@ -1217,8 +1221,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     height: AppDimensions.height10 * 3.4,
                                     valueFontSize: 12.0,
                                     toggleSize: 18.0,
-                                    activeColor: Color(0xFFFA9934),
-                                    inactiveColor: Color(0xFF2F3A4B),
+                                    activeColor: const Color(0xFFFA9934),
+                                    inactiveColor: const Color(0xFF2F3A4B),
                                     value: status4,
                                     onToggle: (val) {
                                       setState(() {
@@ -1237,7 +1241,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       onTap: () {},
                                       child: Image.asset(
                                         'assets/images/BTN Back.png',
-                                        color: Color(0xFFFFFFFF),
+                                        color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10 * 2.6,
                                         //height: AppDimensions.height10 * 2.6,
                                         fit: BoxFit.cover,
@@ -1253,8 +1257,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: BoxDecoration(
-                    color: color5 ? Colors.transparent : Color(0xFF828282),
-                    border: Border(
+                    color:
+                        color5 ? Colors.transparent : const Color(0xFF828282),
+                    border: const Border(
                         bottom:
                             BorderSide(color: Color(0xFFFFFFFF), width: 1))),
                 child: Row(
@@ -1264,7 +1269,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       height: AppDimensions.height10 * 5.4,
                       margin:
                           EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                         image: AssetImage('assets/images/Ellipse blue.png'),
                         fit: BoxFit.cover,
@@ -1286,7 +1291,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                           Container(
@@ -1297,7 +1302,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFFFFFF))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10 * 0.5),
@@ -1307,7 +1312,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               AppDimensions.height10 * 1.0,
                                           fontWeight: FontWeight.w300,
                                           // fontFamily: 'Poppins',
-                                          color: Color(0xFFF6F6F6))),
+                                          color: const Color(0xFFF6F6F6))),
                                 ),
                               ],
                             ),
@@ -1374,7 +1379,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1382,14 +1387,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     4.2,
                                                 width: double.infinity,
-                                                color: Color(0xFF007AFF),
+                                                color: const Color(0xFF007AFF),
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
                                                     'No',
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0xFFFFFFFF),
+                                                        color: const Color(
+                                                            0xFFFFFFFF),
                                                         fontSize: AppDimensions
                                                                 .height10 *
                                                             1.7,
@@ -1403,7 +1408,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1422,8 +1427,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         fontFamily: "Laila",
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        color:
-                                                            Color(0xFF007AFF)),
+                                                        color: const Color(
+                                                            0xFF007AFF)),
                                                   ),
                                                 ),
                                               ),
@@ -1431,7 +1436,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1445,7 +1450,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               height: AppDimensions.height10 * 1.6,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10 * 10.6),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image:
                                           AssetImage('assets/images/bin.png'))),
@@ -1462,8 +1467,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     height: AppDimensions.height10 * 3.4,
                                     valueFontSize: 12.0,
                                     toggleSize: 18.0,
-                                    activeColor: Color(0xFFFA9934),
-                                    inactiveColor: Color(0xFF2F3A4B),
+                                    activeColor: const Color(0xFFFA9934),
+                                    inactiveColor: const Color(0xFF2F3A4B),
                                     value: status5,
                                     onToggle: (val) {
                                       setState(() {
@@ -1482,7 +1487,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       onTap: () {},
                                       child: Image.asset(
                                         'assets/images/BTN Back.png',
-                                        color: Color(0xFFFFFFFF),
+                                        color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10 * 2.6,
                                         //height: AppDimensions.height10 * 2.6,
                                         fit: BoxFit.cover,
@@ -1497,7 +1502,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
               Container(
                 width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Color(0xFF828282),
                     border: Border(
                         bottom:
@@ -1509,7 +1514,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       height: AppDimensions.height10 * 5.4,
                       margin:
                           EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                         image: AssetImage('assets/images/Ellipse 158.png'),
                         fit: BoxFit.cover,
@@ -1531,7 +1536,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                           Container(
@@ -1542,7 +1547,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFFFFFF))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10 * 0.5),
@@ -1552,7 +1557,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                               AppDimensions.height10 * 1.0,
                                           fontWeight: FontWeight.w300,
                                           // fontFamily: 'Poppins',
-                                          color: Color(0xFFF6F6F6))),
+                                          color: const Color(0xFFF6F6F6))),
                                 ),
                               ],
                             ),
@@ -1619,7 +1624,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1627,14 +1632,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     4.2,
                                                 width: double.infinity,
-                                                color: Color(0xFF007AFF),
+                                                color: const Color(0xFF007AFF),
                                                 child: TextButton(
                                                   onPressed: () {},
                                                   child: Text(
                                                     'No',
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0xFFFFFFFF),
+                                                        color: const Color(
+                                                            0xFFFFFFFF),
                                                         fontSize: AppDimensions
                                                                 .height10 *
                                                             1.7,
@@ -1648,7 +1653,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1667,8 +1672,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         fontFamily: "Laila",
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        color:
-                                                            Color(0xFF007AFF)),
+                                                        color: const Color(
+                                                            0xFF007AFF)),
                                                   ),
                                                 ),
                                               ),
@@ -1676,7 +1681,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 height: AppDimensions.height10 *
                                                     0.1,
                                                 child: Divider(
-                                                  color: Color(0XFF3C3C43)
+                                                  color: const Color(0XFF3C3C43)
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
@@ -1690,7 +1695,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               height: AppDimensions.height10 * 1.6,
                               margin: EdgeInsets.only(
                                   left: AppDimensions.height10 * 10.6),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image:
                                           AssetImage('assets/images/bin.png'))),
@@ -1710,7 +1715,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           fontSize:
                                               AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xFFFFFFFF)),
+                                          color: const Color(0xFFFFFFFF)),
                                     ),
                                   )),
                               Container(
@@ -1722,7 +1727,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     onTap: () {},
                                     child: Image.asset(
                                       'assets/images/BTN Back.png',
-                                      color: Color(0xFFFFFFFF),
+                                      color: const Color(0xFFFFFFFF),
                                       //width: AppDimensions.height10 * 2.6,
                                       //height: AppDimensions.height10 * 2.6,
                                       fit: BoxFit.cover,
@@ -1737,7 +1742,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 width: AppDimensions.height10 * 13.4,
                 height: AppDimensions.height10 * 13.2,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 5.5),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         image: AssetImage('assets/images/circle_grey.png'))),
@@ -1748,7 +1753,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.8,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFFFFFFFF)),
+                        color: const Color(0xFFFFFFFF)),
                   ),
                 ),
               ),
@@ -1801,20 +1806,20 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   SizedBox(
                                     height: AppDimensions.height10 * 0.1,
                                     child: Divider(
-                                      color:
-                                          Color(0XFF3C3C43).withOpacity(0.29),
+                                      color: const Color(0XFF3C3C43)
+                                          .withOpacity(0.29),
                                     ),
                                   ),
                                   Container(
                                     height: AppDimensions.height10 * 4.2,
                                     width: double.infinity,
-                                    color: Color(0xFF007AFF),
+                                    color: const Color(0xFF007AFF),
                                     child: TextButton(
                                       onPressed: () {},
                                       child: Text(
                                         'No',
                                         style: TextStyle(
-                                            color: Color(0xFFFFFFFF),
+                                            color: const Color(0xFFFFFFFF),
                                             fontSize:
                                                 AppDimensions.height10 * 1.7,
                                             fontFamily: "Laila",
@@ -1825,8 +1830,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   SizedBox(
                                     height: AppDimensions.height10 * 0.1,
                                     child: Divider(
-                                      color:
-                                          Color(0XFF3C3C43).withOpacity(0.29),
+                                      color: const Color(0XFF3C3C43)
+                                          .withOpacity(0.29),
                                     ),
                                   ),
                                   Container(
@@ -1841,15 +1846,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 AppDimensions.height10 * 1.7,
                                             fontFamily: "Laila",
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xFF007AFF)),
+                                            color: const Color(0xFF007AFF)),
                                       ),
                                     ),
                                   ),
                                   SizedBox(
                                     height: AppDimensions.height10 * 0.1,
                                     child: Divider(
-                                      color:
-                                          Color(0XFF3C3C43).withOpacity(0.29),
+                                      color: const Color(0XFF3C3C43)
+                                          .withOpacity(0.29),
                                     ),
                                   ),
                                 ],
@@ -1864,7 +1869,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         top: AppDimensions.height10 * 3.0,
                         bottom: AppDimensions.height10 * 12.7),
                     decoration: BoxDecoration(
-                      color: Color(0xFF464646),
+                      color: const Color(0xFF464646),
                       borderRadius:
                           BorderRadius.circular(AppDimensions.height10 * 5.0),
                     ),
@@ -1917,14 +1922,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xFF5B74A6)),
+                            color: const Color(0xFF5B74A6)),
                       ),
                       Text(
                         'have been selected',
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF5B74A6)),
+                            color: const Color(0xFF5B74A6)),
                       ),
                     ],
                   ),
@@ -1983,20 +1988,21 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                         SizedBox(
                                           height: AppDimensions.height10 * 0.1,
                                           child: Divider(
-                                            color: Color(0XFF3C3C43)
+                                            color: const Color(0XFF3C3C43)
                                                 .withOpacity(0.29),
                                           ),
                                         ),
                                         Container(
                                           height: AppDimensions.height10 * 4.2,
                                           width: double.infinity,
-                                          color: Color(0xFF007AFF),
+                                          color: const Color(0xFF007AFF),
                                           child: TextButton(
                                             onPressed: () {},
                                             child: Text(
                                               'No',
                                               style: TextStyle(
-                                                  color: Color(0xFFFFFFFF),
+                                                  color:
+                                                      const Color(0xFFFFFFFF),
                                                   fontSize:
                                                       AppDimensions.height10 *
                                                           1.7,
@@ -2008,7 +2014,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                         SizedBox(
                                           height: AppDimensions.height10 * 0.1,
                                           child: Divider(
-                                            color: Color(0XFF3C3C43)
+                                            color: const Color(0XFF3C3C43)
                                                 .withOpacity(0.29),
                                           ),
                                         ),
@@ -2025,14 +2031,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                           1.7,
                                                   fontFamily: "Laila",
                                                   fontWeight: FontWeight.w400,
-                                                  color: Color(0xFF007AFF)),
+                                                  color:
+                                                      const Color(0xFF007AFF)),
                                             ),
                                           ),
                                         ),
                                         SizedBox(
                                           height: AppDimensions.height10 * 0.1,
                                           child: Divider(
-                                            color: Color(0XFF3C3C43)
+                                            color: const Color(0XFF3C3C43)
                                                 .withOpacity(0.29),
                                           ),
                                         ),
@@ -2051,9 +2058,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             border: Border.all(width: 3, color: Colors.white),
                             boxShadow: List.filled(
                                 4,
-                                BoxShadow(
+                                const BoxShadow(
                                     color: Color.fromRGBO(0, 0, 0, 0.25))),
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
@@ -2069,7 +2076,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 height: AppDimensions.height10 * 2.0,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10 * 2.7),
-                                color: Color(0xFFFFFFFF),
+                                color: const Color(0xFFFFFFFF),
                               ),
                               Container(
                                 margin: EdgeInsets.only(
@@ -2079,7 +2086,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.4,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFFFFFFFF)),
+                                      color: const Color(0xFFFFFFFF)),
                                 ),
                               )
                             ],
@@ -2091,7 +2098,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    multiple_goal_inactive(isActive: true)));
+                                    const multiple_goal_inactive(
+                                        isActive: true)));
                       },
                       child: Container(
                           width: AppDimensions.height10 * 9.1,
@@ -2100,8 +2108,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               right: AppDimensions.height10 * 3.3),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border:
-                                Border.all(width: 3, color: Color(0xFFFFA511)),
+                            border: Border.all(
+                                width: 3, color: const Color(0xFFFFA511)),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -2109,7 +2117,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               Container(
                                 width: AppDimensions.height10 * 2.0,
                                 height: AppDimensions.height10 * 2.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/start_icon.png'))),
@@ -2122,7 +2130,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.4,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFFFFA511)),
+                                      color: const Color(0xFFFFA511)),
                                 ),
                               )
                             ],

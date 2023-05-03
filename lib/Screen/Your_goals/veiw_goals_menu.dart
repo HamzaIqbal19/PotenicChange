@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 
 import '../../utils/app_dimensions.dart';
+import '../community/community.dart';
 
 class your_goals_menu extends StatelessWidget {
   const your_goals_menu({super.key});
@@ -193,15 +194,21 @@ class your_goals_menu extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: AppDimensions.height10 * 20.6,
-                          height: AppDimensions.height10 * 1.9,
-                          child: Text(
-                            'Community (coming soon)',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.6,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0XFF5B74A6)),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                            community_sheet(context);
+                          },
+                          child: Container(
+                            width: AppDimensions.height10 * 20.6,
+                            height: AppDimensions.height10 * 1.9,
+                            child: Text(
+                              'Community (coming soon)',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0XFF5B74A6)),
+                            ),
                           ),
                         ),
                         Container(

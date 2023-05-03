@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 
 import '../Screen/captureHurdles/captureHurdles_whatHurdles.dart';
 import '../utils/app_dimensions.dart';
@@ -71,24 +72,32 @@ class Navigation_BarState extends State<Navigation_Bar> {
             label: 'Timeline',
           ),
           BottomNavigationBarItem(
-              icon: Container(
-                width: AppDimensions.height10 * 6.0,
-                height: AppDimensions.height10 * 6.0,
-                //margin: EdgeInsets.only(right: 30),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+              icon: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => inspiration_motivation()));
+                },
                 child: Container(
-                    height: AppDimensions.height10 * 1.889,
-                    width: AppDimensions.height10 * 2.444,
-                    padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
-                    child: ImageIcon(
-                      AssetImage('assets/images/insp (1).png'),
-                      color: Colors.white,
-                    )),
+                  width: AppDimensions.height10 * 6.0,
+                  height: AppDimensions.height10 * 6.0,
+                  //margin: EdgeInsets.only(right: 30),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                  child: Container(
+                      height: AppDimensions.height10 * 1.889,
+                      width: AppDimensions.height10 * 2.444,
+                      padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
+                      child: ImageIcon(
+                        AssetImage('assets/images/insp (1).png'),
+                        color: Colors.white,
+                      )),
+                ),
               ),
               label: 'Inspiration'),
           BottomNavigationBarItem(

@@ -252,43 +252,39 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     ),
                   ),
                 ),
-                MediaQuery.of(context).viewInsets.bottom == 0
-                    ? SizedBox(
-                        height: AppDimensions.height10 * 5.9,
-                      )
-                    : Container(
-                        height: AppDimensions.height10 * 5.0,
-                        width: AppDimensions.height10 * 16.7,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10 * 1.0,
-                            bottom: AppDimensions.height10 * 1.0),
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xffFCC10D),
-                              Color(0xffFDA210),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 5.0),
-                        ),
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => summary_hurdles()));
-                            },
-                            child: Text(
-                              'Next',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Poppins'),
-                            ))),
+                Container(
+                    height: AppDimensions.height10 * 5.0,
+                    width: AppDimensions.height10 * 16.7,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.0,
+                        bottom: AppDimensions.height10 * 1.0),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xffFCC10D),
+                          Color(0xffFDA210),
+                        ],
+                      ),
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.height10 * 5.0),
+                    ),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => summary_hurdles()));
+                        },
+                        child: Text(
+                          'Next',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 1.6,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins'),
+                        ))),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? Container(
                         width: AppDimensions.height10 * 17.0,

@@ -42,7 +42,7 @@ class add_your_practice extends StatelessWidget {
             ),
           ]),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -69,7 +69,7 @@ class add_your_practice extends StatelessWidget {
                       child: Container(
                         width: AppDimensions.height10 * 7.9,
                         height: AppDimensions.height10 * 7.9,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             image: DecorationImage(
                           image: AssetImage('assets/images/image3.png'),
                           fit: BoxFit.cover,
@@ -79,7 +79,7 @@ class add_your_practice extends StatelessWidget {
                   ),
                 ),
                 Align(
-                  alignment: Alignment(1, -0.4),
+                  alignment: const Alignment(1, -0.4),
                   child: Container(
                     // color: Colors.amber,
                     width: AppDimensions.height10 * 17.1,
@@ -89,7 +89,7 @@ class add_your_practice extends StatelessWidget {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 2.0,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xffffffff)),
+                          color: const Color(0xffffffff)),
                     ),
                   ),
                 ),
@@ -106,7 +106,7 @@ class add_your_practice extends StatelessWidget {
                 style: TextStyle(
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xff437296)),
+                    color: const Color(0xff437296)),
               ),
             ),
           ),
@@ -117,18 +117,18 @@ class add_your_practice extends StatelessWidget {
             margin: EdgeInsets.only(top: AppDimensions.height10 * 4.4),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Color(0xFFFFFFFF), width: 3)),
+                border: Border.all(color: const Color(0xFFFFFFFF), width: 3)),
             child: Container(
               width: AppDimensions.height10 * 15.5,
               height: AppDimensions.height10 * 15.5,
               padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: Color(0xFFFFFFFF), width: 4)),
+                  border: Border.all(color: const Color(0xFFFFFFFF), width: 4)),
               child: Container(
                 width: AppDimensions.height10 * 13.4,
                 height: AppDimensions.height10 * 13.2,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         image: AssetImage('assets/images/circle_grey.png'))),
@@ -139,7 +139,7 @@ class add_your_practice extends StatelessWidget {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.8,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFFFFFFFF)),
+                        color: const Color(0xFFFFFFFF)),
                   ),
                 ),
               ),
@@ -151,7 +151,7 @@ class add_your_practice extends StatelessWidget {
             margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
-              color: Color(0xFFFFFFFF),
+              color: const Color(0xFFFFFFFF),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,7 +163,7 @@ class add_your_practice extends StatelessWidget {
                   child: Text(
                     'Goal details',
                     style: TextStyle(
-                      color: Color(0xff646464),
+                      color: const Color(0xff646464),
                       fontSize: AppDimensions.height10 * 1.8,
                       fontWeight: FontWeight.w500,
                     ),
