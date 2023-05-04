@@ -73,6 +73,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           'My current\ninspirations',
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            height: 1.5,
                             fontSize: AppDimensions.height10 * 3.0,
                             fontWeight: FontWeight.w700,
                           ),
@@ -269,13 +270,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         decoration: BoxDecoration(
                                           color: Color(0xFFD9D9D9),
                                           shape: BoxShape.circle,
-                                          gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xFFE9A594),
-                                                Color(0xFFEEBEB2)
-                                              ]),
+                                          gradient: RadialGradient(colors: [
+                                            Color(0xFFE9A594),
+                                            Color(0xFFEEBEB2)
+                                          ]),
                                         ),
                                         child: Center(
                                           child: Text(
@@ -531,7 +529,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                       width: AppDimensions.height10 * 16.7,
                       height: AppDimensions.height10 * 21.2,
                       margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 3.0,
+                        top: AppDimensions.height10 * 5.3,
                         right: AppDimensions.height10 * 21.7,
                         left: AppDimensions.height10 * 3.0,
                       ),
@@ -579,8 +577,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                 : Container(
                     width: AppDimensions.height10 * 38.259,
                     height: AppDimensions.height10 * 9.707,
-                    margin:
-                        EdgeInsets.only(top: AppDimensions.height10 * 14.319),
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 12.0),
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
@@ -664,7 +661,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                 : Container(
                     width: AppDimensions.height10 * 17.0,
                     height: AppDimensions.height10 * 0.5,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 0.29),
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
@@ -791,7 +788,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   margin: EdgeInsets.only(
                                       left: AppDimensions.height10 * 1.0),
                                   child: Text(
-                                    'Type:',
+                                    'Tags:',
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.4,
                                         fontWeight: FontWeight.w400,
@@ -1118,6 +1115,7 @@ _showTagSheet(BuildContext context) {
                           Container(
                             decoration: BoxDecoration(
                                 border: Border(
+                                    //when it will be reconstructed bottom decororation will be set, at the moment it is there to show presence.
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
                                         color: Color(0xFF828282)))),

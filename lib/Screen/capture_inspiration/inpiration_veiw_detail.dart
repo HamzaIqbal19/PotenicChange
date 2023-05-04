@@ -51,7 +51,7 @@ class _veiw_detailsState extends State<veiw_details> {
                   width: AppDimensions.height10 * 34.7,
                   height: AppDimensions.height10 * 36.188,
                   margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 10.0,
+                    top: AppDimensions.height10 * 12.0,
                     left: AppDimensions.height10 * 3.4,
                     right: AppDimensions.height10 * 3.4,
                   ),
@@ -70,7 +70,7 @@ class _veiw_detailsState extends State<veiw_details> {
                   height: AppDimensions.height10 * 24.7,
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 10.0,
+                    top: AppDimensions.height10 * 11.50,
                     left: AppDimensions.height10 * 1.8,
                     right: AppDimensions.height10 * 1.8,
                   ),
@@ -84,11 +84,11 @@ class _veiw_detailsState extends State<veiw_details> {
               ),
             ] else if (widget.type_switch == 4) ...[
               Container(
-                alignment: Alignment.topCenter,
-
+                alignment: Alignment.center,
+//IT'S HEIGHT IS SET SO BACKGROUND DOES'NT BECOME VISIBLE
                 // width: AppDimensions.height10 * 41.4,
                 // margin: EdgeInsets.only(bottom: AppDimensions.height10 * 20.0),
-                height: AppDimensions.height10 * 53.5,
+                height: AppDimensions.height10 * 44.5,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/video_image.png'),
@@ -107,9 +107,7 @@ class _veiw_detailsState extends State<veiw_details> {
                 height: AppDimensions.height10 * 52.5,
 
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                  gradient: RadialGradient(
                       colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
                 ),
                 child: Center(
@@ -151,12 +149,15 @@ class _veiw_detailsState extends State<veiw_details> {
             child: Container(
               height: widget.type_switch == 3
                   ? AppDimensions.height10 * 67.2
-                  : AppDimensions.height10 * 60.2,
+                  : widget.type_switch == 1
+                      ? AppDimensions.height10 * 38.465
+                      : AppDimensions.height10 * 60.2,
               child: Column(
                 children: [
                   Container(
                     height: AppDimensions.height10 * 2.1,
                     width: AppDimensions.height10 * 30.5,
+                    alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10 * 3.6,
                         right: AppDimensions.height10 * 8.9,
@@ -176,10 +177,9 @@ class _veiw_detailsState extends State<veiw_details> {
                       alignment: Alignment.centerLeft,
                       // color: Colors.amber,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 3.6,
-                        right: AppDimensions.height10 * 9.0,
-                        // top: AppDimensions.height10 * 1.0
-                      ),
+                          left: AppDimensions.height10 * 3.6,
+                          right: AppDimensions.height10 * 9.0,
+                          top: AppDimensions.height10 * 0.3),
                       child: Column(
                         children: [
                           if (widget.type_switch == 1) ...[
@@ -232,7 +232,7 @@ class _veiw_detailsState extends State<veiw_details> {
                           height: AppDimensions.height10 * 3.0,
                           width: AppDimensions.height10 * 25.3,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10 * 9.9,
+                              right: AppDimensions.height10 * 10.0,
                               top: AppDimensions.height10 * 1.0),
                           decoration: BoxDecoration(
                               border: Border.all(
@@ -326,10 +326,9 @@ class _veiw_detailsState extends State<veiw_details> {
                       // width: AppDimensions.height10 * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 3.6,
-                        right: AppDimensions.height10 * 8.9,
-                        //top: AppDimensions.height10 * 1.0
-                      ),
+                          left: AppDimensions.height10 * 3.6,
+                          right: AppDimensions.height10 * 8.9,
+                          top: AppDimensions.height10 * 0.2),
                       child: Column(
                         children: [
                           if (widget.type_switch == 1) ...[
@@ -378,6 +377,7 @@ class _veiw_detailsState extends State<veiw_details> {
                   Container(
                     height: AppDimensions.height10 * 2.1,
                     width: AppDimensions.height10 * 30.5,
+                    alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10 * 3.6,
                         right: AppDimensions.height10 * 8.9,
@@ -395,10 +395,9 @@ class _veiw_detailsState extends State<veiw_details> {
                       // width: AppDimensions.height10 * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 3.6,
-                        right: AppDimensions.height10 * 8.9,
-                        //top: AppDimensions.height10 * 1.0
-                      ),
+                          left: AppDimensions.height10 * 3.6,
+                          right: AppDimensions.height10 * 8.9,
+                          top: AppDimensions.height10 * 0.2),
                       child: Text(
                         '#tag1 #tag2',
                         style: TextStyle(
@@ -411,6 +410,7 @@ class _veiw_detailsState extends State<veiw_details> {
                   Container(
                     height: AppDimensions.height10 * 2.1,
                     width: AppDimensions.height10 * 30.5,
+                    alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(
                         left: AppDimensions.height10 * 3.6,
                         right: AppDimensions.height10 * 8.9,
@@ -429,10 +429,10 @@ class _veiw_detailsState extends State<veiw_details> {
                       height: AppDimensions.height10 * 6.0,
                       width: AppDimensions.height10 * 37.5,
                       margin: EdgeInsets.only(
-                        // bottom: AppDimensions.height10 * 1.0,
-                        left: AppDimensions.height10 * 2.0,
-                        right: AppDimensions.height10 * 1.9,
-                      ),
+                          // bottom: AppDimensions.height10 * 1.0,
+                          left: AppDimensions.height10 * 2.2,
+                          right: AppDimensions.height10 * 1.7,
+                          top: AppDimensions.height10 * 0.5),
                       decoration: BoxDecoration(
                           border:
                               Border.all(width: 1, color: Color(0xFF464646)),

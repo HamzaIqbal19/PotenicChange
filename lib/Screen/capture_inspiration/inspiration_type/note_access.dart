@@ -181,7 +181,9 @@ class _note_infoState extends State<note_info> {
                           height: widget.note_saved
                               ? AppDimensions.height10 * 4.8
                               : AppDimensions.height10 * 2.4,
-                          width: AppDimensions.height10 * 37.5,
+                          width: widget.note_saved
+                              ? AppDimensions.height10 * 37.5
+                              : AppDimensions.height10 * 30.5,
                           //color: Colors.amber,
                           margin: EdgeInsets.only(
                             left: widget.note_saved
@@ -189,7 +191,7 @@ class _note_infoState extends State<note_info> {
                                 : AppDimensions.height10 * 0,
                             right: widget.note_saved
                                 ? AppDimensions.height10 * 1.9
-                                : AppDimensions.height10 * 3.0,
+                                : AppDimensions.height10 * 10.0,
                             // top: widget.note_saved
                             //     ? AppDimensions.height10 * 0
                             //     : AppDimensions.height10 * 1.0
@@ -300,12 +302,17 @@ class _note_infoState extends State<note_info> {
                                   ],
                                 )
                               : TextField(
-                                  textAlignVertical: TextAlignVertical.bottom,
+                                  textAlignVertical: TextAlignVertical.center,
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w500,
                                       color: Color(0xff282828)),
                                   decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          AppDimensions.height10 * 1.5,
+                                          AppDimensions.height10 * 0.4,
+                                          AppDimensions.height10 * 0.2,
+                                          0),
                                       hintText: 'Give your inspiration a title',
                                       hintStyle: TextStyle(
                                           fontFamily: 'Poppins',
@@ -422,13 +429,19 @@ class _note_infoState extends State<note_info> {
                                   height: widget.note_saved
                                       ? AppDimensions.height10 * 39.0
                                       : AppDimensions.height10 * 2.4,
+                                  width: AppDimensions.height10 * 37.5,
                                   child: TextField(
-                                    textAlignVertical: TextAlignVertical.bottom,
+                                    textAlignVertical: TextAlignVertical.center,
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w400,
                                         color: Color(0xff282828)),
                                     decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.fromLTRB(
+                                            AppDimensions.height10 * 1.5,
+                                            AppDimensions.height10 * 0.4,
+                                            0,
+                                            0),
                                         hintText:
                                             'Say more about this inspiration ',
                                         hintStyle: TextStyle(
@@ -524,11 +537,17 @@ class _note_infoState extends State<note_info> {
                                       fontWeight: FontWeight.w500),
                                 )
                               : TextField(
+                                  textAlignVertical: TextAlignVertical.center,
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w400,
                                       color: Color(0xff282828)),
                                   decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.fromLTRB(
+                                          AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10 * 0.4,
+                                          0,
+                                          0),
                                       hintText: 'Add #hashtag',
                                       hintStyle: TextStyle(
                                           fontFamily: 'Poppins',

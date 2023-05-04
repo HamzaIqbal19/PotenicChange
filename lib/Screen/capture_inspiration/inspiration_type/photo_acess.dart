@@ -83,6 +83,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                                     edit_details: false,
                                     image_detals: false,
                                     image_save: false,
+                                    image_create: false,
                                   )));
                     },
                     child: SizedBox(
@@ -167,11 +168,13 @@ class photo_info extends StatefulWidget {
   final bool image_detals;
   final bool image_save;
   final bool edit_details;
+  final bool image_create;
   const photo_info(
       {super.key,
       required this.image_detals,
       required this.image_save,
-      required this.edit_details});
+      required this.edit_details,
+      required this.image_create});
 
   @override
   State<photo_info> createState() => _photo_infoState();
@@ -256,21 +259,34 @@ class _photo_infoState extends State<photo_info> {
                         ? Container(
                             child: widget.image_save
                                 ? GestureDetector(
-                                    onTap: () => showDialog<String>(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            Container(
-                                              width:
-                                                  AppDimensions.height10 * 27.0,
-                                              height:
-                                                  AppDimensions.height10 * 18.2,
-                                              child: AlertDialog(
-                                                contentPadding: EdgeInsets.zero,
-                                                actionsPadding: EdgeInsets.zero,
-                                                titlePadding: EdgeInsets.zero,
-                                                title: Container(
-                                                  margin:
-                                                      EdgeInsets.only(
+                                    onTap: () => widget.image_create
+                                        ? Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    inspiration_landing(
+                                                      muliple_insp: false,
+                                                      is_Updated: false,
+                                                    )))
+                                        : showDialog<String>(
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                Container(
+                                                  width:
+                                                      AppDimensions.height10 *
+                                                          27.0,
+                                                  height:
+                                                      AppDimensions.height10 *
+                                                          18.2,
+                                                  child: AlertDialog(
+                                                    contentPadding:
+                                                        EdgeInsets.zero,
+                                                    actionsPadding:
+                                                        EdgeInsets.zero,
+                                                    titlePadding:
+                                                        EdgeInsets.zero,
+                                                    title: Container(
+                                                      margin: EdgeInsets.only(
                                                           top: AppDimensions
                                                                   .height10 *
                                                               1.9,
@@ -283,165 +299,164 @@ class _photo_infoState extends State<photo_info> {
                                                           bottom: AppDimensions
                                                                   .height10 *
                                                               0.2),
-                                                  height:
-                                                      AppDimensions.height10 *
+                                                      height: AppDimensions
+                                                              .height10 *
                                                           2.2,
-                                                  width:
-                                                      AppDimensions.height10 *
+                                                      width: AppDimensions
+                                                              .height10 *
                                                           23.8,
-                                                  child: Text(
-                                                    "Save changes?",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10 *
-                                                          1.7,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                      child: Text(
+                                                        "Save changes?",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10 *
+                                                              1.7,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                                content: Container(
-                                                  margin: EdgeInsets.only(
-                                                      bottom: AppDimensions
+                                                    content: Container(
+                                                      margin: EdgeInsets.only(
+                                                          bottom: AppDimensions
+                                                                  .height10 *
+                                                              1.5,
+                                                          left: AppDimensions
+                                                                  .height10 *
+                                                              1.6,
+                                                          right: AppDimensions
+                                                                  .height10 *
+                                                              1.6),
+                                                      height: AppDimensions
                                                               .height10 *
-                                                          1.5,
-                                                      left: AppDimensions
-                                                              .height10 *
-                                                          1.6,
-                                                      right: AppDimensions
-                                                              .height10 *
-                                                          1.6),
-                                                  height:
-                                                      AppDimensions.height10 *
                                                           3.4,
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          23.8,
-                                                  child: Text(
-                                                    "Are you sure you want to save your\nupdates?",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontSize: AppDimensions
+                                                      width: AppDimensions
                                                               .height10 *
-                                                          1.3,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                          23.8,
+                                                      child: Text(
+                                                        "Are you sure you want to save your\nupdates?",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10 *
+                                                              1.3,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                                actions: <Widget>[
-                                                  Column(
-                                                    children: [
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10 *
-                                                            0.1,
-                                                        child: Divider(
-                                                          color: const Color(
-                                                                  0XFF3C3C43)
-                                                              .withOpacity(
-                                                                  0.29),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        height: AppDimensions
-                                                                .height10 *
-                                                            4.2,
-                                                        width: double.infinity,
-                                                        color: const Color(
-                                                            0xFF007AFF),
-                                                        child: TextButton(
-                                                          onPressed: () {
-                                                            Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (context) => widget
-                                                                            .edit_details
-                                                                        ? inspiration_landing(
-                                                                            muliple_insp:
-                                                                                false,
-                                                                            is_Updated:
-                                                                                true,
-                                                                          )
-                                                                        : inspiration_landing(
-                                                                            muliple_insp:
-                                                                                false,
-                                                                            is_Updated:
-                                                                                false,
-                                                                          )));
-                                                          },
-                                                          child: Text(
-                                                            'Yes',
-                                                            style: TextStyle(
-                                                                color: const Color(
-                                                                    0xFFFFFFFF),
-                                                                fontSize: AppDimensions
-                                                                        .height10 *
-                                                                    1.7,
-                                                                fontFamily:
-                                                                    "Laila",
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
+                                                    actions: <Widget>[
+                                                      Column(
+                                                        children: [
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10 *
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10 *
-                                                            0.1,
-                                                        child: Divider(
-                                                          color: const Color(
-                                                                  0XFF3C3C43)
-                                                              .withOpacity(
-                                                                  0.29),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        height: AppDimensions
-                                                                .height10 *
-                                                            4.4,
-                                                        width: double.infinity,
-                                                        child: TextButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Text(
-                                                            'Cancel',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .height10 *
-                                                                    1.7,
-                                                                fontFamily:
-                                                                    "Laila",
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: const Color(
-                                                                    0xFF007AFF)),
+                                                          Container(
+                                                            height: AppDimensions
+                                                                    .height10 *
+                                                                4.2,
+                                                            width:
+                                                                double.infinity,
+                                                            color: const Color(
+                                                                0xFF007AFF),
+                                                            child: TextButton(
+                                                              onPressed: () {
+                                                                Navigator.push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder: (context) => widget.edit_details
+                                                                            ? inspiration_landing(
+                                                                                muliple_insp: false,
+                                                                                is_Updated: true,
+                                                                              )
+                                                                            : inspiration_landing(
+                                                                                muliple_insp: false,
+                                                                                is_Updated: false,
+                                                                              )));
+                                                              },
+                                                              child: Text(
+                                                                'Yes',
+                                                                style: TextStyle(
+                                                                    color: const Color(
+                                                                        0xFFFFFFFF),
+                                                                    fontSize:
+                                                                        AppDimensions.height10 *
+                                                                            1.7,
+                                                                    fontFamily:
+                                                                        "Laila",
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400),
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10 *
-                                                            0.1,
-                                                        child: Divider(
-                                                          color: const Color(
-                                                                  0XFF3C3C43)
-                                                              .withOpacity(
-                                                                  0.29),
-                                                        ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10 *
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: AppDimensions
+                                                                    .height10 *
+                                                                4.4,
+                                                            width:
+                                                                double.infinity,
+                                                            child: TextButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(
+                                                                    context);
+                                                              },
+                                                              child: Text(
+                                                                'Cancel',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        AppDimensions.height10 *
+                                                                            1.7,
+                                                                    fontFamily:
+                                                                        "Laila",
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                    color: const Color(
+                                                                        0xFF007AFF)),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10 *
+                                                                0.1,
+                                                            child: Divider(
+                                                              color: const Color(
+                                                                      0XFF3C3C43)
+                                                                  .withOpacity(
+                                                                      0.29),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
-                                                ],
-                                              ),
-                                            )),
+                                                )),
                                     child: Text(
-                                      'Save',
+                                      widget.image_create ? 'Create' : 'Save',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10 * 1.5,
@@ -603,9 +618,7 @@ class _photo_infoState extends State<photo_info> {
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10 * 2.0,
                                 right: AppDimensions.height10 * 8.9,
-                                top: widget.image_detals
-                                    ? AppDimensions.height10 * 4.0
-                                    : AppDimensions.height10 * 3.0),
+                                top: AppDimensions.height10 * 4.0),
                             child: Text(
                               'Destination website',
                               style: TextStyle(
@@ -621,7 +634,7 @@ class _photo_infoState extends State<photo_info> {
                                   height: AppDimensions.height10 * 3.0,
                                   width: widget.image_detals
                                       ? AppDimensions.height10 * 30.5
-                                      : AppDimensions.height10 * 36.4,
+                                      : AppDimensions.height10 * 30.5,
                                   margin: EdgeInsets.only(
                                     left: AppDimensions.height10 * 3.0,
                                   ),
@@ -726,7 +739,7 @@ class _photo_infoState extends State<photo_info> {
                                         width: AppDimensions.height10 * 2.5,
                                         margin: EdgeInsets.only(
                                             left:
-                                                AppDimensions.height10 * 1.15),
+                                                AppDimensions.height10 * 4.85),
                                         height: AppDimensions.height10 * 2.5,
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
@@ -760,9 +773,7 @@ class _photo_infoState extends State<photo_info> {
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10 * 2.0,
                                 right: AppDimensions.height10 * 8.9,
-                                top: widget.image_detals
-                                    ? AppDimensions.height10 * 4.0
-                                    : AppDimensions.height10 * 3.0),
+                                top: AppDimensions.height10 * 4.0),
                             child: Text(
                               'Tags',
                               style: TextStyle(
@@ -1001,7 +1012,7 @@ class _link_setState extends State<link_set> {
                                       },
                                       textAlign: TextAlign.left,
                                       textAlignVertical:
-                                          TextAlignVertical.bottom,
+                                          TextAlignVertical.center,
                                       style: TextStyle(
                                           decoration: TextDecoration.none,
                                           decorationThickness: 0,
@@ -1011,6 +1022,11 @@ class _link_setState extends State<link_set> {
                                           color: Color(0xff3C3C43)
                                               .withOpacity(0.6)),
                                       decoration: InputDecoration(
+                                          contentPadding: EdgeInsets.fromLTRB(
+                                              AppDimensions.height10 * 0.6,
+                                              AppDimensions.height10 * 0.4,
+                                              0,
+                                              0),
                                           hintText: 'Enter website address',
                                           hintStyle: TextStyle(
                                               fontSize: AppDimensions.height10 *
@@ -1038,15 +1054,18 @@ class _link_setState extends State<link_set> {
                                       width: AppDimensions.height10 * 2.3,
                                       height: AppDimensions.height10 * 2.3,
                                       decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        // color: Color(0xff282828),
-                                      ),
-                                      child: Image.asset(
-                                        'assets/images/ic_refresh.png',
-                                        width: AppDimensions.height10 * 0.941,
-                                        height: AppDimensions.height10 * 1.4,
-                                        color: Color(0xff282828),
-                                      ),
+                                          shape: BoxShape.circle,
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/ic_refresh.png'))
+                                          // color: Color(0xff282828),
+                                          ),
+                                      // child: Image.asset(
+                                      //   'assets/images/ic_refresh.png',
+                                      //  // width: AppDimensions.height10 * 0.941,
+                                      //   //height: AppDimensions.height10 * 1.4,
+                                      //   color: Color(0xff282828),
+                                      // ),
                                     ),
                                   )
                                 ],
@@ -1067,10 +1086,11 @@ class _link_setState extends State<link_set> {
                                                 edit_details: false,
                                                 image_detals: true,
                                                 image_save: false,
+                                                image_create: false,
                                               )));
                                 },
                                 child: Text(
-                                  'Add Link',
+                                  'Add link',
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.5,
                                       fontWeight: FontWeight.w400,
@@ -1080,6 +1100,7 @@ class _link_setState extends State<link_set> {
                             )
                           ])
                     : Row(
+                        //it is centered to make it consistent on differernt devices
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                             Container(
@@ -1180,6 +1201,7 @@ class _link_setState extends State<link_set> {
                                                         edit_details: false,
                                                         image_detals: true,
                                                         image_save: false,
+                                                        image_create: false,
                                                       )));
                                         },
                                         child: Text(

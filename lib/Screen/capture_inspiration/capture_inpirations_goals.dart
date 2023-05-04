@@ -37,6 +37,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                     edit_details: false,
                                     image_detals: true,
                                     image_save: true,
+                                    image_create: true,
                                   )),
                         );
                       },
@@ -586,7 +587,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                     height: AppDimensions.height10 * 5.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10 * 3.3,
-                        bottom: AppDimensions.height10 * 3.6),
+                        bottom: AppDimensions.height10 * 2.6),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         begin: Alignment.topCenter,
@@ -619,7 +620,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
             Container(
               width: AppDimensions.height10 * 17.0,
               height: AppDimensions.height10 * 0.5,
-              //  margin: EdgeInsets.only(bottom: AppDimensions.height10 * 0),
+              // margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),

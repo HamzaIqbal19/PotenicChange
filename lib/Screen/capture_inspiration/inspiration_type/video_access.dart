@@ -111,11 +111,12 @@ class _video_infoState extends State<video_info> {
                       children: [
                         Container(
                           height: AppDimensions.height10 * 2.4,
-                          width: AppDimensions.height10 * 36.4,
+                          width: AppDimensions.height10 * 30.5,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.5,
-                              //right: AppDimensions.height10 * 9.0,
-                              top: AppDimensions.height10 * 1.0),
+                            left: AppDimensions.height10 * 1.5,
+                            right: AppDimensions.height10 * 5.0,
+                            //top: AppDimensions.height10 * 1.0
+                          ),
                           child: TextFormField(
                             onEditingComplete: () {
                               setState(() {
@@ -129,6 +130,11 @@ class _video_infoState extends State<video_info> {
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xff282828)),
                             decoration: InputDecoration(
+                                contentPadding: EdgeInsets.fromLTRB(
+                                    AppDimensions.height10 * 1.4,
+                                    AppDimensions.height10 * 0,
+                                    0,
+                                    0),
                                 hintText: 'Add a link',
                                 hintStyle: TextStyle(
                                     fontFamily: 'Poppins',
@@ -231,15 +237,21 @@ class _video_infoState extends State<video_info> {
                       height: AppDimensions.height10 * 2.4,
                       width: AppDimensions.height10 * 30.5,
                       margin: EdgeInsets.only(
-                          //left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 10.0,
-                          top: AppDimensions.height10 * 1.0),
+                        //left: AppDimensions.height10 * 2.0,
+                        right: AppDimensions.height10 * 10.0,
+                        // top: AppDimensions.height10 * 1.0
+                      ),
                       child: TextField(
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff282828)),
                         decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(
+                                AppDimensions.height10 * 1.6,
+                                AppDimensions.height10 * 0.4,
+                                0,
+                                0),
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
                                 fontFamily: 'Poppins',
@@ -274,15 +286,21 @@ class _video_infoState extends State<video_info> {
                       height: AppDimensions.height10 * 2.4,
                       width: AppDimensions.height10 * 30.5,
                       margin: EdgeInsets.only(
-                          // left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 10.0,
-                          top: AppDimensions.height10 * 1.0),
+                        // left: AppDimensions.height10 * 2.0,
+                        right: AppDimensions.height10 * 10.0,
+                        //top: AppDimensions.height10 * 1.0
+                      ),
                       child: TextField(
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff282828)),
                         decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(
+                                AppDimensions.height10 * 1.6,
+                                AppDimensions.height10 * 0,
+                                0,
+                                0),
                             hintText: 'Add #hashtag',
                             hintStyle: TextStyle(
                                 fontFamily: 'Poppins',

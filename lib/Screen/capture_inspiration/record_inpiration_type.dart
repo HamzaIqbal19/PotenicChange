@@ -65,7 +65,7 @@ class _record_inspirationState extends State<record_inspiration> {
           children: [
             Container(
               width: AppDimensions.height10 * 5.5,
-              height: AppDimensions.height10 * 2.4,
+              height: AppDimensions.height10 * 2.5,
               margin: EdgeInsets.only(top: AppDimensions.height10 * 4.8),
               child: Center(
                 child: Text(
@@ -111,14 +111,16 @@ class _record_inspirationState extends State<record_inspiration> {
                         )),
                       ),
                       SizedBox(
-                        child: Center(
+                        height: AppDimensions.height10 * 3.0,
+                        child: Align(
+                            alignment: Alignment.topCenter,
                             child: Text(
-                          'Nir Eyal',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.0,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFFFFFFFF)),
-                        )),
+                              'Nir Eyal',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFFFFFFFF)),
+                            )),
                       )
                     ])
                   ] else if (widget.type_switch == 2) ...[
@@ -128,9 +130,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         height: AppDimensions.height10 * 16.7,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
+                          gradient: RadialGradient(
                               colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
                         ),
                         child: Center(
@@ -161,14 +161,15 @@ class _record_inspirationState extends State<record_inspiration> {
                       Container(
                         width: AppDimensions.height10 * 16.7,
                         height: AppDimensions.height10 * 3.0,
-                        child: Center(
+                        child: Align(
+                            alignment: Alignment.topCenter,
                             child: Text(
-                          'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.0,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFFFFFFFF)),
-                        )),
+                              'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFFFFFFFF)),
+                            )),
                       )
                     ])
                   ] else if (widget.type_switch == 3) ...[
@@ -197,14 +198,16 @@ class _record_inspirationState extends State<record_inspiration> {
                         )),
                       ),
                       SizedBox(
-                        child: Center(
+                        height: AppDimensions.height10 * 3.0,
+                        child: Align(
+                            alignment: Alignment.topCenter,
                             child: Text(
-                          'Survivors',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.0,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFFFFFFFF)),
-                        )),
+                              'Survivors',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFFFFFFFF)),
+                            )),
                       )
                     ])
                   ] else if (widget.type_switch == 4) ...[
@@ -233,16 +236,18 @@ class _record_inspirationState extends State<record_inspiration> {
                               color: Color(0xFFFFFFFF)),
                         )),
                       ),
-                      SizedBox(
-                        child: Center(
+                      Container(
+                        height: AppDimensions.height10 * 3.0,
+                        child: Align(
+                            alignment: Alignment.topCenter,
                             child: Text(
-                          'Learn How To Avoid Distraction In A\nWorld That Is Full Of It',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.0,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFFFFFFFF)),
-                        )),
+                              'Learn How To Avoid Distraction In A\nWorld That Is Full Of It',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFFFFFFFF)),
+                            )),
                       )
                     ])
                   ]
@@ -344,6 +349,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 onTap: () {},
                                 child: Image.asset(
                                   'assets/images/BTN Back.png',
+                                  color: Color(0xFF646464),
                                   //width: AppDimensions.height10 * 2.6,
                                   //height: AppDimensions.height10 * 2.6,
                                   fit: BoxFit.cover,
@@ -360,9 +366,11 @@ class _record_inspirationState extends State<record_inspiration> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => photo_info(
-                                  edit_details: true,
-                                  image_detals: true,
-                                  image_save: true)),
+                                    edit_details: true,
+                                    image_detals: true,
+                                    image_save: true,
+                                    image_create: false,
+                                  )),
                         );
                       } else if (widget.type_switch == 2) {
                         Navigator.push(
@@ -424,6 +432,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 onTap: () {},
                                 child: Image.asset(
                                   'assets/images/BTN Back.png',
+                                  color: Color(0xFF646464),
                                   //width: AppDimensions.height10 * 2.6,
                                   //height: AppDimensions.height10 * 2.6,
                                   fit: BoxFit.cover,
@@ -524,7 +533,17 @@ class _record_inspirationState extends State<record_inspiration> {
                   ),
                 ],
               ),
-            )
+            ),
+            Container(
+              width: AppDimensions.height10 * 17.0,
+              height: AppDimensions.height10 * 0.5,
+              //alignment: Alignment.bottomCenter,
+              margin: EdgeInsets.only(top: AppDimensions.height10 * 18.0),
+              decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+            ),
           ],
         ),
       ),

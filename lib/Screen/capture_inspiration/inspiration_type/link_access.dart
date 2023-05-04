@@ -111,10 +111,10 @@ class _link_infoState extends State<link_info> {
                       children: [
                         Container(
                           height: AppDimensions.height10 * 2.4,
-                          width: AppDimensions.height10 * 36.4,
+                          width: AppDimensions.height10 * 30.5,
                           margin: EdgeInsets.only(
                             left: AppDimensions.height10 * 1.5,
-                            //right: AppDimensions.height10 * 9.0,
+                            right: AppDimensions.height10 * 5.0,
                           ),
                           child: TextFormField(
                             onEditingComplete: () {
@@ -122,12 +122,17 @@ class _link_infoState extends State<link_info> {
                                 link_state = true;
                               });
                             },
-                            textAlignVertical: TextAlignVertical.bottom,
+                            textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xff282828)),
                             decoration: InputDecoration(
+                                contentPadding: EdgeInsets.fromLTRB(
+                                    AppDimensions.height10 * 1.4,
+                                    AppDimensions.height10 * 0.4,
+                                    0,
+                                    0),
                                 hintText: 'Add a link',
                                 hintStyle: TextStyle(
                                     fontFamily: 'Poppins',
@@ -234,12 +239,17 @@ class _link_infoState extends State<link_info> {
                         right: AppDimensions.height10 * 10.0,
                       ),
                       child: TextField(
-                        textAlignVertical: TextAlignVertical.bottom,
+                        textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff282828)),
                         decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(
+                                AppDimensions.height10 * 1.6,
+                                AppDimensions.height10 * 0.4,
+                                0,
+                                0),
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
                                 fontFamily: 'Poppins',
@@ -278,12 +288,17 @@ class _link_infoState extends State<link_info> {
                         right: AppDimensions.height10 * 10.0,
                       ),
                       child: TextField(
-                        textAlignVertical: TextAlignVertical.bottom,
+                        textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff282828)),
                         decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(
+                                AppDimensions.height10 * 1.6,
+                                AppDimensions.height10 * 0.4,
+                                0,
+                                0),
                             hintText: 'Who created the content',
                             hintStyle: TextStyle(
                                 fontFamily: 'Poppins',
@@ -323,12 +338,17 @@ class _link_infoState extends State<link_info> {
                         right: AppDimensions.height10 * 10.0,
                       ),
                       child: TextField(
-                        textAlignVertical: TextAlignVertical.bottom,
+                        textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff282828)),
                         decoration: InputDecoration(
+                            contentPadding: EdgeInsets.fromLTRB(
+                                AppDimensions.height10 * 1.6,
+                                AppDimensions.height10 * 0,
+                                0,
+                                0),
                             hintText: 'Add #hashtag',
                             hintStyle: TextStyle(
                                 fontFamily: 'Poppins',
