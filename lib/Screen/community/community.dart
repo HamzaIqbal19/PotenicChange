@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -72,8 +73,9 @@ void community_sheet(context) {
                 Container(
                     width: AppDimensions.height10 * 28.6,
                     height: AppDimensions.height10 * 8.6,
+                    // color: Colors.amber,
                     alignment: Alignment.topCenter,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                    //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
                     child: Column(
                       children: [
                         Text(
@@ -114,7 +116,7 @@ void community_sheet(context) {
                                   'App community is coming in future releases to\ntake the experience to another level. If you have\na real life story that you would like to share to\ninspire others and make an impact, please\ncontact us :) \n\nMeanwhile, we invite you to join '),
                           TextSpan(
                               text:
-                                  'our community of personal development enthusiasts and action takers here.',
+                                  'our\ncommunity of personal development\nenthusiasts and action takers here.',
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () async {
                                   var url = "https://potenic.com/community/";
@@ -142,6 +144,7 @@ void community_sheet(context) {
                         top: AppDimensions.height10 * 1.5,
                         bottom: AppDimensions.height10 * 6.2),
                     decoration: BoxDecoration(
+                        // color: Colors.amber,
                         image: DecorationImage(
                             image: AssetImage(
                                 'assets/images/Community promo 1.png'))),
@@ -153,3 +156,24 @@ void community_sheet(context) {
     ),
   );
 }
+
+
+//  Center(
+//                       child: RichText(
+//                           textAlign: TextAlign.center,
+//                           text: TextSpan(
+//                               style: TextStyle(
+//                                   fontSize: AppDimensions.height10 * 2.2,
+//                                   fontWeight: FontWeight.w600,
+//                                   color: Color(0xFF437296)),
+//                               children: [
+//                                 TextSpan(
+//                                     text: 'Community\n',
+//                                     style: TextStyle(
+//                                       //height: 1.5,
+//                                       fontSize: AppDimensions.height10 * 3.0,
+//                                       fontWeight: FontWeight.w700,
+//                                     )),
+//                                 TextSpan(text: 'coming soon...')
+//                               ])),
+//                     )

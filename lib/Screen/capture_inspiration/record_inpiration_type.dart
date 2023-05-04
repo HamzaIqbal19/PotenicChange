@@ -135,7 +135,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         ),
                         child: Center(
                           child: Text(
-                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ',
+                            'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,

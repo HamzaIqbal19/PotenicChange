@@ -28,11 +28,13 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
             height: AppDimensions.height10 * 2.4,
             child: Row(
               children: [
+                //increasing font size through out title in hurdles by 2 px
+                //change was requested by clients
                 GradientText(
                   'Capture Hurdle ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -41,7 +43,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   ' 1',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -50,7 +52,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   '/5',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -76,7 +78,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 height: AppDimensions.height10 * 2.2,
                                 width: AppDimensions.height10 * 23.8,
                                 child: const Text(
-                                  "Exit hurdle??",
+                                  "Exit hurdle?",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 17,

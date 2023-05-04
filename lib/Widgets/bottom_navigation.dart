@@ -77,7 +77,9 @@ class Navigation_BarState extends State<Navigation_Bar> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => inspiration_motivation()));
+                          builder: (context) => inspiration_motivation(
+                                goal_delete: false,
+                              )));
                 },
                 child: Container(
                   width: AppDimensions.height10 * 6.0,

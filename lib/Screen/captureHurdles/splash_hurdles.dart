@@ -42,7 +42,7 @@ class hurdles_splashState extends State<hurdles_splash> {
           height: double.infinity,
           decoration: BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('assets/images/practicebackground.png'),
+            image: AssetImage('assets/images/Capture_hurdle_landing.png'),
             fit: BoxFit.cover,
           )),
           child: Column(
@@ -51,7 +51,10 @@ class hurdles_splashState extends State<hurdles_splash> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => landing_hurdles()),
+                    MaterialPageRoute(
+                        builder: (context) => landing_hurdles(
+                              multiple_hurdle: false,
+                            )),
                   );
                 },
                 child: Container(
@@ -84,39 +87,24 @@ class hurdles_splashState extends State<hurdles_splash> {
                         color: Colors.white,
                         fontFamily: 'laila')),
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => hurdles_goal_impact()),
-                  );
-                },
-                child: Container(
-                  width: AppDimensions.height10 * 61.5,
-                  height: AppDimensions.height10 * 45.0,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/Blackhole.png'))),
-                  child: Align(
-                    alignment: Alignment(-0.075, -0.68),
-                    child: Container(
-                      width: AppDimensions.height10 * 16.8,
-                      height: AppDimensions.height10 * 17.0,
-                      child: Center(
-                        child: Text(
-                          'Record your\nhurdles',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.0,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xFFFFFFFF)),
-                        ),
-                      ),
-                    ),
+              Container(
+                width: AppDimensions.height10 * 16.8,
+                height: AppDimensions.height10 * 17.0,
+                // color: Colors.amber,
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 5.5,
+                    right: AppDimensions.height10 * 1.9),
+                child: Center(
+                  child: Text(
+                    'Record your\nhurdles',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10 * 2.0,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFFFFFFFF)),
                   ),
                 ),
-              ),
+              )
             ],
           )),
     );

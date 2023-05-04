@@ -6,7 +6,8 @@ import '../../utils/app_dimensions.dart';
 import 'inpiration_landing.dart';
 
 class inspiration_motivation extends StatefulWidget {
-  const inspiration_motivation({super.key});
+  final bool goal_delete;
+  const inspiration_motivation({super.key, required this.goal_delete});
 
   @override
   State<inspiration_motivation> createState() => _inspiration_motivationState();
@@ -113,8 +114,10 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              inspiration_landing(muliple_insp: true)),
+                          builder: (context) => inspiration_landing(
+                                muliple_insp: true,
+                                is_Updated: false,
+                              )),
                     );
                   },
                   child: Container(
@@ -153,6 +156,93 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
               ],
             ),
           ),
+          widget.goal_delete
+              ? Align(
+                  alignment: Alignment(0, 0.9),
+                  child: Container(
+                    width: AppDimensions.height10 * 38.259,
+                    height: AppDimensions.height10 * 9.707,
+                    margin:
+                        EdgeInsets.only(top: AppDimensions.height10 * 15.319),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            BorderRadius.circular(AppDimensions.height10 * 2.0),
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10 * 1.261),
+                          width: AppDimensions.height10 * 4.437,
+                          height: AppDimensions.height10 * 4.437,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/circle_tick.png'))),
+                        ),
+                        Container(
+                          width: AppDimensions.height10 * 6.9,
+                          height: AppDimensions.height10 * 3.6,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10 * 1.232),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: AppDimensions.height10 * 4.2,
+                                height: AppDimensions.height10 * 1.4,
+                                child: Text(
+                                  'Deleted',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.3,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFFFFFFFF)),
+                                ),
+                              ),
+                              Container(
+                                width: AppDimensions.height10 * 6.9,
+                                height: AppDimensions.height10 * 2.2,
+                                child: Text(
+                                  'Nir Eyal',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFFFFFFFF)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: AppDimensions.height10 * 8.1,
+                          height: AppDimensions.height10 * 6.0,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10 * 15.1),
+                          decoration: BoxDecoration(
+                            border:
+                                Border.all(color: Color(0xFFFFFFFF), width: 1),
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10 * 2.0),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Veiw',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xFFFFFFFF)),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              : Container(),
           Align(
             alignment: Alignment(0, 1),
             child: Container(

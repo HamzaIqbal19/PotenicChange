@@ -97,7 +97,7 @@ class _video_infoState extends State<video_info> {
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10 * 2.0,
                           right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 3.9),
+                          top: AppDimensions.height10 * 3.2),
                       child: Text(
                         'Video Destination Link',
                         style: TextStyle(

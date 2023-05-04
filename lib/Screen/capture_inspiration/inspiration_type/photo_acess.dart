@@ -19,75 +19,99 @@ class _photo_pop_upState extends State<photo_pop_up> {
         width: double.infinity,
         height: double.infinity,
         color: Color(0xff646464),
-        child: Center(
-          child: Container(
-            width: AppDimensions.height10 * 27.0,
-            height: AppDimensions.height10 * 24.8,
-            decoration: BoxDecoration(
-                color: Color(0xff1E1E1E).withOpacity(0.75),
-                borderRadius:
-                    BorderRadius.circular(AppDimensions.height10 * 1.4)),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: AppDimensions.height10 * 11.6,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        // width: AppDimensions.height10 * 23.8,
-                        height: AppDimensions.height10 * 4.4,
+        child: Stack(children: [
+          Align(
+            alignment: Alignment(0, 0),
+            child: Container(
+              width: AppDimensions.height10 * 27.0,
+              height: AppDimensions.height10 * 24.8,
+              decoration: BoxDecoration(
+                  color: Color(0xff1E1E1E).withOpacity(0.75),
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.height10 * 1.4)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: AppDimensions.height10 * 11.6,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          // width: AppDimensions.height10 * 23.8,
+                          height: AppDimensions.height10 * 4.4,
+                          child: Text(
+                            'Potenic would like to access\nyour photos',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.7,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10 * 0.2),
+                          // width: AppDimensions.height10 * 23.8,
+                          height: AppDimensions.height10 * 3.4,
+                          child: Text(
+                            'To upload from your device, allow\naccess to your photos.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.3,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppDimensions.height10 * 0.1,
+                    child: Divider(
+                      color: Color(0xff545458).withOpacity(0.65),
+                      //thickness: AppDimensions.height10 * 0.5,
+                      height: AppDimensions.height10 * 0.5,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => photo_info(
+                                    edit_details: false,
+                                    image_detals: false,
+                                    image_save: false,
+                                  )));
+                    },
+                    child: SizedBox(
+                      height: AppDimensions.height10 * 4.3,
+                      child: Center(
                         child: Text(
-                          'Potenic would like to access\nyour photos',
+                          'Select Photos...',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.7,
                               fontWeight: FontWeight.w400,
-                              color: Colors.white),
+                              color: Color(0xff0A84FF)),
                         ),
                       ),
-                      Container(
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 0.2),
-                        // width: AppDimensions.height10 * 23.8,
-                        height: AppDimensions.height10 * 3.4,
-                        child: Text(
-                          'To upload from your device, allow\naccess to your photos.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.3,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: AppDimensions.height10 * 0.1,
-                  child: Divider(
-                    color: Color(0xff545458).withOpacity(0.65),
-                    //thickness: AppDimensions.height10 * 0.5,
-                    height: AppDimensions.height10 * 0.5,
+                  SizedBox(
+                    height: AppDimensions.height10 * 0.1,
+                    child: Divider(
+                      color: Color(0xff545458).withOpacity(0.65),
+                      //thickness: AppDimensions.height10 * 0.5,
+                      height: AppDimensions.height10 * 0.5,
+                    ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => photo_info(
-                                  edit_details: false,
-                                  image_detals: false,
-                                  image_save: false,
-                                )));
-                  },
-                  child: SizedBox(
+                  SizedBox(
                     height: AppDimensions.height10 * 4.3,
                     child: Center(
                       child: Text(
-                        'Select Photos...',
+                        'Allow Access to All Photos',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.7,
@@ -96,53 +120,44 @@ class _photo_pop_upState extends State<photo_pop_up> {
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: AppDimensions.height10 * 0.1,
-                  child: Divider(
-                    color: Color(0xff545458).withOpacity(0.65),
-                    //thickness: AppDimensions.height10 * 0.5,
-                    height: AppDimensions.height10 * 0.5,
-                  ),
-                ),
-                SizedBox(
-                  height: AppDimensions.height10 * 4.3,
-                  child: Center(
-                    child: Text(
-                      'Allow Access to All Photos',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.7,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff0A84FF)),
+                  SizedBox(
+                    height: AppDimensions.height10 * 0.1,
+                    child: Divider(
+                      color: Color(0xff545458).withOpacity(0.65),
+                      //thickness: AppDimensions.height10 * 0.5,
+                      height: AppDimensions.height10 * 0.5,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: AppDimensions.height10 * 0.1,
-                  child: Divider(
-                    color: Color(0xff545458).withOpacity(0.65),
-                    //thickness: AppDimensions.height10 * 0.5,
-                    height: AppDimensions.height10 * 0.5,
-                  ),
-                ),
-                SizedBox(
-                  height: AppDimensions.height10 * 4.3,
-                  child: Center(
-                    child: Text(
-                      'Don’t Allow',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.7,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff0A84FF)),
+                  SizedBox(
+                    height: AppDimensions.height10 * 4.3,
+                    child: Center(
+                      child: Text(
+                        'Don’t Allow',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.7,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff0A84FF)),
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
-        ),
+          Align(
+            alignment: Alignment(0, 1),
+            child: Container(
+              width: AppDimensions.height10 * 17.0,
+              height: AppDimensions.height10 * 0.5,
+              margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+              decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+            ),
+          )
+        ]),
       ),
     );
   }
@@ -341,10 +356,20 @@ class _photo_infoState extends State<photo_info> {
                                                             Navigator.push(
                                                                 context,
                                                                 MaterialPageRoute(
-                                                                    builder: (context) =>
-                                                                        inspiration_landing(
+                                                                    builder: (context) => widget
+                                                                            .edit_details
+                                                                        ? inspiration_landing(
                                                                             muliple_insp:
-                                                                                false)));
+                                                                                false,
+                                                                            is_Updated:
+                                                                                true,
+                                                                          )
+                                                                        : inspiration_landing(
+                                                                            muliple_insp:
+                                                                                false,
+                                                                            is_Updated:
+                                                                                false,
+                                                                          )));
                                                           },
                                                           child: Text(
                                                             'Yes',
@@ -480,7 +505,7 @@ class _photo_infoState extends State<photo_info> {
                                 right: AppDimensions.height10 * 8.9,
                                 top: widget.image_detals
                                     ? AppDimensions.height10 * 3.9
-                                    : AppDimensions.height10 * 3.0),
+                                    : AppDimensions.height10 * 3.9),
                             child: Text(
                               'Title',
                               style: TextStyle(
@@ -508,6 +533,7 @@ class _photo_infoState extends State<photo_info> {
                                 ? Text(
                                     'Nir Eyal',
                                     style: TextStyle(
+                                        fontFamily: 'Poppins',
                                         color: Color(0xFF282828),
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w500),
@@ -575,6 +601,7 @@ class _photo_infoState extends State<photo_info> {
                                 ? Text(
                                     'Behavioural Coach',
                                     style: TextStyle(
+                                        fontFamily: 'Poppins',
                                         color: Color(0xFF282828),
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w500),
@@ -637,6 +664,7 @@ class _photo_infoState extends State<photo_info> {
                                         'https://www.nirandfar.com/',
                                         style: TextStyle(
                                             color: Color(0xFF282828),
+                                            fontFamily: 'Poppins',
                                             fontSize:
                                                 AppDimensions.height10 * 1.6,
                                             fontWeight: FontWeight.w500),
@@ -778,6 +806,7 @@ class _photo_infoState extends State<photo_info> {
                                 ? Text(
                                     'Add #hashtag',
                                     style: TextStyle(
+                                        fontFamily: 'Poppins',
                                         color: Color(0xFF282828),
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w500),

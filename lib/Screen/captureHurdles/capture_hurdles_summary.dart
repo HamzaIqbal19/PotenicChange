@@ -455,11 +455,11 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         child: Text(
                                           'Delete',
                                           style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.6,
-                                              fontWeight: FontWeight.w700,
-                                              fontFamily: 'Arial'),
+                                            color: Colors.white,
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -485,15 +485,17 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                landing_hurdles()));
+                                                landing_hurdles(
+                                                  multiple_hurdle: false,
+                                                )));
                                   },
                                   child: Text(
                                     'Finish & exit',
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Poppins'),
+                                      color: Colors.white,
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ))),
                         ])),
                 Container(

@@ -526,7 +526,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                     height: AppDimensions.height10 * 5.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10 * 3.3,
-                        bottom: AppDimensions.height10 * 2.6),
+                        bottom: AppDimensions.height10 * 3.6),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -535,8 +535,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           height: AppDimensions.height10 * 5.0,
                           decoration: BoxDecoration(
                             color: Colors.transparent,
-                            border:
-                                Border.all(width: 1, color: Color(0xFFFFFFFF)),
+                            border: Border.all(
+                                width: 1,
+                                color: Color(0xFFFFFFFF).withOpacity(0.5)),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 5.0),
                           ),
@@ -548,7 +549,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 style: TextStyle(
                                     fontSize: AppDimensions.height10 * 1.6,
                                     fontWeight: FontWeight.w600,
-                                    color: Colors.white),
+                                    color: Colors.white.withOpacity(0.5)),
                               )),
                         ),
                         Container(
@@ -585,7 +586,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                     height: AppDimensions.height10 * 5.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10 * 3.3,
-                        bottom: AppDimensions.height10 * 2.6),
+                        bottom: AppDimensions.height10 * 3.6),
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         begin: Alignment.topCenter,
@@ -618,7 +619,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
             Container(
               width: AppDimensions.height10 * 17.0,
               height: AppDimensions.height10 * 0.5,
-              margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+              //  margin: EdgeInsets.only(bottom: AppDimensions.height10 * 0),
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),

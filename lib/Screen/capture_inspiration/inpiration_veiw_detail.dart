@@ -35,7 +35,9 @@ class _veiw_detailsState extends State<veiw_details> {
         height: double.infinity,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/bg_inpiration_purple.png'),
+                image: widget.type_switch == 4
+                    ? AssetImage('assets/images/video_image.png')
+                    : AssetImage('assets/images/bg_inpiration_purple.png'),
                 colorFilter: ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
@@ -43,38 +45,50 @@ class _veiw_detailsState extends State<veiw_details> {
           children: [
             if (widget.type_switch == 1) ...[
               Container(
-                width: AppDimensions.height10 * 34.7,
-                height: AppDimensions.height10 * 36.188,
-                margin: EdgeInsets.only(
-                  top: AppDimensions.height10 * 10.0,
-                  left: AppDimensions.height10 * 3.4,
-                  right: AppDimensions.height10 * 3.4,
+                width: double.infinity,
+                //color: Colors.amber,
+                child: Container(
+                  width: AppDimensions.height10 * 34.7,
+                  height: AppDimensions.height10 * 36.188,
+                  margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 10.0,
+                    left: AppDimensions.height10 * 3.4,
+                    right: AppDimensions.height10 * 3.4,
+                  ),
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/selected_image.png'),
+                          fit: BoxFit.cover)),
                 ),
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/selected_image.png'),
-                        fit: BoxFit.cover)),
               ),
             ] else if (widget.type_switch == 2) ...[
               Container(
-                width: AppDimensions.height10 * 37.7,
-                height: AppDimensions.height10 * 24.7,
-                margin: EdgeInsets.only(
-                  top: AppDimensions.height10 * 10.0,
-                  left: AppDimensions.height10 * 1.8,
-                  right: AppDimensions.height10 * 1.8,
+                width: double.infinity,
+                // color: Colors.amber,
+                child: Container(
+                  width: AppDimensions.height10 * 37.7,
+                  height: AppDimensions.height10 * 24.7,
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 10.0,
+                    left: AppDimensions.height10 * 1.8,
+                    right: AppDimensions.height10 * 1.8,
+                  ),
+                  decoration: BoxDecoration(
+                      //  color: Colors.amber,
+                      image: DecorationImage(
+                          image: AssetImage(
+                              'assets/images/distraction content.png'),
+                          fit: BoxFit.cover)),
                 ),
-                decoration: BoxDecoration(
-                    //  color: Colors.amber,
-                    image: DecorationImage(
-                        image:
-                            AssetImage('assets/images/distraction content.png'),
-                        fit: BoxFit.cover)),
               ),
             ] else if (widget.type_switch == 4) ...[
               Container(
+                alignment: Alignment.topCenter,
+
                 // width: AppDimensions.height10 * 41.4,
-                height: AppDimensions.height10 * 52.5,
+                // margin: EdgeInsets.only(bottom: AppDimensions.height10 * 20.0),
+                height: AppDimensions.height10 * 53.5,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/video_image.png'),
@@ -103,7 +117,8 @@ class _veiw_detailsState extends State<veiw_details> {
                     'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 2.0,
+                        height: 1.5,
+                        fontSize: AppDimensions.height10 * 2.4,
                         fontWeight: FontWeight.w400,
                         color: Color(0xFFFFFFFF)),
                   ),
@@ -120,8 +135,10 @@ class _veiw_detailsState extends State<veiw_details> {
         child: Container(
           //should change according to screen
           height: widget.type_switch == 1
-              ? AppDimensions.height10 * 42.465
-              : AppDimensions.height10 * 48.465,
+              ? AppDimensions.height10 * 38.465
+              : widget.type_switch == 2
+                  ? AppDimensions.height10 * 52.465
+                  : AppDimensions.height10 * 48.465,
           decoration: BoxDecoration(
             color: Color(0xFFFFFFFFF),
             borderRadius: BorderRadius.only(
@@ -132,7 +149,9 @@ class _veiw_detailsState extends State<veiw_details> {
             scrollDirection: Axis.vertical,
             //reverse: true,
             child: Container(
-              height: AppDimensions.height10 * 60.2,
+              height: widget.type_switch == 3
+                  ? AppDimensions.height10 * 67.2
+                  : AppDimensions.height10 * 60.2,
               child: Column(
                 children: [
                   Container(
@@ -167,6 +186,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Nir Eyal',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  height: 1.5,
                                   color: Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
@@ -175,6 +196,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Learn How To Avoid Distraction In A World\nThat Is Full Of It',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  height: 1.5,
                                   color: Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
@@ -183,6 +206,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Survivors:  Music Eye Of The Tiger ',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  height: 1.5,
                                   color: Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
@@ -191,6 +216,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor\nsit amet, consectetur adipiscing elit. ',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  height: 1.5,
                                   color: Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
@@ -309,6 +336,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Behavioural Coach',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  height: 1.5,
                                   color: Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
@@ -317,6 +346,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. ',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  height: 1.5,
                                   color: Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
@@ -325,6 +356,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. Pellentesque non pellentesque diam. Nulla interdum condimentum lorem ac interdum. Quisque tristique lacinia malesuada. Sed sed mattis orci, id pulvinar elit. Donec semper libero quis mauris rutrum, sit amet posuere lacus sodales. Donec a suscipit dolor. Vivamus ut tempus neque. ',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  height: 1.5,
                                   color: Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
@@ -333,6 +366,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. ',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  height: 1.5,
                                   color: Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
@@ -367,6 +402,8 @@ class _veiw_detailsState extends State<veiw_details> {
                       child: Text(
                         '#tag1 #tag2',
                         style: TextStyle(
+                            fontFamily: 'Poppins',
+                            height: 1.5,
                             color: Color(0xFF282828),
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w500),

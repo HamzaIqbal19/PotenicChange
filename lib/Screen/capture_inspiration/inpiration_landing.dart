@@ -5,8 +5,10 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../utils/app_dimensions.dart';
 
 class inspiration_landing extends StatefulWidget {
+  final bool is_Updated;
   final bool muliple_insp;
-  const inspiration_landing({super.key, required this.muliple_insp});
+  const inspiration_landing(
+      {super.key, required this.muliple_insp, required this.is_Updated});
 
   @override
   State<inspiration_landing> createState() => _inspiration_landingState();
@@ -57,8 +59,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                inspiration_landing(muliple_insp: true)),
+                            builder: (context) => inspiration_landing(
+                                  muliple_insp: true,
+                                  is_Updated: false,
+                                )),
                       );
                     },
                     child: Container(
@@ -162,7 +166,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/Rectangle 10.png'))),
+                                                    'assets/images/Rectangle 10.png'),
+                                                fit: BoxFit.cover)),
                                       ),
                                       Container(
                                         // width: AppDimensions.height10 * 16.7,
@@ -314,6 +319,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     ]),
                                   ),
                                 ),
+                                SizedBox(
+                                  height: AppDimensions.height10 * 3.0,
+                                )
                               ],
                             ),
                           ),
@@ -497,6 +505,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     ]),
                                   ),
                                 ),
+                                SizedBox(
+                                  height: AppDimensions.height10 * 3.0,
+                                )
                               ],
                             ),
                           ),
@@ -506,13 +517,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                   )
                 : GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => record_inspiration(
-                                  type_switch: 1,
-                                )),
-                      );
+                      widget.is_Updated
+                          ? NavigatorState()
+                          : Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => record_inspiration(
+                                        type_switch: 1,
+                                      )),
+                            );
                     },
                     child: Container(
                       width: AppDimensions.height10 * 16.7,
@@ -567,7 +580,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     width: AppDimensions.height10 * 38.259,
                     height: AppDimensions.height10 * 9.707,
                     margin:
-                        EdgeInsets.only(top: AppDimensions.height10 * 15.319),
+                        EdgeInsets.only(top: AppDimensions.height10 * 14.319),
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
@@ -597,10 +610,11 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                width: AppDimensions.height10 * 4.2,
+                                width: AppDimensions.height10 * 4.6,
                                 height: AppDimensions.height10 * 1.4,
+                                //   color: Colors.amber,
                                 child: Text(
-                                  'SAVED',
+                                  widget.is_Updated ? 'Updated' : 'SAVED',
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.3,
                                       fontWeight: FontWeight.w500,
@@ -650,8 +664,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                 : Container(
                     width: AppDimensions.height10 * 17.0,
                     height: AppDimensions.height10 * 0.5,
-                    margin:
-                        EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 1.0),
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
@@ -813,6 +826,23 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               ],
                             ),
                           ),
+                        ),
+                        GestureDetector(
+                          child: Container(
+                            width: AppDimensions.height10 * 3.9,
+                            height: AppDimensions.height10 * 3.4,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10 * 1.0),
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              'Clec',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  decoration: TextDecoration.underline,
+                                  color: Color(0xFFFA9934).withOpacity(0.30)),
+                            ),
+                          ),
                         )
                       ],
                     ),
@@ -841,7 +871,17 @@ class _inspiration_landingState extends State<inspiration_landing> {
   }
 }
 
-void _showBottomSheet(BuildContext context) {
+// class filter_bottom_sheet extends StatelessWidget {
+//   const filter_bottom_sheet({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
+
+_showBottomSheet(BuildContext context) {
+  String goal = 'Goal Name';
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -871,16 +911,21 @@ void _showBottomSheet(BuildContext context) {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Container(
-                          width: AppDimensions.height10 * 5.0,
-                          margin: EdgeInsets.only(
-                              right: AppDimensions.height10 * 2.0),
-                          child: Text(
-                            'Cancel',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xFF2F80ED)),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: AppDimensions.height10 * 5.0,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10 * 2.0),
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFF2F80ED)),
+                            ),
                           ),
                         ),
                         Container(
@@ -897,37 +942,77 @@ void _showBottomSheet(BuildContext context) {
                     ),
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(
-                                width: AppDimensions.height10 * 0.1,
-                                color: Color(0xFF828282)))),
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 4.0,
-                        left: AppDimensions.height10 * 2.0,
-                        right: AppDimensions.height10 * 2.0),
-                    child: Center(
-                      child: Text('All'),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      // controller: controller,
-                      itemCount: 4,
-                      itemBuilder: (_, index) {
-                        return Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: AppDimensions.height10 * 2.0),
-                          decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(
-                                      width: AppDimensions.height10 * 0.1,
-                                      color: Color(0xFF828282)))),
-                          padding: EdgeInsets.all(8),
-                          child: Center(child: Text("Goal name $index")),
-                        );
-                      },
-                    ),
+                    width: AppDimensions.height10 * 37.5,
+                    height: AppDimensions.height10 * 24.8,
+                    // color: Colors.amber,
+                    child: ListWheelScrollView(
+                        onSelectedItemChanged: (value) {},
+                        diameterRatio: 1.5,
+                        // magnification: 1.5,
+                        overAndUnderCenterOpacity: 0.5,
+                        itemExtent: AppDimensions.height10 * 3.1,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                'All',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 1',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 2',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 3',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          )
+                        ]),
                   ),
                 ],
               ),
@@ -938,3 +1023,24 @@ void _showBottomSheet(BuildContext context) {
     },
   );
 }
+
+
+//  Expanded(
+//                     child: ListView.builder(
+//                       // controller: controller,
+//                       itemCount: 4,
+//                       itemBuilder: (_, index) {
+//                         return Container(
+//                           margin: EdgeInsets.symmetric(
+//                               horizontal: AppDimensions.height10 * 2.0),
+//                           decoration: BoxDecoration(
+//                               border: Border(
+//                                   bottom: BorderSide(
+//                                       width: AppDimensions.height10 * 0.1,
+//                                       color: Color(0xFF828282)))),
+//                           padding: EdgeInsets.all(8),
+//                           child: Center(child: Text("Goal name $index")),
+//                         );
+//                       },
+//                     ),
+//                   ),

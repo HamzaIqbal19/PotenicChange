@@ -34,7 +34,7 @@ class _select_hurdleState extends State<select_hurdle> {
           ),
           centerTitle: true,
           title: Container(
-            width: AppDimensions.height10 * 18.9,
+            width: AppDimensions.height10 * 19.0,
             height: AppDimensions.height10 * 2.4,
             child: Row(
               children: [
@@ -42,7 +42,7 @@ class _select_hurdleState extends State<select_hurdle> {
                   'Capture Hurdle ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -51,7 +51,7 @@ class _select_hurdleState extends State<select_hurdle> {
                   ' 2',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -60,7 +60,7 @@ class _select_hurdleState extends State<select_hurdle> {
                   '/5',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],

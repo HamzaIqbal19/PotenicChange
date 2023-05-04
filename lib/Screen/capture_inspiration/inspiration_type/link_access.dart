@@ -97,7 +97,7 @@ class _link_infoState extends State<link_info> {
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10 * 2.0,
                           right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 3.9),
+                          top: AppDimensions.height10 * 3.2),
                       child: Text(
                         'Content Destination Link',
                         style: TextStyle(
@@ -112,16 +112,16 @@ class _link_infoState extends State<link_info> {
                           height: AppDimensions.height10 * 2.4,
                           width: AppDimensions.height10 * 36.4,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.5,
-                              //right: AppDimensions.height10 * 9.0,
-                              top: AppDimensions.height10 * 1.0),
+                            left: AppDimensions.height10 * 1.5,
+                            //right: AppDimensions.height10 * 9.0,
+                          ),
                           child: TextFormField(
                             onEditingComplete: () {
                               setState(() {
                                 link_state = true;
                               });
                             },
-                            textAlignVertical: TextAlignVertical.center,
+                            textAlignVertical: TextAlignVertical.bottom,
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w400,
@@ -227,10 +227,11 @@ class _link_infoState extends State<link_info> {
                       height: AppDimensions.height10 * 2.4,
                       width: AppDimensions.height10 * 30.5,
                       margin: EdgeInsets.only(
-                          //left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 10.0,
-                          top: AppDimensions.height10 * 1.0),
+                        //left: AppDimensions.height10 * 2.0,
+                        right: AppDimensions.height10 * 10.0,
+                      ),
                       child: TextField(
+                        textAlignVertical: TextAlignVertical.bottom,
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
@@ -268,10 +269,11 @@ class _link_infoState extends State<link_info> {
                       height: AppDimensions.height10 * 2.4,
                       width: AppDimensions.height10 * 30.5,
                       margin: EdgeInsets.only(
-                          // left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 10.0,
-                          top: AppDimensions.height10 * 1.0),
+                        // left: AppDimensions.height10 * 2.0,
+                        right: AppDimensions.height10 * 10.0,
+                      ),
                       child: TextField(
+                        textAlignVertical: TextAlignVertical.bottom,
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
@@ -309,10 +311,11 @@ class _link_infoState extends State<link_info> {
                       height: AppDimensions.height10 * 2.4,
                       width: AppDimensions.height10 * 30.5,
                       margin: EdgeInsets.only(
-                          // left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 10.0,
-                          top: AppDimensions.height10 * 1.0),
+                        // left: AppDimensions.height10 * 2.0,
+                        right: AppDimensions.height10 * 10.0,
+                      ),
                       child: TextField(
+                        textAlignVertical: TextAlignVertical.bottom,
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,

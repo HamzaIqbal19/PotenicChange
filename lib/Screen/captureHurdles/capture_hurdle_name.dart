@@ -36,7 +36,7 @@ class _hurdle_nameState extends State<hurdle_name> {
           ),
           centerTitle: true,
           title: Container(
-            width: AppDimensions.height10 * 18.9,
+            width: AppDimensions.height10 * 19.0,
             height: AppDimensions.height10 * 2.4,
             child: Row(
               children: [
@@ -44,7 +44,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                   'Capture Hurdle ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -53,7 +53,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                   ' 3',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -62,7 +62,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                   '/5',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
