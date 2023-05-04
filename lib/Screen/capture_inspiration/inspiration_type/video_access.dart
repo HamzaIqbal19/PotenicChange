@@ -101,6 +101,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Video Destination Link',
                         style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff828282)),
@@ -123,14 +124,16 @@ class _video_infoState extends State<video_info> {
                             },
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
+                                fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xff282828)),
                             decoration: InputDecoration(
                                 hintText: 'Add a link',
                                 hintStyle: TextStyle(
+                                    fontFamily: 'Poppins',
                                     fontSize: AppDimensions.height10 * 1.6,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w500,
                                     color: Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
                                     borderSide:
@@ -218,6 +221,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Why is it inspirational to you',
                         style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff828282)),
@@ -238,8 +242,9 @@ class _video_infoState extends State<video_info> {
                         decoration: InputDecoration(
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
+                                fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w500,
                                 color: Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
                                 borderSide:
@@ -259,6 +264,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Tags',
                         style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff828282)),
@@ -279,8 +285,9 @@ class _video_infoState extends State<video_info> {
                         decoration: InputDecoration(
                             hintText: 'Add #hashtag',
                             hintStyle: TextStyle(
+                                fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w500,
                                 color: Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
                                 borderSide:
@@ -300,6 +307,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Attached goals',
                         style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff828282)),

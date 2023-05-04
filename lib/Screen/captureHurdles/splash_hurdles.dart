@@ -87,21 +87,30 @@ class hurdles_splashState extends State<hurdles_splash> {
                         color: Colors.white,
                         fontFamily: 'laila')),
               ),
-              Container(
-                width: AppDimensions.height10 * 16.8,
-                height: AppDimensions.height10 * 17.0,
-                // color: Colors.amber,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 5.5,
-                    right: AppDimensions.height10 * 1.9),
-                child: Center(
-                  child: Text(
-                    'Record your\nhurdles',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10 * 2.0,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFFFFFFFF)),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => hurdles_goal_impact()),
+                  );
+                },
+                child: Container(
+                  width: AppDimensions.height10 * 16.8,
+                  height: AppDimensions.height10 * 17.0,
+                  // color: Colors.amber,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10 * 5.5,
+                      right: AppDimensions.height10 * 1.9),
+                  child: Center(
+                    child: Text(
+                      'Record your\nhurdles',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10 * 2.0,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFFFFFFFF)),
+                    ),
                   ),
                 ),
               )

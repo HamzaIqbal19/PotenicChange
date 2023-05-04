@@ -772,7 +772,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            _showTagSheet(context);
+                          },
                           child: Container(
                             width: AppDimensions.height10 * 11.6,
                             height: AppDimensions.height10 * 3.4,
@@ -882,6 +884,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
 
 _showBottomSheet(BuildContext context) {
   String goal = 'Goal Name';
+
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -1023,6 +1026,153 @@ _showBottomSheet(BuildContext context) {
     },
   );
 }
+
+_showTagSheet(BuildContext context) {
+  String goal = 'Tag';
+
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) {
+      return GestureDetector(
+        onTap: () => Navigator.of(context).pop(),
+        child: Container(
+          height: AppDimensions.height10 * 30.3,
+          color: Color.fromRGBO(0, 0, 0, 0.001),
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    height: AppDimensions.height10 * 4.0,
+                    width: AppDimensions.height10 * 41.4,
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                width: AppDimensions.height10 * 0.1,
+                                color: Color(0xFF828282)))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: AppDimensions.height10 * 5.0,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10 * 2.0),
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFF2F80ED)),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: AppDimensions.height10 * 3.7,
+                          child: Text(
+                            'Done',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.4,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF2F80ED)),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: AppDimensions.height10 * 37.5,
+                    height: AppDimensions.height10 * 24.8,
+                    // color: Colors.amber,
+                    child: ListWheelScrollView(
+                        onSelectedItemChanged: (value) {},
+                        diameterRatio: 1.5,
+                        // magnification: 1.5,
+                        overAndUnderCenterOpacity: 0.5,
+                        itemExtent: AppDimensions.height10 * 3.1,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                'All',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 1',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 2',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 3',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          )
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+
 
 
 //  Expanded(

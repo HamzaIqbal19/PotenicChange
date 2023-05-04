@@ -499,7 +499,7 @@ class _photo_infoState extends State<photo_info> {
                           Container(
                             height: AppDimensions.height10 * 2.1,
                             width: AppDimensions.height10 * 30.5,
-                            alignment: Alignment.topLeft,
+                            alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10 * 2.0,
                                 right: AppDimensions.height10 * 8.9,
@@ -509,69 +509,53 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Title',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xff828282)),
                             ),
                           ),
                           Container(
-                            height: AppDimensions.height10 * 2.4,
-                            width: AppDimensions.height10 * 30.5,
-                            alignment: Alignment.centerLeft,
-                            // color: Colors.amber,
-                            margin: widget.image_detals
-                                ? EdgeInsets.only(
-                                    left: AppDimensions.height10 * 2.0,
-                                    right: AppDimensions.height10 * 9.0,
-                                    // top: AppDimensions.height10 * 1.0
-                                  )
-                                : EdgeInsets.only(
-                                    //left: AppDimensions.height10 * 2.0,
-                                    right: AppDimensions.height10 * 9.5,
-                                    top: AppDimensions.height10 * 1.0),
-                            child: widget.image_detals
-                                ? Text(
-                                    'Nir Eyal',
-                                    style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF282828),
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w500),
-                                  )
-                                : TextField(
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xff282828)),
-                                    decoration: InputDecoration(
-                                        hintText:
-                                            'Give your inspiration a title',
-                                        hintStyle: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.6,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xff828282)),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent))),
-                                  ),
-                          ),
+                              height: AppDimensions.height10 * 2.4,
+                              width: AppDimensions.height10 * 30.5,
+                              alignment: Alignment.centerLeft,
+                              // color: Colors.amber,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 2.0,
+                                  right: AppDimensions.height10 * 9.0,
+                                  top: AppDimensions.height10 * 0.2),
+                              child: widget.image_detals
+                                  ? Text(
+                                      'Nir Eyal',
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500),
+                                    )
+                                  : Text(
+                                      'Give your inspiration a title',
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF828282),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500),
+                                    )),
                           Container(
                             height: AppDimensions.height10 * 2.1,
                             width: AppDimensions.height10 * 30.5,
+                            alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10 * 2.0,
                                 right: AppDimensions.height10 * 8.9,
-                                top: widget.image_detals
-                                    ? AppDimensions.height10 * 4.0
-                                    : AppDimensions.height10 * 3.0),
+                                top: AppDimensions.height10 * 4.0),
                             child: widget.image_detals
                                 ? Text(
                                     'Description',
                                     style: TextStyle(
+                                        fontFamily: 'Poppins',
                                         fontSize: AppDimensions.height10 * 1.4,
                                         fontWeight: FontWeight.w400,
                                         color: Color(0xff828282)),
@@ -579,57 +563,43 @@ class _photo_infoState extends State<photo_info> {
                                 : Text(
                                     'Why is it inspirational to you',
                                     style: TextStyle(
+                                        fontFamily: 'Poppins',
                                         fontSize: AppDimensions.height10 * 1.4,
                                         fontWeight: FontWeight.w400,
                                         color: Color(0xff828282)),
                                   ),
                           ),
                           Container(
-                            height: AppDimensions.height10 * 2.4,
-                            width: AppDimensions.height10 * 30.5,
-                            margin: widget.image_detals
-                                ? EdgeInsets.only(
-                                    left: AppDimensions.height10 * 2.0,
-                                    right: AppDimensions.height10 * 9.0,
-                                    // top: AppDimensions.height10 * 1.0
-                                  )
-                                : EdgeInsets.only(
-                                    //left: AppDimensions.height10 * 2.0,
-                                    right: AppDimensions.height10 * 9.5,
-                                    top: AppDimensions.height10 * 1.0),
-                            child: widget.image_detals
-                                ? Text(
-                                    'Behavioural Coach',
-                                    style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF282828),
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w500),
-                                  )
-                                : TextField(
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xff282828)),
-                                    decoration: InputDecoration(
-                                        hintText:
-                                            'Say more about this inspiration ',
-                                        hintStyle: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.6,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xff828282)),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent))),
-                                  ),
-                          ),
+                              height: AppDimensions.height10 * 2.4,
+                              width: AppDimensions.height10 * 30.5,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 2.0,
+                                  right: AppDimensions.height10 * 9.0,
+                                  top: AppDimensions.height10 * 0.2),
+                              child: widget.image_detals
+                                  ? Text(
+                                      'Behavioural Coach',
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500),
+                                    )
+                                  : Text(
+                                      'Say more about this inspiration ',
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF828282),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500),
+                                    )),
                           Container(
                             height: AppDimensions.height10 * 2.1,
                             width: AppDimensions.height10 * 30.5,
+                            alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10 * 2.0,
                                 right: AppDimensions.height10 * 8.9,
@@ -639,6 +609,7 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Destination website',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xff828282)),
@@ -647,61 +618,40 @@ class _photo_infoState extends State<photo_info> {
                           Row(
                             children: [
                               Container(
-                                height: AppDimensions.height10 * 3.0,
-                                width: widget.image_detals
-                                    ? AppDimensions.height10 * 30.5
-                                    : AppDimensions.height10 * 36.4,
-                                margin: widget.image_detals
-                                    ? EdgeInsets.only(
-                                        left: AppDimensions.height10 * 3.0,
-                                      )
-                                    : EdgeInsets.only(
-                                        left: AppDimensions.height10 * 1.5,
-                                        //right: AppDimensions.height10 * 9.0,
-                                        top: AppDimensions.height10 * 1.0),
-                                child: widget.image_detals
-                                    ? Text(
-                                        'https://www.nirandfar.com/',
-                                        style: TextStyle(
-                                            color: Color(0xFF282828),
-                                            fontFamily: 'Poppins',
-                                            fontSize:
-                                                AppDimensions.height10 * 1.6,
-                                            fontWeight: FontWeight.w500),
-                                      )
-                                    : TextFormField(
-                                        onEditingComplete: () {
-                                          setState(() {
-                                            //link_state = true;
-                                          });
-                                        },
-                                        textAlignVertical:
-                                            TextAlignVertical.center,
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.6,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xff282828)),
-                                        decoration: InputDecoration(
-                                            hintText: 'Add a link',
-                                            hintStyle: TextStyle(
-                                                fontSize: AppDimensions
-                                                        .height10 *
-                                                    1.6,
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(0xff828282)),
-                                            focusedBorder:
-                                                const OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors
-                                                            .transparent)),
-                                            enabledBorder:
-                                                const OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors
-                                                            .transparent))),
-                                      ),
-                              ),
+                                  height: AppDimensions.height10 * 3.0,
+                                  width: widget.image_detals
+                                      ? AppDimensions.height10 * 30.5
+                                      : AppDimensions.height10 * 36.4,
+                                  margin: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 3.0,
+                                  ),
+                                  child: widget.image_detals
+                                      ? Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'https://www.nirandfar.com/',
+                                            style: TextStyle(
+                                                color: Color(0xFF282828),
+                                                fontFamily: 'Poppins',
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.6,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        )
+                                      : Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Add a link',
+                                            style: TextStyle(
+                                                color: Color(0xFF828282),
+                                                fontFamily: 'Poppins',
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.6,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        )),
                               widget.image_detals
                                   ? Row(
                                       children: [
@@ -714,35 +664,53 @@ class _photo_infoState extends State<photo_info> {
                                           },
                                           child: Container(
                                             width: AppDimensions.height10 * 2.5,
+                                            margin: EdgeInsets.only(
+                                                left: AppDimensions.height10 *
+                                                    1.15),
                                             height:
                                                 AppDimensions.height10 * 2.5,
-                                            // margin: EdgeInsets.only(
-                                            //     right: AppDimensions.height10 * 0.8),
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
+                                              // image: DecorationImage(image: AssetImage()),
                                               color: Colors.black,
                                             ),
-                                            child: Icon(
-                                              Icons.add,
-                                              color: Colors.white,
-                                              size: AppDimensions.height10 * 2,
+                                            child: Center(
+                                              child: Icon(
+                                                Icons.add,
+                                                color: Colors.white,
+                                                size: AppDimensions.height10 *
+                                                    1.8,
+                                              ),
                                             ),
+
+                                            // margin: EdgeInsets.only(
+                                            //     right: AppDimensions.height10 * 0.8),
+                                            // decoration: BoxDecoration(
+
+                                            //     image: DecorationImage(
+                                            //         image: AssetImage(
+                                            //             'assets/images/ic_add_circle_black.png'),
+                                            //         fit: BoxFit.cover)),
                                           ),
                                         ),
                                         Container(
                                           width: AppDimensions.height10 * 2.5,
                                           height: AppDimensions.height10 * 2.5,
                                           margin: EdgeInsets.only(
-                                              left:
-                                                  AppDimensions.height10 * 1.0),
+                                              left: AppDimensions.height10 *
+                                                  0.85),
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
+                                            // image: DecorationImage(image: AssetImage()),
                                             color: Colors.black,
                                           ),
-                                          child: Icon(
-                                            Icons.delete,
-                                            color: Colors.white,
-                                            size: AppDimensions.height10 * 2,
+                                          child: Center(
+                                            child: Icon(
+                                              Icons.delete,
+                                              color: Colors.white,
+                                              size:
+                                                  AppDimensions.height10 * 1.8,
+                                            ),
                                           ),
                                         )
                                       ],
@@ -755,19 +723,32 @@ class _photo_infoState extends State<photo_info> {
                                         //         builder: (context) => link_editer()));
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10 * 3.0,
-                                        height: AppDimensions.height10 * 3.0,
-                                        // margin: EdgeInsets.only(
-                                        //     left: AppDimensions.height10 * 3.0),
+                                        width: AppDimensions.height10 * 2.5,
+                                        margin: EdgeInsets.only(
+                                            left:
+                                                AppDimensions.height10 * 1.15),
+                                        height: AppDimensions.height10 * 2.5,
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
+                                          // image: DecorationImage(image: AssetImage()),
                                           color: Colors.black,
                                         ),
-                                        child: Icon(
-                                          Icons.add,
-                                          color: Colors.white,
-                                          size: AppDimensions.height10 * 2,
+                                        child: Center(
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                            size: AppDimensions.height10 * 1.8,
+                                          ),
                                         ),
+
+                                        // margin: EdgeInsets.only(
+                                        //     right: AppDimensions.height10 * 0.8),
+                                        // decoration: BoxDecoration(
+
+                                        //     image: DecorationImage(
+                                        //         image: AssetImage(
+                                        //             'assets/images/ic_add_circle_black.png'),
+                                        //         fit: BoxFit.cover)),
                                       ),
                                     ),
                             ],
@@ -775,6 +756,7 @@ class _photo_infoState extends State<photo_info> {
                           Container(
                             height: AppDimensions.height10 * 2.1,
                             width: AppDimensions.height10 * 30.5,
+                            alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10 * 2.0,
                                 right: AppDimensions.height10 * 8.9,
@@ -784,53 +766,38 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Tags',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xff828282)),
                             ),
                           ),
                           Container(
-                            height: AppDimensions.height10 * 2.4,
-                            width: AppDimensions.height10 * 30.5,
-                            margin: widget.image_detals
-                                ? EdgeInsets.only(
-                                    left: AppDimensions.height10 * 2.0,
-                                    right: AppDimensions.height10 * 9.0,
-                                    // top: AppDimensions.height10 * 1.0
-                                  )
-                                : EdgeInsets.only(
-                                    // left: AppDimensions.height10 * 2.0,
-                                    right: AppDimensions.height10 * 9.5,
-                                    top: AppDimensions.height10 * 1.0),
-                            child: widget.image_detals
-                                ? Text(
-                                    'Add #hashtag',
-                                    style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF282828),
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w500),
-                                  )
-                                : TextField(
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xff282828)),
-                                    decoration: InputDecoration(
-                                        hintText: 'Add #hashtag',
-                                        hintStyle: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.6,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xff828282)),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent))),
-                                  ),
-                          ),
+                              height: AppDimensions.height10 * 2.4,
+                              width: AppDimensions.height10 * 30.5,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 2.0,
+                                  right: AppDimensions.height10 * 9.0,
+                                  top: AppDimensions.height10 * 0.2),
+                              child: widget.image_detals
+                                  ? Text(
+                                      'Add #hashtag',
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500),
+                                    )
+                                  : Text(
+                                      'Add #hashtag',
+                                      style: TextStyle(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF828282),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500),
+                                    )),
                           Container(
                             height: AppDimensions.height10 * 2.1,
                             width: AppDimensions.height10 * 30.5,
@@ -843,6 +810,7 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Attached goals',
                               style: TextStyle(
+                                  fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: Color(0xff828282)),
@@ -1189,15 +1157,9 @@ class _link_setState extends State<link_set> {
                                       width: AppDimensions.height10 * 2.3,
                                       height: AppDimensions.height10 * 2.3,
                                       decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xff282828),
-                                      ),
-                                      child: Image.asset(
-                                        'assets/images/ic_clear.png',
-                                        width: AppDimensions.height10 * 0.941,
-                                        height: AppDimensions.height10 * 1.4,
-                                        color: Color(0xff8E8E93),
-                                      ),
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/close_dark.png'))),
                                     ),
                                   )
                                 ],

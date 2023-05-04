@@ -143,13 +143,6 @@ class landing_hurdles extends StatelessWidget {
                         Row(
                           children: [
                             GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => hurdle_menu()),
-                                );
-                              },
                               child: Container(
                                 width: AppDimensions.height10 * 17.6,
                                 height: AppDimensions.height10 * 18.207,
@@ -170,7 +163,7 @@ class landing_hurdles extends StatelessWidget {
                                       width: AppDimensions.height10 * 7.1,
                                       height: AppDimensions.height10 * 1.9,
                                       child: Text(
-                                        'Husband',
+                                        'Wine bar',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize:
@@ -184,7 +177,8 @@ class landing_hurdles extends StatelessWidget {
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10 * 0.6),
                                       child: Text(
-                                        'Makes a mistake',
+                                        'Drinking too much\nmakes me more\nagressive',
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize:
@@ -224,7 +218,7 @@ class landing_hurdles extends StatelessWidget {
                                       width: AppDimensions.height10 * 7.1,
                                       height: AppDimensions.height10 * 1.9,
                                       child: Text(
-                                        'Husband',
+                                        'Negative thought',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize:
@@ -238,7 +232,8 @@ class landing_hurdles extends StatelessWidget {
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10 * 0.6),
                                       child: Text(
-                                        'Makes a mistake',
+                                        'I don’t deserve to be\nhappy',
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize:
@@ -279,10 +274,10 @@ class landing_hurdles extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      width: AppDimensions.height10 * 7.1,
+                                      //width: AppDimensions.height10 * 7.1,
                                       height: AppDimensions.height10 * 1.9,
                                       child: Text(
-                                        'Husband',
+                                        'Past Event',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize:
@@ -296,7 +291,8 @@ class landing_hurdles extends StatelessWidget {
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10 * 0.6),
                                       child: Text(
-                                        'Makes a mistake',
+                                        'My first husband left\nme and the children for\nanother woman',
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize:
@@ -827,7 +823,7 @@ class landing_hurdles_2 extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        //  _showBottomSheet(context);
+                        _showBottomSheet(context);
                       },
                       child: Container(
                         width: AppDimensions.height10 * 11.5,
@@ -886,7 +882,9 @@ class landing_hurdles_2 extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        _showTagSheet(context);
+                      },
                       child: Container(
                         width: AppDimensions.height10 * 11.6,
                         height: AppDimensions.height10 * 3.4,
@@ -1233,4 +1231,292 @@ class hurdle_menu extends StatelessWidget {
       ),
     );
   }
+}
+
+_showBottomSheet(BuildContext context) {
+  String goal = 'Goal Name';
+
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) {
+      return GestureDetector(
+        onTap: () => Navigator.of(context).pop(),
+        child: Container(
+          height: AppDimensions.height10 * 30.3,
+          color: Color.fromRGBO(0, 0, 0, 0.001),
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    height: AppDimensions.height10 * 4.0,
+                    width: AppDimensions.height10 * 41.4,
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                width: AppDimensions.height10 * 0.1,
+                                color: Color(0xFF828282)))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: AppDimensions.height10 * 5.0,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10 * 2.0),
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFF2F80ED)),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: AppDimensions.height10 * 3.7,
+                          child: Text(
+                            'Done',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.4,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF2F80ED)),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: AppDimensions.height10 * 37.5,
+                    height: AppDimensions.height10 * 24.8,
+                    // color: Colors.amber,
+                    child: ListWheelScrollView(
+                        onSelectedItemChanged: (value) {},
+                        diameterRatio: 1.5,
+                        // magnification: 1.5,
+                        overAndUnderCenterOpacity: 0.5,
+                        itemExtent: AppDimensions.height10 * 3.1,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                'All',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 1',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 2',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                '$goal 3',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          )
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}
+
+_showTagSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    builder: (context) {
+      return GestureDetector(
+        onTap: () => Navigator.of(context).pop(),
+        child: Container(
+          height: AppDimensions.height10 * 30.3,
+          color: Color.fromRGBO(0, 0, 0, 0.001),
+          child: GestureDetector(
+            onTap: () {},
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    height: AppDimensions.height10 * 4.0,
+                    width: AppDimensions.height10 * 41.4,
+                    decoration: BoxDecoration(
+                        border: Border(
+                            bottom: BorderSide(
+                                width: AppDimensions.height10 * 0.1,
+                                color: Color(0xFF828282)))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: AppDimensions.height10 * 5.0,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10 * 2.0),
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFF2F80ED)),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: AppDimensions.height10 * 3.7,
+                          child: Text(
+                            'Done',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.4,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFF2F80ED)),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: AppDimensions.height10 * 37.5,
+                    height: AppDimensions.height10 * 24.8,
+                    // color: Colors.amber,
+                    child: ListWheelScrollView(
+                        onSelectedItemChanged: (value) {},
+                        diameterRatio: 1.5,
+                        //magnification: 1.1,
+                        overAndUnderCenterOpacity: 0.5,
+                        itemExtent: AppDimensions.height10 * 3.1,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                'All',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                'People / person 1',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                'Negative thought 2',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: Color(0xFF828282)))),
+                            child: Center(
+                              child: Text(
+                                'Place 3',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          )
+                        ]),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+    },
+  );
 }

@@ -204,10 +204,8 @@ class _filter_bottom_sheetState extends State<filter_bottom_sheet> {
   }
 }
 
-_showBottomSheet(BuildContext context) {
-  String goal = filter_bottom_sheet(
-    filter_name: ' ',
-  ).filter_name;
+void _showBottomSheet(BuildContext context) {
+  String goal = 'Goal Name';
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
