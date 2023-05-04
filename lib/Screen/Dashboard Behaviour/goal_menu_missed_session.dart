@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/captureHurdles/captureHurdles_whatHurdles.dart';
 
 import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
@@ -153,7 +154,7 @@ class missed_Menu extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => view_goals()));
+                      MaterialPageRoute(builder: (context) => what_hurdles()));
                 },
                 child: Container(
                   width: AppDimensions.height10 * 9.36,

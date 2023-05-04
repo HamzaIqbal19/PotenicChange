@@ -35,7 +35,7 @@ class _AllGoalsState extends State<AllGoals> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                 Navigator.pop(context);
+                  Navigator.pop(context);
                   // Add code for performing close action
                 },
               ),
@@ -99,7 +99,6 @@ class _AllGoalsState extends State<AllGoals> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Container(
                     child: Center(
                       child: Text(
@@ -122,7 +121,6 @@ class _AllGoalsState extends State<AllGoals> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Container(
                     // height: AppDimensions.height10*7.1,
                     child: Text(
@@ -150,7 +148,6 @@ class _AllGoalsState extends State<AllGoals> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-
                             Container(
                               padding: EdgeInsets.only(
                                   top: AppDimensions.height10 * 0.4),
@@ -256,7 +253,8 @@ class _AllGoalsState extends State<AllGoals> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   circles(
-                                      circle_text: "Reduce \n Chocolate \n Consumption",
+                                      circle_text:
+                                          "Reduce \n Chocolate \n Consumption",
                                       circle_color1: 0xFFFFFFFF,
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
@@ -452,131 +450,129 @@ class _AllGoalsState extends State<AllGoals> {
           width: AppDimensions.height10 * 41.4,
           child: SearchIcon == true
               ? Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    height: AppDimensions.height10 * 3.6,
-                    width: AppDimensions.height10 * 31.3,
-                    padding: const EdgeInsets.all(6.0),
-                    decoration: BoxDecoration(
-                        color: const Color(0xFF767680).withOpacity(0.12),
-                        border: Border.all(color: Colors.white, width: 2),
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(AppDimensions.height10))),
-                    child: Center(
-                      child: TextFormField(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: AppDimensions.height10 * 3.6,
+                          width: AppDimensions.height10 * 31.3,
+                          padding: const EdgeInsets.all(6.0),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFF767680).withOpacity(0.12),
+                              border: Border.all(color: Colors.white, width: 2),
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(AppDimensions.height10))),
+                          child: Center(
+                            child: TextFormField(
+                                decoration: InputDecoration(
+                                    contentPadding: const EdgeInsets.only(),
+                                    prefixIcon: Image.asset(
+                                      'assets/images/Light.png',
+                                      width: AppDimensions.height10 * 1.5,
+                                      height: AppDimensions.height10 * 1.5,
 
-
-                          decoration:  InputDecoration(
-                              contentPadding: const EdgeInsets.only(),
-                              prefixIcon:  Image.asset(
-                                'assets/images/Light.png',
-                                width: AppDimensions.height10 * 1.5,
-                                height: AppDimensions.height10 * 1.5,
-
-                                // fit: BoxFit.contain,
-                                // fit: BoxFit.contain,
-                              ),
-
-                              suffixIcon:  Image.asset(
-                                'assets/images/cancel.png',
-                                width: AppDimensions.height10 * 2.3,
-                                height: AppDimensions.height10 * 2.3,
-                                // fit: BoxFit.contain,
-                              ),
-
-                              hintText: "Search",
-                              focusedBorder:const  OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.transparent)),
-                              enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.transparent)))),
+                                      // fit: BoxFit.contain,
+                                      // fit: BoxFit.contain,
+                                    ),
+                                    suffixIcon: Image.asset(
+                                      'assets/images/cancel.png',
+                                      width: AppDimensions.height10 * 2.3,
+                                      height: AppDimensions.height10 * 2.3,
+                                      // fit: BoxFit.contain,
+                                    ),
+                                    hintText: "Search",
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent)),
+                                    enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent)))),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
 
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          SearchIcon = false;
+                        });
+                      },
+                      child: Text(
+                        "Cancel",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: AppDimensions.height10 * 1.7,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFF007AFF),
+                        ),
+                      ),
+                    ),
 
-              GestureDetector(
-                onTap: (){
-                  setState(() {
-                    SearchIcon=false;
-                  });
-                },
-                child: Text(
-                  "Cancel",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: AppDimensions.height10 * 1.7,
-                    fontWeight: FontWeight.w400,
-                    color: const Color(0xFF007AFF),
-                  ),
-                ) ,
-              ),
-
-              //const Padding(padding: EdgeInsets.all(10))
-            ],
-          )
+                    //const Padding(padding: EdgeInsets.all(10))
+                  ],
+                )
               : Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                children: [
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: AppDimensions.height10 * 4.7,
+                          height: AppDimensions.height10 * 4.7,
+                          padding: EdgeInsets.only(
+                              top: AppDimensions.height10 * 0.5,
+                              bottom: AppDimensions.height10 * 0.5),
+                          child: Image.asset(
+                            'assets/images/Add.png',
+                            width: AppDimensions.height10 * 4.7,
+                            height: AppDimensions.height10 * 4.7,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                        SizedBox(
+                          width: AppDimensions.height10 * 0.5,
+                        ),
+                        Text(
+                          'Create a new goal! ',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: const Color(0xFFFA9934),
+                            // fontFamily: ,
+                            fontSize: AppDimensions.height10 * 1.6,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
 
-                  Container(
-                    width: AppDimensions.height10 * 4.7,
-                    height: AppDimensions.height10 * 4.7,
-                    padding: EdgeInsets.only(top:AppDimensions.height10*0.5,bottom: AppDimensions.height10*0.5),
-                    child: Image.asset(
-                      'assets/images/Add.png',
+                    Container(
                       width: AppDimensions.height10 * 4.7,
                       height: AppDimensions.height10 * 4.7,
-                      fit: BoxFit.contain,
+                      padding: EdgeInsets.only(
+                          top: AppDimensions.height10 * 0.5,
+                          bottom: AppDimensions.height10 * 0.5),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            SearchIcon = true;
+                          });
+                        },
+                        child: Image.asset(
+                          'assets/images/Search.png',
+                          width: AppDimensions.height10 * 5,
+                          height: AppDimensions.height10 * 5,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: AppDimensions.height10 * 0.5,
-                  ),
-                  Text(
-                    'Create a new goal! ',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: const Color(0xFFFA9934),
-                      // fontFamily: ,
-                      fontSize: AppDimensions.height10 * 1.6,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
 
-              Container(
-                width: AppDimensions.height10 * 4.7,
-                height: AppDimensions.height10 * 4.7,
-                padding: EdgeInsets.only(top:AppDimensions.height10*0.5,bottom: AppDimensions.height10*0.5),
-                child: GestureDetector(
-                  onTap: (){
-                    setState(() {
-                      SearchIcon=true;
-                    });
-                  },
-                  child: Image.asset(
-                    'assets/images/Search.png',
-                    width: AppDimensions.height10 * 5,
-                    height: AppDimensions.height10 * 5,
-                    fit: BoxFit.contain,
-                  ),
+                    //const Padding(padding: EdgeInsets.all(10))
+                  ],
                 ),
-              ),
-
-              //const Padding(padding: EdgeInsets.all(10))
-            ],
-          ),
         ),
       ),
     );

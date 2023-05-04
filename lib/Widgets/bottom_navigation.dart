@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/Menu/Menu.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
+import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 
+import '../Screen/captureHurdles/captureHurdles_whatHurdles.dart';
 import '../utils/app_dimensions.dart';
 
 class Navigation_Bar extends StatefulWidget {
@@ -25,12 +27,12 @@ class Navigation_BarState extends State<Navigation_Bar> {
     int index = 0;
     return Container(
       decoration: widget.bg_colored
-          ?const  BoxDecoration(gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              //transform: GradientRotation(3.14159),
-              colors: [Color(0xffD9B4B4), Color(0xffD9B4B4)]))
-          : const BoxDecoration(shape: BoxShape.rectangle, color: Colors.transparent),
+          ? BoxDecoration(gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          //transform: GradientRotation(3.14159),
+          colors: [Color(0xffD9B4B4), Color(0xffD9B4B4)]))
+          : BoxDecoration(shape: BoxShape.rectangle, color: Colors.transparent),
       //height: 77,
       width: AppDimensions.height10 * 30.5,
       padding: EdgeInsets.only(
@@ -54,7 +56,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
               child: Container(
                   height: AppDimensions.height10 * 2.612,
                   width: AppDimensions.height10 * 3.318,
-                  decoration:const  BoxDecoration(
+                  decoration:const BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: LinearGradient(
                           begin: Alignment.topCenter,
@@ -73,7 +75,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                 width: AppDimensions.height10 * 6.0,
                 height: AppDimensions.height10 * 6.0,
                 //margin: EdgeInsets.only(right: 30),
-                decoration:const BoxDecoration(
+                decoration: const  BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -90,9 +92,46 @@ class Navigation_BarState extends State<Navigation_Bar> {
               ),
               label: 'Inspiration'),
           BottomNavigationBarItem(
-              icon: Container(
-                width: AppDimensions.height10 * 6.0,
-                height: AppDimensions.height10 * 6.0,
+              icon: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => hurdles_splash()));
+                },
+                child: Container(
+                  width: AppDimensions.height10 * 6.0,
+                  height: AppDimensions.height10 * 6.0,
+                  decoration:const BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                  child: Container(
+                    height: AppDimensions.height10 * 2.612,
+                    width: AppDimensions.height10 * 3.318,
+                    padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
+                    child: const ImageIcon(
+                      AssetImage('assets/images/hurdle_icon.png'),
+                      //size: ,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              label: 'Hurdle'),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => your_goals_menu()));
+              },
+              child: Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 2.0, right: 0),
+                width: AppDimensions.height10 * 4.0,
+                height: AppDimensions.height10 * 4.0,
                 decoration:const BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
@@ -100,50 +139,15 @@ class Navigation_BarState extends State<Navigation_Bar> {
                         end: Alignment.bottomCenter,
                         colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
                 child: Container(
-                  height: AppDimensions.height10 * 2.612,
-                  width: AppDimensions.height10 * 3.318,
-                  padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
-                  child: const ImageIcon(
-                    AssetImage('assets/images/hurdle_icon.png'),
-                    //size: ,
-                    color: Colors.white,
-                  ),
-                ),
+                    height: AppDimensions.height10 * 1.889,
+                    width: AppDimensions.height10 * 2.444,
+                    padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
+                    child:const ImageIcon(
+                      AssetImage('assets/images/menu_icon.png'),
+                      color: Colors.white,
+                    )),
               ),
-              label: 'Hurdle'),
-          BottomNavigationBarItem(
-            icon:
-
-           GestureDetector(
-             onTap: (){
-               Navigator.push(
-                 context,
-                 MaterialPageRoute(
-                   builder: (context) => Menu(),
-                 ),
-               );
-             },
-             child:Container(
-               margin:
-               EdgeInsets.only(top: AppDimensions.height10 * 2.0, right: 0),
-               width: AppDimensions.height10 * 4.0,
-               height: AppDimensions.height10 * 4.0,
-               decoration:const BoxDecoration(
-                   shape: BoxShape.circle,
-                   gradient: LinearGradient(
-                       begin: Alignment.topCenter,
-                       end: Alignment.bottomCenter,
-                       colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
-               child: Container(
-                   height: AppDimensions.height10 * 1.889,
-                   width: AppDimensions.height10 * 2.444,
-                   padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
-                   child:const ImageIcon(
-                     AssetImage('assets/images/menu_icon.png'),
-                     color: Colors.white,
-                   )),
-             ),
-           ),
+            ),
             label: 'Menu',
           ),
         ],
