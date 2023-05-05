@@ -528,7 +528,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                       children: [
                                         Container(
                                           width: AppDimensions.height10 * 9.3,
-                                          height: AppDimensions.height10 * 3.4,
+                                          height: AppDimensions.height10 * 3.55,
                                           child: Text(
                                             'No. of\nActive days',
                                             textAlign: TextAlign.center,
@@ -600,19 +600,26 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                 style: TextStyle(
                                                     fontSize:
                                                         AppDimensions.height10 *
-                                                            2.0,
+                                                            2.8,
                                                     fontWeight: FontWeight.w600,
                                                     color: Color(0xFF464646)),
                                               ),
-                                              Text(
-                                                '/5',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize:
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    top:
                                                         AppDimensions.height10 *
-                                                            1.0,
-                                                    fontWeight: FontWeight.w300,
-                                                    color: Color(0xFF464646)),
+                                                            1.5),
+                                                child: Text(
+                                                  '/5',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.0,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      color: Color(0xFF464646)),
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -897,7 +904,7 @@ class goal_card extends StatelessWidget {
                     children: [
                       Container(
                         width: AppDimensions.height10 * 9.3,
-                        height: AppDimensions.height10 * 3.4,
+                        height: AppDimensions.height10 * 3.55,
                         child: Text(
                           'No. of\nActive days',
                           textAlign: TextAlign.center,
@@ -956,17 +963,21 @@ class goal_card extends StatelessWidget {
                               goal_level,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 2.0,
+                                  fontSize: AppDimensions.height10 * 2.8,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xFF464646)),
                             ),
-                            Text(
-                              '/5',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
-                                  fontWeight: FontWeight.w300,
-                                  color: Color(0xFF464646)),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  top: AppDimensions.height10 * 1.5),
+                              child: Text(
+                                '/5',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 1.0,
+                                    fontWeight: FontWeight.w300,
+                                    color: Color(0xFF464646)),
+                              ),
                             ),
                           ],
                         ),

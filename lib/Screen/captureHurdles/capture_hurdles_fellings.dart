@@ -34,7 +34,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
           ),
           centerTitle: true,
           title: Container(
-            width: AppDimensions.height10 * 18.9,
+            width: AppDimensions.height10 * 19.0,
             height: AppDimensions.height10 * 2.4,
             child: Row(
               children: [
@@ -42,7 +42,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                   'Capture Hurdle ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -51,7 +51,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                   ' 5',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -60,7 +60,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                   '/5',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
                   colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -98,7 +98,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                   height: AppDimensions.height10 * 7.3,
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 18.0),
                   child: GradientText(
-                    'How do you feel when\nthis hurdle happens??',
+                    'How do you feel when\nthis hurdle happens?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: AppDimensions.height10 * 2.8,
@@ -252,43 +252,39 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     ),
                   ),
                 ),
-                MediaQuery.of(context).viewInsets.bottom == 0
-                    ? SizedBox(
-                        height: AppDimensions.height10 * 5.9,
-                      )
-                    : Container(
-                        height: AppDimensions.height10 * 5.0,
-                        width: AppDimensions.height10 * 16.7,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10 * 1.0,
-                            bottom: AppDimensions.height10 * 1.0),
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xffFCC10D),
-                              Color(0xffFDA210),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 5.0),
-                        ),
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => summary_hurdles()));
-                            },
-                            child: Text(
-                              'Next',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Poppins'),
-                            ))),
+                Container(
+                    height: AppDimensions.height10 * 5.0,
+                    width: AppDimensions.height10 * 16.7,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.0,
+                        bottom: AppDimensions.height10 * 1.0),
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xffFCC10D),
+                          Color(0xffFDA210),
+                        ],
+                      ),
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.height10 * 5.0),
+                    ),
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => summary_hurdles()));
+                        },
+                        child: Text(
+                          'Next',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 1.6,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Poppins'),
+                        ))),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? Container(
                         width: AppDimensions.height10 * 17.0,

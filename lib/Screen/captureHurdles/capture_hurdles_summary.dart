@@ -90,8 +90,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                       Align(
                         alignment: Alignment(0, 0.8),
                         child: Container(
-                            height: AppDimensions.height10 * 2.0,
-                            width: AppDimensions.height10 * 2.0,
+                            height: AppDimensions.height10 * 3.0,
+                            width: AppDimensions.height10 * 3.0,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10 * 2.1),
                             padding:
@@ -229,8 +229,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                   ),
                 ),
                 Container(
-                    height: AppDimensions.height10 * 2.0,
-                    width: AppDimensions.height10 * 2.0,
+                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10 * 3.0,
                     margin: EdgeInsets.only(top: AppDimensions.height10 * 2.1),
                     padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
                     decoration: BoxDecoration(
@@ -351,8 +351,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                   ),
                 ),
                 Container(
-                    height: AppDimensions.height10 * 2.0,
-                    width: AppDimensions.height10 * 2.0,
+                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10 * 3.0,
                     margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
                     padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
                     decoration: BoxDecoration(
@@ -408,8 +408,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                   ),
                 ),
                 Container(
-                    height: AppDimensions.height10 * 2.0,
-                    width: AppDimensions.height10 * 2.0,
+                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10 * 3.0,
                     margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
                     padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
                     decoration: BoxDecoration(
@@ -455,11 +455,11 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         child: Text(
                                           'Delete',
                                           style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.6,
-                                              fontWeight: FontWeight.w700,
-                                              fontFamily: 'Arial'),
+                                            color: Colors.white,
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -485,15 +485,17 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                landing_hurdles()));
+                                                landing_hurdles(
+                                                  multiple_hurdle: false,
+                                                )));
                                   },
                                   child: Text(
                                     'Finish & exit',
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Poppins'),
+                                      color: Colors.white,
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ))),
                         ])),
                 Container(

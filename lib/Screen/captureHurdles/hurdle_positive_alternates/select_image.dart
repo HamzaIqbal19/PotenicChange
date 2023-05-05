@@ -154,11 +154,15 @@ class _image_infoState extends State<image_info> {
         width: double.infinity,
         height: double.infinity,
         color: Color(0xffC4C4C4),
+      ),
+      bottomNavigationBar: BottomAppBar(
+          child: Container(
+        height: AppDimensions.height10 * 83.517,
         child: Column(children: [
           Container(
             // width: AppDimensions.height10 * 41.1,
             height: AppDimensions.height10 * 5.1,
-            margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
+            // margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
             decoration: BoxDecoration(
                 color: Color(0xffF5F5F5).withOpacity(0.8),
                 borderRadius: BorderRadius.only(
@@ -495,7 +499,7 @@ class _image_infoState extends State<image_info> {
             ),
           )
         ]),
-      ),
+      )),
     );
   }
 }
