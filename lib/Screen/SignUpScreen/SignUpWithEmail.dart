@@ -161,56 +161,39 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                          height: AppDimensions.height10 * 6,
-                          width: AppDimensions.height10 * 36.0,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10 * 1.8))),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 2.0,
-                                    bottom: AppDimensions.height10 * 0.5),
-                                width: AppDimensions.height10 * 3.7,
-                                height: AppDimensions.height10 * 1.7,
-                                child: Text(
-                                  "Name",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xFF282828),
-                                      fontSize: AppDimensions.height10 * 1.4),
+                        height: AppDimensions.height10 * 6,
+                        width: AppDimensions.screenWidth - 100,
+                        padding: EdgeInsetsDirectional.only(
+                          top: AppDimensions.height10 + 2,
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.white, width: 2),
+                            borderRadius:
+                                 BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                        child: TextFormField(
+                            decoration:  InputDecoration(
+                                contentPadding: const EdgeInsets.only(
+                                    top: 5.0,
+                                    bottom: 15.0,
+                                    left: 10.0,
+                                    right: 10.0),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                hintText: "John",
+                                hintStyle: TextStyle(
+                                  color: const Color(0xFF8C648A),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: AppDimensions.height10*1.8,
                                 ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                ),
-                                width: AppDimensions.height10 * 36.0,
-                                height: AppDimensions.height10 * 2.2,
-                                child: TextFormField(
-                                    decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.zero,
-                                        hintText: "John Smith",
-                                        hintStyle: TextStyle(
-                                          color: const Color(0xFF8C648A),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize:
-                                          AppDimensions.height10 * 1.8,
-                                        ),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)))),
-                              )
-                            ],
-                          )),
+                                labelText: "Name",
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.transparent)))),
+                      ),
                       Container(
                         child: Text(
                           "Full name is required",
@@ -223,56 +206,40 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       ),
 
                       Container(
-                          height: AppDimensions.height10 * 6,
-                          width: AppDimensions.height10 * 36.0,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10 * 1.8))),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 2.0,
-                                    bottom: AppDimensions.height10 * 0.5),
-                                width: AppDimensions.height10 * 3.7,
-                                height: AppDimensions.height10 * 1.7,
-                                child: Text(
-                                  "Email",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xFF282828),
-                                      fontSize: AppDimensions.height10 * 1.4),
+                        height: AppDimensions.height10 * 6,
+                        width: AppDimensions.screenWidth - 100,
+                        padding: EdgeInsetsDirectional.only(
+                          top: AppDimensions.height10 + 2,
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.white, width: 2),
+                            borderRadius:
+                                 BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                        child: TextFormField(
+                            decoration:  InputDecoration(
+                                contentPadding:const EdgeInsets.only(
+                                    top: 5.0,
+                                    bottom: 15.0,
+                                    left: 10.0,
+                                    right: 10.0),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                hintText: "abc@gmail.com",
+
+                                hintStyle: TextStyle(
+                                  color: const Color(0xFF8C648A),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: AppDimensions.height10*1.8,
                                 ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                ),
-                                width: AppDimensions.height10 * 36.0,
-                                height: AppDimensions.height10 * 2.2,
-                                child: TextFormField(
-                                    decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.zero,
-                                        hintText: "JohnSmith@yahoo.com",
-                                        hintStyle: TextStyle(
-                                          color: const Color(0xFF8C648A),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize:
-                                          AppDimensions.height10 * 1.8,
-                                        ),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)))),
-                              )
-                            ],
-                          )),
+                                labelText: "Email",
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder:const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.transparent)))),
+                      ),
                       Container(
                         child: Text(
                           "Ooops! Needs to be an email format",
@@ -285,54 +252,40 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       ),
                       Container(
                         height: AppDimensions.height10 * 6,
-                        width: AppDimensions.height10 * 36.0,
+                        width: AppDimensions.screenWidth - 100,
+                        padding: EdgeInsetsDirectional.only(
+                          top: AppDimensions.height10 + 2,
+                        ),
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            border: Border.all(color: Colors.white, width: 2),
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(AppDimensions.height10 * 1.8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                  bottom: AppDimensions.height10 * 0.5),
-                              width: AppDimensions.height10 * 6.3,
-                              height: AppDimensions.height10 * 1.7,
-                              child: Text(
-                                "Password",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF282828),
-                                    fontSize: AppDimensions.height10 * 1.4),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                              ),
-                              width: AppDimensions.height10 * 36.0,
-                              height: AppDimensions.height10 * 2.2,
-                              child: TextFormField(
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.zero,
-                                      hintText: "*******",
-                                      hintStyle: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: AppDimensions.height10 * 1.8,
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)))),
-                            )
-                          ],
-                        ),
+                            border: Border.all(color: Colors.white, width: 0),
+                            borderRadius:
+                                 BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                        child: TextFormField(
+                            obscureText: true,
+                            textAlign: TextAlign.justify,
+                            decoration:  InputDecoration(
+                                contentPadding:const EdgeInsets.only(
+                                    top: 5.0,
+                                    bottom: 15.0,
+                                    left: 10.0,
+                                    right: 10.0),
+                                alignLabelWithHint: true,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                hintText: "********",
+                                hintStyle: TextStyle(
+                                  color: const Color(0xFF8C648A),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: AppDimensions.height10*1.8,
+                                ),
+                                labelText: "Password",
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder:const OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.transparent)))),
                       ),
                       Container(
                         child: Text(
@@ -461,7 +414,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       'Sign up',
                       style: TextStyle(
                         color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10 *1.8,
+                        fontSize: AppDimensions.height10 *1.6,
                         fontWeight: FontWeight.w700,
                       ),
                     )),

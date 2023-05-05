@@ -7,6 +7,9 @@ import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -25,8 +28,9 @@ class _LoginPageState extends State<LoginPage> {
   var accountFlag;
   var sessionRoute;
 
+
   late SharedPreferences _prefs;
-  setEmail(email) async {
+  setEmail(email)async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('email', email);
     print("SetEmail: $email");
@@ -49,62 +53,68 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+
     // return WillPopScope(
     // onWillPop: () async => false,
     // =>
     // SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
-    return Scaffold(
+    return   Scaffold(
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading:false,
+
           actions: [
             Center(
+              // alignment: Alignment.center,
+
+
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10 * 2.8,
-                  height: AppDimensions.height10 * 2.8,
+                  width: AppDimensions.height10*2.8,
+                  height: AppDimensions.height10*2.8,
                   fit: BoxFit.cover,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
+                  // Add code for performing close action
                 },
               ),
             ),
+
+
           ],
         ),
-        body: Stack(
+        body:  Stack(
           children: <Widget>[
             Container(
+
               decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.png"),
-                  fit: BoxFit.cover,
-                ),
+                image:  DecorationImage(image:  AssetImage("assets/images/loginscreenBackground.png"), fit: BoxFit.cover,),
               ),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  height: AppDimensions.height10 * 8.02,
-                ),
+              children:<Widget> [
+                SizedBox(height:AppDimensions.height10 * 8.02,),
                 Center(
                   child: Image(
                     // color: Colors.orange,
-                    image: const AssetImage("assets/images/logo.png"),
+                    image:  const AssetImage("assets/images/logo.png"),
                     height: AppDimensions.height10 * 7.75,
                     width: AppDimensions.width10 * 7.75,
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 2.32),
+
+                SizedBox(height: AppDimensions.height10*2.32),
                 Container(
-                  height: AppDimensions.height10 * 3.9,
+                  height: AppDimensions.height10*3.9,
+
                   child: Text(
                     "Log in",
                     textAlign: TextAlign.center,
@@ -115,36 +125,41 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 - 2),
+                SizedBox(height: AppDimensions.height10-2),
                 Container(
-                    height: AppDimensions.height10 * 5.0,
-                    width: AppDimensions.height10 * 36.7,
-                    child: Text(
+                    height:AppDimensions.height10*5.0,
+                    width: AppDimensions.height10*36.7,
+                    child:Text(
                       'How did you access your Potenic account\n last time?',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10*1.8,
                       ),
-                    )),
-                SizedBox(height: AppDimensions.height10 * 5.1),
+                    )
+                ),
+                // SizedBox(height: AppDimensions.height0),
+
+                SizedBox(height: AppDimensions.height10*5.1),
                 Container(
-                  height: AppDimensions.height10 * 20 + 2,
-                  child: Column(
+
+                  height: AppDimensions.height10*20+2,
+                  child:Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+
+
                       Container(
                         height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
-                        child: OutlinedButton.icon(
-                          // <-- OutlinedButton
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(
-                                width: 1.0, color: Colors.white),
+                        width: AppDimensions.height10*34.1,
 
-                            backgroundColor: const Color(0xFF5A4D73),
+                        child:OutlinedButton.icon( // <-- OutlinedButton
+                          style: OutlinedButton.styleFrom(
+                            side:const BorderSide(width: 1.0,color: Colors.white),
+
+                            backgroundColor:const  Color(0xFF5A4D73),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(40.0),
                             ),
@@ -154,110 +169,99 @@ class _LoginPageState extends State<LoginPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Loginemailandpassword(),
+                                builder: (context) => Loginemailandpassword()
+                                ,
                               ),
                             );
                           },
-                          icon: Icon(
+                          icon:  Icon(
                             Icons.mail_outline,
                             color: Colors.white,
-                            size: AppDimensions.height10 * 2.4,
+                            size: AppDimensions.height10*2.4,
                           ),
                           label: Row(
                             children: [
                               Expanded(
-                                  // alignment: Alignment.centerLeft,
-                                  child: Text(
-                                '  Email and Password',
-                                style: TextStyle(
-                                  color: const Color(0xFFFFFFFF),
-                                  fontSize: AppDimensions.height10 * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              )),
+                                // alignment: Alignment.centerLeft,
+                                  child:Text('  Email and Password',style: TextStyle(
+                                    color: const Color(0xFFFFFFFF),
+                                    fontSize:  AppDimensions.height10 *1.8,
+                                    fontWeight: FontWeight.w600,
+                                  ),)),
                             ],
                           ),
                         ),
                       ),
+
+
+
                       Container(
                         height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
-                        child: OutlinedButton.icon(
-                          // <-- OutlinedButton
+                        width: AppDimensions.height10*34.1,
+
+                        child:OutlinedButton.icon( // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
-                            backgroundColor: const Color(0xFFFFFFFF),
+                            backgroundColor:const  Color(0xFFFFFFFF),
 
                             shape: RoundedRectangleBorder(
+
                               borderRadius: BorderRadius.circular(40.0),
                             ),
                             //<-- SEE HERE
                           ),
                           onPressed: () {},
-                          icon: Image.asset(
-                            "assets/images/Google.png",
-                            width: AppDimensions.height10 * 2.4,
-                            height: AppDimensions.height10 * 2.4,
-                          ),
+                          icon: Image.asset("assets/images/Google.png", width: AppDimensions.height10*2.4,height: AppDimensions.height10*2.4,),
                           label: Row(
                             children: [
                               Expanded(
-                                  child: Text(
-                                '  Sign in with Google',
-                                style: TextStyle(
-                                  color: Colors.black45,
-                                  fontSize: AppDimensions.height10 * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              )),
+                                  child:Text('  Sign in with Google',style: TextStyle(
+                                    color:  Colors.black45,
+                                    fontSize:  AppDimensions.height10 *1.8,
+                                    fontWeight: FontWeight.w600,
+                                  ),)),
                             ],
                           ),
                         ),
                       ),
                       Container(
                         height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
-                        child: OutlinedButton.icon(
-                          // <-- OutlinedButton
+                        width: AppDimensions.height10*34.1,
+
+                        child:OutlinedButton.icon( // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
-                            backgroundColor: const Color(0xFF1877F2),
+                            backgroundColor:const Color(0xFF1877F2),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10 * 4.0),
+                              borderRadius: BorderRadius.circular(AppDimensions.height10*4.0),
                             ),
                             //<-- SEE HERE
                           ),
                           onPressed: () {},
-                          icon: Image.asset(
-                            "assets/images/fb.png",
-                            width: AppDimensions.height10 * 2.4,
-                            height: AppDimensions.height10 * 2.4,
-                          ),
+                          icon: Image.asset("assets/images/fb.png", width: AppDimensions.height10*2.4,height: AppDimensions.height10*2.4,),
                           label: Row(
                             children: [
                               Expanded(
-                                  child: Text(
-                                '  Sign up with Facebook',
-                                style: TextStyle(
-                                  color: const Color(0xFFFFFFFF),
-                                  fontSize: AppDimensions.height10 * 1.8,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )),
+                                  child:Text('  Sign up with Facebook',style: TextStyle(
+                                    color: const Color(0xFFFFFFFF),
+                                    fontSize:  AppDimensions.height10 *1.8,
+                                    fontWeight: FontWeight.w700,
+                                  ),)),
                             ],
                           ),
                         ),
                       ),
+
+
                     ],
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 28.4),
+                SizedBox(height: AppDimensions.height10*28.4),
                 SizedBox(
                   height: AppDimensions.height10 * 5,
-                  width: AppDimensions.height10 * 29.3,
-                  child: OutlinedButton.icon(
-                    // <-- OutlinedButton
+                  width: AppDimensions.screenWidth-100,
+
+                  child:OutlinedButton.icon( // <-- OutlinedButton
                     style: OutlinedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFFFFFF),
+                      backgroundColor:const Color(0xFFFFFFFF),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40.0),
                       ),
@@ -267,31 +271,36 @@ class _LoginPageState extends State<LoginPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignUpPage(),
+                          builder: (context) => SignUpPage()
+                          ,
                         ),
                       );
                     },
-                    icon: Image.asset(
-                      "assets/images/fb.png",
-                      width: 0.0,
-                      height: 0.0,
-                    ),
+                    icon: Image.asset("assets/images/fb.png", width: 0.0,height: 0.0,),
                     label: Center(
-                        child: Text(
-                      'New account',
-                      style: TextStyle(
-                        color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10 * 1.9,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    )),
+                        child:Text('New account',style: TextStyle(
+                          color:  const Color(0xFF8C648A),
+                          fontSize:  AppDimensions.height10*1.6,
+                          fontWeight: FontWeight.w600,
+                        ),)),
                   ),
                 ),
               ],
               // child:  Text("Hello background"),
+
             ),
+
           ],
-        ));
+        )
+
+
+    );
     // );
+
+
   }
+
+
+
+
 }

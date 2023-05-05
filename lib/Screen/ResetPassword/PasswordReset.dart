@@ -270,7 +270,7 @@ class _PasswordResetState extends State<PasswordReset> {
                       'Reset password',
                       style: TextStyle(
                         color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10 * 1.6,
                         fontWeight: FontWeight.w600,
                       ),
                     )),
