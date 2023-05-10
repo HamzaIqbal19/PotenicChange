@@ -190,7 +190,7 @@ class _schedule_cardState extends State<schedule_card> {
                 children: <Widget>[
                   Container(
                     // color:Colors.orange,
-                    width: AppDimensions.height10 * 36.2,
+                    width: AppDimensions.height10 * 38.2,
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
@@ -227,8 +227,8 @@ class _schedule_cardState extends State<schedule_card> {
                     ),
                   ),
                   Container(
-                    // color:Colors.orange,
-                    width: AppDimensions.height10 * 36.2,
+
+                    width: AppDimensions.height10 * 38.2,
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
@@ -307,20 +307,21 @@ class _startTimerStateState extends State<startTimerState> {
               Text(
                 text_state,
                 //textAlign: TextAlign.left,
-                style: const TextStyle(
-                  color: Color.fromRGBO(100, 100, 100, 1),
-                  fontSize: 16,
+                style:  TextStyle(
+                  color: const Color.fromRGBO(100, 100, 100, 1),
+                  fontSize: AppDimensions.height10*1.6,
                   fontFamily: "Laila",
                   fontWeight: FontWeight.w700,
                 ),
               ),
               Container(
-                width: 162,
+                width: AppDimensions.height10*17.2,
+
                 child: Text(
                   start_time,
-                  style:const  TextStyle(
-                    color: Color.fromRGBO(250, 153, 52, 1),
-                    fontSize: 16,
+                  style:  TextStyle(
+                    color:const Color.fromRGBO(250, 153, 52, 1),
+                    fontSize: AppDimensions.height10*1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
@@ -329,46 +330,47 @@ class _startTimerStateState extends State<startTimerState> {
             ],
           ),
 
-          Container(
-            width: AppDimensions.height10*2.4,
 
-           child:Center(child: FloatingActionButton(
-               elevation: 0,
-               backgroundColor: Colors.transparent,
-               onPressed: () {
+             Container(
+
+              width: AppDimensions.height10*2.4,
+              // height: AppDimensions.height10*1.7,
+              // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
+             child:Center(
+
+               child: GestureDetector(
+                 // elevation: 0,
+                 // backgroundColor: Colors.transparent,
+                 onTap: () {
 
 
-                 showModalBottomSheet(
-                   context: context,
-                   builder: (context) {
-                     return MyListWheelForm(
-                       onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
-                         setState(() {
-                           start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                           // date.hour.toString();
-                           day = selectedDay;
-                           hour = selectedHour;
-                           minute = selectedMinute;
-                           period = selectedPeriod;
-                         });
-                       },
-                     );
-                   },
-                   isScrollControlled: true,
-                   shape: const RoundedRectangleBorder(
-                     borderRadius: BorderRadius.vertical(
-                       top: Radius.circular(16),
-                     ),
-                   ),
-                 );
-               },
-               child: const Icon(
-                 Icons.arrow_drop_down,
-                 color: Color.fromRGBO(250, 153, 52, 1),
-                 size: 35,
-               )),),
+                   showModalBottomSheet(
+                     context: context,
+                     builder: (context) {
+                       return MyListWheelForm(
+                         onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
+                           setState(() {
+                             start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                             // date.hour.toString();
+                             day = selectedDay;
+                             hour = selectedHour;
+                             minute = selectedMinute;
+                             period = selectedPeriod;
+                           });
+                         },
+                       );
+                     },
 
-          )
+
+                   );
+                 },
+                 child:  Icon(
+                   Icons.arrow_drop_down,
+                   color: const Color.fromRGBO(250, 153, 52, 1),
+                   // size: AppDimensions.height10*3.5,
+                 )),),
+
+            ),
         ],
       ),
     );
@@ -406,20 +408,20 @@ class _endTimerStateState extends State<endTimerState> {
               Text(
                 text_state,
                 //textAlign: TextAlign.left,
-                style: const TextStyle(
+                style:  TextStyle(
                   color: Color.fromRGBO(100, 100, 100, 1),
-                  fontSize: 16,
+                  fontSize: AppDimensions.height10*1.6,
                   fontFamily: "Laila",
                   fontWeight: FontWeight.w700,
                 ),
               ),
               Container(
-                width: 162,
+                width: AppDimensions.height10*16.2,
                 child: Text(
                   end_time,
-                  style:const  TextStyle(
+                  style:  TextStyle(
                     color: Color.fromRGBO(250, 153, 52, 1),
-                    fontSize: 16,
+                    fontSize: AppDimensions.height10*1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
@@ -430,42 +432,43 @@ class _endTimerStateState extends State<endTimerState> {
 
           Container(
             width: AppDimensions.height10*2.4,
+            // height: AppDimensions.height10*1.7,
+            // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
+            child:Center(
 
-            child:Center(child: FloatingActionButton(
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                onPressed: () {
-                  showModalBottomSheet(
+              child: GestureDetector(
+                // elevation: 0,
+                // backgroundColor: Colors.transparent,
+                  onTap: () {
+
+
+                    showModalBottomSheet(
                       context: context,
                       builder: (context) {
-                    return MyListWheelForm(
-                      onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
-                        setState(() {
-                          start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                          // date.hour.toString();
-                          day = selectedDay;
-                          hour = selectedHour;
-                          minute = selectedMinute;
-                          period = selectedPeriod;
-                        });
+                        return MyListWheelForm(
+                          onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
+                            setState(() {
+                              start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                              // date.hour.toString();
+                              day = selectedDay;
+                              hour = selectedHour;
+                              minute = selectedMinute;
+                              period = selectedPeriod;
+                            });
+                          },
+                        );
                       },
+
+
                     );
                   },
-                  isScrollControlled: true,
-                  shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(16),
-                  ),
-                  ),
-                  );
-                },
-                child: Icon(
-                  Icons.arrow_drop_down,
-                  color: Color.fromRGBO(250, 153, 52, 1),
-                  size: 35,
-                )),),
+                  child: const Icon(
+                    Icons.arrow_drop_down,
+                    color:  Color.fromRGBO(250, 153, 52, 1),
+                    // size: AppDimensions.height10*3.5,
+                  )),),
 
-          )
+          ),
         ],
       ),
     );

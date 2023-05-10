@@ -301,7 +301,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                         bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
-          )
+          ),
+
         ],
       ),
     );
