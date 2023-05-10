@@ -34,19 +34,6 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
           centerTitle: true,
-          title: Container(
-            margin: EdgeInsets.only(top: AppDimensions.height10 * 01),
-            width: AppDimensions.height10 * 17.0,
-            height: AppDimensions.height10 * 4.8,
-            child: Text(
-              'Goal Menu',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: AppDimensions.height10 * 2.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-          ),
           actions: [
             Center(
               child: IconButton(
@@ -75,10 +62,30 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
             children: [
               Container(
                 // color: Colors.amber,
+                //width: AppDimensions.height10 * 17.1,
+                height: AppDimensions.height10 * 2.2,
+                margin: EdgeInsets.only(
+                  top: AppDimensions.height10 * 5.2,
+                  // left: AppDimensions.height10 * 12.2,
+                  // right: AppDimensions.height10 * 12.1
+                ),
+                child: Center(
+                  child: Text(
+                    'Goal Menu',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10 * 1.8,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xffffffff)),
+                  ),
+                ),
+              ),
+              Container(
+                // color: Colors.amber,
                 width: AppDimensions.height10 * 17.1,
                 height: AppDimensions.height10 * 2.4,
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 7.9,
+                    top: AppDimensions.height10 * 0.5,
                     left: AppDimensions.height10 * 12.2,
                     right: AppDimensions.height10 * 12.1),
                 child: Text(
@@ -111,8 +118,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   )));
                 },
                 child: Container(
-                  width: AppDimensions.height10 * 6.56,
-                  height: AppDimensions.height10 * 6.56,
+                  width: AppDimensions.height10 * 8.39,
+                  height: AppDimensions.height10 * 9.3,
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 2.03),
                   decoration: const BoxDecoration(
                       image: DecorationImage(

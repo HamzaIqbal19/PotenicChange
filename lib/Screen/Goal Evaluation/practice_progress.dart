@@ -1414,7 +1414,7 @@ class _practice_progressState extends State<practice_progress> {
                 ),
                 Container(
                   width: AppDimensions.height10 * 38.5,
-                  height: AppDimensions.height10 * 80.169,
+                  height: AppDimensions.height10 * 84.669,
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
                   decoration: BoxDecoration(
                       borderRadius:
@@ -1438,6 +1438,7 @@ class _practice_progressState extends State<practice_progress> {
                         width: AppDimensions.height10 * 23,
                         child: Center(
                           child: RichText(
+                              textAlign: TextAlign.center,
                               text: TextSpan(
                                   style: TextStyle(
                                     height: 1.2,
@@ -1446,17 +1447,17 @@ class _practice_progressState extends State<practice_progress> {
                                     color: const Color(0xFF5B74A6),
                                   ),
                                   children: [
-                                TextSpan(
-                                    text: 'You have completed this\nover '),
-                                TextSpan(
-                                    text: '2 months',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w700))
-                              ])),
+                                    TextSpan(
+                                        text: 'You have completed this\nover '),
+                                    TextSpan(
+                                        text: '2 months',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w700))
+                                  ])),
                         ),
                       ),
                       Container(
-                          height: AppDimensions.height10 * 41.8,
+                          height: AppDimensions.height10 * 46.8,
                           child: CalendarWithRadioButtons()),
                     ],
                   ),

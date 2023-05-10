@@ -242,8 +242,8 @@ class progress_report extends StatelessWidget {
                 height: AppDimensions.height10 * 63.3,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image:
-                            AssetImage('assets/images/pro_report_bg#2.png'))),
+                        image: AssetImage('assets/images/pro_report_bg#2.png'),
+                        fit: BoxFit.cover)),
                 child: Column(
                   children: [
                     Container(
@@ -357,7 +357,7 @@ class progress_report extends StatelessWidget {
               ),
               Container(
                 width: AppDimensions.height10 * 38.5,
-                height: AppDimensions.height10 * 80.169,
+                height: AppDimensions.height10 * 84.569,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 3.7),
                 decoration: BoxDecoration(
                     borderRadius:
@@ -381,6 +381,7 @@ class progress_report extends StatelessWidget {
                       width: AppDimensions.height10 * 23,
                       child: Center(
                         child: RichText(
+                            textAlign: TextAlign.center,
                             text: TextSpan(
                                 style: TextStyle(
                                   height: 1.2,
@@ -389,15 +390,20 @@ class progress_report extends StatelessWidget {
                                   color: const Color(0xFF5B74A6),
                                 ),
                                 children: [
-                              TextSpan(text: 'You have completed this\nover '),
-                              TextSpan(
-                                  text: '2 months',
-                                  style: TextStyle(fontWeight: FontWeight.w700))
-                            ])),
+                                  TextSpan(
+                                      text: 'You have completed this\nover '),
+                                  TextSpan(
+                                      text: '2 months',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w700))
+                                ])),
                       ),
                     ),
                     Container(
-                        height: AppDimensions.height10 * 41.8,
+                        height: AppDimensions.height10 * 46.8,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10 * 2.0)),
                         child: CalendarWithRadioButtons()),
                   ],
                 ),
@@ -760,14 +766,18 @@ class progress_report extends StatelessWidget {
                           child: Container(
                             width: AppDimensions.height10 * 7.2,
                             height: AppDimensions.height10 * 2.1,
-                            child: Text(
-                              'Exit report',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  height: 1.2,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFFFFFF)),
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10 * 0.2),
+                            child: Center(
+                              child: Text(
+                                'Exit report',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 1.4,
+                                    height: 1.2,
+                                    fontWeight: FontWeight.w600,
+                                    color: const Color(0xFFFFFFFF)),
+                              ),
                             ),
                           ),
                         ),

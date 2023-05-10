@@ -102,8 +102,8 @@ class practiceMenu extends StatelessWidget {
                               decoration: const BoxDecoration(
                                 // color: Colors.amber,
                                 image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Group 9398.png'),
+                                    image:
+                                        AssetImage('assets/images/image3.png'),
                                     fit: BoxFit.cover),
                               ),
                             ),
