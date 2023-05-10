@@ -292,8 +292,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       ),
                                     ),
                                     content: Container(
-                                      margin: const EdgeInsets.only(bottom: 19, left: 16, right: 16),
-                                      height: AppDimensions.height10*1.6,
+                                      margin:  EdgeInsets.only(bottom: AppDimensions.height10*1.9, left: AppDimensions.height10*1.6, right: AppDimensions.height10*1.6),
+                                      color: Colors.blue,
+                                      height: AppDimensions.height10*1.8,
                                       width: AppDimensions.height10*23.8,
                                       child: const Text(
                                         "Please enable it in Phone’s setting",
@@ -370,11 +371,11 @@ class _PracticeReminderState extends State<PracticeReminder> {
 
 
                             child: Container(
-                            // color: Colors.red,
                             width: AppDimensions.height10*3.3,
                             height: AppDimensions.height10*3.3,
 
-                              child:radio1==true?Image.asset("assets/images/uncheckradio.png"):Image.asset("assets/images/circle.png")
+
+                              child:radio1==true?Image.asset("assets/images/uncheckradio.png",width:AppDimensions.height10*3.3,height: AppDimensions.height10*3.3,):Image.asset("assets/images/circle.png",width:AppDimensions.height10*3.3,height: AppDimensions.height10*3.3,)
 
                           ),
                           ),
@@ -392,12 +393,15 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             height: AppDimensions.height10*5.1,
                             width: AppDimensions.height10*34.5,
                             padding: EdgeInsets.only(right: AppDimensions.height10*2.0,left: AppDimensions.height10*1.7),
-                            child: Text("We will check in with you to remind you about your practices. You would be able to customise your notifications later in your Account Settings. ",
+                            child: Text("We will check in with you to remind you about your practices.You would be able to customise your notifications later in your Account Settings. ",
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
-                                fontFamily: "Laila-Regular",
+                                fontFamily: "Laila",
+
+                                height:AppDimensions.height10*0.12,
                                 color: const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.6,
                               ),
                             ),
                           )
@@ -502,13 +506,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             height: AppDimensions.height10*6.8,
                             width: AppDimensions.height10*34.5,
                             padding: EdgeInsets.only(right: AppDimensions.height10*2.0,left: AppDimensions.height10*1.7),
-                            child: Text("You confirm that you don’t want us to send you reminders and notifications to perform your \npractices. You can always enable and update your notification preferences later in Account Settings. ",
-                              textAlign: TextAlign.start,
+                            child: Text("You confirm that you don’t want us to send you reminders and notifications to perform your\npractices. You can always enable and update your notification preferences later in Account Settings. ",
+                              textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
-                                fontFamily: "Laila-Regular",
+                                fontFamily: "Laila",
+                                height:AppDimensions.height10*0.12,
                                 color: const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.6,
                               ),
                             ),
                           )
@@ -570,7 +575,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             style:  TextStyle(
                               color: Colors.white,
                               fontFamily: "Laila",
-                              fontSize: AppDimensions.height10 * 1.8,
+                              // height: AppDimensions.height10*0.1,
+                              fontSize: AppDimensions.height10 * 2.0,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

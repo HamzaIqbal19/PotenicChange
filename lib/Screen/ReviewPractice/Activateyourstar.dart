@@ -89,12 +89,12 @@ class _ActivateStarState extends State<ActivateStar> {
             children: [
               SizedBox(height: AppDimensions.height10*8.9,),
               Container(
-                width:AppDimensions.height10*20.7,
+                width:AppDimensions.height10*28.3,
                 height: AppDimensions.height10*7.2,
                 // padding: EdgeInsets.only(top: AppDimensions.height10 * 10),
                 child: Center(
                   child: GradientText(
-                    "Star & planet created! ",
+                    "Activate your star ",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
@@ -102,29 +102,29 @@ class _ActivateStarState extends State<ActivateStar> {
                       fontSize: AppDimensions.height10 * 3,
                     ),
                     colors: [
-                      const Color(0xFFFA9934),
-                      const Color(0xFFEDD15E).withOpacity(0.90),
+                      const Color(0xFFFFFFFF),
+                      const Color(0xFFFFFFFF).withOpacity(0.90),
                     ],
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 2.2,
+                height: AppDimensions.height10 * 2.5,
               ),
               Container(
                 // color: Colors.black,
-                  height: AppDimensions.height10 * 5.1,
-                  width: AppDimensions.height10 * 34.0,
+                  height: AppDimensions.height10 * 13.2,
+                  width: AppDimensions.height10 * 35.7,
                   child: Column(
                     children: [
                       Container(
                         child: Center(
-                          child: Text("Please review and continue ",
+                          child: Text("I desire to grow and improve my identity. By activating my star, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 2.2,
+                              fontSize: AppDimensions.height10 * 1.8,
                             ),
                           ),
                         ),
@@ -134,7 +134,7 @@ class _ActivateStarState extends State<ActivateStar> {
                   )),
 
               SizedBox(
-                height: AppDimensions.height10 * 5.7,
+                height: AppDimensions.height10 * 3.6,
               ),
               Stack(
                 children: [
@@ -187,56 +187,33 @@ class _ActivateStarState extends State<ActivateStar> {
 
 
               SizedBox(
-                height: AppDimensions.height10 * 13.7,
+                height: AppDimensions.height10 * 1.1,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    // color: Colors.blue,
-                      width: AppDimensions.height10 * 5.0,
-                      height: AppDimensions.height10 * 5.0,
+                    // color: Colors.black,
 
-                      child: Image.asset(
-                        "assets/images/Moreactions.png",
-                        fit: BoxFit.contain,
-                      )),
-
-                  GestureDetector(
-
-                    onTap: (){
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => Visualising(),
-                      //   ),
-                      // );
-                    },
-
-                    child:   Container(
-                      height: AppDimensions.height10*5,
-                      width: AppDimensions.height10*31.3,
-                      decoration:  BoxDecoration(
-                        // color: Color(0xFFFF7D50),
-                        border: Border.all(color: Colors.transparent),
-                        gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                        borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-                      ),
-                      child:  Center(
-                        child:  Text(
-                          "Next",
-                          style:  TextStyle(
-                            color: Colors.white,
-                            fontSize: AppDimensions.height10 * 1.6,
-                            fontWeight: FontWeight.w600,
+                      height: AppDimensions.height10 * 5.4,
+                      width: AppDimensions.height10 * 27.4,
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Center(
+                              child: Text("To begin your journey press and hold here.  ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: AppDimensions.height10 * 1.8,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ),
+
+                        ],
+                      )),
                 ],
               ),
 

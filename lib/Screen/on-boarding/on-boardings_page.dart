@@ -233,7 +233,8 @@ class OnboardingPageState extends State<OnboardingPage> {
                   page.description,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontWeight: FontWeight.w400,
+                    letterSpacing: AppDimensions.height10*0.13,
+                    fontWeight: FontWeight.w500,
                     color: page.descripColor,
                     fontSize: AppDimensions.height10 * 2.0,
                   ),
@@ -243,6 +244,7 @@ class OnboardingPageState extends State<OnboardingPage> {
               Container(
 
                 // width: double.infinity,
+
                 width:AppDimensions.height10*28.5,
                 height: page.description2 != ""
                     ? AppDimensions.height10 * 0
@@ -251,7 +253,8 @@ class OnboardingPageState extends State<OnboardingPage> {
                   page.subDescription,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                    letterSpacing: AppDimensions.height10*0.15,
+                    fontWeight: FontWeight.w400,
                     color: page.descripColor,
                     fontSize: AppDimensions.height10 * 2.0,
                   ),
@@ -260,7 +263,7 @@ class OnboardingPageState extends State<OnboardingPage> {
             ],
           ),
           page.description2 != ""
-              ? SizedBox(height: AppDimensions.height10 * 5.2)
+              ? SizedBox(height: AppDimensions.height10 * 2.2)
               : Container(),
           page.image1 != ""
               ? Center(
@@ -272,7 +275,7 @@ class OnboardingPageState extends State<OnboardingPage> {
                 )
               : Container(),
           page.description2 != ""
-              ? SizedBox(height: AppDimensions.height10 * 1.7)
+              ? SizedBox(height: AppDimensions.height10 * 4.7)
               : Container(),
           page.description2 != ""
               ? Container(
@@ -290,7 +293,7 @@ class OnboardingPageState extends State<OnboardingPage> {
                   ))
               : Container(),
           page.description2 != ""
-              ? SizedBox(height: AppDimensions.height10 * 4.7)
+              ? SizedBox(height: AppDimensions.height10 * 2.7)
               : Container(),
           page.image2 != ""
               ? Center(
@@ -302,8 +305,8 @@ class OnboardingPageState extends State<OnboardingPage> {
                 )
               : Container(),
           page.description2 != ""
-              ? SizedBox(height: AppDimensions.height10 * 4.85,)
-              : SizedBox(height: AppDimensions.height10 * 6.1,),
+              ? SizedBox(height: AppDimensions.height10 * 6.89,)
+              : SizedBox(height: AppDimensions.height10 * 6.139,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

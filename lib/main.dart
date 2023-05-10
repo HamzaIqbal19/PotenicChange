@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.grey, fontFamily: "Laila"),
       builder: (context, child) {
         return MediaQuery(
-          data: MediaQuery.of(context).copyWith(textScaleFactor: 0.88),
+          data: MediaQuery.of(context).copyWith(textScaleFactor: 0.87),
           child: child!,
         );
       },

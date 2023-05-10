@@ -41,138 +41,140 @@ void bottom_sheet(context) {
         // color:Colors.lightGreen,
         height: AppDimensions.height10*45.0,
         width: AppDimensions.height10*41.4,
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                height: AppDimensions.height10*6.3,
-                width: AppDimensions.height10*35.5,
-                // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
-                child: Text(
-                  'Create a new practice \n for ‘Control My Anger’ goal ',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: const Color(0xFF464646),
-                    fontSize: AppDimensions.height10*2.4,
-                    fontWeight: FontWeight.w600,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  height: AppDimensions.height10*6.3,
+                  width: AppDimensions.height10*35.5,
+                  // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+                  child: Text(
+                    'Create a new practice \n for ‘Control My Anger’ goal ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: const Color(0xFF464646),
+                      fontSize: AppDimensions.height10*2.4,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              ),
 
-              SizedBox(height: AppDimensions.height10*3.9,),
-
+                SizedBox(height: AppDimensions.height10*3.9,),
 
 
-              Container(
-                width: AppDimensions.height10*36.0,
-                child: TextField(
-                  style: const  TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 24,
-                    color: Color.fromARGB(209, 250, 154, 52),
+
+                Container(
+                  width: AppDimensions.height10*36.0,
+                  child: TextField(
+                    style: const  TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24,
+                      color: Color.fromARGB(209, 250, 154, 52),
+                    ),
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color.fromRGBO(0, 0, 0, 0.1),
+                        hintText: "Enter practice name",
+                        hintStyle:const  TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 24,
+                            color: Color(0xFF828282)
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18),
+                            borderSide: const BorderSide(
+                                width: 3, color: Colors.transparent))),
                   ),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color.fromRGBO(0, 0, 0, 0.1),
-                      hintText: "Enter practice name",
-                      hintStyle:const  TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 24,
-                        color: Color(0xFF828282)
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18),
-                          borderSide: const BorderSide(
-                              width: 3, color: Colors.transparent))),
                 ),
-              ),
-              SizedBox(height: AppDimensions.height10*1,),
-              Container(
-                height: AppDimensions.height10*2,
-                padding: EdgeInsets.only(left:AppDimensions.height10*4.0),
-                child: Row(
-                  children: const [
-                    Center(
-                      child: Text(
-                        "Character count:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: Color.fromARGB(209, 250, 154, 52),
-                          fontSize: 13,
+                SizedBox(height: AppDimensions.height10*1,),
+                Container(
+                  height: AppDimensions.height10*2,
+                  padding: EdgeInsets.only(left:AppDimensions.height10*4.0),
+                  child: Row(
+                    children: const [
+                      Center(
+                        child: Text(
+                          "Character count:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            color: Color.fromARGB(209, 250, 154, 52),
+                            fontSize: 13,
+                          ),
                         ),
                       ),
-                    ),
-                    Center(
-                      child: Text(
-                        "80",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Color.fromARGB(209, 250, 154, 52),
-                          fontSize: 13,
+                      Center(
+                        child: Text(
+                          "80",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: Color.fromARGB(209, 250, 154, 52),
+                            fontSize: 13,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
 
 
-              SizedBox(height: AppDimensions.height10*3.0,),
-              Container(
+                SizedBox(height: AppDimensions.height10*3.0,),
+                Container(
 
-                height: AppDimensions.height10*5,
-                width:AppDimensions.height10*25.4,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(AppDimensions.height10*5.0),
-                  gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0xFFFCC10D),
-                        Color(0xFFFDA210)
-                      ]),
-                ),
-                child: TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => PracticeName("Meditation","Meditation"),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      'Save',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),
-                    )),
-              ),
-              Container(
-                  margin: EdgeInsets.only(top: 24),
-                  height: 40,
-                  width: 140,
+                  height: AppDimensions.height10*5,
+                  width:AppDimensions.height10*25.4,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      border: Border.all(
-                          width: 2, color: Color.fromARGB(209, 250, 154, 52))),
+                    borderRadius: BorderRadius.circular(AppDimensions.height10*5.0),
+                    gradient: const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color(0xFFFCC10D),
+                          Color(0xFFFDA210)
+                        ]),
+                  ),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PracticeName("Meditation","Meditation"),
+                          ),
+                        );
+                      },
                       child: const Text(
-                        'Cancel',
+                        'Save',
                         style: TextStyle(
-                          color: Color.fromARGB(209, 250, 154, 52),
+                          color: Colors.white,
                           fontSize: 16,
                         ),
-                      )))
-            ],
+                      )),
+                ),
+                Container(
+                    margin: EdgeInsets.only(top: 24),
+                    height: 40,
+                    width: 140,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                            width: 2, color: Color.fromARGB(209, 250, 154, 52))),
+                    child: TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(
+                            color: Color.fromARGB(209, 250, 154, 52),
+                            fontSize: 16,
+                          ),
+                        )))
+              ],
+            ),
           ),
         ),
       ),

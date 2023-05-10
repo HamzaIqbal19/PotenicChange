@@ -116,7 +116,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
                               fontFamily: "LaiLa",
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10 * 1.8,
                             ),
                           ),
                         ),
@@ -153,7 +153,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                     right: 0,
                     child: Align(
                       // alignment: Alignment.bottomCenter,
-                      alignment: Alignment(0.01,AppDimensions.height10*0.046+1),
+                      alignment: Alignment(0.01,AppDimensions.height10*0.015+1),
                       //heightFactor: 0.5,
                       child: Container(
                         height: AppDimensions.height10*17.5,

@@ -19,7 +19,9 @@ class _backboxState extends State<backbox> {
     return Stack(children: [
       Container(
           width: AppDimensions.height10 * 38.2,
-          height: AppDimensions.height10 * 40.3,
+          height: AppDimensions.height10 * 42.3,
+          padding: EdgeInsets.only(left:AppDimensions.height10*1.1,right:AppDimensions.height10*1.1 ),
+          
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(
@@ -29,55 +31,129 @@ class _backboxState extends State<backbox> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(
-                height: AppDimensions.height10 * 36.3,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      inner_text('Reason 1'),
-                      SizedBox(
-                        height: AppDimensions.height10 * 1.1,
-                      ),
-                      inner_text("Reason 2"),
-                      SizedBox(
-                        height: AppDimensions.height10 * 1.1,
-                      ),
-                      inner_text("Reason 3"),
-                    ],
+              Center(
+                child: SizedBox(
+                  height: AppDimensions.height10 * 40.0,
+                  width: AppDimensions.height10 * 36.2,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        inner_text('Reason 1'),
+                        SizedBox(
+                          height: AppDimensions.height10 * 0.4,
+                        ),
+                        Container(
+
+                          padding: EdgeInsets.only(
+                              left: AppDimensions.height10 * 2.0,
+                              right: AppDimensions.height10 * 13.6),
+                          child: Row(
+                            children: [
+                              Center(
+                                child: Text(
+                                  "Character count: ",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xFF464646),
+                                    fontSize: AppDimensions.height10 * 1.3,
+                                  ),
+                                ),
+                              ),
+                              Center(
+                                child: Text(
+                                  "200",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFF464646),
+                                    fontSize: AppDimensions.height10 * 1.3,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: AppDimensions.height10 * 0.9,
+                        ),
+                        inner_text("Reason 2"),
+                        SizedBox(
+                          height: AppDimensions.height10 * 0.4,
+                        ),
+                        Container(
+
+                          padding: EdgeInsets.only(
+                              left: AppDimensions.height10 * 2.0,
+                              right: AppDimensions.height10 * 13.6),
+                          child: Row(
+                            children: [
+                              Center(
+                                child: Text(
+                                  "Character count: ",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xFF464646),
+                                    fontSize: AppDimensions.height10 * 1.3,
+                                  ),
+                                ),
+                              ),
+                              Center(
+                                child: Text(
+                                  "200",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFF464646),
+                                    fontSize: AppDimensions.height10 * 1.3,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: AppDimensions.height10 * 0.9,
+                        ),
+                        inner_text("Reason 3"),
+                        SizedBox(
+                          height: AppDimensions.height10 * 0.4,
+                        ),
+                        Container(
+
+                          padding: EdgeInsets.only(
+                              left: AppDimensions.height10 * 2.0,
+                              right: AppDimensions.height10 * 13.6),
+                          child: Row(
+                            children: [
+                              Center(
+                                child: Text(
+                                  "Character count: ",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xFF464646),
+                                    fontSize: AppDimensions.height10 * 1.3,
+                                  ),
+                                ),
+                              ),
+                              Center(
+                                child: Text(
+                                  "200",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFF464646),
+                                    fontSize: AppDimensions.height10 * 1.3,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.only(
-                    left: AppDimensions.height10 * 2.0,
-                    right: AppDimensions.height10 * 23.6),
-                child: Row(
-                  children: [
-                    Center(
-                      child: Text(
-                        "Character count:",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xFF464646),
-                          fontSize: AppDimensions.height10 * 1.3,
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: Text(
-                        "200",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF464646),
-                          fontSize: AppDimensions.height10 * 1.3,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+
             ],
           )),
       Positioned(
@@ -140,12 +216,11 @@ class _inner_textState extends State<inner_text> {
   Widget build(BuildContext context) {
     return Container(
       height: AppDimensions.height10 * 17.9,
-      width: AppDimensions.height10 * 34.0,
+      width: AppDimensions.height10 * 38.0,
       padding: EdgeInsets.only(
-          top: AppDimensions.height10 * 2,
-          bottom: 1,
-          left: AppDimensions.height10,
-          right: AppDimensions.height10 * 6.0),
+          top: AppDimensions.height10 * 1.3,
+          left: AppDimensions.height10*2.0,
+          right: AppDimensions.height10 * 2.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(
@@ -163,13 +238,15 @@ class _inner_textState extends State<inner_text> {
               BorderRadius.all(Radius.circular(AppDimensions.height10 * 1.8))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
               height: AppDimensions.height10 * 3.6,
-              width: AppDimensions.height10 * 26.9,
-              child: Text("Reason1",
+              // width: AppDimensions.height10 * 26.9,
+              child: Text(widget.circle_text,
                   style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Laila",
                     color: _focusNode.hasFocus
                         ? const Color(0xFFFFFFFF)
                         : const Color(0xFF828282),
@@ -180,17 +257,22 @@ class _inner_textState extends State<inner_text> {
           ),
           Container(
               height: AppDimensions.height10 * 7.5,
-              width: AppDimensions.height10 * 26.9,
+              // width: AppDimensions.height10 * 26.9,
+
               child: CupertinoTextField(
                 placeholder: "I want to achieve this goal because...",
+                textAlignVertical: TextAlignVertical.top,
                 placeholderStyle: TextStyle(
                     fontSize: AppDimensions.height10 * 1.6,
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xFF828282)),
+                    fontFamily: "Laila",
+                    color: _focusNode.hasFocus
+                    ? const Color(0xFFFFFFFF)
+                      : const Color(0xFF828282),),
                 controller: body_text,
                 focusNode: _focusNode,
                 maxLines: 4,
-                style: const TextStyle(
+                style: const   TextStyle(
                     fontWeight: FontWeight.w500, color: Color(0xFFFFFFFF)),
                 decoration: const BoxDecoration(
                   color: Colors.transparent,

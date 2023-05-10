@@ -23,7 +23,7 @@ class routinecommitment extends StatelessWidget {
                   days: 'Monday',
                 ),
                 SizedBox(
-                  height: 10,
+                  height: AppDimensions.height10*1.0,
                 ),
                 schedule_card(
                   days: 'Tuesday',
@@ -160,7 +160,7 @@ class _startTimerStateState extends State<startTimerState> {
       width: AppDimensions.height10*31.6,
       height: AppDimensions.height10*3.7,
       decoration: BoxDecoration(
-          color: Color.fromRGBO(0, 0, 0, 0.1),
+          color: Color(0xFFF6F6F6),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Row(
@@ -244,7 +244,7 @@ class _endTimerStateState extends State<endTimerState> {
       width: AppDimensions.height10*31.6,
       height: AppDimensions.height10*3.7,
       decoration: BoxDecoration(
-          color: Color.fromRGBO(0, 0, 0, 0.1),
+          color: Color(0xFFF6F6F6),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Row(

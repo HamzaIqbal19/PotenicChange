@@ -49,7 +49,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
       index: 1,
       description:
           'Potenic is a self-growth \n transformational app for personal\n development enthusiasts, who:',
-      subDescription: '-are on the journey already \n using self-development tools \n - need clarity on progress \n - struggle to stay focused \n - desire to reach a \n consistent level of self- \n fulfilment.',
+      subDescription: '-are on the journey already using self-development tools \n-need clarity on progress \n - struggle to stay focused \n - desire to reach a \n consistent level of self- \n fulfilment.',
       image1:"",
       backbutton: false,
       description2:"",

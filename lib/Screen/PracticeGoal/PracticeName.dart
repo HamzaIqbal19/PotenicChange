@@ -173,11 +173,11 @@ class _PracticeNameState extends State<PracticeName> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.0,
+                  height: AppDimensions.height10 * 0.8,
                 ),
                 Container(
                   height: AppDimensions.height10 * 2.2,
-                  width: AppDimensions.height10 * 24.4,
+                  width: AppDimensions.height10 * 28.4,
                   child: Center(
                     child: Text(
                       "Enter the name of your practice",
@@ -191,7 +191,7 @@ class _PracticeNameState extends State<PracticeName> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.4,
+                  height: AppDimensions.height10 * 2.3,
                 ),
                 Container(
 
@@ -277,7 +277,7 @@ class _PracticeNameState extends State<PracticeName> {
                 MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
                   height: AppDimensions.height10 * 26.3,
                 ):SizedBox(
-                  height: AppDimensions.height10 * 9.6,
+                  height: AppDimensions.height10 *11.2,
                 ),
 
                 Row(

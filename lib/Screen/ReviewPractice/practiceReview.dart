@@ -205,8 +205,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                   ),
                                   // SizedBox(width: ),
                                   Container(
-                                    height: AppDimensions.height10*2.0,
-                                    width: AppDimensions.height10*2.0,
+                                    height: AppDimensions.height10*3.0,
+                                    width: AppDimensions.height10*3.0,
 
                                     // color: Colors.blue,
                                     margin: EdgeInsets.only(bottom:AppDimensions.height10*1.5, ),
@@ -328,8 +328,8 @@ class _PracticeReviewState extends State<PracticeReview> {
 
                                       },
                                       child:  Container(
-                                        height: AppDimensions.height10*2.0,
-                                        width: AppDimensions.height10*2.0,
+                                        height: AppDimensions.height10*3.0,
+                                        width: AppDimensions.height10*3.0,
 
                                         // color: Colors.blue,
                                         margin: EdgeInsets.only(bottom:AppDimensions.height10*1.5, ),
@@ -360,8 +360,17 @@ class _PracticeReviewState extends State<PracticeReview> {
                                     ),
                                   ),
                                 ),
+                                SizedBox(height: AppDimensions.height10*2.9,),
+                                 Container(
+                                   height: AppDimensions.height10 * 0.5,
+                                   width: AppDimensions.height10 * 6.1,
+                                   decoration:  BoxDecoration(
+                                          color: const Color(0xFF437296),
+                                       borderRadius: BorderRadius.all(Radius.circular(AppDimensions.height10*0.5))
+                                   ),
 
-                                SizedBox(height: AppDimensions.height10*2.3,),
+                               ),
+                                SizedBox(height: AppDimensions.height10*1.5,),
                                  Container(
                                    height: AppDimensions.height10*89.5,
                                    child:routinecommitment(),
@@ -425,8 +434,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                     ),
                                     // SizedBox(width: ),
                                     Container(
-                                      height: AppDimensions.height10*2.0,
-                                      width: AppDimensions.height10*2.0,
+                                      height: AppDimensions.height10*3.0,
+                                      width: AppDimensions.height10*3.0,
 
                                       // color: Colors.blue,
                                       margin: EdgeInsets.only(bottom:AppDimensions.height10*1.5, ),
@@ -606,29 +615,65 @@ class _PracticeReviewState extends State<PracticeReview> {
 
 
                                   margin: EdgeInsets.only(top: AppDimensions.height10*1.9, right:AppDimensions.height10* 1.6, left: AppDimensions.height10*1.6, bottom: AppDimensions.height10*0),
-                                  height: AppDimensions.height10*4.4,
+
                                   width: AppDimensions.height10*23.8,
-                                  child: Text(
-                                    "Are you sure you want\nto delete this goal?",
+                                  child:  Text.rich(
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: "Laila",
-                                      fontSize:  AppDimensions.height10*1.7,
-                                      fontWeight: FontWeight.w400,
+                                    TextSpan(
+                                      text: 'Are you sure you want\n to ',
+
+                                      style: TextStyle(
+                                        color: const Color(0xFF000000),
+                                        fontSize: AppDimensions.height10 *1.9,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                      children: <TextSpan>[
+
+                                        TextSpan(
+                                            text: 'delete ',
+
+                                            style: TextStyle(
+
+                                              color: const Color(0xFF000000),
+                                              fontSize: AppDimensions.height10 *1.9,
+                                              fontWeight: FontWeight.w700,
+                                            )),
+
+
+                                        TextSpan(
+                                            text: 'this goal?',
+
+                                            style: TextStyle(
+
+                                              color: const Color(0xFF000000),
+                                              fontSize: AppDimensions.height10 *1.9,
+                                              fontWeight: FontWeight.w400,
+                                            )),
+                                        // can add more TextSpans here...
+
+
+
+                                        // can add more TextSpans here...
+
+
+                                        // can add more TextSpans here...
+                                      ],
                                     ),
+
+
                                   ),
                                 ),
 
                                 content: Container(
                                   // color:Colors.red,
                                   margin: EdgeInsets.only(bottom: AppDimensions.height10*1.9, left:AppDimensions.height10* 1.6, right: AppDimensions.height10*1.6,top:AppDimensions.height10*0.5),
-                                  height: AppDimensions.height10*6.8,
+
                                   width: AppDimensions.height10*23.8,
                                   child: Text(
                                     "By clicking 'Yes' you confirm that this\ngoal will be deleted and all your data\nthat relates to this goal won't be\nrecoverable. ",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontSize: AppDimensions.height10*1.3,
+                                      fontSize: AppDimensions.height10*1.5,
                                       fontFamily: "Laila",
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -701,18 +746,20 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 Image.asset(
                                   "assets/images/bin.png",
                                   height: AppDimensions.height10*1.8,
-                                  width: AppDimensions.height10*1.8,
+                                  width: AppDimensions.height10*1.4,
 
                                 ),
-                                SizedBox(width: AppDimensions.height10*0.8,),
-                                Text(
-                                  "Delete Practice",
-                                  style:  TextStyle(
-                                    color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 1.6,
-                                    fontWeight: FontWeight.w600,
+                                SizedBox(width: AppDimensions.height10*1.3,),
+                                Container(
+                                  child: Text(
+                                    "Delete Practice",
+                                    style:  TextStyle(
+                                      color: Colors.white,
+                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
-                                ),
+                                )
                               ],
                             )
                         ),

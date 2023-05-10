@@ -29,7 +29,7 @@ class _StarReviewState extends State<StarReview> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: Text("Review",style: TextStyle(color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontSize: AppDimensions.height10*2.0),),
+        title: Text("Review goal details",style: TextStyle(color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontSize: AppDimensions.height10*2.0),),
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: true,
         leading: Center(
@@ -80,7 +80,7 @@ class _StarReviewState extends State<StarReview> {
                 Container(
 
                     width: AppDimensions.height10 * 10.4,
-                    height: AppDimensions.height10 * 7.6,
+                    height: AppDimensions.height10 *11.2,
                     padding: EdgeInsets.only(
 
                         left: AppDimensions.height10 * 1.5,
@@ -90,7 +90,7 @@ class _StarReviewState extends State<StarReview> {
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
-                  height: AppDimensions.height10*1.6 ,
+                  height: AppDimensions.height10*0.6 ,
                 ),
                 Container(
                   child: Center(
@@ -164,8 +164,8 @@ class _StarReviewState extends State<StarReview> {
                                     ),
                                     // SizedBox(width: ),
                                     Container(
-                                      height: AppDimensions.height10*2.0,
-                                      width: AppDimensions.height10*2.0,
+                                      height: AppDimensions.height10*3.0,
+                                      width: AppDimensions.height10*3.0,
 
                                       // color: Colors.blue,
                                       margin: EdgeInsets.only(bottom:AppDimensions.height10*1.5, ),
@@ -292,8 +292,8 @@ class _StarReviewState extends State<StarReview> {
                                         );
                                       },
                                       child:  Container(
-                                        height: AppDimensions.height10*2.0,
-                                        width: AppDimensions.height10*2.0,
+                                        height: AppDimensions.height10*3.0,
+                                        width: AppDimensions.height10*3.0,
 
                                         // color: Colors.blue,
                                         margin: EdgeInsets.only(bottom:AppDimensions.height10*1.5, ),
@@ -311,13 +311,13 @@ class _StarReviewState extends State<StarReview> {
                                 SizedBox(height: AppDimensions.height10*0.5,),
                                 Container(
                                   height: AppDimensions.height10 * 2.2,
-                                  width: AppDimensions.height10 * 23.9,
+                                  width: AppDimensions.height10 * 24,
                                   child: Center(
                                     child: Text(
                                       "Your reasons ‘Why’",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-
+                                          height: AppDimensions.height10*0.12,
                                           fontSize: AppDimensions.height10 * 2.0,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFF5B74A6)),
@@ -327,14 +327,14 @@ class _StarReviewState extends State<StarReview> {
 
                                 SizedBox(height: AppDimensions.height10*2.3,),
 
-                                inner_text('Reason 1'),
+                                inner_text('Reason 1',"I want to achieve this goal to be in control of my\n anger and to regain control of my life."),
                                 SizedBox(height: AppDimensions.height10*1.0,),
-                                inner_text('Reason 2'),
+                                inner_text('Reason 2',"I want to be closer and respect my wife\n and children."),
                                 SizedBox(height: AppDimensions.height10*1.0,),
-                                inner_text('Reason 3'),
+                                inner_text('Reason 3',"I don’t want my anger to hold me back\n from enjoying life."),
 
 
-                                SizedBox(height: AppDimensions.height10*1.6,),
+                                SizedBox(height: AppDimensions.height10*2.0,),
 
 
                               ],
@@ -389,8 +389,8 @@ class _StarReviewState extends State<StarReview> {
                                     ),
                                     // SizedBox(width: ),
                                     Container(
-                                      height: AppDimensions.height10*2.0,
-                                      width: AppDimensions.height10*2.0,
+                                      height: AppDimensions.height10*3.0,
+                                      width: AppDimensions.height10*3.0,
 
                                       // color: Colors.blue,
                                       margin: EdgeInsets.only(bottom:AppDimensions.height10*1.5, ),
@@ -405,14 +405,14 @@ class _StarReviewState extends State<StarReview> {
                                 ),
                                 SizedBox(height: AppDimensions.height10*0.5,),
                                 Container(
-                                  height: AppDimensions.height10 * 2.2,
+                                  height: AppDimensions.height10 * 2.4,
                                   width: AppDimensions.height10 * 30.9,
                                   child: Center(
                                     child: Text(
                                       "Your New identity Statement",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-
+                                          height: AppDimensions.height10*0.12,
                                           fontSize: AppDimensions.height10 * 2.0,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFF5B74A6)),
@@ -422,7 +422,7 @@ class _StarReviewState extends State<StarReview> {
 
                                 SizedBox(height: AppDimensions.height10*2.3,),
 
-                                inner_text('Statement 1'),
+                                inner_text('Statement 1',"I am someone who is in control of my anger"),
                                 SizedBox(height: AppDimensions.height10*1.0,),
 
 
@@ -481,8 +481,8 @@ class _StarReviewState extends State<StarReview> {
                                     ),
                                     // SizedBox(width: ),
                                     Container(
-                                      height: AppDimensions.height10*2.0,
-                                      width: AppDimensions.height10*2.0,
+                                      height: AppDimensions.height10*3.0,
+                                      width: AppDimensions.height10*3.0,
 
                                       // color: Colors.blue,
                                       margin: EdgeInsets.only(bottom:AppDimensions.height10*1.5, ),
@@ -497,14 +497,14 @@ class _StarReviewState extends State<StarReview> {
                                 ),
                                 SizedBox(height: AppDimensions.height10*0.5,),
                                 Container(
-                                  height: AppDimensions.height10 * 2.2,
+                                  height: AppDimensions.height10 * 2.4,
                                   width: AppDimensions.height10 * 30.9,
                                   child: Center(
                                     child: Text(
                                       "Your ‘New self’",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-
+                                          height: AppDimensions.height10*0.12,
                                           fontSize: AppDimensions.height10 * 2.0,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFF5B74A6)),
@@ -514,7 +514,7 @@ class _StarReviewState extends State<StarReview> {
 
                                 SizedBox(height: AppDimensions.height10*2.3,),
 
-                                inner_text('Statement 1'),
+                                inner_text('Statement 1',"I picture myself talking more calmly to my wife when she has made a mistake. "),
                                 SizedBox(height: AppDimensions.height10*1.0,),
 
 
@@ -570,14 +570,50 @@ class _StarReviewState extends State<StarReview> {
                                 margin: EdgeInsets.only(top: AppDimensions.height10*1.9, right:AppDimensions.height10* 1.6, left: AppDimensions.height10*1.6, bottom: AppDimensions.height10*0),
                                 height: AppDimensions.height10*4.4,
                                 width: AppDimensions.height10*23.8,
-                                child: Text(
-                                  "Are you sure you want\nto delete this goal?",
+                                child:  Text.rich(
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontFamily: "Laila",
-                                    fontSize:  AppDimensions.height10*1.7,
-                                    fontWeight: FontWeight.w400,
+                                  TextSpan(
+                                    text: 'Are you sure you want\n to ',
+
+                                    style: TextStyle(
+                                      color: const Color(0xFF000000),
+                                      fontSize: AppDimensions.height10 *1.9,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                    children: <TextSpan>[
+
+                                      TextSpan(
+                                          text: 'delete ',
+
+                                          style: TextStyle(
+
+                                            color: const Color(0xFF000000),
+                                            fontSize: AppDimensions.height10 *1.9,
+                                            fontWeight: FontWeight.w700,
+                                          )),
+
+
+                                      TextSpan(
+                                          text: 'this goal?',
+
+                                          style: TextStyle(
+
+                                            color: const Color(0xFF000000),
+                                            fontSize: AppDimensions.height10 *1.9,
+                                            fontWeight: FontWeight.w400,
+                                          )),
+                                      // can add more TextSpans here...
+
+
+
+                                      // can add more TextSpans here...
+
+
+                                      // can add more TextSpans here...
+                                    ],
                                   ),
+
+
                                 ),
                               ),
 
@@ -590,7 +626,7 @@ class _StarReviewState extends State<StarReview> {
                                   "By clicking 'Yes' you confirm that this\ngoal will be deleted and all your data\nthat relates to this goal won't be\nrecoverable. ",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: AppDimensions.height10*1.3,
+                                    fontSize: AppDimensions.height10*1.5,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -658,23 +694,28 @@ class _StarReviewState extends State<StarReview> {
                         child:  Center(
                           child:  Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                                               Image.asset(
                                               "assets/images/bin.png",
-                                              height: AppDimensions.height10*1.8,
-                                              width: AppDimensions.height10*1.8,
+                                              height: AppDimensions.height10*1.2,
+                                              width: AppDimensions.height10*1.4,
 
                                               ),
-                                                                        SizedBox(width: AppDimensions.height10*0.8,),
-                                                                        Text(
-                                "Delete Goal",
-                                style:  TextStyle(
-                                  color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
+                              SizedBox(width: AppDimensions.height10*1.4,),
+                             Container(
+                               padding: EdgeInsets.only(top:AppDimensions.height10*1.3,bottom:AppDimensions.height10*1.3),
+                               child:  Text(
+                                 "Delete Goal",
+                                 textAlign: TextAlign.end,
+                                 style:  TextStyle(
+                                   color: Colors.white,
+                                   // height: AppDimensions.height10*0.1,
+                                   fontSize: AppDimensions.height10 * 1.8,
+                                   fontWeight: FontWeight.w700,
+                                 ),
+                               ),
+                             )
                             ],
                           )
                         ),
@@ -774,9 +815,10 @@ class _inner_text1State extends State<inner_text1> {
 
 class inner_text extends StatefulWidget {
   final String circle_text;
+  final String panel_Text;
 
 
-  inner_text(this.circle_text, {super.key});
+  inner_text(this.circle_text,this.panel_Text, {super.key});
 
   @override
   State<inner_text> createState() => _inner_textState();
@@ -805,49 +847,60 @@ class _inner_textState extends State<inner_text> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height10*11.0,
+
       width: AppDimensions.height10*36.0,
-      padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: 1, left:AppDimensions.height10, right: AppDimensions.height10*6.0),
+
       decoration: BoxDecoration(
           gradient:_focusNode.hasFocus? const LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Color(0xFFEFBEB2), Color(0xFFFEAA897)]
+              colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]
 
           ):const LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Color(0xFFEECDC5), Color(0xFFF6E0DB)]),
+              colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
           // color: Colors.white,
 
           border: Border.all(color: Colors.white, width: 2),
           borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
 
-              height: AppDimensions.height10*3.6,
-              width:AppDimensions.height10* 26.9,
+
+              width:AppDimensions.height10* 32.0,
+              padding:  EdgeInsets.only(top: AppDimensions.height10*1.3),
               child: Text("${widget.circle_text}",style: TextStyle(
                 fontWeight: FontWeight.w500,
+                fontFamily: "Laila",
                 color: _focusNode.hasFocus? const Color(0xFFFFFFFF):const Color(0xFFFFFFFF),
                 fontSize: AppDimensions.height10*2.2,
               ))),
           SizedBox(height: AppDimensions.height10*0.9,),
           Container(
 
-              height: AppDimensions.height10*2.6,
-              width:AppDimensions.height10* 26.9,
+              padding:  EdgeInsets.only(bottom: AppDimensions.height10*2.4),
+              width:AppDimensions.height10* 32.0,
+
+
               child: CupertinoTextField(
-                placeholder: "I want to achieve this goal because...",
+                placeholder: widget.panel_Text,
                 placeholderStyle:TextStyle(
                     fontSize: AppDimensions.height10*1.6,
                     fontWeight: FontWeight.w500,
+                    fontFamily: "Laila",
+                    height: AppDimensions.height10*0.12,
                     color: const Color(0xFFFFFFFF)),
                 controller: body_text,
                 focusNode: _focusNode,
-                maxLines: 4,
+                // maxLines: 4,
+                minLines: null,
+                maxLines: null,
+                expands: true,
+
                 style: const TextStyle(
                     fontWeight: FontWeight.w500,
                     color:  Color(0xFFFFFFFF)

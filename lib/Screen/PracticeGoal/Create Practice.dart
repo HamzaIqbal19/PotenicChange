@@ -138,7 +138,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                   Container(
                     // height: AppDimensions.height10*7.1,
                     child: Text(
-                      "Choose your practice!",
+                      "Choose your practice",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
@@ -484,7 +484,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                     width: AppDimensions.height10 * 0.5,
                   ),
                   Text(
-                    'Create a new goal! ',
+                    'Create a new practice! ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: const Color(0xFFFA9934),

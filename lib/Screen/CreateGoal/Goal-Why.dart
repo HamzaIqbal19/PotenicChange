@@ -136,7 +136,7 @@ class _GoalWhyState extends State<GoalWhy> {
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
-                  height: AppDimensions.height10*1.0 ,
+                  height: AppDimensions.height10*3.7 ,
                 ),
                 Container(
                   child: Center(
@@ -154,7 +154,7 @@ class _GoalWhyState extends State<GoalWhy> {
                   height: AppDimensions.height10 * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 7.5,
+                  height: AppDimensions.height10 * 4.9,
                   width: AppDimensions.height10 * 37.2,
                   child: Center(
                     child: Text(

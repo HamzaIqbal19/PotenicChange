@@ -2,68 +2,87 @@ import 'package:flutter/material.dart';
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:potenic_app/Widgets/DateTimeBottomSheet.dart';
+import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 String start_time = '00:00';
 String end_time = '07:00';
 String? minutes;
 String? hours;
+int count=0;
+String day = '';
+String hour = '';
+String minute = '';
+String period = '';
+bool Done=false;
 
 class schedule extends StatelessWidget {
+
+  final ValueChanged<int> onCountChanged;
+
+  schedule({required this.onCountChanged});
   @override
   Widget build(BuildContext context) {
     return  Padding(
           padding:
           const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
-          child: SingleChildScrollView(
+
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                schedule_card(
+                 schedule_card(
                   days: 'Monday',
+                  onCountChanged: onCountChanged,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: AppDimensions.height10*1.6,
                 ),
-                schedule_card(
+                 schedule_card(
                   days: 'Tuesday',
+                  onCountChanged: onCountChanged,
                 ),
                 SizedBox(
-                  height: 10,
+                    height: AppDimensions.height10*1.6
                 ),
-                schedule_card(
+                 schedule_card(
                   days: 'Wednesday',
+                  onCountChanged: onCountChanged,
                 ),
                 SizedBox(
-                  height: 10,
+                    height: AppDimensions.height10*1.6
                 ),
-                schedule_card(
+                 schedule_card(
                   days: 'Thursday',
+                  onCountChanged: onCountChanged,
                 ),
                 SizedBox(
-                  height: 10,
+                    height: AppDimensions.height10*1.6
                 ),
-                schedule_card(
+                 schedule_card(
                   days: 'Friday',
+                  onCountChanged: onCountChanged,
                 ),
                 SizedBox(
-                  height: 10,
+                    height: AppDimensions.height10*1.6
                 ),
-                schedule_card(
+                   schedule_card(
                   days: 'Saturday',
+                  onCountChanged: onCountChanged,
                 ),
                 SizedBox(
-                  height: 10,
+                    height: AppDimensions.height10*1.6
                 ),
-                schedule_card(
+                 schedule_card(
                   days: 'Sunday',
+                  onCountChanged: onCountChanged,
                 ),
                 SizedBox(
-                  height: 10,
+                    height: AppDimensions.height10*1.6
                 ),
               ],
             ),
-          ),
+
         );
 
 
@@ -72,18 +91,21 @@ class schedule extends StatelessWidget {
 
 class schedule_card extends StatefulWidget {
   final String days;
+  final ValueChanged<int> onCountChanged;
 
-  const schedule_card({super.key, required this.days});
+   schedule_card({super.key, required this.days, required this.onCountChanged});
 
   @override
-  State<schedule_card> createState() => _schedule_cardState(days);
+  State<schedule_card> createState() => _schedule_cardState(days,onCountChanged);
 }
 
 class _schedule_cardState extends State<schedule_card> {
   final String days_name;
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
 
-  _schedule_cardState(this.days_name);
+  final ValueChanged<int> onCountChanged;
+
+  _schedule_cardState(this.days_name, this.onCountChanged);
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +113,14 @@ class _schedule_cardState extends State<schedule_card> {
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.white, width: 2),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.5),
+                blurRadius: 10,
+                spreadRadius: AppDimensions.height10*0.2,
+                offset: Offset(0,AppDimensions.height10*0.4), // Shadow position
+              ),
+            ],
             borderRadius: const BorderRadius.all(Radius.circular(18))),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -117,19 +147,39 @@ class _schedule_cardState extends State<schedule_card> {
                           size: 30,
                         ),
                         onPressed: () {
-                          DatePicker.showDateTimePicker(context,
-
-                              showTitleActions: true, onChanged: (date) {
-                                hours = date.hour.toString();
-                                minutes = date.minute.toString();
-                              }, onConfirm: (date) {
-                                _globalKey.currentState?.expand();
-                                setState(() {
-                                  start_time = '${hours} : ${minutes}';
-                                });
-                                ;
-                              }, currentTime: DateTime.now());
-                        })),
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return MyListWheelForm(
+                                onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
+                                  setState(() {
+                                    start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                    end_time="12:00am";
+                                    Done=Done;
+                                    print("Done:$Done");
+                                    if(Done==true) {
+                                      _globalKey.currentState?.expand();
+                                      count=count+1;
+                                      onCountChanged(count);
+                                    }
+                                    // date.hour.toString();
+                                    day = selectedDay;
+                                    hour = selectedHour;
+                                    minute = selectedMinute;
+                                    period = selectedPeriod;
+                                  });
+                                },
+                              );
+                            },
+                            isScrollControlled: true,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(16),
+                              ),
+                            ),
+                          );
+                        }
+                        )),
                 title: Text(
                   days_name,
                   style: const TextStyle(
@@ -176,8 +226,10 @@ class _schedule_cardState extends State<schedule_card> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 9.0, bottom: 10),
+                  Container(
+                    // color:Colors.orange,
+                    width: AppDimensions.height10 * 36.2,
+                    padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
                         const endTimerState(
@@ -284,18 +336,33 @@ class _startTimerStateState extends State<startTimerState> {
                elevation: 0,
                backgroundColor: Colors.transparent,
                onPressed: () {
-                 DatePicker.showTime12hPicker(context, showTitleActions: true,
-                     onChanged: (date) {
-                       hours = date.hour.toString();
-                       minutes = date.minute.toString();
-                     }, onConfirm: (date) {
-                       setState(() {
-                         start_time = '${hours} : ${minutes}';
-                       });
-                       ;
-                     }, currentTime: DateTime.now());
+
+
+                 showModalBottomSheet(
+                   context: context,
+                   builder: (context) {
+                     return MyListWheelForm(
+                       onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
+                         setState(() {
+                           start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                           // date.hour.toString();
+                           day = selectedDay;
+                           hour = selectedHour;
+                           minute = selectedMinute;
+                           period = selectedPeriod;
+                         });
+                       },
+                     );
+                   },
+                   isScrollControlled: true,
+                   shape: const RoundedRectangleBorder(
+                     borderRadius: BorderRadius.vertical(
+                       top: Radius.circular(16),
+                     ),
+                   ),
+                 );
                },
-               child: Icon(
+               child: const Icon(
                  Icons.arrow_drop_down,
                  color: Color.fromRGBO(250, 153, 52, 1),
                  size: 35,
@@ -368,16 +435,29 @@ class _endTimerStateState extends State<endTimerState> {
                 elevation: 0,
                 backgroundColor: Colors.transparent,
                 onPressed: () {
-                  DatePicker.showTime12hPicker(context, showTitleActions: true,
-                      onChanged: (date) {
-                        hours = date.hour.toString();
-                        minutes = date.minute.toString();
-                      }, onConfirm: (date) {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                    return MyListWheelForm(
+                      onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
                         setState(() {
-                          start_time = '${hours} : ${minutes}';
+                          start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                          // date.hour.toString();
+                          day = selectedDay;
+                          hour = selectedHour;
+                          minute = selectedMinute;
+                          period = selectedPeriod;
                         });
-                        ;
-                      }, currentTime: DateTime.now());
+                      },
+                    );
+                  },
+                  isScrollControlled: true,
+                  shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(16),
+                  ),
+                  ),
+                  );
                 },
                 child: Icon(
                   Icons.arrow_drop_down,

@@ -12,6 +12,16 @@ class PracticeRoutine extends StatefulWidget {
 
 class _PracticeRoutineState extends State<PracticeRoutine> {
   bool buttonActive = false;
+  int Count=0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    setState(() {
+      count=0;
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +95,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
+                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.3),
                   child: Center(
                     child: Text(
                       "Practice Creation 3/3",
@@ -214,31 +224,35 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
            ],
          ),
 
-
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.1,
                 ),
                 Container(
-                  color: Colors.transparent,
-                  height: AppDimensions.height10 * 38,
-                  width: AppDimensions.height10 * 40.4,
-                  child: schedule(),
+                  child: schedule(onCountChanged: (int count) {
+                    setState(() {
+                      Count=count;
+                    });
+                    print("Updated count: $count");
+                  })
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 5.6,
+                  height: AppDimensions.height10 * 6.85,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PracticeReminder(),
-                          ),
-                        );
+                        if(count >= 3) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PracticeReminder(),
+                            ),
+                          );
+                        }else{
+
+                        }
                       },
                       child: Container(
                         height: AppDimensions.height10 * 5,
@@ -247,7 +261,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
 
-                          gradient: buttonActive == true
+                          gradient: count>= 3
                               ? const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -280,7 +294,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.5,
+                  height: AppDimensions.height10 * 4.2,
                 ),
                 Padding(
                     padding: EdgeInsets.only(
