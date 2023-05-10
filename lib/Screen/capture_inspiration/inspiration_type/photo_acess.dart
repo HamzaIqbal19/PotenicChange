@@ -18,15 +18,15 @@ class _photo_pop_upState extends State<photo_pop_up> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xff646464),
+        color: const Color(0xff646464),
         child: Stack(children: [
           Align(
-            alignment: Alignment(0, 0),
+            alignment: const Alignment(0, 0),
             child: Container(
               width: AppDimensions.height10 * 27.0,
               height: AppDimensions.height10 * 24.8,
               decoration: BoxDecoration(
-                  color: Color(0xff1E1E1E).withOpacity(0.75),
+                  color: const Color(0xff1E1E1E).withOpacity(0.75),
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 1.4)),
               child: Column(
@@ -69,7 +69,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                   SizedBox(
                     height: AppDimensions.height10 * 0.1,
                     child: Divider(
-                      color: Color(0xff545458).withOpacity(0.65),
+                      color: const Color(0xff545458).withOpacity(0.65),
                       //thickness: AppDimensions.height10 * 0.5,
                       height: AppDimensions.height10 * 0.5,
                     ),
@@ -79,7 +79,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => photo_info(
+                              builder: (context) => const photo_info(
                                     edit_details: false,
                                     image_detals: false,
                                     image_save: false,
@@ -95,7 +95,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.7,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff0A84FF)),
+                              color: const Color(0xff0A84FF)),
                         ),
                       ),
                     ),
@@ -103,7 +103,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                   SizedBox(
                     height: AppDimensions.height10 * 0.1,
                     child: Divider(
-                      color: Color(0xff545458).withOpacity(0.65),
+                      color: const Color(0xff545458).withOpacity(0.65),
                       //thickness: AppDimensions.height10 * 0.5,
                       height: AppDimensions.height10 * 0.5,
                     ),
@@ -117,14 +117,14 @@ class _photo_pop_upState extends State<photo_pop_up> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.7,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff0A84FF)),
+                            color: const Color(0xff0A84FF)),
                       ),
                     ),
                   ),
                   SizedBox(
                     height: AppDimensions.height10 * 0.1,
                     child: Divider(
-                      color: Color(0xff545458).withOpacity(0.65),
+                      color: const Color(0xff545458).withOpacity(0.65),
                       //thickness: AppDimensions.height10 * 0.5,
                       height: AppDimensions.height10 * 0.5,
                     ),
@@ -138,7 +138,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.7,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff0A84FF)),
+                            color: const Color(0xff0A84FF)),
                       ),
                     ),
                   )
@@ -147,7 +147,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
             ),
           ),
           Align(
-            alignment: Alignment(0, 1),
+            alignment: const Alignment(0, 1),
             child: Container(
               width: AppDimensions.height10 * 17.0,
               height: AppDimensions.height10 * 0.5,
@@ -155,7 +155,7 @@ class _photo_pop_upState extends State<photo_pop_up> {
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),
-                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             ),
           )
         ]),
@@ -189,12 +189,12 @@ class _photo_infoState extends State<photo_info> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xffC4C4C4),
+        color: const Color(0xffC4C4C4),
       ),
       bottomNavigationBar: BottomAppBar(
           elevation: 0,
-          shape: CircularNotchedRectangle(),
-          color: Color(0xffC4C4C4),
+          shape: const CircularNotchedRectangle(),
+          color: const Color(0xffC4C4C4),
           child: Container(
             // height: AppDimensions.height10 * 84.8,
             margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
@@ -204,7 +204,7 @@ class _photo_infoState extends State<photo_info> {
                 height: AppDimensions.height10 * 5.1,
                 //margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
                 decoration: BoxDecoration(
-                    color: Color(0xffF5F5F5).withOpacity(0.8),
+                    color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(AppDimensions.height10 * 1.0),
                         topRight:
@@ -225,7 +225,7 @@ class _photo_infoState extends State<photo_info> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff007AFF)),
+                            color: const Color(0xff007AFF)),
                       ),
                     ),
                   ),
@@ -240,14 +240,14 @@ class _photo_infoState extends State<photo_info> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.7,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff282828)),
+                                      color: const Color(0xff282828)),
                                 )
                               : Text(
                                   'Create image inspiration',
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.7,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xff282828)),
+                                      color: const Color(0xff282828)),
                                 )),
                     ),
                   ),
@@ -264,7 +264,7 @@ class _photo_infoState extends State<photo_info> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    inspiration_landing(
+                                                    const inspiration_landing(
                                                       muliple_insp: false,
                                                       is_Updated: false,
                                                     )))
@@ -376,11 +376,11 @@ class _photo_infoState extends State<photo_info> {
                                                                     context,
                                                                     MaterialPageRoute(
                                                                         builder: (context) => widget.edit_details
-                                                                            ? inspiration_landing(
+                                                                            ? const inspiration_landing(
                                                                                 muliple_insp: false,
                                                                                 is_Updated: true,
                                                                               )
-                                                                            : inspiration_landing(
+                                                                            : const inspiration_landing(
                                                                                 muliple_insp: false,
                                                                                 is_Updated: false,
                                                                               )));
@@ -461,7 +461,7 @@ class _photo_infoState extends State<photo_info> {
                                           fontSize:
                                               AppDimensions.height10 * 1.5,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff007AFF)),
+                                          color: const Color(0xff007AFF)),
                                     ),
                                   )
                                 : GestureDetector(
@@ -472,7 +472,7 @@ class _photo_infoState extends State<photo_info> {
                                           fontSize:
                                               AppDimensions.height10 * 1.5,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff007AFF)),
+                                          color: const Color(0xff007AFF)),
                                     ),
                                   ),
                           )
@@ -481,7 +481,8 @@ class _photo_infoState extends State<photo_info> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.5,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff007AFF).withOpacity(0.4)),
+                                color:
+                                    const Color(0xff007AFF).withOpacity(0.4)),
                           ),
                   )
                 ]),
@@ -502,7 +503,7 @@ class _photo_infoState extends State<photo_info> {
                         ),
                         width: AppDimensions.height10 * 24.4,
                         height: AppDimensions.height10 * 24.4,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: AssetImage(
@@ -527,7 +528,7 @@ class _photo_infoState extends State<photo_info> {
                                   fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           ),
                           Container(
@@ -544,7 +545,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Nir Eyal',
                                       style: TextStyle(
                                           fontFamily: 'Poppins',
-                                          color: Color(0xFF282828),
+                                          color: const Color(0xFF282828),
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500),
@@ -553,7 +554,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Give your inspiration a title',
                                       style: TextStyle(
                                           fontFamily: 'Poppins',
-                                          color: Color(0xFF828282),
+                                          color: const Color(0xFF828282),
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500),
@@ -573,7 +574,7 @@ class _photo_infoState extends State<photo_info> {
                                         fontFamily: 'Poppins',
                                         fontSize: AppDimensions.height10 * 1.4,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff828282)),
+                                        color: const Color(0xff828282)),
                                   )
                                 : Text(
                                     'Why is it inspirational to you',
@@ -581,7 +582,7 @@ class _photo_infoState extends State<photo_info> {
                                         fontFamily: 'Poppins',
                                         fontSize: AppDimensions.height10 * 1.4,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff828282)),
+                                        color: const Color(0xff828282)),
                                   ),
                           ),
                           Container(
@@ -597,7 +598,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Behavioural Coach',
                                       style: TextStyle(
                                           fontFamily: 'Poppins',
-                                          color: Color(0xFF282828),
+                                          color: const Color(0xFF282828),
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500),
@@ -606,7 +607,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Say more about this inspiration ',
                                       style: TextStyle(
                                           fontFamily: 'Poppins',
-                                          color: Color(0xFF828282),
+                                          color: const Color(0xFF828282),
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500),
@@ -625,7 +626,7 @@ class _photo_infoState extends State<photo_info> {
                                   fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           ),
                           Row(
@@ -644,7 +645,7 @@ class _photo_infoState extends State<photo_info> {
                                           child: Text(
                                             'https://www.nirandfar.com/',
                                             style: TextStyle(
-                                                color: Color(0xFF282828),
+                                                color: const Color(0xFF282828),
                                                 fontFamily: 'Poppins',
                                                 fontSize:
                                                     AppDimensions.height10 *
@@ -657,7 +658,7 @@ class _photo_infoState extends State<photo_info> {
                                           child: Text(
                                             'Add a link',
                                             style: TextStyle(
-                                                color: Color(0xFF828282),
+                                                color: const Color(0xFF828282),
                                                 fontFamily: 'Poppins',
                                                 fontSize:
                                                     AppDimensions.height10 *
@@ -682,7 +683,7 @@ class _photo_infoState extends State<photo_info> {
                                                     1.15),
                                             height:
                                                 AppDimensions.height10 * 2.5,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               // image: DecorationImage(image: AssetImage()),
                                               color: Colors.black,
@@ -712,7 +713,7 @@ class _photo_infoState extends State<photo_info> {
                                           margin: EdgeInsets.only(
                                               left: AppDimensions.height10 *
                                                   0.85),
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             // image: DecorationImage(image: AssetImage()),
                                             color: Colors.black,
@@ -741,7 +742,7 @@ class _photo_infoState extends State<photo_info> {
                                             left:
                                                 AppDimensions.height10 * 4.85),
                                         height: AppDimensions.height10 * 2.5,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           // image: DecorationImage(image: AssetImage()),
                                           color: Colors.black,
@@ -780,7 +781,7 @@ class _photo_infoState extends State<photo_info> {
                                   fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           ),
                           Container(
@@ -795,7 +796,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Add #hashtag',
                                       style: TextStyle(
                                           fontFamily: 'Poppins',
-                                          color: Color(0xFF282828),
+                                          color: const Color(0xFF282828),
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500),
@@ -804,7 +805,7 @@ class _photo_infoState extends State<photo_info> {
                                       'Add #hashtag',
                                       style: TextStyle(
                                           fontFamily: 'Poppins',
-                                          color: Color(0xFF828282),
+                                          color: const Color(0xFF828282),
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500),
@@ -824,7 +825,7 @@ class _photo_infoState extends State<photo_info> {
                                   fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           ),
                           GestureDetector(
@@ -834,13 +835,14 @@ class _photo_infoState extends State<photo_info> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              inspiraton_goals(
+                                              const inspiraton_goals(
                                                 data_saved: true,
                                               )))
                                   : Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => link_set()));
+                                          builder: (context) =>
+                                              const link_set()));
                             },
                             child: Container(
                               height: AppDimensions.height10 * 6.0,
@@ -852,7 +854,7 @@ class _photo_infoState extends State<photo_info> {
                               ),
                               decoration: BoxDecoration(
                                   border: Border.all(
-                                      width: 1, color: Color(0xFF464646)),
+                                      width: 1, color: const Color(0xFF464646)),
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10 * 2.0)),
                               child: Row(
@@ -869,7 +871,7 @@ class _photo_infoState extends State<photo_info> {
                                         child: Text(
                                           '00 impacted goals',
                                           style: TextStyle(
-                                            color: Color(0xFF646464),
+                                            color: const Color(0xFF646464),
                                             fontSize:
                                                 AppDimensions.height10 * 1.8,
                                             fontWeight: FontWeight.w500,
@@ -888,7 +890,7 @@ class _photo_infoState extends State<photo_info> {
                                           'assets/images/BTN Back.png',
                                           //width: AppDimensions.height10 * 2.6,
                                           //height: AppDimensions.height10 * 2.6,
-                                          color: Color(0xFF646464),
+                                          color: const Color(0xFF646464),
                                           fit: BoxFit.cover,
                                         ),
                                       ))
@@ -925,11 +927,11 @@ class _link_setState extends State<link_set> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xffC4C4C4),
+        color: const Color(0xffC4C4C4),
       ),
       bottomNavigationBar: BottomAppBar(
         // elevation: 0,
-        color: Color(0xffC4C4C4),
+        color: const Color(0xffC4C4C4),
         child: Container(
           margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
           //height: AppDimensions.height10 * 83.517,
@@ -937,7 +939,7 @@ class _link_setState extends State<link_set> {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(AppDimensions.height10 * 1.0),
                 topRight: Radius.circular(AppDimensions.height10 * 1.0)),
-            color: Color(0xFF828282),
+            color: const Color(0xFF828282),
           ),
           child: Column(
             children: [
@@ -946,7 +948,7 @@ class _link_setState extends State<link_set> {
                 height: AppDimensions.height10 * 5.1,
                 // margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
                 decoration: BoxDecoration(
-                    color: Color(0xffF5F5F5).withOpacity(0.8),
+                    color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(AppDimensions.height10 * 1.0),
                         topRight:
@@ -968,8 +970,9 @@ class _link_setState extends State<link_set> {
                                     right: AppDimensions.height10 * 0.8),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Color(0xFF828282).withOpacity(0.85),
-                                    image: DecorationImage(
+                                    color: const Color(0xFF828282)
+                                        .withOpacity(0.85),
+                                    image: const DecorationImage(
                                         image: AssetImage(
                                             'assets/images/Close.png'))),
                               ),
@@ -981,7 +984,8 @@ class _link_setState extends State<link_set> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10 * 1.0),
-                                  color: Color(0xff767680).withOpacity(0.12)),
+                                  color: const Color(0xff767680)
+                                      .withOpacity(0.12)),
                               child: Row(
                                 // mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -990,7 +994,7 @@ class _link_setState extends State<link_set> {
                                     height: AppDimensions.height10 * 1.413,
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10 * 0.8),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         //shape: BoxShape.circle,
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -1019,7 +1023,7 @@ class _link_setState extends State<link_set> {
                                           fontSize:
                                               AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff3C3C43)
+                                          color: const Color(0xff3C3C43)
                                               .withOpacity(0.6)),
                                       decoration: InputDecoration(
                                           contentPadding: EdgeInsets.fromLTRB(
@@ -1032,7 +1036,7 @@ class _link_setState extends State<link_set> {
                                               fontSize: AppDimensions.height10 *
                                                   1.4,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xff3C3C43)
+                                              color: const Color(0xff3C3C43)
                                                   .withOpacity(0.6)),
                                           focusedBorder:
                                               const OutlineInputBorder(
@@ -1053,7 +1057,7 @@ class _link_setState extends State<link_set> {
                                     child: Container(
                                       width: AppDimensions.height10 * 2.3,
                                       height: AppDimensions.height10 * 2.3,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -1082,7 +1086,8 @@ class _link_setState extends State<link_set> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => photo_info(
+                                          builder: (context) =>
+                                              const photo_info(
                                                 edit_details: false,
                                                 image_detals: true,
                                                 image_save: false,
@@ -1094,7 +1099,7 @@ class _link_setState extends State<link_set> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.5,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff007AFF)),
+                                      color: const Color(0xff007AFF)),
                                 ),
                               )),
                             )
@@ -1110,7 +1115,8 @@ class _link_setState extends State<link_set> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10 * 1.0),
-                                  color: Color(0xff767680).withOpacity(0.12)),
+                                  color: const Color(0xff767680)
+                                      .withOpacity(0.12)),
                               child: Row(
                                 // mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -1119,7 +1125,7 @@ class _link_setState extends State<link_set> {
                                     height: AppDimensions.height10 * 1.413,
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10 * 0.8),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         //shape: BoxShape.circle,
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -1148,7 +1154,7 @@ class _link_setState extends State<link_set> {
                                           fontSize:
                                               AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff3C3C43)
+                                          color: const Color(0xff3C3C43)
                                               .withOpacity(0.6)),
                                       decoration: InputDecoration(
                                           hintText: 'Enter website address',
@@ -1156,7 +1162,7 @@ class _link_setState extends State<link_set> {
                                               fontSize: AppDimensions.height10 *
                                                   1.4,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xff3C3C43)
+                                              color: const Color(0xff3C3C43)
                                                   .withOpacity(0.6)),
                                           focusedBorder:
                                               const OutlineInputBorder(
@@ -1177,7 +1183,7 @@ class _link_setState extends State<link_set> {
                                     child: Container(
                                       width: AppDimensions.height10 * 2.3,
                                       height: AppDimensions.height10 * 2.3,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
                                                   'assets/images/close_dark.png'))),
@@ -1197,7 +1203,7 @@ class _link_setState extends State<link_set> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      photo_info(
+                                                      const photo_info(
                                                         edit_details: false,
                                                         image_detals: true,
                                                         image_save: false,
@@ -1210,7 +1216,7 @@ class _link_setState extends State<link_set> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.5,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xff007AFF)),
+                                              color: const Color(0xff007AFF)),
                                         ),
                                       )
                                     : GestureDetector(
@@ -1223,7 +1229,7 @@ class _link_setState extends State<link_set> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.5,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xff007AFF)),
+                                              color: const Color(0xff007AFF)),
                                         ),
                                       ),
                               ),

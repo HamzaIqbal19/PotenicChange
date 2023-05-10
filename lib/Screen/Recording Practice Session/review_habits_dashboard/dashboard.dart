@@ -365,7 +365,9 @@ class reviw_habit_dashBoard extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => practiceMenu()));
+                                  builder: (context) => practiceMenu(
+                                        goal_eval: false,
+                                      )));
                         },
                         child: Container(
                           height: AppDimensions.height10 * 13.8,

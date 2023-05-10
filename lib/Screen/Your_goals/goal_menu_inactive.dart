@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
+import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 
 import '../../utils/app_dimensions.dart';
+import '../Recording Practice Session/recordPracticeMenu.dart';
 
 class goal_menu_inactive extends StatefulWidget {
   final bool isActive;
+  final bool goal_evaluation;
+  final bool premium;
   const goal_menu_inactive({
     super.key,
     required this.isActive,
+    required this.goal_evaluation,
+    required this.premium,
   });
 
   @override
@@ -18,6 +25,8 @@ class goal_menu_inactive extends StatefulWidget {
 class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   @override
   Widget build(BuildContext context) {
+    int goal_level = 2;
+    //bool premium = false;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -53,7 +62,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
             ),
           ]),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -65,181 +74,193 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10 * 27.5,
-                height: AppDimensions.height10 * 11.2,
+                // color: Colors.amber,
+                width: AppDimensions.height10 * 17.1,
+                height: AppDimensions.height10 * 2.4,
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 9.7,
-                    right: AppDimensions.height10 * 8.3,
-                    left: AppDimensions.height10 * 5.1),
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
-                        width: AppDimensions.height10 * 10.4,
-                        height: AppDimensions.height10 * 11.2,
-                        child: Align(
-                          alignment: Alignment.topCenter,
-                          child: Container(
-                            width: AppDimensions.height10 * 7.9,
-                            height: AppDimensions.height10 * 7.9,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                              image: AssetImage('assets/images/image3.png'),
-                              fit: BoxFit.cover,
-                            )),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(1, -0.4),
-                      child: Container(
-                        // color: Colors.amber,
-                        width: AppDimensions.height10 * 17.1,
-                        height: AppDimensions.height10 * 2.4,
-                        child: Text(
-                          'Control my anger',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.0,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xffffffff)),
-                        ),
-                      ),
-                    ),
-                  ],
+                    top: AppDimensions.height10 * 7.9,
+                    left: AppDimensions.height10 * 12.2,
+                    right: AppDimensions.height10 * 12.1),
+                child: Text(
+                  'Control my anger',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10 * 2.0,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xffffffff)),
                 ),
               ),
-              Container(
-                width: AppDimensions.height10 * 32.0,
-                height: AppDimensions.height10 * 2.6,
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 1.4),
-                child: Center(
-                  child: Text(
-                    'What do you want to do?',
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10 * 2.2,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xff437296)),
-                  ),
+              GestureDetector(
+                onTap: () {
+                  widget.premium
+                      ? Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const goal_menu_inactive(
+                                    premium: false,
+                                    isActive: true,
+                                    goal_evaluation: true,
+                                  )))
+                      : Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const goal_menu_inactive(
+                                    premium: true,
+                                    isActive: true,
+                                    goal_evaluation: true,
+                                  )));
+                },
+                child: Container(
+                  width: AppDimensions.height10 * 6.56,
+                  height: AppDimensions.height10 * 6.56,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.03),
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                    image: AssetImage('assets/images/orange_flair.png'),
+                    fit: BoxFit.cover,
+                  )),
                 ),
               ),
               Container(
                 width: AppDimensions.height10 * 37.4,
                 height: AppDimensions.height10 * 14.7,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.4),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.81),
                 decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.circular(AppDimensions.height10 * 2.0),
-                    color: Colors.white),
+                    color: Color(0xFFF5F5F5)),
                 child: Stack(
                   children: [
-                    Container(
-                      width: AppDimensions.height10 * 37.4,
-                      height: AppDimensions.height10 * 12.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0),
-                          image: DecorationImage(
-                            image:
-                                AssetImage('assets/images/Rectangle 192.png'),
-                            fit: BoxFit.cover,
-                          )),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10 * 8.1,
-                            height: AppDimensions.height10 * 8.1,
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.height10 * 1.6),
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image:
-                                    AssetImage('assets/images/Nebula Pie.png'),
-                              ),
-                              // color: Colors.amber,
-                            ),
-                            child: Center(
-                              child: Text(
-                                '-',
-                                style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.8),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10 * 20.9,
-                            height: AppDimensions.height10 * 9.1,
-                            child: Column(
-                              children: [
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Container(
-                                    // width: AppDimensions.height10 * 16.5,
-                                    height: AppDimensions.height10 * 1.9,
-
-                                    child: Text(
-                                      'Goal level evaluation',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w700,
-                                          color: Color(0xFFFFFFFF)),
-                                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        width: AppDimensions.height10 * 37.4,
+                        height: AppDimensions.height10 * 12.0,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10 * 2.0),
+                            image: const DecorationImage(
+                              image:
+                                  AssetImage('assets/images/Rectangle 192.png'),
+                              fit: BoxFit.cover,
+                            )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const new_progress_score()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 8.1,
+                                height: AppDimensions.height10 * 8.1,
+                                margin: EdgeInsets.only(
+                                    right: AppDimensions.height10 * 1.6),
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/Nebula Pie.png'),
+                                  ),
+                                  // color: Colors.amber,
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    '$goal_level',
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 2.0,
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xFF464646)),
                                   ),
                                 ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Container(
-                                    // width: AppDimensions.height10 * 9.5,
-                                    height: AppDimensions.height10 * 2.2,
+                              ),
+                            ),
+                            Container(
+                              width: AppDimensions.height10 * 20.9,
+                              height: AppDimensions.height10 * 9.1,
+                              child: Column(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Container(
+                                      // width: AppDimensions.height10 * 16.5,
+                                      height: AppDimensions.height10 * 1.9,
 
+                                      child: Text(
+                                        'Goal level evaluation',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w700,
+                                            color: widget.premium
+                                                ? Color(0xFFFFFFFF)
+                                                : Color(0xFF464646)),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Container(
+                                      // width: AppDimensions.height10 * 9.5,
+                                      height: AppDimensions.height10 * 2.2,
+
+                                      child: Text(
+                                        'for 01 FEB 23!',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.4,
+                                            fontWeight: FontWeight.w500,
+                                            color: widget.premium
+                                                ? Color(0xFFFFFFFF)
+                                                : Color(0xFF464646)),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: AppDimensions.height10 * 20.9,
+                                    height: AppDimensions.height10 * 5,
+                                    alignment: Alignment.centerLeft,
                                     child: Text(
-                                      'for 01 FEB 23!',
+                                      widget.premium
+                                          ? 'Evaluate how close you’re\ncurrently to living your goal'
+                                          : 'Only available to Premium\nCustomers',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10 * 1.4,
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xFFFFFFFF)),
+                                          fontWeight: FontWeight.w400,
+                                          color: widget.premium
+                                              ? Color(0xFFFFFFFF)
+                                              : Color(0xFF464646)),
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  width: AppDimensions.height10 * 20.9,
-                                  height: AppDimensions.height10 * 5,
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    'Evaluate how close you’re\ncurrently to living your goal',
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(0xFFFFFFFF)),
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          Container(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.31,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 0.8),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.png',
-                                  color: Color(0xFFFFFFFF),
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
-                                  fit: BoxFit.cover,
-                                ),
-                              )),
-                        ],
+                            Container(
+                                width: AppDimensions.height10 * 2.4,
+                                height: AppDimensions.height10 * 1.31,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 0.8),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Image.asset(
+                                    'assets/images/BTN Back.png',
+                                    color: const Color(0xFFFFFFFF),
+                                    //width: AppDimensions.height10 * 2.6,
+                                    //height: AppDimensions.height10 * 2.6,
+                                    fit: BoxFit.cover,
+                                  ),
+                                )),
+                          ],
+                        ),
                       ),
                     ),
                     Align(
-                      alignment: Alignment(-0.8, 0.875),
+                      alignment: const Alignment(-0.8, 0.875),
                       child: Container(
                         width: AppDimensions.height10 * 15.7,
                         height: AppDimensions.height10 * 1.3,
@@ -250,50 +271,52 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.1,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff464646)),
                             ),
                             Text(
                               '-00',
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.1,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff464646)),
                             ),
                             Text(
                               ' days',
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.1,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff464646)),
                             ),
                           ],
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment(-0.975, -1.275),
-                      child: Container(
-                        width: AppDimensions.height10 * 18.0,
-                        height: AppDimensions.height10 * 2.9,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 2.0),
-                            color: Color(0xFFFFFFFF)),
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 0.8,
-                              top: AppDimensions.height10 * 0.5,
-                              bottom: AppDimensions.height10 * 0.5),
-                          child: Text(
-                            'Score needed!',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.6,
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xFF646464)),
-                          ),
-                        ),
-                      ),
-                    )
+                    widget.goal_evaluation
+                        ? Container()
+                        : Align(
+                            alignment: const Alignment(-0.975, -1.275),
+                            child: Container(
+                              width: AppDimensions.height10 * 18.0,
+                              height: AppDimensions.height10 * 2.9,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10 * 2.0),
+                                  color: const Color(0xFFFFFFFF)),
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 0.8,
+                                    top: AppDimensions.height10 * 0.5,
+                                    bottom: AppDimensions.height10 * 0.5),
+                                child: Text(
+                                  'Score needed!',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w600,
+                                      color: const Color(0xFF646464)),
+                                ),
+                              ),
+                            ),
+                          )
                   ],
                 ),
               ),
@@ -304,23 +327,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                 padding: EdgeInsets.only(
                     left: AppDimensions.height10 * 2.0,
                     right: AppDimensions.height10 * 1.9),
-                decoration: widget.isActive
-                    ? BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: Color(0xFFF0CB59),
-                        border: Border.all(
-                            color: Color(0xFFFFFFFF),
-                            width: AppDimensions.height10 * 0.1),
-                      )
-                    : BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: Color(0xFF828282),
-                        border: Border.all(
-                            color: Color(0xFFFFFFFF),
-                            width: AppDimensions.height10 * 0.1),
-                      ),
+                decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  color: const Color(0xFFF5F5F5),
+                  border: Border.all(
+                      color: const Color(0xFFFFFFFF),
+                      width: AppDimensions.height10 * 0.1),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -332,7 +346,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.8,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFFFFFFFF)),
+                                color: widget.isActive
+                                    ? Color(0xFF156F6D)
+                                    : Color(0xFFDE7A11)),
                           ),
                           widget.isActive
                               ? Text(
@@ -340,14 +356,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.8,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xFF156F6D)),
+                                      color: const Color(0xFF156F6D)),
                                 )
                               : Text(
                                   'Inactive',
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.8,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xFFDE7A11)),
+                                      color: const Color(0xFFDE7A11)),
                                 )
                         ],
                       ),
@@ -355,15 +371,23 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     GestureDetector(
                       onTap: () {
                         widget.isActive
-                            ? Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        goal_inactive(isActive: true)))
+                            ? widget.goal_evaluation
+                                ? Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const multiple_goal_inactive(
+                                                isActive: true)))
+                                : Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const goal_inactive(
+                                                isActive: true)))
                             : Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => goal_inactive(
+                                    builder: (context) => const goal_inactive(
                                           isActive: false,
                                         )));
                       },
@@ -372,11 +396,11 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         height: AppDimensions.height10 * 2.2,
                         child: Center(
                           child: Text(
-                            'EDIT',
+                            'View',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xFFFFFFFF),
+                                color: const Color(0xFF437296),
                                 decoration: TextDecoration.underline),
                           ),
                         ),
@@ -386,37 +410,142 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 37.4,
+                width: double.infinity,
                 height: AppDimensions.height10 * 0.1,
-                color: Color(0xFFFFFFFF),
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                color: const Color(0xFFFFFFFF).withOpacity(0.5),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
               ),
-              Container(
-                width: AppDimensions.height10 * 13.8,
-                height: AppDimensions.height10 * 13.8,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  image: AssetImage('assets/images/Ellipse 158.png'),
-                  fit: BoxFit.contain,
-                )),
-                child: Center(
-                  child: Text(
-                    'Meditation',
-                    style: TextStyle(
-                      fontSize: AppDimensions.height10 * 1.8,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFFFFFFFF),
+              widget.goal_evaluation
+                  ? Container(
+                      width: AppDimensions.height10 * 45.4,
+                      margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 3.0,
+                        //  left: AppDimensions.height10 * 2.6
+                      ),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => practiceMenu(
+                                              goal_eval: true,
+                                            )));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 13.8,
+                                height: AppDimensions.height10 * 13.8,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 2.6),
+                                decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/Ellipse 158.png'),
+                                  fit: BoxFit.contain,
+                                )),
+                                child: Center(
+                                  child: Text(
+                                    'Meditation',
+                                    style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFFFFFFFF),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: AppDimensions.height10 * 13.8,
+                              width: AppDimensions.height10 * 13.8,
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: AppDimensions.height10 * 2.0),
+                              decoration: const BoxDecoration(
+                                  //color: Colors.amber,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/Ellipse 157.png'),
+                                      fit: BoxFit.cover)),
+                              child: Center(
+                                  child: Text(
+                                'Count\ndown',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontWeight: FontWeight.w500),
+                                textAlign: TextAlign.center,
+                              )),
+                            ),
+                            Container(
+                              height: AppDimensions.height10 * 13.8,
+                              width: AppDimensions.height10 * 13.8,
+                              decoration: const BoxDecoration(
+                                  //color: Colors.amber,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/Ellipse orange.png'),
+                                      fit: BoxFit.contain)),
+                              child: Center(
+                                  child: Text(
+                                'Count\ntemper\nepisodes',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontWeight: FontWeight.w500),
+                              )),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => practiceMenu(
+                                      goal_eval: true,
+                                    )));
+                      },
+                      child: Container(
+                        width: AppDimensions.height10 * 13.8,
+                        height: AppDimensions.height10 * 13.8,
+                        margin:
+                            EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                          image: AssetImage('assets/images/Ellipse 158.png'),
+                          fit: BoxFit.contain,
+                        )),
+                        child: Center(
+                          child: Text(
+                            'Meditation',
+                            style: TextStyle(
+                              fontSize: AppDimensions.height10 * 1.8,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFFFFFFFF),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+              Container(
+                width: double.infinity,
+                height: AppDimensions.height10 * 0.1,
+                color: const Color(0xFFFFFFFF).withOpacity(0.5),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
               ),
               Container(
                 width: AppDimensions.height10 * 36.0,
                 height: AppDimensions.height10 * 20.0,
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 2.0,
-                    bottom: AppDimensions.height10 * 8.4),
+                  top: AppDimensions.height10 * 2.0,
+                  //bottom: AppDimensions.height10 * 8.4
+                ),
                 child: Column(
                   children: [
                     Container(
@@ -425,7 +554,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: Color(0xFFFFFFFF),
+                        color: const Color(0xFFFFFFFF),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -438,7 +567,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             child: Text(
                               'Progress report  (00)',
                               style: TextStyle(
-                                color: Color(0xff646464),
+                                color: const Color(0xff646464),
                                 fontSize: AppDimensions.height10 * 1.8,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -461,48 +590,54 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ],
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.height10 * 36.0,
-                      height: AppDimensions.height10 * 6.0,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 1.0),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: Color(0xFFFFFFFF),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10 * 18.5,
-                            height: AppDimensions.height10 * 2.2,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.99),
-                            child: Text(
-                              'Timeline',
-                              style: TextStyle(
-                                color: Color(0xff646464),
-                                fontSize: AppDimensions.height10 * 1.8,
-                                fontWeight: FontWeight.w500,
+                    GestureDetector(
+                      child: Container(
+                        width: AppDimensions.height10 * 36.0,
+                        height: AppDimensions.height10 * 6.0,
+                        margin:
+                            EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 2.0),
+                          color: widget.premium
+                              ? Color(0xFFFFFFFF)
+                              : Color(0xFFFFFFFF).withOpacity(0.5),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: AppDimensions.height10 * 19.2,
+                              height: AppDimensions.height10 * 2.2,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 1.99),
+                              child: Text(
+                                widget.premium
+                                    ? 'Timeline'
+                                    : 'Timeline (Premium only)',
+                                style: TextStyle(
+                                  color: const Color(0xff646464),
+                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.39,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 2.391),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.png',
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
-                                  fit: BoxFit.cover,
-                                ),
-                              ))
-                        ],
+                            Container(
+                                width: AppDimensions.height10 * 2.4,
+                                height: AppDimensions.height10 * 1.39,
+                                margin: EdgeInsets.only(
+                                    right: AppDimensions.height10 * 2.391),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Image.asset(
+                                    'assets/images/BTN Back.png',
+                                    //width: AppDimensions.height10 * 2.6,
+                                    //height: AppDimensions.height10 * 2.6,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ))
+                          ],
+                        ),
                       ),
                     ),
                     Container(
@@ -513,22 +648,30 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: Color(0xFFFFFFFF),
+                        color: const Color(0xFFFFFFFF),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            width: AppDimensions.height10 * 18.5,
-                            height: AppDimensions.height10 * 2.2,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.99),
-                            child: Text(
-                              'Goal details',
-                              style: TextStyle(
-                                color: Color(0xff646464),
-                                fontSize: AppDimensions.height10 * 1.8,
-                                fontWeight: FontWeight.w500,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => StarReview()));
+                            },
+                            child: Container(
+                              width: AppDimensions.height10 * 18.5,
+                              height: AppDimensions.height10 * 2.2,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 1.99),
+                              child: Text(
+                                'Goal details',
+                                style: TextStyle(
+                                  color: const Color(0xff646464),
+                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
@@ -552,6 +695,21 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                   ],
                 ),
               ),
+              widget.goal_evaluation
+                  ? Container(
+                      width: AppDimensions.height10 * 17.0,
+                      height: AppDimensions.height10 * 0.5,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10 * 14.1,
+                          bottom: AppDimensions.height10 * 1.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 2.0),
+                          color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                    )
+                  : SizedBox(
+                      height: AppDimensions.height10 * 8.4,
+                    ),
             ],
           ),
         ),

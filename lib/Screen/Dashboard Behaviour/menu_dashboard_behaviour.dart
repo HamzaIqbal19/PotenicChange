@@ -354,12 +354,14 @@ class menu_behaviour extends StatelessWidget {
                                   feild_text: 'Progress report',
                                   icon_viible: false,
                                   text_color: 0xff828282,
+                                  feild_text_2: '',
                                 ),
                               ),
                               button_feilds(
                                 feild_text: 'Practice score (-/5)',
                                 icon_viible: false,
                                 text_color: 0xff828282,
+                                feild_text_2: '',
                               )
                             ],
                           ),
@@ -389,6 +391,7 @@ class menu_behaviour extends StatelessWidget {
                       feild_text: 'View practice progress',
                       icon_viible: true,
                       text_color: 0xff646464,
+                      feild_text_2: '',
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -398,6 +401,7 @@ class menu_behaviour extends StatelessWidget {
                         feild_text: 'View practice settings',
                         icon_viible: true,
                         text_color: 0xff646464,
+                        feild_text_2: '',
                       ),
                     ),
                     Container(
@@ -407,12 +411,14 @@ class menu_behaviour extends StatelessWidget {
                         feild_text: 'Veiw upcoming schedules',
                         icon_viible: true,
                         text_color: 0xff646464,
+                        feild_text_2: '',
                       ),
                     ),
                     button_feilds(
                       feild_text: 'Practice assesment history',
                       icon_viible: true,
                       text_color: 0xff646464,
+                      feild_text_2: '',
                     )
                   ],
                 ),

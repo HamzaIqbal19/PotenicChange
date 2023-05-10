@@ -55,7 +55,7 @@ class _record_inspirationState extends State<record_inspiration> {
         width: double.infinity,
         height: double.infinity,
         // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/bg_inpiration_purple.png'),
                 colorFilter: ColorFilter.mode(
@@ -73,7 +73,7 @@ class _record_inspirationState extends State<record_inspiration> {
                   style: TextStyle(
                       fontSize: AppDimensions.height10 * 2.00,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFFFFFFFF)),
+                      color: const Color(0xFFFFFFFF)),
                 ),
               ),
             ),
@@ -90,7 +90,7 @@ class _record_inspirationState extends State<record_inspiration> {
                       Container(
                         width: AppDimensions.height10 * 16.7,
                         height: AppDimensions.height10 * 16.7,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: AssetImage('assets/images/sir_nyal.png'),
@@ -107,7 +107,7 @@ class _record_inspirationState extends State<record_inspiration> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFFFFFFFF)),
+                              color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       SizedBox(
@@ -119,7 +119,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.0,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             )),
                       )
                     ])
@@ -128,7 +128,7 @@ class _record_inspirationState extends State<record_inspiration> {
                       Container(
                         width: AppDimensions.height10 * 16.7,
                         height: AppDimensions.height10 * 16.7,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: RadialGradient(
                               colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
@@ -140,7 +140,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFFFFFFFF)),
+                                color: const Color(0xFFFFFFFF)),
                           ),
                         ),
                       ),
@@ -155,7 +155,7 @@ class _record_inspirationState extends State<record_inspiration> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFFFFFFFF)),
+                              color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       Container(
@@ -168,7 +168,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.0,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             )),
                       )
                     ])
@@ -177,7 +177,7 @@ class _record_inspirationState extends State<record_inspiration> {
                       Container(
                         width: AppDimensions.height10 * 16.7,
                         height: AppDimensions.height10 * 16.7,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: AssetImage(
@@ -194,7 +194,7 @@ class _record_inspirationState extends State<record_inspiration> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFFFFFFFF)),
+                              color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       SizedBox(
@@ -206,7 +206,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.0,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             )),
                       )
                     ])
@@ -215,7 +215,7 @@ class _record_inspirationState extends State<record_inspiration> {
                       Container(
                         width: AppDimensions.height10 * 16.7,
                         height: AppDimensions.height10 * 16.7,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color(0xFFD9D9D9),
                             image: DecorationImage(
@@ -233,7 +233,7 @@ class _record_inspirationState extends State<record_inspiration> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFFFFFFFF)),
+                              color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       Container(
@@ -246,7 +246,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.0,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             )),
                       )
                     ])
@@ -282,7 +282,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => veiw_details(
+                              builder: (context) => const veiw_details(
                                     type_switch: 1,
                                   )),
                         );
@@ -290,7 +290,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => veiw_details(
+                              builder: (context) => const veiw_details(
                                     type_switch: 3,
                                   )),
                         );
@@ -298,7 +298,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => veiw_details(
+                              builder: (context) => const veiw_details(
                                     type_switch: 4,
                                   )),
                         );
@@ -306,7 +306,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => veiw_details(
+                              builder: (context) => const veiw_details(
                                     type_switch: 2,
                                   )),
                         );
@@ -334,7 +334,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 child: Text(
                                   'View details',
                                   style: TextStyle(
-                                    color: Color(0xFF646464),
+                                    color: const Color(0xFF646464),
                                     fontSize: AppDimensions.height10 * 1.8,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -349,7 +349,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 onTap: () {},
                                 child: Image.asset(
                                   'assets/images/BTN Back.png',
-                                  color: Color(0xFF646464),
+                                  color: const Color(0xFF646464),
                                   //width: AppDimensions.height10 * 2.6,
                                   //height: AppDimensions.height10 * 2.6,
                                   fit: BoxFit.cover,
@@ -365,7 +365,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => photo_info(
+                              builder: (context) => const photo_info(
                                     edit_details: true,
                                     image_detals: true,
                                     image_save: true,
@@ -376,22 +376,22 @@ class _record_inspirationState extends State<record_inspiration> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  note_info(note_saved: true, type_switch: 1)),
+                              builder: (context) => const note_info(
+                                  note_saved: true, type_switch: 1)),
                         );
                       } else if (widget.type_switch == 3) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  note_info(note_saved: true, type_switch: 3)),
+                              builder: (context) => const note_info(
+                                  note_saved: true, type_switch: 3)),
                         );
                       } else if (widget.type_switch == 4) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  note_info(note_saved: true, type_switch: 2)),
+                              builder: (context) => const note_info(
+                                  note_saved: true, type_switch: 2)),
                         );
                       }
                     },
@@ -417,7 +417,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 child: Text(
                                   'Edit details',
                                   style: TextStyle(
-                                    color: Color(0xFF646464),
+                                    color: const Color(0xFF646464),
                                     fontSize: AppDimensions.height10 * 1.8,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -432,7 +432,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                 onTap: () {},
                                 child: Image.asset(
                                   'assets/images/BTN Back.png',
-                                  color: Color(0xFF646464),
+                                  color: const Color(0xFF646464),
                                   //width: AppDimensions.height10 * 2.6,
                                   //height: AppDimensions.height10 * 2.6,
                                   fit: BoxFit.cover,
@@ -471,7 +471,7 @@ class _record_inspirationState extends State<record_inspiration> {
                           margin: EdgeInsets.only(
                             right: AppDimensions.height10 * 0.5,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.share,
                             color: Color(0xff646464),
                           ),
@@ -485,7 +485,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.8,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF646464)),
+                                color: const Color(0xFF646464)),
                           )),
                         ),
                       ],
@@ -497,10 +497,10 @@ class _record_inspirationState extends State<record_inspiration> {
                     decoration: BoxDecoration(
                         border: Border.all(
                             width: AppDimensions.height10 * 0.1,
-                            color: Color(0xFFFFFFFF)),
+                            color: const Color(0xFFFFFFFF)),
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: Color(0xff464646)),
+                        color: const Color(0xff464646)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -511,7 +511,7 @@ class _record_inspirationState extends State<record_inspiration> {
                           margin: EdgeInsets.only(
                             right: AppDimensions.height10 * 0.5,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.delete,
                             color: Color(0XFFFFFFFF),
                           ),
@@ -525,7 +525,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.8,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xffffffff)),
+                                color: const Color(0xffffffff)),
                           )),
                         ),
                       ],
@@ -542,7 +542,7 @@ class _record_inspirationState extends State<record_inspiration> {
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),
-                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             ),
           ],
         ),

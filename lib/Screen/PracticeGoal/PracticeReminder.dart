@@ -293,7 +293,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     ),
                                     content: Container(
                                       margin:  EdgeInsets.only(bottom: AppDimensions.height10*1.9, left: AppDimensions.height10*1.6, right: AppDimensions.height10*1.6),
-                                      color: Colors.blue,
+
                                       height: AppDimensions.height10*1.8,
                                       width: AppDimensions.height10*23.8,
                                       child: const Text(

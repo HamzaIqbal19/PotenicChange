@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -40,7 +41,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
         width: double.infinity,
         height: double.infinity,
         // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/bg_inpiration_purple.png'),
                 colorFilter: ColorFilter.mode(
@@ -56,16 +57,24 @@ class _inspiration_landingState extends State<inspiration_landing> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => inspiration_landing(
-                                  muliple_insp: true,
-                                  is_Updated: false,
-                                )),
-                      );
+                      widget.muliple_insp
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => inspiration_motivation(
+                                      goal_delete: false)),
+                            )
+                          : Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const inspiration_landing(
+                                        muliple_insp: true,
+                                        is_Updated: false,
+                                      )),
+                            );
                     },
-                    child: Container(
+                    child: SizedBox(
                       width: AppDimensions.height10 * 34.3,
                       height: AppDimensions.height10 * 7.3,
                       child: Center(
@@ -77,17 +86,20 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             fontSize: AppDimensions.height10 * 3.0,
                             fontWeight: FontWeight.w700,
                           ),
-                          colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                          colors: [
+                            const Color(0xffFA9934),
+                            const Color(0xffEDD15E)
+                          ],
                         ),
                       ),
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0, 0.525),
+                    alignment: const Alignment(0, 0.525),
                     child: Container(
                       width: AppDimensions.height10 * 16.43,
                       height: AppDimensions.height10 * 16.43,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                         opacity: 0.2,
                         image: AssetImage('assets/images/Star.png'),
@@ -96,7 +108,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         child: Container(
                           width: AppDimensions.height10 * 15.6,
                           height: AppDimensions.height10 * 15.6,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/Inspiration_center 1.png'))),
@@ -104,11 +116,11 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               child: Container(
                             width: AppDimensions.height10 * 6.8,
                             height: AppDimensions.height10 * 6.8,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color(0xFFFFFFFF)),
                             child: Center(
-                                child: Container(
+                                child: SizedBox(
                                     width: AppDimensions.height10 * 3.2,
                                     height: AppDimensions.height10 * 3.2,
                                     child:
@@ -119,8 +131,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0.1, 0.85),
-                    child: Container(
+                    alignment: const Alignment(0.1, 0.85),
+                    child: SizedBox(
                       width: AppDimensions.height10 * 13.5,
                       height: AppDimensions.height10 * 2.2,
                       child: Text(
@@ -128,7 +140,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.8,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xFFFFFFFF)),
+                            color: const Color(0xFFFFFFFF)),
                       ),
                     ),
                   )
@@ -156,14 +168,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               children: [
                                 GestureDetector(
                                   onTap: () {},
-                                  child: Container(
+                                  child: SizedBox(
                                     width: AppDimensions.height10 * 16.7,
                                     height: AppDimensions.height10 * 22,
                                     child: Column(children: [
                                       Container(
                                         width: AppDimensions.height10 * 16.7,
                                         height: AppDimensions.height10 * 16.7,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
                                                 image: AssetImage(
@@ -182,7 +194,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.4,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       ),
                                       SizedBox(
@@ -193,7 +205,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.0,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       )
                                     ]),
@@ -211,7 +223,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       Container(
                                         width: AppDimensions.height10 * 16.7,
                                         height: AppDimensions.height10 * 16.7,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             color: Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
@@ -230,7 +242,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.4,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       ),
                                       SizedBox(
@@ -241,7 +253,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.0,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       )
                                     ]),
@@ -253,7 +265,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              record_inspiration(
+                                              const record_inspiration(
                                                 type_switch: 2,
                                               )),
                                     );
@@ -267,7 +279,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       Container(
                                         width: AppDimensions.height10 * 16.7,
                                         height: AppDimensions.height10 * 16.7,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0xFFD9D9D9),
                                           shape: BoxShape.circle,
                                           gradient: RadialGradient(colors: [
@@ -284,7 +296,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                     AppDimensions.height10 *
                                                         1.4,
                                                 fontWeight: FontWeight.w400,
-                                                color: Color(0xFFFFFFFF)),
+                                                color: const Color(0xFFFFFFFF)),
                                           ),
                                         ),
                                       ),
@@ -300,7 +312,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.4,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       ),
                                       SizedBox(
@@ -311,7 +323,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.0,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       )
                                     ]),
@@ -342,19 +354,19 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              record_inspiration(
+                                              const record_inspiration(
                                                 type_switch: 3,
                                               )),
                                     );
                                   },
-                                  child: Container(
+                                  child: SizedBox(
                                     width: AppDimensions.height10 * 16.7,
                                     height: AppDimensions.height10 * 21.2,
                                     child: Column(children: [
                                       Container(
                                         width: AppDimensions.height10 * 16.7,
                                         height: AppDimensions.height10 * 16.7,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             color: Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
@@ -374,7 +386,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.4,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       ),
                                       SizedBox(
@@ -385,7 +397,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.0,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       )
                                     ]),
@@ -397,7 +409,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              record_inspiration(
+                                              const record_inspiration(
                                                 type_switch: 1,
                                               )),
                                     );
@@ -412,7 +424,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       Container(
                                         width: AppDimensions.height10 * 16.7,
                                         height: AppDimensions.height10 * 16.7,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
                                                 image: AssetImage(
@@ -430,7 +442,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.4,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       ),
                                       SizedBox(
@@ -441,7 +453,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.0,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       )
                                     ]),
@@ -453,7 +465,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              record_inspiration(
+                                              const record_inspiration(
                                                 type_switch: 4,
                                               )),
                                     );
@@ -467,7 +479,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       Container(
                                         width: AppDimensions.height10 * 16.7,
                                         height: AppDimensions.height10 * 16.7,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: Color(0xFFD9D9D9),
                                             image: DecorationImage(
@@ -486,7 +498,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.4,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       ),
                                       SizedBox(
@@ -497,7 +509,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                               fontSize:
                                                   AppDimensions.height10 * 1.0,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xFFFFFFFF)),
+                                              color: const Color(0xFFFFFFFF)),
                                         )),
                                       )
                                     ]),
@@ -520,7 +532,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           : Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => record_inspiration(
+                                  builder: (context) =>
+                                      const record_inspiration(
                                         type_switch: 1,
                                       )),
                             );
@@ -537,7 +550,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         Container(
                           width: AppDimensions.height10 * 16.7,
                           height: AppDimensions.height10 * 16.7,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color(0xFFD9D9D9),
                               image: DecorationImage(
@@ -556,7 +569,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFFFFFFFF)),
+                                color: const Color(0xFFFFFFFF)),
                           )),
                         ),
                         SizedBox(
@@ -566,7 +579,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.0,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFFFFFFFF)),
+                                color: const Color(0xFFFFFFFF)),
                           )),
                         )
                       ]),
@@ -581,7 +594,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
@@ -593,7 +606,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               left: AppDimensions.height10 * 1.261),
                           width: AppDimensions.height10 * 4.437,
                           height: AppDimensions.height10 * 4.437,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/circle_tick.png'))),
@@ -606,7 +619,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 4.6,
                                 height: AppDimensions.height10 * 1.4,
                                 //   color: Colors.amber,
@@ -615,10 +628,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.3,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFFFFFFFF)),
+                                      color: const Color(0xFFFFFFFF)),
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 6.9,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -626,7 +639,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.8,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFFFFFFFF)),
+                                      color: const Color(0xFFFFFFFF)),
                                 ),
                               ),
                             ],
@@ -638,8 +651,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10 * 15.1),
                           decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Color(0xFFFFFFFF), width: 1),
+                            border: Border.all(
+                                color: const Color(0xFFFFFFFF), width: 1),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 2.0),
                           ),
@@ -649,7 +662,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                         )
@@ -665,7 +678,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                        color: const Color(0xFFFFFFFF).withOpacity(0.3)),
                   ),
           ],
         ),
@@ -673,7 +686,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
       extendBody: true,
       bottomNavigationBar: widget.muliple_insp
           ? BottomAppBar(
-              shape: CircularNotchedRectangle(),
+              shape: const CircularNotchedRectangle(),
               notchMargin: 10,
               child: Container(
                 // color: Colors.blue,
@@ -688,7 +701,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                   children: [
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10 * 2.4,
                           height: AppDimensions.height10 * 2.4,
                           // padding: EdgeInsets.only(
@@ -719,7 +732,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     AppDimensions.height10 * 1.0),
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
-                                    color: Color(0xFFE0E0E0))),
+                                    color: const Color(0xFFE0E0E0))),
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10 * 1.3,
                                 right: AppDimensions.height10 * 1.0),
@@ -734,7 +747,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.4,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xffFA9934)),
+                                        color: const Color(0xffFA9934)),
                                   ),
                                 ),
                                 Container(
@@ -749,7 +762,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           fontSize:
                                               AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w700,
-                                          color: Color(0xffFA9934)),
+                                          color: const Color(0xffFA9934)),
                                     ),
                                   ),
                                 ),
@@ -759,7 +772,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   margin: EdgeInsets.only(
                                       left: AppDimensions.height10 * 0.8,
                                       bottom: AppDimensions.height10 * 0.3),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.arrow_drop_down,
                                     color: Color(0xffFA9934),
                                   ),
@@ -780,7 +793,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     AppDimensions.height10 * 1.0),
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
-                                    color: Color(0xFFE0E0E0))),
+                                    color: const Color(0xFFE0E0E0))),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
@@ -792,7 +805,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.4,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xffFA9934)),
+                                        color: const Color(0xffFA9934)),
                                   ),
                                 ),
                                 Container(
@@ -807,7 +820,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           fontSize:
                                               AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w700,
-                                          color: Color(0xffFA9934)),
+                                          color: const Color(0xffFA9934)),
                                     ),
                                   ),
                                 ),
@@ -817,7 +830,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   margin: EdgeInsets.only(
                                       left: AppDimensions.height10 * 0.8,
                                       bottom: AppDimensions.height10 * 0.3),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.arrow_drop_down,
                                     color: Color(0xffFA9934),
                                   ),
@@ -839,14 +852,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
                                   decoration: TextDecoration.underline,
-                                  color: Color(0xFFFA9934).withOpacity(0.30)),
+                                  color: const Color(0xFFFA9934)
+                                      .withOpacity(0.30)),
                             ),
                           ),
                         )
                       ],
                     ),
 
-                    Container(
+                    SizedBox(
                       width: AppDimensions.height10 * 4.9,
                       height: AppDimensions.height10 * 5.0,
                       child: GestureDetector(
@@ -891,11 +905,11 @@ _showBottomSheet(BuildContext context) {
         onTap: () => Navigator.of(context).pop(),
         child: Container(
           height: AppDimensions.height10 * 30.3,
-          color: Color.fromRGBO(0, 0, 0, 0.001),
+          color: const Color.fromRGBO(0, 0, 0, 0.001),
           child: GestureDetector(
             onTap: () {},
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: Column(
@@ -907,7 +921,7 @@ _showBottomSheet(BuildContext context) {
                         border: Border(
                             bottom: BorderSide(
                                 width: AppDimensions.height10 * 0.1,
-                                color: Color(0xFF828282)))),
+                                color: const Color(0xFF828282)))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -924,24 +938,24 @@ _showBottomSheet(BuildContext context) {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFF2F80ED)),
+                                  color: const Color(0xFF2F80ED)),
                             ),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10 * 3.7,
                           child: Text(
                             'Done',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF2F80ED)),
+                                color: const Color(0xFF2F80ED)),
                           ),
                         )
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.height10 * 37.5,
                     height: AppDimensions.height10 * 24.8,
                     // color: Colors.amber,
@@ -957,7 +971,7 @@ _showBottomSheet(BuildContext context) {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 'All',
@@ -972,7 +986,7 @@ _showBottomSheet(BuildContext context) {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 1',
@@ -987,7 +1001,7 @@ _showBottomSheet(BuildContext context) {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 2',
@@ -1002,7 +1016,7 @@ _showBottomSheet(BuildContext context) {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 3',
@@ -1036,11 +1050,11 @@ _showTagSheet(BuildContext context) {
         onTap: () => Navigator.of(context).pop(),
         child: Container(
           height: AppDimensions.height10 * 30.3,
-          color: Color.fromRGBO(0, 0, 0, 0.001),
+          color: const Color.fromRGBO(0, 0, 0, 0.001),
           child: GestureDetector(
             onTap: () {},
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: Column(
@@ -1052,7 +1066,7 @@ _showTagSheet(BuildContext context) {
                         border: Border(
                             bottom: BorderSide(
                                 width: AppDimensions.height10 * 0.1,
-                                color: Color(0xFF828282)))),
+                                color: const Color(0xFF828282)))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -1069,24 +1083,24 @@ _showTagSheet(BuildContext context) {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFF2F80ED)),
+                                  color: const Color(0xFF2F80ED)),
                             ),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10 * 3.7,
                           child: Text(
                             'Done',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF2F80ED)),
+                                color: const Color(0xFF2F80ED)),
                           ),
                         )
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.height10 * 37.5,
                     height: AppDimensions.height10 * 24.8,
                     // color: Colors.amber,
@@ -1102,7 +1116,7 @@ _showTagSheet(BuildContext context) {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 'All',
@@ -1118,7 +1132,7 @@ _showTagSheet(BuildContext context) {
                                     //when it will be reconstructed bottom decororation will be set, at the moment it is there to show presence.
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 1',
@@ -1133,7 +1147,7 @@ _showTagSheet(BuildContext context) {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 2',
@@ -1148,7 +1162,7 @@ _showTagSheet(BuildContext context) {
                                 border: Border(
                                     bottom: BorderSide(
                                         width: AppDimensions.height10 * 0.1,
-                                        color: Color(0xFF828282)))),
+                                        color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 3',

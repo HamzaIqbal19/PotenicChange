@@ -44,7 +44,7 @@ class inspiration_type extends StatelessWidget {
                     fontSize: AppDimensions.height10 * 2.0,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '/2',
@@ -53,7 +53,7 @@ class inspiration_type extends StatelessWidget {
                     fontSize: AppDimensions.height10 * 2.0,
                     fontWeight: FontWeight.w400,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
                 ),
               ],
             ),
@@ -74,7 +74,7 @@ class inspiration_type extends StatelessWidget {
       body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/bg_inpiration_purple.png'),
                   fit: BoxFit.cover)),
@@ -93,7 +93,7 @@ class inspiration_type extends StatelessWidget {
                     fontSize: AppDimensions.height10 * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
                 ),
               ),
             ),
@@ -108,7 +108,7 @@ class inspiration_type extends StatelessWidget {
                   style: TextStyle(
                       fontSize: AppDimensions.height10 * 1.8,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFFFFFFFF)),
+                      color: const Color(0xFFFFFFFF)),
                 ),
               ),
             ),
@@ -125,7 +125,7 @@ class inspiration_type extends StatelessWidget {
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10 * 1.4,
                           left: AppDimensions.height10 * 4.0),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           //borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
@@ -134,7 +134,7 @@ class inspiration_type extends StatelessWidget {
                               fit: BoxFit.cover)),
                       child: Container(
                         margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           // borderRadius: BorderRadius.circular(5)
                         ),
@@ -151,7 +151,7 @@ class inspiration_type extends StatelessWidget {
                                     height: AppDimensions.height10 * 3.032,
                                     margin: EdgeInsets.only(
                                         bottom: AppDimensions.height10 * 0.68),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/image_icon.png'))),
@@ -175,7 +175,7 @@ class inspiration_type extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  photo_pop_up()));
+                                                  const photo_pop_up()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10 * 2.122,
@@ -183,7 +183,7 @@ class inspiration_type extends StatelessWidget {
                                       margin: EdgeInsets.only(
                                           bottom:
                                               AppDimensions.height10 * 0.178),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -200,7 +200,7 @@ class inspiration_type extends StatelessWidget {
                       height: AppDimensions.height10 * 13.3,
                       margin:
                           EdgeInsets.only(right: AppDimensions.height10 * 1.4),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image: AssetImage(
@@ -208,7 +208,7 @@ class inspiration_type extends StatelessWidget {
                               fit: BoxFit.cover)),
                       child: Container(
                         margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
                         child: DottedBorder(
@@ -226,7 +226,7 @@ class inspiration_type extends StatelessWidget {
                                     height: AppDimensions.height10 * 3.032,
                                     margin: EdgeInsets.only(
                                         bottom: AppDimensions.height10 * 0.68),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/note_icon.png'))),
@@ -249,7 +249,8 @@ class inspiration_type extends StatelessWidget {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => note_info(
+                                              builder: (context) =>
+                                                  const note_info(
                                                     note_saved: false,
                                                     type_switch: 1,
                                                   )));
@@ -260,7 +261,7 @@ class inspiration_type extends StatelessWidget {
                                       margin: EdgeInsets.only(
                                           bottom:
                                               AppDimensions.height10 * 0.178),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -277,7 +278,7 @@ class inspiration_type extends StatelessWidget {
                       height: AppDimensions.height10 * 13.3,
                       margin:
                           EdgeInsets.only(right: AppDimensions.height10 * 1.4),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image: AssetImage(
@@ -285,7 +286,7 @@ class inspiration_type extends StatelessWidget {
                               fit: BoxFit.cover)),
                       child: Container(
                         margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
                         child: DottedBorder(
@@ -304,7 +305,7 @@ class inspiration_type extends StatelessWidget {
                                     height: AppDimensions.height10 * 3.032,
                                     margin: EdgeInsets.only(
                                         bottom: AppDimensions.height10 * 0.68),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/link_icon.png'))),
@@ -328,7 +329,7 @@ class inspiration_type extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  link_info()));
+                                                  const link_info()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10 * 2.122,
@@ -336,7 +337,7 @@ class inspiration_type extends StatelessWidget {
                                       margin: EdgeInsets.only(
                                           bottom:
                                               AppDimensions.height10 * 0.178),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -353,7 +354,7 @@ class inspiration_type extends StatelessWidget {
                       height: AppDimensions.height10 * 13.30,
                       margin:
                           EdgeInsets.only(right: AppDimensions.height10 * 0.7),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image: AssetImage(
@@ -361,7 +362,7 @@ class inspiration_type extends StatelessWidget {
                               fit: BoxFit.cover)),
                       child: Container(
                         margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
                         child: DottedBorder(
@@ -379,7 +380,7 @@ class inspiration_type extends StatelessWidget {
                                     height: AppDimensions.height10 * 3.032,
                                     margin: EdgeInsets.only(
                                         bottom: AppDimensions.height10 * 0.68),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/video_icon.png'))),
@@ -403,7 +404,7 @@ class inspiration_type extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  video_info()));
+                                                  const video_info()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10 * 2.122,
@@ -411,7 +412,7 @@ class inspiration_type extends StatelessWidget {
                                       margin: EdgeInsets.only(
                                           bottom:
                                               AppDimensions.height10 * 0.178),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(

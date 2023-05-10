@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/bottom_navigation.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class dashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool dashboard_ctrl = true;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -323,101 +325,246 @@ class dashBoard extends StatelessWidget {
                   ]),
                 ),
                 Container(
-                  width: AppDimensions.height10 * 31.3,
+                  width: dashboard_ctrl
+                      ? AppDimensions.height10 * 40.1
+                      : AppDimensions.height10 * 31.3,
                   height: AppDimensions.height10 * 31.3,
                   // color: Colors.blue,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10 * 2.9,
                       bottom: AppDimensions.height10 * 1.2,
-                      right: AppDimensions.height10 * 7.3,
-                      left: AppDimensions.height10 * 2.3),
-                  child: Stack(children: [
-                    Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        width: AppDimensions.height10 * 26.8,
-                        height: AppDimensions.height10 * 26.8,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/images/image3.png'),
-                                fit: BoxFit.cover)),
-                        child: Stack(
-                          children: [
-                            Align(
-                                alignment: Alignment(0, -0.5),
-                                child: Text(
-                                  'Control my anger',
+                      right: dashboard_ctrl
+                          ? AppDimensions.height10 * 0.9
+                          : AppDimensions.height10 * 7.3,
+                      left: dashboard_ctrl
+                          ? AppDimensions.height10 * 0.4
+                          : AppDimensions.height10 * 2.3),
+                  child: dashboard_ctrl
+                      ? Stack(children: [
+                          Align(
+                            alignment: Alignment(-1, 0),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => practiceMenu(
+                                              goal_eval: true,
+                                            )));
+                              },
+                              child: Container(
+                                height: AppDimensions.height10 * 13.8,
+                                width: AppDimensions.height10 * 13.8,
+                                decoration: BoxDecoration(
+                                    //color: Colors.amber,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Ellipse 158.png'),
+                                        fit: BoxFit.cover)),
+                                child: Center(
+                                    child: Text(
+                                  'Meditation',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 2.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: Color(0xff5B74A6)),
+                                      color: Colors.white,
+                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontWeight: FontWeight.w500),
                                 )),
-                            Align(
-                              alignment: Alignment(0, -0.2),
-                              child: Text(
-                                  '“I am someone who is in\n control of my anger”',
-                                  textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment(1, 0.4),
+                            child: Container(
+                              height: AppDimensions.height10 * 13.8,
+                              width: AppDimensions.height10 * 13.8,
+                              decoration: BoxDecoration(
+                                  //color: Colors.amber,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/Ellipse 157.png'),
+                                      fit: BoxFit.cover)),
+                              child: Center(
+                                  child: Text(
+                                'Count\ndown',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontWeight: FontWeight.w500),
+                                textAlign: TextAlign.center,
+                              )),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.topCenter,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            goal_menu_inactive(
+                                              premium: true,
+                                              isActive: true,
+                                              goal_evaluation: true,
+                                            )));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 26.8,
+                                height: AppDimensions.height10 * 26.8,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/image3.png'),
+                                        fit: BoxFit.cover)),
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                        alignment: Alignment(0, -0.5),
+                                        child: Text(
+                                          'Control my anger',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.height10 * 2.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: Color(0xff5B74A6)),
+                                        )),
+                                    Align(
+                                      alignment: Alignment(0, -0.2),
+                                      child: Text(
+                                          '“I am someone who is in\n control of my anger”',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: "Poppins",
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.6,
+                                              fontWeight: FontWeight.w400,
+                                              color: Color(0xff5B74A6))),
+                                    ),
+                                    Align(
+                                      alignment: Alignment(0, 1.5),
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          height: AppDimensions.height10 * 13.8,
+                                          width: AppDimensions.height10 * 13.8,
+                                          decoration: BoxDecoration(
+                                              //color: Colors.amber,
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/Ellipse orange.png'),
+                                                  fit: BoxFit.contain)),
+                                          child: Center(
+                                              child: Text(
+                                            'Count\ntemper\nepisodes',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.8,
+                                                fontWeight: FontWeight.w500),
+                                          )),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ])
+                      : Stack(children: [
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              width: AppDimensions.height10 * 26.8,
+                              height: AppDimensions.height10 * 26.8,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image3.png'),
+                                      fit: BoxFit.cover)),
+                              child: Stack(
+                                children: [
+                                  Align(
+                                      alignment: Alignment(0, -0.5),
+                                      child: Text(
+                                        'Control my anger',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 2.0,
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0xff5B74A6)),
+                                      )),
+                                  Align(
+                                    alignment: Alignment(0, -0.2),
+                                    child: Text(
+                                        '“I am someone who is in\n control of my anger”',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(0xff5B74A6))),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment(0.9, 0.9),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => practiceMenu(
+                                              goal_eval: false,
+                                            )));
+                              },
+                              child: Container(
+                                height: AppDimensions.height10 * 13.8,
+                                width: AppDimensions.height10 * 13.8,
+                                decoration: BoxDecoration(
+                                    //color: Colors.amber,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Ellipse 158.png'),
+                                        fit: BoxFit.cover)),
+                                child: Center(
+                                    child: Text(
+                                  'Meditation',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.6,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xff5B74A6))),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(0.9, 0.9),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => practiceMenu()));
-                        },
-                        child: Container(
-                          height: AppDimensions.height10 * 13.8,
-                          width: AppDimensions.height10 * 13.8,
-                          decoration: BoxDecoration(
-                              //color: Colors.amber,
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/Ellipse 158.png'),
-                                  fit: BoxFit.cover)),
-                          child: Center(
-                              child: Text(
-                            'Meditation',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10 * 1.8,
-                                fontWeight: FontWeight.w500),
-                          )),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(-1, 0.4),
-                      child: Container(
-                        height: AppDimensions.height10 * 13.8,
-                        width: AppDimensions.height10 * 13.8,
-                        decoration: BoxDecoration(
-                            //color: Colors.amber,
-                            image: DecorationImage(
-                                image:
-                                    AssetImage('assets/images/Ellipse 157.png'),
-                                fit: BoxFit.cover)),
-                        child: Center(
-                            child: Text(
-                          'Count\ndown',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.8,
-                              fontWeight: FontWeight.w500),
-                          textAlign: TextAlign.center,
-                        )),
-                      ),
-                    ),
-                  ]),
+                                      color: Colors.white,
+                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontWeight: FontWeight.w500),
+                                )),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment(-1, 0.4),
+                            child: Container(
+                              height: AppDimensions.height10 * 13.8,
+                              width: AppDimensions.height10 * 13.8,
+                              decoration: BoxDecoration(
+                                  //color: Colors.amber,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/Ellipse 157.png'),
+                                      fit: BoxFit.cover)),
+                              child: Center(
+                                  child: Text(
+                                'Count\ndown',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontWeight: FontWeight.w500),
+                                textAlign: TextAlign.center,
+                              )),
+                            ),
+                          ),
+                        ]),
                 ),
                 Container(
                   height: AppDimensions.height10 * 14.432,
