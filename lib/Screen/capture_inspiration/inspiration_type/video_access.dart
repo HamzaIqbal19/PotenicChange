@@ -18,11 +18,11 @@ class _video_infoState extends State<video_info> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xffC4C4C4),
+        color: const Color(0xffC4C4C4),
       ),
       bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          color: Color(0xffC4C4C4),
+          shape: const CircularNotchedRectangle(),
+          color: const Color(0xffC4C4C4),
           child: Container(
             height: AppDimensions.height10 * 84.8,
             child: Column(children: [
@@ -31,7 +31,7 @@ class _video_infoState extends State<video_info> {
                 height: AppDimensions.height10 * 5.1,
                 // margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
                 decoration: BoxDecoration(
-                    color: Color(0xffF5F5F5).withOpacity(0.8),
+                    color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(AppDimensions.height10 * 1.0),
                         topRight:
@@ -52,7 +52,7 @@ class _video_infoState extends State<video_info> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff007AFF)),
+                            color: const Color(0xff007AFF)),
                       ),
                     ),
                   ),
@@ -66,7 +66,7 @@ class _video_infoState extends State<video_info> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.7,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff282828)),
+                              color: const Color(0xff282828)),
                         ),
                       ),
                     ),
@@ -80,7 +80,7 @@ class _video_infoState extends State<video_info> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.5,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff007AFF).withOpacity(0.4)),
+                          color: const Color(0xff007AFF).withOpacity(0.4)),
                     ),
                   )
                 ]),
@@ -104,7 +104,7 @@ class _video_infoState extends State<video_info> {
                             fontFamily: 'Poppins',
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                       ),
                     ),
                     Row(
@@ -128,7 +128,7 @@ class _video_infoState extends State<video_info> {
                                 fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff282828)),
+                                color: const Color(0xff282828)),
                             decoration: InputDecoration(
                                 contentPadding: EdgeInsets.fromLTRB(
                                     AppDimensions.height10 * 1.4,
@@ -140,7 +140,7 @@ class _video_infoState extends State<video_info> {
                                     fontFamily: 'Poppins',
                                     fontSize: AppDimensions.height10 * 1.6,
                                     fontWeight: FontWeight.w500,
-                                    color: Color(0xff828282)),
+                                    color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.transparent)),
@@ -164,7 +164,7 @@ class _video_infoState extends State<video_info> {
                                       height: AppDimensions.height10 * 2.5,
                                       // margin: EdgeInsets.only(
                                       //     right: AppDimensions.height10 * 0.8),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.black,
                                       ),
@@ -180,7 +180,7 @@ class _video_infoState extends State<video_info> {
                                     height: AppDimensions.height10 * 3.0,
                                     margin: EdgeInsets.only(
                                         right: AppDimensions.height10 * 2.0),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: Colors.black,
                                     ),
@@ -204,7 +204,7 @@ class _video_infoState extends State<video_info> {
                                   height: AppDimensions.height10 * 3.0,
                                   // margin: EdgeInsets.only(
                                   //     left: AppDimensions.height10 * 3.0),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.black,
                                   ),
@@ -230,7 +230,7 @@ class _video_infoState extends State<video_info> {
                             fontFamily: 'Poppins',
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                       ),
                     ),
                     Container(
@@ -245,7 +245,7 @@ class _video_infoState extends State<video_info> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff282828)),
+                            color: const Color(0xff282828)),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(
                                 AppDimensions.height10 * 1.6,
@@ -257,7 +257,7 @@ class _video_infoState extends State<video_info> {
                                 fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xff828282)),
+                                color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent)),
@@ -279,7 +279,7 @@ class _video_infoState extends State<video_info> {
                             fontFamily: 'Poppins',
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                       ),
                     ),
                     Container(
@@ -294,7 +294,7 @@ class _video_infoState extends State<video_info> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff282828)),
+                            color: const Color(0xff282828)),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(
                                 AppDimensions.height10 * 1.6,
@@ -306,7 +306,7 @@ class _video_infoState extends State<video_info> {
                                 fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xff828282)),
+                                color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent)),
@@ -328,7 +328,7 @@ class _video_infoState extends State<video_info> {
                             fontFamily: 'Poppins',
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                       ),
                     ),
                     GestureDetector(
@@ -336,7 +336,7 @@ class _video_infoState extends State<video_info> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => note_info(
+                                builder: (context) => const note_info(
                                     note_saved: true, type_switch: 3)));
                       },
                       child: Container(
@@ -347,8 +347,8 @@ class _video_infoState extends State<video_info> {
                           right: AppDimensions.height10 * 1.9,
                         ),
                         decoration: BoxDecoration(
-                            border:
-                                Border.all(width: 1, color: Color(0xFF464646)),
+                            border: Border.all(
+                                width: 1, color: const Color(0xFF464646)),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 2.0)),
                         child: Row(
@@ -364,7 +364,7 @@ class _video_infoState extends State<video_info> {
                                   child: Text(
                                     '00 impacted goals',
                                     style: TextStyle(
-                                      color: Color(0xFF646464),
+                                      color: const Color(0xFF646464),
                                       fontSize: AppDimensions.height10 * 1.8,
                                       fontWeight: FontWeight.w500,
                                     ),
@@ -381,7 +381,7 @@ class _video_infoState extends State<video_info> {
                                     'assets/images/BTN Back.png',
                                     //width: AppDimensions.height10 * 2.6,
                                     //height: AppDimensions.height10 * 2.6,
-                                    color: Color(0xFF646464),
+                                    color: const Color(0xFF646464),
                                     fit: BoxFit.cover,
                                   ),
                                 ))

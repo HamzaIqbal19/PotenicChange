@@ -43,7 +43,7 @@ class veiw_all_goals_menu extends StatelessWidget {
       ),
       extendBodyBehindAppBar: true,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -59,7 +59,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                 width: AppDimensions.height10 * 6.5,
                 height: AppDimensions.height10 * 6.5,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 6.4),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/menu_goals_p.png'),
                         fit: BoxFit.cover)),
@@ -73,7 +73,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                   style: TextStyle(
                       fontSize: AppDimensions.height10 * 2.8,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xffffffff)),
+                      color: const Color(0xffffffff)),
                 ),
               ),
               Container(
@@ -85,7 +85,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                   style: TextStyle(
                       fontSize: AppDimensions.height10 * 1.8,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xffffffff)),
+                      color: const Color(0xffffffff)),
                 ),
               ),
               Container(
@@ -112,7 +112,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                             height: AppDimensions.height10 * 3.5,
                             margin: EdgeInsets.only(
                                 right: AppDimensions.height10 * 0.8),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
                                         'assets/images/menu_goals_b.png'),
@@ -126,7 +126,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: AppDimensions.height10 * 1.8,
-                                  color: Color(0xff437296)),
+                                  color: const Color(0xff437296)),
                             ),
                           )
                         ],
@@ -137,10 +137,13 @@ class veiw_all_goals_menu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    goal_menu_inactive(isActive: false)));
+                                builder: (context) => const goal_menu_inactive(
+                                      premium: true,
+                                      isActive: false,
+                                      goal_evaluation: false,
+                                    )));
                       },
-                      child: goal_card(
+                      child: const goal_card(
                         days_text: '0',
                         goal_level: '-',
                         isActive: false,
@@ -174,7 +177,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                             height: AppDimensions.height10 * 3.5,
                             margin: EdgeInsets.only(
                                 right: AppDimensions.height10 * 0.8),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
                                         'assets/images/menu_goals_b.png'),
@@ -188,7 +191,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: AppDimensions.height10 * 1.8,
-                                  color: Color(0xff437296)),
+                                  color: const Color(0xff437296)),
                             ),
                           )
                         ],
@@ -199,10 +202,13 @@ class veiw_all_goals_menu extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    goal_menu_inactive(isActive: true)));
+                                builder: (context) => const goal_menu_inactive(
+                                      premium: false,
+                                      isActive: true,
+                                      goal_evaluation: false,
+                                    )));
                       },
-                      child: goal_card(
+                      child: const goal_card(
                         days_text: '10',
                         goal_level: '1',
                         isActive: true,
@@ -236,7 +242,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                             height: AppDimensions.height10 * 3.5,
                             margin: EdgeInsets.only(
                                 right: AppDimensions.height10 * 0.8),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
                                         'assets/images/menu_goals_b.png'),
@@ -250,7 +256,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: AppDimensions.height10 * 1.8,
-                                  color: Color(0xff437296)),
+                                  color: const Color(0xff437296)),
                             ),
                           )
                         ],
@@ -262,7 +268,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    multiple_goal_inactive(isActive: false)));
+                                    const multiple_goal_inactive(
+                                        isActive: false)));
                       },
                       child: Container(
                         width: AppDimensions.height10 * 35.3,
@@ -272,7 +279,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 2.0),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/images/Mask Group.png'),
                               fit: BoxFit.cover,
                             )),
@@ -290,14 +297,14 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.8,
                                         fontWeight: FontWeight.w500,
-                                        color: Color(0xFFFFFFFF)),
+                                        color: const Color(0xFFFFFFFF)),
                                   ),
                                   Text(
                                     'Active',
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.8,
                                         fontWeight: FontWeight.w700,
-                                        color: Color(0xFF156F6D)),
+                                        color: const Color(0xFF156F6D)),
                                   )
                                 ],
                               ),
@@ -313,7 +320,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                   child: Container(
                                     width: AppDimensions.height10 * 26.8,
                                     height: AppDimensions.height10 * 26.8,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/image3.png'),
@@ -321,7 +328,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     child: Stack(
                                       children: [
                                         Align(
-                                            alignment: Alignment(0, -0.5),
+                                            alignment: const Alignment(0, -0.5),
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
@@ -343,14 +350,14 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                             2.0,
                                                         fontWeight:
                                                             FontWeight.w600,
-                                                        color:
-                                                            Color(0xFF5B74A6)),
+                                                        color: const Color(
+                                                            0xFF5B74A6)),
                                                   ),
                                                 ),
                                               ],
                                             )),
                                         Align(
-                                          alignment: Alignment(0, -0.1),
+                                          alignment: const Alignment(0, -0.1),
                                           child: Text(
                                               '“I am someone who is in\ncontrol of my anger”',
                                               textAlign: TextAlign.center,
@@ -359,26 +366,28 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                       AppDimensions.height10 *
                                                           1.6,
                                                   fontWeight: FontWeight.w400,
-                                                  color: Color(0xFF5B74A6))),
+                                                  color:
+                                                      const Color(0xFF5B74A6))),
                                         )
                                       ],
                                     ),
                                   ),
                                 ),
                                 Align(
-                                  alignment: Alignment(0, 0.8),
+                                  alignment: const Alignment(0, 0.8),
                                   child: Container(
                                     width: AppDimensions.height10 * 31.0,
                                     height: AppDimensions.height10 * 8.9,
                                     child: Stack(
                                       children: [
                                         Align(
-                                          alignment: Alignment(0.485, 0.8),
+                                          alignment:
+                                              const Alignment(0.485, 0.8),
                                           child: Container(
                                             height:
                                                 AppDimensions.height10 * 8.9,
                                             width: AppDimensions.height10 * 8.9,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
                                                     image: AssetImage(
@@ -389,7 +398,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                               'Mirror\npractice',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                  color: Color(0xFFFFFFFF),
+                                                  color:
+                                                      const Color(0xFFFFFFFF),
                                                   fontSize:
                                                       AppDimensions.height10 *
                                                           1.4,
@@ -398,12 +408,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           ),
                                         ),
                                         Align(
-                                          alignment: Alignment(0.05, 0.8),
+                                          alignment: const Alignment(0.05, 0.8),
                                           child: Container(
                                             height:
                                                 AppDimensions.height10 * 8.9,
                                             width: AppDimensions.height10 * 8.9,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
                                                     image: AssetImage(
@@ -414,7 +424,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                               'Count\ntemper\nepisodes',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                  color: Color(0xFFFFFFFF),
+                                                  color:
+                                                      const Color(0xFFFFFFFF),
                                                   fontSize:
                                                       AppDimensions.height10 *
                                                           1.4,
@@ -423,12 +434,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           ),
                                         ),
                                         Align(
-                                          alignment: Alignment(-0.5, 0.8),
+                                          alignment: const Alignment(-0.5, 0.8),
                                           child: Container(
                                             height:
                                                 AppDimensions.height10 * 8.9,
                                             width: AppDimensions.height10 * 8.9,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
                                                     image: AssetImage(
@@ -440,7 +451,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                 'Count\ndown',
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
-                                                    color: Color(0xFFFFFFFF),
+                                                    color:
+                                                        const Color(0xFFFFFFFF),
                                                     fontSize:
                                                         AppDimensions.height10 *
                                                             1.4,
@@ -451,12 +463,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           ),
                                         ),
                                         Align(
-                                          alignment: Alignment(-1, 0.8),
+                                          alignment: const Alignment(-1, 0.8),
                                           child: Container(
                                             height:
                                                 AppDimensions.height10 * 8.9,
                                             width: AppDimensions.height10 * 8.9,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
                                                     image: AssetImage(
@@ -467,7 +479,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                               'Meditation',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                  color: Color(0xFFFFFFFF),
+                                                  color:
+                                                      const Color(0xFFFFFFFF),
                                                   fontSize:
                                                       AppDimensions.height10 *
                                                           1.4,
@@ -476,7 +489,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           ),
                                         ),
                                         Align(
-                                          alignment: Alignment(1, 0.3),
+                                          alignment: const Alignment(1, 0.3),
                                           child: Container(
                                             height:
                                                 AppDimensions.height10 * 5.5,
@@ -487,13 +500,15 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                     width:
                                                         AppDimensions.height10 *
                                                             0.2,
-                                                    color: Color(0xffffffff))),
+                                                    color: const Color(
+                                                        0xffffffff))),
                                             child: Center(
                                                 child: Text(
                                               '+2',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                  color: Color(0xFFFFFFFF),
+                                                  color:
+                                                      const Color(0xFFFFFFFF),
                                                   fontSize:
                                                       AppDimensions.height10 *
                                                           1.4,
@@ -519,7 +534,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                   Container(
                                     width: AppDimensions.height10 * 11.4,
                                     height: AppDimensions.height10 * 11.4,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xFFFFFFFF)),
                                     child: Column(
@@ -537,7 +552,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                     AppDimensions.height10 *
                                                         1.4,
                                                 fontWeight: FontWeight.w600,
-                                                color: Color(0xFF437296)),
+                                                color: const Color(0xFF437296)),
                                           ),
                                         ),
                                         Container(
@@ -554,7 +569,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                     AppDimensions.height10 *
                                                         2.8,
                                                 fontWeight: FontWeight.w500,
-                                                color: Color(0xFF464646)),
+                                                color: const Color(0xFF464646)),
                                           ),
                                         )
                                       ],
@@ -563,7 +578,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                   Container(
                                     width: AppDimensions.height10 * 11.4,
                                     height: AppDimensions.height10 * 11.4,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xFFFFFFFF)),
                                     child: Column(
@@ -581,7 +596,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                     AppDimensions.height10 *
                                                         1.4,
                                                 fontWeight: FontWeight.w600,
-                                                color: Color(0xFF437296)),
+                                                color: const Color(0xFF437296)),
                                           ),
                                         ),
                                         Container(
@@ -602,7 +617,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                         AppDimensions.height10 *
                                                             2.8,
                                                     fontWeight: FontWeight.w600,
-                                                    color: Color(0xFF464646)),
+                                                    color: const Color(
+                                                        0xFF464646)),
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.only(
@@ -618,7 +634,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                           1.0,
                                                       fontWeight:
                                                           FontWeight.w300,
-                                                      color: Color(0xFF464646)),
+                                                      color: const Color(
+                                                          0xFF464646)),
                                                 ),
                                               ),
                                             ],
@@ -636,16 +653,16 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            goal_prac_info()));
+                                            const goal_prac_info()));
                               },
                               child: Align(
-                                alignment: Alignment(0.955, 0),
+                                alignment: const Alignment(0.955, 0),
                                 child: Container(
                                   width: AppDimensions.height10 * 2.5,
                                   height: AppDimensions.height10 * 2.5,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10 * 0.0),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
                                               'assets/images/ic_info_outline.png'),
@@ -686,7 +703,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                               height: AppDimensions.height10 * 3.5,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10 * 0.8),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
                                           'assets/images/menu_goals_b.png'),
@@ -700,7 +717,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: AppDimensions.height10 * 1.8,
-                                    color: Color(0xff437296)),
+                                    color: const Color(0xff437296)),
                               ),
                             )
                           ],
@@ -711,9 +728,10 @@ class veiw_all_goals_menu extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => add_your_practice()));
+                                  builder: (context) =>
+                                      const add_your_practice()));
                         },
-                        child: goal_card(
+                        child: const goal_card(
                           days_text: '0',
                           goal_level: '-',
                           isActive: false,
@@ -753,7 +771,7 @@ class goal_card extends StatelessWidget {
       margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
-          image: DecorationImage(
+          image: const DecorationImage(
             image: AssetImage('assets/images/Mask Group.png'),
             fit: BoxFit.cover,
           )),
@@ -770,7 +788,7 @@ class goal_card extends StatelessWidget {
                   style: TextStyle(
                       fontSize: AppDimensions.height10 * 1.8,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFFFFFFFF)),
+                      color: const Color(0xFFFFFFFF)),
                 ),
                 isActive
                     ? Text(
@@ -778,14 +796,14 @@ class goal_card extends StatelessWidget {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.8,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xFF156F6D)),
+                            color: const Color(0xFF156F6D)),
                       )
                     : Text(
                         'Inactive',
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.8,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xFFDE7A11)),
+                            color: const Color(0xFFDE7A11)),
                       )
               ],
             ),
@@ -800,14 +818,14 @@ class goal_card extends StatelessWidget {
                 child: Container(
                   width: AppDimensions.height10 * 26.8,
                   height: AppDimensions.height10 * 26.8,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/image3.png'),
                           fit: BoxFit.cover)),
                   child: Stack(
                     children: [
                       Align(
-                          alignment: Alignment(0, -0.5),
+                          alignment: const Alignment(0, -0.5),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -821,13 +839,13 @@ class goal_card extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 2.0,
                                       fontWeight: FontWeight.w600,
-                                      color: Color(0xFF5B74A6)),
+                                      color: const Color(0xFF5B74A6)),
                                 ),
                               ),
                             ],
                           )),
                       Align(
-                        alignment: Alignment(0, -0.1),
+                        alignment: const Alignment(0, -0.1),
                         child: Text(
                             '“I am someone who is in\ncontrol of my anger”',
                             textAlign: TextAlign.center,
@@ -835,19 +853,19 @@ class goal_card extends StatelessWidget {
                                 fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF5B74A6))),
+                                color: const Color(0xFF5B74A6))),
                       )
                     ],
                   ),
                 ),
               ),
               Align(
-                alignment: Alignment(0, 0.8),
+                alignment: const Alignment(0, 0.8),
                 child: add_practice
                     ? Container(
                         height: AppDimensions.height10 * 8.9,
                         width: AppDimensions.height10 * 8.9,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             //color: Colors.amber,
                             image: DecorationImage(
                                 image: AssetImage(
@@ -859,7 +877,7 @@ class goal_card extends StatelessWidget {
                             'Add practice',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Color(0xFFFFFFFF),
+                                color: const Color(0xFFFFFFFF),
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400),
                           )),
@@ -868,7 +886,7 @@ class goal_card extends StatelessWidget {
                     : Container(
                         height: AppDimensions.height10 * 8.9,
                         width: AppDimensions.height10 * 8.9,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             //color: Colors.amber,
                             image: DecorationImage(
                                 image:
@@ -879,7 +897,7 @@ class goal_card extends StatelessWidget {
                           'Meditation',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: Color(0xFFFFFFFF),
+                              color: const Color(0xFFFFFFFF),
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w400),
                         )),
@@ -897,7 +915,7 @@ class goal_card extends StatelessWidget {
                 Container(
                   width: AppDimensions.height10 * 11.4,
                   height: AppDimensions.height10 * 11.4,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -911,7 +929,7 @@ class goal_card extends StatelessWidget {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF437296)),
+                              color: const Color(0xFF437296)),
                         ),
                       ),
                       Container(
@@ -925,7 +943,7 @@ class goal_card extends StatelessWidget {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 2.8,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xFF464646)),
+                              color: const Color(0xFF464646)),
                         ),
                       )
                     ],
@@ -934,7 +952,7 @@ class goal_card extends StatelessWidget {
                 Container(
                   width: AppDimensions.height10 * 11.4,
                   height: AppDimensions.height10 * 11.4,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -948,7 +966,7 @@ class goal_card extends StatelessWidget {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF437296)),
+                              color: const Color(0xFF437296)),
                         ),
                       ),
                       Container(
@@ -965,7 +983,7 @@ class goal_card extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 2.8,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF464646)),
+                                  color: const Color(0xFF464646)),
                             ),
                             Padding(
                               padding: EdgeInsets.only(
@@ -976,7 +994,7 @@ class goal_card extends StatelessWidget {
                                 style: TextStyle(
                                     fontSize: AppDimensions.height10 * 1.0,
                                     fontWeight: FontWeight.w300,
-                                    color: Color(0xFF464646)),
+                                    color: const Color(0xFF464646)),
                               ),
                             ),
                           ],
@@ -990,16 +1008,18 @@ class goal_card extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => goal_prac_info()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const goal_prac_info()));
             },
             child: Align(
-              alignment: Alignment(0.955, 0),
+              alignment: const Alignment(0.955, 0),
               child: Container(
                 width: AppDimensions.height10 * 2.5,
                 height: AppDimensions.height10 * 2.5,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 0.0),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/ic_info_outline.png'),
                         fit: BoxFit.cover)),

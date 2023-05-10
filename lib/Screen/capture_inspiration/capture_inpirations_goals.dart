@@ -33,7 +33,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => photo_info(
+                              builder: (context) => const photo_info(
                                     edit_details: false,
                                     image_detals: true,
                                     image_save: true,
@@ -64,7 +64,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           fontSize: AppDimensions.height10 * 2.0,
                           fontWeight: FontWeight.w600,
                         ),
-                        colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                        colors: [
+                          const Color(0xffFA9934),
+                          const Color(0xffEDD15E)
+                        ],
                       ),
                       GradientText(
                         '/2',
@@ -73,7 +76,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           fontSize: AppDimensions.height10 * 2.0,
                           fontWeight: FontWeight.w400,
                         ),
-                        colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                        colors: [
+                          const Color(0xffFA9934),
+                          const Color(0xffEDD15E)
+                        ],
                       ),
                     ],
                   ),
@@ -93,7 +99,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                     actionsPadding: EdgeInsets.zero,
                                     titlePadding: EdgeInsets.zero,
                                     title: Container(
-                                      margin: EdgeInsets.only(
+                                      margin: const EdgeInsets.only(
                                           top: 19,
                                           right: 16,
                                           left: 16,
@@ -110,7 +116,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       ),
                                     ),
                                     content: Container(
-                                      margin: EdgeInsets.only(
+                                      margin: const EdgeInsets.only(
                                           bottom: 19, left: 16, right: 16),
                                       height: 32,
                                       width: 238,
@@ -130,7 +136,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             height:
                                                 AppDimensions.height10 * 0.1,
                                             child: Divider(
-                                              color: Color(0XFF3C3C43)
+                                              color: const Color(0XFF3C3C43)
                                                   .withOpacity(0.29),
                                             ),
                                           ),
@@ -155,7 +161,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             height:
                                                 AppDimensions.height10 * 0.1,
                                             child: Divider(
-                                              color: Color(0XFF3C3C43)
+                                              color: const Color(0XFF3C3C43)
                                                   .withOpacity(0.29),
                                             ),
                                           ),
@@ -178,7 +184,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             height:
                                                 AppDimensions.height10 * 0.1,
                                             child: Divider(
-                                              color: Color(0XFF3C3C43)
+                                              color: const Color(0XFF3C3C43)
                                                   .withOpacity(0.29),
                                             ),
                                           ),
@@ -219,7 +225,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
           width: double.infinity,
           height: double.infinity,
           // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/bg_inpiration_purple.png'),
                   colorFilter: ColorFilter.mode(
@@ -253,7 +259,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               fontSize: AppDimensions.height10 * 2.8,
                               fontWeight: FontWeight.w700,
                             ),
-                            colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                            colors: [
+                              const Color(0xffFA9934),
+                              const Color(0xffEDD15E)
+                            ],
                           ),
                         ),
                       ),
@@ -276,7 +285,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               border: Border.all(
                                   width: AppDimensions.height10 * 0.1,
                                   color: Colors.white),
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
@@ -330,7 +339,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -356,7 +365,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -410,7 +419,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -436,7 +445,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -472,7 +481,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -498,7 +507,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -538,7 +547,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             color: Colors.transparent,
                             border: Border.all(
                                 width: 1,
-                                color: Color(0xFFFFFFFF).withOpacity(0.5)),
+                                color:
+                                    const Color(0xFFFFFFFF).withOpacity(0.5)),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 5.0),
                           ),
@@ -561,8 +571,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                Color(0xffFCC10D).withOpacity(0.5),
-                                Color(0xffFDA210).withOpacity(0.5),
+                                const Color(0xffFCC10D).withOpacity(0.5),
+                                const Color(0xffFDA210).withOpacity(0.5),
                               ],
                             ),
                             borderRadius: BorderRadius.circular(
@@ -605,7 +615,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => inspiration_type()),
+                                builder: (context) => const inspiration_type()),
                           );
                         },
                         child: Text(
@@ -624,7 +634,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),
-                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             )
           ])),
     );

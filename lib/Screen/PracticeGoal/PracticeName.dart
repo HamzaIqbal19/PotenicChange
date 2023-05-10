@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
@@ -15,7 +9,7 @@ class PracticeName extends StatefulWidget {
   final String Circletitle;
   // final String message;
 
-  PracticeName(this.title,this.Circletitle);
+  PracticeName(this.title, this.Circletitle);
 
   @override
   State<PracticeName> createState() => _PracticeNameState();
@@ -123,18 +117,18 @@ class _PracticeNameState extends State<PracticeName> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 ,
+                  height: AppDimensions.height10,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        margin: EdgeInsets.only(left:AppDimensions.height10*1.0,right:AppDimensions.height10*1.0),
-              width: AppDimensions.height10 * 10.4,
-              height: AppDimensions.height10 *11.2,
-
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10 * 1.0,
+                            right: AppDimensions.height10 * 1.0),
+                        width: AppDimensions.height10 * 10.4,
+                        height: AppDimensions.height10 * 11.2,
                         child: Image.asset(
                           "assets/images/createprac.png",
                           fit: BoxFit.contain,
@@ -153,9 +147,7 @@ class _PracticeNameState extends State<PracticeName> {
                       ),
                     ),
                   ],
-
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 1.6,
                 ),
@@ -177,13 +169,12 @@ class _PracticeNameState extends State<PracticeName> {
                 ),
                 Container(
                   height: AppDimensions.height10 * 2.2,
-                  width: AppDimensions.height10 * 24.4,
+                  width: AppDimensions.height10 * 28.4,
                   child: Center(
                     child: Text(
                       "Enter the name of your practice",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-
                           fontSize: AppDimensions.height10 * 1.8,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFFFFFFFF)),
@@ -194,38 +185,39 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10 * 3.4,
                 ),
                 Container(
-
                   height: AppDimensions.height10 * 10.5,
-                  width: AppDimensions.height10*36.0,
-                  padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8,),
+                  width: AppDimensions.height10 * 36.0,
+                  padding: EdgeInsets.only(
+                    top: AppDimensions.height10 * 2,
+                    bottom: AppDimensions.height10 * 4.8,
+                  ),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
-                      borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(AppDimensions.height10 * 1.8))),
                   child: TextFormField(
-                      decoration:  InputDecoration(
-
+                      decoration: InputDecoration(
                           hintText: widget.title,
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10 * 2.4,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFFFA9934)),
-
                           focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.transparent)),
+                              borderSide:
+                                  BorderSide(color: Colors.transparent)),
                           enabledBorder: const OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: Colors.transparent)))),
+                                  BorderSide(color: Colors.transparent)))),
                 ),
                 SizedBox(
                   height: AppDimensions.height10 * 0.5,
                 ),
                 Container(
                   // width: AppDimensions.height10*12.3,
-                  width:  AppDimensions.height10 * 34.7,
+                  width: AppDimensions.height10 * 34.7,
 
-
-                  margin: EdgeInsets.only(right:AppDimensions.height10*1.3),
+                  margin: EdgeInsets.only(right: AppDimensions.height10 * 1.3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -258,9 +250,8 @@ class _PracticeNameState extends State<PracticeName> {
                 ),
                 Container(
                   height: AppDimensions.height10 * 4.2,
-                  width:  AppDimensions.height10 * 34.7,
-
-                  margin: EdgeInsets.only(right:AppDimensions.height10*1.3),
+                  width: AppDimensions.height10 * 34.7,
+                  margin: EdgeInsets.only(right: AppDimensions.height10 * 1.3),
                   child: Center(
                     child: Text(
                       "You can change the name of your practice later by going into your Dashboard.  ",
@@ -272,30 +263,26 @@ class _PracticeNameState extends State<PracticeName> {
                     ),
                   ),
                 ),
-
-
-                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
-                  height: AppDimensions.height10 * 26.3,
-                ):SizedBox(
-                  height: AppDimensions.height10 * 9.6,
-                ),
-
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10 * 26.3,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10 * 9.6,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      // color: Colors.blue,
+                        // color: Colors.blue,
                         width: AppDimensions.height10 * 5.0,
                         height: AppDimensions.height10 * 5.0,
-
                         child: Image.asset(
                           "assets/images/Moreactions.png",
                           fit: BoxFit.contain,
                         )),
-
                     GestureDetector(
-
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -303,23 +290,23 @@ class _PracticeNameState extends State<PracticeName> {
                           ),
                         );
                       },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*31.3,
-                        decoration:  BoxDecoration(
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 31.3,
+                        decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        child:  Center(
-                          child:  Text(
+                        child: Center(
+                          child: Text(
                             "Next",
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
@@ -330,20 +317,17 @@ class _PracticeNameState extends State<PracticeName> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.5,
                 ),
-
-                Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           )
-
         ],
       ),
-
-
     );
   }
 }

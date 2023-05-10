@@ -22,11 +22,11 @@ class _note_infoState extends State<note_info> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xffC4C4C4),
+        color: const Color(0xffC4C4C4),
       ),
       bottomNavigationBar: BottomAppBar(
-          color: Color(0xffC4C4C4),
-          shape: CircularNotchedRectangle(),
+          color: const Color(0xffC4C4C4),
+          shape: const CircularNotchedRectangle(),
           child: Container(
             height: AppDimensions.height10 * 84.8,
             child: SingleChildScrollView(
@@ -37,7 +37,7 @@ class _note_infoState extends State<note_info> {
                   height: AppDimensions.height10 * 5.1,
                   // margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
                   decoration: BoxDecoration(
-                      color: Color(0xffF5F5F5).withOpacity(0.8),
+                      color: const Color(0xffF5F5F5).withOpacity(0.8),
                       borderRadius: BorderRadius.only(
                           topLeft:
                               Radius.circular(AppDimensions.height10 * 1.0),
@@ -60,7 +60,7 @@ class _note_infoState extends State<note_info> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.5,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff007AFF)),
+                                  color: const Color(0xff007AFF)),
                             ),
                           ),
                         ),
@@ -77,7 +77,7 @@ class _note_infoState extends State<note_info> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.7,
                                         fontWeight: FontWeight.w700,
-                                        color: Color(0xff282828)),
+                                        color: const Color(0xff282828)),
                                   ),
                                   if (widget.type_switch == 1) ...[
                                     Text(
@@ -86,7 +86,7 @@ class _note_infoState extends State<note_info> {
                                           fontSize:
                                               AppDimensions.height10 * 1.7,
                                           fontWeight: FontWeight.w700,
-                                          color: Color(0xff282828)),
+                                          color: const Color(0xff282828)),
                                     ),
                                   ] else if (widget.type_switch == 2) ...[
                                     Text(
@@ -95,7 +95,7 @@ class _note_infoState extends State<note_info> {
                                           fontSize:
                                               AppDimensions.height10 * 1.7,
                                           fontWeight: FontWeight.w700,
-                                          color: Color(0xff282828)),
+                                          color: const Color(0xff282828)),
                                     )
                                   ] else if (widget.type_switch == 3) ...[
                                     Text(
@@ -104,7 +104,7 @@ class _note_infoState extends State<note_info> {
                                           fontSize:
                                               AppDimensions.height10 * 1.7,
                                           fontWeight: FontWeight.w700,
-                                          color: Color(0xff282828)),
+                                          color: const Color(0xff282828)),
                                     )
                                   ],
                                 ],
@@ -123,8 +123,8 @@ class _note_infoState extends State<note_info> {
                                 fontSize: AppDimensions.height10 * 1.5,
                                 fontWeight: FontWeight.w400,
                                 color: widget.note_saved
-                                    ? Color(0xff007AFF)
-                                    : Color(0xff007AFF).withOpacity(0.4)),
+                                    ? const Color(0xff007AFF)
+                                    : const Color(0xff007AFF).withOpacity(0.4)),
                           ),
                         )
                       ]),
@@ -153,7 +153,7 @@ class _note_infoState extends State<note_info> {
                                     fontFamily: 'Poppins',
                                     fontSize: AppDimensions.height10 * 1.4,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff828282)),
+                                    color: const Color(0xff828282)),
                               ),
                             ] else if (widget.type_switch == 2) ...[
                               Text(
@@ -162,7 +162,7 @@ class _note_infoState extends State<note_info> {
                                     fontFamily: 'Poppins',
                                     fontSize: AppDimensions.height10 * 1.4,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff828282)),
+                                    color: const Color(0xff828282)),
                               ),
                             ] else ...[
                               Text(
@@ -171,7 +171,7 @@ class _note_infoState extends State<note_info> {
                                     fontFamily: 'Poppins',
                                     fontSize: AppDimensions.height10 * 1.4,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff828282)),
+                                    color: const Color(0xff828282)),
                               ),
                             ],
                           ]),
@@ -208,7 +208,7 @@ class _note_infoState extends State<note_info> {
                                             fontSize:
                                                 AppDimensions.height10 * 1.6,
                                             fontWeight: FontWeight.w500,
-                                            color: Color(0xFF464646)),
+                                            color: const Color(0xFF464646)),
                                       ),
                                     ] else if (widget.type_switch == 2) ...[
                                       Row(
@@ -226,7 +226,7 @@ class _note_infoState extends State<note_info> {
                                                     AppDimensions.height10 *
                                                         1.6,
                                                 fontWeight: FontWeight.w500,
-                                                color: Color(0xFF464646)),
+                                                color: const Color(0xFF464646)),
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(
@@ -240,7 +240,7 @@ class _note_infoState extends State<note_info> {
                                               margin: EdgeInsets.only(
                                                   left: AppDimensions.height10 *
                                                       1.0),
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: Colors.black,
                                               ),
@@ -270,7 +270,7 @@ class _note_infoState extends State<note_info> {
                                                         1.6,
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
-                                                color: Color(0xFF464646)),
+                                                color: const Color(0xFF464646)),
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(
@@ -284,7 +284,7 @@ class _note_infoState extends State<note_info> {
                                               margin: EdgeInsets.only(
                                                   left: AppDimensions.height10 *
                                                       1.0),
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: Colors.black,
                                               ),
@@ -306,7 +306,7 @@ class _note_infoState extends State<note_info> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xff282828)),
+                                      color: const Color(0xff282828)),
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           AppDimensions.height10 * 1.5,
@@ -319,7 +319,7 @@ class _note_infoState extends State<note_info> {
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500,
-                                          color: Color(0xff828282)),
+                                          color: const Color(0xff828282)),
                                       focusedBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
                                               color: Colors.transparent)),
@@ -345,7 +345,7 @@ class _note_infoState extends State<note_info> {
                                       fontFamily: 'Poppins',
                                       fontSize: AppDimensions.height10 * 1.4,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff828282)),
+                                      color: const Color(0xff828282)),
                                 ),
                               ] else if (widget.type_switch == 2) ...[
                                 Text(
@@ -354,7 +354,7 @@ class _note_infoState extends State<note_info> {
                                       fontFamily: 'Poppins',
                                       fontSize: AppDimensions.height10 * 1.4,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff828282)),
+                                      color: const Color(0xff828282)),
                                 ),
                               ] else if (widget.type_switch == 3) ...[
                                 Text(
@@ -363,7 +363,7 @@ class _note_infoState extends State<note_info> {
                                       fontFamily: 'Poppins',
                                       fontSize: AppDimensions.height10 * 1.4,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff828282)),
+                                      color: const Color(0xff828282)),
                                 ),
                               ]
                             ],
@@ -398,7 +398,7 @@ class _note_infoState extends State<note_info> {
                                             fontSize:
                                                 AppDimensions.height10 * 1.6,
                                             fontWeight: FontWeight.w500,
-                                            color: Color(0xFF464646)),
+                                            color: const Color(0xFF464646)),
                                       ),
                                     ] else if (widget.type_switch == 2) ...[
                                       Text(
@@ -409,7 +409,7 @@ class _note_infoState extends State<note_info> {
                                                 AppDimensions.height10 * 1.6,
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.w500,
-                                            color: Color(0xFF464646)),
+                                            color: const Color(0xFF464646)),
                                       ),
                                     ] else if (widget.type_switch == 3) ...[
                                       Text(
@@ -420,7 +420,7 @@ class _note_infoState extends State<note_info> {
                                             fontSize:
                                                 AppDimensions.height10 * 1.6,
                                             fontWeight: FontWeight.w500,
-                                            color: Color(0xFF464646)),
+                                            color: const Color(0xFF464646)),
                                       ),
                                     ]
                                   ],
@@ -435,7 +435,7 @@ class _note_infoState extends State<note_info> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff282828)),
+                                        color: const Color(0xff282828)),
                                     decoration: InputDecoration(
                                         contentPadding: EdgeInsets.fromLTRB(
                                             AppDimensions.height10 * 1.5,
@@ -449,7 +449,7 @@ class _note_infoState extends State<note_info> {
                                             fontSize:
                                                 AppDimensions.height10 * 1.6,
                                             fontWeight: FontWeight.w500,
-                                            color: Color(0xff828282)),
+                                            color: const Color(0xff828282)),
                                         focusedBorder: const OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.transparent)),
@@ -473,7 +473,7 @@ class _note_infoState extends State<note_info> {
                                   fontFamily: 'Poppins',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           )
                         ] else ...[
@@ -492,7 +492,7 @@ class _note_infoState extends State<note_info> {
                               'Author name',
                               style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -511,7 +511,7 @@ class _note_infoState extends State<note_info> {
                                 fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff828282)),
+                                color: const Color(0xff828282)),
                           ),
                         ),
                         Container(
@@ -532,7 +532,7 @@ class _note_infoState extends State<note_info> {
                                   'Add #hashtag',
                                   style: TextStyle(
                                       fontFamily: 'Poppins',
-                                      color: Color(0xFF282828),
+                                      color: const Color(0xFF282828),
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w500),
                                 )
@@ -541,7 +541,7 @@ class _note_infoState extends State<note_info> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff282828)),
+                                      color: const Color(0xff282828)),
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.fromLTRB(
                                           AppDimensions.height10 * 1.6,
@@ -554,7 +554,7 @@ class _note_infoState extends State<note_info> {
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500,
-                                          color: Color(0xff828282)),
+                                          color: const Color(0xff828282)),
                                       focusedBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
                                               color: Colors.transparent)),
@@ -576,7 +576,7 @@ class _note_infoState extends State<note_info> {
                                 fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xff828282)),
+                                color: const Color(0xff828282)),
                           ),
                         ),
                         GestureDetector(
@@ -586,14 +586,14 @@ class _note_infoState extends State<note_info> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            inspiration_landing(
+                                            const inspiration_landing(
                                               muliple_insp: true,
                                               is_Updated: false,
                                             )))
                                 : Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => note_info(
+                                        builder: (context) => const note_info(
                                               note_saved: true,
                                               type_switch: 1,
                                             )));
@@ -607,7 +607,7 @@ class _note_infoState extends State<note_info> {
                             ),
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    width: 1, color: Color(0xFF464646)),
+                                    width: 1, color: const Color(0xFF464646)),
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10 * 2.0)),
                             child: Row(
@@ -623,7 +623,7 @@ class _note_infoState extends State<note_info> {
                                       child: Text(
                                         '00 impacted goals',
                                         style: TextStyle(
-                                          color: Color(0xFF646464),
+                                          color: const Color(0xFF646464),
                                           fontSize:
                                               AppDimensions.height10 * 1.8,
                                           fontWeight: FontWeight.w500,
@@ -641,7 +641,7 @@ class _note_infoState extends State<note_info> {
                                         'assets/images/BTN Back.png',
                                         //width: AppDimensions.height10 * 2.6,
                                         //height: AppDimensions.height10 * 2.6,
-                                        color: Color(0xFF646464),
+                                        color: const Color(0xFF646464),
                                         fit: BoxFit.cover,
                                       ),
                                     ))

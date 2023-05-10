@@ -37,29 +37,29 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/bg_inpiration_purple.png'),
           fit: BoxFit.cover,
         )),
         child: Stack(children: [
           Align(
-            alignment: Alignment(0, 0.995),
+            alignment: const Alignment(0, 0.995),
             child: Container(
               width: AppDimensions.height10 * 11.1,
               height: AppDimensions.height10 * 27.6,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image:
                           AssetImage('assets/images/Inspiration_dust 1.png'))),
             ),
           ),
           Align(
-            alignment: Alignment(0, 0.45),
+            alignment: const Alignment(0, 0.45),
             child: Container(
               height: AppDimensions.height10 * 57.5,
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image:
                           AssetImage('assets/images/Inspiration_Glow 1.png'))),
@@ -67,7 +67,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                 child: Container(
                   height: AppDimensions.height10 * 35.9,
                   width: AppDimensions.height10 * 35.9,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(
                               'assets/images/Inspiration_center 1.png'))),
@@ -77,7 +77,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => inspiraton_goals(
+                              builder: (context) => const inspiraton_goals(
                                     data_saved: false,
                                   )),
                         );
@@ -85,7 +85,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       child: Container(
                         width: AppDimensions.height10 * 16.7,
                         height: AppDimensions.height10 * 16.8,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
                         child: Center(
                           child: GradientText(
@@ -95,7 +95,10 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                               fontSize: AppDimensions.height10 * 2.0,
                               fontWeight: FontWeight.w600,
                             ),
-                            colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                            colors: [
+                              const Color(0xffFA9934),
+                              const Color(0xffEDD15E)
+                            ],
                           ),
                         ),
                       ),
@@ -106,7 +109,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
             ),
           ),
           Align(
-            alignment: Alignment(0, 0),
+            alignment: const Alignment(0, 0),
             child: Column(
               children: [
                 GestureDetector(
@@ -114,7 +117,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => inspiration_landing(
+                          builder: (context) => const inspiration_landing(
                                 muliple_insp: true,
                                 is_Updated: false,
                               )),
@@ -133,7 +136,10 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           fontSize: AppDimensions.height10 * 3.0,
                           fontWeight: FontWeight.w700,
                           height: 1.3),
-                      colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                      colors: [
+                        const Color(0xffFA9934),
+                        const Color(0xffEDD15E)
+                      ],
                     ),
                   ),
                 ),
@@ -144,13 +150,13 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                   child: Text(
                       'Use this space to capture\ninspirational material that motivates and\npushes you forward towards achieving\nyour personal growth goals. ',
                       textAlign: TextAlign.center,
-                      textHeightBehavior: TextHeightBehavior(
+                      textHeightBehavior: const TextHeightBehavior(
                           leadingDistribution: TextLeadingDistribution.even),
                       style: TextStyle(
                           height: 1.3,
                           fontSize: AppDimensions.height10 * 1.8,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFFFFFFFF).withOpacity(0.9),
+                          color: const Color(0xFFFFFFFF).withOpacity(0.9),
                           fontFamily: 'laila')),
                 ),
               ],
@@ -158,7 +164,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
           ),
           widget.goal_delete
               ? Align(
-                  alignment: Alignment(0, 0.9),
+                  alignment: const Alignment(0, 0.9),
                   child: Container(
                     width: AppDimensions.height10 * 38.259,
                     height: AppDimensions.height10 * 9.707,
@@ -167,7 +173,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     decoration: BoxDecoration(
                         borderRadius:
                             BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
@@ -179,7 +185,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                               left: AppDimensions.height10 * 1.261),
                           width: AppDimensions.height10 * 4.437,
                           height: AppDimensions.height10 * 4.437,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/circle_tick.png'))),
@@ -200,7 +206,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.3,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFFFFFFFF)),
+                                      color: const Color(0xFFFFFFFF)),
                                 ),
                               ),
                               Container(
@@ -211,7 +217,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.8,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFFFFFFFF)),
+                                      color: const Color(0xFFFFFFFF)),
                                 ),
                               ),
                             ],
@@ -223,8 +229,8 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10 * 15.1),
                           decoration: BoxDecoration(
-                            border:
-                                Border.all(color: Color(0xFFFFFFFF), width: 1),
+                            border: Border.all(
+                                color: const Color(0xFFFFFFFF), width: 1),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 2.0),
                           ),
@@ -234,7 +240,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xFFFFFFFF)),
+                                  color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                         )
@@ -244,7 +250,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                 )
               : Container(),
           Align(
-            alignment: Alignment(0, 1),
+            alignment: const Alignment(0, 1),
             child: Container(
               width: AppDimensions.height10 * 17.0,
               height: AppDimensions.height10 * 0.5,
@@ -252,7 +258,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),
-                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             ),
           )
         ]),

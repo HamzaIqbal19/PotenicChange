@@ -36,9 +36,10 @@ class _veiw_detailsState extends State<veiw_details> {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: widget.type_switch == 4
-                    ? AssetImage('assets/images/video_image.png')
-                    : AssetImage('assets/images/bg_inpiration_purple.png'),
-                colorFilter: ColorFilter.mode(
+                    ? const AssetImage('assets/images/video_image.png')
+                    : const AssetImage(
+                        'assets/images/bg_inpiration_purple.png'),
+                colorFilter: const ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
         child: Stack(
@@ -55,7 +56,7 @@ class _veiw_detailsState extends State<veiw_details> {
                     left: AppDimensions.height10 * 3.4,
                     right: AppDimensions.height10 * 3.4,
                   ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/selected_image.png'),
                           fit: BoxFit.cover)),
@@ -74,7 +75,7 @@ class _veiw_detailsState extends State<veiw_details> {
                     left: AppDimensions.height10 * 1.8,
                     right: AppDimensions.height10 * 1.8,
                   ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       //  color: Colors.amber,
                       image: DecorationImage(
                           image: AssetImage(
@@ -89,7 +90,7 @@ class _veiw_detailsState extends State<veiw_details> {
                 // width: AppDimensions.height10 * 41.4,
                 // margin: EdgeInsets.only(bottom: AppDimensions.height10 * 20.0),
                 height: AppDimensions.height10 * 44.5,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/video_image.png'),
                         fit: BoxFit.cover)),
@@ -106,7 +107,7 @@ class _veiw_detailsState extends State<veiw_details> {
                 // width: AppDimensions.height10 * 34.7,
                 height: AppDimensions.height10 * 52.5,
 
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: RadialGradient(
                       colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
                 ),
@@ -118,7 +119,7 @@ class _veiw_detailsState extends State<veiw_details> {
                         height: 1.5,
                         fontSize: AppDimensions.height10 * 2.4,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xFFFFFFFF)),
+                        color: const Color(0xFFFFFFFF)),
                   ),
                 ),
               ),
@@ -138,7 +139,7 @@ class _veiw_detailsState extends State<veiw_details> {
                   ? AppDimensions.height10 * 52.465
                   : AppDimensions.height10 * 48.465,
           decoration: BoxDecoration(
-            color: Color(0xFFFFFFFFF),
+            color: const Color(0xFFFFFFFFF),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(AppDimensions.height10 * 4.0),
                 topRight: Radius.circular(AppDimensions.height10 * 4.0)),
@@ -148,7 +149,7 @@ class _veiw_detailsState extends State<veiw_details> {
             //reverse: true,
             child: Container(
               height: widget.type_switch == 3
-                  ? AppDimensions.height10 * 67.2
+                  ? AppDimensions.height10 * 69.2
                   : widget.type_switch == 1
                       ? AppDimensions.height10 * 38.465
                       : AppDimensions.height10 * 60.2,
@@ -167,7 +168,7 @@ class _veiw_detailsState extends State<veiw_details> {
                       style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.4,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff828282),
+                        color: const Color(0xff828282),
                       ),
                     ),
                   ),
@@ -188,7 +189,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   height: 1.5,
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -198,7 +199,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   height: 1.5,
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -208,7 +209,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   height: 1.5,
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -218,7 +219,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   height: 1.5,
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -236,7 +237,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               top: AppDimensions.height10 * 1.0),
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  width: 1, color: Color(0xFF282828)),
+                                  width: 1, color: const Color(0xFF282828)),
                               borderRadius: BorderRadius.circular(
                                   AppDimensions.height10 * 2.0)),
                           child: Center(
@@ -245,7 +246,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xFF646464)),
+                                  color: const Color(0xFF646464)),
                             ),
                           ),
                         ),
@@ -260,7 +261,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               top: AppDimensions.height10 * 1.0),
                           decoration: BoxDecoration(
                               border: Border.all(
-                                  width: 1, color: Color(0xFF282828)),
+                                  width: 1, color: const Color(0xFF282828)),
                               borderRadius: BorderRadius.circular(
                                   AppDimensions.height10 * 2.0)),
                           child: Center(
@@ -269,7 +270,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.8,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xFF646464)),
+                                  color: const Color(0xFF646464)),
                             ),
                           ),
                         ),
@@ -292,7 +293,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           ] else if (widget.type_switch == 2) ...[
                             Text(
@@ -300,7 +301,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           ] else if (widget.type_switch == 4) ...[
                             Text(
@@ -308,7 +309,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           ] else if (widget.type_switch == 3) ...[
                             Text(
@@ -316,7 +317,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff828282)),
+                                  color: const Color(0xff828282)),
                             ),
                           ]
                         ],
@@ -337,7 +338,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   height: 1.5,
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -347,7 +348,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   height: 1.5,
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -357,7 +358,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   height: 1.5,
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -367,7 +368,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               style: TextStyle(
                                   fontFamily: 'Poppins',
                                   height: 1.5,
-                                  color: Color(0xFF282828),
+                                  color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
@@ -387,7 +388,7 @@ class _veiw_detailsState extends State<veiw_details> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff828282)),
+                          color: const Color(0xff828282)),
                     ),
                   ),
                   Container(
@@ -403,7 +404,7 @@ class _veiw_detailsState extends State<veiw_details> {
                         style: TextStyle(
                             fontFamily: 'Poppins',
                             height: 1.5,
-                            color: Color(0xFF282828),
+                            color: const Color(0xFF282828),
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w500),
                       )),
@@ -420,7 +421,7 @@ class _veiw_detailsState extends State<veiw_details> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff828282)),
+                          color: const Color(0xff828282)),
                     ),
                   ),
                   GestureDetector(
@@ -434,8 +435,8 @@ class _veiw_detailsState extends State<veiw_details> {
                           right: AppDimensions.height10 * 1.7,
                           top: AppDimensions.height10 * 0.5),
                       decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 1, color: Color(0xFF464646)),
+                          border: Border.all(
+                              width: 1, color: const Color(0xFF464646)),
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10 * 2.0)),
                       child: Row(
@@ -451,7 +452,7 @@ class _veiw_detailsState extends State<veiw_details> {
                                 child: Text(
                                   '00 impacted goals',
                                   style: TextStyle(
-                                    color: Color(0xFF646464),
+                                    color: const Color(0xFF646464),
                                     fontSize: AppDimensions.height10 * 1.8,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -468,7 +469,7 @@ class _veiw_detailsState extends State<veiw_details> {
                                   'assets/images/BTN Back.png',
                                   //width: AppDimensions.height10 * 2.6,
                                   //height: AppDimensions.height10 * 2.6,
-                                  color: Color(0xFF646464),
+                                  color: const Color(0xFF646464),
                                   fit: BoxFit.cover,
                                 ),
                               ))

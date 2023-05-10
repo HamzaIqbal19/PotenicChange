@@ -152,10 +152,7 @@ class missed_Menu extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => what_hurdles()));
-                },
+                onTap: () {},
                 child: Container(
                   width: AppDimensions.height10 * 9.36,
                   height: AppDimensions.height10 * 12.0,
@@ -276,12 +273,14 @@ class missed_Menu extends StatelessWidget {
                                   feild_text: 'Progress report',
                                   icon_viible: false,
                                   text_color: 0xff828282,
+                                  feild_text_2: '',
                                 ),
                               ),
                               button_feilds(
                                 feild_text: 'Practice score (-/5)',
                                 icon_viible: false,
                                 text_color: 0xff828282,
+                                feild_text_2: '',
                               )
                             ],
                           ),
@@ -311,6 +310,7 @@ class missed_Menu extends StatelessWidget {
                       feild_text: 'View practice progress',
                       icon_viible: true,
                       text_color: 0xff646464,
+                      feild_text_2: '',
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -320,6 +320,7 @@ class missed_Menu extends StatelessWidget {
                         feild_text: 'View practice settings',
                         icon_viible: true,
                         text_color: 0xff646464,
+                        feild_text_2: '',
                       ),
                     ),
                     Container(
@@ -329,12 +330,14 @@ class missed_Menu extends StatelessWidget {
                         feild_text: 'Veiw upcoming schedules',
                         icon_viible: true,
                         text_color: 0xff646464,
+                        feild_text_2: '',
                       ),
                     ),
                     button_feilds(
                       feild_text: 'Practice assesment history',
                       icon_viible: true,
                       text_color: 0xff646464,
+                      feild_text_2: '',
                     )
                   ],
                 ),
