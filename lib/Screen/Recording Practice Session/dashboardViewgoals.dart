@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/bottom_navigation.dart';
@@ -42,9 +43,9 @@ class dashBoard extends StatelessWidget {
         ),
         extendBodyBehindAppBar: true,
         extendBody: true,
-        bottomNavigationBar: Navigation_Bar(bg_colored: false),
+        bottomNavigationBar: const Navigation_Bar(bg_colored: false),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/Mask Group.png'),
               fit: BoxFit.cover,
@@ -65,7 +66,7 @@ class dashBoard extends StatelessWidget {
                     child: Stack(
                       children: [
                         Align(
-                          alignment: Alignment(-1, 1),
+                          alignment: const Alignment(-1, 1),
                           child: Container(
                             height: AppDimensions.height10 * 7.9,
                             width: AppDimensions.height10 * 7.9,
@@ -119,7 +120,7 @@ class dashBoard extends StatelessWidget {
                                         height: AppDimensions.height10 * 2.5,
                                         width: AppDimensions.height10 * 2.5,
                                         //  margin: const EdgeInsets.only(top: 3.32),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: DottedBorder(
@@ -142,7 +143,7 @@ class dashBoard extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: const Alignment(0, 0),
                           child: Container(
                             height: AppDimensions.height10 * 19.2,
                             width: AppDimensions.height10 * 18.8,
@@ -157,11 +158,11 @@ class dashBoard extends StatelessWidget {
                                       fit: BoxFit.cover)),
                               child: Stack(children: [
                                 Align(
-                                  alignment: Alignment(0.185, 0.215),
+                                  alignment: const Alignment(0.185, 0.215),
                                   child: Container(
                                     height: AppDimensions.height10 * 1.3,
                                     width: AppDimensions.height10 * 1.3,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         gradient: LinearGradient(colors: [
                                           Color(0xfff1e39a),
@@ -170,7 +171,7 @@ class dashBoard extends StatelessWidget {
                                   ),
                                 ),
                                 Align(
-                                  alignment: Alignment(0, 0),
+                                  alignment: const Alignment(0, 0),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -180,12 +181,12 @@ class dashBoard extends StatelessWidget {
                                             fontSize:
                                                 AppDimensions.height10 * 1.4,
                                             fontWeight: FontWeight.w600,
-                                            color: Color(0xff5B74A6)),
+                                            color: const Color(0xff5B74A6)),
                                       ),
                                       Text(
                                         '02.07',
                                         style: TextStyle(
-                                            color: Color(0xff5B74A6),
+                                            color: const Color(0xff5B74A6),
                                             fontSize:
                                                 AppDimensions.height10 * 1.3,
                                             fontWeight: FontWeight.w400),
@@ -205,7 +206,8 @@ class dashBoard extends StatelessWidget {
                                                       AppDimensions.height10 *
                                                           1.0,
                                                   fontWeight: FontWeight.w400,
-                                                  color: Color(0xff5B74A6)),
+                                                  color:
+                                                      const Color(0xff5B74A6)),
                                             ),
                                           )),
                                     ],
@@ -217,7 +219,7 @@ class dashBoard extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(1, 1),
+                          alignment: const Alignment(1, 1),
                           child: Container(
                               height: AppDimensions.height10 * 7.9,
                               width: AppDimensions.height10 * 7.9,
@@ -228,7 +230,7 @@ class dashBoard extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   border:
                                       Border.all(width: 3, color: Colors.white),
-                                  gradient: LinearGradient(
+                                  gradient: const LinearGradient(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                       colors: [
@@ -245,9 +247,9 @@ class dashBoard extends StatelessWidget {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.2,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xff5B74A6)),
+                                        color: const Color(0xff5B74A6)),
                                   ),
-                                  Text(
+                                  const Text(
                                     '03.07',
                                     style: TextStyle(color: Color(0xff5B74A6)),
                                   ),
@@ -275,7 +277,7 @@ class dashBoard extends StatelessWidget {
                                                     AppDimensions.height10 *
                                                         1.0,
                                                 fontWeight: FontWeight.w400,
-                                                color: Color(0xff5B74A6)),
+                                                color: const Color(0xff5B74A6)),
                                           ),
                                         )),
                                   )
@@ -342,20 +344,21 @@ class dashBoard extends StatelessWidget {
                   child: dashboard_ctrl
                       ? Stack(children: [
                           Align(
-                            alignment: Alignment(-1, 0),
+                            alignment: const Alignment(-1, 0),
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => practiceMenu(
+                                        builder: (context) =>
+                                            const practiceMenu(
                                               goal_eval: true,
                                             )));
                               },
                               child: Container(
                                 height: AppDimensions.height10 * 13.8,
                                 width: AppDimensions.height10 * 13.8,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     //color: Colors.amber,
                                     image: DecorationImage(
                                         image: AssetImage(
@@ -373,25 +376,28 @@ class dashBoard extends StatelessWidget {
                             ),
                           ),
                           Align(
-                            alignment: Alignment(1, 0.4),
-                            child: Container(
-                              height: AppDimensions.height10 * 13.8,
-                              width: AppDimensions.height10 * 13.8,
-                              decoration: BoxDecoration(
-                                  //color: Colors.amber,
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Ellipse 157.png'),
-                                      fit: BoxFit.cover)),
-                              child: Center(
-                                  child: Text(
-                                'Count\ndown',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 1.8,
-                                    fontWeight: FontWeight.w500),
-                                textAlign: TextAlign.center,
-                              )),
+                            alignment: const Alignment(1, 0.4),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                height: AppDimensions.height10 * 13.8,
+                                width: AppDimensions.height10 * 13.8,
+                                decoration: const BoxDecoration(
+                                    //color: Colors.amber,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Ellipse 157.png'),
+                                        fit: BoxFit.cover)),
+                                child: Center(
+                                    child: Text(
+                                  'Count\ndown',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontWeight: FontWeight.w500),
+                                  textAlign: TextAlign.center,
+                                )),
+                              ),
                             ),
                           ),
                           Align(
@@ -402,7 +408,7 @@ class dashBoard extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            goal_menu_inactive(
+                                            const goal_menu_inactive(
                                               premium: true,
                                               isActive: true,
                                               goal_evaluation: true,
@@ -411,7 +417,7 @@ class dashBoard extends StatelessWidget {
                               child: Container(
                                 width: AppDimensions.height10 * 26.8,
                                 height: AppDimensions.height10 * 26.8,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/image3.png'),
@@ -419,17 +425,17 @@ class dashBoard extends StatelessWidget {
                                 child: Stack(
                                   children: [
                                     Align(
-                                        alignment: Alignment(0, -0.5),
+                                        alignment: const Alignment(0, -0.5),
                                         child: Text(
                                           'Control my anger',
                                           style: TextStyle(
                                               fontSize:
                                                   AppDimensions.height10 * 2.0,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xff5B74A6)),
+                                              color: const Color(0xff5B74A6)),
                                         )),
                                     Align(
-                                      alignment: Alignment(0, -0.2),
+                                      alignment: const Alignment(0, -0.2),
                                       child: Text(
                                           '“I am someone who is in\n control of my anger”',
                                           textAlign: TextAlign.center,
@@ -438,16 +444,22 @@ class dashBoard extends StatelessWidget {
                                               fontSize:
                                                   AppDimensions.height10 * 1.6,
                                               fontWeight: FontWeight.w400,
-                                              color: Color(0xff5B74A6))),
+                                              color: const Color(0xff5B74A6))),
                                     ),
                                     Align(
-                                      alignment: Alignment(0, 1.5),
+                                      alignment: const Alignment(0, 1.5),
                                       child: GestureDetector(
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const congratulations()));
+                                        },
                                         child: Container(
                                           height: AppDimensions.height10 * 13.8,
                                           width: AppDimensions.height10 * 13.8,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                               //color: Colors.amber,
                                               image: DecorationImage(
                                                   image: AssetImage(
@@ -479,7 +491,7 @@ class dashBoard extends StatelessWidget {
                             child: Container(
                               width: AppDimensions.height10 * 26.8,
                               height: AppDimensions.height10 * 26.8,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
                                           'assets/images/image3.png'),
@@ -487,17 +499,17 @@ class dashBoard extends StatelessWidget {
                               child: Stack(
                                 children: [
                                   Align(
-                                      alignment: Alignment(0, -0.5),
+                                      alignment: const Alignment(0, -0.5),
                                       child: Text(
                                         'Control my anger',
                                         style: TextStyle(
                                             fontSize:
                                                 AppDimensions.height10 * 2.0,
                                             fontWeight: FontWeight.w600,
-                                            color: Color(0xff5B74A6)),
+                                            color: const Color(0xff5B74A6)),
                                       )),
                                   Align(
-                                    alignment: Alignment(0, -0.2),
+                                    alignment: const Alignment(0, -0.2),
                                     child: Text(
                                         '“I am someone who is in\n control of my anger”',
                                         textAlign: TextAlign.center,
@@ -505,27 +517,28 @@ class dashBoard extends StatelessWidget {
                                             fontSize:
                                                 AppDimensions.height10 * 1.6,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xff5B74A6))),
+                                            color: const Color(0xff5B74A6))),
                                   )
                                 ],
                               ),
                             ),
                           ),
                           Align(
-                            alignment: Alignment(0.9, 0.9),
+                            alignment: const Alignment(0.9, 0.9),
                             child: GestureDetector(
                               onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => practiceMenu(
+                                        builder: (context) =>
+                                            const practiceMenu(
                                               goal_eval: false,
                                             )));
                               },
                               child: Container(
                                 height: AppDimensions.height10 * 13.8,
                                 width: AppDimensions.height10 * 13.8,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     //color: Colors.amber,
                                     image: DecorationImage(
                                         image: AssetImage(
@@ -543,11 +556,11 @@ class dashBoard extends StatelessWidget {
                             ),
                           ),
                           Align(
-                            alignment: Alignment(-1, 0.4),
+                            alignment: const Alignment(-1, 0.4),
                             child: Container(
                               height: AppDimensions.height10 * 13.8,
                               width: AppDimensions.height10 * 13.8,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   //color: Colors.amber,
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -606,13 +619,13 @@ class dashBoard extends StatelessWidget {
                           Container(
                             width: AppDimensions.height10 * 28.0,
                             height: AppDimensions.height10 * 2.3,
-                            alignment: Alignment(-0.65, 0),
+                            alignment: const Alignment(-0.65, 0),
                             child: Text(
                               "Hi, it's Reda here",
                               style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(91, 116, 166, 1),
+                                color: const Color.fromRGBO(91, 116, 166, 1),
                               ),
                             ),
                           ),
@@ -639,7 +652,7 @@ class dashBoard extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color.fromRGBO(91, 116, 166, 1)),
+                                  color: const Color.fromRGBO(91, 116, 166, 1)),
                             ),
                           )
                         ],
