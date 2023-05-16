@@ -533,7 +533,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),
                   color: Color(0xFFFFFFFF).withOpacity(0.3)),
-            )
+            ),
           ])),
     );
   }
