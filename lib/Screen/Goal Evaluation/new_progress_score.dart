@@ -643,32 +643,32 @@ void evaluation_sheet(context) {
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF437296)),
-                            children: [
-                          const TextSpan(
+                            children: const [
+                          TextSpan(
                               text:
                                   'It’s important to have clarity on the progress you’re\nmaking with your personal development goals.\n\nFor this purpose, we’ve created a '),
-                          const TextSpan(
+                          TextSpan(
                               text: 'Goal Level\nEvaluation ',
                               style: TextStyle(fontWeight: FontWeight.w700)),
-                          const TextSpan(
+                          TextSpan(
                               text:
                                   'feature to help you assess your goal\nprogress in relation to your original reasons for\nwanting to achieve it (remember the statements you\nhad to complete during onboarding and creating your\ngoal? We use these exact reasons for you to evaluate).\n\n'),
-                          const TextSpan(
+                          TextSpan(
                               text: 'Goal Level Evaluation ',
                               style: TextStyle(fontWeight: FontWeight.w700)),
-                          const TextSpan(
+                          TextSpan(
                               text:
                                   'has four core criteria that you’ll need to assess:\n\n 1.Your why’s\n 2.Your new identity\n 3.Your vision for new self\n 4.Impact on your life\n\nBy navigating to each of different criteria, you would\nbe able to '),
-                          const TextSpan(
+                          TextSpan(
                               text: 'evaluate your progress.\n\n',
                               style: TextStyle(fontWeight: FontWeight.w700)),
-                          const TextSpan(
+                          TextSpan(
                               text:
                                   'Have fun with it, but also make sure you’re honest\nwith yourself. It’s totally ok to give yourself a low level\nscore if you feel you’re not making a considerable\nprogress yet. This way, we can better support you.\n\nDepending on a goal, some take longer that others to\nachieve. What matters is the '),
-                          const TextSpan(
+                          TextSpan(
                               text: 'daily practices ',
                               style: TextStyle(fontWeight: FontWeight.w700)),
-                          const TextSpan(
+                          TextSpan(
                               text:
                                   ' you perform\nthat will eventually help you observe\nmeaningful changes into your life.'),
                         ])),

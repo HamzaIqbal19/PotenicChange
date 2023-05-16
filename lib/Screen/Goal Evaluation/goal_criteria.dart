@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Widgets/Circle.dart';
 
 import '../../utils/app_dimensions.dart';
 

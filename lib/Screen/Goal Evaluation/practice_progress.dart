@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Widgets/calender.dart';
 
 import '../../utils/app_dimensions.dart';
-import 'circle_container.dart';
 
 String activity_duration = 'Last week ';
 String _selected_activity = '';

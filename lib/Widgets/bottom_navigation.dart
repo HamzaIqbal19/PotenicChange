@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
+import 'package:potenic_app/Screen/timeline/timeline.dart';
 
 import '../Screen/captureHurdles/captureHurdles_whatHurdles.dart';
+import '../Screen/timeline/coming_soon.dart';
 import '../utils/app_dimensions.dart';
 
 class Navigation_Bar extends StatefulWidget {
@@ -28,11 +32,11 @@ class Navigation_BarState extends State<Navigation_Bar> {
     int index = 0;
     return Container(
       decoration: widget.bg_colored
-          ? BoxDecoration(gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          //transform: GradientRotation(3.14159),
-          colors: [Color(0xffD9B4B4), Color(0xffD9B4B4)]))
+          ? BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter, end: Alignment.bottomCenter,
+                  //transform: GradientRotation(3.14159),
+                  colors: [Color(0xffD9B4B4), Color(0xffD9B4B4)]))
           : BoxDecoration(shape: BoxShape.rectangle, color: Colors.transparent),
       //height: 77,
       width: AppDimensions.height10 * 30.5,
@@ -50,24 +54,31 @@ class Navigation_BarState extends State<Navigation_Bar> {
         backgroundColor: Colors.transparent,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Container(
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
-              width: AppDimensions.height10 * 4.0,
-              height: AppDimensions.height10 * 4.0,
+            icon: GestureDetector(
+              onTap: () {
+                //  timeline_sheet(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => timeline()));
+              },
               child: Container(
-                  height: AppDimensions.height10 * 2.612,
-                  width: AppDimensions.height10 * 3.318,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
-                  padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
-                  child: ImageIcon(
-                    AssetImage('assets/images/timeline_icon.png'),
-                    color: Colors.white,
-                  )),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                width: AppDimensions.height10 * 4.0,
+                height: AppDimensions.height10 * 4.0,
+                child: Container(
+                    height: AppDimensions.height10 * 2.612,
+                    width: AppDimensions.height10 * 3.318,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                    padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
+                    child: ImageIcon(
+                      AssetImage('assets/images/timeline_icon.png'),
+                      color: Colors.white,
+                    )),
+              ),
             ),
             label: 'Timeline',
           ),
@@ -78,8 +89,8 @@ class Navigation_BarState extends State<Navigation_Bar> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => inspiration_motivation(
-                            goal_delete: false,
-                          )));
+                                goal_delete: false,
+                              )));
                 },
                 child: Container(
                   width: AppDimensions.height10 * 6.0,

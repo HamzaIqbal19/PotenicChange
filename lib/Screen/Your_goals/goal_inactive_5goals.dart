@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-//import 'package:custom_switch/custom_switch.dart';
 
 import '../../utils/app_dimensions.dart';
 
