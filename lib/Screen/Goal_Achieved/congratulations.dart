@@ -415,7 +415,6 @@ void goal_achieved_sheet(context) {
                                     'Control my anger',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
                                         fontSize: AppDimensions.height10 * 2.0,
                                         height: AppDimensions.height10 * 0.12,
                                         fontWeight: FontWeight.w600,
@@ -566,7 +565,6 @@ void goal_achieved_sheet(context) {
                               'Exit',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Poppins',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 color: const Color(0xFFFFFFFF),
                               ),
@@ -593,7 +591,6 @@ void goal_achieved_sheet(context) {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontFamily: 'Poppins',
                               fontSize: AppDimensions.height10 * 1.6,
                               color: const Color(0xFFFA9934),
                             ),
