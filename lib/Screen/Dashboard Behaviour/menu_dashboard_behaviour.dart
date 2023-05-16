@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
+import '../Recording Practice Session/recordPracticeMenu.dart';
+import 'dashboard_view_goals.dart';
 import 'goal_menu_missed_session.dart';
 
 class menu_behaviour extends StatelessWidget {
@@ -38,7 +40,7 @@ class menu_behaviour extends StatelessWidget {
           ]),
       extendBodyBehindAppBar: true,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -52,50 +54,58 @@ class menu_behaviour extends StatelessWidget {
               Container(
                 width: AppDimensions.height10 * 30.4,
                 height: AppDimensions.height10 * 18.6,
+                // color: Colors.grey.withOpacity(0.5),
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 4.2,
-                    bottom: AppDimensions.height10 * 3.2),
+                    top: AppDimensions.height10 * 5.0,
+                    bottom: AppDimensions.height10 * 1.0),
                 child: Column(
                   children: [
                     Text(
-                      'Menu',
+                      'Practice Menu',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10 * 2.0,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Text(
+                      'Control my anger',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: AppDimensions.height10 * 2.0,
                           fontWeight: FontWeight.w600),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 21.0,
+                      width: AppDimensions.height10 * 40.0,
                       height: AppDimensions.height10 * 11.2,
                       margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 4.6),
+                          EdgeInsets.only(top: AppDimensions.height10 * 1.6),
                       // color: Colors.blue,
                       child: Stack(
                         children: [
                           Align(
-                            alignment: Alignment(-1, 0),
+                            alignment: const Alignment(-1, 0),
                             child: Container(
                               width: AppDimensions.height10 * 10.4,
                               height: AppDimensions.height10 * 11.2,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 // color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
                                         'assets/images/Group 9398.png'),
-                                    fit: BoxFit.cover),
+                                    fit: BoxFit.contain),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: Alignment(-0.4, -0.2),
+                            alignment: const Alignment(-0.6, -0.2),
                             child: Container(
                                 height: AppDimensions.height10 * 5.0,
                                 width: AppDimensions.height10 * 4.6,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     //color: Colors.amber,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Ellipse pearl.png'),
+                                            'assets/images/Ellipse pearl_1.png'),
                                         fit: BoxFit.contain)),
                                 child: Align(
                                     alignment: const Alignment(0, 1.125),
@@ -103,22 +113,24 @@ class menu_behaviour extends StatelessWidget {
                                       height: AppDimensions.height10 * 0.98,
                                       width: AppDimensions.height10 * 0.967,
                                       padding: EdgeInsets.all(
-                                          AppDimensions.height10 * 0.7),
+                                          AppDimensions.height10 * 0.2),
                                       decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: Colors.white),
+                                          color: Color(0xff52855E)),
                                       child: Image.asset(
                                         'assets/images/tick_icon.png',
+                                        color: const Color(0xFFFFFFFF),
                                         height: AppDimensions.height10 * 0.5,
                                         width: AppDimensions.height10 * 0.5,
                                       ),
                                     ))),
                           ),
                           Align(
-                            alignment: Alignment(1.9, 0),
+                            alignment: const Alignment(1.3, 6),
                             child: Container(
-                              width: AppDimensions.height10 * 14.0,
-                              height: AppDimensions.height10 * 14.6,
+                              width: AppDimensions.height10 * 21,
+                              height: AppDimensions.height10 * 10.6,
+                              // color: Colors.amber.withOpacity(0.2),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -126,7 +138,7 @@ class menu_behaviour extends StatelessWidget {
                                     'Count temper episodes ',
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
-                                        color: Color(0xffffffff),
+                                        color: const Color(0xffffffff),
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600),
                                   ),
@@ -135,12 +147,12 @@ class menu_behaviour extends StatelessWidget {
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10 * 0.6),
                                     child: Text(
-                                      'Completed',
+                                      'Session completed',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500,
-                                          color: Color(0xff156F6D)),
+                                          color: const Color(0xff156F6D)),
                                     ),
                                   )
                                 ],
@@ -153,19 +165,7 @@ class menu_behaviour extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                width: AppDimensions.height10 * 32.0,
-                height: AppDimensions.height10 * 2.6,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 2.0),
-                child: Text(
-                  'What do you want to do?',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.2,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff437296)),
-                ),
-              ),
+
               Container(
                 width: AppDimensions.height10 * 21.1,
                 height: AppDimensions.height10 * 11.8,
@@ -214,6 +214,7 @@ class menu_behaviour extends StatelessWidget {
                             'session',
                             textAlign: TextAlign.center,
                             style: TextStyle(
+                                height: AppDimensions.height10 * 0.12,
                                 color: Colors.white,
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500),
@@ -244,17 +245,186 @@ class menu_behaviour extends StatelessWidget {
                                       color: Colors.white)),
                               child: Center(
                                 child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  missed_Menu()));
-                                    },
+                                    onTap: () => showDialog<String>(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            Container(
+                                              width:
+                                                  AppDimensions.height10 * 27.0,
+                                              height:
+                                                  AppDimensions.height10 * 18.2,
+                                              child: AlertDialog(
+                                                contentPadding: EdgeInsets.zero,
+                                                actionsPadding: EdgeInsets.zero,
+                                                titlePadding: EdgeInsets.zero,
+                                                title: Container(
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions.height10 *
+                                                            1.9,
+                                                        right: AppDimensions.height10 *
+                                                            1.6,
+                                                        left: AppDimensions.height10 *
+                                                            1.6,
+                                                        bottom: AppDimensions
+                                                                .height10 *
+                                                            0.2),
+                                                    height:
+                                                        AppDimensions.height10 *
+                                                            2.2,
+                                                    width: AppDimensions.height10 *
+                                                        23.8,
+                                                    child: RichText(
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions.height10 *
+                                                                        1.7,
+                                                                fontWeight:
+                                                                    FontWeight.w400,
+                                                                color: Color(0xFF000000)),
+                                                            children: [
+                                                              TextSpan(
+                                                                  text:
+                                                                      'Are you sure?'),
+                                                            ]))),
+                                                content: Container(
+                                                  margin: EdgeInsets.only(
+                                                      bottom: AppDimensions
+                                                              .height10 *
+                                                          1.5,
+                                                      left: AppDimensions
+                                                              .height10 *
+                                                          1.6,
+                                                      right: AppDimensions
+                                                              .height10 *
+                                                          1.6),
+                                                  height:
+                                                      AppDimensions.height10 *
+                                                          3.4,
+                                                  width:
+                                                      AppDimensions.height10 *
+                                                          23.8,
+                                                  child: Text(
+                                                    "Are you sure you want to change this\nscheduled session to missed?",
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.3,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                                actions: <Widget>[
+                                                  Column(
+                                                    children: [
+                                                      SizedBox(
+                                                        height: AppDimensions
+                                                                .height10 *
+                                                            0.1,
+                                                        child: Divider(
+                                                          color: const Color(
+                                                                  0XFF3C3C43)
+                                                              .withOpacity(
+                                                                  0.29),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        height: AppDimensions
+                                                                .height10 *
+                                                            4.2,
+                                                        width: double.infinity,
+                                                        color: const Color(
+                                                            0xFF007AFF),
+                                                        child: TextButton(
+                                                          onPressed: () {
+                                                            Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            view_goals(
+                                                                              missed: true,
+                                                                            )));
+                                                          },
+                                                          child: Text(
+                                                            'Yes',
+                                                            style: TextStyle(
+                                                                color: const Color(
+                                                                    0xFFFFFFFF),
+                                                                fontSize: AppDimensions
+                                                                        .height10 *
+                                                                    1.7,
+                                                                fontFamily:
+                                                                    "Laila",
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: AppDimensions
+                                                                .height10 *
+                                                            0.1,
+                                                        child: Divider(
+                                                          color: const Color(
+                                                                  0XFF3C3C43)
+                                                              .withOpacity(
+                                                                  0.29),
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        height: AppDimensions
+                                                                .height10 *
+                                                            4.4,
+                                                        width: double.infinity,
+                                                        child: TextButton(
+                                                          onPressed: () {
+                                                            Navigator.pop(
+                                                                context);
+                                                          },
+                                                          child: Text(
+                                                            'Cancel',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10 *
+                                                                    1.7,
+                                                                fontFamily:
+                                                                    "Laila",
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF007AFF)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: AppDimensions
+                                                                .height10 *
+                                                            0.1,
+                                                        child: Divider(
+                                                          color: const Color(
+                                                                  0XFF3C3C43)
+                                                              .withOpacity(
+                                                                  0.29),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            )),
                                     child: Container(
                                       width: AppDimensions.height10 * 2.9,
                                       height: AppDimensions.height10 * 2.9,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.red,
                                       ),
@@ -275,6 +445,7 @@ class menu_behaviour extends StatelessWidget {
                             'session',
                             textAlign: TextAlign.center,
                             style: TextStyle(
+                                height: AppDimensions.height10 * 0.12,
                                 color: Colors.white,
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500),
@@ -294,14 +465,22 @@ class menu_behaviour extends StatelessWidget {
               //   ),
               // ),
               Container(
+                width: double.infinity,
+                height: AppDimensions.height10 * 0.1,
+                color: const Color(0xFFFFFFFF).withOpacity(0.5),
+                // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+              ),
+              Container(
                 width: AppDimensions.height10 * 41.3,
                 height: AppDimensions.height10 * 22.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
                 child: Stack(children: [
                   Align(
-                    alignment: Alignment(1, -1.3),
+                    alignment: const Alignment(1, -1.3),
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          info_sheet(context);
+                        },
                         icon: Image.asset(
                           'assets/images/ic_info_outline.png',
                           height: AppDimensions.height10 * 3.0,
@@ -309,14 +488,14 @@ class menu_behaviour extends StatelessWidget {
                         )),
                   ),
                   Align(
-                    alignment: Alignment(0, -1),
+                    alignment: const Alignment(0, -1),
                     child: Container(
                       width: AppDimensions.height10 * 36.0,
-                      height: AppDimensions.height10 * 18.8,
+                      height: AppDimensions.height10 * 24.7,
                       child: Column(
                         children: [
                           Container(
-                            height: AppDimensions.height10 * 4.4,
+                            height: AppDimensions.height10 * 5.9,
                             width: AppDimensions.height10 * 36.0,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10 * 1.2),
@@ -326,22 +505,43 @@ class menu_behaviour extends StatelessWidget {
                                 child: Text(
                                   'Practice Assessment',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.6,
+                                      //increase font size by 2 px
+                                      fontSize: AppDimensions.height10 * 1.8,
                                       fontWeight: FontWeight.w700,
-                                      color: Color(0xfff5f5f5)),
+                                      color: const Color(0xfff5f5f5)),
                                 ),
                               ),
                               Container(
                                 height: AppDimensions.height10 * 1.7,
                                 margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 0.8),
+                                    top: AppDimensions.height10 * 0.2),
                                 child: Text(
-                                  'You can evaluate your progress in -19 active days.',
+                                  'Here is your latest 20 active day evaluation.',
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.4,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xfff5f5f5)),
+                                      color: const Color(0xfff5f5f5)),
                                 ),
+                              ),
+                              Container(
+                                height: AppDimensions.height10 * 1.7,
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10 * 0.3),
+                                child: RichText(
+                                    text: TextSpan(
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.4,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xfff5f5f5)),
+                                        children: [
+                                      const TextSpan(
+                                          text: 'Next assessment is in'),
+                                      const TextSpan(
+                                          text: ' -19 active days.',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w700))
+                                    ])),
                               )
                             ]),
                           ),
@@ -350,18 +550,24 @@ class menu_behaviour extends StatelessWidget {
                               Container(
                                 margin: EdgeInsets.only(
                                     bottom: AppDimensions.height10 * 1.2),
-                                child: button_feilds(
-                                  feild_text: 'Progress report',
-                                  icon_viible: false,
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: const button_feilds(
+                                    feild_text: 'Progress report',
+                                    icon_viible: true,
+                                    text_color: 0xff828282,
+                                    feild_text_2: ' DD/MMM/YY',
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: const button_feilds(
+                                  feild_text: 'Evaluation level (2/5)',
+                                  icon_viible: true,
                                   text_color: 0xff828282,
                                   feild_text_2: '',
                                 ),
-                              ),
-                              button_feilds(
-                                feild_text: 'Practice score (-/5)',
-                                icon_viible: false,
-                                text_color: 0xff828282,
-                                feild_text_2: '',
                               )
                             ],
                           ),
@@ -372,14 +578,12 @@ class menu_behaviour extends StatelessWidget {
                 ]),
               ),
               Container(
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.1),
-                width: AppDimensions.height10 * 36.0,
-                child: Divider(
-                  thickness: AppDimensions.height10 * 0.1,
-                  height: AppDimensions.height10 * 0.1,
-                  color: Colors.white,
-                ),
+                width: double.infinity,
+                height: AppDimensions.height10 * 0.1,
+                color: const Color(0xFFFFFFFF).withOpacity(0.5),
+                // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
               ),
+
               Container(
                 height: AppDimensions.height10 * 28.0,
                 margin: EdgeInsets.only(
@@ -387,7 +591,7 @@ class menu_behaviour extends StatelessWidget {
                     top: AppDimensions.height10 * 3.0),
                 child: Column(
                   children: [
-                    button_feilds(
+                    const button_feilds(
                       feild_text: 'View practice progress',
                       icon_viible: true,
                       text_color: 0xff646464,
@@ -397,7 +601,7 @@ class menu_behaviour extends StatelessWidget {
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10 * 1.0,
                           top: AppDimensions.height10 * 1.0),
-                      child: button_feilds(
+                      child: const button_feilds(
                         feild_text: 'View practice settings',
                         icon_viible: true,
                         text_color: 0xff646464,
@@ -407,14 +611,14 @@ class menu_behaviour extends StatelessWidget {
                     Container(
                       margin:
                           EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
-                      child: button_feilds(
+                      child: const button_feilds(
                         feild_text: 'Veiw upcoming schedules',
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
                       ),
                     ),
-                    button_feilds(
+                    const button_feilds(
                       feild_text: 'Practice assesment history',
                       icon_viible: true,
                       text_color: 0xff646464,

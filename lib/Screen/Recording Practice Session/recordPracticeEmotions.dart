@@ -101,7 +101,9 @@ class _emotionsState extends State<emotions> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 5.2),
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10 * 5.2,
+                    left: AppDimensions.height10 * 1.0),
                 height: AppDimensions.height10 * 13.7,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,

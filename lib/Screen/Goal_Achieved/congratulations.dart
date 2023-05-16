@@ -380,15 +380,13 @@ void goal_achieved_sheet(context) {
                       height: AppDimensions.height10 * 14.1,
                       margin:
                           EdgeInsets.only(top: AppDimensions.height10 * 0.6),
-                      child: Center(
-                        child: Text(
-                          'Based on your latest evaluation, your total goal\nscore level has gone down. Please don’t beat\nyourself up life is a journey of ups and downs\nworking on yourself is part of the growing\nprocess. Please review your latest assessment and\nadjust your original ‘why’ reasons if needed.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xFF437296)),
-                        ),
+                      child: Text(
+                        'Based on your latest evaluation, your total goal\nscore level has gone down. Please don’t beat\nyourself up life is a journey of ups and downs\nworking on yourself is part of the growing\nprocess. Please review your latest assessment and\nadjust your original ‘why’ reasons if needed.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.4,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFF437296)),
                       ),
                     ),
                     Container(
@@ -431,7 +429,6 @@ void goal_achieved_sheet(context) {
                                     '“I am someone who is in\ncontrol of my anger”',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
                                         fontSize: AppDimensions.height10 * 1.6,
                                         //  height: AppDimensions.height10 * 0.12,
                                         fontWeight: FontWeight.w400,
@@ -518,7 +515,7 @@ void goal_achieved_sheet(context) {
                                           child: Text(
                                             // goal_level == 2
                                             //     ? 'I feel like I’m living\nmy goal and desired\nidentity':
-                                            "I am making small\nsteps towards\nmy goal",
+                                            "I am making small\nsteps towards my\ngoal",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               fontFamily: 'laila',

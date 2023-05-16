@@ -29,7 +29,8 @@ class dashBoard extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(
                       left: AppDimensions.height10 * 1.7,
-                      right: AppDimensions.height10 * 0.9),
+                      right: AppDimensions.height10 * 0.9,
+                      bottom: AppDimensions.height10 * 0.3),
                   child: Image.asset(
                     'assets/images/calendar_month_black_24dp 1.png',
                     height: AppDimensions.height10 * 2.4,
@@ -86,35 +87,23 @@ class dashBoard extends StatelessWidget {
                                 alignment: Alignment.center,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  // crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Container(
-                                      height: AppDimensions.height10 * 1.7,
-
-                                      // color: Colors.blue,
-                                      child: Text(
-                                        'MON',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.2,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white),
-                                      ),
+                                    Text(
+                                      'MON',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.2,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white),
                                     ),
-                                    Container(
-                                      //width: AppDimensions.height10 * 4.0,
-                                      height: AppDimensions.height10 * 1.7,
-                                      margin: EdgeInsets.only(
-                                          bottom: AppDimensions.height10 * 0.5),
-                                      // color: Colors.amber,
-                                      child: Text(
-                                        '02.06',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize:
-                                                AppDimensions.height10 * 1.7),
-                                      ),
+                                    Text(
+                                      '02.06',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize:
+                                              AppDimensions.height10 * 1.7),
                                     ),
                                     Container(
                                         height: AppDimensions.height10 * 2.5,
@@ -291,7 +280,7 @@ class dashBoard extends StatelessWidget {
                 Container(
                   width: AppDimensions.height10 * 35.6,
                   height: AppDimensions.height10 * 4.2,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.1),
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
                   child: Column(children: [
                     Container(
                       margin:
@@ -420,7 +409,7 @@ class dashBoard extends StatelessWidget {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/image3.png'),
+                                            'assets/images/orange_moon.png'),
                                         fit: BoxFit.cover)),
                                 child: Stack(
                                   children: [
@@ -440,7 +429,7 @@ class dashBoard extends StatelessWidget {
                                           '“I am someone who is in\n control of my anger”',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontFamily: "Poppins",
+                                              fontStyle: FontStyle.italic,
                                               fontSize:
                                                   AppDimensions.height10 * 1.6,
                                               fontWeight: FontWeight.w400,
@@ -589,9 +578,7 @@ class dashBoard extends StatelessWidget {
                     ),
                     fit: BoxFit.cover,
                   )),
-                  margin: EdgeInsets.only(
-                      left: AppDimensions.height10 * 3.4,
-                      right: AppDimensions.height10 * 2.665),
+
                   //color: Colors.blue,
                   child: Stack(children: [
                     Align(

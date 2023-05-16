@@ -38,7 +38,7 @@ class clocks extends StatelessWidget {
             )
           ]),
       extendBodyBehindAppBar: true,
-      body:  Container(
+      body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
@@ -73,9 +73,10 @@ class clocks extends StatelessWidget {
                 alignment: Alignment.center,
                 // margin: EdgeInsets.only(bottom: 86),
                 child: Text(
-                  'Do you need a timer for\nyour practice',
+                  'Do you need a timer for\nyour practice?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                      height: AppDimensions.height10 * 0.12,
                       fontSize: AppDimensions.height10 * 2.8,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
@@ -109,7 +110,7 @@ class clocks extends StatelessWidget {
                             'Skip',
                             style: TextStyle(
                                 color: Color(0xffFA9934),
-                                fontSize: AppDimensions.height10*1.6,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w600),
                           ))),
                   Container(
@@ -126,8 +127,9 @@ class clocks extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10 * 5.0),
-                          border:
-                              Border.all(width: AppDimensions.height10*0.2, color: Colors.transparent)),
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.2,
+                              color: Colors.transparent)),
                       child: TextButton(
                           onPressed: () {
                             Navigator.push(
@@ -139,7 +141,7 @@ class clocks extends StatelessWidget {
                             'Finished Practice',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10*1.6,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w600),
                           )))
                 ]),
@@ -199,8 +201,8 @@ class _watch_timeState extends State<watch_time> {
                           child: Text(
                             'Stopwatch',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.6,
-                                fontWeight: FontWeight.w500,
+                                fontSize: AppDimensions.height10 * 1.8,
+                                fontWeight: FontWeight.w700,
                                 color: Color(0xff437296)),
                           ),
                         )
@@ -242,7 +244,7 @@ class _watch_timeState extends State<watch_time> {
                             child: Text('Timer',
                                 style: TextStyle(
                                     fontSize: AppDimensions.height10 * 1.8,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w700,
                                     color: Colors.white)),
                           )
                         : Container(
@@ -250,7 +252,7 @@ class _watch_timeState extends State<watch_time> {
                             // width: AppDimensions.height10 * 5.4,
                             child: Text('Timer',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize: AppDimensions.height10 * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xff437296))),
                           )),
@@ -288,41 +290,41 @@ class _watch_timeState extends State<watch_time> {
                     width: AppDimensions.height10 * 12.8,
                     child: Center(
                       child: Container(
-                        decoration: clock_state
-                            ? BoxDecoration(
-                                shape: BoxShape.rectangle,
-                              )
-                            : DottedDecoration(
-                                shape: Shape.line,
-                                linePosition: LinePosition.bottom,
+                          decoration: clock_state
+                              ? BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                )
+                              : DottedDecoration(
+                                  shape: Shape.line,
+                                  linePosition: LinePosition.bottom,
+                                  color: Colors.white,
+                                  dash: [2, 2]),
+                          child:
+                              // clock_state
+                              //     ?
+                              //
+                              Text(
+                            duration,
+                            style: TextStyle(
                                 color: Colors.white,
-                                dash: [2, 2]),
-                        child:
-                        // clock_state
-                        //     ?
-                        //
-                        Text(
-                                duration,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 4.6,
-                                    fontWeight: FontWeight.w300),
-                              )
+                                fontSize: AppDimensions.height10 * 4.6,
+                                fontWeight: FontWeight.w300),
+                          )
 
-                            // : TextFieldTapRegion(
-                            //     onTapInside: (event) {
-                            //       showCupertinoModalPopup<void>(
-                            //           context: context,
-                            //           builder: (BuildContext context) {
-                            //             return _buildContainer(timerPicker());
-                            //           });
-                            //     },
-                            //     child: Text(duration,
-                            //         style: TextStyle(
-                            //             color: Colors.white,
-                            //             fontSize: AppDimensions.height10 * 4.6,
-                            //             fontWeight: FontWeight.w300))),
-                      ),
+                          // : TextFieldTapRegion(
+                          //     onTapInside: (event) {
+                          //       showCupertinoModalPopup<void>(
+                          //           context: context,
+                          //           builder: (BuildContext context) {
+                          //             return _buildContainer(timerPicker());
+                          //           });
+                          //     },
+                          //     child: Text(duration,
+                          //         style: TextStyle(
+                          //             color: Colors.white,
+                          //             fontSize: AppDimensions.height10 * 4.6,
+                          //             fontWeight: FontWeight.w300))),
+                          ),
                     )),
               ),
               //play button
@@ -396,21 +398,23 @@ class _watch_timeState extends State<watch_time> {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
-                        border: Border.all(width: 1, color: Color(0xffFEBD0F))),
+                        border: Border.all(
+                            width: 1,
+                            color: Color(0xffFEBD0F).withOpacity(0.5))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.refresh,
                           size: AppDimensions.height10 * 1.8,
-                          color: Color(0xffFEAD10),
+                          color: Color(0xffFEAD10).withOpacity(0.5),
                         ),
                         Text(
                           'Reset',
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.2,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xffFFA511)),
+                              color: Color(0xffFFA511).withOpacity(0.5)),
                         )
                       ],
                     ),

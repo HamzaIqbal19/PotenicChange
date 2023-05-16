@@ -11,7 +11,7 @@ class multiple_circle extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       color: Colors.grey,
-      child: Center(
+      child: const Center(
           child: align_circles(
         asset_1: 'assets/images/oraange_sun.png',
         s_circle_text: 'Meditation',
@@ -80,7 +80,7 @@ class align_circles extends StatelessWidget {
             child: Stack(
               children: [
                 Align(
-                    alignment: Alignment(0, -0.5),
+                    alignment: const Alignment(0, -0.5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -100,11 +100,12 @@ class align_circles extends StatelessWidget {
                       ],
                     )),
                 Align(
-                  alignment: Alignment(0, -0.1),
+                  alignment: const Alignment(0, -0.17),
                   child: Text(body_text,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: body_text_size,
+                          fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.w400,
                           color: Color(body_text_color))),
                 )
@@ -113,7 +114,8 @@ class align_circles extends StatelessWidget {
           ),
         ),
         Align(
-          alignment: is_right ? Alignment(0.5, 1) : Alignment(-0.5, 1),
+          alignment:
+              is_right ? const Alignment(0.5, 1) : const Alignment(-0.5, 1),
           child: Container(
             height: AppDimensions.height10 * 13.8,
             width: AppDimensions.height10 * 13.8,
@@ -138,12 +140,13 @@ class align_circles extends StatelessWidget {
                         child: Container(
                             height: AppDimensions.height10 * 2.9,
                             width: AppDimensions.height10 * 2.9,
-                            padding: EdgeInsets.all(7),
+                            padding: const EdgeInsets.all(7),
                             decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.white),
-                            child: ImageIcon(
+                                shape: BoxShape.circle,
+                                color: Color(0xff52855E)),
+                            child: const ImageIcon(
                               AssetImage('assets/images/tick_icon.png'),
-                              color: Color(0xff1A481C),
+                              color: Color(0xffFFFFFF),
                             )))
                     : Container(),
               )

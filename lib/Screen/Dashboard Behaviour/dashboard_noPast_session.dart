@@ -156,7 +156,7 @@ class no_past_session extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                view_goals()));
+                                                view_goals(missed: false)));
                                   },
                                   child: Container(
                                     height: AppDimensions.height10 * 7.9,

@@ -93,7 +93,7 @@ class welldone_splashState extends State<welldone_splash> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 2.8,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w500,
                           color: Colors.white,
                           fontFamily: 'laila')),
                 )

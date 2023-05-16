@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_noPast_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_session.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/mult_circles.dart';
@@ -9,7 +10,8 @@ import '../../utils/app_dimensions.dart';
 import 'menu_dashboard_behaviour.dart';
 
 class view_goals extends StatelessWidget {
-  const view_goals({super.key});
+  final bool missed;
+  const view_goals({super.key, required this.missed});
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +46,11 @@ class view_goals extends StatelessWidget {
             ]),
         extendBodyBehindAppBar: true,
         extendBody: true,
-        bottomNavigationBar: Navigation_Bar(
+        bottomNavigationBar: const Navigation_Bar(
           bg_colored: true,
         ),
         body: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Mask Group.png'),
                 fit: BoxFit.cover,
@@ -71,14 +73,14 @@ class view_goals extends StatelessWidget {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: Alignment(-1, 1),
+                                alignment: const Alignment(-1, 1),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                no_past_session()));
+                                                const no_past_session()));
                                   },
                                   child: Container(
                                     height: AppDimensions.height10 * 7.9,
@@ -118,7 +120,8 @@ class view_goals extends StatelessWidget {
                                                         AppDimensions.height10 *
                                                             1.2,
                                                     fontWeight: FontWeight.w600,
-                                                    color: Color(0xff5B74A6)),
+                                                    color: const Color(
+                                                        0xff5B74A6)),
                                               ),
                                             ),
                                             Container(
@@ -129,7 +132,8 @@ class view_goals extends StatelessWidget {
                                               child: Text(
                                                 '02.06',
                                                 style: TextStyle(
-                                                    color: Color(0xff5B74A6),
+                                                    color:
+                                                        const Color(0xff5B74A6),
                                                     fontWeight: FontWeight.w400,
                                                     fontSize:
                                                         AppDimensions.height10 *
@@ -142,10 +146,10 @@ class view_goals extends StatelessWidget {
                                                 width: AppDimensions.height10 *
                                                     2.7,
                                                 //  margin: const EdgeInsets.only(top: 3.32),
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: Color(0xff156F6D)),
-                                                child: Center(
+                                                child: const Center(
                                                   child: Text(
                                                     '0/0',
                                                     style: TextStyle(
@@ -161,7 +165,7 @@ class view_goals extends StatelessWidget {
                                 ),
                               ),
                               Align(
-                                alignment: Alignment(0, 0),
+                                alignment: const Alignment(0, 0),
                                 child: Container(
                                   height: AppDimensions.height10 * 19.2,
                                   width: AppDimensions.height10 * 18.8,
@@ -176,11 +180,12 @@ class view_goals extends StatelessWidget {
                                             fit: BoxFit.cover)),
                                     child: Stack(children: [
                                       Align(
-                                        alignment: Alignment(0.185, 0.215),
+                                        alignment:
+                                            const Alignment(0.185, 0.215),
                                         child: Container(
                                           height: AppDimensions.height10 * 1.3,
                                           width: AppDimensions.height10 * 1.3,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               gradient: LinearGradient(colors: [
                                                 Color(0xfff1e39a),
@@ -189,7 +194,7 @@ class view_goals extends StatelessWidget {
                                         ),
                                       ),
                                       Align(
-                                        alignment: Alignment(0, 0),
+                                        alignment: const Alignment(0, 0),
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -201,12 +206,14 @@ class view_goals extends StatelessWidget {
                                                       AppDimensions.height10 *
                                                           1.4,
                                                   fontWeight: FontWeight.w600,
-                                                  color: Color(0xff5B74A6)),
+                                                  color:
+                                                      const Color(0xff5B74A6)),
                                             ),
                                             Text(
                                               '02.07',
                                               style: TextStyle(
-                                                  color: Color(0xff5B74A6),
+                                                  color:
+                                                      const Color(0xff5B74A6),
                                                   fontSize:
                                                       AppDimensions.height10 *
                                                           1.3,
@@ -221,7 +228,7 @@ class view_goals extends StatelessWidget {
                                                 decoration: const BoxDecoration(
                                                     shape: BoxShape.circle,
                                                     color: Colors.white),
-                                                child: Center(
+                                                child: const Center(
                                                   child: Text(
                                                     '0/2',
                                                     style: TextStyle(
@@ -241,14 +248,14 @@ class view_goals extends StatelessWidget {
                                 ),
                               ),
                               Align(
-                                alignment: Alignment(1, 1),
+                                alignment: const Alignment(1, 1),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                no_planned_session()));
+                                                const no_planned_session()));
                                   },
                                   child: Container(
                                       height: AppDimensions.height10 * 7.9,
@@ -260,7 +267,7 @@ class view_goals extends StatelessWidget {
                                           shape: BoxShape.circle,
                                           border: Border.all(
                                               width: 3, color: Colors.white),
-                                          gradient: LinearGradient(
+                                          gradient: const LinearGradient(
                                               begin: Alignment.topCenter,
                                               end: Alignment.bottomCenter,
                                               colors: [
@@ -280,9 +287,9 @@ class view_goals extends StatelessWidget {
                                                     AppDimensions.height10 *
                                                         1.2,
                                                 fontWeight: FontWeight.w600,
-                                                color: Color(0xff5B74A6)),
+                                                color: const Color(0xff5B74A6)),
                                           ),
-                                          Text(
+                                          const Text(
                                             '03.07',
                                             style: TextStyle(
                                                 color: Color(0xff5B74A6)),
@@ -306,7 +313,7 @@ class view_goals extends StatelessWidget {
                                                 // margin:
                                                 //     const EdgeInsets.only(top: 3.32),
                                                 // margin: const EdgeInsets.only(left: 1),
-                                                child: Center(
+                                                child: const Center(
                                                   child: Text(
                                                     '0/2',
                                                     style: TextStyle(
@@ -364,16 +371,26 @@ class view_goals extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => menu_behaviour()));
+                          if (missed == true) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const missed_Menu()));
+                          } else {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const menu_behaviour()));
+                          }
                         },
                         child: Center(
                             child: align_circles(
-                          asset_1: 'assets/images/image3.png',
+                          asset_1: 'assets/images/orange_moon.png',
                           s_circle_text: 'Count\ntemper\nepisodes',
-                          asset_2: 'assets/images/Ellipse pearl.png',
+                          asset_2: missed
+                              ? 'assets/images/Med Habit Practice (1).png'
+                              : 'assets/images/Ellipse pearl_1.png',
                           head_text: 'Control my anger',
                           body_text:
                               '“I am someone who is in\n control of my anger”',
@@ -381,7 +398,7 @@ class view_goals extends StatelessWidget {
                           head_text_color: 0xff5B74A6,
                           body_text_size: AppDimensions.height10 * 1.6,
                           head_text_size: AppDimensions.height10 * 2.0,
-                          enable_icon: true,
+                          enable_icon: missed ? false : true,
                           is_right: false,
                           s_circle_text_col: 0xffFD6727,
                         )),
@@ -424,7 +441,7 @@ class view_goals extends StatelessWidget {
                       ),
                       Center(
                           child: align_circles(
-                        asset_1: 'assets/images/image3.png',
+                        asset_1: 'assets/images/orange_moon.png',
                         s_circle_text: 'Count\ndown',
                         asset_2: 'assets/images/Ellipse purple.png',
                         head_text: 'Control my anger',
@@ -492,7 +509,7 @@ class view_goals extends StatelessWidget {
                       ),
                       Center(
                           child: align_circles(
-                        asset_1: 'assets/images/image3.png',
+                        asset_1: 'assets/images/orange_moon.png',
                         s_circle_text: 'Meditation',
                         asset_2: 'assets/images/Ellipse 158.png',
                         head_text: 'Control my anger',
@@ -597,7 +614,7 @@ class view_goals extends StatelessWidget {
                                   top: AppDimensions.height10 * 1.7),
                               width: AppDimensions.height10 * 4.3,
                               height: AppDimensions.height10 * 2.1,
-                              child: ImageIcon(
+                              child: const ImageIcon(
                                 AssetImage('assets/images/Arrow.png'),
                                 color: Colors.white,
                               ),

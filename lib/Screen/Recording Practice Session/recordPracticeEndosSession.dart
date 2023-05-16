@@ -57,7 +57,7 @@ class endofSession extends StatelessWidget {
                 height: AppDimensions.height10 * 2.4,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10 * 10.5,
-                    top: AppDimensions.height10 * 4.3),
+                    top: AppDimensions.height10 * 5.0),
                 alignment: Alignment.center,
                 child: Text(
                   'Meditation Session',
@@ -81,7 +81,9 @@ class endofSession extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 5.2),
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10 * 5.2,
+                    left: AppDimensions.height10 * 1.0),
                 height: AppDimensions.height10 * 15.4,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -106,6 +108,7 @@ class endofSession extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
+                                fontFamily: 'laila',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
@@ -138,6 +141,7 @@ class endofSession extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
+                                fontFamily: 'laila',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
@@ -172,6 +176,7 @@ class endofSession extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
+                                fontFamily: 'laila',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
@@ -205,6 +210,7 @@ class endofSession extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
+                                fontFamily: 'laila',
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
@@ -252,6 +258,7 @@ class endofSession extends StatelessWidget {
                             textAlign: TextAlign.center,
                             text: TextSpan(
                                 style: TextStyle(
+                                  fontFamily: 'laila',
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.white,

@@ -255,6 +255,7 @@ class _timelineState extends State<timeline> {
                                   width: AppDimensions.height10 * 15.8,
                                   height: AppDimensions.height10 * 4.8,
                                   alignment: const Alignment(0.3, -0.4),
+                                  //changed font family due to client's request
                                   child: Text(
                                     'Control\nmy anger',
                                     textAlign: TextAlign.center,
@@ -866,7 +867,7 @@ class _timelineState extends State<timeline> {
                           width: AppDimensions.height10 * 30.7,
                           height: AppDimensions.height10 * 3.5,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 3.9,
+                            right: AppDimensions.height10 * 4.9,
                             top: AppDimensions.height10 * 1.5,
                           ),
                           child: Row(
@@ -2164,6 +2165,7 @@ class _timelineState extends State<timeline> {
                   child: Container(
                     width: AppDimensions.height10 * 4.9,
                     height: AppDimensions.height10 * 5.0,
+                    color: Color(0xFFFBFBFB),
                     child: GestureDetector(
                       onTap: () {},
                       child: Image.asset(

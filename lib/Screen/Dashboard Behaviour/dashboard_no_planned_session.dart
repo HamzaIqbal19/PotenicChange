@@ -162,8 +162,9 @@ class no_planned_session extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                view_goals()));
+                                            builder: (context) => view_goals(
+                                                  missed: false,
+                                                )));
                                   },
                                   child: Container(
                                     width: AppDimensions.height10 * 8.3,
@@ -319,30 +320,31 @@ class no_planned_session extends StatelessWidget {
                         height: AppDimensions.height10 * 4.9,
                         margin:
                             EdgeInsets.only(top: AppDimensions.height10 * 18.9),
-                        child: Center(
-                          child: Text(
-                            'No planned sessions',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10 * 3.0,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Laila'),
-                          ),
+                        child: Text(
+                          'No planned sessions',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              height: AppDimensions.height10 * 0.12,
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 3.0,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Laila'),
                         ),
                       ),
                       Container(
                         width: AppDimensions.height10 * 26.9,
                         height: AppDimensions.height10 * 5.8,
-                        child: Center(
-                          child: Text(
-                            'There are no scheduled\npractices for this date.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'Laila',
-                                fontSize: AppDimensions.height10 * 1.8,
-                                fontWeight: FontWeight.w600),
-                          ),
+                        margin:
+                            EdgeInsets.only(top: AppDimensions.height10 * 0.2),
+                        child: Text(
+                          'There are no scheduled\npractices for this date.',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              height: AppDimensions.height10 * 0.12,
+                              fontFamily: 'Laila',
+                              fontSize: AppDimensions.height10 * 1.8,
+                              fontWeight: FontWeight.w600),
                         ),
                       ),
                       GestureDetector(
@@ -355,6 +357,8 @@ class no_planned_session extends StatelessWidget {
                         child: Container(
                           width: AppDimensions.height10 * 10.1,
                           height: AppDimensions.height10 * 10.1,
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10 * 1.4),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.transparent,
@@ -363,10 +367,11 @@ class no_planned_session extends StatelessWidget {
                                   color: Colors.white)),
                           child: Center(
                             child: Text(
-                              'Add\npractice',
+                              'View\npractice',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
+                                  height: AppDimensions.height10 * 0.12,
                                   fontFamily: 'laila',
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400),

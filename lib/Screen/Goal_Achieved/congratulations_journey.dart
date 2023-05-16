@@ -70,7 +70,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                               'Your journey\nwith us',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                letterSpacing: AppDimensions.height10 * 0.2,
+                                // letterSpacing: AppDimensions.height10 * 0.2,
                                 fontSize: AppDimensions.height10 * 3.0,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFFFBFBFB),
@@ -89,7 +89,8 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 'We’ve put together your\npersonal development\njourney for you.\nTake a look...',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  height: AppDimensions.height10 * 0.12,
+                                  letterSpacing: AppDimensions.height10 * 0.2,
+                                  height: AppDimensions.height10 * 0.15,
                                   fontSize: AppDimensions.height10 * 2.4,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFBFBFB),
@@ -159,7 +160,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     ),
                   ),
                   SizedBox(
-                    height: AppDimensions.height10 * 2.0,
+                    height: AppDimensions.height10 * 4.9,
                   ),
                   Container(
                     width: AppDimensions.height10 * 16.9,
@@ -1125,7 +1126,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                           letterSpacing: AppDimensions.height10 * 0.2,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xFFFBFBFB),
-                          height: AppDimensions.height10 * 0.15),
+                          height: AppDimensions.height10 * 0.16),
                     ),
                   ),
                   SizedBox(

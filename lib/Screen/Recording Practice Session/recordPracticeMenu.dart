@@ -71,6 +71,7 @@ class practiceMenu extends StatelessWidget {
                         'Practice Menu',
                         style: TextStyle(
                             color: Colors.white,
+                            height: AppDimensions.height10 * 0.12,
                             fontSize: AppDimensions.height10 * 1.8,
                             fontWeight: FontWeight.w600),
                       ),
@@ -81,6 +82,7 @@ class practiceMenu extends StatelessWidget {
                         'Control my anger',
                         style: TextStyle(
                             color: Colors.white,
+                            height: AppDimensions.height10 * 0.12,
                             fontSize: AppDimensions.height10 * 2.0,
                             fontWeight: FontWeight.w600),
                       ),
@@ -200,13 +202,16 @@ class practiceMenu extends StatelessWidget {
                       // color: Colors.red,
                       height: AppDimensions.height10 * 4.921,
                       width: AppDimensions.height10 * 9.36,
-                      child: Text(
-                        'Record\npractice',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: AppDimensions.height10 * 1.6,
-                            fontWeight: FontWeight.w500),
+                      child: Center(
+                        child: Text(
+                          'Record\npractice',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              height: AppDimensions.height10 * 0.12,
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 1.6,
+                              fontWeight: FontWeight.w500),
+                        ),
                       ),
                     )
                   ],
@@ -226,7 +231,9 @@ class practiceMenu extends StatelessWidget {
                   Align(
                     alignment: const Alignment(1, -1.3),
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          info_sheet(context);
+                        },
                         icon: Image.asset(
                           'assets/images/ic_info_outline.png',
                           height: AppDimensions.height10 * 3.0,
@@ -255,7 +262,8 @@ class practiceMenu extends StatelessWidget {
                                 child: Text(
                                   'Practice Assessment',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.6,
+                                      //increase font size by 2 px
+                                      fontSize: AppDimensions.height10 * 1.8,
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xfff5f5f5)),
                                 ),
@@ -263,6 +271,8 @@ class practiceMenu extends StatelessWidget {
                               goal_eval
                                   ? Container(
                                       height: AppDimensions.height10 * 1.7,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10 * 0.2),
                                       child: Text(
                                         'Here is your latest 20 active day evaluation.',
                                         style: TextStyle(
@@ -292,7 +302,7 @@ class practiceMenu extends StatelessWidget {
                                               ? 'Next assessment is in'
                                               : 'You can evaluate your progress in '),
                                       const TextSpan(
-                                          text: '-19 active days.',
+                                          text: ' -19 active days.',
                                           style: TextStyle(
                                               fontWeight: FontWeight.w700))
                                     ])),
@@ -419,4 +429,132 @@ class practiceMenu extends StatelessWidget {
       ),
     );
   }
+}
+
+void info_sheet(context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+      top: Radius.circular(AppDimensions.height10 * 2.0),
+    )),
+    builder: (context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+          width: AppDimensions.height10 * 41.4,
+          height: AppDimensions.height10 * 54.7,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(AppDimensions.height10 * 2.0)),
+              color: Color(0xFFF5F5F5)),
+          child: Column(
+            // alignment: AlignmentDirectional.topCenter,
+            //  mainAxisAlignment: MainAxisAlignment.start,
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                //color: Colors.amber,
+                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                alignment: Alignment(1, 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.5,
+                        right: AppDimensions.height10 * 1.5),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/Close_blue.png'))),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 1.9,
+                    bottom: AppDimensions.height10 * 1.9),
+                child: Image.asset(
+                  'assets/images/potenic__icon.png',
+                  width: AppDimensions.height10 * 8.202,
+                  height: AppDimensions.height10 * 11.2,
+                ),
+              ),
+              Container(
+                // width: AppDimensions.height10 * 28.7,
+                height: AppDimensions.height10 * 3.4,
+                // color: Colors.amber,
+                alignment: Alignment.center,
+                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                child: Text(
+                  'Practice Assessment',
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10 * 2.8,
+                      letterSpacing: AppDimensions.height10 * 0.2,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF437296)),
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10 * 35.2,
+                height: AppDimensions.height10 * 26.9,
+                // color: Colors.grey,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                child: RichText(
+                  text: TextSpan(
+                      style: TextStyle(
+                          fontFamily: 'laila',
+                          fontSize: AppDimensions.height10 * 1.4,
+                          height: AppDimensions.height10 * 0.12,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF437296)),
+                      children: [
+                        TextSpan(
+                            text:
+                                'For each practice, you can evaluate your last 20 active days, and asses it to see if it is working for you or not.\n\n'),
+                        TextSpan(
+                            text: 'Practice Assessment ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            )),
+                        TextSpan(
+                            text:
+                                'is broken down into two main\nsections:\n\n'),
+                        TextSpan(
+                            text: '1.Progress Report\n',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.5)),
+                        TextSpan(text: 'See your '),
+                        TextSpan(
+                            text: 'overall practice progress',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            )),
+                        TextSpan(
+                            text:
+                                ', gain visibility on\nhow your personal development journey is going and\nwhether you’re making any progress to towards your\ngoal.\n\n'),
+                        TextSpan(
+                            text: '2.Practice Score\n',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.5)),
+                        TextSpan(text: 'Here you can'),
+                        TextSpan(
+                            text: ' assess your practice effectiveness ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            )),
+                        TextSpan(text: 'based on our scoring criteria.')
+                      ]),
+                ),
+              ),
+            ],
+          )),
+    ),
+  );
 }
