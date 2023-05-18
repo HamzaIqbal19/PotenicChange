@@ -241,7 +241,6 @@ class _congratulationsState extends State<congratulations> {
                       goal_level > 3 ? 'Yes I am' : 'Exit',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Poppins',
                         fontSize: AppDimensions.height10 * 1.6,
                         color: const Color(0xFFFFFFFF),
                       ),
@@ -270,7 +269,6 @@ class _congratulationsState extends State<congratulations> {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       height: AppDimensions.height10 * 0.15,
-                      fontFamily: 'Poppins',
                       fontSize: AppDimensions.height10 * 1.6,
                       color: const Color(0xFFFA9934),
                     ),

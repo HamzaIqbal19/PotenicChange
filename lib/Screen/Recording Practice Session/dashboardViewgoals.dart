@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
@@ -568,84 +569,98 @@ class dashBoard extends StatelessWidget {
                           ),
                         ]),
                 ),
-                Container(
-                  height: AppDimensions.height10 * 14.432,
-                  width: AppDimensions.height10 * 35.335,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                    image: AssetImage(
-                      'assets/images/Component 1.png',
-                    ),
-                    fit: BoxFit.cover,
-                  )),
+                GestureDetector(
+                  onTap: () {
+                    notifications_sheet(context);
+                  },
+                  child: Container(
+                    height: AppDimensions.height10 * 14.432,
+                    width: AppDimensions.height10 * 35.335,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                      image: AssetImage(
+                        'assets/images/Component 1.png',
+                      ),
+                      fit: BoxFit.cover,
+                    )),
 
-                  //color: Colors.blue,
-                  child: Stack(children: [
-                    Align(
-                      alignment: const Alignment(-0.925, -1.35),
-                      child: Image.asset(
-                        "assets/images/Group.png",
-                        height: AppDimensions.height10 * 4.366,
-                        width: AppDimensions.height10 * 4.366,
+                    //color: Colors.blue,
+                    child: Stack(children: [
+                      Align(
+                        alignment: const Alignment(-0.925, -1.35),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => message_center()));
+                          },
+                          child: Image.asset(
+                            "assets/images/Group.png",
+                            height: AppDimensions.height10 * 4.366,
+                            width: AppDimensions.height10 * 4.366,
+                          ),
+                        ),
                       ),
-                    ),
-                    Align(
-                      alignment: const Alignment(0.93, 0),
-                      child: Image.asset(
-                        "assets/images/Vector Smart Object.png",
-                        height: AppDimensions.height10 * 9.296,
-                        width: AppDimensions.height10 * 4.16,
+                      Align(
+                        alignment: const Alignment(0.93, 0),
+                        child: Image.asset(
+                          "assets/images/Vector Smart Object.png",
+                          height: AppDimensions.height10 * 9.296,
+                          width: AppDimensions.height10 * 4.16,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 2.1,
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                            width: AppDimensions.height10 * 28.0,
-                            height: AppDimensions.height10 * 2.3,
-                            alignment: const Alignment(-0.65, 0),
-                            child: Text(
-                              "Hi, it's Reda here",
-                              style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.6,
-                                fontWeight: FontWeight.w700,
-                                color: const Color.fromRGBO(91, 116, 166, 1),
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: AppDimensions.height10 * 2.1,
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: AppDimensions.height10 * 28.0,
+                              height: AppDimensions.height10 * 2.3,
+                              alignment: const Alignment(-0.65, 0),
+                              child: Text(
+                                "Hi, it's Reda here",
+                                style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color.fromRGBO(91, 116, 166, 1),
+                                ),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10 * 5.245,
-                            height: AppDimensions.height10 * 1.3,
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.height10 * 17.5),
-                            child: const Divider(
-                              thickness: 1,
-                              color: Color.fromRGBO(91, 116, 166, 1),
+                            Container(
+                              width: AppDimensions.height10 * 5.245,
+                              height: AppDimensions.height10 * 1.3,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10 * 17.5),
+                              child: const Divider(
+                                thickness: 1,
+                                color: Color.fromRGBO(91, 116, 166, 1),
+                              ),
                             ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10 * 26.7,
-                            // height: AppDimensions.height10 * 5.3,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 3.4,
-                                bottom: AppDimensions.height10 * 1.2),
-                            child: Text(
-                              "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
-                              // textAlign: TextAlign.left,
+                            Container(
+                              width: AppDimensions.height10 * 26.7,
+                              // height: AppDimensions.height10 * 5.3,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 3.4,
+                                  bottom: AppDimensions.height10 * 1.2),
+                              child: Text(
+                                "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
+                                // textAlign: TextAlign.left,
 
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color.fromRGBO(91, 116, 166, 1)),
-                            ),
-                          )
-                        ],
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontWeight: FontWeight.w400,
+                                    color:
+                                        const Color.fromRGBO(91, 116, 166, 1)),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ]),
+                    ]),
+                  ),
                 )
               ],
             ),
