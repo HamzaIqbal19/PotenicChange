@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Alerts/message_center.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
+import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Menu&settings/settings.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
+import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
+import 'package:potenic_app/Screen/timeline/timeline.dart';
 
 import '../../utils/app_dimensions.dart';
+import '../Goal Evaluation/goal_criteria.dart';
+import '../Recording Practice Session/recordPracticeMenu.dart';
+import '../captureHurdles/splash_hurdles.dart';
+import '../capture_inspiration/inpiration_motivation.dart';
 import '../community/community.dart';
+import 'goal_menu_inactive.dart';
 
 class your_goals_menu extends StatelessWidget {
   const your_goals_menu({super.key});
@@ -311,7 +323,13 @@ class your_goals_menu extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const OnBoarding()));
+                            },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
                               height: AppDimensions.height10 * 5.0,
@@ -358,7 +376,9 @@ class your_goals_menu extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                                      builder: (context) => const practiceMenu(
+                                            goal_eval: true,
+                                          )));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -406,7 +426,8 @@ class your_goals_menu extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                                      builder: (context) =>
+                                          const veiw_all_goals_menu()));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -454,7 +475,8 @@ class your_goals_menu extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                                      builder: (context) =>
+                                          const hurdles_splash()));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -502,7 +524,10 @@ class your_goals_menu extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                                      builder: (context) =>
+                                          const inspiration_motivation(
+                                            goal_delete: false,
+                                          )));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -550,7 +575,12 @@ class your_goals_menu extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                                      builder: (context) =>
+                                          const goal_menu_inactive(
+                                            premium: true,
+                                            isActive: true,
+                                            goal_evaluation: true,
+                                          )));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -598,7 +628,8 @@ class your_goals_menu extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                                      builder: (context) =>
+                                          const your_why(evaluation: true)));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -643,10 +674,8 @@ class your_goals_menu extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                              Navigator.pop(context);
+                              community_sheet(context);
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -694,7 +723,7 @@ class your_goals_menu extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                                      builder: (context) => const timeline()));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -742,7 +771,8 @@ class your_goals_menu extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const About_us()));
+                                      builder: (context) =>
+                                          const congratulations()));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 33.4,
@@ -785,118 +815,149 @@ class your_goals_menu extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Container(
-                            width: AppDimensions.height10 * 33.4,
-                            height: AppDimensions.height10 * 5.0,
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
-                                        color: const Color(0xff5B74A6)))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.height10 * 20.6,
-                                  height: AppDimensions.height10 * 1.9,
-                                  child: Text(
-                                    'J11 Alerts',
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0XFF5B74A6)),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => message_center()));
+                            },
+                            child: Container(
+                              width: AppDimensions.height10 * 33.4,
+                              height: AppDimensions.height10 * 5.0,
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          width: AppDimensions.height10 * 0.1,
+                                          color: const Color(0xff5B74A6)))),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: AppDimensions.height10 * 20.6,
+                                    height: AppDimensions.height10 * 1.9,
+                                    child: Text(
+                                      'J11 Alerts',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0XFF5B74A6)),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.png',
-                                        //width: AppDimensions.height10 * 2.6,
-                                        //height: AppDimensions.height10 * 2.6,
-                                        color: const Color(0xff5B74A6),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
+                                  SizedBox(
+                                      width: AppDimensions.height10 * 2.4,
+                                      height: AppDimensions.height10 * 1.39,
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.png',
+                                          //width: AppDimensions.height10 * 2.6,
+                                          //height: AppDimensions.height10 * 2.6,
+                                          color: const Color(0xff5B74A6),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ))
+                                ],
+                              ),
                             ),
                           ),
-                          Container(
-                            width: AppDimensions.height10 * 33.4,
-                            height: AppDimensions.height10 * 5.0,
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
-                                        color: const Color(0xff5B74A6)))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.height10 * 20.6,
-                                  height: AppDimensions.height10 * 1.9,
-                                  child: Text(
-                                    'J12 Menu & Settings',
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0XFF5B74A6)),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Settings()));
+                            },
+                            child: Container(
+                              width: AppDimensions.height10 * 33.4,
+                              height: AppDimensions.height10 * 5.0,
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          width: AppDimensions.height10 * 0.1,
+                                          color: const Color(0xff5B74A6)))),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: AppDimensions.height10 * 20.6,
+                                    height: AppDimensions.height10 * 1.9,
+                                    child: Text(
+                                      'J12 Menu & Settings',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0XFF5B74A6)),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.png',
-                                        //width: AppDimensions.height10 * 2.6,
-                                        //height: AppDimensions.height10 * 2.6,
-                                        color: const Color(0xff5B74A6),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
+                                  SizedBox(
+                                      width: AppDimensions.height10 * 2.4,
+                                      height: AppDimensions.height10 * 1.39,
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.png',
+                                          //width: AppDimensions.height10 * 2.6,
+                                          //height: AppDimensions.height10 * 2.6,
+                                          color: const Color(0xff5B74A6),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ))
+                                ],
+                              ),
                             ),
                           ),
-                          Container(
-                            width: AppDimensions.height10 * 33.4,
-                            height: AppDimensions.height10 * 5.0,
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
-                                        color: const Color(0xff5B74A6)))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.height10 * 20.6,
-                                  height: AppDimensions.height10 * 1.9,
-                                  child: Text(
-                                    'J13 Dashboard behaviour',
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0XFF5B74A6)),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const view_goals(missed: false)));
+                            },
+                            child: Container(
+                              width: AppDimensions.height10 * 33.4,
+                              height: AppDimensions.height10 * 5.0,
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          width: AppDimensions.height10 * 0.1,
+                                          color: const Color(0xff5B74A6)))),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: AppDimensions.height10 * 20.6,
+                                    height: AppDimensions.height10 * 1.9,
+                                    child: Text(
+                                      'J13 Dashboard behaviour',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0XFF5B74A6)),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.png',
-                                        //width: AppDimensions.height10 * 2.6,
-                                        //height: AppDimensions.height10 * 2.6,
-                                        color: const Color(0xff5B74A6),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
+                                  SizedBox(
+                                      width: AppDimensions.height10 * 2.4,
+                                      height: AppDimensions.height10 * 1.39,
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.png',
+                                          //width: AppDimensions.height10 * 2.6,
+                                          //height: AppDimensions.height10 * 2.6,
+                                          color: const Color(0xff5B74A6),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ))
+                                ],
+                              ),
                             ),
                           ),
                           Container(

@@ -177,18 +177,25 @@ class _notificationsState extends State<notifications> {
                                               color: const Color(0XFF5B74A6)),
                                         ),
                                       ),
-                                      Container(
-                                        width: AppDimensions.height10 * 20.6,
-                                        height: AppDimensions.height10 * 2.2,
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10 * 0.6),
-                                        child: Text(
-                                          '10 minutes before',
-                                          style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.6,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0XFF8C648A)),
+                                      GestureDetector(
+                                        onTap: () {
+                                          _showBottomSheet(context);
+                                        },
+                                        child: Container(
+                                          width: AppDimensions.height10 * 20.6,
+                                          height: AppDimensions.height10 * 2.2,
+                                          margin: EdgeInsets.only(
+                                              top:
+                                                  AppDimensions.height10 * 0.6),
+                                          child: Text(
+                                            '10 minutes before',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.6,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0XFF8C648A)),
+                                          ),
                                         ),
                                       )
                                     ],
@@ -392,8 +399,84 @@ class _notificationsState extends State<notifications> {
                 ],
               ),
             ),
+            Container(
+              width: AppDimensions.height10 * 17.0,
+              height: AppDimensions.height10 * 0.5,
+              margin: EdgeInsets.only(top: AppDimensions.height10 * 32.5),
+              decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.height10 * 5.0),
+                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+            )
           ],
         ),
+      ),
+    );
+  }
+}
+
+void _showBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return MyBottomSheet();
+    },
+  ).then((value) {
+    if (value != null) {
+      // Do something with the selected statement
+      print(value);
+    }
+  });
+}
+
+class MyBottomSheet extends StatefulWidget {
+  @override
+  _MyBottomSheetState createState() => _MyBottomSheetState();
+}
+
+class _MyBottomSheetState extends State<MyBottomSheet> {
+  int _selectedIndex = 0;
+  final List<String> _statements = [
+    'None',
+    '10 minutes before',
+    '20 minutes before',
+    '30 minutes before',
+    '1hour before',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: AppDimensions.height10 * 23.8,
+      color: Color(0xFF282828), // Set the height of the bottom sheet
+      child: Column(
+        children: [
+          Expanded(
+            child: ListWheelScrollView(
+              itemExtent: 20,
+              magnification: 1.1,
+              useMagnifier: true,
+              overAndUnderCenterOpacity:
+                  0.8, // Set the height of each statement
+              children: _statements
+                  .map((statement) => Text(statement,
+                      style: TextStyle(
+                        color: Color(0xFFFBFBFB),
+                        fontSize: AppDimensions.height10 * 2.2,
+                        fontWeight: FontWeight.w400,
+                      )))
+                  .toList(),
+              onSelectedItemChanged: (int index) {
+                setState(() {
+                  _selectedIndex = index;
+                  //activity_duration = _statements[_selectedIndex];
+                  // _selected_activity = _statements[_selectedIndex];
+                });
+              },
+            ),
+          ),
+          SizedBox(height: AppDimensions.height10 * 0.1),
+        ],
       ),
     );
   }

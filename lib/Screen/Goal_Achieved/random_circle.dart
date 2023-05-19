@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+
+import '../../utils/app_dimensions.dart';
 //import 'package:r_dart_library/asset_svg.dart';
 
 void main() {
@@ -29,17 +31,18 @@ class _RandomCirclesState extends State<RandomCircles> {
   final Random _random = Random();
   final List<Circle> _circles = [];
 
-  final double containerHeight = 314.0;
-  final double circleWidth = 65.0;
-  final double circleHeight = 74.0;
-  final double containerWidth = 950.0; // You can adjust this value
+  final double containerHeight = AppDimensions.height10 * 31.40;
+  final double circleWidth = AppDimensions.height10 * 6.50;
+  final double circleHeight = AppDimensions.height10 * 7.40;
+  final double containerWidth =
+      AppDimensions.height10 * 95.00; // You can adjust this value
   final double overlapFactor = 0.85; // You can adjust this value
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      for (var i = 0; i < 100; i++) {
+      for (var i = 0; i < 87; i++) {
         _addCircle();
       }
     });
@@ -111,9 +114,41 @@ class Circle extends StatelessWidget {
         width: width,
         height: height,
         decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/Ellipse 158.png')),
           shape: BoxShape.circle,
-          color: Colors.red, // You can change the color
         ),
+        child: Stack(children: [
+          Center(
+              child: SizedBox(
+            width: AppDimensions.height10 * 2.7,
+            height: AppDimensions.height10 * 3.4,
+            child: RichText(
+                text: TextSpan(
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: AppDimensions.height10 * 1.4,
+                        fontWeight: FontWeight.w400),
+                    children: [
+                  TextSpan(
+                    text: 'Tue',
+                  ),
+                  TextSpan(
+                      text: '01/07',
+                      style: TextStyle(fontSize: AppDimensions.height10 * 0.9))
+                ])),
+          )),
+          Align(
+            alignment: Alignment(0, 1.15),
+            child: Container(
+              width: AppDimensions.height10 * 2.0,
+              height: AppDimensions.height10 * 2.0,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/task_comp.png'))),
+            ),
+          )
+        ]),
       ),
     );
   }

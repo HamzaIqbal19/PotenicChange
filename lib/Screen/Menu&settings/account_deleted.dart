@@ -17,7 +17,9 @@ class Acc_deleted extends StatelessWidget {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: Image.asset(
                     'assets/images/Close.png',
                     width: AppDimensions.height10 * 2.6,
@@ -72,7 +74,7 @@ class Acc_deleted extends StatelessWidget {
                         'Your account\nhas been deleted',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            height: AppDimensions.height10 * 0.12,
+                            height: AppDimensions.height10 * 0.17,
                             fontSize: AppDimensions.height10 * 3.0,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFFFBFBFB)),
@@ -88,7 +90,7 @@ class Acc_deleted extends StatelessWidget {
                             text: TextSpan(
                                 style: TextStyle(
                                     fontFamily: 'laila',
-                                    height: AppDimensions.height10 * 0.15,
+                                    // height: AppDimensions.height10 * 0.15,
                                     fontSize: AppDimensions.height10 * 2.0,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFBFBFB)),
@@ -109,6 +111,9 @@ class Acc_deleted extends StatelessWidget {
                 height: AppDimensions.height10 * 5.0,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 16.2),
                 decoration: BoxDecoration(
+                    border: Border.all(
+                        width: AppDimensions.height10 * 0.1,
+                        color: Color(0xFFFBFBFB)),
                     borderRadius:
                         BorderRadius.circular(AppDimensions.height10 * 5.0),
                     gradient: const LinearGradient(

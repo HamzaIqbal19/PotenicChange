@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
@@ -82,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     width: AppDimensions.width10 * 10.0,
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10*2.32),
+                SizedBox(height: AppDimensions.height10 * 2.32),
                 Container(
                   height: AppDimensions.height10 * 8.5,
                   child: Text(
@@ -95,9 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10*0.5),
+                SizedBox(height: AppDimensions.height10 * 0.5),
                 Container(
-                    height: AppDimensions.height10*11.5,
+                    height: AppDimensions.height10 * 11.5,
                     child: Text(
                       'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.',
                       textAlign: TextAlign.center,
@@ -107,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: AppDimensions.height10 * 1.8,
                       ),
                     )),
-                SizedBox(height: AppDimensions.height10*4.4),
+                SizedBox(height: AppDimensions.height10 * 4.4),
                 Center(
                   child: GestureDetector(
                     onTap: () {
@@ -126,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10*12.1),
+                SizedBox(height: AppDimensions.height10 * 12.1),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -145,8 +144,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           color: const Color(0xFFF5F5F5),
                           border: Border.all(color: Colors.white),
-                          borderRadius:
-                               BorderRadius.all(Radius.circular(AppDimensions.height10*5.0)),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(AppDimensions.height10 * 5.0)),
                         ),
                         child: Center(
                           child: Text(
@@ -175,8 +174,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         decoration: BoxDecoration(
                           color: const Color(0xFF5A4D73),
                           border: Border.all(color: const Color(0xFF5A4D73)),
-                          borderRadius:
-                               BorderRadius.all(Radius.circular(AppDimensions.height10*5.0)),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(AppDimensions.height10 * 5.0)),
                         ),
                         child: Center(
                           child: Text(
@@ -191,8 +190,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
-                        signupSheet(context,"Introduction","OnBoarding");
+                      onTap: () {
+                        signupSheet(context, "Introduction", "OnBoarding");
                       },
                       child: Container(
                         height: AppDimensions.height10 * 5,

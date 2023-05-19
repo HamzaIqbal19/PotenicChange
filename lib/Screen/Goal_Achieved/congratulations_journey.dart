@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Goal_Achieved/random_circle.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -1008,7 +1009,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                         width: AppDimensions.height10 * 60.0,
                         padding: EdgeInsets.all(AppDimensions.height10 * 0.5),
                         // color: Colors.transparent,
-                        child: RandomContainers()),
+                        child: RandomCircles()),
                   ),
                   Container(
                     width: AppDimensions.height10 * 16.784,
