@@ -1,7 +1,3 @@
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/review_habits_dashboard/dashboard.dart';
@@ -69,7 +65,6 @@ class _ActivateStarState extends State<ActivateStar> {
               },
             ),
           ),
-
         ],
       ),
       body: Stack(
@@ -82,15 +77,16 @@ class _ActivateStarState extends State<ActivateStar> {
               ),
             ),
           ),
-
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: AppDimensions.height10*8.9,),
+              SizedBox(
+                height: AppDimensions.height10 * 8.9,
+              ),
               Container(
-                width:AppDimensions.height10*28.3,
-                height: AppDimensions.height10*7.2,
+                width: AppDimensions.height10 * 28.3,
+                height: AppDimensions.height10 * 7.2,
                 // padding: EdgeInsets.only(top: AppDimensions.height10 * 10),
                 child: Center(
                   child: GradientText(
@@ -112,14 +108,15 @@ class _ActivateStarState extends State<ActivateStar> {
                 height: AppDimensions.height10 * 2.5,
               ),
               Container(
-                // color: Colors.black,
+                  // color: Colors.black,
                   height: AppDimensions.height10 * 13.2,
                   width: AppDimensions.height10 * 35.7,
                   child: Column(
                     children: [
                       Container(
                         child: Center(
-                          child: Text("I desire to grow and improve my identity. By activating my star, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ",
+                          child: Text(
+                            "I desire to grow and improve my identity. By activating my star, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -129,10 +126,8 @@ class _ActivateStarState extends State<ActivateStar> {
                           ),
                         ),
                       ),
-
                     ],
                   )),
-
               SizedBox(
                 height: AppDimensions.height10 * 3.6,
               ),
@@ -140,7 +135,8 @@ class _ActivateStarState extends State<ActivateStar> {
                 children: [
                   Container(
                     child: Image(
-                      image: const AssetImage('assets/images/angerwithoutreview.png'),
+                      image: const AssetImage(
+                          'assets/images/angerwithoutreview.png'),
                       height: AppDimensions.height10 * 38.1,
                       width: AppDimensions.height10 * 35.3,
                     ),
@@ -152,7 +148,8 @@ class _ActivateStarState extends State<ActivateStar> {
                     right: 0,
                     child: Align(
                       // alignment: Alignment.bottomCenter,
-                      alignment: Alignment(0.01,AppDimensions.height10*0.016+0.9),
+                      alignment:
+                          Alignment(0.01, AppDimensions.height10 * 0.016 + 0.9),
                       //heightFactor: 0.5,
                       child: Container(
                         // height: AppDimensions.height10*17.5,
@@ -160,32 +157,34 @@ class _ActivateStarState extends State<ActivateStar> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child:
-                        GestureDetector(
-                          onTap: (){
+                        child: GestureDetector(
+                          onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => dashBoard(),
+                                builder: (context) => dashBoard(
+                                  helpful_tips: true,
+                                  membership: true,
+                                  dashboard_ctrl: false,
+                                  cancel: false,
+                                  trial: false,
+                                ),
                               ),
                             );
+                            dashboard_sheet(context);
                           },
-
                           child: Image(
-                            image: const AssetImage('assets/images/Asfinger.png'),
-                            height: AppDimensions.height10* 16.0,
+                            image:
+                                const AssetImage('assets/images/Asfinger.png'),
+                            height: AppDimensions.height10 * 16.0,
                             width: AppDimensions.height10 * 16.0,
                           ),
                         ),
-
                       ),
                     ),
                   )
-
                 ],
               ),
-
-
               SizedBox(
                 height: AppDimensions.height10 * 1.1,
               ),
@@ -193,7 +192,7 @@ class _ActivateStarState extends State<ActivateStar> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    // color: Colors.black,
+                      // color: Colors.black,
 
                       height: AppDimensions.height10 * 5.4,
                       width: AppDimensions.height10 * 27.4,
@@ -201,7 +200,8 @@ class _ActivateStarState extends State<ActivateStar> {
                         children: [
                           Container(
                             child: Center(
-                              child: Text("To begin your journey press and hold here.  ",
+                              child: Text(
+                                "To begin your journey press and hold here.  ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -211,16 +211,109 @@ class _ActivateStarState extends State<ActivateStar> {
                               ),
                             ),
                           ),
-
                         ],
                       )),
                 ],
               ),
-
             ],
           )
         ],
       ),
     );
   }
+}
+
+void dashboard_sheet(context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+      top: Radius.circular(AppDimensions.height10 * 2.0),
+    )),
+    builder: (context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+          width: AppDimensions.height10 * 39.4,
+          height: AppDimensions.height10 * 62.3,
+          margin: EdgeInsets.only(
+              left: AppDimensions.height10 * 1.0,
+              right: AppDimensions.height10 * 1.0,
+              bottom: AppDimensions.height10 * 1.0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+              color: Color(0xFFF5F5F5)),
+          child: Column(
+            // alignment: AlignmentDirectional.topCenter,
+            //  mainAxisAlignment: MainAxisAlignment.start,
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                //color: Colors.amber,
+                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                alignment: Alignment(1, 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.9,
+                        right: AppDimensions.height10 * 1.5),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/Close_blue.png'))),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 1.5,
+                    bottom: AppDimensions.height10 * 2.0),
+                child: Image.asset(
+                  'assets/images/potenic__icon.png',
+                  width: AppDimensions.height10 * 8.202,
+                  height: AppDimensions.height10 * 11.2,
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10 * 30.7,
+                height: AppDimensions.height10 * 6.8,
+                // color: Colors.amber,
+                alignment: Alignment.center,
+                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                child: Text(
+                  'Welcome to\nyour Dashboard',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      height: AppDimensions.height10 * 0.12,
+                      fontSize: AppDimensions.height10 * 2.8,
+                      letterSpacing: AppDimensions.height10 * 0.2,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF437296)),
+                ),
+              ),
+              Container(
+                  width: AppDimensions.height10 * 33.2,
+                  //  height: AppDimensions.height10 * 10.8,
+                  // color: Colors.grey,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.1),
+                  child: Text(
+                    'This is a one-stop place to manage your\npersonal development journey. From\nDashboard, you can quickly navigate to\nyour goals, view your practices, record\nhurdles and inspirations.\n\nHave a tour of what’s available to you\nand how you can access the tools that\nare important to your personal growth\nWe look forward to supporting you.\nEnjoy your journey :)',
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10 * 1.8,
+                        // letterSpacing: AppDimensions.height10 * 0.2,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFF437296)),
+                  )),
+            ],
+          )),
+    ),
+  );
 }

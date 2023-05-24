@@ -48,6 +48,9 @@ class view_goals extends StatelessWidget {
         extendBody: true,
         bottomNavigationBar: const Navigation_Bar(
           bg_colored: true,
+          membership: true,
+          cancel: false,
+          trial: false,
         ),
         body: Container(
             decoration: const BoxDecoration(

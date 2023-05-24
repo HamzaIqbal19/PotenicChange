@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/utils/app_constants.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+
 // import 'package:flutter_ui/pages/goalsetting/bottom_sheet.dart';
 // import 'package:potenic_app/utils/backDecor.dart';
 // import 'package:potenic_app/utils/icons.dart';
@@ -14,14 +17,21 @@ class backbox extends StatefulWidget {
 }
 
 class _backboxState extends State<backbox> {
+  int times = 1;
+
+  void increment() {
+    times = times + 1;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
           width: AppDimensions.height10 * 38.2,
           height: AppDimensions.height10 * 42.3,
-          padding: EdgeInsets.only(left:AppDimensions.height10*1.1,right:AppDimensions.height10*1.1 ),
-          
+          padding: EdgeInsets.only(
+              left: AppDimensions.height10 * 1.1,
+              right: AppDimensions.height10 * 1.1),
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(
@@ -40,120 +50,55 @@ class _backboxState extends State<backbox> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        inner_text('Reason 1'),
-                        SizedBox(
-                          height: AppDimensions.height10 * 0.4,
-                        ),
-                        Container(
-
-                          padding: EdgeInsets.only(
-                              left: AppDimensions.height10 * 2.0,
-                              right: AppDimensions.height10 * 13.6),
-                          child: Row(
-                            children: [
-                              Center(
-                                child: Text(
-                                  "Character count: ",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF464646),
-                                    fontSize: AppDimensions.height10 * 1.3,
-                                  ),
+                        for (int i = 1; i <= times; i++) ...[
+                          Column(
+                            children: <Widget>[
+                              inner_text('Reason $times'),
+                              SizedBox(
+                                height: AppDimensions.height10 * 0.4,
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 2.0,
+                                    right: AppDimensions.height10 * 13.6),
+                                child: Row(
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        "Character count: ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.3,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        "200",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.3,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Center(
-                                child: Text(
-                                  "200",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color(0xFF464646),
-                                    fontSize: AppDimensions.height10 * 1.3,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: AppDimensions.height10 * 0.9,
-                        ),
-                        inner_text("Reason 2"),
-                        SizedBox(
-                          height: AppDimensions.height10 * 0.4,
-                        ),
-                        Container(
-
-                          padding: EdgeInsets.only(
-                              left: AppDimensions.height10 * 2.0,
-                              right: AppDimensions.height10 * 13.6),
-                          child: Row(
-                            children: [
-                              Center(
-                                child: Text(
-                                  "Character count: ",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF464646),
-                                    fontSize: AppDimensions.height10 * 1.3,
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: Text(
-                                  "200",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color(0xFF464646),
-                                    fontSize: AppDimensions.height10 * 1.3,
-                                  ),
-                                ),
+                              SizedBox(
+                                height: AppDimensions.height10 * 0.9,
                               ),
                             ],
-                          ),
-                        ),
-                        SizedBox(
-                          height: AppDimensions.height10 * 0.9,
-                        ),
-                        inner_text("Reason 3"),
-                        SizedBox(
-                          height: AppDimensions.height10 * 0.4,
-                        ),
-                        Container(
-
-                          padding: EdgeInsets.only(
-                              left: AppDimensions.height10 * 2.0,
-                              right: AppDimensions.height10 * 13.6),
-                          child: Row(
-                            children: [
-                              Center(
-                                child: Text(
-                                  "Character count: ",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF464646),
-                                    fontSize: AppDimensions.height10 * 1.3,
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: Text(
-                                  "200",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    color: const Color(0xFF464646),
-                                    fontSize: AppDimensions.height10 * 1.3,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                          )
+                        ],
                       ],
                     ),
                   ),
                 ),
               ),
-
             ],
           )),
       Positioned(
@@ -178,7 +123,21 @@ class _backboxState extends State<backbox> {
             child: Padding(
               padding:
                   const EdgeInsets.only(top: 4, left: 4, right: 4, bottom: 4),
-              child: add_reason,
+              child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      increment();
+                      print(times);
+                    });
+                  },
+                  child: Container(
+                    color: Colors.transparent,
+                    child: Image.asset(
+                      'assets/images/Addgoal.png',
+                      height: AppDimensions.height10 * 4.7,
+                      width: AppDimensions.height10 * 4.7,
+                    ),
+                  )),
             ),
           ),
         ),
@@ -188,8 +147,7 @@ class _backboxState extends State<backbox> {
 }
 
 class inner_text extends StatefulWidget {
-  final String circle_text;
-
+  String circle_text;
   inner_text(this.circle_text, {super.key});
 
   @override
@@ -198,7 +156,6 @@ class inner_text extends StatefulWidget {
 
 class _inner_textState extends State<inner_text> {
   final TextEditingController body_text = TextEditingController();
-
   final TextEditingController heading_text = TextEditingController();
 
   late FocusNode _focusNode;
@@ -219,7 +176,7 @@ class _inner_textState extends State<inner_text> {
       width: AppDimensions.height10 * 38.0,
       padding: EdgeInsets.only(
           top: AppDimensions.height10 * 1.3,
-          left: AppDimensions.height10*2.0,
+          left: AppDimensions.height10 * 2.0,
           right: AppDimensions.height10 * 2.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
@@ -263,16 +220,17 @@ class _inner_textState extends State<inner_text> {
                 placeholder: "I want to achieve this goal because...",
                 textAlignVertical: TextAlignVertical.top,
                 placeholderStyle: TextStyle(
-                    fontSize: AppDimensions.height10 * 1.6,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Laila",
-                    color: _focusNode.hasFocus
-                    ? const Color(0xFFFFFFFF)
-                      : const Color(0xFF828282),),
+                  fontSize: AppDimensions.height10 * 1.6,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: "Laila",
+                  color: _focusNode.hasFocus
+                      ? const Color(0xFFFFFFFF)
+                      : const Color(0xFF828282),
+                ),
                 controller: body_text,
                 focusNode: _focusNode,
                 maxLines: 4,
-                style: const   TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.w500, color: Color(0xFFFFFFFF)),
                 decoration: const BoxDecoration(
                   color: Colors.transparent,
@@ -287,9 +245,7 @@ class _inner_textState extends State<inner_text> {
 FloatingActionButton add_reason = FloatingActionButton(
   elevation: 0,
   backgroundColor: Colors.transparent,
-  onPressed: () {
-    // BottomSheetExample();
-  },
+  onPressed: () {},
   child: Icon(
     Icons.add,
     color: Colors.white,

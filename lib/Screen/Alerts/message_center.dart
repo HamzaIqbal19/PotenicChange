@@ -81,7 +81,9 @@ class _message_centerState extends State<message_center> {
                     ),
                   )
                 : IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon: Image.asset(
                       'assets/images/Close.png',
                       width: AppDimensions.height10 * 2.6,
@@ -108,12 +110,24 @@ class _message_centerState extends State<message_center> {
                 height: AppDimensions.height10 * 9.2,
               ),
               Container(
-                width: AppDimensions.height10 * 9.0,
-                height: AppDimensions.height10 * 9.0,
+                width: AppDimensions.height10 * 7.6,
+                height: AppDimensions.height10 * 7.6,
+                padding: EdgeInsets.symmetric(
+                    vertical: AppDimensions.height10 * 0.85,
+                    horizontal: AppDimensions.height10 * 1.162),
                 decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/Group.png'),
-                        fit: BoxFit.cover)),
+                  shape: BoxShape.circle,
+                  color: Color(0xFFFFFFFF),
+                  // image: DecorationImage(
+                  //     image: AssetImage(
+                  //         'assets/images/Vector Smart Object_1.png'),
+                  //     fit: BoxFit.contain)
+                ),
+                child: Image.asset(
+                  'assets/images/Vector Smart Object_1.png',
+                  width: AppDimensions.height10 * 5.275,
+                  height: AppDimensions.height10 * 5.991,
+                ),
               ),
               Container(
                 width: AppDimensions.height10 * 32.9,
@@ -211,7 +225,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_1
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -262,7 +276,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_2
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -311,7 +325,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_3
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -362,7 +376,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_4
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -413,7 +427,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_5
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -464,7 +478,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_6
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -515,7 +529,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_7
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -567,7 +581,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_8
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -618,7 +632,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_9
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -669,7 +683,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_10
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -721,7 +735,7 @@ class _message_centerState extends State<message_center> {
                                                 AppDimensions.height10 * 1.0),
                                         child: msg_11
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -760,6 +774,14 @@ class _message_centerState extends State<message_center> {
                   left: AppDimensions.height10 * 1.6,
                   right: AppDimensions.height10 * 1.6),
               decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      spreadRadius: AppDimensions.height10 * 0.5,
+                      blurRadius: AppDimensions.height10 * 0.7,
+                      offset: const Offset(2, 3),
+                    )
+                  ],
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),
                   gradient: const LinearGradient(
@@ -850,6 +872,16 @@ class _message_centerState extends State<message_center> {
                       left: AppDimensions.height10 * 6.2,
                       bottom: AppDimensions.height10 * 2.2),
               decoration: BoxDecoration(
+                  boxShadow: [
+                    options
+                        ? BoxShadow(
+                            color: const Color(0xFF000000).withOpacity(0.25),
+                            spreadRadius: AppDimensions.height10 * 0.5,
+                            blurRadius: AppDimensions.height10 * 0.7,
+                            offset: const Offset(2, 3),
+                          )
+                        : BoxShadow()
+                  ],
                   borderRadius: BorderRadius.circular(options
                       ? AppDimensions.height10 * 0
                       : AppDimensions.height10 * 5.0),
@@ -886,7 +918,7 @@ class _message_centerState extends State<message_center> {
                                                 left: AppDimensions.height10 *
                                                     1.6,
                                                 bottom: AppDimensions.height10 *
-                                                    0.2),
+                                                    1.2),
                                             height:
                                                 AppDimensions.height10 * 4.4,
                                             width:
@@ -898,7 +930,7 @@ class _message_centerState extends State<message_center> {
                                                         fontFamily: 'laila',
                                                         height: AppDimensions
                                                                 .height10 *
-                                                            0.12,
+                                                            0.15,
                                                         fontSize: AppDimensions
                                                                 .height10 *
                                                             1.7,
@@ -928,7 +960,7 @@ class _message_centerState extends State<message_center> {
                                                   AppDimensions.height10 * 1.6,
                                               right:
                                                   AppDimensions.height10 * 1.6),
-                                          height: AppDimensions.height10 * 3.4,
+                                          height: AppDimensions.height10 * 3.2,
                                           width: AppDimensions.height10 * 23.8,
                                           child: Text(
                                             "By clicking 'Yes' you confirm that this\nalert will be deleted. ",
@@ -1117,7 +1149,7 @@ class messages extends StatelessWidget {
                 height: AppDimensions.height10 * 4.0,
                 margin: EdgeInsets.only(left: AppDimensions.height10 * 3.2),
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment(-1, 0.6),
                   child: Text(
                     title,
                     style: TextStyle(
@@ -1276,11 +1308,11 @@ void notifications_sheet(context) {
                             EdgeInsets.only(top: AppDimensions.height10 * 1.4),
                         child: Center(
                             child: Text(
-                          'We will check in with you to remind you\nabout your practices. You would be able to customise your\nnotifications later in your Account Settings. ',
+                          'We will check in with you to remind you about your\npractices. You would be able to customise your\nnotifications later in your Account Settings. ',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
-                              height: AppDimensions.height10 * 0.12,
+                              height: AppDimensions.height10 * 0.15,
                               //letterSpacing: AppDimensions.height10 * 0.2,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFFFFFFFF)),

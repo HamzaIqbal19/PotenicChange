@@ -40,9 +40,14 @@ class reviw_habit_dashBoard extends StatelessWidget {
         ),
         extendBodyBehindAppBar: true,
         extendBody: true,
-        bottomNavigationBar: Navigation_Bar(bg_colored: false),
+        bottomNavigationBar: const Navigation_Bar(
+          bg_colored: false,
+          membership: true,
+          cancel: false,
+          trial: false,
+        ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/images/Mask Group.png'),
               fit: BoxFit.cover,
@@ -63,7 +68,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                     child: Stack(
                       children: [
                         Align(
-                          alignment: Alignment(-1, 1),
+                          alignment: const Alignment(-1, 1),
                           child: Container(
                             height: AppDimensions.height10 * 7.9,
                             width: AppDimensions.height10 * 7.9,
@@ -117,13 +122,13 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                         height: AppDimensions.height10 * 2.7,
                                         width: AppDimensions.height10 * 2.7,
                                         //  margin: const EdgeInsets.only(top: 3.32),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: DottedBorder(
                                           borderType: BorderType.Circle,
                                           color: Colors.white,
-                                          child: Center(
+                                          child: const Center(
                                             child: Text(
                                               '0/0',
                                               style: TextStyle(
@@ -138,7 +143,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(0, 0),
+                          alignment: const Alignment(0, 0),
                           child: Container(
                             height: AppDimensions.height10 * 19.2,
                             width: AppDimensions.height10 * 18.8,
@@ -153,11 +158,11 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                       fit: BoxFit.cover)),
                               child: Stack(children: [
                                 Align(
-                                  alignment: Alignment(0.185, 0.215),
+                                  alignment: const Alignment(0.185, 0.215),
                                   child: Container(
                                     height: AppDimensions.height10 * 1.3,
                                     width: AppDimensions.height10 * 1.3,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         gradient: LinearGradient(colors: [
                                           Color(0xfff1e39a),
@@ -166,7 +171,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                   ),
                                 ),
                                 Align(
-                                  alignment: Alignment(0, 0),
+                                  alignment: const Alignment(0, 0),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -176,12 +181,12 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                             fontSize:
                                                 AppDimensions.height10 * 1.4,
                                             fontWeight: FontWeight.w600,
-                                            color: Color(0xff5B74A6)),
+                                            color: const Color(0xff5B74A6)),
                                       ),
                                       Text(
                                         '02.07',
                                         style: TextStyle(
-                                            color: Color(0xff5B74A6),
+                                            color: const Color(0xff5B74A6),
                                             fontSize:
                                                 AppDimensions.height10 * 1.3,
                                             fontWeight: FontWeight.w400),
@@ -193,7 +198,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                           decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               color: Colors.white),
-                                          child: Center(
+                                          child: const Center(
                                             child: Text(
                                               '0/2',
                                               style: TextStyle(
@@ -211,7 +216,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                           ),
                         ),
                         Align(
-                          alignment: Alignment(1, 1),
+                          alignment: const Alignment(1, 1),
                           child: Container(
                               height: AppDimensions.height10 * 7.9,
                               width: AppDimensions.height10 * 7.9,
@@ -222,7 +227,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   border:
                                       Border.all(width: 3, color: Colors.white),
-                                  gradient: LinearGradient(
+                                  gradient: const LinearGradient(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                       colors: [
@@ -239,9 +244,9 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.2,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xff5B74A6)),
+                                        color: const Color(0xff5B74A6)),
                                   ),
-                                  Text(
+                                  const Text(
                                     '03.07',
                                     style: TextStyle(color: Color(0xff5B74A6)),
                                   ),
@@ -260,7 +265,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                                         // margin:
                                         //     const EdgeInsets.only(top: 3.32),
                                         // margin: const EdgeInsets.only(left: 1),
-                                        child: Center(
+                                        child: const Center(
                                           child: Text(
                                             '0/2',
                                             style: TextStyle(
@@ -329,50 +334,50 @@ class reviw_habit_dashBoard extends StatelessWidget {
                       child: Container(
                         width: AppDimensions.height10 * 26.8,
                         height: AppDimensions.height10 * 26.8,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/images/image3.png'),
                                 fit: BoxFit.cover)),
                         child: Stack(
                           children: [
                             Align(
-                                alignment: Alignment(0, -0.5),
+                                alignment: const Alignment(0, -0.5),
                                 child: Text(
                                   'Control my anger',
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 2.0,
                                       fontWeight: FontWeight.w600,
-                                      color: Color(0xff5B74A6)),
+                                      color: const Color(0xff5B74A6)),
                                 )),
                             Align(
-                              alignment: Alignment(0, -0.2),
+                              alignment: const Alignment(0, -0.2),
                               child: Text(
                                   '“I am someone who is in\n control of my anger”',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff5B74A6))),
+                                      color: const Color(0xff5B74A6))),
                             )
                           ],
                         ),
                       ),
                     ),
                     Align(
-                      alignment: Alignment(-0.2, 0.8),
+                      alignment: const Alignment(-0.2, 0.8),
                       child: GestureDetector(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => practiceMenu(
+                                  builder: (context) => const practiceMenu(
                                         goal_eval: false,
                                       )));
                         },
                         child: Container(
                           height: AppDimensions.height10 * 13.8,
                           width: AppDimensions.height10 * 13.8,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               //color: Colors.amber,
                               image: DecorationImage(
                                   image: AssetImage(
@@ -431,13 +436,13 @@ class reviw_habit_dashBoard extends StatelessWidget {
                           Container(
                             width: AppDimensions.height10 * 28.0,
                             height: AppDimensions.height10 * 2.3,
-                            alignment: Alignment(-0.65, 0),
+                            alignment: const Alignment(-0.65, 0),
                             child: Text(
                               "Hi, it's Reda here",
                               style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(91, 116, 166, 1),
+                                color: const Color.fromRGBO(91, 116, 166, 1),
                               ),
                             ),
                           ),
@@ -464,7 +469,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color.fromRGBO(91, 116, 166, 1)),
+                                  color: const Color.fromRGBO(91, 116, 166, 1)),
                             ),
                           )
                         ],

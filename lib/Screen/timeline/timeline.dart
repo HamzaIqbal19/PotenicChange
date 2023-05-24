@@ -202,9 +202,9 @@ class _timelineState extends State<timeline> {
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/session_stored.png'),
-                                        fit: BoxFit.cover)),
+                                        fit: BoxFit.contain)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 23.6,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -235,7 +235,7 @@ class _timelineState extends State<timeline> {
                             ],
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 2.0),
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 colors: [Color(0xFFD9B4B4), Color(0xFFF5EDED)]),
@@ -254,12 +254,13 @@ class _timelineState extends State<timeline> {
                                 child: Container(
                                   width: AppDimensions.height10 * 15.8,
                                   height: AppDimensions.height10 * 4.8,
-                                  alignment: const Alignment(0.3, -0.4),
+                                  alignment: const Alignment(0.1, -0.1),
                                   //changed font family due to client's request
                                   child: Text(
                                     'Control\nmy anger',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
+                                        height: AppDimensions.height10 * 0.15,
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff5B74A6)),
@@ -290,14 +291,14 @@ class _timelineState extends State<timeline> {
                               ),
                             ),
                             Align(
-                              alignment: Alignment(0.9, 0),
-                              child: Container(
+                              alignment: const Alignment(0.9, 0),
+                              child: SizedBox(
                                 width: AppDimensions.height10 * 8.2,
                                 height: AppDimensions.height10 * 4.1,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: AppDimensions.height10 * 8.2,
                                       height: AppDimensions.height10 * 2.0,
                                       child: Text(
@@ -315,7 +316,7 @@ class _timelineState extends State<timeline> {
                                     Container(
                                       width: AppDimensions.height10 * 6.3,
                                       height: AppDimensions.height10 * 1.9,
-                                      alignment: Alignment.topLeft,
+                                      alignment: Alignment.topCenter,
                                       child: Text(
                                         '7 - 8pm',
                                         style: TextStyle(
@@ -367,9 +368,9 @@ class _timelineState extends State<timeline> {
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/session_stored.png'),
-                                        fit: BoxFit.cover)),
+                                        fit: BoxFit.contain)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 23.6,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -390,7 +391,7 @@ class _timelineState extends State<timeline> {
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10 * 2.0),
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 colors: [Color(0xFFD9B4B4), Color(0xFFF5EDED)]),
@@ -419,11 +420,12 @@ class _timelineState extends State<timeline> {
                                 child: Container(
                                   width: AppDimensions.height10 * 15.8,
                                   height: AppDimensions.height10 * 4.8,
-                                  alignment: const Alignment(0.3, -0.4),
+                                  alignment: const Alignment(0.1, -0.1),
                                   child: Text(
                                     'Control\nmy anger',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
+                                        height: AppDimensions.height10 * 0.15,
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xff5B74A6)),
@@ -454,14 +456,14 @@ class _timelineState extends State<timeline> {
                               ),
                             ),
                             Align(
-                              alignment: Alignment(0.9, 0),
-                              child: Container(
+                              alignment: const Alignment(0.9, 0),
+                              child: SizedBox(
                                 width: AppDimensions.height10 * 8.2,
                                 height: AppDimensions.height10 * 4.1,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: AppDimensions.height10 * 8.2,
                                       height: AppDimensions.height10 * 2.0,
                                       child: Text(
@@ -479,7 +481,7 @@ class _timelineState extends State<timeline> {
                                     Container(
                                       width: AppDimensions.height10 * 6.3,
                                       height: AppDimensions.height10 * 1.9,
-                                      alignment: Alignment.topLeft,
+                                      alignment: Alignment.topCenter,
                                       child: Text(
                                         '9 - 10am',
                                         style: TextStyle(
@@ -561,28 +563,28 @@ class _timelineState extends State<timeline> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 3.5),
-                    width: AppDimensions.height10 * 7.8,
-                    height: AppDimensions.height10 * 7.8,
-                    child: Container(
-                        height: AppDimensions.height10 * 2.612,
-                        width: AppDimensions.height10 * 3.318,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xff93ABD0),
-                                  Color(0xff8C648A)
-                                ])),
-                        padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/timeline_icon.png'),
-                          //size: AppDimensions.height10 * 4.2,
-                          color: Colors.white,
-                        )),
-                  ),
+                      margin:
+                          EdgeInsets.only(top: AppDimensions.height10 * 3.5),
+
+                      // child: Container(
+                      //     height: AppDimensions.height10 * 2.612,
+                      //     width: AppDimensions.height10 * 3.318,
+                      //     decoration: const BoxDecoration(
+                      //         shape: BoxShape.circle,
+                      //         gradient: LinearGradient(
+                      //             begin: Alignment.topCenter,
+                      //             end: Alignment.bottomCenter,
+                      //             colors: [
+                      //               Color(0xff93ABD0),
+                      //               Color(0xff8C648A)
+                      //             ])),
+                      //     padding: EdgeInsets.all(AppDimensions.height10 * 1.2),
+                      child: Image.asset(
+                        'assets/images/Asset_timeline.png',
+                        height: AppDimensions.height10 * 7.8,
+                        width: AppDimensions.height10 * 7.8,
+                      )),
+                  //       ),
                   Container(
                     width: AppDimensions.height10 * 34.8,
                     height: AppDimensions.height10 * 3.6,
@@ -602,17 +604,18 @@ class _timelineState extends State<timeline> {
                   Container(
                     width: AppDimensions.height10 * 30.8,
                     height: AppDimensions.height10 * 4.4,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 1.5),
-                    child: Center(
-                      child: Text(
-                        'All your recorded events & schedule\nin one place',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
-                            fontWeight: FontWeight.w500,
-                            height: AppDimensions.height10 * 0.12,
-                            color: const Color(0xFF437296)),
-                      ),
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.0,
+                        left: AppDimensions.height10 * 4.8,
+                        right: AppDimensions.height10 * 4.7),
+                    child: Text(
+                      'All your recorded events & schedule\nin one place',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10 * 1.8,
+                          fontWeight: FontWeight.w500,
+                          height: AppDimensions.height10 * 0.15,
+                          color: const Color(0xFF437296)),
                     ),
                   ),
                   Container(
@@ -708,7 +711,7 @@ class _timelineState extends State<timeline> {
                                             'assets/images/menu_goals_b.png'),
                                         fit: BoxFit.contain)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 22.5,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -881,9 +884,9 @@ class _timelineState extends State<timeline> {
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/session_stored.png'),
-                                        fit: BoxFit.cover)),
+                                        fit: BoxFit.contain)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 23.6,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -938,7 +941,7 @@ class _timelineState extends State<timeline> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
-                                        height: AppDimensions.height10 * 0.12,
+                                        //  height: AppDimensions.height10 * 0.12,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xff5B74A6)),
                                   ),
@@ -975,6 +978,7 @@ class _timelineState extends State<timeline> {
                                 child: RichText(
                                     text: TextSpan(
                                         style: TextStyle(
+                                            fontFamily: 'laila',
                                             fontSize:
                                                 AppDimensions.height10 * 1.4,
                                             height:
@@ -990,7 +994,7 @@ class _timelineState extends State<timeline> {
                                           ))
                                     ])),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 33.7,
                                 height: AppDimensions.height10 * 2.3,
                                 child: Row(
@@ -1040,7 +1044,7 @@ class _timelineState extends State<timeline> {
                         SizedBox(
                           height: AppDimensions.height10 * 1.0,
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10 * 33.7,
                           height: AppDimensions.height10 * 4.1,
                           child: Column(
@@ -1053,6 +1057,7 @@ class _timelineState extends State<timeline> {
                                 child: RichText(
                                     text: TextSpan(
                                         style: TextStyle(
+                                            fontFamily: 'laila',
                                             fontSize:
                                                 AppDimensions.height10 * 1.4,
                                             height:
@@ -1068,7 +1073,7 @@ class _timelineState extends State<timeline> {
                                           ))
                                     ])),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 33.7,
                                 height: AppDimensions.height10 * 2.3,
                                 child: Row(
@@ -1155,9 +1160,9 @@ class _timelineState extends State<timeline> {
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/hurdle.png'),
-                                        fit: BoxFit.cover)),
+                                        fit: BoxFit.contain)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 13.4,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -1217,7 +1222,7 @@ class _timelineState extends State<timeline> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: AppDimensions.height10 * 6.873,
                                       height: AppDimensions.height10 * 2.197,
                                       child: Center(
@@ -1231,7 +1236,7 @@ class _timelineState extends State<timeline> {
                                         ),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: AppDimensions.height10 * 9.641,
                                       height: AppDimensions.height10 * 4.81,
                                       child: Center(
@@ -1291,7 +1296,7 @@ class _timelineState extends State<timeline> {
                                             'assets/images/inspiration.png'),
                                         fit: BoxFit.cover)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 13.4,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -1413,7 +1418,7 @@ class _timelineState extends State<timeline> {
                                             'assets/images/report.png'),
                                         fit: BoxFit.cover)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 13.4,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -1525,7 +1530,7 @@ class _timelineState extends State<timeline> {
                                             'assets/images/menu_goals_b.png'),
                                         fit: BoxFit.cover)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 16.1,
                                 height: AppDimensions.height10 * 2.2,
                                 child: Text(
@@ -1551,204 +1556,219 @@ class _timelineState extends State<timeline> {
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 2.0),
                           ),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: AppDimensions.height10 * 26.6,
-                                height: AppDimensions.height10 * 3.4,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 3.2),
-                                child: Text(
-                                  'New progress level',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: AppDimensions.height10 * 2.8,
-                                      color: const Color(0xff437296)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: const DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/bg_stars.png')),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: AppDimensions.height10 * 26.6,
+                                  height: AppDimensions.height10 * 3.4,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10 * 3.2),
+                                  child: Text(
+                                    'New progress level',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: AppDimensions.height10 * 2.8,
+                                        color: const Color(0xff437296)),
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                width: AppDimensions.height10 * 31.1,
-                                height: AppDimensions.height10 * 42.2,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 1.9),
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                      alignment: const Alignment(0, 1),
-                                      child: Container(
-                                        width: AppDimensions.height10 * 31.1,
-                                        height: AppDimensions.height10 * 29.6,
-                                        decoration: BoxDecoration(
-                                          gradient: LinearGradient(
-                                              colors: [
-                                                const Color(0xFFF9DCC0)
-                                                    .withOpacity(0),
-                                                const Color(0xFFFF7975)
-                                              ],
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter),
-                                          borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10 * 2.0),
-                                        ),
-                                        child: Align(
-                                          alignment: Alignment.bottomCenter,
-                                          child: Container(
-                                            width:
-                                                AppDimensions.height10 * 25.8,
-                                            height:
-                                                AppDimensions.height10 * 5.866,
-                                            margin: EdgeInsets.only(
-                                                bottom: AppDimensions.height10 *
-                                                    2.856,
-                                                top: AppDimensions.height10 *
-                                                    1.1),
-                                            child: Stack(
-                                              children: [
-                                                Align(
-                                                  alignment: Alignment.topLeft,
-                                                  child: Container(
-                                                    width:
-                                                        AppDimensions.height10 *
-                                                            2.13,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            1.8,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      image: DecorationImage(
-                                                          image: AssetImage(
-                                                              'assets/images/colon.png'),
-                                                          fit: BoxFit.contain),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      const Alignment(0.7, 0),
-                                                  child: SizedBox(
-                                                    width:
-                                                        AppDimensions.height10 *
-                                                            25.5,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            5.366,
-
-                                                    ///color: Colors.amber,
-                                                    child: Center(
-                                                      child: Text(
-                                                        "I feel I am making small\nsteps forward",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10 *
-                                                                1.8,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: const Color(
-                                                                0xFFFFFFFF)),
+                                Container(
+                                  width: AppDimensions.height10 * 31.1,
+                                  height: AppDimensions.height10 * 42.2,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10 * 1.9),
+                                  child: Stack(
+                                    children: [
+                                      Align(
+                                        alignment: const Alignment(0, 1),
+                                        child: Container(
+                                          width: AppDimensions.height10 * 31.1,
+                                          height: AppDimensions.height10 * 29.6,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                                colors: [
+                                                  const Color(0xFFF9DCC0)
+                                                      .withOpacity(0),
+                                                  const Color(0xFFFF7975)
+                                                ],
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter),
+                                            borderRadius: BorderRadius.circular(
+                                                AppDimensions.height10 * 2.0),
+                                          ),
+                                          child: Align(
+                                            alignment: Alignment.bottomCenter,
+                                            child: Container(
+                                              width:
+                                                  AppDimensions.height10 * 25.8,
+                                              height: AppDimensions.height10 *
+                                                  5.866,
+                                              margin: EdgeInsets.only(
+                                                  bottom:
+                                                      AppDimensions.height10 *
+                                                          2.856,
+                                                  top: AppDimensions.height10 *
+                                                      1.1),
+                                              child: Stack(
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.topLeft,
+                                                    child: Container(
+                                                      width: AppDimensions
+                                                              .height10 *
+                                                          2.13,
+                                                      height: AppDimensions
+                                                              .height10 *
+                                                          1.8,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        image: DecorationImage(
+                                                            image: AssetImage(
+                                                                'assets/images/colon.png'),
+                                                            fit:
+                                                                BoxFit.contain),
                                                       ),
                                                     ),
                                                   ),
-                                                )
-                                              ],
+                                                  Align(
+                                                    alignment:
+                                                        const Alignment(0.7, 0),
+                                                    child: SizedBox(
+                                                      width: AppDimensions
+                                                              .height10 *
+                                                          25.5,
+                                                      height: AppDimensions
+                                                              .height10 *
+                                                          5.366,
+
+                                                      ///color: Colors.amber,
+                                                      child: Center(
+                                                        child: Text(
+                                                          "I feel I am making small\nsteps forward",
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  AppDimensions
+                                                                          .height10 *
+                                                                      1.8,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              color: const Color(
+                                                                  0xFFFFFFFF)),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Align(
-                                      alignment: const Alignment(0, -1),
-                                      child: Container(
-                                        width: AppDimensions.height10 * 26.8,
-                                        height: AppDimensions.height10 * 26.8,
-                                        padding: EdgeInsets.only(
-                                            bottom:
-                                                AppDimensions.height10 * 6.0),
-                                        decoration: const BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/images/orange_moon.png'),
-                                                fit: BoxFit.cover)),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              width:
-                                                  AppDimensions.height10 * 17.1,
-                                              height:
-                                                  AppDimensions.height10 * 2.4,
-                                              margin: EdgeInsets.only(
-                                                  top: AppDimensions.height10 *
-                                                      7.3),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                'Control my anger',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontSize:
+                                      Align(
+                                        alignment: const Alignment(0, -1),
+                                        child: Container(
+                                          width: AppDimensions.height10 * 26.8,
+                                          height: AppDimensions.height10 * 26.8,
+                                          padding: EdgeInsets.only(
+                                              bottom:
+                                                  AppDimensions.height10 * 6.0),
+                                          decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/orange_moon.png'),
+                                                  fit: BoxFit.cover)),
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    17.1,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    top:
                                                         AppDimensions.height10 *
-                                                            2.0,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            0.12,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: const Color(
-                                                        0xff5B74A6)),
-                                              ),
-                                            ),
-                                            Container(
-                                              // width:
-                                              //     AppDimensions.height10 * 20.9,
-                                              height:
-                                                  AppDimensions.height10 * 3.63,
-                                              margin: EdgeInsets.only(
-                                                  top: AppDimensions.height10 *
-                                                      0.2),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                  '“I am someone who is in\ncontrol of my anger”',
+                                                            7.3),
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  'Control my anger',
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10 *
-                                                          1.4,
+                                                          2.0,
+                                                      height: AppDimensions
+                                                              .height10 *
+                                                          0.12,
                                                       fontWeight:
-                                                          FontWeight.w400,
-                                                      fontStyle:
-                                                          FontStyle.italic,
+                                                          FontWeight.w600,
                                                       color: const Color(
-                                                          0xff5B74A6))),
-                                            ),
-                                          ],
+                                                          0xff5B74A6)),
+                                                ),
+                                              ),
+                                              Container(
+                                                // width:
+                                                //     AppDimensions.height10 * 20.9,
+                                                height: AppDimensions.height10 *
+                                                    3.63,
+                                                margin: EdgeInsets.only(
+                                                    top:
+                                                        AppDimensions.height10 *
+                                                            0.2),
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                    '“I am someone who is in\ncontrol of my anger”',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            1.4,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontStyle:
+                                                            FontStyle.italic,
+                                                        color: const Color(
+                                                            0xff5B74A6))),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Align(
-                                      alignment: const Alignment(0, 0.2),
-                                      child: Container(
-                                        width: AppDimensions.height10 * 15.3,
-                                        height: AppDimensions.height10 * 15.3,
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                                image: AssetImage(goal_level ==
-                                                        1
-                                                    ? 'assets/images/goal_level_1.png'
-                                                    : goal_level == 2
-                                                        ? 'assets/images/Goal level score.png'
-                                                        : goal_level == 3
-                                                            ? 'assets/images/goal_level_3.png'
-                                                            : goal_level == 4
-                                                                ? 'assets/images/goal_level_4.png'
-                                                                : 'assets/images/goal_level_5.png'),
-                                                fit: BoxFit.cover)),
+                                      Align(
+                                        alignment: const Alignment(0, 0.2),
+                                        child: Container(
+                                          width: AppDimensions.height10 * 15.3,
+                                          height: AppDimensions.height10 * 15.3,
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              image: DecorationImage(
+                                                  image: AssetImage(goal_level ==
+                                                          1
+                                                      ? 'assets/images/goal_level_1.png'
+                                                      : goal_level == 2
+                                                          ? 'assets/images/Goal level score.png'
+                                                          : goal_level == 3
+                                                              ? 'assets/images/goal_level_3.png'
+                                                              : goal_level == 4
+                                                                  ? 'assets/images/goal_level_4.png'
+                                                                  : 'assets/images/goal_level_5.png'),
+                                                  fit: BoxFit.cover)),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -1858,7 +1878,7 @@ class _timelineState extends State<timeline> {
                         children: [
                           Row(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 2.4,
                                 height: AppDimensions.height10 * 2.4,
 
@@ -2165,7 +2185,7 @@ class _timelineState extends State<timeline> {
                   child: Container(
                     width: AppDimensions.height10 * 4.9,
                     height: AppDimensions.height10 * 5.0,
-                    color: Color(0xFFFBFBFB),
+                    color: const Color(0xFFFBFBFB),
                     child: GestureDetector(
                       onTap: () {},
                       child: Image.asset(
@@ -2232,7 +2252,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height:
           AppDimensions.height10 * 31.3, // Set the height of the bottom sheet
       child: Column(
@@ -2242,7 +2262,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
             decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
-                        color: Color(0xFF828282),
+                        color: const Color(0xFF828282),
                         width: AppDimensions.height10 * 0.1))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -2262,7 +2282,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF2F80ED)),
+                          color: const Color(0xFF2F80ED)),
                     ),
                   ),
                 ),
@@ -2285,7 +2305,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF2F80ED)),
+                          color: const Color(0xFF2F80ED)),
                     ),
                   ),
                 ),
@@ -2294,7 +2314,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
           ),
           Expanded(
             child: ListWheelScrollView(
-              itemExtent: 60,
+              itemExtent: 35,
               magnification: 1.2,
               useMagnifier: true, // Set the height of each statement
               children: widget.sheet_bottom
@@ -2374,7 +2394,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height:
           AppDimensions.height10 * 31.3, // Set the height of the bottom sheet
       child: Column(
@@ -2384,7 +2404,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
             decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
-                        color: Color(0xFF828282),
+                        color: const Color(0xFF828282),
                         width: AppDimensions.height10 * 0.1))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -2404,7 +2424,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF2F80ED)),
+                          color: const Color(0xFF2F80ED)),
                     ),
                   ),
                 ),
@@ -2427,7 +2447,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF2F80ED)),
+                          color: const Color(0xFF2F80ED)),
                     ),
                   ),
                 ),
@@ -2436,7 +2456,7 @@ class _BottomSheetState extends State<MyBottomSheet> {
           ),
           Expanded(
             child: ListWheelScrollView(
-              itemExtent: 60,
+              itemExtent: 35,
               magnification: 1.2,
               useMagnifier: true, // Set the height of each statement
               children: widget.sheet_bottom
@@ -2474,7 +2494,7 @@ _TimeBottomSheet(BuildContext context) {
   showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
           height: AppDimensions.height10 * 30.3,
           child: Column(
             children: [
@@ -2483,7 +2503,7 @@ _TimeBottomSheet(BuildContext context) {
                 decoration: BoxDecoration(
                     border: Border(
                         bottom: BorderSide(
-                            color: Color(0xFF828282),
+                            color: const Color(0xFF828282),
                             width: AppDimensions.height10 * 0.1))),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -2503,7 +2523,7 @@ _TimeBottomSheet(BuildContext context) {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xFF2F80ED)),
+                              color: const Color(0xFF2F80ED)),
                         ),
                       ),
                     ),
@@ -2520,14 +2540,14 @@ _TimeBottomSheet(BuildContext context) {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 1.4,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xFF2F80ED)),
+                              color: const Color(0xFF2F80ED)),
                         ),
                       ),
                     ),
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 height: AppDimensions.height10 * 26.0,
                 child: CupertinoDatePicker(
                   mode: CupertinoDatePickerMode.date,

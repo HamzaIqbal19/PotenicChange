@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Menu&settings/settings.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
+import 'package:potenic_app/Screen/Subscription/Subscription.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
@@ -18,10 +21,20 @@ import '../community/community.dart';
 import 'goal_menu_inactive.dart';
 
 class your_goals_menu extends StatelessWidget {
-  const your_goals_menu({super.key});
+  final bool trial;
+  final bool membership;
+  final bool cancel;
+
+  const your_goals_menu(
+      {super.key,
+      required this.trial,
+      required this.membership,
+      required this.cancel});
 
   @override
   Widget build(BuildContext context) {
+    final colorC = Color.alphaBlend(
+        const Color(0xFF000000).withOpacity(0.2), const Color(0XFF5B74A6));
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -62,37 +75,79 @@ class your_goals_menu extends StatelessWidget {
         )),
         width: double.infinity,
         height: double.infinity,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              Container(
-                width: AppDimensions.height10 * 37.4,
-                height: AppDimensions.height10 * 28.0,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 16.0),
-                decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 2.0),
-                    color: Colors.white),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const veiw_all_goals_menu()));
-                      },
-                      child: Container(
+        child: Stack(alignment: Alignment.center, children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Container(
+                  width: AppDimensions.height10 * 37.4,
+                  //height: AppDimensions.height10 * 28.0,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 16.0),
+                  padding: EdgeInsets.symmetric(
+                      vertical: AppDimensions.height10 * 1.5),
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.height10 * 2.0),
+                      color: Colors.white),
+                  child: Column(
+                    //mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const veiw_all_goals_menu()));
+                        },
+                        child: Container(
+                          width: AppDimensions.height10 * 33.4,
+                          height: AppDimensions.height10 * 5.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                                      width: AppDimensions.height10 * 0.1,
+                                      color: colorC))),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: AppDimensions.height10 * 20.6,
+                                height: AppDimensions.height10 * 1.9,
+                                child: Text(
+                                  'Your goals',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w500,
+                                      color: colorC),
+                                ),
+                              ),
+                              SizedBox(
+                                  width: AppDimensions.height10 * 2.4,
+                                  height: AppDimensions.height10 * 1.39,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Image.asset(
+                                      'assets/images/BTN Back.png',
+                                      //width: AppDimensions.height10 * 2.6,
+                                      //height: AppDimensions.height10 * 2.6,
+                                      color: colorC,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
                         width: AppDimensions.height10 * 33.4,
                         height: AppDimensions.height10 * 5.0,
                         decoration: BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
                                     width: AppDimensions.height10 * 0.1,
-                                    color: const Color(0xff5B74A6)))),
+                                    color: colorC))),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -100,11 +155,11 @@ class your_goals_menu extends StatelessWidget {
                               width: AppDimensions.height10 * 20.6,
                               height: AppDimensions.height10 * 1.9,
                               child: Text(
-                                'Your goals',
+                                'Messages (00 new)',
                                 style: TextStyle(
                                     fontSize: AppDimensions.height10 * 1.6,
                                     fontWeight: FontWeight.w500,
-                                    color: const Color(0XFF5B74A6)),
+                                    color: colorC),
                               ),
                             ),
                             SizedBox(
@@ -116,976 +171,1216 @@ class your_goals_menu extends StatelessWidget {
                                     'assets/images/BTN Back.png',
                                     //width: AppDimensions.height10 * 2.6,
                                     //height: AppDimensions.height10 * 2.6,
-                                    color: const Color(0xff5B74A6),
+                                    color: colorC,
                                     fit: BoxFit.cover,
                                   ),
                                 ))
                           ],
                         ),
                       ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10 * 33.4,
-                      height: AppDimensions.height10 * 5.0,
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: AppDimensions.height10 * 0.1,
-                                  color: const Color(0xff5B74A6)))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10 * 20.6,
-                            height: AppDimensions.height10 * 1.9,
-                            child: Text(
-                              'Messages (00 new)',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0XFF5B74A6)),
-                            ),
-                          ),
-                          SizedBox(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.39,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.png',
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
-                                  color: const Color(0xff5B74A6),
-                                  fit: BoxFit.cover,
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10 * 33.4,
-                      height: AppDimensions.height10 * 5.0,
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: AppDimensions.height10 * 0.1,
-                                  color: const Color(0xff5B74A6)))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10 * 20.6,
-                            height: AppDimensions.height10 * 1.9,
-                            child: Text(
-                              'Membership subscription',
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.6,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0XFF5B74A6)),
-                            ),
-                          ),
-                          SizedBox(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.39,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.png',
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
-                                  color: const Color(0xff5B74A6),
-                                  fit: BoxFit.cover,
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10 * 33.4,
-                      height: AppDimensions.height10 * 5.0,
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: AppDimensions.height10 * 0.1,
-                                  color: const Color(0xff5B74A6)))),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                              community_sheet(context);
-                            },
-                            child: SizedBox(
-                              width: AppDimensions.height10 * 20.6,
-                              height: AppDimensions.height10 * 1.9,
-                              child: Text(
-                                'Community (coming soon)',
-                                style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0XFF5B74A6)),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.39,
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.png',
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
-                                  color: const Color(0xff5B74A6),
-                                  fit: BoxFit.cover,
-                                ),
-                              ))
-                        ],
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Settings()));
-                      },
-                      child: SizedBox(
+                      Container(
                         width: AppDimensions.height10 * 33.4,
-                        height: AppDimensions.height10 * 5.0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // height: AppDimensions.height10 * 5.0,
+                        padding: EdgeInsets.symmetric(
+                            vertical: AppDimensions.height10 * 1.5),
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: AppDimensions.height10 * 0.1,
+                                    color: colorC))),
+                        child: Column(
                           children: [
-                            SizedBox(
-                              width: AppDimensions.height10 * 20.6,
-                              height: AppDimensions.height10 * 1.9,
-                              child: Text(
-                                'Settings',
-                                style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0XFF5B74A6)),
-                              ),
-                            ),
-                            SizedBox(
-                                width: AppDimensions.height10 * 2.4,
-                                height: AppDimensions.height10 * 1.39,
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Image.asset(
-                                    'assets/images/BTN Back.png',
-                                    //width: AppDimensions.height10 * 2.6,
-                                    //height: AppDimensions.height10 * 2.6,
-                                    color: const Color(0xff5B74A6),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ))
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10 * 37.4,
-                height: AppDimensions.height10 * 86.4,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 3.0,
-                    bottom: AppDimensions.height10 * 3.0),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: SizedBox(
-                        width: AppDimensions.height10 * 26.6,
-                        height: AppDimensions.height10 * 2.4,
-                        child: Text(
-                          'Journeys (DEV USE ONLY)',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.0,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0XFFFBFBFB)),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10 * 37.4,
-                      height: AppDimensions.height10 * 83.0,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 1.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0),
-                          color: Colors.white),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const OnBoarding()));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J1 Onboarding',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const practiceMenu(
-                                            goal_eval: true,
-                                          )));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J2 Record practice session',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const veiw_all_goals_menu()));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J3 Your goals',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const hurdles_splash()));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J4 Record hurdle ',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const inspiration_motivation(
-                                            goal_delete: false,
-                                          )));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J5 Record inspiration  ',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const goal_menu_inactive(
-                                            premium: true,
-                                            isActive: true,
-                                            goal_evaluation: true,
-                                          )));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J6 Goal evaluation',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const your_why(evaluation: true)));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J7 Practice evaluation',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                              community_sheet(context);
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J8 Community',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const timeline()));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J9 Timeline',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const congratulations()));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J10 Goal achieved',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => message_center()));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J11 Alerts',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Settings()));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J12 Menu & Settings',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const view_goals(missed: false)));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10 * 33.4,
-                              height: AppDimensions.height10 * 5.0,
-                              decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                          width: AppDimensions.height10 * 0.1,
-                                          color: const Color(0xff5B74A6)))),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 20.6,
-                                    height: AppDimensions.height10 * 1.9,
-                                    child: Text(
-                                      'J13 Dashboard behaviour',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.6,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
-                                      child: GestureDetector(
-                                        onTap: () {},
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
-                                          color: const Color(0xff5B74A6),
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ))
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10 * 33.4,
-                            height: AppDimensions.height10 * 5.0,
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
-                                        color: const Color(0xff5B74A6)))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.height10 * 20.6,
-                                  height: AppDimensions.height10 * 1.9,
-                                  child: Text(
-                                    'J14 Helpful tips',
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0XFF5B74A6)),
-                                  ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.png',
-                                        //width: AppDimensions.height10 * 2.6,
-                                        //height: AppDimensions.height10 * 2.6,
-                                        color: const Color(0xff5B74A6),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10 * 33.4,
-                            height: AppDimensions.height10 * 5.0,
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
-                                        color: const Color(0xff5B74A6)))),
-                            child: Row(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pop(context);
-                                    community_sheet(context);
+                                    if (membership == true) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const Subscription()));
+                                    } else if (trial == true) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const dashBoard(
+                                                      helpful_tips: false,
+                                                      dashboard_ctrl: true,
+                                                      membership: false,
+                                                      trial: true,
+                                                      cancel: true)));
+
+                                      _canceled_plan(context);
+                                    } else if (cancel == true) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const dashBoard(
+                                                      helpful_tips: false,
+                                                      dashboard_ctrl: true,
+                                                      membership: true,
+                                                      trial: false,
+                                                      cancel: false)));
+
+                                      _canceled_plan(context);
+                                    } else {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const Subscription()));
+                                    }
                                   },
                                   child: SizedBox(
+                                      width: AppDimensions.height10 * 27.6,
+                                      // height: AppDimensions.height10 * 1.9,
+                                      child: RichText(
+                                          text: TextSpan(
+                                              style: TextStyle(
+                                                  fontFamily: 'Laila',
+                                                  height:
+                                                      AppDimensions.height10 *
+                                                          0.15,
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.6,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: colorC),
+                                              children: [
+                                            const TextSpan(
+                                                text:
+                                                    'Membership subscription\n'),
+                                            membership
+                                                ? const TextSpan(
+                                                    text:
+                                                        'Current plan: Empowered Starter',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color:
+                                                            Color(0xFF8C648A)))
+                                                : TextSpan(
+                                                    text:
+                                                        'Your subscription is managed through\nthe App Store.',
+                                                    style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.4,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    )),
+                                          ]))),
+                                ),
+                                SizedBox(
+                                    width: AppDimensions.height10 * 2.4,
+                                    height: AppDimensions.height10 * 1.39,
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Image.asset(
+                                        'assets/images/BTN Back.png',
+                                        //width: AppDimensions.height10 * 2.6,
+                                        //height: AppDimensions.height10 * 2.6,
+                                        color: colorC,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ))
+                              ],
+                            ),
+                            trial
+                                ? Container(
+                                    width: AppDimensions.height10 * 33.9,
+                                    height: AppDimensions.height10 * 1.9,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10 * 1.0),
+                                    child: Text(
+                                        cancel
+                                            ? 'Renews March 9th 2023'
+                                            : '7 day trial, 6 days left (tap here to cancel)',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color(0xFF8C648A))),
+                                  )
+                                : Container()
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: AppDimensions.height10 * 33.4,
+                        height: AppDimensions.height10 * 5.0,
+                        decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: AppDimensions.height10 * 0.1,
+                                    color: colorC))),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                                community_sheet(context);
+                              },
+                              child: SizedBox(
+                                width: AppDimensions.height10 * 20.6,
+                                height: AppDimensions.height10 * 1.9,
+                                child: Text(
+                                  'Community (coming soon)',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w500,
+                                      color: colorC),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                                width: AppDimensions.height10 * 2.4,
+                                height: AppDimensions.height10 * 1.39,
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Image.asset(
+                                    'assets/images/BTN Back.png',
+                                    //width: AppDimensions.height10 * 2.6,
+                                    //height: AppDimensions.height10 * 2.6,
+                                    color: colorC,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ))
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Settings()));
+                        },
+                        child: SizedBox(
+                          width: AppDimensions.height10 * 33.4,
+                          height: AppDimensions.height10 * 5.0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: AppDimensions.height10 * 20.6,
+                                height: AppDimensions.height10 * 1.9,
+                                child: Text(
+                                  'Settings',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w500,
+                                      color: colorC),
+                                ),
+                              ),
+                              SizedBox(
+                                  width: AppDimensions.height10 * 2.4,
+                                  height: AppDimensions.height10 * 1.39,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Image.asset(
+                                      'assets/images/BTN Back.png',
+                                      //width: AppDimensions.height10 * 2.6,
+                                      //height: AppDimensions.height10 * 2.6,
+                                      color: colorC,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: AppDimensions.height10 * 37.4,
+                  height: AppDimensions.height10 * 86.4,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10 * 3.0,
+                      bottom: AppDimensions.height10 * 3.0),
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: SizedBox(
+                          width: AppDimensions.height10 * 26.6,
+                          height: AppDimensions.height10 * 2.4,
+                          child: Text(
+                            'Journeys (DEV USE ONLY)',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 2.0,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0XFFFBFBFB)),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: AppDimensions.height10 * 37.4,
+                        height: AppDimensions.height10 * 83.0,
+                        margin:
+                            EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10 * 2.0),
+                            color: Colors.white),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const OnBoarding()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J1 Onboarding',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const practiceMenu(
+                                              goal_eval: true,
+                                            )));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J2 Record practice session',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const veiw_all_goals_menu()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J3 Your goals',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const hurdles_splash()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J4 Record hurdle ',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const inspiration_motivation(
+                                              goal_delete: false,
+                                            )));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J5 Record inspiration  ',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const goal_menu_inactive(
+                                              premium: true,
+                                              isActive: true,
+                                              goal_evaluation: true,
+                                            )));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J6 Goal evaluation',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const your_why(evaluation: true)));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J7 Practice evaluation',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                                community_sheet(context);
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J8 Community',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const timeline()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J9 Timeline',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const congratulations()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J10 Goal achieved',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const message_center()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J11 Alerts',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Settings()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J12 Menu & Settings',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const view_goals(missed: false)));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10 * 33.4,
+                                height: AppDimensions.height10 * 5.0,
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            width: AppDimensions.height10 * 0.1,
+                                            color: colorC))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J13 Dashboard behaviour',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 1.39,
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.png',
+                                            //width: AppDimensions.height10 * 2.6,
+                                            //height: AppDimensions.height10 * 2.6,
+                                            color: colorC,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ))
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: AppDimensions.height10 * 33.4,
+                              height: AppDimensions.height10 * 5.0,
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          width: AppDimensions.height10 * 0.1,
+                                          color: colorC))),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
                                     width: AppDimensions.height10 * 20.6,
                                     height: AppDimensions.height10 * 1.9,
                                     child: Text(
-                                      'J15 Subscription ',
+                                      'J14 Helpful tips',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w500,
-                                          color: const Color(0XFF5B74A6)),
+                                          color: colorC),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.png',
-                                        //width: AppDimensions.height10 * 2.6,
-                                        //height: AppDimensions.height10 * 2.6,
-                                        color: const Color(0xff5B74A6),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
+                                  SizedBox(
+                                      width: AppDimensions.height10 * 2.4,
+                                      height: AppDimensions.height10 * 1.39,
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.png',
+                                          //width: AppDimensions.height10 * 2.6,
+                                          //height: AppDimensions.height10 * 2.6,
+                                          color: colorC,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ))
+                                ],
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: AppDimensions.height10 * 33.4,
-                            height: AppDimensions.height10 * 5.0,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.height10 * 20.6,
-                                  height: AppDimensions.height10 * 1.9,
-                                  child: Text(
-                                    'J16 Offline mode',
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w500,
-                                        color: const Color(0XFF5B74A6)),
+                            Container(
+                              width: AppDimensions.height10 * 33.4,
+                              height: AppDimensions.height10 * 5.0,
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          width: AppDimensions.height10 * 0.1,
+                                          color: colorC))),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const Subscription()));
+                                    },
+                                    child: SizedBox(
+                                      width: AppDimensions.height10 * 20.6,
+                                      height: AppDimensions.height10 * 1.9,
+                                      child: Text(
+                                        'J15 Subscription ',
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.6,
+                                            fontWeight: FontWeight.w500,
+                                            color: colorC),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.png',
-                                        //width: AppDimensions.height10 * 2.6,
-                                        //height: AppDimensions.height10 * 2.6,
-                                        color: const Color(0xff5B74A6),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
+                                  SizedBox(
+                                      width: AppDimensions.height10 * 2.4,
+                                      height: AppDimensions.height10 * 1.39,
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.png',
+                                          //width: AppDimensions.height10 * 2.6,
+                                          //height: AppDimensions.height10 * 2.6,
+                                          color: colorC,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ))
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                              width: AppDimensions.height10 * 33.4,
+                              height: AppDimensions.height10 * 5.0,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    width: AppDimensions.height10 * 20.6,
+                                    height: AppDimensions.height10 * 1.9,
+                                    child: Text(
+                                      'J16 Offline mode',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.6,
+                                          fontWeight: FontWeight.w500,
+                                          color: colorC),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                      width: AppDimensions.height10 * 2.4,
+                                      height: AppDimensions.height10 * 1.39,
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.png',
+                                          //width: AppDimensions.height10 * 2.6,
+                                          //height: AppDimensions.height10 * 2.6,
+                                          color: colorC,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ))
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+          OfflineBuilder(
+              debounceDuration: kOfflineDebounceDuration,
+              connectivityBuilder: (
+                BuildContext context,
+                ConnectivityResult connectivity,
+                Widget child,
+              ) {
+                final bool connected = connectivity != ConnectivityResult.none;
+                return Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Positioned(
+                        child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Container(
+                        width: double.infinity,
+                        height: AppDimensions.height10 * 3.0,
+                        color:
+                            connected ? Color(0xFF27AE60) : Color(0xFFFE6624),
+                        child: Center(
+                          child: Text(
+                            connected ? 'Back Online' : 'You’re Offline',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.4,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xFFFBFBFB)),
+                          ),
+                        ),
+                      ),
+                    ))
+                  ],
+                );
+              },
+              child: Container())
+        ]),
       ),
     );
   }
+}
+
+void _canceled_plan(canceled) {
+  showModalBottomSheet(
+    context: canceled,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+      top: Radius.circular(AppDimensions.height10 * 2.0),
+    )),
+    builder: (context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+          width: AppDimensions.height10 * 39.4,
+          height: AppDimensions.height10 * 75.5,
+          margin: EdgeInsets.only(
+              left: AppDimensions.height10 * 1.0,
+              right: AppDimensions.height10 * 1.0,
+              bottom: AppDimensions.height10 * 1.0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xFFF8F7F9), Color(0xFFE1D7D8)])),
+          child: Column(
+            // alignment: AlignmentDirectional.topCenter,
+            //  mainAxisAlignment: MainAxisAlignment.start,
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                //color: Colors.amber,
+                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                alignment: const Alignment(1, 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.9,
+                        right: AppDimensions.height10 * 1.5),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/Close_blue.png'))),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 1.5,
+                    bottom: AppDimensions.height10 * 2.0),
+                child: Image.asset(
+                  'assets/images/potenic__icon.png',
+                  width: AppDimensions.height10 * 8.202,
+                  height: AppDimensions.height10 * 11.2,
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10 * 30.7,
+                height: AppDimensions.height10 * 6.8,
+                // color: Colors.amber,
+                alignment: Alignment.center,
+                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                child: Text(
+                  'Ownership Plan is\nnow cancelled',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      height: AppDimensions.height10 * 0.12,
+                      fontSize: AppDimensions.height10 * 2.8,
+                      // letterSpacing: AppDimensions.height10 * 0.2,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF437296)),
+                ),
+              ),
+              Container(
+                  width: AppDimensions.height10 * 33.2,
+                  height: AppDimensions.height10 * 36.4,
+                  // color: Colors.grey,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.9),
+                  child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10 * 1.8,
+                              fontFamily: 'laila',
+                              height: AppDimensions.height10 * 0.15,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xFF437296)),
+                          children: [
+                            const TextSpan(
+                                text:
+                                    'We are sad you’ve decided to cancel\nyour subscription. \n\n',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            const TextSpan(text: 'You’ve been downgraded to\n'),
+                            const TextSpan(
+                                text: 'Empowered Starter ',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            const TextSpan(
+                                text:
+                                    'Plan.\n\nWe know life circumstances change and\nevolve, so if you change your mind in\nthe future, you can always upgrade\nback to '),
+                            const TextSpan(
+                                text: 'Ownership Plan.\n\n',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            const TextSpan(
+                              text:
+                                  'We always look to improve and provide\nbetter service - if you could let us know\nyour feedback by completing a short\nsurvey below we would be very grateful.\nYour experience is important to us. ',
+                            )
+                          ]))),
+              Container(
+                width: AppDimensions.height10 * 33.5,
+                height: AppDimensions.height10 * 5.0,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                decoration: BoxDecoration(
+                    color: const Color(0xFF5A4D73),
+                    borderRadius:
+                        BorderRadius.circular(AppDimensions.height10 * 5.0)),
+                child: Center(
+                  child: Text(
+                    'Feedback about their experience',
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10 * 1.6,
+                        height: AppDimensions.height10 * 0.15,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFFFFFFFF)),
+                  ),
+                ),
+              )
+            ],
+          )),
+    ),
+  );
 }

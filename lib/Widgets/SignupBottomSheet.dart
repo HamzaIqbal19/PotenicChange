@@ -66,7 +66,13 @@ void signupSheet(context, String ButtonName, String Route) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => dashBoard(),
+                            builder: (context) => dashBoard(
+                              helpful_tips: false,
+                              dashboard_ctrl: true,
+                              membership: true,
+                              cancel: false,
+                              trial: false,
+                            ),
                           ),
                         );
                       },

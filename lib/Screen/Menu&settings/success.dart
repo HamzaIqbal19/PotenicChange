@@ -47,7 +47,7 @@ class Success extends StatelessWidget {
                     'Please check your inbox and follow\ninstructions to reset your password.',
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.3,
-                        // height: AppDimensions.height10 * 0.12,
+                        height: AppDimensions.height10 * 0.14,
                         fontWeight: FontWeight.w400,
                         color: const Color(0XFF000000)),
                   )),

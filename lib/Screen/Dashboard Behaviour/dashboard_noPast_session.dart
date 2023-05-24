@@ -55,6 +55,9 @@ class no_past_session extends StatelessWidget {
         extendBody: true,
         bottomNavigationBar: Navigation_Bar(
           bg_colored: false,
+          membership: true,
+          cancel: false,
+          trial: false,
         ),
         body: Container(
             decoration: BoxDecoration(

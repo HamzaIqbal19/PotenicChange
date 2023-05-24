@@ -117,10 +117,10 @@ class _congratulationsState extends State<congratulations> {
                     ),
                   ),
                   Align(
-                    alignment: const Alignment(0, 1.2),
+                    alignment: const Alignment(0, 1.625),
                     child: Container(
-                      width: AppDimensions.height10 * 21.2,
-                      height: AppDimensions.height10 * 21.2,
+                      width: AppDimensions.height10 * 23.2,
+                      height: AppDimensions.height10 * 23.2,
                       //same dimensions as design
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -375,11 +375,11 @@ void goal_achieved_sheet(context) {
                     ),
                     Container(
                       width: AppDimensions.height10 * 32.7,
-                      height: AppDimensions.height10 * 14.1,
+                      height: AppDimensions.height10 * 16.1,
                       margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 0.6),
+                          EdgeInsets.only(top: AppDimensions.height10 * 1.6),
                       child: Text(
-                        'Based on your latest evaluation, your total goal\nscore level has gone down. Please don’t beat\nyourself up life is a journey of ups and downs\nworking on yourself is part of the growing\nprocess. Please review your latest assessment and\nadjust your original ‘why’ reasons if needed.',
+                        'Based on your latest evaluation, your total goal\nscore level has gone down. Don’t despair yet.\n\nLife is a journey of ups and downs, and working on\nyourself is part of the transformation process.\nPlease review your latest assessment and adjust\nyour original ‘why’ reasons if needed.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.4,
@@ -437,10 +437,10 @@ void goal_achieved_sheet(context) {
                             ),
                           ),
                           Align(
-                            alignment: const Alignment(0, 4.5),
+                            alignment: const Alignment(0, 10.5),
                             child: Container(
-                              width: AppDimensions.height10 * 21.2,
-                              height: AppDimensions.height10 * 21.2,
+                              width: AppDimensions.height10 * 24.2,
+                              height: AppDimensions.height10 * 24.2,
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
