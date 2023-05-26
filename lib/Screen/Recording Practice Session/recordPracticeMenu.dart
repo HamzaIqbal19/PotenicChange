@@ -435,7 +435,7 @@ class practiceMenu extends StatelessWidget {
               ),
             ),
             OfflineBuilder(
-                debounceDuration: kOfflineDebounceDuration,
+                debounceDuration: Duration(milliseconds: 3),
                 connectivityBuilder: (
                   BuildContext context,
                   ConnectivityResult connectivity,

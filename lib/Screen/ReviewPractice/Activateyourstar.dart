@@ -163,7 +163,7 @@ class _ActivateStarState extends State<ActivateStar> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => dashBoard(
-                                  helpful_tips: true,
+                                  helpful_tips: false,
                                   membership: true,
                                   dashboard_ctrl: false,
                                   cancel: false,
@@ -224,6 +224,7 @@ class _ActivateStarState extends State<ActivateStar> {
 }
 
 void dashboard_sheet(context) {
+  bool hide = true;
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -257,7 +258,18 @@ void dashboard_sheet(context) {
                 alignment: Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => dashBoard(
+                          helpful_tips: true,
+                          membership: true,
+                          dashboard_ctrl: false,
+                          cancel: false,
+                          trial: false,
+                        ),
+                      ),
+                    );
                   },
                   child: Container(
                     width: AppDimensions.height10 * 2.6,

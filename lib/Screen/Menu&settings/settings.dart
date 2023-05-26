@@ -1080,7 +1080,7 @@ class Settings extends StatelessWidget {
             ),
           ),
           OfflineBuilder(
-              debounceDuration: kOfflineDebounceDuration,
+              debounceDuration: Duration(seconds: 1),
               connectivityBuilder: (
                 BuildContext context,
                 ConnectivityResult connectivity,

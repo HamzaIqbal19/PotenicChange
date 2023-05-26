@@ -20,7 +20,7 @@ import '../capture_inspiration/inpiration_motivation.dart';
 import '../community/community.dart';
 import 'goal_menu_inactive.dart';
 
-class your_goals_menu extends StatelessWidget {
+class your_goals_menu extends StatefulWidget {
   final bool trial;
   final bool membership;
   final bool cancel;
@@ -31,6 +31,11 @@ class your_goals_menu extends StatelessWidget {
       required this.membership,
       required this.cancel});
 
+  @override
+  State<your_goals_menu> createState() => _your_goals_menuState();
+}
+
+class _your_goals_menuState extends State<your_goals_menu> {
   @override
   Widget build(BuildContext context) {
     final colorC = Color.alphaBlend(
@@ -195,36 +200,31 @@ class your_goals_menu extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    if (membership == true) {
+                                    if (widget.membership == true) {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   const Subscription()));
-                                    } else if (trial == true) {
+                                    } else if (widget.trial == true) {
+                                      print(widget.cancel);
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const dashBoard(
-                                                      helpful_tips: false,
-                                                      dashboard_ctrl: true,
-                                                      membership: false,
-                                                      trial: true,
-                                                      cancel: true)));
-
-                                      _canceled_plan(context);
-                                    } else if (cancel == true) {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const dashBoard(
-                                                      helpful_tips: false,
-                                                      dashboard_ctrl: true,
-                                                      membership: true,
-                                                      trial: false,
-                                                      cancel: false)));
+                                                  widget.cancel
+                                                      ? const dashBoard(
+                                                          helpful_tips: false,
+                                                          dashboard_ctrl: true,
+                                                          membership: true,
+                                                          trial: false,
+                                                          cancel: false)
+                                                      : const dashBoard(
+                                                          helpful_tips: false,
+                                                          dashboard_ctrl: true,
+                                                          membership: false,
+                                                          trial: true,
+                                                          cancel: true)));
 
                                       _canceled_plan(context);
                                     } else {
@@ -254,7 +254,7 @@ class your_goals_menu extends StatelessWidget {
                                             const TextSpan(
                                                 text:
                                                     'Membership subscription\n'),
-                                            membership
+                                            widget.membership
                                                 ? const TextSpan(
                                                     text:
                                                         'Current plan: Empowered Starter',
@@ -290,14 +290,14 @@ class your_goals_menu extends StatelessWidget {
                                     ))
                               ],
                             ),
-                            trial
+                            widget.trial
                                 ? Container(
                                     width: AppDimensions.height10 * 33.9,
                                     height: AppDimensions.height10 * 1.9,
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10 * 1.0),
                                     child: Text(
-                                        cancel
+                                        widget.cancel
                                             ? 'Renews March 9th 2023'
                                             : '7 day trial, 6 days left (tap here to cancel)',
                                         style: TextStyle(
@@ -1208,7 +1208,7 @@ class your_goals_menu extends StatelessWidget {
             ),
           ),
           OfflineBuilder(
-              debounceDuration: kOfflineDebounceDuration,
+              debounceDuration: const Duration(seconds: 1),
               connectivityBuilder: (
                 BuildContext context,
                 ConnectivityResult connectivity,
@@ -1224,15 +1224,16 @@ class your_goals_menu extends StatelessWidget {
                       child: Container(
                         width: double.infinity,
                         height: AppDimensions.height10 * 3.0,
-                        color:
-                            connected ? Color(0xFF27AE60) : Color(0xFFFE6624),
+                        color: connected
+                            ? const Color(0xFF27AE60)
+                            : const Color(0xFFFE6624),
                         child: Center(
                           child: Text(
                             connected ? 'Back Online' : 'You’re Offline',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFFFBFBFB)),
+                                color: const Color(0xFFFBFBFB)),
                           ),
                         ),
                       ),
@@ -1268,7 +1269,7 @@ void _canceled_plan(canceled) {
               bottom: AppDimensions.height10 * 1.0),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [Color(0xFFF8F7F9), Color(0xFFE1D7D8)])),

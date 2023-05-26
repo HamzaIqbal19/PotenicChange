@@ -1527,7 +1527,7 @@ class _SubscriptionState extends State<Subscription> {
                                                 fontWeight: FontWeight.w600)),
                                         const TextSpan(
                                             text:
-                                                'Yes you can by going into your Account Settings.\nRemember to cancel your subscription plan no\nearlier than 3 working days before your plan is due\nto renew.')
+                                                'Yes you can by going into your Account Settings.\nRemember to cancel your subscription plan no\nearlier than 3 working days before your plan is due to\nrenew.')
                                       ])),
                                 ),
                               ],
