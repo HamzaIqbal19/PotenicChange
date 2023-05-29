@@ -47,118 +47,119 @@ class _inspiration_landingState extends State<inspiration_landing> {
                 colorFilter: ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
-        child: Column(
-          children: [
-            Container(
-              width: AppDimensions.height10 * 34.3,
-              height: AppDimensions.height10 * 27.0,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 12.0),
-              child: Stack(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      widget.muliple_insp
-                          ? Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => inspiration_motivation(
-                                      goal_delete: false)),
-                            )
-                          : Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const inspiration_landing(
-                                        muliple_insp: true,
-                                        is_Updated: false,
-                                      )),
-                            );
-                    },
-                    child: SizedBox(
-                      width: AppDimensions.height10 * 34.3,
-                      height: AppDimensions.height10 * 7.3,
-                      child: Center(
-                        child: GradientText(
-                          'My current\ninspirations',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            height: 1.5,
-                            fontSize: AppDimensions.height10 * 3.0,
-                            fontWeight: FontWeight.w700,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                width: AppDimensions.height10 * 34.3,
+                height: AppDimensions.height10 * 27.0,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 12.0),
+                child: Stack(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        widget.muliple_insp
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        inspiration_motivation(
+                                            goal_delete: false)),
+                              )
+                            : Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const inspiration_landing(
+                                          muliple_insp: true,
+                                          is_Updated: false,
+                                        )),
+                              );
+                      },
+                      child: SizedBox(
+                        width: AppDimensions.height10 * 34.3,
+                        height: AppDimensions.height10 * 7.3,
+                        child: Center(
+                          child: GradientText(
+                            'My current\ninspirations',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              height: 1.5,
+                              fontSize: AppDimensions.height10 * 3.0,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            colors: [
+                              const Color(0xffFA9934),
+                              const Color(0xffEDD15E)
+                            ],
                           ),
-                          colors: [
-                            const Color(0xffFA9934),
-                            const Color(0xffEDD15E)
-                          ],
                         ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: const Alignment(0, 0.525),
-                    child: Container(
-                      width: AppDimensions.height10 * 16.43,
-                      height: AppDimensions.height10 * 16.43,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        opacity: 0.2,
-                        image: AssetImage('assets/images/Star.png'),
-                      )),
-                      child: Center(
-                        child: Container(
-                          width: AppDimensions.height10 * 15.6,
-                          height: AppDimensions.height10 * 15.6,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/Inspiration_center 1.png'))),
-                          child: Center(
-                              child: Container(
-                            width: AppDimensions.height10 * 6.8,
-                            height: AppDimensions.height10 * 6.8,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFFFFFFFF)),
-                            child: Center(
-                                child: SizedBox(
-                                    width: AppDimensions.height10 * 3.2,
-                                    height: AppDimensions.height10 * 3.2,
-                                    child:
-                                        Image.asset('assets/images/plus.png'))),
-                          )),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: const Alignment(0.1, 0.85),
-                    child: SizedBox(
-                      width: AppDimensions.height10 * 13.5,
-                      height: AppDimensions.height10 * 2.2,
-                      child: Text(
-                        'New inspiration',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xFFFFFFFF)),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            widget.muliple_insp
-                ? Container(
-                    //  color: Colors.red,
-                    height: AppDimensions.height10 * 47.0,
-                    margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 2.4,
-                    ),
-                    child: Row(
-                      children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
+                    Align(
+                      alignment: const Alignment(0, 0.525),
+                      child: Container(
+                        width: AppDimensions.height10 * 16.43,
+                        height: AppDimensions.height10 * 16.43,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                          opacity: 0.2,
+                          image: AssetImage('assets/images/Star.png'),
+                        )),
+                        child: Center(
                           child: Container(
+                            width: AppDimensions.height10 * 15.6,
+                            height: AppDimensions.height10 * 15.6,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/Inspiration_center 1.png'))),
+                            child: Center(
+                                child: Container(
+                              width: AppDimensions.height10 * 6.8,
+                              height: AppDimensions.height10 * 6.8,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFFFFFFFF)),
+                              child: Center(
+                                  child: SizedBox(
+                                      width: AppDimensions.height10 * 3.2,
+                                      height: AppDimensions.height10 * 3.2,
+                                      child: Image.asset(
+                                          'assets/images/plus.png'))),
+                            )),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: const Alignment(0.1, 0.85),
+                      child: SizedBox(
+                        width: AppDimensions.height10 * 13.5,
+                        height: AppDimensions.height10 * 2.2,
+                        child: Text(
+                          'New inspiration',
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10 * 1.8,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFFFFFFFF)),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              widget.muliple_insp
+                  ? Container(
+                      //  color: Colors.red,
+                      // height: AppDimensions.height10 * 47.0,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10 * 2.4,
+                          bottom: AppDimensions.height10 * 2.5),
+                      child: Row(
+                        children: [
+                          Container(
                             width: AppDimensions.height10 * 16.7,
                             //  height: AppDimensions.height10 * 71.0,
                             margin: EdgeInsets.only(
@@ -335,17 +336,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               ],
                             ),
                           ),
-                        ),
-                        Container(
-                          // color: Colors.amber,
-                          width: AppDimensions.height10 * 16.7,
+                          Container(
+                            // color: Colors.amber,
+                            width: AppDimensions.height10 * 16.7,
 
-                          //height: AppDimensions.height10 * 71.0,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 3.0,
-                              top: AppDimensions.height10 * 7.0),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
+                            //height: AppDimensions.height10 * 71.0,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10 * 3.0,
+                                top: AppDimensions.height10 * 7.0),
                             child: Column(
                               children: [
                                 GestureDetector(
@@ -521,166 +519,168 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               ],
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                : GestureDetector(
-                    onTap: () {
-                      widget.is_Updated
-                          ? NavigatorState()
-                          : Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const record_inspiration(
-                                        type_switch: 1,
-                                      )),
-                            );
-                    },
-                    child: Container(
-                      width: AppDimensions.height10 * 16.7,
-                      height: AppDimensions.height10 * 21.2,
-                      margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 5.3,
-                        right: AppDimensions.height10 * 21.7,
-                        left: AppDimensions.height10 * 3.0,
+                        ],
                       ),
-                      child: Column(children: [
-                        Container(
-                          width: AppDimensions.height10 * 16.7,
-                          height: AppDimensions.height10 * 16.7,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color(0xFFD9D9D9),
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage('assets/images/sir_nyal.png'),
-                                  fit: BoxFit.cover)),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        widget.is_Updated
+                            ? NavigatorState()
+                            : Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const record_inspiration(
+                                          type_switch: 1,
+                                        )),
+                              );
+                      },
+                      child: Container(
+                        width: AppDimensions.height10 * 16.7,
+                        height: AppDimensions.height10 * 21.2,
+                        margin: EdgeInsets.only(
+                          top: AppDimensions.height10 * 5.3,
+                          right: AppDimensions.height10 * 21.7,
+                          left: AppDimensions.height10 * 3.0,
                         ),
-                        Container(
-                          width: AppDimensions.height10 * 16.7,
-                          height: AppDimensions.height10 * 1.9,
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 0.5),
-                          child: Center(
-                              child: Text(
-                            'Influencer',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xFFFFFFFF)),
-                          )),
-                        ),
-                        SizedBox(
-                          child: Center(
-                              child: Text(
-                            'Nir Eyal',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.0,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xFFFFFFFF)),
-                          )),
-                        )
-                      ]),
-                    ),
-                  ),
-            widget.muliple_insp
-                ? Container()
-                : Container(
-                    width: AppDimensions.height10 * 38.259,
-                    height: AppDimensions.height10 * 9.707,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 12.0),
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.261),
-                          width: AppDimensions.height10 * 4.437,
-                          height: AppDimensions.height10 * 4.437,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/circle_tick.png'))),
-                        ),
-                        Container(
-                          width: AppDimensions.height10 * 6.9,
-                          height: AppDimensions.height10 * 3.6,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.232),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.height10 * 4.6,
-                                height: AppDimensions.height10 * 1.4,
-                                //   color: Colors.amber,
-                                child: Text(
-                                  widget.is_Updated ? 'Updated' : 'SAVED',
-                                  style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.3,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color(0xFFFFFFFF)),
-                                ),
-                              ),
-                              SizedBox(
-                                width: AppDimensions.height10 * 6.9,
-                                height: AppDimensions.height10 * 2.2,
-                                child: Text(
-                                  'Nir Eyal',
-                                  style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.8,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color(0xFFFFFFFF)),
-                                ),
-                              ),
-                            ],
+                        child: Column(children: [
+                          Container(
+                            width: AppDimensions.height10 * 16.7,
+                            height: AppDimensions.height10 * 16.7,
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xFFD9D9D9),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/sir_nyal.png'),
+                                    fit: BoxFit.cover)),
                           ),
-                        ),
-                        Container(
-                          width: AppDimensions.height10 * 8.1,
-                          height: AppDimensions.height10 * 6.0,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 15.1),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xFFFFFFFF), width: 1),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 2.0),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Veiw',
+                          Container(
+                            width: AppDimensions.height10 * 16.7,
+                            height: AppDimensions.height10 * 1.9,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10 * 0.5),
+                            child: Center(
+                                child: Text(
+                              'Influencer',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
-                                  fontWeight: FontWeight.w500,
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFFFFFF)),
+                            )),
+                          ),
+                          SizedBox(
+                            child: Center(
+                                child: Text(
+                              'Nir Eyal',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xFFFFFFFF)),
+                            )),
+                          )
+                        ]),
+                      ),
+                    ),
+              widget.muliple_insp
+                  ? Container()
+                  : Container(
+                      width: AppDimensions.height10 * 38.259,
+                      height: AppDimensions.height10 * 9.707,
+                      margin:
+                          EdgeInsets.only(top: AppDimensions.height10 * 12.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 2.0),
+                          gradient: const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10 * 1.261),
+                            width: AppDimensions.height10 * 4.437,
+                            height: AppDimensions.height10 * 4.437,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/circle_tick.png'))),
+                          ),
+                          Container(
+                            width: AppDimensions.height10 * 6.9,
+                            height: AppDimensions.height10 * 3.6,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10 * 1.232),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.height10 * 4.6,
+                                  height: AppDimensions.height10 * 1.4,
+                                  //   color: Colors.amber,
+                                  child: Text(
+                                    widget.is_Updated ? 'Updated' : 'SAVED',
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.3,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: AppDimensions.height10 * 6.9,
+                                  height: AppDimensions.height10 * 2.2,
+                                  child: Text(
+                                    'Nir Eyal',
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        )
-                      ],
+                          Container(
+                            width: AppDimensions.height10 * 8.1,
+                            height: AppDimensions.height10 * 6.0,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10 * 15.1),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color(0xFFFFFFFF), width: 1),
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10 * 2.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Veiw',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xFFFFFFFF)),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-            widget.muliple_insp
-                ? Container()
-                : Container(
-                    width: AppDimensions.height10 * 17.0,
-                    height: AppDimensions.height10 * 0.5,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 0.29),
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                  ),
-          ],
+              widget.muliple_insp
+                  ? Container()
+                  : Container(
+                      width: AppDimensions.height10 * 17.0,
+                      height: AppDimensions.height10 * 0.5,
+                      margin:
+                          EdgeInsets.only(top: AppDimensions.height10 * 0.29),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 2.0),
+                          color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                    ),
+            ],
+          ),
         ),
       ),
       extendBody: true,

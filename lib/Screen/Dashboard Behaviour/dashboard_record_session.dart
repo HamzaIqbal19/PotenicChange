@@ -27,7 +27,7 @@ class record_session extends StatelessWidget {
           ]),
       extendBodyBehindAppBar: true,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/Mask Group.png'),
             fit: BoxFit.cover,
@@ -71,7 +71,7 @@ class record_session extends StatelessWidget {
                         child: Container(
                             width: AppDimensions.height10 * 26.8,
                             height: AppDimensions.height10 * 26.8,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
                                     image:
@@ -82,27 +82,27 @@ class record_session extends StatelessWidget {
                                     fit: BoxFit.cover)),
                             child: Stack(children: [
                               Align(
-                                  alignment: Alignment(0, -0.5),
+                                  alignment: const Alignment(0, -0.5),
                                   child: Text(
                                     'Control my anger',
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: Color(0xff5B74A6)),
+                                        color: const Color(0xff5B74A6)),
                                   )),
                               Align(
-                                alignment: Alignment(0, -0.2),
+                                alignment: const Alignment(0, -0.2),
                                 child: Text(
                                     '“I am someone who is in\n control of my anger”',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xff5B74A6))),
+                                        color: const Color(0xff5B74A6))),
                               ),
                             ]))),
                     Align(
-                      alignment: Alignment(0, 1),
+                      alignment: const Alignment(0, 1),
                       child: Container(
                         margin:
                             EdgeInsets.only(left: AppDimensions.height10 * 2.9),
@@ -114,14 +114,14 @@ class record_session extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            record_summary()));
+                                            const record_summary()));
                               },
                               child: Container(
                                 height: AppDimensions.height10 * 13.8,
                                 width: AppDimensions.height10 * 13.8,
                                 margin: EdgeInsets.only(
                                     right: AppDimensions.height10 * 1.0),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -146,7 +146,7 @@ class record_session extends StatelessWidget {
                               width: AppDimensions.height10 * 13.8,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10 * 1.0),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
                                     image: AssetImage(
@@ -168,7 +168,7 @@ class record_session extends StatelessWidget {
                             Container(
                               height: AppDimensions.height10 * 13.8,
                               width: AppDimensions.height10 * 13.8,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -206,7 +206,7 @@ class record_session extends StatelessWidget {
                       child: Container(
                           width: AppDimensions.height10 * 26.8,
                           height: AppDimensions.height10 * 26.8,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image:
@@ -217,28 +217,28 @@ class record_session extends StatelessWidget {
                                   fit: BoxFit.cover)),
                           child: Stack(children: [
                             Align(
-                                alignment: Alignment(0, -0.5),
+                                alignment: const Alignment(0, -0.5),
                                 child: Text(
                                   'Be more confident',
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 2.0,
                                       fontWeight: FontWeight.w600,
-                                      color: Color(0xff5B74A6)),
+                                      color: const Color(0xff5B74A6)),
                                 )),
                             Align(
-                              alignment: Alignment(0, -0.2),
+                              alignment: const Alignment(0, -0.2),
                               child: Text(
                                   'I am someone who is in\n confident in my abilities',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xff5B74A6))),
+                                      color: const Color(0xff5B74A6))),
                             ),
                           ])),
                     ),
                     Align(
-                      alignment: Alignment(0, 1),
+                      alignment: const Alignment(0, 1),
                       child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Container(
@@ -251,7 +251,7 @@ class record_session extends StatelessWidget {
                                     width: AppDimensions.height10 * 13.8,
                                     margin: EdgeInsets.only(
                                         right: AppDimensions.height10 * 1.0),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: AssetImage(
@@ -274,7 +274,7 @@ class record_session extends StatelessWidget {
                                   Container(
                                     height: AppDimensions.height10 * 13.8,
                                     width: AppDimensions.height10 * 13.8,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: AssetImage(

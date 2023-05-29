@@ -47,6 +47,7 @@ class _message_centerState extends State<message_center> {
                       'Delete All',
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.6,
+                          height: AppDimensions.height10 * 0.16,
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.underline,
                           color: const Color(0xFFFBFBFB)),
@@ -66,16 +67,17 @@ class _message_centerState extends State<message_center> {
                         });
                       }
                     },
-                    child: SizedBox(
-                      //  color: Colors.amber,
+                    child: Container(
                       width: AppDimensions.height10 * 5.8,
                       height: AppDimensions.height10 * 2.4,
                       child: Text(
                         'Cancel',
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
+                            height: AppDimensions.height10 * 0.16,
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline,
+                            // decorationThickness: 3,
                             color: const Color(0xFFFBFBFB)),
                       ),
                     ),
@@ -176,19 +178,19 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 33.2,
-                          height: AppDimensions.height10 * 9.7,
+                          width: AppDimensions.height10 * 34.4,
+                          height: AppDimensions.height10 * 5.9,
+                          //color: Colors.amber,
+                          alignment: Alignment.topCenter,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10 * 0.2),
-                          child: Center(
-                            child: Text(
-                              'You currently have no\nmessages, your new\nalerts will appear\nhere.',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFBFBFB)),
-                            ),
+                          child: Text(
+                            'You currently have no messages, your\nnew alerts will appear here.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10 * 1.8,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xFFFBFBFB)),
                           ),
                         ),
                       ],
@@ -967,8 +969,8 @@ class _message_centerState extends State<message_center> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: const Color(0XFF000000),
-                                              letterSpacing:
-                                                  AppDimensions.height10 * 0.1,
+                                              // letterSpacing:
+                                              //     AppDimensions.height10 * 0.1,
                                               fontSize:
                                                   AppDimensions.height10 * 1.3,
                                               fontWeight: FontWeight.w400,
@@ -1131,7 +1133,7 @@ class messages extends StatelessWidget {
       //color: Colors.blue,
       child: Stack(children: [
         Align(
-          alignment: const Alignment(0.93, 0),
+          alignment: const Alignment(1, -0.1),
           child: Image.asset(
             "assets/images/Vector Smart Object.png",
             height: AppDimensions.height10 * 9.296,

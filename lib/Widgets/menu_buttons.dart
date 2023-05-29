@@ -33,25 +33,29 @@ class button_feilds extends StatelessWidget {
             margin: EdgeInsets.only(left: AppDimensions.height10 * 1.99),
             child: GestureDetector(
               onTap: () {},
-              child: RichText(
-                  text: TextSpan(
-                      style: TextStyle(
-                        color: Color(text_color),
-                        fontSize: AppDimensions.height10 * 1.6,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      children: [
-                    TextSpan(text: feild_text),
-                    TextSpan(
-                      text: feild_text_2,
-                      style: TextStyle(
-                        color: Color(text_color),
-                        fontFamily: '',
-                        fontSize: AppDimensions.height10 * 1.4,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    )
-                  ])),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: RichText(
+                    text: TextSpan(
+                        style: TextStyle(
+                          color: Color(text_color),
+                          fontFamily: 'laila',
+                          fontSize: AppDimensions.height10 * 1.6,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        children: [
+                      TextSpan(text: feild_text),
+                      TextSpan(
+                        text: feild_text_2,
+                        style: TextStyle(
+                          color: Color(text_color),
+                          fontFamily: '',
+                          fontSize: AppDimensions.height10 * 1.4,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    ])),
+              ),
             ),
           ),
           Container(

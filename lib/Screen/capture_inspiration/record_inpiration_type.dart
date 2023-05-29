@@ -105,7 +105,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                           'Influencer',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
@@ -117,7 +117,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                               'Nir Eyal',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontSize: AppDimensions.height10 * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -138,7 +138,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFFFFFFFF)),
                           ),
@@ -153,7 +153,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                           'Notes',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
@@ -166,7 +166,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                               'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontSize: AppDimensions.height10 * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -192,7 +192,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                           'Music Eye Of The Tiger ',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
@@ -204,7 +204,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                               'Survivors',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontSize: AppDimensions.height10 * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -231,7 +231,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                           'Content',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
@@ -244,7 +244,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               'Learn How To Avoid Distraction In A\nWorld That Is Full Of It',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontSize: AppDimensions.height10 * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -491,44 +491,168 @@ class _record_inspirationState extends State<record_inspiration> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: AppDimensions.height10 * 36.0,
-                    height: AppDimensions.height10 * 6.0,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            width: AppDimensions.height10 * 0.1,
-                            color: const Color(0xFFFFFFFF)),
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
-                        color: const Color(0xff464646)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: AppDimensions.height10 * 2.4,
-                          height: AppDimensions.height10 * 2.4,
-                          margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 0.5,
+                  GestureDetector(
+                    onTap: () => showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => Container(
+                              width: AppDimensions.height10 * 27.0,
+                              height: AppDimensions.height10 * 21.4,
+                              child: AlertDialog(
+                                contentPadding: EdgeInsets.zero,
+                                actionsPadding: EdgeInsets.zero,
+                                titlePadding: EdgeInsets.zero,
+                                title: Container(
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10 * 1.9,
+                                        right: AppDimensions.height10 * 1.6,
+                                        left: AppDimensions.height10 * 1.6,
+                                        bottom: AppDimensions.height10 * 0.2),
+                                    height: AppDimensions.height10 * 4.4,
+                                    width: AppDimensions.height10 * 23.8,
+                                    child: RichText(
+                                        textAlign: TextAlign.center,
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.7,
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xFF000000)),
+                                            children: [
+                                              const TextSpan(
+                                                  text:
+                                                      'Are you sure you want\nto'),
+                                              const TextSpan(
+                                                text: ' delete ',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                              const TextSpan(
+                                                  text: 'this inspiration?')
+                                            ]))),
+                                content: Container(
+                                  margin: EdgeInsets.only(
+                                      bottom: AppDimensions.height10 * 1.5,
+                                      left: AppDimensions.height10 * 1.6,
+                                      right: AppDimensions.height10 * 1.6),
+                                  height: AppDimensions.height10 * 3.4,
+                                  width: AppDimensions.height10 * 23.8,
+                                  child: Text(
+                                    "By clicking 'Yes' you confirm that this\ninspiration will be deleted permanently. ",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: const Color(0xFF000000),
+                                      fontSize: AppDimensions.height10 * 1.3,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  Column(
+                                    children: [
+                                      SizedBox(
+                                        height: AppDimensions.height10 * 0.1,
+                                        child: Divider(
+                                          color: const Color(0XFF3C3C43)
+                                              .withOpacity(0.29),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: AppDimensions.height10 * 4.2,
+                                        width: double.infinity,
+                                        color: const Color(0xFF007AFF),
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          child: Text(
+                                            'No',
+                                            style: TextStyle(
+                                                color: const Color(0xFFFFFFFF),
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.7,
+                                                fontFamily: "Laila",
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: AppDimensions.height10 * 0.1,
+                                        child: Divider(
+                                          color: const Color(0XFF3C3C43)
+                                              .withOpacity(0.29),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: AppDimensions.height10 * 4.4,
+                                        width: double.infinity,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            'Yes',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.7,
+                                                fontFamily: "Laila",
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xFF007AFF)),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: AppDimensions.height10 * 0.1,
+                                        child: Divider(
+                                          color: const Color(0XFF3C3C43)
+                                              .withOpacity(0.29),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )),
+                    child: Container(
+                      width: AppDimensions.height10 * 36.0,
+                      height: AppDimensions.height10 * 6.0,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.1,
+                              color: const Color(0xFFFFFFFF)),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 2.0),
+                          color: const Color(0xff464646)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: AppDimensions.height10 * 2.4,
+                            height: AppDimensions.height10 * 2.4,
+                            margin: EdgeInsets.only(
+                              right: AppDimensions.height10 * 0.5,
+                            ),
+                            child: const Icon(
+                              Icons.delete,
+                              color: Color(0XFFFFFFFF),
+                            ),
                           ),
-                          child: const Icon(
-                            Icons.delete,
-                            color: Color(0XFFFFFFFF),
+                          Container(
+                            width: AppDimensions.height10 * 5.3,
+                            height: AppDimensions.height10 * 2.2,
+                            child: Center(
+                                child: Text(
+                              'Delete',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xffffffff)),
+                            )),
                           ),
-                        ),
-                        Container(
-                          width: AppDimensions.height10 * 5.3,
-                          height: AppDimensions.height10 * 2.2,
-                          child: Center(
-                              child: Text(
-                            'Delete',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xffffffff)),
-                          )),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

@@ -275,7 +275,9 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => summary_hurdles()));
+                                  builder: (context) => summary_hurdles(
+                                        delete_hurdle: false,
+                                      )));
                         },
                         child: Text(
                           'Next',

@@ -101,8 +101,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Content Destination Link',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -124,7 +123,7 @@ class _link_infoState extends State<link_info> {
                             },
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10 * 1.7,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -135,8 +134,7 @@ class _link_infoState extends State<link_info> {
                                     0),
                                 hintText: 'Add a link',
                                 hintStyle: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize: AppDimensions.height10 * 1.7,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
@@ -225,8 +223,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Why is it inspirational to you',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -241,7 +238,7 @@ class _link_infoState extends State<link_info> {
                       child: TextField(
                         textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10 * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -252,8 +249,7 @@ class _link_infoState extends State<link_info> {
                                 0),
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10 * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -274,8 +270,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Content Author',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -290,7 +285,7 @@ class _link_infoState extends State<link_info> {
                       child: TextField(
                         textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10 * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -301,8 +296,7 @@ class _link_infoState extends State<link_info> {
                                 0),
                             hintText: 'Who created the content',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10 * 1.7,
                                 fontWeight: FontWeight.w500,
                                 height: 1.5,
                                 color: const Color(0xff828282)),
@@ -324,8 +318,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Tags',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -351,8 +344,7 @@ class _link_infoState extends State<link_info> {
                                 0),
                             hintText: 'Add #hashtag',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10 * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -373,8 +365,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Attached goals',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),

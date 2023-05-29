@@ -144,8 +144,6 @@ class menu_behaviour extends StatelessWidget {
                                   ),
                                   Container(
                                     height: AppDimensions.height10 * 2.5,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 0.6),
                                     child: Text(
                                       'Session completed',
                                       style: TextStyle(
@@ -530,6 +528,7 @@ class menu_behaviour extends StatelessWidget {
                                 child: RichText(
                                     text: TextSpan(
                                         style: TextStyle(
+                                            fontFamily: 'laila',
                                             fontSize:
                                                 AppDimensions.height10 * 1.4,
                                             fontWeight: FontWeight.w400,

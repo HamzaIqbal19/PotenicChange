@@ -127,7 +127,8 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     width: AppDimensions.height10 * 34.3,
                     height: AppDimensions.height10 * 7.9,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 10.3,
+                        //increased 10 px
+                        top: AppDimensions.height10 * 11.6,
                         bottom: AppDimensions.height10 * 1.7),
                     child: GradientText(
                       'My current\ninspirations',

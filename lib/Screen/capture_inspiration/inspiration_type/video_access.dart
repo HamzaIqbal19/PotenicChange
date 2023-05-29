@@ -101,8 +101,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Video Destination Link',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -125,8 +124,7 @@ class _video_infoState extends State<video_info> {
                             },
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10 * 1.7,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -137,8 +135,7 @@ class _video_infoState extends State<video_info> {
                                     0),
                                 hintText: 'Add a link',
                                 hintStyle: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize: AppDimensions.height10 * 1.7,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
@@ -227,8 +224,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Why is it inspirational to you',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -243,7 +239,7 @@ class _video_infoState extends State<video_info> {
                       ),
                       child: TextField(
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10 * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -254,8 +250,7 @@ class _video_infoState extends State<video_info> {
                                 0),
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10 * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -276,8 +271,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Tags',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -292,7 +286,7 @@ class _video_infoState extends State<video_info> {
                       ),
                       child: TextField(
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10 * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -303,8 +297,7 @@ class _video_infoState extends State<video_info> {
                                 0),
                             hintText: 'Add #hashtag',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10 * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -325,8 +318,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Attached goals',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),

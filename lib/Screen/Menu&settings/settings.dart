@@ -140,7 +140,7 @@ class Settings extends StatelessWidget {
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10 *
-                                                          1.4,
+                                                          1.8,
                                                   fontWeight: FontWeight.w400,
                                                   color: colorC),
                                             ),
@@ -225,7 +225,7 @@ class Settings extends StatelessWidget {
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10 *
-                                                          1.4,
+                                                          1.8,
                                                   fontWeight: FontWeight.w400,
                                                   color: colorC),
                                             ),
@@ -302,7 +302,7 @@ class Settings extends StatelessWidget {
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10 *
-                                                          1.4,
+                                                          1.8,
                                                   fontWeight: FontWeight.w400,
                                                   color: colorC),
                                             ),
@@ -1345,7 +1345,7 @@ void export_data_sheet(context) {
       )),
       builder: (context) => Container(
             width: AppDimensions.height10 * 41.4,
-            height: AppDimensions.height10 * 47.7,
+            height: AppDimensions.height10 * 48.7,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                     top: Radius.circular(AppDimensions.height10 * 2.0)),
@@ -1377,7 +1377,7 @@ void export_data_sheet(context) {
                 Container(
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10 * 1.9,
-                      bottom: AppDimensions.height10 * 4.9),
+                      bottom: AppDimensions.height10 * 3.9),
                   child: Image.asset(
                     'assets/images/potenic__icon.png',
                     width: AppDimensions.height10 * 8.202,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/Your_goals/add_your_practice.dart';
 import 'package:potenic_app/Screen/Your_goals/goal&practice_info.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
@@ -31,7 +32,12 @@ class veiw_all_goals_menu extends StatelessWidget {
         actions: [
           Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CreatePractice()));
+                },
                 icon: Image.asset(
                   'assets/images/Addgoal.png',
                   width: AppDimensions.height10 * 2.6,
@@ -68,24 +74,28 @@ class veiw_all_goals_menu extends StatelessWidget {
                 width: AppDimensions.height10 * 15.4,
                 height: AppDimensions.height10 * 3.4,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 0.6),
-                child: Text(
-                  'Your Goals',
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.8,
-                      fontWeight: FontWeight.w700,
-                      color: const Color(0xffffffff)),
+                child: Center(
+                  child: Text(
+                    'Your Goals',
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10 * 2.8,
+                        fontWeight: FontWeight.w700,
+                        color: const Color(0xffffffff)),
+                  ),
                 ),
               ),
               Container(
                 width: AppDimensions.height10 * 22.1,
                 height: AppDimensions.height10 * 2.2,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 0.4),
-                child: Text(
-                  'All your goals in one place',
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10 * 1.8,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xffffffff)),
+                child: Center(
+                  child: Text(
+                    'All your goals in one place',
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10 * 1.8,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xffffffff)),
+                  ),
                 ),
               ),
               Container(
@@ -323,7 +333,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/image3.png'),
+                                                'assets/images/orange_moon.png'),
                                             fit: BoxFit.cover)),
                                     child: Stack(
                                       children: [
@@ -362,6 +372,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                               '“I am someone who is in\ncontrol of my anger”',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
+                                                  fontStyle: FontStyle.italic,
                                                   fontSize:
                                                       AppDimensions.height10 *
                                                           1.6,
@@ -489,7 +500,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           ),
                                         ),
                                         Align(
-                                          alignment: const Alignment(1, 0.3),
+                                          alignment: const Alignment(0.99, 0.3),
                                           child: Container(
                                             height:
                                                 AppDimensions.height10 * 5.5,
@@ -511,8 +522,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                       const Color(0xFFFFFFFF),
                                                   fontSize:
                                                       AppDimensions.height10 *
-                                                          1.4,
-                                                  fontWeight: FontWeight.w400),
+                                                          1.8,
+                                                  fontWeight: FontWeight.w500),
                                             )),
                                           ),
                                         ),
@@ -820,7 +831,7 @@ class goal_card extends StatelessWidget {
                   height: AppDimensions.height10 * 26.8,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/image3.png'),
+                          image: AssetImage('assets/images/orange_moon.png'),
                           fit: BoxFit.cover)),
                   child: Stack(
                     children: [
@@ -850,7 +861,7 @@ class goal_card extends StatelessWidget {
                             '“I am someone who is in\ncontrol of my anger”',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontFamily: 'Poppins',
+                                fontStyle: FontStyle.italic,
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF5B74A6))),

@@ -52,7 +52,7 @@ class no_planned_session extends StatelessWidget {
             ]),
         extendBodyBehindAppBar: true,
         extendBody: true,
-        bottomNavigationBar: Navigation_Bar(
+        bottomNavigationBar: const Navigation_Bar(
           bg_colored: false,
           membership: true,
           cancel: false,
@@ -61,7 +61,7 @@ class no_planned_session extends StatelessWidget {
         body: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Mask Group.png'),
                 fit: BoxFit.cover,
@@ -81,14 +81,14 @@ class no_planned_session extends StatelessWidget {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: Alignment(-1, 1),
+                                alignment: const Alignment(-1, 1),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                no_past_session()));
+                                                const no_past_session()));
                                   },
                                   child: Container(
                                     height: AppDimensions.height10 * 7.9,
@@ -101,8 +101,7 @@ class no_planned_session extends StatelessWidget {
                                             width: AppDimensions.height10 * 0.3,
                                             color: Colors.white),
                                         color: Colors.transparent),
-                                    child: Container(
-                                        child: Column(
+                                    child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
@@ -114,7 +113,7 @@ class no_planned_session extends StatelessWidget {
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white),
                                         ),
-                                        Text(
+                                        const Text(
                                           '02.06',
                                           style: TextStyle(color: Colors.white),
                                         ),
@@ -154,18 +153,19 @@ class no_planned_session extends StatelessWidget {
                                               )),
                                         )
                                       ],
-                                    )),
+                                    ),
                                   ),
                                 ),
                               ),
                               Align(
-                                alignment: Alignment(0, 0),
+                                alignment: const Alignment(0, 0),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => view_goals(
+                                            builder: (context) =>
+                                                const view_goals(
                                                   missed: false,
                                                 )));
                                   },
@@ -173,7 +173,7 @@ class no_planned_session extends StatelessWidget {
                                     width: AppDimensions.height10 * 8.3,
                                     height: AppDimensions.height10 * 8.3,
                                     //  margin: EdgeInsets.only(right: 121, left: 121),
-                                    padding: EdgeInsets.all(4),
+                                    padding: const EdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
@@ -189,7 +189,7 @@ class no_planned_session extends StatelessWidget {
                                           color: Colors.transparent),
                                       child: Stack(children: [
                                         Align(
-                                          alignment: Alignment(0, 0),
+                                          alignment: const Alignment(0, 0),
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -251,7 +251,7 @@ class no_planned_session extends StatelessWidget {
                                 ),
                               ),
                               Align(
-                                alignment: Alignment(1, 1),
+                                alignment: const Alignment(1, 1),
                                 child: Container(
                                     height: AppDimensions.height10 * 7.9,
                                     width: AppDimensions.height10 * 7.9,
@@ -277,7 +277,7 @@ class no_planned_session extends StatelessWidget {
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white),
                                         ),
-                                        Text(
+                                        const Text(
                                           '03.07',
                                           style: TextStyle(color: Colors.white),
                                         ),
@@ -355,7 +355,8 @@ class no_planned_session extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => record_session()));
+                                  builder: (context) =>
+                                      const record_session()));
                         },
                         child: Container(
                           width: AppDimensions.height10 * 10.1,
@@ -376,8 +377,9 @@ class no_planned_session extends StatelessWidget {
                                   color: Colors.white,
                                   height: AppDimensions.height10 * 0.12,
                                   fontFamily: 'laila',
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  fontWeight: FontWeight.w400),
+                                  fontSize: AppDimensions.height10 * 1.6,
+                                  //add 2 px font size from feedback
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),

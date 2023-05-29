@@ -313,6 +313,7 @@ class _photo_infoState extends State<photo_info> {
                                                           fontSize: AppDimensions
                                                                   .height10 *
                                                               1.7,
+                                                          fontFamily: 'laila',
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         ),
@@ -343,6 +344,7 @@ class _photo_infoState extends State<photo_info> {
                                                           fontSize: AppDimensions
                                                                   .height10 *
                                                               1.3,
+                                                          fontFamily: 'laila',
                                                           fontWeight:
                                                               FontWeight.w400,
                                                         ),
@@ -525,8 +527,7 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Title',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize: AppDimensions.height10 * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -544,19 +545,17 @@ class _photo_infoState extends State<photo_info> {
                                   ? Text(
                                       'Nir Eyal',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10 * 1.7,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
                                       'Give your inspiration a title',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10 * 1.7,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
@@ -571,16 +570,14 @@ class _photo_infoState extends State<photo_info> {
                                 ? Text(
                                     'Description',
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize: AppDimensions.height10 * 1.5,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xff828282)),
                                   )
                                 : Text(
                                     'Why is it inspirational to you',
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize: AppDimensions.height10 * 1.5,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xff828282)),
                                   ),
@@ -597,19 +594,17 @@ class _photo_infoState extends State<photo_info> {
                                   ? Text(
                                       'Behavioural Coach',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10 * 1.7,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
                                       'Say more about this inspiration ',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10 * 1.7,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
@@ -623,8 +618,7 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Destination website',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize: AppDimensions.height10 * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -646,10 +640,9 @@ class _photo_infoState extends State<photo_info> {
                                             'https://www.nirandfar.com/',
                                             style: TextStyle(
                                                 color: const Color(0xFF282828),
-                                                fontFamily: 'Poppins',
                                                 fontSize:
                                                     AppDimensions.height10 *
-                                                        1.6,
+                                                        1.7,
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         )
@@ -659,10 +652,9 @@ class _photo_infoState extends State<photo_info> {
                                             'Add a link',
                                             style: TextStyle(
                                                 color: const Color(0xFF828282),
-                                                fontFamily: 'Poppins',
                                                 fontSize:
                                                     AppDimensions.height10 *
-                                                        1.6,
+                                                        1.7,
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         )),
@@ -670,12 +662,6 @@ class _photo_infoState extends State<photo_info> {
                                   ? Row(
                                       children: [
                                         GestureDetector(
-                                          onTap: () {
-                                            // Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //         builder: (context) => link_editer()));
-                                          },
                                           child: Container(
                                             width: AppDimensions.height10 * 2.5,
                                             margin: EdgeInsets.only(
@@ -731,10 +717,11 @@ class _photo_infoState extends State<photo_info> {
                                     )
                                   : GestureDetector(
                                       onTap: () {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) => link_editer()));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    link_set()));
                                       },
                                       child: Container(
                                         width: AppDimensions.height10 * 2.5,
@@ -778,8 +765,7 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Tags',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize: AppDimensions.height10 * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -795,19 +781,17 @@ class _photo_infoState extends State<photo_info> {
                                   ? Text(
                                       'Add #hashtag',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10 * 1.5,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
                                       'Add #hashtag',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10 * 1.7,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
@@ -822,8 +806,7 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Attached goals',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize: AppDimensions.height10 * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -842,7 +825,8 @@ class _photo_infoState extends State<photo_info> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              const link_set()));
+                                              inspiraton_goals(
+                                                  data_saved: false)));
                             },
                             child: Container(
                               height: AppDimensions.height10 * 6.0,
@@ -871,6 +855,7 @@ class _photo_infoState extends State<photo_info> {
                                         child: Text(
                                           '00 impacted goals',
                                           style: TextStyle(
+                                            fontFamily: 'laila',
                                             color: const Color(0xFF646464),
                                             fontSize:
                                                 AppDimensions.height10 * 1.8,

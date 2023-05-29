@@ -103,10 +103,11 @@ class inspiration_type extends StatelessWidget {
               margin: EdgeInsets.only(bottom: AppDimensions.height10 * 11.50),
               child: Center(
                 child: Text(
+                  //add 2 px font_size
                   'What type of inspiration do you want to\nrecord?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 1.8,
+                      fontSize: AppDimensions.height10 * 2.0,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFFFFFFFF)),
                 ),
@@ -164,7 +165,7 @@ class inspiration_type extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
@@ -235,11 +236,11 @@ class inspiration_type extends StatelessWidget {
                                     margin: EdgeInsets.only(
                                         bottom: AppDimensions.height10 * 1.0),
                                     child: Text(
-                                      'Note',
+                                      'Notes',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
@@ -318,7 +319,7 @@ class inspiration_type extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
@@ -393,7 +394,7 @@ class inspiration_type extends StatelessWidget {
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10 * 1.6,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),

@@ -36,10 +36,7 @@ void community_sheet(context) {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
                   top: Radius.circular(AppDimensions.height10 * 2.0)),
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFE1B3B7), Color(0xFFC9B9CB)])),
+              color: Color(0xFFF5F5F5)),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -71,6 +68,16 @@ void community_sheet(context) {
                   ),
                 ),
                 Container(
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10 * 1.9,
+                      bottom: AppDimensions.height10 * 1.9),
+                  child: Image.asset(
+                    'assets/images/potenic__icon.png',
+                    width: AppDimensions.height10 * 8.202,
+                    height: AppDimensions.height10 * 11.2,
+                  ),
+                ),
+                Container(
                     width: AppDimensions.height10 * 28.6,
                     height: AppDimensions.height10 * 8.6,
                     // color: Colors.amber,
@@ -83,6 +90,7 @@ void community_sheet(context) {
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 3.0,
                               fontWeight: FontWeight.w700,
+                              height: AppDimensions.height10 * 0.15,
                               color: Color(0xFF437296)),
                         ),
                         Container(
@@ -91,6 +99,7 @@ void community_sheet(context) {
                           child: Text(
                             ' coming soon...',
                             style: TextStyle(
+                                height: AppDimensions.height10 * 0.15,
                                 fontSize: AppDimensions.height10 * 2.2,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF437296)),
@@ -107,6 +116,8 @@ void community_sheet(context) {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
+                            fontFamily: 'laila',
+                            height: AppDimensions.height10 * 0.15,
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
                             color: Color(0xFF437296)),

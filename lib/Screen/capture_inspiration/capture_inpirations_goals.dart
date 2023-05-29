@@ -107,7 +107,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       height: AppDimensions.height10 * 2.2,
                                       width: AppDimensions.height10 * 23.8,
                                       child: const Text(
-                                        "Exit hurdle?",
+                                        "Exit Inspiration?",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 17,

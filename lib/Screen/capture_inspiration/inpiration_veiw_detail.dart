@@ -187,7 +187,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Nir Eyal',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
@@ -197,7 +196,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Learn How To Avoid Distraction In A World\nThat Is Full Of It',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
@@ -207,7 +205,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Survivors:  Music Eye Of The Tiger ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
@@ -217,7 +214,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor\nsit amet, consectetur adipiscing elit. ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
@@ -336,7 +332,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Behavioural Coach',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
@@ -346,7 +341,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
@@ -356,7 +350,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. Pellentesque non pellentesque diam. Nulla interdum condimentum lorem ac interdum. Quisque tristique lacinia malesuada. Sed sed mattis orci, id pulvinar elit. Donec semper libero quis mauris rutrum, sit amet posuere lacus sodales. Donec a suscipit dolor. Vivamus ut tempus neque. ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
@@ -366,7 +359,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize: AppDimensions.height10 * 1.6,
@@ -402,7 +394,6 @@ class _veiw_detailsState extends State<veiw_details> {
                       child: Text(
                         '#tag1 #tag2',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
                             height: 1.5,
                             color: const Color(0xFF282828),
                             fontSize: AppDimensions.height10 * 1.6,

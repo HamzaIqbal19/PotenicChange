@@ -51,10 +51,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => landing_hurdles(
-                              multiple_hurdle: false,
-                            )),
+                    MaterialPageRoute(builder: (context) => landing_hurdles()),
                   );
                 },
                 child: Container(
