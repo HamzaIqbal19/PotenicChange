@@ -1,8 +1,3 @@
-
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
@@ -10,14 +5,23 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 
 // ignore: camel_case_types
 class Goal_Identity extends StatefulWidget {
-  const Goal_Identity({Key? key}) : super(key: key);
+  String goalName;
+  String category;
+  TextEditingController reasonWhy;
+  Goal_Identity({required this.goalName, required this.category, required this.reasonWhy});
 
   @override
-  State<Goal_Identity> createState() => _Goal_IdentityState();
+  State<Goal_Identity> createState() => _Goal_IdentityState(goalName: goalName,category: category, reasonWhy: reasonWhy);
 }
 
 // ignore: camel_case_types
 class _Goal_IdentityState extends State<Goal_Identity> {
+  TextEditingController reasonWhy = TextEditingController();
+  TextEditingController reasonIdentity = TextEditingController();
+  String goalName;
+  String category;
+
+  _Goal_IdentityState({required this.goalName, required this.category, required this.reasonWhy});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -171,7 +175,11 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                   height: AppDimensions.height10 * 3.4,
                 ),
 
-                backbox(),
+                backbox(
+                  reason: reasonIdentity,
+                  category: category,
+                  goalName: goalName,
+                ),
 
 
 
@@ -199,12 +207,16 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         )),
 
                     GestureDetector(
-
                       onTap: (){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Visualising(),
+                            builder: (context) => Visualising(
+                              reasonWhy: reasonWhy,
+                              reasonIdentity: reasonIdentity,
+                              category: category,
+                              goalName: goalName,
+                            ),
                           ),
                         );
                       },

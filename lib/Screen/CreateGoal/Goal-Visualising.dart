@@ -1,20 +1,28 @@
-
-
-
-
 import 'package:flutter/material.dart';
+import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class Visualising extends StatefulWidget {
-  const Visualising({Key? key}) : super(key: key);
+  String goalName;
+  String category;
+  TextEditingController reasonWhy;
+  TextEditingController reasonIdentity;
+  Visualising({required this.goalName, required this.category,required this.reasonWhy,required this.reasonIdentity});
 
   @override
-  State<Visualising> createState() => _VisualisingState();
+  State<Visualising> createState() => _VisualisingState(goalName: goalName,category:category,reasonWhy: reasonWhy,reasonIdentity: reasonIdentity);
 }
 
 class _VisualisingState extends State<Visualising> {
+  TextEditingController reasonWhy = TextEditingController();
+  TextEditingController reasonIdentity = TextEditingController();
+  TextEditingController reasonVisualising = TextEditingController();
+  String goalName;
+  String category;
+
+  _VisualisingState({required this.goalName, required this.category, required this.reasonWhy, required this.reasonIdentity});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,7 +168,11 @@ class _VisualisingState extends State<Visualising> {
                 SizedBox(
                   height: AppDimensions.height10 * 3.4,
                 ),
-                backbox(),
+                backbox(
+                  reason: reasonVisualising,
+                  goalName: goalName,
+                  category: category,
+                ),
 
                 MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
                   height: AppDimensions.height10 * 7.2,
@@ -182,8 +194,9 @@ class _VisualisingState extends State<Visualising> {
                         )),
 
                     GestureDetector(
-
                       onTap: (){
+                        myapi().create_goal(goalName, reasonWhy.text, reasonIdentity.text.toString(), reasonVisualising.text.toString(), category);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("New Goal Inserted")));
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

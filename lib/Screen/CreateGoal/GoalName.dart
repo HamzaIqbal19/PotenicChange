@@ -9,15 +9,36 @@ import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class GoalName extends StatefulWidget {
-  const GoalName({Key? key}) : super(key: key);
+  String category;
+  String goalName;
+
+  GoalName({required this.category, required this.goalName});
 
   @override
-  State<GoalName> createState() => _GoalNameState();
+  State<GoalName> createState() => _GoalNameState(category: category,goalName: goalName);
 }
 
 class _GoalNameState extends State<GoalName> {
+
+  String category;
+  String goalName;
+
+  _GoalNameState({required this.category, required this.goalName});
+
+  final mygoal = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    mygoal.text = widget.goalName;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    final _formkey = GlobalKey<FormState>();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
@@ -299,6 +320,7 @@ class _GoalNameState extends State<GoalName> {
                       border: Border.all(color: Colors.white, width: 2),
                       borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
                   child: TextFormField(
+                    key: _formkey,
                       decoration:  InputDecoration(
 
                           hintText: "Control my anger",
@@ -311,7 +333,16 @@ class _GoalNameState extends State<GoalName> {
                               borderSide: BorderSide(color: Colors.transparent)),
                           enabledBorder: const OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: Colors.transparent)))),
+                              BorderSide(color: Colors.transparent))),
+                  controller: mygoal,
+                  validator: (val){
+                        if (val==null||val=="") {
+                          return "Kindly Enter Goal Name";
+                        }
+                        else{
+                          return null;
+                        }
+                  },),
                 ),
                 SizedBox(
                   height: AppDimensions.height10 * 0.5,
@@ -396,12 +427,14 @@ class _GoalNameState extends State<GoalName> {
                         )),
 
                     GestureDetector(
-
                       onTap: (){
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GoalWhy(),
+                            builder: (context) => GoalWhy(
+                              goalName: goalName,
+                              category: category,
+                            ),
                           ),
                         );
                       },

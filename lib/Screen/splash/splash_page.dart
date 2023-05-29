@@ -7,6 +7,7 @@ import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -18,8 +19,18 @@ class SplashPage extends StatefulWidget {
 }
 
 class SplashPageState extends State<SplashPage> {
+  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  // var token = FirebaseMessaging.instance.getToken().then((newToken) {});
   bool data = false;
   int myAmount = 0;
+
+
+  // late SharedPreferences _prefss;
+  // setToken(token) async {
+  //   SharedPreferences pref = await SharedPreferences.getInstance();
+  //   pref.setString('token', token);
+  //   print("SetToken: $token");
+  // }
 
   @override
   void initState() {

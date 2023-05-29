@@ -10,8 +10,12 @@ List<String> categories = [
   'Self Control',
   'Relationship'
 ];
+String dropdownValue = categories.first;
+
+final goalName = TextEditingController();
 
 class BottomSheetExample extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -26,6 +30,7 @@ class BottomSheetExample extends StatelessWidget {
 }
 
 void bottom_sheet(context) {
+  final _formkey = GlobalKey<FormState>();
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
@@ -73,27 +78,39 @@ void bottom_sheet(context) {
               Container(
                 width: AppDimensions.height10 * 36.0,
                 height: AppDimensions.height10 * 8.0,
-                child: TextField(
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: AppDimensions.height10 * 2.4,
-                    color: const Color.fromARGB(209, 250, 154, 52),
+                child: Form(
+                  key: _formkey,
+                  child: TextFormField(
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: AppDimensions.height10 * 2.4,
+                      color: const Color.fromARGB(209, 250, 154, 52),
+                    ),
+                    decoration: InputDecoration(
+                        filled: true,
+                        fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
+                        hintText: "  Enter your goal name ",
+                        hintStyle: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: AppDimensions.height10 * 2.4,
+                          color: const Color(0xFF828282),
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(18),
+                            borderSide: const BorderSide(
+                                width: 3, color: Colors.transparent))),
+                    controller: goalName,
+                    validator: (val){
+                      if (val==null || val=="") {
+                        return "PLease Enter a value";
+                      }
+                      else{
+                        return null;
+                      }
+                    },
                   ),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
-                      hintText: "  Enter your goal name ",
-                      hintStyle: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: AppDimensions.height10 * 2.4,
-                        color: const Color(0xFF828282),
-                      ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18)),
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(18),
-                          borderSide: const BorderSide(
-                              width: 3, color: Colors.transparent))),
                 ),
               ),
               SizedBox(
@@ -142,12 +159,16 @@ void bottom_sheet(context) {
                 ),
                 child: TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => GoalName(),
-                        ),
-                      );
+                      if (_formkey.currentState!.validate()) {
+                        print(goalName.text.toString());
+                        print(dropdownValue);
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GoalName(category: dropdownValue,goalName: goalName.text.toString()),
+                          ),
+                        );
+                      }
                     },
                     child: Text(
                       'Save',
@@ -185,14 +206,12 @@ void bottom_sheet(context) {
     ),
   );
 }
-
 class DropdownButtonExample extends StatefulWidget {
   @override
   State<DropdownButtonExample> createState() => _DropdownButtonExampleState();
 }
 
 class _DropdownButtonExampleState extends State<DropdownButtonExample> {
-  String dropdownValue = categories.first;
 
   @override
   Widget build(BuildContext context) {

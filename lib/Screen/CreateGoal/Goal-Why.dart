@@ -1,24 +1,26 @@
 
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class GoalWhy extends StatefulWidget {
-  const GoalWhy({Key? key}) : super(key: key);
+  String goalName;
+  String category;
+
+  GoalWhy({required this.goalName, required this.category});
 
   @override
-  State<GoalWhy> createState() => _GoalWhyState();
+  State<GoalWhy> createState() => _GoalWhyState(goalName: goalName,category: category);
 }
 
 class _GoalWhyState extends State<GoalWhy> {
 
-  late inner_text InnerText;
-  
+  TextEditingController reasonWhy = TextEditingController();
+  String goalName;
+  String category;
+
+  _GoalWhyState({required this.goalName, required this.category});
   @override
   Widget build(BuildContext context) {
 
@@ -171,7 +173,11 @@ class _GoalWhyState extends State<GoalWhy> {
                 SizedBox(
                   height: AppDimensions.height10 * 3.4,
                 ),
-                backbox(),
+                backbox(
+                  category: category,
+                  goalName: goalName,
+                  reason: reasonWhy,
+                ),
 
 
 
@@ -206,7 +212,11 @@ class _GoalWhyState extends State<GoalWhy> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Goal_Identity(),
+                            builder: (context) => Goal_Identity(
+                              reasonWhy: reasonWhy,
+                              goalName: goalName,
+                              category: category,
+                            ),
                           ),
                         );
                       },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
@@ -12,8 +13,19 @@ class PasswordReset extends StatefulWidget {
 }
 
 class _PasswordResetState extends State<PasswordReset> {
+
+  final email = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    email.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
+    final _formkey = GlobalKey<FormState>();
+
     return Scaffold(
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
@@ -152,46 +164,58 @@ class _PasswordResetState extends State<PasswordReset> {
                                       fontSize: AppDimensions.height10 * 1.4),
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                ),
-                                width: AppDimensions.height10 * 20.9,
-                                height: AppDimensions.height10 * 2.2,
-                                child: TextFormField(
+                              Form(
+                                key: _formkey,
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 2.0,
+                                  ),
+                                  width: AppDimensions.height10 * 20.9,
+                                  height: AppDimensions.height10 * 2.2,
+                                  child: TextFormField(
                                     decoration: const InputDecoration(
-                                        contentPadding: EdgeInsets.zero,
-                                        floatingLabelBehavior:
-                                            FloatingLabelBehavior.always,
-                                        hintText: "JohnSmith@yahoo.com",
-                                        hintStyle: TextStyle(color: Color(0xFF8C648A)),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)))),
+                                          contentPadding: EdgeInsets.zero,
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.always,
+                                          hintText: "JohnSmith@yahoo.com",
+                                          hintStyle: TextStyle(color: Color(0xFF8C648A)),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.transparent)),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.transparent))),
+                                  controller: email,
+                                  validator: (val){
+                                        if (val==null||val=="") {
+                                          return "Oops Needs to be an Email Format";
+                                        }
+                                        else{
+                                          return null;
+                                        }
+                                  },),
+                                ),
                               )
                             ],
                           )),
                       SizedBox(height: AppDimensions.height10 * 0.3),
-                      Container(
-                        // color: Colors.blue,
-                        height: AppDimensions.height10 * 1.7,
-                        width: AppDimensions.height10 * 23.3,
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 4.4,
-                            right: AppDimensions.height10 * 15.6),
-                        child: Text(
-                          "Ooops! Needs to be an email format",
-                          style: TextStyle(
-                            color: const Color(0xFFFE6624),
-                            fontSize: AppDimensions.height10 * 1.4,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: AppDimensions.height10 * 1.1),
+                      // Container(
+                      //   // color: Colors.blue,
+                      //   height: AppDimensions.height10 * 1.7,
+                      //   width: AppDimensions.height10 * 23.3,
+                      //   margin: EdgeInsets.only(
+                      //       left: AppDimensions.height10 * 4.4,
+                      //       right: AppDimensions.height10 * 15.6),
+                      //   child: Text(
+                      //     "Ooops! Needs to be an email format",
+                      //     style: TextStyle(
+                      //       color: const Color(0xFFFE6624),
+                      //       fontSize: AppDimensions.height10 * 1.4,
+                      //       fontWeight: FontWeight.w600,
+                      //     ),
+                      //   ),
+                      // ),
+                      // SizedBox(height: AppDimensions.height10 * 1.1),
                       Container(
                           height: AppDimensions.height10 * 2.2,
                           width: AppDimensions.height10 * 26.1,
@@ -253,12 +277,16 @@ class _PasswordResetState extends State<PasswordReset> {
                       //<-- SEE HERE
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => EmailSent(),
-                        ),
-                      );
+                      if (_formkey.currentState!.validate()) {
+                        myapi().forgotPassword('${email.text.toString()}');
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Password Reset")));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EmailSent(),
+                          ),
+                        );
+                      }
                     },
                     icon: Image.asset(
                       "assets/images/fb.png",
