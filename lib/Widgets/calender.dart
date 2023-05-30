@@ -126,7 +126,7 @@ class CalendarWithRadioButtons extends HookWidget {
             Icons.chevron_right,
             color: Color(0xFFFE6624),
           ),
-          titleTextStyle: TextStyle(fontSize: 24, color: Color(0xFF5B74A6)),
+          titleTextStyle: TextStyle(fontSize: 24, color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontFamily: 'laila'),
         ),
         calendarFormat: CalendarFormat.month,
         availableCalendarFormats: const {

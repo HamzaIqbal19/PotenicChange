@@ -52,12 +52,13 @@ class _practice_progressState extends State<practice_progress> {
                   // width: AppDimensions.height10 * 12.5,
                   height: AppDimensions.height10 * 2.3,
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
-                  child: const Text(
+                  child:  Text(
                     'Practice Progress',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         height: 1.2,
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: AppDimensions.height10*1.8,
                         fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -67,6 +68,7 @@ class _practice_progressState extends State<practice_progress> {
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 0.5),
                   child: Text(
                     'Control my anger',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: AppDimensions.height10 * 2.0,
                       fontWeight: FontWeight.w600,
@@ -173,7 +175,7 @@ class _practice_progressState extends State<practice_progress> {
                                     children: [
                                   const TextSpan(text: 'View: '),
                                   const TextSpan(
-                                      text: 'Last week',
+                                      text: 'Past week',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600))
                                 ])),
@@ -202,7 +204,7 @@ class _practice_progressState extends State<practice_progress> {
                 ),
                 Container(
                     width: AppDimensions.height10 * 38.2,
-                    height: AppDimensions.height10 * 62.4,
+                    height: AppDimensions.height10 * 64.4,
                     margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                     decoration: BoxDecoration(
                         borderRadius:
@@ -371,18 +373,19 @@ class _practice_progressState extends State<practice_progress> {
                         ),
                         Container(
                           width: AppDimensions.height10 * 22.0,
-                          height: AppDimensions.height10 * 8.8,
+                          height: AppDimensions.height10 * 11.2,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10 * 1.0),
                           child: Column(
                             children: [
                               Container(
                                 width: AppDimensions.height10 * 22.0,
-                                height: AppDimensions.height10 * 2.4,
+                                height: AppDimensions.height10 * 4.8,
                                 // color: Colors.amber,
                                 child: Center(
                                   child: Text(
-                                    '“I felt low and irritated ”',
+                                    '“Had distractions, it\nwas hard to focus”',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: const Color(0xFFB695B7),
                                         height: 1.2,
@@ -489,7 +492,7 @@ class _practice_progressState extends State<practice_progress> {
                     )),
                 Container(
                   width: AppDimensions.height10 * 38.2,
-                  height: AppDimensions.height10 * 57.6,
+                  height: AppDimensions.height10 * 59.6,
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
                   decoration: BoxDecoration(
                       borderRadius:
@@ -659,18 +662,19 @@ class _practice_progressState extends State<practice_progress> {
                       ),
                       Container(
                         width: AppDimensions.height10 * 22.0,
-                        height: AppDimensions.height10 * 8.8,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                        height: AppDimensions.height10 * 11.2,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10 * 1.0),
                         child: Column(
                           children: [
                             Container(
                               width: AppDimensions.height10 * 22.0,
-                              height: AppDimensions.height10 * 2.4,
+                              height: AppDimensions.height10 * 4.8,
                               // color: Colors.amber,
                               child: Center(
                                 child: Text(
-                                  '“I felt low and irritated ”',
+                                  '“Had distractions, it\nwas hard to focus”',
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: const Color(0xFFB695B7),
                                       height: 1.2,
@@ -704,12 +708,12 @@ class _practice_progressState extends State<practice_progress> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: List.generate(
                                   2, // Replace 5 with the number of containers you want to create
-                                  (index) => Container(
+                                      (index) => Container(
                                     width: AppDimensions.height10 * 1.0,
                                     height: AppDimensions.height10 * 1.0,
                                     margin: EdgeInsets.symmetric(
                                         horizontal:
-                                            AppDimensions.height10 * 0.25),
+                                        AppDimensions.height10 * 0.25),
                                     decoration: BoxDecoration(
                                         color: Color(0xFFB695B7),
                                         shape: BoxShape.circle),
@@ -726,7 +730,7 @@ class _practice_progressState extends State<practice_progress> {
                 Container(
                   // width: AppDimensions.height10 * 2.1,
                   //height: AppDimensions.height10 * 4.3,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                   child: Image.asset(
                     'assets/images/Arrow.png',
                     width: AppDimensions.height10 * 4.1,
@@ -736,14 +740,14 @@ class _practice_progressState extends State<practice_progress> {
                 Container(
                   width: AppDimensions.height10 * 37.1,
                   height: AppDimensions.height10 * 5.4,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                   child: Center(
                     child: Text(
                       'Your last practice progress\nevaluation for periods',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        height: 1.2,
-                        fontSize: AppDimensions.height10 * 2.2,
+                        height: AppDimensions.height10 *0.12,
+                        fontSize: AppDimensions.height10 * 2.4,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFFBFBFB),
                       ),
@@ -758,8 +762,8 @@ class _practice_progressState extends State<practice_progress> {
                     child: Text(
                       'DD/MMM/YY to DD/MMM/YY.',
                       style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.8,
-                        height: 1.2,
+                        fontSize: AppDimensions.height10 * 2.0,
+                        height: AppDimensions.height10 *0.12,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFFBFBFB),
                       ),
@@ -787,8 +791,8 @@ class _practice_progressState extends State<practice_progress> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: const Color(0xFF437296),
-                                height: 1.2,
-                                fontSize: AppDimensions.height10 * 2.0,
+                                height: AppDimensions.height10 *0.12,
+                                fontSize: AppDimensions.height10 * 2.2,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -1387,7 +1391,7 @@ class _practice_progressState extends State<practice_progress> {
                 Container(
                   // width: AppDimensions.height10 * 2.1,
                   //height: AppDimensions.height10 * 4.3,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                   child: Image.asset(
                     'assets/images/Arrow.png',
                     width: AppDimensions.height10 * 4.1,
@@ -1397,14 +1401,14 @@ class _practice_progressState extends State<practice_progress> {
                 Container(
                   width: AppDimensions.height10 * 35.8,
                   height: AppDimensions.height10 * 5.2,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                   child: Center(
                     child: Text(
                       'Your next practice report will be\ndelivered in 9 Active Days',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        height: 1.2,
-                        fontSize: AppDimensions.height10 * 2.2,
+                        height: AppDimensions.height10 *0.12,
+                        fontSize: AppDimensions.height10 * 2.4,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFFBFBFB),
                       ),
@@ -1571,11 +1575,11 @@ class MyBottomSheet extends StatefulWidget {
 class _MyBottomSheetState extends State<MyBottomSheet> {
   int _selectedIndex = 0;
   final List<String> _statements = [
-    'Last week',
-    'Last 2 weeks ',
-    'Last month ',
-    'Last 2 month ',
-    'Last 3 month ',
+    'Past week',
+    'Past 2 weeks ',
+    'Past month ',
+    'Past 2 month ',
+    'Past 3 month ',
   ];
 
   @override

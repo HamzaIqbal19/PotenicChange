@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
 import 'package:potenic_app/Screen/Menu&settings/settings.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
@@ -293,13 +294,13 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             widget.trial
                                 ? Container(
                                     width: AppDimensions.height10 * 33.9,
-                                    height: AppDimensions.height10 * 1.9,
+                                    // height: AppDimensions.height10 * 1.9,
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10 * 1.0),
                                     child: Text(
                                         widget.cancel
                                             ? 'Renews March 9th 2023'
-                                            : '7 day trial, 6 days left (tap here to cancel)',
+                                            : '5 day trial, 4 days left (tap here to cancel)',
                                         style: TextStyle(
                                             fontSize:
                                                 AppDimensions.height10 * 1.6,
@@ -740,7 +741,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const your_why(evaluation: true)));
+                                            const prac_score()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -1373,7 +1374,7 @@ void _canceled_plan(canceled) {
                   child: Text(
                     'Feedback about their experience',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.6,
+                        fontSize: AppDimensions.height10 * 1.8,
                         height: AppDimensions.height10 * 0.15,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFFFFFFF)),

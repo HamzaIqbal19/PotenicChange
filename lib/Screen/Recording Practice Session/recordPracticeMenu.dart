@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 import '../../Widgets/menu_buttons.dart';
+import '../Goal Evaluation/practice_score.dart';
 
 class practiceMenu extends StatelessWidget {
   final bool goal_eval;
@@ -49,7 +50,7 @@ class practiceMenu extends StatelessWidget {
       body: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('assets/images/Mask Group.png'),
+            image: AssetImage('assets/images/prac_assesment.png'),
             fit: BoxFit.cover,
           )),
           width: double.infinity,
@@ -118,11 +119,11 @@ class practiceMenu extends StatelessWidget {
                                   height: AppDimensions.height10 * 4.1,
                                   width: AppDimensions.height10 * 4.06,
                                   decoration: const BoxDecoration(
-                                      //color: Colors.amber,
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/image2.png'),
-                                          fit: BoxFit.cover)),
+                                      shape: BoxShape.circle,
+                                      gradient: RadialGradient(colors: [
+                                        Color(0xFFB3F0D1),
+                                        Color(0xFF1A481C)
+                                      ])),
                                 ),
                               ),
                               Align(
@@ -163,7 +164,7 @@ class practiceMenu extends StatelessWidget {
                     height: AppDimensions.height10 * 12.0,
                     //color: Colors.amber,
                     margin:
-                        EdgeInsets.only(bottom: AppDimensions.height10 * 1.7),
+                        EdgeInsets.only(bottom: AppDimensions.height10 * 1.6),
                     child: Column(
                       children: [
                         Container(
@@ -344,7 +345,7 @@ class practiceMenu extends StatelessWidget {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  your_why(evaluation: true)));
+                                                  prac_score()));
                                     },
                                     child: button_feilds(
                                       feild_text: goal_eval

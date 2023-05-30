@@ -41,9 +41,11 @@ class _your_whyState extends State<your_why> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: widget.evaluation
+              ? AssetImage('assets/images/Background.png')
+              : AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
         )),
         child: SingleChildScrollView(
@@ -460,43 +462,36 @@ class _your_whyState extends State<your_why> {
                             ),
                             select_item
                                 ? Align(
-                                    alignment: const Alignment(0, 1.6),
-                                    child: widget.evaluation
-                                        ? Container()
-                                        : Container(
-                                            width: AppDimensions.height10 * 4.0,
-                                            height:
-                                                AppDimensions.height10 * 4.0,
-                                            padding: EdgeInsets.all(
-                                                AppDimensions.height10 * 0.2),
-                                            decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                    width:
-                                                        AppDimensions.height10 *
-                                                            0.1,
-                                                    color: const Color(
-                                                        0xFFFFFFFF))),
-                                            child: Container(
+                                    alignment: widget.evaluation
+                                        ? Alignment(0, 1.4)
+                                        : Alignment(0, 1.6),
+                                    child: Container(
+                                      width: AppDimensions.height10 * 4.0,
+                                      height: AppDimensions.height10 * 4.0,
+                                      padding: EdgeInsets.all(
+                                          AppDimensions.height10 * 0.2),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
                                               width:
-                                                  AppDimensions.height10 * 2.4,
-                                              height:
-                                                  AppDimensions.height10 * 2.4,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      width: AppDimensions
-                                                              .height10 *
-                                                          0.1,
-                                                      color: const Color(
-                                                          0xFFFFFFFF)),
-                                                  shape: BoxShape.circle,
-                                                  image: DecorationImage(
-                                                      image: AssetImage(widget
-                                                              .evaluation
-                                                          ? 'assets/images/Tick.png'
-                                                          : 'assets/images/circle_tick.png'))),
-                                            ),
-                                          ),
+                                                  AppDimensions.height10 * 0.1,
+                                              color: const Color(0xFFFFFFFF))),
+                                      child: Container(
+                                        width: AppDimensions.height10 * 2.4,
+                                        height: AppDimensions.height10 * 2.4,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: AppDimensions.height10 *
+                                                    0.1,
+                                                color: const Color(0xFFFFFFFF)),
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                                image: AssetImage(widget
+                                                        .evaluation
+                                                    ? 'assets/images/Tick.png'
+                                                    : 'assets/images/circle_tick.png'))),
+                                      ),
+                                    ),
                                   )
                                 : Container()
                           ]),
@@ -646,7 +641,7 @@ class _your_whyState extends State<your_why> {
                             Text(
                               widget.evaluation
                                   ? "There's been good\nimprovement"
-                                  : "There's been good\nimprovement",
+                                  : "I am almost\nthere",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
@@ -685,7 +680,7 @@ class _your_whyState extends State<your_why> {
                               ),
                             ),
                             Text(
-                              "It's been very\neffective so far",
+                              "II’m definitely\nliving my why",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
@@ -1158,7 +1153,7 @@ class _your_whyState extends State<your_why> {
                                     width: AppDimensions.height10 * 0.3,
                                     color: widget.evaluation
                                         ? const Color(0xFF8C648A)
-                                        : const Color(0xFFEE8F70))),
+                                        : const Color(0xFFFFFFFF))),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -1348,330 +1343,349 @@ class _your_whyState extends State<your_why> {
                   ),
                 ),
               ),
-              Container(
-                width: AppDimensions.height10 * 7.2,
-                height: AppDimensions.height10 * 0.1,
-                color: widget.evaluation
-                    ? const Color(0xFFFFFFFF)
-                    : const Color(0xFF437296),
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 3.0,
-                    bottom: AppDimensions.height10 * 3.0),
-              ),
-              Container(
-                width: AppDimensions.height10 * 37.0,
-                height: AppDimensions.height10 * 11.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      width: AppDimensions.height10 * 15.5,
-                      height: AppDimensions.height10 * 2.9,
-                      child: Text(
-                        widget.evaluation ? 'Question 4' : 'Why reason 3',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10 * 2.4,
-                            fontWeight: FontWeight.w600,
-                            color: widget.evaluation
-                                ? const Color(0xFFFFFFFF)
-                                : const Color(0xFF437296)),
-                      ),
-                    ),
-                    Container(
+              widget.evaluation
+                  ? Container(
+                      width: AppDimensions.height10 * 7.2,
+                      height: AppDimensions.height10 * 0.1,
+                      color: widget.evaluation
+                          ? const Color(0xFFFFFFFF)
+                          : const Color(0xFF437296),
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10 * 3.0,
+                          bottom: AppDimensions.height10 * 3.0),
+                    )
+                  : Container(),
+              widget.evaluation
+                  ? Container(
                       width: AppDimensions.height10 * 37.0,
-                      height: AppDimensions.height10 * 6.8,
+                      height: AppDimensions.height10 * 11.9,
                       margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 1.3),
-                      child: Text(
-                        widget.evaluation
-                            ? 'How easy is it to implement this\npractice in to your life?'
-                            : 'I don’t want my anger to hold me back\nfrom enjoying life.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
-                            height: 1.2,
-                            fontWeight: FontWeight.w500,
-                            color: widget.evaluation
-                                ? const Color(0xFFFFFFFF)
-                                : const Color(0xFF437296)),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: AppDimensions.height10 * 16.3,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 3.0,
-                    left: AppDimensions.height10 * 0.425),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: AppDimensions.height10 * 12.95,
-                        height: AppDimensions.height10 * 12.95,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 1.5),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: const Color(0xFFFFFFFF),
-                            border: Border.all(
-                                width: AppDimensions.height10 * 0.3,
-                                color: widget.evaluation
-                                    ? const Color(0xFF8C648A)
-                                    : const Color(0xFFEE8F70))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: Text(
-                                '1',
-                                style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 3.2,
-                                    fontWeight: FontWeight.w500,
-                                    color: widget.evaluation
-                                        ? const Color(0xFF8C648AF)
-                                        : const Color(0xFFFA9934)),
-                              ),
-                            ),
-                            Text(
-                              widget.evaluation
-                                  ? "I feel it's\nalmost\nimpossible"
-                                  : 'I’m not\nmaking any\nprogress',
+                          EdgeInsets.only(top: AppDimensions.height10 * 2.2),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: AppDimensions.height10 * 15.5,
+                            height: AppDimensions.height10 * 2.9,
+                            child: Text(
+                              widget.evaluation ? 'Question 4' : 'Why reason 3',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  fontWeight: FontWeight.w400,
+                                  fontSize: AppDimensions.height10 * 2.4,
+                                  fontWeight: FontWeight.w600,
                                   color: widget.evaluation
-                                      ? const Color(0xFF8C648AF)
-                                      : const Color(0xFFFA9934)),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: AppDimensions.height10 * 12.95,
-                        height: AppDimensions.height10 * 12.95,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 1.5),
-                        child: Stack(children: [
-                          Container(
-                            width: AppDimensions.height10 * 12.95,
-                            height: AppDimensions.height10 * 12.95,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: widget.evaluation
-                                        ? [
-                                            const Color(0XFFFFFFFF),
-                                            const Color(0xFFFFFFFF)
-                                          ]
-                                        : [
-                                            const Color(0XFFFA9E71),
-                                            const Color(0xFFFA9E71)
-                                          ]),
-                                border: Border.all(
-                                    width: AppDimensions.height10 * 0.3,
-                                    color: widget.evaluation
-                                        ? const Color(0xFF8C648A)
-                                        : const Color(0xFFEE8F70))),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  child: Text(
-                                    '2',
-                                    style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 3.2,
-                                        fontWeight: FontWeight.w500,
-                                        color: widget.evaluation
-                                            ? const Color(0xFF8C648AF)
-                                            : const Color(0xFFFFFFFFF)),
-                                  ),
-                                ),
-                                Text(
-                                  widget.evaluation
-                                      ? "It feels\nchallenging"
-                                      : 'I’m making\nsmall steps\nforward',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.4,
-                                      fontWeight: FontWeight.w400,
-                                      color: widget.evaluation
-                                          ? const Color(0xFF8C648AF)
-                                          : const Color(0xFFFFFFFFF)),
-                                )
-                              ],
+                                      ? const Color(0xFFFFFFFF)
+                                      : const Color(0xFF437296)),
                             ),
                           ),
-                          widget.evaluation
-                              ? Container()
-                              : Align(
-                                  alignment: const Alignment(0, 1.6),
-                                  child: Container(
-                                    width: AppDimensions.height10 * 4.0,
-                                    height: AppDimensions.height10 * 4.0,
-                                    padding: EdgeInsets.all(
-                                        AppDimensions.height10 * 0.2),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            width: AppDimensions.height10 * 0.1,
-                                            color: const Color(0xFFFFFFFF))),
-                                    child: Container(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 2.4,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width:
-                                                  AppDimensions.height10 * 0.1,
-                                              color: const Color(0xFFFFFFFF)),
-                                          shape: BoxShape.circle,
-                                          image: const DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/circle_tick.png'))),
+                          Container(
+                            width: AppDimensions.height10 * 37.0,
+                            height: AppDimensions.height10 * 6.8,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10 * 1.3),
+                            child: Text(
+                              widget.evaluation
+                                  ? 'How easy is it to implement this\npractice in to your life?'
+                                  : 'I don’t want my anger to hold me back\nfrom enjoying life.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.8,
+                                  height: 1.2,
+                                  fontWeight: FontWeight.w500,
+                                  color: widget.evaluation
+                                      ? const Color(0xFFFFFFFF)
+                                      : const Color(0xFF437296)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : Container(),
+              widget.evaluation
+                  ? Container(
+                      width: double.infinity,
+                      height: AppDimensions.height10 * 16.3,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10 * 3.0,
+                          left: AppDimensions.height10 * 0.425),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: AppDimensions.height10 * 12.95,
+                              height: AppDimensions.height10 * 12.95,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10 * 1.5),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: const Color(0xFFFFFFFF),
+                                  border: Border.all(
+                                      width: AppDimensions.height10 * 0.3,
+                                      color: widget.evaluation
+                                          ? const Color(0xFF8C648A)
+                                          : const Color(0xFFEE8F70))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      '1',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 3.2,
+                                          fontWeight: FontWeight.w500,
+                                          color: widget.evaluation
+                                              ? const Color(0xFF8C648AF)
+                                              : const Color(0xFFFA9934)),
                                     ),
                                   ),
-                                )
-                        ]),
-                      ),
-                      Container(
-                        width: AppDimensions.height10 * 12.95,
-                        height: AppDimensions.height10 * 12.95,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 1.5),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: const Color(0xFFFFFFFF),
-                            border: Border.all(
-                                width: AppDimensions.height10 * 0.3,
-                                color: widget.evaluation
-                                    ? const Color(0xFF8C648A)
-                                    : const Color(0xFFEE8F70))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: Text(
-                                '3',
-                                style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 3.2,
-                                    fontWeight: FontWeight.w500,
-                                    color: widget.evaluation
-                                        ? const Color(0xFF8C648AF)
-                                        : const Color(0xFFFA9934)),
+                                  Text(
+                                    widget.evaluation
+                                        ? "I feel it's\nalmost\nimpossible"
+                                        : 'I’m not\nmaking any\nprogress',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontWeight: FontWeight.w400,
+                                        color: widget.evaluation
+                                            ? const Color(0xFF8C648AF)
+                                            : const Color(0xFFFA9934)),
+                                  )
+                                ],
                               ),
                             ),
-                            Text(
-                              widget.evaluation
-                                  ? "I find it hard,\nbut willing to\nwork on it"
-                                  : 'I’m making\nconsiderable\nsteps forward',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: widget.evaluation
-                                      ? const Color(0xFF8C648AF)
-                                      : const Color(0xFFFA9934)),
+                            Container(
+                              width: AppDimensions.height10 * 12.95,
+                              height: AppDimensions.height10 * 12.95,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10 * 1.5),
+                              child: Stack(children: [
+                                Container(
+                                  width: AppDimensions.height10 * 12.95,
+                                  height: AppDimensions.height10 * 12.95,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: widget.evaluation
+                                              ? [
+                                                  const Color(0XFFFFFFFF),
+                                                  const Color(0xFFFFFFFF)
+                                                ]
+                                              : [
+                                                  const Color(0XFFFA9E71),
+                                                  const Color(0xFFFA9E71)
+                                                ]),
+                                      border: Border.all(
+                                          width: AppDimensions.height10 * 0.3,
+                                          color: widget.evaluation
+                                              ? const Color(0xFF8C648A)
+                                              : const Color(0xFFEE8F70))),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        child: Text(
+                                          '2',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.height10 * 3.2,
+                                              fontWeight: FontWeight.w500,
+                                              color: widget.evaluation
+                                                  ? const Color(0xFF8C648AF)
+                                                  : const Color(0xFFFFFFFFF)),
+                                        ),
+                                      ),
+                                      Text(
+                                        widget.evaluation
+                                            ? "It feels\nchallenging"
+                                            : 'I’m making\nsmall steps\nforward',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.4,
+                                            fontWeight: FontWeight.w400,
+                                            color: widget.evaluation
+                                                ? const Color(0xFF8C648AF)
+                                                : const Color(0xFFFFFFFFF)),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                widget.evaluation
+                                    ? Container()
+                                    : Align(
+                                        alignment: const Alignment(0, 1.6),
+                                        child: Container(
+                                          width: AppDimensions.height10 * 4.0,
+                                          height: AppDimensions.height10 * 4.0,
+                                          padding: EdgeInsets.all(
+                                              AppDimensions.height10 * 0.2),
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                  width:
+                                                      AppDimensions.height10 *
+                                                          0.1,
+                                                  color:
+                                                      const Color(0xFFFFFFFF))),
+                                          child: Container(
+                                            width: AppDimensions.height10 * 2.4,
+                                            height:
+                                                AppDimensions.height10 * 2.4,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    width:
+                                                        AppDimensions.height10 *
+                                                            0.1,
+                                                    color: const Color(
+                                                        0xFFFFFFFF)),
+                                                shape: BoxShape.circle,
+                                                image: const DecorationImage(
+                                                    image: AssetImage(
+                                                        'assets/images/circle_tick.png'))),
+                                          ),
+                                        ),
+                                      )
+                              ]),
+                            ),
+                            Container(
+                              width: AppDimensions.height10 * 12.95,
+                              height: AppDimensions.height10 * 12.95,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10 * 1.5),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: const Color(0xFFFFFFFF),
+                                  border: Border.all(
+                                      width: AppDimensions.height10 * 0.3,
+                                      color: widget.evaluation
+                                          ? const Color(0xFF8C648A)
+                                          : const Color(0xFFEE8F70))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      '3',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 3.2,
+                                          fontWeight: FontWeight.w500,
+                                          color: widget.evaluation
+                                              ? const Color(0xFF8C648AF)
+                                              : const Color(0xFFFA9934)),
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.evaluation
+                                        ? "I find it hard,\nbut willing to\nwork on it"
+                                        : 'I’m making\nconsiderable\nsteps forward',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontWeight: FontWeight.w400,
+                                        color: widget.evaluation
+                                            ? const Color(0xFF8C648AF)
+                                            : const Color(0xFFFA9934)),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: AppDimensions.height10 * 12.95,
+                              height: AppDimensions.height10 * 12.95,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10 * 1.5),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: const Color(0xFFFFFFFF),
+                                  border: Border.all(
+                                      width: AppDimensions.height10 * 0.3,
+                                      color: widget.evaluation
+                                          ? const Color(0xFF8C648A)
+                                          : const Color(0xFFEE8F70))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      '4',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 3.2,
+                                          fontWeight: FontWeight.w500,
+                                          color: widget.evaluation
+                                              ? const Color(0xFF8C648AF)
+                                              : const Color(0xFFFA9934)),
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.evaluation
+                                        ? "Relatively\neasy"
+                                        : 'I am almost\nthere',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontWeight: FontWeight.w400,
+                                        color: widget.evaluation
+                                            ? const Color(0xFF8C648AF)
+                                            : const Color(0xFFFA9934)),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: AppDimensions.height10 * 12.95,
+                              height: AppDimensions.height10 * 12.95,
+                              // margin: EdgeInsets.only(right: AppDimensions.height10*1.5),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: const Color(0xFFFFFFFF),
+                                  border: Border.all(
+                                      width: AppDimensions.height10 * 0.3,
+                                      color: widget.evaluation
+                                          ? const Color(0xFF8C648A)
+                                          : const Color(0xFFEE8F70))),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Text(
+                                      '5',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 3.2,
+                                          fontWeight: FontWeight.w500,
+                                          color: widget.evaluation
+                                              ? const Color(0xFF8C648AF)
+                                              : const Color(0xFFFA9934)),
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.evaluation
+                                        ? "It's tough work,\nbut I am\nenjoying it "
+                                        : 'I’m definitely\nliving my\nwhy',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontWeight: FontWeight.w400,
+                                        color: widget.evaluation
+                                            ? const Color(0xFF8C648AF)
+                                            : const Color(0xFFFA9934)),
+                                  )
+                                ],
+                              ),
                             )
                           ],
                         ),
                       ),
-                      Container(
-                        width: AppDimensions.height10 * 12.95,
-                        height: AppDimensions.height10 * 12.95,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 1.5),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: const Color(0xFFFFFFFF),
-                            border: Border.all(
-                                width: AppDimensions.height10 * 0.3,
-                                color: widget.evaluation
-                                    ? const Color(0xFF8C648A)
-                                    : const Color(0xFFEE8F70))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: Text(
-                                '4',
-                                style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 3.2,
-                                    fontWeight: FontWeight.w500,
-                                    color: widget.evaluation
-                                        ? const Color(0xFF8C648AF)
-                                        : const Color(0xFFFA9934)),
-                              ),
-                            ),
-                            Text(
-                              widget.evaluation
-                                  ? "Relatively\neasy"
-                                  : 'I am almost\nthere',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: widget.evaluation
-                                      ? const Color(0xFF8C648AF)
-                                      : const Color(0xFFFA9934)),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: AppDimensions.height10 * 12.95,
-                        height: AppDimensions.height10 * 12.95,
-                        // margin: EdgeInsets.only(right: AppDimensions.height10*1.5),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: const Color(0xFFFFFFFF),
-                            border: Border.all(
-                                width: AppDimensions.height10 * 0.3,
-                                color: widget.evaluation
-                                    ? const Color(0xFF8C648A)
-                                    : const Color(0xFFEE8F70))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: Text(
-                                '5',
-                                style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 3.2,
-                                    fontWeight: FontWeight.w500,
-                                    color: widget.evaluation
-                                        ? const Color(0xFF8C648AF)
-                                        : const Color(0xFFFA9934)),
-                              ),
-                            ),
-                            Text(
-                              widget.evaluation
-                                  ? "It's tough work,\nbut I am\nenjoying it "
-                                  : 'I’m definitely\nliving my\nwhy',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: widget.evaluation
-                                      ? const Color(0xFF8C648AF)
-                                      : const Color(0xFFFA9934)),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
+                    )
+                  : Container(),
               saved
                   ? Container(
                       width: AppDimensions.height10 * 38.259,

@@ -306,23 +306,25 @@ void dashboard_sheet(context) {
                   style: TextStyle(
                       height: AppDimensions.height10 * 0.12,
                       fontSize: AppDimensions.height10 * 2.8,
-                      letterSpacing: AppDimensions.height10 * 0.2,
+                      //letterSpacing: AppDimensions.height10 * 0.2,
                       fontWeight: FontWeight.w700,
                       color: Color(0xFF437296)),
                 ),
               ),
               Container(
-                  width: AppDimensions.height10 * 33.2,
+                  //  width: AppDimensions.height10 * 33.2,
                   //  height: AppDimensions.height10 * 10.8,
                   // color: Colors.grey,
                   margin: EdgeInsets.only(top: AppDimensions.height10 * 1.1),
-                  child: Text(
-                    'This is a one-stop place to manage your\npersonal development journey. From\nDashboard, you can quickly navigate to\nyour goals, view your practices, record\nhurdles and inspirations.\n\nHave a tour of what’s available to you\nand how you can access the tools that\nare important to your personal growth\nWe look forward to supporting you.\nEnjoy your journey :)',
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.8,
-                        // letterSpacing: AppDimensions.height10 * 0.2,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF437296)),
+                  child: Center(
+                    child: Text(
+                      'This is a one-stop place to manage your\npersonal development journey. From\nDashboard, you can quickly navigate to\nyour goals, view your practices, record\nhurdles and inspirations.\n\nHave a tour of what’s available to you\nand how you can access the tools that\nare important to your personal growth.\n\nWe look forward to supporting you.\nEnjoy your journey :)',
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10 * 1.8,
+                          // letterSpacing: AppDimensions.height10 * 0.2,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF437296)),
+                    ),
                   )),
             ],
           )),

@@ -42,7 +42,7 @@ class practice_assesment extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/prac_assesment.png'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -54,7 +54,7 @@ class practice_assesment extends StatelessWidget {
               // width: AppDimensions.height10 * 27.9,
               // alignment: Alignment.center,
               margin: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
-              child: Text(
+              child: const Text(
                 'Practice Assessment History',
                 style: TextStyle(
                     color: Colors.white,
@@ -91,11 +91,11 @@ class practice_assesment extends StatelessWidget {
                               bottom: AppDimensions.height10 * 1.2),
                           child: Column(children: [
                             Container(
-                              height: AppDimensions.height10 * 1.9,
+                              height: AppDimensions.height10 * 2.1,
                               child: Text(
                                 'Practice Assessment',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize: AppDimensions.height10 * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xfff5f5f5)),
                               ),
@@ -117,12 +117,13 @@ class practice_assesment extends StatelessWidget {
                               child: RichText(
                                   text: TextSpan(
                                       style: TextStyle(
+                                        fontFamily: 'laila',
                                           fontSize:
                                               AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xfff5f5f5)),
                                       children: [
-                                    TextSpan(text: 'Next assessment is in'),
+                                    const TextSpan(text: 'Next assessment is in'),
                                     const TextSpan(
                                         text: '-19 active days.',
                                         style: TextStyle(
@@ -136,14 +137,14 @@ class practice_assesment extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10 * 1.2),
-                              child: button_feilds(
+                              child: const button_feilds(
                                 feild_text: 'Progress report',
                                 icon_viible: true,
                                 text_color: 0xff828282,
                                 feild_text_2: ' DD/MMM/YY',
                               ),
                             ),
-                            button_feilds(
+                            const button_feilds(
                               feild_text: 'Evaluation level (2/5)',
                               icon_viible: true,
                               text_color: 0xff828282,
@@ -192,11 +193,11 @@ class practice_assesment extends StatelessWidget {
                               bottom: AppDimensions.height10 * 1.2),
                           child: Column(children: [
                             Container(
-                              height: AppDimensions.height10 * 1.9,
+                              height: AppDimensions.height10 * 2.1,
                               child: Text(
                                 'Practice Assessment',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize: AppDimensions.height10 * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xfff5f5f5)),
                               ),
@@ -219,14 +220,14 @@ class practice_assesment extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10 * 1.2),
-                              child: button_feilds(
+                              child: const button_feilds(
                                 feild_text: 'Progress report',
                                 icon_viible: true,
                                 text_color: 0xff828282,
                                 feild_text_2: ' DD/MMM/YY',
                               ),
                             ),
-                            button_feilds(
+                            const button_feilds(
                               feild_text: 'Evaluation level (2/5)',
                               icon_viible: true,
                               text_color: 0xff828282,
@@ -275,11 +276,11 @@ class practice_assesment extends StatelessWidget {
                               bottom: AppDimensions.height10 * 1.2),
                           child: Column(children: [
                             Container(
-                              height: AppDimensions.height10 * 1.9,
+                              height: AppDimensions.height10 * 2.1,
                               child: Text(
                                 'Practice Assessment',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize: AppDimensions.height10 * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xfff5f5f5)),
                               ),
@@ -302,14 +303,14 @@ class practice_assesment extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10 * 1.2),
-                              child: button_feilds(
+                              child: const button_feilds(
                                 feild_text: 'Progress report',
                                 icon_viible: true,
                                 text_color: 0xff828282,
                                 feild_text_2: ' DD/MMM/YY',
                               ),
                             ),
-                            button_feilds(
+                            const button_feilds(
                               feild_text: 'Evaluation level (2/5)',
                               icon_viible: true,
                               text_color: 0xff828282,
@@ -358,11 +359,11 @@ class practice_assesment extends StatelessWidget {
                               bottom: AppDimensions.height10 * 1.2),
                           child: Column(children: [
                             Container(
-                              height: AppDimensions.height10 * 1.9,
+                              height: AppDimensions.height10 * 2.1,
                               child: Text(
                                 'Practice Assessment',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize: AppDimensions.height10 * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xfff5f5f5)),
                               ),
@@ -385,14 +386,14 @@ class practice_assesment extends StatelessWidget {
                             Container(
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10 * 1.2),
-                              child: button_feilds(
+                              child: const button_feilds(
                                 feild_text: 'Progress report',
                                 icon_viible: true,
                                 text_color: 0xff828282,
                                 feild_text_2: ' DD/MMM/YY',
                               ),
                             ),
-                            button_feilds(
+                            const button_feilds(
                               feild_text: 'Evaluation level (2/5)',
                               icon_viible: true,
                               text_color: 0xff828282,

@@ -816,6 +816,7 @@ class _dashBoardState extends State<dashBoard> {
                                                   ? Alignment(0.1, -0.27)
                                                   : Alignment(0.12, 0.37),
                           child: SimpleTooltip(
+                            //customShadows: [],
                             //  maxHeight: AppDimensions.height10 * 23.9,
                             maxWidth: AppDimensions.height10 * 30.6,
                             //  minHeight: AppDimensions.height10 * 21.9,
@@ -869,7 +870,7 @@ class _dashBoardState extends State<dashBoard> {
                                 children: [
                                   Container(
                                     width: AppDimensions.height10 * 21.6,
-                                    height: AppDimensions.height10 * 2.2,
+                                    //height: AppDimensions.height10 * 2.2,
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10 * 0.5,
                                         left: AppDimensions.height10 * 0.5,
@@ -892,7 +893,7 @@ class _dashBoardState extends State<dashBoard> {
                                         decoration: TextDecoration.none,
                                         fontFamily: 'Laila',
                                         color: Color(0xFF000000),
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
@@ -1025,7 +1026,7 @@ class _dashBoardState extends State<dashBoard> {
                                                                   ? ' assigned practices.'
                                                                   : goal_level ==
                                                                           6
-                                                                      ? ' future '
+                                                                      ? ' future schedule '
                                                                       : 'stay focused.',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w700)),
@@ -1039,7 +1040,7 @@ class _dashBoardState extends State<dashBoard> {
                                                           : goal_level == 4
                                                               ? 'for previous or next day.'
                                                               : goal_level == 5
-                                                                  ? ' Click on the\npractice you want to record the session\nfor and you’ll be taken to capture it'
+                                                                  ? ' Click on the\npractice you want to record the session\nfor and you’ll be taken to capture it.'
                                                                   : goal_level ==
                                                                           6
                                                                       ? 'for a\ncertain date.'
