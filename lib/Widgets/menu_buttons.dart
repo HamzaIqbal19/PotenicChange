@@ -4,14 +4,20 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 class button_feilds extends StatelessWidget {
   final String feild_text;
   final String feild_text_2;
+  final String feild_text_3;
+  final String feild_text_4;
   final bool icon_viible;
   final int text_color;
+  final int text_color_2;
   const button_feilds(
       {super.key,
       required this.feild_text,
       required this.icon_viible,
       required this.text_color,
-      required this.feild_text_2});
+      required this.feild_text_2,
+      required this.text_color_2,
+      required this.feild_text_3,
+      required this.feild_text_4});
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +54,22 @@ class button_feilds extends StatelessWidget {
                       TextSpan(
                         text: feild_text_2,
                         style: TextStyle(
-                          color: Color(text_color),
+                          color: Color(text_color_2),
                           fontFamily: '',
                           fontSize: AppDimensions.height10 * 1.4,
                           fontWeight: FontWeight.w400,
                         ),
-                      )
+                      ),
+                      TextSpan(text: feild_text_3),
+                      TextSpan(
+                        text: feild_text_4,
+                        style: TextStyle(
+                          color: Color(text_color_2),
+                          fontFamily: '',
+                          fontSize: AppDimensions.height10 * 1.4,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
                     ])),
               ),
             ),

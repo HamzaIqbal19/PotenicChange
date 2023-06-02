@@ -35,7 +35,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                 )),
           ),
           centerTitle: true,
-          title: Container(
+          title: SizedBox(
             width: AppDimensions.height10 * 19.0,
             height: AppDimensions.height10 * 2.4,
             child: Row(
@@ -47,7 +47,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   ' 3',
@@ -56,7 +56,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '/5',
@@ -65,7 +65,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ],
             ),
@@ -87,13 +87,13 @@ class _hurdle_nameState extends State<hurdle_name> {
         Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/practicebackground.png'),
                     fit: BoxFit.cover)),
             child: SingleChildScrollView(
               reverse: true,
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -104,7 +104,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                         : SizedBox(
                             height: AppDimensions.height10 * 11.0,
                           ),
-                    Container(
+                    SizedBox(
                       width: AppDimensions.height10 * 34.3,
                       height: AppDimensions.height10 * 7.3,
                       child: GradientText(
@@ -114,7 +114,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                           fontSize: AppDimensions.height10 * 2.8,
                           fontWeight: FontWeight.w700,
                         ),
-                        colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                        colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                       ),
                     ),
                     MediaQuery.of(context).viewInsets.bottom == 0
@@ -127,7 +127,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                     Container(
                       width: AppDimensions.height10 * 13.9,
                       height: AppDimensions.height10 * 13.9,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image:
@@ -162,15 +162,15 @@ class _hurdle_nameState extends State<hurdle_name> {
                               //                  mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  width: AppDimensions.height10 * 4.0,
+                                  width: AppDimensions.height10 * 8.0,
                                   height: AppDimensions.height10 * 2.0,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 2.0,
-                                      right: AppDimensions.height10 * 30.0,
+                                      // left: AppDimensions.height10 * 2.0,
+                                      right: AppDimensions.height10 * 25.0,
                                       top: AppDimensions.height10 * 1.3),
                                   child: Center(
                                     child: Text(
-                                      'Name',
+                                      'Enter Name',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10 * 1.3,
@@ -204,7 +204,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                           fontSize:
                                               AppDimensions.height10 * 2.4,
                                           fontWeight: FontWeight.w600,
-                                          color: Color(0xffB353C9)),
+                                          color: const Color(0xffB353C9)),
                                       decoration: InputDecoration(
                                           contentPadding: EdgeInsets.zero,
                                           hintText: 'Enter Name',
@@ -212,7 +212,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                               fontSize: AppDimensions.height10 *
                                                   2.4,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xff828282)),
+                                              color: const Color(0xff828282)),
                                           focusedBorder:
                                               const OutlineInputBorder(
                                                   borderSide: BorderSide(
@@ -275,7 +275,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                     : AppDimensions.height10 * 1.0),
                         decoration: BoxDecoration(
                           gradient: button_state
-                              ? LinearGradient(
+                              ? const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
@@ -287,8 +287,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    Color(0xff282828).withOpacity(0.5),
-                                    Color(0xff282828).withOpacity(0.5),
+                                    const Color(0xff282828).withOpacity(0.5),
+                                    const Color(0xff282828).withOpacity(0.5),
                                   ],
                                 ),
                           borderRadius: BorderRadius.circular(
@@ -301,13 +301,15 @@ class _hurdle_nameState extends State<hurdle_name> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            hurdle_statement()));
+                                            const hurdle_statement()));
                               }
                             },
                             child: Text(
                               'Next',
                               style: TextStyle(
-                                  color: Color(0xFFFFFFFF),
+                                  color: button_state
+                                      ? Color(0xFFFFFFFF)
+                                      : Color(0xFFFFFFFF).withOpacity(0.7),
                                   fontSize: AppDimensions.height10 * 1.6,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'Poppins'),
@@ -321,7 +323,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10 * 2.0),
-                                color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                                color:
+                                    const Color(0xFFFFFFFF).withOpacity(0.3)),
                           )
                         : SizedBox(
                             height: AppDimensions.height10 * 0,

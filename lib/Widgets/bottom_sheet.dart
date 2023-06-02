@@ -73,16 +73,18 @@ void bottom_sheet(context) {
               Container(
                 width: AppDimensions.height10 * 36.0,
                 height: AppDimensions.height10 * 8.0,
-                child: TextField(
+                child: TextFormField(
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: AppDimensions.height10 * 2.4,
                     color: const Color.fromARGB(209, 250, 154, 52),
                   ),
                   decoration: InputDecoration(
+                      contentPadding:
+                          EdgeInsets.only(left: AppDimensions.height10 * 3.3),
                       filled: true,
                       fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
-                      hintText: "  Enter your goal name ",
+                      hintText: "Enter your goal name ",
                       hintStyle: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: AppDimensions.height10 * 2.4,

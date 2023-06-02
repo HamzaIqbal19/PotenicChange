@@ -87,7 +87,7 @@ class _timelineState extends State<timeline> {
           decoration: const BoxDecoration(
               color: Colors.transparent,
               image: DecorationImage(
-                  image: AssetImage('assets/images/GoalReviewBg.png'),
+                  image: AssetImage('assets/images/Background.png'),
                   fit: BoxFit.cover)),
           child: Container(
             width: double.infinity,
@@ -121,15 +121,15 @@ class _timelineState extends State<timeline> {
                           Text(
                             'THU',
                             style: TextStyle(
-                                height: AppDimensions.height10 * 0.12,
-                                fontSize: AppDimensions.height10 * 1.4,
+                                // height: AppDimensions.height10 * 0.12,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xff5B74A6)),
                           ),
                           Text(
                             '04.07',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 height: AppDimensions.height10 * 0.12,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff5B74A6)),
@@ -156,15 +156,15 @@ class _timelineState extends State<timeline> {
                           Text(
                             'WED',
                             style: TextStyle(
-                                height: AppDimensions.height10 * 0.12,
-                                fontSize: AppDimensions.height10 * 1.4,
+                                //  height: AppDimensions.height10 * 0.12,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xff5B74A6)),
                           ),
                           Text(
                             '03.07',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 height: AppDimensions.height10 * 0.12,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff5B74A6)),
@@ -197,8 +197,9 @@ class _timelineState extends State<timeline> {
                                 width: AppDimensions.height10 * 3.5,
                                 height: AppDimensions.height10 * 3.5,
                                 margin: EdgeInsets.only(
-                                    right: AppDimensions.height10 * 0.8),
+                                    right: AppDimensions.height10 * 0.7),
                                 decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/session_stored.png'),
@@ -257,8 +258,7 @@ class _timelineState extends State<timeline> {
                                   alignment: const Alignment(0.1, -0.1),
                                   //changed font family due to client's request
                                   child: Text(
-                                    'Control\nmy anger',
-                                    textAlign: TextAlign.center,
+                                    ' Control\nmy anger',
                                     style: TextStyle(
                                         height: AppDimensions.height10 * 0.15,
                                         fontSize: AppDimensions.height10 * 1.6,
@@ -360,15 +360,15 @@ class _timelineState extends State<timeline> {
                           child: Row(
                             children: [
                               Container(
-                                width: AppDimensions.height10 * 3.5,
-                                height: AppDimensions.height10 * 3.5,
+                                decoration:
+                                    BoxDecoration(shape: BoxShape.circle),
                                 margin: EdgeInsets.only(
                                     right: AppDimensions.height10 * 0.8),
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/session_stored.png'),
-                                        fit: BoxFit.contain)),
+                                child: Image.asset(
+                                  'assets/images/session_stored.png',
+                                  width: AppDimensions.height10 * 3.5,
+                                  height: AppDimensions.height10 * 3.5,
+                                ),
                               ),
                               SizedBox(
                                 width: AppDimensions.height10 * 23.6,
@@ -422,8 +422,7 @@ class _timelineState extends State<timeline> {
                                   height: AppDimensions.height10 * 4.8,
                                   alignment: const Alignment(0.1, -0.1),
                                   child: Text(
-                                    'Control\nmy anger',
-                                    textAlign: TextAlign.center,
+                                    ' Control\nmy anger',
                                     style: TextStyle(
                                         height: AppDimensions.height10 * 0.15,
                                         fontSize: AppDimensions.height10 * 1.6,
@@ -522,15 +521,15 @@ class _timelineState extends State<timeline> {
                           Text(
                             'WED',
                             style: TextStyle(
-                                height: AppDimensions.height10 * 0.12,
-                                fontSize: AppDimensions.height10 * 1.4,
+                                //   height: AppDimensions.height10 * 0.12,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xff5B74A6)),
                           ),
                           Text(
                             '03.07',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 height: AppDimensions.height10 * 0.12,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff5B74A6)),
@@ -605,14 +604,14 @@ class _timelineState extends State<timeline> {
                     width: AppDimensions.height10 * 30.8,
                     height: AppDimensions.height10 * 4.4,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 1.0,
+                        top: AppDimensions.height10 * 1.5,
                         left: AppDimensions.height10 * 4.8,
                         right: AppDimensions.height10 * 4.7),
                     child: Text(
                       'All your recorded events & schedule\nin one place',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.8,
+                          fontSize: AppDimensions.height10 * 2.0,
                           fontWeight: FontWeight.w500,
                           height: AppDimensions.height10 * 0.15,
                           color: const Color(0xFF437296)),
@@ -621,7 +620,7 @@ class _timelineState extends State<timeline> {
                   Container(
                     width: AppDimensions.height10 * 11.20,
                     height: AppDimensions.height10 * 1.9,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 1.1),
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 1.3),
                     child: Center(
                       child: Text(
                         'Past activities',
@@ -663,15 +662,15 @@ class _timelineState extends State<timeline> {
                           Text(
                             'TUE',
                             style: TextStyle(
-                                height: AppDimensions.height10 * 0.12,
-                                fontSize: AppDimensions.height10 * 1.4,
+                                //height: AppDimensions.height10 * 0.12,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xff5B74A6)),
                           ),
                           Text(
                             '02.07',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 height: AppDimensions.height10 * 0.12,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff5B74A6)),
@@ -701,15 +700,15 @@ class _timelineState extends State<timeline> {
                           child: Row(
                             children: [
                               Container(
-                                width: AppDimensions.height10 * 3.5,
+                                width: AppDimensions.height10 * 3.55,
                                 height: AppDimensions.height10 * 3.5,
                                 margin: EdgeInsets.only(
                                     right: AppDimensions.height10 * 0.8),
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/menu_goals_b.png'),
-                                        fit: BoxFit.contain)),
+                                  image: AssetImage(
+                                      'assets/images/menu_goals_b.png'),
+                                )),
                               ),
                               SizedBox(
                                 width: AppDimensions.height10 * 22.5,
@@ -809,7 +808,10 @@ class _timelineState extends State<timeline> {
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10 *
-                                                          1.4,
+                                                          1.6,
+                                                  height:
+                                                      AppDimensions.height10 *
+                                                          0.15,
                                                   fontWeight: FontWeight.w400,
                                                   fontStyle: FontStyle.italic,
                                                   color:
@@ -876,8 +878,8 @@ class _timelineState extends State<timeline> {
                           child: Row(
                             children: [
                               Container(
-                                width: AppDimensions.height10 * 3.5,
-                                height: AppDimensions.height10 * 3.5,
+                                width: AppDimensions.height10 * 3.58,
+                                height: AppDimensions.height10 * 3.58,
                                 margin: EdgeInsets.only(
                                     right: AppDimensions.height10 * 0.8),
                                 decoration: const BoxDecoration(
@@ -1528,7 +1530,7 @@ class _timelineState extends State<timeline> {
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/menu_goals_b.png'),
-                                        fit: BoxFit.cover)),
+                                        fit: BoxFit.contain)),
                               ),
                               SizedBox(
                                 width: AppDimensions.height10 * 16.1,
@@ -1558,6 +1560,8 @@ class _timelineState extends State<timeline> {
                           ),
                           child: Container(
                             decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10 * 2.0),
                               image: const DecorationImage(
                                   image:
                                       AssetImage('assets/images/bg_stars.png')),
@@ -1731,7 +1735,10 @@ class _timelineState extends State<timeline> {
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
                                                                 .height10 *
-                                                            1.4,
+                                                            1.6,
+                                                        height: AppDimensions
+                                                                .height10 *
+                                                            0.15,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                         fontStyle:
@@ -1755,13 +1762,99 @@ class _timelineState extends State<timeline> {
                                                           1
                                                       ? 'assets/images/goal_level_1.png'
                                                       : goal_level == 2
-                                                          ? 'assets/images/Goal level score.png'
+                                                          ? 'assets/images/Nebula pie 2.png'
                                                           : goal_level == 3
-                                                              ? 'assets/images/goal_level_3.png'
+                                                              ? 'assets/images/Nebula pie 3.png'
                                                               : goal_level == 4
                                                                   ? 'assets/images/goal_level_4.png'
                                                                   : 'assets/images/goal_level_5.png'),
-                                                  fit: BoxFit.cover)),
+                                                  fit: BoxFit.contain)),
+                                          child: Stack(
+                                            alignment: Alignment.center,
+                                            children: [
+                                              Container(
+                                                alignment:
+                                                    Alignment.bottomCenter,
+                                                width: AppDimensions.height10 *
+                                                    2.6,
+                                                height: AppDimensions.height10 *
+                                                    0.8,
+                                                margin: EdgeInsets.only(
+                                                    bottom:
+                                                        AppDimensions.height10 *
+                                                            3.5),
+                                                child: Center(
+                                                  child: Text(
+                                                    'LEVEL',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            0.8,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: const Color(
+                                                            0xFF464646)),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    5.1,
+                                                height: AppDimensions.height10 *
+                                                    2.805,
+                                                // color: Colors.amber,
+                                                margin: EdgeInsets.only(
+                                                    bottom:
+                                                        AppDimensions.height10 *
+                                                            1.0),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    SizedBox(
+                                                      child: Text(
+                                                        '$goal_level',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .height10 *
+                                                                2.8,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: const Color(
+                                                                0xFF646464)),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin: EdgeInsets.only(
+                                                          top: AppDimensions
+                                                                  .height10 *
+                                                              0.7),
+                                                      child: Text(
+                                                        '/5',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            letterSpacing:
+                                                                AppDimensions
+                                                                        .height10 *
+                                                                    -0.1,
+                                                            fontSize: AppDimensions
+                                                                    .height10 *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight.w300,
+                                                            color: const Color(
+                                                                0xFF828282)),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -1794,15 +1887,15 @@ class _timelineState extends State<timeline> {
                           Text(
                             'TUE',
                             style: TextStyle(
-                                height: AppDimensions.height10 * 0.12,
-                                fontSize: AppDimensions.height10 * 1.4,
+                                //height: AppDimensions.height10 * 0.12,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xff5B74A6)),
                           ),
                           Text(
                             '02.07',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 height: AppDimensions.height10 * 0.12,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff5B74A6)),
@@ -1830,15 +1923,15 @@ class _timelineState extends State<timeline> {
                           Text(
                             'MON',
                             style: TextStyle(
-                                height: AppDimensions.height10 * 0.12,
-                                fontSize: AppDimensions.height10 * 1.4,
+                                //height: AppDimensions.height10 * 0.12,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xff5B74A6)),
                           ),
                           Text(
                             '01.07',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10 * 1.5,
                                 height: AppDimensions.height10 * 0.12,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff5B74A6)),

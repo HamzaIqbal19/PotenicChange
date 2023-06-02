@@ -99,14 +99,10 @@ class view_goals extends StatelessWidget {
                                       ]),
                                 ),
                                 child: Container(
-                                    padding: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 1),
                                     alignment: Alignment.center,
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
                                       children: [
                                         SizedBox(
                                           height: AppDimensions.height10 * 1.7,
@@ -122,7 +118,7 @@ class view_goals extends StatelessWidget {
                                                 color: const Color(0xff5B74A6)),
                                           ),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           //width: AppDimensions.height10 * 4.0,
                                           height: AppDimensions.height10 * 1.7,
                                           // color: Colors.amber,
@@ -133,7 +129,7 @@ class view_goals extends StatelessWidget {
                                                 fontWeight: FontWeight.w400,
                                                 fontSize:
                                                     AppDimensions.height10 *
-                                                        1.7),
+                                                        1.4),
                                           ),
                                         ),
                                         Container(
@@ -160,7 +156,7 @@ class view_goals extends StatelessWidget {
                           ),
                           Align(
                             alignment: const Alignment(0, 0),
-                            child: Container(
+                            child: SizedBox(
                               height: AppDimensions.height10 * 19.2,
                               width: AppDimensions.height10 * 18.8,
                               // margin: EdgeInsets.only(left: 55.5, right: 55.5),
@@ -196,7 +192,7 @@ class view_goals extends StatelessWidget {
                                           'TUE',
                                           style: TextStyle(
                                               fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                                  AppDimensions.height10 * 1.2,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xff5B74A6)),
                                         ),
@@ -205,7 +201,7 @@ class view_goals extends StatelessWidget {
                                           style: TextStyle(
                                               color: const Color(0xff5B74A6),
                                               fontSize:
-                                                  AppDimensions.height10 * 1.3,
+                                                  AppDimensions.height10 * 1.4,
                                               fontWeight: FontWeight.w400),
                                         ),
                                         Container(
@@ -260,6 +256,7 @@ class view_goals extends StatelessWidget {
                                             Color(0xffFBF9EF),
                                             Color(0xffF8F3DA)
                                           ])),
+                                  // ignore: avoid_unnecessary_containers
                                   child: Container(
                                       //margin: const EdgeInsets.only(top: 11.52),
                                       child: Column(
@@ -273,10 +270,13 @@ class view_goals extends StatelessWidget {
                                             fontWeight: FontWeight.w600,
                                             color: const Color(0xff5B74A6)),
                                       ),
-                                      const Text(
+                                      Text(
                                         '03.07',
-                                        style:
-                                            TextStyle(color: Color(0xff5B74A6)),
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.4,
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(0xff5B74A6)),
                                       ),
                                       Container(
                                         height: AppDimensions.height10 * 2.7,
@@ -285,9 +285,10 @@ class view_goals extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           border: Border.all(
-                                              width: 1, color: Colors.white),
+                                              width: 1,
+                                              color: Color(0xFFFBFBFB)),
                                         ),
-                                        child: Container(
+                                        child: SizedBox(
                                             width: AppDimensions.height10 * 1.7,
                                             height:
                                                 AppDimensions.height10 * 1.5,
@@ -565,7 +566,7 @@ class view_goals extends StatelessWidget {
                           Center(
                               child: align_circles(
                             asset_1: 'assets/images/blue_sun.png',
-                            s_circle_text: 'Meditation',
+                            s_circle_text: 'Talk to\nstrangers',
                             asset_2: 'assets/images/Ellipse light-blue.png',
                             head_text: 'Be more confident:',
                             body_text:

@@ -415,6 +415,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                   'Negative thought',
                                   style: TextStyle(
                                       color: Colors.white,
+                                      height: AppDimensions.height10 * 0.15,
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w700),
                                 ),

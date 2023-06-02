@@ -467,7 +467,8 @@ class _AllGoalsState extends State<AllGoals> {
                           child: Center(
                             child: TextFormField(
                                 decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.only(),
+                                    contentPadding: EdgeInsets.only(
+                                        bottom: AppDimensions.height10 * 1.2),
                                     prefixIcon: Image.asset(
                                       'assets/images/Light.png',
                                       width: AppDimensions.height10 * 1.5,
@@ -483,6 +484,10 @@ class _AllGoalsState extends State<AllGoals> {
                                       // fit: BoxFit.contain,
                                     ),
                                     hintText: "Search",
+                                    hintStyle: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.7,
+                                        color: Color(0xFF3C3C4399)
+                                            .withOpacity(0.6)),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Colors.transparent)),

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/Your_goals/add_your_practice.dart';
@@ -5,6 +7,7 @@ import 'package:potenic_app/Screen/Your_goals/goal&practice_info.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -34,9 +37,7 @@ class veiw_all_goals_menu extends StatelessWidget {
             child: IconButton(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CreatePractice()));
+                      context, FadePageRoute(page: const CreatePractice()));
                 },
                 icon: Image.asset(
                   'assets/images/Addgoal.png',
@@ -112,7 +113,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                       width: AppDimensions.height10 * 20.5,
                       height: AppDimensions.height10 * 3.5,
                       margin: EdgeInsets.only(
-                        right: AppDimensions.height10 * 13.0,
+                        right: AppDimensions.height10 * 15.0,
                         top: AppDimensions.height10 * 1.5,
                       ),
                       child: Row(
@@ -128,7 +129,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                         'assets/images/menu_goals_b.png'),
                                     fit: BoxFit.cover)),
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10 * 13.4,
                             height: AppDimensions.height10 * 2.2,
                             child: Text(
@@ -146,12 +147,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const goal_menu_inactive(
-                                      premium: true,
-                                      isActive: false,
-                                      goal_evaluation: false,
-                                    )));
+                            FadePageRoute(
+                                page: (const goal_menu_inactive(
+                              premium: true,
+                              isActive: false,
+                              goal_evaluation: false,
+                            ))));
                       },
                       child: const goal_card(
                         days_text: '0',
@@ -177,7 +178,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                       width: AppDimensions.height10 * 20.5,
                       height: AppDimensions.height10 * 3.5,
                       margin: EdgeInsets.only(
-                        right: AppDimensions.height10 * 13.0,
+                        right: AppDimensions.height10 * 15.0,
                         top: AppDimensions.height10 * 1.5,
                       ),
                       child: Row(
@@ -193,7 +194,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                         'assets/images/menu_goals_b.png'),
                                     fit: BoxFit.cover)),
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10 * 13.4,
                             height: AppDimensions.height10 * 2.2,
                             child: Text(
@@ -211,12 +212,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const goal_menu_inactive(
-                                      premium: false,
-                                      isActive: true,
-                                      goal_evaluation: false,
-                                    )));
+                            FadePageRoute(
+                                page: (const goal_menu_inactive(
+                              premium: false,
+                              isActive: true,
+                              goal_evaluation: false,
+                            ))));
                       },
                       child: const goal_card(
                         days_text: '10',
@@ -242,7 +243,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                       width: AppDimensions.height10 * 20.5,
                       height: AppDimensions.height10 * 3.5,
                       margin: EdgeInsets.only(
-                        right: AppDimensions.height10 * 13.0,
+                        right: AppDimensions.height10 * 15.0,
                         top: AppDimensions.height10 * 1.5,
                       ),
                       child: Row(
@@ -258,7 +259,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                         'assets/images/menu_goals_b.png'),
                                     fit: BoxFit.cover)),
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10 * 13.4,
                             height: AppDimensions.height10 * 2.2,
                             child: Text(
@@ -276,10 +277,9 @@ class veiw_all_goals_menu extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const multiple_goal_inactive(
-                                        isActive: false)));
+                            FadePageRoute(
+                                page: const multiple_goal_inactive(
+                                    isActive: false)));
                       },
                       child: Container(
                         width: AppDimensions.height10 * 35.3,
@@ -367,7 +367,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                               ],
                                             )),
                                         Align(
-                                          alignment: const Alignment(0, -0.1),
+                                          alignment: const Alignment(0, -0.22),
                                           child: Text(
                                               '“I am someone who is in\ncontrol of my anger”',
                                               textAlign: TextAlign.center,
@@ -375,7 +375,10 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                   fontStyle: FontStyle.italic,
                                                   fontSize:
                                                       AppDimensions.height10 *
-                                                          1.6,
+                                                          1.68,
+                                                  height:
+                                                      AppDimensions.height10 *
+                                                          0.15,
                                                   fontWeight: FontWeight.w400,
                                                   color:
                                                       const Color(0xFF5B74A6))),
@@ -386,7 +389,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                 ),
                                 Align(
                                   alignment: const Alignment(0, 0.8),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: AppDimensions.height10 * 31.0,
                                     height: AppDimensions.height10 * 8.9,
                                     child: Stack(
@@ -552,7 +555,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: AppDimensions.height10 * 9.3,
                                           height: AppDimensions.height10 * 3.55,
                                           child: Text(
@@ -596,7 +599,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: AppDimensions.height10 * 9.3,
                                           height: AppDimensions.height10 * 3.4,
                                           child: Text(
@@ -662,17 +665,14 @@ class veiw_all_goals_menu extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const goal_prac_info()));
+                                    FadePageRoute(
+                                        page: const goal_prac_info()));
                               },
                               child: Align(
-                                alignment: const Alignment(0.955, 0),
+                                alignment: const Alignment(0.92, 0),
                                 child: Container(
-                                  width: AppDimensions.height10 * 2.5,
-                                  height: AppDimensions.height10 * 2.5,
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.0),
+                                  width: AppDimensions.height10 * 3.0,
+                                  height: AppDimensions.height10 * 3.0,
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
@@ -705,7 +705,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                         height: AppDimensions.height10 * 3.5,
                         margin: EdgeInsets.only(
                           top: AppDimensions.height10 * 1.5,
-                          right: AppDimensions.height10 * 13.0,
+                          right: AppDimensions.height10 * 15.0,
                         ),
                         child: Row(
                           children: [
@@ -720,7 +720,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           'assets/images/menu_goals_b.png'),
                                       fit: BoxFit.cover)),
                             ),
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10 * 13.4,
                               height: AppDimensions.height10 * 2.2,
                               child: Text(
@@ -736,11 +736,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const add_your_practice()));
+                          Navigator.push(context,
+                              FadePageRoute(page: const add_your_practice()));
                         },
                         child: const goal_card(
                           days_text: '0',
@@ -761,6 +758,7 @@ class veiw_all_goals_menu extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class goal_card extends StatelessWidget {
   final bool isActive;
   final String days_text;
@@ -856,13 +854,14 @@ class goal_card extends StatelessWidget {
                             ],
                           )),
                       Align(
-                        alignment: const Alignment(0, -0.1),
+                        alignment: const Alignment(0, -0.20),
                         child: Text(
                             '“I am someone who is in\ncontrol of my anger”',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontStyle: FontStyle.italic,
-                                fontSize: AppDimensions.height10 * 1.6,
+                                height: AppDimensions.height10 * 0.15,
+                                fontSize: AppDimensions.height10 * 1.68,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF5B74A6))),
                       )
@@ -885,7 +884,7 @@ class goal_card extends StatelessWidget {
                         child: Stack(children: [
                           Center(
                               child: Text(
-                            'Add practice',
+                            'Add\npractice',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: const Color(0xFFFFFFFF),
@@ -931,7 +930,7 @@ class goal_card extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         width: AppDimensions.height10 * 9.3,
                         height: AppDimensions.height10 * 3.55,
                         child: Text(
@@ -968,7 +967,7 @@ class goal_card extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         width: AppDimensions.height10 * 9.3,
                         height: AppDimensions.height10 * 3.4,
                         child: Text(
@@ -1020,16 +1019,13 @@ class goal_card extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const goal_prac_info()));
+                  context, FadePageRoute(page: const goal_prac_info()));
             },
             child: Align(
-              alignment: const Alignment(0.955, 0),
+              alignment: const Alignment(0.92, 0),
               child: Container(
-                width: AppDimensions.height10 * 2.5,
-                height: AppDimensions.height10 * 2.5,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 0.0),
+                width: AppDimensions.height10 * 3.0,
+                height: AppDimensions.height10 * 3.0,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/ic_info_outline.png'),

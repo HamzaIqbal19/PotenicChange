@@ -234,48 +234,63 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                             border: Border.all(color: Colors.white, width: 2),
                             borderRadius: BorderRadius.all(
                                 Radius.circular(AppDimensions.height10 * 1.8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                  bottom: AppDimensions.height10 * 0.5),
-                              width: AppDimensions.height10 * 6.3,
-                              height: AppDimensions.height10 * 1.7,
-                              child: Text(
-                                "Password",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFF282828),
-                                    fontSize: AppDimensions.height10 * 1.4),
-                              ),
+                        child: Row(children: [
+                          Container(
+                            width: AppDimensions.height10 * 32.0,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10 * 2.0,
+                                      bottom: AppDimensions.height10 * 0.5),
+                                  width: AppDimensions.height10 * 6.3,
+                                  height: AppDimensions.height10 * 1.7,
+                                  child: Text(
+                                    "Password",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF282828),
+                                        fontSize: AppDimensions.height10 * 1.4),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 2.0,
+                                  ),
+                                  width: AppDimensions.height10 * 36.0,
+                                  height: AppDimensions.height10 * 2.2,
+                                  child: TextFormField(
+                                      decoration: InputDecoration(
+                                          contentPadding: EdgeInsets.zero,
+                                          hintText: "*******",
+                                          hintStyle: TextStyle(
+                                            color: const Color(0xFF8C648A),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize:
+                                                AppDimensions.height10 * 1.8,
+                                          ),
+                                          focusedBorder:
+                                              const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors
+                                                          .transparent)),
+                                          enabledBorder:
+                                              const OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                      color: Colors
+                                                          .transparent)))),
+                                )
+                              ],
                             ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                              ),
-                              width: AppDimensions.height10 * 36.0,
-                              height: AppDimensions.height10 * 2.2,
-                              child: TextFormField(
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.zero,
-                                      hintText: "*******",
-                                      hintStyle: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: AppDimensions.height10 * 1.8,
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)))),
-                            )
-                          ],
-                        ),
+                          ),
+                          Image.asset(
+                            'assets/images/ic_remove_red_eye.png',
+                            height: AppDimensions.height10 * 2.4,
+                            width: AppDimensions.height10 * 2.4,
+                          )
+                        ]),
                       ),
                       Container(
                         padding:

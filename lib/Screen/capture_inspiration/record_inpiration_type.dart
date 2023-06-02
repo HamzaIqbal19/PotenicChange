@@ -166,6 +166,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                               'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
                               style: TextStyle(
+                                  height: AppDimensions.height10 * 0.15,
                                   fontSize: AppDimensions.height10 * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),

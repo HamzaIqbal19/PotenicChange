@@ -279,6 +279,8 @@ class missed_Menu extends StatelessWidget {
                                             fontSize:
                                                 AppDimensions.height10 * 1.4,
                                             fontWeight: FontWeight.w400,
+                                            height:
+                                                AppDimensions.height10 * 0.15,
                                             color: const Color(0xfff5f5f5)),
                                         children: [
                                       const TextSpan(
@@ -301,18 +303,24 @@ class missed_Menu extends StatelessWidget {
                                   child: const button_feilds(
                                     feild_text: 'Progress report',
                                     icon_viible: true,
-                                    text_color: 0xff828282,
+                                    text_color: 0xff646464,
                                     feild_text_2: ' DD/MMM/YY',
+                                    text_color_2: 0xff8EA1B1,
+                                    feild_text_3: '',
+                                    feild_text_4: '',
                                   ),
                                 ),
                               ),
                               GestureDetector(
                                 onTap: () {},
                                 child: const button_feilds(
-                                  feild_text: 'Evaluation level (2/5)',
+                                  feild_text: 'Evaluation level ',
                                   icon_viible: true,
-                                  text_color: 0xff828282,
-                                  feild_text_2: '',
+                                  text_color: 0xff646464,
+                                  feild_text_2: '(',
+                                  text_color_2: 0xff8EA1B1,
+                                  feild_text_3: '2',
+                                  feild_text_4: '/5)',
                                 ),
                               )
                             ],
@@ -342,6 +350,9 @@ class missed_Menu extends StatelessWidget {
                       icon_viible: true,
                       text_color: 0xff646464,
                       feild_text_2: '',
+                      text_color_2: 0xff8EA1B1,
+                      feild_text_3: '',
+                      feild_text_4: '',
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -352,6 +363,9 @@ class missed_Menu extends StatelessWidget {
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
+                        text_color_2: 0xffEA1B1,
+                        feild_text_3: '',
+                        feild_text_4: '',
                       ),
                     ),
                     Container(
@@ -362,6 +376,9 @@ class missed_Menu extends StatelessWidget {
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
+                        text_color_2: 0xffEA1B1,
+                        feild_text_3: '',
+                        feild_text_4: '',
                       ),
                     ),
                     const button_feilds(
@@ -369,6 +386,9 @@ class missed_Menu extends StatelessWidget {
                       icon_viible: true,
                       text_color: 0xff646464,
                       feild_text_2: '',
+                      text_color_2: 0xffEA1B1,
+                      feild_text_3: '',
+                      feild_text_4: '',
                     )
                   ],
                 ),

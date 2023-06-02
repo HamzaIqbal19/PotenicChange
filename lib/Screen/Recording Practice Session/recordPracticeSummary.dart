@@ -111,16 +111,16 @@ class _practice_summaryState extends State<practice_summary> {
                         fit: BoxFit.cover)),
                 child: Stack(children: [
                   Align(
-                      alignment: Alignment(0, -0.65),
+                      alignment: const Alignment(0, -0.65),
                       child: Text(
                         'Control my anger',
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 2.0,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff5B74A6)),
+                            color: const Color(0xff5B74A6)),
                       )),
                   Align(
-                    alignment: Alignment(0, -0.35),
+                    alignment: const Alignment(0, -0.35),
                     child: Text(
                         '“I am someone who is in\n control of my anger”',
                         textAlign: TextAlign.center,
@@ -128,7 +128,7 @@ class _practice_summaryState extends State<practice_summary> {
                             fontStyle: FontStyle.italic,
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff5B74A6))),
+                            color: const Color(0xff5B74A6))),
                   ),
                   Align(
                     alignment: const Alignment(0, 0.975),
@@ -137,8 +137,8 @@ class _practice_summaryState extends State<practice_summary> {
                       width: AppDimensions.height10 * 13.8,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border:
-                              Border.all(width: 5, color: Color(0xFF52855E)),
+                          border: Border.all(
+                              width: 5, color: const Color(0xFF52855E)),
                           gradient: const RadialGradient(
                             // radius: 0.5,
                             colors: <Color>[
@@ -151,7 +151,7 @@ class _practice_summaryState extends State<practice_summary> {
                             child: Text(
                           'Meditation',
                           style: TextStyle(
-                              color: Color(0xff1A481C),
+                              color: const Color(0xff1A481C),
                               fontSize: AppDimensions.height10 * 1.8,
                               fontWeight: FontWeight.w500,
                               fontFamily: 'Laila'),
@@ -166,7 +166,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Color(0xFF52855E)),
-                                child: ImageIcon(
+                                child: const ImageIcon(
                                   AssetImage('assets/images/tick_icon.png'),
                                   color: Color(0xFFFFFFFF),
                                 )))
@@ -264,7 +264,7 @@ class _practice_summaryState extends State<practice_summary> {
                             },
                           );
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.arrow_drop_down,
                           color: Colors.white,
                           size: 30,
@@ -287,13 +287,13 @@ class _practice_summaryState extends State<practice_summary> {
                           color: Colors.white,
                         ),
                         children: [
-                          TextSpan(
+                          const TextSpan(
                             text: 'How did you feel',
                           ),
-                          TextSpan(
+                          const TextSpan(
                               text: '\nbefore',
                               style: TextStyle(color: Color(0xff8C648A))),
-                          TextSpan(
+                          const TextSpan(
                             text: ' your practice?',
                           ),
                         ])),
@@ -325,13 +325,13 @@ class _practice_summaryState extends State<practice_summary> {
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0, 0.8),
+                    alignment: const Alignment(0, 0.8),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => emotions(
+                                builder: (context) => const emotions(
                                       summary: true,
                                     )));
                       },
@@ -344,7 +344,7 @@ class _practice_summaryState extends State<practice_summary> {
                               color: Colors.transparent,
                               border:
                                   Border.all(width: 1, color: Colors.white)),
-                          child: ImageIcon(
+                          child: const ImageIcon(
                             AssetImage('assets/images/edit_icon.png'),
                             color: Colors.white,
                           )),
@@ -368,13 +368,13 @@ class _practice_summaryState extends State<practice_summary> {
                           color: Colors.white,
                         ),
                         children: [
-                          TextSpan(
+                          const TextSpan(
                             text: 'How do you feel',
                           ),
-                          TextSpan(
+                          const TextSpan(
                               text: '\nafter',
                               style: TextStyle(color: Color(0xff8C648A))),
-                          TextSpan(
+                          const TextSpan(
                             text: ' your practice?',
                           ),
                         ])),
@@ -407,13 +407,13 @@ class _practice_summaryState extends State<practice_summary> {
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0, 0.8),
+                    alignment: const Alignment(0, 0.8),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => feelingsAfter(
+                                builder: (context) => const feelingsAfter(
                                       summary: true,
                                     )));
                       },
@@ -426,7 +426,7 @@ class _practice_summaryState extends State<practice_summary> {
                               color: Colors.transparent,
                               border:
                                   Border.all(width: 1, color: Colors.white)),
-                          child: ImageIcon(
+                          child: const ImageIcon(
                             AssetImage('assets/images/edit_icon.png'),
                             color: Colors.white,
                           )),
@@ -442,21 +442,20 @@ class _practice_summaryState extends State<practice_summary> {
                     borderRadius:
                         BorderRadius.circular(AppDimensions.height10 * 2.0),
                     color: Colors.white),
-                child: Center(
-                  child: Container(
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 2.0,
-                        right: AppDimensions.height10 * 2.0),
-                    height: AppDimensions.height10 * 3.9,
-                    width: AppDimensions.height10 * 32.5,
-                    child: Text(
-                      'This session works for me, it clears my head and makes me feel positive :)',
-                      style: TextStyle(
-                          color: Color(0xff646464),
-                          fontSize: AppDimensions.height10 * 1.6,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Laila'),
-                    ),
+                child: Container(
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10 * 1.4,
+                      left: AppDimensions.height10 * 2.0,
+                      right: AppDimensions.height10 * 2.0),
+                  height: AppDimensions.height10 * 3.8,
+                  width: AppDimensions.height10 * 32.0,
+                  child: Text(
+                    'This session works for me, it clears my head and makes me feel positive :)',
+                    style: TextStyle(
+                        color: const Color(0xff646464),
+                        fontSize: AppDimensions.height10 * 1.6,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Laila'),
                   ),
                 ),
               ),
@@ -494,7 +493,7 @@ class _practice_summaryState extends State<practice_summary> {
                 child: Stack(children: [
                   Center(
                     child: Text(
-                      'Good, I liked it',
+                      'Good, I liked\nit',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.6,
@@ -504,13 +503,13 @@ class _practice_summaryState extends State<practice_summary> {
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0, 0.8),
+                    alignment: const Alignment(0, 0.8),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => endofSession(
+                                builder: (context) => const endofSession(
                                       summary: true,
                                     )));
                       },
@@ -522,7 +521,7 @@ class _practice_summaryState extends State<practice_summary> {
                             shape: BoxShape.circle,
                             color: Colors.transparent,
                             border: Border.all(width: 1, color: Colors.white)),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/images/edit_icon.png'),
                           color: Colors.white,
                         ),
@@ -554,7 +553,7 @@ class _practice_summaryState extends State<practice_summary> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.delete,
                                 color: Colors.white,
                               ),
@@ -592,7 +591,7 @@ class _practice_summaryState extends State<practice_summary> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => view_goals(
+                                    builder: (context) => const view_goals(
                                           missed: false,
                                         )));
                           },

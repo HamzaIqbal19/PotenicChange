@@ -95,7 +95,7 @@ class goal_prac_info extends StatelessWidget {
         elevation: 0,
         child: Container(
             width: AppDimensions.height10 * 39.4,
-            height: AppDimensions.height10 * 53.2,
+            height: AppDimensions.height10 * 51.2,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(AppDimensions.height10 * 2.0),
@@ -158,7 +158,7 @@ class goal_prac_info extends StatelessWidget {
                 Container(
                   //  height: AppDimensions.height10 * 23.8,
                   width: AppDimensions.height10 * 35.2,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.1),
                   child: RichText(
                     text: TextSpan(
                         style: TextStyle(

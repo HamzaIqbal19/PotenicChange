@@ -187,10 +187,10 @@ class _PracticeNameState extends State<PracticeName> {
                 Container(
                   height: AppDimensions.height10 * 10.5,
                   width: AppDimensions.height10 * 36.0,
-                  padding: EdgeInsets.only(
-                    top: AppDimensions.height10 * 2,
-                    bottom: AppDimensions.height10 * 4.8,
-                  ),
+                  padding: EdgeInsets.only(left: AppDimensions.height10 * 2.0
+                      // top: AppDimensions.height10 * 2,
+                      // bottom: AppDimensions.height10 * 4.8,
+                      ),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
@@ -198,6 +198,7 @@ class _PracticeNameState extends State<PracticeName> {
                           Radius.circular(AppDimensions.height10 * 1.8))),
                   child: TextFormField(
                       decoration: InputDecoration(
+                          contentPadding: EdgeInsets.zero,
                           hintText: widget.title,
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10 * 2.4,
@@ -263,15 +264,13 @@ class _PracticeNameState extends State<PracticeName> {
                     ),
                   ),
                 ),
-
-
-                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
-                  height: AppDimensions.height10 * 26.3,
-                ):SizedBox(
-                  height: AppDimensions.height10 *11.2,
-                ),
-
-
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10 * 26.3,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10 * 11.2,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [

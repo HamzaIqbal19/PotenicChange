@@ -23,7 +23,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           elevation: 0,
           automaticallyImplyLeading: false,
           centerTitle: true,
-          title: Container(
+          title: SizedBox(
             width: AppDimensions.height10 * 18.9,
             height: AppDimensions.height10 * 2.4,
             child: Row(
@@ -37,7 +37,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   ' 1',
@@ -46,7 +46,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '/5',
@@ -55,7 +55,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ],
             ),
@@ -65,15 +65,18 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
               child: IconButton(
                   onPressed: () => showDialog<String>(
                       context: context,
-                      builder: (BuildContext context) => Container(
+                      builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.height10 * 27.0,
-                            height: AppDimensions.height10 * 21.0,
+                            height: AppDimensions.height10 * 24.0,
                             child: AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10 * 1.4)),
                               contentPadding: EdgeInsets.zero,
                               actionsPadding: EdgeInsets.zero,
                               titlePadding: EdgeInsets.zero,
                               title: Container(
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                     top: 19, right: 16, left: 16, bottom: 2),
                                 height: AppDimensions.height10 * 2.2,
                                 width: AppDimensions.height10 * 23.8,
@@ -87,9 +90,9 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 ),
                               ),
                               content: Container(
-                                margin: EdgeInsets.only(
+                                margin: const EdgeInsets.only(
                                     bottom: 19, left: 16, right: 16),
-                                height: 32,
+                                height: AppDimensions.height10 * 1.6,
                                 width: 238,
                                 child: const Text(
                                   "Please select from the options below",
@@ -106,8 +109,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     SizedBox(
                                       height: AppDimensions.height10 * 0.1,
                                       child: Divider(
-                                        color:
-                                            Color(0XFF3C3C43).withOpacity(0.29),
+                                        color: const Color(0XFF3C3C43)
+                                            .withOpacity(0.29),
                                       ),
                                     ),
                                     Container(
@@ -129,11 +132,11 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     SizedBox(
                                       height: AppDimensions.height10 * 0.1,
                                       child: Divider(
-                                        color:
-                                            Color(0XFF3C3C43).withOpacity(0.29),
+                                        color: const Color(0XFF3C3C43)
+                                            .withOpacity(0.29),
                                       ),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height: 44,
                                       width: double.infinity,
                                       child: TextButton(
@@ -151,13 +154,15 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     SizedBox(
                                       height: AppDimensions.height10 * 0.1,
                                       child: Divider(
-                                        color:
-                                            Color(0XFF3C3C43).withOpacity(0.29),
+                                        color: const Color(0XFF3C3C43)
+                                            .withOpacity(0.29),
                                       ),
                                     ),
                                     Container(
                                       height: 42,
                                       width: double.infinity,
+                                      margin: EdgeInsets.only(
+                                          bottom: AppDimensions.height10 * 1.0),
                                       color: Colors.white,
                                       child: TextButton(
                                         onPressed: () {
@@ -191,7 +196,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           width: double.infinity,
           height: double.infinity,
           // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/practicebackground.png'),
                   colorFilter: ColorFilter.mode(
@@ -224,7 +229,10 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               fontSize: AppDimensions.height10 * 2.8,
                               fontWeight: FontWeight.w700,
                             ),
-                            colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                            colors: const [
+                              Color(0xffFA9934),
+                              Color(0xffEDD15E)
+                            ],
                           ),
                         ),
                       ),
@@ -247,7 +255,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                               border: Border.all(
                                   width: AppDimensions.height10 * 0.1,
                                   color: Colors.white),
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
@@ -301,7 +309,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -327,7 +335,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -380,7 +388,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -406,7 +414,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -442,7 +450,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -468,7 +476,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.1,
                                     color: Colors.white),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter,
                                     colors: [
@@ -513,7 +521,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => select_hurdle()),
+                      MaterialPageRoute(
+                          builder: (context) => const select_hurdle()),
                     );
                   },
                   child: Text(
@@ -532,7 +541,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
               decoration: BoxDecoration(
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 2.0),
-                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             ),
           ])),
     );

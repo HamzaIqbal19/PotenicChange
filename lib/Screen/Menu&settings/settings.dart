@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/Menu&settings/account_deleted.dart';
 import 'package:potenic_app/Screen/Menu&settings/edit_credentials.dart';
 import 'package:potenic_app/Screen/Menu&settings/notifications.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../community/community.dart';
 
@@ -151,13 +152,13 @@ class Settings extends StatelessWidget {
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const edit_credentials(
-                                                      email: false,
-                                                      password_edit: false,
-                                                    )));
+                                          context,
+                                          FadePageRoute(
+                                              page: edit_credentials(
+                                            email: false,
+                                            password_edit: false,
+                                          )),
+                                        );
                                       },
                                       child: Container(
                                         width: AppDimensions.height10 * 4.8,
@@ -236,13 +237,12 @@ class Settings extends StatelessWidget {
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const edit_credentials(
-                                                      email: true,
-                                                      password_edit: false,
-                                                    )));
+                                          context,
+                                          FadePageRoute(
+                                              page: edit_credentials(
+                                                  email: true,
+                                                  password_edit: false)),
+                                        );
                                       },
                                       child: Container(
                                         width: AppDimensions.height10 * 4.8,
@@ -313,13 +313,12 @@ class Settings extends StatelessWidget {
                                     GestureDetector(
                                       onTap: () {
                                         Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const edit_credentials(
-                                                      email: false,
-                                                      password_edit: true,
-                                                    )));
+                                          context,
+                                          FadePageRoute(
+                                              page: edit_credentials(
+                                                  email: false,
+                                                  password_edit: true)),
+                                        );
                                       },
                                       child: Container(
                                         width: AppDimensions.height10 * 4.8,
@@ -380,10 +379,9 @@ class Settings extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const notifications()));
+                                  context,
+                                  FadePageRoute(page: notifications()),
+                                );
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -502,10 +500,9 @@ class Settings extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const About_us()));
+                                  context,
+                                  FadePageRoute(page: About_us()),
+                                );
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -1068,6 +1065,7 @@ class Settings extends StatelessWidget {
                       child: Text(
                         'Delete Account',
                         style: TextStyle(
+                            height: AppDimensions.height10 * 0.15,
                             decoration: TextDecoration.underline,
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w600,

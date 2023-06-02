@@ -299,6 +299,9 @@ class practiceMenu extends StatelessWidget {
                                     child: RichText(
                                         text: TextSpan(
                                             style: TextStyle(
+                                                fontFamily: 'laila',
+                                                height: AppDimensions.height10 *
+                                                    0.15,
                                                 fontSize:
                                                     AppDimensions.height10 *
                                                         1.4,
@@ -333,9 +336,12 @@ class practiceMenu extends StatelessWidget {
                                       child: button_feilds(
                                         feild_text: 'Progress report',
                                         icon_viible: goal_eval ? true : false,
-                                        text_color: 0xff828282,
+                                        text_color: 0xff646464,
                                         feild_text_2:
                                             goal_eval ? ' DD/MMM/YY' : '',
+                                        text_color_2: 0xff8EA1B1,
+                                        feild_text_3: '',
+                                        feild_text_4: '',
                                       ),
                                     ),
                                   ),
@@ -349,11 +355,14 @@ class practiceMenu extends StatelessWidget {
                                     },
                                     child: button_feilds(
                                       feild_text: goal_eval
-                                          ? 'Evaluation level (2/5)'
-                                          : 'Practice score (-/5)',
+                                          ? 'Evaluation level '
+                                          : 'Practice score ',
                                       icon_viible: goal_eval ? true : false,
-                                      text_color: 0xff828282,
-                                      feild_text_2: '',
+                                      text_color: 0xff646464,
+                                      feild_text_2: '(',
+                                      text_color_2: 0xff8EA1B1,
+                                      feild_text_3: goal_eval ? '2' : '-',
+                                      feild_text_4: '/5)',
                                     ),
                                   )
                                 ],
@@ -391,6 +400,9 @@ class practiceMenu extends StatelessWidget {
                             icon_viible: true,
                             text_color: 0xff646464,
                             feild_text_2: '',
+                            text_color_2: 0xff8EA1B1,
+                            feild_text_4: '',
+                            feild_text_3: '',
                           ),
                         ),
                         Container(
@@ -402,6 +414,9 @@ class practiceMenu extends StatelessWidget {
                             icon_viible: true,
                             text_color: 0xff646464,
                             feild_text_2: '',
+                            text_color_2: 0xffEA1B1,
+                            feild_text_3: '',
+                            feild_text_4: '',
                           ),
                         ),
                         Container(
@@ -412,6 +427,9 @@ class practiceMenu extends StatelessWidget {
                             icon_viible: true,
                             text_color: 0xff646464,
                             feild_text_2: '',
+                            text_color_2: 0xffEA1B1,
+                            feild_text_3: '',
+                            feild_text_4: '',
                           ),
                         ),
                         GestureDetector(
@@ -427,6 +445,9 @@ class practiceMenu extends StatelessWidget {
                             icon_viible: true,
                             text_color: 0xff646464,
                             feild_text_2: '',
+                            text_color_2: 0xffEA1B1,
+                            feild_text_3: '',
+                            feild_text_4: '',
                           ),
                         )
                       ],

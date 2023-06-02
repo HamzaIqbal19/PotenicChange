@@ -33,7 +33,7 @@ class _select_hurdleState extends State<select_hurdle> {
                 )),
           ),
           centerTitle: true,
-          title: Container(
+          title: SizedBox(
             width: AppDimensions.height10 * 19.0,
             height: AppDimensions.height10 * 2.4,
             child: Row(
@@ -45,7 +45,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   ' 2',
@@ -54,7 +54,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '/5',
@@ -63,7 +63,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ],
             ),
@@ -85,7 +85,7 @@ class _select_hurdleState extends State<select_hurdle> {
         width: double.infinity,
         height: double.infinity,
         // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/practicebackground.png'),
                 fit: BoxFit.cover)),
@@ -103,7 +103,7 @@ class _select_hurdleState extends State<select_hurdle> {
                   fontSize: AppDimensions.height10 * 2.8,
                   fontWeight: FontWeight.w700,
                 ),
-                colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
               ),
             ),
           ),
@@ -130,7 +130,7 @@ class _select_hurdleState extends State<select_hurdle> {
                         border: Border.all(
                             width: AppDimensions.height10 * 0.1,
                             color: Colors.white),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -154,7 +154,7 @@ class _select_hurdleState extends State<select_hurdle> {
                       border: Border.all(
                           width: AppDimensions.height10 * 0.1,
                           color: Colors.white),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -190,7 +190,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     border: Border.all(
                         width: AppDimensions.height10 * 0.1,
                         color: Colors.white),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -213,7 +213,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     border: Border.all(
                         width: AppDimensions.height10 * 0.1,
                         color: Colors.white),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -241,7 +241,7 @@ class _select_hurdleState extends State<select_hurdle> {
                 shape: BoxShape.circle,
                 border: Border.all(
                     width: AppDimensions.height10 * 0.1, color: Colors.white),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -275,8 +275,10 @@ class _select_hurdleState extends State<select_hurdle> {
             ),
             child: TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => hurdle_name()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const hurdle_name()));
                 },
                 child: Text(
                   'Next',
@@ -294,7 +296,7 @@ class _select_hurdleState extends State<select_hurdle> {
             decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(AppDimensions.height10 * 2.0),
-                color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                color: const Color(0xFFFFFFFF).withOpacity(0.3)),
           )
         ]),
       ),

@@ -3,18 +3,19 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalendarWithRadioButtons extends HookWidget {
+class CalendarWithRadioButtons extends StatelessWidget {
+  final bool status;
   // Define the static list of dates and their status
   final Map<DateTime, String> dateStatus = {
     DateTime(2023, 5, 1): 'null',
     DateTime(2023, 5, 2): 'completed',
     DateTime(2023, 5, 3): 'completed',
-    DateTime(2023, 5, 4): 'missed',
+    DateTime(2023, 5, 4): 'completed',
     DateTime(2023, 5, 5): 'completed',
     DateTime(2023, 5, 6): 'completed',
     DateTime(2023, 5, 7): 'null',
     DateTime(2023, 5, 8): 'null',
-    DateTime(2023, 5, 9): 'missed',
+    DateTime(2023, 5, 9): 'completed',
     DateTime(2023, 5, 10): 'completed',
     DateTime(2023, 5, 11): 'completed',
     DateTime(2023, 5, 12): 'completed',
@@ -29,18 +30,57 @@ class CalendarWithRadioButtons extends HookWidget {
     DateTime(2023, 5, 21): 'null',
     DateTime(2023, 5, 22): 'null',
     DateTime(2023, 5, 23): 'completed',
-    DateTime(2023, 5, 24): 'missed',
+    DateTime(2023, 5, 24): 'completed',
     DateTime(2023, 5, 25): 'completed',
     DateTime(2023, 5, 26): 'completed',
     DateTime(2023, 5, 27): 'completed',
     DateTime(2023, 5, 28): 'null',
     DateTime(2023, 5, 29): 'null',
     DateTime(2023, 5, 30): 'completed',
-    DateTime(2023, 5, 31): 'missed',
+    DateTime(2023, 5, 31): 'completed',
   };
 
+  final Map<DateTime, String> missedStatus = {
+    DateTime(2023, 5, 1): 'completed',
+    DateTime(2023, 5, 2): 'completed',
+    DateTime(2023, 5, 3): 'completed',
+    DateTime(2023, 5, 4): 'missed',
+    DateTime(2023, 5, 5): 'completed',
+    DateTime(2023, 5, 6): 'missed',
+    DateTime(2023, 5, 7): 'null',
+    DateTime(2023, 5, 8): 'null',
+    DateTime(2023, 5, 9): 'missed',
+    DateTime(2023, 5, 10): 'completed',
+    DateTime(2023, 5, 11): 'missed',
+    DateTime(2023, 5, 12): 'completed',
+    DateTime(2023, 5, 13): 'missed',
+    DateTime(2023, 5, 14): 'null',
+    DateTime(2023, 5, 15): 'null',
+    DateTime(2023, 5, 16): 'completed',
+    DateTime(2023, 5, 17): 'missed',
+    DateTime(2023, 5, 18): 'completed',
+    DateTime(2023, 5, 19): 'null',
+    DateTime(2023, 5, 20): 'completed',
+    DateTime(2023, 5, 21): 'null',
+    DateTime(2023, 5, 22): 'null',
+    DateTime(2023, 5, 23): 'missed',
+    DateTime(2023, 5, 24): 'completed',
+    DateTime(2023, 5, 25): 'null',
+    DateTime(2023, 5, 26): 'missed',
+    DateTime(2023, 5, 27): 'completed',
+    DateTime(2023, 5, 28): 'null',
+    DateTime(2023, 5, 29): 'null',
+    DateTime(2023, 5, 30): 'null',
+    DateTime(2023, 5, 31): 'missed',
+  };
+  CalendarWithRadioButtons({super.key, required this.status});
+
   String? getStatus(DateTime date) {
-    return dateStatus[DateTime(date.year, date.month, date.day)];
+    if (status == true) {
+      return dateStatus[DateTime(date.year, date.month, date.day)];
+    } else {
+      return missedStatus[DateTime(date.year, date.month, date.day)];
+    }
   }
 
   IconData? getIcon(String? status) {
@@ -70,8 +110,8 @@ class CalendarWithRadioButtons extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: 20.0,
-              width: 20.0,
+              height: AppDimensions.height10 * 2.0,
+              width: AppDimensions.height10 * 2.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100.0),
                 border: Border.all(color: const Color(0xFF8EA1B1)),
@@ -84,25 +124,31 @@ class CalendarWithRadioButtons extends HookWidget {
               child: status == 'completed'
                   ? Icon(
                       iconData,
-                      size: 15.0,
+                      size: AppDimensions.height10 * 1.5,
                       color: Colors.white,
                     )
                   : status == 'missed'
                       ? Icon(
-                          size: 15.0,
+                          size: AppDimensions.height10 * 1.5,
                           iconData,
                           color: Colors.white,
                         )
                       : Icon(
                           iconData,
-                          size: 15.0,
+                          size: AppDimensions.height10 * 1.5,
                           color: Colors.white,
                         ),
             ),
             Text(
               '${date.day}',
-              style: const TextStyle(fontSize: 10),
+              style: TextStyle(
+                  fontSize: AppDimensions.height10 * 1.4,
+                  color: const Color(0xFF8EA1B1)),
             ),
+            // Container(
+            //   height: AppDimensions.height10 * 0.05,
+            //   color: const Color(0xFF828282),
+            // )
           ],
         ),
       ),
@@ -112,37 +158,48 @@ class CalendarWithRadioButtons extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TableCalendar(
-        firstDay: DateTime.utc(2021, 1, 1),
-        lastDay: DateTime.utc(2030, 12, 31),
-        focusedDay: DateTime.now(),
-        headerStyle: const HeaderStyle(
-          titleCentered: true,
-          leftChevronIcon: Icon(
-            Icons.chevron_left,
-            color: Color(0xFFFE6624),
-          ),
-          rightChevronIcon: Icon(
-            Icons.chevron_right,
-            color: Color(0xFFFE6624),
-          ),
-          titleTextStyle: TextStyle(fontSize: 24, color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontFamily: 'laila'),
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+          //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
         ),
-        calendarFormat: CalendarFormat.month,
-        availableCalendarFormats: const {
-          CalendarFormat.month: 'Month',
-        },
-        onPageChanged: (focusedDay) {},
-        calendarBuilders: CalendarBuilders(
-          defaultBuilder: (context, date, _) => _buildDayCell(date),
-          todayBuilder: (context, date, _) => _buildDayCell(date),
-          selectedBuilder: (context, date, _) => _buildDayCell(date),
-        ),
-        eventLoader: (day) {
-          return [];
-        },
-        calendarStyle: const CalendarStyle(
-          outsideDaysVisible: false,
+        child: TableCalendar(
+          firstDay: DateTime.utc(2021, 1, 1),
+          lastDay: DateTime.utc(2030, 12, 31),
+          focusedDay: DateTime.now(),
+          headerStyle: HeaderStyle(
+            titleCentered: true,
+            leftChevronIcon: const Icon(
+              Icons.chevron_left,
+              color: Color(0xFFFE6624),
+            ),
+            rightChevronIcon: const Icon(
+              Icons.chevron_right,
+              color: Color(0xFFFE6624),
+            ),
+            titleTextStyle: TextStyle(
+                fontSize: AppDimensions.height10 * 2.4,
+                color: const Color(0xFF5B74A6),
+                fontWeight: FontWeight.w600,
+                fontFamily: 'laila'),
+          ),
+          calendarFormat: CalendarFormat.month,
+          availableCalendarFormats: const {
+            CalendarFormat.month: 'Month',
+          },
+          onPageChanged: (focusedDay) {},
+          calendarBuilders: CalendarBuilders(
+            defaultBuilder: (context, date, _) => _buildDayCell(date),
+            todayBuilder: (context, date, _) => _buildDayCell(date),
+            selectedBuilder: (context, date, _) => _buildDayCell(date),
+          ),
+          eventLoader: (day) {
+            return [];
+          },
+          calendarStyle: const CalendarStyle(
+            outsideDaysVisible: false,
+          ),
         ),
       ),
     );

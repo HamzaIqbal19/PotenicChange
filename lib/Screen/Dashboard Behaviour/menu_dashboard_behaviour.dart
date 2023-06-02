@@ -252,6 +252,12 @@ class menu_behaviour extends StatelessWidget {
                                               height:
                                                   AppDimensions.height10 * 18.2,
                                               child: AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            AppDimensions
+                                                                    .height10 *
+                                                                1.4)),
                                                 contentPadding: EdgeInsets.zero,
                                                 actionsPadding: EdgeInsets.zero,
                                                 titlePadding: EdgeInsets.zero,
@@ -283,9 +289,9 @@ class menu_behaviour extends StatelessWidget {
                                                                         1.7,
                                                                 fontWeight:
                                                                     FontWeight.w400,
-                                                                color: Color(0xFF000000)),
+                                                                color: const Color(0xFF000000)),
                                                             children: [
-                                                              TextSpan(
+                                                              const TextSpan(
                                                                   text:
                                                                       'Are you sure?'),
                                                             ]))),
@@ -346,7 +352,7 @@ class menu_behaviour extends StatelessWidget {
                                                                 MaterialPageRoute(
                                                                     builder:
                                                                         (context) =>
-                                                                            view_goals(
+                                                                            const view_goals(
                                                                               missed: true,
                                                                             )));
                                                           },
@@ -516,6 +522,7 @@ class menu_behaviour extends StatelessWidget {
                                 child: Text(
                                   'Here is your latest 20 active day evaluation.',
                                   style: TextStyle(
+                                      height: AppDimensions.height10 * 0.15,
                                       fontSize: AppDimensions.height10 * 1.4,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xfff5f5f5)),
@@ -529,6 +536,8 @@ class menu_behaviour extends StatelessWidget {
                                     text: TextSpan(
                                         style: TextStyle(
                                             fontFamily: 'laila',
+                                            height:
+                                                AppDimensions.height10 * 0.15,
                                             fontSize:
                                                 AppDimensions.height10 * 1.4,
                                             fontWeight: FontWeight.w400,
@@ -554,18 +563,24 @@ class menu_behaviour extends StatelessWidget {
                                   child: const button_feilds(
                                     feild_text: 'Progress report',
                                     icon_viible: true,
-                                    text_color: 0xff828282,
+                                    text_color: 0xff646464,
                                     feild_text_2: ' DD/MMM/YY',
+                                    text_color_2: 0xff8EA1B1,
+                                    feild_text_3: '',
+                                    feild_text_4: '',
                                   ),
                                 ),
                               ),
                               GestureDetector(
                                 onTap: () {},
                                 child: const button_feilds(
-                                  feild_text: 'Evaluation level (2/5)',
+                                  feild_text: 'Evaluation level ',
                                   icon_viible: true,
-                                  text_color: 0xff828282,
-                                  feild_text_2: '',
+                                  text_color: 0xff646464,
+                                  feild_text_2: '(',
+                                  text_color_2: 0xff8EA1B1,
+                                  feild_text_3: '2',
+                                  feild_text_4: '/5)',
                                 ),
                               )
                             ],
@@ -595,6 +610,9 @@ class menu_behaviour extends StatelessWidget {
                       icon_viible: true,
                       text_color: 0xff646464,
                       feild_text_2: '',
+                      text_color_2: 0xffEA1B1,
+                      feild_text_3: '',
+                      feild_text_4: '',
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -605,6 +623,9 @@ class menu_behaviour extends StatelessWidget {
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
+                        text_color_2: 0xffEA1B1,
+                        feild_text_3: '',
+                        feild_text_4: '',
                       ),
                     ),
                     Container(
@@ -615,6 +636,9 @@ class menu_behaviour extends StatelessWidget {
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
+                        text_color_2: 0xffEA1B1,
+                        feild_text_3: '',
+                        feild_text_4: '',
                       ),
                     ),
                     const button_feilds(
@@ -622,6 +646,9 @@ class menu_behaviour extends StatelessWidget {
                       icon_viible: true,
                       text_color: 0xff646464,
                       feild_text_2: '',
+                      text_color_2: 0xffEA1B1,
+                      feild_text_3: '',
+                      feild_text_4: '',
                     )
                   ],
                 ),

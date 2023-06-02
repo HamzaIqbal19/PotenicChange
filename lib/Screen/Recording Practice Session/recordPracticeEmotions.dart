@@ -115,6 +115,7 @@ class _emotionsState extends State<emotions> {
                         height: AppDimensions.height10 * 12.7,
                         width: AppDimensions.height10 * 12.5,
                         margin: EdgeInsets.only(
+                            left: AppDimensions.height10 * 4.0,
                             right: AppDimensions.height10 * 1.5),
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
@@ -125,7 +126,8 @@ class _emotionsState extends State<emotions> {
                           color: Color(0xff546096),
                         ),
                         child: Text(
-                          'I feel very \nlow & dis-\nmotivated',
+                          'I feel very \nlow & \ndemotivated',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w500,

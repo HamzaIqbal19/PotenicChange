@@ -43,7 +43,7 @@ class _record_summaryState extends State<record_summary> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/prac_assesment.png'),
           fit: BoxFit.cover,
         )),
         child: SingleChildScrollView(
@@ -73,9 +73,10 @@ class _record_summaryState extends State<record_summary> {
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 0.5),
                 child: Center(
                   child: Text(
-                    'Well done for recording\nyour practice!',
+                    'Well done for recording your\npractice!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                        height: AppDimensions.height10 * 0.15,
                         fontSize: AppDimensions.height10 * 1.6,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -92,7 +93,7 @@ class _record_summaryState extends State<record_summary> {
                     // color: const Color(0xff7c94b6),
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage('assets/images/image3.png'),
+                        image: AssetImage('assets/images/orange_moon.png'),
                         colorFilter: ColorFilter.mode(
                             Color.fromRGBO(0, 0, 0, 0.5), BlendMode.dstATop),
                         fit: BoxFit.cover)),
@@ -123,40 +124,9 @@ class _record_summaryState extends State<record_summary> {
                       width: AppDimensions.height10 * 13.8,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(
-                              width: AppDimensions.height10 * 0.5,
-                              color: Colors.white),
-                          gradient: const RadialGradient(
-                            // radius: 0.5,
-                            colors: <Color>[
-                              Color(0xFFDFF8EB), // yellow sun
-                              Color(0xFFA3B6A4), // blue sky
-                            ],
-                          )),
-                      child: Stack(children: [
-                        Center(
-                            child: Text(
-                          'Meditation',
-                          style: TextStyle(
-                              color: Color(0xff1A481C),
-                              fontSize: AppDimensions.height10 * 1.8,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Laila'),
-                        )),
-                        Align(
-                            alignment: const Alignment(0, 1.3),
-                            child: Container(
-                                height: 29,
-                                width: 29,
-                                padding: EdgeInsets.all(7),
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.white),
-                                child: ImageIcon(
-                                  AssetImage('assets/images/tick_icon.png'),
-                                  color: Color(0xff1A481C),
-                                )))
-                      ]),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/images/Meditation Completed.png'))),
                     ),
                   ),
                 ]),

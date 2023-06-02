@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/app_dimensions.dart';
+import '../capture_inpirations_goals.dart';
 import 'note_access.dart';
 
 class video_info extends StatefulWidget {
@@ -71,16 +72,26 @@ class _video_infoState extends State<video_info> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: AppDimensions.height10 * 2.2,
-                    width: AppDimensions.height10 * 4.3,
-                    margin: EdgeInsets.only(left: AppDimensions.height10 * 4.0),
-                    child: Text(
-                      'Create',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.5,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff007AFF).withOpacity(0.4)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const note_info(
+                                  note_saved: true, type_switch: 3)));
+                    },
+                    child: Container(
+                      height: AppDimensions.height10 * 2.2,
+                      width: AppDimensions.height10 * 4.3,
+                      margin:
+                          EdgeInsets.only(left: AppDimensions.height10 * 4.0),
+                      child: Text(
+                        'Create',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.5,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xff007AFF).withOpacity(0.4)),
+                      ),
                     ),
                   )
                 ]),
@@ -328,8 +339,8 @@ class _video_infoState extends State<video_info> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const note_info(
-                                    note_saved: true, type_switch: 3)));
+                                builder: (context) =>
+                                    inspiraton_goals(data_saved: false)));
                       },
                       child: Container(
                         height: AppDimensions.height10 * 6.0,

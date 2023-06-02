@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Menu&settings/success.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class edit_credentials extends StatefulWidget {
@@ -310,9 +311,9 @@ class _edit_credentialsState extends State<edit_credentials> {
                 onTap: () {
                   if (widget.password_edit == true) {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Success()));
+                      context,
+                      FadePageRoute(page: Success()),
+                    );
                   }
                 },
                 child: Container(

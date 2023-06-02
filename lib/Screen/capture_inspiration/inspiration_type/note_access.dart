@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 
 import '../../../utils/app_dimensions.dart';
+import '../capture_inpirations_goals.dart';
 
 class note_info extends StatefulWidget {
   final int type_switch;
@@ -28,7 +29,7 @@ class _note_infoState extends State<note_info> {
           color: const Color(0xffC4C4C4),
           shape: const CircularNotchedRectangle(),
           child: Container(
-            height: AppDimensions.height10 * 84.8,
+            //  height: AppDimensions.height10 * 84.8,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(children: [
@@ -112,19 +113,33 @@ class _note_infoState extends State<note_info> {
                             ),
                           ),
                         ),
-                        Container(
-                          height: AppDimensions.height10 * 2.2,
-                          width: AppDimensions.height10 * 4.3,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 4.9),
-                          child: Text(
-                            'Create',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.5,
-                                fontWeight: FontWeight.w400,
-                                color: widget.note_saved
-                                    ? const Color(0xff007AFF)
-                                    : const Color(0xff007AFF).withOpacity(0.4)),
+                        GestureDetector(
+                          onTap: () {
+                            if (widget.note_saved == false) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const note_info(
+                                            note_saved: true,
+                                            type_switch: 1,
+                                          )));
+                            }
+                          },
+                          child: Container(
+                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10 * 4.3,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10 * 4.9),
+                            child: Text(
+                              'Create',
+                              style: TextStyle(
+                                  fontSize: AppDimensions.height10 * 1.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: widget.note_saved
+                                      ? const Color(0xff007AFF)
+                                      : const Color(0xff007AFF)
+                                          .withOpacity(0.4)),
+                            ),
                           ),
                         )
                       ]),
@@ -573,10 +588,8 @@ class _note_infoState extends State<note_info> {
                                 : Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const note_info(
-                                              note_saved: true,
-                                              type_switch: 1,
-                                            )));
+                                        builder: (context) => inspiraton_goals(
+                                            data_saved: false)));
                           },
                           child: Container(
                             height: AppDimensions.height10 * 6.0,
@@ -584,6 +597,7 @@ class _note_infoState extends State<note_info> {
                             margin: EdgeInsets.only(
                               left: AppDimensions.height10 * 2.0,
                               right: AppDimensions.height10 * 1.9,
+                              // bottom: AppDimensions.height10 * 1.0
                             ),
                             decoration: BoxDecoration(
                                 border: Border.all(

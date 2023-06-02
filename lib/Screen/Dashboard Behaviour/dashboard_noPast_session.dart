@@ -53,14 +53,14 @@ class no_past_session extends StatelessWidget {
             ]),
         extendBodyBehindAppBar: true,
         extendBody: true,
-        bottomNavigationBar: Navigation_Bar(
+        bottomNavigationBar: const Navigation_Bar(
           bg_colored: false,
           membership: true,
           cancel: false,
           trial: false,
         ),
         body: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Mask Group.png'),
                 colorFilter: ColorFilter.mode(
@@ -110,17 +110,20 @@ class no_past_session extends StatelessWidget {
                                           fontSize:
                                               AppDimensions.height10 * 1.2,
                                           fontWeight: FontWeight.w600,
+                                          color: const Color(0xff5B74A6)),
+                                    ),
+                                    Text(
+                                      '02.06',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.4,
+                                          fontWeight: FontWeight.w400,
                                           color: Color(0xff5B74A6)),
                                     ),
-                                    const Text(
-                                      '02.06',
-                                      style:
-                                          TextStyle(color: Color(0xff5B74A6)),
-                                    ),
                                     Container(
-                                      height: 27,
-                                      width: 27,
-                                      decoration: BoxDecoration(
+                                      height: AppDimensions.height10 * 2.5,
+                                      width: AppDimensions.height10 * 2.5,
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: Color(0xff156F6D)),
                                       child: Container(
@@ -130,7 +133,7 @@ class no_past_session extends StatelessWidget {
                                           // margin: const EdgeInsets.only(left: 1),
                                           child: Center(
                                             child: Text(
-                                              '0/2',
+                                              '3/3',
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10 *
@@ -146,8 +149,9 @@ class no_past_session extends StatelessWidget {
                               Container(
                                 width: AppDimensions.height10 * 8.3,
                                 height: AppDimensions.height10 * 8.3,
-                                margin: EdgeInsets.only(right: 121, left: 121),
-                                padding: EdgeInsets.all(4),
+                                margin: const EdgeInsets.only(
+                                    right: 121, left: 121),
+                                padding: const EdgeInsets.all(4),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
@@ -159,7 +163,8 @@ class no_past_session extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                view_goals(missed: false)));
+                                                const view_goals(
+                                                    missed: false)));
                                   },
                                   child: Container(
                                     height: AppDimensions.height10 * 7.9,
@@ -168,63 +173,89 @@ class no_past_session extends StatelessWidget {
                                         shape: BoxShape.circle,
                                         border: Border.all(
                                             width: 3, color: Colors.white),
-                                        gradient: LinearGradient(colors: [
-                                          Color(0xffCCCCCA),
-                                          Color(0xff5E5D5C)
-                                        ])),
-                                    child: Stack(children: [
-                                      Align(
-                                        alignment: Alignment(0, 0),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'TUE',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10 *
-                                                          1.4,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Color(0xff5B74A6)),
-                                            ),
-                                            Text(
-                                              '02.07',
-                                              style: TextStyle(
-                                                  color: Color(0xff5B74A6),
-                                                  fontSize:
-                                                      AppDimensions.height10 *
-                                                          1.3,
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                            Container(
-                                                height: AppDimensions.height10 *
-                                                    2.5,
-                                                width: AppDimensions.height10 *
-                                                    2.5,
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
+                                        gradient: const LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color(0xffCCCCCA),
+                                              Color(0xff5E5D5C)
+                                            ])),
+                                    child: Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Align(
+                                            alignment: const Alignment(0, 0),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  'TUE',
+                                                  style: TextStyle(
+                                                      height: AppDimensions
+                                                              .height10 *
+                                                          0.12,
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.2,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: const Color(
+                                                          0xFFFBFBFB)),
                                                 ),
-                                                child: DottedBorder(
-                                                  borderType: BorderType.Circle,
-                                                  color: Colors.white,
-                                                  child: Center(
-                                                    child: Text(
-                                                      '0/0',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10 *
-                                                              1.0,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                          color: Colors.white),
+                                                Text(
+                                                  '02.07',
+                                                  style: TextStyle(
+                                                      height: AppDimensions
+                                                              .height10 *
+                                                          0.12,
+                                                      color: const Color(
+                                                          0xFFFBFBFB),
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.4,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                ),
+                                                Container(
+                                                    height:
+                                                        AppDimensions.height10 *
+                                                            2.5,
+                                                    width:
+                                                        AppDimensions.height10 *
+                                                            2.5,
+                                                    margin: EdgeInsets.only(
+                                                        top: AppDimensions
+                                                                .height10 *
+                                                            0.3),
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      shape: BoxShape.circle,
                                                     ),
-                                                  ),
-                                                ))
-                                          ],
-                                        ),
-                                      ),
-                                    ]),
+                                                    child: DottedBorder(
+                                                      borderType:
+                                                          BorderType.Circle,
+                                                      color: Colors.white,
+                                                      child: Center(
+                                                        child: Text(
+                                                          '0/0',
+                                                          style: TextStyle(
+                                                              fontSize:
+                                                                  AppDimensions
+                                                                          .height10 *
+                                                                      1.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                      ),
+                                                    ))
+                                              ],
+                                            ),
+                                          ),
+                                        ]),
                                   ),
                                 ),
                               ),
@@ -234,7 +265,7 @@ class no_past_session extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              no_planned_session()));
+                                              const no_planned_session()));
                                 },
                                 child: Container(
                                     height: AppDimensions.height10 * 7.9,
@@ -265,18 +296,21 @@ class no_past_session extends StatelessWidget {
                                           style: TextStyle(
                                               fontSize:
                                                   AppDimensions.height10 * 1.2,
-                                              fontWeight: FontWeight.w600,
-                                              color: Color(0xff5B74A6)),
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xff5B74A6)),
                                         ),
                                         Text(
                                           '03.07',
                                           style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.4,
+                                              fontWeight: FontWeight.w400,
                                               color: Color(0xff5B74A6)),
                                         ),
                                         Container(
-                                          height: 27,
-                                          width: 27,
-                                          decoration: BoxDecoration(
+                                          height: AppDimensions.height10 * 2.5,
+                                          width: AppDimensions.height10 * 2.5,
+                                          decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               color: Color(0xff156F6D)),
                                           child: Container(
@@ -332,6 +366,7 @@ class no_past_session extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Laila',
+                                height: AppDimensions.height10 * 0.15,
                                 fontSize: AppDimensions.height10 * 1.8,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -345,7 +380,8 @@ class no_past_session extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => record_session()));
+                                  builder: (context) =>
+                                      const record_session()));
                         },
                         child: Container(
                           width: AppDimensions.height10 * 10.1,
@@ -360,22 +396,20 @@ class no_past_session extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                height: AppDimensions.height10 * 3.5,
-                                width: AppDimensions.height10 * 3.5,
-                                // padding: EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 1, color: Colors.white),
-                                    color: Colors.transparent),
-                                child: IconButton(
-                                    onPressed: () {},
-                                    icon: Image.asset(
-                                      'assets/images/Add goal.png',
-                                      height: AppDimensions.height10 * 2.9,
-                                      width: AppDimensions.height10 * 2.9,
-                                    )),
-                              ),
+                                  height: AppDimensions.height10 * 3.5,
+                                  width: AppDimensions.height10 * 3.5,
+                                  padding: EdgeInsets.all(
+                                      AppDimensions.height10 * 0.6),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          width: 1, color: Colors.white),
+                                      color: Colors.transparent),
+                                  child: Image.asset(
+                                    'assets/images/Add goal.png',
+                                    height: AppDimensions.height10 * 2.9,
+                                    width: AppDimensions.height10 * 2.9,
+                                  )),
                               Container(
                                 child: Center(
                                   child: Text(

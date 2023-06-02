@@ -269,7 +269,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                   )),
               Container(
-                width: AppDimensions.height10 * 41.8,
+                //  width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 1.7),
                 decoration: BoxDecoration(
@@ -285,12 +285,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10 * 5.4,
                       height: AppDimensions.height10 * 5.4,
                       margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse 158.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          EdgeInsets.only(left: AppDimensions.height10 * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10 * 18.6,
@@ -319,15 +323,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.5),
+                                      top: AppDimensions.height10 * 0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.0,
-                                          fontWeight: FontWeight.w300,
+                                              AppDimensions.height10 * 1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -400,7 +404,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 41.8,
+                //  width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: BoxDecoration(
                     color:
@@ -414,12 +418,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10 * 5.4,
                       height: AppDimensions.height10 * 5.4,
                       margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse purple.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          EdgeInsets.only(left: AppDimensions.height10 * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image:
+                                AssetImage('assets/images/Ellipse purple.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10 * 18.6,
@@ -430,7 +439,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: AppDimensions.height10 * 9.2,
+                            //width: AppDimensions.height10 * 9.2,
                             height: AppDimensions.height10 * 2.2,
                             child: Text(
                               'Count down',
@@ -448,15 +457,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.5),
+                                      top: AppDimensions.height10 * 0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.0,
-                                          fontWeight: FontWeight.w300,
+                                              AppDimensions.height10 * 1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -529,7 +538,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 41.8,
+                //  width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: BoxDecoration(
                     color:
@@ -543,12 +552,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10 * 5.4,
                       height: AppDimensions.height10 * 5.4,
                       margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse orange.png'),
-                        fit: BoxFit.contain,
-                      )),
+                          EdgeInsets.only(left: AppDimensions.height10 * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image:
+                                AssetImage('assets/images/Ellipse orange.png'),
+                            fit: BoxFit.contain,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10 * 18.6,
@@ -577,15 +591,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.5),
+                                      top: AppDimensions.height10 * 0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.0,
-                                          fontWeight: FontWeight.w300,
+                                              AppDimensions.height10 * 1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -658,7 +672,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 41.8,
+                //   width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: BoxDecoration(
                     color:
@@ -672,12 +686,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10 * 5.4,
                       height: AppDimensions.height10 * 5.4,
                       margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse 158.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          EdgeInsets.only(left: AppDimensions.height10 * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10 * 18.6,
@@ -706,15 +724,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.5),
+                                      top: AppDimensions.height10 * 0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.0,
-                                          fontWeight: FontWeight.w300,
+                                              AppDimensions.height10 * 1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -787,7 +805,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 41.8,
+                //  width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: BoxDecoration(
                     color:
@@ -801,12 +819,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10 * 5.4,
                       height: AppDimensions.height10 * 5.4,
                       margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse blue.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          EdgeInsets.only(left: AppDimensions.height10 * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/Ellipse blue.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10 * 18.6,
@@ -835,15 +857,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.5),
+                                      top: AppDimensions.height10 * 0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.0,
-                                          fontWeight: FontWeight.w300,
+                                              AppDimensions.height10 * 1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -916,7 +938,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 41.8,
+                //  width: AppDimensions.height10 * 41.8,
                 height: AppDimensions.height10 * 10.0,
                 decoration: const BoxDecoration(
                     color: Color(0xFF828282),
@@ -929,12 +951,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10 * 5.4,
                       height: AppDimensions.height10 * 5.4,
                       margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse 158.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          EdgeInsets.only(left: AppDimensions.height10 * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10 * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10 * 18.6,
@@ -963,15 +989,15 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.5),
+                                      top: AppDimensions.height10 * 0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.0,
-                                          fontWeight: FontWeight.w300,
+                                              AppDimensions.height10 * 1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -985,9 +1011,12 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         ? GestureDetector(
                             onTap: () => showDialog<String>(
                                 context: context,
-                                builder: (BuildContext context) => SizedBox(
+                                builder: (BuildContext context) => Container(
                                     width: AppDimensions.height10 * 27.0,
                                     height: AppDimensions.height10 * 18.2,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10 * 1.4)),
                                     child: delete_prac)),
                             child: Container(
                               width: AppDimensions.height10 * 1.4,
@@ -1042,30 +1071,36 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => CreatePractice()));
+                          builder: (context) => const CreatePractice()));
                 },
                 child: Container(
                   width: AppDimensions.height10 * 13.4,
                   height: AppDimensions.height10 * 13.4,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 5.0),
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10 * 5.0,
+                      bottom: AppDimensions.height10 * 38.9),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
                           width: AppDimensions.height10 * 0.3,
-                          color: Color(0xFFFFFFFF))),
+                          color: const Color(0xFFFFFFFF))),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: AppDimensions.height10 * 2.9,
-                      ),
-                      Text(
-                        'Add new\npractice',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            height: AppDimensions.height10 * 0.15,
-                            fontSize: AppDimensions.height10 * 1.8,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xFFFFFFFF)),
+                        // width: AppDimensions.height10 * 5.8,
+                        height: AppDimensions.height10 * 5.8,
+                        child: Center(
+                          child: Text(
+                            'Add new\npractice',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                height: AppDimensions.height10 * 0.15,
+                                fontSize: AppDimensions.height10 * 1.8,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFFFFFFFF)),
+                          ),
+                        ),
                       ),
                       Image.asset(
                         'assets/images/Addgoal.png',
@@ -1125,6 +1160,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     borderRadius: BorderRadius.circular(
                                         AppDimensions.height10 * 1.4)),
                                 child: AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10 * 1.4)),
                                   contentPadding: EdgeInsets.zero,
                                   actionsPadding: EdgeInsets.zero,
                                   titlePadding: EdgeInsets.zero,
@@ -1176,7 +1214,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           width: double.infinity,
                                           color: const Color(0xFF007AFF),
                                           child: TextButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
                                             child: Text(
                                               'No',
                                               style: TextStyle(
@@ -1357,10 +1397,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 // }
 
 AlertDialog delete_prac = AlertDialog(
+  shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
   contentPadding: EdgeInsets.zero,
   actionsPadding: EdgeInsets.zero,
   titlePadding: EdgeInsets.zero,
   title: Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
     margin: EdgeInsets.only(
         top: AppDimensions.height10 * 1.9,
         right: AppDimensions.height10 * 1.6,

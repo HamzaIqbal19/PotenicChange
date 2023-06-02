@@ -66,7 +66,7 @@ class _congratulationsState extends State<congratulations> {
               },
               child: Container(
                 width: AppDimensions.height10 * 35.5,
-                height: AppDimensions.height10 * 13.2,
+                //height: AppDimensions.height10 * 13.2,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 10.0),
                 child: RichText(
                     textAlign: TextAlign.center,
@@ -359,15 +359,15 @@ void goal_achieved_sheet(context) {
                       },
                       child: Container(
                         // width: AppDimensions.height10 * 35.5,
-                        height: AppDimensions.height10 * 3.4,
+                        //  height: AppDimensions.height10 * 3.4,
                         margin:
                             EdgeInsets.only(top: AppDimensions.height10 * 0.5),
                         child: Text(
                           'Goal level has gone down',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.8,
-                              letterSpacing: AppDimensions.height10 * 0.2,
+                              fontSize: AppDimensions.height10 * 3.0,
+                              // letterSpacing: AppDimensions.height10 * 0.2,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF437296)),
                         ),
@@ -382,7 +382,7 @@ void goal_achieved_sheet(context) {
                         'Based on your latest evaluation, your total goal\nscore level has gone down. Don’t despair yet.\n\nLife is a journey of ups and downs, and working on\nyourself is part of the transformation process.\nPlease review your latest assessment and adjust\nyour original ‘why’ reasons if needed.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF437296)),
                       ),
@@ -414,7 +414,7 @@ void goal_achieved_sheet(context) {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize: AppDimensions.height10 * 2.0,
-                                        height: AppDimensions.height10 * 0.12,
+                                        //  height: AppDimensions.height10 * 0.12,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xff5B74A6)),
                                   ),
@@ -422,6 +422,8 @@ void goal_achieved_sheet(context) {
                                 Container(
                                   //width: AppDimensions.height10 * 20.2,
                                   height: AppDimensions.height10 * 4.0,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10 * 0.3),
                                   child: Text(
                                     '“I am someone who is in\ncontrol of my anger”',
                                     textAlign: TextAlign.center,

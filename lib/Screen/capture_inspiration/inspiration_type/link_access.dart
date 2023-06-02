@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
 
 import '../../../utils/app_dimensions.dart';
+import '../capture_inpirations_goals.dart';
 
 class link_info extends StatefulWidget {
   const link_info({super.key});
@@ -71,16 +72,26 @@ class _link_infoState extends State<link_info> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: AppDimensions.height10 * 2.2,
-                    width: AppDimensions.height10 * 4.3,
-                    margin: EdgeInsets.only(left: AppDimensions.height10 * 4.0),
-                    child: Text(
-                      'Create',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.5,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff007AFF).withOpacity(0.4)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const note_info(
+                                  note_saved: true, type_switch: 2)));
+                    },
+                    child: Container(
+                      height: AppDimensions.height10 * 2.2,
+                      width: AppDimensions.height10 * 4.3,
+                      margin:
+                          EdgeInsets.only(left: AppDimensions.height10 * 4.0),
+                      child: Text(
+                        'Create',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.5,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xff007AFF).withOpacity(0.4)),
+                      ),
                     ),
                   )
                 ]),
@@ -183,7 +194,7 @@ class _link_infoState extends State<link_info> {
                                     child: Icon(
                                       Icons.delete,
                                       color: Colors.white,
-                                      size: AppDimensions.height10 * 2,
+                                      // size: AppDimensions.height10 * 1,
                                     ),
                                   )
                                 ],
@@ -375,8 +386,8 @@ class _link_infoState extends State<link_info> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const note_info(
-                                    note_saved: true, type_switch: 2)));
+                                builder: (context) =>
+                                    inspiraton_goals(data_saved: false)));
                       },
                       child: Container(
                         height: AppDimensions.height10 * 6.0,

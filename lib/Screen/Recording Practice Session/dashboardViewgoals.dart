@@ -3,8 +3,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:simple_tooltip/simple_tooltip.dart';
 //import 'package:super_tooltip/super_tooltip.dart';
+import 'package:flutter_showcaseview/flutter_showcaseview.dart';
 
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:dotted_border/dotted_border.dart';
@@ -492,9 +494,8 @@ class _dashBoardState extends State<dashBoard> {
                                           onTap: () {
                                             Navigator.push(
                                                 context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const congratulations()));
+                                                FadePageRoute(
+                                                    page: Potenic_tool_tip()));
                                           },
                                           child: Container(
                                             height:
@@ -601,6 +602,7 @@ class _dashBoardState extends State<dashBoard> {
                             Align(
                               alignment: const Alignment(-1, 0.4),
                               child: GestureDetector(
+                                onTap: () {},
                                 child: Container(
                                   height: AppDimensions.height10 * 13.8,
                                   width: AppDimensions.height10 * 13.8,
@@ -648,7 +650,8 @@ class _dashBoardState extends State<dashBoard> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => message_center()));
+                                      builder: (context) =>
+                                          const message_center()));
                             },
                             child: Image.asset(
                               "assets/images/Group.png",
@@ -721,7 +724,7 @@ class _dashBoardState extends State<dashBoard> {
                 ],
               ),
               OfflineBuilder(
-                  debounceDuration: Duration(milliseconds: 3),
+                  debounceDuration: const Duration(milliseconds: 3),
                   connectivityBuilder: (
                     BuildContext context,
                     ConnectivityResult connectivity,
@@ -755,7 +758,7 @@ class _dashBoardState extends State<dashBoard> {
                                 style: TextStyle(
                                     fontSize: AppDimensions.height10 * 1.4,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xFFFBFBFB)),
+                                    color: const Color(0xFFFBFBFB)),
                               ),
                             ),
                           ),
@@ -777,7 +780,7 @@ class _dashBoardState extends State<dashBoard> {
                                   child: Container(
                                     width: double.infinity,
                                     height: AppDimensions.height10 * 3.0,
-                                    color: Color(0xFFFE6624),
+                                    color: const Color(0xFFFE6624),
                                     child: Center(
                                       child: Text(
                                         'You’re Offline',
@@ -785,7 +788,7 @@ class _dashBoardState extends State<dashBoard> {
                                             fontSize:
                                                 AppDimensions.height10 * 1.4,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xFFFBFBFB)),
+                                            color: const Color(0xFFFBFBFB)),
                                       ),
                                     ),
                                   ),
@@ -803,18 +806,18 @@ class _dashBoardState extends State<dashBoard> {
                     children: [
                       Align(
                           alignment: goal_level == 2
-                              ? Alignment(-0.2, 0.1)
+                              ? const Alignment(-0.2, 0.1)
                               : goal_level == 3
-                                  ? Alignment(-0.2, -0.47)
+                                  ? const Alignment(-0.2, -0.47)
                                   : goal_level == 4
-                                      ? Alignment(0.07, -0.68)
+                                      ? const Alignment(0.07, -0.68)
                                       : goal_level == 5
-                                          ? Alignment(0.1, -0.85)
+                                          ? const Alignment(0.1, -0.85)
                                           : goal_level == 6
-                                              ? Alignment(0.25, -0.85)
+                                              ? const Alignment(0.25, -0.85)
                                               : goal_level == 1
-                                                  ? Alignment(0.1, -0.27)
-                                                  : Alignment(0.12, 0.37),
+                                                  ? const Alignment(0.1, -0.27)
+                                                  : const Alignment(0.12, 0.37),
                           child: SimpleTooltip(
                             //customShadows: [],
                             //  maxHeight: AppDimensions.height10 * 23.9,
@@ -829,7 +832,7 @@ class _dashBoardState extends State<dashBoard> {
                             arrowTipDistance: 5,
                             minimumOutSidePadding: 0,
                             // targetCenter: goal_level == 2 ? null : null,
-                            ballonPadding: EdgeInsets.all(0),
+                            ballonPadding: const EdgeInsets.all(0),
                             arrowLength: AppDimensions.height10 * 0.6,
                             borderColor: Colors.transparent,
                             // content: null,
@@ -844,7 +847,7 @@ class _dashBoardState extends State<dashBoard> {
                             //   if (goal_level > 7) {}
                             // },
 
-                            animationDuration: Duration(milliseconds: 3),
+                            animationDuration: const Duration(milliseconds: 3),
                             content: Container(
                               width: AppDimensions.height10 * 30.6,
                               height: goal_level == 1
@@ -892,7 +895,7 @@ class _dashBoardState extends State<dashBoard> {
                                       style: TextStyle(
                                         decoration: TextDecoration.none,
                                         fontFamily: 'Laila',
-                                        color: Color(0xFF000000),
+                                        color: const Color(0xFF000000),
                                         fontSize: AppDimensions.height10 * 1.6,
                                         fontWeight: FontWeight.w700,
                                       ),
@@ -926,7 +929,7 @@ class _dashBoardState extends State<dashBoard> {
                                         text: TextSpan(
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
-                                                color: Color(0xFF464646),
+                                                color: const Color(0xFF464646),
                                                 decoration: TextDecoration.none,
                                                 fontFamily: 'Laila',
                                                 fontSize:
@@ -964,7 +967,7 @@ class _dashBoardState extends State<dashBoard> {
                                                                           6
                                                                       ? 'calender '
                                                                       : ' helpful\nreminders ',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.w700)),
                                           TextSpan(
                                               text: goal_level == 1
@@ -996,7 +999,7 @@ class _dashBoardState extends State<dashBoard> {
                                                                           6
                                                                       ? 'past '
                                                                       : 'messages. ',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.w700)),
                                           TextSpan(
                                               text: goal_level == 1
@@ -1028,7 +1031,7 @@ class _dashBoardState extends State<dashBoard> {
                                                                           6
                                                                       ? ' future schedule '
                                                                       : 'stay focused.',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.w700)),
                                           TextSpan(
                                               text: goal_level == 1
@@ -1060,7 +1063,7 @@ class _dashBoardState extends State<dashBoard> {
                                                                           6
                                                                       ? ''
                                                                       : '',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.w700)),
                                           TextSpan(
                                               text: goal_level == 1
@@ -1104,7 +1107,8 @@ class _dashBoardState extends State<dashBoard> {
                                                     width:
                                                         AppDimensions.height10 *
                                                             0.1,
-                                                    color: Color(0xFFFBFBFB))),
+                                                    color: const Color(
+                                                        0xFFFBFBFB))),
                                             width:
                                                 AppDimensions.height10 * 9.60,
                                             height:
@@ -1120,7 +1124,8 @@ class _dashBoardState extends State<dashBoard> {
                                                     fontSize:
                                                         AppDimensions.height10 *
                                                             1.6,
-                                                    color: Color(0xFF8C648A),
+                                                    color:
+                                                        const Color(0xFF8C648A),
                                                     fontWeight:
                                                         FontWeight.w700),
                                               ),
@@ -1146,7 +1151,7 @@ class _dashBoardState extends State<dashBoard> {
                                                     BorderRadius.circular(
                                                         AppDimensions.height10 *
                                                             5.0),
-                                                color: Color(0xFF5A4D73)),
+                                                color: const Color(0xFF5A4D73)),
                                             child: Center(
                                               child: Text(
                                                 goal_level == 2
@@ -1174,7 +1179,8 @@ class _dashBoardState extends State<dashBoard> {
                                                     fontSize:
                                                         AppDimensions.height10 *
                                                             1.6,
-                                                    color: Color(0xFFFFFFFF),
+                                                    color:
+                                                        const Color(0xFFFFFFFF),
                                                     fontWeight:
                                                         FontWeight.w600),
                                               ),
@@ -1194,6 +1200,27 @@ class _dashBoardState extends State<dashBoard> {
             ]),
           ),
         ));
+  }
+}
+
+class Potenic_tool_tip extends StatelessWidget {
+  const Potenic_tool_tip({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      color: Colors.amber,
+      child: Center(
+        child: Container(
+          width: AppDimensions.height10 * 30.6,
+          height: AppDimensions.height10 * 23.9,
+          color: Colors.black,
+          child: Image.asset('assets/images/Right.png'),
+        ),
+      ),
+    );
   }
 }
 
@@ -1620,8 +1647,8 @@ class _dashBoardState extends State<dashBoard> {
 
 
 
-// // 
-//     child: JustTheTooltip(
+// 
+    // child: JustTheTooltip(
 //                           margin: EdgeInsets.only(
 //                               left: AppDimensions.height10 * 5.0),
 //                           onDismiss: () {
@@ -2003,3 +2030,4 @@ class _dashBoardState extends State<dashBoard> {
 //                             ),
 //                           ),
 //                         )),
+

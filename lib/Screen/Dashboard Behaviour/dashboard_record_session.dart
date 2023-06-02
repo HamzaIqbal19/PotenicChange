@@ -29,7 +29,7 @@ class record_session extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/Mask Group.png'),
+            image: AssetImage('assets/images/prac_assesment.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -74,8 +74,8 @@ class record_session extends StatelessWidget {
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/image3.png'),
+                                    image: AssetImage(
+                                        'assets/images/orange_moon.png'),
                                     colorFilter: ColorFilter.mode(
                                         Color.fromRGBO(0, 0, 0, 0.5),
                                         BlendMode.dstATop),

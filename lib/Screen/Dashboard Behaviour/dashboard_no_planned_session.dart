@@ -111,15 +111,19 @@ class no_planned_session extends StatelessWidget {
                                               fontSize:
                                                   AppDimensions.height10 * 1.2,
                                               fontWeight: FontWeight.w600,
+                                              color: Color(0xFFFBFBFB)),
+                                        ),
+                                        Text(
+                                          '02.06',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.4,
+                                              fontWeight: FontWeight.w400,
                                               color: Colors.white),
                                         ),
-                                        const Text(
-                                          '02.06',
-                                          style: TextStyle(color: Colors.white),
-                                        ),
                                         Container(
-                                          height: AppDimensions.height10 * 2.7,
-                                          width: AppDimensions.height10 * 2.7,
+                                          height: AppDimensions.height10 * 2.5,
+                                          width: AppDimensions.height10 * 2.5,
                                           margin: EdgeInsets.only(
                                               top: AppDimensions.height10 *
                                                   0.332),
@@ -128,7 +132,7 @@ class no_planned_session extends StatelessWidget {
                                             border: Border.all(
                                                 width: AppDimensions.height10 *
                                                     0.1,
-                                                color: Colors.white),
+                                                color: Color(0xFFFBFBFB)),
                                           ),
                                           child: Container(
                                               width:
@@ -187,65 +191,72 @@ class no_planned_session extends StatelessWidget {
                                           border: Border.all(
                                               width: 3, color: Colors.white),
                                           color: Colors.transparent),
-                                      child: Stack(children: [
-                                        Align(
-                                          alignment: const Alignment(0, 0),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'TUE',
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.4,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.white),
-                                              ),
-                                              Text(
-                                                '02.07',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.3,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              Container(
-                                                  height:
-                                                      AppDimensions.height10 *
-                                                          2.5,
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          2.5,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    shape: BoxShape.circle,
+                                      child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            Align(
+                                              alignment: const Alignment(0, 0),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'TUE',
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            1.2,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white),
                                                   ),
-                                                  child: DottedBorder(
-                                                    borderType:
-                                                        BorderType.Circle,
-                                                    color: Colors.white,
-                                                    child: Center(
-                                                      child: Text(
-                                                        '0/0',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10 *
-                                                                1.0,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color:
-                                                                Colors.white),
+                                                  Text(
+                                                    '02.07',
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            1.4,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                  Container(
+                                                      height:
+                                                          AppDimensions
+                                                                  .height10 *
+                                                              2.5,
+                                                      width:
+                                                          AppDimensions
+                                                                  .height10 *
+                                                              2.5,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
                                                       ),
-                                                    ),
-                                                  )),
-                                            ],
-                                          ),
-                                        ),
-                                      ]),
+                                                      child: DottedBorder(
+                                                        borderType:
+                                                            BorderType.Circle,
+                                                        color: Colors.white,
+                                                        child: Center(
+                                                          child: Text(
+                                                            '0/0',
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
+                                                      )),
+                                                ],
+                                              ),
+                                            ),
+                                          ]),
                                     ),
                                   ),
                                 ),
@@ -277,13 +288,17 @@ class no_planned_session extends StatelessWidget {
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white),
                                         ),
-                                        const Text(
+                                        Text(
                                           '03.07',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.4,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
                                         ),
                                         Container(
-                                          height: AppDimensions.height10 * 2.7,
-                                          width: AppDimensions.height10 * 2.7,
+                                          height: AppDimensions.height10 * 2.5,
+                                          width: AppDimensions.height10 * 2.5,
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             border: Border.all(
@@ -304,7 +319,7 @@ class no_planned_session extends StatelessWidget {
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10 *
-                                                          0.10,
+                                                          1.0,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: Colors.white),

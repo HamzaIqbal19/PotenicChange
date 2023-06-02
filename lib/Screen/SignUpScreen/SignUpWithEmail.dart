@@ -169,10 +169,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.white, width: 2),
-                            borderRadius:
-                                 BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(AppDimensions.height10 * 1.8))),
                         child: TextFormField(
-                            decoration:  InputDecoration(
+                            decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
                                     bottom: 15.0,
@@ -184,7 +184,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                 hintStyle: TextStyle(
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.height10*1.8,
+                                  fontSize: AppDimensions.height10 * 1.8,
                                 ),
                                 labelText: "Name",
                                 focusedBorder: const OutlineInputBorder(
@@ -214,11 +214,11 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.white, width: 2),
-                            borderRadius:
-                                 BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(AppDimensions.height10 * 1.8))),
                         child: TextFormField(
-                            decoration:  InputDecoration(
-                                contentPadding:const EdgeInsets.only(
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.only(
                                     top: 5.0,
                                     bottom: 15.0,
                                     left: 10.0,
@@ -226,17 +226,16 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always,
                                 hintText: "abc@gmail.com",
-
                                 hintStyle: TextStyle(
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.height10*1.8,
+                                  fontSize: AppDimensions.height10 * 1.8,
                                 ),
                                 labelText: "Email",
                                 focusedBorder: const OutlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Colors.transparent)),
-                                enabledBorder:const OutlineInputBorder(
+                                enabledBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: Colors.transparent)))),
                       ),
@@ -259,33 +258,49 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(color: Colors.white, width: 0),
-                            borderRadius:
-                                 BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
-                        child: TextFormField(
-                            obscureText: true,
-                            textAlign: TextAlign.justify,
-                            decoration:  InputDecoration(
-                                contentPadding:const EdgeInsets.only(
-                                    top: 5.0,
-                                    bottom: 15.0,
-                                    left: 10.0,
-                                    right: 10.0),
-                                alignLabelWithHint: true,
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
-                                hintText: "********",
-                                hintStyle: TextStyle(
-                                  color: const Color(0xFF8C648A),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.height10*1.8,
-                                ),
-                                labelText: "Password",
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                enabledBorder:const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.transparent)))),
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(AppDimensions.height10 * 1.8))),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: AppDimensions.screenWidth - 135,
+                              child: TextFormField(
+                                  obscureText: true,
+                                  textAlign: TextAlign.justify,
+                                  decoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.only(
+                                          top: 5.0,
+                                          bottom: 15.0,
+                                          left: 10.0,
+                                          right: 10.0),
+                                      alignLabelWithHint: true,
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                      hintText: "********",
+                                      hintStyle: TextStyle(
+                                        color: const Color(0xFF8C648A),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: AppDimensions.height10 * 1.8,
+                                      ),
+                                      labelText: "Password",
+                                      focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent)),
+                                      enabledBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent)))),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  bottom: AppDimensions.height10 * 1.0),
+                              child: Image.asset(
+                                'assets/images/ic_remove_red_eye.png',
+                                height: AppDimensions.height10 * 2.4,
+                                width: AppDimensions.height10 * 2.4,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                       Container(
                         child: Text(
@@ -309,8 +324,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                 checkColor: Colors.black,
                                 activeColor: Colors.white,
                                 side: BorderSide(color: Color(0xffffffff)),
-
-
                                 value: rememberMe,
                                 onChanged: (bool? value) {
                                   setState(() {
@@ -319,61 +332,60 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                 },
                               ),
                               Container(
-
-                                child:  Text.rich(
-                                  TextSpan(
-                                    text: 'By signing up, you agree to Potenic’s \n ',
-                                    style: TextStyle(
-                                          color: const Color(0xFFFFFFFF),
-                                          fontSize: AppDimensions.height10 *1.4,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                    children: <TextSpan>[
-                                       TextSpan(
-                                          text: 'User Agreement',
-                                          style: TextStyle(
-                                            decoration: TextDecoration.underline,
-                                            color: const Color(0xFFFFFFFF),
-                                            fontSize: AppDimensions.height10 *1.4,
-                                            fontWeight: FontWeight.w600,
-                                          )),
-                                      // can add more TextSpans here...
-
-
-                                     TextSpan(
-                                        text: ' and ',
+                                  child: Text.rich(
+                                TextSpan(
+                                  text:
+                                      'By signing up, you agree to Potenic’s \n ',
+                                  style: TextStyle(
+                                    color: const Color(0xFFFFFFFF),
+                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                        text: 'User Agreement',
                                         style: TextStyle(
+                                          decoration: TextDecoration.underline,
                                           color: const Color(0xFFFFFFFF),
-                                          fontSize: AppDimensions.height10 *1.4,
+                                          fontSize:
+                                              AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w600,
                                         )),
                                     // can add more TextSpans here...
 
-                                     TextSpan(
+                                    TextSpan(
+                                        text: ' and ',
+                                        style: TextStyle(
+                                          color: const Color(0xFFFFFFFF),
+                                          fontSize:
+                                              AppDimensions.height10 * 1.4,
+                                          fontWeight: FontWeight.w600,
+                                        )),
+                                    // can add more TextSpans here...
+
+                                    TextSpan(
                                         text: 'Privacy Policy',
                                         style: TextStyle(
                                           decoration: TextDecoration.underline,
                                           color: const Color(0xFFFFFFFF),
-                                          fontSize: AppDimensions.height10 *1.4,
+                                          fontSize:
+                                              AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w600,
                                         )),
                                     // can add more TextSpans here...
                                   ],
+                                ),
+                              )
+
+                                  // Text(
+                                  //   "By signing up, you agree to Potenic’s \n User Agreement and Privacy Policy.",
+                                  //   style: TextStyle(
+                                  //     color: const Color(0xFFFFFFFF),
+                                  //     fontSize: AppDimensions.font16 - 4,
+                                  //     fontWeight: FontWeight.w600,
+                                  //   ),
+                                  // ),
                                   ),
-
-
-                                )
-
-
-                                // Text(
-                                //   "By signing up, you agree to Potenic’s \n User Agreement and Privacy Policy.",
-                                //   style: TextStyle(
-                                //     color: const Color(0xFFFFFFFF),
-                                //     fontSize: AppDimensions.font16 - 4,
-                                //     fontWeight: FontWeight.w600,
-                                //   ),
-                                // ),
-                              ),
                             ],
                           ))
 
@@ -414,7 +426,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       'Sign up',
                       style: TextStyle(
                         color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10 *1.6,
+                        fontSize: AppDimensions.height10 * 1.6,
                         fontWeight: FontWeight.w700,
                       ),
                     )),
@@ -425,9 +437,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
               // child:  Text("Hello background"),
             ),
           ],
-        )
-
-
-        );
+        ));
   }
 }

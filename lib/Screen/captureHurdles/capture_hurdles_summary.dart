@@ -370,12 +370,12 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10 * 1.2),
                             padding:
-                                EdgeInsets.all(AppDimensions.height10 * 0.5),
+                                EdgeInsets.all(AppDimensions.height10 * 0.6),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.transparent,
                                 border:
-                                    Border.all(width: 1, color: Colors.white)),
+                                    Border.all(width: 2, color: Colors.white)),
                             child: const ImageIcon(
                               AssetImage('assets/images/edit_icon.png'),
                               color: Colors.white,
@@ -395,8 +395,6 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                           Container(
                               height: AppDimensions.height10 * 5.0,
                               width: AppDimensions.height10 * 15.7,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 2.4),
                               decoration: BoxDecoration(
                                 color: const Color(0xff464646),
                                 borderRadius: BorderRadius.circular(

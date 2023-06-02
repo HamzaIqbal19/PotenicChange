@@ -116,7 +116,7 @@ class _veiw_detailsState extends State<veiw_details> {
                     'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        height: 1.5,
+                        height: AppDimensions.height10 * 0.12,
                         fontSize: AppDimensions.height10 * 2.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFFFFFFFF)),
@@ -148,11 +148,11 @@ class _veiw_detailsState extends State<veiw_details> {
             scrollDirection: Axis.vertical,
             //reverse: true,
             child: Container(
-              height: widget.type_switch == 3
-                  ? AppDimensions.height10 * 69.2
-                  : widget.type_switch == 1
-                      ? AppDimensions.height10 * 38.465
-                      : AppDimensions.height10 * 60.2,
+              // height: widget.type_switch == 3
+              //     ? AppDimensions.height10 * 70.2
+              //     : widget.type_switch == 1
+              //         ? AppDimensions.height10 * 38.465
+              //         : AppDimensions.height10 * 60.2,
               child: Column(
                 children: [
                   Container(
@@ -421,7 +421,7 @@ class _veiw_detailsState extends State<veiw_details> {
                       height: AppDimensions.height10 * 6.0,
                       width: AppDimensions.height10 * 37.5,
                       margin: EdgeInsets.only(
-                          // bottom: AppDimensions.height10 * 1.0,
+                          bottom: AppDimensions.height10 * 1.0,
                           left: AppDimensions.height10 * 2.2,
                           right: AppDimensions.height10 * 1.7,
                           top: AppDimensions.height10 * 0.5),
@@ -437,7 +437,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             width: AppDimensions.height10 * 23.9,
                             height: AppDimensions.height10 * 2.2,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.99),
+                              left: AppDimensions.height10 * 1.99,
+                            ),
                             child: GestureDetector(
                                 onTap: () {},
                                 child: Text(
