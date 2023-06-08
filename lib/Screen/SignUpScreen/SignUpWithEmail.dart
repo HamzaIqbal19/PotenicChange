@@ -6,6 +6,8 @@ import 'package:potenic_app/utils/app_colors.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/fading.dart';
+
 class SignUpWithEmail extends StatefulWidget {
   @override
   _SignUpWithEmailState createState() => _SignUpWithEmailState();
@@ -48,11 +50,13 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
   }
 
   @override
+  bool pass_obscure = true;
   Widget build(BuildContext context) {
     // return WillPopScope(
     //     onWillPop: () async => false,
     // =>
     // SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
@@ -91,8 +95,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                        FadePageRoute(
+                          page: const HomeScreen(
+                            log_status: false,
+                          ),
                         ),
                       );
                       // Add code for performing close action
@@ -172,10 +178,15 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             borderRadius: BorderRadius.all(
                                 Radius.circular(AppDimensions.height10 * 1.8))),
                         child: TextFormField(
+                            style: TextStyle(
+                                color: const Color(0xFF8C648A),
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.none,
+                                fontSize: AppDimensions.height10 * 1.8),
                             decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
-                                    bottom: 15.0,
+                                    //bottom: 15.0,
                                     left: 10.0,
                                     right: 10.0),
                                 floatingLabelBehavior:
@@ -217,10 +228,15 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             borderRadius: BorderRadius.all(
                                 Radius.circular(AppDimensions.height10 * 1.8))),
                         child: TextFormField(
+                            style: TextStyle(
+                                color: const Color(0xFF8C648A),
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.none,
+                                fontSize: AppDimensions.height10 * 1.8),
                             decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
-                                    bottom: 15.0,
+                                    //bottom: 15.0,
                                     left: 10.0,
                                     right: 10.0),
                                 floatingLabelBehavior:
@@ -265,12 +281,17 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             Container(
                               width: AppDimensions.screenWidth - 135,
                               child: TextFormField(
-                                  obscureText: true,
+                                  obscureText: pass_obscure,
                                   textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.none,
+                                      fontSize: AppDimensions.height10 * 1.8),
                                   decoration: InputDecoration(
                                       contentPadding: const EdgeInsets.only(
                                           top: 5.0,
-                                          bottom: 15.0,
+                                          //bottom: 15.0,
                                           left: 10.0,
                                           right: 10.0),
                                       alignLabelWithHint: true,
@@ -290,13 +311,29 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                           borderSide: BorderSide(
                                               color: Colors.transparent)))),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10 * 1.0),
-                              child: Image.asset(
-                                'assets/images/ic_remove_red_eye.png',
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  if (pass_obscure == true) {
+                                    pass_obscure = false;
+                                  } else {
+                                    pass_obscure = true;
+                                  }
+                                });
+                              },
+                              child: Container(
                                 height: AppDimensions.height10 * 2.4,
                                 width: AppDimensions.height10 * 2.4,
+                                margin: EdgeInsets.only(
+                                    bottom: AppDimensions.height10 * 1.0),
+                                child: Image.asset(
+                                  pass_obscure
+                                      ? 'assets/images/ic_remove_red_eye.png'
+                                      : 'assets/images/visible-icon-9.png',
+                                  color: const Color(0xFF8C648A),
+                                  height: AppDimensions.height10 * 2.4,
+                                  width: AppDimensions.height10 * 2.4,
+                                ),
                               ),
                             )
                           ],
@@ -323,7 +360,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                               Checkbox(
                                 checkColor: Colors.black,
                                 activeColor: Colors.white,
-                                side: BorderSide(color: Color(0xffffffff)),
+                                side:
+                                    const BorderSide(color: Color(0xffffffff)),
                                 value: rememberMe,
                                 onChanged: (bool? value) {
                                   setState(() {
@@ -411,8 +449,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpSuccessful(),
+                        FadePageRoute(
+                          page: SignUpSuccessful(),
                         ),
                       );
                     },

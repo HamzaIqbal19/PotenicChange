@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart'
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class summary_hurdles extends StatefulWidget {
@@ -239,8 +240,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => felling_hurdles()),
+                      FadePageRoute(page: const felling_hurdles()),
                     );
                   },
                   child: Container(
@@ -431,6 +431,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                               : Container(
                                   height: AppDimensions.height10 * 5.0,
                                   width: AppDimensions.height10 * 19.7,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10 * 2.4),
                                   decoration: BoxDecoration(
                                     gradient: const LinearGradient(
                                       begin: Alignment.topCenter,
@@ -447,9 +449,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                       onPressed: () {
                                         Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const landing_hurdles()));
+                                            FadePageRoute(
+                                                page: const landing_hurdles()));
                                       },
                                       child: Text(
                                         'Finish & exit',

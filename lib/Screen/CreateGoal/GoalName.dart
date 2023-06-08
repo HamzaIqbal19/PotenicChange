@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
@@ -7,6 +6,8 @@ import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dar
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+
+import '../../Widgets/fading.dart';
 
 class GoalName extends StatefulWidget {
   const GoalName({Key? key}) : super(key: key);
@@ -39,11 +40,10 @@ class _GoalNameState extends State<GoalName> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => Categories(),
+                    FadePageRoute(
+                      page: const Categories(),
                     ),
                   );
                   // Add code for performing close action
@@ -60,19 +60,23 @@ class _GoalNameState extends State<GoalName> {
                     height: AppDimensions.height10 * 3.0,
                     fit: BoxFit.contain,
                   ),
-                  onPressed: ()=>showDialog<String>(
+                  onPressed: () => showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => Container(
-                      width: AppDimensions.height10*27.0,
-                      height: AppDimensions.height10*21.0,
+                      width: AppDimensions.height10 * 27.0,
+                      height: AppDimensions.height10 * 21.0,
                       child: AlertDialog(
                         contentPadding: EdgeInsets.zero,
                         actionsPadding: EdgeInsets.zero,
                         titlePadding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10 * 1.4)),
                         title: Container(
-                          margin: EdgeInsets.only(top: 19, right: 16, left: 16, bottom: 2),
-                          height: AppDimensions.height10*2.2,
-                          width: AppDimensions.height10*23.8,
+                          margin: EdgeInsets.only(
+                              top: 19, right: 16, left: 16, bottom: 2),
+                          // height: AppDimensions.height10 * 2.2,
+                          width: AppDimensions.height10 * 23.8,
                           child: const Text(
                             "Exit onboarding?",
                             textAlign: TextAlign.center,
@@ -83,7 +87,8 @@ class _GoalNameState extends State<GoalName> {
                           ),
                         ),
                         content: Container(
-                          margin: EdgeInsets.only(bottom: 19, left: 16, right: 16),
+                          margin: EdgeInsets.only(
+                              bottom: 19, left: 16, right: 16, top: 2),
                           height: 32,
                           width: 238,
                           child: const Text(
@@ -95,17 +100,16 @@ class _GoalNameState extends State<GoalName> {
                             ),
                           ),
                         ),
-
                         actions: <Widget>[
                           Column(
                             children: [
-                              FDottedLine(
-                               color: const Color(0xFF3C3C43).withOpacity(0.29),
-                               width: double.infinity,
-                               strokeWidth: 2.0,
-                               dottedLength: 10.0,
-                               space: 0.7,
-                             ),
+                              SizedBox(
+                                height: AppDimensions.height10 * 0.1,
+                                child: Divider(
+                                  color:
+                                      const Color(0XFF3C3C43).withOpacity(0.29),
+                                ),
+                              ),
                               Container(
                                 height: 42,
                                 width: double.infinity,
@@ -115,7 +119,10 @@ class _GoalNameState extends State<GoalName> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => HomeScreenProgressSaved(),
+                                        builder: (context) =>
+                                            HomeScreenProgressSaved(
+                                          log_status: true,
+                                        ),
                                       ),
                                     );
                                   },
@@ -129,12 +136,12 @@ class _GoalNameState extends State<GoalName> {
                                   ),
                                 ),
                               ),
-                              FDottedLine(
-                                color: const Color(0xFF3C3C43).withOpacity(0.29),
-                                width: double.infinity,
-                                strokeWidth: 2.0,
-                                dottedLength: 10.0,
-                                space: 0.7,
+                              SizedBox(
+                                height: AppDimensions.height10 * 0.1,
+                                child: Divider(
+                                  color:
+                                      const Color(0XFF3C3C43).withOpacity(0.29),
+                                ),
                               ),
                               Container(
                                 height: 44,
@@ -143,33 +150,33 @@ class _GoalNameState extends State<GoalName> {
                                   onPressed: () {
                                     Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) => HomeScreen(),
+                                      FadePageRoute(
+                                        page: const HomeScreen(
+                                          log_status: true,
+                                        ),
                                       ),
                                     );
                                   },
-                                  child:  const Text(
+                                  child: const Text(
                                     'Exit & delete progress',
                                     style: TextStyle(
-                                      fontSize: 17,
-                                      fontFamily: "Laila",
-                                      fontWeight: FontWeight.w400,
-                                      color:  Color(0xFF007AFF)
-                                    ),
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xFF007AFF)),
                                   ),
                                 ),
                               ),
-                              FDottedLine(
-                                color: const Color(0xFF3C3C43).withOpacity(0.29),
-                                width: double.infinity,
-                                strokeWidth: 2.0,
-                                dottedLength: 10.0,
-                                space: 0.7,
+                              SizedBox(
+                                height: AppDimensions.height10 * 0.1,
+                                child: Divider(
+                                  color:
+                                      const Color(0XFF3C3C43).withOpacity(0.29),
+                                ),
                               ),
                               Container(
                                 height: 42,
-                                width: double.infinity,
-                                color: Colors.white,
+                                width: AppDimensions.height10 * 27.0,
                                 child: TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
@@ -184,16 +191,13 @@ class _GoalNameState extends State<GoalName> {
                                   ),
                                 ),
                               ),
-
-
                             ],
                           ),
                         ],
                       ),
                     ),
                   ),
-                    // Add code for performing close action
-
+                  // Add code for performing close action
                 ),
               ),
             ],
@@ -245,11 +249,10 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10 * 1.9,
                 ),
                 Container(
-                  // color: Colors.blue,
+                    // color: Colors.blue,
                     width: AppDimensions.height10 * 10.4,
                     height: AppDimensions.height10 * 7.6,
                     padding: EdgeInsets.only(
-
                         left: AppDimensions.height10 * 1.5,
                         right: AppDimensions.height10 * 1.5),
                     child: Image.asset(
@@ -275,7 +278,7 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10 * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 7.5,
+                  height: AppDimensions.height10 * 2.2,
                   width: AppDimensions.height10 * 24.4,
                   child: Center(
                     child: Text(
@@ -291,37 +294,52 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10 * 3.4,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 10.5,
-                  width: AppDimensions.height10*36.0,
-                  padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8, left: AppDimensions.height10*0.0,right: AppDimensions.height10*0.0),
+                  // height: AppDimensions.height10 * 10.5,
+                  width: AppDimensions.height10 * 36.0,
+                  // padding: EdgeInsets.only(
+                  //     //  top: AppDimensions.height10 * 2,
+                  //     // bottom: AppDimensions.height10 * 4.8,
+                  //     left: AppDimensions.height10 * 0.0,
+                  //     right: AppDimensions.height10 * 0.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
-                      borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(AppDimensions.height10 * 1.8))),
                   child: TextFormField(
-                      decoration:  InputDecoration(
+                      // maxLength: 50,
+                      maxLines: null,
+                      minLines: null,
 
+                      // expands: true,
+                      // style: TextStyle(
+                      //     fontSize: AppDimensions.height10 * 2.4,
+                      //     fontWeight: FontWeight.w500,
+                      //     color: const Color(0xFFFA9934)),
+                      decoration: InputDecoration(
                           hintText: "Control my anger",
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10 * 2.4,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFFFA9934)),
-
                           focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.transparent)),
+                              borderSide:
+                                  BorderSide(color: Colors.transparent)),
                           enabledBorder: const OutlineInputBorder(
                               borderSide:
-                              BorderSide(color: Colors.transparent)))),
+                                  BorderSide(color: Colors.transparent)))),
                 ),
                 SizedBox(
                   height: AppDimensions.height10 * 0.5,
                 ),
                 Container(
                   // width: AppDimensions.height10*12.3,
-                  width:  AppDimensions.height10 * 34.7,
-                  margin: EdgeInsets.only(right:AppDimensions.height10*1.3),
+                  width: AppDimensions.height10 * 34.7,
+                  margin: EdgeInsets.only(right: AppDimensions.height10 * 1.3),
 
-                  padding: EdgeInsets.only(left:AppDimensions.height10*0.1,right:AppDimensions.height10*20.1 ),
+                  padding: EdgeInsets.only(
+                      left: AppDimensions.height10 * 0.1,
+                      right: AppDimensions.height10 * 20.1),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -354,9 +372,8 @@ class _GoalNameState extends State<GoalName> {
                 ),
                 Container(
                   height: AppDimensions.height10 * 4.2,
-                  width:  AppDimensions.height10 * 34.7,
-
-                  margin: EdgeInsets.only(right:AppDimensions.height10*1.3),
+                  width: AppDimensions.height10 * 34.7,
+                  margin: EdgeInsets.only(right: AppDimensions.height10 * 1.3),
                   child: Center(
                     child: Text(
                       "You can change the name of your practice later by going into your Dashboard.  ",
@@ -368,60 +385,55 @@ class _GoalNameState extends State<GoalName> {
                     ),
                   ),
                 ),
-
-
-                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
-                  height: AppDimensions.height10 * 26.3,
-                ):SizedBox(
-                  height: AppDimensions.height10 * 9.6,
-                ),
-
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10 * 26.3,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10 * 9.6,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-
                     Container(
-                      // color: Colors.blue,
+                        // color: Colors.blue,
                         width: AppDimensions.height10 * 5.0,
                         height: AppDimensions.height10 * 5.0,
-
                         child: GestureDetector(
-                          onTap: (){
-                            signupSheet(context,"Sign up / login","login");
+                          onTap: () {
+                            signupSheet(context, "Sign up / login", "login");
                           },
                           child: Image.asset(
                             "assets/images/Moreactions.png",
                             fit: BoxFit.contain,
                           ),
                         )),
-
                     GestureDetector(
-
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => GoalWhy(),
+                          FadePageRoute(
+                            page: GoalWhy(),
                           ),
                         );
                       },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*31.3,
-                        decoration:  BoxDecoration(
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 31.3,
+                        decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        child:  Center(
-                          child:  Text(
+                        child: Center(
+                          child: Text(
                             "Next",
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
@@ -432,20 +444,17 @@ class _GoalNameState extends State<GoalName> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.5,
                 ),
-
-              Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           )
-
         ],
       ),
-
-
     );
   }
 }

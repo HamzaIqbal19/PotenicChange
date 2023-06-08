@@ -4,6 +4,8 @@ import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
+
 class StarReview extends StatefulWidget {
   const StarReview({Key? key}) : super(key: key);
 
@@ -23,9 +25,9 @@ class _StarReviewState extends State<StarReview> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          "Review goal details",
+          "Review",
           style: TextStyle(
-              color: Color(0xFF5B74A6),
+              color: const Color(0xFF5B74A6),
               fontWeight: FontWeight.w600,
               fontSize: AppDimensions.height10 * 2.0),
         ),
@@ -65,18 +67,20 @@ class _StarReviewState extends State<StarReview> {
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 SizedBox(
-                  height: AppDimensions.height10 * 9.2,
+                  height: AppDimensions.height10 * 9.7,
                 ),
                 Container(
                     width: AppDimensions.height10 * 10.4,
                     height: AppDimensions.height10 * 11.2,
-                    padding: EdgeInsets.only(
-                        left: AppDimensions.height10 * 1.5,
-                        right: AppDimensions.height10 * 1.5),
+                    decoration: const BoxDecoration(
+                        color: Colors.transparent, shape: BoxShape.circle),
+                    // padding: EdgeInsets.only(
+                    //     left: AppDimensions.height10 * 1.5,
+                    //     right: AppDimensions.height10 * 1.5),
                     child: Image.asset(
                       "assets/images/image3.png",
                       fit: BoxFit.contain,
@@ -90,7 +94,7 @@ class _StarReviewState extends State<StarReview> {
                       "Star Details",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF437296),
+                        color: const Color(0xFF437296),
                         fontSize: AppDimensions.height10 * 3.0,
                       ),
                     ),
@@ -287,9 +291,8 @@ class _StarReviewState extends State<StarReview> {
                                       onTap: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                StarReviewWhy(),
+                                          FadePageRoute(
+                                            page: const StarReviewWhy(),
                                           ),
                                         );
                                       },
@@ -335,7 +338,7 @@ class _StarReviewState extends State<StarReview> {
                                   height: AppDimensions.height10 * 2.3,
                                 ),
                                 inner_text('Reason 1',
-                                    "I want to achieve this goal to be in control of my\n anger and to regain control of my life."),
+                                    "I want to achieve this goal to be in control\nof my anger and to regain control of my\nlife."),
                                 SizedBox(
                                   height: AppDimensions.height10 * 1.0,
                                 ),
@@ -360,7 +363,7 @@ class _StarReviewState extends State<StarReview> {
                 ),
                 Container(
                     width: AppDimensions.height10 * 38.2,
-                    height: AppDimensions.height10 * 24.4,
+                    height: AppDimensions.height10 * 25.4,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(
@@ -442,7 +445,7 @@ class _StarReviewState extends State<StarReview> {
                                   height: AppDimensions.height10 * 2.3,
                                 ),
                                 inner_text('Statement 1',
-                                    "I am someone who is in control of my anger"),
+                                    "I am someone who is in control of my\nanger"),
                                 SizedBox(
                                   height: AppDimensions.height10 * 1.0,
                                 ),
@@ -460,7 +463,7 @@ class _StarReviewState extends State<StarReview> {
                 ),
                 Container(
                     width: AppDimensions.height10 * 38.2,
-                    height: AppDimensions.height10 * 24.4,
+                    height: AppDimensions.height10 * 25.4,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(
@@ -541,7 +544,7 @@ class _StarReviewState extends State<StarReview> {
                                   height: AppDimensions.height10 * 2.3,
                                 ),
                                 inner_text('Statement 1',
-                                    "I picture myself talking more calmly to my wife when she has made a mistake. "),
+                                    "I picture myself talking more calmly to\nmy wife when she has made a mistake. "),
                                 SizedBox(
                                   height: AppDimensions.height10 * 1.0,
                                 ),
@@ -898,7 +901,7 @@ class _inner_textState extends State<inner_text> {
                     fontSize: AppDimensions.height10 * 1.6,
                     fontWeight: FontWeight.w500,
                     fontFamily: "Laila",
-                    height: AppDimensions.height10 * 0.12,
+                    height: AppDimensions.height10 * 0.13,
                     color: const Color(0xFFFFFFFF)),
                 controller: body_text,
                 focusNode: _focusNode,

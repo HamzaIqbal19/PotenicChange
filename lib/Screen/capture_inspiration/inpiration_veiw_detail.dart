@@ -116,7 +116,7 @@ class _veiw_detailsState extends State<veiw_details> {
                     'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        height: AppDimensions.height10 * 0.12,
+                        height: AppDimensions.height10 * 0.15,
                         fontSize: AppDimensions.height10 * 2.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFFFFFFFF)),
@@ -139,7 +139,7 @@ class _veiw_detailsState extends State<veiw_details> {
                   ? AppDimensions.height10 * 52.465
                   : AppDimensions.height10 * 48.465,
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFFFFF),
+            color: const Color(0xFFFFFFFF),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(AppDimensions.height10 * 4.0),
                 topRight: Radius.circular(AppDimensions.height10 * 4.0)),

@@ -1,8 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/review_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -83,7 +82,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -93,7 +92,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                       "View and edit mode",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF437296),
+                        color: const Color(0xFF437296),
                         fontSize: AppDimensions.height10 * 1.8,
                       ),
                     ),
@@ -108,7 +107,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                       "Control My Anger",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF437296),
+                        color: const Color(0xFF437296),
                         fontSize: AppDimensions.height10 * 2.0,
                       ),
                     ),
@@ -123,7 +122,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                       "The Why",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF437296),
+                        color: const Color(0xFF437296),
                         fontSize: AppDimensions.height10 * 2.8,
                       ),
                     ),
@@ -140,117 +139,45 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                       "Why pursuing this goal is important to \n you? ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-
-                          fontSize: AppDimensions.height10 * 1.8,
-                          fontWeight: FontWeight.w600,
-                        color: Color(0xFF437296),),
+                        fontSize: AppDimensions.height10 * 1.8,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFF437296),
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: AppDimensions.height10 * 3.4,
                 ),
-                reviewbox(),
-
-
-
-
-
-
-
-
-
-                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
-                  height: AppDimensions.height10 * 7.2,
-                ):SizedBox(
-                  height: AppDimensions.height10 * 5.0,
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-
-                      onTap: (){
-
-                      },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*10.0,
-                        decoration:  BoxDecoration(
-                          // color: Color(0xFFFF7D50),
-                          border: Border.all(color: Color(0xFF282828)),
-                          // gradient: const LinearGradient(
-                          //     begin: Alignment.topCenter,
-                          //     end: Alignment.bottomCenter,
-                          //     colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-                        ),
-                        child:  Center(
-                          child:  Text(
-                            "Reset",
-                            style:  TextStyle(
-                              color: Color(0xFF282828),
-                              fontSize: AppDimensions.height10 * 1.6,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                const reviewbox(),
+                // MediaQuery.of(context).viewInsets.bottom == 0
+                //     ? SizedBox(
+                //         height: AppDimensions.height10 * 7.2,
+                //       )
+                //     : SizedBox(
+                //         height: AppDimensions.height10 * 5.0,
+                //       ),
+                // SizedBox(
+                //   height: AppDimensions.height10 * 2.5,
+                // ),
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10 * 2.7,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10 * 2.4,
                       ),
-                    ),
-
-                    GestureDetector(
-
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ActivateStar(),
-                          ),
-                        );
-                      },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*26.2,
-                        decoration:  BoxDecoration(
-                          // color: Color(0xFFFF7D50),
-                          border: Border.all(color: Colors.transparent),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFF282828), Color(0xFF282828)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
-                        ),
-                        child:  Center(
-                          child:  Text(
-                            "Save",
-                            style:  TextStyle(
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                SizedBox(
-                  height: AppDimensions.height10 * 2.5,
-                ),
-
-                Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                // SizedBox(
+                //   height: AppDimensions.height10 * 2.5,
+                // ),
+                Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           )
-
         ],
       ),
-
-
     );
   }
 }

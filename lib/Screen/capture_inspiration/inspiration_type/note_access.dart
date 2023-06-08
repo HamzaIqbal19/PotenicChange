@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 
+import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 import '../capture_inpirations_goals.dart';
 
@@ -66,7 +67,7 @@ class _note_infoState extends State<note_info> {
                           ),
                         ),
                         Center(
-                          child: Container(
+                          child: SizedBox(
                             height: AppDimensions.height10 * 2.2,
                             width: AppDimensions.height10 * 23.1,
                             child: Center(
@@ -118,11 +119,11 @@ class _note_infoState extends State<note_info> {
                             if (widget.note_saved == false) {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const note_info(
-                                            note_saved: true,
-                                            type_switch: 1,
-                                          )));
+                                  FadePageRoute(
+                                      page: const note_info(
+                                    note_saved: true,
+                                    type_switch: 1,
+                                  )));
                             }
                           },
                           child: Container(
@@ -427,7 +428,7 @@ class _note_infoState extends State<note_info> {
                                     ]
                                   ],
                                 )
-                              : Container(
+                              : SizedBox(
                                   height: widget.note_saved
                                       ? AppDimensions.height10 * 39.0
                                       : AppDimensions.height10 * 2.4,
@@ -579,16 +580,15 @@ class _note_infoState extends State<note_info> {
                             widget.note_saved
                                 ? Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const inspiration_landing(
-                                              muliple_insp: true,
-                                              is_Updated: false,
-                                            )))
+                                    FadePageRoute(
+                                        page: const inspiration_landing(
+                                      muliple_insp: true,
+                                      is_Updated: false,
+                                    )))
                                 : Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) => inspiraton_goals(
+                                    FadePageRoute(
+                                        page: inspiraton_goals(
                                             data_saved: false)));
                           },
                           child: Container(

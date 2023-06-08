@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 import '../capture_inpirations_goals.dart';
 import 'note_access.dart';
@@ -76,8 +77,8 @@ class _video_infoState extends State<video_info> {
                     onTap: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const note_info(
+                          FadePageRoute(
+                              page: const note_info(
                                   note_saved: true, type_switch: 3)));
                     },
                     child: Container(
@@ -338,9 +339,8 @@ class _video_infoState extends State<video_info> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    inspiraton_goals(data_saved: false)));
+                            FadePageRoute(
+                                page: inspiraton_goals(data_saved: false)));
                       },
                       child: Container(
                         height: AppDimensions.height10 * 6.0,

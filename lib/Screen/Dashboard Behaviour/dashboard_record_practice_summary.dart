@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/recordPracticeEmotions.dart';
 
@@ -269,10 +270,10 @@ class _record_summaryState extends State<record_summary> {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => emotions(
-                                        summary: true,
-                                      )));
+                              FadePageRoute(
+                                  page: const emotions(
+                                summary: true,
+                              )));
                         },
                         child: Container(
                             height: AppDimensions.height10 * 2.8,
@@ -341,9 +342,8 @@ class _record_summaryState extends State<record_summary> {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      feelingsAfter(summary: true)));
+                              FadePageRoute(
+                                  page: const feelingsAfter(summary: true)));
                         },
                         child: Container(
                             height: AppDimensions.height10 * 2.8,
@@ -403,9 +403,8 @@ class _record_summaryState extends State<record_summary> {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      endofSession(summary: true)));
+                              FadePageRoute(
+                                  page: const endofSession(summary: true)));
                         },
                         child: Container(
                             height: AppDimensions.height10 * 2.8,

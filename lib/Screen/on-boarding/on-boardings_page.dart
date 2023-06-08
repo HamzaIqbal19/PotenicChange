@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 // import 'package:go_eventio/pages/authentication/sign_in_page.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding_model.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,7 +15,6 @@ class OnboardingPage extends StatefulWidget {
   final Color themeColor;
   final ValueChanged<String> skipClicked;
   final ValueChanged<String> getStartedClicked;
-
 
   const OnboardingPage({
     Key? key,
@@ -87,24 +87,26 @@ class OnboardingPageState extends State<OnboardingPage> {
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.transparent,
-          automaticallyImplyLeading:true,
-          leading:_currentPage!=0?
-          Center(
-            // alignment: Alignment.center,
-            child: IconButton(
-              icon: Image.asset(
-                'assets/images/Back.png',
-                width: AppDimensions.height10 * 3,
-                height: AppDimensions.height10 * 3,
-                fit: BoxFit.contain,
-              ),
-              onPressed: () {
-                _pageController.previousPage(
-                    duration: Duration(milliseconds: 500), curve: Curves.ease);
-                // Add code for performing close action
-              },
-            ),
-          ):Container(),
+          automaticallyImplyLeading: true,
+          leading: _currentPage != 0
+              ? Center(
+                  // alignment: Alignment.center,
+                  child: IconButton(
+                    icon: Image.asset(
+                      'assets/images/Back.png',
+                      width: AppDimensions.height10 * 3,
+                      height: AppDimensions.height10 * 3,
+                      fit: BoxFit.contain,
+                    ),
+                    onPressed: () {
+                      _pageController.previousPage(
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease);
+                      // Add code for performing close action
+                    },
+                  ),
+                )
+              : Container(),
           title: Center(
             child: Text(
               "Introduction",
@@ -116,30 +118,29 @@ class OnboardingPageState extends State<OnboardingPage> {
               ),
             ),
           ),
-
           actions: [
             Center(
               // alignment: Alignment.center,
 
-
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10*2.8,
-                  height: AppDimensions.height10*2.8,
+                  width: AppDimensions.height10 * 2.8,
+                  height: AppDimensions.height10 * 2.8,
                   fit: BoxFit.cover,
                 ),
                 onPressed: () {
                   Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                      builder: (context) => HomeScreen()),);
+                    context,
+                    FadePageRoute(
+                        page: HomeScreen(
+                      log_status: false,
+                    )),
+                  );
                   // Add code for performing close action
                 },
               ),
             ),
-
-
           ],
         ),
         body: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -183,32 +184,45 @@ class OnboardingPageState extends State<OnboardingPage> {
           fit: BoxFit.cover,
         ),
       ),
-      padding: page.index==7? EdgeInsets.only(top: AppDimensions.height10 * 9.5):EdgeInsets.only(top: AppDimensions.height10 * 11.1),
+      padding: page.index == 7
+          ? EdgeInsets.only(top: AppDimensions.height10 * 9.5)
+          : EdgeInsets.only(top: AppDimensions.height10 * 11.1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-
           // page.index==7?  SizedBox(height: AppDimensions.height10 * 2.3):  SizedBox(height: AppDimensions.height10 * 3.9),
           Center(
-            child:page.index==7? Image(
-              // color: Colors.orange,
-              image: AssetImage(page.logo),
-              height: AppDimensions.height10 * 11.15,
-              width: AppDimensions.height10 * 10.0,
-            ):Image(
-              // color: Colors.orange,
-              image: AssetImage(page.logo),
-              height: AppDimensions.height10 * 7.75,
-              width: AppDimensions.height10 * 7.75,
-            ),
+            child: page.index == 7
+                ? Image(
+                    // color: Colors.orange,
+                    image: AssetImage(page.logo),
+                    height: AppDimensions.height10 * 11.15,
+                    width: AppDimensions.height10 * 10.0,
+                  )
+                : Image(
+                    // color: Colors.orange,
+                    image: AssetImage(page.logo),
+                    height: AppDimensions.height10 * 7.75,
+                    width: AppDimensions.height10 * 7.75,
+                  ),
           ),
           page.description2 != ""
               ? SizedBox(height: AppDimensions.height10 * 5.45)
-              :  page.subDescription!=""?SizedBox(height: AppDimensions.height10 * 7.64,):(page.index==7)?SizedBox(height: AppDimensions.height10 * 10.3):SizedBox(height: AppDimensions.height10 * 12.1),
+              : page.subDescription != ""
+                  ? SizedBox(
+                      height: AppDimensions.height10 * 7.64,
+                    )
+                  : (page.index == 7)
+                      ? SizedBox(height: AppDimensions.height10 * 10.3)
+                      : SizedBox(height: AppDimensions.height10 * 12.1),
           Container(
-            height: page.description2 !=""?AppDimensions.height10 * 3.6:(page.index==3 || page.index==1)?AppDimensions.height10 * 7.9:AppDimensions.height10*3.9,
-            width: AppDimensions.height10*35.4,
+            height: page.description2 != ""
+                ? AppDimensions.height10 * 3.6
+                : (page.index == 3 || page.index == 1)
+                    ? AppDimensions.height10 * 7.9
+                    : AppDimensions.height10 * 3.9,
+            width: AppDimensions.height10 * 35.4,
             child: Text(
               page.title,
               textAlign: TextAlign.center,
@@ -218,42 +232,50 @@ class OnboardingPageState extends State<OnboardingPage> {
                 fontSize: AppDimensions.height10 * 3.0,
               ),
             ),
-          ),//Title Container
+          ), //Title Container
           SizedBox(height: AppDimensions.height10 * 2.0),
           Column(
             children: [
               Container(
-
                 // width: double.infinity,
-                width: AppDimensions.height10*35.4,
+                width: AppDimensions.height10 * 35.4,
                 height: page.description2 != ""
                     ? AppDimensions.height10 * 9.3
-                    :page.subDescription!=""? AppDimensions.height10*9.3:(page.index==3 || page.index==1)?AppDimensions.height10 * 28.5:AppDimensions.height10 * 32.5,
+                    : page.subDescription != ""
+                        ? AppDimensions.height10 * 9.3
+                        : (page.index == 3 || page.index == 1)
+                            ? AppDimensions.height10 * 28.5
+                            : AppDimensions.height10 * 32.5,
                 child: Text(
                   page.description,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    letterSpacing: AppDimensions.height10*0.13,
+                    letterSpacing: AppDimensions.height10 * 0.13,
                     fontWeight: FontWeight.w500,
                     color: page.descripColor,
                     fontSize: AppDimensions.height10 * 2.0,
                   ),
                 ),
               ),
-              page.subDescription!=""?SizedBox(height: AppDimensions.height10 * 2.0,):SizedBox(height: AppDimensions.height10 *0),
+              page.subDescription != ""
+                  ? SizedBox(
+                      height: AppDimensions.height10 * 2.0,
+                    )
+                  : SizedBox(height: AppDimensions.height10 * 0),
               Container(
-
                 // width: double.infinity,
 
-                width:AppDimensions.height10*28.5,
+                width: AppDimensions.height10 * 28.5,
                 height: page.description2 != ""
                     ? AppDimensions.height10 * 0
-                    :page.subDescription!=""?AppDimensions.height10*21.7: AppDimensions.height10 *0,
+                    : page.subDescription != ""
+                        ? AppDimensions.height10 * 21.7
+                        : AppDimensions.height10 * 0,
                 child: Text(
                   page.subDescription,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    letterSpacing: AppDimensions.height10*0.15,
+                    letterSpacing: AppDimensions.height10 * 0.15,
                     fontWeight: FontWeight.w400,
                     color: page.descripColor,
                     fontSize: AppDimensions.height10 * 2.0,
@@ -279,9 +301,9 @@ class OnboardingPageState extends State<OnboardingPage> {
               : Container(),
           page.description2 != ""
               ? Container(
-            // color: Colors.blue,
+                  // color: Colors.blue,
                   height: AppDimensions.height10 * 9.3,
-                  width: AppDimensions.height10*35.4,
+                  width: AppDimensions.height10 * 35.4,
                   child: Text(
                     page.description2,
                     textAlign: TextAlign.center,
@@ -305,8 +327,12 @@ class OnboardingPageState extends State<OnboardingPage> {
                 )
               : Container(),
           page.description2 != ""
-              ? SizedBox(height: AppDimensions.height10 * 6.89,)
-              : SizedBox(height: AppDimensions.height10 * 6.139,),
+              ? SizedBox(
+                  height: AppDimensions.height10 * 6.89,
+                )
+              : SizedBox(
+                  height: AppDimensions.height10 * 6.139,
+                ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -316,20 +342,17 @@ class OnboardingPageState extends State<OnboardingPage> {
             ],
           ),
           SizedBox(height: AppDimensions.height3 - 2),
-           Container(
-
-             child: Row(
-
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: _buildPageIndicator(),
-                  ),
-                ],
-              ),
-           ),
-
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _buildPageIndicator(),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -358,8 +381,10 @@ class OnboardingPageState extends State<OnboardingPage> {
         } else {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(
-              builder: (context) => HomeScreen(),
+            FadePageRoute(
+              page: HomeScreen(
+                log_status: false,
+              ),
             ),
           );
         }

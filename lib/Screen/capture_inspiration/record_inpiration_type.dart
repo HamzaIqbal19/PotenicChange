@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_acc
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class record_inspiration extends StatefulWidget {
@@ -158,7 +159,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
-                      Container(
+                      SizedBox(
                         width: AppDimensions.height10 * 16.7,
                         height: AppDimensions.height10 * 3.0,
                         child: Align(
@@ -237,7 +238,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
-                      Container(
+                      SizedBox(
                         height: AppDimensions.height10 * 3.0,
                         child: Align(
                             alignment: Alignment.topCenter,
@@ -282,34 +283,34 @@ class _record_inspirationState extends State<record_inspiration> {
                       if (widget.type_switch == 1) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const veiw_details(
-                                    type_switch: 1,
-                                  )),
+                          FadePageRoute(
+                              page: const veiw_details(
+                            type_switch: 1,
+                          )),
                         );
                       } else if (widget.type_switch == 2) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const veiw_details(
-                                    type_switch: 3,
-                                  )),
+                          FadePageRoute(
+                              page: const veiw_details(
+                            type_switch: 3,
+                          )),
                         );
                       } else if (widget.type_switch == 3) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const veiw_details(
-                                    type_switch: 4,
-                                  )),
+                          FadePageRoute(
+                              page: const veiw_details(
+                            type_switch: 4,
+                          )),
                         );
                       } else if (widget.type_switch == 4) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const veiw_details(
-                                    type_switch: 2,
-                                  )),
+                          FadePageRoute(
+                              page: const veiw_details(
+                            type_switch: 2,
+                          )),
                         );
                       }
                     },
@@ -365,33 +366,33 @@ class _record_inspirationState extends State<record_inspiration> {
                       if (widget.type_switch == 1) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const photo_info(
-                                    edit_details: true,
-                                    image_detals: true,
-                                    image_save: true,
-                                    image_create: false,
-                                  )),
+                          FadePageRoute(
+                              page: const photo_info(
+                            edit_details: true,
+                            image_detals: true,
+                            image_save: true,
+                            image_create: false,
+                          )),
                         );
                       } else if (widget.type_switch == 2) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const note_info(
+                          FadePageRoute(
+                              page: const note_info(
                                   note_saved: true, type_switch: 1)),
                         );
                       } else if (widget.type_switch == 3) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const note_info(
+                          FadePageRoute(
+                              page: const note_info(
                                   note_saved: true, type_switch: 3)),
                         );
                       } else if (widget.type_switch == 4) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const note_info(
+                          FadePageRoute(
+                              page: const note_info(
                                   note_saved: true, type_switch: 2)),
                         );
                       }
@@ -477,7 +478,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             color: Color(0xff646464),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10 * 5.0,
                           height: AppDimensions.height10 * 2.2,
                           child: Center(
@@ -495,7 +496,7 @@ class _record_inspirationState extends State<record_inspiration> {
                   GestureDetector(
                     onTap: () => showDialog<String>(
                         context: context,
-                        builder: (BuildContext context) => Container(
+                        builder: (BuildContext context) => SizedBox(
                               width: AppDimensions.height10 * 27.0,
                               height: AppDimensions.height10 * 21.4,
                               child: AlertDialog(
@@ -519,17 +520,17 @@ class _record_inspirationState extends State<record_inspiration> {
                                                         1.7,
                                                 fontWeight: FontWeight.w400,
                                                 color: const Color(0xFF000000)),
-                                            children: [
-                                              const TextSpan(
+                                            children: const [
+                                              TextSpan(
                                                   text:
                                                       'Are you sure you want\nto'),
-                                              const TextSpan(
+                                              TextSpan(
                                                 text: ' delete ',
                                                 style: TextStyle(
                                                     fontWeight:
                                                         FontWeight.w700),
                                               ),
-                                              const TextSpan(
+                                              TextSpan(
                                                   text: 'this inspiration?')
                                             ]))),
                                 content: Container(
@@ -584,7 +585,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                               .withOpacity(0.29),
                                         ),
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height: AppDimensions.height10 * 4.4,
                                         width: double.infinity,
                                         child: TextButton(
@@ -640,7 +641,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               color: Color(0XFFFFFFFF),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10 * 5.3,
                             height: AppDimensions.height10 * 2.2,
                             child: Center(

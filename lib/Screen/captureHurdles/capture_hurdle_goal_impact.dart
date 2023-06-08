@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.d
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class hurdles_goal_impact extends StatefulWidget {
@@ -521,8 +522,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const select_hurdle()),
+                      FadePageRoute(page: const select_hurdle()),
                     );
                   },
                   child: Text(

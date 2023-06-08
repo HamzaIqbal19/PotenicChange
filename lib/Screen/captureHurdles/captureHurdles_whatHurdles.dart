@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class what_hurdles extends StatefulWidget {
@@ -45,7 +46,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                 fontSize: AppDimensions.height10 * 2.0,
                 fontWeight: FontWeight.w600,
               ),
-              colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+              colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
           actions: [
@@ -65,13 +66,13 @@ class _what_hurdlesState extends State<what_hurdles> {
         Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/practicebackground.png'),
                     fit: BoxFit.cover)),
             child: SingleChildScrollView(
               reverse: true,
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -87,7 +88,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                           fontSize: AppDimensions.height10 * 2.8,
                           fontWeight: FontWeight.w700,
                         ),
-                        colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                        colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                       ),
                     ),
                     MediaQuery.of(context).viewInsets.bottom == 0
@@ -113,7 +114,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                                       height: AppDimensions.height10 * 18.1,
                                       margin: EdgeInsets.only(
                                           bottom: AppDimensions.height10 * 0.8),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           gradient: LinearGradient(
                                               begin: Alignment.topCenter,
@@ -125,7 +126,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                                       child: Container(
                                         width: AppDimensions.height10 * 16.813,
                                         height: AppDimensions.height10 * 6.83,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             shape: BoxShape.circle),
                                         child: Center(
                                           child: TextField(
@@ -133,7 +134,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                                             maxLines: null,
                                             minLines: null,
                                             scrollPhysics:
-                                                ClampingScrollPhysics(),
+                                                const ClampingScrollPhysics(),
                                             decoration: InputDecoration(
                                                 hintText: 'I feel...',
                                                 hintStyle: TextStyle(
@@ -211,7 +212,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                                 height: AppDimensions.height10 * 4.7,
                                 margin: EdgeInsets.only(
                                     bottom: AppDimensions.height10 * 1.1),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     // border: Border.all(
                                     //     width: AppDimensions.height10 * 0.3,
@@ -252,7 +253,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 border: Border.all(
-                                    width: 1, color: Color(0xffFA9934)),
+                                    width: 1, color: const Color(0xffFA9934)),
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10 * 5.0),
                               ),
@@ -290,9 +291,8 @@ class _what_hurdlesState extends State<what_hurdles> {
                                   onPressed: () {
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                new_hurdles()));
+                                        FadePageRoute(
+                                            page: const new_hurdles()));
                                   },
                                   child: Text(
                                     'Next',
@@ -315,7 +315,8 @@ class _what_hurdlesState extends State<what_hurdles> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10 * 2.0),
-                                color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                                color:
+                                    const Color(0xFFFFFFFF).withOpacity(0.3)),
                           )
                         : SizedBox(
                             height: AppDimensions.height10 * 0,

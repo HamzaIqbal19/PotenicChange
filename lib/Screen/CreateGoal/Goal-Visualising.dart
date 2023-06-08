@@ -1,11 +1,9 @@
-
-
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+
+import '../../Widgets/fading.dart';
 
 class Visualising extends StatefulWidget {
   const Visualising({Key? key}) : super(key: key);
@@ -38,7 +36,7 @@ class _VisualisingState extends State<Visualising> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                  Navigator.pop(context,true);
+                  Navigator.pop(context, true);
                   // Add code for performing close action
                 },
               ),
@@ -113,11 +111,10 @@ class _VisualisingState extends State<Visualising> {
                   height: AppDimensions.height10 * 1.0,
                 ),
                 Container(
-                  // color: Colors.blue,
+                    // color: Colors.blue,
                     width: AppDimensions.height10 * 10.4,
                     height: AppDimensions.height10 * 7.6,
                     padding: EdgeInsets.only(
-
                         left: AppDimensions.height10 * 1.5,
                         right: AppDimensions.height10 * 1.5),
                     child: Image.asset(
@@ -150,7 +147,6 @@ class _VisualisingState extends State<Visualising> {
                       "What does it look like? What are you \n  doing? What emotions do you have and \n how does it feel?",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-
                           fontSize: AppDimensions.height10 * 1.8,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFFFFFFFF)),
@@ -161,53 +157,50 @@ class _VisualisingState extends State<Visualising> {
                   height: AppDimensions.height10 * 3.4,
                 ),
                 backbox(),
-
-                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
-                  height: AppDimensions.height10 * 7.2,
-                ):SizedBox(
-                  height: AppDimensions.height10 * 5.0,
-                ),
-
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10 * 7.2,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10 * 5.0,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      // color: Colors.blue,
+                        // color: Colors.blue,
                         width: AppDimensions.height10 * 5.0,
                         height: AppDimensions.height10 * 5.0,
-
                         child: Image.asset(
                           "assets/images/Moreactions.png",
                           fit: BoxFit.contain,
                         )),
-
                     GestureDetector(
-
-                      onTap: (){
+                      onTap: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => GoalFinished(),
+                          FadePageRoute(
+                            page: const GoalFinished(),
                           ),
                         );
                       },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*31.3,
-                        decoration:  BoxDecoration(
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 31.3,
+                        decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        child:  Center(
-                          child:  Text(
+                        child: Center(
+                          child: Text(
                             "Next",
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
@@ -218,20 +211,17 @@ class _VisualisingState extends State<Visualising> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.5,
                 ),
-
-                Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           )
-
         ],
       ),
-
-
     );
   }
 }

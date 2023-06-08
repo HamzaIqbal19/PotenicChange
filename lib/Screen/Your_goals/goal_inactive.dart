@@ -685,3 +685,93 @@ class _goal_inactiveState extends State<goal_inactive> {
 //         ]);
 //   }
 // }
+
+
+// Container(
+//                         width: AppDimensions.height10 * 38.259,
+//                         height: AppDimensions.height10 * 9.707,
+//                         margin: EdgeInsets.only(
+//                             bottom: AppDimensions.height10 * 14.0),
+//                         decoration: BoxDecoration(
+//                             borderRadius: BorderRadius.circular(
+//                                 AppDimensions.height10 * 2.0),
+//                             gradient: const LinearGradient(
+//                                 begin: Alignment.topCenter,
+//                                 end: Alignment.bottomCenter,
+//                                 colors: [
+//                                   Color(0xFFD4B7B9),
+//                                   Color(0xFF91698C)
+//                                 ])),
+//                         child: Row(
+//                           crossAxisAlignment: CrossAxisAlignment.center,
+//                           children: [
+//                             Container(
+//                               margin: EdgeInsets.only(
+//                                   left: AppDimensions.height10 * 1.261),
+//                               width: AppDimensions.height10 * 4.437,
+//                               height: AppDimensions.height10 * 4.437,
+//                               decoration: const BoxDecoration(
+//                                   image: DecorationImage(
+//                                       image: AssetImage(
+//                                           'assets/images/circle_tick.png'))),
+//                             ),
+//                             Container(
+//                               width: AppDimensions.height10 * 16.3,
+//                               height: AppDimensions.height10 * 3.6,
+//                               margin: EdgeInsets.only(
+//                                   left: AppDimensions.height10 * 1.232),
+//                               child: Column(
+//                                 crossAxisAlignment: CrossAxisAlignment.start,
+//                                 children: [
+//                                   SizedBox(
+//                                     //  / width: AppDimensions.height10 * 4.6,
+//                                     height: AppDimensions.height10 * 1.4,
+//                                     //   color: Colors.amber,
+//                                     child: Text(
+//                                       'Goal Active',
+//                                       style: TextStyle(
+//                                           fontSize:
+//                                               AppDimensions.height10 * 1.3,
+//                                           fontWeight: FontWeight.w500,
+//                                           color: const Color(0xFFFFFFFF)),
+//                                     ),
+//                                   ),
+//                                   SizedBox(
+//                                     //width: AppDimensions.height10 * 6.9,
+//                                     height: AppDimensions.height10 * 2.2,
+//                                     child: Text(
+//                                       'Control My Anger',
+//                                       style: TextStyle(
+//                                           fontSize:
+//                                               AppDimensions.height10 * 1.8,
+//                                           fontWeight: FontWeight.w500,
+//                                           color: const Color(0xFFFFFFFF)),
+//                                     ),
+//                                   ),
+//                                 ],
+//                               ),
+//                             ),
+//                             Container(
+//                               width: AppDimensions.height10 * 8.1,
+//                               height: AppDimensions.height10 * 6.0,
+//                               margin: EdgeInsets.only(
+//                                   left: AppDimensions.height10 * 5.1),
+//                               decoration: BoxDecoration(
+//                                 border: Border.all(
+//                                     color: const Color(0xFFFFFFFF), width: 1),
+//                                 borderRadius: BorderRadius.circular(
+//                                     AppDimensions.height10 * 2.0),
+//                               ),
+//                               child: Center(
+//                                 child: Text(
+//                                   'Undo',
+//                                   style: TextStyle(
+//                                       fontSize: AppDimensions.height10 * 1.8,
+//                                       fontWeight: FontWeight.w500,
+//                                       color: const Color(0xFFFFFFFF)),
+//                                 ),
+//                               ),
+//                             )
+//                           ],
+//                         ),
+//                       )

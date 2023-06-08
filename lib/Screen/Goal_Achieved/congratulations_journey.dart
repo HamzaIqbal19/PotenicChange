@@ -63,7 +63,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10 * 24.7,
                             height: AppDimensions.height10 * 7.2,
                             //color: Colors.amber,
@@ -163,13 +163,13 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                   SizedBox(
                     height: AppDimensions.height10 * 4.9,
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.height10 * 16.9,
                     height: AppDimensions.height10 * 14.4,
                     child: Row(
                       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
+                        SizedBox(
                           // width: AppDimensions.height10 * 5.7,
                           height: AppDimensions.height10 * 14.4,
                           child: Center(
@@ -185,7 +185,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             ),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10 * 7.0,
                           height: AppDimensions.height10 * 8.4,
 
@@ -201,12 +201,12 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                         fontFamily: 'Poppins',
                                         color: const Color(0xFFFBFBFB),
                                         height: AppDimensions.height10 * 0.12),
-                                    children: [
-                                  const TextSpan(
+                                    children: const [
+                                  TextSpan(
                                       text: 'Jun\n',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600)),
-                                  const TextSpan(text: '2020')
+                                  TextSpan(text: '2020')
                                 ])),
                           ),
                         ),
@@ -252,7 +252,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                   Divider(
                     thickness: AppDimensions.height10 * 0.1,
                     height: AppDimensions.height10 * 0.1,
-                    color: const Color(0xFF0000000),
+                    color: const Color(0xFF000000),
                   )
                 ]),
               ),
@@ -279,7 +279,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                           height: AppDimensions.height10 * 0.15),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.height10 * 32.9,
                     height: AppDimensions.height10 * 36.0,
                     child: Stack(children: [
@@ -407,7 +407,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                   Divider(
                     thickness: AppDimensions.height10 * 0.1,
                     height: AppDimensions.height10 * 0.1,
-                    color: const Color(0xFF0000000),
+                    color: const Color(0xFF000000),
                   )
                 ]),
               ),
@@ -437,7 +437,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                           height: AppDimensions.height10 * 0.15),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.height10 * 38.9,
                     height: AppDimensions.height10 * 34.9,
                     //  color: Colors.grey,
@@ -473,7 +473,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10 * 7.1,
                                   //height: AppDimensions.height10 * 1.9,
                                   child: Center(
@@ -487,7 +487,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                     ),
                                   ),
                                 ),
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10 * 7.471,
                                   // height: AppDimensions.height10 * 4.38,
 
@@ -521,7 +521,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10 * 7.1,
                                   //height: AppDimensions.height10 * 1.9,
                                   child: Center(
@@ -535,7 +535,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                     ),
                                   ),
                                 ),
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10 * 7.471,
                                   // height: AppDimensions.height10 * 4.38,
 
@@ -569,7 +569,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10 * 7.1,
                                   //height: AppDimensions.height10 * 1.9,
                                   child: Center(
@@ -583,7 +583,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                     ),
                                   ),
                                 ),
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10 * 7.471,
                                   // height: AppDimensions.height10 * 4.38,
 
@@ -617,7 +617,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10 * 7.1,
                                   //height: AppDimensions.height10 * 1.9,
                                   child: Center(
@@ -685,7 +685,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                   Divider(
                     thickness: AppDimensions.height10 * 0.1,
                     height: AppDimensions.height10 * 0.1,
-                    color: const Color(0xFF0000000),
+                    color: const Color(0xFF000000),
                   ),
                   SizedBox(
                     height: AppDimensions.height10 * 2,
@@ -729,7 +729,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 color: const Color(0xFFFBFBFB),
                                 height: AppDimensions.height10 * 0.12)),
                       )),
-                  Container(
+                  SizedBox(
                     width: double.infinity,
                     height: AppDimensions.height10 * 22.0,
                     child: SingleChildScrollView(
@@ -761,7 +761,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                             'assets/images/video_image.png'),
                                         fit: BoxFit.cover)),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 10.5,
                                 height: AppDimensions.height10 * 4.0,
                                 // margin: EdgeInsets.only(
@@ -860,7 +860,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   ),
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 15.0,
                                 height: AppDimensions.height10 * 3.4,
                                 child: Center(
@@ -967,7 +967,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                           height: AppDimensions.height10 * 0.15),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.height10 * 13.315,
                     height: AppDimensions.height10 * 14.0,
                     //    margin: EdgeInsets.only(top: AppDimensions.height10 * 8.5),
@@ -985,7 +985,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: AppDimensions.height10 * 38.8,
                     height: AppDimensions.height10 * 3.6,
 
@@ -1103,7 +1103,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                   Divider(
                     thickness: AppDimensions.height10 * 0.1,
                     height: AppDimensions.height10 * 0.1,
-                    color: const Color(0xFF0000000),
+                    color: const Color(0xFF000000),
                   )
                 ]),
               ),
@@ -1145,7 +1145,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                     AssetImage('assets/images/anger_2.png'))),
                       ),
                       Align(
-                        alignment: Alignment(0, 1),
+                        alignment: const Alignment(0, 1),
                         child: Container(
                           width: AppDimensions.height10 * 12.5,
                           height: AppDimensions.height10 * 12.5,
@@ -1189,7 +1189,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                   Divider(
                     thickness: AppDimensions.height10 * 0.1,
                     height: AppDimensions.height10 * 0.1,
-                    color: const Color(0xFF0000000),
+                    color: const Color(0xFF000000),
                   )
                 ]),
               ),
@@ -1334,7 +1334,7 @@ class _RandomContainersState extends State<RandomContainers> {
             Container(
               width: AppDimensions.height10 * 6.5,
               height: AppDimensions.height10 * 7.4,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/Ellipse 158.png')),
                 shape: BoxShape.circle,
@@ -1350,7 +1350,7 @@ class _RandomContainersState extends State<RandomContainers> {
                             fontSize: AppDimensions.height10 * 1.4,
                             fontWeight: FontWeight.w400),
                         children: [
-                      TextSpan(
+                      const TextSpan(
                         text: 'Tue',
                       ),
                       TextSpan(
@@ -1361,11 +1361,11 @@ class _RandomContainersState extends State<RandomContainers> {
               )),
             ),
             Align(
-              alignment: Alignment(0, 1.0),
+              alignment: const Alignment(0, 1.0),
               child: Container(
                 width: AppDimensions.height10 * 2.0,
                 height: AppDimensions.height10 * 2.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/task_comp.png'))),
               ),
@@ -1382,7 +1382,7 @@ class _RandomContainersState extends State<RandomContainers> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Container(
+      body: SizedBox(
         width: AppDimensions.height10 * 60.0,
         height: AppDimensions.height10 * 40.0,
         child: Stack(

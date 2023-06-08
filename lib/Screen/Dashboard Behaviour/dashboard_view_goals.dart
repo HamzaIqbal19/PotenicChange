@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_se
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 
 import '../../Widgets/bottom_navigation.dart';
+import '../../Widgets/fading.dart';
 import '../../Widgets/mult_circles.dart';
 import '../../utils/app_dimensions.dart';
 import 'menu_dashboard_behaviour.dart';
@@ -28,8 +29,8 @@ class view_goals extends StatelessWidget {
                         EdgeInsets.only(right: AppDimensions.height10 * 1.7),
                     child: Image.asset(
                       'assets/images/Add goal.png',
-                      height: AppDimensions.height10 * 2.0,
-                      width: AppDimensions.height10 * 2.1,
+                      height: AppDimensions.height10 * 2.4,
+                      width: AppDimensions.height10 * 2.4,
                     ),
                   ),
                   Container(
@@ -78,9 +79,8 @@ class view_goals extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const no_past_session()));
+                                    FadePageRoute(
+                                        page: const no_past_session()));
                               },
                               child: Container(
                                 height: AppDimensions.height10 * 7.9,
@@ -235,9 +235,8 @@ class view_goals extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const no_planned_session()));
+                                    FadePageRoute(
+                                        page: const no_planned_session()));
                               },
                               child: Container(
                                   height: AppDimensions.height10 * 7.9,
@@ -315,7 +314,7 @@ class view_goals extends StatelessWidget {
                   ),
                   Container(
                     height: AppDimensions.height10 * 66.2,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 20.0),
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 23.0),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
@@ -359,17 +358,13 @@ class view_goals extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               if (missed == true) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const missed_Menu()));
+                                Navigator.push(context,
+                                    FadePageRoute(page: const missed_Menu()));
                               } else {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const menu_behaviour()));
+                                    FadePageRoute(
+                                        page: const menu_behaviour()));
                               }
                             },
                             child: Center(
@@ -615,7 +610,7 @@ class view_goals extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                      top: AppDimensions.height10 * 65.0,
+                      top: AppDimensions.height10 * 64.0,
                       left: AppDimensions.height10 * 1.3,
                       child: Container(
                         width: AppDimensions.height10 * 4.5,
@@ -653,7 +648,104 @@ class view_goals extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ))
+                      )),
+                  missed
+                      ? Positioned(
+                          top: AppDimensions.height10 * 56.8,
+                          left: AppDimensions.height10 * 2.5,
+                          child: Container(
+                            width: AppDimensions.height10 * 38.259,
+                            height: AppDimensions.height10 * 9.707,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10 * 12.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10 * 2.0),
+                                gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFD4B7B9),
+                                      Color(0xFF91698C)
+                                    ])),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10 * 1.261),
+                                  width: AppDimensions.height10 * 4.437,
+                                  height: AppDimensions.height10 * 4.437,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/circle_tick.png'))),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10 * 16.3,
+                                  height: AppDimensions.height10 * 3.6,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10 * 1.232),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        //  / width: AppDimensions.height10 * 4.6,
+                                        height: AppDimensions.height10 * 1.4,
+                                        //   color: Colors.amber,
+                                        child: Text(
+                                          'Session missed',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.3,
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color(0xFFFFFFFF)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        //width: AppDimensions.height10 * 6.9,
+                                        height: AppDimensions.height10 * 2.2,
+                                        child: Text(
+                                          'Count temper ep...',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.8,
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color(0xFFFFFFFF)),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10 * 8.1,
+                                  height: AppDimensions.height10 * 6.0,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10 * 5.1),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: const Color(0xFFFFFFFF),
+                                        width: 1),
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10 * 2.0),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Veiw',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      : Container(),
                 ]))));
   }
 }

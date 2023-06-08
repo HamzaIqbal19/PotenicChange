@@ -154,7 +154,7 @@ class Settings extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: edit_credentials(
+                                              page: const edit_credentials(
                                             email: false,
                                             password_edit: false,
                                           )),
@@ -195,7 +195,7 @@ class Settings extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: AppDimensions.height10 * 19.0,
                                       height: AppDimensions.height10 * 4.0,
                                       child: Column(
@@ -216,7 +216,7 @@ class Settings extends StatelessWidget {
                                                   color: colorC),
                                             ),
                                           ),
-                                          Container(
+                                          SizedBox(
                                             width:
                                                 AppDimensions.height10 * 19.0,
                                             height:
@@ -239,7 +239,7 @@ class Settings extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: edit_credentials(
+                                              page: const edit_credentials(
                                                   email: true,
                                                   password_edit: false)),
                                         );
@@ -315,7 +315,7 @@ class Settings extends StatelessWidget {
                                         Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: edit_credentials(
+                                              page: const edit_credentials(
                                                   email: false,
                                                   password_edit: true)),
                                         );
@@ -380,7 +380,7 @@ class Settings extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  FadePageRoute(page: notifications()),
+                                  FadePageRoute(page: const notifications()),
                                 );
                               },
                               child: Container(
@@ -501,7 +501,7 @@ class Settings extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  FadePageRoute(page: About_us()),
+                                  FadePageRoute(page: const About_us()),
                                 );
                               },
                               child: Container(
@@ -861,9 +861,10 @@ class Settings extends StatelessWidget {
                                         onPressed: () {
                                           Navigator.push(
                                               context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const HomeScreen()));
+                                              FadePageRoute(
+                                                  page: const HomeScreen(
+                                                log_status: true,
+                                              )));
                                         },
                                         child: Text(
                                           'Yes',
@@ -1003,9 +1004,8 @@ class Settings extends StatelessWidget {
                                         onPressed: () {
                                           Navigator.push(
                                               context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const Acc_deleted()));
+                                              FadePageRoute(
+                                                  page: const Acc_deleted()));
                                         },
                                         child: Text(
                                           'Yes, delete my account',
@@ -1078,7 +1078,7 @@ class Settings extends StatelessWidget {
             ),
           ),
           OfflineBuilder(
-              debounceDuration: Duration(seconds: 1),
+              debounceDuration: const Duration(seconds: 1),
               connectivityBuilder: (
                 BuildContext context,
                 ConnectivityResult connectivity,
@@ -1094,15 +1094,16 @@ class Settings extends StatelessWidget {
                       child: Container(
                         width: double.infinity,
                         height: AppDimensions.height10 * 3.0,
-                        color:
-                            connected ? Color(0xFF27AE60) : Color(0xFFFE6624),
+                        color: connected
+                            ? const Color(0xFF27AE60)
+                            : const Color(0xFFFE6624),
                         child: Center(
                           child: Text(
                             connected ? 'Back Online' : 'You’re Offline',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFFFBFBFB)),
+                                color: const Color(0xFFFBFBFB)),
                           ),
                         ),
                       ),
@@ -1412,22 +1413,22 @@ void export_data_sheet(context) {
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF437296)),
-                            children: [
-                              const TextSpan(
+                            children: const [
+                              TextSpan(
                                   text:
                                       'To access your data, please email to us at\n'),
-                              const TextSpan(
+                              TextSpan(
                                   text: 'info@potenic.com',
                                   style:
                                       TextStyle(fontWeight: FontWeight.w600)),
-                              const TextSpan(
+                              TextSpan(
                                   text:
                                       ' and we will action your request as soon as possible.\n\n\nIn the email subject please state: '),
-                              const TextSpan(
+                              TextSpan(
                                 text: 'Potenic App Export My Data\n\n\n',
                                 style: TextStyle(fontWeight: FontWeight.w600),
                               ),
-                              const TextSpan(
+                              TextSpan(
                                   text: 'Thank you for your co-operation :)')
                             ])),
                   ),

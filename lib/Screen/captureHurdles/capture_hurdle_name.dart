@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class hurdle_name extends StatefulWidget {
@@ -299,9 +299,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                               if (button_state == true) {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const hurdle_statement()));
+                                    FadePageRoute(
+                                        page: const hurdle_statement()));
                               }
                             },
                             child: Text(

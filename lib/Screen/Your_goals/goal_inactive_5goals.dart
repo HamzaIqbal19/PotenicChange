@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../PracticeGoal/Create Practice.dart';
 
@@ -1315,10 +1316,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const multiple_goal_inactive(
-                                        isActive: true)));
+                            FadePageRoute(
+                                page: const multiple_goal_inactive(
+                                    isActive: true)));
                       },
                       child: Container(
                           width: AppDimensions.height10 * 9.1,

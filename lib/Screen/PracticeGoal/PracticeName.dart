@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class PracticeName extends StatefulWidget {
@@ -187,16 +188,19 @@ class _PracticeNameState extends State<PracticeName> {
                 Container(
                   height: AppDimensions.height10 * 10.5,
                   width: AppDimensions.height10 * 36.0,
-                  padding: EdgeInsets.only(left: AppDimensions.height10 * 2.0
-                      // top: AppDimensions.height10 * 2,
-                      // bottom: AppDimensions.height10 * 4.8,
-                      ),
+                  padding: EdgeInsets.only(
+                    left: AppDimensions.height10 * 2.0,
+                    // top: AppDimensions.height10 * 2,
+                    bottom: AppDimensions.height10 * 1.0,
+                  ),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
                       borderRadius: BorderRadius.all(
                           Radius.circular(AppDimensions.height10 * 1.8))),
                   child: TextFormField(
+                      maxLines: null,
+                      minLines: null,
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.zero,
                           hintText: widget.title,
@@ -286,8 +290,8 @@ class _PracticeNameState extends State<PracticeName> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => PracticeRoutine(),
+                          FadePageRoute(
+                            page: PracticeRoutine(),
                           ),
                         );
                       },

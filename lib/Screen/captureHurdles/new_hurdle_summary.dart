@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart';
 
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class new_hurdles_summary extends StatefulWidget {
@@ -18,7 +19,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/practicebackground.png'),
                 fit: BoxFit.cover)),
@@ -40,7 +41,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       fontSize: AppDimensions.height10 * 2.8,
                       fontWeight: FontWeight.w700,
                     ),
-                    colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                    colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                   ),
                 ),
                 Container(
@@ -55,7 +56,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       fontSize: AppDimensions.height10 * 1.6,
                       fontWeight: FontWeight.w500,
                     ),
-                    colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                    colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                   ),
                 ),
                 Container(
@@ -63,7 +64,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                   height: AppDimensions.height10 * 19.6,
                   margin:
                       EdgeInsets.only(bottom: AppDimensions.height10 * 3.828),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image: AssetImage('assets/images/black_hole.png'))),
@@ -120,7 +121,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         Container(
                           height: AppDimensions.height10 * 14.5,
                           width: AppDimensions.height10 * 14.5,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -143,7 +144,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         Container(
                           height: AppDimensions.height10 * 14.5,
                           width: AppDimensions.height10 * 14.5,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -166,7 +167,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         Container(
                           height: AppDimensions.height10 * 14.5,
                           width: AppDimensions.height10 * 14.5,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -189,7 +190,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         Container(
                           height: AppDimensions.height10 * 14.5,
                           width: AppDimensions.height10 * 14.5,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -222,7 +223,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         shape: BoxShape.circle,
                         color: Colors.transparent,
                         border: Border.all(width: 1, color: Colors.white)),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage('assets/images/edit_icon.png'),
                       color: Colors.white,
                       //size: 10,
@@ -251,7 +252,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       border: Border.all(
                           width: AppDimensions.height10 * 0.1,
                           color: Colors.white),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage('assets/images/Ellipse 161.png'))),
                   child: Center(
                     child: Text(
@@ -273,7 +274,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         shape: BoxShape.circle,
                         color: Colors.transparent,
                         border: Border.all(width: 1, color: Colors.white)),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage('assets/images/edit_icon.png'),
                       color: Colors.white,
                       //size: 10,
@@ -302,7 +303,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                       border: Border.all(
                           width: AppDimensions.height10 * 0.1,
                           color: Colors.white),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage('assets/images/Ellipse 161.png'))),
                   child: Center(
                     child: Text(
@@ -324,7 +325,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         shape: BoxShape.circle,
                         color: Colors.transparent,
                         border: Border.all(width: 1, color: Colors.white)),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage('assets/images/edit_icon.png'),
                       color: Colors.white,
                       //size: 10,
@@ -355,7 +356,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.delete,
                                         color: Colors.white,
                                       ),
@@ -393,9 +394,8 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                                   onPressed: () {
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                new_hurdles()));
+                                        FadePageRoute(
+                                            page: const new_hurdles()));
                                   },
                                   child: Text(
                                     'Save Practice',

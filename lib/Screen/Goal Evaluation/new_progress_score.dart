@@ -154,7 +154,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                       AppDimensions.height10 *
                                                           1.4,
                                                   fontWeight: FontWeight.w400,
-                                                  color: Color(0xFF2F80ED)),
+                                                  color:
+                                                      const Color(0xFF2F80ED)),
                                             ),
                                           ),
                                         ),
@@ -162,15 +163,19 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                           onTap: () {
                                             if (_selectedIndex == 2) {
                                               setState(() {
-                                                goal_level = 2;
                                                 color_fill_1 = false;
                                                 color_fill_2 = false;
+                                                goal_level = 2;
                                               });
                                             } else if (_selectedIndex == 1) {
                                               color_fill_1 = true;
                                               color_fill_2 = true;
                                               goal_level = 0;
                                             } else if (_selectedIndex == 0) {
+                                              color_fill_1 = true;
+                                              color_fill_2 = true;
+                                              goal_level = 0;
+                                            } else if (_selectedIndex == 4) {
                                               color_fill_1 = false;
                                               color_fill_2 = true;
                                               goal_level = 0;
@@ -245,7 +250,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                           },
                         ),
                         child: Container(
-                          width: AppDimensions.height10 * 30.3,
+                          width: AppDimensions.height10 * 31.3,
                           height: AppDimensions.height10 * 12.3,
                           decoration: BoxDecoration(
                               border: Border.all(
@@ -257,7 +262,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(
-                                width: AppDimensions.height10 * 27.4,
+                                // width: AppDimensions.height10 * 30.3,
                                 height: index_color == 1
                                     ? AppDimensions.height10 * 4.4
                                     : AppDimensions.height10 * 2.2,
@@ -266,25 +271,28 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                     top: AppDimensions.height10 * 1.4),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  //crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                      width: AppDimensions.height10 * 24.2,
+                                      //  width: AppDimensions.height10 * 25.2,
                                       child: Text(
                                         index_color == 1
-                                            ? activity_duration + '\nMissing'
-                                            : activity_duration,
+                                            ? 'From $activity_duration\nMissing'
+                                            : 'From $activity_duration',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize:
-                                                AppDimensions.height10 * 1.8,
+                                                AppDimensions.height10 * 1.75,
                                             fontWeight: FontWeight.w600,
                                             height:
-                                                AppDimensions.height10 * 0.15,
+                                                AppDimensions.height10 * 0.12,
                                             color: index_color == 1
                                                 ? Colors.red
-                                                : Color(0xFFFFFFFF)),
+                                                : const Color(0xFFFFFFFF)),
                                       ),
+                                    ),
+                                    SizedBox(
+                                      width: AppDimensions.height10 * 0.8,
                                     ),
                                     SizedBox(
                                         // width: AppDimensions.height10 * 2.4,
@@ -359,11 +367,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 1.0),
+                                  SizedBox(
                                     width: AppDimensions.height10 * 2.6,
-                                    //height: AppDimensions.height10 * 1.2,
+                                    height: AppDimensions.height10 * 1.0,
                                     child: Center(
                                       child: Text(
                                         'LEVEL',
@@ -378,11 +384,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   ),
                                   Container(
                                     width: AppDimensions.height10 * 6.0,
-                                    // height: AppDimensions.height10 * 3.3,
+                                    height: AppDimensions.height10 * 3.3,
                                     // color: Colors.amber,
                                     margin: EdgeInsets.only(
                                         bottom: AppDimensions.height10 * 1.5),
                                     child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
@@ -431,29 +439,38 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   top: AppDimensions.height10 * 1.1),
                               child: Stack(
                                 children: [
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Container(
-                                      width: AppDimensions.height10 * 2.5,
-                                      height: AppDimensions.height10 * 1.6,
-                                      decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/colon.png'),
-                                            fit: BoxFit.contain),
-                                      ),
-                                    ),
-                                  ),
+                                  index_color == 3 ||
+                                          index_color == 1 ||
+                                          index_color == 4
+                                      ? Container()
+                                      : Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Container(
+                                            width: AppDimensions.height10 * 2.5,
+                                            height:
+                                                AppDimensions.height10 * 1.6,
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/colon.png'),
+                                                  fit: BoxFit.contain),
+                                            ),
+                                          ),
+                                        ),
                                   Align(
                                     alignment: const Alignment(0.5, 0),
                                     child: SizedBox(
-                                      width: AppDimensions.height10 * 21.4,
+                                      //  width: AppDimensions.height10 * 21.4,
                                       height: AppDimensions.height10 * 7.3,
 
                                       //color: Colors.amber,
                                       child: Center(
                                         child: Text(
-                                          "I'm making small steps forward",
+                                          index_color == 3 || index_color == 1
+                                              ? 'Score needed!'
+                                              : index_color == 4
+                                                  ? 'Incomplete scores below!'
+                                                  : "I'm making small steps forward",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize:
@@ -509,8 +526,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            FadePageRoute(page: your_why(criteria: 1)));
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const your_why(
+                              criteria: 1,
+                              saved: false,
+                            )));
                       },
                       child: goal_criteria(
                         criteria: 'Goal Criteria 1',
@@ -551,8 +573,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
                     GestureDetector(
                       onTap: () {
                         if (index_color == 3) {
-                          Navigator.push(context,
-                              FadePageRoute(page: const your_why(criteria: 4)));
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const your_why(
+                                criteria: 4,
+                                saved: false,
+                              )));
                         }
                       },
                       child: goal_criteria(
@@ -582,6 +609,60 @@ class _new_progress_scoreState extends State<new_progress_score> {
                     color: const Color(0xFFFFFFFF).withOpacity(0.3)),
               )
             ],
+          ),
+        ),
+      ),
+      extendBody: true,
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          Upgrade_sheet(context);
+        },
+        child: BottomAppBar(
+          elevation: 0,
+          color: Colors.transparent,
+          child: Container(
+            height: AppDimensions.height10 * 7.7,
+            width: AppDimensions.height10 * 41.4,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(AppDimensions.height10 * 2.0),
+                    topRight: Radius.circular(AppDimensions.height10 * 2.0)),
+                color: const Color(0xFFF5F5F5)),
+            child: SizedBox(
+              // width: AppDimensions.height10 * 27.8,
+              height: AppDimensions.height10 * 3.4,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    margin:
+                        EdgeInsets.only(right: AppDimensions.height10 * 1.0),
+                    // width: AppDimensions.height10 * 23.6,
+                    child: Text(
+                      'Upgrade to score ',
+                      style: TextStyle(
+                          color: const Color(0xFF437296),
+                          fontSize: AppDimensions.height10 * 2.8,
+                          fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  Container(
+                    width: AppDimensions.height10 * 3.2,
+                    height: AppDimensions.height10 * 3.2,
+                    padding: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.1,
+                        left: AppDimensions.height10 * 0.6,
+                        right: AppDimensions.height10 * 0.6,
+                        bottom: AppDimensions.height10 * 0.9),
+                    decoration: const BoxDecoration(
+                        color: Color(0xFF437296), shape: BoxShape.circle),
+                    child: Image.asset(
+                      'assets/images/Arrow.png',
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
         ),
       ),
@@ -690,7 +771,8 @@ class goal_criteria extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(
                     width: border ? AppDimensions.height10 * 0.1 : 0,
-                    color: border ? Color(0xFFFEFEEC) : Colors.transparent)),
+                    color:
+                        border ? const Color(0xFFFEFEEC) : Colors.transparent)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -753,6 +835,116 @@ class goal_criteria extends StatelessWidget {
       ),
     );
   }
+}
+
+void Upgrade_sheet(context) {
+  showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+        top: Radius.circular(AppDimensions.height10 * 2.0),
+      )),
+      builder: (context) => Container(
+            height: AppDimensions.height10 * 23.7,
+            width: AppDimensions.height10 * 41.4,
+            decoration: BoxDecoration(
+              color: const Color(0xFFF5F5F5),
+              borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(AppDimensions.height10 * 2.0)),
+            ),
+            child: Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    // width: AppDimensions.height10 * 27.8,
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 2.1),
+                    height: AppDimensions.height10 * 3.4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              right: AppDimensions.height10 * 1.0),
+                          // width: AppDimensions.height10 * 23.6,
+                          child: Text(
+                            'Upgrade to score ',
+                            style: TextStyle(
+                                color: const Color(0xFF437296),
+                                fontSize: AppDimensions.height10 * 2.8,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        Container(
+                          width: AppDimensions.height10 * 3.2,
+                          height: AppDimensions.height10 * 3.2,
+                          padding: EdgeInsets.only(
+                              top: AppDimensions.height10 * 0.9,
+                              left: AppDimensions.height10 * 0.6,
+                              right: AppDimensions.height10 * 0.6,
+                              bottom: AppDimensions.height10 * 1.1),
+                          decoration: const BoxDecoration(
+                              color: Color(0xFF437296), shape: BoxShape.circle),
+                          child: Image.asset(
+                            'assets/images/Arrow_up.png',
+                            color: const Color(0xFFFBFBFB),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  width: AppDimensions.height10 * 32.7,
+                  height: AppDimensions.height10 * 7.4,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                  child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          style: TextStyle(
+                              fontFamily: 'LAILA',
+                              color: const Color(0xFF437296),
+                              fontSize: AppDimensions.height10 * 1.6,
+                              fontWeight: FontWeight.w400),
+                          children: const [
+                            TextSpan(
+                                text:
+                                    'To access this functionality, please check\nout our '),
+                            TextSpan(
+                                text: 'Ownership Plan ',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text: 'that is available for premium users. ')
+                          ])),
+                ),
+                Container(
+                  width: AppDimensions.height10 * 36.0,
+                  height: AppDimensions.height10 * 5.0,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.7),
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.height10 * 5.0),
+                      gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xFFFCC10D), Color(0xFFFCC10D)])),
+                  child: Center(
+                    child: Text(
+                      'View Ownership Plan',
+                      style: TextStyle(
+                          fontFamily: 'LAILA',
+                          color: const Color(0xFFFFFFFF),
+                          fontSize: AppDimensions.height10 * 1.8,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ));
 }
 
 void evaluation_sheet(context) {

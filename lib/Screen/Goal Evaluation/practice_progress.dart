@@ -144,48 +144,49 @@ class _practice_progressState extends State<practice_progress> {
                     ),
                   ),
                 ),
-                Container(
-                  width: AppDimensions.height10 * 30.3,
-                  height: AppDimensions.height10 * 5.1,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 1.8),
-                    border:
-                        Border.all(width: 1, color: const Color(0xFFFBFBFB)),
-                  ),
-                  child: Center(
-                    child: Container(
-                      width: AppDimensions.height10 * 21.0,
-                      height: AppDimensions.height10 * 2.6,
-                      margin:
-                          EdgeInsets.only(bottom: AppDimensions.height10 * 0.8),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            //width: AppDimensions.height10 * 16.7,
-                            height: AppDimensions.height10 * 2.6,
-                            child: RichText(
-                                text: TextSpan(
-                                    style: TextStyle(
-                                        color: const Color(0xFFFBFBFB),
-                                        fontFamily: 'laila',
-                                        fontSize: AppDimensions.height10 * 2.2,
-                                        fontWeight: FontWeight.w400),
-                                    children: [
-                                  const TextSpan(text: 'View: '),
-                                  const TextSpan(
-                                      text: 'Past week',
+                GestureDetector(
+                  onTap: () {
+                    _showBottomSheet(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.height10 * 30.3,
+                    height: AppDimensions.height10 * 5.1,
+                    margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.height10 * 1.8),
+                      border:
+                          Border.all(width: 1, color: const Color(0xFFFBFBFB)),
+                    ),
+                    child: Center(
+                      child: Container(
+                        width: AppDimensions.height10 * 21.0,
+                        height: AppDimensions.height10 * 2.6,
+                        margin: EdgeInsets.only(
+                            bottom: AppDimensions.height10 * 0.8),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              //width: AppDimensions.height10 * 16.7,
+                              height: AppDimensions.height10 * 2.6,
+                              child: RichText(
+                                  text: TextSpan(
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600))
-                                ])),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              _showBottomSheet(context);
-                            },
-                            child: Container(
+                                          color: const Color(0xFFFBFBFB),
+                                          fontFamily: 'laila',
+                                          fontSize:
+                                              AppDimensions.height10 * 2.2,
+                                          fontWeight: FontWeight.w400),
+                                      children: const [
+                                    TextSpan(text: 'View: '),
+                                    TextSpan(
+                                        text: 'Past week',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600))
+                                  ])),
+                            ),
+                            Container(
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10 * 0.8,
                                     left: AppDimensions.height10 * 1.2),
@@ -197,8 +198,8 @@ class _practice_progressState extends State<practice_progress> {
                                   width: AppDimensions.height10 * 1.7,
                                   height: AppDimensions.height10 * 1.7,
                                 )),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -1882,8 +1883,8 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
           ),
           Expanded(
             child: ListWheelScrollView(
-              itemExtent: 60,
-              magnification: 1.2,
+              itemExtent: 40,
+              magnification: 1.4,
               useMagnifier: true, // Set the height of each statement
               children: _statements
                   .map((statement) => Text(statement,

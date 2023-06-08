@@ -39,7 +39,7 @@ class Success extends StatelessWidget {
                         color: const Color(0XFF000000)),
                   )),
                 ),
-                Container(
+                SizedBox(
                   width: AppDimensions.height10 * 23.8,
                   height: AppDimensions.height10 * 3.2,
                   child: Center(

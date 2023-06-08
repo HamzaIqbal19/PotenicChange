@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/captureHurdles/hurdle_positive_alternates/hurdles_details/link_details.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 
 class select_link extends StatefulWidget {
@@ -42,7 +43,7 @@ class _select_linkState extends State<select_link> {
                 fontSize: AppDimensions.height10 * 2.0,
                 fontWeight: FontWeight.w600,
               ),
-              colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+              colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
           actions: [
@@ -61,7 +62,7 @@ class _select_linkState extends State<select_link> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/practicebackground.png'),
                 fit: BoxFit.cover)),
@@ -76,7 +77,7 @@ class _select_linkState extends State<select_link> {
                   shape: BoxShape.rectangle,
                   borderRadius:
                       BorderRadius.circular(AppDimensions.height10 * 1.0),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       image: AssetImage('assets/images/Image_Subtract.png'))),
               child: Container(
                 margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
@@ -98,7 +99,7 @@ class _select_linkState extends State<select_link> {
                             height: AppDimensions.height10 * 3.032,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10 * 0.68),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
                                         'assets/images/link_icon.png'))),
@@ -141,7 +142,7 @@ class _select_linkState extends State<select_link> {
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10 * 1.8,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent)),
                         enabledBorder: const OutlineInputBorder(
@@ -169,9 +170,7 @@ class _select_linkState extends State<select_link> {
                 child: TextButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => link_details()));
+                          context, FadePageRoute(page: const link_details()));
                     },
                     child: Text(
                       'Confirm',

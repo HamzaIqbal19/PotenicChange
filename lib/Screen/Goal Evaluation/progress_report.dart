@@ -642,10 +642,10 @@ class progress_report extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFF5B74A6),
                                 ),
-                                children: [
-                                  const TextSpan(
+                                children: const [
+                                  TextSpan(
                                       text: 'You have completed this\nover '),
-                                  const TextSpan(
+                                  TextSpan(
                                       text: '2 months',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w700))
@@ -916,12 +916,12 @@ class progress_report extends StatelessWidget {
                           EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                       child: Center(
                         child: Text(
-                          '“It was ok”',
+                          '“I feel ok”',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: AppDimensions.height10 * 2.8,
                               fontWeight: FontWeight.w700,
-                              color: const Color(0xFFEDD264)),
+                              color: const Color(0xFFE1C44F)),
                         ),
                       ),
                     ),
@@ -935,7 +935,7 @@ class progress_report extends StatelessWidget {
                                   fontFamily: 'laila',
                                   height: 1.2,
                                   fontWeight: FontWeight.w400,
-                                  color: const Color(0xFFEDD264)),
+                                  color: const Color(0xFFE1C44F)),
                               children: [
                             const TextSpan(text: '5'),
                             TextSpan(
@@ -958,7 +958,7 @@ class progress_report extends StatelessWidget {
                             margin: EdgeInsets.symmetric(
                                 horizontal: AppDimensions.height10 * 0.3),
                             decoration: const BoxDecoration(
-                                color: Color(0xFFEDD264),
+                                color: Color(0xFFE1C44F),
                                 shape: BoxShape.circle),
                           ),
                         ),

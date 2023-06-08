@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_ac
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:dotted_border/dotted_border.dart';
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class inspiration_type extends StatelessWidget {
@@ -44,7 +45,7 @@ class inspiration_type extends StatelessWidget {
                     fontSize: AppDimensions.height10 * 2.0,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '/2',
@@ -53,7 +54,7 @@ class inspiration_type extends StatelessWidget {
                     fontSize: AppDimensions.height10 * 2.0,
                     fontWeight: FontWeight.w400,
                   ),
-                  colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ],
             ),
@@ -93,7 +94,7 @@ class inspiration_type extends StatelessWidget {
                     fontSize: AppDimensions.height10 * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
-                  colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
             ),
@@ -174,9 +175,8 @@ class inspiration_type extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const photo_pop_up()));
+                                          FadePageRoute(
+                                              page: const photo_pop_up()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10 * 2.122,
@@ -249,12 +249,11 @@ class inspiration_type extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const note_info(
-                                                    note_saved: false,
-                                                    type_switch: 1,
-                                                  )));
+                                          FadePageRoute(
+                                              page: const note_info(
+                                            note_saved: false,
+                                            type_switch: 1,
+                                          )));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10 * 2.122,
@@ -328,9 +327,8 @@ class inspiration_type extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const link_info()));
+                                          FadePageRoute(
+                                              page: const link_info()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10 * 2.122,
@@ -403,9 +401,8 @@ class inspiration_type extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const video_info()));
+                                          FadePageRoute(
+                                              page: const video_info()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10 * 2.122,

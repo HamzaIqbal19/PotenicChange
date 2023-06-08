@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -61,8 +62,10 @@ class _PracticeFinishedState extends State<PracticeFinished> {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
+                  FadePageRoute(
+                    page: HomeScreen(
+                      log_status: true,
+                    ),
                   ),
                 );
                 // Add code for performing close action
@@ -152,7 +155,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                     child: Align(
                       // alignment: Alignment.bottomCenter,
 
-                      alignment: Alignment(0.49,AppDimensions.height10*0.016+1.4),
+                      alignment:
+                          Alignment(0.49, AppDimensions.height10 * 0.016 + 1.4),
                       //heightFactor: 0.5,
                       child: Container(
                         // height: AppDimensions.height10*17.5,
@@ -160,21 +164,20 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child:
-                        GestureDetector(
-                          onTap: (){
+                        child: GestureDetector(
+                          onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => PracticeReview(),
+                              FadePageRoute(
+                                page: PracticeReview(),
                               ),
                             );
                           },
                           child: Image(
-                            image: const AssetImage('assets/images/practicefinal.png'),
-                            height: AppDimensions.height10*1.5 * 14.7,
-                            width: AppDimensions.height10*1.5 * 14.7,
-
+                            image: const AssetImage(
+                                'assets/images/practicefinal.png'),
+                            height: AppDimensions.height10 * 1.5 * 14.7,
+                            width: AppDimensions.height10 * 1.5 * 14.7,
                           ),
                         ),
                       ),
@@ -197,13 +200,12 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         fit: BoxFit.contain,
                       )),
                   GestureDetector(
-                onTap: (){
+                    onTap: () {
                       Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ActivateStar(),
-                        )
-                      );
+                          context,
+                          FadePageRoute(
+                            page: ActivateStar(),
+                          ));
                     },
                     child: Container(
                       height: AppDimensions.height10 * 5,

@@ -1,5 +1,3 @@
-// import 'package:flutter/gestures.dart';
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -23,6 +21,7 @@ class dashBoard extends StatefulWidget {
   final bool helpful_tips;
   final bool dashboard_ctrl;
   final bool membership;
+  final bool saved;
   final bool trial;
   final bool cancel;
 
@@ -32,7 +31,8 @@ class dashBoard extends StatefulWidget {
       required this.dashboard_ctrl,
       required this.membership,
       required this.trial,
-      required this.cancel});
+      required this.cancel,
+      required this.saved});
   @override
   State<dashBoard> createState() => _dashBoardState();
 }
@@ -60,8 +60,8 @@ class _dashBoardState extends State<dashBoard> {
                 Container(
                   child: Image.asset(
                     'assets/images/Add goal.png',
-                    height: AppDimensions.height10 * 2.1,
-                    width: AppDimensions.height10 * 2.2,
+                    height: AppDimensions.height10 * 2.4,
+                    width: AppDimensions.height10 * 2.4,
                   ),
                 ),
                 Container(
@@ -82,57 +82,297 @@ class _dashBoardState extends State<dashBoard> {
         ),
         extendBodyBehindAppBar: true,
         extendBody: true,
-        bottomNavigationBar: Navigation_Bar(
-          bg_colored: false,
-          membership: widget.membership ? true : false,
-          cancel: widget.cancel ? true : false,
-          trial: widget.trial ? true : false,
-        ),
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/Mask Group.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-          width: double.infinity,
-          height: double.infinity,
-          child: SizedBox(
-            width: double.infinity,
-            height: AppDimensions.height10 * 19.2,
-            child: Stack(children: [
-              Column(
-                children: [
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: SizedBox(
-                      height: AppDimensions.height10 * 19.2,
-                      width: AppDimensions.height10 * 45.7,
-                      child: Stack(
-                        children: [
-                          Align(
-                            alignment: const Alignment(-1, 1),
-                            child: Container(
-                              height: AppDimensions.height10 * 7.9,
-                              width: AppDimensions.height10 * 7.9,
-                              //margin: const EdgeInsets.only(top: 84),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 3, color: Colors.white),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color.fromRGBO(187, 185, 174, 1),
-                                      Color.fromRGBO(206, 194, 149, 1)
-                                    ]),
+        bottomNavigationBar: widget.saved
+            ? Container(
+                color: Colors.transparent,
+                padding: EdgeInsets.all(AppDimensions.height10 * 1.6),
+                child: Container(
+                  width: AppDimensions.height10 * 38.259,
+                  height: AppDimensions.height10 * 9.707,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 12.0),
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.height10 * 2.0),
+                      gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10 * 1.261),
+                        width: AppDimensions.height10 * 4.437,
+                        height: AppDimensions.height10 * 4.437,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/circle_tick.png'))),
+                      ),
+                      Container(
+                        width: AppDimensions.height10 * 16.3,
+                        height: AppDimensions.height10 * 3.6,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10 * 1.232),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              //  / width: AppDimensions.height10 * 4.6,
+                              height: AppDimensions.height10 * 1.4,
+                              //   color: Colors.amber,
+                              child: Text(
+                                'SAVED',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 1.3,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xFFFFFFFF)),
                               ),
+                            ),
+                            SizedBox(
+                              //width: AppDimensions.height10 * 6.9,
+                              height: AppDimensions.height10 * 2.2,
+                              child: Text(
+                                'Meditation Practice',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xFFFFFFFF)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: AppDimensions.height10 * 3.0,
+                        width: AppDimensions.height10 * 3.0,
+                        padding: EdgeInsets.all(AppDimensions.height10 * 0.6),
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10 * 10.6),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.transparent,
+                            border: Border.all(
+                                width: AppDimensions.height10 * 0.2,
+                                color: Colors.white)),
+                        child: const ImageIcon(
+                          AssetImage('assets/images/edit_icon.png'),
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            : Navigation_Bar(
+                bg_colored: false,
+                membership: widget.membership ? true : false,
+                cancel: widget.cancel ? true : false,
+                trial: widget.trial ? true : false,
+              ),
+        body: GestureDetector(
+          onTap: () {
+            if (widget.saved == true) {
+              __share_experience(context);
+            }
+          },
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/Mask Group.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            width: double.infinity,
+            height: double.infinity,
+            child: SizedBox(
+              width: double.infinity,
+              height: AppDimensions.height10 * 19.2,
+              child: Stack(children: [
+                Column(
+                  children: [
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: SizedBox(
+                        height: AppDimensions.height10 * 19.2,
+                        width: AppDimensions.height10 * 45.7,
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: const Alignment(-1, 1),
                               child: Container(
-                                  alignment: Alignment.center,
-                                  child: Column(
+                                height: AppDimensions.height10 * 7.9,
+                                width: AppDimensions.height10 * 7.9,
+                                //margin: const EdgeInsets.only(top: 84),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border:
+                                      Border.all(width: 3, color: Colors.white),
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Color.fromRGBO(187, 185, 174, 1),
+                                        Color.fromRGBO(206, 194, 149, 1)
+                                      ]),
+                                ),
+                                child: Container(
+                                    alignment: Alignment.center,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      // crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'MON',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.2,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white),
+                                        ),
+                                        Text(
+                                          '02.06',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize:
+                                                  AppDimensions.height10 * 1.7),
+                                        ),
+                                        Container(
+                                            height:
+                                                AppDimensions.height10 * 2.5,
+                                            width: AppDimensions.height10 * 2.5,
+                                            //  margin: const EdgeInsets.only(top: 3.32),
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: DottedBorder(
+                                              borderType: BorderType.Circle,
+                                              color: Colors.white,
+                                              child: Center(
+                                                child: Text(
+                                                  '0/0',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Colors.white),
+                                                ),
+                                              ),
+                                            ))
+                                      ],
+                                    )),
+                              ),
+                            ),
+                            Align(
+                              alignment: const Alignment(0, 0),
+                              child: SizedBox(
+                                height: AppDimensions.height10 * 19.2,
+                                width: AppDimensions.height10 * 18.8,
+                                // margin: EdgeInsets.only(left: 55.5, right: 55.5),
+                                child: Container(
+                                  height: AppDimensions.height10 * 13.81,
+                                  width: AppDimensions.height10 * 13.265,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/Asset 10 2.png'),
+                                          fit: BoxFit.cover)),
+                                  child: Stack(children: [
+                                    Align(
+                                      alignment: const Alignment(0.185, 0.215),
+                                      child: Container(
+                                        height: AppDimensions.height10 * 1.3,
+                                        width: AppDimensions.height10 * 1.3,
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            gradient: LinearGradient(colors: [
+                                              Color(0xfff1e39a),
+                                              Color(0xffEEDD96)
+                                            ])),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: const Alignment(0, 0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'TUE',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.4,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xff5B74A6)),
+                                          ),
+                                          Text(
+                                            '02.07',
+                                            style: TextStyle(
+                                                color: const Color(0xff5B74A6),
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.3,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          Container(
+                                              height:
+                                                  AppDimensions.height10 * 2.5,
+                                              width:
+                                                  AppDimensions.height10 * 2.5,
+                                              // margin: const EdgeInsets.only(top: 2),
+                                              decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Colors.white),
+                                              child: Center(
+                                                child: Text(
+                                                  '0/2',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.0,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xff5B74A6)),
+                                                ),
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                  ]),
+                                ),
+                                //color: Colors.blue,
+                              ),
+                            ),
+                            Align(
+                              alignment: const Alignment(1, 1),
+                              child: Container(
+                                  height: AppDimensions.height10 * 7.9,
+                                  width: AppDimensions.height10 * 7.9,
+                                  // margin: const EdgeInsets.only(
+                                  //   top: 84,
+                                  // ),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          width: 3, color: Colors.white),
+                                      gradient: const LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color(0xffFBF9EF),
+                                            Color(0xffF8F3DA)
+                                          ])),
+                                  child: Container(
+                                      //margin: const EdgeInsets.only(top: 11.52),
+                                      child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    // crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
                                       Text(
                                         'MON',
@@ -140,100 +380,31 @@ class _dashBoardState extends State<dashBoard> {
                                             fontSize:
                                                 AppDimensions.height10 * 1.2,
                                             fontWeight: FontWeight.w600,
-                                            color: Colors.white),
+                                            color: const Color(0xff5B74A6)),
                                       ),
-                                      Text(
-                                        '02.06',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize:
-                                                AppDimensions.height10 * 1.7),
+                                      const Text(
+                                        '03.07',
+                                        style:
+                                            TextStyle(color: Color(0xff5B74A6)),
                                       ),
                                       Container(
-                                          height: AppDimensions.height10 * 2.5,
-                                          width: AppDimensions.height10 * 2.5,
-                                          //  margin: const EdgeInsets.only(top: 3.32),
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: DottedBorder(
-                                            borderType: BorderType.Circle,
-                                            color: Colors.white,
-                                            child: Center(
-                                              child: Text(
-                                                '0/0',
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.0,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: Colors.white),
-                                              ),
-                                            ),
-                                          ))
-                                    ],
-                                  )),
-                            ),
-                          ),
-                          Align(
-                            alignment: const Alignment(0, 0),
-                            child: SizedBox(
-                              height: AppDimensions.height10 * 19.2,
-                              width: AppDimensions.height10 * 18.8,
-                              // margin: EdgeInsets.only(left: 55.5, right: 55.5),
-                              child: Container(
-                                height: AppDimensions.height10 * 13.81,
-                                width: AppDimensions.height10 * 13.265,
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/Asset 10 2.png'),
-                                        fit: BoxFit.cover)),
-                                child: Stack(children: [
-                                  Align(
-                                    alignment: const Alignment(0.185, 0.215),
-                                    child: Container(
-                                      height: AppDimensions.height10 * 1.3,
-                                      width: AppDimensions.height10 * 1.3,
-                                      decoration: const BoxDecoration(
+                                        height: AppDimensions.height10 * 2.7,
+                                        width: AppDimensions.height10 * 2.7,
+                                        //margin: const EdgeInsets.only(top: 3.32),
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          gradient: LinearGradient(colors: [
-                                            Color(0xfff1e39a),
-                                            Color(0xffEEDD96)
-                                          ])),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: const Alignment(0, 0),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'TUE',
-                                          style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xff5B74A6)),
+                                          border: Border.all(
+                                              width:
+                                                  AppDimensions.height10 * 0.1,
+                                              color: Colors.white),
                                         ),
-                                        Text(
-                                          '02.07',
-                                          style: TextStyle(
-                                              color: const Color(0xff5B74A6),
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.3,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Container(
+                                        child: SizedBox(
+                                            width: AppDimensions.height10 * 1.7,
                                             height:
-                                                AppDimensions.height10 * 2.5,
-                                            width: AppDimensions.height10 * 2.5,
-                                            // margin: const EdgeInsets.only(top: 2),
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.white),
+                                                AppDimensions.height10 * 1.5,
+                                            // margin:
+                                            //     const EdgeInsets.only(top: 3.32),
+                                            // margin: const EdgeInsets.only(left: 1),
                                             child: Center(
                                               child: Text(
                                                 '0/2',
@@ -246,213 +417,221 @@ class _dashBoardState extends State<dashBoard> {
                                                         0xff5B74A6)),
                                               ),
                                             )),
-                                      ],
-                                    ),
-                                  ),
-                                ]),
-                              ),
-                              //color: Colors.blue,
+                                      )
+                                    ],
+                                  ))),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.height10 * 35.6,
+                      height: AppDimensions.height10 * 4.2,
+                      margin:
+                          EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                      child: Column(children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10 * 0.3),
+                          height: AppDimensions.height10 * 2.2,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            '8.00',
+                            style: TextStyle(
+                              fontSize: AppDimensions.height10 * 1.8,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
                             ),
                           ),
-                          Align(
-                            alignment: const Alignment(1, 1),
-                            child: Container(
-                                height: AppDimensions.height10 * 7.9,
-                                width: AppDimensions.height10 * 7.9,
-                                // margin: const EdgeInsets.only(
-                                //   top: 84,
-                                // ),
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    border: Border.all(
-                                        width: 3, color: Colors.white),
-                                    gradient: const LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Color(0xffFBF9EF),
-                                          Color(0xffF8F3DA)
-                                        ])),
-                                child: Container(
-                                    //margin: const EdgeInsets.only(top: 11.52),
-                                    child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'MON',
+                        ),
+                        Divider(
+                          height: AppDimensions.height10 * 0.1,
+                          thickness: AppDimensions.height10 * 0.1,
+                          color: Colors.white,
+                        ),
+                        Container(
+                          height: AppDimensions.height10 * 1.2,
+                          alignment: Alignment.centerLeft,
+                          child: const Text(
+                            'AM',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )
+                      ]),
+                    ),
+                    Container(
+                      width: widget.dashboard_ctrl
+                          ? AppDimensions.height10 * 40.1
+                          : AppDimensions.height10 * 31.3,
+                      height: AppDimensions.height10 * 31.3,
+                      // color: Colors.blue,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10 * 2.9,
+                          bottom: AppDimensions.height10 * 1.2,
+                          right: widget.dashboard_ctrl
+                              ? AppDimensions.height10 * 0.9
+                              : AppDimensions.height10 * 7.3,
+                          left: widget.dashboard_ctrl
+                              ? AppDimensions.height10 * 0.4
+                              : AppDimensions.height10 * 2.3),
+                      child: widget.dashboard_ctrl
+                          ? Stack(children: [
+                              Align(
+                                alignment: const Alignment(-1, 0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const practiceMenu(
+                                          goal_eval: false,
+                                        )));
+                                  },
+                                  child: Container(
+                                    height: AppDimensions.height10 * 13.8,
+                                    width: AppDimensions.height10 * 13.8,
+                                    decoration: const BoxDecoration(
+                                        //color: Colors.amber,
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/Ellipse 158.png'),
+                                            fit: BoxFit.cover)),
+                                    child: Center(
+                                        child: Text(
+                                      'Meditation',
                                       style: TextStyle(
+                                          color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10 * 1.2,
-                                          fontWeight: FontWeight.w600,
-                                          color: const Color(0xff5B74A6)),
-                                    ),
-                                    const Text(
-                                      '03.07',
-                                      style:
-                                          TextStyle(color: Color(0xff5B74A6)),
-                                    ),
-                                    Container(
-                                      height: AppDimensions.height10 * 2.7,
-                                      width: AppDimensions.height10 * 2.7,
-                                      //margin: const EdgeInsets.only(top: 3.32),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            width: AppDimensions.height10 * 0.1,
-                                            color: Colors.white),
-                                      ),
-                                      child: SizedBox(
-                                          width: AppDimensions.height10 * 1.7,
-                                          height: AppDimensions.height10 * 1.5,
-                                          // margin:
-                                          //     const EdgeInsets.only(top: 3.32),
-                                          // margin: const EdgeInsets.only(left: 1),
-                                          child: Center(
+                                              AppDimensions.height10 * 1.8,
+                                          fontWeight: FontWeight.w500),
+                                    )),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: const Alignment(1, 0.4),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: AppDimensions.height10 * 13.8,
+                                    width: AppDimensions.height10 * 13.8,
+                                    decoration: const BoxDecoration(
+                                        //color: Colors.amber,
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/Ellipse 157.png'),
+                                            fit: BoxFit.cover)),
+                                    child: Center(
+                                        child: Text(
+                                      'Count\ndown',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize:
+                                              AppDimensions.height10 * 1.8,
+                                          fontWeight: FontWeight.w500),
+                                      textAlign: TextAlign.center,
+                                    )),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const goal_menu_inactive(
+                                          premium: true,
+                                          isActive: true,
+                                          goal_evaluation: true,
+                                        )));
+                                  },
+                                  child: Container(
+                                    width: AppDimensions.height10 * 26.8,
+                                    height: AppDimensions.height10 * 26.8,
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/orange_moon.png'),
+                                            fit: BoxFit.cover)),
+                                    child: Stack(
+                                      children: [
+                                        Align(
+                                            alignment: const Alignment(0, -0.5),
                                             child: Text(
-                                              '0/2',
+                                              'Control my anger',
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10 *
-                                                          1.0,
-                                                  fontWeight: FontWeight.w400,
+                                                          2.0,
+                                                  fontWeight: FontWeight.w600,
                                                   color:
                                                       const Color(0xff5B74A6)),
+                                            )),
+                                        Align(
+                                          alignment: const Alignment(0, -0.2),
+                                          child: Text(
+                                              '“I am someone who is in\n control of my anger”',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontStyle: FontStyle.italic,
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.6,
+                                                  fontWeight: FontWeight.w400,
+                                                  color:
+                                                      const Color(0xff5B74A6))),
+                                        ),
+                                        Align(
+                                          alignment: const Alignment(0, 1.5),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: congratulations()));
+                                            },
+                                            child: Container(
+                                              height:
+                                                  AppDimensions.height10 * 13.8,
+                                              width:
+                                                  AppDimensions.height10 * 13.8,
+                                              decoration: const BoxDecoration(
+                                                  //color: Colors.amber,
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          'assets/images/Ellipse orange.png'),
+                                                      fit: BoxFit.contain)),
+                                              child: Center(
+                                                  child: Text(
+                                                'Count\ntemper\nepisodes',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize:
+                                                        AppDimensions.height10 *
+                                                            1.8,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              )),
                                             ),
-                                          )),
-                                    )
-                                  ],
-                                ))),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: AppDimensions.height10 * 35.6,
-                    height: AppDimensions.height10 * 4.2,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
-                    child: Column(children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            bottom: AppDimensions.height10 * 0.3),
-                        height: AppDimensions.height10 * 2.2,
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          '8.00',
-                          style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Divider(
-                        height: AppDimensions.height10 * 0.1,
-                        thickness: AppDimensions.height10 * 0.1,
-                        color: Colors.white,
-                      ),
-                      Container(
-                        height: AppDimensions.height10 * 1.2,
-                        alignment: Alignment.centerLeft,
-                        child: const Text(
-                          'AM',
-                          style: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
-                          ),
-                        ),
-                      )
-                    ]),
-                  ),
-                  Container(
-                    width: widget.dashboard_ctrl
-                        ? AppDimensions.height10 * 40.1
-                        : AppDimensions.height10 * 31.3,
-                    height: AppDimensions.height10 * 31.3,
-                    // color: Colors.blue,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 2.9,
-                        bottom: AppDimensions.height10 * 1.2,
-                        right: widget.dashboard_ctrl
-                            ? AppDimensions.height10 * 0.9
-                            : AppDimensions.height10 * 7.3,
-                        left: widget.dashboard_ctrl
-                            ? AppDimensions.height10 * 0.4
-                            : AppDimensions.height10 * 2.3),
-                    child: widget.dashboard_ctrl
-                        ? Stack(children: [
-                            Align(
-                              alignment: const Alignment(-1, 0),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const practiceMenu(
-                                                goal_eval: true,
-                                              )));
-                                },
-                                child: Container(
-                                  height: AppDimensions.height10 * 13.8,
-                                  width: AppDimensions.height10 * 13.8,
-                                  decoration: const BoxDecoration(
-                                      //color: Colors.amber,
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/Ellipse 158.png'),
-                                          fit: BoxFit.cover)),
-                                  child: Center(
-                                      child: Text(
-                                    'Meditation',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: AppDimensions.height10 * 1.8,
-                                        fontWeight: FontWeight.w500),
-                                  )),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Align(
-                              alignment: const Alignment(1, 0.4),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  height: AppDimensions.height10 * 13.8,
-                                  width: AppDimensions.height10 * 13.8,
-                                  decoration: const BoxDecoration(
-                                      //color: Colors.amber,
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/Ellipse 157.png'),
-                                          fit: BoxFit.cover)),
-                                  child: Center(
-                                      child: Text(
-                                    'Count\ndown',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: AppDimensions.height10 * 1.8,
-                                        fontWeight: FontWeight.w500),
-                                    textAlign: TextAlign.center,
-                                  )),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.topCenter,
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const goal_menu_inactive(
-                                                premium: true,
-                                                isActive: true,
-                                                goal_evaluation: true,
-                                              )));
-                                },
+                            ])
+                          : Stack(children: [
+                              Align(
+                                alignment: Alignment.topRight,
                                 child: Container(
                                   width: AppDimensions.height10 * 26.8,
                                   height: AppDimensions.height10 * 26.8,
@@ -487,741 +666,898 @@ class _dashBoardState extends State<dashBoard> {
                                                 fontWeight: FontWeight.w400,
                                                 color:
                                                     const Color(0xff5B74A6))),
-                                      ),
-                                      Align(
-                                        alignment: const Alignment(0, 1.5),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                FadePageRoute(
-                                                    page: Potenic_tool_tip()));
-                                          },
-                                          child: Container(
-                                            height:
-                                                AppDimensions.height10 * 13.8,
-                                            width:
-                                                AppDimensions.height10 * 13.8,
-                                            decoration: const BoxDecoration(
-                                                //color: Colors.amber,
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/Ellipse orange.png'),
-                                                    fit: BoxFit.contain)),
-                                            child: Center(
-                                                child: Text(
-                                              'Count\ntemper\nepisodes',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize:
-                                                      AppDimensions.height10 *
-                                                          1.8,
-                                                  fontWeight: FontWeight.w500),
-                                            )),
-                                          ),
-                                        ),
-                                      ),
+                                      )
                                     ],
                                   ),
                                 ),
                               ),
-                            ),
-                          ])
-                        : Stack(children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Container(
-                                width: AppDimensions.height10 * 26.8,
-                                height: AppDimensions.height10 * 26.8,
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/orange_moon.png'),
-                                        fit: BoxFit.cover)),
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                        alignment: const Alignment(0, -0.5),
-                                        child: Text(
-                                          'Control my anger',
-                                          style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 2.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xff5B74A6)),
-                                        )),
-                                    Align(
-                                      alignment: const Alignment(0, -0.2),
-                                      child: Text(
-                                          '“I am someone who is in\n control of my anger”',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontStyle: FontStyle.italic,
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.6,
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color(0xff5B74A6))),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const Alignment(0.9, 0.9),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const practiceMenu(
-                                                goal_eval: false,
-                                              )));
-                                },
-                                child: Container(
-                                  height: AppDimensions.height10 * 13.8,
-                                  width: AppDimensions.height10 * 13.8,
-                                  decoration: const BoxDecoration(
-                                      //color: Colors.amber,
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/Ellipse 158.png'),
-                                          fit: BoxFit.cover)),
-                                  child: Center(
-                                      child: Text(
-                                    'Meditation',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: AppDimensions.height10 * 1.8,
-                                        fontWeight: FontWeight.w500),
-                                  )),
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: const Alignment(-1, 0.4),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  height: AppDimensions.height10 * 13.8,
-                                  width: AppDimensions.height10 * 13.8,
-                                  decoration: const BoxDecoration(
-                                      //color: Colors.amber,
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/Ellipse 157.png'),
-                                          fit: BoxFit.cover)),
-                                  child: Center(
-                                      child: Text(
-                                    'Count\ndown',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: AppDimensions.height10 * 1.8,
-                                        fontWeight: FontWeight.w500),
-                                    textAlign: TextAlign.center,
-                                  )),
-                                ),
-                              ),
-                            ),
-                          ]),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      notifications_sheet(context);
-                    },
-                    child: Container(
-                      height: AppDimensions.height10 * 14.432,
-                      width: AppDimensions.height10 * 35.335,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage(
-                          'assets/images/Component 1.png',
-                        ),
-                        fit: BoxFit.cover,
-                      )),
-
-                      //color: Colors.blue,
-                      child: Stack(children: [
-                        Align(
-                          alignment: const Alignment(-0.930, -1.42),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const message_center()));
-                            },
-                            child: Image.asset(
-                              "assets/images/Group.png",
-                              height: AppDimensions.height10 * 5.0,
-                              width: AppDimensions.height10 * 5.0,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: const Alignment(0.93, 0),
-                          child: Image.asset(
-                            "assets/images/Vector Smart Object.png",
-                            height: AppDimensions.height10 * 9.296,
-                            width: AppDimensions.height10 * 4.16,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                            top: AppDimensions.height10 * 2.1,
-                          ),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: AppDimensions.height10 * 28.0,
-                                height: AppDimensions.height10 * 2.3,
-                                alignment: const Alignment(-0.65, 0),
-                                child: Text(
-                                  "Hi, it's Reda here",
-                                  style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.6,
-                                    fontWeight: FontWeight.w700,
-                                    color:
-                                        const Color.fromRGBO(91, 116, 166, 1),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: AppDimensions.height10 * 5.245,
-                                height: AppDimensions.height10 * 1.3,
-                                margin: EdgeInsets.only(
-                                    right: AppDimensions.height10 * 17.5),
-                                child: const Divider(
-                                  thickness: 1,
-                                  color: Color.fromRGBO(91, 116, 166, 1),
-                                ),
-                              ),
-                              Container(
-                                width: AppDimensions.height10 * 26.7,
-                                // height: AppDimensions.height10 * 5.3,
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 3.4,
-                                    bottom: AppDimensions.height10 * 1.2),
-                                child: Text(
-                                  "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
-                                  // textAlign: TextAlign.left,
-
-                                  style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.4,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color.fromRGBO(
-                                          91, 116, 166, 1)),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ]),
-                    ),
-                  )
-                ],
-              ),
-              OfflineBuilder(
-                  debounceDuration: const Duration(milliseconds: 3),
-                  connectivityBuilder: (
-                    BuildContext context,
-                    ConnectivityResult connectivity,
-                    Widget child,
-                  ) {
-                    connected = connectivity != ConnectivityResult.none;
-
-                    onlineCon() {
-                      // if (connected == true) {
-                      //   print("check whether condition is true or false");
-
-                      //   Timer(Duration(seconds: 10), () {
-                      //     setState(() {
-                      //       _isVisible = false;
-                      //       print(_isVisible);
-                      //     });
-                      //   });
-                      // }
-
-                      return Container(
-                        child: Positioned(
-                            child: Align(
-                          alignment: Alignment.bottomCenter,
-                          child: Container(
-                            width: double.infinity,
-                            height: AppDimensions.height10 * 3.0,
-                            color: Colors.green,
-                            child: Center(
-                              child: Text(
-                                'Back Online',
-                                style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.4,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xFFFBFBFB)),
-                              ),
-                            ),
-                          ),
-                        )),
-                      );
-                    }
-
-                    return ScaffoldMessenger(
-                      child: Stack(
-                        fit: StackFit.expand,
-                        children: [
-                          connected
-                              ? connected
-                                  ? onlineCon()
-                                  : Container()
-                              : Positioned(
-                                  child: Align(
-                                  alignment: Alignment.bottomCenter,
+                              Align(
+                                alignment: const Alignment(0.9, 0.9),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const practiceMenu(
+                                          goal_eval: false,
+                                        )));
+                                  },
                                   child: Container(
-                                    width: double.infinity,
-                                    height: AppDimensions.height10 * 3.0,
-                                    color: const Color(0xFFFE6624),
+                                    height: widget.saved
+                                        ? AppDimensions.height10 * 14.8
+                                        : AppDimensions.height10 * 13.8,
+                                    width: widget.saved
+                                        ? AppDimensions.height10 * 14.8
+                                        : AppDimensions.height10 * 13.8,
+                                    decoration: BoxDecoration(
+                                        //color: Colors.amber,
+                                        image: DecorationImage(
+                                            image: AssetImage(widget.saved
+                                                ? 'assets/images/Meditation Completed.png'
+                                                : 'assets/images/Ellipse 158.png'),
+                                            fit: widget.saved
+                                                ? BoxFit.contain
+                                                : BoxFit.cover)),
                                     child: Center(
-                                      child: Text(
-                                        'You’re Offline',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.4,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xFFFBFBFB)),
-                                      ),
-                                    ),
-                                  ),
-                                ))
-                        ],
-                      ),
-                    );
-                  },
-                  child: Container()),
-              if (_showOverlay && widget.helpful_tips == true)
-                Container(
-                  color: Colors.transparent,
-                  alignment: Alignment.center,
-                  child: Stack(
-                    children: [
-                      Align(
-                          alignment: goal_level == 2
-                              ? const Alignment(-0.2, 0.1)
-                              : goal_level == 3
-                                  ? const Alignment(-0.2, -0.47)
-                                  : goal_level == 4
-                                      ? const Alignment(0.07, -0.68)
-                                      : goal_level == 5
-                                          ? const Alignment(0.1, -0.85)
-                                          : goal_level == 6
-                                              ? const Alignment(0.25, -0.85)
-                                              : goal_level == 1
-                                                  ? const Alignment(0.1, -0.27)
-                                                  : const Alignment(0.12, 0.37),
-                          child: SimpleTooltip(
-                            //customShadows: [],
-                            //  maxHeight: AppDimensions.height10 * 23.9,
-                            maxWidth: AppDimensions.height10 * 30.6,
-                            //  minHeight: AppDimensions.height10 * 21.9,
-                            //minWidth: AppDimensions.height10 * 29.6,
-                            tooltipDirection: goal_level == 1 ||
-                                    goal_level == 2 ||
-                                    goal_level == 7
-                                ? TooltipDirection.up
-                                : TooltipDirection.down,
-                            arrowTipDistance: 5,
-                            minimumOutSidePadding: 0,
-                            // targetCenter: goal_level == 2 ? null : null,
-                            ballonPadding: const EdgeInsets.all(0),
-                            arrowLength: AppDimensions.height10 * 0.6,
-                            borderColor: Colors.transparent,
-                            // content: null,
-                            //have to initialize from different widgets
-                            child: SizedBox(
-                              width: AppDimensions.height10 * 1,
-                              height: AppDimensions.height10 * 1,
-                              child: Container(),
-                            ),
-                            show: goal_level > 7 ? false : true,
-                            // tooltipTap: () {
-                            //   if (goal_level > 7) {}
-                            // },
-
-                            animationDuration: const Duration(milliseconds: 3),
-                            content: Container(
-                              width: AppDimensions.height10 * 30.6,
-                              height: goal_level == 1
-                                  ? AppDimensions.height10 * 20.3
-                                  : goal_level == 2
-                                      ? AppDimensions.height10 * 20.1
-                                      : goal_level == 3
-                                          ? AppDimensions.height10 * 16.3
-                                          : goal_level == 4
-                                              ? AppDimensions.height10 * 18.6
-                                              : goal_level == 5
-                                                  ? AppDimensions.height10 *
-                                                      20.6
-                                                  : goal_level == 6
-                                                      ? AppDimensions.height10 *
-                                                          16.4
-                                                      : AppDimensions.height10 *
-                                                          18.6,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10 * 1.0)),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: AppDimensions.height10 * 21.6,
-                                    //height: AppDimensions.height10 * 2.2,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 0.5,
-                                        left: AppDimensions.height10 * 0.5,
-                                        right: AppDimensions.height10 * 7.4),
-                                    child: Text(
-                                      goal_level == 2
-                                          ? 'Your Practice'
-                                          : goal_level == 3
-                                              ? 'Time'
-                                              : goal_level == 4
-                                                  ? 'Your Schedule'
-                                                  : goal_level == 5
-                                                      ? 'Record Practice'
-                                                      : goal_level == 6
-                                                          ? 'Your Calendar'
-                                                          : goal_level == 1
-                                                              ? 'Your Goal'
-                                                              : 'Reda',
+                                        child: Text(
+                                      widget.saved ? '' : 'Meditation',
                                       style: TextStyle(
-                                        decoration: TextDecoration.none,
-                                        fontFamily: 'Laila',
-                                        color: const Color(0xFF000000),
-                                        fontSize: AppDimensions.height10 * 1.6,
-                                        fontWeight: FontWeight.w700,
-                                      ),
+                                          color: Colors.white,
+                                          fontSize:
+                                              AppDimensions.height10 * 1.8,
+                                          fontWeight: FontWeight.w500),
+                                    )),
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: const Alignment(-1, 0.4),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: AppDimensions.height10 * 13.8,
+                                    width: AppDimensions.height10 * 13.8,
+                                    decoration: const BoxDecoration(
+                                        //color: Colors.amber,
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/Ellipse 157.png'),
+                                            fit: BoxFit.cover)),
+                                    child: Center(
+                                        child: Text(
+                                      'Count\ndown',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize:
+                                              AppDimensions.height10 * 1.8,
+                                          fontWeight: FontWeight.w500),
+                                      textAlign: TextAlign.center,
+                                    )),
+                                  ),
+                                ),
+                              ),
+                            ]),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        notifications_sheet(context);
+                      },
+                      child: Container(
+                        height: AppDimensions.height10 * 14.432,
+                        width: AppDimensions.height10 * 35.335,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                          image: AssetImage(
+                            'assets/images/Component 1.png',
+                          ),
+                          fit: BoxFit.cover,
+                        )),
+
+                        //color: Colors.blue,
+                        child: Stack(children: [
+                          Align(
+                            alignment: const Alignment(-0.930, -1.42),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const message_center()));
+                              },
+                              child: Image.asset(
+                                "assets/images/Group.png",
+                                height: AppDimensions.height10 * 5.0,
+                                width: AppDimensions.height10 * 5.0,
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const Alignment(0.93, 0),
+                            child: Image.asset(
+                              "assets/images/Vector Smart Object.png",
+                              height: AppDimensions.height10 * 9.296,
+                              width: AppDimensions.height10 * 4.16,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: AppDimensions.height10 * 2.1,
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  width: AppDimensions.height10 * 28.0,
+                                  height: AppDimensions.height10 * 2.3,
+                                  alignment: const Alignment(-0.65, 0),
+                                  child: Text(
+                                    "Hi, it's Reda here",
+                                    style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w700,
+                                      color:
+                                          const Color.fromRGBO(91, 116, 166, 1),
                                     ),
                                   ),
-                                  Container(
-                                    width: AppDimensions.height10 * 27.4,
-                                    height: goal_level == 1
-                                        ? AppDimensions.height10 * 11.8
-                                        : goal_level == 2
-                                            ? AppDimensions.height10 * 11.6
-                                            : goal_level == 3
-                                                ? AppDimensions.height10 * 7.8
-                                                : goal_level == 4
-                                                    ? AppDimensions.height10 *
-                                                        10.1
-                                                    : goal_level == 5
-                                                        ? AppDimensions
-                                                                .height10 *
-                                                            12.1
-                                                        : goal_level == 6
-                                                            ? AppDimensions
-                                                                    .height10 *
-                                                                7.9
-                                                            : AppDimensions
-                                                                    .height10 *
-                                                                10.1,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 0.3),
-                                    child: RichText(
-                                        text: TextSpan(
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                color: const Color(0xFF464646),
-                                                decoration: TextDecoration.none,
-                                                fontFamily: 'Laila',
-                                                fontSize:
-                                                    AppDimensions.height10 *
-                                                        1.4,
-                                                height: AppDimensions.height10 *
-                                                    0.15),
-                                            children: [
-                                          TextSpan(
-                                            text: goal_level == 1
-                                                ? 'This is your own star that you’ve created.\nRemember, '
-                                                : goal_level == 2
-                                                    ? 'Smaller circles that spin around your\nstars are the planets. The '
-                                                    : goal_level == 3
-                                                        ? 'This shows the '
-                                                        : goal_level == 4 ||
-                                                                goal_level == 6
-                                                            ? 'This is your '
-                                                            : goal_level == 5
-                                                                ? 'If you want to '
-                                                                : 'This is your friend who sends out',
-                                          ),
-                                          TextSpan(
-                                              text: goal_level == 1
-                                                  ? '‘stars’ '
-                                                  : goal_level == 2
-                                                      ? '‘planets’ '
-                                                      : goal_level == 3
-                                                          ? 'actual time '
-                                                          : goal_level == 4
-                                                              ? 'daily view '
-                                                              : goal_level == 5
-                                                                  ? 'record a practice session\n'
-                                                                  : goal_level ==
-                                                                          6
-                                                                      ? 'calender '
-                                                                      : ' helpful\nreminders ',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w700)),
-                                          TextSpan(
-                                              text: goal_level == 1
-                                                  ? 'are your '
-                                                  : goal_level == 2
-                                                      ? 'are\nyour own '
-                                                      : goal_level == 3
-                                                          ? 'the practice\nis '
-                                                          : goal_level == 4
-                                                              ? 'schedule.\nNavigate here if you want quick access to\nsee all your '
-                                                              : goal_level == 5
-                                                                  ? 'that it’s not currently scheduled, navigate\nhere. You will see all your '
-                                                                  : goal_level ==
-                                                                          6
-                                                                      ? 'It’s very similar to your schedule. Navigate here if you want to see your '
-                                                                      : 'and '),
-                                          TextSpan(
-                                              text: goal_level == 1
-                                                  ? 'personal\ngrowth goals. '
-                                                  : goal_level == 2
-                                                      ? 'practices '
-                                                      : goal_level == 3
-                                                          ? 'scheduled '
-                                                          : goal_level == 4
-                                                              ? 'scheduled practices '
-                                                              : goal_level == 5
-                                                                  ? 'active goals '
-                                                                  : goal_level ==
-                                                                          6
-                                                                      ? 'past '
-                                                                      : 'messages. ',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w700)),
-                                          TextSpan(
-                                              text: goal_level == 1
-                                                  ? 'They wil always look bigger and will have '
-                                                  : goal_level == 2
-                                                      ? 'that you’ve created to help you progress with your goal. The\n'
-                                                      : goal_level == 3
-                                                          ? 'for on that day (centred daily calendar view at the top shows you the actual date).'
-                                                          : goal_level == 4
-                                                              ? 'for that day. Scroll left or right to see your\n'
-                                                              : goal_level == 5
-                                                                  ? 'with its'
-                                                                  : goal_level ==
-                                                                          6
-                                                                      ? 'or'
-                                                                      : ' You will see\nReda appearing every time you have a new\nnotification with gentle prompts to help\nyou '),
-                                          TextSpan(
-                                              text: goal_level == 1
-                                                  ? 'goal name '
-                                                  : goal_level == 2
-                                                      ? 'practice '
-                                                      : goal_level == 3
-                                                          ? ''
-                                                          : goal_level == 4
-                                                              ? 'schedule '
-                                                              : goal_level == 5
-                                                                  ? ' assigned practices.'
-                                                                  : goal_level ==
-                                                                          6
-                                                                      ? ' future schedule '
-                                                                      : 'stay focused.',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w700)),
-                                          TextSpan(
-                                              text: goal_level == 1
-                                                  ? 'with\n'
-                                                  : goal_level == 2
-                                                      ? 'will have a '
-                                                      : goal_level == 3
-                                                          ? ''
-                                                          : goal_level == 4
-                                                              ? 'for previous or next day.'
-                                                              : goal_level == 5
-                                                                  ? ' Click on the\npractice you want to record the session\nfor and you’ll be taken to capture it.'
-                                                                  : goal_level ==
-                                                                          6
-                                                                      ? 'for a\ncertain date.'
-                                                                      : ''),
-                                          TextSpan(
-                                              text: goal_level == 1
-                                                  ? 'identity statement  '
-                                                  : goal_level == 2
-                                                      ? 'name '
-                                                      : goal_level == 3
-                                                          ? ''
-                                                          : goal_level == 4
-                                                              ? ''
-                                                              : goal_level == 5
-                                                                  ? ''
-                                                                  : goal_level ==
-                                                                          6
-                                                                      ? ''
-                                                                      : '',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.w700)),
-                                          TextSpan(
-                                              text: goal_level == 1
-                                                  ? 'written on it, so you\ncan easily identify it.'
-                                                  : goal_level == 2
-                                                      ? 'written on it to help you identify it.'
-                                                      : goal_level == 3
-                                                          ? ''
-                                                          : goal_level == 4
-                                                              ? ''
-                                                              : goal_level == 5
-                                                                  ? ''
-                                                                  : goal_level ==
-                                                                          6
-                                                                      ? ''
-                                                                      : '')
-                                        ])),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10 * 5.245,
+                                  height: AppDimensions.height10 * 1.3,
+                                  margin: EdgeInsets.only(
+                                      right: AppDimensions.height10 * 17.5),
+                                  child: const Divider(
+                                    thickness: 1,
+                                    color: Color.fromRGBO(91, 116, 166, 1),
                                   ),
-                                  Container(
-                                    width: AppDimensions.height10 * 24.3,
-                                    height: AppDimensions.height10 * 4.0,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 0.8),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        GestureDetector(
-                                          onTap: (() {
-                                            setState(() {
-                                              _showOverlay = false;
-                                            });
-                                          }),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        AppDimensions.height10 *
-                                                            5.0),
-                                                border: Border.all(
-                                                    width:
-                                                        AppDimensions.height10 *
-                                                            0.1,
-                                                    color: const Color(
-                                                        0xFFFBFBFB))),
-                                            width:
-                                                AppDimensions.height10 * 9.60,
-                                            height:
-                                                AppDimensions.height10 * 3.2,
-                                            child: Center(
-                                              child: Text(
-                                                'Skip tour',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontFamily: 'Laila',
-                                                    decoration:
-                                                        TextDecoration.none,
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.6,
-                                                    color:
-                                                        const Color(0xFF8C648A),
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10 * 26.7,
+                                  // height: AppDimensions.height10 * 5.3,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10 * 3.4,
+                                      bottom: AppDimensions.height10 * 1.2),
+                                  child: Text(
+                                    "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
+                                    // textAlign: TextAlign.left,
+
+                                    style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color.fromRGBO(
+                                            91, 116, 166, 1)),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ]),
+                      ),
+                    )
+                  ],
+                ),
+                widget.saved
+                    ? Container()
+                    : OfflineBuilder(
+                        debounceDuration: const Duration(milliseconds: 3),
+                        connectivityBuilder: (
+                          BuildContext context,
+                          ConnectivityResult connectivity,
+                          Widget child,
+                        ) {
+                          connected = connectivity != ConnectivityResult.none;
+
+                          onlineCon() {
+                            // if (connected == true) {
+                            //   print("check whether condition is true or false");
+
+                            //   Timer(Duration(seconds: 10), () {
+                            //     setState(() {
+                            //       _isVisible = false;
+                            //       print(_isVisible);
+                            //     });
+                            //   });
+                            // }
+
+                            return Container(
+                              child: Positioned(
+                                  child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  width: double.infinity,
+                                  height: AppDimensions.height10 * 3.0,
+                                  color: Colors.green,
+                                  child: Center(
+                                    child: Text(
+                                      'Back Online',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.4,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFFFBFBFB)),
+                                    ),
+                                  ),
+                                ),
+                              )),
+                            );
+                          }
+
+                          return ScaffoldMessenger(
+                            child: Stack(
+                              fit: StackFit.expand,
+                              children: [
+                                connected
+                                    ? connected
+                                        ? onlineCon()
+                                        : Container()
+                                    : Positioned(
+                                        child: Align(
+                                        alignment: Alignment.bottomCenter,
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: AppDimensions.height10 * 3.0,
+                                          color: const Color(0xFFFE6624),
+                                          child: Center(
+                                            child: Text(
+                                              'You’re Offline',
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.4,
+                                                  fontWeight: FontWeight.w400,
+                                                  color:
+                                                      const Color(0xFFFBFBFB)),
                                             ),
                                           ),
                                         ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            _incrementValue();
-                                            if (goal_level > 7) {
-                                              setState(() {
-                                                _showOverlay = false;
-                                              });
-                                            }
-                                          },
-                                          child: Container(
+                                      ))
+                              ],
+                            ),
+                          );
+                        },
+                        child: Container()),
+                if (_showOverlay && widget.helpful_tips == true)
+                  FutureBuilder(
+                      future: Future.delayed(Duration(milliseconds: 200)),
+                      builder: (c, s) => s.connectionState ==
+                              ConnectionState.done
+                          ? Align(
+                              alignment: goal_level == 2
+                                  ? const Alignment(-0.8, -0.28)
+                                  : goal_level == 3
+                                      ? const Alignment(-0.6, -0.28)
+                                      : goal_level == 4
+                                          ? const Alignment(0.25, -0.55)
+                                          : goal_level == 5
+                                              ? const Alignment(0.39, -0.71)
+                                              : goal_level == 6
+                                                  ? const Alignment(0.99, -0.74)
+                                                  : goal_level == 1
+                                                      ? const Alignment(
+                                                          0.1, -0.77)
+                                                      : const Alignment(
+                                                          0.4, 0.13),
+                              child: Container(
+                                width: AppDimensions.height10 * 30.6,
+                                height: goal_level == 1
+                                    ? AppDimensions.height10 * 22.3
+                                    : goal_level == 2
+                                        ? AppDimensions.height10 * 22.1
+                                        : goal_level == 3
+                                            ? AppDimensions.height10 * 18.3
+                                            : goal_level == 4
+                                                ? AppDimensions.height10 * 20.6
+                                                : goal_level == 5
+                                                    ? AppDimensions.height10 *
+                                                        22.6
+                                                    : goal_level == 6
+                                                        ? AppDimensions
+                                                                .height10 *
+                                                            18.4
+                                                        : AppDimensions
+                                                                .height10 *
+                                                            20.6,
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                      alignment: goal_level == 2
+                                          ? const Alignment(0.87, 1.1)
+                                          : goal_level == 3
+                                              ? const Alignment(-0.9, -1.1)
+                                              : goal_level == 4
+                                                  ? const Alignment(0, -1.1)
+                                                  : goal_level == 5
+                                                      ? const Alignment(
+                                                          0.9, -1.1)
+                                                      : goal_level == 6
+                                                          ? const Alignment(
+                                                              0.9, -1.1)
+                                                          : goal_level == 1
+                                                              ? const Alignment(
+                                                                  0, 1.1)
+                                                              : const Alignment(
+                                                                  0, 1.1),
+                                      child: Container(
+                                        child: Image.asset(
+                                          (goal_level == 3 ||
+                                                  goal_level == 4 ||
+                                                  goal_level == 5 ||
+                                                  goal_level == 6)
+                                              ? 'assets/images/arrow-192-up.png'
+                                              : 'assets/images/arrow-192.png',
+                                          height: AppDimensions.height10 * 2.0,
+                                          width: AppDimensions.height10 * 2.0,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: AppDimensions.height10 * 30.6,
+                                      height: goal_level == 1
+                                          ? AppDimensions.height10 * 22.3
+                                          : goal_level == 2
+                                              ? AppDimensions.height10 * 22.1
+                                              : goal_level == 3
+                                                  ? AppDimensions.height10 *
+                                                      18.3
+                                                  : goal_level == 4
+                                                      ? AppDimensions.height10 *
+                                                          20.6
+                                                      : goal_level == 5
+                                                          ? AppDimensions
+                                                                  .height10 *
+                                                              22.6
+                                                          : goal_level == 6
+                                                              ? AppDimensions
+                                                                      .height10 *
+                                                                  18.4
+                                                              : AppDimensions
+                                                                      .height10 *
+                                                                  20.6,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(
+                                              AppDimensions.height10 * 1.0)),
+                                      child: Column(
+                                        children: [
+                                          Container(
                                             width:
-                                                AppDimensions.height10 * 11.7,
-                                            height:
-                                                AppDimensions.height10 * 4.0,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        AppDimensions.height10 *
-                                                            5.0),
-                                                color: const Color(0xFF5A4D73)),
-                                            child: Center(
-                                              child: Text(
-                                                goal_level == 2
-                                                    ? '(2/7) Next'
-                                                    : goal_level == 3
-                                                        ? '(3/7) Next'
-                                                        : goal_level == 4
-                                                            ? '(4/7) Next'
-                                                            : goal_level == 5
-                                                                ? '(5/7) Next'
-                                                                : goal_level ==
-                                                                        6
-                                                                    ? '(6/7) Next'
-                                                                    : goal_level ==
-                                                                            7
-                                                                        ? '(7/7) Next'
-                                                                        : goal_level ==
-                                                                                1
-                                                                            ? '(1/7) Next'
-                                                                            : '(7/7) Next',
-                                                style: TextStyle(
-                                                    decoration:
-                                                        TextDecoration.none,
-                                                    fontFamily: 'Laila',
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.6,
-                                                    color:
-                                                        const Color(0xFFFFFFFF),
-                                                    fontWeight:
-                                                        FontWeight.w600),
+                                                AppDimensions.height10 * 21.6,
+                                            //height: AppDimensions.height10 * 2.2,
+                                            margin: EdgeInsets.only(
+                                                top: AppDimensions.height10 *
+                                                    1.7,
+                                                left: AppDimensions.height10 *
+                                                    1.6,
+                                                right: AppDimensions.height10 *
+                                                    7.4),
+                                            child: Text(
+                                              goal_level == 2
+                                                  ? 'Your Practice'
+                                                  : goal_level == 3
+                                                      ? 'Time'
+                                                      : goal_level == 4
+                                                          ? 'Your Schedule'
+                                                          : goal_level == 5
+                                                              ? 'Record Practice'
+                                                              : goal_level == 6
+                                                                  ? 'Your Calendar'
+                                                                  : goal_level ==
+                                                                          1
+                                                                      ? 'Your Goal'
+                                                                      : 'Reda',
+                                              style: TextStyle(
+                                                decoration: TextDecoration.none,
+                                                fontFamily: 'Laila',
+                                                color: const Color(0xFF000000),
+                                                fontSize:
+                                                    AppDimensions.height10 *
+                                                        1.6,
+                                                fontWeight: FontWeight.w700,
                                               ),
                                             ),
                                           ),
-                                        )
-                                      ],
+                                          Container(
+                                            width:
+                                                AppDimensions.height10 * 27.4,
+                                            height: goal_level == 1
+                                                ? AppDimensions.height10 * 11.8
+                                                : goal_level == 2
+                                                    ? AppDimensions.height10 *
+                                                        11.6
+                                                    : goal_level == 3
+                                                        ? AppDimensions
+                                                                .height10 *
+                                                            7.8
+                                                        : goal_level == 4
+                                                            ? AppDimensions
+                                                                    .height10 *
+                                                                10.1
+                                                            : goal_level == 5
+                                                                ? AppDimensions
+                                                                        .height10 *
+                                                                    12.1
+                                                                : goal_level ==
+                                                                        6
+                                                                    ? AppDimensions
+                                                                            .height10 *
+                                                                        7.9
+                                                                    : AppDimensions
+                                                                            .height10 *
+                                                                        10.1,
+                                            margin: EdgeInsets.only(
+                                                top: AppDimensions.height10 *
+                                                    0.3),
+                                            child: RichText(
+                                                text: TextSpan(
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: const Color(
+                                                            0xFF464646),
+                                                        decoration:
+                                                            TextDecoration.none,
+                                                        fontFamily: 'Laila',
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            1.4,
+                                                        height: AppDimensions
+                                                                .height10 *
+                                                            0.15),
+                                                    children: [
+                                                  TextSpan(
+                                                    text: goal_level == 1
+                                                        ? 'This is your own star that you’ve created.\nRemember, '
+                                                        : goal_level == 2
+                                                            ? 'Smaller circles that spin around your\nstars are the planets. The '
+                                                            : goal_level == 3
+                                                                ? 'This shows the '
+                                                                : goal_level ==
+                                                                            4 ||
+                                                                        goal_level ==
+                                                                            6
+                                                                    ? 'This is your '
+                                                                    : goal_level ==
+                                                                            5
+                                                                        ? 'If you want to '
+                                                                        : 'This is your friend who sends out',
+                                                  ),
+                                                  TextSpan(
+                                                      text: goal_level == 1
+                                                          ? '‘stars’ '
+                                                          : goal_level == 2
+                                                              ? '‘planets’ '
+                                                              : goal_level == 3
+                                                                  ? 'actual time '
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? 'daily view '
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? 'record a practice session\n'
+                                                                          : goal_level ==
+                                                                                  6
+                                                                              ? 'calender '
+                                                                              : ' helpful\nreminders ',
+                                                      style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700)),
+                                                  TextSpan(
+                                                      text: goal_level == 1
+                                                          ? 'are your '
+                                                          : goal_level == 2
+                                                              ? 'are\nyour own '
+                                                              : goal_level == 3
+                                                                  ? 'the practice\nis '
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? 'schedule.\nNavigate here if you want quick access to\nsee all your '
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? 'that it’s not currently scheduled, navigate\nhere. You will see all your '
+                                                                          : goal_level == 6
+                                                                              ? 'It’s very similar to your schedule. Navigate here if you want to see your '
+                                                                              : 'and '),
+                                                  TextSpan(
+                                                      text: goal_level == 1
+                                                          ? 'personal\ngrowth goals. '
+                                                          : goal_level == 2
+                                                              ? 'practices '
+                                                              : goal_level == 3
+                                                                  ? 'scheduled '
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? 'scheduled practices '
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? 'active goals '
+                                                                          : goal_level ==
+                                                                                  6
+                                                                              ? 'past '
+                                                                              : 'messages. ',
+                                                      style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700)),
+                                                  TextSpan(
+                                                      text: goal_level == 1
+                                                          ? 'They wil always look bigger and will have '
+                                                          : goal_level == 2
+                                                              ? 'that you’ve created to help you progress with your goal. The\n'
+                                                              : goal_level == 3
+                                                                  ? 'for on that day (centred daily calendar view at the top shows you the actual date).'
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? 'for that day. Scroll left or right to see your\n'
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? 'with its'
+                                                                          : goal_level == 6
+                                                                              ? 'or'
+                                                                              : ' You will see\nReda appearing every time you have a new\nnotification with gentle prompts to help\nyou '),
+                                                  TextSpan(
+                                                      text: goal_level == 1
+                                                          ? 'goal name '
+                                                          : goal_level == 2
+                                                              ? 'practice '
+                                                              : goal_level == 3
+                                                                  ? ''
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? 'schedule '
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? ' assigned practices.'
+                                                                          : goal_level ==
+                                                                                  6
+                                                                              ? ' future schedule '
+                                                                              : 'stay focused.',
+                                                      style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700)),
+                                                  TextSpan(
+                                                      text: goal_level == 1
+                                                          ? 'with\n'
+                                                          : goal_level == 2
+                                                              ? 'will have a '
+                                                              : goal_level == 3
+                                                                  ? ''
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? 'for previous or next day.'
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? ' Click on the\npractice you want to record the session\nfor and you’ll be taken to capture it.'
+                                                                          : goal_level == 6
+                                                                              ? 'for a\ncertain date.'
+                                                                              : ''),
+                                                  TextSpan(
+                                                      text: goal_level == 1
+                                                          ? 'identity statement  '
+                                                          : goal_level == 2
+                                                              ? 'name '
+                                                              : goal_level == 3
+                                                                  ? ''
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? ''
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? ''
+                                                                          : goal_level ==
+                                                                                  6
+                                                                              ? ''
+                                                                              : '',
+                                                      style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w700)),
+                                                  TextSpan(
+                                                      text: goal_level == 1
+                                                          ? 'written on it, so you\ncan easily identify it.'
+                                                          : goal_level == 2
+                                                              ? 'written on it to help you identify it.'
+                                                              : goal_level == 3
+                                                                  ? ''
+                                                                  : goal_level ==
+                                                                          4
+                                                                      ? ''
+                                                                      : goal_level ==
+                                                                              5
+                                                                          ? ''
+                                                                          : goal_level == 6
+                                                                              ? ''
+                                                                              : '')
+                                                ])),
+                                          ),
+                                          Container(
+                                            width:
+                                                AppDimensions.height10 * 24.3,
+                                            height:
+                                                AppDimensions.height10 * 4.0,
+                                            margin: EdgeInsets.only(
+                                                top: AppDimensions.height10 *
+                                                    0.8),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: (() {
+                                                    setState(() {
+                                                      _showOverlay = false;
+                                                    });
+                                                  }),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                AppDimensions
+                                                                        .height10 *
+                                                                    5.0),
+                                                        border: Border.all(
+                                                            width: AppDimensions
+                                                                    .height10 *
+                                                                0.1,
+                                                            color: const Color(
+                                                                0xFFFBFBFB))),
+                                                    width:
+                                                        AppDimensions.height10 *
+                                                            9.60,
+                                                    height:
+                                                        AppDimensions.height10 *
+                                                            3.2,
+                                                    child: Center(
+                                                      child: Text(
+                                                        'Skip tour',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                            fontFamily: 'Laila',
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none,
+                                                            fontSize: AppDimensions
+                                                                    .height10 *
+                                                                1.6,
+                                                            color: const Color(
+                                                                0xFF8C648A),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    _incrementValue();
+                                                    if (goal_level > 7) {
+                                                      setState(() {
+                                                        _showOverlay = false;
+                                                      });
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.height10 *
+                                                            11.7,
+                                                    height:
+                                                        AppDimensions.height10 *
+                                                            4.0,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                AppDimensions
+                                                                        .height10 *
+                                                                    5.0),
+                                                        color: const Color(
+                                                            0xFF5A4D73)),
+                                                    child: Center(
+                                                      child: Text(
+                                                        goal_level == 2
+                                                            ? '(2/7) Next'
+                                                            : goal_level == 3
+                                                                ? '(3/7) Next'
+                                                                : goal_level ==
+                                                                        4
+                                                                    ? '(4/7) Next'
+                                                                    : goal_level ==
+                                                                            5
+                                                                        ? '(5/7) Next'
+                                                                        : goal_level ==
+                                                                                6
+                                                                            ? '(6/7) Next'
+                                                                            : goal_level == 7
+                                                                                ? '(7/7) Next'
+                                                                                : goal_level == 1
+                                                                                    ? '(1/7) Next'
+                                                                                    : '(7/7) Next',
+                                                        style: TextStyle(
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none,
+                                                            fontFamily: 'Laila',
+                                                            fontSize: AppDimensions
+                                                                    .height10 *
+                                                                1.6,
+                                                            color: const Color(
+                                                                0xFFFFFFFF),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w600),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  )
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          )),
-                    ],
-                  ),
-                ),
-            ]),
+                            )
+                          : Container()),
+              ]),
+            ),
           ),
         ));
   }
 }
 
-class Potenic_tool_tip extends StatelessWidget {
-  const Potenic_tool_tip({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      color: Colors.amber,
-      child: Center(
-        child: Container(
-          width: AppDimensions.height10 * 30.6,
-          height: AppDimensions.height10 * 23.9,
-          color: Colors.black,
-          child: Image.asset('assets/images/Right.png'),
-        ),
-      ),
-    );
-  }
+void __share_experience(canceled) {
+  showModalBottomSheet(
+    context: canceled,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+      top: Radius.circular(AppDimensions.height10 * 2.0),
+    )),
+    builder: (context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+          width: AppDimensions.height10 * 39.4,
+          height: AppDimensions.height10 * 62.3,
+          margin: EdgeInsets.only(
+              left: AppDimensions.height10 * 1.0,
+              right: AppDimensions.height10 * 1.0,
+              bottom: AppDimensions.height10 * 1.0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+              color: Color(0xFFD9B4B4)),
+          child: Column(
+            // alignment: AlignmentDirectional.topCenter,
+            //  mainAxisAlignment: MainAxisAlignment.start,
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                //color: Colors.amber,
+                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                alignment: const Alignment(1, 0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.9,
+                        right: AppDimensions.height10 * 1.5),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/Close_blue.png'))),
+                  ),
+                ),
+              ),
+              Container(
+                  width: AppDimensions.height10 * 28.6,
+                  height: AppDimensions.height10 * 5.8,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10 * 0.7,
+                      bottom: AppDimensions.height10 * 1.2),
+                  child: Text(
+                    'Share your first\nexperience...',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        height: AppDimensions.height10 * 0.12,
+                        fontSize: AppDimensions.height10 * 2.4,
+                        // letterSpacing: AppDimensions.height10 * 0.2,
+                        fontWeight: FontWeight.w600,
+                        color: const Color(0xFF437296)),
+                  )),
+              Container(
+                width: AppDimensions.height10 * 32.7,
+                height: AppDimensions.height10 * 6.4,
+                // color: Colors.amber,
+                alignment: Alignment.center,
+                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                child: Text(
+                  'True happiness comes from sharing and\nhelping others who are on the same\njourney as you.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      height: AppDimensions.height10 * 0.12,
+                      fontSize: AppDimensions.height10 * 1.6,
+                      // letterSpacing: AppDimensions.height10 * 0.2,
+                      fontWeight: FontWeight.w500,
+                      color: const Color(0xFF437296)),
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10 * 24.8,
+                height: AppDimensions.height10 * 24.8,
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.8),
+                child: Stack(children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      width: AppDimensions.height10 * 24.8,
+                      height: AppDimensions.height10 * 24.8,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage('assets/images/orange_moon.png'),
+                              fit: BoxFit.cover)),
+                      child: Stack(
+                        children: [
+                          Align(
+                              alignment: const Alignment(0, -0.5),
+                              child: Text(
+                                'Control my anger',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.height10 * 2.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: const Color(0xff5B74A6)),
+                              )),
+                          Align(
+                            alignment: const Alignment(0, -0.2),
+                            child: Text(
+                                '“I am someone who is in\n control of my anger”',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xff5B74A6))),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: const Alignment(0.9, 1),
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        height: AppDimensions.height10 * 14.8,
+                        width: AppDimensions.height10 * 14.8,
+                        decoration: const BoxDecoration(
+                            //color: Colors.amber,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/Meditation Completed.png'),
+                                fit: BoxFit.contain)),
+                      ),
+                    ),
+                  ),
+                ]),
+              ),
+              Container(
+                  height: AppDimensions.height10 * 12.5,
+                  width: AppDimensions.height10 * 12.5,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.9),
+                  decoration: const BoxDecoration(
+                      //color: Colors.amber,
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/share_exp.png'),
+                          fit: BoxFit.contain)))
+            ],
+          )),
+    ),
+  );
 }
 
 // OfflineBuilder(
@@ -2031,3 +2367,427 @@ class Potenic_tool_tip extends StatelessWidget {
 //                           ),
 //                         )),
 
+  // Container(
+  //                   color: Colors.transparent,
+  //                   alignment: Alignment.center,
+  //                   child: Stack(
+  //                     children: [
+  //                       Align(
+  //                           alignment: goal_level == 2
+  //                               ? const Alignment(-0.2, 0.1)
+  //                               : goal_level == 3
+  //                                   ? const Alignment(-0.2, -0.47)
+  //                                   : goal_level == 4
+  //                                       ? const Alignment(0.07, -0.68)
+  //                                       : goal_level == 5
+  //                                           ? const Alignment(0.1, -0.85)
+  //                                           : goal_level == 6
+  //                                               ? const Alignment(0.25, -0.85)
+  //                                               : goal_level == 1
+  //                                                   ? const Alignment(
+  //                                                       0.1, -0.27)
+  //                                                   : const Alignment(
+  //                                                       0.12, 0.37),
+  //                           child: SimpleTooltip(
+  //                             //customShadows: [],
+  //                             //  maxHeight: AppDimensions.height10 * 23.9,
+  //                             maxWidth: AppDimensions.height10 * 30.6,
+  //                             //  minHeight: AppDimensions.height10 * 21.9,
+  //                             //minWidth: AppDimensions.height10 * 29.6,
+  //                             tooltipDirection: goal_level == 1 ||
+  //                                     goal_level == 2 ||
+  //                                     goal_level == 7
+  //                                 ? TooltipDirection.up
+  //                                 : TooltipDirection.down,
+  //                             arrowTipDistance: 5,
+  //                             minimumOutSidePadding: 0,
+  //                             // targetCenter: goal_level == 2 ? null : null,
+  //                             ballonPadding: const EdgeInsets.all(0),
+  //                             arrowLength: AppDimensions.height10 * 0.6,
+  //                             borderColor: Colors.transparent,
+  //                             // content: null,
+  //                             //have to initialize from different widgets
+  //                             child: SizedBox(
+  //                               width: AppDimensions.height10 * 1,
+  //                               height: AppDimensions.height10 * 1,
+  //                               child: Container(),
+  //                             ),
+  //                             show: goal_level > 7 ? false : true,
+  //                             // tooltipTap: () {
+  //                             //   if (goal_level > 7) {}
+  //                             // },
+
+  //                             animationDuration:
+  //                                 const Duration(milliseconds: 3),
+  //                             content: Container(
+  //                               width: AppDimensions.height10 * 30.6,
+  //                               height: goal_level == 1
+  //                                   ? AppDimensions.height10 * 20.3
+  //                                   : goal_level == 2
+  //                                       ? AppDimensions.height10 * 20.1
+  //                                       : goal_level == 3
+  //                                           ? AppDimensions.height10 * 16.3
+  //                                           : goal_level == 4
+  //                                               ? AppDimensions.height10 * 18.6
+  //                                               : goal_level == 5
+  //                                                   ? AppDimensions.height10 *
+  //                                                       20.6
+  //                                                   : goal_level == 6
+  //                                                       ? AppDimensions
+  //                                                               .height10 *
+  //                                                           16.4
+  //                                                       : AppDimensions
+  //                                                               .height10 *
+  //                                                           18.6,
+  //                               decoration: BoxDecoration(
+  //                                   borderRadius: BorderRadius.circular(
+  //                                       AppDimensions.height10 * 1.0)),
+  //                               child: Column(
+  //                                 children: [
+  //                                   Container(
+  //                                     width: AppDimensions.height10 * 21.6,
+  //                                     //height: AppDimensions.height10 * 2.2,
+  //                                     margin: EdgeInsets.only(
+  //                                         top: AppDimensions.height10 * 0.5,
+  //                                         left: AppDimensions.height10 * 0.5,
+  //                                         right: AppDimensions.height10 * 7.4),
+  //                                     child: Text(
+  //                                       goal_level == 2
+  //                                           ? 'Your Practice'
+  //                                           : goal_level == 3
+  //                                               ? 'Time'
+  //                                               : goal_level == 4
+  //                                                   ? 'Your Schedule'
+  //                                                   : goal_level == 5
+  //                                                       ? 'Record Practice'
+  //                                                       : goal_level == 6
+  //                                                           ? 'Your Calendar'
+  //                                                           : goal_level == 1
+  //                                                               ? 'Your Goal'
+  //                                                               : 'Reda',
+  //                                       style: TextStyle(
+  //                                         decoration: TextDecoration.none,
+  //                                         fontFamily: 'Laila',
+  //                                         color: const Color(0xFF000000),
+  //                                         fontSize:
+  //                                             AppDimensions.height10 * 1.6,
+  //                                         fontWeight: FontWeight.w700,
+  //                                       ),
+  //                                     ),
+  //                                   ),
+  //                                   Container(
+  //                                     width: AppDimensions.height10 * 27.4,
+  //                                     height: goal_level == 1
+  //                                         ? AppDimensions.height10 * 11.8
+  //                                         : goal_level == 2
+  //                                             ? AppDimensions.height10 * 11.6
+  //                                             : goal_level == 3
+  //                                                 ? AppDimensions.height10 * 7.8
+  //                                                 : goal_level == 4
+  //                                                     ? AppDimensions.height10 *
+  //                                                         10.1
+  //                                                     : goal_level == 5
+  //                                                         ? AppDimensions
+  //                                                                 .height10 *
+  //                                                             12.1
+  //                                                         : goal_level == 6
+  //                                                             ? AppDimensions
+  //                                                                     .height10 *
+  //                                                                 7.9
+  //                                                             : AppDimensions
+  //                                                                     .height10 *
+  //                                                                 10.1,
+  //                                     margin: EdgeInsets.only(
+  //                                         top: AppDimensions.height10 * 0.3),
+  //                                     child: RichText(
+  //                                         text: TextSpan(
+  //                                             style: TextStyle(
+  //                                                 fontWeight: FontWeight.w400,
+  //                                                 color:
+  //                                                     const Color(0xFF464646),
+  //                                                 decoration:
+  //                                                     TextDecoration.none,
+  //                                                 fontFamily: 'Laila',
+  //                                                 fontSize:
+  //                                                     AppDimensions.height10 *
+  //                                                         1.4,
+  //                                                 height:
+  //                                                     AppDimensions.height10 *
+  //                                                         0.15),
+  //                                             children: [
+  //                                           TextSpan(
+  //                                             text: goal_level == 1
+  //                                                 ? 'This is your own star that you’ve created.\nRemember, '
+  //                                                 : goal_level == 2
+  //                                                     ? 'Smaller circles that spin around your\nstars are the planets. The '
+  //                                                     : goal_level == 3
+  //                                                         ? 'This shows the '
+  //                                                         : goal_level == 4 ||
+  //                                                                 goal_level ==
+  //                                                                     6
+  //                                                             ? 'This is your '
+  //                                                             : goal_level == 5
+  //                                                                 ? 'If you want to '
+  //                                                                 : 'This is your friend who sends out',
+  //                                           ),
+  //                                           TextSpan(
+  //                                               text: goal_level == 1
+  //                                                   ? '‘stars’ '
+  //                                                   : goal_level == 2
+  //                                                       ? '‘planets’ '
+  //                                                       : goal_level == 3
+  //                                                           ? 'actual time '
+  //                                                           : goal_level == 4
+  //                                                               ? 'daily view '
+  //                                                               : goal_level ==
+  //                                                                       5
+  //                                                                   ? 'record a practice session\n'
+  //                                                                   : goal_level ==
+  //                                                                           6
+  //                                                                       ? 'calender '
+  //                                                                       : ' helpful\nreminders ',
+  //                                               style: const TextStyle(
+  //                                                   fontWeight:
+  //                                                       FontWeight.w700)),
+  //                                           TextSpan(
+  //                                               text: goal_level == 1
+  //                                                   ? 'are your '
+  //                                                   : goal_level == 2
+  //                                                       ? 'are\nyour own '
+  //                                                       : goal_level == 3
+  //                                                           ? 'the practice\nis '
+  //                                                           : goal_level == 4
+  //                                                               ? 'schedule.\nNavigate here if you want quick access to\nsee all your '
+  //                                                               : goal_level ==
+  //                                                                       5
+  //                                                                   ? 'that it’s not currently scheduled, navigate\nhere. You will see all your '
+  //                                                                   : goal_level ==
+  //                                                                           6
+  //                                                                       ? 'It’s very similar to your schedule. Navigate here if you want to see your '
+  //                                                                       : 'and '),
+  //                                           TextSpan(
+  //                                               text: goal_level == 1
+  //                                                   ? 'personal\ngrowth goals. '
+  //                                                   : goal_level == 2
+  //                                                       ? 'practices '
+  //                                                       : goal_level == 3
+  //                                                           ? 'scheduled '
+  //                                                           : goal_level == 4
+  //                                                               ? 'scheduled practices '
+  //                                                               : goal_level ==
+  //                                                                       5
+  //                                                                   ? 'active goals '
+  //                                                                   : goal_level ==
+  //                                                                           6
+  //                                                                       ? 'past '
+  //                                                                       : 'messages. ',
+  //                                               style: const TextStyle(
+  //                                                   fontWeight:
+  //                                                       FontWeight.w700)),
+  //                                           TextSpan(
+  //                                               text: goal_level == 1
+  //                                                   ? 'They wil always look bigger and will have '
+  //                                                   : goal_level == 2
+  //                                                       ? 'that you’ve created to help you progress with your goal. The\n'
+  //                                                       : goal_level == 3
+  //                                                           ? 'for on that day (centred daily calendar view at the top shows you the actual date).'
+  //                                                           : goal_level == 4
+  //                                                               ? 'for that day. Scroll left or right to see your\n'
+  //                                                               : goal_level ==
+  //                                                                       5
+  //                                                                   ? 'with its'
+  //                                                                   : goal_level ==
+  //                                                                           6
+  //                                                                       ? 'or'
+  //                                                                       : ' You will see\nReda appearing every time you have a new\nnotification with gentle prompts to help\nyou '),
+  //                                           TextSpan(
+  //                                               text: goal_level == 1
+  //                                                   ? 'goal name '
+  //                                                   : goal_level == 2
+  //                                                       ? 'practice '
+  //                                                       : goal_level == 3
+  //                                                           ? ''
+  //                                                           : goal_level == 4
+  //                                                               ? 'schedule '
+  //                                                               : goal_level ==
+  //                                                                       5
+  //                                                                   ? ' assigned practices.'
+  //                                                                   : goal_level ==
+  //                                                                           6
+  //                                                                       ? ' future schedule '
+  //                                                                       : 'stay focused.',
+  //                                               style: const TextStyle(
+  //                                                   fontWeight:
+  //                                                       FontWeight.w700)),
+  //                                           TextSpan(
+  //                                               text: goal_level == 1
+  //                                                   ? 'with\n'
+  //                                                   : goal_level == 2
+  //                                                       ? 'will have a '
+  //                                                       : goal_level == 3
+  //                                                           ? ''
+  //                                                           : goal_level == 4
+  //                                                               ? 'for previous or next day.'
+  //                                                               : goal_level ==
+  //                                                                       5
+  //                                                                   ? ' Click on the\npractice you want to record the session\nfor and you’ll be taken to capture it.'
+  //                                                                   : goal_level ==
+  //                                                                           6
+  //                                                                       ? 'for a\ncertain date.'
+  //                                                                       : ''),
+  //                                           TextSpan(
+  //                                               text: goal_level == 1
+  //                                                   ? 'identity statement  '
+  //                                                   : goal_level == 2
+  //                                                       ? 'name '
+  //                                                       : goal_level == 3
+  //                                                           ? ''
+  //                                                           : goal_level == 4
+  //                                                               ? ''
+  //                                                               : goal_level ==
+  //                                                                       5
+  //                                                                   ? ''
+  //                                                                   : goal_level ==
+  //                                                                           6
+  //                                                                       ? ''
+  //                                                                       : '',
+  //                                               style: const TextStyle(
+  //                                                   fontWeight:
+  //                                                       FontWeight.w700)),
+  //                                           TextSpan(
+  //                                               text: goal_level == 1
+  //                                                   ? 'written on it, so you\ncan easily identify it.'
+  //                                                   : goal_level == 2
+  //                                                       ? 'written on it to help you identify it.'
+  //                                                       : goal_level == 3
+  //                                                           ? ''
+  //                                                           : goal_level == 4
+  //                                                               ? ''
+  //                                                               : goal_level ==
+  //                                                                       5
+  //                                                                   ? ''
+  //                                                                   : goal_level ==
+  //                                                                           6
+  //                                                                       ? ''
+  //                                                                       : '')
+  //                                         ])),
+  //                                   ),
+  //                                   Container(
+  //                                     width: AppDimensions.height10 * 24.3,
+  //                                     height: AppDimensions.height10 * 4.0,
+  //                                     margin: EdgeInsets.only(
+  //                                         top: AppDimensions.height10 * 0.8),
+  //                                     child: Row(
+  //                                       mainAxisAlignment:
+  //                                           MainAxisAlignment.spaceBetween,
+  //                                       children: [
+  //                                         GestureDetector(
+  //                                           onTap: (() {
+  //                                             setState(() {
+  //                                               _showOverlay = false;
+  //                                             });
+  //                                           }),
+  //                                           child: Container(
+  //                                             decoration: BoxDecoration(
+  //                                                 borderRadius:
+  //                                                     BorderRadius.circular(
+  //                                                         AppDimensions
+  //                                                                 .height10 *
+  //                                                             5.0),
+  //                                                 border: Border.all(
+  //                                                     width: AppDimensions
+  //                                                             .height10 *
+  //                                                         0.1,
+  //                                                     color: const Color(
+  //                                                         0xFFFBFBFB))),
+  //                                             width:
+  //                                                 AppDimensions.height10 * 9.60,
+  //                                             height:
+  //                                                 AppDimensions.height10 * 3.2,
+  //                                             child: Center(
+  //                                               child: Text(
+  //                                                 'Skip tour',
+  //                                                 textAlign: TextAlign.center,
+  //                                                 style: TextStyle(
+  //                                                     fontFamily: 'Laila',
+  //                                                     decoration:
+  //                                                         TextDecoration.none,
+  //                                                     fontSize: AppDimensions
+  //                                                             .height10 *
+  //                                                         1.6,
+  //                                                     color: const Color(
+  //                                                         0xFF8C648A),
+  //                                                     fontWeight:
+  //                                                         FontWeight.w700),
+  //                                               ),
+  //                                             ),
+  //                                           ),
+  //                                         ),
+  //                                         GestureDetector(
+  //                                           onTap: () {
+  //                                             _incrementValue();
+  //                                             if (goal_level > 7) {
+  //                                               setState(() {
+  //                                                 _showOverlay = false;
+  //                                               });
+  //                                             }
+  //                                           },
+  //                                           child: Container(
+  //                                             width:
+  //                                                 AppDimensions.height10 * 11.7,
+  //                                             height:
+  //                                                 AppDimensions.height10 * 4.0,
+  //                                             decoration: BoxDecoration(
+  //                                                 borderRadius:
+  //                                                     BorderRadius.circular(
+  //                                                         AppDimensions
+  //                                                                 .height10 *
+  //                                                             5.0),
+  //                                                 color:
+  //                                                     const Color(0xFF5A4D73)),
+  //                                             child: Center(
+  //                                               child: Text(
+  //                                                 goal_level == 2
+  //                                                     ? '(2/7) Next'
+  //                                                     : goal_level == 3
+  //                                                         ? '(3/7) Next'
+  //                                                         : goal_level == 4
+  //                                                             ? '(4/7) Next'
+  //                                                             : goal_level == 5
+  //                                                                 ? '(5/7) Next'
+  //                                                                 : goal_level ==
+  //                                                                         6
+  //                                                                     ? '(6/7) Next'
+  //                                                                     : goal_level ==
+  //                                                                             7
+  //                                                                         ? '(7/7) Next'
+  //                                                                         : goal_level == 1
+  //                                                                             ? '(1/7) Next'
+  //                                                                             : '(7/7) Next',
+  //                                                 style: TextStyle(
+  //                                                     decoration:
+  //                                                         TextDecoration.none,
+  //                                                     fontFamily: 'Laila',
+  //                                                     fontSize: AppDimensions
+  //                                                             .height10 *
+  //                                                         1.6,
+  //                                                     color: const Color(
+  //                                                         0xFFFFFFFF),
+  //                                                     fontWeight:
+  //                                                         FontWeight.w600),
+  //                                               ),
+  //                                             ),
+  //                                           ),
+  //                                         )
+  //                                       ],
+  //                                     ),
+  //                                   )
+  //                                 ],
+  //                               ),
+  //                             ),
+                            
+  //                           )),
+  //                     ],
+  //                   ),
+  //                 ),
+             

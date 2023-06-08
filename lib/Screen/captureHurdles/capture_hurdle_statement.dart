@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart'
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class hurdle_statement extends StatefulWidget {
@@ -45,7 +46,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '4',
@@ -54,7 +55,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '/5',
@@ -63,7 +64,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ],
             ),
@@ -85,13 +86,13 @@ class _hurdle_statementState extends State<hurdle_statement> {
         Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/practicebackground.png'),
                     fit: BoxFit.cover)),
             child: SingleChildScrollView(
               reverse: true,
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -107,7 +108,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                           fontSize: AppDimensions.height10 * 2.8,
                           fontWeight: FontWeight.w700,
                         ),
-                        colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                        colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                       ),
                     ),
                     Container(
@@ -115,7 +116,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                       height: AppDimensions.height10 * 13.9,
                       margin:
                           EdgeInsets.only(top: AppDimensions.height10 * 3.177),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image:
@@ -163,7 +164,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                           fontSize:
                                               AppDimensions.height10 * 1.3,
                                           fontWeight: FontWeight.w500,
-                                          color: Color(0xff646464)),
+                                          color: const Color(0xff646464)),
                                     ),
                                   ),
                                 ),
@@ -183,7 +184,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                           fontSize:
                                               AppDimensions.height10 * 2.4,
                                           fontWeight: FontWeight.w600,
-                                          color: Color(0xffB353C9)),
+                                          color: const Color(0xffB353C9)),
                                       decoration: InputDecoration(
                                           contentPadding: EdgeInsets.zero,
                                           hintText: 'Makes simple mistakes',
@@ -191,7 +192,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                               fontSize: AppDimensions.height10 *
                                                   2.4,
                                               fontWeight: FontWeight.w600,
-                                              color: Color(0xffB353C9)),
+                                              color: const Color(0xffB353C9)),
                                           focusedBorder:
                                               const OutlineInputBorder(
                                                   borderSide: BorderSide(
@@ -266,10 +267,8 @@ class _hurdle_statementState extends State<hurdle_statement> {
                         ),
                         child: TextButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => felling_hurdles()));
+                              Navigator.push(context,
+                                  FadePageRoute(page: const felling_hurdles()));
                             },
                             child: Text(
                               'Next',
@@ -288,7 +287,8 @@ class _hurdle_statementState extends State<hurdle_statement> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10 * 2.0),
-                                color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                                color:
+                                    const Color(0xFFFFFFFF).withOpacity(0.3)),
                           )
                         : SizedBox(
                             height: AppDimensions.height10 * 0,

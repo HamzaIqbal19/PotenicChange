@@ -67,7 +67,7 @@ class _message_centerState extends State<message_center> {
                         });
                       }
                     },
-                    child: Container(
+                    child: SizedBox(
                       width: AppDimensions.height10 * 5.8,
                       height: AppDimensions.height10 * 2.4,
                       child: Text(
@@ -882,7 +882,7 @@ class _message_centerState extends State<message_center> {
                             blurRadius: AppDimensions.height10 * 0.7,
                             offset: const Offset(2, 3),
                           )
-                        : BoxShadow()
+                        : const BoxShadow()
                   ],
                   borderRadius: BorderRadius.circular(options
                       ? AppDimensions.height10 * 0
@@ -901,7 +901,7 @@ class _message_centerState extends State<message_center> {
                           GestureDetector(
                             onTap: () => showDialog<String>(
                                 context: context,
-                                builder: (BuildContext context) => Container(
+                                builder: (BuildContext context) => SizedBox(
                                       width: AppDimensions.height10 * 27.0,
                                       height: AppDimensions.height10 * 21.4,
                                       child: AlertDialog(
@@ -940,18 +940,18 @@ class _message_centerState extends State<message_center> {
                                                             FontWeight.w400,
                                                         color: const Color(
                                                             0xFF000000)),
-                                                    children: [
-                                                      const TextSpan(
+                                                    children: const [
+                                                      TextSpan(
                                                           text:
                                                               'Are you sure you want\nto'),
-                                                      const TextSpan(
+                                                      TextSpan(
                                                         text: ' delete ',
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight
                                                                     .w700),
                                                       ),
-                                                      const TextSpan(
+                                                      TextSpan(
                                                           text: 'this alert?')
                                                     ]))),
                                         content: Container(
@@ -1019,7 +1019,7 @@ class _message_centerState extends State<message_center> {
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 height: AppDimensions.height10 *
                                                     4.4,
                                                 width: double.infinity,
@@ -1151,7 +1151,7 @@ class messages extends StatelessWidget {
                 height: AppDimensions.height10 * 4.0,
                 margin: EdgeInsets.only(left: AppDimensions.height10 * 3.2),
                 child: Align(
-                  alignment: Alignment(-1, 0.6),
+                  alignment: const Alignment(-1, 0.6),
                   child: Text(
                     title,
                     style: TextStyle(

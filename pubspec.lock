@@ -233,6 +233,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
+  just_the_tooltip:
+    dependency: "direct main"
+    description:
+      name: just_the_tooltip
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.12"
   lints:
     dependency: transitive
     description:
@@ -469,6 +476,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.0"
+  speech_balloon:
+    dependency: "direct main"
+    description:
+      name: speech_balloon
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   stack_trace:
     dependency: transitive
     description:

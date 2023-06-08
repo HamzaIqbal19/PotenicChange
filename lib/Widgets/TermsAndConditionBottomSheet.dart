@@ -201,99 +201,105 @@ void termsSheet(context) {
                             border: Border.all(color: Colors.white),
                             color: Color.fromRGBO(250, 153, 52, 1)),
                         child: TextButton(
-                          onPressed: () => showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => Container(
-                              width: AppDimensions.height10 * 27.0,
-                              height: AppDimensions.height10 * 20.4,
-                              child: AlertDialog(
-                                actionsPadding: const EdgeInsets.all(0.0),
-                                contentPadding: const EdgeInsets.all(0.0),
-                                titlePadding: const EdgeInsets.all(0.0),
-                                title: Container(
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 1.9,
-                                      right: AppDimensions.height10 * 1.6,
-                                      left: AppDimensions.height10 * 1.6,
-                                      bottom: AppDimensions.height10 * 0),
-                                  height: AppDimensions.height10 * 4.9,
-                                  width: AppDimensions.height10 * 23.8,
-                                  child: Text(
-                                    "Potenic wants to use your \n Google account to sign in",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontFamily: "Laila",
-                                      fontSize: AppDimensions.height10 * 1.7,
-                                      fontWeight: FontWeight.w400,
+                          onPressed: () {
+                            showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => Container(
+                                width: AppDimensions.height10 * 27.0,
+                                height: AppDimensions.height10 * 20.4,
+                                child: AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10 * 1.4)),
+                                  actionsPadding: const EdgeInsets.all(0.0),
+                                  contentPadding: const EdgeInsets.all(0.0),
+                                  titlePadding: const EdgeInsets.all(0.0),
+                                  title: Container(
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10 * 1.9,
+                                        right: AppDimensions.height10 * 1.6,
+                                        left: AppDimensions.height10 * 1.6,
+                                        bottom: AppDimensions.height10 * 0),
+                                    height: AppDimensions.height10 * 4.9,
+                                    width: AppDimensions.height10 * 23.8,
+                                    child: Text(
+                                      "Potenic wants to use your \n Google account to sign in",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontFamily: "Laila",
+                                        fontSize: AppDimensions.height10 * 1.7,
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                content: Container(
-                                  // color:Colors.red,
-                                  margin: EdgeInsets.only(
-                                      bottom: AppDimensions.height10 * 1.9,
-                                      left: AppDimensions.height10 * 1.6,
-                                      right: AppDimensions.height10 * 1.6),
-                                  height: AppDimensions.height10 * 3.2,
-                                  width: AppDimensions.height10 * 23.8,
-                                  child: Text(
-                                    "This allows the app and website to \n share information about you.",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.3,
-                                      fontFamily: "Laila",
-                                      fontWeight: FontWeight.w400,
+                                  content: Container(
+                                    // color:Colors.red,
+                                    margin: EdgeInsets.only(
+                                        bottom: AppDimensions.height10 * 1.9,
+                                        left: AppDimensions.height10 * 1.6,
+                                        right: AppDimensions.height10 * 1.6),
+                                    height: AppDimensions.height10 * 3.2,
+                                    width: AppDimensions.height10 * 23.8,
+                                    child: Text(
+                                      "This allows the app and website to \n share information about you.",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: AppDimensions.height10 * 1.3,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                actions: <Widget>[
-                                  Column(
-                                    children: [
-                                      Container(
-                                        height: AppDimensions.height10 * 4.4,
-                                        width: double.infinity,
-                                        color: const Color.fromRGBO(
-                                            0, 122, 255, 1),
-                                        child: TextButton(
-                                          onPressed: () {},
-                                          child: Text(
-                                            'Continue',
-                                            style: TextStyle(
-                                                color: Colors.white,
+                                  actions: <Widget>[
+                                    Column(
+                                      children: [
+                                        Container(
+                                          height: AppDimensions.height10 * 4.4,
+                                          width: double.infinity,
+                                          color: const Color.fromRGBO(
+                                              0, 122, 255, 1),
+                                          child: TextButton(
+                                            onPressed: () {},
+                                            child: Text(
+                                              'Continue',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.7,
+                                                  fontFamily: "Laila",
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: AppDimensions.height10 * 4.4,
+                                          width: AppDimensions.height10 * 27.0,
+                                          child: TextButton(
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text(
+                                              'Cancel',
+                                              style: TextStyle(
                                                 fontSize:
                                                     AppDimensions.height10 *
                                                         1.7,
                                                 fontFamily: "Laila",
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: AppDimensions.height10 * 4.4,
-                                        width: AppDimensions.height10 * 27.0,
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop();
-                                          },
-                                          child: Text(
-                                            'Cancel',
-                                            style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.7,
-                                              fontFamily: "Laila",
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color.fromRGBO(
-                                                  0, 122, 255, 1),
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color.fromRGBO(
+                                                    0, 122, 255, 1),
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          },
                           child: const Text('Agree',
                               style: TextStyle(color: Colors.white)),
                         )),

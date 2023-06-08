@@ -607,7 +607,7 @@ class _prac_scoreState extends State<prac_score> {
                       width: AppDimensions.height10 * 3.0,
                       height: AppDimensions.height10 * 3.0,
 
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
                                   'assets/images/ic_info_outline.png'))),
@@ -1839,21 +1839,21 @@ void enjoyment(context) {
                               height: AppDimensions.height10 * 0.15,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFF437296)),
-                          children: [
+                          children: const [
                         TextSpan(text: 'When we talk about'),
-                        const TextSpan(
+                        TextSpan(
                             text: ' ‘enjoyment’ ',
                             style: TextStyle(fontWeight: FontWeight.w700)),
                         TextSpan(
                             text:
                                 "we generally mean a\nsatisfying experience of performing a certain action.\n\nHowever,"),
-                        const TextSpan(
+                        TextSpan(
                             text: ' ‘enjoyment’ ',
                             style: TextStyle(fontWeight: FontWeight.w700)),
                         TextSpan(
                             text:
                                 "can mean different things for\ndifferent people depending on time, environment and\ncontext.\n\nFor Potenic and this question specifically,"),
-                        const TextSpan(
+                        TextSpan(
                             text: ' ‘enjoyment’ ',
                             style: TextStyle(fontWeight: FontWeight.w700)),
                         TextSpan(

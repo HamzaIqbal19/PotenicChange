@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/recordPracticeMenu.dart';
@@ -349,12 +350,11 @@ class menu_behaviour extends StatelessWidget {
                                                           onPressed: () {
                                                             Navigator.push(
                                                                 context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            const view_goals(
-                                                                              missed: true,
-                                                                            )));
+                                                                FadePageRoute(
+                                                                    page:
+                                                                        const view_goals(
+                                                                  missed: true,
+                                                                )));
                                                           },
                                                           child: Text(
                                                             'Yes',

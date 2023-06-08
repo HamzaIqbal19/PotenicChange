@@ -6,6 +6,8 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Widgets/bottom_navigation.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../../Widgets/fading.dart';
+
 class reviw_habit_dashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -369,10 +371,10 @@ class reviw_habit_dashBoard extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => const practiceMenu(
-                                        goal_eval: false,
-                                      )));
+                              FadePageRoute(
+                                  page: const practiceMenu(
+                                goal_eval: false,
+                              )));
                         },
                         child: Container(
                           height: AppDimensions.height10 * 13.8,

@@ -7,6 +7,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
 import '../Goal Evaluation/practice_score.dart';
 
@@ -189,10 +190,10 @@ class practiceMenu extends StatelessWidget {
                             onTap: () {
                               Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const emotions(
-                                            summary: false,
-                                          )));
+                                  FadePageRoute(
+                                      page: const emotions(
+                                    summary: false,
+                                  )));
                             },
                             child: Icon(
                               Icons.add_task,
@@ -329,9 +330,8 @@ class practiceMenu extends StatelessWidget {
                                       onTap: () {
                                         Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    progress_report()));
+                                            FadePageRoute(
+                                                page: const progress_report()));
                                       },
                                       child: button_feilds(
                                         feild_text: 'Progress report',
@@ -349,9 +349,8 @@ class practiceMenu extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  prac_score()));
+                                          FadePageRoute(
+                                              page: const prac_score()));
                                     },
                                     child: button_feilds(
                                       feild_text: goal_eval
@@ -389,11 +388,8 @@ class practiceMenu extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const practice_progress()));
+                            Navigator.push(context,
+                                FadePageRoute(page: const practice_progress()));
                           },
                           child: const button_feilds(
                             feild_text: 'View practice progress',
@@ -436,9 +432,8 @@ class practiceMenu extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const practice_assesment()));
+                                FadePageRoute(
+                                    page: const practice_assesment()));
                           },
                           child: const button_feilds(
                             feild_text: 'Practice assesment history',
@@ -567,16 +562,17 @@ void info_sheet(context) {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 35.2,
-                height: AppDimensions.height10 * 26.9,
-                // color: Colors.grey,
+                width: AppDimensions.height10 * 36.7,
+                //height: AppDimensions.height10 * 26.9,
+                //  color: Colors.grey,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
                 child: RichText(
                   text: TextSpan(
                       style: TextStyle(
                           fontFamily: 'laila',
-                          fontSize: AppDimensions.height10 * 1.4,
-                          height: AppDimensions.height10 * 0.12,
+                          fontSize: AppDimensions.height10 * 1.47,
+                          height: AppDimensions.height10 * 0.15,
+                          //  letterSpacing: AppDimensions.height10,
                           fontWeight: FontWeight.w400,
                           color: Color(0xFF437296)),
                       children: [

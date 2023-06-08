@@ -13,6 +13,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../Goal Evaluation/goal_criteria.dart';
 import '../Recording Practice Session/recordPracticeMenu.dart';
@@ -101,11 +102,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const veiw_all_goals_menu()));
+                          Navigator.push(context,
+                              FadePageRoute(page: const veiw_all_goals_menu()));
                         },
                         child: Container(
                           width: AppDimensions.height10 * 33.4,
@@ -204,36 +202,35 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                     if (widget.membership == true) {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const Subscription()));
+                                          FadePageRoute(
+                                              page: const Subscription()));
                                     } else if (widget.trial == true) {
                                       print(widget.cancel);
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  widget.cancel
-                                                      ? const dashBoard(
-                                                          helpful_tips: false,
-                                                          dashboard_ctrl: true,
-                                                          membership: true,
-                                                          trial: false,
-                                                          cancel: false)
-                                                      : const dashBoard(
-                                                          helpful_tips: false,
-                                                          dashboard_ctrl: true,
-                                                          membership: false,
-                                                          trial: true,
-                                                          cancel: true)));
+                                          FadePageRoute(
+                                              page: widget.cancel
+                                                  ? const dashBoard(
+                                                      saved: false,
+                                                      helpful_tips: false,
+                                                      dashboard_ctrl: true,
+                                                      membership: true,
+                                                      trial: false,
+                                                      cancel: false)
+                                                  : const dashBoard(
+                                                      saved: false,
+                                                      helpful_tips: false,
+                                                      dashboard_ctrl: true,
+                                                      membership: false,
+                                                      trial: true,
+                                                      cancel: true)));
 
                                       _canceled_plan(context);
                                     } else {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const Subscription()));
+                                          FadePageRoute(
+                                              page: const Subscription()));
                                     }
                                   },
                                   child: SizedBox(
@@ -252,9 +249,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                                   fontWeight: FontWeight.w500,
                                                   color: colorC),
                                               children: [
-                                            const TextSpan(
-                                                text:
-                                                    'Membership subscription\n'),
+                                            TextSpan(
+                                                text: widget.membership
+                                                    ? 'Membership subscription\n'
+                                                    : 'Manage my subscription\n'),
                                             widget.membership
                                                 ? const TextSpan(
                                                     text:
@@ -358,9 +356,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Settings()));
+                              context, FadePageRoute(page: const Settings()));
                         },
                         child: SizedBox(
                           width: AppDimensions.height10 * 33.4,
@@ -435,11 +431,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const OnBoarding()));
+                                Navigator.push(context,
+                                    FadePageRoute(page: const OnBoarding()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -486,11 +479,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const practiceMenu(
-                                              goal_eval: true,
-                                            )));
+                                    FadePageRoute(
+                                        page: const practiceMenu(
+                                      goal_eval: true,
+                                    )));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -537,9 +529,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const veiw_all_goals_menu()));
+                                    FadePageRoute(
+                                        page: const veiw_all_goals_menu()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -586,9 +577,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const hurdles_splash()));
+                                    FadePageRoute(
+                                        page: const hurdles_splash()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -635,11 +625,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const inspiration_motivation(
-                                              goal_delete: false,
-                                            )));
+                                    FadePageRoute(
+                                        page: const inspiration_motivation(
+                                      goal_delete: false,
+                                    )));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -686,13 +675,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const goal_menu_inactive(
-                                              premium: true,
-                                              isActive: true,
-                                              goal_evaluation: true,
-                                            )));
+                                    FadePageRoute(
+                                        page: const goal_menu_inactive(
+                                      premium: true,
+                                      isActive: true,
+                                      goal_evaluation: true,
+                                    )));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -737,11 +725,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const prac_score()));
+                                Navigator.push(context,
+                                    FadePageRoute(page: const prac_score()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -832,11 +817,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const timeline()));
+                                Navigator.push(context,
+                                    FadePageRoute(page: const timeline()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -883,9 +865,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const congratulations()));
+                                    FadePageRoute(
+                                        page: const congratulations()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -932,9 +913,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const message_center()));
+                                    FadePageRoute(
+                                        page: const message_center()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -979,11 +959,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Settings()));
+                                Navigator.push(context,
+                                    FadePageRoute(page: const Settings()));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -1030,9 +1007,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const view_goals(missed: false)));
+                                    FadePageRoute(
+                                        page: const view_goals(missed: false)));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 33.4,
@@ -1131,9 +1107,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const Subscription()));
+                                          FadePageRoute(
+                                              page: const Subscription()));
                                     },
                                     child: SizedBox(
                                       width: AppDimensions.height10 * 20.6,

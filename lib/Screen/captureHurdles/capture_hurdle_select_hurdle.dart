@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class select_hurdle extends StatefulWidget {
@@ -276,9 +277,7 @@ class _select_hurdleState extends State<select_hurdle> {
             child: TextButton(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const hurdle_name()));
+                      context, FadePageRoute(page: const hurdle_name()));
                 },
                 child: Text(
                   'Next',

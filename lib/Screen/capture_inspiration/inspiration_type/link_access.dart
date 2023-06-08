@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../../utils/app_dimensions.dart';
 import '../capture_inpirations_goals.dart';
@@ -76,8 +77,8 @@ class _link_infoState extends State<link_info> {
                     onTap: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const note_info(
+                          FadePageRoute(
+                              page: const note_info(
                                   note_saved: true, type_switch: 2)));
                     },
                     child: Container(
@@ -191,7 +192,7 @@ class _link_infoState extends State<link_info> {
                                       shape: BoxShape.circle,
                                       color: Colors.black,
                                     ),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.delete,
                                       color: Colors.white,
                                       // size: AppDimensions.height10 * 1,
@@ -385,9 +386,9 @@ class _link_infoState extends State<link_info> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    inspiraton_goals(data_saved: false)));
+                            FadePageRoute(
+                                page:
+                                    const inspiraton_goals(data_saved: false)));
                       },
                       child: Container(
                         height: AppDimensions.height10 * 6.0,

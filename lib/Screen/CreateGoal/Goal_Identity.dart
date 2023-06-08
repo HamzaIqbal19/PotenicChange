@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 // ignore: camel_case_types
@@ -185,8 +186,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => const Visualising(),
+                          FadePageRoute(
+                            page: const Visualising(),
                           ),
                         );
                       },

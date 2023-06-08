@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 
+import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 
 class photo_pop_up extends StatefulWidget {
@@ -78,13 +79,13 @@ class _photo_pop_upState extends State<photo_pop_up> {
                     onTap: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const photo_info(
-                                    edit_details: false,
-                                    image_detals: false,
-                                    image_save: false,
-                                    image_create: false,
-                                  )));
+                          FadePageRoute(
+                              page: const photo_info(
+                            edit_details: false,
+                            image_detals: false,
+                            image_save: false,
+                            image_create: false,
+                          )));
                     },
                     child: SizedBox(
                       height: AppDimensions.height10 * 4.3,
@@ -230,7 +231,7 @@ class _photo_infoState extends State<photo_info> {
                     ),
                   ),
                   Center(
-                    child: Container(
+                    child: SizedBox(
                       height: AppDimensions.height10 * 2.2,
                       width: AppDimensions.height10 * 19.9,
                       child: Center(
@@ -262,16 +263,15 @@ class _photo_infoState extends State<photo_info> {
                                     onTap: () => widget.image_create
                                         ? Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const inspiration_landing(
-                                                      muliple_insp: false,
-                                                      is_Updated: false,
-                                                    )))
+                                            FadePageRoute(
+                                                page: const inspiration_landing(
+                                              muliple_insp: false,
+                                              is_Updated: false,
+                                            )))
                                         : showDialog<String>(
                                             context: context,
                                             builder: (BuildContext context) =>
-                                                Container(
+                                                SizedBox(
                                                   width:
                                                       AppDimensions.height10 *
                                                           27.0,
@@ -279,6 +279,12 @@ class _photo_infoState extends State<photo_info> {
                                                       AppDimensions.height10 *
                                                           18.2,
                                                   child: AlertDialog(
+                                                    shape: RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                AppDimensions
+                                                                        .height10 *
+                                                                    1.4)),
                                                     contentPadding:
                                                         EdgeInsets.zero,
                                                     actionsPadding:
@@ -376,8 +382,8 @@ class _photo_infoState extends State<photo_info> {
                                                               onPressed: () {
                                                                 Navigator.push(
                                                                     context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) => widget.edit_details
+                                                                    FadePageRoute(
+                                                                        page: widget.edit_details
                                                                             ? const inspiration_landing(
                                                                                 muliple_insp: false,
                                                                                 is_Updated: true,
@@ -414,7 +420,7 @@ class _photo_infoState extends State<photo_info> {
                                                                       0.29),
                                                             ),
                                                           ),
-                                                          Container(
+                                                          SizedBox(
                                                             height: AppDimensions
                                                                     .height10 *
                                                                 4.4,
@@ -717,11 +723,8 @@ class _photo_infoState extends State<photo_info> {
                                     )
                                   : GestureDetector(
                                       onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    link_set()));
+                                        Navigator.push(context,
+                                            FadePageRoute(page: link_set()));
                                       },
                                       child: Container(
                                         width: AppDimensions.height10 * 2.5,
@@ -816,17 +819,15 @@ class _photo_infoState extends State<photo_info> {
                               widget.image_detals
                                   ? Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const inspiraton_goals(
-                                                data_saved: true,
-                                              )))
+                                      FadePageRoute(
+                                          page: const inspiraton_goals(
+                                        data_saved: true,
+                                      )))
                                   : Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              inspiraton_goals(
-                                                  data_saved: false)));
+                                      FadePageRoute(
+                                          page: inspiraton_goals(
+                                              data_saved: false)));
                             },
                             child: Container(
                               height: AppDimensions.height10 * 6.0,
@@ -986,7 +987,7 @@ class _link_setState extends State<link_set> {
                                                 'assets/images/Light.png'),
                                             fit: BoxFit.fill)),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width: AppDimensions.height10 * 23.8,
                                     height: AppDimensions.height10 * 2.2,
                                     //color: Colors.amber,
@@ -1070,14 +1071,13 @@ class _link_setState extends State<link_set> {
                                 onTap: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const photo_info(
-                                                edit_details: false,
-                                                image_detals: true,
-                                                image_save: false,
-                                                image_create: false,
-                                              )));
+                                      FadePageRoute(
+                                          page: const photo_info(
+                                        edit_details: false,
+                                        image_detals: true,
+                                        image_save: true,
+                                        image_create: true,
+                                      )));
                                 },
                                 child: Text(
                                   'Add link',
@@ -1117,7 +1117,7 @@ class _link_setState extends State<link_set> {
                                                 'assets/images/Light.png'),
                                             fit: BoxFit.fill)),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width: AppDimensions.height10 * 28.3,
                                     height: AppDimensions.height10 * 2.2,
                                     //color: Colors.amber,
@@ -1186,14 +1186,13 @@ class _link_setState extends State<link_set> {
                                         onTap: () {
                                           Navigator.push(
                                               context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const photo_info(
-                                                        edit_details: false,
-                                                        image_detals: true,
-                                                        image_save: false,
-                                                        image_create: false,
-                                                      )));
+                                              FadePageRoute(
+                                                  page: const photo_info(
+                                                edit_details: false,
+                                                image_detals: true,
+                                                image_save: false,
+                                                image_create: false,
+                                              )));
                                         },
                                         child: Text(
                                           'Add Link',

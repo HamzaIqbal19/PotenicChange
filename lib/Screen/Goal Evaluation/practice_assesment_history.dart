@@ -123,10 +123,9 @@ class practice_assesment extends StatelessWidget {
                                               AppDimensions.height10 * 1.4,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xfff5f5f5)),
-                                      children: [
-                                    const TextSpan(
-                                        text: 'Next assessment is in'),
-                                    const TextSpan(
+                                      children: const [
+                                    TextSpan(text: 'Next assessment is in'),
+                                    TextSpan(
                                         text: '-19 active days.',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700))

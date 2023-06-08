@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_sessio
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 
 import '../../Widgets/bottom_navigation.dart';
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class no_past_session extends StatelessWidget {
@@ -161,10 +162,9 @@ class no_past_session extends StatelessWidget {
                                   onTap: () {
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const view_goals(
-                                                    missed: false)));
+                                        FadePageRoute(
+                                            page: const view_goals(
+                                                missed: false)));
                                   },
                                   child: Container(
                                     height: AppDimensions.height10 * 7.9,
@@ -263,9 +263,8 @@ class no_past_session extends StatelessWidget {
                                 onTap: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const no_planned_session()));
+                                      FadePageRoute(
+                                          page: const no_planned_session()));
                                 },
                                 child: Container(
                                     height: AppDimensions.height10 * 7.9,
@@ -377,11 +376,8 @@ class no_past_session extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const record_session()));
+                          Navigator.push(context,
+                              FadePageRoute(page: const record_session()));
                         },
                         child: Container(
                           width: AppDimensions.height10 * 10.1,

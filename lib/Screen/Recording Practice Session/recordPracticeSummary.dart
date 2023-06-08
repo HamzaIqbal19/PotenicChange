@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -175,101 +177,102 @@ class _practice_summaryState extends State<practice_summary> {
                   ),
                 ]),
               ),
-              Container(
-                width: AppDimensions.height10 * 26.8,
-                height: AppDimensions.height10 * 5.0,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
-                decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 1.8),
-                    border: Border.all(width: 1, color: Colors.white),
-                    color: Colors.transparent),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                        //margin: EdgeInsets.only(left: 92, right: 66),
-                        height: AppDimensions.height10 * 2.6,
-                        width: AppDimensions.height10 * 21.0,
-                        child: Text(
-                          date_time,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: AppDimensions.height10 * 2.0,
-                            fontFamily: 'Laila',
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        )),
-                    GestureDetector(
-                        onTap: () {
-                          showCupertinoModalPopup(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return _buildBottomPicker(CupertinoDatePicker(
-                                  mode: CupertinoDatePickerMode.dateAndTime,
-                                  //initialDateTime: date_time,
-                                  onDateTimeChanged: (DateTime newDateTime) {
-                                    if (mounted) {
-                                      setState(() {
-                                        if (newDateTime.weekday == 2) {
-                                          setState(() {
-                                            day = 'Tue';
-                                          });
-                                        } else if (newDateTime.weekday == 3) {
-                                          setState(() {
-                                            day = 'Wed';
-                                          });
-                                        } else if (newDateTime.weekday == 4) {
-                                          setState(() {
-                                            day = 'Thu';
-                                          });
-                                        } else if (newDateTime.weekday == 5) {
-                                          setState(() {
-                                            day = 'Fri';
-                                          });
-                                        } else if (newDateTime.weekday == 6) {
-                                          setState(() {
-                                            day = 'Sat';
-                                          });
-                                        } else if (newDateTime.weekday == 7) {
-                                          setState(() {
-                                            day = 'Sun';
-                                          });
-                                        } else {
-                                          setState(() {
-                                            day = 'Mon';
-                                          });
-                                        }
-                                      });
-                                      setState(() {
-                                        if (newDateTime.hour > 11) {
-                                          setState(() {
-                                            time = 'Pm';
-                                          });
-                                        } else {
-                                          setState(() {
-                                            time = 'Am';
-                                            //print(time);
-                                          });
-                                        }
-                                      });
-                                      setState(() => date_time =
-                                          " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                      print(
-                                          "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                    }
-                                  }));
-                            },
-                          );
-                        },
-                        child: const Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.white,
-                          size: 30,
-                        ))
-                  ],
+              GestureDetector(
+                onTap: () {
+                  showCupertinoModalPopup(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return _buildBottomPicker(CupertinoDatePicker(
+                          mode: CupertinoDatePickerMode.dateAndTime,
+                          //initialDateTime: date_time,
+                          onDateTimeChanged: (DateTime newDateTime) {
+                            if (mounted) {
+                              setState(() {
+                                if (newDateTime.weekday == 2) {
+                                  setState(() {
+                                    day = 'Tue';
+                                  });
+                                } else if (newDateTime.weekday == 3) {
+                                  setState(() {
+                                    day = 'Wed';
+                                  });
+                                } else if (newDateTime.weekday == 4) {
+                                  setState(() {
+                                    day = 'Thu';
+                                  });
+                                } else if (newDateTime.weekday == 5) {
+                                  setState(() {
+                                    day = 'Fri';
+                                  });
+                                } else if (newDateTime.weekday == 6) {
+                                  setState(() {
+                                    day = 'Sat';
+                                  });
+                                } else if (newDateTime.weekday == 7) {
+                                  setState(() {
+                                    day = 'Sun';
+                                  });
+                                } else {
+                                  setState(() {
+                                    day = 'Mon';
+                                  });
+                                }
+                              });
+                              setState(() {
+                                if (newDateTime.hour > 11) {
+                                  setState(() {
+                                    time = 'Pm';
+                                  });
+                                } else {
+                                  setState(() {
+                                    time = 'Am';
+                                    //print(time);
+                                  });
+                                }
+                              });
+                              setState(() => date_time =
+                                  " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                              print(
+                                  "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                            }
+                          }));
+                    },
+                  );
+                },
+                child: Container(
+                  width: AppDimensions.height10 * 26.8,
+                  height: AppDimensions.height10 * 5.0,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.height10 * 1.8),
+                      border: Border.all(width: 1, color: Colors.white),
+                      color: Colors.transparent),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                          //margin: EdgeInsets.only(left: 92, right: 66),
+                          height: AppDimensions.height10 * 2.6,
+                          width: AppDimensions.height10 * 21.0,
+                          child: Text(
+                            date_time,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: AppDimensions.height10 * 2.0,
+                              fontFamily: 'Laila',
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          )),
+                      const Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.white,
+                        size: 30,
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(
@@ -301,7 +304,7 @@ class _practice_summaryState extends State<practice_summary> {
               Container(
                 width: AppDimensions.height10 * 13.4,
                 height: AppDimensions.height10 * 13.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.3),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -330,10 +333,10 @@ class _practice_summaryState extends State<practice_summary> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const emotions(
-                                      summary: true,
-                                    )));
+                            FadePageRoute(
+                                page: const emotions(
+                              summary: true,
+                            )));
                       },
                       child: Container(
                           height: AppDimensions.height10 * 2.0,
@@ -356,7 +359,7 @@ class _practice_summaryState extends State<practice_summary> {
                 width: AppDimensions.height10 * 32.6,
                 height: AppDimensions.height10 * 4.8,
 //color: Colors.amber,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                 child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
@@ -382,7 +385,7 @@ class _practice_summaryState extends State<practice_summary> {
               Container(
                 width: AppDimensions.height10 * 13.4,
                 height: AppDimensions.height10 * 13.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.7),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -412,10 +415,10 @@ class _practice_summaryState extends State<practice_summary> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const feelingsAfter(
-                                      summary: true,
-                                    )));
+                            FadePageRoute(
+                                page: const feelingsAfter(
+                              summary: true,
+                            )));
                       },
                       child: Container(
                           height: AppDimensions.height10 * 2.0,
@@ -437,7 +440,7 @@ class _practice_summaryState extends State<practice_summary> {
               Container(
                 width: AppDimensions.height10 * 36.0,
                 height: AppDimensions.height10 * 7.3,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                 decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.circular(AppDimensions.height10 * 2.0),
@@ -462,7 +465,7 @@ class _practice_summaryState extends State<practice_summary> {
               Container(
                 width: AppDimensions.height10 * 32.6,
                 height: AppDimensions.height10 * 2.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
                 child: Center(
                   child: Text(
                     'How did the practice go?',
@@ -478,7 +481,7 @@ class _practice_summaryState extends State<practice_summary> {
               Container(
                 width: AppDimensions.height10 * 13.4,
                 height: AppDimensions.height10 * 13.2,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.6),
+                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -508,10 +511,10 @@ class _practice_summaryState extends State<practice_summary> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const endofSession(
-                                      summary: true,
-                                    )));
+                            FadePageRoute(
+                                page: const endofSession(
+                              summary: true,
+                            )));
                       },
                       child: Container(
                         height: AppDimensions.height10 * 2.0,
@@ -590,10 +593,15 @@ class _practice_summaryState extends State<practice_summary> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => const view_goals(
-                                          missed: false,
-                                        )));
+                                FadePageRoute(
+                                    page: const dashBoard(
+                                  helpful_tips: false,
+                                  dashboard_ctrl: false,
+                                  membership: true,
+                                  trial: false,
+                                  cancel: false,
+                                  saved: true,
+                                )));
                           },
                           child: Text(
                             'Save Practice',

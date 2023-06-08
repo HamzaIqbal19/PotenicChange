@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 
 class upload_image_popup extends StatefulWidget {
@@ -16,13 +17,13 @@ class _upload_image_popupState extends State<upload_image_popup> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xff8E8E93),
+        color: const Color(0xff8E8E93),
         child: Center(
           child: Container(
             width: AppDimensions.height10 * 27.0,
             height: AppDimensions.height10 * 24.8,
             decoration: BoxDecoration(
-                color: Color(0xff1E1E1E).withOpacity(0.75),
+                color: const Color(0xff1E1E1E).withOpacity(0.75),
                 borderRadius:
                     BorderRadius.circular(AppDimensions.height10 * 1.4)),
             child: Column(
@@ -63,15 +64,15 @@ class _upload_image_popupState extends State<upload_image_popup> {
                 SizedBox(
                   height: AppDimensions.height10 * 0.1,
                   child: Divider(
-                    color: Color(0xff545458).withOpacity(0.65),
+                    color: const Color(0xff545458).withOpacity(0.65),
                     //thickness: AppDimensions.height10 * 0.5,
                     height: AppDimensions.height10 * 0.5,
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => image_info()));
+                    Navigator.push(
+                        context, FadePageRoute(page: const image_info()));
                   },
                   child: SizedBox(
                     height: AppDimensions.height10 * 4.3,
@@ -82,7 +83,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.7,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff0A84FF)),
+                            color: const Color(0xff0A84FF)),
                       ),
                     ),
                   ),
@@ -90,7 +91,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
                 SizedBox(
                   height: AppDimensions.height10 * 0.1,
                   child: Divider(
-                    color: Color(0xff545458).withOpacity(0.65),
+                    color: const Color(0xff545458).withOpacity(0.65),
                     //thickness: AppDimensions.height10 * 0.5,
                     height: AppDimensions.height10 * 0.5,
                   ),
@@ -104,14 +105,14 @@ class _upload_image_popupState extends State<upload_image_popup> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.7,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff0A84FF)),
+                          color: const Color(0xff0A84FF)),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: AppDimensions.height10 * 0.1,
                   child: Divider(
-                    color: Color(0xff545458).withOpacity(0.65),
+                    color: const Color(0xff545458).withOpacity(0.65),
                     //thickness: AppDimensions.height10 * 0.5,
                     height: AppDimensions.height10 * 0.5,
                   ),
@@ -125,7 +126,7 @@ class _upload_image_popupState extends State<upload_image_popup> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10 * 1.7,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff0A84FF)),
+                          color: const Color(0xff0A84FF)),
                     ),
                   ),
                 )
@@ -153,10 +154,10 @@ class _image_infoState extends State<image_info> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xffC4C4C4),
+        color: const Color(0xffC4C4C4),
       ),
       bottomNavigationBar: BottomAppBar(
-          child: Container(
+          child: SizedBox(
         height: AppDimensions.height10 * 83.517,
         child: Column(children: [
           Container(
@@ -164,12 +165,12 @@ class _image_infoState extends State<image_info> {
             height: AppDimensions.height10 * 5.1,
             // margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
             decoration: BoxDecoration(
-                color: Color(0xffF5F5F5).withOpacity(0.8),
+                color: const Color(0xffF5F5F5).withOpacity(0.8),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(AppDimensions.height10 * 1.0),
                     topRight: Radius.circular(AppDimensions.height10 * 1.0))),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
+              SizedBox(
                 height: AppDimensions.height10 * 2.2,
                 width: AppDimensions.height10 * 3.3,
                 child: GestureDetector(
@@ -181,7 +182,7 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.5,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff007AFF)),
+                        color: const Color(0xff007AFF)),
                   ),
                 ),
               ),
@@ -196,10 +197,10 @@ class _image_infoState extends State<image_info> {
                   style: TextStyle(
                       fontSize: AppDimensions.height10 * 1.7,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xff282828)),
+                      color: const Color(0xff282828)),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: AppDimensions.height10 * 2.2,
                 width: AppDimensions.height10 * 4.3,
                 child: Text(
@@ -207,7 +208,7 @@ class _image_infoState extends State<image_info> {
                   style: TextStyle(
                       fontSize: AppDimensions.height10 * 1.5,
                       fontWeight: FontWeight.w400,
-                      color: Color(0xff007AFF)),
+                      color: const Color(0xff007AFF)),
                 ),
               )
             ]),
@@ -225,7 +226,7 @@ class _image_infoState extends State<image_info> {
                       right: AppDimensions.height10 * 15.2),
                   width: AppDimensions.height10 * 24.4,
                   height: AppDimensions.height10 * 24.4,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image:
@@ -243,7 +244,7 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.4,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff828282)),
+                        color: const Color(0xff828282)),
                   ),
                 ),
                 Container(
@@ -258,13 +259,13 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.6,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff282828)),
+                        color: const Color(0xff282828)),
                     decoration: InputDecoration(
                         hintText: 'Give your inspiration a title',
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent)),
                         enabledBorder: const OutlineInputBorder(
@@ -283,7 +284,7 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.4,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff828282)),
+                        color: const Color(0xff828282)),
                   ),
                 ),
                 Container(
@@ -297,13 +298,13 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.6,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff282828)),
+                        color: const Color(0xff282828)),
                     decoration: InputDecoration(
                         hintText: 'Say more about this inspiration ',
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent)),
                         enabledBorder: const OutlineInputBorder(
@@ -322,7 +323,7 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.4,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff828282)),
+                        color: const Color(0xff828282)),
                   ),
                 ),
                 Row(
@@ -343,13 +344,13 @@ class _image_infoState extends State<image_info> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff282828)),
+                            color: const Color(0xff282828)),
                         decoration: InputDecoration(
                             hintText: 'Add a link',
                             hintStyle: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.6,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xff828282)),
+                                color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: Colors.transparent)),
@@ -363,17 +364,15 @@ class _image_infoState extends State<image_info> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => link_editer()));
+                                  Navigator.push(context,
+                                      FadePageRoute(page: const link_editer()));
                                 },
                                 child: Container(
                                   width: AppDimensions.height10 * 3.0,
                                   height: AppDimensions.height10 * 3.0,
                                   margin: EdgeInsets.only(
                                       right: AppDimensions.height10 * 0.8),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.black,
                                   ),
@@ -389,7 +388,7 @@ class _image_infoState extends State<image_info> {
                                 height: AppDimensions.height10 * 3.0,
                                 margin: EdgeInsets.only(
                                     right: AppDimensions.height10 * 2.0),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: Colors.black,
                                 ),
@@ -403,17 +402,15 @@ class _image_infoState extends State<image_info> {
                           )
                         : GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => link_editer()));
+                              Navigator.push(context,
+                                  FadePageRoute(page: const link_editer()));
                             },
                             child: Container(
                               width: AppDimensions.height10 * 3.0,
                               height: AppDimensions.height10 * 3.0,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10 * 0.8),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Colors.black,
                               ),
@@ -438,7 +435,7 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.4,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff828282)),
+                        color: const Color(0xff828282)),
                   ),
                 ),
                 Container(
@@ -452,13 +449,13 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.6,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff282828)),
+                        color: const Color(0xff282828)),
                     decoration: InputDecoration(
                         hintText: 'Add #hashtag',
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent)),
                         enabledBorder: const OutlineInputBorder(
@@ -477,7 +474,7 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.4,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff828282)),
+                        color: const Color(0xff828282)),
                   ),
                 ),
                 Container(
@@ -492,7 +489,7 @@ class _image_infoState extends State<image_info> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10 * 1.6,
                         fontWeight: FontWeight.w400,
-                        color: Color(0xff282828)),
+                        color: const Color(0xff282828)),
                   ),
                 ),
               ],
@@ -518,7 +515,7 @@ class _link_editerState extends State<link_editer> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        color: Color(0xffC4C4C4),
+        color: const Color(0xffC4C4C4),
         child: Column(
           children: [
             Container(
@@ -526,7 +523,7 @@ class _link_editerState extends State<link_editer> {
               height: AppDimensions.height10 * 5.1,
               margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
               decoration: BoxDecoration(
-                  color: Color(0xffF5F5F5).withOpacity(0.8),
+                  color: const Color(0xffF5F5F5).withOpacity(0.8),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(AppDimensions.height10 * 1.0),
                       topRight: Radius.circular(AppDimensions.height10 * 1.0))),
@@ -539,14 +536,14 @@ class _link_editerState extends State<link_editer> {
                   decoration: BoxDecoration(
                       borderRadius:
                           BorderRadius.circular(AppDimensions.height10 * 2.0),
-                      color: Color(0xff767680).withOpacity(0.12)),
+                      color: const Color(0xff767680).withOpacity(0.12)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                         width: AppDimensions.height10 * 1.4,
                         height: AppDimensions.height10 * 1.413,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             //shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: AssetImage('assets/images/Light.png'),
@@ -563,7 +560,8 @@ class _link_editerState extends State<link_editer> {
                               hintStyle: TextStyle(
                                   fontSize: AppDimensions.height10 * 1.4,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff3C3C43).withOpacity(0.6)),
+                                  color:
+                                      const Color(0xff3C3C43).withOpacity(0.6)),
                               focusedBorder: const OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Colors.transparent)),
@@ -575,7 +573,7 @@ class _link_editerState extends State<link_editer> {
                       Container(
                         width: AppDimensions.height10 * 2.3,
                         height: AppDimensions.height10 * 2.3,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: Color(0xff282828),
                         ),
@@ -583,7 +581,7 @@ class _link_editerState extends State<link_editer> {
                           'assets/images/ic_clear.png',
                           width: AppDimensions.height10 * 0.941,
                           height: AppDimensions.height10 * 1.4,
-                          color: Color(0xff8E8E93),
+                          color: const Color(0xff8E8E93),
                         ),
                       )
                     ],
@@ -602,7 +600,7 @@ class _link_editerState extends State<link_editer> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10 * 1.5,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff007AFF)),
+                            color: const Color(0xff007AFF)),
                       ),
                     ),
                   ),

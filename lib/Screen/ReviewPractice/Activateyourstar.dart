@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/review_habits_dashboard/dashboard.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -133,12 +134,17 @@ class _ActivateStarState extends State<ActivateStar> {
               ),
               Stack(
                 children: [
-                  Container(
-                    child: Image(
-                      image: const AssetImage(
-                          'assets/images/angerwithoutreview.png'),
-                      height: AppDimensions.height10 * 38.1,
-                      width: AppDimensions.height10 * 35.3,
+                  GestureDetector(
+                    onTap: () {
+                      login_sheet(context);
+                    },
+                    child: Container(
+                      child: Image(
+                        image: const AssetImage(
+                            'assets/images/angerwithoutreview.png'),
+                        height: AppDimensions.height10 * 38.1,
+                        width: AppDimensions.height10 * 35.3,
+                      ),
                     ),
                   ),
                   Positioned(
@@ -161,8 +167,9 @@ class _ActivateStarState extends State<ActivateStar> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => dashBoard(
+                              FadePageRoute(
+                                page: const dashBoard(
+                                  saved: false,
                                   helpful_tips: false,
                                   membership: true,
                                   dashboard_ctrl: false,
@@ -227,6 +234,8 @@ void dashboard_sheet(context) {
   bool hide = true;
   showModalBottomSheet(
     context: context,
+    isDismissible: false,
+    enableDrag: false,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
@@ -245,7 +254,7 @@ void dashboard_sheet(context) {
               bottom: AppDimensions.height10 * 1.0),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
-              color: Color(0xFFF5F5F5)),
+              color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
@@ -255,18 +264,19 @@ void dashboard_sheet(context) {
               Container(
                 //color: Colors.amber,
                 // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
-                alignment: Alignment(1, 0),
+                alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => dashBoard(
+                      FadePageRoute(
+                        page: const dashBoard(
                           helpful_tips: true,
                           membership: true,
                           dashboard_ctrl: false,
                           cancel: false,
                           trial: false,
+                          saved: false,
                         ),
                       ),
                     );
@@ -277,7 +287,7 @@ void dashboard_sheet(context) {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10 * 1.9,
                         right: AppDimensions.height10 * 1.5),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             image: AssetImage('assets/images/Close_blue.png'))),
@@ -308,7 +318,7 @@ void dashboard_sheet(context) {
                       fontSize: AppDimensions.height10 * 2.8,
                       //letterSpacing: AppDimensions.height10 * 0.2,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF437296)),
+                      color: const Color(0xFF437296)),
                 ),
               ),
               Container(
@@ -323,9 +333,171 @@ void dashboard_sheet(context) {
                           fontSize: AppDimensions.height10 * 1.8,
                           // letterSpacing: AppDimensions.height10 * 0.2,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF437296)),
+                          color: const Color(0xFF437296)),
                     ),
                   )),
+            ],
+          )),
+    ),
+  );
+}
+
+void login_sheet(context) {
+  bool hide = true;
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    backgroundColor: Colors.transparent,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+      top: Radius.circular(AppDimensions.height10 * 2.0),
+    )),
+    builder: (context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+          width: AppDimensions.height10 * 39.4,
+          height: AppDimensions.height10 * 54.4,
+          // margin: EdgeInsets.only(
+          //     left: AppDimensions.height10 * 1.0,
+          //     right: AppDimensions.height10 * 1.0,
+          //     bottom: AppDimensions.height10 * 1.0),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(AppDimensions.height10 * 2.0)),
+              color: const Color(0xFFF5F5F5)),
+          child: Column(
+            // alignment: AlignmentDirectional.topCenter,
+            //  mainAxisAlignment: MainAxisAlignment.start,
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                //color: Colors.amber,
+                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                alignment: const Alignment(1, 0),
+                child: GestureDetector(
+                  child: Container(
+                    width: AppDimensions.height10 * 2.6,
+                    height: AppDimensions.height10 * 2.6,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.9,
+                        right: AppDimensions.height10 * 1.5),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/Close_blue.png'))),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10 * 1.5,
+                    bottom: AppDimensions.height10 * 2.0),
+                child: Image.asset(
+                  'assets/images/potenic__icon.png',
+                  width: AppDimensions.height10 * 8.202,
+                  height: AppDimensions.height10 * 11.2,
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10 * 30.7,
+                height: AppDimensions.height10 * 3.4,
+                // color: Colors.amber,
+                alignment: Alignment.center,
+                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                child: Text(
+                  'Login to continue',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      height: AppDimensions.height10 * 0.12,
+                      fontSize: AppDimensions.height10 * 2.8,
+                      //letterSpacing: AppDimensions.height10 * 0.2,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF437296)),
+                ),
+              ),
+              Container(
+                  //  width: AppDimensions.height10 * 33.2,
+                  height: AppDimensions.height10 * 20.1,
+                  // color: Colors.grey,
+                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                  child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.4,
+                            height: AppDimensions.height10 * 0.13,
+                            fontFamily: 'laila',
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFF437296),
+                          ),
+                          children: [
+                            TextSpan(text: 'In order to '),
+                            TextSpan(
+                                text: 'activate your star ',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(text: 'and view your\n'),
+                            TextSpan(
+                                text: 'Dashboard ',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    ", you need to create an account or login in.\nYou’ve already completed a big step in setting and\ndefining your vision for better-self.\n\nYou have goal and practice set up. One more step and\nyou can access other tools that are available to you to\nhelp you in your personal growth journey :)\n\nVisit your "),
+                            TextSpan(
+                                text: 'Dashboard ',
+                                style: TextStyle(fontWeight: FontWeight.w700)),
+                            TextSpan(
+                                text:
+                                    'now without losing any\nprogress you’ve made so far.  ')
+                          ]))),
+              Container(
+                width: AppDimensions.height10 * 28.0,
+                margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: AppDimensions.height10 * 13.0,
+                      height: AppDimensions.height10 * 5.0,
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 2.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 5.0),
+                          color: Color(0xFFFBFBFB)),
+                      child: Center(
+                        child: Text(
+                          'I’m new here',
+                          style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.6,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF8C648A),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.height10 * 13.0,
+                      height: AppDimensions.height10 * 5.0,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 5.0),
+                          color: Color(0xFF5A4D73)),
+                      child: Center(
+                        child: Text(
+                          'Log in',
+                          style: TextStyle(
+                            fontSize: AppDimensions.height10 * 1.6,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFFFBFBFB),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           )),
     ),

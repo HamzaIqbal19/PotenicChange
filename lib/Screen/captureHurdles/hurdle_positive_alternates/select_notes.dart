@@ -41,7 +41,7 @@ class _select_noteState extends State<select_note> {
                 fontSize: AppDimensions.height10 * 2.0,
                 fontWeight: FontWeight.w600,
               ),
-              colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+              colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
           actions: [
@@ -60,7 +60,7 @@ class _select_noteState extends State<select_note> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/practicebackground.png'),
                 fit: BoxFit.cover)),
@@ -74,7 +74,7 @@ class _select_noteState extends State<select_note> {
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       image: AssetImage('assets/images/Video_Subtract.png'))),
               child: Container(
                 margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
@@ -95,7 +95,7 @@ class _select_noteState extends State<select_note> {
                             height: AppDimensions.height10 * 3.032,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10 * 0.68),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
                                         'assets/images/note_icon.png'))),
@@ -138,7 +138,7 @@ class _select_noteState extends State<select_note> {
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10 * 1.8,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent)),
                         enabledBorder: const OutlineInputBorder(

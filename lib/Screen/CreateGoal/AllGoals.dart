@@ -466,9 +466,13 @@ class _AllGoalsState extends State<AllGoals> {
                                   Radius.circular(AppDimensions.height10))),
                           child: Center(
                             child: TextFormField(
+                                style: TextStyle(
+                                    color: Color(0xFF3C3C43).withOpacity(0.6),
+                                    fontFamily: 'Laila',
+                                    fontSize: AppDimensions.height10 * 1.7,
+                                    height: AppDimensions.height10 * 0.15),
                                 decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 1.2),
+                                    contentPadding: EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(
                                       'assets/images/Light.png',
                                       width: AppDimensions.height10 * 1.5,
@@ -484,10 +488,6 @@ class _AllGoalsState extends State<AllGoals> {
                                       // fit: BoxFit.contain,
                                     ),
                                     hintText: "Search",
-                                    hintStyle: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.7,
-                                        color: Color(0xFF3C3C4399)
-                                            .withOpacity(0.6)),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Colors.transparent)),

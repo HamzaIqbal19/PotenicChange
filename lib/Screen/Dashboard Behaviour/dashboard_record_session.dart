@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_practice_summary.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class record_session extends StatelessWidget {
@@ -112,9 +113,8 @@ class record_session extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const record_summary()));
+                                    FadePageRoute(
+                                        page: const record_summary()));
                               },
                               child: Container(
                                 height: AppDimensions.height10 * 13.8,

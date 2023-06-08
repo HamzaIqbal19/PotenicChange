@@ -105,6 +105,7 @@ class align_circles extends StatelessWidget {
                   child: Text(body_text,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                          height: AppDimensions.height10 * 0.15,
                           fontSize: body_text_size,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.w400,

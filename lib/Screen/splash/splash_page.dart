@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class SplashPage extends StatefulWidget {
@@ -34,8 +35,8 @@ class SplashPageState extends State<SplashPage> {
   onDoneLoading() async {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => OnBoarding(),
+      FadePageRoute(
+        page: OnBoarding(),
       ),
     );
     // print('==================================');
@@ -43,8 +44,8 @@ class SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("app dimension:${AppDimensions.height10 }");
-    print("app dimension:${AppDimensions.screenHeight }");
+    print("app dimension:${AppDimensions.height10}");
+    print("app dimension:${AppDimensions.screenHeight}");
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Center(
@@ -52,7 +53,6 @@ class SplashPageState extends State<SplashPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-
               width: AppDimensions.width10 * 40.65,
               height: AppDimensions.height20 * 45,
               // width: 423.5,

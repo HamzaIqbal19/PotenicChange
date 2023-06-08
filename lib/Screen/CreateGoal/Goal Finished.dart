@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -66,7 +67,6 @@ class _GoalFinishedState extends State<GoalFinished> {
               },
             ),
           ),
-
         ],
       ),
       body: Stack(
@@ -108,9 +108,9 @@ class _GoalFinishedState extends State<GoalFinished> {
                   child: Column(
                     children: [
                       Container(
-
                         child: Center(
-                          child: Text("You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not  working, you can change it to another \n practice. ",
+                          child: Text(
+                            "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not  working, you can change it to another \n practice. ",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
@@ -121,19 +121,16 @@ class _GoalFinishedState extends State<GoalFinished> {
                           ),
                         ),
                       ),
-
                     ],
                   )),
-
-
               Stack(
                 children: [
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => StarReview(),
+                        FadePageRoute(
+                          page: const StarReview(),
                         ),
                       );
                     },
@@ -145,7 +142,6 @@ class _GoalFinishedState extends State<GoalFinished> {
                       ),
                     ),
                   ),
-
                   Positioned(
                     top: 0,
                     bottom: 0,
@@ -153,62 +149,55 @@ class _GoalFinishedState extends State<GoalFinished> {
                     right: 0,
                     child: Align(
                       // alignment: Alignment.bottomCenter,
-                      alignment: Alignment(0.01,AppDimensions.height10*0.015+1),
+                      alignment:
+                          Alignment(0.01, AppDimensions.height10 * 0.015 + 1),
                       //heightFactor: 0.5,
                       child: Container(
-                        height: AppDimensions.height10*17.5,
-                        width:  AppDimensions.height10*17.5,
+                        height: AppDimensions.height10 * 17.5,
+                        width: AppDimensions.height10 * 17.5,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child:
-                            GestureDetector(
-                              onTap: (){
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CreatePractice(),
-                                  ),
-                                );
-                              },
-                              child: Image(
-                                image: const AssetImage('assets/images/practice.png'),
-                                height: AppDimensions.height10 * 17.5,
-                                width: AppDimensions.height10 * 17.5,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              FadePageRoute(
+                                page: const CreatePractice(),
                               ),
-                            ),
-
+                            );
+                          },
+                          child: Image(
+                            image:
+                                const AssetImage('assets/images/practice.png'),
+                            height: AppDimensions.height10 * 17.5,
+                            width: AppDimensions.height10 * 17.5,
+                          ),
+                        ),
                       ),
                     ),
                   )
-
                 ],
               ),
-
-
-
-
-
               SizedBox(
                 height: AppDimensions.height10 * 6.16,
               ),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.start,
-               children: [
-                 SizedBox(width: AppDimensions.height10*1.6,),
-                 Container(
-                   // color: Colors.blue,
-                     width: AppDimensions.height10 * 5.0,
-                     height: AppDimensions.height10 * 5.0,
-
-                     child: Image.asset(
-                       "assets/images/Moreactions.png",
-                       fit: BoxFit.contain,
-                     )),
-
-               ],
-             )
-
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: AppDimensions.height10 * 1.6,
+                  ),
+                  Container(
+                      // color: Colors.blue,
+                      width: AppDimensions.height10 * 5.0,
+                      height: AppDimensions.height10 * 5.0,
+                      child: Image.asset(
+                        "assets/images/Moreactions.png",
+                        fit: BoxFit.contain,
+                      )),
+                ],
+              )
             ],
           )
         ],

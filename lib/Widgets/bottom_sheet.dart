@@ -1,4 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -26,6 +27,7 @@ class BottomSheetExample extends StatelessWidget {
 }
 
 void bottom_sheet(context) {
+  bool enable = false;
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
@@ -73,15 +75,20 @@ void bottom_sheet(context) {
               Container(
                 width: AppDimensions.height10 * 36.0,
                 height: AppDimensions.height10 * 8.0,
+                // decoration: BoxDecoration(
+                //   color: const Color.fromRGBO(0, 0, 0, 0.1),
+                // ),
                 child: TextFormField(
+                  onTap: () {},
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: AppDimensions.height10 * 2.4,
                     color: const Color.fromARGB(209, 250, 154, 52),
                   ),
                   decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.only(left: AppDimensions.height10 * 3.3),
+
+                      // contentPadding:
+                      //     EdgeInsets.only(left: AppDimensions.height10 * 2.0),
                       filled: true,
                       fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
                       hintText: "Enter your goal name ",
@@ -170,7 +177,9 @@ void bottom_sheet(context) {
                       border: Border.all(
                           width: 2, color: Color.fromARGB(209, 250, 154, 52))),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       child: Text(
                         'Cancel',
                         style: TextStyle(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet_Practice.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class CreatePractice extends StatefulWidget {
@@ -173,8 +174,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
+                                  FadePageRoute(
+                                    page: PracticeName(
                                         "Meditation", "Meditation"),
                                   ),
                                 );
@@ -194,9 +195,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Count temper episodes",
+                                  FadePageRoute(
+                                    page: PracticeName("Count temper episodes",
                                         "Count temper \n episodes"),
                                   ),
                                 );
@@ -224,8 +224,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
+                                  FadePageRoute(
+                                    page: PracticeName(
                                         "Take time to understand",
                                         "Take time to \n understand"),
                                   ),
@@ -246,8 +246,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
+                                  FadePageRoute(
+                                    page: PracticeName(
                                         "Laugh it off", "Laugh it off"),
                                   ),
                                 );
@@ -275,9 +275,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Count  down", "Count \n down"),
+                                  FadePageRoute(
+                                    page: (PracticeName(
+                                        "Count  down", "Count \n down")),
                                   ),
                                 );
                               },
@@ -296,9 +296,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Practice gratitude",
+                                  FadePageRoute(
+                                    page: PracticeName("Practice gratitude",
                                         "Practice \n gratitude"),
                                   ),
                                 );
@@ -326,8 +325,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
+                                  FadePageRoute(
+                                    page:
                                         PracticeName("Walk away", "Walk away"),
                                   ),
                                 );
@@ -347,8 +346,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                               onTap: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
+                                  FadePageRoute(
+                                    page: PracticeName(
                                         "Get it out,express your feelings",
                                         "Get it out, \n express your \n feelings"),
                                   ),
@@ -403,6 +402,11 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   Radius.circular(AppDimensions.height10))),
                           child: Center(
                             child: TextFormField(
+                                style: TextStyle(
+                                    color: Color(0xFF3C3C43).withOpacity(0.6),
+                                    fontFamily: 'Laila',
+                                    fontSize: AppDimensions.height10 * 1.7,
+                                    height: AppDimensions.height10 * 0.15),
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(

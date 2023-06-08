@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -25,7 +26,94 @@ class _emotionsState extends State<emotions> {
         actions: [
           Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => Container(
+                      width: AppDimensions.height10 * 27.0,
+                      height: AppDimensions.height10 * 18.2,
+                      child: AlertDialog(
+                        contentPadding: EdgeInsets.zero,
+                        actionsPadding: EdgeInsets.zero,
+                        titlePadding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10 * 1.4)),
+                        title: Container(
+                          margin: const EdgeInsets.only(
+                              top: 19, right: 16, left: 16, bottom: 2),
+                          height: AppDimensions.height10 * 2.2,
+                          width: AppDimensions.height10 * 23.8,
+                          child: Text(
+                            "Are you sure?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: const Color(0xFF000000),
+                              fontSize: AppDimensions.height10 * 1.7,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        content: Container(
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10 * 1.9,
+                              left: AppDimensions.height10 * 1.6,
+                              right: AppDimensions.height10 * 1.6),
+                          height: AppDimensions.height10 * 3.2,
+                          width: AppDimensions.height10 * 23.8,
+                          child: Text(
+                            "If you close it now, you will lose all your progress.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              height: AppDimensions.height10 * 0.15,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        actions: <Widget>[
+                          Column(
+                            children: [
+                              Container(
+                                height: 42,
+                                width: double.infinity,
+                                color: const Color(0xFF007AFF),
+                                child: TextButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Close',
+                                    style: TextStyle(
+                                        color: Color(0xFFFFFFFF),
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 44,
+                                width: double.infinity,
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xFF007AFF)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
                 icon: Image.asset(
                   'assets/images/Close.png',
                   width: AppDimensions.height10 * 2.6,
@@ -38,7 +126,7 @@ class _emotionsState extends State<emotions> {
       ),
       extendBodyBehindAppBar: true,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -89,7 +177,7 @@ class _emotionsState extends State<emotions> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 2.8,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xff8C648A)),
+                                color: const Color(0xff8C648A)),
                           ),
                           Text(
                             ' your practice?',
@@ -123,7 +211,7 @@ class _emotionsState extends State<emotions> {
                           border: Border.all(
                               width: AppDimensions.height10 * 0.2,
                               color: Colors.white),
-                          color: Color(0xff546096),
+                          color: const Color(0xff546096),
                         ),
                         child: Text(
                           'I feel very \nlow & \ndemotivated',
@@ -146,7 +234,7 @@ class _emotionsState extends State<emotions> {
                           border: Border.all(
                               width: AppDimensions.height10 * 0.2,
                               color: Colors.white),
-                          color: Color(0xff7291A0),
+                          color: const Color(0xff7291A0),
                         ),
                         child: Text(
                           'I feel slightly \nirritated, not \nfussed really',
@@ -180,7 +268,7 @@ class _emotionsState extends State<emotions> {
                             border: Border.all(
                                 width: AppDimensions.height10 * 0.2,
                                 color: Colors.white),
-                            color: Color(0xffE1C44F),
+                            color: const Color(0xffE1C44F),
                           ),
                           child: Text(
                             'I feel ok',
@@ -203,7 +291,7 @@ class _emotionsState extends State<emotions> {
                           border: Border.all(
                               width: AppDimensions.height10 * 0.2,
                               color: Colors.white),
-                          color: Color(0xffFA9458),
+                          color: const Color(0xffFA9458),
                         ),
                         child: Text(
                           'Motivated and \nready to start',
@@ -225,7 +313,7 @@ class _emotionsState extends State<emotions> {
                           border: Border.all(
                               width: AppDimensions.height10 * 0.2,
                               color: Colors.white),
-                          color: Color(0xffFF7C42),
+                          color: const Color(0xffFF7C42),
                         ),
                         child: Text(
                           'Great, cannot \nwait to start!',
@@ -262,7 +350,7 @@ class _emotionsState extends State<emotions> {
                               left: AppDimensions.height10 * 0.3),
                           child: IconButton(
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.edit_note,
                                 //size: 27,
                                 color: Colors.white,
@@ -302,18 +390,18 @@ class _emotionsState extends State<emotions> {
                                     AppDimensions.height10 * 5.0),
                                 border: Border.all(
                                     width: AppDimensions.height10 * 0.2,
-                                    color: Color(0xffFA9934))),
+                                    color: const Color(0xffFA9934))),
                             child: TextButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => clocks()));
+                                  widget.summary
+                                      ? Navigator.pop(context)
+                                      : Navigator.push(context,
+                                          FadePageRoute(page: const clocks()));
                                 },
                                 child: Text(
-                                  'Use Timer',
+                                  widget.summary ? 'Cancel' : 'Use Timer',
                                   style: TextStyle(
-                                      color: Color(0xffFA9934),
+                                      color: const Color(0xffFA9934),
                                       fontSize: AppDimensions.height10 * 1.6,
                                       fontWeight: FontWeight.w600),
                                 ))),
@@ -338,9 +426,9 @@ class _emotionsState extends State<emotions> {
                                       onPressed: () {
                                         Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    practice_summary()));
+                                            FadePageRoute(
+                                                page:
+                                                    const practice_summary()));
                                       },
                                       child: Text(
                                         'Update Summary',
@@ -354,9 +442,8 @@ class _emotionsState extends State<emotions> {
                                       onPressed: () {
                                         Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    welldone_splash()));
+                                            FadePageRoute(
+                                                page: const welldone_splash()));
                                       },
                                       child: Text(
                                         'Finished practice',
@@ -373,7 +460,7 @@ class _emotionsState extends State<emotions> {
             ),
           ),
           OfflineBuilder(
-              debounceDuration: Duration(milliseconds: 3),
+              debounceDuration: const Duration(milliseconds: 3),
               connectivityBuilder: (
                 BuildContext context,
                 ConnectivityResult connectivity,
@@ -389,15 +476,16 @@ class _emotionsState extends State<emotions> {
                       child: Container(
                         width: double.infinity,
                         height: AppDimensions.height10 * 3.0,
-                        color:
-                            connected ? Color(0xFF27AE60) : Color(0xFFFE6624),
+                        color: connected
+                            ? const Color(0xFF27AE60)
+                            : const Color(0xFFFE6624),
                         child: Center(
                           child: Text(
                             connected ? 'Back Online' : 'You’re Offline',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10 * 1.4,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFFFBFBFB)),
+                                color: const Color(0xFFFBFBFB)),
                           ),
                         ),
                       ),

@@ -4,6 +4,8 @@ import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../Widgets/fading.dart';
+
 class PasswordReset extends StatefulWidget {
   const PasswordReset({Key? key}) : super(key: key);
 
@@ -52,8 +54,10 @@ class _PasswordResetState extends State<PasswordReset> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                        FadePageRoute(
+                          page: HomeScreen(
+                            log_status: false,
+                          ),
                         ),
                       );
                       // Add code for performing close action
@@ -156,15 +160,21 @@ class _PasswordResetState extends State<PasswordReset> {
                                 margin: EdgeInsets.only(
                                   left: AppDimensions.height10 * 2.0,
                                 ),
-                                width: AppDimensions.height10 * 20.9,
+                                // width: AppDimensions.height10 * 34.0,
                                 height: AppDimensions.height10 * 2.2,
                                 child: TextFormField(
+                                    style: TextStyle(
+                                        color: const Color(0xFF8C648A),
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.none,
+                                        fontSize: AppDimensions.height10 * 1.8),
                                     decoration: const InputDecoration(
                                         contentPadding: EdgeInsets.zero,
                                         floatingLabelBehavior:
                                             FloatingLabelBehavior.always,
                                         hintText: "JohnSmith@yahoo.com",
-                                        hintStyle: TextStyle(color: Color(0xFF8C648A)),
+                                        hintStyle:
+                                            TextStyle(color: Color(0xFF8C648A)),
                                         focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.transparent)),
@@ -206,9 +216,8 @@ class _PasswordResetState extends State<PasswordReset> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          Loginemailandpassword(),
+                                    FadePageRoute(
+                                      page: Loginemailandpassword(),
                                     ),
                                   );
                                 },
@@ -255,8 +264,8 @@ class _PasswordResetState extends State<PasswordReset> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => EmailSent(),
+                        FadePageRoute(
+                          page: EmailSent(),
                         ),
                       );
                     },

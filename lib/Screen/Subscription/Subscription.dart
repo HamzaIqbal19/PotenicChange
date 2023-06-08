@@ -1,7 +1,9 @@
+import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class Subscription extends StatefulWidget {
@@ -12,6 +14,7 @@ class Subscription extends StatefulWidget {
 }
 
 class _SubscriptionState extends State<Subscription> {
+  final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
   late ScrollController _scrollController;
 
   bool _showBackToTopButton = false;
@@ -108,7 +111,7 @@ class _SubscriptionState extends State<Subscription> {
               ),
               Container(
                 width: AppDimensions.height10 * 38.4,
-                height: AppDimensions.height10 * 148.3,
+                // height: AppDimensions.height10 * 148.3,
                 margin: EdgeInsets.only(top: AppDimensions.height10 * 2.8),
                 decoration: BoxDecoration(
                     boxShadow: [
@@ -116,7 +119,8 @@ class _SubscriptionState extends State<Subscription> {
                         color: Colors.black.withOpacity(0.3),
                         spreadRadius: 3,
                         blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                     borderRadius:
@@ -414,14 +418,15 @@ class _SubscriptionState extends State<Subscription> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const dashBoard(
-                                      helpful_tips: false,
-                                      dashboard_ctrl: true,
-                                      membership: false,
-                                      trial: true,
-                                      cancel: false,
-                                    )));
+                            FadePageRoute(
+                                page: const dashBoard(
+                              saved: false,
+                              helpful_tips: false,
+                              dashboard_ctrl: true,
+                              membership: false,
+                              trial: true,
+                              cancel: false,
+                            )));
                         subscribed(context);
                       },
                       child: Container(
@@ -523,725 +528,938 @@ class _SubscriptionState extends State<Subscription> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        _scrollToTop();
+                        // _scrollToTop();
                       },
                       child: Container(
-                        width: AppDimensions.height10 * 25.7,
-                        height: AppDimensions.height10 * 4.0,
                         margin:
                             EdgeInsets.only(top: AppDimensions.height10 * 3.0),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: AppDimensions.height10 * 0.1,
-                                color: const Color(0xFFFA9934)),
-                            color: const Color(0xFFFBFBFB),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 5.0)),
-                        child: Row(
+                        child: Column(
                           children: [
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 5.3),
-                              width: AppDimensions.height10 * 14.9,
-                              height: AppDimensions.height10 * 1.9,
-                              child: Center(
-                                child: Text(
-                                  'Check what you get',
-                                  style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.7,
-                                      fontWeight: FontWeight.w500,
-                                      height: AppDimensions.height10 * 0.15,
-                                      color: const Color(0xFF437296)),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 1.5,
-                                  top: AppDimensions.height10 * 0),
-                              child: Image.asset(
-                                'assets/images/Arrow.png',
-                                height: AppDimensions.height10 * 1.2,
-                                width: AppDimensions.height10 * 2.1,
-                                color: const Color(0xFFFA9934),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10 * 32.4,
-                      height: AppDimensions.height10 * 4.629,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 3.0),
-                      child: Center(
-                        child: Text(
-                          'More focused ME time awaits\nyou from a single mouse click...',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.1,
-                              fontWeight: FontWeight.w600,
-                              height: AppDimensions.height10 * 0.15,
-                              color: const Color(0xFF437296)),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10 * 7.4,
-                      height: AppDimensions.height10 * 0.2,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 2.471),
-                      decoration: BoxDecoration(
-                          color: const Color(0xFFFA9934),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 0.5)),
-                    ),
-                    Container(
-                      width: AppDimensions.height10 * 36.0,
-                      height: AppDimensions.height10 * 58.8,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 2.1),
-                      child: Stack(children: [
-                        Column(
-                          children: [
-                            Align(
-                              alignment: const Alignment(1, 0),
-                              child: Container(
-                                width: AppDimensions.height10 * 19.6,
-                                height: AppDimensions.height10 * 3.934,
-                                // alignment: Alignment(1, 0),
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 1.3,
-                                    right: AppDimensions.height10 * 0.4),
+                            AdvanceExpansionTile(
+                              key: _globalKey,
+                              hideIcon: true,
+                              tilePadding: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 6.3,
+                                  right: AppDimensions.height10 * 6.3),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 0, color: Colors.transparent)),
+                              title: Container(
+                                width: AppDimensions.height10 * 25.7,
+                                height: AppDimensions.height10 * 4.0,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: AppDimensions.height10 * 0.1,
+                                        color: const Color(0xFFFA9934)),
+                                    color: const Color(0xFFFBFBFB),
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10 * 5.0)),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  // crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    SizedBox(
-                                      width: AppDimensions.height10 * 9.1,
-                                      height: AppDimensions.height10 * 3.934,
+                                    Container(
+                                      width: AppDimensions.height10 * 14.9,
+                                      height: AppDimensions.height10 * 1.9,
                                       child: Center(
                                         child: Text(
-                                          'Empowered\n(free)',
-                                          textAlign: TextAlign.center,
+                                          'Check what you get',
                                           style: TextStyle(
                                               fontSize:
-                                                  AppDimensions.height10 * 1.5,
-                                              fontWeight: FontWeight.w700,
-                                              // height:
-                                              //     AppDimensions.height10 * 0.15,
+                                                  AppDimensions.height10 * 1.7,
+                                              fontWeight: FontWeight.w500,
+                                              height:
+                                                  AppDimensions.height10 * 0.15,
                                               color: const Color(0xFF437296)),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: AppDimensions.height10 * 7.7,
-                                      height: AppDimensions.height10 * 19.67,
-                                      child: Text(
-                                        'Ownership',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.5,
-                                            fontWeight: FontWeight.w700,
-                                            height:
-                                                AppDimensions.height10 * 0.15,
-                                            color: const Color(0xFF437296)),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          left: AppDimensions.height10 * 1.5,
+                                          top: AppDimensions.height10 * 0),
+                                      child: Image.asset(
+                                        'assets/images/Arrow.png',
+                                        height: AppDimensions.height10 * 1.2,
+                                        width: AppDimensions.height10 * 2.1,
+                                        color: const Color(0xFFFA9934),
                                       ),
                                     )
                                   ],
                                 ),
                               ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.0,
-                              height: AppDimensions.height10 * 4.9,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.066),
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 13.9,
-                                    height: AppDimensions.height10 * 4.9,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                              text: 'Active Goals',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          const TextSpan(
-                                              text:
-                                                  ' (create\nand save as many as\nyou like)')
-                                        ]))),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.0,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 5.9),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: Center(
-                                        child: Text(
-                                      '1',
+                              children: <Widget>[
+                                Container(
+                                  width: AppDimensions.height10 * 32.4,
+                                  height: AppDimensions.height10 * 4.629,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10 * 3.0),
+                                  child: Center(
+                                    child: Text(
+                                      'More focused ME time awaits\nyou from a single mouse click...',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.9,
-                                          fontWeight: FontWeight.w500,
-                                          // height:
-                                          //     AppDimensions.height10 *
-                                          //         0.12,
-                                          color: const Color(0xFF437296)),
-                                    )),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.0,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 7.9),
-                                    //   height: AppDimensions.height10 * 1.9,
-                                    child: Center(
-                                        child: Text(
-                                      '3',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.9,
-                                          fontWeight: FontWeight.w500,
-                                          // height:
-                                          //     AppDimensions.height10 *
-                                          //         0.12,
-                                          color: const Color(0xFF437296)),
-                                    )),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.3,
-                              height: AppDimensions.height10 * 0.075,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.0,
-                                  bottom: AppDimensions.height10 * 1.0),
-                              color: const Color(0xFFE0E0E0),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.height10 * 35.0,
-                              height: AppDimensions.height10 * 4.9,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 13.9,
-                                    height: AppDimensions.height10 * 4.9,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                              text: 'Active Practices\n',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          const TextSpan(
-                                              text:
-                                                  '(create and save as many as you like)')
-                                        ]))),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 7.5,
-                                    // height: AppDimensions.height10 * 3.6,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 3.1),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: Center(
-                                        child: Text(
-                                      'Up to 3 per\nactive goal',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.5,
-                                          fontWeight: FontWeight.w400,
+                                              AppDimensions.height10 * 2.1,
+                                          fontWeight: FontWeight.w600,
                                           height: AppDimensions.height10 * 0.15,
                                           color: const Color(0xFF437296)),
-                                    )),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 7.5,
-                                    //height: AppDimensions.height10 * 3.6,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 2.6),
-                                    //   height: AppDimensions.height10 * 1.9,
-                                    child: Center(
-                                        child: Text(
-                                      'Up to 5 per\nactive goal',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.5,
-                                          fontWeight: FontWeight.w400,
-                                          height: AppDimensions.height10 * 0.15,
-                                          color: const Color(0xFF437296)),
-                                    )),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.3,
-                              height: AppDimensions.height10 * 0.075,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.0,
-                                  bottom: AppDimensions.height10 * 1.0),
-                              color: const Color(0xFFE0E0E0),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.height10 * 35.0,
-                              height: AppDimensions.height10 * 3.4,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 13.9,
-                                    height: AppDimensions.height10 * 3.4,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                            text: 'Define a ',
-                                          ),
-                                          const TextSpan(
-                                              text: 'sticky inspiring vision',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600))
-                                        ]))),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 5.7),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 7.4),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.3,
-                              height: AppDimensions.height10 * 0.075,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.0,
-                                  bottom: AppDimensions.height10 * 1.0),
-                              color: const Color(0xFFE0E0E0),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.height10 * 35.0,
-                              height: AppDimensions.height10 * 3.4,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 13.9,
-                                    height: AppDimensions.height10 * 3.4,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                            text: 'Build your',
-                                          ),
-                                          const TextSpan(
-                                              text: ' inspiration board',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600))
-                                        ]))),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 5.7),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 7.4),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.3,
-                              height: AppDimensions.height10 * 0.075,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.0,
-                                  bottom: AppDimensions.height10 * 1.0),
-                              color: const Color(0xFFE0E0E0),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.height10 * 35.0,
-                              height: AppDimensions.height10 * 5.1,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 13.9,
-                                    height: AppDimensions.height10 * 5.1,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                            text: 'Build ',
-                                          ),
-                                          const TextSpan(
-                                              text: ' self-reliance ',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          const TextSpan(
-                                              text:
-                                                  'by capturing your hurdles (unlimited)')
-                                        ]))),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 5.7),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 7.4),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.3,
-                              height: AppDimensions.height10 * 0.075,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.0,
-                                  bottom: AppDimensions.height10 * 1.0),
-                              color: const Color(0xFFE0E0E0),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.height10 * 35.0,
-                              height: AppDimensions.height10 * 5.1,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 13.9,
-                                    height: AppDimensions.height10 * 5.1,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                              text: 'Goal evaluation ',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          const TextSpan(
-                                              text:
-                                                  'tools to help with clarity and focus')
-                                        ]))),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 5.7),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: Center(child: Container()),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 7.4),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.3,
-                              height: AppDimensions.height10 * 0.075,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.0,
-                                  bottom: AppDimensions.height10 * 1.0),
-                              color: const Color(0xFFE0E0E0),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.height10 * 35.0,
-                              height: AppDimensions.height10 * 4.9,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 13.9,
-                                    height: AppDimensions.height10 * 4.9,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.height10 *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10 *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                              text: 'Practice\nevaluation',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          const TextSpan(
-                                              text: ' and progress reports')
-                                        ]))),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 7.3,
-                                    height: AppDimensions.height10 * 4.6,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 4.1),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: Center(
-                                      child: Text(
-                                        'Practice\nevaluation\nonly',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.5,
-                                            fontWeight: FontWeight.w400,
-                                            height:
-                                                AppDimensions.height10 * 0.12,
-                                            color: const Color(0xFF437296)),
-                                      ),
                                     ),
                                   ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 4.1),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.3,
-                              height: AppDimensions.height10 * 0.075,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.0,
-                                  bottom: AppDimensions.height10 * 1.0),
-                              color: const Color(0xFFE0E0E0),
-                            ),
-                            SizedBox(
-                              width: AppDimensions.height10 * 35.0,
-                              height: AppDimensions.height10 * 5.1,
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 13.9,
-                                    height: AppDimensions.height10 * 5.1,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
+                                ),
+                                Container(
+                                  width: AppDimensions.height10 * 7.4,
+                                  height: AppDimensions.height10 * 0.2,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10 * 2.471),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFFA9934),
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10 * 0.5)),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10 * 36.0,
+                                  height: AppDimensions.height10 * 58.8,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10 * 2.1),
+                                  child: Stack(children: [
+                                    Column(
+                                      children: [
+                                        Align(
+                                          alignment: const Alignment(1, 0),
+                                          child: Container(
+                                            width:
+                                                AppDimensions.height10 * 19.6,
+                                            height:
+                                                AppDimensions.height10 * 3.934,
+                                            // alignment: Alignment(1, 0),
+                                            margin: EdgeInsets.only(
+                                                top: AppDimensions.height10 *
+                                                    1.3,
+                                                right: AppDimensions.height10 *
+                                                    0.4),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              // crossAxisAlignment: CrossAxisAlignment.end,
+                                              children: [
+                                                SizedBox(
+                                                  width:
+                                                      AppDimensions.height10 *
+                                                          9.1,
+                                                  height:
+                                                      AppDimensions.height10 *
+                                                          3.934,
+                                                  child: Center(
+                                                    child: Text(
+                                                      'Empowered\n(free)',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10 *
+                                                              1.5,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          // height:
+                                                          //     AppDimensions.height10 * 0.15,
+                                                          color: const Color(
+                                                              0xFF437296)),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width:
+                                                      AppDimensions.height10 *
+                                                          7.7,
+                                                  height:
+                                                      AppDimensions.height10 *
+                                                          19.67,
+                                                  child: Text(
+                                                    'Ownership',
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            1.5,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        height: AppDimensions
+                                                                .height10 *
+                                                            0.15,
+                                                        color: const Color(
+                                                            0xFF437296)),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.0,
+                                          height: AppDimensions.height10 * 4.9,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10 *
+                                                  1.066),
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10 *
+                                                    13.9,
+                                                height: AppDimensions.height10 *
+                                                    4.9,
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.45,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                height: AppDimensions
+                                                                        .height10 *
+                                                                    0.12,
+                                                                color: const Color(
+                                                                    0xFF437296)),
+                                                            children: const [
+                                                      TextSpan(
+                                                          text: 'Active Goals',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600)),
+                                                      TextSpan(
+                                                          text:
+                                                              ' (create\nand save as many as\nyou like)')
+                                                    ]))),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.0,
+                                                margin: EdgeInsets.only(
+                                                    left:
                                                         AppDimensions.height10 *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
+                                                            5.9),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: Center(
+                                                    child: Text(
+                                                  '1',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.9,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      // height:
+                                                      //     AppDimensions.height10 *
+                                                      //         0.12,
+                                                      color: const Color(
+                                                          0xFF437296)),
+                                                )),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.0,
+                                                margin: EdgeInsets.only(
+                                                    left:
                                                         AppDimensions.height10 *
+                                                            7.9),
+                                                //   height: AppDimensions.height10 * 1.9,
+                                                child: Center(
+                                                    child: Text(
+                                                  '3',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.9,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      // height:
+                                                      //     AppDimensions.height10 *
+                                                      //         0.12,
+                                                      color: const Color(
+                                                          0xFF437296)),
+                                                )),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.3,
+                                          height:
+                                              AppDimensions.height10 * 0.075,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10 * 1.0,
+                                              bottom:
+                                                  AppDimensions.height10 * 1.0),
+                                          color: const Color(0xFFE0E0E0),
+                                        ),
+                                        SizedBox(
+                                          width: AppDimensions.height10 * 35.0,
+                                          height: AppDimensions.height10 * 4.9,
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10 *
+                                                    13.9,
+                                                height: AppDimensions.height10 *
+                                                    4.9,
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.45,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                height: AppDimensions
+                                                                        .height10 *
+                                                                    0.12,
+                                                                color: const Color(
+                                                                    0xFF437296)),
+                                                            children: const [
+                                                      TextSpan(
+                                                          text:
+                                                              'Active Practices\n',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600)),
+                                                      TextSpan(
+                                                          text:
+                                                              '(create and save as many as you like)')
+                                                    ]))),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    7.5,
+                                                // height: AppDimensions.height10 * 3.6,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            3.1),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: Center(
+                                                    child: Text(
+                                                  'Up to 3 per\nactive goal',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.5,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      height: AppDimensions
+                                                              .height10 *
+                                                          0.15,
+                                                      color: const Color(
+                                                          0xFF437296)),
+                                                )),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    7.5,
+                                                //height: AppDimensions.height10 * 3.6,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            2.6),
+                                                //   height: AppDimensions.height10 * 1.9,
+                                                child: Center(
+                                                    child: Text(
+                                                  'Up to 5 per\nactive goal',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.5,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      height: AppDimensions
+                                                              .height10 *
+                                                          0.15,
+                                                      color: const Color(
+                                                          0xFF437296)),
+                                                )),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.3,
+                                          height:
+                                              AppDimensions.height10 * 0.075,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10 * 1.0,
+                                              bottom:
+                                                  AppDimensions.height10 * 1.0),
+                                          color: const Color(0xFFE0E0E0),
+                                        ),
+                                        SizedBox(
+                                          width: AppDimensions.height10 * 35.0,
+                                          height: AppDimensions.height10 * 3.4,
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10 *
+                                                    13.9,
+                                                height: AppDimensions.height10 *
+                                                    3.4,
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.45,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                height: AppDimensions
+                                                                        .height10 *
+                                                                    0.12,
+                                                                color: const Color(
+                                                                    0xFF437296)),
+                                                            children: const [
+                                                      TextSpan(
+                                                        text: 'Define a ',
+                                                      ),
+                                                      TextSpan(
+                                                          text:
+                                                              'sticky inspiring vision',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600))
+                                                    ]))),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            5.7),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            7.4),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.3,
+                                          height:
+                                              AppDimensions.height10 * 0.075,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10 * 1.0,
+                                              bottom:
+                                                  AppDimensions.height10 * 1.0),
+                                          color: const Color(0xFFE0E0E0),
+                                        ),
+                                        SizedBox(
+                                          width: AppDimensions.height10 * 35.0,
+                                          height: AppDimensions.height10 * 3.4,
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10 *
+                                                    13.9,
+                                                height: AppDimensions.height10 *
+                                                    3.4,
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.45,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                height: AppDimensions
+                                                                        .height10 *
+                                                                    0.12,
+                                                                color: const Color(
+                                                                    0xFF437296)),
+                                                            children: const [
+                                                      TextSpan(
+                                                        text: 'Build your',
+                                                      ),
+                                                      TextSpan(
+                                                          text:
+                                                              ' inspiration board',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600))
+                                                    ]))),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            5.7),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            7.4),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.3,
+                                          height:
+                                              AppDimensions.height10 * 0.075,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10 * 1.0,
+                                              bottom:
+                                                  AppDimensions.height10 * 1.0),
+                                          color: const Color(0xFFE0E0E0),
+                                        ),
+                                        SizedBox(
+                                          width: AppDimensions.height10 * 35.0,
+                                          height: AppDimensions.height10 * 5.1,
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10 *
+                                                    13.9,
+                                                height: AppDimensions.height10 *
+                                                    5.1,
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.45,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                height: AppDimensions
+                                                                        .height10 *
+                                                                    0.12,
+                                                                color: const Color(
+                                                                    0xFF437296)),
+                                                            children: const [
+                                                      TextSpan(
+                                                        text: 'Build ',
+                                                      ),
+                                                      TextSpan(
+                                                          text:
+                                                              ' self-reliance ',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600)),
+                                                      TextSpan(
+                                                          text:
+                                                              'by capturing your hurdles (unlimited)')
+                                                    ]))),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            5.7),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            7.4),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.3,
+                                          height:
+                                              AppDimensions.height10 * 0.075,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10 * 1.0,
+                                              bottom:
+                                                  AppDimensions.height10 * 1.0),
+                                          color: const Color(0xFFE0E0E0),
+                                        ),
+                                        SizedBox(
+                                          width: AppDimensions.height10 * 35.0,
+                                          height: AppDimensions.height10 * 5.1,
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10 *
+                                                    13.9,
+                                                height: AppDimensions.height10 *
+                                                    5.1,
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.45,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                height: AppDimensions
+                                                                        .height10 *
+                                                                    0.12,
+                                                                color: const Color(
+                                                                    0xFF437296)),
+                                                            children: const [
+                                                      TextSpan(
+                                                          text:
+                                                              'Goal evaluation ',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600)),
+                                                      TextSpan(
+                                                          text:
+                                                              'tools to help with clarity and focus')
+                                                    ]))),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            5.7),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child:
+                                                    Center(child: Container()),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            7.4),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.3,
+                                          height:
+                                              AppDimensions.height10 * 0.075,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10 * 1.0,
+                                              bottom:
+                                                  AppDimensions.height10 * 1.0),
+                                          color: const Color(0xFFE0E0E0),
+                                        ),
+                                        SizedBox(
+                                          width: AppDimensions.height10 * 35.0,
+                                          height: AppDimensions.height10 * 4.9,
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10 *
+                                                    13.9,
+                                                height: AppDimensions.height10 *
+                                                    4.9,
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.45,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                height: AppDimensions
+                                                                        .height10 *
+                                                                    0.12,
+                                                                color: const Color(
+                                                                    0xFF437296)),
+                                                            children: const [
+                                                      TextSpan(
+                                                          text:
+                                                              'Practice\nevaluation',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600)),
+                                                      TextSpan(
+                                                          text:
+                                                              ' and progress reports')
+                                                    ]))),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    7.3,
+                                                height: AppDimensions.height10 *
+                                                    4.6,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            4.1),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: Center(
+                                                  child: Text(
+                                                    'Practice\nevaluation\nonly',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            1.5,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        height: AppDimensions
+                                                                .height10 *
                                                             0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                              text: 'Personalised\ntimeline  ',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          const TextSpan(
-                                              text: 'of recorded activities')
-                                        ]))),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 5.7),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: Center(child: Container()),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.height10 * 2.4,
-                                    height: AppDimensions.height10 * 2.4,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 7.4),
-                                    // height: AppDimensions.height10 * 1.9,
-                                    child: const Center(
-                                        child: Icon(
-                                      Icons.check,
-                                      color: Color(0xFFFA9934),
-                                    )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10 * 35.3,
-                              height: AppDimensions.height10 * 0.075,
-                              margin: EdgeInsets.only(
-                                top: AppDimensions.height10 * 1.0,
-                              ),
-                              color: const Color(0xFFE0E0E0),
+                                                        color: const Color(
+                                                            0xFF437296)),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            4.1),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.3,
+                                          height:
+                                              AppDimensions.height10 * 0.075,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10 * 1.0,
+                                              bottom:
+                                                  AppDimensions.height10 * 1.0),
+                                          color: const Color(0xFFE0E0E0),
+                                        ),
+                                        SizedBox(
+                                          width: AppDimensions.height10 * 35.0,
+                                          height: AppDimensions.height10 * 5.1,
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10 *
+                                                    13.9,
+                                                height: AppDimensions.height10 *
+                                                    5.1,
+                                                child: Center(
+                                                    child: RichText(
+                                                        text: TextSpan(
+                                                            style: TextStyle(
+                                                                fontFamily:
+                                                                    'laila',
+                                                                fontSize:
+                                                                    AppDimensions
+                                                                            .height10 *
+                                                                        1.45,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                height: AppDimensions
+                                                                        .height10 *
+                                                                    0.12,
+                                                                color: const Color(
+                                                                    0xFF437296)),
+                                                            children: const [
+                                                      TextSpan(
+                                                          text:
+                                                              'Personalised\ntimeline  ',
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600)),
+                                                      TextSpan(
+                                                          text:
+                                                              'of recorded activities')
+                                                    ]))),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            5.7),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child:
+                                                    Center(child: Container()),
+                                              ),
+                                              Container(
+                                                width: AppDimensions.height10 *
+                                                    2.4,
+                                                height: AppDimensions.height10 *
+                                                    2.4,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10 *
+                                                            7.4),
+                                                // height: AppDimensions.height10 * 1.9,
+                                                child: const Center(
+                                                    child: Icon(
+                                                  Icons.check,
+                                                  color: Color(0xFFFA9934),
+                                                )),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: AppDimensions.height10 * 35.3,
+                                          height:
+                                              AppDimensions.height10 * 0.075,
+                                          margin: EdgeInsets.only(
+                                            top: AppDimensions.height10 * 1.0,
+                                          ),
+                                          color: const Color(0xFFE0E0E0),
+                                        ),
+                                      ],
+                                    ),
+                                    Align(
+                                      alignment: const Alignment(0.98, 1),
+                                      child: Container(
+                                        width: AppDimensions.height10 * 9.0,
+                                        height: AppDimensions.height10 * 58.2,
+                                        color: const Color(0xFFFA9934)
+                                            .withOpacity(0.1),
+                                      ),
+                                    )
+                                  ]),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10 * 7.4,
+                                  height: AppDimensions.height10 * 0.2,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10 * 3.5),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFFA9934),
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10 * 0.5)),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                        Align(
-                          alignment: const Alignment(0.98, 1),
-                          child: Container(
-                            width: AppDimensions.height10 * 9.0,
-                            height: AppDimensions.height10 * 58.2,
-                            color: const Color(0xFFFA9934).withOpacity(0.1),
-                          ),
-                        )
-                      ]),
+                      ),
                     ),
                     Container(
                       width: AppDimensions.height10 * 34.4,
                       height: AppDimensions.height10 * 8.827,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 3.5),
                       child: Column(
                         children: [
-                          Container(
-                            width: AppDimensions.height10 * 7.4,
-                            height: AppDimensions.height10 * 0.2,
-                            decoration: BoxDecoration(
-                                color: const Color(0xFFFA9934),
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10 * 0.5)),
-                          ),
                           Container(
                             width: AppDimensions.height10 * 34.4,
                             height: AppDimensions.height10 * 2.893,
@@ -1257,15 +1475,15 @@ class _SubscriptionState extends State<Subscription> {
                                           fontFamily: 'laila',
                                           // height: AppDimensions.height10 * 0.15,
                                           color: const Color(0xFF437296)),
-                                      children: [
-                                    const TextSpan(text: 'Read our '),
-                                    const TextSpan(
+                                      children: const [
+                                    TextSpan(text: 'Read our '),
+                                    TextSpan(
                                         text: 'Terms of service',
                                         style: TextStyle(
                                             decoration:
                                                 TextDecoration.underline)),
-                                    const TextSpan(text: ' and '),
-                                    const TextSpan(
+                                    TextSpan(text: ' and '),
+                                    TextSpan(
                                         text: 'Privacy policy',
                                         style: TextStyle(
                                             decoration:
@@ -1312,7 +1530,8 @@ class _SubscriptionState extends State<Subscription> {
                         color: Colors.black.withOpacity(0.3),
                         spreadRadius: 3,
                         blurRadius: 7,
-                        offset: Offset(0, 3), // changes position of shadow
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
                       ),
                     ],
                     borderRadius:
@@ -1389,12 +1608,12 @@ class _SubscriptionState extends State<Subscription> {
                                               height:
                                                   AppDimensions.height10 * 0.14,
                                               color: const Color(0xFF437296)),
-                                          children: [
-                                        const TextSpan(
+                                          children: const [
+                                        TextSpan(
                                             text: 'Answer:  \n',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600)),
-                                        const TextSpan(
+                                        TextSpan(
                                             text:
                                                 'Yes, we offer a free 5-day trial period for both monthly and yearly plans.')
                                       ])),
@@ -1461,12 +1680,12 @@ class _SubscriptionState extends State<Subscription> {
                                               height:
                                                   AppDimensions.height10 * 0.14,
                                               color: const Color(0xFF437296)),
-                                          children: [
-                                        const TextSpan(
+                                          children: const [
+                                        TextSpan(
                                             text: 'Answer:  \n',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600)),
-                                        const TextSpan(
+                                        TextSpan(
                                             text:
                                                 'You can upgrade to an yearly plan in any month\nbefore your recurring monthly billing is due. If you\nwant to downgrade from yearly plan, make sure to\nchoose monthly payment by the time your yearly plan is due to renew. ')
                                       ])),
@@ -1533,12 +1752,12 @@ class _SubscriptionState extends State<Subscription> {
                                               height:
                                                   AppDimensions.height10 * 0.14,
                                               color: const Color(0xFF437296)),
-                                          children: [
-                                        const TextSpan(
+                                          children: const [
+                                        TextSpan(
                                             text: 'Answer:  \n',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600)),
-                                        const TextSpan(
+                                        TextSpan(
                                             text:
                                                 'Yes you can by going into your Account Settings.\nRemember to cancel your subscription plan no\nearlier than 3 working days before your plan is due to\nrenew.')
                                       ])),
@@ -1605,12 +1824,12 @@ class _SubscriptionState extends State<Subscription> {
                                               height:
                                                   AppDimensions.height10 * 0.14,
                                               color: const Color(0xFF437296)),
-                                          children: [
-                                        const TextSpan(
+                                          children: const [
+                                        TextSpan(
                                             text: 'Answer:  \n',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600)),
-                                        const TextSpan(
+                                        TextSpan(
                                             text:
                                                 'If you stay on our free Empowered Starter plan, you\nget it for lifetime. No subscription fees, it’s yours to\nown :)\n\nFor a more personalised experience and clarity on your growth progress towards self-fulfilment, we recommend you upgrade to our Ownership Plan (if you’re serious about your personal growth).')
                                       ])),
@@ -1726,11 +1945,11 @@ void subscribed(canceled) {
                               height: AppDimensions.height10 * 0.15,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFF437296)),
-                          children: [
-                            const TextSpan(
+                          children: const [
+                            TextSpan(
                                 text: 'Your first steps & 5 day trial\n\n',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
-                            const TextSpan(
+                            TextSpan(
                                 text:
                                     'You’re now on a 5-day trial.\n\nPlease check your email (you should\nhave received a confirmation welcome\nemail).\n\nWe look forward to supporting you on\nyour personal development journey!')
                           ]))),

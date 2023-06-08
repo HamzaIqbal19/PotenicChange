@@ -312,7 +312,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                   if (widget.password_edit == true) {
                     Navigator.push(
                       context,
-                      FadePageRoute(page: Success()),
+                      FadePageRoute(page: const Success()),
                     );
                   }
                 },
@@ -333,7 +333,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                     child: Text(
                       widget.password_edit ? 'Send' : 'Save updates',
                       style: TextStyle(
-                        color: const Color(0xFFFFFFFFF).withOpacity(0.9),
+                        color: const Color(0xFFFFFFFF).withOpacity(0.9),
                         fontSize: AppDimensions.height10 * 1.6,
                         height: AppDimensions.height10 * 0.12,
                         fontWeight: FontWeight.w600,

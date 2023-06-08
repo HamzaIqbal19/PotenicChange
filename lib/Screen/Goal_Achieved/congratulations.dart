@@ -313,21 +313,21 @@ void goal_achieved_sheet(context) {
           }
 
           return Container(
-            margin: EdgeInsets.only(top: AppDimensions.height10 * 26.5),
+            margin: EdgeInsets.only(top: AppDimensions.height10 * 4.6),
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 width: AppDimensions.height10 * 41.4,
-                height: AppDimensions.height10 * 96.3,
+                //  height: AppDimensions.height10 * 87.6,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                         top: Radius.circular(AppDimensions.height10 * 2.0)),
                     gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [Color(0xFFC9B9CB), Color(0xFFE1B3B7)])),
+                        colors: [Color(0xFFE7DEDF), Color(0xFFF9F7F9)])),
                 child: Column(
                   children: [
                     Container(
@@ -379,10 +379,10 @@ void goal_achieved_sheet(context) {
                       margin:
                           EdgeInsets.only(top: AppDimensions.height10 * 1.6),
                       child: Text(
-                        'Based on your latest evaluation, your total goal\nscore level has gone down. Don’t despair yet.\n\nLife is a journey of ups and downs, and working on\nyourself is part of the transformation process.\nPlease review your latest assessment and adjust\nyour original ‘why’ reasons if needed.',
+                        'Based on your latest evaluation, your total goal\nscore level has gone down. Don’t despair yet.\nLife is a journey of ups and downs, and working\non yourself is part of the transformation\nprocess. Please review your latest assessment\nand adjust your original ‘why’ reasons if needed.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.5,
+                            fontSize: AppDimensions.height10 * 1.6,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF437296)),
                       ),
@@ -391,7 +391,7 @@ void goal_achieved_sheet(context) {
                       width: AppDimensions.height10 * 26.8,
                       height: AppDimensions.height10 * 26.8,
                       margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 4.7),
+                          EdgeInsets.only(top: AppDimensions.height10 * 5.7),
                       child: Stack(
                         children: [
                           Container(
@@ -551,7 +551,7 @@ void goal_achieved_sheet(context) {
                         width: AppDimensions.height10 * 29.0,
                         height: AppDimensions.height10 * 5.0,
                         margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 15.1),
+                            EdgeInsets.only(top: AppDimensions.height10 * 13.1),
                         decoration: BoxDecoration(
                             gradient: const LinearGradient(
                                 colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
@@ -576,8 +576,9 @@ void goal_achieved_sheet(context) {
                     Container(
                       width: AppDimensions.height10 * 29.0,
                       height: AppDimensions.height10 * 5.0,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 1.8),
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10 * 1.8,
+                          bottom: AppDimensions.height10 * 4.3),
                       decoration: BoxDecoration(
                           color: const Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(

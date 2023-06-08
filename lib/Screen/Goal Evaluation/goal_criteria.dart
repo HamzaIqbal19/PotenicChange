@@ -1,13 +1,16 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
 class your_why extends StatefulWidget {
   final int criteria;
+  final bool saved;
   const your_why({
     super.key,
+    required this.saved,
     required this.criteria,
   });
 
@@ -18,7 +21,7 @@ class your_why extends StatefulWidget {
 class _your_whyState extends State<your_why> {
   bool select_item = true;
   bool bt_visible = false;
-  bool saved = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -878,7 +881,7 @@ class _your_whyState extends State<your_why> {
                 ),
               ),
               widget.criteria == 4
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Container(
                       width: AppDimensions.height10 * 7.2,
                       height: AppDimensions.height10 * 0.1,
@@ -888,7 +891,7 @@ class _your_whyState extends State<your_why> {
                           bottom: AppDimensions.height10 * 3.0),
                     ),
               widget.criteria == 4
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Container(
                       width: AppDimensions.height10 * 37.0,
                       height: AppDimensions.height10 * 11.9,
@@ -928,7 +931,7 @@ class _your_whyState extends State<your_why> {
                       ),
                     ),
               widget.criteria == 4
-                  ? SizedBox()
+                  ? const SizedBox()
                   : Container(
                       width: double.infinity,
                       height: AppDimensions.height10 * 16.3,
@@ -1162,7 +1165,7 @@ class _your_whyState extends State<your_why> {
                         ),
                       ),
                     ),
-              saved
+              widget.saved
                   ? Container(
                       width: AppDimensions.height10 * 38.259,
                       height: AppDimensions.height10 * 9.707,
@@ -1225,9 +1228,9 @@ class _your_whyState extends State<your_why> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              setState(() {
-                                saved = false;
-                              });
+                              // setState(() {
+                              //   saved = false;
+                              // });
                             },
                             child: Container(
                               width: AppDimensions.height10 * 8.1,
@@ -1266,40 +1269,25 @@ class _your_whyState extends State<your_why> {
                               : AppDimensions.height10 * 3.6),
                       child: Row(
                         children: [
-                          Container(
-                            width: AppDimensions.height10 * 8.0,
-                            height: AppDimensions.height10 * 5.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFFFFFFF),
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10 * 5.0),
-                            ),
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Cancel',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.6,
-                                      fontWeight: FontWeight.w600,
-                                      color: bt_visible
-                                          ? const Color(0xFFFA9934)
-                                          : const Color(0xFFFA9934)
-                                              .withOpacity(0.5)),
-                                )),
-                          ),
-                          Container(
-                            width: AppDimensions.height10 * 8.0,
-                            height: AppDimensions.height10 * 5.0,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.0),
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFFFFFFF),
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10 * 5.0),
-                            ),
-                            child: TextButton(
-                                onPressed: () {},
+                          GestureDetector(
+                            onTap: () => showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => Container(
+                                    width: AppDimensions.height10 * 27.0,
+                                    height: AppDimensions.height10 * 18.2,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10 * 1.4)),
+                                    child: clear_criteria)),
+                            child: Container(
+                              width: AppDimensions.height10 * 8.0,
+                              height: AppDimensions.height10 * 5.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFFFFFFF),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10 * 5.0),
+                              ),
+                              child: Center(
                                 child: Text(
                                   'Clear',
                                   textAlign: TextAlign.center,
@@ -1310,44 +1298,213 @@ class _your_whyState extends State<your_why> {
                                           ? const Color(0xFFFA9934)
                                           : const Color(0xFFFA9934)
                                               .withOpacity(0.5)),
-                                )),
-                          ),
-                          Container(
-                            width: AppDimensions.height10 * 17.4,
-                            height: AppDimensions.height10 * 5.0,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.0),
-                            decoration: BoxDecoration(
-                              gradient: bt_visible
-                                  ? const LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Color(0xffFCC10D),
-                                        Color(0xffFDA210),
-                                      ],
-                                    )
-                                  : LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        const Color(0xffFCC10D)
-                                            .withOpacity(0.5),
-                                        const Color(0xffFDA210)
-                                            .withOpacity(0.5),
-                                      ],
-                                    ),
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10 * 5.0),
+                                ),
+                              ),
                             ),
-                            child: TextButton(
-                                onPressed: () {
-                                  if (bt_visible == true) {
-                                    setState(() {
-                                      saved = true;
-                                    });
-                                  }
-                                },
+                          ),
+                          GestureDetector(
+                            onTap: () => showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => Container(
+                                    width: AppDimensions.height10 * 27.0,
+                                    height: AppDimensions.height10 * 18.2,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10 * 1.4)),
+                                    child: without_save_criteria)),
+                            child: Container(
+                              width: AppDimensions.height10 * 8.0,
+                              height: AppDimensions.height10 * 5.0,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 1.0),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFFFFFFF),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10 * 5.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Reset',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontWeight: FontWeight.w600,
+                                      color: bt_visible
+                                          ? const Color(0xFFFA9934)
+                                          : const Color(0xFFFA9934)
+                                              .withOpacity(0.5)),
+                                ),
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => Container(
+                                    width: AppDimensions.height10 * 27.0,
+                                    height: AppDimensions.height10 * 18.2,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10 * 1.4)),
+                                    child: AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              AppDimensions.height10 * 1.4)),
+                                      contentPadding: EdgeInsets.zero,
+                                      actionsPadding: EdgeInsets.zero,
+                                      titlePadding: EdgeInsets.zero,
+                                      title: Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                                AppDimensions.height10 * 1.4)),
+                                        margin: EdgeInsets.only(
+                                            top: AppDimensions.height10 * 1.9,
+                                            right: AppDimensions.height10 * 1.6,
+                                            left: AppDimensions.height10 * 1.6,
+                                            bottom:
+                                                AppDimensions.height10 * 0.2),
+                                        height: AppDimensions.height10 * 2.2,
+                                        width: AppDimensions.height10 * 23.8,
+                                        child: Text(
+                                          "Save changes?",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.7,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ),
+                                      content: Container(
+                                        margin: EdgeInsets.only(
+                                            bottom:
+                                                AppDimensions.height10 * 1.5,
+                                            left: AppDimensions.height10 * 1.6,
+                                            right:
+                                                AppDimensions.height10 * 1.6),
+                                        height: AppDimensions.height10 * 3.2,
+                                        width: AppDimensions.height10 * 23.8,
+                                        child: Text(
+                                          "Are you sure you want to save your new\nupdates?",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.3,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        Column(
+                                          children: [
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10 * 0.1,
+                                              child: Divider(
+                                                color: const Color(0XFF3C3C43)
+                                                    .withOpacity(0.29),
+                                              ),
+                                            ),
+                                            Container(
+                                              height:
+                                                  AppDimensions.height10 * 4.2,
+                                              width: double.infinity,
+                                              color: const Color(0xFF007AFF),
+                                              child: TextButton(
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page: const your_why(
+                                                        criteria: 1,
+                                                        saved: true,
+                                                      )));
+                                                },
+                                                child: Text(
+                                                  'Yes',
+                                                  style: TextStyle(
+                                                      color: const Color(
+                                                          0xFFFFFFFF),
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.7,
+                                                      fontFamily: "Laila",
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10 * 0.1,
+                                              child: Divider(
+                                                color: const Color(0XFF3C3C43)
+                                                    .withOpacity(0.29),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10 * 4.4,
+                                              width: double.infinity,
+                                              child: TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Text(
+                                                  'Cancel',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10 *
+                                                          1.7,
+                                                      fontFamily: "Laila",
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xFF007AFF)),
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10 * 0.1,
+                                              child: Divider(
+                                                color: const Color(0XFF3C3C43)
+                                                    .withOpacity(0.29),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ))),
+                            child: Container(
+                              width: AppDimensions.height10 * 17.4,
+                              height: AppDimensions.height10 * 5.0,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 1.0),
+                              decoration: BoxDecoration(
+                                gradient: bt_visible
+                                    ? const LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Color(0xffFCC10D),
+                                          Color(0xffFDA210),
+                                        ],
+                                      )
+                                    : LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          const Color(0xffFCC10D)
+                                              .withOpacity(0.5),
+                                          const Color(0xffFDA210)
+                                              .withOpacity(0.5),
+                                        ],
+                                      ),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10 * 5.0),
+                              ),
+                              child: Center(
                                 child: Text(
                                   'Save updates',
                                   textAlign: TextAlign.center,
@@ -1357,7 +1514,9 @@ class _your_whyState extends State<your_why> {
                                       color: bt_visible
                                           ? Colors.white
                                           : Colors.white.withOpacity(0.5)),
-                                )),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -1369,3 +1528,310 @@ class _your_whyState extends State<your_why> {
     );
   }
 }
+
+// AlertDialog save_criteria = AlertDialog(
+//   shape: RoundedRectangleBorder(
+//       borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
+//   contentPadding: EdgeInsets.zero,
+//   actionsPadding: EdgeInsets.zero,
+//   titlePadding: EdgeInsets.zero,
+//   title: Container(
+//     decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
+//     margin: EdgeInsets.only(
+//         top: AppDimensions.height10 * 1.9,
+//         right: AppDimensions.height10 * 1.6,
+//         left: AppDimensions.height10 * 1.6,
+//         bottom: AppDimensions.height10 * 0.2),
+//     height: AppDimensions.height10 * 2.2,
+//     width: AppDimensions.height10 * 23.8,
+//     child: Text(
+//       "Save changes?",
+//       textAlign: TextAlign.center,
+//       style: TextStyle(
+//         fontSize: AppDimensions.height10 * 1.7,
+//         fontWeight: FontWeight.w400,
+//       ),
+//     ),
+//   ),
+//   content: Container(
+//     margin: EdgeInsets.only(
+//         bottom: AppDimensions.height10 * 1.5,
+//         left: AppDimensions.height10 * 1.6,
+//         right: AppDimensions.height10 * 1.6),
+//     height: AppDimensions.height10 * 3.2,
+//     width: AppDimensions.height10 * 23.8,
+//     child: Text(
+//       "Are you sure you want to save your new\nupdates?",
+//       textAlign: TextAlign.center,
+//       style: TextStyle(
+//         fontSize: AppDimensions.height10 * 1.3,
+//         fontWeight: FontWeight.w400,
+//       ),
+//     ),
+//   ),
+//   actions: <Widget>[
+//     Column(
+//       children: [
+//         SizedBox(
+//           height: AppDimensions.height10 * 0.1,
+//           child: Divider(
+//             color: const Color(0XFF3C3C43).withOpacity(0.29),
+//           ),
+//         ),
+//         Container(
+//           height: AppDimensions.height10 * 4.2,
+//           width: double.infinity,
+//           color: const Color(0xFF007AFF),
+//           child: GestureDetector(
+//             onTap: () {
+//                Navigator.push(context,
+//                               FadePageRoute(page: const your_why(criteria: 1, saved: true,)));
+//             },
+//             child: Center(
+//               child: Text(
+//                 'Yes',
+//                 style: TextStyle(
+//                     color: const Color(0xFFFFFFFF),
+//                     fontSize: AppDimensions.height10 * 1.7,
+//                     fontFamily: "Laila",
+//                     fontWeight: FontWeight.w400),
+//               ),
+//             ),
+//           ),
+//         ),
+//         SizedBox(
+//           height: AppDimensions.height10 * 0.1,
+//           child: Divider(
+//             color: const Color(0XFF3C3C43).withOpacity(0.29),
+//           ),
+//         ),
+//         SizedBox(
+//           height: AppDimensions.height10 * 4.4,
+//           width: double.infinity,
+//           child: TextButton(
+//             onPressed: () {},
+//             child: Text(
+//               'Cancel',
+//               style: TextStyle(
+//                   fontSize: AppDimensions.height10 * 1.7,
+//                   fontFamily: "Laila",
+//                   fontWeight: FontWeight.w400,
+//                   color: const Color(0xFF007AFF)),
+//             ),
+//           ),
+//         ),
+//         SizedBox(
+//           height: AppDimensions.height10 * 0.1,
+//           child: Divider(
+//             color: const Color(0XFF3C3C43).withOpacity(0.29),
+//           ),
+//         ),
+//       ],
+//     ),
+//   ],
+// );
+
+AlertDialog without_save_criteria = AlertDialog(
+  shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
+  contentPadding: EdgeInsets.zero,
+  actionsPadding: EdgeInsets.zero,
+  titlePadding: EdgeInsets.zero,
+  title: Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
+    margin: EdgeInsets.only(
+        top: AppDimensions.height10 * 1.9,
+        right: AppDimensions.height10 * 1.6,
+        left: AppDimensions.height10 * 1.6,
+        bottom: AppDimensions.height10 * 0.2),
+    height: AppDimensions.height10 * 2.2,
+    width: AppDimensions.height10 * 23.8,
+    child: Text(
+      "Exit without saving changes?",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: AppDimensions.height10 * 1.7,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  ),
+  content: Container(
+    margin: EdgeInsets.only(
+        bottom: AppDimensions.height10 * 1.5,
+        left: AppDimensions.height10 * 1.6,
+        right: AppDimensions.height10 * 1.6),
+    height: AppDimensions.height10 * 3.2,
+    width: AppDimensions.height10 * 23.8,
+    child: Text(
+      "Are you sure you want to exit, all your\nchanges will be lost?",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: AppDimensions.height10 * 1.3,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  ),
+  actions: <Widget>[
+    Column(
+      children: [
+        SizedBox(
+          height: AppDimensions.height10 * 0.1,
+          child: Divider(
+            color: const Color(0XFF3C3C43).withOpacity(0.29),
+          ),
+        ),
+        Container(
+          height: AppDimensions.height10 * 4.2,
+          width: double.infinity,
+          color: const Color(0xFF007AFF),
+          child: GestureDetector(
+            onTap: () {
+              // Navigator.pop(context);
+            },
+            child: Center(
+              child: Text(
+                'Yes',
+                style: TextStyle(
+                    color: const Color(0xFFFFFFFF),
+                    fontSize: AppDimensions.height10 * 1.7,
+                    fontFamily: "Laila",
+                    fontWeight: FontWeight.w400),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: AppDimensions.height10 * 0.1,
+          child: Divider(
+            color: const Color(0XFF3C3C43).withOpacity(0.29),
+          ),
+        ),
+        SizedBox(
+          height: AppDimensions.height10 * 4.4,
+          width: double.infinity,
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              'Cancel',
+              style: TextStyle(
+                  fontSize: AppDimensions.height10 * 1.7,
+                  fontFamily: "Laila",
+                  fontWeight: FontWeight.w400,
+                  color: const Color(0xFF007AFF)),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: AppDimensions.height10 * 0.1,
+          child: Divider(
+            color: const Color(0XFF3C3C43).withOpacity(0.29),
+          ),
+        ),
+      ],
+    ),
+  ],
+);
+
+AlertDialog clear_criteria = AlertDialog(
+  shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
+  contentPadding: EdgeInsets.zero,
+  actionsPadding: EdgeInsets.zero,
+  titlePadding: EdgeInsets.zero,
+  title: Container(
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
+    margin: EdgeInsets.only(
+        top: AppDimensions.height10 * 1.9,
+        right: AppDimensions.height10 * 1.6,
+        left: AppDimensions.height10 * 1.6,
+        bottom: AppDimensions.height10 * 0.2),
+    height: AppDimensions.height10 * 2.2,
+    width: AppDimensions.height10 * 23.8,
+    child: Text(
+      "Clear answers?",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: AppDimensions.height10 * 1.7,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  ),
+  content: Container(
+    margin: EdgeInsets.only(
+        bottom: AppDimensions.height10 * 1.5,
+        left: AppDimensions.height10 * 1.6,
+        right: AppDimensions.height10 * 1.6),
+    height: AppDimensions.height10 * 3.2,
+    width: AppDimensions.height10 * 23.8,
+    child: Text(
+      "Are you sure you want to clear all your\nanswers for this Goal criterion?",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: AppDimensions.height10 * 1.3,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  ),
+  actions: <Widget>[
+    Column(
+      children: [
+        SizedBox(
+          height: AppDimensions.height10 * 0.1,
+          child: Divider(
+            color: const Color(0XFF3C3C43).withOpacity(0.29),
+          ),
+        ),
+        Container(
+          height: AppDimensions.height10 * 4.2,
+          width: double.infinity,
+          color: const Color(0xFF007AFF),
+          child: GestureDetector(
+            onTap: () {
+              // Navigator.pop(context);
+            },
+            child: Center(
+              child: Text(
+                'Yes',
+                style: TextStyle(
+                    color: const Color(0xFFFFFFFF),
+                    fontSize: AppDimensions.height10 * 1.7,
+                    fontFamily: "Laila",
+                    fontWeight: FontWeight.w400),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: AppDimensions.height10 * 0.1,
+          child: Divider(
+            color: const Color(0XFF3C3C43).withOpacity(0.29),
+          ),
+        ),
+        SizedBox(
+          height: AppDimensions.height10 * 4.4,
+          width: double.infinity,
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              'Cancel',
+              style: TextStyle(
+                  fontSize: AppDimensions.height10 * 1.7,
+                  fontFamily: "Laila",
+                  fontWeight: FontWeight.w400,
+                  color: const Color(0xFF007AFF)),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: AppDimensions.height10 * 0.1,
+          child: Divider(
+            color: const Color(0XFF3C3C43).withOpacity(0.29),
+          ),
+        ),
+      ],
+    ),
+  ],
+);

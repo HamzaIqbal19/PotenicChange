@@ -176,8 +176,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context,
-                                    FadePageRoute(page: new_progress_score()));
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const new_progress_score()));
                               },
                               child: Container(
                                 width: goal_level == 2
@@ -368,21 +370,19 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       ? widget.goal_evaluation
                           ? Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const multiple_goal_inactive(
-                                          isActive: true)))
+                              FadePageRoute(
+                                  page: const multiple_goal_inactive(
+                                      isActive: true)))
                           : Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const goal_inactive(isActive: true)))
+                              FadePageRoute(
+                                  page: const goal_inactive(isActive: true)))
                       : Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const goal_inactive(
-                                    isActive: false,
-                                  )));
+                          FadePageRoute(
+                              page: const goal_inactive(
+                            isActive: false,
+                          )));
                 },
                 child: Container(
                   width: AppDimensions.height10 * 37.4,
@@ -471,11 +471,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const practiceMenu(
-                                              goal_eval: true,
-                                            )));
+                                    FadePageRoute(
+                                        page: const practiceMenu(
+                                      goal_eval: true,
+                                    )));
                               },
                               child: Container(
                                 width: AppDimensions.height10 * 13.8,
@@ -550,10 +549,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const practiceMenu(
-                                      goal_eval: true,
-                                    )));
+                            FadePageRoute(
+                                page: const practiceMenu(
+                              goal_eval: true,
+                            )));
                       },
                       child: Container(
                         width: AppDimensions.height10 * 13.8,
@@ -687,9 +686,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const StarReview()));
+                            context, FadePageRoute(page: const StarReview()));
                       },
                       child: Container(
                         width: AppDimensions.height10 * 36.0,

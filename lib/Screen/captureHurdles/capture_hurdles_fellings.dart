@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class felling_hurdles extends StatefulWidget {
@@ -33,7 +34,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                 )),
           ),
           centerTitle: true,
-          title: Container(
+          title: SizedBox(
             width: AppDimensions.height10 * 19.0,
             height: AppDimensions.height10 * 2.4,
             child: Row(
@@ -45,7 +46,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   ' 5',
@@ -54,7 +55,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '/5',
@@ -63,7 +64,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     fontSize: AppDimensions.height10 * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ],
             ),
@@ -85,13 +86,13 @@ class _felling_hurdlesState extends State<felling_hurdles> {
         Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/practicebackground.png'),
                     fit: BoxFit.cover)),
             child: SingleChildScrollView(
               reverse: true,
-              physics: ClampingScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               child: Column(children: [
                 Container(
                   width: AppDimensions.height10 * 34.3,
@@ -104,7 +105,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                       fontSize: AppDimensions.height10 * 2.8,
                       fontWeight: FontWeight.w700,
                     ),
-                    colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                    colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                   ),
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
@@ -114,7 +115,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     : SizedBox(
                         height: AppDimensions.height10 * 6.5,
                       ),
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).viewInsets.bottom == 0
                       ? AppDimensions.height10 * 46.5
                       : AppDimensions.height10 * 30.7,
@@ -130,7 +131,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                   height: AppDimensions.height10 * 18.1,
                                   margin: EdgeInsets.only(
                                       bottom: AppDimensions.height10 * 0.8),
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       gradient: LinearGradient(
                                           begin: Alignment.topCenter,
@@ -142,14 +143,15 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                   child: Container(
                                     width: AppDimensions.height10 * 16.813,
                                     height: AppDimensions.height10 * 6.83,
-                                    decoration:
-                                        BoxDecoration(shape: BoxShape.circle),
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle),
                                     child: Center(
                                       child: TextField(
                                         expands: true,
                                         maxLines: null,
                                         minLines: null,
-                                        scrollPhysics: ClampingScrollPhysics(),
+                                        scrollPhysics:
+                                            const ClampingScrollPhysics(),
                                         decoration: InputDecoration(
                                             hintText: 'I feel...',
                                             hintStyle: TextStyle(
@@ -179,7 +181,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                       ),
                                     ),
                                   )),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10 * 12.2,
                                 height: AppDimensions.height10 * 2.0,
                                 child: Row(
@@ -226,7 +228,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                             height: AppDimensions.height10 * 4.7,
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10 * 1.1),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 // border: Border.all(
                                 //     width: AppDimensions.height10 * 0.3,
@@ -236,7 +238,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                         'assets/images/Addgoal.png'))),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10 * 21.7,
                           height: AppDimensions.height10 * 1.9,
                           child: Text(
@@ -274,10 +276,10 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         onPressed: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => summary_hurdles(
-                                        delete_hurdle: false,
-                                      )));
+                              FadePageRoute(
+                                  page: const summary_hurdles(
+                                delete_hurdle: false,
+                              )));
                         },
                         child: Text(
                           'Next',
@@ -296,7 +298,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10 * 2.0),
-                            color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                            color: const Color(0xFFFFFFFF).withOpacity(0.3)),
                       )
                     : SizedBox(
                         height: AppDimensions.height10 * 0,
