@@ -37,7 +37,7 @@ class _GoalNameState extends State<GoalName> {
   @override
   Widget build(BuildContext context) {
 
-    final _formkey = GlobalKey<FormState>();
+    final _formkey1 = GlobalKey<FormState>();
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -320,7 +320,7 @@ class _GoalNameState extends State<GoalName> {
                       border: Border.all(color: Colors.white, width: 2),
                       borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
                   child: TextFormField(
-                    key: _formkey,
+                    key: _formkey1,
                       decoration:  InputDecoration(
 
                           hintText: "Control my anger",

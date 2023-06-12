@@ -11,16 +11,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class SignUpSuccessful extends StatefulWidget {
+  final String name;
+  const SignUpSuccessful({super.key, required this.name});
+
   @override
   _SignUpSuccessfulState createState() => _SignUpSuccessfulState();
 }
 
 class _SignUpSuccessfulState extends State<SignUpSuccessful> {
   // controllers
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
-  final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
   var errorMsg, jsonResponse;
   bool rememberMe=true;
@@ -102,7 +101,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                         height:AppDimensions.height10*2.4,
                         width: AppDimensions.screenWidth-100,
                         child:Text(
-                          'Welcome aboard [Name]',
+                          'Welcome aboard ${widget.name}',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,

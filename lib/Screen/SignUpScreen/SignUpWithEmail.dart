@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:potenic_app/MyServices/API.dart';
+import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:potenic_app/utils/app_colors.dart';
@@ -19,7 +19,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  final formKey = GlobalKey<FormState>();
+  // final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
   var errorMsg, jsonResponse;
   bool rememberMe = true;
@@ -62,7 +62,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
     super.dispose();
   }
 
-  final _formkey = GlobalKey<FormState>();
+  final _formkey1 = GlobalKey<FormState>();
+  final _formkey2 = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +130,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
               ),
             ),
             Form(
-              key: _formkey,
+              key: _formkey1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -192,7 +193,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                               borderRadius:
                               BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
                           child: TextFormField(
-                            key: _formkey,
+                            key: _formkey2,
                             decoration:  InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
@@ -436,16 +437,28 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         //<-- SEE HERE
                       ),
                       onPressed: () {
-                        if (_formkey.currentState!.validate()) {
-                          myapi().registerapi('${nameController.text.toString()}', '${emailController.text.toString()}', '${passwordController.text.toString()}', fcm);
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Registration Successfull")));
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignUpSuccessful(),
-                            ),
-                          );
-                        }
+                        // if (_formkey.currentState!.validate()) {
+                          print("Hello WOrld 12345");
+                          Authentication().registerApi('${nameController.text.toString()}', '${emailController.text.toString()}', '${passwordController.text.toString()}', fcm).then((success) async {
+
+                            print("response of signup api call:${success["message"]}");
+                            if (success["message"]!= "Failed! Email is already in use!") {
+
+                              ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text(success["message"])));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUpSuccessful(name:nameController.text.toString()),
+                                ),
+                              );
+
+                            }
+                            else {
+                              ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text(success["message"])));
+                            }
+                          });
+
+                        // }
                       },
                       icon: Image.asset(
                         "assets/images/fb.png",

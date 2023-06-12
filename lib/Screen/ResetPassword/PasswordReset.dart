@@ -24,7 +24,8 @@ class _PasswordResetState extends State<PasswordReset> {
   }
   @override
   Widget build(BuildContext context) {
-    final _formkey = GlobalKey<FormState>();
+    final _formkey2 = GlobalKey<FormState>();
+
 
     return Scaffold(
         extendBodyBehindAppBar: true,
@@ -165,7 +166,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                 ),
                               ),
                               Form(
-                                key: _formkey,
+                                key: _formkey2,
                                 child: Container(
                                   margin: EdgeInsets.only(
                                     left: AppDimensions.height10 * 2.0,
@@ -277,7 +278,7 @@ class _PasswordResetState extends State<PasswordReset> {
                       //<-- SEE HERE
                     ),
                     onPressed: () {
-                      if (_formkey.currentState!.validate()) {
+                      if (_formkey2.currentState!.validate()) {
                         myapi().forgotPassword('${email.text.toString()}');
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Password Reset")));
                         Navigator.push(
