@@ -26,25 +26,26 @@ class _video_infoState extends State<video_info> {
           shape: const CircularNotchedRectangle(),
           color: const Color(0xffC4C4C4),
           child: Container(
-            height: AppDimensions.height10 * 84.8,
+            height: AppDimensions.height10(context) * 84.8,
             child: Column(children: [
               Container(
-                // width: AppDimensions.height10 * 41.1,
-                height: AppDimensions.height10 * 5.1,
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
+                // width: AppDimensions.height10(context) * 41.1,
+                height: AppDimensions.height10(context) * 5.1,
+                // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
                 decoration: BoxDecoration(
                     color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(AppDimensions.height10 * 1.0),
-                        topRight:
-                            Radius.circular(AppDimensions.height10 * 1.0))),
+                        topLeft: Radius.circular(
+                            AppDimensions.height10(context) * 1.0),
+                        topRight: Radius.circular(
+                            AppDimensions.height10(context) * 1.0))),
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                    height: AppDimensions.height10 * 2.2,
-                    width: AppDimensions.height10 * 3.3,
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 4.9),
+                    height: AppDimensions.height10(context) * 2.2,
+                    width: AppDimensions.height10(context) * 3.3,
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 4.9),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.pop(context);
@@ -52,7 +53,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Back',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.5,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff007AFF)),
                       ),
@@ -60,13 +61,13 @@ class _video_infoState extends State<video_info> {
                   ),
                   Center(
                     child: Container(
-                      height: AppDimensions.height10 * 2.2,
-                      width: AppDimensions.height10 * 22.9,
+                      height: AppDimensions.height10(context) * 2.2,
+                      width: AppDimensions.height10(context) * 22.9,
                       child: Center(
                         child: Text(
                           'Create inspiration video link',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.7,
+                              fontSize: AppDimensions.height10(context) * 1.7,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xff282828)),
                         ),
@@ -82,14 +83,14 @@ class _video_infoState extends State<video_info> {
                                   note_saved: true, type_switch: 3)));
                     },
                     child: Container(
-                      height: AppDimensions.height10 * 2.2,
-                      width: AppDimensions.height10 * 4.3,
-                      margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 4.0),
+                      height: AppDimensions.height10(context) * 2.2,
+                      width: AppDimensions.height10(context) * 4.3,
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 4.0),
                       child: Text(
                         'Create',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.5,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff007AFF).withOpacity(0.4)),
                       ),
@@ -98,22 +99,22 @@ class _video_infoState extends State<video_info> {
                 ]),
               ),
               Container(
-                height: AppDimensions.height10 * 79.7,
+                height: AppDimensions.height10(context) * 79.7,
                 width: double.infinity,
                 color: Colors.white,
                 child: Column(
                   children: [
                     Container(
-                      height: AppDimensions.height10 * 2.1,
-                      width: AppDimensions.height10 * 30.5,
+                      height: AppDimensions.height10(context) * 2.1,
+                      width: AppDimensions.height10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 3.2),
+                          left: AppDimensions.height10(context) * 2.0,
+                          right: AppDimensions.height10(context) * 8.9,
+                          top: AppDimensions.height10(context) * 3.2),
                       child: Text(
                         'Video Destination Link',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.5,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -121,12 +122,12 @@ class _video_infoState extends State<video_info> {
                     Row(
                       children: [
                         Container(
-                          height: AppDimensions.height10 * 2.4,
-                          width: AppDimensions.height10 * 30.5,
+                          height: AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.height10(context) * 30.5,
                           margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 1.5,
-                            right: AppDimensions.height10 * 5.0,
-                            //top: AppDimensions.height10 * 1.0
+                            left: AppDimensions.height10(context) * 1.5,
+                            right: AppDimensions.height10(context) * 5.0,
+                            //top: AppDimensions.height10(context) * 1.0
                           ),
                           child: TextFormField(
                             onEditingComplete: () {
@@ -136,18 +137,19 @@ class _video_infoState extends State<video_info> {
                             },
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.7,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
                                 contentPadding: EdgeInsets.fromLTRB(
-                                    AppDimensions.height10 * 1.4,
-                                    AppDimensions.height10 * 0,
+                                    AppDimensions.height10(context) * 1.4,
+                                    AppDimensions.height10(context) * 0,
                                     0,
                                     0),
                                 hintText: 'Add a link',
                                 hintStyle: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.7,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.7,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
@@ -169,10 +171,12 @@ class _video_infoState extends State<video_info> {
                                       //         builder: (context) => link_editer()));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10 * 2.5,
-                                      height: AppDimensions.height10 * 2.5,
+                                      width:
+                                          AppDimensions.height10(context) * 2.5,
+                                      height:
+                                          AppDimensions.height10(context) * 2.5,
                                       // margin: EdgeInsets.only(
-                                      //     right: AppDimensions.height10 * 0.8),
+                                      //     right: AppDimensions.height10(context) * 0.8),
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.black,
@@ -180,15 +184,19 @@ class _video_infoState extends State<video_info> {
                                       child: Icon(
                                         Icons.add,
                                         color: Colors.white,
-                                        size: AppDimensions.height10 * 2,
+                                        size:
+                                            AppDimensions.height10(context) * 2,
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    width: AppDimensions.height10 * 3.0,
-                                    height: AppDimensions.height10 * 3.0,
+                                    width:
+                                        AppDimensions.height10(context) * 3.0,
+                                    height:
+                                        AppDimensions.height10(context) * 3.0,
                                     margin: EdgeInsets.only(
-                                        right: AppDimensions.height10 * 2.0),
+                                        right: AppDimensions.height10(context) *
+                                            2.0),
                                     decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: Colors.black,
@@ -196,7 +204,7 @@ class _video_infoState extends State<video_info> {
                                     child: Icon(
                                       Icons.delete,
                                       color: Colors.white,
-                                      size: AppDimensions.height10 * 2,
+                                      size: AppDimensions.height10(context) * 2,
                                     ),
                                   )
                                 ],
@@ -209,10 +217,10 @@ class _video_infoState extends State<video_info> {
                                   //         builder: (context) => link_editer()));
                                 },
                                 child: Container(
-                                  width: AppDimensions.height10 * 3.0,
-                                  height: AppDimensions.height10 * 3.0,
+                                  width: AppDimensions.height10(context) * 3.0,
+                                  height: AppDimensions.height10(context) * 3.0,
                                   // margin: EdgeInsets.only(
-                                  //     left: AppDimensions.height10 * 3.0),
+                                  //     left: AppDimensions.height10(context) * 3.0),
                                   decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Colors.black,
@@ -220,49 +228,49 @@ class _video_infoState extends State<video_info> {
                                   child: Icon(
                                     Icons.add,
                                     color: Colors.white,
-                                    size: AppDimensions.height10 * 2,
+                                    size: AppDimensions.height10(context) * 2,
                                   ),
                                 ),
                               ),
                       ],
                     ),
                     Container(
-                      height: AppDimensions.height10 * 2.1,
-                      width: AppDimensions.height10 * 30.5,
+                      height: AppDimensions.height10(context) * 2.1,
+                      width: AppDimensions.height10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 3.9),
+                          left: AppDimensions.height10(context) * 2.0,
+                          right: AppDimensions.height10(context) * 8.9,
+                          top: AppDimensions.height10(context) * 3.9),
                       child: Text(
                         'Why is it inspirational to you',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.5,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 2.4,
-                      width: AppDimensions.height10 * 30.5,
+                      height: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.height10(context) * 30.5,
                       margin: EdgeInsets.only(
-                        //left: AppDimensions.height10 * 2.0,
-                        right: AppDimensions.height10 * 10.0,
-                        // top: AppDimensions.height10 * 1.0
+                        //left: AppDimensions.height10(context) * 2.0,
+                        right: AppDimensions.height10(context) * 10.0,
+                        // top: AppDimensions.height10(context) * 1.0
                       ),
                       child: TextField(
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.7,
+                            fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(
-                                AppDimensions.height10 * 1.6,
-                                AppDimensions.height10 * 0.4,
+                                AppDimensions.height10(context) * 1.6,
+                                AppDimensions.height10(context) * 0.4,
                                 0,
                                 0),
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.7,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -274,42 +282,42 @@ class _video_infoState extends State<video_info> {
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 2.1,
-                      width: AppDimensions.height10 * 30.5,
+                      height: AppDimensions.height10(context) * 2.1,
+                      width: AppDimensions.height10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 3.9),
+                          left: AppDimensions.height10(context) * 2.0,
+                          right: AppDimensions.height10(context) * 8.9,
+                          top: AppDimensions.height10(context) * 3.9),
                       child: Text(
                         'Tags',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.5,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 2.4,
-                      width: AppDimensions.height10 * 30.5,
+                      height: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.height10(context) * 30.5,
                       margin: EdgeInsets.only(
-                        // left: AppDimensions.height10 * 2.0,
-                        right: AppDimensions.height10 * 10.0,
-                        //top: AppDimensions.height10 * 1.0
+                        // left: AppDimensions.height10(context) * 2.0,
+                        right: AppDimensions.height10(context) * 10.0,
+                        //top: AppDimensions.height10(context) * 1.0
                       ),
                       child: TextField(
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.7,
+                            fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.fromLTRB(
-                                AppDimensions.height10 * 1.6,
-                                AppDimensions.height10 * 0,
+                                AppDimensions.height10(context) * 1.6,
+                                AppDimensions.height10(context) * 0,
                                 0,
                                 0),
                             hintText: 'Add #hashtag',
                             hintStyle: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.7,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -321,16 +329,16 @@ class _video_infoState extends State<video_info> {
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 2.1,
-                      width: AppDimensions.height10 * 30.5,
+                      height: AppDimensions.height10(context) * 2.1,
+                      width: AppDimensions.height10(context) * 30.5,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 3.9),
+                          left: AppDimensions.height10(context) * 2.0,
+                          right: AppDimensions.height10(context) * 8.9,
+                          top: AppDimensions.height10(context) * 3.9),
                       child: Text(
                         'Attached goals',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.5,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -343,47 +351,49 @@ class _video_infoState extends State<video_info> {
                                 page: inspiraton_goals(data_saved: false)));
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 6.0,
-                        width: AppDimensions.height10 * 37.5,
+                        height: AppDimensions.height10(context) * 6.0,
+                        width: AppDimensions.height10(context) * 37.5,
                         margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 2.0,
-                          right: AppDimensions.height10 * 1.9,
+                          left: AppDimensions.height10(context) * 2.0,
+                          right: AppDimensions.height10(context) * 1.9,
                         ),
                         decoration: BoxDecoration(
                             border: Border.all(
                                 width: 1, color: const Color(0xFF464646)),
                             borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 2.0)),
+                                AppDimensions.height10(context) * 2.0)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: AppDimensions.height10 * 23.9,
-                              height: AppDimensions.height10 * 2.2,
+                              width: AppDimensions.height10(context) * 23.9,
+                              height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 1.99),
+                                  left: AppDimensions.height10(context) * 1.99),
                               child: GestureDetector(
                                   onTap: () {},
                                   child: Text(
                                     '00 impacted goals',
                                     style: TextStyle(
                                       color: const Color(0xFF646464),
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                     ),
                                   )),
                             ),
                             Container(
-                                width: AppDimensions.height10 * 2.4,
-                                height: AppDimensions.height10 * 1.39,
+                                width: AppDimensions.height10(context) * 2.4,
+                                height: AppDimensions.height10(context) * 1.39,
                                 margin: EdgeInsets.only(
-                                    right: AppDimensions.height10 * 2.391),
+                                    right: AppDimensions.height10(context) *
+                                        2.391),
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
                                     'assets/images/BTN Back.png',
-                                    //width: AppDimensions.height10 * 2.6,
-                                    //height: AppDimensions.height10 * 2.6,
+                                    //width: AppDimensions.height10(context) * 2.6,
+                                    //height: AppDimensions.height10(context) * 2.6,
                                     color: const Color(0xFF646464),
                                     fit: BoxFit.cover,
                                   ),

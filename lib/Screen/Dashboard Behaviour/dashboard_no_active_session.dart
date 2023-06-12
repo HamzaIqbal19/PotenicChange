@@ -26,15 +26,15 @@ class no_active_session extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Add goal.png',
-                    height: AppDimensions.height10 * 2.0,
-                    width: AppDimensions.height10 * 2.1,
+                    height: AppDimensions.height10(context) * 2.0,
+                    width: AppDimensions.height10(context) * 2.1,
                   )),
               IconButton(
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/calendar_month_black_24dp 1.png',
-                    height: AppDimensions.height10 * 2.4,
-                    width: AppDimensions.height10 * 2.4,
+                    height: AppDimensions.height10(context) * 2.4,
+                    width: AppDimensions.height10(context) * 2.4,
                   )),
             ],
           )
@@ -55,27 +55,28 @@ class no_active_session extends StatelessWidget {
               ),
             ),
             width: double.infinity,
-            height: AppDimensions.height10 * 78.2,
+            height: AppDimensions.height10(context) * 78.2,
             child: SizedBox(
                 width: double.infinity,
-                height: AppDimensions.height10 * 19.2,
+                height: AppDimensions.height10(context) * 19.2,
                 child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(children: [
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: SizedBox(
-                          height: AppDimensions.height10 * 19.2,
-                          width: AppDimensions.height10 * 45.7,
+                          height: AppDimensions.height10(context) * 19.2,
+                          width: AppDimensions.height10(context) * 45.7,
                           child: Stack(
                             children: [
                               Align(
                                 alignment: Alignment(-1, 1),
                                 child: Container(
-                                  height: AppDimensions.height10 * 7.9,
-                                  width: AppDimensions.height10 * 7.9,
+                                  height: AppDimensions.height10(context) * 7.9,
+                                  width: AppDimensions.height10(context) * 7.9,
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 8.4),
+                                      top: AppDimensions.height10(context) *
+                                          8.4),
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
@@ -83,7 +84,8 @@ class no_active_session extends StatelessWidget {
                                       color: Colors.transparent),
                                   child: Container(
                                       margin: EdgeInsets.only(
-                                          top: AppDimensions.height10 * 1.152),
+                                          top: AppDimensions.height10(context) *
+                                              1.152),
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -273,15 +275,15 @@ class no_active_session extends StatelessWidget {
                         // width: 343,
                         // height: 49,
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10 * 14.9,
-                            bottom: AppDimensions.height10 * 2.2),
+                            top: AppDimensions.height10(context) * 14.9,
+                            bottom: AppDimensions.height10(context) * 2.2),
                         child: Center(
                           child: Text(
                             'All your practices are\ninactive',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 3.0,
+                                fontSize: AppDimensions.height10(context) * 3.0,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Laila'),
                           ),
@@ -290,8 +292,8 @@ class no_active_session extends StatelessWidget {
                       Container(
                         // width: 269,
                         // height: 58,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 3.2),
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 3.2),
                         child: Center(
                           child: Text(
                             "You don’t have any active or\nplanned practices. Please view\nyour current goals to manage\nand update your practices.",
@@ -299,16 +301,16 @@ class no_active_session extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Laila',
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
                       Container(
-                          height: AppDimensions.height10 * 5.0,
-                          width: AppDimensions.height10 * 24.3,
+                          height: AppDimensions.height10(context) * 5.0,
+                          width: AppDimensions.height10(context) * 24.3,
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 4.6),
+                              top: AppDimensions.height10(context) * 4.6),
                           decoration: BoxDecoration(
                             gradient: const LinearGradient(
                                 begin: Alignment.topCenter,
@@ -318,7 +320,7 @@ class no_active_session extends StatelessWidget {
                                   Color(0xffFDA210),
                                 ]),
                             borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 5.0),
+                                AppDimensions.height10(context) * 5.0),
                           ),
                           child: TextButton(
                             onPressed: () {},
@@ -326,7 +328,8 @@ class no_active_session extends StatelessWidget {
                               'View all goals',
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'poppins'),
                             ),

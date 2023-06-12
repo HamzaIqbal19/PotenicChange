@@ -40,20 +40,21 @@ class _TooltipExampleState extends State<TooltipExample> {
                                       ? const Alignment(0.1, -0.27)
                                       : const Alignment(0.12, 0.37),
               child: Container(
-                width: AppDimensions.height10 * 30.6,
+                width: AppDimensions.height10(context) * 30.6,
                 height: goal_level == 1
-                    ? AppDimensions.height10 * 22.3
+                    ? AppDimensions.height10(context) * 22.3
                     : goal_level == 2
-                        ? AppDimensions.height10 * 22.1
+                        ? AppDimensions.height10(context) * 22.1
                         : goal_level == 3
-                            ? AppDimensions.height10 * 18.3
+                            ? AppDimensions.height10(context) * 18.3
                             : goal_level == 4
-                                ? AppDimensions.height10 * 20.6
+                                ? AppDimensions.height10(context) * 20.6
                                 : goal_level == 5
-                                    ? AppDimensions.height10 * 22.6
+                                    ? AppDimensions.height10(context) * 22.6
                                     : goal_level == 6
-                                        ? AppDimensions.height10 * 18.4
-                                        : AppDimensions.height10 * 20.6,
+                                        ? AppDimensions.height10(context) * 18.4
+                                        : AppDimensions.height10(context) *
+                                            20.6,
                 child: Stack(
                   children: [
                     Align(
@@ -78,39 +79,44 @@ class _TooltipExampleState extends State<TooltipExample> {
                                   goal_level == 6)
                               ? 'assets/images/arrow-192-up.png'
                               : 'assets/images/arrow-192.png',
-                          height: AppDimensions.height10 * 2.0,
-                          width: AppDimensions.height10 * 2.0,
+                          height: AppDimensions.height10(context) * 2.0,
+                          width: AppDimensions.height10(context) * 2.0,
                         ),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 30.6,
+                      width: AppDimensions.height10(context) * 30.6,
                       height: goal_level == 1
-                          ? AppDimensions.height10 * 22.3
+                          ? AppDimensions.height10(context) * 22.3
                           : goal_level == 2
-                              ? AppDimensions.height10 * 22.1
+                              ? AppDimensions.height10(context) * 22.1
                               : goal_level == 3
-                                  ? AppDimensions.height10 * 18.3
+                                  ? AppDimensions.height10(context) * 18.3
                                   : goal_level == 4
-                                      ? AppDimensions.height10 * 20.6
+                                      ? AppDimensions.height10(context) * 20.6
                                       : goal_level == 5
-                                          ? AppDimensions.height10 * 22.6
+                                          ? AppDimensions.height10(context) *
+                                              22.6
                                           : goal_level == 6
-                                              ? AppDimensions.height10 * 18.4
-                                              : AppDimensions.height10 * 20.6,
+                                              ? AppDimensions.height10(
+                                                      context) *
+                                                  18.4
+                                              : AppDimensions.height10(
+                                                      context) *
+                                                  20.6,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 1.0)),
+                              AppDimensions.height10(context) * 1.0)),
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 21.6,
-                            //height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 21.6,
+                            //height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10 * 1.7,
-                                left: AppDimensions.height10 * 1.6,
-                                right: AppDimensions.height10 * 7.4),
+                                top: AppDimensions.height10(context) * 1.7,
+                                left: AppDimensions.height10(context) * 1.6,
+                                right: AppDimensions.height10(context) * 7.4),
                             child: Text(
                               goal_level == 2
                                   ? 'Your Practice'
@@ -129,30 +135,35 @@ class _TooltipExampleState extends State<TooltipExample> {
                                 decoration: TextDecoration.none,
                                 fontFamily: 'Laila',
                                 color: const Color(0xFF000000),
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10 * 27.4,
+                            width: AppDimensions.height10(context) * 27.4,
                             height: goal_level == 1
-                                ? AppDimensions.height10 * 11.8
+                                ? AppDimensions.height10(context) * 11.8
                                 : goal_level == 2
-                                    ? AppDimensions.height10 * 11.6
+                                    ? AppDimensions.height10(context) * 11.6
                                     : goal_level == 3
-                                        ? AppDimensions.height10 * 7.8
+                                        ? AppDimensions.height10(context) * 7.8
                                         : goal_level == 4
-                                            ? AppDimensions.height10 * 10.1
+                                            ? AppDimensions.height10(context) *
+                                                10.1
                                             : goal_level == 5
-                                                ? AppDimensions.height10 * 12.1
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    12.1
                                                 : goal_level == 6
-                                                    ? AppDimensions.height10 *
+                                                    ? AppDimensions.height10(
+                                                            context) *
                                                         7.9
-                                                    : AppDimensions.height10 *
+                                                    : AppDimensions.height10(
+                                                            context) *
                                                         10.1,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10 * 0.3),
+                                top: AppDimensions.height10(context) * 0.3),
                             child: RichText(
                                 text: TextSpan(
                                     style: TextStyle(
@@ -160,8 +171,12 @@ class _TooltipExampleState extends State<TooltipExample> {
                                         color: const Color(0xFF464646),
                                         decoration: TextDecoration.none,
                                         fontFamily: 'Laila',
-                                        fontSize: AppDimensions.height10 * 1.4,
-                                        height: AppDimensions.height10 * 0.15),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.15),
                                     children: [
                                   TextSpan(
                                     text: goal_level == 1
@@ -300,10 +315,10 @@ class _TooltipExampleState extends State<TooltipExample> {
                                 ])),
                           ),
                           Container(
-                            width: AppDimensions.height10 * 24.3,
-                            height: AppDimensions.height10 * 4.0,
+                            width: AppDimensions.height10(context) * 24.3,
+                            height: AppDimensions.height10(context) * 4.0,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10 * 0.8),
+                                top: AppDimensions.height10(context) * 0.8),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -316,12 +331,17 @@ class _TooltipExampleState extends State<TooltipExample> {
                                   child: Container(
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(
-                                            AppDimensions.height10 * 5.0),
+                                            AppDimensions.height10(context) *
+                                                5.0),
                                         border: Border.all(
-                                            width: AppDimensions.height10 * 0.1,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                0.1,
                                             color: const Color(0xFFFBFBFB))),
-                                    width: AppDimensions.height10 * 9.60,
-                                    height: AppDimensions.height10 * 3.2,
+                                    width:
+                                        AppDimensions.height10(context) * 9.60,
+                                    height:
+                                        AppDimensions.height10(context) * 3.2,
                                     child: Center(
                                       child: Text(
                                         'Skip tour',
@@ -329,8 +349,9 @@ class _TooltipExampleState extends State<TooltipExample> {
                                         style: TextStyle(
                                             fontFamily: 'Laila',
                                             decoration: TextDecoration.none,
-                                            fontSize:
-                                                AppDimensions.height10 * 1.6,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
                                             color: const Color(0xFF8C648A),
                                             fontWeight: FontWeight.w700),
                                       ),
@@ -347,11 +368,14 @@ class _TooltipExampleState extends State<TooltipExample> {
                                     }
                                   },
                                   child: Container(
-                                    width: AppDimensions.height10 * 11.7,
-                                    height: AppDimensions.height10 * 4.0,
+                                    width:
+                                        AppDimensions.height10(context) * 11.7,
+                                    height:
+                                        AppDimensions.height10(context) * 4.0,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(
-                                            AppDimensions.height10 * 5.0),
+                                            AppDimensions.height10(context) *
+                                                5.0),
                                         color: const Color(0xFF5A4D73)),
                                     child: Center(
                                       child: Text(
@@ -374,8 +398,9 @@ class _TooltipExampleState extends State<TooltipExample> {
                                         style: TextStyle(
                                             decoration: TextDecoration.none,
                                             fontFamily: 'Laila',
-                                            fontSize:
-                                                AppDimensions.height10 * 1.6,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
                                             color: const Color(0xFFFFFFFF),
                                             fontWeight: FontWeight.w600),
                                       ),

@@ -1,6 +1,3 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -20,7 +17,7 @@ class _NewGoalState extends State<NewGoal> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+          preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
           child: AppBar(
             elevation: 0,
             centerTitle: true,
@@ -31,8 +28,8 @@ class _NewGoalState extends State<NewGoal> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 3,
-                  height: AppDimensions.height10 * 3,
+                  width: AppDimensions.height10(context) * 3,
+                  height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
@@ -52,8 +49,8 @@ class _NewGoalState extends State<NewGoal> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 3.0,
-                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10(context) * 3.0,
+                    height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
@@ -86,27 +83,28 @@ class _NewGoalState extends State<NewGoal> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: AppDimensions.height10 * 4.2),
+                padding:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.2),
                 child: Center(
                   child: Text(
                     "Star Creation 1/5",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.8,
+                      fontSize: AppDimensions.height10(context) * 1.8,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 2.7,
+                height: AppDimensions.height10(context) * 2.7,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: AppDimensions.height10 * 3.6,
+                    width: AppDimensions.height10(context) * 3.6,
                   ),
                   Container(
                     child: Center(
@@ -116,7 +114,7 @@ class _NewGoalState extends State<NewGoal> {
                         style: TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          fontSize: AppDimensions.height10 * 2.8,
+                          fontSize: AppDimensions.height10(context) * 2.8,
                         ),
                       ),
                     ),
@@ -124,24 +122,24 @@ class _NewGoalState extends State<NewGoal> {
                 ],
               ),
               SizedBox(
-                height: AppDimensions.height10 * 1.6,
+                height: AppDimensions.height10(context) * 1.6,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: AppDimensions.height10 * 3.6,
+                    width: AppDimensions.height10(context) * 3.6,
                   ),
                   Container(
-                    // height: AppDimensions.height10*7.1,
+                    // height: AppDimensions.height10(context)*7.1,
                     child: Text(
                       "Which category does your goal belong to? ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
                   ),
@@ -149,7 +147,7 @@ class _NewGoalState extends State<NewGoal> {
               ),
               Container(
                 // color: Colors.blue,
-                height: AppDimensions.height10 * 65.795,
+                height: AppDimensions.height10(context) * 65.795,
                 padding: const EdgeInsets.only(top: 0, bottom: 0),
                 child: ListView(
                   shrinkWrap: true,
@@ -161,51 +159,54 @@ class _NewGoalState extends State<NewGoal> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10 * 3.6,
+                              width: AppDimensions.height10(context) * 3.6,
                             ),
                             Container(
                               padding: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 0.4),
+                                  top: AppDimensions.height10(context) * 0.4),
                               child: circles(
                                   circle_text: '',
                                   circle_color1: 0xFFFC854F,
                                   circle_color2: 0xFFFAA960,
                                   circle_border: 1,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 2.5,
-                                  circle_width: AppDimensions.height10 * 2.5,
+                                  circle_height:
+                                      AppDimensions.height10(context) * 2.5,
+                                  circle_width:
+                                      AppDimensions.height10(context) * 2.5,
                                   textfont: 0,
                                   textcolor: 0),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10 * 1.24,
+                              width: AppDimensions.height10(context) * 1.24,
                             ),
                             Container(
                               // color: Colors.yellow,
-                              height: AppDimensions.height10 * 2.4,
+                              height: AppDimensions.height10(context) * 2.4,
                               child: Text(
                                 "Self Control ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 2.0,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.0,
                                 ),
                               ),
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 2.0,
+                          height: AppDimensions.height10(context) * 2.0,
                         ),
                         Container(
-                          height: AppDimensions.height10 * 41.9,
+                          height: AppDimensions.height10(context) * 41.9,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   circles(
                                       circle_text: "Anger Management ",
@@ -214,10 +215,13 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                   circles(
                                       circle_text: "Consume \n Less \n Drugs",
@@ -226,16 +230,19 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   circles(
                                       circle_text: "Eat More Healthy ",
@@ -244,10 +251,13 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                   circles(
                                       circle_text: "Consume \n Less \n Drugs",
@@ -256,16 +266,19 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   circles(
                                       circle_text: "Anger Management ",
@@ -274,10 +287,13 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                   circles(
                                       circle_text: "Consume \n Less \n Drugs",
@@ -286,10 +302,13 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                 ],
                               ),
@@ -305,51 +324,54 @@ class _NewGoalState extends State<NewGoal> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              width: AppDimensions.height10 * 3.6,
+                              width: AppDimensions.height10(context) * 3.6,
                             ),
                             Container(
                               padding: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 0.4),
+                                  top: AppDimensions.height10(context) * 0.4),
                               child: circles(
                                   circle_text: '',
                                   circle_color1: 0xFFFC854F,
                                   circle_color2: 0xFFFAA960,
                                   circle_border: 1,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 2.5,
-                                  circle_width: AppDimensions.height10 * 2.5,
+                                  circle_height:
+                                      AppDimensions.height10(context) * 2.5,
+                                  circle_width:
+                                      AppDimensions.height10(context) * 2.5,
                                   textfont: 0,
                                   textcolor: 0),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10 * 1.24,
+                              width: AppDimensions.height10(context) * 1.24,
                             ),
                             Container(
                               // color: Colors.yellow,
-                              height: AppDimensions.height10 * 2.4,
+                              height: AppDimensions.height10(context) * 2.4,
                               child: Text(
                                 "Self Control ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 2.0,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.0,
                                 ),
                               ),
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 2.0,
+                          height: AppDimensions.height10(context) * 2.0,
                         ),
                         Container(
-                          height: AppDimensions.height10 * 41.9,
+                          height: AppDimensions.height10(context) * 41.9,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   circles(
                                       circle_text: "Anger Management ",
@@ -358,10 +380,13 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                   circles(
                                       circle_text: "Consume \n Less \n Drugs",
@@ -370,16 +395,19 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   circles(
                                       circle_text: "Eat More Healthy ",
@@ -388,10 +416,13 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                   circles(
                                       circle_text: "Consume \n Less \n Drugs",
@@ -400,16 +431,19 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   circles(
                                       circle_text: "Anger Management ",
@@ -418,10 +452,13 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                   circles(
                                       circle_text: "Consume \n Less \n Drugs",
@@ -430,10 +467,13 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
-                                      AppDimensions.height10 * 13.4,
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                       circle_width:
-                                      AppDimensions.height10 * 13.4,
-                                      textfont: AppDimensions.height10 * 1.6,
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
                                 ],
                               ),
@@ -449,7 +489,6 @@ class _NewGoalState extends State<NewGoal> {
           )
         ],
       ),
-
     );
   }
 }

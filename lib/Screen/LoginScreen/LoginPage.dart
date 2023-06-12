@@ -70,8 +70,8 @@ class _LoginPageState extends State<LoginPage> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10 * 2.8,
-                  height: AppDimensions.height10 * 2.8,
+                  width: AppDimensions.height10(context) * 2.8,
+                  height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.cover,
                 ),
                 onPressed: () {
@@ -97,55 +97,55 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: AppDimensions.height10 * 8.02,
+                  height: AppDimensions.height10(context) * 8.02,
                 ),
                 Center(
                   child: Image(
                     // color: Colors.orange,
                     image: const AssetImage("assets/images/logo.png"),
-                    height: AppDimensions.height10 * 7.75,
-                    width: AppDimensions.width10 * 7.75,
+                    height: AppDimensions.height10(context) * 7.75,
+                    width: AppDimensions.height10(context) * 7.75,
                   ),
                 ),
 
-                SizedBox(height: AppDimensions.height10 * 2.32),
+                SizedBox(height: AppDimensions.height10(context) * 2.32),
                 Container(
-                  height: AppDimensions.height10 * 3.9,
+                  height: AppDimensions.height10(context) * 3.9,
                   child: Text(
                     "Log in",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontSize: AppDimensions.font26 + 2.9384698,
+                      fontSize: AppDimensions.height10(context) * 1.4,
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 - 2),
+                SizedBox(height: AppDimensions.height10(context) - 2),
                 Container(
-                    height: AppDimensions.height10 * 5.0,
-                    width: AppDimensions.height10 * 36.7,
+                    height: AppDimensions.height10(context) * 5.0,
+                    width: AppDimensions.height10(context) * 36.7,
                     child: Text(
                       'How did you access your Potenic account\n last time?',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     )),
                 // SizedBox(height: AppDimensions.height0),
 
-                SizedBox(height: AppDimensions.height10 * 5.1),
+                SizedBox(height: AppDimensions.height10(context) * 5.1),
                 Container(
-                  height: AppDimensions.height10 * 20 + 2,
+                  height: AppDimensions.height10(context) * 20 + 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
+                        height: AppDimensions.height10(context) * 5.5,
+                        width: AppDimensions.height10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
@@ -169,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
                           icon: Icon(
                             Icons.mail_outline,
                             color: Colors.white,
-                            size: AppDimensions.height10 * 2.4,
+                            size: AppDimensions.height10(context) * 2.4,
                           ),
                           label: Row(
                             children: [
@@ -179,7 +179,8 @@ class _LoginPageState extends State<LoginPage> {
                                 '  Email and Password',
                                 style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                 ),
                               )),
@@ -188,8 +189,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
+                        height: AppDimensions.height10(context) * 5.5,
+                        width: AppDimensions.height10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
@@ -203,8 +204,8 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {},
                           icon: Image.asset(
                             "assets/images/Google.png",
-                            width: AppDimensions.height10 * 2.4,
-                            height: AppDimensions.height10 * 2.4,
+                            width: AppDimensions.height10(context) * 2.4,
+                            height: AppDimensions.height10(context) * 2.4,
                           ),
                           label: Row(
                             children: [
@@ -213,7 +214,8 @@ class _LoginPageState extends State<LoginPage> {
                                 '  Sign in with Google',
                                 style: TextStyle(
                                   color: Colors.black45,
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                 ),
                               )),
@@ -222,23 +224,23 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
+                        height: AppDimensions.height10(context) * 5.5,
+                        width: AppDimensions.height10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
                             backgroundColor: const Color(0xFF1877F2),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10 * 4.0),
+                                  AppDimensions.height10(context) * 4.0),
                             ),
                             //<-- SEE HERE
                           ),
                           onPressed: () {},
                           icon: Image.asset(
                             "assets/images/fb.png",
-                            width: AppDimensions.height10 * 2.4,
-                            height: AppDimensions.height10 * 2.4,
+                            width: AppDimensions.height10(context) * 2.4,
+                            height: AppDimensions.height10(context) * 2.4,
                           ),
                           label: Row(
                             children: [
@@ -247,7 +249,8 @@ class _LoginPageState extends State<LoginPage> {
                                 '  Sign up with Facebook',
                                 style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
@@ -258,10 +261,10 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 28.4),
+                SizedBox(height: AppDimensions.height10(context) * 28.4),
                 SizedBox(
-                  height: AppDimensions.height10 * 5,
-                  width: AppDimensions.screenWidth - 100,
+                  height: AppDimensions.height10(context) * 5,
+                  width: AppDimensions.height10(context) - 100,
                   child: OutlinedButton.icon(
                     // <-- OutlinedButton
                     style: OutlinedButton.styleFrom(
@@ -289,7 +292,7 @@ class _LoginPageState extends State<LoginPage> {
                       'New account',
                       style: TextStyle(
                         color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10 * 1.6,
+                        fontSize: AppDimensions.height10(context) * 1.6,
                         fontWeight: FontWeight.w600,
                       ),
                     )),

@@ -21,8 +21,8 @@ class endofSession extends StatelessWidget {
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -32,8 +32,8 @@ class endofSession extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -54,46 +54,47 @@ class endofSession extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: AppDimensions.height10 * 18.6,
-                height: AppDimensions.height10 * 2.4,
+                width: AppDimensions.height10(context) * 18.6,
+                height: AppDimensions.height10(context) * 2.4,
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 10.5,
-                    top: AppDimensions.height10 * 5.0),
+                    bottom: AppDimensions.height10(context) * 10.5,
+                    top: AppDimensions.height10(context) * 5.0),
                 alignment: Alignment.center,
                 child: Text(
                   'Meditation Session',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.0,
+                      fontSize: AppDimensions.height10(context) * 2.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 35.9,
-                height: AppDimensions.height10 * 14.8,
+                width: AppDimensions.height10(context) * 35.9,
+                height: AppDimensions.height10(context) * 14.8,
                 alignment: Alignment.center,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 8.3),
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 8.3),
                 child: Text(
                   'How did the practice go?',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.8,
+                      fontSize: AppDimensions.height10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 5.2,
-                    left: AppDimensions.height10 * 1.0),
-                height: AppDimensions.height10 * 15.4,
+                    bottom: AppDimensions.height10(context) * 5.2,
+                    left: AppDimensions.height10(context) * 1.0),
+                height: AppDimensions.height10(context) * 15.4,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
                     Container(
-                      height: AppDimensions.height10 * 13.4,
-                      width: AppDimensions.height10 * 13.4,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      height: AppDimensions.height10(context) * 13.4,
+                      width: AppDimensions.height10(context) * 13.4,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -110,7 +111,7 @@ class endofSession extends StatelessWidget {
                           text: TextSpan(
                               style: TextStyle(
                                 fontFamily: 'laila',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -123,11 +124,11 @@ class endofSession extends StatelessWidget {
                               ])),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 13.4,
-                      width: AppDimensions.height10 * 13.4,
+                      height: AppDimensions.height10(context) * 13.4,
+                      width: AppDimensions.height10(context) * 13.4,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
@@ -143,7 +144,7 @@ class endofSession extends StatelessWidget {
                           text: TextSpan(
                               style: TextStyle(
                                 fontFamily: 'laila',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -158,11 +159,11 @@ class endofSession extends StatelessWidget {
                               ])),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 13.4,
-                      width: AppDimensions.height10 * 13.4,
+                      height: AppDimensions.height10(context) * 13.4,
+                      width: AppDimensions.height10(context) * 13.4,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
@@ -178,7 +179,7 @@ class endofSession extends StatelessWidget {
                           text: TextSpan(
                               style: TextStyle(
                                 fontFamily: 'laila',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -192,11 +193,11 @@ class endofSession extends StatelessWidget {
                               ])),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 13.4,
-                      width: AppDimensions.height10 * 13.4,
+                      height: AppDimensions.height10(context) * 13.4,
+                      width: AppDimensions.height10(context) * 13.4,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
@@ -212,7 +213,7 @@ class endofSession extends StatelessWidget {
                           text: TextSpan(
                               style: TextStyle(
                                 fontFamily: 'laila',
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -227,23 +228,23 @@ class endofSession extends StatelessWidget {
                               ])),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 15.4,
-                      width: AppDimensions.height10 * 15.4,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      height: AppDimensions.height10(context) * 15.4,
+                      width: AppDimensions.height10(context) * 15.4,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.2,
+                            width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
                       ),
                       child: Container(
-                        height: AppDimensions.height10 * 13.4,
-                        width: AppDimensions.height10 * 13.4,
+                        height: AppDimensions.height10(context) * 13.4,
+                        width: AppDimensions.height10(context) * 13.4,
                         alignment: Alignment.center,
                         margin: EdgeInsets.symmetric(
-                            vertical: AppDimensions.height10 * 0.9,
-                            horizontal: AppDimensions.height10 * 0.9),
+                            vertical: AppDimensions.height10(context) * 0.9,
+                            horizontal: AppDimensions.height10(context) * 0.9),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width: 1, color: Colors.white),
@@ -260,7 +261,8 @@ class endofSession extends StatelessWidget {
                             text: TextSpan(
                                 style: TextStyle(
                                   fontFamily: 'laila',
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.white,
                                 ),
@@ -275,11 +277,11 @@ class endofSession extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 13.4,
-                      width: AppDimensions.height10 * 13.4,
+                      height: AppDimensions.height10(context) * 13.4,
+                      width: AppDimensions.height10(context) * 13.4,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 1, color: Colors.white),
@@ -295,7 +297,7 @@ class endofSession extends StatelessWidget {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -311,25 +313,26 @@ class endofSession extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 7.6,
-                height: AppDimensions.height10 * 7.6,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 10.1),
+                width: AppDimensions.height10(context) * 7.6,
+                height: AppDimensions.height10(context) * 7.6,
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 10.1),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 5.0,
-                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10(context) * 5.0,
+                      height: AppDimensions.height10(context) * 5.0,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
+                              width: AppDimensions.height10(context) * 0.2,
                               color: Colors.white)),
                       child: Container(
-                        height: AppDimensions.height10 * 2.7,
-                        width: AppDimensions.height10 * 2.7,
-                        margin:
-                            EdgeInsets.only(left: AppDimensions.height10 * 0.3),
+                        height: AppDimensions.height10(context) * 2.7,
+                        width: AppDimensions.height10(context) * 2.7,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 0.3),
                         child: IconButton(
                             onPressed: () {
                               Navigator.pop(context);
@@ -342,14 +345,14 @@ class endofSession extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 7.6,
-                      height: AppDimensions.height10 * 1.9,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 0.6),
+                      width: AppDimensions.height10(context) * 7.6,
+                      height: AppDimensions.height10(context) * 1.9,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 0.6),
                       child: Text(
                         'Add Notes',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w500,
                             color: Colors.white),
                       ),
@@ -358,9 +361,10 @@ class endofSession extends StatelessWidget {
                 ),
               ),
               Container(
-                  height: AppDimensions.height10 * 5.0,
-                  width: AppDimensions.height10 * 25.4,
-                  margin: EdgeInsets.only(bottom: AppDimensions.height10 * 6.3),
+                  height: AppDimensions.height10(context) * 5.0,
+                  width: AppDimensions.height10(context) * 25.4,
+                  margin: EdgeInsets.only(
+                      bottom: AppDimensions.height10(context) * 6.3),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                         begin: Alignment.topCenter,
@@ -369,8 +373,8 @@ class endofSession extends StatelessWidget {
                           Color(0xffFCC10D),
                           Color(0xffFDA210),
                         ]),
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 5.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 5.0),
                   ),
                   child: summary
                       ? TextButton(
@@ -382,7 +386,7 @@ class endofSession extends StatelessWidget {
                             'Update Summary',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w600),
                           ),
                         )
@@ -395,7 +399,7 @@ class endofSession extends StatelessWidget {
                             'Summary',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w600),
                           ),
                         ))

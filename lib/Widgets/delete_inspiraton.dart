@@ -11,20 +11,20 @@ class delete_insp extends StatelessWidget {
       onTap: () => showDialog<String>(
           context: context,
           builder: (BuildContext context) => Container(
-                width: AppDimensions.height10 * 27.0,
-                height: AppDimensions.height10 * 18.2,
+                width: AppDimensions.height10(context) * 27.0,
+                height: AppDimensions.height10(context) * 18.2,
                 child: AlertDialog(
                   contentPadding: EdgeInsets.zero,
                   actionsPadding: EdgeInsets.zero,
                   titlePadding: EdgeInsets.zero,
                   title: Container(
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10 * 1.9,
-                          right: AppDimensions.height10 * 1.6,
-                          left: AppDimensions.height10 * 1.6,
-                          bottom: AppDimensions.height10 * 0.2),
-                      height: AppDimensions.height10 * 2.2,
-                      width: AppDimensions.height10 * 23.8,
+                          top: AppDimensions.height10(context) * 1.9,
+                          right: AppDimensions.height10(context) * 1.6,
+                          left: AppDimensions.height10(context) * 1.6,
+                          bottom: AppDimensions.height10(context) * 0.2),
+                      height: AppDimensions.height10(context) * 2.2,
+                      width: AppDimensions.height10(context) * 23.8,
                       child: RichText(
                           text: TextSpan(
                               style: TextStyle(
@@ -41,16 +41,16 @@ class delete_insp extends StatelessWidget {
                           ]))),
                   content: Container(
                     margin: EdgeInsets.only(
-                        bottom: AppDimensions.height10 * 1.5,
-                        left: AppDimensions.height10 * 1.6,
-                        right: AppDimensions.height10 * 1.6),
-                    height: AppDimensions.height10 * 3.4,
-                    width: AppDimensions.height10 * 23.8,
+                        bottom: AppDimensions.height10(context) * 1.5,
+                        left: AppDimensions.height10(context) * 1.6,
+                        right: AppDimensions.height10(context) * 1.6),
+                    height: AppDimensions.height10(context) * 3.4,
+                    width: AppDimensions.height10(context) * 23.8,
                     child: Text(
                       "By clicking 'Yes' you confirm that this\ninspiration will be deleted permanently. ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.3,
+                        fontSize: AppDimensions.height10(context) * 1.3,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -59,13 +59,13 @@ class delete_insp extends StatelessWidget {
                     Column(
                       children: [
                         SizedBox(
-                          height: AppDimensions.height10 * 0.1,
+                          height: AppDimensions.height10(context) * 0.1,
                           child: Divider(
                             color: const Color(0XFF3C3C43).withOpacity(0.29),
                           ),
                         ),
                         Container(
-                          height: AppDimensions.height10 * 4.2,
+                          height: AppDimensions.height10(context) * 4.2,
                           width: double.infinity,
                           color: const Color(0xFF007AFF),
                           child: TextButton(
@@ -74,20 +74,21 @@ class delete_insp extends StatelessWidget {
                               'No',
                               style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
-                                  fontSize: AppDimensions.height10 * 1.7,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
                                   fontFamily: "Laila",
                                   fontWeight: FontWeight.w400),
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.1,
+                          height: AppDimensions.height10(context) * 0.1,
                           child: Divider(
                             color: const Color(0XFF3C3C43).withOpacity(0.29),
                           ),
                         ),
                         Container(
-                          height: AppDimensions.height10 * 4.4,
+                          height: AppDimensions.height10(context) * 4.4,
                           width: double.infinity,
                           child: TextButton(
                             onPressed: () {
@@ -96,7 +97,8 @@ class delete_insp extends StatelessWidget {
                             child: Text(
                               'Yes',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.7,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
                                   fontFamily: "Laila",
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFF007AFF)),
@@ -104,7 +106,7 @@ class delete_insp extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.1,
+                          height: AppDimensions.height10(context) * 0.1,
                           child: Divider(
                             color: const Color(0XFF3C3C43).withOpacity(0.29),
                           ),

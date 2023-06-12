@@ -29,8 +29,8 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             ),
@@ -47,8 +47,8 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
           Align(
             alignment: const Alignment(0, 0.995),
             child: Container(
-              width: AppDimensions.height10 * 11.1,
-              height: AppDimensions.height10 * 27.6,
+              width: AppDimensions.height10(context) * 11.1,
+              height: AppDimensions.height10(context) * 27.6,
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image:
@@ -58,7 +58,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
           Align(
             alignment: const Alignment(0, 0.45),
             child: Container(
-              height: AppDimensions.height10 * 57.5,
+              height: AppDimensions.height10(context) * 57.5,
               width: double.infinity,
               decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -66,8 +66,8 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           AssetImage('assets/images/Inspiration_Glow 1.png'))),
               child: Center(
                 child: Container(
-                  height: AppDimensions.height10 * 35.9,
-                  width: AppDimensions.height10 * 35.9,
+                  height: AppDimensions.height10(context) * 35.9,
+                  width: AppDimensions.height10(context) * 35.9,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(
@@ -84,8 +84,8 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                         );
                       },
                       child: Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 16.8,
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 16.8,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
                         child: Center(
@@ -93,7 +93,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                             'Record your\ninspiration',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.0,
+                              fontSize: AppDimensions.height10(context) * 2.0,
                               fontWeight: FontWeight.w600,
                             ),
                             colors: const [
@@ -125,17 +125,17 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                     );
                   },
                   child: Container(
-                    width: AppDimensions.height10 * 34.3,
-                    height: AppDimensions.height10 * 7.9,
+                    width: AppDimensions.height10(context) * 34.3,
+                    height: AppDimensions.height10(context) * 7.9,
                     margin: EdgeInsets.only(
                         //increased 10 px
-                        top: AppDimensions.height10 * 11.6,
-                        bottom: AppDimensions.height10 * 1.7),
+                        top: AppDimensions.height10(context) * 11.6,
+                        bottom: AppDimensions.height10(context) * 1.7),
                     child: GradientText(
                       'My current\ninspirations',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 3.0,
+                          fontSize: AppDimensions.height10(context) * 3.0,
                           fontWeight: FontWeight.w700,
                           height: 1.3),
                       colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -143,9 +143,9 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                   ),
                 ),
                 SizedBox(
-                  width: AppDimensions.height10 * 34.9,
-                  height: AppDimensions.height10 * 12.1,
-                  //margin: EdgeInsets.only(bottom: AppDimensions.height10 * 2.0),
+                  width: AppDimensions.height10(context) * 34.9,
+                  height: AppDimensions.height10(context) * 12.1,
+                  //margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 2.0),
                   child: Text(
                       'Use this space to capture\ninspirational material that motivates and\npushes you forward towards achieving\nyour personal growth goals. ',
                       textAlign: TextAlign.center,
@@ -153,7 +153,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           leadingDistribution: TextLeadingDistribution.even),
                       style: TextStyle(
                           height: 1.3,
-                          fontSize: AppDimensions.height10 * 1.8,
+                          fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFFFFFFFF).withOpacity(0.9),
                           fontFamily: 'laila')),
@@ -165,13 +165,13 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
               ? Align(
                   alignment: const Alignment(0, 0.9),
                   child: Container(
-                    width: AppDimensions.height10 * 38.259,
-                    height: AppDimensions.height10 * 9.707,
-                    margin:
-                        EdgeInsets.only(top: AppDimensions.height10 * 15.319),
+                    width: AppDimensions.height10(context) * 38.259,
+                    height: AppDimensions.height10(context) * 9.707,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 15.319),
                     decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0),
                         gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -181,40 +181,42 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.261),
-                          width: AppDimensions.height10 * 4.437,
-                          height: AppDimensions.height10 * 4.437,
+                              left: AppDimensions.height10(context) * 1.261),
+                          width: AppDimensions.height10(context) * 4.437,
+                          height: AppDimensions.height10(context) * 4.437,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/circle_tick.png'))),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 6.9,
-                          height: AppDimensions.height10 * 3.6,
+                          width: AppDimensions.height10(context) * 6.9,
+                          height: AppDimensions.height10(context) * 3.6,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.232),
+                              left: AppDimensions.height10(context) * 1.232),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                width: AppDimensions.height10 * 4.2,
-                                height: AppDimensions.height10 * 1.4,
+                                width: AppDimensions.height10(context) * 4.2,
+                                height: AppDimensions.height10(context) * 1.4,
                                 child: Text(
                                   'Deleted',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.3,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.3,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xFFFFFFFF)),
                                 ),
                               ),
                               SizedBox(
-                                width: AppDimensions.height10 * 6.9,
-                                height: AppDimensions.height10 * 2.2,
+                                width: AppDimensions.height10(context) * 6.9,
+                                height: AppDimensions.height10(context) * 2.2,
                                 child: Text(
                                   'Nir Eyal',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xFFFFFFFF)),
                                 ),
@@ -223,21 +225,22 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 8.1,
-                          height: AppDimensions.height10 * 6.0,
+                          width: AppDimensions.height10(context) * 8.1,
+                          height: AppDimensions.height10(context) * 6.0,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 15.1),
+                              left: AppDimensions.height10(context) * 15.1),
                           decoration: BoxDecoration(
                             border: Border.all(
                                 color: const Color(0xFFFFFFFF), width: 1),
                             borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 2.0),
+                                AppDimensions.height10(context) * 2.0),
                           ),
                           child: Center(
                             child: Text(
                               'Veiw',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFFFFFFFF)),
                             ),
@@ -251,12 +254,13 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
           Align(
             alignment: const Alignment(0, 1),
             child: Container(
-              width: AppDimensions.height10 * 17.0,
-              height: AppDimensions.height10 * 0.5,
-              margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+              width: AppDimensions.height10(context) * 17.0,
+              height: AppDimensions.height10(context) * 0.5,
+              margin: EdgeInsets.only(
+                  bottom: AppDimensions.height10(context) * 1.0),
               decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 2.0),
                   color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             ),
           )

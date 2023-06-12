@@ -25,17 +25,17 @@ void timeline_sheet(context) {
     isScrollControlled: true,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-      top: Radius.circular(AppDimensions.height10 * 2.0),
+      top: Radius.circular(AppDimensions.height10(context) * 2.0),
     )),
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10 * 41.4,
-          height: AppDimensions.height10 * 85.3,
+          width: AppDimensions.height10(context) * 41.4,
+          height: AppDimensions.height10(context) * 85.3,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(AppDimensions.height10 * 2.0)),
+                  top: Radius.circular(AppDimensions.height10(context) * 2.0)),
               color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
@@ -45,18 +45,18 @@ void timeline_sheet(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 1.5,
-                        right: AppDimensions.height10 * 1.5),
+                        top: AppDimensions.height10(context) * 1.5,
+                        right: AppDimensions.height10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -66,40 +66,41 @@ void timeline_sheet(context) {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 1.9,
-                    bottom: AppDimensions.height10 * 1.9),
+                    top: AppDimensions.height10(context) * 1.9,
+                    bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
                   'assets/images/potenic__icon.png',
-                  width: AppDimensions.height10 * 8.202,
-                  height: AppDimensions.height10 * 11.2,
+                  width: AppDimensions.height10(context) * 8.202,
+                  height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 36.4,
-                height: AppDimensions.height10 * 3.6,
+                width: AppDimensions.height10(context) * 36.4,
+                height: AppDimensions.height10(context) * 3.6,
                 // color: Colors.amber,
                 alignment: Alignment.center,
-                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                 child: Text(
                   'Timeline ‘Coming soon’',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 3.0,
-                      letterSpacing: AppDimensions.height10 * 0.2,
+                      fontSize: AppDimensions.height10(context) * 3.0,
+                      letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 35.2,
-                height: AppDimensions.height10 * 10.8,
+                width: AppDimensions.height10(context) * 35.2,
+                height: AppDimensions.height10(context) * 10.8,
                 // color: Colors.grey,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 1.1),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.1),
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
                       style: TextStyle(
                           fontFamily: 'laila',
-                          fontSize: AppDimensions.height10 * 1.4,
+                          fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF437296)),
                       children: [
@@ -122,7 +123,7 @@ void timeline_sheet(context) {
                                 decoration: TextDecoration.underline,
                                 decorationStyle: TextDecorationStyle.solid,
                                 decorationThickness:
-                                    AppDimensions.height10 * 0.1)),
+                                    AppDimensions.height10(context) * 0.1)),
                         const TextSpan(
                             text: ' to get updates\non further releases.')
                       ]),
@@ -131,11 +132,11 @@ void timeline_sheet(context) {
               Align(
                 // alignment: Alignment(0, 1),
                 child: Container(
-                  width: AppDimensions.height10 * 33.4,
-                  height: AppDimensions.height10 * 43.8,
+                  width: AppDimensions.height10(context) * 33.4,
+                  height: AppDimensions.height10(context) * 43.8,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 1.5,
-                      bottom: AppDimensions.height10 * 3.9),
+                      top: AppDimensions.height10(context) * 1.5,
+                      bottom: AppDimensions.height10(context) * 3.9),
                   decoration: const BoxDecoration(
                       // color: Colors.amber,
                       image: DecorationImage(
@@ -155,7 +156,7 @@ void timeline_sheet(context) {
 //                           textAlign: TextAlign.center,
 //                           text: TextSpan(
 //                               style: TextStyle(
-//                                   fontSize: AppDimensions.height10 * 2.2,
+//                                   fontSize: AppDimensions.height10(context) * 2.2,
 //                                   fontWeight: FontWeight.w600,
 //                                   color: Color(0xFF437296)),
 //                               children: [
@@ -163,7 +164,7 @@ void timeline_sheet(context) {
 //                                     text: 'Community\n',
 //                                     style: TextStyle(
 //                                       //height: 1.5,
-//                                       fontSize: AppDimensions.height10 * 3.0,
+//                                       fontSize: AppDimensions.height10(context) * 3.0,
 //                                       fontWeight: FontWeight.w700,
 //                                     )),
 //                                 TextSpan(text: 'coming soon...')

@@ -26,8 +26,8 @@ class feelingsAfter extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -37,8 +37,8 @@ class feelingsAfter extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -60,14 +60,15 @@ class feelingsAfter extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: AppDimensions.height10 * 18.6,
-                height: AppDimensions.height10 * 2.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 5.0),
+                width: AppDimensions.height10(context) * 18.6,
+                height: AppDimensions.height10(context) * 2.4,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 5.0),
                 child: Center(
                   child: Text(
                     'Meditation Session',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 2.0,
+                        fontSize: AppDimensions.height10(context) * 2.0,
                         fontWeight: FontWeight.w600,
                         color: Colors.white),
                   ),
@@ -75,14 +76,14 @@ class feelingsAfter extends StatelessWidget {
               ),
               MediaQuery.of(context).viewInsets.bottom == 0
                   ? SizedBox(
-                      height: AppDimensions.height10 * 10.5,
+                      height: AppDimensions.height10(context) * 10.5,
                     )
                   : SizedBox(
-                      height: AppDimensions.height10 * 0,
+                      height: AppDimensions.height10(context) * 0,
                     ),
               Container(
-                width: AppDimensions.height10 * 35.9,
-                height: AppDimensions.height10 * 14.8,
+                width: AppDimensions.height10(context) * 35.9,
+                height: AppDimensions.height10(context) * 14.8,
                 // alignment: Alignment.center,
 
                 child: Column(
@@ -92,7 +93,7 @@ class feelingsAfter extends StatelessWidget {
                     Text(
                       'How do you feel',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 2.8,
+                          fontSize: AppDimensions.height10(context) * 2.8,
                           fontWeight: FontWeight.w700,
                           color: Colors.white),
                     ),
@@ -102,14 +103,14 @@ class feelingsAfter extends StatelessWidget {
                         Text(
                           'after',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.8,
+                              fontSize: AppDimensions.height10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xff8C648A)),
                         ),
                         Text(
                           ' your practice?',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.8,
+                              fontSize: AppDimensions.height10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                               color: Colors.white),
                         ),
@@ -120,24 +121,24 @@ class feelingsAfter extends StatelessWidget {
               ),
               MediaQuery.of(context).viewInsets.bottom == 0
                   ? SizedBox(
-                      height: AppDimensions.height10 * 8.7,
+                      height: AppDimensions.height10(context) * 8.7,
                     )
                   : SizedBox(
-                      height: AppDimensions.height10 * 0,
+                      height: AppDimensions.height10(context) * 0,
                     ),
               Container(
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 6.3,
-                    left: AppDimensions.height10 * 1.0),
-                height: AppDimensions.height10 * 13.7,
+                    bottom: AppDimensions.height10(context) * 6.3,
+                    left: AppDimensions.height10(context) * 1.0),
+                height: AppDimensions.height10(context) * 13.7,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
                     Container(
-                      height: AppDimensions.height10 * 12.7,
-                      width: AppDimensions.height10 * 12.5,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      height: AppDimensions.height10(context) * 12.7,
+                      width: AppDimensions.height10(context) * 12.5,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -148,22 +149,22 @@ class feelingsAfter extends StatelessWidget {
                         'I feel very low\n& irritated',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 12.7,
-                      width: AppDimensions.height10 * 12.5,
+                      height: AppDimensions.height10(context) * 12.7,
+                      width: AppDimensions.height10(context) * 12.5,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.2,
+                            width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
                         color: const Color(0xff7291A0),
                       ),
@@ -171,78 +172,78 @@ class feelingsAfter extends StatelessWidget {
                         'I feel alright,\n but slightly\ndown',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 12.7,
-                      width: AppDimensions.height10 * 12.5,
+                      height: AppDimensions.height10(context) * 12.7,
+                      width: AppDimensions.height10(context) * 12.5,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.2,
+                            width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
                         color: const Color(0xffE1C44F),
                       ),
                       child: Text(
                         'I feel ok',
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 12.7,
-                      width: AppDimensions.height10 * 12.5,
+                      height: AppDimensions.height10(context) * 12.7,
+                      width: AppDimensions.height10(context) * 12.5,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.2,
+                            width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
                         color: const Color(0xffFA9458),
                       ),
                       child: Text(
                         ' I feel focused\nand motivated',
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 13.7,
-                      height: AppDimensions.height10 * 13.7,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      width: AppDimensions.height10(context) * 13.7,
+                      height: AppDimensions.height10(context) * 13.7,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                           color: Colors.transparent,
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
+                              width: AppDimensions.height10(context) * 0.2,
                               color: Colors.white)),
                       child: Container(
-                        height: AppDimensions.height10 * 12.7,
-                        width: AppDimensions.height10 * 12.5,
+                        height: AppDimensions.height10(context) * 12.7,
+                        width: AppDimensions.height10(context) * 12.5,
                         alignment: Alignment.center,
                         margin: EdgeInsets.symmetric(
-                            vertical: AppDimensions.height10 * 0.4,
-                            horizontal: AppDimensions.height10 * 0.3),
+                            vertical: AppDimensions.height10(context) * 0.4,
+                            horizontal: AppDimensions.height10(context) * 0.3),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
+                              width: AppDimensions.height10(context) * 0.2,
                               color: Colors.white),
                           color: const Color(0xffFF7C42),
                         ),
@@ -250,7 +251,7 @@ class feelingsAfter extends StatelessWidget {
                           'I feel excited\nand good in\nmyself',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
@@ -293,24 +294,24 @@ class _addNotesState extends State<addNotes> {
     return Column(
       children: [
         Container(
-          width: AppDimensions.height10 * 7.6,
-          height: AppDimensions.height10 * 7.6,
+          width: AppDimensions.height10(context) * 7.6,
+          height: AppDimensions.height10(context) * 7.6,
           //margin: EdgeInsets.only(bottom: 113),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: AppDimensions.height10 * 5.0,
-                height: AppDimensions.height10 * 5.0,
+                width: AppDimensions.height10(context) * 5.0,
+                height: AppDimensions.height10(context) * 5.0,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: Color(back_color),
                     border: Border.all(
-                        width: AppDimensions.height10 * 0.2,
+                        width: AppDimensions.height10(context) * 0.2,
                         color: Color(icon_color))),
                 child: Container(
-                  height: AppDimensions.height10 * 2.7,
-                  width: AppDimensions.height10 * 2.7,
+                  height: AppDimensions.height10(context) * 2.7,
+                  width: AppDimensions.height10(context) * 2.7,
                   margin: const EdgeInsets.only(left: 3),
                   child: IconButton(
                       onPressed: () {
@@ -335,13 +336,14 @@ class _addNotesState extends State<addNotes> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 7.6,
-                height: AppDimensions.height10 * 1.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 0.6),
+                width: AppDimensions.height10(context) * 7.6,
+                height: AppDimensions.height10(context) * 1.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
                 child: Text(
                   'Add Notes',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 1.6,
+                      fontSize: AppDimensions.height10(context) * 1.6,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
@@ -352,14 +354,15 @@ class _addNotesState extends State<addNotes> {
         Container(
             child: note_check
                 ? Container(
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.0),
                     child: notes(
                       state: widget.state_,
                     ))
                 : Container(
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 10.1,
-                        bottom: AppDimensions.height10 * 4.4),
+                        top: AppDimensions.height10(context) * 10.1,
+                        bottom: AppDimensions.height10(context) * 4.4),
                     child: next_botton(state: widget.state_),
                   )),
 
@@ -381,11 +384,11 @@ class notes extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: AppDimensions.height10 * 36.0,
-          // height: AppDimensions.height10 * 11.0,
+          width: AppDimensions.height10(context) * 36.0,
+          // height: AppDimensions.height10(context) * 11.0,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
-                  Radius.circular(AppDimensions.height10 * 1.8)),
+                  Radius.circular(AppDimensions.height10(context) * 1.8)),
               color: Colors.white),
           child: Column(
             children: [
@@ -397,7 +400,7 @@ class notes extends StatelessWidget {
                   decoration: InputDecoration(
                       hintText: 'Add notes here',
                       hintStyle: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.6,
+                        fontSize: AppDimensions.height10(context) * 1.6,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xff646464),
                       ),
@@ -408,26 +411,27 @@ class notes extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 1.4,
+                height: AppDimensions.height10(context) * 1.4,
               ),
               Container(
                 //alignment: Alignment(0, 0),
-                margin: EdgeInsets.only(right: AppDimensions.height10 * 21.2),
-                width: AppDimensions.height10 * 13.1,
-                height: AppDimensions.height10 * 2.0,
+                margin: EdgeInsets.only(
+                    right: AppDimensions.height10(context) * 21.2),
+                width: AppDimensions.height10(context) * 13.1,
+                height: AppDimensions.height10(context) * 2.0,
                 child: Row(
                   children: [
                     Text(
                       'Character count: ',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.3,
+                          fontSize: AppDimensions.height10(context) * 1.3,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xff464646)),
                     ),
                     Text(
                       '200',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.3,
+                          fontSize: AppDimensions.height10(context) * 1.3,
                           fontWeight: FontWeight.w700,
                           color: const Color(0xff464646)),
                     )
@@ -439,14 +443,14 @@ class notes extends StatelessWidget {
         ),
         Container(
             margin: EdgeInsets.only(
-                top: AppDimensions.height10 * 4.6,
-                bottom: AppDimensions.height10 * 2.6),
+                top: AppDimensions.height10(context) * 4.6,
+                bottom: AppDimensions.height10(context) * 2.6),
             child: next_botton(
               state: state,
             )),
         note_check
             ? SizedBox(
-                // height: AppDimensions.height10 * 2.6,
+                // height: AppDimensions.height10(context) * 2.6,
                 child: Container(
                   color: Colors.amber,
                 ),
@@ -464,8 +468,8 @@ class next_botton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: AppDimensions.height10 * 5.0,
-        width: AppDimensions.height10 * 25.4,
+        height: AppDimensions.height10(context) * 5.0,
+        width: AppDimensions.height10(context) * 25.4,
         // margin: EdgeInsets.only(bottom: 62, top: 46),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
@@ -475,7 +479,8 @@ class next_botton extends StatelessWidget {
                 Color(0xffFCC10D),
                 Color(0xffFDA210),
               ]),
-          borderRadius: BorderRadius.circular(AppDimensions.height10 * 5.0),
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 5.0),
         ),
         child: state
             ? TextButton(
@@ -487,7 +492,7 @@ class next_botton extends StatelessWidget {
                   'Update Summary',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.6,
+                      fontSize: AppDimensions.height10(context) * 1.6,
                       fontWeight: FontWeight.w600),
                 ),
               )
@@ -504,7 +509,7 @@ class next_botton extends StatelessWidget {
                   'Next',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.6,
+                      fontSize: AppDimensions.height10(context) * 1.6,
                       fontWeight: FontWeight.w600),
                 ),
               ));

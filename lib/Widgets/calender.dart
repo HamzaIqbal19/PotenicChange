@@ -98,61 +98,64 @@ class CalendarWithRadioButtons extends StatelessWidget {
     String? status = getStatus(date);
     IconData? iconData = getIcon(status);
 
-    return Container(
-      margin: const EdgeInsets.all(2.0),
-      padding: const EdgeInsets.symmetric(vertical: 2.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
-        //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: AppDimensions.height10 * 2.0,
-              width: AppDimensions.height10 * 2.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100.0),
-                border: Border.all(color: const Color(0xFF8EA1B1)),
-                color: status == 'completed'
-                    ? const Color(0xFF196F6E)
-                    : status == 'missed'
-                        ? const Color(0xFFFE6624)
-                        : const Color(0xFFFFFFFF),
-              ),
-              child: status == 'completed'
-                  ? Icon(
-                      iconData,
-                      size: AppDimensions.height10 * 1.5,
-                      color: Colors.white,
-                    )
-                  : status == 'missed'
-                      ? Icon(
-                          size: AppDimensions.height10 * 1.5,
-                          iconData,
-                          color: Colors.white,
-                        )
-                      : Icon(
-                          iconData,
-                          size: AppDimensions.height10 * 1.5,
-                          color: Colors.white,
-                        ),
-            ),
-            Text(
-              '${date.day}',
-              style: TextStyle(
-                  fontSize: AppDimensions.height10 * 1.4,
-                  color: const Color(0xFF8EA1B1)),
-            ),
-            // Container(
-            //   height: AppDimensions.height10 * 0.05,
-            //   color: const Color(0xFF828282),
-            // )
-          ],
+    return Builder(builder: (context) {
+      return Container(
+        margin: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.symmetric(vertical: 2.0),
+        decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+          //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
         ),
-      ),
-    );
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: AppDimensions.height10(context) * 2.0,
+                width: AppDimensions.height10(context) * 2.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100.0),
+                  border: Border.all(color: const Color(0xFF8EA1B1)),
+                  color: status == 'completed'
+                      ? const Color(0xFF196F6E)
+                      : status == 'missed'
+                          ? const Color(0xFFFE6624)
+                          : const Color(0xFFFFFFFF),
+                ),
+                child: status == 'completed'
+                    ? Icon(
+                        iconData,
+                        size: AppDimensions.height10(context) * 1.5,
+                        color: Colors.white,
+                      )
+                    : status == 'missed'
+                        ? Icon(
+                            size: AppDimensions.height10(context) * 1.5,
+                            iconData,
+                            color: Colors.white,
+                          )
+                        : Icon(
+                            iconData,
+                            size: AppDimensions.height10(context) * 1.5,
+                            color: Colors.white,
+                          ),
+              ),
+              Text(
+                '${date.day}',
+                style: TextStyle(
+                    fontSize: AppDimensions.height10(context) * 1.4,
+                    color: const Color(0xFF8EA1B1)),
+              ),
+              // Container(
+              //   height: AppDimensions.height10(context) * 0.05,
+              //   color: const Color(0xFF828282),
+              // )
+            ],
+          ),
+        ),
+      );
+    });
   }
 
   @override
@@ -161,7 +164,8 @@ class CalendarWithRadioButtons extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 2.0),
           //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
         ),
         child: TableCalendar(
@@ -179,7 +183,7 @@ class CalendarWithRadioButtons extends StatelessWidget {
               color: Color(0xFFFE6624),
             ),
             titleTextStyle: TextStyle(
-                fontSize: AppDimensions.height10 * 2.4,
+                fontSize: AppDimensions.height10(context) * 2.4,
                 color: const Color(0xFF5B74A6),
                 fontWeight: FontWeight.w600,
                 fontFamily: 'laila'),

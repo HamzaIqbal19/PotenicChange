@@ -63,8 +63,8 @@ class _SignUpPageState extends State<SignUpPage> {
           //   child: IconButton(
           //     icon: Image.asset(
           //       'assets/images/Back.png',
-          //       width: AppDimensions.height10 * 3,
-          //       height: AppDimensions.height10 * 3,
+          //       width: AppDimensions.height10(context) * 3,
+          //       height: AppDimensions.height10(context) * 3,
           //       fit: BoxFit.contain,
           //     ),
           //     onPressed: () {
@@ -80,8 +80,8 @@ class _SignUpPageState extends State<SignUpPage> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10 * 2.8,
-                  height: AppDimensions.height10 * 2.8,
+                  width: AppDimensions.height10(context) * 2.8,
+                  height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.cover,
                 ),
                 onPressed: () {
@@ -114,51 +114,51 @@ class _SignUpPageState extends State<SignUpPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: AppDimensions.height10 * 8.02,
+                  height: AppDimensions.height10(context) * 8.02,
                 ),
                 Center(
                   child: Image(
                     // color: Colors.orange,
                     image: const AssetImage("assets/images/logo.png"),
-                    height: AppDimensions.height10 * 7.75,
-                    width: AppDimensions.width10 * 7.75,
+                    height: AppDimensions.height10(context) * 7.75,
+                    width: AppDimensions.height10(context) * 7.75,
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 2.32),
+                SizedBox(height: AppDimensions.height10(context) * 2.32),
                 Container(
-                  height: AppDimensions.height10 * 3.6,
+                  height: AppDimensions.height10(context) * 3.6,
                   child: Text(
                     "Welcome to Potenic",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 3),
+                        fontSize: AppDimensions.height10(context) * 3),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 + 1),
+                SizedBox(height: AppDimensions.height10(context) + 1),
                 Container(
-                    height: AppDimensions.height10 * 4.4,
-                    width: AppDimensions.height10 * 35.3,
+                    height: AppDimensions.height10(context) * 4.4,
+                    width: AppDimensions.height10(context) * 35.3,
                     child: Text(
                       'Your Personalised Journey To Better \n  Self Starts Here',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     )),
-                SizedBox(height: AppDimensions.height10 * 4.8),
+                SizedBox(height: AppDimensions.height10(context) * 4.8),
                 Container(
-                  height: AppDimensions.height10 * 20 + 2,
+                  height: AppDimensions.height10(context) * 20 + 2,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
+                        height: AppDimensions.height10(context) * 5.5,
+                        width: AppDimensions.height10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
@@ -181,7 +181,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           icon: Icon(
                             Icons.mail_outline,
                             color: Colors.white,
-                            size: AppDimensions.height10 * 2.4,
+                            size: AppDimensions.height10(context) * 2.4,
                           ),
                           label: Row(
                             children: [
@@ -191,7 +191,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 '  Sign up with email',
                                 style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                 ),
                               )),
@@ -200,8 +201,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
+                        height: AppDimensions.height10(context) * 5.5,
+                        width: AppDimensions.height10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
@@ -216,8 +217,8 @@ class _SignUpPageState extends State<SignUpPage> {
                           },
                           icon: Image.asset(
                             "assets/images/Google.png",
-                            width: AppDimensions.height10 * 2.4,
-                            height: AppDimensions.height10 * 2.4,
+                            width: AppDimensions.height10(context) * 2.4,
+                            height: AppDimensions.height10(context) * 2.4,
                           ),
                           label: Row(
                             children: [
@@ -226,7 +227,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 '  Sign up with Google',
                                 style: TextStyle(
                                   color: Colors.black45,
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                 ),
                               )),
@@ -235,23 +237,23 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10 * 5.5,
-                        width: AppDimensions.height10 * 34.1,
+                        height: AppDimensions.height10(context) * 5.5,
+                        width: AppDimensions.height10(context) * 34.1,
                         child: OutlinedButton.icon(
                           // <-- OutlinedButton
                           style: OutlinedButton.styleFrom(
                             backgroundColor: const Color(0xFF1877F2),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10 * 4.0),
+                                  AppDimensions.height10(context) * 4.0),
                             ),
                             //<-- SEE HERE
                           ),
                           onPressed: () {},
                           icon: Image.asset(
                             "assets/images/fb.png",
-                            width: AppDimensions.height10 * 2.4,
-                            height: AppDimensions.height10 * 2.4,
+                            width: AppDimensions.height10(context) * 2.4,
+                            height: AppDimensions.height10(context) * 2.4,
                           ),
                           label: Row(
                             children: [
@@ -260,7 +262,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                 '  Sign up with Facebook',
                                 style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w700,
                                 ),
                               )),
@@ -271,10 +274,10 @@ class _SignUpPageState extends State<SignUpPage> {
                     ],
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 28.4),
+                SizedBox(height: AppDimensions.height10(context) * 28.4),
                 SizedBox(
-                  height: AppDimensions.height10 * 5,
-                  width: AppDimensions.screenWidth - 100,
+                  height: AppDimensions.height10(context) * 5,
+                  width: AppDimensions.height10(context) * 36.0,
                   child: OutlinedButton.icon(
                     // <-- OutlinedButton
                     style: OutlinedButton.styleFrom(
@@ -302,7 +305,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       'I already have an account',
                       style: TextStyle(
                         color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10 * 1.6,
+                        fontSize: AppDimensions.height10(context) * 1.6,
                         fontWeight: FontWeight.w600,
                       ),
                     )),

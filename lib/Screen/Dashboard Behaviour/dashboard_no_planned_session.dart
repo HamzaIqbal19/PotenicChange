@@ -21,31 +21,31 @@ class no_planned_session extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.32),
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.32),
                     child: Image.asset(
                       'assets/images/Asset 10 2.png',
-                      height: AppDimensions.height10 * 4.0,
-                      width: AppDimensions.height10 * 3.977,
+                      height: AppDimensions.height10(context) * 4.0,
+                      width: AppDimensions.height10(context) * 3.977,
                       fit: BoxFit.contain,
                     ),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.7),
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.7),
                     child: Image.asset(
                       'assets/images/Add goal.png',
-                      height: AppDimensions.height10 * 2.0,
-                      width: AppDimensions.height10 * 2.1,
+                      height: AppDimensions.height10(context) * 2.0,
+                      width: AppDimensions.height10(context) * 2.1,
                     ),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.32),
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.32),
                     child: Image.asset(
                       'assets/images/calendar_month_black_24dp 1.png',
-                      height: AppDimensions.height10 * 2.4,
-                      width: AppDimensions.height10 * 2.4,
+                      height: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.height10(context) * 2.4,
                     ),
                   ),
                 ],
@@ -70,15 +70,15 @@ class no_planned_session extends StatelessWidget {
             ),
             child: SizedBox(
                 width: double.infinity,
-                height: AppDimensions.height10 * 19.2,
+                height: AppDimensions.height10(context) * 19.2,
                 child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(children: [
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: SizedBox(
-                          height: AppDimensions.height10 * 19.2,
-                          width: AppDimensions.height10 * 45.7,
+                          height: AppDimensions.height10(context) * 19.2,
+                          width: AppDimensions.height10(context) * 45.7,
                           child: Stack(
                             children: [
                               Align(
@@ -91,14 +91,19 @@ class no_planned_session extends StatelessWidget {
                                             page: const no_past_session()));
                                   },
                                   child: Container(
-                                    height: AppDimensions.height10 * 7.9,
-                                    width: AppDimensions.height10 * 7.9,
+                                    height:
+                                        AppDimensions.height10(context) * 7.9,
+                                    width:
+                                        AppDimensions.height10(context) * 7.9,
                                     margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 8.4),
+                                        top: AppDimensions.height10(context) *
+                                            8.4),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                            width: AppDimensions.height10 * 0.3,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                0.3,
                                             color: Colors.white),
                                         color: Colors.transparent),
                                     child: Column(
@@ -108,39 +113,50 @@ class no_planned_session extends StatelessWidget {
                                         Text(
                                           'MON',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.2,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.2,
                                               fontWeight: FontWeight.w600,
                                               color: Color(0xFFFBFBFB)),
                                         ),
                                         Text(
                                           '02.06',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.white),
                                         ),
                                         Container(
-                                          height: AppDimensions.height10 * 2.5,
-                                          width: AppDimensions.height10 * 2.5,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.5,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.5,
                                           margin: EdgeInsets.only(
-                                              top: AppDimensions.height10 *
+                                              top: AppDimensions.height10(
+                                                      context) *
                                                   0.332),
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             border: Border.all(
-                                                width: AppDimensions.height10 *
+                                                width: AppDimensions.height10(
+                                                        context) *
                                                     0.1,
                                                 color: Color(0xFFFBFBFB)),
                                           ),
                                           child: Container(
-                                              width:
-                                                  AppDimensions.height10 * 1.7,
-                                              height:
-                                                  AppDimensions.height10 * 1.5,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
                                               margin: EdgeInsets.only(
-                                                  top: AppDimensions.height10 *
+                                                  top: AppDimensions.height10(
+                                                          context) *
                                                       0.332),
                                               // margin: const EdgeInsets.only(left: 1),
                                               child: Center(
@@ -148,7 +164,8 @@ class no_planned_session extends StatelessWidget {
                                                   '0/2',
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.0,
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -173,8 +190,10 @@ class no_planned_session extends StatelessWidget {
                                         )));
                                   },
                                   child: Container(
-                                    width: AppDimensions.height10 * 8.3,
-                                    height: AppDimensions.height10 * 8.3,
+                                    width:
+                                        AppDimensions.height10(context) * 8.3,
+                                    height:
+                                        AppDimensions.height10(context) * 8.3,
                                     //  margin: EdgeInsets.only(right: 121, left: 121),
                                     padding: const EdgeInsets.all(4),
                                     decoration: BoxDecoration(
@@ -183,8 +202,10 @@ class no_planned_session extends StatelessWidget {
                                             width: 1, color: Colors.white),
                                         color: Colors.transparent),
                                     child: Container(
-                                      height: AppDimensions.height10 * 7.9,
-                                      width: AppDimensions.height10 * 7.9,
+                                      height:
+                                          AppDimensions.height10(context) * 7.9,
+                                      width:
+                                          AppDimensions.height10(context) * 7.9,
                                       decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           border: Border.all(
@@ -203,7 +224,8 @@ class no_planned_session extends StatelessWidget {
                                                     'TUE',
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.2,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -214,20 +236,21 @@ class no_planned_session extends StatelessWidget {
                                                     style: TextStyle(
                                                         color: Colors.white,
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.4,
                                                         fontWeight:
                                                             FontWeight.w400),
                                                   ),
                                                   Container(
-                                                      height:
-                                                          AppDimensions
-                                                                  .height10 *
-                                                              2.5,
-                                                      width:
-                                                          AppDimensions
-                                                                  .height10 *
-                                                              2.5,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.5,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.5,
                                                       decoration:
                                                           const BoxDecoration(
                                                         shape: BoxShape.circle,
@@ -240,10 +263,10 @@ class no_planned_session extends StatelessWidget {
                                                           child: Text(
                                                             '0/0',
                                                             style: TextStyle(
-                                                                fontSize:
-                                                                    AppDimensions
-                                                                            .height10 *
-                                                                        1.0,
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.0,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w400,
@@ -263,15 +286,20 @@ class no_planned_session extends StatelessWidget {
                               Align(
                                 alignment: const Alignment(1, 1),
                                 child: Container(
-                                    height: AppDimensions.height10 * 7.9,
-                                    width: AppDimensions.height10 * 7.9,
+                                    height:
+                                        AppDimensions.height10(context) * 7.9,
+                                    width:
+                                        AppDimensions.height10(context) * 7.9,
                                     margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 8.4,
+                                      top:
+                                          AppDimensions.height10(context) * 8.4,
                                     ),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                            width: AppDimensions.height10 * 0.3,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                0.3,
                                             color: Colors.white),
                                         color: Colors.transparent),
                                     child: Container(
@@ -282,34 +310,43 @@ class no_planned_session extends StatelessWidget {
                                         Text(
                                           'MON',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.2,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.2,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white),
                                         ),
                                         Text(
                                           '03.07',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w400,
                                               color: Colors.white),
                                         ),
                                         Container(
-                                          height: AppDimensions.height10 * 2.5,
-                                          width: AppDimensions.height10 * 2.5,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.5,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.5,
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             border: Border.all(
-                                                width: AppDimensions.height10 *
+                                                width: AppDimensions.height10(
+                                                        context) *
                                                     0.1,
                                                 color: Colors.white),
                                           ),
                                           child: Container(
-                                              width:
-                                                  AppDimensions.height10 * 1.7,
-                                              height:
-                                                  AppDimensions.height10 * 1.5,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
 
                                               // margin: const EdgeInsets.only(left: 1),
                                               child: Center(
@@ -317,7 +354,8 @@ class no_planned_session extends StatelessWidget {
                                                   '0/2',
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.0,
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -333,34 +371,34 @@ class no_planned_session extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 34.3,
-                        height: AppDimensions.height10 * 4.9,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 18.9),
+                        width: AppDimensions.height10(context) * 34.3,
+                        height: AppDimensions.height10(context) * 4.9,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 18.9),
                         child: Text(
                           'No planned sessions',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              height: AppDimensions.height10 * 0.12,
+                              height: AppDimensions.height10(context) * 0.12,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 3.0,
+                              fontSize: AppDimensions.height10(context) * 3.0,
                               fontWeight: FontWeight.w700,
                               fontFamily: 'Laila'),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 26.9,
-                        height: AppDimensions.height10 * 5.8,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 0.2),
+                        width: AppDimensions.height10(context) * 26.9,
+                        height: AppDimensions.height10(context) * 5.8,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.2),
                         child: Text(
                           'There are no scheduled\npractices for this date.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: Colors.white,
-                              height: AppDimensions.height10 * 0.12,
+                              height: AppDimensions.height10(context) * 0.12,
                               fontFamily: 'Laila',
-                              fontSize: AppDimensions.height10 * 1.8,
+                              fontSize: AppDimensions.height10(context) * 1.8,
                               fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -374,15 +412,15 @@ class no_planned_session extends StatelessWidget {
                               )));
                         },
                         child: Container(
-                          width: AppDimensions.height10 * 10.1,
-                          height: AppDimensions.height10 * 10.1,
+                          width: AppDimensions.height10(context) * 10.1,
+                          height: AppDimensions.height10(context) * 10.1,
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 1.4),
+                              top: AppDimensions.height10(context) * 1.4),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.transparent,
                               border: Border.all(
-                                  width: AppDimensions.height10 * 0.3,
+                                  width: AppDimensions.height10(context) * 0.3,
                                   color: Colors.white)),
                           child: Center(
                             child: Text(
@@ -390,9 +428,11 @@ class no_planned_session extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.white,
-                                  height: AppDimensions.height10 * 0.12,
+                                  height:
+                                      AppDimensions.height10(context) * 0.12,
                                   fontFamily: 'laila',
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   //add 2 px font size from feedback
                                   fontWeight: FontWeight.w600),
                             ),

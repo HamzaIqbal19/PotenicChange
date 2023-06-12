@@ -29,8 +29,8 @@ class _ActivateStarState extends State<ActivateStar> {
           child: IconButton(
             icon: Image.asset(
               'assets/images/Back.png',
-              width: AppDimensions.height10 * 3,
-              height: AppDimensions.height10 * 3,
+              width: AppDimensions.height10(context) * 3,
+              height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
             ),
             onPressed: () {
@@ -51,8 +51,8 @@ class _ActivateStarState extends State<ActivateStar> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Close.png',
-                width: AppDimensions.height10 * 3.0,
-                height: AppDimensions.height10 * 3.0,
+                width: AppDimensions.height10(context) * 3.0,
+                height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
               ),
               onPressed: () {
@@ -83,12 +83,12 @@ class _ActivateStarState extends State<ActivateStar> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: AppDimensions.height10 * 8.9,
+                height: AppDimensions.height10(context) * 8.9,
               ),
               Container(
-                width: AppDimensions.height10 * 28.3,
-                height: AppDimensions.height10 * 7.2,
-                // padding: EdgeInsets.only(top: AppDimensions.height10 * 10),
+                width: AppDimensions.height10(context) * 28.3,
+                height: AppDimensions.height10(context) * 7.2,
+                // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
                 child: Center(
                   child: GradientText(
                     "Activate your star ",
@@ -96,7 +96,7 @@ class _ActivateStarState extends State<ActivateStar> {
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       // color: Colors.white,
-                      fontSize: AppDimensions.height10 * 3,
+                      fontSize: AppDimensions.height10(context) * 3,
                     ),
                     colors: [
                       const Color(0xFFFFFFFF),
@@ -106,12 +106,12 @@ class _ActivateStarState extends State<ActivateStar> {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 2.5,
+                height: AppDimensions.height10(context) * 2.5,
               ),
               Container(
                   // color: Colors.black,
-                  height: AppDimensions.height10 * 13.2,
-                  width: AppDimensions.height10 * 35.7,
+                  height: AppDimensions.height10(context) * 13.2,
+                  width: AppDimensions.height10(context) * 35.7,
                   child: Column(
                     children: [
                       Container(
@@ -122,7 +122,7 @@ class _ActivateStarState extends State<ActivateStar> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.8,
+                              fontSize: AppDimensions.height10(context) * 1.8,
                             ),
                           ),
                         ),
@@ -130,7 +130,7 @@ class _ActivateStarState extends State<ActivateStar> {
                     ],
                   )),
               SizedBox(
-                height: AppDimensions.height10 * 3.6,
+                height: AppDimensions.height10(context) * 3.6,
               ),
               Stack(
                 children: [
@@ -142,8 +142,8 @@ class _ActivateStarState extends State<ActivateStar> {
                       child: Image(
                         image: const AssetImage(
                             'assets/images/angerwithoutreview.png'),
-                        height: AppDimensions.height10 * 38.1,
-                        width: AppDimensions.height10 * 35.3,
+                        height: AppDimensions.height10(context) * 38.1,
+                        width: AppDimensions.height10(context) * 35.3,
                       ),
                     ),
                   ),
@@ -154,12 +154,12 @@ class _ActivateStarState extends State<ActivateStar> {
                     right: 0,
                     child: Align(
                       // alignment: Alignment.bottomCenter,
-                      alignment:
-                          Alignment(0.01, AppDimensions.height10 * 0.016 + 0.9),
+                      alignment: Alignment(
+                          0.01, AppDimensions.height10(context) * 0.016 + 0.9),
                       //heightFactor: 0.5,
                       child: Container(
-                        // height: AppDimensions.height10*17.5,
-                        // width:  AppDimensions.height10*17.5,
+                        // height: AppDimensions.height10(context)*17.5,
+                        // width:  AppDimensions.height10(context)*17.5,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
@@ -183,8 +183,8 @@ class _ActivateStarState extends State<ActivateStar> {
                           child: Image(
                             image:
                                 const AssetImage('assets/images/Asfinger.png'),
-                            height: AppDimensions.height10 * 16.0,
-                            width: AppDimensions.height10 * 16.0,
+                            height: AppDimensions.height10(context) * 16.0,
+                            width: AppDimensions.height10(context) * 16.0,
                           ),
                         ),
                       ),
@@ -193,7 +193,7 @@ class _ActivateStarState extends State<ActivateStar> {
                 ],
               ),
               SizedBox(
-                height: AppDimensions.height10 * 1.1,
+                height: AppDimensions.height10(context) * 1.1,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -201,8 +201,8 @@ class _ActivateStarState extends State<ActivateStar> {
                   Container(
                       // color: Colors.black,
 
-                      height: AppDimensions.height10 * 5.4,
-                      width: AppDimensions.height10 * 27.4,
+                      height: AppDimensions.height10(context) * 5.4,
+                      width: AppDimensions.height10(context) * 27.4,
                       child: Column(
                         children: [
                           Container(
@@ -213,7 +213,8 @@ class _ActivateStarState extends State<ActivateStar> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                 ),
                               ),
                             ),
@@ -240,20 +241,21 @@ void dashboard_sheet(context) {
     backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-      top: Radius.circular(AppDimensions.height10 * 2.0),
+      top: Radius.circular(AppDimensions.height10(context) * 2.0),
     )),
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10 * 39.4,
-          height: AppDimensions.height10 * 62.3,
+          width: AppDimensions.height10(context) * 39.4,
+          height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
-              left: AppDimensions.height10 * 1.0,
-              right: AppDimensions.height10 * 1.0,
-              bottom: AppDimensions.height10 * 1.0),
+              left: AppDimensions.height10(context) * 1.0,
+              right: AppDimensions.height10(context) * 1.0,
+              bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+              borderRadius:
+                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
               color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
@@ -263,7 +265,7 @@ void dashboard_sheet(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
@@ -282,11 +284,11 @@ void dashboard_sheet(context) {
                     );
                   },
                   child: Container(
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 1.9,
-                        right: AppDimensions.height10 * 1.5),
+                        top: AppDimensions.height10(context) * 1.9,
+                        right: AppDimensions.height10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -296,42 +298,43 @@ void dashboard_sheet(context) {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 1.5,
-                    bottom: AppDimensions.height10 * 2.0),
+                    top: AppDimensions.height10(context) * 1.5,
+                    bottom: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
                   'assets/images/potenic__icon.png',
-                  width: AppDimensions.height10 * 8.202,
-                  height: AppDimensions.height10 * 11.2,
+                  width: AppDimensions.height10(context) * 8.202,
+                  height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 30.7,
-                height: AppDimensions.height10 * 6.8,
+                width: AppDimensions.height10(context) * 30.7,
+                height: AppDimensions.height10(context) * 6.8,
                 // color: Colors.amber,
                 alignment: Alignment.center,
-                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                 child: Text(
                   'Welcome to\nyour Dashboard',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      height: AppDimensions.height10 * 0.12,
-                      fontSize: AppDimensions.height10 * 2.8,
-                      //letterSpacing: AppDimensions.height10 * 0.2,
+                      height: AppDimensions.height10(context) * 0.12,
+                      fontSize: AppDimensions.height10(context) * 2.8,
+                      //letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                  //  width: AppDimensions.height10 * 33.2,
-                  //  height: AppDimensions.height10 * 10.8,
+                  //  width: AppDimensions.height10(context) * 33.2,
+                  //  height: AppDimensions.height10(context) * 10.8,
                   // color: Colors.grey,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.1),
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.1),
                   child: Center(
                     child: Text(
                       'This is a one-stop place to manage your\npersonal development journey. From\nDashboard, you can quickly navigate to\nyour goals, view your practices, record\nhurdles and inspirations.\n\nHave a tour of what’s available to you\nand how you can access the tools that\nare important to your personal growth.\n\nWe look forward to supporting you.\nEnjoy your journey :)',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.8,
-                          // letterSpacing: AppDimensions.height10 * 0.2,
+                          fontSize: AppDimensions.height10(context) * 1.8,
+                          // letterSpacing: AppDimensions.height10(context) * 0.2,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF437296)),
                     ),
@@ -350,21 +353,21 @@ void login_sheet(context) {
     backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-      top: Radius.circular(AppDimensions.height10 * 2.0),
+      top: Radius.circular(AppDimensions.height10(context) * 2.0),
     )),
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10 * 39.4,
-          height: AppDimensions.height10 * 54.4,
+          width: AppDimensions.height10(context) * 39.4,
+          height: AppDimensions.height10(context) * 54.4,
           // margin: EdgeInsets.only(
-          //     left: AppDimensions.height10 * 1.0,
-          //     right: AppDimensions.height10 * 1.0,
-          //     bottom: AppDimensions.height10 * 1.0),
+          //     left: AppDimensions.height10(context) * 1.0,
+          //     right: AppDimensions.height10(context) * 1.0,
+          //     bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(AppDimensions.height10 * 2.0)),
+                  top: Radius.circular(AppDimensions.height10(context) * 2.0)),
               color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
@@ -374,15 +377,15 @@ void login_sheet(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   child: Container(
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 1.9,
-                        right: AppDimensions.height10 * 1.5),
+                        top: AppDimensions.height10(context) * 1.9,
+                        right: AppDimensions.height10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -392,42 +395,43 @@ void login_sheet(context) {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 1.5,
-                    bottom: AppDimensions.height10 * 2.0),
+                    top: AppDimensions.height10(context) * 1.5,
+                    bottom: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
                   'assets/images/potenic__icon.png',
-                  width: AppDimensions.height10 * 8.202,
-                  height: AppDimensions.height10 * 11.2,
+                  width: AppDimensions.height10(context) * 8.202,
+                  height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 30.7,
-                height: AppDimensions.height10 * 3.4,
+                width: AppDimensions.height10(context) * 30.7,
+                height: AppDimensions.height10(context) * 3.4,
                 // color: Colors.amber,
                 alignment: Alignment.center,
-                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                 child: Text(
                   'Login to continue',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      height: AppDimensions.height10 * 0.12,
-                      fontSize: AppDimensions.height10 * 2.8,
-                      //letterSpacing: AppDimensions.height10 * 0.2,
+                      height: AppDimensions.height10(context) * 0.12,
+                      fontSize: AppDimensions.height10(context) * 2.8,
+                      //letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                  //  width: AppDimensions.height10 * 33.2,
-                  height: AppDimensions.height10 * 20.1,
+                  //  width: AppDimensions.height10(context) * 33.2,
+                  height: AppDimensions.height10(context) * 20.1,
                   // color: Colors.grey,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.2),
                   child: RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
                           style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.4,
-                            height: AppDimensions.height10 * 0.13,
+                            fontSize: AppDimensions.height10(context) * 1.4,
+                            height: AppDimensions.height10(context) * 0.13,
                             fontFamily: 'laila',
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF437296),
@@ -452,25 +456,26 @@ void login_sheet(context) {
                                     'now without losing any\nprogress you’ve made so far.  ')
                           ]))),
               Container(
-                width: AppDimensions.height10 * 28.0,
-                margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                width: AppDimensions.height10(context) * 28.0,
+                margin: EdgeInsets.only(
+                    left: AppDimensions.height10(context) * 1.5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 13.0,
-                      height: AppDimensions.height10 * 5.0,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 2.0),
+                      width: AppDimensions.height10(context) * 13.0,
+                      height: AppDimensions.height10(context) * 5.0,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 2.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 5.0),
+                              AppDimensions.height10(context) * 5.0),
                           color: Color(0xFFFBFBFB)),
                       child: Center(
                         child: Text(
                           'I’m new here',
                           style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF8C648A),
                           ),
@@ -478,17 +483,17 @@ void login_sheet(context) {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 13.0,
-                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10(context) * 13.0,
+                      height: AppDimensions.height10(context) * 5.0,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 5.0),
+                              AppDimensions.height10(context) * 5.0),
                           color: Color(0xFF5A4D73)),
                       child: Center(
                         child: Text(
                           'Log in',
                           style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFFFBFBFB),
                           ),

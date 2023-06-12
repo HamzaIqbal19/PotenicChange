@@ -18,8 +18,8 @@ class Circulardates extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10 * 24.0,
-      height: AppDimensions.height10 * 24.0,
+      width: AppDimensions.height10(context) * 24.0,
+      height: AppDimensions.height10(context) * 24.0,
       color: Colors.transparent,
       child: Stack(
         children: [
@@ -31,8 +31,8 @@ class Circulardates extends StatelessWidget {
           Align(alignment: Alignment.center, child: centerContainer),
           Positioned.fill(
             child: Container(
-              width: AppDimensions.height10 * 24.0,
-              height: AppDimensions.height10 * 24.0,
+              width: AppDimensions.height10(context) * 24.0,
+              height: AppDimensions.height10(context) * 24.0,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.transparent),
               child: Stack(

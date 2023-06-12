@@ -41,7 +41,7 @@ class _CategoriesState extends State<Categories> {
             ),
           ),
           SizedBox(
-            width: AppDimensions.width10,
+            width: AppDimensions.height10(context),
           )
         ],
       ),
@@ -58,20 +58,21 @@ class _CategoriesState extends State<Categories> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: AppDimensions.height10 * 4.2),
+                padding:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.2),
                 child: Center(
                   child: Text(
                     "Star Creation 1/5",
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.8,
+                      fontSize: AppDimensions.height10(context) * 1.8,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 10.5,
+                height: AppDimensions.height10(context) * 10.5,
               ),
               Container(
                 child: Center(
@@ -81,13 +82,13 @@ class _CategoriesState extends State<Categories> {
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 2.8,
+                      fontSize: AppDimensions.height10(context) * 2.8,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 1.6,
+                height: AppDimensions.height10(context) * 1.6,
               ),
               Container(
                 child: Center(
@@ -97,17 +98,17 @@ class _CategoriesState extends State<Categories> {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.8,
+                      fontSize: AppDimensions.height10(context) * 1.8,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 6.7,
+                height: AppDimensions.height10(context) * 6.7,
               ),
               Container(
-                width: AppDimensions.height10 * 41.4,
-                height: AppDimensions.height10 * 28.2,
+                width: AppDimensions.height10(context) * 41.4,
+                height: AppDimensions.height10(context) * 28.2,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Column(
@@ -118,7 +119,7 @@ class _CategoriesState extends State<Categories> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: AppDimensions.height10 * 2.0,
+                            width: AppDimensions.height10(context) * 2.0,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -136,13 +137,15 @@ class _CategoriesState extends State<Categories> {
                                 circle_color2: 0xFFFAA960,
                                 circle_border: 3.0,
                                 circle_bordercolor: 0xFFFFFFFF,
-                                circle_height: AppDimensions.height10 * 13.4,
-                                circle_width: AppDimensions.height10 * 13.4,
-                                textfont: AppDimensions.height10 * 1.6,
+                                circle_height:
+                                    AppDimensions.height10(context) * 13.4,
+                                circle_width:
+                                    AppDimensions.height10(context) * 13.4,
+                                textfont: AppDimensions.height10(context) * 1.6,
                                 textcolor: 0xFFFFFFFF),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10 * 1.6,
+                            width: AppDimensions.height10(context) * 1.6,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -160,13 +163,15 @@ class _CategoriesState extends State<Categories> {
                                 circle_color2: 0xFFFAA960,
                                 circle_border: 3.0,
                                 circle_bordercolor: 0xFFFFFFFF,
-                                circle_height: AppDimensions.height10 * 13.4,
-                                circle_width: AppDimensions.height10 * 13.4,
-                                textfont: AppDimensions.height10 * 1.6,
+                                circle_height:
+                                    AppDimensions.height10(context) * 13.4,
+                                circle_width:
+                                    AppDimensions.height10(context) * 13.4,
+                                textfont: AppDimensions.height10(context) * 1.6,
                                 textcolor: 0xFFFFFFFF),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10 * 1.6,
+                            width: AppDimensions.height10(context) * 1.6,
                           ),
                           GestureDetector(
                               onTap: () {
@@ -184,9 +189,12 @@ class _CategoriesState extends State<Categories> {
                                   circle_color2: 0xFFFAA960,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height:
+                                      AppDimensions.height10(context) * 13.4,
+                                  circle_width:
+                                      AppDimensions.height10(context) * 13.4,
+                                  textfont:
+                                      AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF)),
                         ],
                       ),
@@ -194,7 +202,7 @@ class _CategoriesState extends State<Categories> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(
-                            width: AppDimensions.height10 * 8.0,
+                            width: AppDimensions.height10(context) * 8.0,
                           ),
                           circles(
                               circle_text: "Happiness & Wellbeing",
@@ -202,12 +210,14 @@ class _CategoriesState extends State<Categories> {
                               circle_color2: 0xFFFAA960,
                               circle_border: 3.0,
                               circle_bordercolor: 0xFFFFFFFF,
-                              circle_height: AppDimensions.height10 * 13.4,
-                              circle_width: AppDimensions.height10 * 13.4,
-                              textfont: AppDimensions.height10 * 1.6,
+                              circle_height:
+                                  AppDimensions.height10(context) * 13.4,
+                              circle_width:
+                                  AppDimensions.height10(context) * 13.4,
+                              textfont: AppDimensions.height10(context) * 1.6,
                               textcolor: 0xFFFFFFFF),
                           SizedBox(
-                            width: AppDimensions.height10 * 1.6,
+                            width: AppDimensions.height10(context) * 1.6,
                           ),
                           circles(
                               circle_text: "Self \n Control",
@@ -215,12 +225,14 @@ class _CategoriesState extends State<Categories> {
                               circle_color2: 0xFFFAA960,
                               circle_border: 3.0,
                               circle_bordercolor: 0xFFFFFFFF,
-                              circle_height: AppDimensions.height10 * 13.4,
-                              circle_width: AppDimensions.height10 * 13.4,
-                              textfont: AppDimensions.height10 * 1.6,
+                              circle_height:
+                                  AppDimensions.height10(context) * 13.4,
+                              circle_width:
+                                  AppDimensions.height10(context) * 13.4,
+                              textfont: AppDimensions.height10(context) * 1.6,
                               textcolor: 0xFFFFFFFF),
                           SizedBox(
-                            width: AppDimensions.height10 * 1.6,
+                            width: AppDimensions.height10(context) * 1.6,
                           ),
                           circles(
                               circle_text: "Category \n Name",
@@ -228,9 +240,11 @@ class _CategoriesState extends State<Categories> {
                               circle_color2: 0xFFFAA960,
                               circle_border: 3.0,
                               circle_bordercolor: 0xFFFFFFFF,
-                              circle_height: AppDimensions.height10 * 13.4,
-                              circle_width: AppDimensions.height10 * 13.4,
-                              textfont: AppDimensions.height10 * 1.6,
+                              circle_height:
+                                  AppDimensions.height10(context) * 13.4,
+                              circle_width:
+                                  AppDimensions.height10(context) * 13.4,
+                              textfont: AppDimensions.height10(context) * 1.6,
                               textcolor: 0xFFFFFFFF)
                         ],
                       ),
@@ -239,7 +253,7 @@ class _CategoriesState extends State<Categories> {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 11.6,
+                height: AppDimensions.height10(context) * 11.6,
               ),
               GestureDetector(
                 onTap: () {
@@ -256,9 +270,9 @@ class _CategoriesState extends State<Categories> {
                     circle_color2: 0xFFFAA960,
                     circle_border: 3.0,
                     circle_bordercolor: 0xFFFFFFFF,
-                    circle_height: AppDimensions.height10 * 10.0,
-                    circle_width: AppDimensions.height10 * 10.0,
-                    textfont: AppDimensions.height10 * 1.6,
+                    circle_height: AppDimensions.height10(context) * 10.0,
+                    circle_width: AppDimensions.height10(context) * 10.0,
+                    textfont: AppDimensions.height10(context) * 1.6,
                     textcolor: 0xFFFFFFFF),
               )
             ],

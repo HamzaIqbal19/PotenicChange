@@ -32,22 +32,23 @@ class _message_centerState extends State<message_center> {
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         // centerTitle: true,
-        leadingWidth: AppDimensions.height10 * 9.1,
+        leadingWidth: AppDimensions.height10(context) * 9.1,
         leading: options
             ? Center(
                 child: Container(
-                  margin: EdgeInsets.only(left: AppDimensions.height10 * 1.6),
+                  margin: EdgeInsets.only(
+                      left: AppDimensions.height10(context) * 1.6),
                   // color: Colors.amber,
                   child: SizedBox(
-                    width: AppDimensions.height10 * 7.5,
-                    height: AppDimensions.height10 * 2.4,
+                    width: AppDimensions.height10(context) * 7.5,
+                    height: AppDimensions.height10(context) * 2.4,
 
-                    // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.6),
+                    // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.6),
                     child: Text(
                       'Delete All',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
-                          height: AppDimensions.height10 * 0.16,
+                          fontSize: AppDimensions.height10(context) * 1.6,
+                          height: AppDimensions.height10(context) * 0.16,
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.underline,
                           color: const Color(0xFFFBFBFB)),
@@ -68,13 +69,13 @@ class _message_centerState extends State<message_center> {
                       }
                     },
                     child: SizedBox(
-                      width: AppDimensions.height10 * 5.8,
-                      height: AppDimensions.height10 * 2.4,
+                      width: AppDimensions.height10(context) * 5.8,
+                      height: AppDimensions.height10(context) * 2.4,
                       child: Text(
                         'Cancel',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
-                            height: AppDimensions.height10 * 0.16,
+                            fontSize: AppDimensions.height10(context) * 1.6,
+                            height: AppDimensions.height10(context) * 0.16,
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline,
                             // decorationThickness: 3,
@@ -88,8 +89,8 @@ class _message_centerState extends State<message_center> {
                     },
                     icon: Image.asset(
                       'assets/images/Close.png',
-                      width: AppDimensions.height10 * 2.6,
-                      height: AppDimensions.height10 * 2.6,
+                      width: AppDimensions.height10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
                     )),
           ),
@@ -109,14 +110,14 @@ class _message_centerState extends State<message_center> {
           child: Column(
             children: [
               SizedBox(
-                height: AppDimensions.height10 * 9.2,
+                height: AppDimensions.height10(context) * 9.2,
               ),
               Container(
-                width: AppDimensions.height10 * 7.6,
-                height: AppDimensions.height10 * 7.6,
+                width: AppDimensions.height10(context) * 7.6,
+                height: AppDimensions.height10(context) * 7.6,
                 padding: EdgeInsets.symmetric(
-                    vertical: AppDimensions.height10 * 0.85,
-                    horizontal: AppDimensions.height10 * 1.162),
+                    vertical: AppDimensions.height10(context) * 0.85,
+                    horizontal: AppDimensions.height10(context) * 1.162),
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color(0xFFFFFFFF),
@@ -127,33 +128,35 @@ class _message_centerState extends State<message_center> {
                 ),
                 child: Image.asset(
                   'assets/images/Vector Smart Object_1.png',
-                  width: AppDimensions.height10 * 5.275,
-                  height: AppDimensions.height10 * 5.991,
+                  width: AppDimensions.height10(context) * 5.275,
+                  height: AppDimensions.height10(context) * 5.991,
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 32.9,
-                height: AppDimensions.height10 * 3.6,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 1.9),
+                width: AppDimensions.height10(context) * 32.9,
+                height: AppDimensions.height10(context) * 3.6,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.9),
                 child: Center(
                   child: Text(
                     'Message centre',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 3.0,
+                        fontSize: AppDimensions.height10(context) * 3.0,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFFFBFBFB)),
                   ),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 28.4,
-                height: AppDimensions.height10 * 2.2,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                width: AppDimensions.height10(context) * 28.4,
+                height: AppDimensions.height10(context) * 2.2,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                 child: Center(
                   child: Text(
                     'All your notifications in one place',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xFFFBFBFB)),
                   ),
@@ -163,32 +166,33 @@ class _message_centerState extends State<message_center> {
                   ? Column(
                       children: [
                         Container(
-                          width: AppDimensions.height10 * 34.3,
-                          height: AppDimensions.height10 * 4.9,
+                          width: AppDimensions.height10(context) * 34.3,
+                          height: AppDimensions.height10(context) * 4.9,
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 10.1),
+                              top: AppDimensions.height10(context) * 10.1),
                           child: Center(
                             child: Text(
                               'No messages',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 3.0,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 3.0,
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xFFFBFBFB)),
                             ),
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 34.4,
-                          height: AppDimensions.height10 * 5.9,
+                          width: AppDimensions.height10(context) * 34.4,
+                          height: AppDimensions.height10(context) * 5.9,
                           //color: Colors.amber,
                           alignment: Alignment.topCenter,
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 0.2),
+                              top: AppDimensions.height10(context) * 0.2),
                           child: Text(
                             'You currently have no messages, your\nnew alerts will appear here.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFBFBFB)),
                           ),
@@ -198,11 +202,11 @@ class _message_centerState extends State<message_center> {
                   : Column(
                       children: [
                         SizedBox(
-                          height: AppDimensions.height10 * 1.2,
+                          height: AppDimensions.height10(context) * 1.2,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -220,11 +224,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_1
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -233,7 +241,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -249,11 +258,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.6,
+                          height: AppDimensions.height10(context) * 0.6,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -271,11 +280,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_2
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -284,7 +297,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -299,10 +313,10 @@ class _message_centerState extends State<message_center> {
                             ],
                           ),
                         ),
-                        SizedBox(height: AppDimensions.height10 * 0.6),
+                        SizedBox(height: AppDimensions.height10(context) * 0.6),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -320,11 +334,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_3
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -333,7 +351,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -349,11 +368,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.6,
+                          height: AppDimensions.height10(context) * 0.6,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -371,11 +390,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_4
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -384,7 +407,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -400,11 +424,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.60,
+                          height: AppDimensions.height10(context) * 0.60,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -422,11 +446,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_5
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -435,7 +463,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -451,11 +480,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.6,
+                          height: AppDimensions.height10(context) * 0.6,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -473,11 +502,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_6
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -486,7 +519,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -502,11 +536,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.6,
+                          height: AppDimensions.height10(context) * 0.6,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -524,11 +558,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_7
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -537,7 +575,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -554,11 +593,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.6,
+                          height: AppDimensions.height10(context) * 0.6,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -576,11 +615,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_8
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -589,7 +632,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -605,11 +649,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.6,
+                          height: AppDimensions.height10(context) * 0.6,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -627,11 +671,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_9
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -640,7 +688,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -656,11 +705,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.6,
+                          height: AppDimensions.height10(context) * 0.6,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -678,11 +727,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_10
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -691,7 +744,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -708,11 +762,11 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.6,
+                          height: AppDimensions.height10(context) * 0.6,
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 14.4,
-                          width: AppDimensions.height10 * 38.8,
+                          height: AppDimensions.height10(context) * 14.4,
+                          width: AppDimensions.height10(context) * 38.8,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -730,11 +784,15 @@ class _message_centerState extends State<message_center> {
                                         }
                                       },
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.3,
-                                        width: AppDimensions.height10 * 3.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.3,
+                                        width: AppDimensions.height10(context) *
+                                            3.3,
                                         margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.height10 * 1.0),
+                                            right: AppDimensions.height10(
+                                                    context) *
+                                                1.0),
                                         child: msg_11
                                             ? Image.asset(
                                                 'assets/images/Select.png')
@@ -743,7 +801,8 @@ class _message_centerState extends State<message_center> {
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.2,
                                                         color: const Color(
                                                             0xFFFFFFFF))),
@@ -759,7 +818,7 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 7.6,
+                          height: AppDimensions.height10(context) * 7.6,
                         )
                       ],
                     )
@@ -769,23 +828,23 @@ class _message_centerState extends State<message_center> {
       ),
       bottomNavigationBar: delete
           ? Container(
-              width: AppDimensions.height10 * 38.259,
-              height: AppDimensions.height10 * 9.707,
+              width: AppDimensions.height10(context) * 38.259,
+              height: AppDimensions.height10(context) * 9.707,
               margin: EdgeInsets.only(
-                  bottom: AppDimensions.height10 * 2.093,
-                  left: AppDimensions.height10 * 1.6,
-                  right: AppDimensions.height10 * 1.6),
+                  bottom: AppDimensions.height10(context) * 2.093,
+                  left: AppDimensions.height10(context) * 1.6,
+                  right: AppDimensions.height10(context) * 1.6),
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.withOpacity(0.4),
-                      spreadRadius: AppDimensions.height10 * 0.5,
-                      blurRadius: AppDimensions.height10 * 0.7,
+                      spreadRadius: AppDimensions.height10(context) * 0.5,
+                      blurRadius: AppDimensions.height10(context) * 0.7,
                       offset: const Offset(2, 3),
                     )
                   ],
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 2.0),
                   gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -794,42 +853,42 @@ class _message_centerState extends State<message_center> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    margin:
-                        EdgeInsets.only(left: AppDimensions.height10 * 1.261),
-                    width: AppDimensions.height10 * 4.437,
-                    height: AppDimensions.height10 * 4.437,
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 1.261),
+                    width: AppDimensions.height10(context) * 4.437,
+                    height: AppDimensions.height10(context) * 4.437,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image:
                                 AssetImage('assets/images/circle_tick.png'))),
                   ),
                   Container(
-                    width: AppDimensions.height10 * 6.9,
-                    height: AppDimensions.height10 * 3.6,
-                    margin:
-                        EdgeInsets.only(left: AppDimensions.height10 * 1.232),
+                    width: AppDimensions.height10(context) * 6.9,
+                    height: AppDimensions.height10(context) * 3.6,
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 1.232),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: AppDimensions.height10 * 4.6,
-                          height: AppDimensions.height10 * 1.4,
+                          width: AppDimensions.height10(context) * 4.6,
+                          height: AppDimensions.height10(context) * 1.4,
                           //   color: Colors.amber,
                           child: Text(
                             'Deleted',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.3,
+                                fontSize: AppDimensions.height10(context) * 1.3,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFFFFFFFF)),
                           ),
                         ),
                         SizedBox(
-                          width: AppDimensions.height10 * 6.9,
-                          height: AppDimensions.height10 * 2.2,
+                          width: AppDimensions.height10(context) * 6.9,
+                          height: AppDimensions.height10(context) * 2.2,
                           child: Text(
                             'Alerts',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFFFFFFFF)),
                           ),
@@ -838,21 +897,21 @@ class _message_centerState extends State<message_center> {
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10 * 8.1,
-                    height: AppDimensions.height10 * 6.0,
-                    margin:
-                        EdgeInsets.only(left: AppDimensions.height10 * 15.1),
+                    width: AppDimensions.height10(context) * 8.1,
+                    height: AppDimensions.height10(context) * 6.0,
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 15.1),
                     decoration: BoxDecoration(
                       border:
                           Border.all(color: const Color(0xFFFFFFFF), width: 1),
-                      borderRadius:
-                          BorderRadius.circular(AppDimensions.height10 * 2.0),
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 2.0),
                     ),
                     child: Center(
                       child: Text(
                         'Undo',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
+                            fontSize: AppDimensions.height10(context) * 1.8,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFFFFFFFF)),
                       ),
@@ -862,31 +921,31 @@ class _message_centerState extends State<message_center> {
               ),
             )
           : Container(
-              width: AppDimensions.height10 * 29.0,
+              width: AppDimensions.height10(context) * 29.0,
               height: options
-                  ? AppDimensions.height10 * 7.0
-                  : AppDimensions.height10 * 5.0,
+                  ? AppDimensions.height10(context) * 7.0
+                  : AppDimensions.height10(context) * 5.0,
               margin: options
                   ? const EdgeInsets.all(0)
                   : EdgeInsets.only(
-                      top: AppDimensions.height10 * 0.1,
-                      right: AppDimensions.height10 * 6.2,
-                      left: AppDimensions.height10 * 6.2,
-                      bottom: AppDimensions.height10 * 2.2),
+                      top: AppDimensions.height10(context) * 0.1,
+                      right: AppDimensions.height10(context) * 6.2,
+                      left: AppDimensions.height10(context) * 6.2,
+                      bottom: AppDimensions.height10(context) * 2.2),
               decoration: BoxDecoration(
                   boxShadow: [
                     options
                         ? BoxShadow(
                             color: const Color(0xFF000000).withOpacity(0.25),
-                            spreadRadius: AppDimensions.height10 * 0.5,
-                            blurRadius: AppDimensions.height10 * 0.7,
+                            spreadRadius: AppDimensions.height10(context) * 0.5,
+                            blurRadius: AppDimensions.height10(context) * 0.7,
                             offset: const Offset(2, 3),
                           )
                         : const BoxShadow()
                   ],
                   borderRadius: BorderRadius.circular(options
-                      ? AppDimensions.height10 * 0
-                      : AppDimensions.height10 * 5.0),
+                      ? AppDimensions.height10(context) * 0
+                      : AppDimensions.height10(context) * 5.0),
                   color: const Color(0xFFF5F5F5)),
               child: GestureDetector(
                 onTap: () {
@@ -902,44 +961,46 @@ class _message_centerState extends State<message_center> {
                             onTap: () => showDialog<String>(
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
-                                      width: AppDimensions.height10 * 27.0,
-                                      height: AppDimensions.height10 * 21.4,
+                                      width: AppDimensions.height10(context) *
+                                          27.0,
+                                      height: AppDimensions.height10(context) *
+                                          21.4,
                                       child: AlertDialog(
                                         shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10 * 1.4)),
+                                                AppDimensions.height10(
+                                                        context) *
+                                                    1.4)),
                                         contentPadding: EdgeInsets.zero,
                                         actionsPadding: EdgeInsets.zero,
                                         titlePadding: EdgeInsets.zero,
                                         title: Container(
                                             margin: EdgeInsets.only(
-                                                top: AppDimensions.height10 *
+                                                top: AppDimensions.height10(context) *
                                                     1.9,
-                                                right: AppDimensions.height10 *
+                                                right: AppDimensions.height10(context) *
                                                     1.6,
-                                                left: AppDimensions.height10 *
+                                                left: AppDimensions.height10(context) *
                                                     1.6,
-                                                bottom: AppDimensions.height10 *
-                                                    1.2),
+                                                bottom:
+                                                    AppDimensions.height10(context) *
+                                                        1.2),
                                             height:
-                                                AppDimensions.height10 * 4.4,
-                                            width:
-                                                AppDimensions.height10 * 23.8,
+                                                AppDimensions.height10(context) *
+                                                    4.4,
+                                            width: AppDimensions.height10(context) *
+                                                23.8,
                                             child: RichText(
                                                 textAlign: TextAlign.center,
                                                 text: TextSpan(
                                                     style: TextStyle(
                                                         fontFamily: 'laila',
-                                                        height: AppDimensions
-                                                                .height10 *
-                                                            0.15,
-                                                        fontSize: AppDimensions
-                                                                .height10 *
-                                                            1.7,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF000000)),
+                                                        height:
+                                                            AppDimensions.height10(context) *
+                                                                0.15,
+                                                        fontSize: AppDimensions.height10(context) * 1.7,
+                                                        fontWeight: FontWeight.w400,
+                                                        color: const Color(0xFF000000)),
                                                     children: const [
                                                       TextSpan(
                                                           text:
@@ -957,22 +1018,31 @@ class _message_centerState extends State<message_center> {
                                         content: Container(
                                           margin: EdgeInsets.only(
                                               bottom:
-                                                  AppDimensions.height10 * 1.5,
-                                              left:
-                                                  AppDimensions.height10 * 1.6,
-                                              right:
-                                                  AppDimensions.height10 * 1.6),
-                                          height: AppDimensions.height10 * 3.2,
-                                          width: AppDimensions.height10 * 23.8,
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      1.5,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              right: AppDimensions.height10(
+                                                      context) *
+                                                  1.6),
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.2,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  23.8,
                                           child: Text(
                                             "By clicking 'Yes' you confirm that this\nalert will be deleted. ",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: const Color(0XFF000000),
                                               // letterSpacing:
-                                              //     AppDimensions.height10 * 0.1,
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.3,
+                                              //     AppDimensions.height10(context) * 0.1,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.3,
                                               fontWeight: FontWeight.w400,
                                             ),
                                           ),
@@ -981,7 +1051,8 @@ class _message_centerState extends State<message_center> {
                                           Column(
                                             children: [
                                               SizedBox(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     0.1,
                                                 child: Divider(
                                                   color: const Color(0XFF3C3C43)
@@ -989,7 +1060,8 @@ class _message_centerState extends State<message_center> {
                                                 ),
                                               ),
                                               Container(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     4.2,
                                                 width: double.infinity,
                                                 color: const Color(0xFF007AFF),
@@ -1003,7 +1075,8 @@ class _message_centerState extends State<message_center> {
                                                         color: const Color(
                                                             0xFFFFFFFF),
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.7,
                                                         fontFamily: "Laila",
                                                         fontWeight:
@@ -1012,7 +1085,8 @@ class _message_centerState extends State<message_center> {
                                                 ),
                                               ),
                                               SizedBox(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     0.1,
                                                 child: Divider(
                                                   color: const Color(0XFF3C3C43)
@@ -1020,7 +1094,8 @@ class _message_centerState extends State<message_center> {
                                                 ),
                                               ),
                                               SizedBox(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     4.4,
                                                 width: double.infinity,
                                                 child: TextButton(
@@ -1035,7 +1110,8 @@ class _message_centerState extends State<message_center> {
                                                     'Yes',
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.7,
                                                         fontFamily: "Laila",
                                                         fontWeight:
@@ -1046,7 +1122,8 @@ class _message_centerState extends State<message_center> {
                                                 ),
                                               ),
                                               SizedBox(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     0.1,
                                                 child: Divider(
                                                   color: const Color(0XFF3C3C43)
@@ -1059,13 +1136,13 @@ class _message_centerState extends State<message_center> {
                                       ),
                                     )),
                             child: Container(
-                              width: AppDimensions.height10 * 10.1,
-                              height: AppDimensions.height10 * 5.0,
+                              width: AppDimensions.height10(context) * 10.1,
+                              height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0),
+                                  left: AppDimensions.height10(context) * 2.0),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10 * 5.0),
+                                      AppDimensions.height10(context) * 5.0),
                                   gradient: const LinearGradient(colors: [
                                     Color(0xFFFCC10D),
                                     Color(0xFFFDA210)
@@ -1073,7 +1150,8 @@ class _message_centerState extends State<message_center> {
                               child: Center(
                                 child: Text('Delete ',
                                     style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFFFFFFFF),
                                     )),
@@ -1081,14 +1159,15 @@ class _message_centerState extends State<message_center> {
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10 * 7.7,
-                            height: AppDimensions.height10 * 2.1,
+                            width: AppDimensions.height10(context) * 7.7,
+                            height: AppDimensions.height10(context) * 2.1,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10 * 2.0),
+                                right: AppDimensions.height10(context) * 2.0),
                             child: Center(
                               child: Text('10 selected',
                                   style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xFFFA9934),
                                   )),
@@ -1100,7 +1179,7 @@ class _message_centerState extends State<message_center> {
                         child: Text(
                           'Options',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFA9934)),
                         ),
@@ -1120,8 +1199,8 @@ class messages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height10 * 14.4,
-      width: AppDimensions.height10 * 34.5,
+      height: AppDimensions.height10(context) * 14.4,
+      width: AppDimensions.height10(context) * 34.5,
       decoration: const BoxDecoration(
           image: DecorationImage(
         image: AssetImage(
@@ -1136,26 +1215,27 @@ class messages extends StatelessWidget {
           alignment: const Alignment(1, -0.1),
           child: Image.asset(
             "assets/images/Vector Smart Object.png",
-            height: AppDimensions.height10 * 9.296,
-            width: AppDimensions.height10 * 4.16,
+            height: AppDimensions.height10(context) * 9.296,
+            width: AppDimensions.height10(context) * 4.16,
           ),
         ),
         Container(
           margin: EdgeInsets.only(
-            top: AppDimensions.height10 * 0.6,
+            top: AppDimensions.height10(context) * 0.6,
           ),
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10 * 31.1,
-                height: AppDimensions.height10 * 4.0,
-                margin: EdgeInsets.only(left: AppDimensions.height10 * 3.2),
+                width: AppDimensions.height10(context) * 31.1,
+                height: AppDimensions.height10(context) * 4.0,
+                margin: EdgeInsets.only(
+                    left: AppDimensions.height10(context) * 3.2),
                 child: Align(
                   alignment: const Alignment(-1, 0.6),
                   child: Text(
                     title,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10 * 1.6,
+                      fontSize: AppDimensions.height10(context) * 1.6,
                       fontWeight: FontWeight.w700,
                       color: const Color.fromRGBO(91, 116, 166, 1),
                     ),
@@ -1163,27 +1243,28 @@ class messages extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 5.245,
-                height: AppDimensions.height10 * 1.3,
-                margin: EdgeInsets.only(right: AppDimensions.height10 * 22.0),
+                width: AppDimensions.height10(context) * 5.245,
+                height: AppDimensions.height10(context) * 1.3,
+                margin: EdgeInsets.only(
+                    right: AppDimensions.height10(context) * 22.0),
                 child: const Divider(
                   thickness: 1,
                   color: Color.fromRGBO(91, 116, 166, 1),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 31.1,
-                // height: AppDimensions.height10 * 5.3,
+                width: AppDimensions.height10(context) * 31.1,
+                // height: AppDimensions.height10(context) * 5.3,
                 margin: EdgeInsets.only(
-                  left: AppDimensions.height10 * 3.4,
+                  left: AppDimensions.height10(context) * 3.4,
                 ),
                 child: Text(
                   body,
                   // textAlign: TextAlign.left,
 
                   style: TextStyle(
-                      height: AppDimensions.height10 * 0.15,
-                      fontSize: AppDimensions.height10 * 1.4,
+                      height: AppDimensions.height10(context) * 0.15,
+                      fontSize: AppDimensions.height10(context) * 1.4,
                       fontWeight: FontWeight.w400,
                       color: const Color.fromRGBO(91, 116, 166, 1)),
                 ),
@@ -1202,31 +1283,32 @@ void notifications_sheet(context) {
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-        top: Radius.circular(AppDimensions.height10 * 2.0),
+        top: Radius.circular(AppDimensions.height10(context) * 2.0),
       )),
       builder: ((context) => Container(
-            width: AppDimensions.height10 * 41.4,
-            height: AppDimensions.height10 * 57.6,
+            width: AppDimensions.height10(context) * 41.4,
+            height: AppDimensions.height10(context) * 57.6,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(AppDimensions.height10 * 2.0)),
+                    top:
+                        Radius.circular(AppDimensions.height10(context) * 2.0)),
                 color: const Color(0xFFF5F5F5)),
             child: Column(
               children: [
                 Container(
                   //color: Colors.amber,
-                  // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                  // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
                   alignment: const Alignment(1, 0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
                     },
                     child: Container(
-                      width: AppDimensions.height10 * 2.6,
-                      height: AppDimensions.height10 * 2.6,
+                      width: AppDimensions.height10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.6,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10 * 1.5,
-                          right: AppDimensions.height10 * 1.5),
+                          top: AppDimensions.height10(context) * 1.5,
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -1237,56 +1319,58 @@ void notifications_sheet(context) {
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 1.9,
-                      bottom: AppDimensions.height10 * 2.9),
+                      top: AppDimensions.height10(context) * 1.9,
+                      bottom: AppDimensions.height10(context) * 2.9),
                   child: Image.asset(
                     'assets/images/potenic__icon.png',
-                    width: AppDimensions.height10 * 8.202,
-                    height: AppDimensions.height10 * 11.2,
+                    width: AppDimensions.height10(context) * 8.202,
+                    height: AppDimensions.height10(context) * 11.2,
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10 * 22.7,
-                  height: AppDimensions.height10 * 3.6,
+                  width: AppDimensions.height10(context) * 22.7,
+                  height: AppDimensions.height10(context) * 3.6,
                   // color: Colors.amber,
                   alignment: Alignment.center,
-                  //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                  //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                   child: Text(
                     'Get Reminders',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 3.0,
-                        letterSpacing: AppDimensions.height10 * 0.2,
+                        fontSize: AppDimensions.height10(context) * 3.0,
+                        letterSpacing: AppDimensions.height10(context) * 0.2,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFF437296)),
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10 * 38.2,
-                  height: AppDimensions.height10 * 5.7,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.1),
+                  width: AppDimensions.height10(context) * 38.2,
+                  height: AppDimensions.height10(context) * 5.7,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.1),
                   child: Center(
                     child: Text(
                       'In order to build consistent behaviour,\nallow us to gently nudge you to remind you to do\nyour practices and offer helpful tips.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
-                          height: AppDimensions.height10 * 0.15,
-                          //letterSpacing: AppDimensions.height10 * 0.2,
+                          fontSize: AppDimensions.height10(context) * 1.6,
+                          height: AppDimensions.height10(context) * 0.15,
+                          //letterSpacing: AppDimensions.height10(context) * 0.2,
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFF437296)),
                     ),
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10 * 38.2,
-                  height: AppDimensions.height10 * 21.0,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.6),
+                  width: AppDimensions.height10(context) * 38.2,
+                  height: AppDimensions.height10(context) * 21.0,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.6),
                   decoration: BoxDecoration(
                       border: Border.all(
-                          width: AppDimensions.height10 * 0.1,
+                          width: AppDimensions.height10(context) * 0.1,
                           color: const Color(0xFFFBFBFB)),
-                      borderRadius:
-                          BorderRadius.circular(AppDimensions.height10 * 2.0),
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 2.0),
                       gradient: const LinearGradient(colors: [
                         Color(0xFFE8776D),
                         Color(0xFFEF939D),
@@ -1295,42 +1379,42 @@ void notifications_sheet(context) {
                   child: Column(
                     children: [
                       Container(
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 1.0),
                         child: Image.asset(
                           'assets/images/notifications.png',
-                          width: AppDimensions.height10 * 4.8,
-                          height: AppDimensions.height10 * 4.8,
+                          width: AppDimensions.height10(context) * 4.8,
+                          height: AppDimensions.height10(context) * 4.8,
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 34.5,
-                        height: AppDimensions.height10 * 5.1,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 1.4),
+                        width: AppDimensions.height10(context) * 34.5,
+                        height: AppDimensions.height10(context) * 5.1,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 1.4),
                         child: Center(
                             child: Text(
                           'We will check in with you to remind you about your\npractices. You would be able to customise your\nnotifications later in your Account Settings. ',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
-                              height: AppDimensions.height10 * 0.15,
-                              //letterSpacing: AppDimensions.height10 * 0.2,
+                              fontSize: AppDimensions.height10(context) * 1.4,
+                              height: AppDimensions.height10(context) * 0.15,
+                              //letterSpacing: AppDimensions.height10(context) * 0.2,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 34.3,
-                        height: AppDimensions.height10 * 5.0,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 1.7),
+                        width: AppDimensions.height10(context) * 34.3,
+                        height: AppDimensions.height10(context) * 5.0,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 1.7),
                         decoration: BoxDecoration(
                             border: Border.all(
-                                width: AppDimensions.height10 * 0.1,
+                                width: AppDimensions.height10(context) * 0.1,
                                 color: const Color(0xFFFBFBFB)),
                             borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 5.0),
+                                AppDimensions.height10(context) * 5.0),
                             gradient: const LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
@@ -1342,9 +1426,9 @@ void notifications_sheet(context) {
                           child: Text(
                             'Yes, remind Me',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.6,
-                                //  height: AppDimensions.height10 * 0.12,
-                                //letterSpacing: AppDimensions.height10 * 0.2,
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                //  height: AppDimensions.height10(context) * 0.12,
+                                //letterSpacing: AppDimensions.height10(context) * 0.2,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFFFFFF)),
                           ),

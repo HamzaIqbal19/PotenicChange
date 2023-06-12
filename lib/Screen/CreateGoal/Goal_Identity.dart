@@ -29,7 +29,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+          preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
           child: AppBar(
             elevation: 0,
             centerTitle: true,
@@ -40,8 +40,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 3,
-                  height: AppDimensions.height10 * 3,
+                  width: AppDimensions.height10(context) * 3,
+                  height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
@@ -62,8 +62,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 3.0,
-                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10(context) * 3.0,
+                    height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
@@ -95,20 +95,21 @@ class _Goal_IdentityState extends State<Goal_Identity> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
+                  padding: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
                       "Star Creation 4/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.5,
+                  height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
                   child: Center(
@@ -117,27 +118,27 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.2,
+                        fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.9,
+                  height: AppDimensions.height10(context) * 1.9,
                 ),
                 Container(
                     // color: Colors.blue,
-                    width: AppDimensions.height10 * 10.4,
-                    height: AppDimensions.height10 * 7.6,
+                    width: AppDimensions.height10(context) * 10.4,
+                    height: AppDimensions.height10(context) * 7.6,
                     padding: EdgeInsets.only(
-                        left: AppDimensions.height10 * 1.5,
-                        right: AppDimensions.height10 * 1.5),
+                        left: AppDimensions.height10(context) * 1.5,
+                        right: AppDimensions.height10(context) * 1.5),
                     child: Image.asset(
                       "assets/images/image3.png",
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.0,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
                   child: Center(
@@ -146,55 +147,55 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.8,
+                        fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.0,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 7.5,
-                  width: AppDimensions.height10 * 37.2,
+                  height: AppDimensions.height10(context) * 7.5,
+                  width: AppDimensions.height10(context) * 37.2,
                   child: Center(
                     child: Text(
                       "What positive statements can you think of \n to help you own your goal & your new \n identity?  ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.8,
+                          fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.4,
+                  height: AppDimensions.height10(context) * 3.4,
                 ),
                 Container(
-                  width: AppDimensions.height10 * 38.2,
-                  height: AppDimensions.height10 * 33.0,
+                  width: AppDimensions.height10(context) * 38.2,
+                  height: AppDimensions.height10(context) * 33.0,
                   child: Stack(children: [
                     Container(
-                        width: AppDimensions.height10 * 38.2,
-                        height: AppDimensions.height10 * 33.0,
+                        width: AppDimensions.height10(context) * 38.2,
+                        height: AppDimensions.height10(context) * 33.0,
                         padding: EdgeInsets.only(
-                            left: AppDimensions.height10 * 1.1,
-                            right: AppDimensions.height10 * 1.1),
+                            left: AppDimensions.height10(context) * 1.1,
+                            right: AppDimensions.height10(context) * 1.1),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             border: Border.all(
                                 color: Colors.white,
-                                width: AppDimensions.height10 * 0.2),
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(AppDimensions.height10 * 1.8))),
+                                width: AppDimensions.height10(context) * 0.2),
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                AppDimensions.height10(context) * 1.8))),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Center(
                               child: SizedBox(
-                                height: AppDimensions.height10 * 31.0,
-                                width: AppDimensions.height10 * 36.2,
+                                height: AppDimensions.height10(context) * 31.0,
+                                width: AppDimensions.height10(context) * 36.2,
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.vertical,
                                   child: Column(
@@ -219,16 +220,18 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                   length: 200,
                                                 )),
                                             SizedBox(
-                                              height:
-                                                  AppDimensions.height10 * 0.4,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.4,
                                             ),
                                             Container(
                                               padding: EdgeInsets.only(
-                                                  left: AppDimensions.height10 *
+                                                  left: AppDimensions.height10(
+                                                          context) *
                                                       2.0,
-                                                  right:
-                                                      AppDimensions.height10 *
-                                                          13.6),
+                                                  right: AppDimensions.height10(
+                                                          context) *
+                                                      13.6),
                                               child: Row(
                                                 children: [
                                                   Center(
@@ -240,7 +243,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                         color: const Color(
                                                             0xFF464646),
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.3,
                                                       ),
                                                     ),
@@ -254,7 +258,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                         color: const Color(
                                                             0xFF464646),
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.3,
                                                       ),
                                                     ),
@@ -263,8 +268,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height:
-                                                  AppDimensions.height10 * 0.9,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.9,
                                             ),
                                           ],
                                         )
@@ -286,8 +292,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         alignment: Alignment(0.01, 1.155),
                         //heightFactor: 0.5,
                         child: Container(
-                          height: AppDimensions.height10 * 4.7,
-                          width: AppDimensions.height10 * 4.7,
+                          height: AppDimensions.height10(context) * 4.7,
+                          width: AppDimensions.height10(context) * 4.7,
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             gradient: LinearGradient(
@@ -309,8 +315,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                   color: Colors.transparent,
                                   child: Image.asset(
                                     'assets/images/Addgoal.png',
-                                    height: AppDimensions.height10 * 4.7,
-                                    width: AppDimensions.height10 * 4.7,
+                                    height:
+                                        AppDimensions.height10(context) * 4.7,
+                                    width:
+                                        AppDimensions.height10(context) * 4.7,
                                   ),
                                 )),
                           ),
@@ -321,18 +329,18 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10 * 12.2,
+                        height: AppDimensions.height10(context) * 12.2,
                       )
                     : SizedBox(
-                        height: AppDimensions.height10 * 5.0,
+                        height: AppDimensions.height10(context) * 5.0,
                       ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                         // color: Colors.blue,
-                        width: AppDimensions.height10 * 5.0,
-                        height: AppDimensions.height10 * 5.0,
+                        width: AppDimensions.height10(context) * 5.0,
+                        height: AppDimensions.height10(context) * 5.0,
                         child: Image.asset(
                           "assets/images/Moreactions.png",
                           fit: BoxFit.contain,
@@ -347,8 +355,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         );
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 5,
-                        width: AppDimensions.height10 * 31.3,
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 31.3,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
@@ -364,7 +372,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             "Next",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -374,7 +382,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.5,
+                  height: AppDimensions.height10(context) * 2.5,
                 ),
                 Padding(
                     padding: EdgeInsets.only(

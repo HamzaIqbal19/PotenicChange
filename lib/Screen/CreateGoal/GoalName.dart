@@ -24,7 +24,7 @@ class _GoalNameState extends State<GoalName> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+          preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
           child: AppBar(
             elevation: 0,
             centerTitle: true,
@@ -35,8 +35,8 @@ class _GoalNameState extends State<GoalName> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 3,
-                  height: AppDimensions.height10 * 3,
+                  width: AppDimensions.height10(context) * 3,
+                  height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
@@ -56,27 +56,27 @@ class _GoalNameState extends State<GoalName> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 3.0,
-                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10(context) * 3.0,
+                    height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
                   onPressed: () => showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => Container(
-                      width: AppDimensions.height10 * 27.0,
-                      height: AppDimensions.height10 * 21.0,
+                      width: AppDimensions.height10(context) * 27.0,
+                      height: AppDimensions.height10(context) * 21.0,
                       child: AlertDialog(
                         contentPadding: EdgeInsets.zero,
                         actionsPadding: EdgeInsets.zero,
                         titlePadding: EdgeInsets.zero,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 1.4)),
+                                AppDimensions.height10(context) * 1.4)),
                         title: Container(
                           margin: EdgeInsets.only(
                               top: 19, right: 16, left: 16, bottom: 2),
-                          // height: AppDimensions.height10 * 2.2,
-                          width: AppDimensions.height10 * 23.8,
+                          // height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 23.8,
                           child: const Text(
                             "Exit onboarding?",
                             textAlign: TextAlign.center,
@@ -104,7 +104,7 @@ class _GoalNameState extends State<GoalName> {
                           Column(
                             children: [
                               SizedBox(
-                                height: AppDimensions.height10 * 0.1,
+                                height: AppDimensions.height10(context) * 0.1,
                                 child: Divider(
                                   color:
                                       const Color(0XFF3C3C43).withOpacity(0.29),
@@ -136,7 +136,7 @@ class _GoalNameState extends State<GoalName> {
                                 ),
                               ),
                               SizedBox(
-                                height: AppDimensions.height10 * 0.1,
+                                height: AppDimensions.height10(context) * 0.1,
                                 child: Divider(
                                   color:
                                       const Color(0XFF3C3C43).withOpacity(0.29),
@@ -167,7 +167,7 @@ class _GoalNameState extends State<GoalName> {
                                 ),
                               ),
                               SizedBox(
-                                height: AppDimensions.height10 * 0.1,
+                                height: AppDimensions.height10(context) * 0.1,
                                 child: Divider(
                                   color:
                                       const Color(0XFF3C3C43).withOpacity(0.29),
@@ -175,7 +175,7 @@ class _GoalNameState extends State<GoalName> {
                               ),
                               Container(
                                 height: 42,
-                                width: AppDimensions.height10 * 27.0,
+                                width: AppDimensions.height10(context) * 27.0,
                                 child: TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
@@ -217,20 +217,21 @@ class _GoalNameState extends State<GoalName> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
+                  padding: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
                       "Star Creation 2/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.5,
+                  height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
                   child: Center(
@@ -239,27 +240,27 @@ class _GoalNameState extends State<GoalName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.2,
+                        fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.9,
+                  height: AppDimensions.height10(context) * 1.9,
                 ),
                 Container(
                     // color: Colors.blue,
-                    width: AppDimensions.height10 * 10.4,
-                    height: AppDimensions.height10 * 7.6,
+                    width: AppDimensions.height10(context) * 10.4,
+                    height: AppDimensions.height10(context) * 7.6,
                     padding: EdgeInsets.only(
-                        left: AppDimensions.height10 * 1.5,
-                        right: AppDimensions.height10 * 1.5),
+                        left: AppDimensions.height10(context) * 1.5,
+                        right: AppDimensions.height10(context) * 1.5),
                     child: Image.asset(
                       "assets/images/image3.png",
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
-                  height: AppDimensions.height10 * 4.6,
+                  height: AppDimensions.height10(context) * 4.6,
                 ),
                 Container(
                   child: Center(
@@ -268,43 +269,43 @@ class _GoalNameState extends State<GoalName> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.8,
+                        fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.0,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 2.2,
-                  width: AppDimensions.height10 * 24.4,
+                  height: AppDimensions.height10(context) * 2.2,
+                  width: AppDimensions.height10(context) * 24.4,
                   child: Center(
                     child: Text(
                       "Enter the name of your goal ",
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.8,
+                          fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.4,
+                  height: AppDimensions.height10(context) * 3.4,
                 ),
                 Container(
-                  // height: AppDimensions.height10 * 10.5,
-                  width: AppDimensions.height10 * 36.0,
+                  // height: AppDimensions.height10(context) * 10.5,
+                  width: AppDimensions.height10(context) * 36.0,
                   // padding: EdgeInsets.only(
-                  //     //  top: AppDimensions.height10 * 2,
-                  //     // bottom: AppDimensions.height10 * 4.8,
-                  //     left: AppDimensions.height10 * 0.0,
-                  //     right: AppDimensions.height10 * 0.0),
+                  //     //  top: AppDimensions.height10(context) * 2,
+                  //     // bottom: AppDimensions.height10(context) * 4.8,
+                  //     left: AppDimensions.height10(context) * 0.0,
+                  //     right: AppDimensions.height10(context) * 0.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(AppDimensions.height10 * 1.8))),
+                      borderRadius: BorderRadius.all(Radius.circular(
+                          AppDimensions.height10(context) * 1.8))),
                   child: TextFormField(
                       maxLength: 50,
                       maxLines: null,
@@ -312,7 +313,7 @@ class _GoalNameState extends State<GoalName> {
 
                       // expands: true,
                       // style: TextStyle(
-                      //     fontSize: AppDimensions.height10 * 2.4,
+                      //     fontSize: AppDimensions.height10(context) * 2.4,
                       //     fontWeight: FontWeight.w500,
                       //     color: const Color(0xFFFA9934)),
                       decoration: InputDecoration(
@@ -322,7 +323,7 @@ class _GoalNameState extends State<GoalName> {
                           ),
                           hintText: "Control my anger",
                           hintStyle: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.4,
+                              fontSize: AppDimensions.height10(context) * 2.4,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFFFA9934)),
                           focusedBorder: const OutlineInputBorder(
@@ -333,16 +334,17 @@ class _GoalNameState extends State<GoalName> {
                                   BorderSide(color: Colors.transparent)))),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.5,
+                  height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  // width: AppDimensions.height10*12.3,
-                  width: AppDimensions.height10 * 34.7,
-                  margin: EdgeInsets.only(right: AppDimensions.height10 * 1.3),
+                  // width: AppDimensions.height10(context)*12.3,
+                  width: AppDimensions.height10(context) * 34.7,
+                  margin: EdgeInsets.only(
+                      right: AppDimensions.height10(context) * 1.3),
 
                   padding: EdgeInsets.only(
-                      left: AppDimensions.height10 * 0.1,
-                      right: AppDimensions.height10 * 20.1),
+                      left: AppDimensions.height10(context) * 0.1,
+                      right: AppDimensions.height10(context) * 20.1),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -353,7 +355,7 @@ class _GoalNameState extends State<GoalName> {
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.4,
                           ),
                         ),
                       ),
@@ -363,7 +365,7 @@ class _GoalNameState extends State<GoalName> {
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.4,
                           ),
                         ),
                       ),
@@ -371,37 +373,38 @@ class _GoalNameState extends State<GoalName> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.1,
+                  height: AppDimensions.height10(context) * 0.1,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 4.2,
-                  width: AppDimensions.height10 * 34.7,
-                  margin: EdgeInsets.only(right: AppDimensions.height10 * 1.3),
+                  height: AppDimensions.height10(context) * 4.2,
+                  width: AppDimensions.height10(context) * 34.7,
+                  margin: EdgeInsets.only(
+                      right: AppDimensions.height10(context) * 1.3),
                   child: Center(
                     child: Text(
                       "You can change the name of your goal later by going into your Dashboard.  ",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.6,
+                        fontSize: AppDimensions.height10(context) * 1.6,
                       ),
                     ),
                   ),
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10 * 26.3,
+                        height: AppDimensions.height10(context) * 26.3,
                       )
                     : SizedBox(
-                        height: AppDimensions.height10 * 9.6,
+                        height: AppDimensions.height10(context) * 9.6,
                       ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                         // color: Colors.blue,
-                        width: AppDimensions.height10 * 5.0,
-                        height: AppDimensions.height10 * 5.0,
+                        width: AppDimensions.height10(context) * 5.0,
+                        height: AppDimensions.height10(context) * 5.0,
                         child: GestureDetector(
                           onTap: () {
                             signupSheet(context, "Sign up / login", "login");
@@ -421,8 +424,8 @@ class _GoalNameState extends State<GoalName> {
                         );
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 5,
-                        width: AppDimensions.height10 * 31.3,
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 31.3,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
@@ -438,7 +441,7 @@ class _GoalNameState extends State<GoalName> {
                             "Next",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -448,7 +451,7 @@ class _GoalNameState extends State<GoalName> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.5,
+                  height: AppDimensions.height10(context) * 2.5,
                 ),
                 Padding(
                     padding: EdgeInsets.only(

@@ -18,17 +18,17 @@ class CircularFormation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: AppDimensions.height10 * 15.0,
-      height: AppDimensions.height10 * 15.0,
+      width: AppDimensions.height10(context) * 15.0,
+      height: AppDimensions.height10(context) * 15.0,
       child: CustomPaint(
         painter: CircularFormationPainter(
           circleColor: Colors.transparent,
           outerCircleColors: outerCircleColors,
         ),
         child: Container(
-          width: AppDimensions.height10 * 13.1,
-          height: AppDimensions.height10 * 13.1,
-          //  margin: EdgeInsets.only(top: AppDimensions.height10 * 5.1),
+          width: AppDimensions.height10(context) * 13.1,
+          height: AppDimensions.height10(context) * 13.1,
+          //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.1),
           decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(

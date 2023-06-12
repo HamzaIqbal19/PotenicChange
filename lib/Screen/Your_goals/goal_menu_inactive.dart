@@ -43,8 +43,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                   },
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             ),
@@ -63,19 +63,19 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
             children: [
               Container(
                 // color: Colors.amber,
-                //width: AppDimensions.height10 * 17.1,
-                height: AppDimensions.height10 * 2.2,
+                //width: AppDimensions.height10(context) * 17.1,
+                height: AppDimensions.height10(context) * 2.2,
                 margin: EdgeInsets.only(
-                  top: AppDimensions.height10 * 5.2,
-                  // left: AppDimensions.height10 * 12.2,
-                  // right: AppDimensions.height10 * 12.1
+                  top: AppDimensions.height10(context) * 5.2,
+                  // left: AppDimensions.height10(context) * 12.2,
+                  // right: AppDimensions.height10(context) * 12.1
                 ),
                 child: Center(
                   child: Text(
                     'Goal Menu',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xffffffff)),
                   ),
@@ -83,17 +83,17 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               ),
               Container(
                 // color: Colors.amber,
-                width: AppDimensions.height10 * 17.1,
-                height: AppDimensions.height10 * 2.4,
+                width: AppDimensions.height10(context) * 17.1,
+                height: AppDimensions.height10(context) * 2.4,
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 0.5,
-                    left: AppDimensions.height10 * 12.2,
-                    right: AppDimensions.height10 * 12.1),
+                    top: AppDimensions.height10(context) * 0.5,
+                    left: AppDimensions.height10(context) * 12.2,
+                    right: AppDimensions.height10(context) * 12.1),
                 child: Text(
                   'Control my anger',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.0,
+                      fontSize: AppDimensions.height10(context) * 2.0,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xffffffff)),
                 ),
@@ -119,9 +119,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           ))));
                 },
                 child: Container(
-                  width: AppDimensions.height10 * 8.39,
-                  height: AppDimensions.height10 * 9.3,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.03),
+                  width: AppDimensions.height10(context) * 8.39,
+                  height: AppDimensions.height10(context) * 9.3,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 2.03),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                     image: AssetImage('assets/images/orange_flair.png'),
@@ -130,12 +131,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 37.4,
-                height: AppDimensions.height10 * 14.7,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.81),
+                width: AppDimensions.height10(context) * 37.4,
+                height: AppDimensions.height10(context) * 14.7,
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 4.81),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 2.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
                     color: const Color(0xFFF5F5F5)),
                 child: Stack(
                   children: [
@@ -153,12 +155,12 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         print(goal_level);
                       },
                       child: Container(
-                        width: AppDimensions.height10 * 37.4,
-                        height: AppDimensions.height10 * 12.0,
+                        width: AppDimensions.height10(context) * 37.4,
+                        height: AppDimensions.height10(context) * 12.0,
                         decoration: widget.premium
                             ? BoxDecoration(
                                 borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10 * 2.0),
+                                    AppDimensions.height10(context) * 2.0),
                                 image: const DecorationImage(
                                   image: AssetImage(
                                       'assets/images/Rectangle 192.png'),
@@ -166,7 +168,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 ))
                             : BoxDecoration(
                                 borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10 * 2.0),
+                                    AppDimensions.height10(context) * 2.0),
                                 gradient: LinearGradient(colors: [
                                   const Color(0xFFFF7975).withOpacity(0.8),
                                   const Color(0xFFF9DCC0).withOpacity(0)
@@ -183,13 +185,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               },
                               child: Container(
                                 width: goal_level == 2
-                                    ? AppDimensions.height10 * 10.135
-                                    : AppDimensions.height10 * 10.1,
+                                    ? AppDimensions.height10(context) * 10.135
+                                    : AppDimensions.height10(context) * 10.1,
                                 height: goal_level == 2
-                                    ? AppDimensions.height10 * 10.135
-                                    : AppDimensions.height10 * 10.1,
+                                    ? AppDimensions.height10(context) * 10.135
+                                    : AppDimensions.height10(context) * 10.1,
                                 margin: EdgeInsets.only(
-                                    right: AppDimensions.height10 * 0.6),
+                                    right:
+                                        AppDimensions.height10(context) * 0.6),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
@@ -214,9 +217,14 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     style: TextStyle(
                                         fontSize: widget.premium
                                             ? goal_level == 0
-                                                ? AppDimensions.height10 * 2.8
-                                                : AppDimensions.height10 * 2.0
-                                            : AppDimensions.height10 * 2.8,
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    2.8
+                                                : AppDimensions.height10(
+                                                        context) *
+                                                    2.0
+                                            : AppDimensions.height10(context) *
+                                                2.8,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFF464646)),
                                   ),
@@ -224,21 +232,23 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10 * 20.9,
-                              height: AppDimensions.height10 * 9.1,
+                              width: AppDimensions.height10(context) * 20.9,
+                              height: AppDimensions.height10(context) * 9.1,
                               child: Column(
                                 children: [
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Container(
-                                      // width: AppDimensions.height10 * 16.5,
-                                      height: AppDimensions.height10 * 1.9,
+                                      // width: AppDimensions.height10(context) * 16.5,
+                                      height:
+                                          AppDimensions.height10(context) * 1.9,
 
                                       child: Text(
                                         'Goal level evaluation',
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.7,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.7,
                                             fontWeight: FontWeight.w700,
                                             color: widget.premium
                                                 ? const Color(0xFFFFFFFF)
@@ -249,14 +259,16 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Container(
-                                      // width: AppDimensions.height10 * 9.5,
-                                      height: AppDimensions.height10 * 2.2,
+                                      // width: AppDimensions.height10(context) * 9.5,
+                                      height:
+                                          AppDimensions.height10(context) * 2.2,
 
                                       child: Text(
                                         'for 01 FEB 23!',
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.5,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.5,
                                             fontWeight: FontWeight.w500,
                                             color: widget.premium
                                                 ? const Color(0xFFFFFFFF)
@@ -265,8 +277,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     ),
                                   ),
                                   Container(
-                                    width: AppDimensions.height10 * 20.9,
-                                    height: AppDimensions.height10 * 5,
+                                    width:
+                                        AppDimensions.height10(context) * 20.9,
+                                    height: AppDimensions.height10(context) * 5,
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       widget.premium
@@ -274,7 +287,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           : 'Only available to Premium\nCustomers',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.5,
+                                              AppDimensions.height10(context) *
+                                                  1.5,
                                           fontWeight: FontWeight.w400,
                                           color: widget.premium
                                               ? const Color(0xFFFFFFFF)
@@ -285,17 +299,18 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               ),
                             ),
                             Container(
-                                width: AppDimensions.height10 * 2.4,
-                                height: AppDimensions.height10 * 1.31,
+                                width: AppDimensions.height10(context) * 2.4,
+                                height: AppDimensions.height10(context) * 1.31,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 0.8),
+                                    left:
+                                        AppDimensions.height10(context) * 0.8),
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
                                     'assets/images/BTN Back.png',
                                     color: const Color(0xFFFFFFFF),
-                                    //width: AppDimensions.height10 * 2.6,
-                                    //height: AppDimensions.height10 * 2.6,
+                                    //width: AppDimensions.height10(context) * 2.6,
+                                    //height: AppDimensions.height10(context) * 2.6,
                                     fit: BoxFit.cover,
                                   ),
                                 )),
@@ -306,28 +321,31 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     Align(
                       alignment: const Alignment(-0.8, 0.875),
                       child: Container(
-                        width: AppDimensions.height10 * 18.5,
-                        height: AppDimensions.height10 * 1.6,
+                        width: AppDimensions.height10(context) * 18.5,
+                        height: AppDimensions.height10(context) * 1.6,
                         child: Row(
                           children: [
                             Text(
                               'Next score needed in ',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.3,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.3,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff464646)),
                             ),
                             Text(
                               '-00',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.3,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.3,
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xff464646)),
                             ),
                             Text(
                               ' days',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.3,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.3,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff464646)),
                             ),
@@ -340,21 +358,23 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         : Align(
                             alignment: const Alignment(-0.975, -1.275),
                             child: Container(
-                              width: AppDimensions.height10 * 11.9,
-                              height: AppDimensions.height10 * 2.9,
+                              width: AppDimensions.height10(context) * 11.9,
+                              height: AppDimensions.height10(context) * 2.9,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10 * 2.0),
+                                      AppDimensions.height10(context) * 2.0),
                                   color: const Color(0xFFFFFFFF)),
                               child: Container(
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 0.8,
-                                    top: AppDimensions.height10 * 0.5,
-                                    bottom: AppDimensions.height10 * 0.5),
+                                    left: AppDimensions.height10(context) * 0.8,
+                                    top: AppDimensions.height10(context) * 0.5,
+                                    bottom:
+                                        AppDimensions.height10(context) * 0.5),
                                 child: Text(
                                   'Score needed!',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFF646464)),
                                 ),
@@ -385,19 +405,20 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           )));
                 },
                 child: Container(
-                  width: AppDimensions.height10 * 37.4,
-                  height: AppDimensions.height10 * 6.0,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                  width: AppDimensions.height10(context) * 37.4,
+                  height: AppDimensions.height10(context) * 6.0,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.0),
                   padding: EdgeInsets.only(
-                      left: AppDimensions.height10 * 2.0,
-                      right: AppDimensions.height10 * 1.9),
+                      left: AppDimensions.height10(context) * 2.0,
+                      right: AppDimensions.height10(context) * 1.9),
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 2.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
                     color: const Color(0xFFF5F5F5),
                     border: Border.all(
                         color: const Color(0xFFFFFFFF),
-                        width: AppDimensions.height10 * 0.1),
+                        width: AppDimensions.height10(context) * 0.1),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -408,7 +429,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             Text(
                               'This goal is ',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: widget.isActive
                                       ? const Color(0xFF156F6D)
@@ -418,14 +440,18 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 ? Text(
                                     'Active',
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.8,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
                                         fontWeight: FontWeight.w700,
                                         color: const Color(0xFF156F6D)),
                                   )
                                 : Text(
                                     'Inactive',
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.8,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
                                         fontWeight: FontWeight.w700,
                                         color: const Color(0xFFDE7A11)),
                                   )
@@ -433,13 +459,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 3.6,
-                        height: AppDimensions.height10 * 2.2,
+                        width: AppDimensions.height10(context) * 3.6,
+                        height: AppDimensions.height10(context) * 2.2,
                         child: Center(
                           child: Text(
                             'View',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.4,
                                 fontWeight: FontWeight.w700,
                                 color: const Color(0xFF437296),
                                 decoration: TextDecoration.underline),
@@ -452,16 +478,17 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               ),
               Container(
                 width: double.infinity,
-                height: AppDimensions.height10 * 0.1,
+                height: AppDimensions.height10(context) * 0.1,
                 color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               ),
               widget.goal_evaluation
                   ? Container(
-                      width: AppDimensions.height10 * 45.4,
+                      width: AppDimensions.height10(context) * 45.4,
                       margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 3.0,
-                        //  left: AppDimensions.height10 * 2.6
+                        top: AppDimensions.height10(context) * 3.0,
+                        //  left: AppDimensions.height10(context) * 2.6
                       ),
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -477,10 +504,11 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     )));
                               },
                               child: Container(
-                                width: AppDimensions.height10 * 13.8,
-                                height: AppDimensions.height10 * 13.8,
+                                width: AppDimensions.height10(context) * 13.8,
+                                height: AppDimensions.height10(context) * 13.8,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 2.6),
+                                    left:
+                                        AppDimensions.height10(context) * 2.6),
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                   image: AssetImage(
@@ -491,7 +519,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   child: Text(
                                     'Meditation',
                                     style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xFFFFFFFF),
                                     ),
@@ -500,10 +529,11 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               ),
                             ),
                             Container(
-                              height: AppDimensions.height10 * 13.8,
-                              width: AppDimensions.height10 * 13.8,
+                              height: AppDimensions.height10(context) * 13.8,
+                              width: AppDimensions.height10(context) * 13.8,
                               margin: EdgeInsets.symmetric(
-                                  horizontal: AppDimensions.height10 * 2.0),
+                                  horizontal:
+                                      AppDimensions.height10(context) * 2.0),
                               decoration: const BoxDecoration(
                                   //color: Colors.amber,
                                   image: DecorationImage(
@@ -515,16 +545,17 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 'Count\ndown',
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w500),
                                 textAlign: TextAlign.center,
                               )),
                             ),
                             Container(
-                              height: AppDimensions.height10 * 13.8,
-                              width: AppDimensions.height10 * 13.8,
+                              height: AppDimensions.height10(context) * 13.8,
+                              width: AppDimensions.height10(context) * 13.8,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 4.0),
+                                  right: AppDimensions.height10(context) * 4.0),
                               decoration: const BoxDecoration(
                                   //color: Colors.amber,
                                   image: DecorationImage(
@@ -537,7 +568,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w500),
                               )),
                             ),
@@ -555,10 +587,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             )));
                       },
                       child: Container(
-                        width: AppDimensions.height10 * 13.8,
-                        height: AppDimensions.height10 * 13.8,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                        width: AppDimensions.height10(context) * 13.8,
+                        height: AppDimensions.height10(context) * 13.8,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 3.0),
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                           image: AssetImage('assets/images/Ellipse 158.png'),
@@ -568,7 +600,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           child: Text(
                             'Meditation',
                             style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.8,
+                              fontSize: AppDimensions.height10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFFFFFFFF),
                             ),
@@ -578,55 +610,57 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     ),
               Container(
                 width: double.infinity,
-                height: AppDimensions.height10 * 0.1,
+                height: AppDimensions.height10(context) * 0.1,
                 color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.2),
               ),
               Container(
-                width: AppDimensions.height10 * 36.0,
-                height: AppDimensions.height10 * 20.0,
+                width: AppDimensions.height10(context) * 36.0,
+                height: AppDimensions.height10(context) * 20.0,
                 margin: EdgeInsets.only(
-                  top: AppDimensions.height10 * 2.0,
-                  //bottom: AppDimensions.height10 * 8.4
+                  top: AppDimensions.height10(context) * 2.0,
+                  //bottom: AppDimensions.height10(context) * 8.4
                 ),
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 36.0,
-                      height: AppDimensions.height10 * 6.0,
+                      width: AppDimensions.height10(context) * 36.0,
+                      height: AppDimensions.height10(context) * 6.0,
                       decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0),
                         color: const Color(0xFFFFFFFF),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 18.5,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 18.5,
+                            height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.99),
+                                left: AppDimensions.height10(context) * 1.99),
                             child: Text(
                               'Progress report  (00)',
                               style: TextStyle(
                                 color: const Color(0xff646464),
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
                           Container(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.39,
+                              width: AppDimensions.height10(context) * 2.4,
+                              height: AppDimensions.height10(context) * 1.39,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 2.391),
+                                  right:
+                                      AppDimensions.height10(context) * 2.391),
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
                                   'assets/images/BTN Back.png',
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
+                                  //width: AppDimensions.height10(context) * 2.6,
+                                  //height: AppDimensions.height10(context) * 2.6,
                                   fit: BoxFit.cover,
                                 ),
                               ))
@@ -635,13 +669,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     ),
                     GestureDetector(
                       child: Container(
-                        width: AppDimensions.height10 * 36.0,
-                        height: AppDimensions.height10 * 6.0,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                        width: AppDimensions.height10(context) * 36.0,
+                        height: AppDimensions.height10(context) * 6.0,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 1.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0),
+                              AppDimensions.height10(context) * 2.0),
                           color: widget.premium
                               ? const Color(0xFFFFFFFF)
                               : const Color(0xFFFFFFFF).withOpacity(0.5),
@@ -650,32 +684,34 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: AppDimensions.height10 * 19.2,
-                              height: AppDimensions.height10 * 2.2,
+                              width: AppDimensions.height10(context) * 19.2,
+                              height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 1.99),
+                                  left: AppDimensions.height10(context) * 1.99),
                               child: Text(
                                 widget.premium
                                     ? 'Timeline'
                                     : 'Timeline (Premium only)',
                                 style: TextStyle(
                                   color: const Color(0xff646464),
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
                             Container(
-                                width: AppDimensions.height10 * 2.4,
-                                height: AppDimensions.height10 * 1.39,
+                                width: AppDimensions.height10(context) * 2.4,
+                                height: AppDimensions.height10(context) * 1.39,
                                 margin: EdgeInsets.only(
-                                    right: AppDimensions.height10 * 2.391),
+                                    right: AppDimensions.height10(context) *
+                                        2.391),
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
                                     'assets/images/BTN Back.png',
-                                    //width: AppDimensions.height10 * 2.6,
-                                    //height: AppDimensions.height10 * 2.6,
+                                    //width: AppDimensions.height10(context) * 2.6,
+                                    //height: AppDimensions.height10(context) * 2.6,
                                     fit: BoxFit.cover,
                                   ),
                                 ))
@@ -689,43 +725,45 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             context, FadePageRoute(page: const StarReview()));
                       },
                       child: Container(
-                        width: AppDimensions.height10 * 36.0,
-                        height: AppDimensions.height10 * 6.0,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 1.0),
+                        width: AppDimensions.height10(context) * 36.0,
+                        height: AppDimensions.height10(context) * 6.0,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 1.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0),
+                              AppDimensions.height10(context) * 2.0),
                           color: const Color(0xFFFFFFFF),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: AppDimensions.height10 * 18.5,
-                              height: AppDimensions.height10 * 2.2,
+                              width: AppDimensions.height10(context) * 18.5,
+                              height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 1.99),
+                                  left: AppDimensions.height10(context) * 1.99),
                               child: Text(
                                 'Goal details',
                                 style: TextStyle(
                                   color: const Color(0xff646464),
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
                             Container(
-                                width: AppDimensions.height10 * 2.4,
-                                height: AppDimensions.height10 * 1.39,
+                                width: AppDimensions.height10(context) * 2.4,
+                                height: AppDimensions.height10(context) * 1.39,
                                 margin: EdgeInsets.only(
-                                    right: AppDimensions.height10 * 2.391),
+                                    right: AppDimensions.height10(context) *
+                                        2.391),
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
                                     'assets/images/BTN Back.png',
-                                    //width: AppDimensions.height10 * 2.6,
-                                    //height: AppDimensions.height10 * 2.6,
+                                    //width: AppDimensions.height10(context) * 2.6,
+                                    //height: AppDimensions.height10(context) * 2.6,
                                     fit: BoxFit.cover,
                                   ),
                                 ))
@@ -738,18 +776,18 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               ),
               widget.goal_evaluation
                   ? Container(
-                      width: AppDimensions.height10 * 17.0,
-                      height: AppDimensions.height10 * 0.5,
+                      width: AppDimensions.height10(context) * 17.0,
+                      height: AppDimensions.height10(context) * 0.5,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10 * 14.1,
-                          bottom: AppDimensions.height10 * 1.0),
+                          top: AppDimensions.height10(context) * 14.1,
+                          bottom: AppDimensions.height10(context) * 1.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0),
+                              AppDimensions.height10(context) * 2.0),
                           color: const Color(0xFFFFFFFF).withOpacity(0.3)),
                     )
                   : SizedBox(
-                      height: AppDimensions.height10 * 8.4,
+                      height: AppDimensions.height10(context) * 8.4,
                     ),
             ],
           ),

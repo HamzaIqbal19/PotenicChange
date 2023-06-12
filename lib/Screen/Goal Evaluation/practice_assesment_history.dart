@@ -20,8 +20,8 @@ class practice_assesment extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.png',
-                width: AppDimensions.height10 * 2.6,
-                height: AppDimensions.height10 * 2.6,
+                width: AppDimensions.height10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
         ),
@@ -31,8 +31,8 @@ class practice_assesment extends StatelessWidget {
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           )
@@ -51,9 +51,10 @@ class practice_assesment extends StatelessWidget {
             child: Column(
           children: [
             Container(
-              // width: AppDimensions.height10 * 27.9,
+              // width: AppDimensions.height10(context) * 27.9,
               // alignment: Alignment.center,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 5.2),
               child: const Text(
                 'Practice Assessment History',
                 style: TextStyle(
@@ -63,9 +64,10 @@ class practice_assesment extends StatelessWidget {
               ),
             ),
             Container(
-              width: AppDimensions.height10 * 41.3,
-              height: AppDimensions.height10 * 22.9,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 4.5),
+              width: AppDimensions.height10(context) * 41.3,
+              height: AppDimensions.height10(context) * 22.9,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 4.5),
               child: Stack(children: [
                 Align(
                   alignment: const Alignment(1, -1.3),
@@ -73,54 +75,59 @@ class practice_assesment extends StatelessWidget {
                       onPressed: () {},
                       icon: Image.asset(
                         'assets/images/ic_info_outline.png',
-                        height: AppDimensions.height10 * 3.0,
-                        width: AppDimensions.height10 * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
+                        width: AppDimensions.height10(context) * 3.0,
                       )),
                 ),
                 Align(
                   alignment: const Alignment(0, -1),
                   child: SizedBox(
-                    width: AppDimensions.height10 * 36.0,
-                    height: AppDimensions.height10 * 24.7,
+                    width: AppDimensions.height10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 24.7,
                     child: Column(
                       children: [
                         Container(
-                          height: AppDimensions.height10 * 5.9,
-                          width: AppDimensions.height10 * 36.0,
+                          height: AppDimensions.height10(context) * 5.9,
+                          width: AppDimensions.height10(context) * 36.0,
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 1.2),
+                              bottom: AppDimensions.height10(context) * 1.2),
                           child: Column(children: [
                             SizedBox(
-                              height: AppDimensions.height10 * 2.1,
+                              height: AppDimensions.height10(context) * 2.1,
                               child: Text(
                                 'Practice Assessment',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xfff5f5f5)),
                               ),
                             ),
                             SizedBox(
-                              height: AppDimensions.height10 * 1.7,
+                              height: AppDimensions.height10(context) * 1.7,
                               child: Text(
                                 'Here is your latest 20 active day evaluation.',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xfff5f5f5)),
                               ),
                             ),
                             Container(
-                              height: AppDimensions.height10 * 1.7,
+                              height: AppDimensions.height10(context) * 1.7,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 0.3),
+                                  top: AppDimensions.height10(context) * 0.3),
                               child: RichText(
                                   text: TextSpan(
                                       style: TextStyle(
                                           fontFamily: 'laila',
-                                          height: AppDimensions.height10 * 0.15,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  0.15,
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xfff5f5f5)),
                                       children: const [
@@ -137,7 +144,8 @@ class practice_assesment extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10 * 1.2),
+                                  bottom:
+                                      AppDimensions.height10(context) * 1.2),
                               child: const button_feilds(
                                 feild_text: 'Progress report',
                                 icon_viible: true,
@@ -167,14 +175,15 @@ class practice_assesment extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: AppDimensions.height10 * 0.1,
+              height: AppDimensions.height10(context) * 0.1,
               color: const Color(0xFFFFFFFF).withOpacity(0.5),
-              // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+              // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
             ),
             Container(
-              width: AppDimensions.height10 * 41.3,
-              height: AppDimensions.height10 * 22.9,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+              width: AppDimensions.height10(context) * 41.3,
+              height: AppDimensions.height10(context) * 22.9,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               child: Stack(children: [
                 Align(
                   alignment: const Alignment(0.9, -1.3),
@@ -182,40 +191,42 @@ class practice_assesment extends StatelessWidget {
                       onPressed: () {},
                       icon: Image.asset(
                         'assets/images/ic_info_outline.png',
-                        height: AppDimensions.height10 * 3.0,
-                        width: AppDimensions.height10 * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
+                        width: AppDimensions.height10(context) * 3.0,
                       )),
                 ),
                 Align(
                   alignment: const Alignment(0, -1),
                   child: SizedBox(
-                    width: AppDimensions.height10 * 36.0,
-                    height: AppDimensions.height10 * 24.7,
+                    width: AppDimensions.height10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 24.7,
                     child: Column(
                       children: [
                         Container(
-                          height: AppDimensions.height10 * 5.9,
-                          width: AppDimensions.height10 * 36.0,
+                          height: AppDimensions.height10(context) * 5.9,
+                          width: AppDimensions.height10(context) * 36.0,
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 1.2),
+                              bottom: AppDimensions.height10(context) * 1.2),
                           child: Column(children: [
                             SizedBox(
-                              height: AppDimensions.height10 * 2.1,
+                              height: AppDimensions.height10(context) * 2.1,
                               child: Text(
                                 'Practice Assessment',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xfff5f5f5)),
                               ),
                             ),
                             SizedBox(
-                              height: AppDimensions.height10 * 3.4,
+                              height: AppDimensions.height10(context) * 3.4,
                               child: Text(
                                 'Here is your 20 active day evaluation\nfor periods DD/MMM/YY to DD/MMM/YY.',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xfff5f5f5)),
                               ),
@@ -226,7 +237,8 @@ class practice_assesment extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10 * 1.2),
+                                  bottom:
+                                      AppDimensions.height10(context) * 1.2),
                               child: const button_feilds(
                                 feild_text: 'Progress report',
                                 icon_viible: true,
@@ -256,14 +268,15 @@ class practice_assesment extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: AppDimensions.height10 * 0.1,
+              height: AppDimensions.height10(context) * 0.1,
               color: const Color(0xFFFFFFFF).withOpacity(0.5),
-              // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+              // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
             ),
             Container(
-              width: AppDimensions.height10 * 41.3,
-              height: AppDimensions.height10 * 22.9,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+              width: AppDimensions.height10(context) * 41.3,
+              height: AppDimensions.height10(context) * 22.9,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               child: Stack(children: [
                 Align(
                   alignment: const Alignment(0.9, -1.3),
@@ -271,40 +284,42 @@ class practice_assesment extends StatelessWidget {
                       onPressed: () {},
                       icon: Image.asset(
                         'assets/images/ic_info_outline.png',
-                        height: AppDimensions.height10 * 3.0,
-                        width: AppDimensions.height10 * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
+                        width: AppDimensions.height10(context) * 3.0,
                       )),
                 ),
                 Align(
                   alignment: const Alignment(0, -1),
                   child: SizedBox(
-                    width: AppDimensions.height10 * 36.0,
-                    height: AppDimensions.height10 * 24.7,
+                    width: AppDimensions.height10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 24.7,
                     child: Column(
                       children: [
                         Container(
-                          height: AppDimensions.height10 * 5.9,
-                          width: AppDimensions.height10 * 36.0,
+                          height: AppDimensions.height10(context) * 5.9,
+                          width: AppDimensions.height10(context) * 36.0,
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 1.2),
+                              bottom: AppDimensions.height10(context) * 1.2),
                           child: Column(children: [
                             SizedBox(
-                              height: AppDimensions.height10 * 2.1,
+                              height: AppDimensions.height10(context) * 2.1,
                               child: Text(
                                 'Practice Assessment',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xfff5f5f5)),
                               ),
                             ),
                             SizedBox(
-                              height: AppDimensions.height10 * 3.4,
+                              height: AppDimensions.height10(context) * 3.4,
                               child: Text(
                                 'Here is your 20 active day evaluation\nfor periods DD/MMM/YY to DD/MMM/YY.',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xfff5f5f5)),
                               ),
@@ -315,7 +330,8 @@ class practice_assesment extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10 * 1.2),
+                                  bottom:
+                                      AppDimensions.height10(context) * 1.2),
                               child: const button_feilds(
                                 feild_text: 'Progress report',
                                 icon_viible: true,
@@ -345,14 +361,15 @@ class practice_assesment extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: AppDimensions.height10 * 0.1,
+              height: AppDimensions.height10(context) * 0.1,
               color: const Color(0xFFFFFFFF).withOpacity(0.5),
-              // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+              // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
             ),
             Container(
-              width: AppDimensions.height10 * 41.3,
-              height: AppDimensions.height10 * 22.9,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+              width: AppDimensions.height10(context) * 41.3,
+              height: AppDimensions.height10(context) * 22.9,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               child: Stack(children: [
                 Align(
                   alignment: const Alignment(0.9, -1.3),
@@ -360,40 +377,42 @@ class practice_assesment extends StatelessWidget {
                       onPressed: () {},
                       icon: Image.asset(
                         'assets/images/ic_info_outline.png',
-                        height: AppDimensions.height10 * 3.0,
-                        width: AppDimensions.height10 * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
+                        width: AppDimensions.height10(context) * 3.0,
                       )),
                 ),
                 Align(
                   alignment: const Alignment(0, -1),
                   child: SizedBox(
-                    width: AppDimensions.height10 * 36.0,
-                    height: AppDimensions.height10 * 24.7,
+                    width: AppDimensions.height10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 24.7,
                     child: Column(
                       children: [
                         Container(
-                          height: AppDimensions.height10 * 5.9,
-                          width: AppDimensions.height10 * 36.0,
+                          height: AppDimensions.height10(context) * 5.9,
+                          width: AppDimensions.height10(context) * 36.0,
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 1.2),
+                              bottom: AppDimensions.height10(context) * 1.2),
                           child: Column(children: [
                             SizedBox(
-                              height: AppDimensions.height10 * 2.1,
+                              height: AppDimensions.height10(context) * 2.1,
                               child: Text(
                                 'Practice Assessment',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xfff5f5f5)),
                               ),
                             ),
                             SizedBox(
-                              height: AppDimensions.height10 * 3.4,
+                              height: AppDimensions.height10(context) * 3.4,
                               child: Text(
                                 'Here is your 20 active day evaluation\nfor periods DD/MMM/YY to DD/MMM/YY.',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xfff5f5f5)),
                               ),
@@ -404,7 +423,8 @@ class practice_assesment extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10 * 1.2),
+                                  bottom:
+                                      AppDimensions.height10(context) * 1.2),
                               child: const button_feilds(
                                 feild_text: 'Progress report',
                                 icon_viible: true,
@@ -434,9 +454,9 @@ class practice_assesment extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: AppDimensions.height10 * 0.1,
+              height: AppDimensions.height10(context) * 0.1,
               color: const Color(0xFFFFFFFF).withOpacity(0.5),
-              // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+              // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
             ),
           ],
         )),

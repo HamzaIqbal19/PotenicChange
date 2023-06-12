@@ -28,8 +28,8 @@ class veiw_all_goals_menu extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.png',
-                width: AppDimensions.height10 * 2.6,
-                height: AppDimensions.height10 * 2.6,
+                width: AppDimensions.height10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
         ),
@@ -42,8 +42,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Addgoal.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -67,13 +67,14 @@ class veiw_all_goals_menu extends StatelessWidget {
                 // onTap: (() => showDialog(
                 //     context: context,
                 //     builder: (BuildContext context) => SizedBox(
-                //         width: AppDimensions.height10 * 27.0,
-                //         height: AppDimensions.height10 * 18.2,
+                //         width: AppDimensions.height10(context) * 27.0,
+                //         height: AppDimensions.height10(context) * 18.2,
                 //         child: break_comm))),
                 child: Container(
-                  width: AppDimensions.height10 * 6.5,
-                  height: AppDimensions.height10 * 6.5,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 6.4),
+                  width: AppDimensions.height10(context) * 6.5,
+                  height: AppDimensions.height10(context) * 6.5,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 6.4),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/menu_goals_p.png'),
@@ -81,57 +82,60 @@ class veiw_all_goals_menu extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 15.4,
-                height: AppDimensions.height10 * 3.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 0.6),
+                width: AppDimensions.height10(context) * 15.4,
+                height: AppDimensions.height10(context) * 3.4,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
                 child: Center(
                   child: Text(
                     'Your Goals',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 2.8,
+                        fontSize: AppDimensions.height10(context) * 2.8,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xffffffff)),
                   ),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 22.1,
-                height: AppDimensions.height10 * 2.2,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 0.4),
+                width: AppDimensions.height10(context) * 22.1,
+                height: AppDimensions.height10(context) * 2.2,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.4),
                 child: Center(
                   child: Text(
                     'All your goals in one place',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                         fontWeight: FontWeight.w500,
                         color: const Color(0xffffffff)),
                   ),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 39.5,
-                height: AppDimensions.height10 * 62.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.1),
+                width: AppDimensions.height10(context) * 39.5,
+                height: AppDimensions.height10(context) * 62.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.1),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 2.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
                     color: Colors.white),
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 20.5,
-                      height: AppDimensions.height10 * 3.5,
+                      width: AppDimensions.height10(context) * 20.5,
+                      height: AppDimensions.height10(context) * 3.5,
                       margin: EdgeInsets.only(
-                        right: AppDimensions.height10 * 15.0,
-                        top: AppDimensions.height10 * 1.5,
+                        right: AppDimensions.height10(context) * 15.0,
+                        top: AppDimensions.height10(context) * 1.5,
                       ),
                       child: Row(
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 3.5,
-                            height: AppDimensions.height10 * 3.5,
+                            width: AppDimensions.height10(context) * 3.5,
+                            height: AppDimensions.height10(context) * 3.5,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10 * 0.8),
+                                right: AppDimensions.height10(context) * 0.8),
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
@@ -139,13 +143,14 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     fit: BoxFit.cover)),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10 * 13.4,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 13.4,
+                            height: AppDimensions.height10(context) * 2.2,
                             child: Text(
                               'Goal & Practice',
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   color: const Color(0xff437296)),
                             ),
                           )
@@ -174,29 +179,30 @@ class veiw_all_goals_menu extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 39.5,
-                height: AppDimensions.height10 * 62.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.1),
+                width: AppDimensions.height10(context) * 39.5,
+                height: AppDimensions.height10(context) * 62.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.1),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 2.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
                     color: Colors.white),
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 20.5,
-                      height: AppDimensions.height10 * 3.5,
+                      width: AppDimensions.height10(context) * 20.5,
+                      height: AppDimensions.height10(context) * 3.5,
                       margin: EdgeInsets.only(
-                        right: AppDimensions.height10 * 15.0,
-                        top: AppDimensions.height10 * 1.5,
+                        right: AppDimensions.height10(context) * 15.0,
+                        top: AppDimensions.height10(context) * 1.5,
                       ),
                       child: Row(
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 3.5,
-                            height: AppDimensions.height10 * 3.5,
+                            width: AppDimensions.height10(context) * 3.5,
+                            height: AppDimensions.height10(context) * 3.5,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10 * 0.8),
+                                right: AppDimensions.height10(context) * 0.8),
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
@@ -204,13 +210,14 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     fit: BoxFit.cover)),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10 * 13.4,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 13.4,
+                            height: AppDimensions.height10(context) * 2.2,
                             child: Text(
                               'Goal & Practice',
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   color: const Color(0xff437296)),
                             ),
                           )
@@ -239,29 +246,30 @@ class veiw_all_goals_menu extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 39.5,
-                height: AppDimensions.height10 * 62.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.1),
+                width: AppDimensions.height10(context) * 39.5,
+                height: AppDimensions.height10(context) * 62.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.1),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 2.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
                     color: Colors.white),
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 20.5,
-                      height: AppDimensions.height10 * 3.5,
+                      width: AppDimensions.height10(context) * 20.5,
+                      height: AppDimensions.height10(context) * 3.5,
                       margin: EdgeInsets.only(
-                        right: AppDimensions.height10 * 15.0,
-                        top: AppDimensions.height10 * 1.5,
+                        right: AppDimensions.height10(context) * 15.0,
+                        top: AppDimensions.height10(context) * 1.5,
                       ),
                       child: Row(
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 3.5,
-                            height: AppDimensions.height10 * 3.5,
+                            width: AppDimensions.height10(context) * 3.5,
+                            height: AppDimensions.height10(context) * 3.5,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10 * 0.8),
+                                right: AppDimensions.height10(context) * 0.8),
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
@@ -269,13 +277,14 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     fit: BoxFit.cover)),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10 * 13.4,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 13.4,
+                            height: AppDimensions.height10(context) * 2.2,
                             child: Text(
                               'Goal & Practice',
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   color: const Color(0xff437296)),
                             ),
                           )
@@ -291,13 +300,13 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     isActive: false)));
                       },
                       child: Container(
-                        width: AppDimensions.height10 * 35.3,
-                        height: AppDimensions.height10 * 51.8,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                        width: AppDimensions.height10(context) * 35.3,
+                        height: AppDimensions.height10(context) * 51.8,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 2.0),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 2.0),
+                                AppDimensions.height10(context) * 2.0),
                             image: const DecorationImage(
                               image: AssetImage('assets/images/Mask Group.png'),
                               fit: BoxFit.cover,
@@ -305,23 +314,27 @@ class veiw_all_goals_menu extends StatelessWidget {
                         child: Column(
                           children: [
                             Container(
-                              width: AppDimensions.height10 * 13.9,
-                              height: AppDimensions.height10 * 2.2,
+                              width: AppDimensions.height10(context) * 13.9,
+                              height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 3.1),
+                                  top: AppDimensions.height10(context) * 3.1),
                               child: Row(
                                 children: [
                                   Text(
                                     'Status: ',
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.8,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
                                   Text(
                                     'Active',
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.8,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
                                         fontWeight: FontWeight.w700,
                                         color: const Color(0xFF156F6D)),
                                   )
@@ -329,16 +342,18 @@ class veiw_all_goals_menu extends StatelessWidget {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10 * 31.0,
-                              height: AppDimensions.height10 * 26.8,
+                              width: AppDimensions.height10(context) * 31.0,
+                              height: AppDimensions.height10(context) * 26.8,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.9),
+                                  top: AppDimensions.height10(context) * 1.9),
                               child: Stack(children: [
                                 Align(
                                   alignment: Alignment.center,
                                   child: Container(
-                                    width: AppDimensions.height10 * 26.8,
-                                    height: AppDimensions.height10 * 26.8,
+                                    width:
+                                        AppDimensions.height10(context) * 26.8,
+                                    height:
+                                        AppDimensions.height10(context) * 26.8,
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -355,17 +370,19 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                 Container(
                                                   margin: EdgeInsets.only(
                                                       bottom: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           0),
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          19.9,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      19.9,
                                                   child: Text(
                                                     'Control my anger',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             2.0,
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -383,10 +400,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                                               style: TextStyle(
                                                   fontStyle: FontStyle.italic,
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.68,
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           0.15,
                                                   fontWeight: FontWeight.w400,
                                                   color:
@@ -399,17 +418,22 @@ class veiw_all_goals_menu extends StatelessWidget {
                                 Align(
                                   alignment: const Alignment(0, 0.8),
                                   child: SizedBox(
-                                    width: AppDimensions.height10 * 31.0,
-                                    height: AppDimensions.height10 * 8.9,
+                                    width:
+                                        AppDimensions.height10(context) * 31.0,
+                                    height:
+                                        AppDimensions.height10(context) * 8.9,
                                     child: Stack(
                                       children: [
                                         Align(
                                           alignment:
                                               const Alignment(0.485, 0.8),
                                           child: Container(
-                                            height:
-                                                AppDimensions.height10 * 8.9,
-                                            width: AppDimensions.height10 * 8.9,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
                                             decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
@@ -424,7 +448,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                   color:
                                                       const Color(0xFFFFFFFF),
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.4,
                                                   fontWeight: FontWeight.w400),
                                             )),
@@ -433,9 +458,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                                         Align(
                                           alignment: const Alignment(0.05, 0.8),
                                           child: Container(
-                                            height:
-                                                AppDimensions.height10 * 8.9,
-                                            width: AppDimensions.height10 * 8.9,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
                                             decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
@@ -450,7 +478,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                   color:
                                                       const Color(0xFFFFFFFF),
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.4,
                                                   fontWeight: FontWeight.w400),
                                             )),
@@ -459,9 +488,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                                         Align(
                                           alignment: const Alignment(-0.5, 0.8),
                                           child: Container(
-                                            height:
-                                                AppDimensions.height10 * 8.9,
-                                            width: AppDimensions.height10 * 8.9,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
                                             decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
@@ -477,7 +509,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                     color:
                                                         const Color(0xFFFFFFFF),
                                                     fontSize:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             1.4,
                                                     fontWeight:
                                                         FontWeight.w400),
@@ -488,9 +521,12 @@ class veiw_all_goals_menu extends StatelessWidget {
                                         Align(
                                           alignment: const Alignment(-1, 0.8),
                                           child: Container(
-                                            height:
-                                                AppDimensions.height10 * 8.9,
-                                            width: AppDimensions.height10 * 8.9,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                8.9,
                                             decoration: const BoxDecoration(
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
@@ -505,7 +541,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                   color:
                                                       const Color(0xFFFFFFFF),
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.4,
                                                   fontWeight: FontWeight.w400),
                                             )),
@@ -514,14 +551,18 @@ class veiw_all_goals_menu extends StatelessWidget {
                                         Align(
                                           alignment: const Alignment(0.99, 0.3),
                                           child: Container(
-                                            height:
-                                                AppDimensions.height10 * 5.5,
-                                            width: AppDimensions.height10 * 5.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                5.5,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                5.5,
                                             decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 border: Border.all(
                                                     width:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             0.2,
                                                     color: const Color(
                                                         0xffffffff))),
@@ -533,7 +574,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                   color:
                                                       const Color(0xFFFFFFFF),
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.8,
                                                   fontWeight: FontWeight.w500),
                                             )),
@@ -546,17 +588,19 @@ class veiw_all_goals_menu extends StatelessWidget {
                               ]),
                             ),
                             Container(
-                              width: AppDimensions.height10 * 25.8,
-                              height: AppDimensions.height10 * 11.4,
+                              width: AppDimensions.height10(context) * 25.8,
+                              height: AppDimensions.height10(context) * 11.4,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 2.0),
+                                  top: AppDimensions.height10(context) * 2.0),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10 * 11.4,
-                                    height: AppDimensions.height10 * 11.4,
+                                    width:
+                                        AppDimensions.height10(context) * 11.4,
+                                    height:
+                                        AppDimensions.height10(context) * 11.4,
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xFFFFFFFF)),
@@ -565,31 +609,42 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
-                                          width: AppDimensions.height10 * 9.3,
-                                          height: AppDimensions.height10 * 3.55,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  9.3,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.55,
                                           child: Text(
                                             'No. of\nActive days',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.4,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF437296)),
                                           ),
                                         ),
                                         Container(
-                                          width: AppDimensions.height10 * 6.3,
-                                          height: AppDimensions.height10 * 3.3,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  6.3,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.3,
                                           margin: EdgeInsets.only(
-                                              top:
-                                                  AppDimensions.height10 * 0.8),
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.8),
                                           child: Text(
                                             '21',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         2.8,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFF464646)),
@@ -599,8 +654,10 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     ),
                                   ),
                                   Container(
-                                    width: AppDimensions.height10 * 11.4,
-                                    height: AppDimensions.height10 * 11.4,
+                                    width:
+                                        AppDimensions.height10(context) * 11.4,
+                                    height:
+                                        AppDimensions.height10(context) * 11.4,
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Color(0xFFFFFFFF)),
@@ -609,25 +666,35 @@ class veiw_all_goals_menu extends StatelessWidget {
                                           MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
-                                          width: AppDimensions.height10 * 9.3,
-                                          height: AppDimensions.height10 * 3.4,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  9.3,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.4,
                                           child: Text(
                                             'Goal\nLevel',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.4,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xFF437296)),
                                           ),
                                         ),
                                         Container(
-                                          width: AppDimensions.height10 * 6.3,
-                                          height: AppDimensions.height10 * 3.3,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  6.3,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.3,
                                           margin: EdgeInsets.only(
-                                              top:
-                                                  AppDimensions.height10 * 0.8),
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.8),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -637,7 +704,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             2.8,
                                                     fontWeight: FontWeight.w600,
                                                     color: const Color(
@@ -645,15 +713,16 @@ class veiw_all_goals_menu extends StatelessWidget {
                                               ),
                                               Padding(
                                                 padding: EdgeInsets.only(
-                                                    top:
-                                                        AppDimensions.height10 *
-                                                            1.5),
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        1.5),
                                                 child: Text(
                                                   '/5',
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.0,
                                                       fontWeight:
                                                           FontWeight.w300,
@@ -680,8 +749,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                               child: Align(
                                 alignment: const Alignment(0.92, 0),
                                 child: Container(
-                                  width: AppDimensions.height10 * 3.0,
-                                  height: AppDimensions.height10 * 3.0,
+                                  width: AppDimensions.height10(context) * 3.0,
+                                  height: AppDimensions.height10(context) * 3.0,
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
@@ -698,31 +767,33 @@ class veiw_all_goals_menu extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 8.1),
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 8.1),
                 child: Container(
-                  width: AppDimensions.height10 * 39.5,
-                  height: AppDimensions.height10 * 62.9,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 4.1),
+                  width: AppDimensions.height10(context) * 39.5,
+                  height: AppDimensions.height10(context) * 62.9,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 4.1),
                   decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.circular(AppDimensions.height10 * 2.0),
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 2.0),
                       color: Colors.white),
                   child: Column(
                     children: [
                       Container(
-                        width: AppDimensions.height10 * 20.5,
-                        height: AppDimensions.height10 * 3.5,
+                        width: AppDimensions.height10(context) * 20.5,
+                        height: AppDimensions.height10(context) * 3.5,
                         margin: EdgeInsets.only(
-                          top: AppDimensions.height10 * 1.5,
-                          right: AppDimensions.height10 * 15.0,
+                          top: AppDimensions.height10(context) * 1.5,
+                          right: AppDimensions.height10(context) * 15.0,
                         ),
                         child: Row(
                           children: [
                             Container(
-                              width: AppDimensions.height10 * 3.5,
-                              height: AppDimensions.height10 * 3.5,
+                              width: AppDimensions.height10(context) * 3.5,
+                              height: AppDimensions.height10(context) * 3.5,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 0.8),
+                                  right: AppDimensions.height10(context) * 0.8),
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -730,13 +801,14 @@ class veiw_all_goals_menu extends StatelessWidget {
                                       fit: BoxFit.cover)),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10 * 13.4,
-                              height: AppDimensions.height10 * 2.2,
+                              width: AppDimensions.height10(context) * 13.4,
+                              height: AppDimensions.height10(context) * 2.2,
                               child: Text(
                                 'Goal & Practice',
                                 style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     color: const Color(0xff437296)),
                               ),
                             )
@@ -784,11 +856,12 @@ class goal_card extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10 * 35.3,
-      height: AppDimensions.height10 * 51.8,
-      margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+      width: AppDimensions.height10(context) * 35.3,
+      height: AppDimensions.height10(context) * 51.8,
+      margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 2.0),
           image: const DecorationImage(
             image: AssetImage('assets/images/Mask Group.png'),
             fit: BoxFit.cover,
@@ -796,15 +869,15 @@ class goal_card extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: AppDimensions.height10 * 13.9,
-            height: AppDimensions.height10 * 2.2,
-            margin: EdgeInsets.only(top: AppDimensions.height10 * 3.1),
+            width: AppDimensions.height10(context) * 13.9,
+            height: AppDimensions.height10(context) * 2.2,
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 3.1),
             child: Row(
               children: [
                 Text(
                   'Status: ',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 1.8,
+                      fontSize: AppDimensions.height10(context) * 1.8,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFFFFFFFF)),
                 ),
@@ -812,14 +885,14 @@ class goal_card extends StatelessWidget {
                     ? Text(
                         'Active',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
+                            fontSize: AppDimensions.height10(context) * 1.8,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF156F6D)),
                       )
                     : Text(
                         'Inactive',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
+                            fontSize: AppDimensions.height10(context) * 1.8,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFFDE7A11)),
                       )
@@ -827,15 +900,15 @@ class goal_card extends StatelessWidget {
             ),
           ),
           Container(
-            width: AppDimensions.height10 * 26.8,
-            height: AppDimensions.height10 * 26.8,
-            margin: EdgeInsets.only(top: AppDimensions.height10 * 1.9),
+            width: AppDimensions.height10(context) * 26.8,
+            height: AppDimensions.height10(context) * 26.8,
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.9),
             child: Stack(children: [
               Align(
                 alignment: Alignment.center,
                 child: Container(
-                  width: AppDimensions.height10 * 26.8,
-                  height: AppDimensions.height10 * 26.8,
+                  width: AppDimensions.height10(context) * 26.8,
+                  height: AppDimensions.height10(context) * 26.8,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/images/orange_moon.png'),
@@ -849,13 +922,15 @@ class goal_card extends StatelessWidget {
                             children: [
                               Container(
                                 margin: EdgeInsets.only(
-                                    bottom: AppDimensions.height10 * 0),
-                                width: AppDimensions.height10 * 19.9,
+                                    bottom:
+                                        AppDimensions.height10(context) * 0),
+                                width: AppDimensions.height10(context) * 19.9,
                                 child: Text(
                                   'Control my anger',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 2.0,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 2.0,
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFF5B74A6)),
                                 ),
@@ -869,8 +944,9 @@ class goal_card extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontStyle: FontStyle.italic,
-                                height: AppDimensions.height10 * 0.15,
-                                fontSize: AppDimensions.height10 * 1.68,
+                                height: AppDimensions.height10(context) * 0.15,
+                                fontSize:
+                                    AppDimensions.height10(context) * 1.68,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF5B74A6))),
                       )
@@ -882,8 +958,8 @@ class goal_card extends StatelessWidget {
                 alignment: const Alignment(0, 0.8),
                 child: add_practice
                     ? Container(
-                        height: AppDimensions.height10 * 8.9,
-                        width: AppDimensions.height10 * 8.9,
+                        height: AppDimensions.height10(context) * 8.9,
+                        width: AppDimensions.height10(context) * 8.9,
                         decoration: const BoxDecoration(
                             //color: Colors.amber,
                             image: DecorationImage(
@@ -897,14 +973,14 @@ class goal_card extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.4,
                                 fontWeight: FontWeight.w400),
                           )),
                         ]),
                       )
                     : Container(
-                        height: AppDimensions.height10 * 8.9,
-                        width: AppDimensions.height10 * 8.9,
+                        height: AppDimensions.height10(context) * 8.9,
+                        width: AppDimensions.height10(context) * 8.9,
                         decoration: const BoxDecoration(
                             //color: Colors.amber,
                             image: DecorationImage(
@@ -917,7 +993,7 @@ class goal_card extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: const Color(0xFFFFFFFF),
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.4,
                               fontWeight: FontWeight.w400),
                         )),
                       ),
@@ -925,42 +1001,42 @@ class goal_card extends StatelessWidget {
             ]),
           ),
           Container(
-            width: AppDimensions.height10 * 25.8,
-            height: AppDimensions.height10 * 11.4,
-            margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+            width: AppDimensions.height10(context) * 25.8,
+            height: AppDimensions.height10(context) * 11.4,
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: AppDimensions.height10 * 11.4,
-                  height: AppDimensions.height10 * 11.4,
+                  width: AppDimensions.height10(context) * 11.4,
+                  height: AppDimensions.height10(context) * 11.4,
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: AppDimensions.height10 * 9.3,
-                        height: AppDimensions.height10 * 3.55,
+                        width: AppDimensions.height10(context) * 9.3,
+                        height: AppDimensions.height10(context) * 3.55,
                         child: Text(
                           'No. of\nActive days',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.4,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFF437296)),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 6.3,
-                        height: AppDimensions.height10 * 3.3,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 0.8),
+                        width: AppDimensions.height10(context) * 6.3,
+                        height: AppDimensions.height10(context) * 3.3,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.8),
                         child: Text(
                           days_text,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.8,
+                              fontSize: AppDimensions.height10(context) * 2.8,
                               fontWeight: FontWeight.w500,
                               color: const Color(0xFF464646)),
                         ),
@@ -969,30 +1045,30 @@ class goal_card extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10 * 11.4,
-                  height: AppDimensions.height10 * 11.4,
+                  width: AppDimensions.height10(context) * 11.4,
+                  height: AppDimensions.height10(context) * 11.4,
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: AppDimensions.height10 * 9.3,
-                        height: AppDimensions.height10 * 3.4,
+                        width: AppDimensions.height10(context) * 9.3,
+                        height: AppDimensions.height10(context) * 3.4,
                         child: Text(
                           'Goal\nLevel',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.4,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFF437296)),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 6.3,
-                        height: AppDimensions.height10 * 3.3,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 0.8),
+                        width: AppDimensions.height10(context) * 6.3,
+                        height: AppDimensions.height10(context) * 3.3,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -1000,18 +1076,20 @@ class goal_card extends StatelessWidget {
                               goal_level,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 2.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.8,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF464646)),
                             ),
                             Padding(
                               padding: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.5),
+                                  top: AppDimensions.height10(context) * 1.5),
                               child: Text(
                                 '/5',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.0,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.0,
                                     fontWeight: FontWeight.w300,
                                     color: const Color(0xFF464646)),
                               ),
@@ -1033,8 +1111,8 @@ class goal_card extends StatelessWidget {
             child: Align(
               alignment: const Alignment(0.92, 0),
               child: Container(
-                width: AppDimensions.height10 * 3.0,
-                height: AppDimensions.height10 * 3.0,
+                width: AppDimensions.height10(context) * 3.0,
+                height: AppDimensions.height10(context) * 3.0,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/ic_info_outline.png'),
@@ -1048,105 +1126,109 @@ class goal_card extends StatelessWidget {
   }
 }
 
-AlertDialog break_comm = AlertDialog(
-  shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
-  contentPadding: EdgeInsets.zero,
-  actionsPadding: EdgeInsets.zero,
-  titlePadding: EdgeInsets.zero,
-  title: Container(
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.4)),
-    margin: EdgeInsets.only(
-        top: AppDimensions.height10 * 1.9,
-        right: AppDimensions.height10 * 1.6,
-        left: AppDimensions.height10 * 1.6,
-        bottom: AppDimensions.height10 * 0.2),
-    height: AppDimensions.height10 * 2.2,
-    width: AppDimensions.height10 * 23.8,
-    child: Text(
-      "Break commitment & stop goal",
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        color: Color(0xFF000000),
-        fontSize: AppDimensions.height10 * 1.7,
-        fontWeight: FontWeight.w400,
-      ),
-    ),
-  ),
-  content: Container(
-    margin: EdgeInsets.only(
-        bottom: AppDimensions.height10 * 1.5,
-        left: AppDimensions.height10 * 1.6,
-        right: AppDimensions.height10 * 1.6),
-    height: AppDimensions.height10 * 3.3,
-    width: AppDimensions.height10 * 23.8,
-    child: Text(
-      "Are you sure you want to stop this goal\nand break your commitment?",
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontSize: AppDimensions.height10 * 1.3,
-        fontWeight: FontWeight.w400,
-      ),
-    ),
-  ),
-  actions: <Widget>[
-    Column(
-      children: [
-        SizedBox(
-          height: AppDimensions.height10 * 0.1,
-          child: Divider(
-            color: const Color(0XFF3C3C43).withOpacity(0.29),
-          ),
+showBreakcomm(BuildContext context) {
+  AlertDialog(
+    shape: RoundedRectangleBorder(
+        borderRadius:
+            BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+    contentPadding: EdgeInsets.zero,
+    actionsPadding: EdgeInsets.zero,
+    titlePadding: EdgeInsets.zero,
+    title: Container(
+      decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+      margin: EdgeInsets.only(
+          top: AppDimensions.height10(context) * 1.9,
+          right: AppDimensions.height10(context) * 1.6,
+          left: AppDimensions.height10(context) * 1.6,
+          bottom: AppDimensions.height10(context) * 0.2),
+      height: AppDimensions.height10(context) * 2.2,
+      width: AppDimensions.height10(context) * 23.8,
+      child: Text(
+        "Break commitment & stop goal",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Color(0xFF000000),
+          fontSize: AppDimensions.height10(context) * 1.7,
+          fontWeight: FontWeight.w400,
         ),
-        Container(
-          height: AppDimensions.height10 * 4.2,
-          width: double.infinity,
-          color: const Color(0xFF007AFF),
-          child: GestureDetector(
-            onTap: () {
-              // Navigator.pop(context);
-            },
-            child: Center(
-              child: Text(
-                'No',
-                style: TextStyle(
-                    color: const Color(0xFFFFFFFF),
-                    fontSize: AppDimensions.height10 * 1.7,
-                    fontFamily: "Laila",
-                    fontWeight: FontWeight.w400),
+      ),
+    ),
+    content: Container(
+      margin: EdgeInsets.only(
+          bottom: AppDimensions.height10(context) * 1.5,
+          left: AppDimensions.height10(context) * 1.6,
+          right: AppDimensions.height10(context) * 1.6),
+      height: AppDimensions.height10(context) * 3.3,
+      width: AppDimensions.height10(context) * 23.8,
+      child: Text(
+        "Are you sure you want to stop this goal\nand break your commitment?",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: AppDimensions.height10(context) * 1.3,
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    ),
+    actions: <Widget>[
+      Column(
+        children: [
+          SizedBox(
+            height: AppDimensions.height10(context) * 0.1,
+            child: Divider(
+              color: const Color(0XFF3C3C43).withOpacity(0.29),
+            ),
+          ),
+          Container(
+            height: AppDimensions.height10(context) * 4.2,
+            width: double.infinity,
+            color: const Color(0xFF007AFF),
+            child: GestureDetector(
+              onTap: () {
+                // Navigator.pop(context);
+              },
+              child: Center(
+                child: Text(
+                  'No',
+                  style: TextStyle(
+                      color: const Color(0xFFFFFFFF),
+                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontFamily: "Laila",
+                      fontWeight: FontWeight.w400),
+                ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: AppDimensions.height10 * 0.1,
-          child: Divider(
-            color: const Color(0XFF3C3C43).withOpacity(0.29),
-          ),
-        ),
-        SizedBox(
-          height: AppDimensions.height10 * 4.4,
-          width: double.infinity,
-          child: TextButton(
-            onPressed: () {},
-            child: Text(
-              'Break commitment',
-              style: TextStyle(
-                  fontSize: AppDimensions.height10 * 1.7,
-                  fontFamily: "Laila",
-                  fontWeight: FontWeight.w400,
-                  color: const Color(0xFF007AFF)),
+          SizedBox(
+            height: AppDimensions.height10(context) * 0.1,
+            child: Divider(
+              color: const Color(0XFF3C3C43).withOpacity(0.29),
             ),
           ),
-        ),
-        SizedBox(
-          height: AppDimensions.height10 * 0.1,
-          child: Divider(
-            color: const Color(0XFF3C3C43).withOpacity(0.29),
+          SizedBox(
+            height: AppDimensions.height10(context) * 4.4,
+            width: double.infinity,
+            child: TextButton(
+              onPressed: () {},
+              child: Text(
+                'Break commitment',
+                style: TextStyle(
+                    fontSize: AppDimensions.height10(context) * 1.7,
+                    fontFamily: "Laila",
+                    fontWeight: FontWeight.w400,
+                    color: const Color(0xFF007AFF)),
+              ),
+            ),
           ),
-        ),
-      ],
-    ),
-  ],
-);
+          SizedBox(
+            height: AppDimensions.height10(context) * 0.1,
+            child: Divider(
+              color: const Color(0XFF3C3C43).withOpacity(0.29),
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+}

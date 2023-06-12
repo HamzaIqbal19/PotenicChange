@@ -60,19 +60,19 @@ class _dashBoardState extends State<dashBoard> {
                 Container(
                   child: Image.asset(
                     'assets/images/Add goal.png',
-                    height: AppDimensions.height10 * 2.4,
-                    width: AppDimensions.height10 * 2.4,
+                    height: AppDimensions.height10(context) * 2.4,
+                    width: AppDimensions.height10(context) * 2.4,
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10 * 1.7,
-                      right: AppDimensions.height10 * 0.9,
-                      bottom: AppDimensions.height10 * 0.3),
+                      left: AppDimensions.height10(context) * 1.7,
+                      right: AppDimensions.height10(context) * 0.9,
+                      bottom: AppDimensions.height10(context) * 0.3),
                   child: Image.asset(
                     'assets/images/calendar_month_black_24dp 1.png',
-                    height: AppDimensions.height10 * 2.4,
-                    width: AppDimensions.height10 * 2.4,
+                    height: AppDimensions.height10(context) * 2.4,
+                    width: AppDimensions.height10(context) * 2.4,
                   ),
                 ),
               ],
@@ -85,14 +85,15 @@ class _dashBoardState extends State<dashBoard> {
         bottomNavigationBar: widget.saved
             ? Container(
                 color: Colors.transparent,
-                padding: EdgeInsets.all(AppDimensions.height10 * 1.6),
+                padding: EdgeInsets.all(AppDimensions.height10(context) * 1.6),
                 child: Container(
-                  width: AppDimensions.height10 * 38.259,
-                  height: AppDimensions.height10 * 9.707,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 12.0),
+                  width: AppDimensions.height10(context) * 38.259,
+                  height: AppDimensions.height10(context) * 9.707,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 12.0),
                   decoration: BoxDecoration(
-                      borderRadius:
-                          BorderRadius.circular(AppDimensions.height10 * 2.0),
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 2.0),
                       gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -102,41 +103,43 @@ class _dashBoardState extends State<dashBoard> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 1.261),
-                        width: AppDimensions.height10 * 4.437,
-                        height: AppDimensions.height10 * 4.437,
+                            left: AppDimensions.height10(context) * 1.261),
+                        width: AppDimensions.height10(context) * 4.437,
+                        height: AppDimensions.height10(context) * 4.437,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
                                     'assets/images/circle_tick.png'))),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 16.3,
-                        height: AppDimensions.height10 * 3.6,
+                        width: AppDimensions.height10(context) * 16.3,
+                        height: AppDimensions.height10(context) * 3.6,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 1.232),
+                            left: AppDimensions.height10(context) * 1.232),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             SizedBox(
-                              //  / width: AppDimensions.height10 * 4.6,
-                              height: AppDimensions.height10 * 1.4,
+                              //  / width: AppDimensions.height10(context) * 4.6,
+                              height: AppDimensions.height10(context) * 1.4,
                               //   color: Colors.amber,
                               child: Text(
                                 'SAVED',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.3,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.3,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                             SizedBox(
-                              //width: AppDimensions.height10 * 6.9,
-                              height: AppDimensions.height10 * 2.2,
+                              //width: AppDimensions.height10(context) * 6.9,
+                              height: AppDimensions.height10(context) * 2.2,
                               child: Text(
                                 'Meditation Practice',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFFFFFF)),
                               ),
@@ -145,16 +148,17 @@ class _dashBoardState extends State<dashBoard> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10 * 3.0,
-                        width: AppDimensions.height10 * 3.0,
-                        padding: EdgeInsets.all(AppDimensions.height10 * 0.6),
+                        height: AppDimensions.height10(context) * 3.0,
+                        width: AppDimensions.height10(context) * 3.0,
+                        padding: EdgeInsets.all(
+                            AppDimensions.height10(context) * 0.6),
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 10.6),
+                            left: AppDimensions.height10(context) * 10.6),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.transparent,
                             border: Border.all(
-                                width: AppDimensions.height10 * 0.2,
+                                width: AppDimensions.height10(context) * 0.2,
                                 color: Colors.white)),
                         child: const ImageIcon(
                           AssetImage('assets/images/edit_icon.png'),
@@ -188,22 +192,22 @@ class _dashBoardState extends State<dashBoard> {
             height: double.infinity,
             child: SizedBox(
               width: double.infinity,
-              height: AppDimensions.height10 * 19.2,
+              height: AppDimensions.height10(context) * 19.2,
               child: Stack(children: [
                 Column(
                   children: [
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: SizedBox(
-                        height: AppDimensions.height10 * 19.2,
-                        width: AppDimensions.height10 * 45.7,
+                        height: AppDimensions.height10(context) * 19.2,
+                        width: AppDimensions.height10(context) * 45.7,
                         child: Stack(
                           children: [
                             Align(
                               alignment: const Alignment(-1, 1),
                               child: Container(
-                                height: AppDimensions.height10 * 7.9,
-                                width: AppDimensions.height10 * 7.9,
+                                height: AppDimensions.height10(context) * 7.9,
+                                width: AppDimensions.height10(context) * 7.9,
                                 //margin: const EdgeInsets.only(top: 84),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
@@ -227,8 +231,9 @@ class _dashBoardState extends State<dashBoard> {
                                         Text(
                                           'MON',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.2,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.2,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white),
                                         ),
@@ -237,13 +242,17 @@ class _dashBoardState extends State<dashBoard> {
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w400,
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.7),
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.7),
                                         ),
                                         Container(
-                                            height:
-                                                AppDimensions.height10 * 2.5,
-                                            width: AppDimensions.height10 * 2.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.5,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                2.5,
                                             //  margin: const EdgeInsets.only(top: 3.32),
                                             decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
@@ -256,7 +265,8 @@ class _dashBoardState extends State<dashBoard> {
                                                   '0/0',
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.0,
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -271,12 +281,14 @@ class _dashBoardState extends State<dashBoard> {
                             Align(
                               alignment: const Alignment(0, 0),
                               child: SizedBox(
-                                height: AppDimensions.height10 * 19.2,
-                                width: AppDimensions.height10 * 18.8,
+                                height: AppDimensions.height10(context) * 19.2,
+                                width: AppDimensions.height10(context) * 18.8,
                                 // margin: EdgeInsets.only(left: 55.5, right: 55.5),
                                 child: Container(
-                                  height: AppDimensions.height10 * 13.81,
-                                  width: AppDimensions.height10 * 13.265,
+                                  height:
+                                      AppDimensions.height10(context) * 13.81,
+                                  width:
+                                      AppDimensions.height10(context) * 13.265,
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
@@ -286,8 +298,11 @@ class _dashBoardState extends State<dashBoard> {
                                     Align(
                                       alignment: const Alignment(0.185, 0.215),
                                       child: Container(
-                                        height: AppDimensions.height10 * 1.3,
-                                        width: AppDimensions.height10 * 1.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.3,
+                                        width: AppDimensions.height10(context) *
+                                            1.3,
                                         decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             gradient: LinearGradient(colors: [
@@ -306,7 +321,8 @@ class _dashBoardState extends State<dashBoard> {
                                             'TUE',
                                             style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.4,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xff5B74A6)),
@@ -316,15 +332,18 @@ class _dashBoardState extends State<dashBoard> {
                                             style: TextStyle(
                                                 color: const Color(0xff5B74A6),
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.3,
                                                 fontWeight: FontWeight.w400),
                                           ),
                                           Container(
-                                              height:
-                                                  AppDimensions.height10 * 2.5,
-                                              width:
-                                                  AppDimensions.height10 * 2.5,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  2.5,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  2.5,
                                               // margin: const EdgeInsets.only(top: 2),
                                               decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
@@ -334,7 +353,8 @@ class _dashBoardState extends State<dashBoard> {
                                                   '0/2',
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.0,
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -353,8 +373,8 @@ class _dashBoardState extends State<dashBoard> {
                             Align(
                               alignment: const Alignment(1, 1),
                               child: Container(
-                                  height: AppDimensions.height10 * 7.9,
-                                  width: AppDimensions.height10 * 7.9,
+                                  height: AppDimensions.height10(context) * 7.9,
+                                  width: AppDimensions.height10(context) * 7.9,
                                   // margin: const EdgeInsets.only(
                                   //   top: 84,
                                   // ),
@@ -377,8 +397,9 @@ class _dashBoardState extends State<dashBoard> {
                                       Text(
                                         'MON',
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.2,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.2,
                                             fontWeight: FontWeight.w600,
                                             color: const Color(0xff5B74A6)),
                                       ),
@@ -388,20 +409,27 @@ class _dashBoardState extends State<dashBoard> {
                                             TextStyle(color: Color(0xff5B74A6)),
                                       ),
                                       Container(
-                                        height: AppDimensions.height10 * 2.7,
-                                        width: AppDimensions.height10 * 2.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.7,
+                                        width: AppDimensions.height10(context) *
+                                            2.7,
                                         //margin: const EdgeInsets.only(top: 3.32),
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           border: Border.all(
-                                              width:
-                                                  AppDimensions.height10 * 0.1,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  0.1,
                                               color: Colors.white),
                                         ),
                                         child: SizedBox(
-                                            width: AppDimensions.height10 * 1.7,
-                                            height:
-                                                AppDimensions.height10 * 1.5,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                1.7,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                1.5,
                                             // margin:
                                             //     const EdgeInsets.only(top: 3.32),
                                             // margin: const EdgeInsets.only(left: 1),
@@ -410,7 +438,8 @@ class _dashBoardState extends State<dashBoard> {
                                                 '0/2',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             1.0,
                                                     fontWeight: FontWeight.w400,
                                                     color: const Color(
@@ -426,32 +455,32 @@ class _dashBoardState extends State<dashBoard> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 35.6,
-                      height: AppDimensions.height10 * 4.2,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                      width: AppDimensions.height10(context) * 35.6,
+                      height: AppDimensions.height10(context) * 4.2,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 2.0),
                       child: Column(children: [
                         Container(
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 0.3),
-                          height: AppDimensions.height10 * 2.2,
+                              bottom: AppDimensions.height10(context) * 0.3),
+                          height: AppDimensions.height10(context) * 2.2,
                           alignment: Alignment.centerLeft,
                           child: Text(
                             '8.00',
                             style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.8,
+                              fontSize: AppDimensions.height10(context) * 1.8,
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
                             ),
                           ),
                         ),
                         Divider(
-                          height: AppDimensions.height10 * 0.1,
-                          thickness: AppDimensions.height10 * 0.1,
+                          height: AppDimensions.height10(context) * 0.1,
+                          thickness: AppDimensions.height10(context) * 0.1,
                           color: Colors.white,
                         ),
                         Container(
-                          height: AppDimensions.height10 * 1.2,
+                          height: AppDimensions.height10(context) * 1.2,
                           alignment: Alignment.centerLeft,
                           child: const Text(
                             'AM',
@@ -466,19 +495,19 @@ class _dashBoardState extends State<dashBoard> {
                     ),
                     Container(
                       width: widget.dashboard_ctrl
-                          ? AppDimensions.height10 * 40.1
-                          : AppDimensions.height10 * 31.3,
-                      height: AppDimensions.height10 * 31.3,
+                          ? AppDimensions.height10(context) * 40.1
+                          : AppDimensions.height10(context) * 31.3,
+                      height: AppDimensions.height10(context) * 31.3,
                       // color: Colors.blue,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10 * 2.9,
-                          bottom: AppDimensions.height10 * 1.2,
+                          top: AppDimensions.height10(context) * 2.9,
+                          bottom: AppDimensions.height10(context) * 1.2,
                           right: widget.dashboard_ctrl
-                              ? AppDimensions.height10 * 0.9
-                              : AppDimensions.height10 * 7.3,
+                              ? AppDimensions.height10(context) * 0.9
+                              : AppDimensions.height10(context) * 7.3,
                           left: widget.dashboard_ctrl
-                              ? AppDimensions.height10 * 0.4
-                              : AppDimensions.height10 * 2.3),
+                              ? AppDimensions.height10(context) * 0.4
+                              : AppDimensions.height10(context) * 2.3),
                       child: widget.dashboard_ctrl
                           ? Stack(children: [
                               Align(
@@ -493,8 +522,10 @@ class _dashBoardState extends State<dashBoard> {
                                         )));
                                   },
                                   child: Container(
-                                    height: AppDimensions.height10 * 13.8,
-                                    width: AppDimensions.height10 * 13.8,
+                                    height:
+                                        AppDimensions.height10(context) * 13.8,
+                                    width:
+                                        AppDimensions.height10(context) * 13.8,
                                     decoration: const BoxDecoration(
                                         //color: Colors.amber,
                                         image: DecorationImage(
@@ -507,7 +538,8 @@ class _dashBoardState extends State<dashBoard> {
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10 * 1.8,
+                                              AppDimensions.height10(context) *
+                                                  1.8,
                                           fontWeight: FontWeight.w500),
                                     )),
                                   ),
@@ -518,8 +550,10 @@ class _dashBoardState extends State<dashBoard> {
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Container(
-                                    height: AppDimensions.height10 * 13.8,
-                                    width: AppDimensions.height10 * 13.8,
+                                    height:
+                                        AppDimensions.height10(context) * 13.8,
+                                    width:
+                                        AppDimensions.height10(context) * 13.8,
                                     decoration: const BoxDecoration(
                                         //color: Colors.amber,
                                         image: DecorationImage(
@@ -532,7 +566,8 @@ class _dashBoardState extends State<dashBoard> {
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10 * 1.8,
+                                              AppDimensions.height10(context) *
+                                                  1.8,
                                           fontWeight: FontWeight.w500),
                                       textAlign: TextAlign.center,
                                     )),
@@ -553,8 +588,10 @@ class _dashBoardState extends State<dashBoard> {
                                         )));
                                   },
                                   child: Container(
-                                    width: AppDimensions.height10 * 26.8,
-                                    height: AppDimensions.height10 * 26.8,
+                                    width:
+                                        AppDimensions.height10(context) * 26.8,
+                                    height:
+                                        AppDimensions.height10(context) * 26.8,
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -568,7 +605,8 @@ class _dashBoardState extends State<dashBoard> {
                                               'Control my anger',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           2.0,
                                                   fontWeight: FontWeight.w600,
                                                   color:
@@ -582,7 +620,8 @@ class _dashBoardState extends State<dashBoard> {
                                               style: TextStyle(
                                                   fontStyle: FontStyle.italic,
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.6,
                                                   fontWeight: FontWeight.w400,
                                                   color:
@@ -598,10 +637,12 @@ class _dashBoardState extends State<dashBoard> {
                                                       page: congratulations()));
                                             },
                                             child: Container(
-                                              height:
-                                                  AppDimensions.height10 * 13.8,
-                                              width:
-                                                  AppDimensions.height10 * 13.8,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  13.8,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  13.8,
                                               decoration: const BoxDecoration(
                                                   //color: Colors.amber,
                                                   image: DecorationImage(
@@ -615,7 +656,8 @@ class _dashBoardState extends State<dashBoard> {
                                                 style: TextStyle(
                                                     color: Colors.white,
                                                     fontSize:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             1.8,
                                                     fontWeight:
                                                         FontWeight.w500),
@@ -633,8 +675,9 @@ class _dashBoardState extends State<dashBoard> {
                               Align(
                                 alignment: Alignment.topRight,
                                 child: Container(
-                                  width: AppDimensions.height10 * 26.8,
-                                  height: AppDimensions.height10 * 26.8,
+                                  width: AppDimensions.height10(context) * 26.8,
+                                  height:
+                                      AppDimensions.height10(context) * 26.8,
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
@@ -648,7 +691,8 @@ class _dashBoardState extends State<dashBoard> {
                                             'Control my anger',
                                             style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xff5B74A6)),
@@ -661,7 +705,8 @@ class _dashBoardState extends State<dashBoard> {
                                             style: TextStyle(
                                                 fontStyle: FontStyle.italic,
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.6,
                                                 fontWeight: FontWeight.w400,
                                                 color:
@@ -684,11 +729,13 @@ class _dashBoardState extends State<dashBoard> {
                                   },
                                   child: Container(
                                     height: widget.saved
-                                        ? AppDimensions.height10 * 14.8
-                                        : AppDimensions.height10 * 13.8,
+                                        ? AppDimensions.height10(context) * 14.8
+                                        : AppDimensions.height10(context) *
+                                            13.8,
                                     width: widget.saved
-                                        ? AppDimensions.height10 * 14.8
-                                        : AppDimensions.height10 * 13.8,
+                                        ? AppDimensions.height10(context) * 14.8
+                                        : AppDimensions.height10(context) *
+                                            13.8,
                                     decoration: BoxDecoration(
                                         //color: Colors.amber,
                                         image: DecorationImage(
@@ -704,7 +751,8 @@ class _dashBoardState extends State<dashBoard> {
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10 * 1.8,
+                                              AppDimensions.height10(context) *
+                                                  1.8,
                                           fontWeight: FontWeight.w500),
                                     )),
                                   ),
@@ -715,8 +763,10 @@ class _dashBoardState extends State<dashBoard> {
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Container(
-                                    height: AppDimensions.height10 * 13.8,
-                                    width: AppDimensions.height10 * 13.8,
+                                    height:
+                                        AppDimensions.height10(context) * 13.8,
+                                    width:
+                                        AppDimensions.height10(context) * 13.8,
                                     decoration: const BoxDecoration(
                                         //color: Colors.amber,
                                         image: DecorationImage(
@@ -729,7 +779,8 @@ class _dashBoardState extends State<dashBoard> {
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize:
-                                              AppDimensions.height10 * 1.8,
+                                              AppDimensions.height10(context) *
+                                                  1.8,
                                           fontWeight: FontWeight.w500),
                                       textAlign: TextAlign.center,
                                     )),
@@ -743,8 +794,8 @@ class _dashBoardState extends State<dashBoard> {
                         notifications_sheet(context);
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 14.432,
-                        width: AppDimensions.height10 * 35.335,
+                        height: AppDimensions.height10(context) * 14.432,
+                        width: AppDimensions.height10(context) * 35.335,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                           image: AssetImage(
@@ -766,8 +817,8 @@ class _dashBoardState extends State<dashBoard> {
                               },
                               child: Image.asset(
                                 "assets/images/Group.png",
-                                height: AppDimensions.height10 * 5.0,
-                                width: AppDimensions.height10 * 5.0,
+                                height: AppDimensions.height10(context) * 5.0,
+                                width: AppDimensions.height10(context) * 5.0,
                               ),
                             ),
                           ),
@@ -775,24 +826,25 @@ class _dashBoardState extends State<dashBoard> {
                             alignment: const Alignment(0.93, 0),
                             child: Image.asset(
                               "assets/images/Vector Smart Object.png",
-                              height: AppDimensions.height10 * 9.296,
-                              width: AppDimensions.height10 * 4.16,
+                              height: AppDimensions.height10(context) * 9.296,
+                              width: AppDimensions.height10(context) * 4.16,
                             ),
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 2.1,
+                              top: AppDimensions.height10(context) * 2.1,
                             ),
                             child: Column(
                               children: [
                                 Container(
-                                  width: AppDimensions.height10 * 28.0,
-                                  height: AppDimensions.height10 * 2.3,
+                                  width: AppDimensions.height10(context) * 28.0,
+                                  height: AppDimensions.height10(context) * 2.3,
                                   alignment: const Alignment(-0.65, 0),
                                   child: Text(
                                     "Hi, it's Reda here",
                                     style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
                                       fontWeight: FontWeight.w700,
                                       color:
                                           const Color.fromRGBO(91, 116, 166, 1),
@@ -800,27 +852,33 @@ class _dashBoardState extends State<dashBoard> {
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10 * 5.245,
-                                  height: AppDimensions.height10 * 1.3,
+                                  width:
+                                      AppDimensions.height10(context) * 5.245,
+                                  height: AppDimensions.height10(context) * 1.3,
                                   margin: EdgeInsets.only(
-                                      right: AppDimensions.height10 * 17.5),
+                                      right: AppDimensions.height10(context) *
+                                          17.5),
                                   child: const Divider(
                                     thickness: 1,
                                     color: Color.fromRGBO(91, 116, 166, 1),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10 * 26.7,
-                                  // height: AppDimensions.height10 * 5.3,
+                                  width: AppDimensions.height10(context) * 26.7,
+                                  // height: AppDimensions.height10(context) * 5.3,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 3.4,
-                                      bottom: AppDimensions.height10 * 1.2),
+                                      left:
+                                          AppDimensions.height10(context) * 3.4,
+                                      bottom: AppDimensions.height10(context) *
+                                          1.2),
                                   child: Text(
                                     "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
                                     // textAlign: TextAlign.left,
 
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
                                         fontWeight: FontWeight.w400,
                                         color: const Color.fromRGBO(
                                             91, 116, 166, 1)),
@@ -863,14 +921,15 @@ class _dashBoardState extends State<dashBoard> {
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
                                   width: double.infinity,
-                                  height: AppDimensions.height10 * 3.0,
+                                  height: AppDimensions.height10(context) * 3.0,
                                   color: Colors.green,
                                   child: Center(
                                     child: Text(
                                       'Back Online',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xFFFBFBFB)),
                                     ),
@@ -893,14 +952,17 @@ class _dashBoardState extends State<dashBoard> {
                                         alignment: Alignment.bottomCenter,
                                         child: Container(
                                           width: double.infinity,
-                                          height: AppDimensions.height10 * 3.0,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.0,
                                           color: const Color(0xFFFE6624),
                                           child: Center(
                                             child: Text(
                                               'You’re Offline',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.4,
                                                   fontWeight: FontWeight.w400,
                                                   color:
@@ -936,24 +998,30 @@ class _dashBoardState extends State<dashBoard> {
                                                       : const Alignment(
                                                           0.4, 0.13),
                               child: Container(
-                                width: AppDimensions.height10 * 30.6,
+                                width: AppDimensions.height10(context) * 30.6,
                                 height: goal_level == 1
-                                    ? AppDimensions.height10 * 22.3
+                                    ? AppDimensions.height10(context) * 22.3
                                     : goal_level == 2
-                                        ? AppDimensions.height10 * 22.1
+                                        ? AppDimensions.height10(context) * 22.1
                                         : goal_level == 3
-                                            ? AppDimensions.height10 * 18.3
+                                            ? AppDimensions.height10(context) *
+                                                18.3
                                             : goal_level == 4
-                                                ? AppDimensions.height10 * 20.6
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    20.6
                                                 : goal_level == 5
-                                                    ? AppDimensions.height10 *
+                                                    ? AppDimensions.height10(
+                                                            context) *
                                                         22.6
                                                     : goal_level == 6
                                                         ? AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             18.4
                                                         : AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             20.6,
                                 child: Stack(
                                   children: [
@@ -983,50 +1051,68 @@ class _dashBoardState extends State<dashBoard> {
                                                   goal_level == 6)
                                               ? 'assets/images/arrow-192-up.png'
                                               : 'assets/images/arrow-192.png',
-                                          height: AppDimensions.height10 * 2.0,
-                                          width: AppDimensions.height10 * 2.0,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.0,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.0,
                                         ),
                                       ),
                                     ),
                                     Container(
-                                      width: AppDimensions.height10 * 30.6,
+                                      width: AppDimensions.height10(context) *
+                                          30.6,
                                       height: goal_level == 1
-                                          ? AppDimensions.height10 * 22.3
+                                          ? AppDimensions.height10(context) *
+                                              22.3
                                           : goal_level == 2
-                                              ? AppDimensions.height10 * 22.1
+                                              ? AppDimensions.height10(
+                                                      context) *
+                                                  22.1
                                               : goal_level == 3
-                                                  ? AppDimensions.height10 *
+                                                  ? AppDimensions.height10(
+                                                          context) *
                                                       18.3
                                                   : goal_level == 4
-                                                      ? AppDimensions.height10 *
+                                                      ? AppDimensions.height10(
+                                                              context) *
                                                           20.6
                                                       : goal_level == 5
                                                           ? AppDimensions
-                                                                  .height10 *
+                                                                  .height10(
+                                                                      context) *
                                                               22.6
                                                           : goal_level == 6
                                                               ? AppDimensions
-                                                                      .height10 *
+                                                                      .height10(
+                                                                          context) *
                                                                   18.4
                                                               : AppDimensions
-                                                                      .height10 *
+                                                                      .height10(
+                                                                          context) *
                                                                   20.6,
                                       decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10 * 1.0)),
+                                              AppDimensions.height10(context) *
+                                                  1.0)),
                                       child: Column(
                                         children: [
                                           Container(
-                                            width:
-                                                AppDimensions.height10 * 21.6,
-                                            //height: AppDimensions.height10 * 2.2,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                21.6,
+                                            //height: AppDimensions.height10(context) * 2.2,
                                             margin: EdgeInsets.only(
-                                                top: AppDimensions.height10 *
+                                                top: AppDimensions.height10(
+                                                        context) *
                                                     1.7,
-                                                left: AppDimensions.height10 *
+                                                left: AppDimensions.height10(
+                                                        context) *
                                                     1.6,
-                                                right: AppDimensions.height10 *
+                                                right: AppDimensions.height10(
+                                                        context) *
                                                     7.4),
                                             child: Text(
                                               goal_level == 2
@@ -1048,42 +1134,51 @@ class _dashBoardState extends State<dashBoard> {
                                                 fontFamily: 'Laila',
                                                 color: const Color(0xFF000000),
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.6,
                                                 fontWeight: FontWeight.w700,
                                               ),
                                             ),
                                           ),
                                           Container(
-                                            width:
-                                                AppDimensions.height10 * 27.4,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                27.4,
                                             height: goal_level == 1
-                                                ? AppDimensions.height10 * 11.8
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    11.8
                                                 : goal_level == 2
-                                                    ? AppDimensions.height10 *
+                                                    ? AppDimensions.height10(
+                                                            context) *
                                                         11.6
                                                     : goal_level == 3
                                                         ? AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             7.8
                                                         : goal_level == 4
                                                             ? AppDimensions
-                                                                    .height10 *
+                                                                    .height10(
+                                                                        context) *
                                                                 10.1
                                                             : goal_level == 5
                                                                 ? AppDimensions
-                                                                        .height10 *
+                                                                        .height10(
+                                                                            context) *
                                                                     12.1
                                                                 : goal_level ==
                                                                         6
-                                                                    ? AppDimensions
-                                                                            .height10 *
+                                                                    ? AppDimensions.height10(
+                                                                            context) *
                                                                         7.9
-                                                                    : AppDimensions
-                                                                            .height10 *
+                                                                    : AppDimensions.height10(
+                                                                            context) *
                                                                         10.1,
                                             margin: EdgeInsets.only(
-                                                top: AppDimensions.height10 *
+                                                top: AppDimensions.height10(
+                                                        context) *
                                                     0.3),
                                             child: RichText(
                                                 text: TextSpan(
@@ -1096,10 +1191,12 @@ class _dashBoardState extends State<dashBoard> {
                                                             TextDecoration.none,
                                                         fontFamily: 'Laila',
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.4,
                                                         height: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.15),
                                                     children: [
                                                   TextSpan(
@@ -1266,12 +1363,15 @@ class _dashBoardState extends State<dashBoard> {
                                                 ])),
                                           ),
                                           Container(
-                                            width:
-                                                AppDimensions.height10 * 24.3,
-                                            height:
-                                                AppDimensions.height10 * 4.0,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                24.3,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                4.0,
                                             margin: EdgeInsets.only(
-                                                top: AppDimensions.height10 *
+                                                top: AppDimensions.height10(
+                                                        context) *
                                                     0.8),
                                             child: Row(
                                               mainAxisAlignment:
@@ -1286,22 +1386,25 @@ class _dashBoardState extends State<dashBoard> {
                                                   }),
                                                   child: Container(
                                                     decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                AppDimensions
-                                                                        .height10 *
-                                                                    5.0),
+                                                        borderRadius: BorderRadius
+                                                            .circular(AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                5.0),
                                                         border: Border.all(
                                                             width: AppDimensions
-                                                                    .height10 *
+                                                                    .height10(
+                                                                        context) *
                                                                 0.1,
                                                             color: const Color(
                                                                 0xFFFBFBFB))),
                                                     width:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             9.60,
                                                     height:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             3.2,
                                                     child: Center(
                                                       child: Text(
@@ -1314,7 +1417,8 @@ class _dashBoardState extends State<dashBoard> {
                                                                 TextDecoration
                                                                     .none,
                                                             fontSize: AppDimensions
-                                                                    .height10 *
+                                                                    .height10(
+                                                                        context) *
                                                                 1.6,
                                                             color: const Color(
                                                                 0xFF8C648A),
@@ -1336,17 +1440,19 @@ class _dashBoardState extends State<dashBoard> {
                                                   },
                                                   child: Container(
                                                     width:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             11.7,
                                                     height:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             4.0,
                                                     decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                AppDimensions
-                                                                        .height10 *
-                                                                    5.0),
+                                                        borderRadius: BorderRadius
+                                                            .circular(AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                5.0),
                                                         color: const Color(
                                                             0xFF5A4D73)),
                                                     child: Center(
@@ -1375,7 +1481,8 @@ class _dashBoardState extends State<dashBoard> {
                                                                     .none,
                                                             fontFamily: 'Laila',
                                                             fontSize: AppDimensions
-                                                                    .height10 *
+                                                                    .height10(
+                                                                        context) *
                                                                 1.6,
                                                             color: const Color(
                                                                 0xFFFFFFFF),
@@ -1404,27 +1511,28 @@ class _dashBoardState extends State<dashBoard> {
   }
 }
 
-void __share_experience(canceled) {
+void __share_experience(context) {
   showModalBottomSheet(
-    context: canceled,
+    context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-      top: Radius.circular(AppDimensions.height10 * 2.0),
+      top: Radius.circular(AppDimensions.height10(context) * 2.0),
     )),
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10 * 39.4,
-          height: AppDimensions.height10 * 62.3,
+          width: AppDimensions.height10(context) * 39.4,
+          height: AppDimensions.height10(context) * 62.3,
           margin: EdgeInsets.only(
-              left: AppDimensions.height10 * 1.0,
-              right: AppDimensions.height10 * 1.0,
-              bottom: AppDimensions.height10 * 1.0),
+              left: AppDimensions.height10(context) * 1.0,
+              right: AppDimensions.height10(context) * 1.0,
+              bottom: AppDimensions.height10(context) * 1.0),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+              borderRadius:
+                  BorderRadius.circular(AppDimensions.height10(context) * 2.0),
               color: Color(0xFFD9B4B4)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
@@ -1434,18 +1542,18 @@ void __share_experience(canceled) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
                 alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 1.9,
-                        right: AppDimensions.height10 * 1.5),
+                        top: AppDimensions.height10(context) * 1.9,
+                        right: AppDimensions.height10(context) * 1.5),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -1454,48 +1562,49 @@ void __share_experience(canceled) {
                 ),
               ),
               Container(
-                  width: AppDimensions.height10 * 28.6,
-                  height: AppDimensions.height10 * 5.8,
+                  width: AppDimensions.height10(context) * 28.6,
+                  height: AppDimensions.height10(context) * 5.8,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 0.7,
-                      bottom: AppDimensions.height10 * 1.2),
+                      top: AppDimensions.height10(context) * 0.7,
+                      bottom: AppDimensions.height10(context) * 1.2),
                   child: Text(
                     'Share your first\nexperience...',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        height: AppDimensions.height10 * 0.12,
-                        fontSize: AppDimensions.height10 * 2.4,
-                        // letterSpacing: AppDimensions.height10 * 0.2,
+                        height: AppDimensions.height10(context) * 0.12,
+                        fontSize: AppDimensions.height10(context) * 2.4,
+                        // letterSpacing: AppDimensions.height10(context) * 0.2,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFF437296)),
                   )),
               Container(
-                width: AppDimensions.height10 * 32.7,
-                height: AppDimensions.height10 * 6.4,
+                width: AppDimensions.height10(context) * 32.7,
+                height: AppDimensions.height10(context) * 6.4,
                 // color: Colors.amber,
                 alignment: Alignment.center,
-                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                 child: Text(
                   'True happiness comes from sharing and\nhelping others who are on the same\njourney as you.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      height: AppDimensions.height10 * 0.12,
-                      fontSize: AppDimensions.height10 * 1.6,
-                      // letterSpacing: AppDimensions.height10 * 0.2,
+                      height: AppDimensions.height10(context) * 0.12,
+                      fontSize: AppDimensions.height10(context) * 1.6,
+                      // letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 24.8,
-                height: AppDimensions.height10 * 24.8,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.8),
+                width: AppDimensions.height10(context) * 24.8,
+                height: AppDimensions.height10(context) * 24.8,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.8),
                 child: Stack(children: [
                   Align(
                     alignment: Alignment.topRight,
                     child: Container(
-                      width: AppDimensions.height10 * 24.8,
-                      height: AppDimensions.height10 * 24.8,
+                      width: AppDimensions.height10(context) * 24.8,
+                      height: AppDimensions.height10(context) * 24.8,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image:
@@ -1508,7 +1617,8 @@ void __share_experience(canceled) {
                               child: Text(
                                 'Control my anger',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.0,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.0,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xff5B74A6)),
                               )),
@@ -1519,7 +1629,8 @@ void __share_experience(canceled) {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontStyle: FontStyle.italic,
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff5B74A6))),
                           )
@@ -1532,8 +1643,8 @@ void __share_experience(canceled) {
                     child: GestureDetector(
                       onTap: () {},
                       child: Container(
-                        height: AppDimensions.height10 * 14.8,
-                        width: AppDimensions.height10 * 14.8,
+                        height: AppDimensions.height10(context) * 14.8,
+                        width: AppDimensions.height10(context) * 14.8,
                         decoration: const BoxDecoration(
                             //color: Colors.amber,
                             image: DecorationImage(
@@ -1546,9 +1657,10 @@ void __share_experience(canceled) {
                 ]),
               ),
               Container(
-                  height: AppDimensions.height10 * 12.5,
-                  width: AppDimensions.height10 * 12.5,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.9),
+                  height: AppDimensions.height10(context) * 12.5,
+                  width: AppDimensions.height10(context) * 12.5,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.9),
                   decoration: const BoxDecoration(
                       //color: Colors.amber,
                       image: DecorationImage(
@@ -1577,14 +1689,14 @@ void __share_experience(canceled) {
 //                         alignment: Alignment.bottomCenter,
 //                         child: Container(
 //                           width: double.infinity,
-//                           height: AppDimensions.height10 * 3.0,
+//                           height: AppDimensions.height10(context) * 3.0,
 //                           color:
 //                               connected ? Color(0xFF27AE60) : Color(0xFFFE6624),
 //                           child: Center(
 //                             child: Text(
 //                               connected ? 'Back Online' : 'You’re Offline',
 //                               style: TextStyle(
-//                                   fontSize: AppDimensions.height10 * 1.4,
+//                                   fontSize: AppDimensions.height10(context) * 1.4,
 //                                   fontWeight: FontWeight.w400,
 //                                   color: Color(0xFFFBFBFB)),
 //                             ),
@@ -1668,35 +1780,35 @@ void __share_experience(canceled) {
 //       // touchThroughAreaShape: ClipAreaShape.rectangle,
 //       content: Material(
 //         child: Container(
-//           width: AppDimensions.height10 * 29.6,
+//           width: AppDimensions.height10(context) * 29.6,
 //           height: goal_level == 1
-//               ? AppDimensions.height10 * 21.3
+//               ? AppDimensions.height10(context) * 21.3
 //               : goal_level == 2
-//                   ? AppDimensions.height10 * 21.1
+//                   ? AppDimensions.height10(context) * 21.1
 //                   : goal_level == 3
-//                       ? AppDimensions.height10 * 18.02
+//                       ? AppDimensions.height10(context) * 18.02
 //                       : goal_level == 4
-//                           ? AppDimensions.height10 * 20.32
+//                           ? AppDimensions.height10(context) * 20.32
 //                           : goal_level == 5
-//                               ? AppDimensions.height10 * 22.32
+//                               ? AppDimensions.height10(context) * 22.32
 //                               : goal_level == 6
-//                                   ? AppDimensions.height10 * 18.12
-//                                   : AppDimensions.height10 * 19.6,
+//                                   ? AppDimensions.height10(context) * 18.12
+//                                   : AppDimensions.height10(context) * 19.6,
 //           decoration: BoxDecoration(
 //               color: const Color(0xFFFFFFFF),
 //               borderRadius:
-//                   BorderRadius.circular(AppDimensions.height10 * 1.0)),
+//                   BorderRadius.circular(AppDimensions.height10(context) * 1.0)),
 //           child: Column(
 //             children: [
 //               Container(
-//                 width: AppDimensions.height10 * 21.6,
-//                 height: AppDimensions.height10 * 2.2,
+//                 width: AppDimensions.height10(context) * 21.6,
+//                 height: AppDimensions.height10(context) * 2.2,
 //                 margin: EdgeInsets.only(
-//                     top: AppDimensions.height10 * 1.7,
+//                     top: AppDimensions.height10(context) * 1.7,
 //                     left: goal_level == 6
-//                         ? AppDimensions.height10 * 1.2
-//                         : AppDimensions.height10 * 1.2,
-//                     right: AppDimensions.height10 * 7.4),
+//                         ? AppDimensions.height10(context) * 1.2
+//                         : AppDimensions.height10(context) * 1.2,
+//                     right: AppDimensions.height10(context) * 7.4),
 //                 child: Text(
 //                   goal_level == 2
 //                       ? 'Your Practice'
@@ -1715,27 +1827,27 @@ void __share_experience(canceled) {
 //                     decoration: TextDecoration.none,
 //                     fontFamily: 'Laila',
 //                     color: const Color(0xFF000000),
-//                     fontSize: AppDimensions.height10 * 1.4,
+//                     fontSize: AppDimensions.height10(context) * 1.4,
 //                     fontWeight: FontWeight.w700,
 //                   ),
 //                 ),
 //               ),
 //               Container(
-//                 width: AppDimensions.height10 * 27.4,
+//                 width: AppDimensions.height10(context) * 27.4,
 //                 height: goal_level == 1
-//                     ? AppDimensions.height10 * 11.8
+//                     ? AppDimensions.height10(context) * 11.8
 //                     : goal_level == 2
-//                         ? AppDimensions.height10 * 11.6
+//                         ? AppDimensions.height10(context) * 11.6
 //                         : goal_level == 3
-//                             ? AppDimensions.height10 * 7.8
+//                             ? AppDimensions.height10(context) * 7.8
 //                             : goal_level == 4
-//                                 ? AppDimensions.height10 * 10.1
+//                                 ? AppDimensions.height10(context) * 10.1
 //                                 : goal_level == 5
-//                                     ? AppDimensions.height10 * 12.1
+//                                     ? AppDimensions.height10(context) * 12.1
 //                                     : goal_level == 6
-//                                         ? AppDimensions.height10 * 7.9
-//                                         : AppDimensions.height10 * 10.1,
-//                 margin: EdgeInsets.only(top: AppDimensions.height10 * 0.3),
+//                                         ? AppDimensions.height10(context) * 7.9
+//                                         : AppDimensions.height10(context) * 10.1,
+//                 margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.3),
 //                 child: RichText(
 //                     text: TextSpan(
 //                         style: TextStyle(
@@ -1743,8 +1855,8 @@ void __share_experience(canceled) {
 //                             color: const Color(0xFF464646),
 //                             decoration: TextDecoration.none,
 //                             fontFamily: 'Laila',
-//                             fontSize: AppDimensions.height10 * 1.4,
-//                             height: AppDimensions.height10 * 0.15),
+//                             fontSize: AppDimensions.height10(context) * 1.4,
+//                             height: AppDimensions.height10(context) * 0.15),
 //                         children: [
 //                       TextSpan(
 //                         text: goal_level == 1
@@ -1878,9 +1990,9 @@ void __share_experience(canceled) {
 //                     ])),
 //               ),
 //               Container(
-//                 width: AppDimensions.height10 * 24.3,
-//                 height: AppDimensions.height10 * 4.0,
-//                 margin: EdgeInsets.only(top: AppDimensions.height10 * 0.8),
+//                 width: AppDimensions.height10(context) * 24.3,
+//                 height: AppDimensions.height10(context) * 4.0,
+//                 margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0.8),
 //                 child: Row(
 //                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                   children: [
@@ -1888,12 +2000,12 @@ void __share_experience(canceled) {
 //                       child: Container(
 //                         decoration: BoxDecoration(
 //                             borderRadius: BorderRadius.circular(
-//                                 AppDimensions.height10 * 5.0),
+//                                 AppDimensions.height10(context) * 5.0),
 //                             border: Border.all(
-//                                 width: AppDimensions.height10 * 0.1,
+//                                 width: AppDimensions.height10(context) * 0.1,
 //                                 color: const Color(0xFFFBFBFB))),
-//                         width: AppDimensions.height10 * 9.60,
-//                         height: AppDimensions.height10 * 3.2,
+//                         width: AppDimensions.height10(context) * 9.60,
+//                         height: AppDimensions.height10(context) * 3.2,
 //                         child: Center(
 //                           child: Text(
 //                             'Skip tour',
@@ -1901,7 +2013,7 @@ void __share_experience(canceled) {
 //                             style: TextStyle(
 //                                 fontFamily: 'Laila',
 //                                 decoration: TextDecoration.none,
-//                                 fontSize: AppDimensions.height10 * 1.6,
+//                                 fontSize: AppDimensions.height10(context) * 1.6,
 //                                 color: const Color(0xFF8C648A),
 //                                 fontWeight: FontWeight.w700),
 //                           ),
@@ -1918,11 +2030,11 @@ void __share_experience(canceled) {
 //                         }
 //                       },
 //                       child: Container(
-//                         width: AppDimensions.height10 * 11.7,
-//                         height: AppDimensions.height10 * 4.0,
+//                         width: AppDimensions.height10(context) * 11.7,
+//                         height: AppDimensions.height10(context) * 4.0,
 //                         decoration: BoxDecoration(
 //                             borderRadius: BorderRadius.circular(
-//                                 AppDimensions.height10 * 5.0),
+//                                 AppDimensions.height10(context) * 5.0),
 //                             color: const Color(0xFF5A4D73)),
 //                         child: Center(
 //                           child: Text(
@@ -1944,7 +2056,7 @@ void __share_experience(canceled) {
 //                             style: TextStyle(
 //                                 decoration: TextDecoration.none,
 //                                 fontFamily: 'Laila',
-//                                 fontSize: AppDimensions.height10 * 1.6,
+//                                 fontSize: AppDimensions.height10(context) * 1.6,
 //                                 color: const Color(0xFFFFFFFF),
 //                                 fontWeight: FontWeight.w600),
 //                           ),
@@ -1986,7 +2098,7 @@ void __share_experience(canceled) {
 // 
     // child: JustTheTooltip(
 //                           margin: EdgeInsets.only(
-//                               left: AppDimensions.height10 * 5.0),
+//                               left: AppDimensions.height10(context) * 5.0),
 //                           onDismiss: () {
 //                             print(goal_level);
 //                           },
@@ -2013,46 +2125,46 @@ void __share_experience(canceled) {
 //                           //   }
 //                           // },
 //                           child: SizedBox(
-//                             width: AppDimensions.height10 * 5.0,
-//                             height: AppDimensions.height10 * 5.00,
+//                             width: AppDimensions.height10(context) * 5.0,
+//                             height: AppDimensions.height10(context) * 5.00,
 //                             child: Container(
 //                               color: Colors.amber,
 //                             ),
 //                           ),
 
 //                           content: Container(
-//                             width: AppDimensions.height10 * 29.6,
+//                             width: AppDimensions.height10(context) * 29.6,
 //                             height: goal_level == 1
-//                                 ? AppDimensions.height10 * 21.3
+//                                 ? AppDimensions.height10(context) * 21.3
 //                                 : goal_level == 2
-//                                     ? AppDimensions.height10 * 21.1
+//                                     ? AppDimensions.height10(context) * 21.1
 //                                     : goal_level == 3
-//                                         ? AppDimensions.height10 * 18.02
+//                                         ? AppDimensions.height10(context) * 18.02
 //                                         : goal_level == 4
-//                                             ? AppDimensions.height10 * 20.32
+//                                             ? AppDimensions.height10(context) * 20.32
 //                                             : goal_level == 5
-//                                                 ? AppDimensions.height10 *
+//                                                 ? AppDimensions.height10(context) *
 //                                                     22.32
 //                                                 : goal_level == 6
-//                                                     ? AppDimensions.height10 *
+//                                                     ? AppDimensions.height10(context) *
 //                                                         18.12
-//                                                     : AppDimensions.height10 *
+//                                                     : AppDimensions.height10(context) *
 //                                                         19.6,
 //                             decoration: BoxDecoration(
 //                                 color: Color(0xFFFFFFFF),
 //                                 borderRadius: BorderRadius.circular(
-//                                     AppDimensions.height10 * 1.0)),
+//                                     AppDimensions.height10(context) * 1.0)),
 //                             child: Column(
 //                               children: [
 //                                 Container(
-//                                   width: AppDimensions.height10 * 21.6,
-//                                   height: AppDimensions.height10 * 2.2,
+//                                   width: AppDimensions.height10(context) * 21.6,
+//                                   height: AppDimensions.height10(context) * 2.2,
 //                                   margin: EdgeInsets.only(
-//                                       top: AppDimensions.height10 * 1.7,
+//                                       top: AppDimensions.height10(context) * 1.7,
 //                                       left: goal_level == 6
-//                                           ? AppDimensions.height10 * 1.2
-//                                           : AppDimensions.height10 * 1.2,
-//                                       right: AppDimensions.height10 * 7.4),
+//                                           ? AppDimensions.height10(context) * 1.2
+//                                           : AppDimensions.height10(context) * 1.2,
+//                                       right: AppDimensions.height10(context) * 7.4),
 //                                   child: Text(
 //                                     goal_level == 2
 //                                         ? 'Your Practice'
@@ -2071,21 +2183,21 @@ void __share_experience(canceled) {
 //                                       decoration: TextDecoration.none,
 //                                       fontFamily: 'Laila',
 //                                       color: Color(0xFF000000),
-//                                       fontSize: AppDimensions.height10 * 1.4,
+//                                       fontSize: AppDimensions.height10(context) * 1.4,
 //                                       fontWeight: FontWeight.w700,
 //                                     ),
 //                                   ),
 //                                 ),
 //                                 Container(
-//                                   width: AppDimensions.height10 * 27.4,
+//                                   width: AppDimensions.height10(context) * 27.4,
 //                                   height: goal_level == 1
-//                                       ? AppDimensions.height10 * 11.8
+//                                       ? AppDimensions.height10(context) * 11.8
 //                                       : goal_level == 2
-//                                           ? AppDimensions.height10 * 11.6
+//                                           ? AppDimensions.height10(context) * 11.6
 //                                           : goal_level == 3
-//                                               ? AppDimensions.height10 * 7.8
+//                                               ? AppDimensions.height10(context) * 7.8
 //                                               : goal_level == 4
-//                                                   ? AppDimensions.height10 *
+//                                                   ? AppDimensions.height10(context) *
 //                                                       10.1
 //                                                   : goal_level == 5
 //                                                       ? AppDimensions
@@ -2099,7 +2211,7 @@ void __share_experience(canceled) {
 //                                                                   .height10 *
 //                                                               10.1,
 //                                   margin: EdgeInsets.only(
-//                                       top: AppDimensions.height10 * 0.3),
+//                                       top: AppDimensions.height10(context) * 0.3),
 //                                   child: RichText(
 //                                       text: TextSpan(
 //                                           style: TextStyle(
@@ -2108,9 +2220,9 @@ void __share_experience(canceled) {
 //                                               decoration: TextDecoration.none,
 //                                               fontFamily: 'Laila',
 //                                               fontSize:
-//                                                   AppDimensions.height10 *
+//                                                   AppDimensions.height10(context) *
 //                                                       1.4,
-//                                               height: AppDimensions.height10 *
+//                                               height: AppDimensions.height10(context) *
 //                                                   0.15),
 //                                           children: [
 //                                         TextSpan(
@@ -2258,10 +2370,10 @@ void __share_experience(canceled) {
 //                                       ])),
 //                                 ),
 //                                 Container(
-//                                   width: AppDimensions.height10 * 24.3,
-//                                   height: AppDimensions.height10 * 4.0,
+//                                   width: AppDimensions.height10(context) * 24.3,
+//                                   height: AppDimensions.height10(context) * 4.0,
 //                                   margin: EdgeInsets.only(
-//                                       top: AppDimensions.height10 * 0.8),
+//                                       top: AppDimensions.height10(context) * 0.8),
 //                                   child: Row(
 //                                     mainAxisAlignment:
 //                                         MainAxisAlignment.spaceBetween,
@@ -2276,17 +2388,17 @@ void __share_experience(canceled) {
 //                                           decoration: BoxDecoration(
 //                                               borderRadius:
 //                                                   BorderRadius.circular(
-//                                                       AppDimensions.height10 *
+//                                                       AppDimensions.height10(context) *
 //                                                           5.0),
 //                                               border: Border.all(
 //                                                   width:
-//                                                       AppDimensions.height10 *
+//                                                       AppDimensions.height10(context) *
 //                                                           0.1,
 //                                                   color: Color(0xFFFBFBFB))),
 //                                           width:
-//                                               AppDimensions.height10 * 9.60,
+//                                               AppDimensions.height10(context) * 9.60,
 //                                           height:
-//                                               AppDimensions.height10 * 3.2,
+//                                               AppDimensions.height10(context) * 3.2,
 //                                           child: Center(
 //                                             child: Text(
 //                                               'Skip tour',
@@ -2296,7 +2408,7 @@ void __share_experience(canceled) {
 //                                                   decoration:
 //                                                       TextDecoration.none,
 //                                                   fontSize:
-//                                                       AppDimensions.height10 *
+//                                                       AppDimensions.height10(context) *
 //                                                           1.6,
 //                                                   color: Color(0xFF8C648A),
 //                                                   fontWeight:
@@ -2316,13 +2428,13 @@ void __share_experience(canceled) {
 //                                         },
 //                                         child: Container(
 //                                           width:
-//                                               AppDimensions.height10 * 11.7,
+//                                               AppDimensions.height10(context) * 11.7,
 //                                           height:
-//                                               AppDimensions.height10 * 4.0,
+//                                               AppDimensions.height10(context) * 4.0,
 //                                           decoration: BoxDecoration(
 //                                               borderRadius:
 //                                                   BorderRadius.circular(
-//                                                       AppDimensions.height10 *
+//                                                       AppDimensions.height10(context) *
 //                                                           5.0),
 //                                               color: Color(0xFF5A4D73)),
 //                                           child: Center(
@@ -2350,7 +2462,7 @@ void __share_experience(canceled) {
 //                                                       TextDecoration.none,
 //                                                   fontFamily: 'Laila',
 //                                                   fontSize:
-//                                                       AppDimensions.height10 *
+//                                                       AppDimensions.height10(context) *
 //                                                           1.6,
 //                                                   color: Color(0xFFFFFFFF),
 //                                                   fontWeight:
@@ -2390,10 +2502,10 @@ void __share_experience(canceled) {
   //                                                       0.12, 0.37),
   //                           child: SimpleTooltip(
   //                             //customShadows: [],
-  //                             //  maxHeight: AppDimensions.height10 * 23.9,
-  //                             maxWidth: AppDimensions.height10 * 30.6,
-  //                             //  minHeight: AppDimensions.height10 * 21.9,
-  //                             //minWidth: AppDimensions.height10 * 29.6,
+  //                             //  maxHeight: AppDimensions.height10(context) * 23.9,
+  //                             maxWidth: AppDimensions.height10(context) * 30.6,
+  //                             //  minHeight: AppDimensions.height10(context) * 21.9,
+  //                             //minWidth: AppDimensions.height10(context) * 29.6,
   //                             tooltipDirection: goal_level == 1 ||
   //                                     goal_level == 2 ||
   //                                     goal_level == 7
@@ -2403,13 +2515,13 @@ void __share_experience(canceled) {
   //                             minimumOutSidePadding: 0,
   //                             // targetCenter: goal_level == 2 ? null : null,
   //                             ballonPadding: const EdgeInsets.all(0),
-  //                             arrowLength: AppDimensions.height10 * 0.6,
+  //                             arrowLength: AppDimensions.height10(context) * 0.6,
   //                             borderColor: Colors.transparent,
   //                             // content: null,
   //                             //have to initialize from different widgets
   //                             child: SizedBox(
-  //                               width: AppDimensions.height10 * 1,
-  //                               height: AppDimensions.height10 * 1,
+  //                               width: AppDimensions.height10(context) * 1,
+  //                               height: AppDimensions.height10(context) * 1,
   //                               child: Container(),
   //                             ),
   //                             show: goal_level > 7 ? false : true,
@@ -2420,17 +2532,17 @@ void __share_experience(canceled) {
   //                             animationDuration:
   //                                 const Duration(milliseconds: 3),
   //                             content: Container(
-  //                               width: AppDimensions.height10 * 30.6,
+  //                               width: AppDimensions.height10(context) * 30.6,
   //                               height: goal_level == 1
-  //                                   ? AppDimensions.height10 * 20.3
+  //                                   ? AppDimensions.height10(context) * 20.3
   //                                   : goal_level == 2
-  //                                       ? AppDimensions.height10 * 20.1
+  //                                       ? AppDimensions.height10(context) * 20.1
   //                                       : goal_level == 3
-  //                                           ? AppDimensions.height10 * 16.3
+  //                                           ? AppDimensions.height10(context) * 16.3
   //                                           : goal_level == 4
-  //                                               ? AppDimensions.height10 * 18.6
+  //                                               ? AppDimensions.height10(context) * 18.6
   //                                               : goal_level == 5
-  //                                                   ? AppDimensions.height10 *
+  //                                                   ? AppDimensions.height10(context) *
   //                                                       20.6
   //                                                   : goal_level == 6
   //                                                       ? AppDimensions
@@ -2441,16 +2553,16 @@ void __share_experience(canceled) {
   //                                                           18.6,
   //                               decoration: BoxDecoration(
   //                                   borderRadius: BorderRadius.circular(
-  //                                       AppDimensions.height10 * 1.0)),
+  //                                       AppDimensions.height10(context) * 1.0)),
   //                               child: Column(
   //                                 children: [
   //                                   Container(
-  //                                     width: AppDimensions.height10 * 21.6,
-  //                                     //height: AppDimensions.height10 * 2.2,
+  //                                     width: AppDimensions.height10(context) * 21.6,
+  //                                     //height: AppDimensions.height10(context) * 2.2,
   //                                     margin: EdgeInsets.only(
-  //                                         top: AppDimensions.height10 * 0.5,
-  //                                         left: AppDimensions.height10 * 0.5,
-  //                                         right: AppDimensions.height10 * 7.4),
+  //                                         top: AppDimensions.height10(context) * 0.5,
+  //                                         left: AppDimensions.height10(context) * 0.5,
+  //                                         right: AppDimensions.height10(context) * 7.4),
   //                                     child: Text(
   //                                       goal_level == 2
   //                                           ? 'Your Practice'
@@ -2470,21 +2582,21 @@ void __share_experience(canceled) {
   //                                         fontFamily: 'Laila',
   //                                         color: const Color(0xFF000000),
   //                                         fontSize:
-  //                                             AppDimensions.height10 * 1.6,
+  //                                             AppDimensions.height10(context) * 1.6,
   //                                         fontWeight: FontWeight.w700,
   //                                       ),
   //                                     ),
   //                                   ),
   //                                   Container(
-  //                                     width: AppDimensions.height10 * 27.4,
+  //                                     width: AppDimensions.height10(context) * 27.4,
   //                                     height: goal_level == 1
-  //                                         ? AppDimensions.height10 * 11.8
+  //                                         ? AppDimensions.height10(context) * 11.8
   //                                         : goal_level == 2
-  //                                             ? AppDimensions.height10 * 11.6
+  //                                             ? AppDimensions.height10(context) * 11.6
   //                                             : goal_level == 3
-  //                                                 ? AppDimensions.height10 * 7.8
+  //                                                 ? AppDimensions.height10(context) * 7.8
   //                                                 : goal_level == 4
-  //                                                     ? AppDimensions.height10 *
+  //                                                     ? AppDimensions.height10(context) *
   //                                                         10.1
   //                                                     : goal_level == 5
   //                                                         ? AppDimensions
@@ -2498,7 +2610,7 @@ void __share_experience(canceled) {
   //                                                                     .height10 *
   //                                                                 10.1,
   //                                     margin: EdgeInsets.only(
-  //                                         top: AppDimensions.height10 * 0.3),
+  //                                         top: AppDimensions.height10(context) * 0.3),
   //                                     child: RichText(
   //                                         text: TextSpan(
   //                                             style: TextStyle(
@@ -2509,10 +2621,10 @@ void __share_experience(canceled) {
   //                                                     TextDecoration.none,
   //                                                 fontFamily: 'Laila',
   //                                                 fontSize:
-  //                                                     AppDimensions.height10 *
+  //                                                     AppDimensions.height10(context) *
   //                                                         1.4,
   //                                                 height:
-  //                                                     AppDimensions.height10 *
+  //                                                     AppDimensions.height10(context) *
   //                                                         0.15),
   //                                             children: [
   //                                           TextSpan(
@@ -2673,10 +2785,10 @@ void __share_experience(canceled) {
   //                                         ])),
   //                                   ),
   //                                   Container(
-  //                                     width: AppDimensions.height10 * 24.3,
-  //                                     height: AppDimensions.height10 * 4.0,
+  //                                     width: AppDimensions.height10(context) * 24.3,
+  //                                     height: AppDimensions.height10(context) * 4.0,
   //                                     margin: EdgeInsets.only(
-  //                                         top: AppDimensions.height10 * 0.8),
+  //                                         top: AppDimensions.height10(context) * 0.8),
   //                                     child: Row(
   //                                       mainAxisAlignment:
   //                                           MainAxisAlignment.spaceBetween,
@@ -2701,9 +2813,9 @@ void __share_experience(canceled) {
   //                                                     color: const Color(
   //                                                         0xFFFBFBFB))),
   //                                             width:
-  //                                                 AppDimensions.height10 * 9.60,
+  //                                                 AppDimensions.height10(context) * 9.60,
   //                                             height:
-  //                                                 AppDimensions.height10 * 3.2,
+  //                                                 AppDimensions.height10(context) * 3.2,
   //                                             child: Center(
   //                                               child: Text(
   //                                                 'Skip tour',
@@ -2734,9 +2846,9 @@ void __share_experience(canceled) {
   //                                           },
   //                                           child: Container(
   //                                             width:
-  //                                                 AppDimensions.height10 * 11.7,
+  //                                                 AppDimensions.height10(context) * 11.7,
   //                                             height:
-  //                                                 AppDimensions.height10 * 4.0,
+  //                                                 AppDimensions.height10(context) * 4.0,
   //                                             decoration: BoxDecoration(
   //                                                 borderRadius:
   //                                                     BorderRadius.circular(

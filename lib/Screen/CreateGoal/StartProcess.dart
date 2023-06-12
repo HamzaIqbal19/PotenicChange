@@ -33,8 +33,8 @@ class _StartProcessState extends State<StartProcess> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Close.png',
-                width: AppDimensions.height10 * 2.8,
-                height: AppDimensions.height10 * 2.8,
+                width: AppDimensions.height10(context) * 2.8,
+                height: AppDimensions.height10(context) * 2.8,
                 fit: BoxFit.cover,
               ),
               onPressed: () {
@@ -44,7 +44,7 @@ class _StartProcessState extends State<StartProcess> {
             ),
           ),
           SizedBox(
-            width: AppDimensions.width10,
+            width: AppDimensions.height10(context),
           )
         ],
       ),
@@ -61,14 +61,15 @@ class _StartProcessState extends State<StartProcess> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: AppDimensions.height10 * 5.7),
+                padding:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 5.7),
                 child: Center(
                   child: GradientText(
                     "Goal Setting",
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       // color: Colors.white,
-                      fontSize: AppDimensions.height10 * 3,
+                      fontSize: AppDimensions.height10(context) * 3,
                     ),
                     colors: const [
                       Color(0xFFFA9934),
@@ -78,12 +79,12 @@ class _StartProcessState extends State<StartProcess> {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 3.4,
+                height: AppDimensions.height10(context) * 3.4,
               ),
               Container(
                   // color: Colors.black,
-                  height: AppDimensions.height10 * 7.4,
-                  width: AppDimensions.height10 * 36.6,
+                  height: AppDimensions.height10(context) * 7.4,
+                  width: AppDimensions.height10(context) * 36.6,
                   child: Column(
                     children: [
                       Container(
@@ -94,7 +95,7 @@ class _StartProcessState extends State<StartProcess> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 2.4,
+                              fontSize: AppDimensions.height10(context) * 2.4,
                             ),
                           ),
                         ),
@@ -107,7 +108,7 @@ class _StartProcessState extends State<StartProcess> {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 2.4,
+                              fontSize: AppDimensions.height10(context) * 2.4,
                             ),
                           ),
                         ),
@@ -117,12 +118,12 @@ class _StartProcessState extends State<StartProcess> {
               Center(
                 child: Image(
                   image: const AssetImage('assets/images/image1.png'),
-                  height: AppDimensions.height10 * 6.5,
-                  width: AppDimensions.height10 * 6.5,
+                  height: AppDimensions.height10(context) * 6.5,
+                  width: AppDimensions.height10(context) * 6.5,
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 1.1,
+                height: AppDimensions.height10(context) * 1.1,
               ),
               Container(
                 child: Center(
@@ -132,28 +133,28 @@ class _StartProcessState extends State<StartProcess> {
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.8,
+                      fontSize: AppDimensions.height10(context) * 1.8,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 2.7,
+                height: AppDimensions.height10(context) * 2.7,
               ),
               Center(
                 child: Image(
                   image: const AssetImage('assets/images/Line.png'),
-                  // height: AppDimensions.height10 * 6.5,
-                  width: AppDimensions.height10 * 6.5,
+                  // height:   AppDimensions.height10(context)(context)* 6.5,
+                  width: AppDimensions.height10(context) * 6.5,
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 2.3,
+                height: AppDimensions.height10(context) * 2.3,
               ),
               Container(
                   // color: Colors.black,
-                  height: AppDimensions.height10 * 8.3,
-                  width: AppDimensions.height10 * 36.6,
+                  height: AppDimensions.height10(context) * 8.3,
+                  width: AppDimensions.height10(context) * 36.6,
                   child: Column(
                     children: [
                       Container(
@@ -164,7 +165,7 @@ class _StartProcessState extends State<StartProcess> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 2.4,
+                              fontSize: AppDimensions.height10(context) * 2.4,
                             ),
                           ),
                         ),
@@ -177,7 +178,7 @@ class _StartProcessState extends State<StartProcess> {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 2.4,
+                              fontSize: AppDimensions.height10(context) * 2.4,
                             ),
                           ),
                         ),
@@ -187,15 +188,15 @@ class _StartProcessState extends State<StartProcess> {
               Center(
                 child: Image(
                   image: const AssetImage('assets/images/image2.png'),
-                  height: AppDimensions.height10 * 4,
-                  width: AppDimensions.height10 * 4,
+                  height: AppDimensions.height10(context) * 4,
+                  width: AppDimensions.height10(context) * 4,
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 1.3,
+                height: AppDimensions.height10(context) * 1.3,
               ),
               Container(
-                height: AppDimensions.height10 * 8.6,
+                height: AppDimensions.height10(context) * 8.6,
                 child: Center(
                   child: Text(
                     "Decide on a tool / practice you’ll be using \n and set your routine (you need to do this 3 \n or more times a week) ",
@@ -203,16 +204,16 @@ class _StartProcessState extends State<StartProcess> {
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.8,
+                      fontSize: AppDimensions.height10(context) * 1.8,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 3.5,
+                height: AppDimensions.height10(context) * 3.5,
               ),
               Container(
-                height: AppDimensions.height10 * 5.6,
+                height: AppDimensions.height10(context) * 5.6,
                 child: Center(
                   child: Text(
                     "In 25 mins and less you’ll be on your \n way towards more clarity. ",
@@ -220,17 +221,17 @@ class _StartProcessState extends State<StartProcess> {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.9,
+                      fontSize: AppDimensions.height10(context) * 1.9,
                     ),
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 1.7,
+                height: AppDimensions.height10(context) * 1.7,
               ),
               Container(
-                height: AppDimensions.height10 * 5,
-                width: AppDimensions.height10 * 25.4,
+                height: AppDimensions.height10(context) * 5,
+                width: AppDimensions.height10(context) * 25.4,
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(40.0)),
                     gradient: LinearGradient(
@@ -255,13 +256,13 @@ class _StartProcessState extends State<StartProcess> {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.9,
+                      fontSize: AppDimensions.height10(context) * 1.9,
                     ),
                   ),
                 ),
               ),
               Container(
-                height: AppDimensions.height10 * 5.6,
+                height: AppDimensions.height10(context) * 5.6,
                 child: Center(
                   child: Text(
                     "You can save and exit at any time. ",
@@ -269,7 +270,7 @@ class _StartProcessState extends State<StartProcess> {
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.6,
+                      fontSize: AppDimensions.height10(context) * 1.6,
                     ),
                   ),
                 ),

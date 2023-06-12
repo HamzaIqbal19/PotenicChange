@@ -21,8 +21,8 @@ class clocks extends StatelessWidget {
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -32,8 +32,8 @@ class clocks extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -54,50 +54,50 @@ class clocks extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: AppDimensions.height10 * 18.6,
-                height: AppDimensions.height10 * 2.4,
+                width: AppDimensions.height10(context) * 18.6,
+                height: AppDimensions.height10(context) * 2.4,
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 10.5,
-                    top: AppDimensions.height10 * 4.6),
+                    bottom: AppDimensions.height10(context) * 10.5,
+                    top: AppDimensions.height10(context) * 4.6),
                 alignment: Alignment.center,
                 child: Text(
                   'Meditation Session',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.0,
+                      fontSize: AppDimensions.height10(context) * 2.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 35.9,
-                height: AppDimensions.height10 * 14.8,
+                width: AppDimensions.height10(context) * 35.9,
+                height: AppDimensions.height10(context) * 14.8,
                 alignment: Alignment.center,
                 // margin: EdgeInsets.only(bottom: 86),
                 child: Text(
                   'Do you need a timer for\nyour practice?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      height: AppDimensions.height10 * 0.12,
-                      fontSize: AppDimensions.height10 * 2.8,
+                      height: AppDimensions.height10(context) * 0.12,
+                      fontSize: AppDimensions.height10(context) * 2.8,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
               ),
               Container(child: watch_time()),
               Container(
-                width: AppDimensions.height10 * 32.5,
-                height: AppDimensions.height10 * 6.0,
+                width: AppDimensions.height10(context) * 32.5,
+                height: AppDimensions.height10(context) * 6.0,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                      height: AppDimensions.height10 * 5.0,
-                      width: AppDimensions.height10 * 10.6,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.0),
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 10.6,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.0),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 5.0),
+                              AppDimensions.height10(context) * 5.0),
                           border:
                               Border.all(width: 2, color: Color(0xffFA9934))),
                       child: TextButton(
@@ -109,12 +109,12 @@ class clocks extends StatelessWidget {
                             'Skip',
                             style: TextStyle(
                                 color: Color(0xffFA9934),
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w600),
                           ))),
                   Container(
-                      height: AppDimensions.height10 * 5.0,
-                      width: AppDimensions.height10 * 20.7,
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 20.7,
                       decoration: BoxDecoration(
                           gradient: const LinearGradient(
                             begin: Alignment.topCenter,
@@ -125,9 +125,9 @@ class clocks extends StatelessWidget {
                             ],
                           ),
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 5.0),
+                              AppDimensions.height10(context) * 5.0),
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
+                              width: AppDimensions.height10(context) * 0.2,
                               color: Colors.transparent)),
                       child: TextButton(
                           onPressed: () {
@@ -138,7 +138,7 @@ class clocks extends StatelessWidget {
                             'Finished Practice',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w600),
                           )))
                 ]),
@@ -169,17 +169,17 @@ class _watch_timeState extends State<watch_time> {
   Widget build(BuildContext context) {
     return Column(children: [
       Container(
-        height: AppDimensions.height10 * 4.501,
-        width: AppDimensions.height10 * 26.6,
+        height: AppDimensions.height10(context) * 4.501,
+        width: AppDimensions.height10(context) * 26.6,
         alignment: Alignment.center,
         child: Row(
           children: [
             Container(
-              width: AppDimensions.height10 * 13.3,
+              width: AppDimensions.height10(context) * 13.3,
               decoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(
-                          width: AppDimensions.height10 * 0.2,
+                          width: AppDimensions.height10(context) * 0.2,
                           color:
                               clock_state ? Color(0xff437296) : Colors.white))),
               child: Center(
@@ -193,23 +193,23 @@ class _watch_timeState extends State<watch_time> {
                   },
                   child: clock_state
                       ? Container(
-                          //width: AppDimensions.height10 * 9.2,
-                          height: AppDimensions.height10 * 2.4,
+                          //width: AppDimensions.height10(context) * 9.2,
+                          height: AppDimensions.height10(context) * 2.4,
                           child: Text(
                             'Stopwatch',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff437296)),
                           ),
                         )
                       : Container(
-                          //width: AppDimensions.height10 * 5.4,
-                          height: AppDimensions.height10 * 2.4,
+                          //width: AppDimensions.height10(context) * 5.4,
+                          height: AppDimensions.height10(context) * 2.4,
                           child: Text(
                             'Stopwatch',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white),
                           ),
@@ -218,11 +218,11 @@ class _watch_timeState extends State<watch_time> {
               ),
             ),
             Container(
-              width: AppDimensions.height10 * 13.3,
+              width: AppDimensions.height10(context) * 13.3,
               decoration: BoxDecoration(
                   border: Border(
                       bottom: BorderSide(
-                          width: AppDimensions.height10 * 0.2,
+                          width: AppDimensions.height10(context) * 0.2,
                           color:
                               clock_state ? Colors.white : Color(0xff437296)))),
               // padding: EdgeInsets.only(left: 10),
@@ -236,20 +236,22 @@ class _watch_timeState extends State<watch_time> {
                     },
                     child: clock_state
                         ? Container(
-                            height: AppDimensions.height10 * 2.4,
-                            // width: AppDimensions.height10 * 5.4,
+                            height: AppDimensions.height10(context) * 2.4,
+                            // width: AppDimensions.height10(context) * 5.4,
                             child: Text('Timer',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white)),
                           )
                         : Container(
-                            height: AppDimensions.height10 * 2.4,
-                            // width: AppDimensions.height10 * 5.4,
+                            height: AppDimensions.height10(context) * 2.4,
+                            // width: AppDimensions.height10(context) * 5.4,
                             child: Text('Timer',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                     color: Color(0xff437296))),
                           )),
@@ -259,32 +261,34 @@ class _watch_timeState extends State<watch_time> {
         ),
       ),
       Container(
-        height: AppDimensions.height10 * 34.5,
-        width: AppDimensions.height10 * 34.5,
+        height: AppDimensions.height10(context) * 34.5,
+        width: AppDimensions.height10(context) * 34.5,
         margin: EdgeInsets.only(
-            bottom: AppDimensions.height10 * 6.4,
-            top: AppDimensions.height10 * 2.1),
+            bottom: AppDimensions.height10(context) * 6.4,
+            top: AppDimensions.height10(context) * 2.1),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-              width: AppDimensions.height10 * 0.2, color: Colors.white),
+              width: AppDimensions.height10(context) * 0.2,
+              color: Colors.white),
         ),
         child: Container(
-          height: AppDimensions.height10 * 28.565,
-          width: AppDimensions.height10 * 28.565,
-          margin: EdgeInsets.all(AppDimensions.height10 * 3.0),
+          height: AppDimensions.height10(context) * 28.565,
+          width: AppDimensions.height10(context) * 28.565,
+          margin: EdgeInsets.all(AppDimensions.height10(context) * 3.0),
           decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
-                  width: AppDimensions.height10 * 0.2, color: Colors.white)),
+                  width: AppDimensions.height10(context) * 0.2,
+                  color: Colors.white)),
           child: Stack(
             children: [
               //timer
               Align(
                 alignment: Alignment(0, -0.4),
                 child: Container(
-                    height: AppDimensions.height10 * 7.2,
-                    width: AppDimensions.height10 * 12.8,
+                    height: AppDimensions.height10(context) * 7.2,
+                    width: AppDimensions.height10(context) * 12.8,
                     child: Center(
                       child: Container(
                           decoration: clock_state
@@ -304,7 +308,7 @@ class _watch_timeState extends State<watch_time> {
                             duration,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 4.6,
+                                fontSize: AppDimensions.height10(context) * 4.6,
                                 fontWeight: FontWeight.w300),
                           )
 
@@ -319,16 +323,16 @@ class _watch_timeState extends State<watch_time> {
                           //     child: Text(duration,
                           //         style: TextStyle(
                           //             color: Colors.white,
-                          //             fontSize: AppDimensions.height10 * 4.6,
+                          //             fontSize: AppDimensions.height10(context) * 4.6,
                           //             fontWeight: FontWeight.w300))),
                           ),
                     )),
               ),
               //play button
               Positioned(
-                right: AppDimensions.height10 * 9.7,
-                left: AppDimensions.height10 * 9.7,
-                bottom: AppDimensions.height10 * 2.0,
+                right: AppDimensions.height10(context) * 9.7,
+                left: AppDimensions.height10(context) * 9.7,
+                bottom: AppDimensions.height10(context) * 2.0,
                 child: InkWell(
                   onTap: () {
                     setState(() {
@@ -341,41 +345,42 @@ class _watch_timeState extends State<watch_time> {
                     });
                   },
                   child: Container(
-                    height: AppDimensions.height10 * 9.1,
-                    width: AppDimensions.height10 * 9.1,
+                    height: AppDimensions.height10(context) * 9.1,
+                    width: AppDimensions.height10(context) * 9.1,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.5,
+                            width: AppDimensions.height10(context) * 0.5,
                             color: Color(0xffFEBD0F))),
                     child: Container(
-                      height: AppDimensions.height10 * 7,
-                      width: AppDimensions.height10 * 7,
+                      height: AppDimensions.height10(context) * 7,
+                      width: AppDimensions.height10(context) * 7,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10 * 0.3,
-                                left: AppDimensions.height10 * 1.0),
+                                top: AppDimensions.height10(context) * 0.3,
+                                left: AppDimensions.height10(context) * 1.0),
                             child: Image.asset(
                               'assets/images/start_icon.png',
-                              width: AppDimensions.height10 * 1.8,
-                              height: AppDimensions.height10 * 2.7,
+                              width: AppDimensions.height10(context) * 1.8,
+                              height: AppDimensions.height10(context) * 2.7,
                               fit: BoxFit.cover,
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10 * 3.5,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 3.5,
+                            height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10 * 0.5,
-                                left: AppDimensions.height10 * 0.5),
+                                top: AppDimensions.height10(context) * 0.5,
+                                left: AppDimensions.height10(context) * 0.5),
                             child: Text(button_text,
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w500,
                                     color: Color(0xffFFA511))),
                           )
@@ -387,8 +392,8 @@ class _watch_timeState extends State<watch_time> {
               ),
               //reset button
               Positioned(
-                right: AppDimensions.height10 * 2.7,
-                bottom: AppDimensions.height10 * 5.6,
+                right: AppDimensions.height10(context) * 2.7,
+                bottom: AppDimensions.height10(context) * 5.6,
                 child: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -396,8 +401,8 @@ class _watch_timeState extends State<watch_time> {
                     });
                   },
                   child: Container(
-                    height: AppDimensions.height10 * 5.6,
-                    width: AppDimensions.height10 * 5.6,
+                    height: AppDimensions.height10(context) * 5.6,
+                    width: AppDimensions.height10(context) * 5.6,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.white,
@@ -409,13 +414,13 @@ class _watch_timeState extends State<watch_time> {
                       children: [
                         Icon(
                           Icons.refresh,
-                          size: AppDimensions.height10 * 1.8,
+                          size: AppDimensions.height10(context) * 1.8,
                           color: Color(0xffFEAD10).withOpacity(0.5),
                         ),
                         Text(
                           'Reset',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.2,
+                              fontSize: AppDimensions.height10(context) * 1.2,
                               fontWeight: FontWeight.w400,
                               color: Color(0xffFFA511).withOpacity(0.5)),
                         )
@@ -454,13 +459,13 @@ class _watch_timeState extends State<watch_time> {
 
   Widget _buildContainer(Widget picker) {
     return Container(
-      height: AppDimensions.height10 * 30.3,
-      padding: EdgeInsets.only(top: AppDimensions.height10 * 0.60),
+      height: AppDimensions.height10(context) * 30.3,
+      padding: EdgeInsets.only(top: AppDimensions.height10(context) * 0.60),
       color: CupertinoColors.white,
       child: Column(
         children: [
           Container(
-            height: AppDimensions.height10 * 3.8,
+            height: AppDimensions.height10(context) * 3.8,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -474,7 +479,7 @@ class _watch_timeState extends State<watch_time> {
                     child: Text(
                       'Cancel',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.4,
+                          fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: Color(0xff2F80ED)),
                     )),
@@ -485,7 +490,7 @@ class _watch_timeState extends State<watch_time> {
                     child: Text(
                       'Done',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.4,
+                          fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: Color(0xff2F80ED)),
                     ))
@@ -493,7 +498,7 @@ class _watch_timeState extends State<watch_time> {
             ),
           ),
           Divider(
-            height: AppDimensions.height10 * 0.1,
+            height: AppDimensions.height10(context) * 0.1,
           ),
           DefaultTextStyle(
             style: const TextStyle(

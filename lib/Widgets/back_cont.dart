@@ -36,28 +36,29 @@ class _backboxState extends State<backbox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10 * 38.2,
-      height: AppDimensions.height10 * 42.3,
+      width: AppDimensions.height10(context) * 38.2,
+      height: AppDimensions.height10(context) * 42.3,
       child: Stack(children: [
         Container(
-            width: AppDimensions.height10 * 38.2,
-            height: AppDimensions.height10 * 42.3,
+            width: AppDimensions.height10(context) * 38.2,
+            height: AppDimensions.height10(context) * 42.3,
             padding: EdgeInsets.only(
-                left: AppDimensions.height10 * 1.1,
-                right: AppDimensions.height10 * 1.1),
+                left: AppDimensions.height10(context) * 1.1,
+                right: AppDimensions.height10(context) * 1.1),
             decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                    color: Colors.white, width: AppDimensions.height10 * 0.2),
+                    color: Colors.white,
+                    width: AppDimensions.height10(context) * 0.2),
                 borderRadius: BorderRadius.all(
-                    Radius.circular(AppDimensions.height10 * 1.8))),
+                    Radius.circular(AppDimensions.height10(context) * 1.8))),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Center(
                   child: SizedBox(
-                    height: AppDimensions.height10 * 40.0,
-                    width: AppDimensions.height10 * 36.2,
+                    height: AppDimensions.height10(context) * 40.0,
+                    width: AppDimensions.height10(context) * 36.2,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
@@ -73,12 +74,14 @@ class _backboxState extends State<backbox> {
                                   length: widget.length,
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 0.4,
+                                  height: AppDimensions.height10(context) * 0.4,
                                 ),
                                 Container(
                                   padding: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 2.0,
-                                      right: AppDimensions.height10 * 13.6),
+                                      left:
+                                          AppDimensions.height10(context) * 2.0,
+                                      right: AppDimensions.height10(context) *
+                                          13.6),
                                   child: Row(
                                     children: [
                                       Center(
@@ -87,8 +90,9 @@ class _backboxState extends State<backbox> {
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xFF464646),
-                                            fontSize:
-                                                AppDimensions.height10 * 1.3,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
                                           ),
                                         ),
                                       ),
@@ -98,8 +102,9 @@ class _backboxState extends State<backbox> {
                                           style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             color: const Color(0xFF464646),
-                                            fontSize:
-                                                AppDimensions.height10 * 1.3,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
                                           ),
                                         ),
                                       ),
@@ -107,7 +112,7 @@ class _backboxState extends State<backbox> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 0.9,
+                                  height: AppDimensions.height10(context) * 0.9,
                                 ),
                               ],
                             )
@@ -129,8 +134,8 @@ class _backboxState extends State<backbox> {
             alignment: Alignment(0.01, 1.155),
             //heightFactor: 0.5,
             child: Container(
-              height: AppDimensions.height10 * 4.7,
-              width: AppDimensions.height10 * 4.7,
+              height: AppDimensions.height10(context) * 4.7,
+              width: AppDimensions.height10(context) * 4.7,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
@@ -152,8 +157,8 @@ class _backboxState extends State<backbox> {
                       color: Colors.transparent,
                       child: Image.asset(
                         'assets/images/Addgoal.png',
-                        height: AppDimensions.height10 * 4.7,
-                        width: AppDimensions.height10 * 4.7,
+                        height: AppDimensions.height10(context) * 4.7,
+                        width: AppDimensions.height10(context) * 4.7,
                       ),
                     )),
               ),
@@ -199,13 +204,13 @@ class _inner_textState extends State<inner_text> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height10 * 12.5,
-      width: AppDimensions.height10 * 36.0,
+      height: AppDimensions.height10(context) * 12.5,
+      width: AppDimensions.height10(context) * 36.0,
       padding: EdgeInsets.only(
-          top: AppDimensions.height10 * 1,
+          top: AppDimensions.height10(context) * 1,
           bottom: 1,
-          left: AppDimensions.height10 * 2,
-          right: AppDimensions.height10 * 2.0),
+          left: AppDimensions.height10(context) * 2,
+          right: AppDimensions.height10(context) * 2.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(
@@ -219,55 +224,59 @@ class _inner_textState extends State<inner_text> {
           // color: Colors.white,
 
           border: Border.all(color: Colors.white, width: 2),
-          borderRadius:
-              BorderRadius.all(Radius.circular(AppDimensions.height10 * 1.8))),
+          borderRadius: BorderRadius.all(
+              Radius.circular(AppDimensions.height10(context) * 1.8))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            //width: AppDimensions.height10 * 32.0,
+            //width: AppDimensions.height10(context) * 32.0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                    height: AppDimensions.height10 * 2.2,
-                    width: AppDimensions.height10 * 27,
-                    margin: EdgeInsets.only(left: AppDimensions.height10 * 0.6),
+                    height: AppDimensions.height10(context) * 2.2,
+                    width: AppDimensions.height10(context) * 27,
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 0.6),
                     child: Text(widget.head_text,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
-                          height: AppDimensions.height10 * 0.15,
+                          height: AppDimensions.height10(context) * 0.15,
                           fontFamily: "Laila",
                           color: _focusNode.hasFocus
                               ? const Color(0xFFFFFFFF)
                               : const Color(0xFF828282),
-                          fontSize: AppDimensions.height10 * 2.2,
+                          fontSize: AppDimensions.height10(context) * 2.2,
                         ))),
                 widget.delete
                     ? GestureDetector(
                         onTap: () => showDialog<String>(
                           context: context,
                           builder: (BuildContext context) => Container(
-                            width: AppDimensions.height10 * 27.0,
-                            height: AppDimensions.height10 * 18.2,
+                            width: AppDimensions.height10(context) * 27.0,
+                            height: AppDimensions.height10(context) * 18.2,
                             child: AlertDialog(
                               actionsPadding: const EdgeInsets.all(0.0),
                               contentPadding: const EdgeInsets.all(0.0),
                               titlePadding: const EdgeInsets.all(0.0),
                               title: Container(
                                 margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 1.9,
-                                    right: AppDimensions.height10 * 1.6,
-                                    left: AppDimensions.height10 * 1.6,
-                                    bottom: AppDimensions.height10 * 0),
-                                height: AppDimensions.height10 * 2.2,
-                                width: AppDimensions.height10 * 23.8,
+                                    top: AppDimensions.height10(context) * 1.9,
+                                    right:
+                                        AppDimensions.height10(context) * 1.6,
+                                    left: AppDimensions.height10(context) * 1.6,
+                                    bottom:
+                                        AppDimensions.height10(context) * 0),
+                                height: AppDimensions.height10(context) * 2.2,
+                                width: AppDimensions.height10(context) * 23.8,
                                 child: Text(
                                   "Delete",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: "Laila",
-                                    fontSize: AppDimensions.height10 * 1.7,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.7,
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
@@ -275,16 +284,19 @@ class _inner_textState extends State<inner_text> {
                               content: Container(
                                 // color:Colors.red,
                                 margin: EdgeInsets.only(
-                                    bottom: AppDimensions.height10 * 1.9,
-                                    left: AppDimensions.height10 * 1.6,
-                                    right: AppDimensions.height10 * 1.6),
-                                height: AppDimensions.height10 * 3.2,
-                                width: AppDimensions.height10 * 23.8,
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.9,
+                                    left: AppDimensions.height10(context) * 1.6,
+                                    right:
+                                        AppDimensions.height10(context) * 1.6),
+                                height: AppDimensions.height10(context) * 3.2,
+                                width: AppDimensions.height10(context) * 23.8,
                                 child: Text(
                                   "Are you sure you want to delete this \n item?",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.3,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.3,
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w400,
                                   ),
@@ -294,7 +306,8 @@ class _inner_textState extends State<inner_text> {
                                 Column(
                                   children: [
                                     Container(
-                                      height: AppDimensions.height10 * 4.4,
+                                      height:
+                                          AppDimensions.height10(context) * 4.4,
                                       width: double.infinity,
                                       color:
                                           const Color.fromRGBO(0, 122, 255, 1),
@@ -306,23 +319,27 @@ class _inner_textState extends State<inner_text> {
                                           'No',
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.7,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
                                               fontFamily: "Laila",
                                               fontWeight: FontWeight.w400),
                                         ),
                                       ),
                                     ),
                                     Container(
-                                      height: AppDimensions.height10 * 4.4,
-                                      width: AppDimensions.height10 * 27.0,
+                                      height:
+                                          AppDimensions.height10(context) * 4.4,
+                                      width: AppDimensions.height10(context) *
+                                          27.0,
                                       child: TextButton(
                                         onPressed: () {},
                                         child: Text(
                                           'Yes',
                                           style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.7,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.7,
                                             fontFamily: "Laila",
                                             fontWeight: FontWeight.w400,
                                             color: const Color.fromRGBO(
@@ -338,13 +355,14 @@ class _inner_textState extends State<inner_text> {
                           ),
                         ),
                         child: Container(
-                          height: AppDimensions.height10 * 2.1,
-                          width: AppDimensions.height10 * 2.1,
+                          height: AppDimensions.height10(context) * 2.1,
+                          width: AppDimensions.height10(context) * 2.1,
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 1.0,
-                              top: AppDimensions.height10 * 0.5),
-                          //margin: EdgeInsets.only(bottom: AppDimensions.height10*1.0),
-                          padding: EdgeInsets.all(AppDimensions.height10 * 0.3),
+                              bottom: AppDimensions.height10(context) * 1.0,
+                              top: AppDimensions.height10(context) * 0.5),
+                          //margin: EdgeInsets.only(bottom: AppDimensions.height10(context)*1.0),
+                          padding: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.3),
                           // color: Colors.blue,
                           child: Image.asset("assets/images/bin.png"),
                         ),
@@ -354,17 +372,17 @@ class _inner_textState extends State<inner_text> {
             ),
           ),
           // SizedBox(
-          //   height: AppDimensions.height10 * 0.9,
+          //   height: AppDimensions.height10(context) * 0.9,
           // ),
           Container(
-              height: AppDimensions.height10 * 6.3,
-              width: AppDimensions.height10 * 32.0,
+              height: AppDimensions.height10(context) * 6.3,
+              width: AppDimensions.height10(context) * 32.0,
               child: CupertinoTextField(
                 maxLength: widget.length,
                 placeholder: widget.body_text,
                 placeholderStyle: TextStyle(
-                    height: AppDimensions.height10 * 0.15,
-                    fontSize: AppDimensions.height10 * 1.6,
+                    height: AppDimensions.height10(context) * 0.15,
+                    fontSize: AppDimensions.height10(context) * 1.6,
                     fontWeight: FontWeight.w500,
                     color: _focusNode.hasFocus
                         ? const Color(0xFFFFFFFF)
@@ -373,10 +391,10 @@ class _inner_textState extends State<inner_text> {
                 maxLines: 4,
                 focusNode: _focusNode,
                 style: TextStyle(
-                    //  height: AppDimensions.height10 * 0.15,
+                    //  height: AppDimensions.height10(context) * 0.15,
                     fontWeight: FontWeight.w500,
                     fontFamily: "Laila",
-                    height: AppDimensions.height10 * 0.14,
+                    height: AppDimensions.height10(context) * 0.14,
                     color: const Color(0xFFFFFFFF)),
                 decoration: const BoxDecoration(
                   color: Colors.transparent,
@@ -388,27 +406,27 @@ class _inner_textState extends State<inner_text> {
   }
 }
 
-FloatingActionButton add_reason = FloatingActionButton(
-  elevation: 0,
-  backgroundColor: Colors.transparent,
-  onPressed: () {},
-  child: Icon(
-    Icons.add,
-    color: Colors.white,
-    size: AppDimensions.height10 * 3.5,
-  ),
-  shape: RoundedRectangleBorder(
-      side: BorderSide(width: 3, color: Colors.white),
-      borderRadius: BorderRadius.circular(100)),
-);
+// FloatingActionButton add_reason = FloatingActionButton(
+//   elevation: 0,
+//   backgroundColor: Colors.transparent,
+//   onPressed: () {},
+//   child: Icon(
+//     Icons.add,
+//     color: Colors.white,
+//     size: AppDimensions.height10(context) * 3.5,
+//   ),
+//   shape: RoundedRectangleBorder(
+//       side: BorderSide(width: 3, color: Colors.white),
+//       borderRadius: BorderRadius.circular(100)),
+// );
 
 // Container(
-//       height: AppDimensions.height10 * 1.9,
-//       width: AppDimensions.height10 * 38.0,
+//       height: AppDimensions.height10(context) * 1.9,
+//       width: AppDimensions.height10(context) * 38.0,
 //       padding: EdgeInsets.only(
-//           top: AppDimensions.height10 * 1.3,
-//           left: AppDimensions.height10 * 2.0,
-//           right: AppDimensions.height10 * 2.0),
+//           top: AppDimensions.height10(context) * 1.3,
+//           left: AppDimensions.height10(context) * 2.0,
+//           right: AppDimensions.height10(context) * 2.0),
 //       decoration: BoxDecoration(
 //           gradient: _focusNode.hasFocus
 //               ? const LinearGradient(
@@ -423,14 +441,14 @@ FloatingActionButton add_reason = FloatingActionButton(
 
 //           border: Border.all(color: Colors.white, width: 2),
 //           borderRadius:
-//               BorderRadius.all(Radius.circular(AppDimensions.height10 * 1.8))),
+//               BorderRadius.all(Radius.circular(AppDimensions.height10(context) * 1.8))),
 //       child: Column(
 //         mainAxisAlignment: MainAxisAlignment.start,
 //         crossAxisAlignment: CrossAxisAlignment.start,
 //         children: [
 //           Container(
-//               height: AppDimensions.height10 * 3.6,
-//               // width: AppDimensions.height10 * 26.9,
+//               height: AppDimensions.height10(context) * 3.6,
+//               // width: AppDimensions.height10(context) * 26.9,
 //               child: Text(widget.circle_text,
 //                   style: TextStyle(
 //                     fontWeight: FontWeight.w600,
@@ -438,20 +456,20 @@ FloatingActionButton add_reason = FloatingActionButton(
 //                     color: _focusNode.hasFocus
 //                         ? const Color(0xFFFFFFFF)
 //                         : const Color(0xFF828282),
-//                     fontSize: AppDimensions.height10 * 2.2,
+//                     fontSize: AppDimensions.height10(context) * 2.2,
 //                   ))),
 //           SizedBox(
-//             height: AppDimensions.height10 * 0.9,
+//             height: AppDimensions.height10(context) * 0.9,
 //           ),
 //           Container(
-//               height: AppDimensions.height10 * 7.5,
-//               // width: AppDimensions.height10 * 26.9,
+//               height: AppDimensions.height10(context) * 7.5,
+//               // width: AppDimensions.height10(context) * 26.9,
 
 //               child: CupertinoTextField(
 //                 placeholder: "I want to achieve this goal because...",
 //                 textAlignVertical: TextAlignVertical.top,
 //                 placeholderStyle: TextStyle(
-//                   fontSize: AppDimensions.height10 * 1.6,
+//                   fontSize: AppDimensions.height10(context) * 1.6,
 //                   fontWeight: FontWeight.w500,
 //                   fontFamily: "Laila",
                   // color: _focusNode.hasFocus

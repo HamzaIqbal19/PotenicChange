@@ -25,20 +25,20 @@ class _select_noteState extends State<select_note> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
           centerTitle: true,
           title: SizedBox(
-            width: AppDimensions.height10 * 17.0,
-            height: AppDimensions.height10 * 4.8,
+            width: AppDimensions.height10(context) * 17.0,
+            height: AppDimensions.height10(context) * 4.8,
             child: GradientText(
               'Hurdle‘s positive\nalternatives',
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: AppDimensions.height10 * 2.0,
+                fontSize: AppDimensions.height10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -50,8 +50,8 @@ class _select_noteState extends State<select_note> {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -68,33 +68,35 @@ class _select_noteState extends State<select_note> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: AppDimensions.height10 * 13.339,
-              height: AppDimensions.height10 * 16.674,
-              margin: EdgeInsets.only(right: AppDimensions.height10 * 1.4),
+              width: AppDimensions.height10(context) * 13.339,
+              height: AppDimensions.height10(context) * 16.674,
+              margin:
+                  EdgeInsets.only(right: AppDimensions.height10(context) * 1.4),
               decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10),
                   image: const DecorationImage(
                       image: AssetImage('assets/images/Video_Subtract.png'))),
               child: Container(
-                margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
+                margin: EdgeInsets.all(AppDimensions.height10(context) * 0.758),
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(5)),
                 child: DottedBorder(
                     borderType: BorderType.RRect,
                     color: Colors.white,
-                    radius: Radius.circular(AppDimensions.height10 * 1.5),
+                    radius:
+                        Radius.circular(AppDimensions.height10(context) * 1.5),
                     child: Container(
                       alignment: Alignment.center,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 3.032,
-                            height: AppDimensions.height10 * 3.032,
+                            width: AppDimensions.height10(context) * 3.032,
+                            height: AppDimensions.height10(context) * 3.032,
                             margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10 * 0.68),
+                                bottom: AppDimensions.height10(context) * 0.68),
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
@@ -102,12 +104,13 @@ class _select_noteState extends State<select_note> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10 * 1.0),
+                                bottom: AppDimensions.height10(context) * 1.0),
                             child: Text(
                               'Record your\nown notes here',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white),
                             ),
@@ -118,25 +121,26 @@ class _select_noteState extends State<select_note> {
               ),
             ),
             Container(
-              width: AppDimensions.height10 * 36.0,
-              height: AppDimensions.height10 * 6.0,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 8.026),
+              width: AppDimensions.height10(context) * 36.0,
+              height: AppDimensions.height10(context) * 6.0,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 8.026),
               decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 2.0),
                   color: Colors.white),
               child: Container(
                 margin: EdgeInsets.only(
-                    left: AppDimensions.height10 * 2.0,
-                    right: AppDimensions.height10 * 2.0),
-                height: AppDimensions.height10 * 2.2,
-                width: AppDimensions.height10 * 30.5,
+                    left: AppDimensions.height10(context) * 2.0,
+                    right: AppDimensions.height10(context) * 2.0),
+                height: AppDimensions.height10(context) * 2.2,
+                width: AppDimensions.height10(context) * 30.5,
                 child: Center(
                   child: TextField(
                     decoration: InputDecoration(
                         hintText: 'Content URL',
                         hintStyle: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
+                            fontSize: AppDimensions.height10(context) * 1.8,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
@@ -148,9 +152,10 @@ class _select_noteState extends State<select_note> {
               ),
             ),
             Container(
-                height: AppDimensions.height10 * 5.0,
-                width: AppDimensions.height10 * 25.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
+                height: AppDimensions.height10(context) * 5.0,
+                width: AppDimensions.height10(context) * 25.4,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     begin: Alignment.topCenter,
@@ -160,8 +165,8 @@ class _select_noteState extends State<select_note> {
                       Color(0xffFDA210),
                     ],
                   ),
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 5.0),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 5.0),
                 ),
                 child: TextButton(
                     onPressed: () {},
@@ -169,7 +174,7 @@ class _select_noteState extends State<select_note> {
                       'Confirm',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w600,
                           fontFamily: 'Poppins'),
                     ))),

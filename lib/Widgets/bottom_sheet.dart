@@ -35,15 +35,15 @@ void bottom_sheet(context) {
     backgroundColor: Colors.white,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-      top: Radius.circular(AppDimensions.height10 * 5.0),
+      top: Radius.circular(AppDimensions.height10(context) * 5.0),
     )),
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
         // color:Colors.lightGreen,
-        height: AppDimensions.height10 * 45.0,
-        width: AppDimensions.height10 * 41.4,
+        height: AppDimensions.height10(context) * 45.0,
+        width: AppDimensions.height10(context) * 41.4,
         child: Padding(
           padding: const EdgeInsets.only(top: 10),
           child: Column(
@@ -52,30 +52,30 @@ void bottom_sheet(context) {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Container(
-                height: AppDimensions.height10 * 3.4,
-                width: AppDimensions.height10 * 35.5,
+                height: AppDimensions.height10(context) * 3.4,
+                width: AppDimensions.height10(context) * 35.5,
                 // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                 child: Text(
                   'Create a new goal',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF464646),
-                    fontSize: AppDimensions.height10 * 2.8,
+                    fontSize: AppDimensions.height10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                     fontFamily: "Laila",
                   ),
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 2.5,
+                height: AppDimensions.height10(context) * 2.5,
               ),
               SizedBox(child: DropdownButtonExample()),
               SizedBox(
-                height: AppDimensions.height10,
+                height: AppDimensions.height10(context),
               ),
               Container(
-                width: AppDimensions.height10 * 36.0,
-                height: AppDimensions.height10 * 8.0,
+                width: AppDimensions.height10(context) * 36.0,
+                height: AppDimensions.height10(context) * 8.0,
                 // decoration: BoxDecoration(
                 //   color: const Color.fromRGBO(0, 0, 0, 0.1),
                 // ),
@@ -84,7 +84,7 @@ void bottom_sheet(context) {
                   onTap: () {},
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: AppDimensions.height10 * 2.4,
+                    fontSize: AppDimensions.height10(context) * 2.4,
                     color: const Color.fromARGB(209, 250, 154, 52),
                   ),
                   decoration: InputDecoration(
@@ -93,13 +93,13 @@ void bottom_sheet(context) {
                         height: double.minPositive,
                       ),
                       // contentPadding:
-                      //     EdgeInsets.only(left: AppDimensions.height10 * 2.0),
+                      //     EdgeInsets.only(left: AppDimensions.height10(context) * 2.0),
                       filled: true,
                       fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
                       hintText: "Enter your goal name ",
                       hintStyle: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: AppDimensions.height10 * 2.4,
+                        fontSize: AppDimensions.height10(context) * 2.4,
                         color: const Color(0xFF828282),
                       ),
                       border: OutlineInputBorder(
@@ -111,10 +111,11 @@ void bottom_sheet(context) {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10,
+                height: AppDimensions.height10(context),
               ),
               Container(
-                padding: EdgeInsets.only(left: AppDimensions.height10 * 4.0),
+                padding: EdgeInsets.only(
+                    left: AppDimensions.height10(context) * 4.0),
                 child: Row(
                   children: const [
                     Center(
@@ -141,14 +142,14 @@ void bottom_sheet(context) {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 3.0,
+                height: AppDimensions.height10(context) * 3.0,
               ),
               Container(
-                height: AppDimensions.height10 * 5,
-                width: AppDimensions.height10 * 25.4,
+                height: AppDimensions.height10(context) * 5,
+                width: AppDimensions.height10(context) * 25.4,
                 decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 5.0),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 5.0),
                   gradient: const LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
@@ -169,7 +170,7 @@ void bottom_sheet(context) {
                         fontFamily: "Laila",
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.6,
+                        fontSize: AppDimensions.height10(context) * 1.6,
                       ),
                     )),
               ),
@@ -191,7 +192,7 @@ void bottom_sheet(context) {
                           fontFamily: "Laila",
                           fontWeight: FontWeight.w600,
                           color: const Color.fromARGB(209, 250, 154, 52),
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                         ),
                       )))
             ],
@@ -213,19 +214,20 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10 * 36,
-      height: AppDimensions.height10 * 9.0,
+      width: AppDimensions.height10(context) * 36,
+      height: AppDimensions.height10(context) * 9.0,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
-          borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.8),
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 1.8),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Padding(
         padding: const EdgeInsets.only(left: 8, right: 8),
         child: Column(
           children: [
             Padding(
-              padding:
-                  EdgeInsets.only(top: 5, left: AppDimensions.height10 * 1.6),
+              padding: EdgeInsets.only(
+                  top: 5, left: AppDimensions.height10(context) * 1.6),
               child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
@@ -233,7 +235,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
                     //textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: AppDimensions.height10 * 1.4,
+                      fontSize: AppDimensions.height10(context) * 1.4,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w400,
                     ),
@@ -243,13 +245,13 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
               value: dropdownValue,
               isExpanded: true,
               iconStyleData: IconStyleData(
-                  iconSize: AppDimensions.height10 * 4.0,
+                  iconSize: AppDimensions.height10(context) * 4.0,
                   iconEnabledColor: Color(0xFFFA9934)),
               underline: Container(),
               // elevation: 16,
               style: TextStyle(
                   fontWeight: FontWeight.w400,
-                  fontSize: AppDimensions.height10 * 2.4,
+                  fontSize: AppDimensions.height10(context) * 2.4,
                   fontFamily: "Laila",
                   color: const Color.fromARGB(209, 250, 154, 52)),
               onChanged: (String? value) {

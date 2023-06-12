@@ -33,38 +33,38 @@ class schedule extends StatelessWidget {
             onCountChanged: onCountChanged,
           ),
           SizedBox(
-            height: AppDimensions.height10 * 1.6,
+            height: AppDimensions.height10(context) * 1.6,
           ),
           schedule_card(
             days: 'Tuesday',
             onCountChanged: onCountChanged,
           ),
-          SizedBox(height: AppDimensions.height10 * 1.6),
+          SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
             days: 'Wednesday',
             onCountChanged: onCountChanged,
           ),
-          SizedBox(height: AppDimensions.height10 * 1.6),
+          SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
             days: 'Thursday',
             onCountChanged: onCountChanged,
           ),
-          SizedBox(height: AppDimensions.height10 * 1.6),
+          SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
             days: 'Friday',
             onCountChanged: onCountChanged,
           ),
-          SizedBox(height: AppDimensions.height10 * 1.6),
+          SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
             days: 'Saturday',
             onCountChanged: onCountChanged,
           ),
-          SizedBox(height: AppDimensions.height10 * 1.6),
+          SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
             days: 'Sunday',
             onCountChanged: onCountChanged,
           ),
-          SizedBox(height: AppDimensions.height10 * 1.6),
+          SizedBox(height: AppDimensions.height10(context) * 1.6),
         ],
       ),
     );
@@ -100,9 +100,9 @@ class _schedule_cardState extends State<schedule_card> {
               BoxShadow(
                 color: Colors.black.withOpacity(0.5),
                 blurRadius: 10,
-                spreadRadius: AppDimensions.height10 * 0.2,
-                offset:
-                    Offset(0, AppDimensions.height10 * 0.4), // Shadow position
+                spreadRadius: AppDimensions.height10(context) * 0.2,
+                offset: Offset(0,
+                    AppDimensions.height10(context) * 0.4), // Shadow position
               ),
             ],
             borderRadius: const BorderRadius.all(Radius.circular(18))),
@@ -175,7 +175,7 @@ class _schedule_cardState extends State<schedule_card> {
                 children: <Widget>[
                   Container(
                     // color:Colors.orange,
-                    width: AppDimensions.height10 * 38.2,
+                    width: AppDimensions.height10(context) * 38.2,
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
@@ -211,7 +211,7 @@ class _schedule_cardState extends State<schedule_card> {
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10 * 38.2,
+                    width: AppDimensions.height10(context) * 38.2,
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
@@ -276,8 +276,8 @@ class _startTimerStateState extends State<startTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10 * 31.6,
-      height: AppDimensions.height10 * 3.7,
+      width: AppDimensions.height10(context) * 31.6,
+      height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius: BorderRadius.circular(18),
@@ -314,18 +314,18 @@ class _startTimerStateState extends State<startTimerState> {
                   //textAlign: TextAlign.left,
                   style: TextStyle(
                     color: const Color.fromRGBO(100, 100, 100, 1),
-                    fontSize: AppDimensions.height10 * 1.6,
+                    fontSize: AppDimensions.height10(context) * 1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10 * 17.2,
+                  width: AppDimensions.height10(context) * 17.2,
                   child: Text(
                     start_time,
                     style: TextStyle(
                       color: const Color.fromRGBO(250, 153, 52, 1),
-                      fontSize: AppDimensions.height10 * 1.6,
+                      fontSize: AppDimensions.height10(context) * 1.6,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w700,
                     ),
@@ -335,14 +335,14 @@ class _startTimerStateState extends State<startTimerState> {
             ),
           ),
           Container(
-            width: AppDimensions.height10 * 2.4,
-            // height: AppDimensions.height10*1.7,
-            // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
+            width: AppDimensions.height10(context) * 2.4,
+            // height: AppDimensions.height10(context)*1.7,
+            // padding: EdgeInsets.only(right:AppDimensions.height10(context)*0.6),
             child: Center(
               child: Icon(
                 Icons.arrow_drop_down,
                 color: const Color.fromRGBO(250, 153, 52, 1),
-                // size: AppDimensions.height10*3.5,
+                // size: AppDimensions.height10(context)*3.5,
               ),
             ),
           ),
@@ -369,8 +369,8 @@ class _endTimerStateState extends State<endTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10 * 31.6,
-      height: AppDimensions.height10 * 3.7,
+      width: AppDimensions.height10(context) * 31.6,
+      height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius: BorderRadius.circular(18),
@@ -407,18 +407,18 @@ class _endTimerStateState extends State<endTimerState> {
                   //textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Color.fromRGBO(100, 100, 100, 1),
-                    fontSize: AppDimensions.height10 * 1.6,
+                    fontSize: AppDimensions.height10(context) * 1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10 * 17.2,
+                  width: AppDimensions.height10(context) * 17.2,
                   child: Text(
                     end_time,
                     style: TextStyle(
                       color: Color.fromRGBO(250, 153, 52, 1),
-                      fontSize: AppDimensions.height10 * 1.6,
+                      fontSize: AppDimensions.height10(context) * 1.6,
                       fontFamily: "Laila",
                       fontWeight: FontWeight.w700,
                     ),
@@ -428,14 +428,14 @@ class _endTimerStateState extends State<endTimerState> {
             ),
           ),
           Container(
-            width: AppDimensions.height10 * 2.4,
-            // height: AppDimensions.height10*1.7,
-            // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
+            width: AppDimensions.height10(context) * 2.4,
+            // height: AppDimensions.height10(context)*1.7,
+            // padding: EdgeInsets.only(right:AppDimensions.height10(context)*0.6),
             child: Center(
               child: const Icon(
                 Icons.arrow_drop_down,
                 color: Color.fromRGBO(250, 153, 52, 1),
-                // size: AppDimensions.height10*3.5,
+                // size: AppDimensions.height10(context)*3.5,
               ),
             ),
           ),

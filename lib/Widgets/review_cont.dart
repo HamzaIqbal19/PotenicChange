@@ -28,35 +28,36 @@ class _reviewboxState extends State<reviewbox> {
       children: [
         Stack(children: [
           Container(
-              width: AppDimensions.height10 * 38.2,
-              //height: AppDimensions.height10 * 52.0,
+              width: AppDimensions.height10(context) * 38.2,
+              //height: AppDimensions.height10(context) * 52.0,
               decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(
-                      color: Colors.white, width: AppDimensions.height10 * 0.2),
+                      color: Colors.white,
+                      width: AppDimensions.height10(context) * 0.2),
                   borderRadius: BorderRadius.all(
-                      Radius.circular(AppDimensions.height10 * 1.8))),
+                      Radius.circular(AppDimensions.height10(context) * 1.8))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SizedBox(
-                    // height: AppDimensions.height10 * 52.0,
+                    // height: AppDimensions.height10(context) * 52.0,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SizedBox(
-                            height: AppDimensions.height10 * 2.4,
+                            height: AppDimensions.height10(context) * 2.4,
                           ),
                           Container(
-                            height: AppDimensions.height10 * 12.5,
-                            width: AppDimensions.height10 * 36.0,
+                            height: AppDimensions.height10(context) * 12.5,
+                            width: AppDimensions.height10(context) * 36.0,
                             padding: EdgeInsets.only(
-                                top: AppDimensions.height10 * 1,
+                                top: AppDimensions.height10(context) * 1,
                                 bottom: 1,
-                                left: AppDimensions.height10 * 2,
-                                right: AppDimensions.height10 * 2.0),
+                                left: AppDimensions.height10(context) * 2,
+                                right: AppDimensions.height10(context) * 2.0),
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
@@ -70,29 +71,35 @@ class _reviewboxState extends State<reviewbox> {
                                 border:
                                     Border.all(color: Colors.white, width: 2),
                                 borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10 * 1.8))),
+                                    AppDimensions.height10(context) * 1.8))),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  //width: AppDimensions.height10 * 32.0,
+                                  //width: AppDimensions.height10(context) * 32.0,
                                   child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                          height: AppDimensions.height10 * 2.2,
-                                          width: AppDimensions.height10 * 27,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.2,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  27,
                                           margin: EdgeInsets.only(
-                                              left:
-                                                  AppDimensions.height10 * 0.6),
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  0.6),
                                           child: Text('Reason 1',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 fontFamily: "Laila",
                                                 color: const Color(0xFFFFFFFF),
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         2.2,
                                               ))),
                                       Container()
@@ -100,11 +107,13 @@ class _reviewboxState extends State<reviewbox> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 0.9,
+                                  height: AppDimensions.height10(context) * 0.9,
                                 ),
                                 Container(
-                                    height: AppDimensions.height10 * 6.3,
-                                    width: AppDimensions.height10 * 32.0,
+                                    height:
+                                        AppDimensions.height10(context) * 6.3,
+                                    width:
+                                        AppDimensions.height10(context) * 32.0,
                                     child: CupertinoTextField(
                                       onTap: () {
                                         setState(() {
@@ -115,17 +124,20 @@ class _reviewboxState extends State<reviewbox> {
                                           'I want to achieve this goal to be in control\nof my anger and to regain control of my\nlife.',
                                       placeholderStyle: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xFFFFFFFF)),
                                       //controller: ,
                                       maxLines: 4,
 
                                       style: TextStyle(
-                                          //  height: AppDimensions.height10 * 0.15,
+                                          //  height: AppDimensions.height10(context) * 0.15,
                                           fontWeight: FontWeight.w500,
                                           fontFamily: "Laila",
-                                          height: AppDimensions.height10 * 0.14,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  0.14,
                                           color: const Color(0xFFFFFFFF)),
                                       decoration: const BoxDecoration(
                                         color: Colors.transparent,
@@ -136,8 +148,8 @@ class _reviewboxState extends State<reviewbox> {
                           ),
                           Container(
                             padding: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                                right: AppDimensions.height10 * 23.6),
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 23.6),
                             child: Row(
                               children: [
                                 Center(
@@ -146,7 +158,8 @@ class _reviewboxState extends State<reviewbox> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF464646),
-                                      fontSize: AppDimensions.height10 * 1.3,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.3,
                                     ),
                                   ),
                                 ),
@@ -156,7 +169,8 @@ class _reviewboxState extends State<reviewbox> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xFF464646),
-                                      fontSize: AppDimensions.height10 * 1.3,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.3,
                                     ),
                                   ),
                                 ),
@@ -164,18 +178,18 @@ class _reviewboxState extends State<reviewbox> {
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10 * 4.0,
-                            height: AppDimensions.height10 * 0.3,
+                            width: AppDimensions.height10(context) * 4.0,
+                            height: AppDimensions.height10(context) * 0.3,
                             color: const Color(0xFF282828).withOpacity(0.2),
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10 * 0.4),
+                                top: AppDimensions.height10(context) * 0.4),
                           ),
                           SizedBox(
-                            height: AppDimensions.height10 * 2.0,
+                            height: AppDimensions.height10(context) * 2.0,
                           ),
                           SizedBox(
-                            height: AppDimensions.height10 * 12.5,
-                            width: AppDimensions.height10 * 36.0,
+                            height: AppDimensions.height10(context) * 12.5,
+                            width: AppDimensions.height10(context) * 36.0,
                             child: Stack(
                               children: [
                                 const inner_text(
@@ -191,13 +205,17 @@ class _reviewboxState extends State<reviewbox> {
                                       context: context,
                                       builder: (BuildContext context) =>
                                           Container(
-                                        width: AppDimensions.height10 * 27.0,
-                                        height: AppDimensions.height10 * 18.2,
+                                        width: AppDimensions.height10(context) *
+                                            27.0,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                18.2,
                                         child: AlertDialog(
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.4)),
                                           actionsPadding:
                                               const EdgeInsets.all(0.0),
@@ -207,25 +225,32 @@ class _reviewboxState extends State<reviewbox> {
                                               const EdgeInsets.all(0.0),
                                           title: Container(
                                             margin: EdgeInsets.only(
-                                                top: AppDimensions.height10 *
+                                                top: AppDimensions.height10(
+                                                        context) *
                                                     1.9,
-                                                right: AppDimensions.height10 *
+                                                right: AppDimensions.height10(
+                                                        context) *
                                                     1.6,
-                                                left: AppDimensions.height10 *
+                                                left: AppDimensions.height10(
+                                                        context) *
                                                     1.6,
-                                                bottom:
-                                                    AppDimensions.height10 * 0),
-                                            height:
-                                                AppDimensions.height10 * 2.2,
-                                            width:
-                                                AppDimensions.height10 * 23.8,
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    0),
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.2,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                23.8,
                                             child: Text(
                                               "Delete",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontFamily: "Laila",
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.7,
                                                 fontWeight: FontWeight.w400,
                                               ),
@@ -234,22 +259,28 @@ class _reviewboxState extends State<reviewbox> {
                                           content: Container(
                                             // color:Colors.red,
                                             margin: EdgeInsets.only(
-                                                bottom: AppDimensions.height10 *
+                                                bottom: AppDimensions.height10(
+                                                        context) *
                                                     1.9,
-                                                left: AppDimensions.height10 *
+                                                left: AppDimensions.height10(
+                                                        context) *
                                                     1.6,
-                                                right: AppDimensions.height10 *
+                                                right: AppDimensions.height10(
+                                                        context) *
                                                     1.6),
-                                            height:
-                                                AppDimensions.height10 * 3.2,
-                                            width:
-                                                AppDimensions.height10 * 23.8,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.2,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                23.8,
                                             child: Text(
                                               "Are you sure you want to delete this \n item?",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.3,
                                                 fontFamily: "Laila",
                                                 fontWeight: FontWeight.w400,
@@ -261,7 +292,8 @@ class _reviewboxState extends State<reviewbox> {
                                               children: [
                                                 Container(
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           4.4,
                                                   width: double.infinity,
                                                   color: const Color.fromRGBO(
@@ -276,7 +308,8 @@ class _reviewboxState extends State<reviewbox> {
                                                       style: TextStyle(
                                                           color: Colors.white,
                                                           fontSize: AppDimensions
-                                                                  .height10 *
+                                                                  .height10(
+                                                                      context) *
                                                               1.7,
                                                           fontFamily: "Laila",
                                                           fontWeight:
@@ -286,18 +319,20 @@ class _reviewboxState extends State<reviewbox> {
                                                 ),
                                                 Container(
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           4.4,
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          27.0,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      27.0,
                                                   child: TextButton(
                                                     onPressed: () {},
                                                     child: Text(
                                                       'Yes',
                                                       style: TextStyle(
                                                         fontSize: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.7,
                                                         fontFamily: "Laila",
                                                         fontWeight:
@@ -316,13 +351,18 @@ class _reviewboxState extends State<reviewbox> {
                                       ),
                                     ),
                                     child: Container(
-                                      height: AppDimensions.height10 * 2.1,
-                                      width: AppDimensions.height10 * 2.1,
+                                      height:
+                                          AppDimensions.height10(context) * 2.1,
+                                      width:
+                                          AppDimensions.height10(context) * 2.1,
                                       margin: EdgeInsets.only(
-                                          bottom: AppDimensions.height10 * 1.0),
-                                      //margin: EdgeInsets.only(bottom: AppDimensions.height10*1.0),
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  1.0),
+                                      //margin: EdgeInsets.only(bottom: AppDimensions.height10(context)*1.0),
                                       padding: EdgeInsets.all(
-                                          AppDimensions.height10 * 0.3),
+                                          AppDimensions.height10(context) *
+                                              0.3),
                                       // color: Colors.blue,
                                       child:
                                           Image.asset("assets/images/bin.png"),
@@ -334,8 +374,8 @@ class _reviewboxState extends State<reviewbox> {
                           ),
                           Container(
                             padding: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                                right: AppDimensions.height10 * 23.6),
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 23.6),
                             child: Row(
                               children: [
                                 Center(
@@ -344,7 +384,8 @@ class _reviewboxState extends State<reviewbox> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF464646),
-                                      fontSize: AppDimensions.height10 * 1.3,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.3,
                                     ),
                                   ),
                                 ),
@@ -354,7 +395,8 @@ class _reviewboxState extends State<reviewbox> {
                                     style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xFF464646),
-                                      fontSize: AppDimensions.height10 * 1.3,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.3,
                                     ),
                                   ),
                                 ),
@@ -363,21 +405,23 @@ class _reviewboxState extends State<reviewbox> {
                           ),
                           visibility2
                               ? Container(
-                                  width: AppDimensions.height10 * 4.0,
-                                  height: AppDimensions.height10 * 0.3,
+                                  width: AppDimensions.height10(context) * 4.0,
+                                  height: AppDimensions.height10(context) * 0.3,
                                   color:
                                       const Color(0xFF282828).withOpacity(0.2),
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.4),
+                                      top: AppDimensions.height10(context) *
+                                          0.4),
                                 )
                               : Container(),
                           SizedBox(
-                            height: AppDimensions.height10 * 2.0,
+                            height: AppDimensions.height10(context) * 2.0,
                           ),
                           visibility2
                               ? SizedBox(
-                                  height: AppDimensions.height10 * 12.5,
-                                  width: AppDimensions.height10 * 36.0,
+                                  height:
+                                      AppDimensions.height10(context) * 12.5,
+                                  width: AppDimensions.height10(context) * 36.0,
                                   child: Stack(
                                     children: [
                                       const inner_text(
@@ -393,17 +437,19 @@ class _reviewboxState extends State<reviewbox> {
                                             context: context,
                                             builder: (BuildContext context) =>
                                                 Container(
-                                              width:
-                                                  AppDimensions.height10 * 27.0,
-                                              height:
-                                                  AppDimensions.height10 * 18.2,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  27.0,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  18.2,
                                               child: AlertDialog(
                                                 shape: RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            AppDimensions
-                                                                    .height10 *
-                                                                1.4)),
+                                                    borderRadius: BorderRadius
+                                                        .circular(AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.4)),
                                                 actionsPadding:
                                                     const EdgeInsets.all(0.0),
                                                 contentPadding:
@@ -411,33 +457,38 @@ class _reviewboxState extends State<reviewbox> {
                                                 titlePadding:
                                                     const EdgeInsets.all(0.0),
                                                 title: Container(
-                                                  margin:
-                                                      EdgeInsets.only(
-                                                          top: AppDimensions
-                                                                  .height10 *
-                                                              1.9,
-                                                          right: AppDimensions
-                                                                  .height10 *
-                                                              1.6,
-                                                          left: AppDimensions
-                                                                  .height10 *
-                                                              1.6,
-                                                          bottom: AppDimensions
-                                                                  .height10 *
-                                                              0),
+                                                  margin: EdgeInsets.only(
+                                                      top: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.9,
+                                                      right: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.6,
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.6,
+                                                      bottom: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0),
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           2.2,
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          23.8,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      23.8,
                                                   child: Text(
                                                     "Delete",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontFamily: "Laila",
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.7,
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -448,26 +499,31 @@ class _reviewboxState extends State<reviewbox> {
                                                   // color:Colors.red,
                                                   margin: EdgeInsets.only(
                                                       bottom: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.9,
                                                       left: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.6,
                                                       right: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.6),
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           3.2,
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          23.8,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      23.8,
                                                   child: Text(
                                                     "Are you sure you want to delete this \n item?",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.3,
                                                       fontFamily: "Laila",
                                                       fontWeight:
@@ -480,7 +536,8 @@ class _reviewboxState extends State<reviewbox> {
                                                     children: [
                                                       Container(
                                                         height: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             4.4,
                                                         width: double.infinity,
                                                         color: const Color
@@ -498,7 +555,8 @@ class _reviewboxState extends State<reviewbox> {
                                                                 color: Colors
                                                                     .white,
                                                                 fontSize: AppDimensions
-                                                                        .height10 *
+                                                                        .height10(
+                                                                            context) *
                                                                     1.7,
                                                                 fontFamily:
                                                                     "Laila",
@@ -510,10 +568,12 @@ class _reviewboxState extends State<reviewbox> {
                                                       ),
                                                       Container(
                                                         height: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             4.4,
                                                         width: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             27.0,
                                                         child: TextButton(
                                                           onPressed: () {
@@ -527,10 +587,10 @@ class _reviewboxState extends State<reviewbox> {
                                                           child: Text(
                                                             'Yes',
                                                             style: TextStyle(
-                                                              fontSize:
-                                                                  AppDimensions
-                                                                          .height10 *
-                                                                      1.7,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.7,
                                                               fontFamily:
                                                                   "Laila",
                                                               fontWeight:
@@ -553,15 +613,21 @@ class _reviewboxState extends State<reviewbox> {
                                             ),
                                           ),
                                           child: Container(
-                                            height:
-                                                AppDimensions.height10 * 2.1,
-                                            width: AppDimensions.height10 * 2.1,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.1,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                2.1,
                                             margin: EdgeInsets.only(
-                                                bottom: AppDimensions.height10 *
+                                                bottom: AppDimensions.height10(
+                                                        context) *
                                                     1.0),
-                                            //margin: EdgeInsets.only(bottom: AppDimensions.height10*1.0),
+                                            //margin: EdgeInsets.only(bottom: AppDimensions.height10(context)*1.0),
                                             padding: EdgeInsets.all(
-                                                AppDimensions.height10 * 0.3),
+                                                AppDimensions.height10(
+                                                        context) *
+                                                    0.3),
                                             // color: Colors.blue,
                                             child: Image.asset(
                                                 "assets/images/bin.png"),
@@ -575,8 +641,10 @@ class _reviewboxState extends State<reviewbox> {
                           visibility2
                               ? Container(
                                   padding: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 2.0,
-                                      right: AppDimensions.height10 * 23.6),
+                                      left:
+                                          AppDimensions.height10(context) * 2.0,
+                                      right: AppDimensions.height10(context) *
+                                          23.6),
                                   child: Row(
                                     children: [
                                       Center(
@@ -585,8 +653,9 @@ class _reviewboxState extends State<reviewbox> {
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xFF464646),
-                                            fontSize:
-                                                AppDimensions.height10 * 1.3,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
                                           ),
                                         ),
                                       ),
@@ -596,8 +665,9 @@ class _reviewboxState extends State<reviewbox> {
                                           style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             color: const Color(0xFF464646),
-                                            fontSize:
-                                                AppDimensions.height10 * 1.3,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
                                           ),
                                         ),
                                       ),
@@ -621,8 +691,8 @@ class _reviewboxState extends State<reviewbox> {
               alignment: const Alignment(0.01, 1.155),
               //heightFactor: 0.5,
               child: Container(
-                height: AppDimensions.height10 * 4.7,
-                width: AppDimensions.height10 * 4.7,
+                height: AppDimensions.height10(context) * 4.7,
+                width: AppDimensions.height10(context) * 4.7,
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle, color: Color(0xFFC4C4C4)),
                 child: Padding(
@@ -639,8 +709,8 @@ class _reviewboxState extends State<reviewbox> {
                         color: Colors.transparent,
                         child: Image.asset(
                           'assets/images/Addgoal.png',
-                          height: AppDimensions.height10 * 4.7,
-                          width: AppDimensions.height10 * 4.7,
+                          height: AppDimensions.height10(context) * 4.7,
+                          width: AppDimensions.height10(context) * 4.7,
                         ),
                       )),
                 ),
@@ -650,13 +720,13 @@ class _reviewboxState extends State<reviewbox> {
         ]),
         unSaved
             ? Container(
-                //margin: EdgeInsets.only(top: AppDimensions.height10 * 3.7),
+                //margin: EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).viewInsets.bottom == 0
                         ? visibility2
-                            ? AppDimensions.height10 * 3.7
-                            : AppDimensions.height10 * 18.7
-                        : AppDimensions.height10 * 3.7),
+                            ? AppDimensions.height10(context) * 3.7
+                            : AppDimensions.height10(context) * 18.7
+                        : AppDimensions.height10(context) * 3.7),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -666,29 +736,34 @@ class _reviewboxState extends State<reviewbox> {
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => Container(
-                              width: AppDimensions.height10 * 27.0,
-                              height: AppDimensions.height10 * 19.8,
+                              width: AppDimensions.height10(context) * 27.0,
+                              height: AppDimensions.height10(context) * 19.8,
                               child: AlertDialog(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
-                                        AppDimensions.height10 * 1.4)),
+                                        AppDimensions.height10(context) * 1.4)),
                                 actionsPadding: const EdgeInsets.all(0.0),
                                 contentPadding: const EdgeInsets.all(0.0),
                                 titlePadding: const EdgeInsets.all(0.0),
                                 title: Container(
                                   margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 1.9,
-                                      right: AppDimensions.height10 * 1.6,
-                                      left: AppDimensions.height10 * 1.6,
-                                      bottom: AppDimensions.height10 * 0),
-                                  height: AppDimensions.height10 * 2.2,
-                                  width: AppDimensions.height10 * 23.8,
+                                      top:
+                                          AppDimensions.height10(context) * 1.9,
+                                      right:
+                                          AppDimensions.height10(context) * 1.6,
+                                      left:
+                                          AppDimensions.height10(context) * 1.6,
+                                      bottom:
+                                          AppDimensions.height10(context) * 0),
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  width: AppDimensions.height10(context) * 23.8,
                                   child: Text(
                                     "Exit",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: "Laila",
-                                      fontSize: AppDimensions.height10 * 1.7,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
@@ -696,17 +771,22 @@ class _reviewboxState extends State<reviewbox> {
                                 content: Container(
                                   // color:Colors.red,
                                   margin: EdgeInsets.only(
-                                      bottom: AppDimensions.height10 * 1.9,
-                                      left: AppDimensions.height10 * 1.6,
-                                      right: AppDimensions.height10 * 1.6),
-                                  height: AppDimensions.height10 * 4.8,
-                                  width: AppDimensions.height10 * 23.8,
+                                      bottom:
+                                          AppDimensions.height10(context) * 1.9,
+                                      left:
+                                          AppDimensions.height10(context) * 1.6,
+                                      right: AppDimensions.height10(context) *
+                                          1.6),
+                                  height: AppDimensions.height10(context) * 4.8,
+                                  width: AppDimensions.height10(context) * 23.8,
                                   child: Text(
                                     "You new updates have not been saved.\nIf you exit now, your new updates will\nbe cancelled.",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.3,
-                                      height: AppDimensions.height10 * 0.15,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.3,
+                                      height: AppDimensions.height10(context) *
+                                          0.15,
                                       fontFamily: "Laila",
                                       fontWeight: FontWeight.w400,
                                     ),
@@ -716,7 +796,9 @@ class _reviewboxState extends State<reviewbox> {
                                   Column(
                                     children: [
                                       Container(
-                                        height: AppDimensions.height10 * 4.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.4,
                                         width: double.infinity,
                                         color: const Color.fromRGBO(
                                             0, 122, 255, 1),
@@ -729,7 +811,8 @@ class _reviewboxState extends State<reviewbox> {
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.7,
                                                 fontFamily: "Laila",
                                                 fontWeight: FontWeight.w400),
@@ -737,8 +820,11 @@ class _reviewboxState extends State<reviewbox> {
                                         ),
                                       ),
                                       Container(
-                                        height: AppDimensions.height10 * 4.4,
-                                        width: AppDimensions.height10 * 27.0,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.4,
+                                        width: AppDimensions.height10(context) *
+                                            27.0,
                                         child: TextButton(
                                           onPressed: () {
                                             Navigator.push(
@@ -749,8 +835,9 @@ class _reviewboxState extends State<reviewbox> {
                                           child: Text(
                                             'Yes, cancel and exit',
                                             style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.7,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
                                               fontFamily: "Laila",
                                               fontWeight: FontWeight.w400,
                                               color: const Color.fromRGBO(
@@ -768,8 +855,8 @@ class _reviewboxState extends State<reviewbox> {
                         }
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 5,
-                        width: AppDimensions.height10 * 10.0,
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 10.0,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(
@@ -791,7 +878,7 @@ class _reviewboxState extends State<reviewbox> {
                               color: bt_enable
                                   ? const Color(0xFF282828).withOpacity(0.5)
                                   : const Color(0xFFFA9934),
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -809,8 +896,8 @@ class _reviewboxState extends State<reviewbox> {
                           }
                         },
                         child: Container(
-                          height: AppDimensions.height10 * 5,
-                          width: AppDimensions.height10 * 26.2,
+                          height: AppDimensions.height10(context) * 5,
+                          width: AppDimensions.height10(context) * 26.2,
                           decoration: BoxDecoration(
                             // color: Color(0xFFFF7D50),
                             border: Border.all(color: Colors.transparent),
@@ -840,7 +927,7 @@ class _reviewboxState extends State<reviewbox> {
                                 color: bt_enable
                                     ? Colors.white.withOpacity(0.5)
                                     : const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -852,12 +939,13 @@ class _reviewboxState extends State<reviewbox> {
                 ),
               )
             : Container(
-                width: AppDimensions.height10 * 38.259,
-                height: AppDimensions.height10 * 9.707,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 15.6),
+                width: AppDimensions.height10(context) * 38.259,
+                height: AppDimensions.height10(context) * 9.707,
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 15.6),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 2.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
                     gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -866,41 +954,43 @@ class _reviewboxState extends State<reviewbox> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 1.261),
-                      width: AppDimensions.height10 * 4.437,
-                      height: AppDimensions.height10 * 4.437,
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 1.261),
+                      width: AppDimensions.height10(context) * 4.437,
+                      height: AppDimensions.height10(context) * 4.437,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image:
                                   AssetImage('assets/images/circle_tick.png'))),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 9.9,
-                      height: AppDimensions.height10 * 3.6,
-                      margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 1.232),
+                      width: AppDimensions.height10(context) * 9.9,
+                      height: AppDimensions.height10(context) * 3.6,
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 1.232),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 9.9,
-                            height: AppDimensions.height10 * 1.4,
+                            width: AppDimensions.height10(context) * 9.9,
+                            height: AppDimensions.height10(context) * 1.4,
                             child: Text(
                               'Updates saved',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.3,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.3,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
                           Container(
-                            width: AppDimensions.height10 * 6.9,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 6.9,
+                            height: AppDimensions.height10(context) * 2.2,
                             child: Text(
                               'The why',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFFFFFFFF)),
                             ),
@@ -916,21 +1006,21 @@ class _reviewboxState extends State<reviewbox> {
                         });
                       },
                       child: Container(
-                        width: AppDimensions.height10 * 8.1,
-                        height: AppDimensions.height10 * 6.0,
+                        width: AppDimensions.height10(context) * 8.1,
+                        height: AppDimensions.height10(context) * 6.0,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 12.1),
+                            left: AppDimensions.height10(context) * 12.1),
                         decoration: BoxDecoration(
                           border: Border.all(
                               color: const Color(0xFFFFFFFF), width: 1),
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0),
+                              AppDimensions.height10(context) * 2.0),
                         ),
                         child: Center(
                           child: Text(
                             'Undo',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFFFFFFFF)),
                           ),
@@ -979,13 +1069,13 @@ class _inner_textState extends State<inner_text> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height10 * 12.5,
-      width: AppDimensions.height10 * 36.0,
+      height: AppDimensions.height10(context) * 12.5,
+      width: AppDimensions.height10(context) * 36.0,
       padding: EdgeInsets.only(
-          top: AppDimensions.height10 * 1,
+          top: AppDimensions.height10(context) * 1,
           bottom: 1,
-          left: AppDimensions.height10 * 2,
-          right: AppDimensions.height10 * 2.0),
+          left: AppDimensions.height10(context) * 2,
+          right: AppDimensions.height10(context) * 2.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(
@@ -999,20 +1089,21 @@ class _inner_textState extends State<inner_text> {
           // color: Colors.white,
 
           border: Border.all(color: Colors.white, width: 2),
-          borderRadius:
-              BorderRadius.all(Radius.circular(AppDimensions.height10 * 1.8))),
+          borderRadius: BorderRadius.all(
+              Radius.circular(AppDimensions.height10(context) * 1.8))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            //width: AppDimensions.height10 * 32.0,
+            //width: AppDimensions.height10(context) * 32.0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                    height: AppDimensions.height10 * 2.2,
-                    width: AppDimensions.height10 * 27,
-                    margin: EdgeInsets.only(left: AppDimensions.height10 * 0.6),
+                    height: AppDimensions.height10(context) * 2.2,
+                    width: AppDimensions.height10(context) * 27,
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 0.6),
                     child: Text(widget.head_text,
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -1020,32 +1111,32 @@ class _inner_textState extends State<inner_text> {
                           color: _focusNode.hasFocus
                               ? const Color(0xFFFFFFFF)
                               : const Color(0xFFFFFFFF),
-                          fontSize: AppDimensions.height10 * 2.2,
+                          fontSize: AppDimensions.height10(context) * 2.2,
                         ))),
                 GestureDetector(
                   onTap: () => showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => Container(
-                      width: AppDimensions.height10 * 27.0,
-                      height: AppDimensions.height10 * 18.2,
+                      width: AppDimensions.height10(context) * 27.0,
+                      height: AppDimensions.height10(context) * 18.2,
                       child: AlertDialog(
                         actionsPadding: const EdgeInsets.all(0.0),
                         contentPadding: const EdgeInsets.all(0.0),
                         titlePadding: const EdgeInsets.all(0.0),
                         title: Container(
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 1.9,
-                              right: AppDimensions.height10 * 1.6,
-                              left: AppDimensions.height10 * 1.6,
-                              bottom: AppDimensions.height10 * 0),
-                          height: AppDimensions.height10 * 2.2,
-                          width: AppDimensions.height10 * 23.8,
+                              top: AppDimensions.height10(context) * 1.9,
+                              right: AppDimensions.height10(context) * 1.6,
+                              left: AppDimensions.height10(context) * 1.6,
+                              bottom: AppDimensions.height10(context) * 0),
+                          height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 23.8,
                           child: Text(
                             "Delete",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: "Laila",
-                              fontSize: AppDimensions.height10 * 1.7,
+                              fontSize: AppDimensions.height10(context) * 1.7,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -1053,16 +1144,16 @@ class _inner_textState extends State<inner_text> {
                         content: Container(
                           // color:Colors.red,
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 1.9,
-                              left: AppDimensions.height10 * 1.6,
-                              right: AppDimensions.height10 * 1.6),
-                          height: AppDimensions.height10 * 3.2,
-                          width: AppDimensions.height10 * 23.8,
+                              bottom: AppDimensions.height10(context) * 1.9,
+                              left: AppDimensions.height10(context) * 1.6,
+                              right: AppDimensions.height10(context) * 1.6),
+                          height: AppDimensions.height10(context) * 3.2,
+                          width: AppDimensions.height10(context) * 23.8,
                           child: Text(
                             "Are you sure you want to delete this \n item?",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.3,
+                              fontSize: AppDimensions.height10(context) * 1.3,
                               fontFamily: "Laila",
                               fontWeight: FontWeight.w400,
                             ),
@@ -1072,7 +1163,7 @@ class _inner_textState extends State<inner_text> {
                           Column(
                             children: [
                               Container(
-                                height: AppDimensions.height10 * 4.4,
+                                height: AppDimensions.height10(context) * 4.4,
                                 width: double.infinity,
                                 color: const Color.fromRGBO(0, 122, 255, 1),
                                 child: TextButton(
@@ -1083,21 +1174,24 @@ class _inner_textState extends State<inner_text> {
                                     'No',
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: AppDimensions.height10 * 1.7,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.7,
                                         fontFamily: "Laila",
                                         fontWeight: FontWeight.w400),
                                   ),
                                 ),
                               ),
                               Container(
-                                height: AppDimensions.height10 * 4.4,
-                                width: AppDimensions.height10 * 27.0,
+                                height: AppDimensions.height10(context) * 4.4,
+                                width: AppDimensions.height10(context) * 27.0,
                                 child: TextButton(
                                   onPressed: () {},
                                   child: Text(
                                     'Yes',
                                     style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.7,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
                                       fontFamily: "Laila",
                                       fontWeight: FontWeight.w400,
                                       color:
@@ -1114,12 +1208,13 @@ class _inner_textState extends State<inner_text> {
                   ),
                   child: widget.delete_enable
                       ? Container(
-                          height: AppDimensions.height10 * 2.1,
-                          width: AppDimensions.height10 * 2.1,
+                          height: AppDimensions.height10(context) * 2.1,
+                          width: AppDimensions.height10(context) * 2.1,
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 1.0),
-                          //margin: EdgeInsets.only(bottom: AppDimensions.height10*1.0),
-                          padding: EdgeInsets.all(AppDimensions.height10 * 0.3),
+                              bottom: AppDimensions.height10(context) * 1.0),
+                          //margin: EdgeInsets.only(bottom: AppDimensions.height10(context)*1.0),
+                          padding: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.3),
                           // color: Colors.blue,
                           child: Image.asset("assets/images/bin.png"),
                         )
@@ -1129,25 +1224,25 @@ class _inner_textState extends State<inner_text> {
             ),
           ),
           SizedBox(
-            height: AppDimensions.height10 * 0.9,
+            height: AppDimensions.height10(context) * 0.9,
           ),
           Container(
-              height: AppDimensions.height10 * 6.3,
-              width: AppDimensions.height10 * 32.0,
+              height: AppDimensions.height10(context) * 6.3,
+              width: AppDimensions.height10(context) * 32.0,
               child: CupertinoTextField(
                 placeholder: widget.body_text,
                 placeholderStyle: TextStyle(
-                    fontSize: AppDimensions.height10 * 1.6,
+                    fontSize: AppDimensions.height10(context) * 1.6,
                     fontWeight: FontWeight.w500,
                     color: const Color(0xFFFFFFFF)),
                 controller: body_text,
                 maxLines: 4,
                 focusNode: _focusNode,
                 style: TextStyle(
-                    //  height: AppDimensions.height10 * 0.15,
+                    //  height: AppDimensions.height10(context) * 0.15,
                     fontWeight: FontWeight.w500,
                     fontFamily: "Laila",
-                    height: AppDimensions.height10 * 0.14,
+                    height: AppDimensions.height10(context) * 0.14,
                     color: const Color(0xFFFFFFFF)),
                 decoration: const BoxDecoration(
                   color: Colors.transparent,
@@ -1159,19 +1254,20 @@ class _inner_textState extends State<inner_text> {
   }
 }
 
-FloatingActionButton add_reason = FloatingActionButton(
-  elevation: 0,
-  backgroundColor: Colors.transparent,
-  shape: RoundedRectangleBorder(
-      side:
-          BorderSide(width: AppDimensions.height10 * 0.3, color: Colors.white),
-      borderRadius: BorderRadius.circular(AppDimensions.height10 * 10)),
-  onPressed: () {
-    // BottomSheetExample();
-  },
-  child: Icon(
-    Icons.add,
-    color: Colors.white,
-    size: AppDimensions.height10 * 4.7,
-  ),
-);
+// FloatingActionButton add_reason = FloatingActionButton(
+//   elevation: 0,
+//   backgroundColor: Colors.transparent,
+//   shape: RoundedRectangleBorder(
+//       side: BorderSide(
+//           width: AppDimensions.height10(context) * 0.3, color: Colors.white),
+//       borderRadius:
+//           BorderRadius.circular(AppDimensions.height10(context) * 10)),
+//   onPressed: () {
+//     // BottomSheetExample();
+//   },
+//   child: Icon(
+//     Icons.add,
+//     color: Colors.white,
+//     size: AppDimensions.height10(context) * 4.7,
+//   ),
+// );

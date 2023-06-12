@@ -48,12 +48,12 @@ class welldone_splashState extends State<welldone_splash> {
         elevation: 0,
         automaticallyImplyLeading: false,
         title: Container(
-          margin: EdgeInsets.only(top: AppDimensions.height10 * 1.3),
+          margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.3),
           child: Center(
               child: Text(
             'Meditation Session',
             style: TextStyle(
-                fontSize: AppDimensions.height10 * 2.0,
+                fontSize: AppDimensions.height10(context) * 2.0,
                 fontWeight: FontWeight.w600,
                 fontFamily: 'laila',
                 color: Colors.white),
@@ -71,29 +71,30 @@ class welldone_splashState extends State<welldone_splash> {
         )),
         child: Center(
           child: Container(
-            width: AppDimensions.height10 * 35.9,
-            height: AppDimensions.height10 * 14.8,
+            width: AppDimensions.height10(context) * 35.9,
+            height: AppDimensions.height10(context) * 14.8,
             margin: EdgeInsets.only(
-                left: AppDimensions.height10 * 2.7,
-                right: AppDimensions.height10 * 2.7),
+                left: AppDimensions.height10(context) * 2.7,
+                right: AppDimensions.height10(context) * 2.7),
             child: Column(
               children: [
                 Container(
                   child: Text(
                     'Well Done!',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 3.0,
+                        fontSize: AppDimensions.height10(context) * 3.0,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                         fontFamily: 'laila'),
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 2.0),
                   child: Text('Now, let’s record your\npractice.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 2.8,
+                          fontSize: AppDimensions.height10(context) * 2.8,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                           fontFamily: 'laila')),

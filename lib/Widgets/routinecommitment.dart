@@ -12,50 +12,46 @@ String? hours;
 class routinecommitment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-          padding:
-          const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                schedule_card(
-                  days: 'Monday',
-                ),
-                SizedBox(
-                  height: AppDimensions.height10*1.0,
-                ),
-                schedule_card(
-                  days: 'Tuesday',
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                schedule_card(
-                  days: 'Wednesday',
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                schedule_card(
-                  days: 'Thursday',
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                schedule_card(
-                  days: 'Friday',
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-
-              ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            schedule_card(
+              days: 'Monday',
             ),
-          ),
-        );
-
-
+            SizedBox(
+              height: AppDimensions.height10(context) * 1.0,
+            ),
+            schedule_card(
+              days: 'Tuesday',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            schedule_card(
+              days: 'Wednesday',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            schedule_card(
+              days: 'Thursday',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            schedule_card(
+              days: 'Friday',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -88,11 +84,9 @@ class _schedule_cardState extends State<schedule_card> {
               child: AdvanceExpansionTile(
                 key: _globalKey,
                 initiallyExpanded: true,
-
-                decoration:const BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
-
                 title: Text(
                   days_name,
                   style: const TextStyle(
@@ -103,27 +97,25 @@ class _schedule_cardState extends State<schedule_card> {
                 children: <Widget>[
                   Container(
                     // color:Colors.orange,
-                    width: AppDimensions.height10 * 36.2,
+                    width: AppDimensions.height10(context) * 36.2,
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
                         startTimerState(
                           text: ' 1) Time: ',
                         ),
-
                       ],
                     ),
                   ),
                   Container(
                     // color:Colors.orange,
-                    width: AppDimensions.height10 * 36.2,
+                    width: AppDimensions.height10(context) * 36.2,
                     padding: const EdgeInsets.only(left: 0.0, bottom: 10),
                     child: Row(
                       children: [
                         const endTimerState(
                           text: '1) Time: ',
                         ),
-
                       ],
                     ),
                   ),
@@ -157,8 +149,8 @@ class _startTimerStateState extends State<startTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10*31.6,
-      height: AppDimensions.height10*3.7,
+      width: AppDimensions.height10(context) * 31.6,
+      height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: Color(0xFFF6F6F6),
           borderRadius: BorderRadius.circular(18),
@@ -182,7 +174,7 @@ class _startTimerStateState extends State<startTimerState> {
                 width: 162,
                 child: Text(
                   start_time,
-                  style:const  TextStyle(
+                  style: const TextStyle(
                     color: Color.fromRGBO(250, 153, 52, 1),
                     fontSize: 16,
                     fontFamily: "Laila",
@@ -192,31 +184,30 @@ class _startTimerStateState extends State<startTimerState> {
               ),
             ],
           ),
-
           Container(
-            width: AppDimensions.height10*2.4,
-
-           child:Center(child: FloatingActionButton(
-               elevation: 0,
-               backgroundColor: Colors.transparent,
-               onPressed: () {
-                 DatePicker.showTime12hPicker(context, showTitleActions: true,
-                     onChanged: (date) {
-                       hours = date.hour.toString();
-                       minutes = date.minute.toString();
-                     }, onConfirm: (date) {
-                       setState(() {
-                         start_time = '${hours} : ${minutes}';
-                       });
-                       ;
-                     }, currentTime: DateTime.now());
-               },
-               child: Icon(
-                 Icons.arrow_drop_down,
-                 color: Color.fromRGBO(250, 153, 52, 1),
-                 size: 35,
-               )),),
-
+            width: AppDimensions.height10(context) * 2.4,
+            child: Center(
+              child: FloatingActionButton(
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  onPressed: () {
+                    DatePicker.showTime12hPicker(context,
+                        showTitleActions: true, onChanged: (date) {
+                      hours = date.hour.toString();
+                      minutes = date.minute.toString();
+                    }, onConfirm: (date) {
+                      setState(() {
+                        start_time = '${hours} : ${minutes}';
+                      });
+                      ;
+                    }, currentTime: DateTime.now());
+                  },
+                  child: Icon(
+                    Icons.arrow_drop_down,
+                    color: Color.fromRGBO(250, 153, 52, 1),
+                    size: 35,
+                  )),
+            ),
           )
         ],
       ),
@@ -241,8 +232,8 @@ class _endTimerStateState extends State<endTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10*31.6,
-      height: AppDimensions.height10*3.7,
+      width: AppDimensions.height10(context) * 31.6,
+      height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: Color(0xFFF6F6F6),
           borderRadius: BorderRadius.circular(18),
@@ -266,7 +257,7 @@ class _endTimerStateState extends State<endTimerState> {
                 width: 162,
                 child: Text(
                   end_time,
-                  style:const  TextStyle(
+                  style: const TextStyle(
                     color: Color.fromRGBO(250, 153, 52, 1),
                     fontSize: 16,
                     fontFamily: "Laila",
@@ -276,31 +267,30 @@ class _endTimerStateState extends State<endTimerState> {
               ),
             ],
           ),
-
           Container(
-            width: AppDimensions.height10*2.4,
-
-            child:Center(child: FloatingActionButton(
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-                onPressed: () {
-                  DatePicker.showTime12hPicker(context, showTitleActions: true,
-                      onChanged: (date) {
-                        hours = date.hour.toString();
-                        minutes = date.minute.toString();
-                      }, onConfirm: (date) {
-                        setState(() {
-                          start_time = '${hours} : ${minutes}';
-                        });
-                        ;
-                      }, currentTime: DateTime.now());
-                },
-                child: Icon(
-                  Icons.arrow_drop_down,
-                  color: Color.fromRGBO(250, 153, 52, 1),
-                  size: 35,
-                )),),
-
+            width: AppDimensions.height10(context) * 2.4,
+            child: Center(
+              child: FloatingActionButton(
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  onPressed: () {
+                    DatePicker.showTime12hPicker(context,
+                        showTitleActions: true, onChanged: (date) {
+                      hours = date.hour.toString();
+                      minutes = date.minute.toString();
+                    }, onConfirm: (date) {
+                      setState(() {
+                        start_time = '${hours} : ${minutes}';
+                      });
+                      ;
+                    }, currentTime: DateTime.now());
+                  },
+                  child: Icon(
+                    Icons.arrow_drop_down,
+                    color: Color.fromRGBO(250, 153, 52, 1),
+                    size: 35,
+                  )),
+            ),
           )
         ],
       ),

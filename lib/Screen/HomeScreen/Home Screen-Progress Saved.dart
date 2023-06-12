@@ -74,19 +74,19 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: AppDimensions.height10 * 7.0,
+                  height: AppDimensions.height10(context) * 7.0,
                 ),
                 Center(
                   child: Image(
                     // color: Colors.orange,
                     image: const AssetImage("assets/images/homelogo.png"),
-                    height: AppDimensions.height10 * 10.0,
-                    width: AppDimensions.width10 * 10.0,
+                    height: AppDimensions.height10(context) * 10.0,
+                    width: AppDimensions.height10(context) * 10.0,
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 2.32),
+                SizedBox(height: AppDimensions.height10(context) * 2.32),
                 SizedBox(
-                  height: AppDimensions.height10 * 8.5,
+                  height: AppDimensions.height10(context) * 8.5,
                   child: Text(
                     widget.log_status
                         ? "[Name], your destiny\nis at Your Fingertips"
@@ -95,23 +95,23 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 3.0,
+                      fontSize: AppDimensions.height10(context) * 3.0,
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 0.5),
+                SizedBox(height: AppDimensions.height10(context) * 0.5),
                 SizedBox(
-                    height: AppDimensions.height10 * 11.5,
+                    height: AppDimensions.height10(context) * 11.5,
                     child: Text(
                       'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     )),
-                SizedBox(height: AppDimensions.height10 * 4.4),
+                SizedBox(height: AppDimensions.height10(context) * 4.4),
                 Center(
                     child: GestureDetector(
                   onTap: () {
@@ -126,14 +126,14 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                   child: Image(
                     // color: Colors.orange,
                     image: const AssetImage("assets/images/starprogress.png"),
-                    height: AppDimensions.height10 * 23,
-                    width: AppDimensions.width10 * 26,
+                    height: AppDimensions.height10(context) * 23,
+                    width: AppDimensions.height10(context) * 26,
                   ),
                 )),
-                SizedBox(height: AppDimensions.height10 * 12.1),
+                SizedBox(height: AppDimensions.height10(context) * 12.1),
                 widget.log_status
                     ? SizedBox(
-                        width: AppDimensions.height10 * 19.4,
+                        width: AppDimensions.height10(context) * 19.4,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
@@ -142,13 +142,18 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                 showDialog<String>(
                                     context: context,
                                     builder: (BuildContext context) => SizedBox(
-                                          width: AppDimensions.height10 * 27.0,
-                                          height: AppDimensions.height10 * 19.8,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  27.0,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  19.8,
                                           child: AlertDialog(
                                             shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             1.4)),
                                             contentPadding: EdgeInsets.zero,
                                             actionsPadding: EdgeInsets.zero,
@@ -156,16 +161,19 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                             title: Container(
                                               margin: const EdgeInsets.only(
                                                   top: 19, bottom: 2),
-                                              height:
-                                                  AppDimensions.height10 * 2.2,
-                                              width:
-                                                  AppDimensions.height10 * 23.8,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  2.2,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  23.8,
                                               child: Text(
                                                 "Log out?",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.7,
                                                   fontWeight: FontWeight.w400,
                                                 ),
@@ -175,8 +183,9 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                               margin: const EdgeInsets.only(
                                                 bottom: 19,
                                               ),
-                                              height:
-                                                  AppDimensions.height10 * 4.8,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  4.8,
                                               width: 238,
                                               child: Text(
                                                 "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
@@ -184,10 +193,12 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                                 style: TextStyle(
                                                   fontFamily: 'laila',
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.5,
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           0.15,
                                                   fontWeight: FontWeight.w400,
                                                 ),
@@ -226,7 +237,8 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                                     width: double.infinity,
                                                     margin: EdgeInsets.only(
                                                         bottom: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             1.0),
                                                     color: Colors.white,
                                                     child: TextButton(
@@ -253,23 +265,26 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                         ));
                               },
                               child: Container(
-                                height: AppDimensions.height10 * 5,
-                                width: AppDimensions.height10 * 13,
+                                height: AppDimensions.height10(context) * 5,
+                                width: AppDimensions.height10(context) * 13,
                                 margin: EdgeInsets.only(
-                                    right: AppDimensions.height10 * 1.4),
+                                    right:
+                                        AppDimensions.height10(context) * 1.4),
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFF5F5F5),
                                   border: Border.all(color: Colors.white),
                                   borderRadius: BorderRadius.all(
                                       Radius.circular(
-                                          AppDimensions.height10 * 5.0)),
+                                          AppDimensions.height10(context) *
+                                              5.0)),
                                 ),
                                 child: Center(
                                   child: Text(
                                     "Log out",
                                     style: TextStyle(
                                       color: const Color(0xFF8C648A),
-                                      fontSize: AppDimensions.font16 - 2,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -282,8 +297,8 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                     context, "Introduction", "OnBoarding");
                               },
                               child: Container(
-                                height: AppDimensions.height10 * 5,
-                                width: AppDimensions.height10 * 5,
+                                height: AppDimensions.height10(context) * 5,
+                                width: AppDimensions.height10(context) * 5,
                                 decoration: BoxDecoration(
                                   color: Colors.transparent,
                                   border: Border.all(color: Colors.transparent),
@@ -295,8 +310,8 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                     // color: Colors.orange,
                                     image: const AssetImage(
                                         "assets/images/Moreactions.png"),
-                                    height: AppDimensions.height10 * 5,
-                                    width: AppDimensions.width10 * 5,
+                                    height: AppDimensions.height10(context) * 5,
+                                    width: AppDimensions.height10(context) * 5,
                                   ),
                                 ),
                               ),
@@ -317,20 +332,21 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                               );
                             },
                             child: Container(
-                              height: AppDimensions.height10 * 5,
-                              width: AppDimensions.height10 * 13,
+                              height: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.height10(context) * 13,
                               decoration: BoxDecoration(
                                 color: const Color(0xFFF5F5F5),
                                 border: Border.all(color: Colors.white),
                                 borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10 * 5.0)),
+                                    AppDimensions.height10(context) * 5.0)),
                               ),
                               child: Center(
                                 child: Text(
                                   "I’m new here",
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -339,23 +355,24 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                           ),
                           GestureDetector(
                             child: Container(
-                              height: AppDimensions.height10 * 5,
-                              width: AppDimensions.height10 * 13,
+                              height: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.height10(context) * 13,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 1.4),
+                                  left: AppDimensions.height10(context) * 1.4),
                               decoration: BoxDecoration(
                                 color: const Color(0xFF5A4D73),
                                 border:
                                     Border.all(color: const Color(0xFF5A4D73)),
                                 borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10 * 5.0)),
+                                    AppDimensions.height10(context) * 5.0)),
                               ),
                               child: Center(
                                 child: Text(
                                   "Log in",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -368,21 +385,21 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                   context, "Introduction", "OnBoarding");
                             },
                             child: Container(
-                              height: AppDimensions.height10 * 5,
-                              width: AppDimensions.height10 * 5,
+                              height: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.height10(context) * 5,
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 border: Border.all(color: Colors.transparent),
                                 borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10 * 5.0)),
+                                    AppDimensions.height10(context) * 5.0)),
                               ),
                               child: Center(
                                 child: Image(
                                   // color: Colors.orange,
                                   image: const AssetImage(
                                       "assets/images/Moreactions.png"),
-                                  height: AppDimensions.height10 * 50,
-                                  width: AppDimensions.width10 * 50,
+                                  height: AppDimensions.height10(context) * 50,
+                                  width: AppDimensions.height10(context) * 50,
                                 ),
                               ),
                             ),
