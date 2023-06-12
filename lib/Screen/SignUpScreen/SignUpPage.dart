@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Widgets/TermsAndConditionBottomSheet.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -86,8 +87,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(
+                    FadePageRoute(
+                      page: const HomeScreen(
                         log_status: false,
                       ),
                     ),
@@ -172,8 +173,8 @@ class _SignUpPageState extends State<SignUpPage> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => SignUpWithEmail(),
+                              FadePageRoute(
+                                page: SignUpWithEmail(),
                               ),
                             );
                           },

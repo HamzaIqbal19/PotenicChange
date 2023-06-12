@@ -201,7 +201,12 @@ class _PracticeNameState extends State<PracticeName> {
                   child: TextFormField(
                       maxLines: null,
                       minLines: null,
+                      maxLength: 80,
                       decoration: InputDecoration(
+                          counterText: "",
+                          counterStyle: TextStyle(
+                            height: double.minPositive,
+                          ),
                           contentPadding: EdgeInsets.zero,
                           hintText: widget.title,
                           hintStyle: TextStyle(

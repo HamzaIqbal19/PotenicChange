@@ -28,7 +28,9 @@ class missed_Menu extends StatelessWidget {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: Image.asset(
                     'assets/images/Close.png',
                     width: 26,

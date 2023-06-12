@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations_journey.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -219,8 +220,7 @@ class _congratulationsState extends State<congratulations> {
                 if (goal_level > 3) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const Congratulations_journey()),
+                    FadePageRoute(page: const Congratulations_journey()),
                   );
                 }
               },

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_practice_summary.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
+import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class record_session extends StatelessWidget {
-  const record_session({super.key});
+  final bool past_session;
+  const record_session({super.key, required this.past_session});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +52,9 @@ class record_session extends StatelessWidget {
                     bottom: AppDimensions.height10 * 4.2),
                 child: Center(
                     child: Text(
-                  'Record Practice\nSession',
+                  past_session
+                      ? 'Record Practice\nSession'
+                      : 'View Practice\nSchedules',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
@@ -111,10 +116,13 @@ class record_session extends StatelessWidget {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const record_summary()));
+                                past_session
+                                    ? Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: emotions(summary: false)))
+                                    : Navigator.push(context,
+                                        FadePageRoute(page: PracticeReview()));
                               },
                               child: Container(
                                 height: AppDimensions.height10 * 13.8,

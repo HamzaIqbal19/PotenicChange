@@ -147,12 +147,17 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                         shape: BoxShape.circle),
                                     child: Center(
                                       child: TextField(
+                                        maxLength: 100,
                                         expands: true,
                                         maxLines: null,
                                         minLines: null,
                                         scrollPhysics:
                                             const ClampingScrollPhysics(),
                                         decoration: InputDecoration(
+                                            counterText: "",
+                                            counterStyle: TextStyle(
+                                              height: double.minPositive,
+                                            ),
                                             hintText: 'I feel...',
                                             hintStyle: TextStyle(
                                                 fontSize: AppDimensions

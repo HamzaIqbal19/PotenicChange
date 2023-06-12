@@ -25,7 +25,7 @@ class goal_menu_inactive extends StatefulWidget {
 
 class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   @override
-  int goal_level = 0;
+  int goal_level = 2;
   Widget build(BuildContext context) {
     //bool premium = false;
     return Scaffold(

@@ -30,7 +30,9 @@ class menu_behaviour extends StatelessWidget {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: Image.asset(
                     'assets/images/Close.png',
                     width: AppDimensions.height10 * 2.6,

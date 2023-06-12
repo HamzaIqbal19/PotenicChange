@@ -6,10 +6,23 @@ class FadePageRoute<T> extends PageRouteBuilder<T> {
   FadePageRoute({required this.page})
       : super(
           pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: Duration(milliseconds: 850),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
+            var begin = Offset(0.0, 0.65);
+            var end = Offset.zero;
+            var curve = Curves.easeInOutSine;
+
+            var slideAnim =
+                Tween(begin: begin, end: end).animate(CurvedAnimation(
+              parent: animation,
+              curve: curve,
+            ));
+            return SlideTransition(
+              position: slideAnim,
+              child: FadeTransition(
+                opacity: animation,
+                child: child,
+              ),
             );
           },
         );

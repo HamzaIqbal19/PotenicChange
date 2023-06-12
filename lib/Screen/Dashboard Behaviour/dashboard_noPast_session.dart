@@ -21,23 +21,39 @@ class no_past_session extends StatelessWidget {
             actions: [
               Row(
                 children: [
-                  Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.32),
-                    child: Image.asset(
-                      'assets/images/Asset 10 2.png',
-                      height: AppDimensions.height10 * 4.0,
-                      width: AppDimensions.height10 * 3.977,
-                      fit: BoxFit.contain,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          FadePageRoute(page: view_goals(missed: false)));
+                    },
+                    child: Container(
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.32),
+                      child: Image.asset(
+                        'assets/images/Asset 10 2.png',
+                        height: AppDimensions.height10 * 4.0,
+                        width: AppDimensions.height10 * 3.977,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
-                  Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.7),
-                    child: Image.asset(
-                      'assets/images/Add goal.png',
-                      height: AppDimensions.height10 * 2.0,
-                      width: AppDimensions.height10 * 2.1,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: record_session(
+                            past_session: true,
+                          )));
+                    },
+                    child: Container(
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.7),
+                      child: Image.asset(
+                        'assets/images/Add goal.png',
+                        height: AppDimensions.height10 * 2.0,
+                        width: AppDimensions.height10 * 2.1,
+                      ),
                     ),
                   ),
                   Container(
@@ -376,8 +392,12 @@ class no_past_session extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              FadePageRoute(page: const record_session()));
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const record_session(
+                                past_session: true,
+                              )));
                         },
                         child: Container(
                           width: AppDimensions.height10 * 10.1,

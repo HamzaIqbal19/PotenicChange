@@ -19,7 +19,7 @@ class _CreatePracticeState extends State<CreatePractice> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
@@ -67,21 +67,17 @@ class _CreatePracticeState extends State<CreatePractice> {
               ),
             ],
           )),
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/Categories.png"),
+            fit: BoxFit.cover,
           ),
-
-          // SingleChildScrollView(
-          //   child: ,
-          // )
-          Column(
+        ),
+        child: SingleChildScrollView(
+          child: Column(
             children: [
               Container(
                 padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
@@ -371,14 +367,17 @@ class _CreatePracticeState extends State<CreatePractice> {
                     ),
                   )),
             ],
-          )
-        ],
+          ),
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 10,
         child: Container(
           // color: Colors.blue,
+          margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           padding: EdgeInsets.only(
               left: AppDimensions.height10 * 2.2,
               right: AppDimensions.height10 * 2.2),

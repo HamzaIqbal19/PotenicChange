@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -41,7 +42,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
           leading: Center(
             child: IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const goal_menu_inactive(
+                              isActive: true,
+                              goal_evaluation: true,
+                              premium: true)));
                 },
                 icon: Image.asset(
                   'assets/images/Back.png',

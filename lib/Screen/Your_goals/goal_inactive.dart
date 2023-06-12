@@ -17,6 +17,7 @@ class goal_inactive extends StatefulWidget {
 
 class _goal_inactiveState extends State<goal_inactive> {
   bool status4 = true;
+  bool status1 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -330,10 +331,11 @@ class _goal_inactiveState extends State<goal_inactive> {
                           toggleSize: 18.0,
                           activeColor: const Color(0xFFFA9934),
                           inactiveColor: const Color(0xFF2F3A4B),
-                          value: status4,
+                          value: widget.isActive ? status4 : status1,
                           onToggle: (val) {
                             setState(() {
                               status4 = val;
+                              status1 = val;
                             });
                           },
                         ),
@@ -373,8 +375,8 @@ class _goal_inactiveState extends State<goal_inactive> {
                     width: AppDimensions.height10 * 13.4,
                     height: AppDimensions.height10 * 13.4,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 5.0,
-                        bottom: AppDimensions.height10 * 46.7),
+                      top: AppDimensions.height10 * 5.0,
+                    ),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
@@ -407,6 +409,98 @@ class _goal_inactiveState extends State<goal_inactive> {
                     ),
                   ),
                 ),
+                //  SizedBox(
+                //   height: AppDimensions.height10 * 46.7,
+                // ),
+                status1
+                    ? Container(
+                        width: AppDimensions.height10 * 38.259,
+                        height: AppDimensions.height10 * 9.707,
+                        margin:
+                            EdgeInsets.only(top: AppDimensions.height10 * 12.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10 * 2.0),
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFFD4B7B9),
+                                  Color(0xFF91698C)
+                                ])),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 1.261),
+                              width: AppDimensions.height10 * 4.437,
+                              height: AppDimensions.height10 * 4.437,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/circle_tick.png'))),
+                            ),
+                            Container(
+                              width: AppDimensions.height10 * 6.9,
+                              height: AppDimensions.height10 * 3.6,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 1.232),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    // width: AppDimensions.height10 * 4.6,
+                                    height: AppDimensions.height10 * 1.4,
+                                    //   color: Colors.amber,
+                                    child: Text(
+                                      "Goal Active",
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.3,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: AppDimensions.height10 * 6.9,
+                                    height: AppDimensions.height10 * 2.2,
+                                    child: Text(
+                                      'Control My Anger',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10 * 1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: AppDimensions.height10 * 8.1,
+                              height: AppDimensions.height10 * 6.0,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 15.1),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: const Color(0xFFFFFFFF), width: 1),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10 * 2.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Veiw',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFFFFFFFF)),
+                                ),
+                              ),
+                            )
+                          ],
+                        ))
+                    : Container(),
               ],
             ),
           ),

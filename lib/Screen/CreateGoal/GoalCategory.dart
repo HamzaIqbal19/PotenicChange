@@ -30,6 +30,7 @@ class _GoalCategoryState extends State<GoalCategory> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      //extendBody: true,
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
@@ -77,21 +78,17 @@ class _GoalCategoryState extends State<GoalCategory> {
               ),
             ],
           )),
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/Categories.png"),
+            fit: BoxFit.cover,
           ),
-
-          // SingleChildScrollView(
-          //   child: ,
-          // )
-          Column(
+        ),
+        child: SingleChildScrollView(
+          child: Column(
             children: [
               Container(
                 padding: EdgeInsets.only(top: AppDimensions.height10 * 4.2),
@@ -287,14 +284,17 @@ class _GoalCategoryState extends State<GoalCategory> {
                 ),
               ),
             ],
-          )
-        ],
+          ),
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         child: Container(
           // color: Colors.blue,
+          margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           padding: EdgeInsets.only(
               left: AppDimensions.height10 * 2.2,
               right: AppDimensions.height10 * 2.2),
@@ -318,6 +318,11 @@ class _GoalCategoryState extends State<GoalCategory> {
                                   Radius.circular(AppDimensions.height10))),
                           child: Center(
                             child: TextFormField(
+                                style: TextStyle(
+                                    color: Color(0xFF3C3C43).withOpacity(0.6),
+                                    fontFamily: 'Laila',
+                                    fontSize: AppDimensions.height10 * 1.7,
+                                    height: AppDimensions.height10 * 0.15),
                                 decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(

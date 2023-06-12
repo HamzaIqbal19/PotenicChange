@@ -1070,9 +1070,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
               GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CreatePractice()));
+                      context, FadePageRoute(page: const CreatePractice()));
                 },
                 child: Container(
                   width: AppDimensions.height10 * 13.4,

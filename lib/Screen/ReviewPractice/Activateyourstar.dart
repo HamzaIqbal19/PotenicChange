@@ -208,7 +208,7 @@ class _ActivateStarState extends State<ActivateStar> {
                           Container(
                             child: Center(
                               child: Text(
-                                "To begin your journey press and hold here.  ",
+                                "To begin your journey\npress and hold here.  ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,

@@ -2,6 +2,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 // import 'package:flutter_ui/utilities/app_contants.dart';
 
@@ -79,6 +80,7 @@ void bottom_sheet(context) {
                 //   color: const Color.fromRGBO(0, 0, 0, 0.1),
                 // ),
                 child: TextFormField(
+                  maxLength: 50,
                   onTap: () {},
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
@@ -86,7 +88,10 @@ void bottom_sheet(context) {
                     color: const Color.fromARGB(209, 250, 154, 52),
                   ),
                   decoration: InputDecoration(
-
+                      counterText: "",
+                      counterStyle: TextStyle(
+                        height: double.minPositive,
+                      ),
                       // contentPadding:
                       //     EdgeInsets.only(left: AppDimensions.height10 * 2.0),
                       filled: true,
@@ -153,8 +158,8 @@ void bottom_sheet(context) {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => GoalName(),
+                        FadePageRoute(
+                          page: GoalName(),
                         ),
                       );
                     },

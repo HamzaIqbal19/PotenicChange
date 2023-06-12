@@ -481,7 +481,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                     context,
                                     FadePageRoute(
                                         page: const practiceMenu(
-                                      goal_eval: true,
+                                      goal_eval: false,
                                     )));
                               },
                               child: Container(

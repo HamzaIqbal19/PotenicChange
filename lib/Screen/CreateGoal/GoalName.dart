@@ -118,10 +118,9 @@ class _GoalNameState extends State<GoalName> {
                                   onPressed: () {
                                     Navigator.pushReplacement(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            HomeScreenProgressSaved(
-                                          log_status: true,
+                                      FadePageRoute(
+                                        page: HomeScreenProgressSaved(
+                                          log_status: false,
                                         ),
                                       ),
                                     );
@@ -307,7 +306,7 @@ class _GoalNameState extends State<GoalName> {
                       borderRadius: BorderRadius.all(
                           Radius.circular(AppDimensions.height10 * 1.8))),
                   child: TextFormField(
-                      // maxLength: 50,
+                      maxLength: 50,
                       maxLines: null,
                       minLines: null,
 
@@ -317,6 +316,10 @@ class _GoalNameState extends State<GoalName> {
                       //     fontWeight: FontWeight.w500,
                       //     color: const Color(0xFFFA9934)),
                       decoration: InputDecoration(
+                          counterText: "",
+                          counterStyle: TextStyle(
+                            height: double.minPositive,
+                          ),
                           hintText: "Control my anger",
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10 * 2.4,
@@ -376,7 +379,7 @@ class _GoalNameState extends State<GoalName> {
                   margin: EdgeInsets.only(right: AppDimensions.height10 * 1.3),
                   child: Center(
                     child: Text(
-                      "You can change the name of your practice later by going into your Dashboard.  ",
+                      "You can change the name of your goal later by going into your Dashboard.  ",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,

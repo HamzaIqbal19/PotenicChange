@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_noPast_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_session.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 
 import '../../Widgets/bottom_navigation.dart';
@@ -24,22 +26,114 @@ class view_goals extends StatelessWidget {
             actions: [
               Row(
                 children: [
-                  Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.7),
-                    child: Image.asset(
-                      'assets/images/Add goal.png',
-                      height: AppDimensions.height10 * 2.4,
-                      width: AppDimensions.height10 * 2.4,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: record_session(
+                            past_session: true,
+                          )));
+                    },
+                    child: Container(
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.7),
+                      child: Image.asset(
+                        'assets/images/Add goal.png',
+                        height: AppDimensions.height10 * 2.4,
+                        width: AppDimensions.height10 * 2.4,
+                      ),
                     ),
                   ),
-                  Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.32),
-                    child: Image.asset(
-                      'assets/images/calendar_month_black_24dp 1.png',
-                      height: AppDimensions.height10 * 2.4,
-                      width: AppDimensions.height10 * 2.4,
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return SizedBox(
+                              height: AppDimensions.height10 * 30.3,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: AppDimensions.height10 * 3.8,
+                                    decoration: BoxDecoration(
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: const Color(0xFF828282),
+                                                width: AppDimensions.height10 *
+                                                    0.1))),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Container(
+                                            width: AppDimensions.height10 * 5.0,
+                                            height:
+                                                AppDimensions.height10 * 2.1,
+                                            margin: EdgeInsets.only(
+                                                right: AppDimensions.height10 *
+                                                    2.0),
+                                            child: Text(
+                                              'Cancel',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.4,
+                                                  fontWeight: FontWeight.w400,
+                                                  color:
+                                                      const Color(0xFF2F80ED)),
+                                            ),
+                                          ),
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {},
+                                          child: Container(
+                                            width: AppDimensions.height10 * 3.7,
+                                            height:
+                                                AppDimensions.height10 * 2.1,
+                                            margin: EdgeInsets.only(
+                                                right: AppDimensions.height10 *
+                                                    1.9),
+                                            child: Text(
+                                              'Done',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10 *
+                                                          1.4,
+                                                  fontWeight: FontWeight.w400,
+                                                  color:
+                                                      const Color(0xFF2F80ED)),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: AppDimensions.height10 * 26.0,
+                                    child: CupertinoDatePicker(
+                                      mode: CupertinoDatePickerMode.date,
+                                      onDateTimeChanged: (DateTime value) {},
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          });
+                    },
+                    child: Container(
+                      margin:
+                          EdgeInsets.only(right: AppDimensions.height10 * 1.32),
+                      child: Image.asset(
+                        'assets/images/calendar_month_black_24dp 1.png',
+                        height: AppDimensions.height10 * 2.4,
+                        width: AppDimensions.height10 * 2.4,
+                      ),
                     ),
                   ),
                 ],

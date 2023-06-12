@@ -188,6 +188,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                   //width: AppDimensions.height10 * 30.5,
                                   child: Center(
                                     child: TextFormField(
+                                      maxLength: 80,
                                       onTap: () {
                                         // setState(() {
                                         //   margin_state = false;
@@ -201,11 +202,16 @@ class _hurdle_nameState extends State<hurdle_name> {
                                       style: TextStyle(
                                           decoration: TextDecoration.none,
                                           decorationThickness: 0,
+                                          height: AppDimensions.height10 * 0.15,
                                           fontSize:
                                               AppDimensions.height10 * 2.4,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xffB353C9)),
                                       decoration: InputDecoration(
+                                          counterText: "",
+                                          counterStyle: TextStyle(
+                                            height: double.minPositive,
+                                          ),
                                           contentPadding: EdgeInsets.zero,
                                           hintText: 'Enter Name',
                                           hintStyle: TextStyle(

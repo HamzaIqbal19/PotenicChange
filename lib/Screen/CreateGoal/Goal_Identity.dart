@@ -14,6 +14,14 @@ class Goal_Identity extends StatefulWidget {
 
 // ignore: camel_case_types
 class _Goal_IdentityState extends State<Goal_Identity> {
+  int times = 2;
+
+  void increment() {
+    times = times + 1;
+  }
+
+  bool focus = false;
+  late inner_text InnerText;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,10 +171,157 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 SizedBox(
                   height: AppDimensions.height10 * 3.4,
                 ),
-                const backbox(),
+                Container(
+                  width: AppDimensions.height10 * 38.2,
+                  height: AppDimensions.height10 * 33.0,
+                  child: Stack(children: [
+                    Container(
+                        width: AppDimensions.height10 * 38.2,
+                        height: AppDimensions.height10 * 33.0,
+                        padding: EdgeInsets.only(
+                            left: AppDimensions.height10 * 1.1,
+                            right: AppDimensions.height10 * 1.1),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                                color: Colors.white,
+                                width: AppDimensions.height10 * 0.2),
+                            borderRadius: BorderRadius.all(
+                                Radius.circular(AppDimensions.height10 * 1.8))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Center(
+                              child: SizedBox(
+                                height: AppDimensions.height10 * 31.0,
+                                width: AppDimensions.height10 * 36.2,
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.vertical,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      for (int i = 1; i <= times; i++) ...[
+                                        Column(
+                                          children: <Widget>[
+                                            GestureDetector(
+                                                onTap: () {
+                                                  setState(() {
+                                                    focus == true;
+                                                  });
+                                                },
+                                                child: const inner_text(
+                                                  body_text:
+                                                      'is in control of my anger',
+                                                  head_text:
+                                                      '1. I am someone who',
+                                                  delete: false,
+                                                  length: 200,
+                                                )),
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10 * 0.4,
+                                            ),
+                                            Container(
+                                              padding: EdgeInsets.only(
+                                                  left: AppDimensions.height10 *
+                                                      2.0,
+                                                  right:
+                                                      AppDimensions.height10 *
+                                                          13.6),
+                                              child: Row(
+                                                children: [
+                                                  Center(
+                                                    child: Text(
+                                                      "Character count: ",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: const Color(
+                                                            0xFF464646),
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            1.3,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Center(
+                                                    child: Text(
+                                                      "150",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: const Color(
+                                                            0xFF464646),
+                                                        fontSize: AppDimensions
+                                                                .height10 *
+                                                            1.3,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10 * 0.9,
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                    Positioned(
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Align(
+                        //alignment: Alignment.bottomCenter,
+                        alignment: Alignment(0.01, 1.155),
+                        //heightFactor: 0.5,
+                        child: Container(
+                          height: AppDimensions.height10 * 4.7,
+                          width: AppDimensions.height10 * 4.7,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [Color(0xFFB1B8FF), Color(0xFFC5CAFF)]),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 4, left: 4, right: 4, bottom: 4),
+                            child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    increment();
+                                    print(times);
+                                  });
+                                },
+                                child: Container(
+                                  color: Colors.transparent,
+                                  child: Image.asset(
+                                    'assets/images/Addgoal.png',
+                                    height: AppDimensions.height10 * 4.7,
+                                    width: AppDimensions.height10 * 4.7,
+                                  ),
+                                )),
+                          ),
+                        ),
+                      ),
+                    )
+                  ]),
+                ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10 * 7.2,
+                        height: AppDimensions.height10 * 12.2,
                       )
                     : SizedBox(
                         height: AppDimensions.height10 * 5.0,

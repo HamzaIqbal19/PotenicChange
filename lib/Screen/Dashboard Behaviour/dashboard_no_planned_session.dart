@@ -366,8 +366,12 @@ class no_planned_session extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context,
-                              FadePageRoute(page: const record_session()));
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const record_session(
+                                past_session: false,
+                              )));
                         },
                         child: Container(
                           width: AppDimensions.height10 * 10.1,

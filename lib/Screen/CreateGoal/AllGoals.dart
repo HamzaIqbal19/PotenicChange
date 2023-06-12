@@ -63,21 +63,17 @@ class _AllGoalsState extends State<AllGoals> {
               ),
             ],
           )),
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/Categories.png"),
+            fit: BoxFit.cover,
           ),
-
-          // SingleChildScrollView(
-          //   child: ,
-          // )
-          Column(
+        ),
+        child: SingleChildScrollView(
+          child: Column(
             children: [
               Container(
                 padding: EdgeInsets.only(top: AppDimensions.height10 * 4.2),
@@ -435,14 +431,17 @@ class _AllGoalsState extends State<AllGoals> {
                 ),
               ),
             ],
-          )
-        ],
+          ),
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 10,
         child: Container(
           // color: Colors.blue,
+          margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           padding: EdgeInsets.only(
               left: AppDimensions.height10 * 2.2,
               right: AppDimensions.height10 * 2.2),
