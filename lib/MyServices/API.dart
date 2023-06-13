@@ -116,5 +116,14 @@ class myapi {
       "goalCategoryId": "$goalCategoryId",
     });
     request.headers.addAll(headers);
+    http.StreamedResponse response = await request.send();
+
+    if (response.statusCode == 200) {
+      var res = await response.stream.bytesToString();
+      return res;
+    } else {
+      print(response.reasonPhrase);
+      return 0;
+    }
   }
 }

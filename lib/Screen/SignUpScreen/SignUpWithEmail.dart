@@ -439,9 +439,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       onPressed: () {
                         // if (_formkey.currentState!.validate()) {
                         print("Hello WOrld 12345");
-                        // print('${nameController.text.toString()}');
-                        // print('${emailController.text.toString()}');
-                        // print('${passwordController.text.toString()}');
                         Authentication()
                             .registerApi(
                                 '${nameController.text.toString()}',
@@ -451,22 +448,24 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             .then((success) async {
                           print(
                               "response of signup api call:${success["message"]}");
-                          if (success["message"] !=
-                              "Failed! Email is already in use!") {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(success["message"])));
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignUpSuccessful(
-                                    name: nameController.text.toString()),
-                              ),
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(success["message"])));
-                          }
+                          // if (success["message"] !=
+                          //     "Failed! Email is already in use!") {
+                          //   ScaffoldMessenger.of(context).showSnackBar(
+                          //       SnackBar(content: Text(success["message"])));
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //       builder: (context) => SignUpSuccessful(
+                          //           name: nameController.text.toString()),
+                          //     ),
+                          //   );
+                          // } else {
+                          //   ScaffoldMessenger.of(context).showSnackBar(
+                          //       SnackBar(content: Text(success["message"])));
+                          // }
                         });
+
+                        // }
                       },
                       icon: Image.asset(
                         "assets/images/fb.png",

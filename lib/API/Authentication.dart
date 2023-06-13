@@ -23,21 +23,22 @@ class Authentication {
     var request = await client.post(
         Uri.parse('http://192.168.100.90:8000/api/auth/signup'),
         body: Body);
+
     print("request:");
-    // print("$request");
 
     var responses = jsonDecode(request.body);
     print("status:${request.statusCode}");
+
     print("request:${responses}");
     print("request:${responses["status"]}");
     if (request.statusCode == 200) {
       print("response:${responses["message"]}");
       var res = await responses.stream.bytesToString();
+      print("return this value:$res");
       return res;
     } else {
       client.close();
       // print("response:${}");
-      print(responses.reasonPhrase);
       return responses["message"];
     }
   }
