@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Menu&settings/account_deleted.dart';
@@ -905,7 +906,10 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => showDialog<String>(
+                  onTap: () => showAnimatedDialog(
+                      animationType: DialogTransitionType.fadeScale,
+                      curve: Curves.easeInOut,
+                      duration: Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.height10(context) * 27.0,
@@ -1066,7 +1070,10 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => showDialog<String>(
+                  onTap: () => showAnimatedDialog(
+                      animationType: DialogTransitionType.fadeScale,
+                      curve: Curves.easeInOut,
+                      duration: Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.height10(context) * 27.0,

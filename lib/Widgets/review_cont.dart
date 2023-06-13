@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_constants.dart';
@@ -201,7 +202,11 @@ class _reviewboxState extends State<reviewbox> {
                                 Align(
                                   alignment: const Alignment(0.9, -0.85),
                                   child: GestureDetector(
-                                    onTap: () => showDialog<String>(
+                                    onTap: () => showAnimatedDialog(
+                                      animationType:
+                                          DialogTransitionType.fadeScale,
+                                      curve: Curves.easeInOut,
+                                      duration: Duration(seconds: 1),
                                       context: context,
                                       builder: (BuildContext context) =>
                                           Container(
@@ -433,7 +438,11 @@ class _reviewboxState extends State<reviewbox> {
                                       Align(
                                         alignment: const Alignment(0.9, -0.85),
                                         child: GestureDetector(
-                                          onTap: () => showDialog<String>(
+                                          onTap: () => showAnimatedDialog(
+                                            animationType:
+                                                DialogTransitionType.fadeScale,
+                                            curve: Curves.easeInOut,
+                                            duration: Duration(seconds: 1),
                                             context: context,
                                             builder: (BuildContext context) =>
                                                 Container(
@@ -733,7 +742,10 @@ class _reviewboxState extends State<reviewbox> {
                     GestureDetector(
                       onTap: () {
                         if (visibility2 == false) {
-                          showDialog<String>(
+                          showAnimatedDialog(
+                            animationType: DialogTransitionType.fadeScale,
+                            curve: Curves.easeInOut,
+                            duration: Duration(seconds: 1),
                             context: context,
                             builder: (BuildContext context) => Container(
                               width: AppDimensions.height10(context) * 27.0,
@@ -1114,7 +1126,10 @@ class _inner_textState extends State<inner_text> {
                           fontSize: AppDimensions.height10(context) * 2.2,
                         ))),
                 GestureDetector(
-                  onTap: () => showDialog<String>(
+                  onTap: () => showAnimatedDialog(
+                    animationType: DialogTransitionType.fadeScale,
+                    curve: Curves.easeInOut,
+                    duration: Duration(seconds: 1),
                     context: context,
                     builder: (BuildContext context) => Container(
                       width: AppDimensions.height10(context) * 27.0,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeStopwatch.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
@@ -27,7 +28,10 @@ class _emotionsState extends State<emotions> {
           Center(
             child: IconButton(
                 onPressed: () {
-                  showDialog<String>(
+                  showAnimatedDialog(
+                    animationType: DialogTransitionType.fadeScale,
+                    curve: Curves.easeInOut,
+                    duration: Duration(seconds: 1),
                     context: context,
                     builder: (BuildContext context) => Container(
                       width: AppDimensions.height10(context) * 27.0,

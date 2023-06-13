@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 import '../../Widgets/fading.dart';
@@ -360,7 +361,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) =>
                                     showDeleteAlert(context)),
@@ -503,7 +507,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) =>
                                     showDeleteAlert(context)),
@@ -646,7 +653,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) =>
                                     showDeleteAlert(context)),
@@ -788,7 +798,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) =>
                                     showDeleteAlert(context)),
@@ -930,7 +943,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) =>
                                     showDeleteAlert(context)),
@@ -1071,7 +1087,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) =>
                                     showDeleteAlert(context)),
@@ -1211,7 +1230,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
               ),
               widget.isActive
                   ? GestureDetector(
-                      onTap: () => showDialog<String>(
+                      onTap: () => showAnimatedDialog(
+                          animationType: DialogTransitionType.fadeScale,
+                          curve: Curves.easeInOut,
+                          duration: Duration(seconds: 1),
                           context: context,
                           builder: (BuildContext context) => Container(
                                 width: AppDimensions.height10(context) * 27.0,

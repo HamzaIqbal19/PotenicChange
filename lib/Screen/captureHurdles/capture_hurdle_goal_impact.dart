@@ -1,5 +1,6 @@
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -64,7 +65,10 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () => showDialog<String>(
+                  onPressed: () => showAnimatedDialog(
+                      animationType: DialogTransitionType.fadeScale,
+                      curve: Curves.easeInOut,
+                      duration: Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.height10(context) * 27.0,

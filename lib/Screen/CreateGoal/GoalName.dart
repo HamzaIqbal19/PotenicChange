@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
@@ -60,7 +61,10 @@ class _GoalNameState extends State<GoalName> {
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
-                  onPressed: () => showDialog<String>(
+                  onPressed: () => showAnimatedDialog(
+                    animationType: DialogTransitionType.fadeScale,
+                    curve: Curves.easeInOut,
+                    duration: Duration(seconds: 1),
                     context: context,
                     builder: (BuildContext context) => Container(
                       width: AppDimensions.height10(context) * 27.0,

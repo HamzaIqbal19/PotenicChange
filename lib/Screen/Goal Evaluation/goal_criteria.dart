@@ -36,7 +36,10 @@ class _your_whyState extends State<your_why> {
         leading: Center(
           child: IconButton(
               onPressed: () {
-                showDialog(
+                showAnimatedDialog(
+                    animationType: DialogTransitionType.fadeScale,
+                    curve: Curves.easeInOut,
+                    duration: Duration(seconds: 1),
                     context: context,
                     builder: (BuildContext context) => Container(
                         width: AppDimensions.height10(context) * 27.0,
@@ -1480,7 +1483,10 @@ class _your_whyState extends State<your_why> {
                       child: Row(
                         children: [
                           GestureDetector(
-                            onTap: () => showDialog(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) =>
                                     showAlertBox(context)),
@@ -1545,8 +1551,11 @@ class _your_whyState extends State<your_why> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
                                 context: context,
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 builder: (BuildContext context) => Container(
                                     width:
                                         AppDimensions.height10(context) * 27.0,

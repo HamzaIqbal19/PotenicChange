@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 
@@ -277,7 +278,10 @@ class _photo_infoState extends State<photo_info> {
                                                   muliple_insp: false,
                                                   is_Updated: false,
                                                 )))
-                                            : showDialog<String>(
+                                            : showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                                 context: context,
                                                 builder:
                                                     (BuildContext context) =>

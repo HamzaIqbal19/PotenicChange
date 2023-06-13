@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
@@ -138,7 +139,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                showDialog<String>(
+                                showAnimatedDialog(
+                                    animationType:
+                                        DialogTransitionType.fadeScale,
+                                    curve: Curves.easeInOut,
+                                    duration: Duration(seconds: 1),
                                     context: context,
                                     builder: (BuildContext context) => SizedBox(
                                           width:

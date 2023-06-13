@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/routinecommitment.dart';
@@ -671,7 +672,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                           fit: BoxFit.contain,
                         )),
                     GestureDetector(
-                      onTap: () => showDialog<String>(
+                      onTap: () => showAnimatedDialog(
+                        animationType: DialogTransitionType.fadeScale,
+                        curve: Curves.easeInOut,
+                        duration: Duration(seconds: 1),
                         context: context,
                         builder: (BuildContext context) => Container(
                           width: AppDimensions.height10(context) * 27.0,

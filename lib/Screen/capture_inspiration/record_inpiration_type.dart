@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_veiw_detail.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
@@ -505,7 +506,10 @@ class _record_inspirationState extends State<record_inspiration> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () => showDialog<String>(
+                    onTap: () => showAnimatedDialog(
+                        animationType: DialogTransitionType.fadeScale,
+                        curve: Curves.easeInOut,
+                        duration: Duration(seconds: 1),
                         context: context,
                         builder: (BuildContext context) => SizedBox(
                               width: AppDimensions.height10(context) * 27.0,

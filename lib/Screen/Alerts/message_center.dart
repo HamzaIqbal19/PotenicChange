@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -958,7 +959,10 @@ class _message_centerState extends State<message_center> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
                                       width: AppDimensions.height10(context) *

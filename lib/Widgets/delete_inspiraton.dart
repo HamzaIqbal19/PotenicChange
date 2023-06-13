@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 import '../utils/app_dimensions.dart';
 
@@ -8,7 +9,10 @@ class delete_insp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => showDialog<String>(
+      onTap: () => showAnimatedDialog(
+          animationType: DialogTransitionType.fadeScale,
+          curve: Curves.easeInOut,
+          duration: Duration(seconds: 1),
           context: context,
           builder: (BuildContext context) => Container(
                 width: AppDimensions.height10(context) * 27.0,

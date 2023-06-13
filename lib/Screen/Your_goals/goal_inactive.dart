@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -573,7 +574,10 @@ class _goal_inactiveState extends State<goal_inactive> {
               ),
               widget.isActive
                   ? GestureDetector(
-                      onTap: () => showDialog<String>(
+                      onTap: () => showAnimatedDialog(
+                          animationType: DialogTransitionType.fadeScale,
+                          curve: Curves.easeInOut,
+                          duration: Duration(seconds: 1),
                           context: context,
                           builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.height10(context) * 27.0,

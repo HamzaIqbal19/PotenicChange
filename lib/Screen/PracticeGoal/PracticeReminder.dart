@@ -1,5 +1,6 @@
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -260,7 +261,10 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                   radio1 = false;
                                 });
                               } else if (radio1 == false) {
-                                showDialog<String>(
+                                showAnimatedDialog(
+                                  animationType: DialogTransitionType.fadeScale,
+                                  curve: Curves.easeInOut,
+                                  duration: Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) => Container(
                                     width:

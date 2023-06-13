@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -621,7 +622,10 @@ class _StarReviewState extends State<StarReview> {
                           fit: BoxFit.contain,
                         )),
                     GestureDetector(
-                      onTap: () => showDialog<String>(
+                      onTap: () => showAnimatedDialog(
+                        animationType: DialogTransitionType.fadeScale,
+                        curve: Curves.easeInOut,
+                        duration: Duration(seconds: 1),
                         context: context,
                         builder: (BuildContext context) => Container(
                           width: AppDimensions.height10(context) * 27.0,

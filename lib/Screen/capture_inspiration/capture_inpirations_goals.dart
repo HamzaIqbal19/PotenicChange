@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
@@ -83,7 +84,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                 ? Container()
                 : Center(
                     child: IconButton(
-                        onPressed: () => showDialog<String>(
+                        onPressed: () => showAnimatedDialog(
+                            animationType: DialogTransitionType.fadeScale,
+                            curve: Curves.easeInOut,
+                            duration: Duration(seconds: 1),
                             context: context,
                             builder: (BuildContext context) => SizedBox(
                                   width: AppDimensions.height10(context) * 27.0,

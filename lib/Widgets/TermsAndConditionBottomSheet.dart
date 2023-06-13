@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Widgets/PopupAlert.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -204,7 +205,10 @@ void termsSheet(context) {
                             color: Color.fromRGBO(250, 153, 52, 1)),
                         child: TextButton(
                           onPressed: () {
-                            showDialog<String>(
+                            showAnimatedDialog(
+                              animationType: DialogTransitionType.fadeScale,
+                              curve: Curves.easeInOut,
+                              duration: Duration(seconds: 1),
                               context: context,
                               builder: (BuildContext context) => Container(
                                 width: AppDimensions.height10(context) * 27.0,

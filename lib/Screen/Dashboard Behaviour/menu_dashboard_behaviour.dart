@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
@@ -260,7 +261,11 @@ class menu_behaviour extends StatelessWidget {
                                       color: Colors.white)),
                               child: Center(
                                 child: GestureDetector(
-                                    onTap: () => showDialog<String>(
+                                    onTap: () => showAnimatedDialog(
+                                        animationType:
+                                            DialogTransitionType.fadeScale,
+                                        curve: Curves.easeInOut,
+                                        duration: Duration(seconds: 1),
                                         context: context,
                                         builder: (BuildContext context) =>
                                             Container(
