@@ -439,10 +439,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       onPressed: () {
                         // if (_formkey.currentState!.validate()) {
                           print("Hello WOrld 12345");
-                          Authentication().registerApi(nameController.text.toString(), emailController.text.toString(), passwordController.text.toString(), fcm).then((success) async {
+                          Authentication().registerApi('${nameController.text.toString()}', '${emailController.text.toString()}', '${passwordController.text.toString()}', fcm).then((success) async {
 
-                            print("response of signup api call:$success");
-                            if (success!= "Failed! Email is already in use!") {
+                            print("response of signup api call:${success}");
+                            if (success["message"]!= "Failed! Email is already in use!") {
 
                               ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text(success)));
                               Navigator.push(
