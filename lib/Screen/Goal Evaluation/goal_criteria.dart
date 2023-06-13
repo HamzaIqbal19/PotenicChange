@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -1508,10 +1509,15 @@ class _your_whyState extends State<your_why> {
                             ),
                           ),
                           GestureDetector(
-                            onTap: () => showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    showSaveWithout(context)),
+                            onTap: () => showAnimatedDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return showSaveWithout(context);
+                              },
+                              animationType: DialogTransitionType.fadeScale,
+                              curve: Curves.easeInOut,
+                              duration: Duration(seconds: 1),
+                            ),
                             child: Container(
                               width: AppDimensions.height10(context) * 8.0,
                               height: AppDimensions.height10(context) * 5.0,
@@ -1952,7 +1958,9 @@ Widget showSaveWithout(BuildContext context) {
               height: AppDimensions.height10(context) * 4.4,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 child: Text(
                   'Cancel',
                   style: TextStyle(

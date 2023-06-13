@@ -13,39 +13,35 @@ class Subscription extends StatefulWidget {
   State<Subscription> createState() => _SubscriptionState();
 }
 
-class _SubscriptionState extends State<Subscription> {
+class _SubscriptionState extends State<Subscription>
+    with TickerProviderStateMixin {
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
-  late ScrollController _scrollController;
-
-  bool _showBackToTopButton = false;
+  late AnimationController controller;
+  //late Animation<double> opacityAnimation;
 
   @override
-  void initState() {
-    _scrollController = ScrollController()
-      ..addListener(() {
-        setState(() {
-          if (_scrollController.offset >= 400) {
-            _showBackToTopButton = true; // show the back-to-top button
-          } else {
-            _showBackToTopButton = false; // hide the back-to-top button
-          }
-        });
-      });
-
+  initState() {
     super.initState();
+    // Initialize AnimationController
+    initController();
   }
 
   @override
   void dispose() {
-    _scrollController.dispose(); // dispose the controller
+    controller.dispose();
     super.dispose();
   }
 
-  // This function is triggered when the user presses the back-to-top button
-  void _scrollToTop() {
-    _scrollController.animateTo(660,
-        duration: const Duration(milliseconds: 500), curve: Curves.linear);
+  void initController() {
+    controller = BottomSheet.createAnimationController(this);
+    controller.duration = const Duration(microseconds: 300);
+    controller.reverseDuration = const Duration(seconds: 1);
+    // opacityAnimation = CurvedAnimation(
+    //     parent: Tween<double>(begin: 1, end: 1).animate(controller),
+    //     curve: Curves.easeInOut);
   }
+
+  //bool cancel = canceled;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +72,6 @@ class _SubscriptionState extends State<Subscription> {
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
-          controller: _scrollController,
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
@@ -455,7 +450,165 @@ class _SubscriptionState extends State<Subscription> {
                               trial: true,
                               cancel: false,
                             )));
-                        subscribed(context);
+                        showModalBottomSheet(
+                          context: context,
+                          transitionAnimationController: controller,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                          )),
+                          builder: (context) {
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              child: Container(
+                                  width: AppDimensions.height10(context) * 39.4,
+                                  height:
+                                      AppDimensions.height10(context) * 57.0,
+                                  margin: EdgeInsets.only(
+                                      left:
+                                          AppDimensions.height10(context) * 1.0,
+                                      right:
+                                          AppDimensions.height10(context) * 1.0,
+                                      bottom: AppDimensions.height10(context) *
+                                          1.0),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              2.0),
+                                      gradient: const LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color(0xFFF8F7F9),
+                                            Color(0xFFE1D7D8)
+                                          ])),
+                                  child: Column(
+                                    // alignment: AlignmentDirectional.topCenter,
+                                    //  mainAxisAlignment: MainAxisAlignment.start,
+                                    //  crossAxisAlignment: CrossAxisAlignment.center,
+                                    // mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Container(
+                                        //color: Colors.amber,
+                                        // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                                        alignment: const Alignment(1, 0),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Container(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                2.6,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.6,
+                                            margin: EdgeInsets.only(
+                                                top: AppDimensions.height10(
+                                                        context) *
+                                                    1.9,
+                                                right: AppDimensions.height10(
+                                                        context) *
+                                                    1.5),
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        'assets/images/Close_blue.png'))),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin: EdgeInsets.only(
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                1.5,
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                1.9),
+                                        child: Image.asset(
+                                          'assets/images/potenic__icon.png',
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  8.202,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  11.2,
+                                        ),
+                                      ),
+                                      Container(
+                                        width: AppDimensions.height10(context) *
+                                            30.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                6.8,
+                                        // color: Colors.amber,
+                                        alignment: Alignment.center,
+                                        //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
+                                        child: Text(
+                                          'Your Ownership Plan\nStarts Today',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.15,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.8,
+                                              // letterSpacing: AppDimensions.height10(context) * 0.2,
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color(0xFF437296)),
+                                        ),
+                                      ),
+                                      Container(
+                                          width: AppDimensions.height10(context) *
+                                              33.2,
+                                          //  height: AppDimensions.height10(context) * 10.8,
+                                          // color: Colors.grey,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  1.9),
+                                          child: RichText(
+                                              textAlign: TextAlign.center,
+                                              text: TextSpan(
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.8,
+                                                      fontFamily: 'laila',
+                                                      height:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              0.15,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xFF437296)),
+                                                  children: const [
+                                                    TextSpan(
+                                                        text:
+                                                            'Your first steps & 5 day trial\n\n',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700)),
+                                                    TextSpan(
+                                                        text:
+                                                            'You’re now on a 5-day trial.\n\nPlease check your email (you should\nhave received a confirmation welcome\nemail).\n\nWe look forward to supporting you on\nyour personal development journey!')
+                                                  ]))),
+                                    ],
+                                  )),
+                            );
+                          },
+                        ).whenComplete(() => initController());
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 32.1,
@@ -2109,7 +2262,7 @@ class _SubscriptionState extends State<Subscription> {
   }
 }
 
-void subscribed(context) {
+subscribed(context) {
   //bool cancel = canceled;
   showModalBottomSheet(
     context: context,
