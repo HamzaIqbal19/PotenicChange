@@ -21,7 +21,7 @@ class Authentication{
     });
 
     print("request:$Body");
-    var request = await client.post(Uri.parse('${URL.BASE_URL}/api/auth/signup'),body: Body);
+    var request = await client.post(Uri.parse('http://192.168.100.90:8000/api/auth/signup'),headers:headers,body: Body);
     print("request:");
 
     var responses = jsonDecode(request.body);
@@ -31,12 +31,13 @@ class Authentication{
     if (request.statusCode == 200) {
       print("response:${responses["message"]}");
       var res = await responses.stream.bytesToString();
+      print("return this value:$res");
       return res;
     }
     else {
+      print("hello world:${responses["message"]}");
       client.close();
       // print("response:${}");
-      print(responses.reasonPhrase);
       return responses["message"];
     }
 
