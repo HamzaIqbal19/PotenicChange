@@ -52,7 +52,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
 
   String fcm = 'adsfsf3423424';
 
-
   @override
   void dispose() {
     // TODO: implement dispose
@@ -190,37 +189,38 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Colors.white, width: 2),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimensions.height10 * 1.8))),
                           child: TextFormField(
                             key: _formkey2,
-                            decoration:  InputDecoration(
+                            decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
                                     bottom: 15.0,
                                     left: 10.0,
                                     right: 10.0),
                                 floatingLabelBehavior:
-                                FloatingLabelBehavior.always,
+                                    FloatingLabelBehavior.always,
                                 hintText: "John",
                                 hintStyle: TextStyle(
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.height10*1.8,
+                                  fontSize: AppDimensions.height10 * 1.8,
                                 ),
                                 labelText: "Name",
                                 focusedBorder: const OutlineInputBorder(
                                     borderSide:
-                                    BorderSide(color: Colors.transparent)),
+                                        BorderSide(color: Colors.transparent)),
                                 enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.transparent))),
-                          controller: nameController,
-                          validator: (val){
-                              if (val==null || val=="") {
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent))),
+                            controller: nameController,
+                            validator: (val) {
+                              if (val == null || val == "") {
                                 return "Full Name is required";
                               }
-                          },),
+                            },
+                          ),
                         ),
                         Container(
                           child: Text(
@@ -242,37 +242,37 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Colors.white, width: 2),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimensions.height10 * 1.8))),
                           child: TextFormField(
-                              decoration:  InputDecoration(
-                                  contentPadding:const EdgeInsets.only(
-                                      top: 5.0,
-                                      bottom: 15.0,
-                                      left: 10.0,
-                                      right: 10.0),
-                                  floatingLabelBehavior:
-                                  FloatingLabelBehavior.always,
-                                  hintText: "abc@gmail.com",
-
-                                  hintStyle: TextStyle(
-                                    color: const Color(0xFF8C648A),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: AppDimensions.height10*1.8,
-                                  ),
-                                  labelText: "Email",
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Colors.transparent)),
-                                  enabledBorder:const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent))),
-                          controller: emailController,
-                          validator: (val){
-                                if (val==null || val=="") {
-                                  return "Oops needs to be an email format";
-                                }
-                          },),
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.only(
+                                    top: 5.0,
+                                    bottom: 15.0,
+                                    left: 10.0,
+                                    right: 10.0),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                hintText: "abc@gmail.com",
+                                hintStyle: TextStyle(
+                                  color: const Color(0xFF8C648A),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: AppDimensions.height10 * 1.8,
+                                ),
+                                labelText: "Email",
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent))),
+                            controller: emailController,
+                            validator: (val) {
+                              if (val == null || val == "") {
+                                return "Oops needs to be an email format";
+                              }
+                            },
+                          ),
                         ),
                         Container(
                           child: Text(
@@ -293,39 +293,40 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Colors.white, width: 0),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(AppDimensions.height10*1.8))),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimensions.height10 * 1.8))),
                           child: TextFormField(
-                              obscureText: true,
-                              textAlign: TextAlign.justify,
-                              decoration:  InputDecoration(
-                                  contentPadding:const EdgeInsets.only(
-                                      top: 5.0,
-                                      bottom: 15.0,
-                                      left: 10.0,
-                                      right: 10.0),
-                                  alignLabelWithHint: true,
-                                  floatingLabelBehavior:
-                                  FloatingLabelBehavior.always,
-                                  hintText: "********",
-                                  hintStyle: TextStyle(
-                                    color: const Color(0xFF8C648A),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: AppDimensions.height10*1.8,
-                                  ),
-                                  labelText: "Password",
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide:
-                                      BorderSide(color: Colors.transparent)),
-                                  enabledBorder:const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent))),
-                          controller: passwordController,
-                          validator: (val){
-                                if (val==null || val=="" || val.length<8) {
-                                  return "Minimum 8 characters";
-                                }
-                          },),
+                            obscureText: true,
+                            textAlign: TextAlign.justify,
+                            decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.only(
+                                    top: 5.0,
+                                    bottom: 15.0,
+                                    left: 10.0,
+                                    right: 10.0),
+                                alignLabelWithHint: true,
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                hintText: "********",
+                                hintStyle: TextStyle(
+                                  color: const Color(0xFF8C648A),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: AppDimensions.height10 * 1.8,
+                                ),
+                                labelText: "Password",
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent))),
+                            controller: passwordController,
+                            validator: (val) {
+                              if (val == null || val == "" || val.length < 8) {
+                                return "Minimum 8 characters";
+                              }
+                            },
+                          ),
                         ),
                         Container(
                           child: Text(
@@ -349,8 +350,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                   checkColor: Colors.black,
                                   activeColor: Colors.white,
                                   side: BorderSide(color: Color(0xffffffff)),
-
-
                                   value: rememberMe,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -359,61 +358,62 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                   },
                                 ),
                                 Container(
-
-                                    child:  Text.rich(
+                                    child: Text.rich(
+                                  TextSpan(
+                                    text:
+                                        'By signing up, you agree to Potenic’s \n ',
+                                    style: TextStyle(
+                                      color: const Color(0xFFFFFFFF),
+                                      fontSize: AppDimensions.height10 * 1.4,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                    children: <TextSpan>[
                                       TextSpan(
-                                        text: 'By signing up, you agree to Potenic’s \n ',
-                                        style: TextStyle(
-                                          color: const Color(0xFFFFFFFF),
-                                          fontSize: AppDimensions.height10 *1.4,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                        children: <TextSpan>[
-                                          TextSpan(
-                                              text: 'User Agreement',
-                                              style: TextStyle(
-                                                decoration: TextDecoration.underline,
-                                                color: const Color(0xFFFFFFFF),
-                                                fontSize: AppDimensions.height10 *1.4,
-                                                fontWeight: FontWeight.w600,
-                                              )),
-                                          // can add more TextSpans here...
+                                          text: 'User Agreement',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: const Color(0xFFFFFFFF),
+                                            fontSize:
+                                                AppDimensions.height10 * 1.4,
+                                            fontWeight: FontWeight.w600,
+                                          )),
+                                      // can add more TextSpans here...
 
+                                      TextSpan(
+                                          text: ' and ',
+                                          style: TextStyle(
+                                            color: const Color(0xFFFFFFFF),
+                                            fontSize:
+                                                AppDimensions.height10 * 1.4,
+                                            fontWeight: FontWeight.w600,
+                                          )),
+                                      // can add more TextSpans here...
 
-                                          TextSpan(
-                                              text: ' and ',
-                                              style: TextStyle(
-                                                color: const Color(0xFFFFFFFF),
-                                                fontSize: AppDimensions.height10 *1.4,
-                                                fontWeight: FontWeight.w600,
-                                              )),
-                                          // can add more TextSpans here...
+                                      TextSpan(
+                                          text: 'Privacy Policy',
+                                          style: TextStyle(
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: const Color(0xFFFFFFFF),
+                                            fontSize:
+                                                AppDimensions.height10 * 1.4,
+                                            fontWeight: FontWeight.w600,
+                                          )),
+                                      // can add more TextSpans here...
+                                    ],
+                                  ),
+                                )
 
-                                          TextSpan(
-                                              text: 'Privacy Policy',
-                                              style: TextStyle(
-                                                decoration: TextDecoration.underline,
-                                                color: const Color(0xFFFFFFFF),
-                                                fontSize: AppDimensions.height10 *1.4,
-                                                fontWeight: FontWeight.w600,
-                                              )),
-                                          // can add more TextSpans here...
-                                        ],
-                                      ),
-
-
-                                    )
-
-
-                                  // Text(
-                                  //   "By signing up, you agree to Potenic’s \n User Agreement and Privacy Policy.",
-                                  //   style: TextStyle(
-                                  //     color: const Color(0xFFFFFFFF),
-                                  //     fontSize: AppDimensions.font16 - 4,
-                                  //     fontWeight: FontWeight.w600,
-                                  //   ),
-                                  // ),
-                                ),
+                                    // Text(
+                                    //   "By signing up, you agree to Potenic’s \n User Agreement and Privacy Policy.",
+                                    //   style: TextStyle(
+                                    //     color: const Color(0xFFFFFFFF),
+                                    //     fontSize: AppDimensions.font16 - 4,
+                                    //     fontWeight: FontWeight.w600,
+                                    //   ),
+                                    // ),
+                                    ),
                               ],
                             ))
 
@@ -438,27 +438,35 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       ),
                       onPressed: () {
                         // if (_formkey.currentState!.validate()) {
-                          print("Hello WOrld 12345");
-                          Authentication().registerApi('${nameController.text.toString()}', '${emailController.text.toString()}', '${passwordController.text.toString()}', fcm).then((success) async {
-
-                            print("response of signup api call:${success["message"]}");
-                            if (success["message"]!= "Failed! Email is already in use!") {
-
-                              ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text(success["message"])));
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SignUpSuccessful(name:nameController.text.toString()),
-                                ),
-                              );
-
-                            }
-                            else {
-                              ScaffoldMessenger.of(context).showSnackBar( SnackBar(content: Text(success["message"])));
-                            }
-                          });
-
-                        // }
+                        print("Hello WOrld 12345");
+                        // print('${nameController.text.toString()}');
+                        // print('${emailController.text.toString()}');
+                        // print('${passwordController.text.toString()}');
+                        Authentication()
+                            .registerApi(
+                                '${nameController.text.toString()}',
+                                '${emailController.text.toString()}',
+                                '${passwordController.text.toString()}',
+                                fcm)
+                            .then((success) async {
+                          print(
+                              "response of signup api call:${success["message"]}");
+                          if (success["message"] !=
+                              "Failed! Email is already in use!") {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(success["message"])));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUpSuccessful(
+                                    name: nameController.text.toString()),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(success["message"])));
+                          }
+                        });
                       },
                       icon: Image.asset(
                         "assets/images/fb.png",
@@ -470,7 +478,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         'Sign up',
                         style: TextStyle(
                           color: const Color(0xFF8C648A),
-                          fontSize: AppDimensions.height10 *1.6,
+                          fontSize: AppDimensions.height10 * 1.6,
                           fontWeight: FontWeight.w700,
                         ),
                       )),
@@ -482,9 +490,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
               ),
             ),
           ],
-        )
-
-
-        );
+        ));
   }
 }

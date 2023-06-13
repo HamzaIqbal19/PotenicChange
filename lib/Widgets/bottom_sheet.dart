@@ -1,5 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 // import 'package:flutter_ui/utilities/app_contants.dart';
@@ -15,7 +17,6 @@ String dropdownValue = categories.first;
 final goalName = TextEditingController();
 
 class BottomSheetExample extends StatelessWidget {
-  
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -102,11 +103,10 @@ void bottom_sheet(context) {
                             borderSide: const BorderSide(
                                 width: 3, color: Colors.transparent))),
                     controller: goalName,
-                    validator: (val){
-                      if (val==null || val=="") {
+                    validator: (val) {
+                      if (val == null || val == "") {
                         return "PLease Enter a value";
-                      }
-                      else{
+                      } else {
                         return null;
                       }
                     },
@@ -160,14 +160,39 @@ void bottom_sheet(context) {
                 child: TextButton(
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
-                        print(goalName.text.toString());
-                        print(dropdownValue);
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => GoalName(category: dropdownValue,goalName: goalName.text.toString()),
-                          ),
-                        );
+                        Goal()
+                            .createGoal('${goalName.text.toString()}',
+                                '${dropdownValue.toString()}')
+                            .then((success) async {
+                          print(
+                              "response of create goal api call:${success["message"]}");
+                          if (success["message"] !=
+                              "Goal was add successfully!") {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(success["message"])));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => GoalName(
+                                    category: dropdownValue,
+                                    goalName: goalName.text.toString()),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(success["message"])));
+                          }
+                        });
+                        // print(goalName.text.toString());
+                        // print(dropdownValue);
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => GoalName(
+                        //         category: dropdownValue,
+                        //         goalName: goalName.text.toString()),
+                        //   ),
+                        // );
                       }
                     },
                     child: Text(
@@ -206,13 +231,13 @@ void bottom_sheet(context) {
     ),
   );
 }
+
 class DropdownButtonExample extends StatefulWidget {
   @override
   State<DropdownButtonExample> createState() => _DropdownButtonExampleState();
 }
 
 class _DropdownButtonExampleState extends State<DropdownButtonExample> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
