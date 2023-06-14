@@ -441,28 +441,27 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         print("Hello WOrld 12345");
                         Authentication()
                             .registerApi(
-                                '${nameController.text.toString()}',
-                                '${emailController.text.toString()}',
-                                '${passwordController.text.toString()}',
-                                fcm)
-                            .then((success) async {
+                          '${nameController.text.toString()}',
+                          '${emailController.text.toString()}',
+                          '${passwordController.text.toString()}',
+                        )
+                            .then((response) {
                           print(
-                              "response of signup api call:${success["message"]}");
-                          // if (success["message"] !=
-                          //     "Failed! Email is already in use!") {
-                          //   ScaffoldMessenger.of(context).showSnackBar(
-                          //       SnackBar(content: Text(success["message"])));
-                          //   Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => SignUpSuccessful(
-                          //           name: nameController.text.toString()),
-                          //     ),
-                          //   );
-                          // } else {
-                          //   ScaffoldMessenger.of(context).showSnackBar(
-                          //       SnackBar(content: Text(success["message"])));
-                          // }
+                              "response of signup api call:${response["message"]}");
+                          if (response == "User was registered successfully!") {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response["message"])));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUpSuccessful(
+                                    name: nameController.text.toString()),
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response["message"])));
+                          }
                         });
 
                         // }

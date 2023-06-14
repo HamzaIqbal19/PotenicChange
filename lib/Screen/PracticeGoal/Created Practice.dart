@@ -152,7 +152,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                     child: Align(
                       // alignment: Alignment.bottomCenter,
 
-                      alignment: Alignment(0.49,AppDimensions.height10*0.016+1.4),
+                      alignment:
+                          Alignment(0.49, AppDimensions.height10 * 0.016 + 1.4),
                       //heightFactor: 0.5,
                       child: Container(
                         // height: AppDimensions.height10*17.5,
@@ -160,9 +161,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child:
-                        GestureDetector(
-                          onTap: (){
+                        child: GestureDetector(
+                          onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -171,10 +171,10 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                             );
                           },
                           child: Image(
-                            image: const AssetImage('assets/images/practicefinal.png'),
-                            height: AppDimensions.height10*1.5 * 14.7,
-                            width: AppDimensions.height10*1.5 * 14.7,
-
+                            image: const AssetImage(
+                                'assets/images/practicefinal.png'),
+                            height: AppDimensions.height10 * 1.5 * 14.7,
+                            width: AppDimensions.height10 * 1.5 * 14.7,
                           ),
                         ),
                       ),
@@ -197,13 +197,12 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         fit: BoxFit.contain,
                       )),
                   GestureDetector(
-                onTap: (){
+                    onTap: () {
                       Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ActivateStar(),
-                        )
-                      );
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ActivateStar(),
+                          ));
                     },
                     child: Container(
                       height: AppDimensions.height10 * 5,

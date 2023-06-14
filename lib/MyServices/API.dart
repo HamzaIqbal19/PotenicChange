@@ -126,4 +126,30 @@ class myapi {
       return 0;
     }
   }
+
+  Future updateGoal(goalName, goalCategoryId) async {
+    var headers = {'Content-Type': 'application/json'};
+    var request = http.Request('PUT', Uri.parse(BASEURL + 'add-user-goal'));
+    request.body = json
+        .encode({"goalName": "$goalName", "goalCategoryId": "$goalCategoryId"});
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+    if (response.statusCode == 200) {
+      var res = await response.stream.bytesToString();
+      Map map = jsonDecode(res);
+      String token = map['accessToken'];
+      int goalid = map['id'];
+
+      SharedPreferences login = await SharedPreferences.getInstance();
+      login.setString('usertoken', token);
+      login.setInt('goalid', goalid);
+
+      print(map['accessToken']);
+      return res;
+    } else {
+      print(response.reasonPhrase);
+      return 0;
+    }
+  }
 }

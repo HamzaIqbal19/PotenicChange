@@ -160,9 +160,9 @@ void bottom_sheet(context) {
                 child: TextButton(
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
-                        Goal()
-                            .createGoal('${goalName.text.toString()}',
-                                '${dropdownValue.toString()}')
+                        AdminGoal()
+                            .userAddGoal('${goalName.text.toString()}', 'sad',
+                                'sad', 'sad', 'sad', 'sad', '${dropdownValue}')
                             .then((success) async {
                           print(
                               "response of create goal api call:${success["message"]}");
@@ -183,16 +183,16 @@ void bottom_sheet(context) {
                                 SnackBar(content: Text(success["message"])));
                           }
                         });
-                        // print(goalName.text.toString());
-                        // print(dropdownValue);
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => GoalName(
-                        //         category: dropdownValue,
-                        //         goalName: goalName.text.toString()),
-                        //   ),
-                        // );
+                        print(goalName.text.toString());
+                        print(dropdownValue);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GoalName(
+                                category: dropdownValue,
+                                goalName: goalName.text.toString()),
+                          ),
+                        );
                       }
                     },
                     child: Text(

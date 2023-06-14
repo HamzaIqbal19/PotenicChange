@@ -9,21 +9,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 var client = SentryHttpClient();
 
 class Authentication {
-  Future registerApi(name, email, password, token) async {
+  Future registerApi(name, email, password) async {
     var headers = {'Content-Type': 'application/json'};
 
     var Body = json.encode({
       "name": "$name",
       "email": "$email",
       "password": "$password",
-      "fcmRegistrationToken": "$token"
     });
 
     print("request:$Body");
-    var request = await client.post(
-        Uri.parse('http://192.168.100.90:8000/api/auth/signup'),
-        body: Body);
-
+    var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signup'),
+        headers: headers, body: Body);
     print("request:");
 
     var responses = jsonDecode(request.body);
