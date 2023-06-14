@@ -270,7 +270,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             validator: (val) {
                               if (val == null || val == "") {
                                 return "Oops needs to be an email format";
+                              } else if (!val.contains("@")) {
+                                return "Email is invalid";
                               }
+                              return null;
                             },
                           ),
                         ),
@@ -436,20 +439,32 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         ),
                         //<-- SEE HERE
                       ),
-                      //  onPressed: (() {
-                      //   Authentication().registerApi(
-                      //       nameController.text.toString(),
-                      //       emailController.text.toString(),
-                      //       passwordController.text.toString());
-                      //   print("hello worddd");
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => SignUpSuccessful(
-                      //           name: nameController.text.toString()),
-                      //     ),
-                      //   );
+                      // onPressed: (() {
+                      //   if (_formkey1.currentState!.validate()) {
+                      //     Authentication()
+                      //         .registerApi(
+                      //             nameController.text.toString(),
+                      //             emailController.text.toString(),
+                      //             passwordController.text.toString())
+                      //         .then((value) {
+                      //       if (value == "User was registered successfully!") {
+                      //         print("New page");
+                      //       } else {
+                      //         print('error');
+                      //       }
+                      //       ;
+                      //     });
+                      //     print("hello worddd");
+                      //     // Navigator.push(
+                      //     //   context,
+                      //     //   MaterialPageRoute(
+                      //     //     builder: (context) => SignUpSuccessful(
+                      //     //         name: nameController.text.toString()),
+                      //     //   ),
+                      //     // );
+                      //   }
                       // }),
+
                       onPressed: () {
                         // if (_formkey.currentState!.validate()) {
                         print("Hello WOrld 12345");
@@ -481,6 +496,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
 
                         // }
                       },
+
                       icon: Image.asset(
                         "assets/images/fb.png",
                         width: 0.0,

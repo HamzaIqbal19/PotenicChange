@@ -204,12 +204,16 @@ class _VisualisingState extends State<Visualising> {
                         )),
                     GestureDetector(
                       onTap: () {
+                        print("$goalName");
+                        print("${reasonIdentity.text.toString()}");
+                        print("$category");
+                        print("${reasonVisualising.text.toString()}");
                         //  myapi().create_goal(goalName, reasonWhy.text,C, reasonVisualising.text.toString(), category);
                         AdminGoal().userAddGoal(
-                            goalName,
-                            reasonWhy,
-                            reasonVisualising.text.toString(),
-                            reasonIdentity,
+                            "$goalName",
+                            "${reasonWhy.text.toString()}",
+                            "${reasonVisualising.text.toString()}",
+                            "${reasonIdentity.text.toString()}",
                             "5",
                             "us");
                         ScaffoldMessenger.of(context).showSnackBar(
