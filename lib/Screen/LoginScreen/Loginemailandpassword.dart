@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
@@ -7,6 +8,7 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
 class Loginemailandpassword extends StatefulWidget {
   @override
   _LoginemailandpasswordState createState() => _LoginemailandpasswordState();
@@ -16,6 +18,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  String fcm = 'adsfsf3423424';
 
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
@@ -53,7 +56,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
     passwordController.dispose();
     super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -163,8 +165,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                       children: [
                         Container(
                           height: AppDimensions.height10 * 1.7,
-                          padding:
-                              EdgeInsets.only(left: AppDimensions.height10 * 1.2),
+                          padding: EdgeInsets.only(
+                              left: AppDimensions.height10 * 1.2),
                           child: Text(
                             "Your sign in details are incorrect, please try again",
                             style: TextStyle(
@@ -180,7 +182,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                             width: AppDimensions.height10 * 36.0,
                             decoration: BoxDecoration(
                                 color: Colors.white,
-                                border: Border.all(color: Colors.white, width: 2),
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10 * 1.8))),
                             child: Column(
@@ -208,30 +211,30 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                   width: AppDimensions.height10 * 36.0,
                                   height: AppDimensions.height10 * 2.2,
                                   child: TextFormField(
-                                      decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.zero,
-                                          hintText: "JohnSmith@yahoo.com",
-                                          hintStyle: TextStyle(
-                                            color: const Color(0xFF8C648A),
-                                            fontWeight: FontWeight.w600,
-                                            fontSize:
-                                                AppDimensions.height10 * 1.8,
-                                          ),
-                                          focusedBorder: const OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Colors.transparent)),
-                                          enabledBorder: const OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Colors.transparent))),
-                                  controller: emailController,
-                                  validator: (val){
-                                        if (val==null || val=="") {
-                                          return "oops! needs to be an email format";
-                                        }
-                                        else{
-                                          return null;
-                                        }
-                                  },),
+                                    decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.zero,
+                                        hintText: "JohnSmith@yahoo.com",
+                                        hintStyle: TextStyle(
+                                          color: const Color(0xFF8C648A),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize:
+                                              AppDimensions.height10 * 1.8,
+                                        ),
+                                        focusedBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent)),
+                                        enabledBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent))),
+                                    controller: emailController,
+                                    validator: (val) {
+                                      if (val == null || val == "") {
+                                        return "oops! needs to be an email format";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                  ),
                                 )
                               ],
                             )),
@@ -256,8 +259,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(AppDimensions.height10 * 1.8))),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimensions.height10 * 1.8))),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,30 +286,32 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                 width: AppDimensions.height10 * 36.0,
                                 height: AppDimensions.height10 * 2.2,
                                 child: TextFormField(
-                                    decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.zero,
-                                        hintText: "*******",
-                                        hintStyle: TextStyle(
-                                          color: const Color(0xFF8C648A),
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: AppDimensions.height10 * 1.8,
-                                        ),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent))),
-                                controller: passwordController,
-                                obscureText: true,
-                                validator: (val){
-                                      if (val==null || val=="" || val.length<8) {
-                                        return "Minimum 8 Characters";
-                                      }
-                                      else{
-                                        return null;
-                                      }
-                                },),
+                                  decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.zero,
+                                      hintText: "*******",
+                                      hintStyle: TextStyle(
+                                        color: const Color(0xFF8C648A),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: AppDimensions.height10 * 1.8,
+                                      ),
+                                      focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent)),
+                                      enabledBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent))),
+                                  controller: passwordController,
+                                  obscureText: true,
+                                  validator: (val) {
+                                    if (val == null ||
+                                        val == "" ||
+                                        val.length < 8) {
+                                      return "Minimum 8 Characters";
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                ),
                               )
                             ],
                           ),
@@ -374,21 +379,27 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                       style: OutlinedButton.styleFrom(
                         backgroundColor: const Color(0xFFFFFFFF),
                         shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(AppDimensions.height10 * 5.0),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10 * 5.0),
                         ),
                         //<-- SEE HERE
                       ),
                       onPressed: () {
                         if (_formkey.currentState!.validate()) {
-                          myapi().loginapi('${emailController.text.toString()}', '${passwordController.text.toString()}');
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Login Successfull")));
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => StartProcess(),
-                            ),
+                          Authentication().SignIn(
+                            fcm,
+                            '${emailController.text.toString()}',
+                            '${passwordController.text.toString()}',
                           );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text("Login Successfull")));
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => StartProcess(),
+                          //   ),
+                          // );
                         }
                       },
                       icon: Image.asset(

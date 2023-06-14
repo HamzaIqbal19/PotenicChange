@@ -436,6 +436,20 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         ),
                         //<-- SEE HERE
                       ),
+                      //  onPressed: (() {
+                      //   Authentication().registerApi(
+                      //       nameController.text.toString(),
+                      //       emailController.text.toString(),
+                      //       passwordController.text.toString());
+                      //   print("hello worddd");
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => SignUpSuccessful(
+                      //           name: nameController.text.toString()),
+                      //     ),
+                      //   );
+                      // }),
                       onPressed: () {
                         // if (_formkey.currentState!.validate()) {
                         print("Hello WOrld 12345");
@@ -448,6 +462,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             .then((response) {
                           print(
                               "response of signup api call:${response["message"]}");
+
                           if (response == "User was registered successfully!") {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Text(response["message"])));

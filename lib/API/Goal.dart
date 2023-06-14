@@ -97,20 +97,21 @@ class AdminGoal {
   }
 
   Future userAddGoal(name, reason, identityStatement, visualizingYourSelf,
-      color, userId, goalCategoryId) async {
+      userId, accessToken) async {
     var headers = {'Content-Type': 'application/json'};
     var Body = json.encode({
       "name": "$name",
       "reason": "$reason",
       "identityStatement": "$identityStatement",
       "visualizingYourSelf": "$visualizingYourSelf",
-      "color": "$color",
+      //"color": "$color",
       "userId": "$userId",
-      "goalCategoryId": "$goalCategoryId",
+      //"goalCategoryId": "$goalCategoryId",
     });
     print("request:$Body");
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userGoal/add-user-goal'),
+        headers: headers,
         body: Body);
     print("request:");
 

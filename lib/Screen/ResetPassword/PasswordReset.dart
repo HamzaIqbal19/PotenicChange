@@ -5,6 +5,8 @@ import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../API/Authentication.dart';
+
 class PasswordReset extends StatefulWidget {
   const PasswordReset({Key? key}) : super(key: key);
 
@@ -13,7 +15,6 @@ class PasswordReset extends StatefulWidget {
 }
 
 class _PasswordResetState extends State<PasswordReset> {
-
   final email = TextEditingController();
 
   @override
@@ -22,10 +23,10 @@ class _PasswordResetState extends State<PasswordReset> {
     email.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final _formkey2 = GlobalKey<FormState>();
-
 
     return Scaffold(
         extendBodyBehindAppBar: true,
@@ -175,26 +176,27 @@ class _PasswordResetState extends State<PasswordReset> {
                                   height: AppDimensions.height10 * 2.2,
                                   child: TextFormField(
                                     decoration: const InputDecoration(
-                                          contentPadding: EdgeInsets.zero,
-                                          floatingLabelBehavior:
-                                              FloatingLabelBehavior.always,
-                                          hintText: "JohnSmith@yahoo.com",
-                                          hintStyle: TextStyle(color: Color(0xFF8C648A)),
-                                          focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Colors.transparent)),
-                                          enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Colors.transparent))),
-                                  controller: email,
-                                  validator: (val){
-                                        if (val==null||val=="") {
-                                          return "Oops Needs to be an Email Format";
-                                        }
-                                        else{
-                                          return null;
-                                        }
-                                  },),
+                                        contentPadding: EdgeInsets.zero,
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.always,
+                                        hintText: "JohnSmith@yahoo.com",
+                                        hintStyle:
+                                            TextStyle(color: Color(0xFF8C648A)),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent)),
+                                        enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent))),
+                                    controller: email,
+                                    validator: (val) {
+                                      if (val == null || val == "") {
+                                        return "Oops Needs to be an Email Format";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                  ),
                                 ),
                               )
                             ],
@@ -279,13 +281,8 @@ class _PasswordResetState extends State<PasswordReset> {
                     ),
                     onPressed: () {
                       if (_formkey2.currentState!.validate()) {
-                        myapi().forgotPassword('${email.text.toString()}');
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Password Reset")));
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => EmailSent(),
-                          ),
+                        Authentication().passReset(
+                          '${email.text.toString()}',
                         );
                       }
                     },

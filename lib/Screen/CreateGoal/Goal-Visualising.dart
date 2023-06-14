@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
@@ -203,7 +204,14 @@ class _VisualisingState extends State<Visualising> {
                         )),
                     GestureDetector(
                       onTap: () {
-                        //  myapi().create_goal(goalName, reasonWhy.text, reasonIdentity.text.toString(), reasonVisualising.text.toString(), category);
+                        //  myapi().create_goal(goalName, reasonWhy.text,C, reasonVisualising.text.toString(), category);
+                        AdminGoal().userAddGoal(
+                            goalName,
+                            reasonWhy,
+                            reasonVisualising.text.toString(),
+                            reasonIdentity,
+                            "5",
+                            "us");
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("New Goal Inserted")));
                         Navigator.pushReplacement(
