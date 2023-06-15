@@ -87,7 +87,7 @@ class AdminGoal {
     }
   } ///////////////////////////////
 
-  static Future<List<String>> getAllGoalNames() async {
+  static Future<List<Map<String, dynamic>>> getAllCategoriesNames() async {
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token':
@@ -111,7 +111,74 @@ class AdminGoal {
         goalNames.add(goalName);
       }
       print("run type :${goalNames.runtimeType}");
-      return goalNames;
+      return List<Map<String, dynamic>>.from(jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
+  static Future<List<Map<String, dynamic>>> getAllGoalAndCategories() async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+    };
+
+    var response = await http.get(
+      Uri.parse('http://161.35.106.33:8000/api/goal/all-goals'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return List<Map<String, dynamic>>.from(jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
+  static Future<List<Map<String, dynamic>>> getAllGoal(int id) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+    };
+
+    var response = await http.get(
+      Uri.parse(
+          'http://161.35.106.33:8000/api/goal/all-goals?goalCategoryId=$id'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return List<Map<String, dynamic>>.from(jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
+  static Future<List<Map<String, dynamic>>> searchAllGoal() async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+    };
+
+    var response = await http.get(
+      Uri.parse('http://161.35.106.33:8000/api/goal/all-goals'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return List<Map<String, dynamic>>.from(jsonData);
     } else {
       throw Exception('Failed to fetch goal names');
     }

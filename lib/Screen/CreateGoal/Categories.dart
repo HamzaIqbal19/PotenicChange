@@ -27,7 +27,7 @@ List<String> goals_name = [
 
 class _CategoriesState extends State<Categories> {
   Future<List<String>>? _goalNamesFuture;
-  List<String>? goalCategories;
+  List<Map<String, dynamic>>? goalCategories;
   late int count;
 
   @override
@@ -37,11 +37,11 @@ class _CategoriesState extends State<Categories> {
   }
 
   void _fetchGoalNames() {
-    AdminGoal.getAllGoalNames().then((response) {
+    AdminGoal.getAllCategoriesNames().then((response) {
       if (response.length != 0) {
         setState(() {
           goalCategories = response;
-          count=response.length~/2;
+          count = response.length ~/ 2;
         });
         print("response123:$goalCategories");
       } else {
@@ -144,10 +144,13 @@ class _CategoriesState extends State<Categories> {
                 height: AppDimensions.height10 * 6.7,
               ),
               SizedBox(
-                height: AppDimensions.height10*14.0,
+                height: AppDimensions.height10 * 14.0,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: min(4, goalCategories!.length), // ensure itemCount doesn't exceed 4 or length of list
+                  itemCount: min(
+                      4,
+                      goalCategories!
+                          .length), // ensure itemCount doesn't exceed 4 or length of list
                   itemBuilder: (context, index) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -160,28 +163,31 @@ class _CategoriesState extends State<Categories> {
                               width: AppDimensions.height10 * 2.0,
                             ),
                             GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => GoalCategory(
-                                          "Category Name", goalCategories![index]),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GoalCategory(
+                                      "Category Name",
+                                      goalCategories![index]["name"],
+                                      goalCategories![index]["id"],
                                     ),
-                                  );
-                                },
-                                child:
-                            circles(
-                                circle_text: goalCategories![index],
-                                circle_color1: 0xFFFC854F,
-                                circle_color2: 0xFFFAA960,
-                                circle_border: 3.0,
-                                circle_bordercolor: 0xFFFFFFFF,
-                                circle_height:
-                                AppDimensions.height10 * 13.4,
-                                circle_width: AppDimensions.height10 * 13.4,
-                                textfont: AppDimensions.height10 * 1.6,
-                                textcolor: 0xFFFFFFFF),
-                    )
+                                  ),
+                                );
+                                print(
+                                    '${goalCategories![index]["name"]}${goalCategories![index]["id"]}');
+                              },
+                              child: circles(
+                                  circle_text: goalCategories![index]["name"],
+                                  circle_color1: 0xFFFC854F,
+                                  circle_color2: 0xFFFAA960,
+                                  circle_border: 3.0,
+                                  circle_bordercolor: 0xFFFFFFFF,
+                                  circle_height: AppDimensions.height10 * 13.4,
+                                  circle_width: AppDimensions.height10 * 13.4,
+                                  textfont: AppDimensions.height10 * 1.6,
+                                  textcolor: 0xFFFFFFFF),
+                            )
                           ],
                         ),
                       ],
@@ -191,12 +197,12 @@ class _CategoriesState extends State<Categories> {
               ),
 
               Padding(
-                padding: const EdgeInsets.only(left: 30,top:20.0),
+                padding: const EdgeInsets.only(left: 30, top: 20.0),
                 child: SizedBox(
-                  height: AppDimensions.height10*14.0,
+                  height: AppDimensions.height10 * 14.0,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount:  max(4, goalCategories!.length - 4),
+                      itemCount: max(4, goalCategories!.length - 4),
                       itemBuilder: ((context, index) {
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -208,28 +214,31 @@ class _CategoriesState extends State<Categories> {
                                 SizedBox(
                                   width: AppDimensions.height10 * 2.0,
                                 ),
-
                                 GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => GoalCategory(
-                                            "Category Name", goalCategories![index+4]),
+                                            "Category Name",
+                                            goalCategories![index + 4]["name"],
+                                            goalCategories![index + 4]["id"]),
                                       ),
                                     );
                                   },
-                               child: circles(
-                                    circle_text: goalCategories![index+4],
-                                    circle_color1: 0xFFFC854F,
-                                    circle_color2: 0xFFFAA960,
-                                    circle_border: 3.0,
-                                    circle_bordercolor: 0xFFFFFFFF,
-                                    circle_height:
-                                        AppDimensions.height10 * 13.4,
-                                    circle_width: AppDimensions.height10 * 13.4,
-                                    textfont: AppDimensions.height10 * 1.6,
-                                    textcolor: 0xFFFFFFFF),
+                                  child: circles(
+                                      circle_text: goalCategories![index + 4]
+                                          ["name"],
+                                      circle_color1: 0xFFFC854F,
+                                      circle_color2: 0xFFFAA960,
+                                      circle_border: 3.0,
+                                      circle_bordercolor: 0xFFFFFFFF,
+                                      circle_height:
+                                          AppDimensions.height10 * 13.4,
+                                      circle_width:
+                                          AppDimensions.height10 * 13.4,
+                                      textfont: AppDimensions.height10 * 1.6,
+                                      textcolor: 0xFFFFFFFF),
                                 )
                               ],
                             ),
