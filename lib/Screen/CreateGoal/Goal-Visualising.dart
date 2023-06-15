@@ -4,6 +4,7 @@ import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Visualising extends StatefulWidget {
   String goalName;
@@ -30,6 +31,12 @@ class _VisualisingState extends State<Visualising> {
   TextEditingController reasonVisualising = TextEditingController();
   String goalName;
   String category;
+
+  getToken() async {
+    SharedPreferences login = await SharedPreferences.getInstance();
+    var token = login.get('token');
+    return token;
+  }
 
   _VisualisingState(
       {required this.goalName,
@@ -204,18 +211,20 @@ class _VisualisingState extends State<Visualising> {
                         )),
                     GestureDetector(
                       onTap: () {
+                        print('');
                         print("$goalName");
                         print("${reasonIdentity.text.toString()}");
                         print("$category");
                         print("${reasonVisualising.text.toString()}");
                         //  myapi().create_goal(goalName, reasonWhy.text,C, reasonVisualising.text.toString(), category);
                         AdminGoal().userAddGoal(
-                          "$goalName",
-                          "${reasonWhy.text.toString()}",
-                          "${reasonIdentity.text.toString()}",
-                          "${reasonVisualising.text.toString()}",
-                          "9",
-                        );
+                            "$goalName",
+                            ["${reasonWhy.text.toString()}"],
+                            ["${reasonIdentity.text.toString()}"],
+                            ["${reasonVisualising.text.toString()}"],
+                            "2",
+                            "2",
+                            "0XFF4354373");
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("New Goal Inserted")));
                         Navigator.pushReplacement(

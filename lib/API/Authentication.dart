@@ -68,11 +68,14 @@ class Authentication {
       Map map = jsonDecode(res);
       String token = map['accessToken'];
       int userid = map['id'];
-
+      print('$token');
+      print('$userid');
       SharedPreferences login = await SharedPreferences.getInstance();
       login.setString('usertoken', token);
       login.setInt('userid', userid);
 
+      print('$token');
+      print('$userid');
       print("return this value:$res");
       return res;
     } else {

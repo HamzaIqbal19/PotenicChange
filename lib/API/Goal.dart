@@ -9,11 +9,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 var client = SentryHttpClient();
 
-//  SharedPreferences login =  SharedPreferences.getInstance();
-//       login.getString('usertoken', token);
-//       login.getInt('userid', userid);
-
-// var accessToken = login
+getToken() async {
+  SharedPreferences login = await SharedPreferences.getInstance();
+  var token = login.get('token');
+  return token;
+}
 
 class AdminGoal {
   Future createGoal(goalName, goalCategoryId) async {
@@ -126,18 +126,21 @@ class AdminGoal {
     }
   }
 
-  Future userAddGoal(
-      name, reason, identityStatement, visualizingYourSelf, userId) async {
-    var headers = {'Content-Type': 'application/json', 'Authorizatin': ''};
+  Future userAddGoal(name, reason, identityStatement, visualizingYourSelf,
+      userId, goalCategoryId, color) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI'
+    };
     var Body = json.encode({
       "name": "$name",
-      "reason": "$reason",
-      "identityStatement": "$identityStatement",
-      "visualizingYourSelf": "$visualizingYourSelf",
-      //"color": "$color",
+      "reason": ["$reason"],
+      "identityStatement": ["$identityStatement"],
+      "visualizingYourSelf": ["$visualizingYourSelf"],
+      "color": "$color",
       "userId": "$userId",
-
-      //"goalCategoryId": "$goalCategoryId",
+      "goalCategoryId": "$goalCategoryId",
     });
     print("request:$Body");
     var request = await client.post(
@@ -165,45 +168,74 @@ class AdminGoal {
 
   Future updateUserGoal(goalName, goalCategoryId) async {
     var headers = {'Content-Type': 'application/json'};
-    var Body = json
-        .encode({"goalName": "$goalName", "goalCategoryId": "$goalCategoryId"});
-    print("request:$Body");
-    var request = await client
-        .put(Uri.parse('${URL.BASE_URL}api/goal/{userGoalId}'), body: Body);
+
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/goal/{userGoalId}'),
+        headers: headers);
     print("request:");
 
-    var responses = jsonDecode(request.body);
-    if (responses.statusCode == 200) {
-      //return userAddGoal.fromJson(json.decode(request.body));
-    }
-  }
-
-  Future getUserGoal() async {
-    try {
-      var request =
-          await client.get(Uri.parse('${URL.BASE_URL}/api/goal/{userGoalId}'));
-      print("status:${request.statusCode}");
-      print("request:${request}");
-
-      if (request.statusCode == 200) {
-        var goal = request.body;
-        print("$goal.text.toString()");
-      }
-    } catch (e) {
-      print('Request failed with status: ${"request.statusCode"}.');
-    }
-  }
-
-  Future deleteUserGoal() async {
-    var headers = {'Content-Type': 'application/json'};
-    var request = await client.delete(
-        Uri.parse('${URL.BASE_URL}/api/goal/{userGoalId}'),
-        headers: headers);
     var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
       var res = await responses.stream.bytesToString();
-      print('Deleted successfully');
+      return res;
+    } else {
+      client.close();
+      return responses["message"];
+    }
+  }
+
+  // Future getUserGoal() async {
+  //   var goalName;
+
+  //   var headers = {
+  //     'Content-Type': 'application/json',
+  //     'x-access-token':
+  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI'
+  //   };
+
+  //   var request = await client.get(
+  //       Uri.parse(
+  //         '${URL.BASE_URL}api/userGoal/2',
+  //       ),
+  //       headers: headers);
+
+  //   if (request.statusCode == 200) {
+  //     var responses = jsonDecode(request.body);
+
+  //     print("Data: $responses\n");
+
+  //     print("Single value: ");
+  //     goalName = responses["name"];
+  //     print("$goalName");
+  //     // print("$responses{1}");
+
+  //     var res = await responses.stream.bytesToString();
+  //     return res;
+  //   } else {
+  //     client.close();
+  //     // print("response:${}");
+  //     // print(responses.reasonPhrase);
+  //     // return responses["message"];
+  //   }
+  // }
+
+  Future deleteUserGoal() async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MjA1NDIsImV4cCI6MTY4NjkwNjk0Mn0.9Q88GbIH9OTFIXPdYFFgEsn0V0LSAr5omje2YXdqK3M'
+    };
+
+    var request = await client
+        .delete(Uri.parse('${URL.BASE_URL}api/userGoal/1'), headers: headers);
+
+    var responses = jsonDecode(request.body);
+    print("Goal to be deleted");
+    if (request.statusCode == 200) {
+      print("response:${responses["message"]}");
+      var res = await responses.stream.bytesToString();
+      print('Goal deleted');
       return res;
     } else {
       client.close();
