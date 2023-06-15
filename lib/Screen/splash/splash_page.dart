@@ -24,7 +24,6 @@ class SplashPageState extends State<SplashPage> {
   bool data = false;
   int myAmount = 0;
 
-
   // late SharedPreferences _prefss;
   // setToken(token) async {
   //   SharedPreferences pref = await SharedPreferences.getInstance();
@@ -54,8 +53,8 @@ class SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("app dimension:${AppDimensions.height10 }");
-    print("app dimension:${AppDimensions.screenHeight }");
+    print("app dimension:${AppDimensions.height10}");
+    print("app dimension:${AppDimensions.screenHeight}");
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Center(
@@ -63,7 +62,6 @@ class SplashPageState extends State<SplashPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-
               width: AppDimensions.width10 * 40.65,
               height: AppDimensions.height20 * 45,
               // width: 423.5,

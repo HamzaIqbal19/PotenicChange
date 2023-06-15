@@ -210,12 +210,12 @@ class _VisualisingState extends State<Visualising> {
                         print("${reasonVisualising.text.toString()}");
                         //  myapi().create_goal(goalName, reasonWhy.text,C, reasonVisualising.text.toString(), category);
                         AdminGoal().userAddGoal(
-                            "$goalName",
-                            "${reasonWhy.text.toString()}",
-                            "${reasonVisualising.text.toString()}",
-                            "${reasonIdentity.text.toString()}",
-                            "5",
-                            "us");
+                          "$goalName",
+                          "${reasonWhy.text.toString()}",
+                          "${reasonIdentity.text.toString()}",
+                          "${reasonVisualising.text.toString()}",
+                          "9",
+                        );
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text("New Goal Inserted")));
                         Navigator.pushReplacement(

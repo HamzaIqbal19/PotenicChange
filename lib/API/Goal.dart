@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/API/Apispecs.dart';
@@ -7,6 +8,12 @@ import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var client = SentryHttpClient();
+
+//  SharedPreferences login =  SharedPreferences.getInstance();
+//       login.getString('usertoken', token);
+//       login.getInt('userid', userid);
+
+// var accessToken = login
 
 class AdminGoal {
   Future createGoal(goalName, goalCategoryId) async {
@@ -80,7 +87,7 @@ class AdminGoal {
     }
   }
 
-  Future getAllGoals() async {
+  Future<List<List<String>>> getAllGoals() async {
     var headers = {'Content-Type': 'application/json'};
 
     var request = await client
@@ -91,17 +98,37 @@ class AdminGoal {
     var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
-      var res = await responses.stream.bytesToString();
-      return res;
+      List<List<String>> formattedGoals = [];
+      List<String> row = [];
+
+      for (var i = 0; i < responses.length; i++) {
+        var goal = responses[i]['goal'];
+
+        // Add goal to the current row
+        row.add(goal);
+
+        // If the current row is filled, add it to the formatted goals list and start a new row
+        if (row.length == 3) {
+          formattedGoals.add(row);
+          row = [];
+        }
+      }
+
+      // If there are any remaining goals in the last row, add it to the formatted goals list
+      if (row.isNotEmpty) {
+        formattedGoals.add(row);
+      }
+
+      return formattedGoals;
     } else {
       client.close();
       return responses["message"];
     }
   }
 
-  Future userAddGoal(name, reason, identityStatement, visualizingYourSelf,
-      userId, accessToken) async {
-    var headers = {'Content-Type': 'application/json'};
+  Future userAddGoal(
+      name, reason, identityStatement, visualizingYourSelf, userId) async {
+    var headers = {'Content-Type': 'application/json', 'Authorizatin': ''};
     var Body = json.encode({
       "name": "$name",
       "reason": "$reason",
@@ -109,6 +136,7 @@ class AdminGoal {
       "visualizingYourSelf": "$visualizingYourSelf",
       //"color": "$color",
       "userId": "$userId",
+
       //"goalCategoryId": "$goalCategoryId",
     });
     print("request:$Body");

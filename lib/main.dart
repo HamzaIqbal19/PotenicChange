@@ -11,15 +11,16 @@ Future<void> main() async {
     systemNavigationBarIconBrightness: Brightness.dark,
     systemNavigationBarDividerColor: Colors.transparent,
   ));
-  await SentryFlutter.init(
-        (options) {
-      options.dsn = 'https://591f2b424a6342c48fc692daed3d8bc3@o4504826441760768.ingest.sentry.io/4505311747702784';
-      // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
-      // We recommend adjusting this value in production.
-      options.tracesSampleRate = 1.0;
-    },
-    appRunner: () => runApp(MyApp()),
-  );
+  // await SentryFlutter.init(
+  //       (options) {
+  //     options.dsn = 'https://591f2b424a6342c48fc692daed3d8bc3@o4504826441760768.ingest.sentry.io/4505311747702784';
+  //     // Set tracesSampleRate to 1.0 to capture 100% of transactions for performance monitoring.
+  //     // We recommend adjusting this value in production.
+  //     options.tracesSampleRate = 1.0;
+  //   },
+  //   appRunner: () => runApp(MyApp()),
+  // );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
