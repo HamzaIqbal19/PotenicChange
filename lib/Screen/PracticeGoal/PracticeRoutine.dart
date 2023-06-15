@@ -4,7 +4,11 @@ import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class PracticeRoutine extends StatefulWidget {
-  const PracticeRoutine({Key? key}) : super(key: key);
+  final String pracTitle;
+  final String pracId;
+  const PracticeRoutine(
+      {Key? key, required this.pracTitle, required this.pracId})
+      : super(key: key);
 
   @override
   State<PracticeRoutine> createState() => _PracticeRoutineState();
@@ -12,16 +16,17 @@ class PracticeRoutine extends StatefulWidget {
 
 class _PracticeRoutineState extends State<PracticeRoutine> {
   bool buttonActive = false;
-  int Count=0;
+  int Count = 0;
 
   @override
   void initState() {
     // TODO: implement initState
     setState(() {
-      count=0;
+      count = 0;
     });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,19 +128,18 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 ,
+                  height: AppDimensions.height10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-
-                        margin: EdgeInsets.only(left:AppDimensions.height10*1.0,right:AppDimensions.height10*1.0),
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10 * 1.0,
+                            right: AppDimensions.height10 * 1.0),
                         width: AppDimensions.height10 * 10.4,
-                        height: AppDimensions.height10 *11.2,
-
-
+                        height: AppDimensions.height10 * 11.2,
                         child: Image.asset(
                           "assets/images/createprac.png",
                           fit: BoxFit.contain,
@@ -143,7 +147,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     Container(
                       child: Center(
                         child: Text(
-                          "Meditation ",
+                          widget.pracTitle,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -176,65 +180,52 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 SizedBox(
                   height: AppDimensions.height10 - 2,
                 ),
-         Column(
-           mainAxisAlignment: MainAxisAlignment.center,
-           children: [
-             Container(
-                        height: AppDimensions.height10*8.6,
-                        width: AppDimensions.height10*37.2,
-                        child: Center(
-                          child: Text.rich(
-                            textAlign: TextAlign.center,
-                            TextSpan(
-                              text: 'It’s important to set a consistent routine that works for you. Please select time slots\n ',
-
-                              style: TextStyle(
-                                color: const Color(0xFFFFFFFF),
-                                fontSize: AppDimensions.height10 *1.8,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              children: <TextSpan>[
-
-                                TextSpan(
-                                    text: 'for 3 or more days.',
-
-                                    style: TextStyle(
-
-                                      color: const Color(0xFFFFFFFF),
-                                      fontSize: AppDimensions.height10 *1.8,
-                                      fontWeight: FontWeight.w700,
-                                    )),
-                                // can add more TextSpans here...
-
-
-
-                                // can add more TextSpans here...
-
-
-                                // can add more TextSpans here...
-                              ],
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: AppDimensions.height10 * 8.6,
+                      width: AppDimensions.height10 * 37.2,
+                      child: Center(
+                        child: Text.rich(
+                          textAlign: TextAlign.center,
+                          TextSpan(
+                            text:
+                                'It’s important to set a consistent routine that works for you. Please select time slots\n ',
+                            style: TextStyle(
+                              color: const Color(0xFFFFFFFF),
+                              fontSize: AppDimensions.height10 * 1.8,
+                              fontWeight: FontWeight.w500,
                             ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'for 3 or more days.',
+                                  style: TextStyle(
+                                    color: const Color(0xFFFFFFFF),
+                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontWeight: FontWeight.w700,
+                                  )),
+                              // can add more TextSpans here...
 
+                              // can add more TextSpans here...
 
+                              // can add more TextSpans here...
+                            ],
                           ),
-
                         ),
-
                       ),
-           ],
-         ),
-
+                    ),
+                  ],
+                ),
                 SizedBox(
                   height: AppDimensions.height10 * 2.1,
                 ),
-                Container(
-                  child: schedule(onCountChanged: (int count) {
-                    setState(() {
-                      Count=count;
-                    });
-                    print("Updated count: $count");
-                  })
-                ),
+                Container(child: schedule(onCountChanged: (int count) {
+                  setState(() {
+                    Count = count;
+                  });
+                  print("Updated count: $count");
+                })),
                 SizedBox(
                   height: AppDimensions.height10 * 6.85,
                 ),
@@ -243,16 +234,19 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        if(count >= 3) {
+                        if (count >= 3) {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PracticeReminder(),
+                              builder: (context) => PracticeReminder(
+                                pracId: widget.pracId,
+                                pracTitle: widget.pracTitle,
+                                startTime: start_time,
+                                endTime: end_time,
+                              ),
                             ),
                           );
-                        }else{
-
-                        }
+                        } else {}
                       },
                       child: Container(
                         height: AppDimensions.height10 * 5,
@@ -261,7 +255,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
 
-                          gradient: count>= 3
+                          gradient: count >= 3
                               ? const LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
@@ -302,7 +296,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
               ],
             ),
           ),
-
         ],
       ),
     );

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/API/Apispecs.dart';
+import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -131,7 +132,7 @@ class AdminGoal {
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI'
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
     };
     var Body = json.encode({
       "name": "$name",
@@ -166,59 +167,56 @@ class AdminGoal {
     }
   }
 
-  Future updateUserGoal(goalName, goalCategoryId) async {
-    var headers = {'Content-Type': 'application/json'};
+  Future updateUserGoal(var reason) async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+    };
 
-    var request = await client.put(
-        Uri.parse('${URL.BASE_URL}api/goal/{userGoalId}'),
-        headers: headers);
-    print("request:");
-
-    var responses = jsonDecode(request.body);
+    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/12'),
+        headers: headers, body: jsonEncode({"reason"[0]: reason}));
+    print("request: Update");
 
     if (request.statusCode == 200) {
-      var res = await responses.stream.bytesToString();
-      return res;
+      // print("$request.statusCode");
+      var jsonData = jsonDecode(request.body);
+
+      // jsonData = 'Updated Reason';
+
+      print("Result: $jsonData");
+      print("$jsonData");
+      return jsonData.fromDecode(reason);
     } else {
+      print("Not working");
+
       client.close();
-      return responses["message"];
     }
   }
 
-  // Future getUserGoal() async {
-  //   var goalName;
+  static Future getUserGoal() async {
+    var goalName;
 
-  //   var headers = {
-  //     'Content-Type': 'application/json',
-  //     'x-access-token':
-  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI'
-  //   };
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+    };
 
-  //   var request = await client.get(
-  //       Uri.parse(
-  //         '${URL.BASE_URL}api/userGoal/2',
-  //       ),
-  //       headers: headers);
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/userGoal/12'),
+      headers: headers,
+    );
 
-  //   if (request.statusCode == 200) {
-  //     var responses = jsonDecode(request.body);
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
 
-  //     print("Data: $responses\n");
-
-  //     print("Single value: ");
-  //     goalName = responses["name"];
-  //     print("$goalName");
-  //     // print("$responses{1}");
-
-  //     var res = await responses.stream.bytesToString();
-  //     return res;
-  //   } else {
-  //     client.close();
-  //     // print("response:${}");
-  //     // print(responses.reasonPhrase);
-  //     // return responses["message"];
-  //   }
-  // }
+      return (jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
 
   Future deleteUserGoal() async {
     var headers = {

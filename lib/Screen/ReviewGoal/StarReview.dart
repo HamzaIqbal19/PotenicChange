@@ -16,34 +16,40 @@ class StarReview extends StatefulWidget {
 }
 
 class _StarReviewState extends State<StarReview> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   AdminGoal().getUserGoal();
-  // }
-  var goalDetails;
+  Future<List<String>>? _goalNamesFuture;
   var goalName;
+  var reason;
+  var identity;
+  var visualize;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _fetchGoalNames();
-  // }
+  @override
+  void initState() {
+    super.initState();
+    _fetchGoalNames();
+  }
 
-  // void _fetchGoalNames() async {
-  //   goalDetails = await AdminGoal().getUserGoal();
+  void _fetchGoalNames() async {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          goalName = response["name"];
+          reason = response["reason"][0];
+          identity = response["identityStatement"][0];
+          visualize = response["visualizingYourSelf"][0];
+        });
+        print("response123:$goalName");
+      } else {
+        print("response:$response");
+      }
+    }).catchError((error) {
+      print("error");
+    });
 
-  //   setState(() {
-  //     goalName = extractGoalNameFromResponse(goalDetails);
-  //   });
-  //   print('$goalName');
-  // }
-
-  // String extractGoalNameFromResponse(String response) {
-  //   // Extract the goal name from the response string
-  //   var responseData = jsonDecode(response);
-  //   return responseData["name"];
-  // }
+    // setState(() {
+    //   goalName = AdminGoal().getUserGoal();
+    // });
+    // print('GoalName: $goalName');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -367,8 +373,7 @@ class _StarReviewState extends State<StarReview> {
                                 SizedBox(
                                   height: AppDimensions.height10 * 2.3,
                                 ),
-                                inner_text('Reason 1',
-                                    "I want to achieve this goal to be in control of my\n anger and to regain control of my life."),
+                                inner_text('Reason 1', "$reason"),
                                 SizedBox(
                                   height: AppDimensions.height10 * 1.0,
                                 ),
@@ -472,8 +477,7 @@ class _StarReviewState extends State<StarReview> {
                                 SizedBox(
                                   height: AppDimensions.height10 * 2.3,
                                 ),
-                                inner_text('Statement 1',
-                                    "I am someone who is in control of my anger"),
+                                inner_text('Statement 1', "$identity"),
                                 SizedBox(
                                   height: AppDimensions.height10 * 1.0,
                                 ),
@@ -570,8 +574,7 @@ class _StarReviewState extends State<StarReview> {
                                 SizedBox(
                                   height: AppDimensions.height10 * 2.3,
                                 ),
-                                inner_text('Statement 1',
-                                    "I picture myself talking more calmly to my wife when she has made a mistake. "),
+                                inner_text('Statement 1', "$visualize"),
                                 SizedBox(
                                   height: AppDimensions.height10 * 1.0,
                                 ),

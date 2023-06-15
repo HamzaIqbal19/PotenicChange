@@ -219,9 +219,9 @@ class _VisualisingState extends State<Visualising> {
                         //  myapi().create_goal(goalName, reasonWhy.text,C, reasonVisualising.text.toString(), category);
                         AdminGoal().userAddGoal(
                             "$goalName",
-                            ["${reasonWhy.text.toString()}"],
-                            ["${reasonIdentity.text.toString()}"],
-                            ["${reasonVisualising.text.toString()}"],
+                            "${reasonWhy.text.toString()}",
+                            "${reasonIdentity.text.toString()}",
+                            "${reasonVisualising.text.toString()}",
                             "2",
                             "2",
                             "0XFF4354373");

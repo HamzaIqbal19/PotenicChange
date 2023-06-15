@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
@@ -7,9 +8,10 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 class PracticeName extends StatefulWidget {
   final String title;
   final String Circletitle;
+  final String pracId;
   // final String message;
 
-  PracticeName(this.title, this.Circletitle);
+  PracticeName(this.title, this.Circletitle, this.pracId);
 
   @override
   State<PracticeName> createState() => _PracticeNameState();
@@ -198,7 +200,7 @@ class _PracticeNameState extends State<PracticeName> {
                           Radius.circular(AppDimensions.height10 * 1.8))),
                   child: TextFormField(
                       decoration: InputDecoration(
-                          hintText: widget.title,
+                          hintText: widget.Circletitle,
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10 * 2.4,
                               fontWeight: FontWeight.w500,
@@ -263,15 +265,13 @@ class _PracticeNameState extends State<PracticeName> {
                     ),
                   ),
                 ),
-
-
-                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
-                  height: AppDimensions.height10 * 26.3,
-                ):SizedBox(
-                  height: AppDimensions.height10 *11.2,
-                ),
-
-
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10 * 26.3,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10 * 11.2,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -288,7 +288,10 @@ class _PracticeNameState extends State<PracticeName> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PracticeRoutine(),
+                            builder: (context) => PracticeRoutine(
+                              pracId: widget.pracId,
+                              pracTitle: widget.title,
+                            ),
                           ),
                         );
                       },

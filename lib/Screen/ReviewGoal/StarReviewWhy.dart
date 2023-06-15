@@ -1,10 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/review_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+
+import '../../API/Goal.dart';
 
 class StarReviewWhy extends StatefulWidget {
   const StarReviewWhy({Key? key}) : super(key: key);
@@ -14,6 +14,11 @@ class StarReviewWhy extends StatefulWidget {
 }
 
 class _StarReviewWhyState extends State<StarReviewWhy> {
+  void _updateGoal() async {
+    AdminGoal().updateUserGoal("Hello");
+    print("Goal Updated");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -140,10 +145,10 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                       "Why pursuing this goal is important to \n you? ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-
-                          fontSize: AppDimensions.height10 * 1.8,
-                          fontWeight: FontWeight.w600,
-                        color: Color(0xFF437296),),
+                        fontSize: AppDimensions.height10 * 1.8,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF437296),
+                      ),
                     ),
                   ),
                 ),
@@ -151,46 +156,35 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                   height: AppDimensions.height10 * 3.4,
                 ),
                 reviewbox(),
-
-
-
-
-
-
-
-
-
-                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
-                  height: AppDimensions.height10 * 7.2,
-                ):SizedBox(
-                  height: AppDimensions.height10 * 5.0,
-                ),
-
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10 * 7.2,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10 * 5.0,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
-
-                      onTap: (){
-
-                      },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*10.0,
-                        decoration:  BoxDecoration(
+                      onTap: () {},
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 10.0,
+                        decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Color(0xFF282828)),
                           // gradient: const LinearGradient(
                           //     begin: Alignment.topCenter,
                           //     end: Alignment.bottomCenter,
                           //     colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        child:  Center(
-                          child:  Text(
+                        child: Center(
+                          child: Text(
                             "Reset",
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Color(0xFF282828),
                               fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
@@ -199,34 +193,34 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                         ),
                       ),
                     ),
-
                     GestureDetector(
-
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ActivateStar(),
-                          ),
-                        );
+                      onTap: () {
+                        print("Goals");
+                        _updateGoal();
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => ActivateStar(),
+                        //   ),
+                        // );
                       },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*26.2,
-                        decoration:  BoxDecoration(
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 26.2,
+                        decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFF282828), Color(0xFF282828)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        child:  Center(
-                          child:  Text(
+                        child: Center(
+                          child: Text(
                             "Save",
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
@@ -237,20 +231,17 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.5,
                 ),
-
-                Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           )
-
         ],
       ),
-
-
     );
   }
 }

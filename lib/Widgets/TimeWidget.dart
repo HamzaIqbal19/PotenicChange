@@ -10,82 +10,64 @@ String start_time = '00:00';
 String end_time = '07:00';
 String? minutes;
 String? hours;
-int count=0;
+int count = 0;
 String day = '';
 String hour = '';
 String minute = '';
 String period = '';
-bool Done=false;
+bool Done = false;
 
 class schedule extends StatelessWidget {
-
   final ValueChanged<int> onCountChanged;
 
   schedule({required this.onCountChanged});
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-          padding:
-          const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
-
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                 schedule_card(
-                  days: 'Monday',
-                  onCountChanged: onCountChanged,
-                ),
-                SizedBox(
-                  height: AppDimensions.height10*1.6,
-                ),
-                 schedule_card(
-                  days: 'Tuesday',
-                  onCountChanged: onCountChanged,
-                ),
-                SizedBox(
-                    height: AppDimensions.height10*1.6
-                ),
-                 schedule_card(
-                  days: 'Wednesday',
-                  onCountChanged: onCountChanged,
-                ),
-                SizedBox(
-                    height: AppDimensions.height10*1.6
-                ),
-                 schedule_card(
-                  days: 'Thursday',
-                  onCountChanged: onCountChanged,
-                ),
-                SizedBox(
-                    height: AppDimensions.height10*1.6
-                ),
-                 schedule_card(
-                  days: 'Friday',
-                  onCountChanged: onCountChanged,
-                ),
-                SizedBox(
-                    height: AppDimensions.height10*1.6
-                ),
-                   schedule_card(
-                  days: 'Saturday',
-                  onCountChanged: onCountChanged,
-                ),
-                SizedBox(
-                    height: AppDimensions.height10*1.6
-                ),
-                 schedule_card(
-                  days: 'Sunday',
-                  onCountChanged: onCountChanged,
-                ),
-                SizedBox(
-                    height: AppDimensions.height10*1.6
-                ),
-              ],
-            ),
-
-        );
-
-
+    return Padding(
+      padding: const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          schedule_card(
+            days: 'Monday',
+            onCountChanged: onCountChanged,
+          ),
+          SizedBox(
+            height: AppDimensions.height10 * 1.6,
+          ),
+          schedule_card(
+            days: 'Tuesday',
+            onCountChanged: onCountChanged,
+          ),
+          SizedBox(height: AppDimensions.height10 * 1.6),
+          schedule_card(
+            days: 'Wednesday',
+            onCountChanged: onCountChanged,
+          ),
+          SizedBox(height: AppDimensions.height10 * 1.6),
+          schedule_card(
+            days: 'Thursday',
+            onCountChanged: onCountChanged,
+          ),
+          SizedBox(height: AppDimensions.height10 * 1.6),
+          schedule_card(
+            days: 'Friday',
+            onCountChanged: onCountChanged,
+          ),
+          SizedBox(height: AppDimensions.height10 * 1.6),
+          schedule_card(
+            days: 'Saturday',
+            onCountChanged: onCountChanged,
+          ),
+          SizedBox(height: AppDimensions.height10 * 1.6),
+          schedule_card(
+            days: 'Sunday',
+            onCountChanged: onCountChanged,
+          ),
+          SizedBox(height: AppDimensions.height10 * 1.6),
+        ],
+      ),
+    );
   }
 }
 
@@ -93,10 +75,11 @@ class schedule_card extends StatefulWidget {
   final String days;
   final ValueChanged<int> onCountChanged;
 
-   schedule_card({super.key, required this.days, required this.onCountChanged});
+  schedule_card({super.key, required this.days, required this.onCountChanged});
 
   @override
-  State<schedule_card> createState() => _schedule_cardState(days,onCountChanged);
+  State<schedule_card> createState() =>
+      _schedule_cardState(days, onCountChanged);
 }
 
 class _schedule_cardState extends State<schedule_card> {
@@ -117,8 +100,9 @@ class _schedule_cardState extends State<schedule_card> {
               BoxShadow(
                 color: Colors.black.withOpacity(0.5),
                 blurRadius: 10,
-                spreadRadius: AppDimensions.height10*0.2,
-                offset: Offset(0,AppDimensions.height10*0.4), // Shadow position
+                spreadRadius: AppDimensions.height10 * 0.2,
+                offset:
+                    Offset(0, AppDimensions.height10 * 0.4), // Shadow position
               ),
             ],
             borderRadius: const BorderRadius.all(Radius.circular(18))),
@@ -128,13 +112,13 @@ class _schedule_cardState extends State<schedule_card> {
             Container(
               child: AdvanceExpansionTile(
                 key: _globalKey,
-                decoration:const BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
                 trailing: Container(
                     height: 32.5,
                     width: 32.5,
-                    decoration:const  BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Color.fromRGBO(250, 153, 52, 1),
                     ),
@@ -151,15 +135,17 @@ class _schedule_cardState extends State<schedule_card> {
                             context: context,
                             builder: (context) {
                               return MyListWheelForm(
-                                onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
+                                onSelectionChanged: (selectedDay, selectedHour,
+                                    selectedMinute, selectedPeriod, Done) {
                                   setState(() {
-                                    start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                    end_time="12:00am";
-                                    Done=Done;
+                                    start_time =
+                                        "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                    end_time = "12:00am";
+                                    Done = Done;
                                     print("Done:$Done");
-                                    if(Done==true) {
+                                    if (Done == true) {
                                       _globalKey.currentState?.expand();
-                                      count=count+1;
+                                      count = count + 1;
                                       onCountChanged(count);
                                     }
                                     // date.hour.toString();
@@ -178,8 +164,7 @@ class _schedule_cardState extends State<schedule_card> {
                               ),
                             ),
                           );
-                        }
-                        )),
+                        })),
                 title: Text(
                   days_name,
                   style: const TextStyle(
@@ -194,8 +179,7 @@ class _schedule_cardState extends State<schedule_card> {
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
-
-                       const startTimerState(
+                        const startTimerState(
                           text: ' 1) Time: ',
                         ),
                         Padding(
@@ -203,7 +187,7 @@ class _schedule_cardState extends State<schedule_card> {
                           child: Container(
                               height: 37,
                               width: 37,
-                              decoration:const BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color.fromRGBO(0, 0, 0, 0.1),
                               ),
@@ -214,9 +198,9 @@ class _schedule_cardState extends State<schedule_card> {
                                   setState(() {
                                     start_time = '00:00';
                                   });
-                                _globalKey.currentState?.collapse();
+                                  _globalKey.currentState?.collapse();
                                 },
-                                child:const Icon(
+                                child: const Icon(
                                   Icons.delete,
                                   color: Colors.black,
                                   size: 15,
@@ -227,7 +211,6 @@ class _schedule_cardState extends State<schedule_card> {
                     ),
                   ),
                   Container(
-
                     width: AppDimensions.height10 * 38.2,
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
@@ -286,6 +269,10 @@ class startTimerState extends StatefulWidget {
 }
 
 class _startTimerStateState extends State<startTimerState> {
+  endTime() {
+    return start_time;
+  }
+
   String text_state;
 
   _startTimerStateState(this.text_state);
@@ -293,8 +280,8 @@ class _startTimerStateState extends State<startTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10*31.6,
-      height: AppDimensions.height10*3.7,
+      width: AppDimensions.height10 * 31.6,
+      height: AppDimensions.height10 * 3.7,
       decoration: BoxDecoration(
           color: Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius: BorderRadius.circular(18),
@@ -307,21 +294,20 @@ class _startTimerStateState extends State<startTimerState> {
               Text(
                 text_state,
                 //textAlign: TextAlign.left,
-                style:  TextStyle(
+                style: TextStyle(
                   color: const Color.fromRGBO(100, 100, 100, 1),
-                  fontSize: AppDimensions.height10*1.6,
+                  fontSize: AppDimensions.height10 * 1.6,
                   fontFamily: "Laila",
                   fontWeight: FontWeight.w700,
                 ),
               ),
               Container(
-                width: AppDimensions.height10*17.2,
-
+                width: AppDimensions.height10 * 17.2,
                 child: Text(
                   start_time,
-                  style:  TextStyle(
-                    color:const Color.fromRGBO(250, 153, 52, 1),
-                    fontSize: AppDimensions.height10*1.6,
+                  style: TextStyle(
+                    color: const Color.fromRGBO(250, 153, 52, 1),
+                    fontSize: AppDimensions.height10 * 1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
@@ -329,48 +315,42 @@ class _startTimerStateState extends State<startTimerState> {
               ),
             ],
           ),
-
-
-             Container(
-
-              width: AppDimensions.height10*2.4,
-              // height: AppDimensions.height10*1.7,
-              // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
-             child:Center(
-
-               child: GestureDetector(
-                 // elevation: 0,
-                 // backgroundColor: Colors.transparent,
-                 onTap: () {
-
-
-                   showModalBottomSheet(
-                     context: context,
-                     builder: (context) {
-                       return MyListWheelForm(
-                         onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
-                           setState(() {
-                             start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                             // date.hour.toString();
-                             day = selectedDay;
-                             hour = selectedHour;
-                             minute = selectedMinute;
-                             period = selectedPeriod;
-                           });
-                         },
-                       );
-                     },
-
-
-                   );
-                 },
-                 child:  Icon(
-                   Icons.arrow_drop_down,
-                   color: const Color.fromRGBO(250, 153, 52, 1),
-                   // size: AppDimensions.height10*3.5,
-                 )),),
-
+          Container(
+            width: AppDimensions.height10 * 2.4,
+            // height: AppDimensions.height10*1.7,
+            // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
+            child: Center(
+              child: GestureDetector(
+                  // elevation: 0,
+                  // backgroundColor: Colors.transparent,
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return MyListWheelForm(
+                          onSelectionChanged: (selectedDay, selectedHour,
+                              selectedMinute, selectedPeriod, Done) {
+                            setState(() {
+                              start_time =
+                                  "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
+                              // date.hour.toString();
+                              day = selectedDay;
+                              hour = selectedHour;
+                              minute = selectedMinute;
+                              period = selectedPeriod;
+                            });
+                          },
+                        );
+                      },
+                    );
+                  },
+                  child: Icon(
+                    Icons.arrow_drop_down,
+                    color: const Color.fromRGBO(250, 153, 52, 1),
+                    // size: AppDimensions.height10*3.5,
+                  )),
             ),
+          ),
         ],
       ),
     );
@@ -387,6 +367,10 @@ class endTimerState extends StatefulWidget {
 }
 
 class _endTimerStateState extends State<endTimerState> {
+  endTime() {
+    return end_time;
+  }
+
   String text_state;
 
   _endTimerStateState(this.text_state);
@@ -394,8 +378,8 @@ class _endTimerStateState extends State<endTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10*31.6,
-      height: AppDimensions.height10*3.7,
+      width: AppDimensions.height10 * 31.6,
+      height: AppDimensions.height10 * 3.7,
       decoration: BoxDecoration(
           color: Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius: BorderRadius.circular(18),
@@ -408,20 +392,20 @@ class _endTimerStateState extends State<endTimerState> {
               Text(
                 text_state,
                 //textAlign: TextAlign.left,
-                style:  TextStyle(
+                style: TextStyle(
                   color: Color.fromRGBO(100, 100, 100, 1),
-                  fontSize: AppDimensions.height10*1.6,
+                  fontSize: AppDimensions.height10 * 1.6,
                   fontFamily: "Laila",
                   fontWeight: FontWeight.w700,
                 ),
               ),
               Container(
-                width: AppDimensions.height10*16.2,
+                width: AppDimensions.height10 * 16.2,
                 child: Text(
                   end_time,
-                  style:  TextStyle(
+                  style: TextStyle(
                     color: Color.fromRGBO(250, 153, 52, 1),
-                    fontSize: AppDimensions.height10*1.6,
+                    fontSize: AppDimensions.height10 * 1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
@@ -429,26 +413,24 @@ class _endTimerStateState extends State<endTimerState> {
               ),
             ],
           ),
-
           Container(
-            width: AppDimensions.height10*2.4,
+            width: AppDimensions.height10 * 2.4,
             // height: AppDimensions.height10*1.7,
             // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
-            child:Center(
-
+            child: Center(
               child: GestureDetector(
-                // elevation: 0,
-                // backgroundColor: Colors.transparent,
+                  // elevation: 0,
+                  // backgroundColor: Colors.transparent,
                   onTap: () {
-
-
                     showModalBottomSheet(
                       context: context,
                       builder: (context) {
                         return MyListWheelForm(
-                          onSelectionChanged: (selectedDay, selectedHour, selectedMinute, selectedPeriod,Done) {
+                          onSelectionChanged: (selectedDay, selectedHour,
+                              selectedMinute, selectedPeriod, Done) {
                             setState(() {
-                              start_time = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                              start_time =
+                                  "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
                               // date.hour.toString();
                               day = selectedDay;
                               hour = selectedHour;
@@ -458,16 +440,14 @@ class _endTimerStateState extends State<endTimerState> {
                           },
                         );
                       },
-
-
                     );
                   },
                   child: const Icon(
                     Icons.arrow_drop_down,
-                    color:  Color.fromRGBO(250, 153, 52, 1),
+                    color: Color.fromRGBO(250, 153, 52, 1),
                     // size: AppDimensions.height10*3.5,
-                  )),),
-
+                  )),
+            ),
           ),
         ],
       ),

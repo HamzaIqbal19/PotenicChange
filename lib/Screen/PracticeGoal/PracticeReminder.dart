@@ -1,28 +1,32 @@
-
-
-
-
-
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
+import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class PracticeReminder extends StatefulWidget {
-  const PracticeReminder({Key? key}) : super(key: key);
+  final String pracTitle;
+  final String startTime;
+  final String endTime;
+  final String pracId;
+  const PracticeReminder(
+      {Key? key,
+      required this.pracTitle,
+      required this.startTime,
+      required this.endTime,
+      required this.pracId})
+      : super(key: key);
 
   @override
   State<PracticeReminder> createState() => _PracticeReminderState();
 }
 
 class _PracticeReminderState extends State<PracticeReminder> {
-
-
-
-  bool radio1=false;
-  bool radio2=false;
+  bool radio1 = false;
+  bool radio2 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,7 +130,6 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 SizedBox(
                   height: AppDimensions.height10 * 1.7,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -135,8 +138,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         width: AppDimensions.height10 * 7.9,
                         height: AppDimensions.height10 * 7.9,
                         padding: EdgeInsets.only(
-                            top:AppDimensions.height10*0.6,),
-
+                          top: AppDimensions.height10 * 0.6,
+                        ),
                         child: Image.asset(
                           "assets/images/createprac.png",
                           fit: BoxFit.contain,
@@ -155,15 +158,13 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       ),
                     ),
                   ],
-
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.3,
                 ),
                 Container(
-                  height: AppDimensions.height10*3.4,
-                  width: AppDimensions.height10*22.3,
+                  height: AppDimensions.height10 * 3.4,
+                  width: AppDimensions.height10 * 22.3,
                   child: Center(
                     child: Text(
                       "Your Reminders",
@@ -177,12 +178,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 -2,
+                  height: AppDimensions.height10 - 2,
                 ),
                 Container(
-                  height: AppDimensions.height10*8.6,
-                  width: AppDimensions.height10*37.2,
-                  padding: EdgeInsets.only(left:AppDimensions.height10*2.1 ,right:AppDimensions.height10*2.1 ),
+                  height: AppDimensions.height10 * 8.6,
+                  width: AppDimensions.height10 * 37.2,
+                  padding: EdgeInsets.only(
+                      left: AppDimensions.height10 * 2.1,
+                      right: AppDimensions.height10 * 2.1),
                   child: Center(
                     child: Text(
                       "In order to build consistent behaviour, \n allow us to gently nudge you to remind you to do your practice.",
@@ -201,205 +204,202 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 ),
                 Container(
                   height: AppDimensions.height10 * 17.0,
-                  width: AppDimensions.height10*38.2,
+                  width: AppDimensions.height10 * 38.2,
                   // padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8, left: AppDimensions.height10*2.0,right: AppDimensions.height10*3.5),
                   decoration: BoxDecoration(
                       // color: Colors.white,
                       gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [Color(0xFFE8776D),Color(0xFFEF939D), Color(0xFFD6C4C6)]),
+                          colors: [
+                            Color(0xFFE8776D),
+                            Color(0xFFEF939D),
+                            Color(0xFFD6C4C6)
+                          ]),
                       border: Border.all(color: Colors.white, width: 0),
-                      borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*2.0))),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(AppDimensions.height10 * 2.0))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-
-                      SizedBox(height: AppDimensions.height10*2.4,),
+                      SizedBox(
+                        height: AppDimensions.height10 * 2.4,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
                           Container(
                             // color: Colors.blue,
-                            width: AppDimensions.height10*25.9,
-                            height: AppDimensions.height10*3.6,
+                            width: AppDimensions.height10 * 25.9,
+                            height: AppDimensions.height10 * 3.6,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Container(
-                            width: AppDimensions.height10*3.5,
-                            height: AppDimensions.height10*3.5,
-                            child: Image.asset(
-                            "assets/images/notifications.png",
-                              fit: BoxFit.contain,
-                            )),
-
-
-
+                                    width: AppDimensions.height10 * 3.5,
+                                    height: AppDimensions.height10 * 3.5,
+                                    child: Image.asset(
+                                      "assets/images/notifications.png",
+                                      fit: BoxFit.contain,
+                                    )),
                                 Container(
-                                    width: AppDimensions.height10*20.4,
-                                    height: AppDimensions.height10*2.4,
-                                    child: Text("Yes, remind me",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: "Laila",
-                                        color: const Color(0xFFFFFFFF),
-                                        fontSize: AppDimensions.height10 * 2.0,
-                                      ),
+                                  width: AppDimensions.height10 * 20.4,
+                                  height: AppDimensions.height10 * 2.4,
+                                  child: Text(
+                                    "Yes, remind me",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: "Laila",
+                                      color: const Color(0xFFFFFFFF),
+                                      fontSize: AppDimensions.height10 * 2.0,
                                     ),
-
+                                  ),
                                 ),
                               ],
                             ),
-
-
                           ),
                           GestureDetector(
-                            onTap: (){
-
-
-                            if(radio1==true){
-                              setState(() {
-                                radio1=false;
-                              });
-                            }
-                            else if(radio1==false){
-
-                              showDialog<String>(
-                                context: context,
-                                builder: (BuildContext context) => Container(
-                                  width: AppDimensions.height10*27.0,
-                                  height: AppDimensions.height10*18.8,
-                                  child: AlertDialog(
-                                    contentPadding: EdgeInsets.zero,
-                                    actionsPadding: EdgeInsets.zero,
-                                    titlePadding: EdgeInsets.zero,
-                                    title: Container(
-                                      margin: EdgeInsets.only(top: 19, right: 16, left: 16, bottom: 2),
-                                      height: AppDimensions.height10*4.4,
-                                      width: AppDimensions.height10*23.8,
-                                      child:  Text(
-                                        "Notification permission is \nneeded",
-
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize:AppDimensions.height10*1.7 ,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ),
-                                    content: Container(
-                                      margin:  EdgeInsets.only(bottom: AppDimensions.height10*1.9, left: AppDimensions.height10*1.6, right: AppDimensions.height10*1.6),
-
-                                      height: AppDimensions.height10*1.8,
-                                      width: AppDimensions.height10*23.8,
-                                      child: const Text(
-                                        "Please enable it in Phone’s setting",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                    ),
-
-                                    actions: <Widget>[
-                                      Column(
-                                        children: [
-
-                                          Container(
-                                            height: 42,
-                                            width: double.infinity,
-                                            color: Color(0xFF007AFF),
-                                            child: TextButton(
-                                              onPressed: () {
-                                                setState(() {
-                                                  radio1=true;
-                                                });
-                                                Navigator.pop(context);
-                                              },
-                                              child: const Text(
-                                                'Enable Notification',
-                                                style: TextStyle(
-                                                    color: Color(0xFFFFFFFF),
-                                                    fontSize: 17,
-                                                    fontFamily: "Laila",
-                                                    fontWeight: FontWeight.w400),
-                                              ),
-                                            ),
+                            onTap: () {
+                              if (radio1 == true) {
+                                setState(() {
+                                  radio1 = false;
+                                });
+                              } else if (radio1 == false) {
+                                showDialog<String>(
+                                  context: context,
+                                  builder: (BuildContext context) => Container(
+                                    width: AppDimensions.height10 * 27.0,
+                                    height: AppDimensions.height10 * 18.8,
+                                    child: AlertDialog(
+                                      contentPadding: EdgeInsets.zero,
+                                      actionsPadding: EdgeInsets.zero,
+                                      titlePadding: EdgeInsets.zero,
+                                      title: Container(
+                                        margin: EdgeInsets.only(
+                                            top: 19,
+                                            right: 16,
+                                            left: 16,
+                                            bottom: 2),
+                                        height: AppDimensions.height10 * 4.4,
+                                        width: AppDimensions.height10 * 23.8,
+                                        child: Text(
+                                          "Notification permission is \nneeded",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.height10 * 1.7,
+                                            fontWeight: FontWeight.w400,
                                           ),
-
-                                          Container(
-                                            height: 44,
-                                            width: double.infinity,
-                                            child: TextButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-
-                                              },
-                                              child:  const Text(
-                                                'Cancel',
-                                                style: TextStyle(
-                                                    fontSize: 17,
-                                                    fontFamily: "Laila",
-                                                    fontWeight: FontWeight.w400,
-                                                    color:  Color(0xFF007AFF)
+                                        ),
+                                      ),
+                                      content: Container(
+                                        margin: EdgeInsets.only(
+                                            bottom:
+                                                AppDimensions.height10 * 1.9,
+                                            left: AppDimensions.height10 * 1.6,
+                                            right:
+                                                AppDimensions.height10 * 1.6),
+                                        height: AppDimensions.height10 * 1.8,
+                                        width: AppDimensions.height10 * 23.8,
+                                        child: const Text(
+                                          "Please enable it in Phone’s setting",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        Column(
+                                          children: [
+                                            Container(
+                                              height: 42,
+                                              width: double.infinity,
+                                              color: Color(0xFF007AFF),
+                                              child: TextButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    radio1 = true;
+                                                  });
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text(
+                                                  'Enable Notification',
+                                                  style: TextStyle(
+                                                      color: Color(0xFFFFFFFF),
+                                                      fontSize: 17,
+                                                      fontFamily: "Laila",
+                                                      fontWeight:
+                                                          FontWeight.w400),
                                                 ),
                                               ),
                                             ),
-                                          ),
-
-
-
-
-                                        ],
-                                      ),
-                                    ],
+                                            Container(
+                                              height: 44,
+                                              width: double.infinity,
+                                              child: TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: const Text(
+                                                  'Cancel',
+                                                  style: TextStyle(
+                                                      fontSize: 17,
+                                                      fontFamily: "Laila",
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: Color(0xFF007AFF)),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              );
-
-                            }
-
-
-    },
-
-
-
-
+                                );
+                              }
+                            },
                             child: Container(
-                            width: AppDimensions.height10*3.3,
-                            height: AppDimensions.height10*3.3,
-
-
-                              child:radio1==true?Image.asset("assets/images/uncheckradio.png",width:AppDimensions.height10*3.3,height: AppDimensions.height10*3.3,):Image.asset("assets/images/circle.png",width:AppDimensions.height10*3.3,height: AppDimensions.height10*3.3,)
-
+                                width: AppDimensions.height10 * 3.3,
+                                height: AppDimensions.height10 * 3.3,
+                                child: radio1 == true
+                                    ? Image.asset(
+                                        "assets/images/uncheckradio.png",
+                                        width: AppDimensions.height10 * 3.3,
+                                        height: AppDimensions.height10 * 3.3,
+                                      )
+                                    : Image.asset(
+                                        "assets/images/circle.png",
+                                        width: AppDimensions.height10 * 3.3,
+                                        height: AppDimensions.height10 * 3.3,
+                                      )),
                           ),
-                          ),
-
                         ],
                       ),
-                      SizedBox(height: AppDimensions.height10*3.0,),
-
-
+                      SizedBox(
+                        height: AppDimensions.height10 * 3.0,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            height: AppDimensions.height10*5.1,
-                            width: AppDimensions.height10*34.5,
-                            padding: EdgeInsets.only(right: AppDimensions.height10*2.0,left: AppDimensions.height10*1.7),
-                            child: Text("We will check in with you to remind you about your practices.You would be able to customise your notifications later in your Account Settings. ",
+                            height: AppDimensions.height10 * 5.1,
+                            width: AppDimensions.height10 * 34.5,
+                            padding: EdgeInsets.only(
+                                right: AppDimensions.height10 * 2.0,
+                                left: AppDimensions.height10 * 1.7),
+                            child: Text(
+                              "We will check in with you to remind you about your practices.You would be able to customise your notifications later in your Account Settings. ",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontFamily: "Laila",
-
-                                height:AppDimensions.height10*0.12,
+                                height: AppDimensions.height10 * 0.12,
                                 color: const Color(0xFFFFFFFF),
                                 fontSize: AppDimensions.height10 * 1.6,
                               ),
@@ -409,109 +409,109 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       )
                     ],
                   ),
-
                 ),
                 SizedBox(
                   height: AppDimensions.height10 * 2.0,
                 ),
                 Container(
                   height: AppDimensions.height10 * 17.0,
-                  width: AppDimensions.height10*38.2,
+                  width: AppDimensions.height10 * 38.2,
                   // padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8, left: AppDimensions.height10*2.0,right: AppDimensions.height10*3.5),
                   decoration: BoxDecoration(
-                    // color: Colors.white,
+                      // color: Colors.white,
                       gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [Color(0xFFE8776D),Color(0xFFEF939D), Color(0xFFD6C4C6)]),
+                          colors: [
+                            Color(0xFFE8776D),
+                            Color(0xFFEF939D),
+                            Color(0xFFD6C4C6)
+                          ]),
                       border: Border.all(color: Colors.white, width: 0),
-                      borderRadius:  BorderRadius.all(Radius.circular(AppDimensions.height10*2.0))),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(AppDimensions.height10 * 2.0))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-
-                      SizedBox(height: AppDimensions.height10*2.4,),
+                      SizedBox(
+                        height: AppDimensions.height10 * 2.4,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-
                           Container(
                             // color: Colors.blue,
-                            width: AppDimensions.height10*25.9,
-                            height: AppDimensions.height10*3.6,
+                            width: AppDimensions.height10 * 25.9,
+                            height: AppDimensions.height10 * 3.6,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Container(
-                                    width: AppDimensions.height10*3.5,
-                                    height: AppDimensions.height10*3.5,
+                                    width: AppDimensions.height10 * 3.5,
+                                    height: AppDimensions.height10 * 3.5,
                                     child: Image.asset(
                                       "assets/images/notificationsoff.png",
                                       fit: BoxFit.contain,
                                     )),
-
-
-
                                 Container(
-                                  width: AppDimensions.height10*20.4,
-                                  height: AppDimensions.height10*2.4,
-                                  child: Text("No, don’t remind me",
+                                  width: AppDimensions.height10 * 20.4,
+                                  height: AppDimensions.height10 * 2.4,
+                                  child: Text(
+                                    "No, don’t remind me",
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFFFFFFFF),
                                       fontSize: AppDimensions.height10 * 2.0,
                                     ),
                                   ),
-
                                 ),
                               ],
                             ),
-
-
                           ),
                           GestureDetector(
-                            onTap: (){
-                              if(radio2==false){
+                            onTap: () {
+                              if (radio2 == false) {
                                 setState(() {
-                                  radio2=true;
+                                  radio2 = true;
+                                });
+                              } else {
+                                setState(() {
+                                  radio2 = false;
                                 });
                               }
-                              else{
-                                setState(() {
-                                  radio2=false;
-                                });
-                              }
-
-                           },
-                          child:Container(
-
-                            width: AppDimensions.height10*3.3,
-                            height: AppDimensions.height10*3.3,
-                            child:radio2==true?Image.asset("assets/images/uncheckradio.png"):Image.asset("assets/images/circle.png")
-                            ),
+                            },
+                            child: Container(
+                                width: AppDimensions.height10 * 3.3,
+                                height: AppDimensions.height10 * 3.3,
+                                child: radio2 == true
+                                    ? Image.asset(
+                                        "assets/images/uncheckradio.png")
+                                    : Image.asset("assets/images/circle.png")),
                           ),
-
                         ],
                       ),
-                      SizedBox(height: AppDimensions.height10*1.5,),
-
-
+                      SizedBox(
+                        height: AppDimensions.height10 * 1.5,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            height: AppDimensions.height10*6.8,
-                            width: AppDimensions.height10*34.5,
-                            padding: EdgeInsets.only(right: AppDimensions.height10*2.0,left: AppDimensions.height10*1.7),
-                            child: Text("You confirm that you don’t want us to send you reminders and notifications to perform your\npractices. You can always enable and update your notification preferences later in Account Settings. ",
+                            height: AppDimensions.height10 * 6.8,
+                            width: AppDimensions.height10 * 34.5,
+                            padding: EdgeInsets.only(
+                                right: AppDimensions.height10 * 2.0,
+                                left: AppDimensions.height10 * 1.7),
+                            child: Text(
+                              "You confirm that you don’t want us to send you reminders and notifications to perform your\npractices. You can always enable and update your notification preferences later in Account Settings. ",
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontFamily: "Laila",
-                                height:AppDimensions.height10*0.12,
+                                height: AppDimensions.height10 * 0.12,
                                 color: const Color(0xFFFFFFFF),
                                 fontSize: AppDimensions.height10 * 1.6,
                               ),
@@ -521,34 +521,33 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       )
                     ],
                   ),
-
                 ),
-
-
                 SizedBox(
                   height: AppDimensions.height10 * 7.0,
                 ),
-
-
-
-
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      // color: Colors.blue,
+                        // color: Colors.blue,
                         width: AppDimensions.height10 * 5.0,
                         height: AppDimensions.height10 * 5.0,
-
                         child: Image.asset(
                           "assets/images/Moreactions.png",
                           fit: BoxFit.contain,
                         )),
-
                     GestureDetector(
-
-                      onTap: (){
+                      onTap: () {
+                        PracticeGoalApi().userAddPractice(
+                            widget.pracTitle,
+                            "0xFF",
+                            radio1,
+                            "5",
+                            "1",
+                            "Monday",
+                            widget.startTime,
+                            widget.endTime,
+                            widget.pracId);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -556,23 +555,23 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           ),
                         );
                       },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*31.3,
-                        decoration:  BoxDecoration(
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 31.3,
+                        decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        child:  Center(
-                          child:  Text(
+                        child: Center(
+                          child: Text(
                             "Finished",
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontFamily: "Laila",
                               // height: AppDimensions.height10*0.1,
@@ -585,20 +584,17 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.5,
                 ),
-
-                Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           )
-
         ],
       ),
-
-
     );
   }
 }

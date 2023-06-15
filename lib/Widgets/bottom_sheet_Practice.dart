@@ -10,6 +10,7 @@ List<String> categories = [
   'Self Control',
   'Relationship'
 ];
+final goalName = TextEditingController();
 
 class BottomSheet extends StatelessWidget {
   @override
@@ -30,17 +31,17 @@ void bottom_sheet(context) {
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.white,
-    shape:  RoundedRectangleBorder(
+    shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(AppDimensions.height10*5.0),
-        )),
+      top: Radius.circular(AppDimensions.height10 * 5.0),
+    )),
     builder: (context) => Padding(
       padding:
-      EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
         // color:Colors.lightGreen,
-        height: AppDimensions.height10*45.0,
-        width: AppDimensions.height10*41.4,
+        height: AppDimensions.height10 * 45.0,
+        width: AppDimensions.height10 * 41.4,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(top: 10),
@@ -50,28 +51,27 @@ void bottom_sheet(context) {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
-                  height: AppDimensions.height10*6.3,
-                  width: AppDimensions.height10*35.5,
+                  height: AppDimensions.height10 * 6.3,
+                  width: AppDimensions.height10 * 35.5,
                   // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                   child: Text(
                     'Create a new practice \n for ‘Control My Anger’ goal ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: const Color(0xFF464646),
-                      fontSize: AppDimensions.height10*2.4,
+                      fontSize: AppDimensions.height10 * 2.4,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-
-                SizedBox(height: AppDimensions.height10*3.9,),
-
-
-
+                SizedBox(
+                  height: AppDimensions.height10 * 3.9,
+                ),
                 Container(
-                  width: AppDimensions.height10*36.0,
+                  width: AppDimensions.height10 * 36.0,
                   child: TextField(
-                    style: const  TextStyle(
+                    controller: goalName,
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 24,
                       color: Color.fromARGB(209, 250, 154, 52),
@@ -80,11 +80,10 @@ void bottom_sheet(context) {
                         filled: true,
                         fillColor: Color.fromRGBO(0, 0, 0, 0.1),
                         hintText: "Enter practice name",
-                        hintStyle:const  TextStyle(
+                        hintStyle: const TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 24,
-                            color: Color(0xFF828282)
-                        ),
+                            color: Color(0xFF828282)),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(18)),
                         enabledBorder: OutlineInputBorder(
@@ -93,10 +92,12 @@ void bottom_sheet(context) {
                                 width: 3, color: Colors.transparent))),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10*1,),
+                SizedBox(
+                  height: AppDimensions.height10 * 1,
+                ),
                 Container(
-                  height: AppDimensions.height10*2,
-                  padding: EdgeInsets.only(left:AppDimensions.height10*4.0),
+                  height: AppDimensions.height10 * 2,
+                  padding: EdgeInsets.only(left: AppDimensions.height10 * 4.0),
                   child: Row(
                     children: const [
                       Center(
@@ -122,31 +123,29 @@ void bottom_sheet(context) {
                     ],
                   ),
                 ),
-
-
-                SizedBox(height: AppDimensions.height10*3.0,),
+                SizedBox(
+                  height: AppDimensions.height10 * 3.0,
+                ),
                 Container(
-
-                  height: AppDimensions.height10*5,
-                  width:AppDimensions.height10*25.4,
+                  height: AppDimensions.height10 * 5,
+                  width: AppDimensions.height10 * 25.4,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(AppDimensions.height10*5.0),
+                    borderRadius:
+                        BorderRadius.circular(AppDimensions.height10 * 5.0),
                     gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xFFFCC10D),
-                          Color(0xFFFDA210)
-                        ]),
+                        colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
                   ),
                   child: TextButton(
                       onPressed: () {
                         Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PracticeName("Meditation","Meditation"),
-                          ),
-                        );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PracticeName(
+                                    goalName.text.toString(),
+                                    goalName.text.toString(),
+                                    '9')));
                       },
                       child: const Text(
                         'Save',
@@ -163,7 +162,8 @@ void bottom_sheet(context) {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
-                            width: 2, color: Color.fromARGB(209, 250, 154, 52))),
+                            width: 2,
+                            color: Color.fromARGB(209, 250, 154, 52))),
                     child: TextButton(
                         onPressed: () {},
                         child: const Text(
@@ -193,10 +193,10 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10*36,
+      width: AppDimensions.height10 * 36,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
-          borderRadius: BorderRadius.circular(AppDimensions.height10*1.8),
+          borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.8),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Padding(
         padding: const EdgeInsets.only(left: 8, right: 8),
