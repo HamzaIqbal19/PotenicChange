@@ -81,18 +81,21 @@ class AdminGoal {
   }
 
   Future getAllGoals() async {
-    try {
-      var request =
-          await client.get(Uri.parse('${URL.BASE_URL}/api/goal/all-goals'));
-      print("status:${request.statusCode}");
-      print("request:${request}");
+    var headers = {'Content-Type': 'application/json'};
 
-      if (request.statusCode == 200) {
-        var goal = request.body;
-        print("$goal.text.toString()");
-      }
-    } catch (e) {
-      print('Request failed with status: ${"request.statusCode"}.');
+    var request = await client
+        .get(Uri.parse('${URL.BASE_URL}api/goal/all-goals'), headers: headers);
+    print("status:${request.statusCode}");
+    print("request:${request}");
+
+    var responses = jsonDecode(request.body);
+
+    if (request.statusCode == 200) {
+      var res = await responses.stream.bytesToString();
+      return res;
+    } else {
+      client.close();
+      return responses["message"];
     }
   }
 
@@ -164,14 +167,19 @@ class AdminGoal {
   }
 
   Future deleteUserGoal() async {
-    var request =
-        await client.delete(Uri.parse('${URL.BASE_URL}/api/goal/{userGoalId}'));
+    var headers = {'Content-Type': 'application/json'};
+    var request = await client.delete(
+        Uri.parse('${URL.BASE_URL}/api/goal/{userGoalId}'),
+        headers: headers);
+    var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
-      print('Resource deleted successfully.');
+      var res = await responses.stream.bytesToString();
+      print('Deleted successfully');
+      return res;
     } else {
-      // Request failed, handle the error
-      print('Request failed with status: ${request.statusCode}.');
+      client.close();
+      return responses["message"];
     }
   }
 }

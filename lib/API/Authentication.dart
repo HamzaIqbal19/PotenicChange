@@ -19,8 +19,10 @@ class Authentication {
     });
 
     print("request:$Body");
-    var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signup'),
-        headers: headers, body: Body);
+    var request = await client
+        .post(Uri.parse('${URL.BASE_URL}api/auth/signup'),
+            headers: headers, body: Body)
+        .timeout(Duration(seconds: 10));
     print("request:");
 
     var responses = jsonDecode(request.body);
