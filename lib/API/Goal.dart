@@ -85,21 +85,64 @@ class AdminGoal {
       // Request failed, handle the error
       print('Request failed with status: ${request.statusCode}.');
     }
+  } ///////////////////////////////
+
+  static Future<List<String>> getAllGoalNames() async {
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+    };
+
+    var response = await http.get(
+      Uri.parse(
+          'http://161.35.106.33:8000/api/goalCategory/all-goalCategories'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+      List<String> goalNames = [];
+
+      for (var goalData in jsonData) {
+        var goalName = goalData['name'];
+        print("goalName :$goalName");
+        goalNames.add(goalName);
+      }
+      print("run type :${goalNames.runtimeType}");
+      return goalNames;
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
   }
 
+/////////////////////////////////
+  ///
+/*
   Future<List<List<String>>> getAllGoals() async {
-    var headers = {'Content-Type': 'application/json'};
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token':
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MjA1NDIsImV4cCI6MTY4NjkwNjk0Mn0.9Q88GbIH9OTFIXPdYFFgEsn0V0LSAr5omje2YXdqK3M',
+    };
 
-    var request = await client
-        .get(Uri.parse('${URL.BASE_URL}api/goal/all-goals'), headers: headers);
-    print("status:${request.statusCode}");
-    print("request:${request}");
-
-    var responses = jsonDecode(request.body);
+    var client = http.Client();
+    var request = await client.get(
+      Uri.parse(
+          'http://192.168.18.23:8000/api/goalCategory/all-goalCategories'),
+      headers: headers,
+    );
+    print("status: ${request.statusCode}");
 
     if (request.statusCode == 200) {
+      print("Successfull");
+          print("request: ${request.body}");
+
       List<List<String>> formattedGoals = [];
       List<String> row = [];
+
+      var responses = jsonDecode(request.body);
 
       for (var i = 0; i < responses.length; i++) {
         var goal = responses[i]['goal'];
@@ -108,7 +151,7 @@ class AdminGoal {
         row.add(goal);
 
         // If the current row is filled, add it to the formatted goals list and start a new row
-        if (row.length == 3) {
+        if (row.length == 4) {
           formattedGoals.add(row);
           row = [];
         }
@@ -119,10 +162,22 @@ class AdminGoal {
         formattedGoals.add(row);
       }
 
+      client.close();
       return formattedGoals;
     } else {
       client.close();
-      return responses["message"];
+      throw Exception('Failed to fetch goals: ${request.reasonPhrase}');
+    }
+  }
+
+*/
+
+  void main() async {
+    try {
+      // var goals = await getAllGoals();
+      //  print(goals);
+    } catch (e) {
+      print(e);
     }
   }
 
