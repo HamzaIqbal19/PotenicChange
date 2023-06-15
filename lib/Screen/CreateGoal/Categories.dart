@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/AllGoals.dart';
@@ -26,6 +28,7 @@ List<String> goals_name = [
 class _CategoriesState extends State<Categories> {
   Future<List<String>>? _goalNamesFuture;
   List<String>? goalCategories;
+  late int count;
 
   @override
   void initState() {
@@ -38,6 +41,7 @@ class _CategoriesState extends State<Categories> {
       if (response.length != 0) {
         setState(() {
           goalCategories = response;
+          count=response.length~/2;
         });
         print("response123:$goalCategories");
       } else {
@@ -140,105 +144,59 @@ class _CategoriesState extends State<Categories> {
                 height: AppDimensions.height10 * 6.7,
               ),
               SizedBox(
-                height: 120,
-
-                child: Row(
-                  children: goalCategories!
-                      .take(4)
-                      .map((item) => Expanded(
-                              child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.height10 * 2.0,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => GoalCategory(
-                                              "Happiness & Wellbeing",
-                                              "Happiness & Wellbeing"),
-                                        ),
-                                      );
-                                    },
-                                    child: circles(
-                                        circle_text: item,
-                                        circle_color1: 0xFFFC854F,
-                                        circle_color2: 0xFFFAA960,
-                                        circle_border: 3.0,
-                                        circle_bordercolor: 0xFFFFFFFF,
-                                        circle_height:
-                                            AppDimensions.height10 * 13.4,
-                                        circle_width:
-                                            AppDimensions.height10 * 13.4,
-                                        textfont: AppDimensions.height10 * 1.6,
-                                        textcolor: 0xFFFFFFFF),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )))
-                      .toList(),
+                height: AppDimensions.height10*14.0,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: min(4, goalCategories!.length), // ensure itemCount doesn't exceed 4 or length of list
+                  itemBuilder: (context, index) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10 * 2.0,
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => GoalCategory(
+                                          "Category Name", goalCategories![index]),
+                                    ),
+                                  );
+                                },
+                                child:
+                            circles(
+                                circle_text: goalCategories![index],
+                                circle_color1: 0xFFFC854F,
+                                circle_color2: 0xFFFAA960,
+                                circle_border: 3.0,
+                                circle_bordercolor: 0xFFFFFFFF,
+                                circle_height:
+                                AppDimensions.height10 * 13.4,
+                                circle_width: AppDimensions.height10 * 13.4,
+                                textfont: AppDimensions.height10 * 1.6,
+                                textcolor: 0xFFFFFFFF),
+                    )
+                          ],
+                        ),
+                      ],
+                    );
+                  },
                 ),
-                // Row(
-                //   children: items.skip(4).take(4).map((item) => Expanded(child: Text(item))).toList(),
-                // ),
-                // ListView.builder(
-                //     scrollDirection: Axis.horizontal,
-                //     itemCount: (goalCategories!.length),
-                //     itemBuilder: ((context, index) {
-                // return Column(
-                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   crossAxisAlignment: CrossAxisAlignment.start,
-                //   children: [
-                //     Row(
-                //       mainAxisAlignment: MainAxisAlignment.start,
-                //       children: [
-                //         SizedBox(
-                //           width: AppDimensions.height10 * 2.0,
-                //         ),
-                //         GestureDetector(
-                //           onTap: () {
-                //             Navigator.push(
-                //               context,
-                //               MaterialPageRoute(
-                //                 builder: (context) => GoalCategory(
-                //                     "Happiness & Wellbeing",
-                //                     "Happiness & Wellbeing"),
-                //               ),
-                //             );
-                //           },
-                //           child: circles(
-                //               circle_text: goalCategories![index],
-                //               circle_color1: 0xFFFC854F,
-                //               circle_color2: 0xFFFAA960,
-                //               circle_border: 3.0,
-                //               circle_bordercolor: 0xFFFFFFFF,
-                //               circle_height:
-                //                   AppDimensions.height10 * 13.4,
-                //               circle_width: AppDimensions.height10 * 13.4,
-                //               textfont: AppDimensions.height10 * 1.6,
-                //               textcolor: 0xFFFFFFFF),
-                //         ),
-                //       ],
-                //     ),
-                //   ],
-                // );
-                //     })),
               ),
+
               Padding(
-                padding: const EdgeInsets.only(left: 30),
+                padding: const EdgeInsets.only(left: 30,top:20.0),
                 child: SizedBox(
-                  height: 120,
+                  height: AppDimensions.height10*14.0,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 4,
+                      itemCount:  max(4, goalCategories!.length - 4),
                       itemBuilder: ((context, index) {
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -250,8 +208,19 @@ class _CategoriesState extends State<Categories> {
                                 SizedBox(
                                   width: AppDimensions.height10 * 2.0,
                                 ),
-                                circles(
-                                    circle_text: goalCategories![0],
+
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => GoalCategory(
+                                            "Category Name", goalCategories![index+4]),
+                                      ),
+                                    );
+                                  },
+                               child: circles(
+                                    circle_text: goalCategories![index+4],
                                     circle_color1: 0xFFFC854F,
                                     circle_color2: 0xFFFAA960,
                                     circle_border: 3.0,
@@ -261,6 +230,7 @@ class _CategoriesState extends State<Categories> {
                                     circle_width: AppDimensions.height10 * 13.4,
                                     textfont: AppDimensions.height10 * 1.6,
                                     textcolor: 0xFFFFFFFF),
+                                )
                               ],
                             ),
                           ],
@@ -379,7 +349,7 @@ class _CategoriesState extends State<Categories> {
                                   circle_width: AppDimensions.height10 * 13.4,
                                   textfont: AppDimensions.height10 * 1.6,
                                   textcolor: 0xFFFFFFFF)),
-                     
+
                         ],
                       ),
                     ),
@@ -387,7 +357,7 @@ class _CategoriesState extends State<Categories> {
 /*
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: 
+                      child:
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -433,7 +403,7 @@ class _CategoriesState extends State<Categories> {
                         ],
                       ),
                     ),
-                
+
                */
 
 
