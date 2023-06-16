@@ -16,6 +16,8 @@ getToken() async {
   return token;
 }
 
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
 class AdminGoal {
   Future createGoal(goalName, goalCategoryId) async {
     var headers = {'Content-Type': 'application/json'};
@@ -39,7 +41,7 @@ class AdminGoal {
       return res;
     } else {
       client.close();
-      // print("response:${}");
+
       print(responses.reasonPhrase);
       return responses["message"];
     }
@@ -55,18 +57,13 @@ class AdminGoal {
     print("request:");
 
     var responses = jsonDecode(request.body);
-    if (responses.statusCode == 200) {
-      //return userAddGoal.fromJson(json.decode(request.body));
-    }
+    if (responses.statusCode == 200) {}
   }
 
   Future getGoal() async {
     try {
       var request =
           await client.get(Uri.parse('${URL.BASE_URL}/api/goal/{goalId}'));
-      print("status:${request.statusCode}");
-      print("request:${request}");
-
       if (request.statusCode == 200) {
         var goal = request.body;
         print("$goal.text.toString()");
@@ -86,18 +83,18 @@ class AdminGoal {
       // Request failed, handle the error
       print('Request failed with status: ${request.statusCode}.');
     }
-  } ///////////////////////////////
+  }
 
   static Future<List<Map<String, dynamic>>> getAllCategoriesNames() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+      'x-access-token': '$Accestoken',
     };
 
     var response = await http.get(
-      Uri.parse(
-          'http://161.35.106.33:8000/api/goalCategory/all-goalCategories'),
+      Uri.parse('${URL.BASE_URL}api/goalCategory/all-goalCategories'),
       headers: headers,
     );
 
@@ -105,10 +102,8 @@ class AdminGoal {
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
       List<String> goalNames = [];
-
       for (var goalData in jsonData) {
         var goalName = goalData['name'];
-        print("goalName :$goalName");
         goalNames.add(goalName);
       }
       print("run type :${goalNames.runtimeType}");
@@ -119,21 +114,19 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> getAllGoalAndCategories() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+      'x-access-token': '$Accestoken'
     };
-
     var response = await http.get(
-      Uri.parse('http://161.35.106.33:8000/api/goal/all-goals'),
+      Uri.parse('${URL.BASE_URL}api/goal/all-goals'),
       headers: headers,
     );
-
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
-
+      //print("Result:$jsonData");
       return List<Map<String, dynamic>>.from(jsonData);
     } else {
       throw Exception('Failed to fetch goal names');
@@ -141,22 +134,19 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> getAllGoal(int id) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+      'x-access-token': '$Accestoken'
     };
-
     var response = await http.get(
-      Uri.parse(
-          'http://161.35.106.33:8000/api/goal/all-goals?goalCategoryId=$id'),
+      Uri.parse('${URL.BASE_URL}api/goal/all-goals?goalCategoryId=$id'),
       headers: headers,
     );
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Result:$jsonData");
-
       return List<Map<String, dynamic>>.from(jsonData);
     } else {
       throw Exception('Failed to fetch goal names');
@@ -164,14 +154,14 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> searchAllGoal() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+      'x-access-token': '$Accestoken'
     };
-
     var response = await http.get(
-      Uri.parse('http://161.35.106.33:8000/api/goal/all-goals'),
+      Uri.parse('${URL.BASE_URL}api/goal/all-goals'),
       headers: headers,
     );
 
@@ -185,76 +175,13 @@ class AdminGoal {
     }
   }
 
-/////////////////////////////////
-  ///
-/*
-  Future<List<List<String>>> getAllGoals() async {
-    var headers = {
-      'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MjA1NDIsImV4cCI6MTY4NjkwNjk0Mn0.9Q88GbIH9OTFIXPdYFFgEsn0V0LSAr5omje2YXdqK3M',
-    };
-
-    var client = http.Client();
-    var request = await client.get(
-      Uri.parse(
-          'http://192.168.18.23:8000/api/goalCategory/all-goalCategories'),
-      headers: headers,
-    );
-    print("status: ${request.statusCode}");
-
-    if (request.statusCode == 200) {
-      print("Successfull");
-          print("request: ${request.body}");
-
-      List<List<String>> formattedGoals = [];
-      List<String> row = [];
-
-      var responses = jsonDecode(request.body);
-
-      for (var i = 0; i < responses.length; i++) {
-        var goal = responses[i]['goal'];
-
-        // Add goal to the current row
-        row.add(goal);
-
-        // If the current row is filled, add it to the formatted goals list and start a new row
-        if (row.length == 4) {
-          formattedGoals.add(row);
-          row = [];
-        }
-      }
-
-      // If there are any remaining goals in the last row, add it to the formatted goals list
-      if (row.isNotEmpty) {
-        formattedGoals.add(row);
-      }
-
-      client.close();
-      return formattedGoals;
-    } else {
-      client.close();
-      throw Exception('Failed to fetch goals: ${request.reasonPhrase}');
-    }
-  }
-
-*/
-
-  void main() async {
-    try {
-      // var goals = await getAllGoals();
-      //  print(goals);
-    } catch (e) {
-      print(e);
-    }
-  }
-
   Future userAddGoal(name, reason, identityStatement, visualizingYourSelf,
       userId, goalCategoryId, color) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+      'x-access-token': '$Accestoken'
     };
     var Body = json.encode({
       "name": "$name",
@@ -265,49 +192,42 @@ class AdminGoal {
       "userId": "$userId",
       "goalCategoryId": "$goalCategoryId",
     });
-    print("request:$Body");
+
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userGoal/add-user-goal'),
         headers: headers,
         body: Body);
-    print("request:");
 
     var responses = jsonDecode(request.body);
 
-    print("status:${request.statusCode}");
     print("request:${responses}");
-    print("request:${responses["status"]}");
+
     if (request.statusCode == 200) {
       print("response:${responses["message"]}");
       var res = await responses.stream.bytesToString();
       return res;
     } else {
       client.close();
-      // print("response:${}");
+
       print(responses.reasonPhrase);
       return responses["message"];
     }
   }
 
   Future updateUserGoal(var reason) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+      'x-access-token': '$Accestoken'
     };
 
     var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/12'),
         headers: headers, body: jsonEncode({"reason"[0]: reason}));
-    print("request: Update");
-
     if (request.statusCode == 200) {
-      // print("$request.statusCode");
       var jsonData = jsonDecode(request.body);
-
-      // jsonData = 'Updated Reason';
-
       print("Result: $jsonData");
-      print("$jsonData");
+
       return jsonData.fromDecode(reason);
     } else {
       print("Not working");
@@ -317,14 +237,12 @@ class AdminGoal {
   }
 
   static Future getUserGoal() async {
-    var goalName;
-
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+      'x-access-token': '$Accestoken'
     };
-
     var response = await http.get(
       Uri.parse('${URL.BASE_URL}api/userGoal/12'),
       headers: headers,
@@ -341,10 +259,11 @@ class AdminGoal {
   }
 
   Future deleteUserGoal() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MjA1NDIsImV4cCI6MTY4NjkwNjk0Mn0.9Q88GbIH9OTFIXPdYFFgEsn0V0LSAr5omje2YXdqK3M'
+      'x-access-token': '$Accestoken'
     };
 
     var request = await client

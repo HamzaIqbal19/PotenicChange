@@ -10,6 +10,7 @@ import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var client = SentryHttpClient();
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class PracticeGoalApi {
   Future userAddPractice(name, color, reminder, userId, goalCategoryId, day,
@@ -51,6 +52,34 @@ class PracticeGoalApi {
       // print("response:${}");
       print(responses.reasonPhrase);
       return responses["message"];
+    }
+  }
+
+  static Future<List<Map<String, dynamic>>> getPractice() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/practice/all-practice'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+      List<String> practiceNames = [];
+      for (var practiceData in jsonData) {
+        var goalName = practiceData['name'];
+        practiceNames.add(goalName);
+      }
+      print("run type :${practiceNames.runtimeType}");
+      return List<Map<String, dynamic>>.from(jsonData);
+    } else {
+      throw Exception('Failed to fetch practice names');
     }
   }
 

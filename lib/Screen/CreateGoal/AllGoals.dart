@@ -13,8 +13,6 @@ class AllGoals extends StatefulWidget {
 
 class _AllGoalsState extends State<AllGoals> {
   bool SearchIcon = false;
-
-  // Future<List<String>>? _goalNamesAndCategoriesFuture;
   List<Map<String, dynamic>>? goalNamesAndCategories;
 
   @override
@@ -28,11 +26,11 @@ class _AllGoalsState extends State<AllGoals> {
       if (response.length != 0) {
         setState(() {
           goalNamesAndCategories = response;
-          print("response:${response[1]["goals"]}");
+          //  print("response:${response[1]["goals"]}");
         });
-        print("response123:${goalNamesAndCategories![0]}");
+        //  print("response123:${goalNamesAndCategories![0]}");
       } else {
-        print("response:$response");
+        //print("response:$response");
       }
     }).catchError((error) {
       print("error");
