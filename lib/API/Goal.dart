@@ -10,12 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 var client = SentryHttpClient();
 
-getToken() async {
-  SharedPreferences login = await SharedPreferences.getInstance();
-  var token = login.get('token');
-  return token;
-}
-
 class AdminGoal {
   Future createGoal(goalName, goalCategoryId) async {
     var headers = {'Content-Type': 'application/json'};
@@ -89,15 +83,17 @@ class AdminGoal {
   } ///////////////////////////////
 
   static Future<List<Map<String, dynamic>>> getAllCategoriesNames() async {
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var SessionToken = prefs.getString("refreshtoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+      'x-access-token': '${Accestoken}',
     };
 
     var response = await http.get(
-      Uri.parse(
-          'http://161.35.106.33:8000/api/goalCategory/all-goalCategories'),
+      Uri.parse('${URL.BASE_URL}api/goalCategory/all-goalCategories'),
       headers: headers,
     );
 
@@ -119,14 +115,17 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> getAllGoalAndCategories() async {
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var SessionToken = prefs.getString("refreshtoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+      'x-access-token': '${Accestoken}',
     };
 
     var response = await http.get(
-      Uri.parse('http://161.35.106.33:8000/api/goal/all-goals'),
+      Uri.parse('${URL.BASE_URL}api/goal/all-goals'),
       headers: headers,
     );
 
@@ -141,15 +140,17 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> getAllGoal(int id) async {
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var SessionToken = prefs.getString("refreshtoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+      'x-access-token': '${Accestoken}',
     };
 
     var response = await http.get(
-      Uri.parse(
-          'http://161.35.106.33:8000/api/goal/all-goals?goalCategoryId=$id'),
+      Uri.parse('${URL.BASE_URL}api/goal/all-goals?goalCategoryId=$id'),
       headers: headers,
     );
 
@@ -164,14 +165,17 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> searchAllGoal() async {
+    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var SessionToken = prefs.getString("refreshtoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MzE5MzEsImV4cCI6MTY4NjkxODMzMX0.w2OlQ6fOwXu_Yb2vCsu7mpwMDgZI7PDkfRkM7CUFJOI',
+      'x-access-token': '${Accestoken}',
     };
 
     var response = await http.get(
-      Uri.parse('http://161.35.106.33:8000/api/goal/all-goals'),
+      Uri.parse('api/goal/all-goals'),
       headers: headers,
     );
 

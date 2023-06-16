@@ -18,9 +18,8 @@ class Authentication {
       "email": "$email",
       "password": "$password",
     });
-    var request = await client
-        .post(Uri.parse('${URL.BASE_URL}api/auth/signup'),
-            headers: headers, body: Body);
+    var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signup'),
+        headers: headers, body: Body);
 
     var responses = jsonDecode(request.body);
 
@@ -39,19 +38,16 @@ class Authentication {
     }
   }
 
-
-
-
   Future refreshTokenApi(String SessionToken) async {
     var headers = {'Content-Type': 'application/json'};
 
     var Body = json.encode({
       "sessionToken": SessionToken,
-
     });
-    var request = await client
-        .post(Uri.parse('${URL.BASE_URL}api/auth/refersh-access-token'),
-        headers: headers, body: Body);
+    var request = await client.post(
+        Uri.parse('${URL.BASE_URL}api/auth/refresh-access-token'),
+        headers: headers,
+        body: Body);
 
     var responses = jsonDecode(request.body);
 
@@ -63,7 +59,6 @@ class Authentication {
       final SharedPreferences prefs = await _prefs;
       var accesstoken = prefs.setString('usertoken', token);
 
-
       return true;
     } else {
       client.close();
@@ -71,7 +66,6 @@ class Authentication {
       return false;
     }
   }
-
 
   Future SignIn(fcmRegistrationToken, email, password) async {
     var headers = {'Content-Type': 'application/json'};
@@ -82,10 +76,8 @@ class Authentication {
       "password": "$password",
     });
 
-
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
         headers: headers, body: Body);
-
 
     var responses = jsonDecode(request.body);
     // print("status:${request.statusCode}");
@@ -93,23 +85,19 @@ class Authentication {
     // print("request:${responses}");
 
     if (request.statusCode == 200) {
-
-
       // print("request:${responses["sessionToken"]}");
       String token = responses["accessToken"];
       int userid = responses['id'];
-      String Refreshtoken=responses["sessionToken"];
-
+      String Refreshtoken = responses["sessionToken"];
 
       final SharedPreferences prefs = await _prefs;
       var accesstoken = prefs.setString('usertoken', token);
       var UserId = prefs.setInt('userid', userid);
-      var RefreshToken=prefs.setString("refreshtoken", Refreshtoken);
+      var RefreshToken = prefs.setString("refreshtoken", Refreshtoken);
 
-
-      var Accestoken=prefs.getString("usertoken");
-      var UsersId=prefs.getInt("userid");
-      var SessionToken=prefs.getString("refreshtoken");
+      var Accestoken = prefs.getString("usertoken");
+      var UsersId = prefs.getInt("userid");
+      var SessionToken = prefs.getString("refreshtoken");
 
       print("tokenss:$Accestoken+$UsersId+$SessionToken");
 

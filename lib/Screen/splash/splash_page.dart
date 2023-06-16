@@ -41,30 +41,26 @@ class SplashPageState extends State<SplashPage> {
 
   Future loadData() async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken=prefs.getString("usertoken");
-    var SessionToken=prefs.getString("refreshtoken");
+    var Accestoken = prefs.getString("usertoken");
+    var SessionToken = prefs.getString("refreshtoken");
     print("======================>$Accestoken");
-    if (Accestoken!=null ){
-      Authentication()
-          .refreshTokenApi(SessionToken!)
-          .then((response) {
-            print("???????????:$response");
+    if (Accestoken != null) {
+      Authentication().refreshTokenApi(SessionToken!).then((response) {
+        print("???????????:$response");
         if (response == true) {
           Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>const HomeScreen(login:true),
-          ));
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(login: true),
+              ));
         } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(response["message"])));
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(response["message"])));
         }
       }).catchError((error) {
         print("error");
       });
-
-    }
-    else{
+    } else {
       onDoneLoading();
     }
   }

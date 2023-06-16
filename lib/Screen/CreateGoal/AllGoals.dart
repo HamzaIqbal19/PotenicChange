@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../API/Goal.dart';
 
@@ -13,6 +14,7 @@ class AllGoals extends StatefulWidget {
 
 class _AllGoalsState extends State<AllGoals> {
   bool SearchIcon = false;
+  bool Loading = true;
 
   // Future<List<String>>? _goalNamesAndCategoriesFuture;
   List<Map<String, dynamic>>? goalNamesAndCategories;
@@ -28,13 +30,20 @@ class _AllGoalsState extends State<AllGoals> {
       if (response.length != 0) {
         setState(() {
           goalNamesAndCategories = response;
+          Loading = false;
           print("response:${response[1]["goals"]}");
         });
         print("response123:${goalNamesAndCategories![0]}");
       } else {
+        setState(() {
+          Loading = false;
+        });
         print("response:$response");
       }
     }).catchError((error) {
+      setState(() {
+        Loading = false;
+      });
       print("error");
     });
   }
@@ -114,192 +123,213 @@ class _AllGoalsState extends State<AllGoals> {
           )),
       body: Stack(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+          Loading == false
+              ? Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/images/Categories.png"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              : Container(
+                  color: Colors.white,
+                ),
 
           // SingleChildScrollView(
           //   child: ,
           // )
-          Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(top: AppDimensions.height10 * 4.2),
-                child: Center(
-                  child: Text(
-                    "Star Creation 1/5",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontSize: AppDimensions.height10 * 1.8,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: AppDimensions.height10 * 2.7,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    child: Center(
-                      child: Text(
-                        "All Goals ",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10 * 2.8,
+          Loading == false
+              ? Column(
+                  children: [
+                    Container(
+                      padding:
+                          EdgeInsets.only(top: AppDimensions.height10 * 4.2),
+                      child: Center(
+                        child: Text(
+                          "Star Creation 1/5",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: AppDimensions.height10 * 1.8,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: AppDimensions.height10 * 1.6,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    // height: AppDimensions.height10*7.1,
-                    child: Text(
-                      "Which category does your goal belong to? ",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
-                      ),
+                    SizedBox(
+                      height: AppDimensions.height10 * 2.7,
                     ),
-                  ),
-                ],
-              ),
-              Container(
-                  // color: Colors.blue,
-                  height: AppDimensions.height10 * 65.695,
-                  padding: const EdgeInsets.only(top: 0, bottom: 0),
-                  child: ListView.builder(
-                      itemCount: goalNamesAndCategories!.length,
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 0.1),
-                                  child: circles(
-                                      circle_text: '',
-                                      circle_color1: 0xFFFC854F,
-                                      circle_color2: 0xFFFAA960,
-                                      circle_border: 1,
-                                      circle_bordercolor: 0xFFFFFFFF,
-                                      circle_height:
-                                          AppDimensions.height10 * 2.5,
-                                      circle_width:
-                                          AppDimensions.height10 * 2.5,
-                                      textfont: 0,
-                                      textcolor: 0),
-                                ),
-                                Container(
-                                  // color: Colors.yellow,
-                                  height: AppDimensions.height10 * 2.4,
-                                  child: Text(
-                                    goalNamesAndCategories![index]["name"],
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                      fontSize: AppDimensions.height10 * 2.0,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          child: Center(
+                            child: Text(
+                              "All Goals ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10 * 2.8,
+                              ),
                             ),
-                            SizedBox(
-                              height: AppDimensions.height10 * 2.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10 * 1.6,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          // height: AppDimensions.height10*7.1,
+                          child: Text(
+                            "Which category does your goal belong to? ",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10 * 1.8,
                             ),
-                            Container(
-                              height: (goalNamesAndCategories![index]["goals"]
-                                          .length <=
-                                      7)
-                                  ? AppDimensions.height10 *
-                                      13.4 *
-                                      (goalNamesAndCategories![index]["goals"]
-                                          .length)
-                                  : AppDimensions.height10 *
-                                          13.4 *
-                                          (goalNamesAndCategories![index]
-                                                  ["goals"]
-                                              .length) -
-                                      250,
-                              width: AppDimensions.height10 * 38,
-                              child: GridView.builder(
-                                  shrinkWrap: false,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio:
-                                        3.5 / 3, // Two items in each row
-
-                                    mainAxisSpacing: 1.0,
-                                    crossAxisSpacing: 0.1,
-                                  ),
-                                  itemCount: goalNamesAndCategories![index]
-                                          ["goals"]
-                                      .length,
-                                  itemBuilder: (context, index1) {
-                                    return SizedBox(
-                                        height: AppDimensions.height10 * 41.9,
-                                        child: Column(children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              circles(
-                                                  circle_text:
-                                                      goalNamesAndCategories![
-                                                              index]["goals"]
-                                                          [index1]["goalName"],
-                                                  circle_color1: 0xFFFFFFFF,
-                                                  circle_color2: 0xFFFFFFFF,
-                                                  circle_border: 3.0,
-                                                  circle_bordercolor:
-                                                      0xFFEE8E6F,
-                                                  circle_height:
-                                                      AppDimensions.height10 *
-                                                          13.4,
-                                                  circle_width:
-                                                      AppDimensions.height10 *
-                                                          13.4,
-                                                  textfont:
-                                                      AppDimensions.height10 *
-                                                          1.6,
-                                                  textcolor: 0xFFFA9934),
-                                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                        // color: Colors.blue,
+                        height: AppDimensions.height10 * 65.695,
+                        padding: const EdgeInsets.only(top: 0, bottom: 0),
+                        child: ListView.builder(
+                            itemCount: goalNamesAndCategories!.length,
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.only(
+                                            top: AppDimensions.height10 * 0.1),
+                                        child: circles(
+                                            circle_text: '',
+                                            circle_color1: 0xFFFC854F,
+                                            circle_color2: 0xFFFAA960,
+                                            circle_border: 1,
+                                            circle_bordercolor: 0xFFFFFFFF,
+                                            circle_height:
+                                                AppDimensions.height10 * 2.5,
+                                            circle_width:
+                                                AppDimensions.height10 * 2.5,
+                                            textfont: 0,
+                                            textcolor: 0),
+                                      ),
+                                      Container(
+                                        // color: Colors.yellow,
+                                        height: AppDimensions.height10 * 2.4,
+                                        child: Text(
+                                          goalNamesAndCategories![index]
+                                              ["name"],
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                            fontSize:
+                                                AppDimensions.height10 * 2.0,
                                           ),
-                                        ]));
-                                  }),
-                            )
-                          ],
-                        );
-                      })
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: AppDimensions.height10 * 2.0,
+                                  ),
+                                  Container(
+                                    height: (goalNamesAndCategories![index]
+                                                    ["goals"]
+                                                .length <=
+                                            7)
+                                        ? AppDimensions.height10 *
+                                            13.4 *
+                                            (goalNamesAndCategories![index]
+                                                    ["goals"]
+                                                .length)
+                                        : AppDimensions.height10 *
+                                                13.4 *
+                                                (goalNamesAndCategories![index]
+                                                        ["goals"]
+                                                    .length) -
+                                            250,
+                                    width: AppDimensions.height10 * 38,
+                                    child: GridView.builder(
+                                        shrinkWrap: false,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        gridDelegate:
+                                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          childAspectRatio:
+                                              3.5 / 3, // Two items in each row
 
-                  /*
+                                          mainAxisSpacing: 1.0,
+                                          crossAxisSpacing: 0.1,
+                                        ),
+                                        itemCount:
+                                            goalNamesAndCategories![index]
+                                                    ["goals"]
+                                                .length,
+                                        itemBuilder: (context, index1) {
+                                          return SizedBox(
+                                              height:
+                                                  AppDimensions.height10 * 41.9,
+                                              child: Column(children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    circles(
+                                                        circle_text:
+                                                            goalNamesAndCategories![
+                                                                            index]
+                                                                        [
+                                                                        "goals"]
+                                                                    [index1][
+                                                                "goalName"],
+                                                        circle_color1:
+                                                            0xFFFFFFFF,
+                                                        circle_color2:
+                                                            0xFFFFFFFF,
+                                                        circle_border: 3.0,
+                                                        circle_bordercolor:
+                                                            0xFFEE8E6F,
+                                                        circle_height:
+                                                            AppDimensions.height10 *
+                                                                13.4,
+                                                        circle_width:
+                                                            AppDimensions
+                                                                    .height10 *
+                                                                13.4,
+                                                        textfont: AppDimensions
+                                                                .height10 *
+                                                            1.6,
+                                                        textcolor: 0xFFFA9934),
+                                                  ],
+                                                ),
+                                              ]));
+                                        }),
+                                  )
+                                ],
+                              );
+                            })
+
+                        /*
                  ListView(
                   shrinkWrap: true,
                   children: [
@@ -598,9 +628,15 @@ class _AllGoalsState extends State<AllGoals> {
              
              */
 
+                        ),
+                  ],
+                )
+              : Center(
+                  child: SpinKitFadingCircle(
+                    color: Color(0xFFB1B8FF),
+                    size: 80,
                   ),
-            ],
-          )
+                ),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
