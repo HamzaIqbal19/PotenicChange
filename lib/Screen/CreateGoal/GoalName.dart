@@ -168,7 +168,7 @@ class _GoalNameState extends State<GoalName> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => HomeScreen(),
+                                        builder: (context) => const HomeScreen(login:false),
                                       ),
                                     );
                                   },

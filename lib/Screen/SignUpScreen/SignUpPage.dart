@@ -94,7 +94,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                          builder: (context) => const HomeScreen(login:true),
                         ),
                       );
                       // Add code for performing close action

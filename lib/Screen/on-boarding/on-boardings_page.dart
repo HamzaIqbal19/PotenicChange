@@ -133,7 +133,7 @@ class OnboardingPageState extends State<OnboardingPage> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                      builder: (context) => HomeScreen()),);
+                      builder: (context) => const HomeScreen(login:false)),);
                   // Add code for performing close action
                 },
               ),
@@ -359,7 +359,7 @@ class OnboardingPageState extends State<OnboardingPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => HomeScreen(),
+              builder: (context) => const HomeScreen(login:false),
             ),
           );
         }

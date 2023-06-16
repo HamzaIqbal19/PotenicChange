@@ -7,6 +7,7 @@ import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var client = SentryHttpClient();
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class Authentication {
   Future registerApi(name, email, password) async {
@@ -17,23 +18,18 @@ class Authentication {
       "email": "$email",
       "password": "$password",
     });
-
-    print("request:$Body");
     var request = await client
         .post(Uri.parse('${URL.BASE_URL}api/auth/signup'),
-            headers: headers, body: Body)
-        .timeout(Duration(seconds: 10));
-    print("request:");
+            headers: headers, body: Body);
 
     var responses = jsonDecode(request.body);
-    print("status:${request.statusCode}");
 
     print("request:${responses}");
-    print("request:${responses["status"]}");
+
     if (request.statusCode == 200) {
       print("response:${responses["message"]}");
 
-      var res = await responses.stream.bytesToString();
+      var res = responses["message"];
       print("return this value:$res");
       return res;
     } else {
@@ -42,6 +38,40 @@ class Authentication {
       return responses["message"];
     }
   }
+
+
+
+
+  Future refreshTokenApi(String SessionToken) async {
+    var headers = {'Content-Type': 'application/json'};
+
+    var Body = json.encode({
+      "sessionToken": SessionToken,
+
+    });
+    var request = await client
+        .post(Uri.parse('${URL.BASE_URL}api/auth/refersh-access-token'),
+        headers: headers, body: Body);
+
+    var responses = jsonDecode(request.body);
+
+    print("request:${responses}");
+
+    if (request.statusCode == 200) {
+      String token = responses;
+
+      final SharedPreferences prefs = await _prefs;
+      var accesstoken = prefs.setString('usertoken', token);
+
+
+      return true;
+    } else {
+      client.close();
+      // print("response:${}");
+      return false;
+    }
+  }
+
 
   Future SignIn(fcmRegistrationToken, email, password) async {
     var headers = {'Content-Type': 'application/json'};
@@ -52,36 +82,42 @@ class Authentication {
       "password": "$password",
     });
 
-    print("request:$Body");
+
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
         headers: headers, body: Body);
-    print("request:");
+
 
     var responses = jsonDecode(request.body);
-    print("status:${request.statusCode}");
+    // print("status:${request.statusCode}");
 
-    print("request:${responses}");
-    print("request:${responses["status"]}");
+    // print("request:${responses}");
+
     if (request.statusCode == 200) {
-      print("response:${responses["message"]}");
-      var res = await responses.stream.bytesToString();
-      Map map = jsonDecode(res);
-      String token = map['accessToken'];
-      int userid = map['id'];
-      print('$token');
-      print('$userid');
-      SharedPreferences login = await SharedPreferences.getInstance();
-      login.setString('usertoken', token);
-      login.setInt('userid', userid);
 
-      print('$token');
-      print('$userid');
-      print("return this value:$res");
-      return res;
+
+      // print("request:${responses["sessionToken"]}");
+      String token = responses["accessToken"];
+      int userid = responses['id'];
+      String Refreshtoken=responses["sessionToken"];
+
+
+      final SharedPreferences prefs = await _prefs;
+      var accesstoken = prefs.setString('usertoken', token);
+      var UserId = prefs.setInt('userid', userid);
+      var RefreshToken=prefs.setString("refreshtoken", Refreshtoken);
+
+
+      var Accestoken=prefs.getString("usertoken");
+      var UsersId=prefs.getInt("userid");
+      var SessionToken=prefs.getString("refreshtoken");
+
+      print("tokenss:$Accestoken+$UsersId+$SessionToken");
+
+      return true;
     } else {
       client.close();
       // print("response:${}");
-      return responses["message"];
+      return false;
     }
   }
 

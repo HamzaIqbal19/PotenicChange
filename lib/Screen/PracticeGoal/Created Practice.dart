@@ -62,7 +62,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
+                    builder: (context) => const HomeScreen(login: false,),
                   ),
                 );
                 // Add code for performing close action

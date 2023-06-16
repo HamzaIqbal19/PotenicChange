@@ -142,7 +142,7 @@ class _EmailSentState extends State<EmailSent> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                          builder: (context) => const HomeScreen(login:false),
                         ),
                       );
                     },

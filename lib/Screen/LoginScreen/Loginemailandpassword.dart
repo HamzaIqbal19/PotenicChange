@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -19,7 +20,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   String fcm = 'adsfsf3423424';
-
+  bool Loading =false;
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
   var errorMsg, jsonResponse;
@@ -102,7 +103,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                          builder: (context) => const HomeScreen(login:true),
                         ),
                       );
                       // Add code for performing close action
@@ -385,21 +386,42 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                         //<-- SEE HERE
                       ),
                       onPressed: () {
+                        setState(() {
+                          Loading=true;
+                        });
                         if (_formkey.currentState!.validate()) {
                           Authentication().SignIn(
                             fcm,
                             '${emailController.text.toString()}',
                             '${passwordController.text.toString()}',
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text("Login Successfull")));
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => StartProcess(),
-                          //   ),
-                          // );
+                          ) .then((response) {
+                            setState(() {
+                              Loading=false;
+                            });
+                            if(response==true){
+                              print("SignrResponse: $response");
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                  content: Text("User Login Successfully!!")));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => StartProcess(),
+                                ),
+                              );
+                            }
+                            else{
+                              setState(() {
+                                Loading=false;
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                  content: Text("Your sign in details are incorrect, please try again!!")));
+                            }
+
+                          }).catchError((error) {
+                            print("error");
+                          });
+
+
                         }
                       },
                       icon: Image.asset(
@@ -408,14 +430,18 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                         height: 0.0,
                       ),
                       label: Center(
-                          child: Text(
+                          child: Loading==false?Text(
                         'Log In',
                         style: TextStyle(
                           color: const Color(0xFF8C648A),
                           fontSize: AppDimensions.height10 * 1.6,
                           fontWeight: FontWeight.w600,
                         ),
-                      )),
+                      ): const SpinKitThreeBounce(
+                            color: Color(0xFF8C648A),
+                            size: 30,
+                          ),
+                      ),
                     ),
                   ),
                   // SizedBox(height: AppDimensions.height120+90),

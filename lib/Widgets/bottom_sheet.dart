@@ -4,7 +4,9 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:flutter_ui/utilities/app_contants.dart';
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 List<String> categories = [
   'Fulfil Potential',
@@ -16,21 +18,9 @@ String dropdownValue = categories.first;
 
 final goalName = TextEditingController();
 
-class BottomSheetExample extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: const Text('BottomSheet'),
-        onPressed: () {
-          bottom_sheet(context);
-        },
-      ),
-    );
-  }
-}
 
-void bottom_sheet(context) {
+
+void bottom_sheet(context,int id) {
   final _formkey = GlobalKey<FormState>();
   showModalBottomSheet<void>(
     context: context,
@@ -158,33 +148,10 @@ void bottom_sheet(context) {
                       colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
                 ),
                 child: TextButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formkey.currentState!.validate()) {
-                        // AdminGoal()
-                        //     .userAddGoal('${goalName.text.toString()}', 'sad',
-                        //         'sad', 'sad', 'sad', '${dropdownValue}')
-                        //     .then((success) async {
-                        //   print(
-                        //       "response of create goal api call:${success["message"]}");
-                        //   if (success["message"] !=
-                        //       "Goal was add successfully!") {
-                        //     ScaffoldMessenger.of(context).showSnackBar(
-                        //         SnackBar(content: Text(success["message"])));
-                        //     Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //         builder: (context) => GoalName(
-                        //             category: dropdownValue,
-                        //             goalName: goalName.text.toString()),
-                        //       ),
-                        //     );
-                        //   } else {
-                        //     ScaffoldMessenger.of(context).showSnackBar(
-                        //         SnackBar(content: Text(success["message"])));
-                        //   }
-                        // });
-                        print(goalName.text.toString());
-                        print(dropdownValue);
+                        SharedPreferences login = await SharedPreferences.getInstance();
+                        login.setInt('GoalId', id);
                         Navigator.push(
                           context,
                           MaterialPageRoute(

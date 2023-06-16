@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final bool login;
+  const HomeScreen({
+    Key? key,
+    required this.login,
+  }) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -18,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
   var errorMsg, jsonResponse;
@@ -27,12 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var accountFlag;
   var sessionRoute;
 
-  late SharedPreferences _prefs;
-  setEmail(email) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString('email', email);
-    print("SetEmail: $email");
-  }
+
 
   @override
   void initState() {
@@ -110,12 +111,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 Center(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => StartProcess(),
-                        ),
-                      );
+
+
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => StartProcess(),
+                      //   ),
+                      // );
                     },
                     child: Image(
                       // color: Colors.orange,
@@ -126,6 +129,212 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10 * 12.1),
+                widget.login==true?
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        showAnimatedDialog(
+                            animationType:
+                            DialogTransitionType.fadeScale,
+                            curve: Curves.easeInOut,
+                            duration: Duration(seconds: 1),
+                            context: context,
+                            builder: (BuildContext context) => SizedBox(
+                              width:
+                              AppDimensions.height10 *
+                                  27.0,
+                              height:
+                              AppDimensions.height10 *
+                                  19.8,
+                              child: AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                    BorderRadius.circular(
+                                        AppDimensions.height10 *
+                                            1.4)),
+                                contentPadding: EdgeInsets.zero,
+                                actionsPadding: EdgeInsets.zero,
+                                titlePadding: EdgeInsets.zero,
+                                title: Container(
+                                  margin: const EdgeInsets.only(
+                                      top: 19,
+                                      right: 16,
+                                      left: 16,
+                                      bottom: 2),
+                                  height: AppDimensions.height10 *
+                                      2.2,
+                                  width: AppDimensions.height10 *
+                                      23.8,
+                                  child: Text(
+                                    "Log out?",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize:
+                                      AppDimensions.height10 *
+                                          1.7,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                                content: Container(
+                                  margin: const EdgeInsets.only(
+                                      bottom: 19,
+                                      left: 16,
+                                      right: 16),
+                                  height: AppDimensions.height10 *
+                                      4.8,
+                                  width: 238,
+                                  child: Text(
+                                    "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      height:
+                                      AppDimensions.height10 *
+                                          0.15,
+                                      fontSize:
+                                      AppDimensions.height10 *
+                                          1.5,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  Column(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () async {
+                                          final SharedPreferences prefs = await _prefs;
+                                          await prefs.remove('usertoken');
+                                          await prefs.remove('userId');
+                                          await prefs.remove('refreshtoken');
+                                          Navigator.pushReplacement(
+                                            context,
+                                            FadePageRoute(
+                                              page:
+                                              const HomeScreen(
+                                                  login:
+                                                  false),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          height: 44,
+                                          width: double.infinity,
+                                          color: const Color(
+                                              0xFF007AFF),
+                                          child: const Center(
+                                            child: Text(
+                                              'Yes',
+                                              style: TextStyle(
+                                                  color: Color(
+                                                      0xFFFBFBFB),
+                                                  fontSize: 17,
+                                                  fontFamily:
+                                                  "Laila",
+                                                  fontWeight:
+                                                  FontWeight
+                                                      .w400),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                        AppDimensions.height10 *
+                                            0.1,
+                                        child: Divider(
+                                          color: const Color(
+                                              0XFF3C3C43)
+                                              .withOpacity(0.29),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 42,
+                                        width: double.infinity,
+                                        margin: EdgeInsets.only(
+                                            bottom: AppDimensions
+                                                .height10 *
+                                                1.0),
+                                        color: Colors.white,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text(
+                                            'Cancel',
+                                            style: TextStyle(
+                                                color: Color(
+                                                    0xFF007AFF),
+                                                fontSize: 17,
+                                                fontFamily: "Laila",
+                                                fontWeight:
+                                                FontWeight
+                                                    .w400),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ));
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => SignUpPage(),
+                        //   ),
+                        // );
+                      },
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 13,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF5F5F5),
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(AppDimensions.height10 * 5.0)),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "logout",
+                            style: TextStyle(
+                              color: const Color(0xFF8C648A),
+                              fontSize: AppDimensions.font16 - 2,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: AppDimensions.height10*1.4,),
+                    GestureDetector(
+                      onTap: () {
+                        signupSheet(context, "Introduction", "OnBoarding");
+                      },
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 5,
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          border: Border.all(color: Colors.transparent),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(40.0)),
+                        ),
+                        child: Center(
+                          child: Image(
+                            // color: Colors.orange,
+                            image: const AssetImage(
+                                "assets/images/Moreactions.png"),
+                            height: AppDimensions.height10 * 5,
+                            width: AppDimensions.width10 * 5,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ):
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -200,7 +409,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.transparent,
                           border: Border.all(color: Colors.transparent),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(40.0)),
+                          const BorderRadius.all(Radius.circular(40.0)),
                         ),
                         child: Center(
                           child: Image(

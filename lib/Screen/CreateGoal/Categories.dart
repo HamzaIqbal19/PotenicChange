@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/AllGoals.dart';
@@ -7,18 +9,49 @@ import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class Categories extends StatefulWidget {
-  const Categories({Key? key}) : super(key: key);
-
   @override
   State<Categories> createState() => _CategoriesState();
 }
 
-@override
-void initState() {
-  AdminGoal().getAllGoals();
-}
+List<String> goals_name = [
+  'Happiness & Wellbeing',
+  'Self Control',
+  'Category Name',
+  'Happiness & Wellbeing',
+  'Self Control',
+  'Category Name',
+  'Happiness & Wellbeing',
+  'Self Control',
+  'Category Name',
+];
 
 class _CategoriesState extends State<Categories> {
+  Future<List<String>>? _goalNamesFuture;
+  List<Map<String, dynamic>>? goalCategories;
+  late int count;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchGoalNames();
+  }
+
+  void _fetchGoalNames() {
+    AdminGoal.getAllCategoriesNames().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          goalCategories = response;
+          count = response.length ~/ 2;
+        });
+        print("response123:$goalCategories");
+      } else {
+        print("response:$response");
+      }
+    }).catchError((error) {
+      print("error");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,6 +143,134 @@ class _CategoriesState extends State<Categories> {
               SizedBox(
                 height: AppDimensions.height10 * 6.7,
               ),
+              SizedBox(
+                height: AppDimensions.height10 * 14.0,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: min(
+                      4,
+                      goalCategories!
+                          .length), // ensure itemCount doesn't exceed 4 or length of list
+                  itemBuilder: (context, index) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10 * 2.0,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GoalCategory(
+                                      "Category Name",
+                                      goalCategories?[index]["name"],
+                                      goalCategories?[index]["id"],
+                                    ),
+                                  ),
+                                );
+                                print(
+                                    '${goalCategories![index]["name"]}${goalCategories![index]["id"]}');
+                              },
+                              child: circles(
+                                  circle_text: goalCategories![index]["name"],
+                                  circle_color1: 0xFFFC854F,
+                                  circle_color2: 0xFFFAA960,
+                                  circle_border: 3.0,
+                                  circle_bordercolor: 0xFFFFFFFF,
+                                  circle_height: AppDimensions.height10 * 13.4,
+                                  circle_width: AppDimensions.height10 * 13.4,
+                                  textfont: AppDimensions.height10 * 1.6,
+                                  textcolor: 0xFFFFFFFF),
+                            )
+                          ],
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 30, top: 20.0),
+                child: SizedBox(
+                  height: AppDimensions.height10 * 14.0,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: max(4, goalCategories!.length - 4),
+                      itemBuilder: ((context, index) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.height10 * 2.0,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => GoalCategory(
+                                            "Category Name",
+                                            goalCategories![index + 4]["name"],
+                                            goalCategories![index + 4]["id"]),
+                                      ),
+                                    );
+                                  },
+                                  child: circles(
+                                      circle_text: goalCategories![index + 4]
+                                          ["name"],
+                                      circle_color1: 0xFFFC854F,
+                                      circle_color2: 0xFFFAA960,
+                                      circle_border: 3.0,
+                                      circle_bordercolor: 0xFFFFFFFF,
+                                      circle_height:
+                                          AppDimensions.height10 * 13.4,
+                                      circle_width:
+                                          AppDimensions.height10 * 13.4,
+                                      textfont: AppDimensions.height10 * 1.6,
+                                      textcolor: 0xFFFFFFFF),
+                                )
+                              ],
+                            ),
+                          ],
+                        );
+                      })),
+                ),
+              ),
+              // FutureBuilder<List<String>>(
+              //   future: _goalNamesFuture,
+              //   builder: (context, snapshot) {
+              //     if (snapshot.connectionState == ConnectionState.waiting) {
+              //       return const Center(child: CircularProgressIndicator());
+              //     } else if (snapshot.hasError) {
+              //       return Text('Error: ${snapshot.error}');
+              //     } else {
+              //       final goalNames = snapshot.data;
+
+              //       return ListView.builder(
+              //         itemCount: goalNames!.length,
+              //         itemBuilder: (context, index) {
+              //           return ListTile(
+              //             title: Text(goalNames.length.toString()),
+              //             // Customize ListTile as per your needs
+              //           );
+              //         },
+              //       );
+              //     }
+              //   },
+              // ),
+
+/*
               Container(
                 width: AppDimensions.height10 * 41.4,
                 height: AppDimensions.height10 * 28.2,
@@ -147,6 +308,9 @@ class _CategoriesState extends State<Categories> {
                                 textfont: AppDimensions.height10 * 1.6,
                                 textcolor: 0xFFFFFFFF),
                           ),
+
+
+
                           SizedBox(
                             width: AppDimensions.height10 * 1.6,
                           ),
@@ -194,12 +358,16 @@ class _CategoriesState extends State<Categories> {
                                   circle_width: AppDimensions.height10 * 13.4,
                                   textfont: AppDimensions.height10 * 1.6,
                                   textcolor: 0xFFFFFFFF)),
+
                         ],
                       ),
                     ),
+
+/*
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
+                      child:
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           SizedBox(
@@ -244,9 +412,15 @@ class _CategoriesState extends State<Categories> {
                         ],
                       ),
                     ),
+
+               */
+
+
                   ],
                 ),
               ),
+              */
+
               SizedBox(
                 height: AppDimensions.height10 * 11.6,
               ),

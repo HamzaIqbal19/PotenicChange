@@ -109,7 +109,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
+                          builder: (context) => const HomeScreen(login:false),
                         ),
                       );
                       // Add code for performing close action
@@ -477,7 +477,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             .then((response) {
                           if (response == "User was registered successfully!") {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text("${response["message"]}")));
+                                content: Text(response)));
                             Navigator.push(
                               context,
                               MaterialPageRoute(

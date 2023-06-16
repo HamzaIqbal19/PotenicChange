@@ -29,13 +29,23 @@ class _VisualisingState extends State<Visualising> {
   TextEditingController reasonWhy = TextEditingController();
   TextEditingController reasonIdentity = TextEditingController();
   TextEditingController reasonVisualising = TextEditingController();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   String goalName;
   String category;
+  var token,goalid;
+
+  @override
+  void initState() {
+    super.initState();
+    getToken();
+  }
 
   getToken() async {
-    SharedPreferences login = await SharedPreferences.getInstance();
-    var token = login.get('token');
-    return token;
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken=prefs.getString("usertoken");
+    var UsersId=prefs.getInt("userid");
+    print("token:$Accestoken");
+    print("goalId:$UsersId");
   }
 
   _VisualisingState(

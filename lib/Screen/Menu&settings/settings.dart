@@ -832,7 +832,7 @@ class Settings extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    HomeScreen()));
+                                                  const HomeScreen(login: false,)));
                                       },
                                       child: Text(
                                         'Yes',
