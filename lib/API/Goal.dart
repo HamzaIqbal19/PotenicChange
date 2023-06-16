@@ -9,6 +9,7 @@ import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var client = SentryHttpClient();
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class AdminGoal {
   Future createGoal(goalName, goalCategoryId) async {
@@ -83,7 +84,6 @@ class AdminGoal {
   } ///////////////////////////////
 
   static Future<List<Map<String, dynamic>>> getAllCategoriesNames() async {
-    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var SessionToken = prefs.getString("refreshtoken");
@@ -115,7 +115,6 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> getAllGoalAndCategories() async {
-    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var SessionToken = prefs.getString("refreshtoken");
@@ -140,7 +139,6 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> getAllGoal(int id) async {
-    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var SessionToken = prefs.getString("refreshtoken");
@@ -165,13 +163,11 @@ class AdminGoal {
   }
 
   static Future<List<Map<String, dynamic>>> searchAllGoal() async {
-    final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
-    var SessionToken = prefs.getString("refreshtoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token': '${Accestoken}',
+      'x-access-token': '$Accestoken',
     };
 
     var response = await http.get(
@@ -244,27 +240,21 @@ class AdminGoal {
 
 */
 
-  void main() async {
-    try {
-      // var goals = await getAllGoals();
-      //  print(goals);
-    } catch (e) {
-      print(e);
-    }
-  }
-
   Future userAddGoal(name, reason, identityStatement, visualizingYourSelf,
       userId, goalCategoryId, color) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var SessionToken = prefs.getString("refreshtoken");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY5MjEzOTMsImV4cCI6MTY4NzAwNzc5M30.VQltYdfXMBuk8FN5DY0UfUY5cNaMNFgrDcYEqWxI0IE'
     };
     var Body = json.encode({
       "name": "$name",
-      "reason": ["$reason"],
-      "identityStatement": ["$identityStatement"],
-      "visualizingYourSelf": ["$visualizingYourSelf"],
+      "reason": "$reason",
+      "identityStatement": "$identityStatement",
+      "visualizingYourSelf": "$visualizingYourSelf",
       "color": "$color",
       "userId": "$userId",
       "goalCategoryId": "$goalCategoryId",
@@ -294,10 +284,12 @@ class AdminGoal {
   }
 
   Future updateUserGoal(var reason) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+      'x-access-token': '$Accestoken'
     };
 
     var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/12'),
@@ -323,14 +315,16 @@ class AdminGoal {
   static Future getUserGoal() async {
     var goalName;
 
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+      'x-access-token': '$Accestoken'
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userGoal/12'),
+      Uri.parse('${URL.BASE_URL}api/userGoal/1'),
       headers: headers,
     );
 
@@ -345,10 +339,12 @@ class AdminGoal {
   }
 
   Future deleteUserGoal() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4MjA1NDIsImV4cCI6MTY4NjkwNjk0Mn0.9Q88GbIH9OTFIXPdYFFgEsn0V0LSAr5omje2YXdqK3M'
+      'x-access-token': '$Accestoken'
     };
 
     var request = await client

@@ -4,6 +4,8 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:potenic_app/utils/app_colors.dart';
 import 'dart:convert';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,6 +26,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
   var errorMsg, jsonResponse;
   bool rememberMe = true;
   bool boolean = true;
+  bool Loading = false;
   var token;
   var accountFlag;
   var sessionRoute;
@@ -109,7 +112,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const HomeScreen(login:false),
+                          builder: (context) => const HomeScreen(login: false),
                         ),
                       );
                       // Add code for performing close action
@@ -466,6 +469,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       // }),
 
                       onPressed: () {
+                        setState(() {
+                          Loading = true;
+                        });
                         // if (_formkey.currentState!.validate()) {
                         print("Hello WOrld 12345");
                         Authentication()
@@ -475,9 +481,12 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                           '${passwordController.text.toString()}',
                         )
                             .then((response) {
+                          setState(() {
+                            Loading = false;
+                          });
                           if (response == "User was registered successfully!") {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(response)));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response)));
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -486,6 +495,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                               ),
                             );
                           } else {
+                            setState(() {
+                              Loading = false;
+                            });
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Text(response["message"])));
                           }
@@ -502,14 +514,20 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         height: 0.0,
                       ),
                       label: Center(
-                          child: Text(
-                        'Sign up',
-                        style: TextStyle(
-                          color: const Color(0xFF8C648A),
-                          fontSize: AppDimensions.height10 * 1.6,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      )),
+                        child: Loading == false
+                            ? Text(
+                                'Sign up',
+                                style: TextStyle(
+                                  color: const Color(0xFF8C648A),
+                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )
+                            : const SpinKitThreeBounce(
+                                color: Color(0xFF8C648A),
+                                size: 30,
+                              ),
+                      ),
                     ),
                   ),
                   // SizedBox(height: AppDimensions.height120+90),

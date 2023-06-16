@@ -29,23 +29,13 @@ class _VisualisingState extends State<Visualising> {
   TextEditingController reasonWhy = TextEditingController();
   TextEditingController reasonIdentity = TextEditingController();
   TextEditingController reasonVisualising = TextEditingController();
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   String goalName;
   String category;
-  var token,goalid;
 
   @override
   void initState() {
     super.initState();
-    getToken();
-  }
-
-  getToken() async {
-    final SharedPreferences prefs = await _prefs;
-    var Accestoken=prefs.getString("usertoken");
-    var UsersId=prefs.getInt("userid");
-    print("token:$Accestoken");
-    print("goalId:$UsersId");
   }
 
   _VisualisingState(
@@ -232,7 +222,7 @@ class _VisualisingState extends State<Visualising> {
                             "${reasonWhy.text.toString()}",
                             "${reasonIdentity.text.toString()}",
                             "${reasonVisualising.text.toString()}",
-                            "2",
+                            "8",
                             "2",
                             "0XFF4354373");
                         ScaffoldMessenger.of(context).showSnackBar(
