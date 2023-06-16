@@ -73,6 +73,8 @@ class _backboxState extends State<backbox> {
                                   head_text: widget.head_text,
                                   delete: widget.delete,
                                   length: widget.length,
+                                  onChanged: (String value) {},
+                                  keys: '$i',
                                 ),
                                 SizedBox(
                                   height: AppDimensions.height10(context) * 0.4,
@@ -176,12 +178,15 @@ class inner_text extends StatefulWidget {
   final String body_text;
   final bool delete;
   final int length;
+  final ValueChanged<String> onChanged;
+  final String keys;
   const inner_text(
-      {super.key,
+      {required this.keys,
       required this.head_text,
       required this.body_text,
       required this.delete,
-      required this.length});
+      required this.length,
+      required this.onChanged});
 
   @override
   State<inner_text> createState() => _inner_textState();
@@ -189,17 +194,30 @@ class inner_text extends StatefulWidget {
 
 class _inner_textState extends State<inner_text> {
   final TextEditingController body_text = TextEditingController();
-  final TextEditingController heading_text = TextEditingController();
-
   late FocusNode _focusNode;
 
   void initState() {
     super.initState();
     _focusNode = FocusNode()..addListener(_onFocus);
+    body_text.addListener(_onTextChanged);
   }
 
   void _onFocus() {
     setState(() {});
+  }
+
+  void _onTextChanged() {
+    final newValue = body_text.text;
+    if (newValue != '') {
+      widget.onChanged(newValue);
+    }
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    body_text.dispose();
+    super.dispose();
   }
 
   @override
@@ -382,6 +400,7 @@ class _inner_textState extends State<inner_text> {
               height: AppDimensions.height10(context) * 6.3,
               width: AppDimensions.height10(context) * 32.0,
               child: CupertinoTextField(
+                onChanged: widget.onChanged,
                 maxLength: widget.length,
                 placeholder: widget.body_text,
                 placeholderStyle: TextStyle(
@@ -409,87 +428,3 @@ class _inner_textState extends State<inner_text> {
     );
   }
 }
-
-// FloatingActionButton add_reason = FloatingActionButton(
-//   elevation: 0,
-//   backgroundColor: Colors.transparent,
-//   onPressed: () {},
-//   child: Icon(
-//     Icons.add,
-//     color: Colors.white,
-//     size: AppDimensions.height10(context) * 3.5,
-//   ),
-//   shape: RoundedRectangleBorder(
-//       side: BorderSide(width: 3, color: Colors.white),
-//       borderRadius: BorderRadius.circular(100)),
-// );
-
-// Container(
-//       height: AppDimensions.height10(context) * 1.9,
-//       width: AppDimensions.height10(context) * 38.0,
-//       padding: EdgeInsets.only(
-//           top: AppDimensions.height10(context) * 1.3,
-//           left: AppDimensions.height10(context) * 2.0,
-//           right: AppDimensions.height10(context) * 2.0),
-//       decoration: BoxDecoration(
-//           gradient: _focusNode.hasFocus
-//               ? const LinearGradient(
-//                   begin: Alignment.topCenter,
-//                   end: Alignment.bottomCenter,
-//                   colors: [Color(0xFFEFBEB2), Color(0xFFFEAA897)])
-//               : const LinearGradient(
-//                   begin: Alignment.topCenter,
-//                   end: Alignment.bottomCenter,
-//                   colors: [Color(0xFFEECDC5), Color(0xFFF6E0DB)]),
-//           // color: Colors.white,
-
-//           border: Border.all(color: Colors.white, width: 2),
-//           borderRadius:
-//               BorderRadius.all(Radius.circular(AppDimensions.height10(context) * 1.8))),
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.start,
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Container(
-//               height: AppDimensions.height10(context) * 3.6,
-//               // width: AppDimensions.height10(context) * 26.9,
-//               child: Text(widget.circle_text,
-//                   style: TextStyle(
-//                     fontWeight: FontWeight.w600,
-//                     fontFamily: "Laila",
-//                     color: _focusNode.hasFocus
-//                         ? const Color(0xFFFFFFFF)
-//                         : const Color(0xFF828282),
-//                     fontSize: AppDimensions.height10(context) * 2.2,
-//                   ))),
-//           SizedBox(
-//             height: AppDimensions.height10(context) * 0.9,
-//           ),
-//           Container(
-//               height: AppDimensions.height10(context) * 7.5,
-//               // width: AppDimensions.height10(context) * 26.9,
-
-//               child: CupertinoTextField(
-//                 placeholder: "I want to achieve this goal because...",
-//                 textAlignVertical: TextAlignVertical.top,
-//                 placeholderStyle: TextStyle(
-//                   fontSize: AppDimensions.height10(context) * 1.6,
-//                   fontWeight: FontWeight.w500,
-//                   fontFamily: "Laila",
-                  // color: _focusNode.hasFocus
-                  //     ? const Color(0xFFFFFFFF)
-                  //     : const Color(0xFF828282),
-//                 ),
-//                 controller: body_text,
-//                 focusNode: _focusNode,
-//                 maxLines: 4,
-//                 style: const TextStyle(
-//                     fontWeight: FontWeight.w500, color: Color(0xFFFFFFFF)),
-//                 decoration: const BoxDecoration(
-//                   color: Colors.transparent,
-//                 ),
-//               )),
-//         ],
-//       ),
-//     );
-  

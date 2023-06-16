@@ -204,12 +204,14 @@ class _VisualisingState extends State<Visualising> {
                                                     focus == true;
                                                   });
                                                 },
-                                                child: const inner_text(
+                                                child: inner_text(
+                                                  keys: '$i',
                                                   head_text:
-                                                      '1. I picture myself....',
+                                                      '$i. I picture myself....',
                                                   body_text: '',
                                                   delete: false,
                                                   length: 150,
+                                                  onChanged: (String value) {},
                                                 )),
                                             SizedBox(
                                               height: AppDimensions.height10(

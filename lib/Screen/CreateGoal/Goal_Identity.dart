@@ -211,13 +211,15 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                     focus == true;
                                                   });
                                                 },
-                                                child: const inner_text(
+                                                child: inner_text(
+                                                  keys: '$i',
                                                   body_text:
                                                       'is in control of my anger',
                                                   head_text:
-                                                      '1. I am someone who',
+                                                      '$i. I am someone who',
                                                   delete: false,
                                                   length: 200,
+                                                  onChanged: (String value) {},
                                                 )),
                                             SizedBox(
                                               height: AppDimensions.height10(

@@ -12,14 +12,15 @@ class GoalWhy extends StatefulWidget {
 }
 
 class _GoalWhyState extends State<GoalWhy> {
+  Map<String, String> myTexts = {};
   int times = 2;
+  int i = 1;
   int reason = 1;
   void increment() {
     times = times + 1;
   }
 
   bool focus = false;
-  late inner_text InnerText;
 
   @override
   Widget build(BuildContext context) {
@@ -200,7 +201,7 @@ class _GoalWhyState extends State<GoalWhy> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      for (int i = 1; i <= times; i++) ...[
+                                      for (i = 1; i <= 2; i++) ...[
                                         Column(
                                           children: <Widget>[
                                             GestureDetector(
@@ -209,12 +210,27 @@ class _GoalWhyState extends State<GoalWhy> {
                                                     focus == true;
                                                   });
                                                 },
-                                                child: const inner_text(
+                                                child: inner_text(
+                                                  keys: 'Reason $i',
                                                   body_text:
                                                       'I want to achieve this goal because...',
-                                                  head_text: 'Reason 1',
+                                                  head_text: "Reason $i",
                                                   delete: true,
                                                   length: 200,
+                                                  onChanged: (String value) {
+                                                    print(value);
+                                                    print('=====');
+                                                    setState(() {
+                                                      myTexts['Reason $i'] =
+                                                          value;
+                                                    });
+                                                    for (int j = 0;
+                                                        j <= myTexts.length;
+                                                        j++) {
+                                                      print(
+                                                          myTexts['Reason $i']);
+                                                    }
+                                                  },
                                                 )),
                                             SizedBox(
                                               height: AppDimensions.height10(
@@ -305,7 +321,7 @@ class _GoalWhyState extends State<GoalWhy> {
                                 onTap: () {
                                   setState(() {
                                     increment();
-                                    reason = reason + 1;
+
                                     print(times);
                                   });
                                 },
@@ -345,6 +361,7 @@ class _GoalWhyState extends State<GoalWhy> {
                         )),
                     GestureDetector(
                       onTap: () {
+                        //print(myTexts.length);
                         Navigator.push(
                           context,
                           FadePageRoute(
