@@ -759,7 +759,19 @@ class _StarReviewState extends State<StarReview> {
                                           width: AppDimensions.height10 * 27.0,
                                           child: TextButton(
                                             onPressed: () {
-                                              AdminGoal().deleteUserGoal();
+                                              AdminGoal()
+                                                  .deleteUserGoal()
+                                                  .then((response) {
+                                                if (response == true) {
+                                                  print(
+                                                      "==================>Successfully deleted");
+                                                  Navigator.pop(context);
+                                                } else {
+                                                  print('Goal is not deleted');
+                                                }
+                                              }).catchError((error) {
+                                                print("error");
+                                              });
                                             },
                                             child: Text(
                                               'Yes',

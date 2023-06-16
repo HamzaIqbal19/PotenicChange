@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/utils/app_constants.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../API/Goal.dart';
 // import 'package:flutter_ui/pages/goalsetting/bottom_sheet.dart';
@@ -16,6 +17,8 @@ class reviewbox extends StatefulWidget {
 }
 
 class _reviewboxState extends State<reviewbox> {
+  bool Loading = true;
+
   Future<List<String>>? _goalNamesFuture;
 
   var reason;
@@ -30,6 +33,7 @@ class _reviewboxState extends State<reviewbox> {
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
+          Loading = false;
           reason = response["reason"][0];
         });
       } else {
