@@ -423,7 +423,9 @@ class _GoalNameState extends State<GoalName> {
                         Navigator.push(
                           context,
                           FadePageRoute(
-                            page: GoalWhy(),
+                            page: GoalWhy(
+                              title: '',
+                            ),
                           ),
                         );
                       },

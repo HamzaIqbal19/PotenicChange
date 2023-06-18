@@ -1,26 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
-import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../Widgets/fading.dart';
+
 class GoalWhy extends StatefulWidget {
-  const GoalWhy({Key? key}) : super(key: key);
+  GoalWhy({Key? key, required this.title}) : super(key: key);
+  final String title;
 
   @override
-  State<GoalWhy> createState() => _GoalWhyState();
+  _goalwhyState createState() => _goalwhyState();
 }
 
-class _GoalWhyState extends State<GoalWhy> {
-  Map<String, String> myTexts = {};
-  int times = 2;
-  int i = 1;
-  int reason = 1;
-  void increment() {
-    times = times + 1;
+class _goalwhyState extends State<GoalWhy> {
+  List<Map<String, dynamic>> myTextFields = [];
+  //closing the focus
+  final FocusNode blankNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    // Add one element to the list when the screen is initialized.
+    myTextFields.add({
+      'key': 'Reason ${myTextFields.length}',
+      'text': '',
+    });
   }
 
-  bool focus = false;
+  int item = 1;
+
+  void handleTextChanged(int index, String newValue) {
+    setState(() {
+      myTextFields[index]['text'] = newValue;
+    });
+    print(myTextFields);
+  }
+
+  void decrement() {
+    item = item - 1;
+  }
+
+  void handleDelete(int index) {
+    print('=========>dELETED');
+    setState(() {
+      // myTextFields[index]['text'].remove(index);
+
+      myTextFields.removeAt(index);
+
+      for (int i = index + 1; i < myTextFields.length; i++) {
+        myTextFields[i]['key'] = i.toString();
+
+        // Assuming 'key' is the identifier you want to update.
+      }
+      //index--;
+    });
+    decrement();
+    //closing the focus
+    blankNode.requestFocus();
+    //closing the focus
+    print(myTextFields);
+    print('dELETED');
+  }
+
+  void increment() {
+    item = item + 1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +92,7 @@ class _GoalWhyState extends State<GoalWhy> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
-                  // Navigator.pushReplacement(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => HomeScreen(),
-                  //   ),
-                  // );
+                  Navigator.pop(context, true);
                   // Add code for performing close action
                 },
               ),
@@ -91,7 +132,7 @@ class _GoalWhyState extends State<GoalWhy> {
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -99,7 +140,7 @@ class _GoalWhyState extends State<GoalWhy> {
                       top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
-                      "Star Creation 3/5",
+                      "Star Creation 5/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -124,9 +165,10 @@ class _GoalWhyState extends State<GoalWhy> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10(context) * 1.9,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
+                    // color: Colors.blue,
                     width: AppDimensions.height10(context) * 10.4,
                     height: AppDimensions.height10(context) * 7.6,
                     padding: EdgeInsets.only(
@@ -137,7 +179,7 @@ class _GoalWhyState extends State<GoalWhy> {
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
-                  height: AppDimensions.height10(context) * 3.7,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
                   child: Center(
@@ -155,11 +197,11 @@ class _GoalWhyState extends State<GoalWhy> {
                   height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10(context) * 4.9,
+                  // height: AppDimensions.height10(context) * 4.9,
                   width: AppDimensions.height10(context) * 37.2,
                   child: Center(
                     child: Text(
-                      "Why pursuing this goal is important to \n you? ",
+                      "Why pursuing this goal is important\nto you?",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.8,
@@ -173,128 +215,97 @@ class _GoalWhyState extends State<GoalWhy> {
                 ),
                 Container(
                   width: AppDimensions.height10(context) * 38.2,
-                  height: AppDimensions.height10(context) * 33.0,
+                  height: item == 1
+                      ? AppDimensions.height10(context) * 21.0
+                      : AppDimensions.height10(context) * 34.0,
                   child: Stack(children: [
                     Container(
-                        width: AppDimensions.height10(context) * 38.2,
-                        height: AppDimensions.height10(context) * 33.0,
-                        padding: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 1.1,
-                            right: AppDimensions.height10(context) * 1.1),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                                color: Colors.white,
-                                width: AppDimensions.height10(context) * 0.2),
-                            borderRadius: BorderRadius.all(Radius.circular(
-                                AppDimensions.height10(context) * 1.8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Center(
-                              child: SizedBox(
-                                height: AppDimensions.height10(context) * 31.0,
-                                width: AppDimensions.height10(context) * 36.2,
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      for (i = 1; i <= 2; i++) ...[
-                                        Column(
-                                          children: <Widget>[
-                                            GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    focus == true;
-                                                  });
-                                                },
-                                                child: inner_text(
-                                                  keys: 'Reason $i',
-                                                  body_text:
-                                                      'I want to achieve this goal because...',
-                                                  head_text: "Reason $i",
-                                                  delete: true,
-                                                  length: 200,
-                                                  onChanged: (String value) {
-                                                    print(value);
-                                                    print('=====');
-                                                    setState(() {
-                                                      myTexts['Reason $i'] =
-                                                          value;
-                                                    });
-                                                    for (int j = 0;
-                                                        j <= myTexts.length;
-                                                        j++) {
-                                                      print(
-                                                          myTexts['Reason $i']);
-                                                    }
-                                                  },
-                                                )),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.4,
-                                            ),
-                                            Container(
-                                              padding: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      2.0,
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      13.6),
-                                              child: Row(
-                                                children: [
-                                                  Center(
-                                                    child: Text(
-                                                      "Character count: ",
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF464646),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.3,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Center(
-                                                    child: Text(
-                                                      "200",
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        color: const Color(
-                                                            0xFF464646),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.3,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.9,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ],
-                                  ),
-                                ),
-                              ),
+                      // width: AppDimensions.height10(context) * 38.2,
+                      //height: AppDimensions.height10(context) * 33.0,
+                      padding: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.1,
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                              color: Colors.white,
+                              width: AppDimensions.height10(context) * 0.2),
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              AppDimensions.height10(context) * 1.8))),
+                      child: ListView.builder(
+                        itemCount: myTextFields.length,
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (BuildContext context, index) {
+                          return Column(children: [
+                            inner_text(
+                              key: Key(myTextFields[index]['key']),
+                              delete: true,
+                              head_text: "Reason ${index + 1}",
+                              body_text: myTextFields[index]['text'],
+                              length: 200,
+                              onChanged: (newText) {
+                                setState(() {
+                                  myTextFields[index]['text'] = newText;
+                                });
+                                handleTextChanged(index, newText);
+                              },
+                              onDelete: () => handleDelete(index),
+                              index: index,
+                              placeHolder:
+                                  'I want to achieve this goal because...',
                             ),
-                          ],
-                        )),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 1.5,
+                                  bottom:
+                                      AppDimensions.height10(context) * 1.3),
+                              child: Row(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      "Character count: ",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF464646),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.3,
+                                      ),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      "200",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xFF464646),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.3,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height:
+                                        AppDimensions.height10(context) * 0.3,
+                                    width:
+                                        AppDimensions.height10(context) * 4.0,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) *
+                                            0.5,
+                                        left: AppDimensions.height10(context) *
+                                            4.0),
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Color(0xFF282828).withOpacity(0.2)),
+                                  )
+                                ],
+                              ),
+                            )
+                          ]);
+                        },
+                      ),
+                    ),
                     Positioned(
                       top: 0,
                       bottom: 0,
@@ -302,7 +313,9 @@ class _GoalWhyState extends State<GoalWhy> {
                       right: 0,
                       child: Align(
                         //alignment: Alignment.bottomCenter,
-                        alignment: Alignment(0.01, 1.155),
+                        alignment: item == 1
+                            ? Alignment(0.01, 1.3)
+                            : Alignment(0.01, 1.17),
                         //heightFactor: 0.5,
                         child: Container(
                           height: AppDimensions.height10(context) * 4.7,
@@ -319,11 +332,15 @@ class _GoalWhyState extends State<GoalWhy> {
                                 top: 4, left: 4, right: 4, bottom: 4),
                             child: GestureDetector(
                                 onTap: () {
+                                  increment();
                                   setState(() {
-                                    increment();
-
-                                    print(times);
+                                    myTextFields.add({
+                                      'key':
+                                          'Reason ${myTextFields.length.toString()}',
+                                      'text': '',
+                                    });
                                   });
+                                  print("=============>Pressed");
                                 },
                                 child: Container(
                                   color: Colors.transparent,
@@ -361,11 +378,11 @@ class _GoalWhyState extends State<GoalWhy> {
                         )),
                     GestureDetector(
                       onTap: () {
-                        //print(myTexts.length);
-                        Navigator.push(
+                        // print(myTextFields[2]);
+                        Navigator.pushReplacement(
                           context,
                           FadePageRoute(
-                            page: Goal_Identity(),
+                            page: const Goal_Identity(),
                           ),
                         );
                       },

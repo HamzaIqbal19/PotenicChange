@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -14,14 +15,59 @@ class Goal_Identity extends StatefulWidget {
 
 // ignore: camel_case_types
 class _Goal_IdentityState extends State<Goal_Identity> {
-  int times = 2;
+  List<Map<String, dynamic>> myIdentity = [];
+  //closing the focus
+  final FocusNode blankNode = FocusNode();
 
-  void increment() {
-    times = times + 1;
+  @override
+  void initState() {
+    super.initState();
+    // Add one element to the list when the screen is initialized.
+    myIdentity.add({
+      'key': 'Reason ${myIdentity.length}',
+      'text': '',
+    });
   }
 
-  bool focus = false;
-  late inner_text InnerText;
+  int item = 1;
+
+  void handleTextChanged(int index, String newValue) {
+    setState(() {
+      myIdentity[index]['text'] = newValue;
+    });
+    print(myIdentity);
+  }
+
+  void decrement() {
+    item = item - 1;
+  }
+
+  void handleDelete(int index) {
+    print('=========>dELETED');
+    setState(() {
+      // myTextFields[index]['text'].remove(index);
+
+      myIdentity.removeAt(index);
+
+      for (int i = index + 1; i < myIdentity.length; i++) {
+        myIdentity[i]['key'] = i.toString();
+
+        // Assuming 'key' is the identifier you want to update.
+      }
+      //index--;
+    });
+    decrement();
+    //closing the focus
+    blankNode.requestFocus();
+    //closing the focus
+    print(myIdentity);
+    print('dELETED');
+  }
+
+  void increment() {
+    item = item + 1;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,116 +220,96 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 ),
                 Container(
                   width: AppDimensions.height10(context) * 38.2,
-                  height: AppDimensions.height10(context) * 33.0,
+                  height: item == 1
+                      ? AppDimensions.height10(context) * 21.0
+                      : AppDimensions.height10(context) * 34.0,
                   child: Stack(children: [
                     Container(
-                        width: AppDimensions.height10(context) * 38.2,
-                        height: AppDimensions.height10(context) * 33.0,
-                        padding: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 1.1,
-                            right: AppDimensions.height10(context) * 1.1),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                                color: Colors.white,
-                                width: AppDimensions.height10(context) * 0.2),
-                            borderRadius: BorderRadius.all(Radius.circular(
-                                AppDimensions.height10(context) * 1.8))),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Center(
-                              child: SizedBox(
-                                height: AppDimensions.height10(context) * 31.0,
-                                width: AppDimensions.height10(context) * 36.2,
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      for (int i = 1; i <= times; i++) ...[
-                                        Column(
-                                          children: <Widget>[
-                                            GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    focus == true;
-                                                  });
-                                                },
-                                                child: inner_text(
-                                                  keys: '$i',
-                                                  body_text:
-                                                      'is in control of my anger',
-                                                  head_text:
-                                                      '$i. I am someone who',
-                                                  delete: false,
-                                                  length: 200,
-                                                  onChanged: (String value) {},
-                                                )),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.4,
-                                            ),
-                                            Container(
-                                              padding: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      2.0,
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      13.6),
-                                              child: Row(
-                                                children: [
-                                                  Center(
-                                                    child: Text(
-                                                      "Character count: ",
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF464646),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.3,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Center(
-                                                    child: Text(
-                                                      "150",
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        color: const Color(
-                                                            0xFF464646),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.3,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.9,
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ],
-                                  ),
-                                ),
-                              ),
+                      // width: AppDimensions.height10(context) * 38.2,
+                      //height: AppDimensions.height10(context) * 33.0,
+                      padding: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.1,
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                              color: Colors.white,
+                              width: AppDimensions.height10(context) * 0.2),
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              AppDimensions.height10(context) * 1.8))),
+                      child: ListView.builder(
+                        itemCount: myIdentity.length,
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (BuildContext context, index) {
+                          return Column(children: [
+                            inner_text(
+                              key: Key(myIdentity[index]['key']),
+                              delete: true,
+                              head_text: "${index + 1}. I am someone who ",
+                              body_text: myIdentity[index]['text'],
+                              length: 150,
+                              onChanged: (newText) {
+                                setState(() {
+                                  myIdentity[index]['text'] = newText;
+                                });
+                                handleTextChanged(index, newText);
+                              },
+                              onDelete: () => handleDelete(index),
+                              index: index,
+                              placeHolder: 'is in control of my anger....',
                             ),
-                          ],
-                        )),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 1.5,
+                                  bottom:
+                                      AppDimensions.height10(context) * 1.3),
+                              child: Row(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      "Character count: ",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF464646),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.3,
+                                      ),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      "150",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xFF464646),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.3,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height:
+                                        AppDimensions.height10(context) * 0.3,
+                                    width:
+                                        AppDimensions.height10(context) * 4.0,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) *
+                                            0.5,
+                                        left: AppDimensions.height10(context) *
+                                            4.0),
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Color(0xFF282828).withOpacity(0.2)),
+                                  )
+                                ],
+                              ),
+                            )
+                          ]);
+                        },
+                      ),
+                    ),
                     Positioned(
                       top: 0,
                       bottom: 0,
@@ -291,7 +317,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       right: 0,
                       child: Align(
                         //alignment: Alignment.bottomCenter,
-                        alignment: Alignment(0.01, 1.155),
+                        alignment: item == 1
+                            ? Alignment(0.01, 1.3)
+                            : Alignment(0.01, 1.17),
                         //heightFactor: 0.5,
                         child: Container(
                           height: AppDimensions.height10(context) * 4.7,
@@ -308,10 +336,15 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 top: 4, left: 4, right: 4, bottom: 4),
                             child: GestureDetector(
                                 onTap: () {
+                                  increment();
                                   setState(() {
-                                    increment();
-                                    print(times);
+                                    myIdentity.add({
+                                      'key':
+                                          'Identity ${myIdentity.length.toString()}',
+                                      'text': '',
+                                    });
                                   });
+                                  print("=============>Pressed");
                                 },
                                 child: Container(
                                   color: Colors.transparent,
