@@ -8,13 +8,22 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 
 String start_time = '00:00';
 String end_time = '07:00';
+
 String? minutes;
 String? hours;
+
+List<String> selectedDays = []; // Declare the selectedDays list here
 int count = 0;
 String day = '';
 String hour = '';
 String minute = '';
 String period = '';
+
+String endday = '';
+String endhour = '';
+String endminute = minute;
+String endperiod = '';
+
 bool Done = false;
 
 class schedule extends StatelessWidget {
@@ -85,6 +94,14 @@ class schedule_card extends StatefulWidget {
 class _schedule_cardState extends State<schedule_card> {
   final String days_name;
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
+  void removeSelectedDay(String day) {
+    if (count > 0) {
+      setState(() {
+        selectedDays.remove(day);
+        onCountChanged(--count);
+      });
+    }
+  }
 
   final ValueChanged<int> onCountChanged;
 
@@ -92,6 +109,8 @@ class _schedule_cardState extends State<schedule_card> {
 
   @override
   Widget build(BuildContext context) {
+    bool isDaySelected = selectedDays.contains(days_name);
+
     return Container(
         decoration: BoxDecoration(
             color: Colors.white,
@@ -115,56 +134,73 @@ class _schedule_cardState extends State<schedule_card> {
                 decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
-                trailing: Container(
-                    height: 32.5,
-                    width: 32.5,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color.fromRGBO(250, 153, 52, 1),
-                    ),
-                    child: FloatingActionButton(
-                        elevation: 0,
-                        backgroundColor: Colors.transparent,
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 30,
+                trailing: isDaySelected
+                    ? null
+                    : Container(
+                        height: 32.5,
+                        width: 32.5,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromRGBO(250, 153, 52, 1),
                         ),
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return MyListWheelForm(
-                                onSelectionChanged: (selectedDay, selectedHour,
-                                    selectedMinute, selectedPeriod, Done) {
-                                  setState(() {
-                                    start_time =
-                                        "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                    end_time = "12:00am";
-                                    Done = Done;
-                                    print("Done:$Done");
-                                    if (Done == true) {
-                                      _globalKey.currentState?.expand();
-                                      count = count + 1;
-                                      onCountChanged(count);
-                                    }
-                                    // date.hour.toString();
-                                    day = selectedDay;
-                                    hour = selectedHour;
-                                    minute = selectedMinute;
-                                    period = selectedPeriod;
-                                  });
-                                },
-                              );
-                            },
-                            isScrollControlled: true,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(16),
-                              ),
+                        child: FloatingActionButton(
+                            elevation: 0,
+                            backgroundColor: Colors.transparent,
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 30,
                             ),
-                          );
-                        })),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return MyListWheelForm(
+                                    onSelectionChanged: (selectedDay,
+                                        selectedHour,
+                                        selectedMinute,
+                                        selectedPeriod,
+                                        Done) {
+                                      setState(() {
+                                        if (Done) {
+                                          selectedDays.add(days_name);
+                                          _globalKey.currentState?.expand();
+                                          _globalKey.currentState?.expand();
+                                          _globalKey.currentState?.expand();
+                                          start_time =
+                                              "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                          end_time =
+                                              "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                          Done = Done;
+                                          print("Done:$Done");
+                                          if (Done == true) {
+                                            _globalKey.currentState?.expand();
+                                            count = count + 1;
+                                            onCountChanged(count);
+                                          }
+                                        }
+                                        // date.hour.toString();
+                                        day = selectedDay;
+                                        hour = selectedHour;
+                                        minute = selectedMinute;
+                                        endday = selectedDay;
+                                        endhour = selectedHour;
+                                        endminute = selectedMinute;
+
+                                        period = selectedPeriod;
+                                        endperiod = selectedPeriod;
+                                      });
+                                    },
+                                  );
+                                },
+                                isScrollControlled: true,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
+                              );
+                            })),
                 title: Text(
                   days_name,
                   style: const TextStyle(
@@ -197,6 +233,7 @@ class _schedule_cardState extends State<schedule_card> {
                                 onPressed: () {
                                   setState(() {
                                     start_time = '00:00';
+                                    removeSelectedDay(days_name);
                                   });
                                   _globalKey.currentState?.collapse();
                                 },
@@ -210,39 +247,40 @@ class _schedule_cardState extends State<schedule_card> {
                       ],
                     ),
                   ),
+
                   Container(
                     width: AppDimensions.height10 * 38.2,
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
                         const endTimerState(
-                          text: '1) Time: ',
+                          text: '2) Time: ',
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: Container(
-                              height: 37,
-                              width: 37,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color.fromRGBO(0, 0, 0, 0.1),
-                              ),
-                              child: FloatingActionButton(
-                                elevation: 0,
-                                backgroundColor: Colors.transparent,
-                                onPressed: () {
-                                  setState(() {
-                                    end_time = '00:00';
-                                  });
-                                  _globalKey.currentState?.collapse();
-                                },
-                                child: const Icon(
-                                  Icons.delete,
-                                  color: Colors.black,
-                                  size: 15,
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Container(
+                                height: 37,
+                                width: 37,
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color.fromRGBO(0, 0, 0, 0.1),
                                 ),
-                              )),
-                        )
+                                child: FloatingActionButton(
+                                  elevation: 0,
+                                  backgroundColor: Colors.transparent,
+                                  onPressed: () {
+                                    setState(() {
+                                      end_time = '00:00';
+                                      removeSelectedDay(days_name);
+                                    });
+                                    _globalKey.currentState?.collapse();
+                                  },
+                                  child: const Icon(
+                                    Icons.delete,
+                                    color: Colors.black,
+                                    size: 15,
+                                  ),
+                                )))
                       ],
                     ),
                   ),
@@ -429,13 +467,13 @@ class _endTimerStateState extends State<endTimerState> {
                           onSelectionChanged: (selectedDay, selectedHour,
                               selectedMinute, selectedPeriod, Done) {
                             setState(() {
-                              start_time =
+                              end_time =
                                   "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
                               // date.hour.toString();
-                              day = selectedDay;
-                              hour = selectedHour;
-                              minute = selectedMinute;
-                              period = selectedPeriod;
+                              endday = selectedDay;
+                              endhour = selectedHour;
+                              endminute = selectedMinute;
+                              endperiod = selectedPeriod;
                             });
                           },
                         );

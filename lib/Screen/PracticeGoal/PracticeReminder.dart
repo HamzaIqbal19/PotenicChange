@@ -147,7 +147,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     Container(
                       child: Center(
                         child: Text(
-                          "Meditation ",
+                          widget.pracTitle,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,

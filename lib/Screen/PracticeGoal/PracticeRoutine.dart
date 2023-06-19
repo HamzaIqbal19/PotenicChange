@@ -247,6 +247,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             ),
                           );
                         } else {}
+                        print("successfull${widget.pracTitle}");
                       },
                       child: Container(
                         height: AppDimensions.height10 * 5,
