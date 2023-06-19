@@ -1,48 +1,149 @@
+import 'dart:convert';
+
+import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/MyServices/API.dart';
+import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
+import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
+import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/fading.dart';
+
 class Visualising extends StatefulWidget {
-  String goalName;
-  String category;
-  TextEditingController reasonWhy;
-  TextEditingController reasonIdentity;
-  Visualising(
-      {required this.goalName,
-      required this.category,
-      required this.reasonWhy,
-      required this.reasonIdentity});
+  const Visualising({Key? key}) : super(key: key);
 
   @override
-  State<Visualising> createState() => _VisualisingState(
-      goalName: goalName,
-      category: category,
-      reasonWhy: reasonWhy,
-      reasonIdentity: reasonIdentity);
+  State<Visualising> createState() => _VisualisingState();
 }
 
 class _VisualisingState extends State<Visualising> {
-  TextEditingController reasonWhy = TextEditingController();
-  TextEditingController reasonIdentity = TextEditingController();
-  TextEditingController reasonVisualising = TextEditingController();
-  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  String goalName;
-  String category;
-
+  List<Map<String, String>> goalVisualising = [];
+  //closing the focus
+  final FocusNode blankNode = FocusNode();
+  bool Loading=false;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   @override
   void initState() {
     super.initState();
+    // Add one element to the list when the screen is initialized.
+    goalVisualising.add({
+      'key': 'Reason ${goalVisualising.length}',
+      'text': '',
+    });
   }
 
-  _VisualisingState(
-      {required this.goalName,
-      required this.category,
-      required this.reasonWhy,
-      required this.reasonIdentity});
+  int item = 1;
+
+  void handleTextChanged(int index, String newValue) {
+    setState(() {
+      goalVisualising[index]['text'] = newValue;
+    });
+    print(goalVisualising);
+  }
+
+  void decrement() {
+    item = item - 1;
+  }
+
+  void handleDelete(int index) {
+    print('=========>dELETED');
+    setState(() {
+      // myTextFields[index]['text'].remove(index);
+
+      goalVisualising.removeAt(index);
+
+      for (int i = index + 1; i < goalVisualising.length; i++) {
+        goalVisualising[i]['key'] = i.toString();
+
+        // Assuming 'key' is the identifier you want to update.
+      }
+      //index--;
+    });
+    decrement();
+    //closing the focus
+    blankNode.requestFocus();
+    //closing the focus
+    print(goalVisualising);
+    print('dELETED');
+  }
+
+  void increment() {
+    item = item + 1;
+  }
+
+  Future<void> updateGoalReason(List<Map<String, String>> newReason) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // Check if 'goal' is in shared preferences
+    if (prefs.containsKey('goal')) {
+      // Get stored Goal object from shared preferences
+      String? jsonString = prefs.getString('goal');
+      Map<String, dynamic> userMap = jsonDecode(jsonString!);
+
+      Goal goal = Goal.fromJson(userMap);
+      // Update reason field
+      goal.visualizingYourSelf = newReason;
+
+      // Convert updated Goal object back to JSON string
+      jsonString = jsonEncode(goal.toJson());
+
+      // Save updated Goal object back to shared preferences
+      await prefs.setString('goal', jsonString);
+      getGoal();
+    } else {
+      print("No goal found in shared preferences");
+    }
+  }
+
+  Future<Goal> getGoal() async {
+    print("hello world");
+    final prefs = await SharedPreferences.getInstance();
+    String? jsonString = prefs.getString('goal');
+    print(jsonString);
+
+    if (jsonString != null) {
+      Map<String, dynamic> jsonMap = json.decode(jsonString);
+      AdminGoal().userAddGoal(
+       jsonMap
+      ) .then((response) async {
+        setState(() {
+          Loading=false;
+        });
+        if(response==true){
+          print("visualizeResponse: $response");
+          // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          //     content: Text("User Login Successfully!!")));
+          await prefs
+              .remove('goal');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const GoalFinished(),
+            ),
+          );
+        }
+        else{
+          setState(() {
+            Loading=false;
+          });
+          // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          //     content: Text("Your sign in details are incorrect, please try again!!")));
+        }
+
+      }).catchError((error) {
+        print("error");
+      });
+
+      return Goal.fromJson(jsonMap);
+    }
+
+    throw Exception('No goal found in local storage');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,15 +182,145 @@ class _VisualisingState extends State<Visualising> {
                     height: AppDimensions.height10 * 3.0,
                     fit: BoxFit.contain,
                   ),
-                  onPressed: () {
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
-                    //   ),
-                    // );
-                    // Add code for performing close action
-                  },
+                  onPressed: () => showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => Container(
+                      width: AppDimensions.height10 * 27.0,
+                      height: AppDimensions.height10 * 21.0,
+                      child: AlertDialog(
+                        contentPadding: EdgeInsets.zero,
+                        actionsPadding: EdgeInsets.zero,
+                        titlePadding: EdgeInsets.zero,
+                        title: Container(
+                          margin: EdgeInsets.only(
+                              top: 19, right: 16, left: 16, bottom: 2),
+                          height: AppDimensions.height10 * 2.2,
+                          width: AppDimensions.height10 * 23.8,
+                          child: const Text(
+                            "Exit onboarding?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        content: Container(
+                          margin:
+                          EdgeInsets.only(bottom: 19, left: 16, right: 16),
+                          height: 32,
+                          width: 238,
+                          child: const Text(
+                            "Please select from the options below",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        actions: <Widget>[
+                          Column(
+                            children: [
+                              FDottedLine(
+                                color:
+                                const Color(0xFF3C3C43).withOpacity(0.29),
+                                width: double.infinity,
+                                strokeWidth: 2.0,
+                                dottedLength: 10.0,
+                                space: 0.7,
+                              ),
+                              Container(
+                                height: 42,
+                                width: double.infinity,
+                                color: Colors.white,
+                                child: TextButton(
+                                  onPressed: () async {
+                                    updateGoalReason(goalVisualising);
+                                    final SharedPreferences prefs = await _prefs;
+                                    var goalvisualising = prefs.setString('route', "goalVisualising");
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            HomeScreenProgressSaved(login: true,route: "goalVisualising",),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Exit & save progress',
+                                    style: TextStyle(
+                                        color: Color(0xFF007AFF),
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ),
+                              FDottedLine(
+                                color:
+                                const Color(0xFF3C3C43).withOpacity(0.29),
+                                width: double.infinity,
+                                strokeWidth: 2.0,
+                                dottedLength: 10.0,
+                                space: 0.7,
+                              ),
+                              Container(
+                                height: 44,
+                                width: double.infinity,
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                        const HomeScreen(login: false),
+                                      ),
+                                    );
+                                  },
+                                  child: const Text(
+                                    'Exit & delete progress',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xFF007AFF)),
+                                  ),
+                                ),
+                              ),
+                              FDottedLine(
+                                color:
+                                const Color(0xFF3C3C43).withOpacity(0.29),
+                                width: double.infinity,
+                                strokeWidth: 2.0,
+                                dottedLength: 10.0,
+                                space: 0.7,
+                              ),
+                              Container(
+                                height: 42,
+                                width: double.infinity,
+                                color: Colors.white,
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Cancel exit',
+                                    style: TextStyle(
+                                        color: Color(0xFF007AFF),
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // Add code for performing close action
                 ),
               ),
             ],
@@ -106,11 +337,12 @@ class _VisualisingState extends State<Visualising> {
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
+                  padding: EdgeInsets.only(
+                      top: AppDimensions.height10 * 5.2),
                   child: Center(
                     child: Text(
                       "Star Creation 5/5",
@@ -141,7 +373,7 @@ class _VisualisingState extends State<Visualising> {
                   height: AppDimensions.height10 * 1.0,
                 ),
                 Container(
-                    // color: Colors.blue,
+                  // color: Colors.blue,
                     width: AppDimensions.height10 * 10.4,
                     height: AppDimensions.height10 * 7.6,
                     padding: EdgeInsets.only(
@@ -170,7 +402,7 @@ class _VisualisingState extends State<Visualising> {
                   height: AppDimensions.height10 * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 4.9,
+                  // height: AppDimensions.height10 * 4.9,
                   width: AppDimensions.height10 * 37.2,
                   child: Center(
                     child: Text(
@@ -186,23 +418,163 @@ class _VisualisingState extends State<Visualising> {
                 SizedBox(
                   height: AppDimensions.height10 * 3.4,
                 ),
-                backbox(
-                  reason: reasonVisualising,
-                  goalName: goalName,
-                  category: category,
+                Container(
+                  width: AppDimensions.height10 * 38.2,
+                  height: item == 1
+                      ? AppDimensions.height10 * 21.0
+                      : AppDimensions.height10 * 34.0,
+                  child: Stack(children: [
+                    Container(
+                      // width: AppDimensions.height10 * 38.2,
+                      //height: AppDimensions.height10 * 33.0,
+                      padding: EdgeInsets.only(
+                        top: AppDimensions.height10 * 1.1,
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                              color: Colors.white,
+                              width: AppDimensions.height10 * 0.2),
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              AppDimensions.height10 * 1.8))),
+                      child: ListView.builder(
+                        itemCount: goalVisualising.length,
+                        padding: EdgeInsets.zero,
+                        itemBuilder: (BuildContext context, index) {
+                          return Column(children: [
+                            inner_text(
+                              key: Key(goalVisualising[index]['key']!),
+                              delete: true,
+                              head_text: "${index + 1}. I picture myself.... ",
+                              body_text: goalVisualising[index]['text']!,
+                              length: 200,
+                              onChanged: (newText) {
+                                setState(() {
+                                  goalVisualising[index]['text'] = newText;
+                                });
+                                handleTextChanged(index, newText);
+                              },
+                              onDelete: () => handleDelete(index),
+
+                              index: index,
+                              placeHolder: '',
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 1.5,
+                                  bottom:
+                                  AppDimensions.height10 * 1.3),
+                              child: Row(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      "Character count: ",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF464646),
+                                        fontSize:
+                                        AppDimensions.height10 *
+                                            1.3,
+                                      ),
+                                    ),
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      "200",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xFF464646),
+                                        fontSize:
+                                        AppDimensions.height10 *
+                                            1.3,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height:
+                                    AppDimensions.height10 * 0.3,
+                                    width:
+                                    AppDimensions.height10 * 4.0,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10 *
+                                            0.5,
+                                        left: AppDimensions.height10 *
+                                            4.0),
+                                    decoration: BoxDecoration(
+                                        color:
+                                        Color(0xFF282828).withOpacity(0.2)),
+                                  )
+                                ],
+                              ),
+                            )
+                          ]);
+                        },
+                      ),
+                    ),
+                    Positioned(
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Align(
+                        //alignment: Alignment.bottomCenter,
+                        alignment: item == 1
+                            ? Alignment(0.01, 1.3)
+                            : Alignment(0.01, 1.17),
+                        //heightFactor: 0.5,
+                        child: Container(
+                          height: AppDimensions.height10 * 4.7,
+                          width: AppDimensions.height10 * 4.7,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [Color(0xFFB1B8FF), Color(0xFFC5CAFF)]),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 4, left: 4, right: 4, bottom: 4),
+                            child: GestureDetector(
+                                onTap: () {
+                                  increment();
+                                  setState(() {
+                                    goalVisualising.add({
+                                      'key':
+                                      'Identity ${goalVisualising.length.toString()}',
+                                      'text': '',
+                                    });
+                                  });
+                                  print("=============>Pressed");
+                                },
+                                child: Container(
+                                  color: Colors.transparent,
+                                  child: Image.asset(
+                                    'assets/images/Addgoal.png',
+                                    height:
+                                    AppDimensions.height10 * 4.7,
+                                    width:
+                                    AppDimensions.height10 * 4.7,
+                                  ),
+                                )),
+                          ),
+                        ),
+                      ),
+                    )
+                  ]),
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10 * 7.2,
-                      )
+                  height: AppDimensions.height10 * 12.2,
+                )
                     : SizedBox(
-                        height: AppDimensions.height10 * 5.0,
-                      ),
+                  height: AppDimensions.height10 * 5.0,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                        // color: Colors.blue,
+                      // color: Colors.blue,
                         width: AppDimensions.height10 * 5.0,
                         height: AppDimensions.height10 * 5.0,
                         child: Image.asset(
@@ -211,28 +583,7 @@ class _VisualisingState extends State<Visualising> {
                         )),
                     GestureDetector(
                       onTap: () {
-                        print('');
-                        print("$goalName");
-                        print("${reasonIdentity.text.toString()}");
-                        print("$category");
-                        print("${reasonVisualising.text.toString()}");
-                        //  myapi().create_goal(goalName, reasonWhy.text,C, reasonVisualising.text.toString(), category);
-                        AdminGoal().userAddGoal(
-                            "$goalName",
-                            "${reasonWhy.text.toString()}",
-                            "${reasonIdentity.text.toString()}",
-                            "${reasonVisualising.text.toString()}",
-                            "8",
-                            "2",
-                            "0XFF4354373");
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("New Goal Inserted")));
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => GoalFinished(),
-                          ),
-                        );
+                        updateGoalReason(goalVisualising);
                       },
                       child: Container(
                         height: AppDimensions.height10 * 5,
@@ -245,7 +596,7 @@ class _VisualisingState extends State<Visualising> {
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
                           borderRadius:
-                              const BorderRadius.all(Radius.circular(50.0)),
+                          const BorderRadius.all(Radius.circular(50.0)),
                         ),
                         child: Center(
                           child: Text(

@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
@@ -7,33 +9,51 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GoalName extends StatefulWidget {
-  String category;
-  String goalName;
 
-  GoalName({required this.category, required this.goalName});
+
+  GoalName();
 
   @override
   State<GoalName> createState() =>
-      _GoalNameState(category: category, goalName: goalName);
+      _GoalNameState();
 }
 
 class _GoalNameState extends State<GoalName> {
-  String category;
-  String goalName;
 
-  _GoalNameState({required this.category, required this.goalName});
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  _GoalNameState();
 
   final mygoal = TextEditingController();
 
   @override
   void initState() {
     // TODO: implement initState
-    dropdownValue = widget.category;
-    mygoal.text = widget.goalName;
+    // dropdownValue = widget.category;
+
+    getGoalName();
     super.initState();
+
+
   }
+  //
+  getGoalName() async {
+    print("hello world1224");
+    final SharedPreferences prefs = await _prefs;
+   var goalName=prefs.getString("goalName");
+   mygoal.text=goalName!;
+
+
+  }
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -133,12 +153,14 @@ class _GoalNameState extends State<GoalName> {
                                 width: double.infinity,
                                 color: Colors.white,
                                 child: TextButton(
-                                  onPressed: () {
+                                  onPressed: () async {
+                                    final SharedPreferences prefs = await _prefs;
+                                    var RouteName = prefs.setString('route', "GoalName");
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            HomeScreenProgressSaved(),
+                                           const HomeScreenProgressSaved(login: true, route: 'GoalName',),
                                       ),
                                     );
                                   },
@@ -168,7 +190,8 @@ class _GoalNameState extends State<GoalName> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const HomeScreen(login:false),
+                                        builder: (context) =>
+                                            const HomeScreen(login: false),
                                       ),
                                     );
                                   },
@@ -426,13 +449,11 @@ class _GoalNameState extends State<GoalName> {
                         )),
                     GestureDetector(
                       onTap: () {
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => GoalWhy(
-                              goalName: goalName,
-                              category: category,
-                            ),
+                            builder: (context) => GoalWhy(),
                           ),
                         );
                       },

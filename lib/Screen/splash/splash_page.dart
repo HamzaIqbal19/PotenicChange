@@ -43,8 +43,12 @@ class SplashPageState extends State<SplashPage> {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var SessionToken = prefs.getString("refreshtoken");
-    print("======================>$Accestoken");
-    if (Accestoken != null) {
+    var Routes = prefs.getString("route");
+
+    print("======================>$Routes");
+    if (Accestoken != null && Routes==null) {
+      print("====================>");
+
       Authentication().refreshTokenApi(SessionToken!).then((response) {
         print("???????????:$response");
         if (response == true) {
@@ -60,7 +64,33 @@ class SplashPageState extends State<SplashPage> {
       }).catchError((error) {
         print("error");
       });
-    } else {
+    }
+
+    else if(Accestoken != null && Routes!=null) {
+
+      print("====================>");
+      Authentication().refreshTokenApi(SessionToken!).then((response) {
+        print("???????????:$response");
+        if (response == true) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  HomeScreenProgressSaved(login: true,route:Routes!,),
+              ));
+        } else {
+
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(response["message"])));
+        }
+
+
+
+      }).catchError((error) {
+        print("error");
+      });
+
+    }
+    else{
       onDoneLoading();
     }
   }

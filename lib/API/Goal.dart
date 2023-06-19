@@ -240,48 +240,48 @@ class AdminGoal {
 
 */
 
-  Future userAddGoal(name, reason, identityStatement, visualizingYourSelf,
-      userId, goalCategoryId, color) async {
+  Future userAddGoal(var goal) async {
     final SharedPreferences prefs = await _prefs;
-    var Accestoken = prefs.getString("usertoken");
-    var SessionToken = prefs.getString("refreshtoken");
+    var accessToken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY5MjEzOTMsImV4cCI6MTY4NzAwNzc5M30.VQltYdfXMBuk8FN5DY0UfUY5cNaMNFgrDcYEqWxI0IE'
+      'x-access-token': '$accessToken'
     };
-    var Body = json.encode({
-      "name": "$name",
-      "reason": "$reason",
-      "identityStatement": "$identityStatement",
-      "visualizingYourSelf": "$visualizingYourSelf",
-      "color": "$color",
-      "userId": "$userId",
-      "goalCategoryId": "$goalCategoryId",
-    });
-    print("request:$Body");
+    var Body = json.encode(goal);
+
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userGoal/add-user-goal'),
         headers: headers,
         body: Body);
-    print("request:");
+
 
     var responses = jsonDecode(request.body);
 
-    print("status:${request.statusCode}");
-    print("request:${responses}");
-    print("request:${responses["status"]}");
+
+
+
     if (request.statusCode == 200) {
+      print("response for api call:${responses}");
       print("response:${responses["message"]}");
-      var res = await responses.stream.bytesToString();
-      return res;
+
+      return true;
     } else {
       client.close();
       // print("response:${}");
-      print(responses.reasonPhrase);
-      return responses["message"];
+      print("request==========>$request");
+      return false;
     }
   }
+
+
+
+
+
+
+
+
+
+
 
   Future updateUserGoal(var reason) async {
     final SharedPreferences prefs = await _prefs;

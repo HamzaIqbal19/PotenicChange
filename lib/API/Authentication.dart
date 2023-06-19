@@ -44,10 +44,10 @@ class Authentication {
     var Body = json.encode({
       "sessionToken": SessionToken,
     });
-    var request = await client.post(
-        Uri.parse('${URL.BASE_URL}api/auth/refresh-access-token'),
-        headers: headers,
-        body: Body);
+    var request = await client
+        .post(Uri.parse('${URL.BASE_URL}api/auth/refresh-access-token'),
+        headers: headers, body: Body);
+
 
     var responses = jsonDecode(request.body);
 
@@ -76,19 +76,25 @@ class Authentication {
       "password": "$password",
     });
 
+    print("Body:${Body}");
+    var responses = jsonDecode(Body);
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
         headers: headers, body: Body);
 
-    var responses = jsonDecode(request.body);
-    // print("status:${request.statusCode}");
+    var response = jsonDecode(request.body);
+    print("status:${request.statusCode}");
 
-    // print("request:${responses}");
+    print("request12234344:${response}");
 
     if (request.statusCode == 200) {
-      // print("request:${responses["sessionToken"]}");
-      String token = responses["accessToken"];
-      int userid = responses['id'];
-      String Refreshtoken = responses["sessionToken"];
+      print("request:${response["sessionToken"]}");
+      String token = response["accessToken"];
+      int userid = response['id'];
+      String Refreshtoken = response["sessionToken"];
+
+      print("token:${token}");
+      print("userid:${userid}");
+      print("Refreshtoken:${Refreshtoken}");
 
       final SharedPreferences prefs = await _prefs;
       var accesstoken = prefs.setString('usertoken', token);

@@ -1,8 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Goal.dart';
 
@@ -30,12 +35,65 @@ class _GoalCategoryState extends State<GoalCategory> {
     'Relationship'
   ];
   List<Map<String, dynamic>>? Allgoal;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override
   void initState() {
     super.initState();
+    
     _fetchgetAllGoal();
   }
+
+
+  Future getUserId(int categoryid,goalname,goalid) async{
+    final SharedPreferences prefs = await _prefs;
+    var userId=prefs.getInt("userid");
+    saveGoalToPrefs(userId!,categoryid,goalname,goalid);
+  }
+
+  Future<void> saveGoalToPrefs(var userId, var categoryId,var goalName,var goalId) async {
+
+
+    print("hello world1224");
+    final SharedPreferences prefs = await _prefs;
+    var GoalName = prefs.setString('goalName', goalName);
+    Goal goal = Goal(
+      name: goalName,
+      reason:[ {"key": "reason1", "text": "This is reason 1"},],
+      identityStatement: [ {"key": "reason1", "text": "This is reason 1"},],
+      visualizingYourSelf: [ {"key": "reason1", "text": "This is reason 1"},],
+      userId:userId ,
+      goalId: goalId,
+      goalCategoryId: categoryId,
+    );
+    String jsonString = jsonEncode(goal.toJson()); // converting object to json string
+    prefs.setString('goal', jsonString);
+
+    getGoal();
+
+  }
+
+  Future<Goal> getGoal() async {
+    print("hello world");
+    final prefs = await SharedPreferences.getInstance();
+    String? jsonString = prefs.getString('goal');
+    print(jsonString);
+
+    if (jsonString != null) {
+      Map<String, dynamic> jsonMap = json.decode(jsonString);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => GoalName(),
+
+        ),
+      );
+      return Goal.fromJson(jsonMap);
+    }
+
+    throw Exception('No goal found in local storage');
+  }
+
 
   void _fetchgetAllGoal() {
 
@@ -207,8 +265,12 @@ class _GoalCategoryState extends State<GoalCategory> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  bottom_sheet(context,Allgoal![0]["goals"][index1]
-                                  ["id"]);
+                                  getUserId(  widget.id,
+                                       Allgoal![0]["goals"][index1]
+                                      ["goalName"],
+                                      Allgoal![0]["goals"][index1]
+                                      ["id"]);
+
                                 },
                                 child: circles(
                                     circle_text: Allgoal![0]["goals"][index1]
@@ -330,7 +392,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                               bottom: AppDimensions.height10 * 0.5),
                           child: GestureDetector(
                             onTap: () {
-                              bottom_sheet(context,widget.id);
+                              // bottom_sheet(context,widget.id);
                             },
                             child: Image.asset(
                               'assets/images/Add.png',

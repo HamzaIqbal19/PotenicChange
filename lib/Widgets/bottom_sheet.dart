@@ -150,16 +150,14 @@ void bottom_sheet(context,int id) {
                 child: TextButton(
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
-                        SharedPreferences login = await SharedPreferences.getInstance();
-                        login.setInt('GoalId', id);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => GoalName(
-                                category: dropdownValue,
-                                goalName: goalName.text.toString()),
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => GoalName(
+                        //         category: dropdownValue,
+                        //         goalName: goalName.text.toString()),
+                        //   ),
+                        // );
                       }
                     },
                     child: Text(
