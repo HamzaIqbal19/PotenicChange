@@ -112,8 +112,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => StartProcess(),
+                        FadePageRoute(
+                          // Pass the current page widget here
+                          page: StartProcess(),
                         ),
                       );
                     },
@@ -204,13 +205,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         .remove('userId');
                                                     await prefs
                                                         .remove('refreshtoken');
-                                                    Navigator.pushReplacement(
-                                                      context,
-                                                      FadePageRoute(
-                                                        page: const HomeScreen(
-                                                            login: false),
-                                                      ),
-                                                    );
+                                                    // Navigator.pushReplacement(
+                                                    //   context,
+                                                    //   FadePageRoute(
+                                                    //       page:
+                                                    //           const HomeScreen(
+                                                    //               login: false),
+                                                    //       currentPage:
+                                                    //           HomeScreen(
+                                                    //               login: true)),
+                                                    // );
                                                   },
                                                   child: Container(
                                                     height: 44,

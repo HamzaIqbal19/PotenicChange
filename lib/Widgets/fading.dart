@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 class FadePageRoute<T> extends PageRouteBuilder<T> {
   final Widget page;
@@ -25,3 +24,10 @@ class FadePageRoute<T> extends PageRouteBuilder<T> {
     },
   );
 }
+
+
+
+
+
+
+

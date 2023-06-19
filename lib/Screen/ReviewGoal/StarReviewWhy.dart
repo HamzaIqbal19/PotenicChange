@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/review_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../API/Goal.dart';
 
@@ -14,8 +15,9 @@ class StarReviewWhy extends StatefulWidget {
 }
 
 class _StarReviewWhyState extends State<StarReviewWhy> {
+  bool Loading = true;
+
   void _updateGoal() async {
-    AdminGoal().updateUserGoal("Hello");
     print("Goal Updated");
   }
 
@@ -196,7 +198,15 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                     GestureDetector(
                       onTap: () {
                         print("Goals");
-                        _updateGoal();
+                        AdminGoal().updateUserGoal("Hello").then((response) {
+                          if (response == true) {
+                            print("Success");
+                          } else {
+                            print("Failure");
+                          }
+                        }).catchError((error) {
+                          print("error");
+                        });
                         // Navigator.push(
                         //   context,
                         //   MaterialPageRoute(

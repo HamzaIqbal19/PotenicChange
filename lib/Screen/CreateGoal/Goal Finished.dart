@@ -129,7 +129,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => StarReview(),
+                          builder: (context) => const StarReview(),
                         ),
                       );
                     },
@@ -162,7 +162,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => CreatePractice(),
+                                builder: (context) => const CreatePractice(),
                               ),
                             );
                           },

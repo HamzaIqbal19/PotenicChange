@@ -254,11 +254,7 @@ class AdminGoal {
         headers: headers,
         body: Body);
 
-
     var responses = jsonDecode(request.body);
-
-
-
 
     if (request.statusCode == 200) {
       print("response for api call:${responses}");
@@ -273,42 +269,33 @@ class AdminGoal {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
   Future updateUserGoal(var reason) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
+    int UserGoalId = 12;
 
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
+    var body = jsonEncode({
+      "reason": '$reason',
+    });
 
     var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/12'),
-        headers: headers, body: jsonEncode({"reason"[0]: reason}));
+        headers: headers, body: body);
     print("request: Update");
-
+    print(request.body);
     if (request.statusCode == 200) {
       // print("$request.statusCode");
+      print("request: Update successful");
       var jsonData = jsonDecode(request.body);
-
-      // jsonData = 'Updated Reason';
-
       print("Result: $jsonData");
-      print("$jsonData");
-      return jsonData.fromDecode(reason);
+      return true;
     } else {
-      print("Not working");
-
+      print("Update failed");
       client.close();
+      return false;
     }
   }
 
@@ -324,7 +311,7 @@ class AdminGoal {
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userGoal/1'),
+      Uri.parse('${URL.BASE_URL}api/userGoal/12'),
       headers: headers,
     );
 
@@ -353,13 +340,12 @@ class AdminGoal {
     var responses = jsonDecode(request.body);
     print("Goal to be deleted");
     if (request.statusCode == 200) {
-      print("response:${responses["message"]}");
-      var res = await responses.stream.bytesToString();
-      print('Goal deleted');
-      return res;
+      print('object deleted');
+      return true;
     } else {
-      client.close();
       return responses["message"];
+      // client.close();
+      // return responses["message"];
     }
   }
 }

@@ -23,13 +23,12 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
 
   // final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
-  var errorMsg, jsonResponse;
   bool rememberMe = true;
   bool boolean = true;
   bool Loading = false;
-  var token;
-  var accountFlag;
-  var sessionRoute;
+  bool errorEmail = false;
+  bool errorName = false;
+  bool errorPassword = false;
 
   late SharedPreferences _prefs;
   setEmail(email) async {
@@ -150,7 +149,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                   ),
 
                   SizedBox(height: AppDimensions.height10),
-                  Container(
+                  SizedBox(
                     height: AppDimensions.height30 + 10,
                     child: Text(
                       "Sign up",
@@ -163,7 +162,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                     ),
                   ),
                   SizedBox(height: AppDimensions.height20),
-                  Container(
+                  SizedBox(
                       height: AppDimensions.height10 * 7 + 4,
                       width: AppDimensions.screenWidth - 100,
                       child: Text(
@@ -177,15 +176,16 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       )),
                   // SizedBox(height: AppDimensions.height0),
 
-                  Container(
+                  SizedBox(
                     height: AppDimensions.height10 * 35 + 6,
+                    width: AppDimensions.height10 * 36,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           height: AppDimensions.height10 * 6,
-                          width: AppDimensions.screenWidth - 100,
+                          width: AppDimensions.height10 * 36,
                           padding: EdgeInsetsDirectional.only(
                             top: AppDimensions.height10 + 2,
                           ),
@@ -195,7 +195,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                               borderRadius: BorderRadius.all(Radius.circular(
                                   AppDimensions.height10 * 1.8))),
                           child: TextFormField(
-                            key: _formkey2,
                             decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
@@ -218,27 +217,35 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                     borderSide:
                                         BorderSide(color: Colors.transparent))),
                             controller: nameController,
+                            keyboardType: TextInputType.name,
                             validator: (val) {
                               if (val == null || val == "") {
-                                return "Full Name is required";
+                                setState(() {
+                                  errorName = true;
+                                });
                               }
                             },
                           ),
                         ),
-                        Container(
-                          child: Text(
-                            "Full name is required",
-                            style: TextStyle(
-                              color: const Color(0xFFFE6624),
-                              fontSize: AppDimensions.font16 - 2,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-
+                        errorName
+                            ? Container(
+                                child: Text(
+                                  "Full name is required",
+                                  style: TextStyle(
+                                    color: const Color(0xFFFE6624),
+                                    fontSize: AppDimensions.font16 - 2,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        SizedBox(
+                            height: errorEmail
+                                ? AppDimensions.height10
+                                : AppDimensions.height10 * 3),
                         Container(
                           height: AppDimensions.height10 * 6,
-                          width: AppDimensions.screenWidth - 100,
+                          width: AppDimensions.height10 * 36,
                           padding: EdgeInsetsDirectional.only(
                             top: AppDimensions.height10 + 2,
                           ),
@@ -271,28 +278,39 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                         BorderSide(color: Colors.transparent))),
                             controller: emailController,
                             validator: (val) {
-                              if (val == null || val == "") {
-                                return "Oops needs to be an email format";
-                              } else if (!val.contains("@")) {
-                                return "Email is invalid";
+                              if (val == null ||
+                                  !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      .hasMatch(val)) {
+                                setState(() {
+                                  errorEmail = true;
+                                });
+                              } else {
+                                setState(() {
+                                  errorEmail = false;
+                                });
                               }
-                              return null;
                             },
                           ),
                         ),
-                        Container(
-                          child: Text(
-                            "Ooops! Needs to be an email format",
-                            style: TextStyle(
-                              color: const Color(0xFFFE6624),
-                              fontSize: AppDimensions.font16 - 2,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
+                        errorEmail
+                            ? Container(
+                                child: Text(
+                                  "Ooops! Needs to be an email format",
+                                  style: TextStyle(
+                                    color: const Color(0xFFFE6624),
+                                    fontSize: AppDimensions.font16 - 2,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        SizedBox(
+                            height: errorEmail
+                                ? AppDimensions.height10
+                                : AppDimensions.height10 * 3),
                         Container(
                           height: AppDimensions.height10 * 6,
-                          width: AppDimensions.screenWidth - 100,
+                          width: AppDimensions.height10 * 36,
                           padding: EdgeInsetsDirectional.only(
                             top: AppDimensions.height10 + 2,
                           ),
@@ -329,23 +347,28 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             controller: passwordController,
                             validator: (val) {
                               if (val == null || val == "" || val.length < 8) {
-                                return "Minimum 8 characters";
+                                setState(() {
+                                  errorPassword = true;
+                                });
                               }
                             },
                           ),
                         ),
-                        Container(
-                          child: Text(
-                            "Minimum 8 characters",
-                            style: TextStyle(
-                              color: const Color(0xFFFE6624),
-                              fontSize: AppDimensions.font16 - 2,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-
-                        Container(
+                        errorPassword
+                            ? Text(
+                                "Minimum 8 characters",
+                                style: TextStyle(
+                                  color: const Color(0xFFFE6624),
+                                  fontSize: AppDimensions.font16 - 2,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              )
+                            : Container(),
+                        SizedBox(
+                            height: errorEmail
+                                ? AppDimensions.height10
+                                : AppDimensions.height10 * 3),
+                        SizedBox(
                             height: AppDimensions.height10 * 6.2,
                             width: AppDimensions.screenWidth - 100,
                             child: Row(
@@ -355,7 +378,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                 Checkbox(
                                   checkColor: Colors.black,
                                   activeColor: Colors.white,
-                                  side: BorderSide(color: Color(0xffffffff)),
+                                  side: const BorderSide(
+                                      color: Color(0xffffffff)),
                                   value: rememberMe,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -469,43 +493,50 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                       // }),
 
                       onPressed: () {
-                        setState(() {
-                          Loading = true;
-                        });
-                        // if (_formkey.currentState!.validate()) {
-                        print("Hello WOrld 12345");
-                        Authentication()
-                            .registerApi(
-                          '${nameController.text.toString()}',
-                          '${emailController.text.toString()}',
-                          '${passwordController.text.toString()}',
-                        )
-                            .then((response) {
+                        if (_formkey1.currentState!.validate()) {
                           setState(() {
-                            Loading = false;
+                            Loading = true;
                           });
-                          if (response == "User was registered successfully!") {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response)));
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignUpSuccessful(
-                                    name: nameController.text.toString()),
-                              ),
-                            );
-                          } else {
+                          print("Hello WOrld 12345");
+                          Authentication()
+                              .registerApi(
+                            '${nameController.text.toString()}',
+                            '${emailController.text.toString()}',
+                            '${passwordController.text.toString()}',
+                          )
+                              .then((response) {
                             setState(() {
                               Loading = false;
                             });
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response["message"])));
-                          }
-                        }).catchError((error) {
-                          print("error");
-                        });
-
-                        // }
+                            if (response ==
+                                "User was registered successfully!") {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(response)));
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignUpSuccessful(
+                                      name: nameController.text.toString()),
+                                ),
+                              );
+                            } else {
+                              setState(() {
+                                Loading = false;
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text(response["message"])));
+                            }
+                          }).catchError((error) {
+                            setState(() {
+                              Loading = false;
+                            });
+                            print("error");
+                          });
+                        } else {
+                          setState(() {
+                            Loading = false;
+                          });
+                        }
                       },
 
                       icon: Image.asset(

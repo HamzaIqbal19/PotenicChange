@@ -1,5 +1,5 @@
-import 'dart:convert';
 
+import 'dart:convert';
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
@@ -119,6 +119,7 @@ class _goalwhyState extends State<GoalWhy> {
 
     throw Exception('No goal found in local storage');
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -349,7 +350,6 @@ class _goalwhyState extends State<GoalWhy> {
                   height: AppDimensions.height10 * 1.0,
                 ),
                 Container(
-                  // color: Colors.blue,
                     width: AppDimensions.height10 * 10.4,
                     height: AppDimensions.height10 * 7.6,
                     padding: EdgeInsets.only(
@@ -541,16 +541,19 @@ class _goalwhyState extends State<GoalWhy> {
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
+
                   height: AppDimensions.height10 * 12.2,
                 )
                     : SizedBox(
                   height: AppDimensions.height10 * 5.0,
                 ),
+
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      // color: Colors.blue,
+                    SizedBox(
+                        // color: Colors.blue,
                         width: AppDimensions.height10 * 5.0,
                         height: AppDimensions.height10 * 5.0,
                         child: Image.asset(
@@ -562,6 +565,7 @@ class _goalwhyState extends State<GoalWhy> {
                         updateGoalReason(myTextFields);
                         // print(myTextFields[2]);
                         Navigator.pushReplacement(
+
                           context,
                           FadePageRoute(
                             page: Goal_Identity(),
@@ -580,6 +584,7 @@ class _goalwhyState extends State<GoalWhy> {
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
                           borderRadius:
                           const BorderRadius.all(Radius.circular(50.0)),
+
                         ),
                         child: Center(
                           child: Text(

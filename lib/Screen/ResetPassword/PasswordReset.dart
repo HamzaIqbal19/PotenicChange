@@ -3,7 +3,9 @@ import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
+import 'package:potenic_app/Screen/ResetPassword/reset.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../API/Authentication.dart';
 
@@ -15,7 +17,13 @@ class PasswordReset extends StatefulWidget {
 }
 
 class _PasswordResetState extends State<PasswordReset> {
+  bool Loading = false;
+  bool errorEmail = false;
   final email = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -67,7 +75,7 @@ class _PasswordResetState extends State<PasswordReset> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>const  HomeScreen(login:false),
+                          builder: (context) => const HomeScreen(login: false),
                         ),
                       );
                       // Add code for performing close action
@@ -105,7 +113,7 @@ class _PasswordResetState extends State<PasswordReset> {
                 ),
 
                 SizedBox(height: AppDimensions.height10 * 2.35),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10 * 3.9,
                   child: Text(
                     "Reset your password",
@@ -120,13 +128,13 @@ class _PasswordResetState extends State<PasswordReset> {
                 SizedBox(height: AppDimensions.height10 * 0.9),
 
                 // SizedBox(height: AppDimensions.height0),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10 * 26 + 6,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                         height: AppDimensions.height10 * 1.7,
                         // padding:  EdgeInsets.only(left:AppDimensions.height10*1.2),
                         child: Text(
@@ -190,10 +198,16 @@ class _PasswordResetState extends State<PasswordReset> {
                                                 color: Colors.transparent))),
                                     controller: email,
                                     validator: (val) {
-                                      if (val == null || val == "") {
-                                        return "Oops Needs to be an Email Format";
+                                      if (val == null ||
+                                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                              .hasMatch(val)) {
+                                        setState(() {
+                                          errorEmail = true;
+                                        });
                                       } else {
-                                        return null;
+                                        setState(() {
+                                          errorEmail = false;
+                                        });
                                       }
                                     },
                                   ),
@@ -202,23 +216,25 @@ class _PasswordResetState extends State<PasswordReset> {
                             ],
                           )),
                       SizedBox(height: AppDimensions.height10 * 0.3),
-                      // Container(
-                      //   // color: Colors.blue,
-                      //   height: AppDimensions.height10 * 1.7,
-                      //   width: AppDimensions.height10 * 23.3,
-                      //   margin: EdgeInsets.only(
-                      //       left: AppDimensions.height10 * 4.4,
-                      //       right: AppDimensions.height10 * 15.6),
-                      //   child: Text(
-                      //     "Ooops! Needs to be an email format",
-                      //     style: TextStyle(
-                      //       color: const Color(0xFFFE6624),
-                      //       fontSize: AppDimensions.height10 * 1.4,
-                      //       fontWeight: FontWeight.w600,
-                      //     ),
-                      //   ),
-                      // ),
-                      // SizedBox(height: AppDimensions.height10 * 1.1),
+                      errorEmail
+                          ? Container(
+                              // color: Colors.blue,
+                              height: AppDimensions.height10 * 1.7,
+                              width: AppDimensions.height10 * 23.3,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10 * 4.4,
+                                  right: AppDimensions.height10 * 15.6),
+                              child: Text(
+                                "Ooops! Needs to be an email format",
+                                style: TextStyle(
+                                  color: const Color(0xFFFE6624),
+                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            )
+                          : Container(),
+                      SizedBox(height: AppDimensions.height10 * 1.1),
                       Container(
                           height: AppDimensions.height10 * 2.2,
                           width: AppDimensions.height10 * 26.1,
@@ -239,7 +255,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                     ),
                                   );
                                 },
-                                child: Container(
+                                child: SizedBox(
                                   width: AppDimensions.height10 * 12.6,
                                   height: AppDimensions.height10 * 2.2,
                                   child: Text(
@@ -264,7 +280,7 @@ class _PasswordResetState extends State<PasswordReset> {
 
                 SizedBox(height: AppDimensions.height10 * 5.0),
 
-                Container(
+                SizedBox(
                   height: AppDimensions.height10 * 4.4,
                   width: AppDimensions.height10 * 26.7,
                   // padding: EdgeInsets.only(left:AppDimensions.height10*0.8,top:AppDimensions.height10*1.6,right: AppDimensions.height10*0.8),
@@ -281,9 +297,36 @@ class _PasswordResetState extends State<PasswordReset> {
                     ),
                     onPressed: () {
                       if (_formkey2.currentState!.validate()) {
-                        Authentication().passReset(
+                        setState(() {
+                          Loading = true;
+                        });
+
+                        Authentication()
+                            .passReset(
                           '${email.text.toString()}',
-                        );
+                        )
+                            .then((response) {
+                          if (response == true) {
+                            setState(() {
+                              Loading = false;
+                            });
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const EmailSent(),
+                              ),
+                            );
+                          } else {
+                            setState(() {
+                              Loading = false;
+                            });
+                          }
+                        }).catchError((error) {
+                          setState(() {
+                            Loading = false;
+                          });
+                          print("error");
+                        });
                       }
                     },
                     icon: Image.asset(
@@ -292,14 +335,19 @@ class _PasswordResetState extends State<PasswordReset> {
                       height: 0.0,
                     ),
                     label: Center(
-                        child: Text(
-                      'Reset password',
-                      style: TextStyle(
-                        color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10 * 1.6,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    )),
+                        child: Loading == false
+                            ? Text(
+                                'Reset password',
+                                style: TextStyle(
+                                  color: const Color(0xFF8C648A),
+                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              )
+                            : const SpinKitThreeBounce(
+                                color: Color(0xFF8C648A),
+                                size: 30,
+                              )),
                   ),
                 ),
                 // SizedBox(height: AppDimensions.height120+90),
