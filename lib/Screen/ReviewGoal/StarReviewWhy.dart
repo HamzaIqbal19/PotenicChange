@@ -18,7 +18,6 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
   bool Loading = true;
 
   void _updateGoal() async {
-    AdminGoal().updateUserGoal("Hello");
     print("Goal Updated");
   }
 
@@ -199,7 +198,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                     GestureDetector(
                       onTap: () {
                         print("Goals");
-                        AdminGoal().updateUserGoal('Updated').then((response) {
+                        AdminGoal().updateUserGoal("Hello").then((response) {
                           if (response == true) {
                             print("Success");
                           } else {

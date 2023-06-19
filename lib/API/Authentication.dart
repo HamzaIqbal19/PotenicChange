@@ -149,7 +149,7 @@ class Authentication {
     final SharedPreferences prefs = await _prefs;
     var reset = prefs.getString('resetEmail');
     String token =
-        '7UcMh%2Fw6i%2FNZNkoE11qffMchf1Q%2BTqVsStImMzjrmtATq2pW5gR7jc4JNy1kmb4MGKXaAJeBlehkNf1o6zFbqA%3D%3D';
+        'KEeQ5q3JlCOwXC5IgPw3Qnwakrs0wwgfI%2FDnm%2BiQRmYSc7CqniIDXi6QeDnB4wzsSnZNBcilk6YdIMx1QWAz1A%3D%3D';
     var Body = json.encode({"email": "$reset", "password": "$password"});
 
     var request = await client.put(

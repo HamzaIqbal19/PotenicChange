@@ -282,7 +282,7 @@ class AdminGoal {
     }
   }
 
-  Future updateUserGoal(var reason) async {
+  Future updateUserGoal(String reason) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     int UserGoalId = 12;
@@ -292,15 +292,13 @@ class AdminGoal {
       'x-access-token': '$Accestoken'
     };
     var body = jsonEncode({
-      "reason": reason,
+      "reason": '$reason',
     });
 
-    var request = await client.put(
-        Uri.parse('${URL.BASE_URL}api/userGoal/$UserGoalId'),
-        headers: headers,
-        body: body);
+    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/12'),
+        headers: headers, body: body);
     print("request: Update");
-
+    print(request.body);
     if (request.statusCode == 200) {
       // print("$request.statusCode");
       print("request: Update successful");
@@ -326,7 +324,7 @@ class AdminGoal {
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userGoal/1'),
+      Uri.parse('${URL.BASE_URL}api/userGoal/12'),
       headers: headers,
     );
 
@@ -359,8 +357,8 @@ class AdminGoal {
       return true;
     } else {
       return responses["message"];
-      client.close();
-      return responses["message"];
+      // client.close();
+      // return responses["message"];
     }
   }
 }

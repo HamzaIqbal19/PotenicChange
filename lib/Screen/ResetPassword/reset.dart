@@ -42,21 +42,6 @@ class _resetState extends State<reset> {
               centerTitle: true,
               backgroundColor: Colors.transparent,
               automaticallyImplyLeading: false,
-              // leading: Center(
-              //   // alignment: Alignment.center,
-              //   child: IconButton(
-              //     icon: Image.asset(
-              //       'assets/images/Back.png',
-              //       width: AppDimensions.height10 * 3,
-              //       height: AppDimensions.height10 * 3,
-              //       fit: BoxFit.contain,
-              //     ),
-              //     onPressed: () {
-              //       Navigator.pop(context);
-              //       // Add code for performing close action
-              //     },
-              //   ),
-              // ),
               actions: [
                 Center(
                   // alignment: Alignment.center,
@@ -364,13 +349,13 @@ class _resetState extends State<reset> {
                               setState(() {
                                 Loading = false;
                               });
-                              // Navigator.push(
-                              //   context,
-                              //   FadePageRoute(
-                              //     page: Confirmation(),
-                              //     currentPage: reset(),
-                              //   ),
-                              // );
+                              Navigator.push(
+                                context,
+                                FadePageRoute(
+                                  exitPage: reset(),
+                                  enterPage: Confirmation(),
+                                ),
+                              );
                               print('======DATA PASSED');
                             } else {
                               setState(() {
@@ -438,21 +423,6 @@ class Confirmation extends StatelessWidget {
               centerTitle: true,
               backgroundColor: Colors.transparent,
               automaticallyImplyLeading: false,
-              // leading: Center(
-              //   // alignment: Alignment.center,
-              //   child: IconButton(
-              //     icon: Image.asset(
-              //       'assets/images/Back.png',
-              //       width: AppDimensions.height10 * 3,
-              //       height: AppDimensions.height10 * 3,
-              //       fit: BoxFit.contain,
-              //     ),
-              //     onPressed: () {
-              //       Navigator.pop(context);
-              //       // Add code for performing close action
-              //     },
-              //   ),
-              // ),
               actions: [
                 Center(
                   // alignment: Alignment.center,
@@ -532,12 +502,12 @@ class Confirmation extends StatelessWidget {
                       //<-- SEE HERE
                     ),
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   FadePageRoute(
-                      //       page: HomeScreen(login: false),
-                      //       currentPage: Confirmation()),
-                      // );
+                      Navigator.push(
+                        context,
+                        FadePageRoute(
+                            enterPage: HomeScreen(login: false),
+                            exitPage: Confirmation()),
+                      );
                     },
                     icon: Image.asset(
                       "assets/images/fb.png",
