@@ -156,7 +156,7 @@ class _PracticeNameState extends State<PracticeName> {
                 Container(
                   child: Center(
                     child: Text(
-                      "Practice Name",
+                      widget.Circletitle,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,

@@ -17,18 +17,6 @@ class Categories extends StatefulWidget {
   State<Categories> createState() => _CategoriesState();
 }
 
-List<String> goals_name = [
-  'Happiness & Wellbeing',
-  'Self Control',
-  'Category Name',
-  'Happiness & Wellbeing',
-  'Self Control',
-  'Category Name',
-  'Happiness & Wellbeing',
-  'Self Control',
-  'Category Name',
-];
-
 class _CategoriesState extends State<Categories> {
   Future<List<String>>? _goalNamesFuture;
   List<Map<String, dynamic>>? goalCategories;
@@ -57,10 +45,12 @@ class _CategoriesState extends State<Categories> {
         print("response:$response");
       }
     }).catchError((error) {
+
       setState(() {
         Loading = false;
       });
       print("error");
+
     });
   }
 
