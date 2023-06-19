@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
@@ -11,11 +10,11 @@ class GoalWhy extends StatefulWidget {
   GoalWhy({required this.goalName, required this.category});
 
   @override
-  State<GoalWhy> createState() => _GoalWhyState(goalName: goalName,category: category);
+  State<GoalWhy> createState() =>
+      _GoalWhyState(goalName: goalName, category: category);
 }
 
 class _GoalWhyState extends State<GoalWhy> {
-
   TextEditingController reasonWhy = TextEditingController();
   String goalName;
   String category;
@@ -23,7 +22,6 @@ class _GoalWhyState extends State<GoalWhy> {
   _GoalWhyState({required this.goalName, required this.category});
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
@@ -126,11 +124,9 @@ class _GoalWhyState extends State<GoalWhy> {
                   height: AppDimensions.height10 * 1.9,
                 ),
                 Container(
-
                     width: AppDimensions.height10 * 10.4,
                     height: AppDimensions.height10 * 7.6,
                     padding: EdgeInsets.only(
-
                         left: AppDimensions.height10 * 1.5,
                         right: AppDimensions.height10 * 1.5),
                     child: Image.asset(
@@ -138,7 +134,7 @@ class _GoalWhyState extends State<GoalWhy> {
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
-                  height: AppDimensions.height10*3.7 ,
+                  height: AppDimensions.height10 * 3.7,
                 ),
                 Container(
                   child: Center(
@@ -155,7 +151,7 @@ class _GoalWhyState extends State<GoalWhy> {
                 SizedBox(
                   height: AppDimensions.height10 * 1.0,
                 ),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10 * 4.9,
                   width: AppDimensions.height10 * 37.2,
                   child: Center(
@@ -163,7 +159,6 @@ class _GoalWhyState extends State<GoalWhy> {
                       "Why pursuing this goal is important to \n you? ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-
                           fontSize: AppDimensions.height10 * 1.8,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFFFFFFFF)),
@@ -178,37 +173,26 @@ class _GoalWhyState extends State<GoalWhy> {
                   goalName: goalName,
                   reason: reasonWhy,
                 ),
-
-
-
-
-
-
-
-
-
-                MediaQuery.of(context).viewInsets.bottom==0?  SizedBox(
-                  height: AppDimensions.height10 * 7.2,
-                ):SizedBox(
-                  height: AppDimensions.height10 * 5.0,
-                ),
-
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10 * 7.2,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10 * 5.0,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      // color: Colors.blue,
+                    SizedBox(
+                        // color: Colors.blue,
                         width: AppDimensions.height10 * 5.0,
                         height: AppDimensions.height10 * 5.0,
-
                         child: Image.asset(
                           "assets/images/Moreactions.png",
                           fit: BoxFit.contain,
                         )),
-
                     GestureDetector(
-
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -220,23 +204,23 @@ class _GoalWhyState extends State<GoalWhy> {
                           ),
                         );
                       },
-
-                      child:   Container(
-                        height: AppDimensions.height10*5,
-                        width: AppDimensions.height10*31.3,
-                        decoration:  BoxDecoration(
+                      child: Container(
+                        height: AppDimensions.height10 * 5,
+                        width: AppDimensions.height10 * 31.3,
+                        decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
-                        child:  Center(
-                          child:  Text(
+                        child: Center(
+                          child: Text(
                             "Next",
-                            style:  TextStyle(
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10 * 1.6,
                               fontWeight: FontWeight.w600,
@@ -247,20 +231,17 @@ class _GoalWhyState extends State<GoalWhy> {
                     ),
                   ],
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10 * 2.5,
                 ),
-
-                Padding(padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom))
+                Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom))
               ],
             ),
           )
-
         ],
       ),
-
-
     );
   }
 }
