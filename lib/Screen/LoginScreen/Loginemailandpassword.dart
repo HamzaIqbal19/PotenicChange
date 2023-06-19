@@ -20,15 +20,15 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   String fcm = 'adsfsf3423424';
-  bool Loading =false;
+  bool Loading = false;
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
-  var errorMsg, jsonResponse;
   bool rememberMe = true;
   bool boolean = true;
-  var token;
-  var accountFlag;
-  var sessionRoute;
+  bool errorEmail = false;
+  bool errorPassword = false;
+
+  bool credentials = false;
 
   late SharedPreferences _prefs;
   setEmail(email) async {
@@ -103,7 +103,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const HomeScreen(login:true),
+                          builder: (context) => const HomeScreen(login: true),
                         ),
                       );
                       // Add code for performing close action
@@ -160,24 +160,29 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                   // SizedBox(height: AppDimensions.height0),
                   Container(
                     height: AppDimensions.height10 * 26 + 6,
+                    width: AppDimensions.height10 * 36,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          height: AppDimensions.height10 * 1.7,
-                          padding: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.2),
-                          child: Text(
-                            "Your sign in details are incorrect, please try again",
-                            style: TextStyle(
-                              color: const Color(0xFFFE6624),
-                              fontSize: AppDimensions.height10 * 1.4,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: AppDimensions.height10),
+                        credentials
+                            ? Container(
+                                height: AppDimensions.height10 * 1.7,
+                                padding: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 1.2),
+                                child: Text(
+                                  "Your sign in details are incorrect, please try again",
+                                  style: TextStyle(
+                                    color: const Color(0xFFFE6624),
+                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        credentials
+                            ? SizedBox(height: AppDimensions.height10)
+                            : Container(),
                         Container(
                             height: AppDimensions.height10 * 6,
                             width: AppDimensions.height10 * 36.0,
@@ -212,7 +217,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                   width: AppDimensions.height10 * 36.0,
                                   height: AppDimensions.height10 * 2.2,
                                   child: TextFormField(
+                                    keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
+                                        errorBorder: InputBorder.none,
                                         contentPadding: EdgeInsets.zero,
                                         hintText: "JohnSmith@yahoo.com",
                                         hintStyle: TextStyle(
@@ -229,31 +236,42 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                                 color: Colors.transparent))),
                                     controller: emailController,
                                     validator: (val) {
-                                      if (val == null || val == "") {
-                                        return "oops! needs to be an email format";
+                                      if (val == null ||
+                                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                              .hasMatch(val)) {
+                                        setState(() {
+                                          errorEmail = true;
+                                        });
                                       } else {
-                                        return null;
+                                        setState(() {
+                                          errorEmail = false;
+                                        });
                                       }
                                     },
                                   ),
                                 )
                               ],
                             )),
-                        // Container(
-                        //   height: AppDimensions.height10 * 1.7,
-                        //   width: AppDimensions.height10 * 23.3,
-                        //   padding:
-                        //       EdgeInsets.only(left: AppDimensions.height10 * 1.2),
-                        //   child: Text(
-                        //     "Ooops! Needs to be an email format",
-                        //     style: TextStyle(
-                        //       color: const Color(0xFFFE6624),
-                        //       fontSize: AppDimensions.height10 * 1.4,
-                        //       fontWeight: FontWeight.w600,
-                        //     ),
-                        //   ),
-                        // ),
-                        // SizedBox(height: AppDimensions.height10),
+                        errorEmail
+                            ? Container(
+                                height: AppDimensions.height10 * 1.7,
+                                width: AppDimensions.height10 * 23.3,
+                                padding: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 1.2),
+                                child: Text(
+                                  "Ooops! Needs to be an email format",
+                                  style: TextStyle(
+                                    color: const Color(0xFFFE6624),
+                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        SizedBox(
+                            height: errorEmail
+                                ? AppDimensions.height10
+                                : AppDimensions.height10 * 3),
                         Container(
                           height: AppDimensions.height10 * 6,
                           width: AppDimensions.height10 * 36.0,
@@ -307,9 +325,13 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                     if (val == null ||
                                         val == "" ||
                                         val.length < 8) {
-                                      return "Minimum 8 Characters";
+                                      setState(() {
+                                        errorPassword = true;
+                                      });
                                     } else {
-                                      return null;
+                                      setState(() {
+                                        errorPassword = false;
+                                      });
                                     }
                                   },
                                 ),
@@ -317,19 +339,24 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                             ],
                           ),
                         ),
-                        // Container(
-                        //   padding:
-                        //       EdgeInsets.only(left: AppDimensions.height10 * 1.2),
-                        //   child: Text(
-                        //     "Minimum 8 characters",
-                        //     style: TextStyle(
-                        //       color: const Color(0xFFFE6624),
-                        //       fontSize: AppDimensions.height10 * 1.4,
-                        //       fontWeight: FontWeight.w600,
-                        //     ),
-                        //   ),
-                        // ),
-                        // SizedBox(height: AppDimensions.height10 + 1),
+                        errorPassword
+                            ? Container(
+                                padding: EdgeInsets.only(
+                                    left: AppDimensions.height10 * 1.2),
+                                child: Text(
+                                  "Minimum 8 characters",
+                                  style: TextStyle(
+                                    color: const Color(0xFFFE6624),
+                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        SizedBox(
+                            height: errorPassword
+                                ? AppDimensions.height10
+                                : AppDimensions.height10 * 3),
                         Container(
                             height: AppDimensions.height10 * 2.2,
                             width: AppDimensions.height10 * 26.1,
@@ -386,42 +413,56 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                         //<-- SEE HERE
                       ),
                       onPressed: () {
-                        setState(() {
-                          Loading=true;
-                        });
                         if (_formkey.currentState!.validate()) {
-                          Authentication().SignIn(
+                          setState(() {
+                            Loading = true;
+                          });
+                          Authentication()
+                              .SignIn(
                             fcm,
                             '${emailController.text.toString()}',
                             '${passwordController.text.toString()}',
-                          ) .then((response) {
+                          )
+                              .then((response) {
                             setState(() {
-                              Loading=false;
+                              Loading = false;
                             });
-                            if(response==true){
+                            if (response == 200) {
+                              setState(() {
+                                credentials = false;
+                              });
                               print("SignrResponse: $response");
-                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                                  content: Text("User Login Successfully!!")));
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content:
+                                          Text("User Login Successfully!!")));
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => StartProcess(),
                                 ),
                               );
-                            }
-                            else{
+                            } else if (response == 404) {
                               setState(() {
-                                Loading=false;
+                                Loading = false;
+                                credentials = true;
                               });
-                              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                                  content: Text("Your sign in details are incorrect, please try again!!")));
-                            }
 
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          "Your sign in details are incorrect, please try again!!")));
+                            }
                           }).catchError((error) {
+                            setState(() {
+                              Loading = false;
+                            });
                             print("error");
                           });
-
-
+                        } else {
+                          setState(() {
+                            Loading = false;
+                          });
                         }
                       },
                       icon: Image.asset(
@@ -430,17 +471,19 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                         height: 0.0,
                       ),
                       label: Center(
-                          child: Loading==false?Text(
-                        'Log In',
-                        style: TextStyle(
-                          color: const Color(0xFF8C648A),
-                          fontSize: AppDimensions.height10 * 1.6,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ): const SpinKitThreeBounce(
-                            color: Color(0xFF8C648A),
-                            size: 30,
-                          ),
+                        child: Loading == false
+                            ? Text(
+                                'Log In',
+                                style: TextStyle(
+                                  color: const Color(0xFF8C648A),
+                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              )
+                            : const SpinKitThreeBounce(
+                                color: Color(0xFF8C648A),
+                                size: 30,
+                              ),
                       ),
                     ),
                   ),

@@ -285,6 +285,7 @@ class AdminGoal {
   Future updateUserGoal(var reason) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
+    int UserGoalId = 12;
 
     var headers = {
       'Content-Type': 'application/json',
@@ -294,8 +295,10 @@ class AdminGoal {
       "reason": reason,
     });
 
-    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/5'),
-        headers: headers, body: body);
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/userGoal/$UserGoalId'),
+        headers: headers,
+        body: body);
     print("request: Update");
 
     if (request.statusCode == 200) {

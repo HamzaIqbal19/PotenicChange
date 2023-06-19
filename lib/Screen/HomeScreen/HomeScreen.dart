@@ -111,8 +111,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => StartProcess(),
+                        FadePageRoute(
+                          exitPage: HomeScreen(
+                              login:
+                                  false), // Pass the current page widget here
+                          enterPage: StartProcess(),
                         ),
                       );
                     },
@@ -203,13 +206,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         .remove('userId');
                                                     await prefs
                                                         .remove('refreshtoken');
-                                                    Navigator.pushReplacement(
-                                                      context,
-                                                      FadePageRoute(
-                                                        page: const HomeScreen(
-                                                            login: false),
-                                                      ),
-                                                    );
+                                                    // Navigator.pushReplacement(
+                                                    //   context,
+                                                    //   FadePageRoute(
+                                                    //       page:
+                                                    //           const HomeScreen(
+                                                    //               login: false),
+                                                    //       currentPage:
+                                                    //           HomeScreen(
+                                                    //               login: true)),
+                                                    // );
                                                   },
                                                   child: Container(
                                                     height: 44,

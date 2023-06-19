@@ -101,11 +101,12 @@ class Authentication {
 
       print("tokenss:$Accestoken+$UsersId+$SessionToken");
 
-      return true;
+      return request.statusCode;
+    } else if (request.statusCode == 404) {
+      // print("response:${}");
+      return request.statusCode;
     } else {
       client.close();
-      // print("response:${}");
-      return false;
     }
   }
 
@@ -124,20 +125,52 @@ class Authentication {
     print("request:");
 
     var responses = jsonDecode(request.body);
-    print("status:${request.statusCode}");
 
     print("request:${responses}");
     print("request:${responses["status"]}");
     if (request.statusCode == 200) {
-      print("response:${responses["message"]}");
-      var res = await responses.stream.bytesToString();
+      final SharedPreferences prefs = await _prefs;
+      var resetEmail = prefs.setString('resetEmail', email);
+      var reset = prefs.getString('resetEmail');
+      print('=====>$reset');
 
-      print("return this value:$res");
-      return res;
+      return true;
     } else {
       client.close();
       // print("response:${}");
-      return responses["message"];
+      return false;
+    }
+  }
+
+  Future passwordReset(password) async {
+    var headers = {
+      'Content-Type': 'application/json',
+    };
+    final SharedPreferences prefs = await _prefs;
+    var reset = prefs.getString('resetEmail');
+    String token =
+        '7UcMh%2Fw6i%2FNZNkoE11qffMchf1Q%2BTqVsStImMzjrmtATq2pW5gR7jc4JNy1kmb4MGKXaAJeBlehkNf1o6zFbqA%3D%3D';
+    var Body = json.encode({"email": "$reset", "password": "$password"});
+
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/auth/reset-password?token=$token'),
+        headers: headers,
+        body: Body);
+    print("request:");
+
+    var responses = jsonDecode(request.body);
+    print("status:${request.statusCode}");
+    print("request:$Body");
+    print("request:${responses}");
+
+    if (request.statusCode == 200) {
+      print('============================object');
+
+      return true;
+    } else {
+      client.close();
+      // print("response:${}");
+      return false;
     }
   }
 }
