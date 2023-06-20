@@ -5,21 +5,21 @@ import 'package:get/get.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class PracticeReminder extends StatefulWidget {
   final String pracTitle;
-  final String startTime;
-  final String endTime;
+
   final String pracId;
   const PracticeReminder(
-      {Key? key,
-      required this.pracTitle,
-      required this.startTime,
-      required this.endTime,
-      required this.pracId})
+      {Key? key, required this.pracTitle, required this.pracId})
       : super(key: key);
 
   @override
@@ -29,6 +29,19 @@ class PracticeReminder extends StatefulWidget {
 class _PracticeReminderState extends State<PracticeReminder> {
   bool radio1 = false;
   bool radio2 = false;
+  var Start_time;
+  var End_time;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  Future getData() async {
+    final SharedPreferences prefs = await _prefs;
+    Start_time = prefs.getString('startTime');
+    End_time = prefs.getString('endTime');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -220,16 +233,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             Color(0xFFEF939D),
                             Color(0xFFD6C4C6)
                           ]),
-                      border: Border.all(color: Colors.white, width: 0),
                       borderRadius: BorderRadius.all(Radius.circular(
                           AppDimensions.height10(context) * 2.0))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.4,
-                      ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.4,
                       ),
@@ -349,6 +358,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                                 onPressed: () {
                                                   setState(() {
                                                     radio1 = true;
+                                                    radio2 = false;
                                                   });
                                                   Navigator.pop(context);
                                                 },
@@ -460,16 +470,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             Color(0xFFEF939D),
                             Color(0xFFD6C4C6)
                           ]),
-                      border: Border.all(color: Colors.white, width: 0),
                       borderRadius: BorderRadius.all(Radius.circular(
                           AppDimensions.height10(context) * 2.0))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.4,
-                      ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.4,
                       ),
@@ -515,6 +521,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 setState(() {
                                   radio2 = true;
                                   radio2 = true;
+                                  radio1 = false;
                                 });
                               } else {
                                 setState(() {
@@ -582,22 +589,41 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         )),
                     GestureDetector(
                       onTap: () {
-                        PracticeGoalApi().userAddPractice(
-                            widget.pracTitle,
-                            "0xFF",
-                            radio1,
-                            "5",
-                            "1",
-                            "Monday",
-                            widget.startTime,
-                            widget.endTime,
-                            widget.pracId);
-                        Navigator.pushReplacement(
-                          context,
-                          FadePageRoute(
-                            page: const PracticeFinished(),
-                          ),
-                        );
+                        PracticeGoalApi()
+                            .userAddPractice(
+                                widget.pracTitle,
+                                "0xFF",
+                                radio1,
+                                "5",
+                                "1",
+                                "Monday",
+                                '$Start_time',
+                                '$End_time',
+                                widget.pracId)
+                            .then((responce) {
+                          if (responce == true) {}
+                        }).then((response) {
+                          print('$response');
+                          if (response == true) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content:
+                                        Text("Practice Added Successfully!!")));
+                            print('========Done');
+                            Navigator.pushReplacement(
+                              context,
+                              FadePageRoute2(
+                                exitPage:
+                                    PracticeReminder(pracTitle: '', pracId: ''),
+                                enterPage: const PracticeFinished(),
+                              ),
+                            );
+                          } else {
+                            print('Api call failed');
+                          }
+                        }).catchError((error) {
+                          print('===>adasd');
+                        });
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,

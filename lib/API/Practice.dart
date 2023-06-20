@@ -15,10 +15,11 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 class PracticeGoalApi {
   Future userAddPractice(name, color, reminder, userId, goalCategoryId, day,
       endTime, startTime, practiceId) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+      'x-access-token': '$Accestoken'
     };
     var Body = json.encode({
       "name": "$name",
@@ -45,13 +46,15 @@ class PracticeGoalApi {
     print("request:${responses["status"]}");
     if (request.statusCode == 200) {
       print("response:${responses["message"]}");
-      var res = await responses.stream.bytesToString();
-      return res;
+      print('Practice added');
+
+      return true;
     } else {
       client.close();
       // print("response:${}");
+      print('Practice error');
       print(responses.reasonPhrase);
-      return responses["message"];
+      return false;
     }
   }
 

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../Widgets/fading2.dart';
+
 class PracticeName extends StatefulWidget {
   final String title;
   final String Circletitle;
@@ -299,8 +301,9 @@ class _PracticeNameState extends State<PracticeName> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => PracticeRoutine(
+                          FadePageRoute2(
+                            exitPage: PracticeName('', '', ''),
+                            enterPage: PracticeRoutine(
                               pracId: widget.pracId,
                               pracTitle: widget.title,
                             ),

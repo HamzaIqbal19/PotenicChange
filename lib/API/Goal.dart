@@ -257,7 +257,7 @@ class AdminGoal {
     }
   }
 
-  Future updateUserGoal(String reason) async {
+  Future updateUserGoal(reason) async {
     final SharedPreferences login = await _prefs;
     final SharedPreferences prefs = await _prefs;
 
@@ -271,13 +271,13 @@ class AdminGoal {
       'x-access-token': '$Accestoken'
     };
     var body = jsonEncode({
-      "[reason]": '$reason',
+      "reason": [
+        {"text": "$reason"}
+      ],
     });
 
-    var request = await client.put(
-        Uri.parse('${URL.BASE_URL}api/userGoal/$userGoalId'),
-        headers: headers,
-        body: body);
+    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/1'),
+        headers: headers, body: body);
     print("request: Update");
     print('=====>$request.statusCode');
     print(request.body);

@@ -3,7 +3,9 @@ import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../Screen/PracticeGoal/Create Practice.dart';
 import 'fading.dart';
+import 'fading2.dart';
 // import 'package:flutter_ui/utilities/app_contants.dart';
 
 List<String> categories = [
@@ -153,8 +155,9 @@ void bottom_sheet(context) {
                       onPressed: () {
                         Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => PracticeName(
+                            FadePageRoute2(
+                                exitPage: CreatePractice(),
+                                enterPage: PracticeName(
                                     goalName.text.toString(),
                                     goalName.text.toString(),
                                     '9')));

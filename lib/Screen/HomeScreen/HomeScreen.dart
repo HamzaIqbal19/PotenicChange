@@ -325,8 +325,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              signupSheet(
-                                  context, "Introduction", "OnBoarding");
+                              // signupSheet(
+                              //     context, "Introduction", "OnBoarding");
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
@@ -419,8 +419,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              signupSheet(
-                                  context, "Introduction", "OnBoarding");
+                              // signupSheet(
+                              //     context, "Introduction", "OnBoarding");
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,

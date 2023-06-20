@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+
+import '../../Widgets/fading2.dart';
 
 class PracticeRoutine extends StatefulWidget {
   final String pracTitle;
@@ -240,12 +243,11 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                         if (count >= 3) {
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => PracticeReminder(
+                            FadePageRoute2(
+                              exitPage: CreatePractice(),
+                              enterPage: PracticeReminder(
                                 pracId: widget.pracId,
                                 pracTitle: widget.pracTitle,
-                                startTime: start_time,
-                                endTime: end_time,
                               ),
                             ),
                           );

@@ -166,12 +166,12 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         ),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              FadePageRoute(
-                                page: PracticeReview(),
-                              ),
-                            );
+                            // Navigator.push(
+                            //   context,
+                            //   FadePageRoute(
+                            //     page: PracticeReview(),
+                            //   ),
+                            // );
                           },
                           child: Image(
                             image: const AssetImage(
@@ -202,11 +202,11 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       )),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ActivateStar(),
-                          ));
+                      // Navigator.pushReplacement(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //       builder: (context) => ActivateStar(),
+                      //     ));
                     },
                     child: Container(
                       height: AppDimensions.height10(context) * 5,
