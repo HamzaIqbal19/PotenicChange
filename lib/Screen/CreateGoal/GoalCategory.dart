@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -90,8 +91,9 @@ class _GoalCategoryState extends State<GoalCategory> {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => GoalName(),
+        FadePageRoute2(
+          enterPage: GoalName(),
+          exitPage: GoalCategory('title', 'Circletitle', 1),
         ),
       );
       return Goal.fromJson(jsonMap);

@@ -11,6 +11,8 @@ import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/fading2.dart';
+
 class GoalName extends StatefulWidget {
   GoalName();
 
@@ -147,10 +149,11 @@ class _GoalNameState extends State<GoalName> {
                                         await _prefs;
                                     var RouteName =
                                         prefs.setString('route', "GoalName");
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
+                                      FadePageRoute2(
+                                        exitPage: GoalName(),
+                                        enterPage:
                                             const HomeScreenProgressSaved(
                                           login: true,
                                           route: 'GoalName',
@@ -181,10 +184,11 @@ class _GoalNameState extends State<GoalName> {
                                 width: double.infinity,
                                 child: TextButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
+                                      FadePageRoute2(
+                                        exitPage: GoalName(),
+                                        enterPage:
                                             const HomeScreen(login: false),
                                       ),
                                     );
@@ -447,8 +451,9 @@ class _GoalNameState extends State<GoalName> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => GoalWhy(),
+                          FadePageRoute2(
+                            exitPage: GoalName(),
+                            enterPage: GoalWhy(),
                           ),
                         );
                       },

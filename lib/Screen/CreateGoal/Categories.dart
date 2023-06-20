@@ -7,6 +7,7 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/AllGoals.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalCategory.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -178,8 +179,9 @@ class _CategoriesState extends State<Categories> {
                                     onTap: () {
                                       Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) => GoalCategory(
+                                        FadePageRoute2(
+                                          exitPage: Categories(),
+                                          enterPage: GoalCategory(
                                             "Category Name",
                                             goalCategories?[index]["name"],
                                             goalCategories?[index]["id"],
@@ -238,14 +240,14 @@ class _CategoriesState extends State<Categories> {
                                         onTap: () {
                                           Navigator.push(
                                             context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  GoalCategory(
-                                                      "Category Name",
-                                                      goalCategories![index + 4]
-                                                          ["name"],
-                                                      goalCategories![index + 4]
-                                                          ["id"]),
+                                            FadePageRoute2(
+                                              exitPage: Categories(),
+                                              enterPage: GoalCategory(
+                                                  "Category Name",
+                                                  goalCategories![index + 4]
+                                                      ["name"],
+                                                  goalCategories![index + 4]
+                                                      ["id"]),
                                             ),
                                           );
                                         },

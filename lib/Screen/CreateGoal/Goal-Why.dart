@@ -12,6 +12,8 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/fading2.dart';
+
 class GoalWhy extends StatefulWidget {
   GoalWhy({
     Key? key,
@@ -214,11 +216,11 @@ class _goalwhyState extends State<GoalWhy> {
                                         await _prefs;
                                     var goalwhy =
                                         prefs.setString('route', "goalWhy");
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            HomeScreenProgressSaved(
+                                      FadePageRoute2(
+                                        exitPage: GoalWhy(),
+                                        enterPage: HomeScreenProgressSaved(
                                           login: true,
                                           route: "goalWhy",
                                         ),
@@ -248,10 +250,11 @@ class _goalwhyState extends State<GoalWhy> {
                                 width: double.infinity,
                                 child: TextButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
+                                      FadePageRoute2(
+                                        exitPage: GoalWhy(),
+                                        enterPage:
                                             const HomeScreen(login: false),
                                       ),
                                     );
@@ -562,8 +565,9 @@ class _goalwhyState extends State<GoalWhy> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          FadePageRoute(
-                            page: Goal_Identity(),
+                          FadePageRoute2(
+                            exitPage: GoalWhy(),
+                            enterPage: Goal_Identity(),
                           ),
                         );
                       },

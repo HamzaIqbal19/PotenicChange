@@ -12,6 +12,7 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
+import '../../Widgets/fading2.dart';
 
 class Visualising extends StatefulWidget {
   const Visualising({Key? key}) : super(key: key);
@@ -118,8 +119,9 @@ class _VisualisingState extends State<Visualising> {
           await prefs.remove('goal');
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const GoalFinished(),
+            FadePageRoute2(
+              exitPage: Visualising(),
+              enterPage: const GoalFinished(),
             ),
           );
         } else {
@@ -237,11 +239,11 @@ class _VisualisingState extends State<Visualising> {
                                         await _prefs;
                                     var goalvisualising = prefs.setString(
                                         'route', "goalVisualising");
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            HomeScreenProgressSaved(
+                                      FadePageRoute2(
+                                        exitPage: Visualising(),
+                                        enterPage: HomeScreenProgressSaved(
                                           login: true,
                                           route: "goalVisualising",
                                         ),
@@ -271,10 +273,11 @@ class _VisualisingState extends State<Visualising> {
                                 width: double.infinity,
                                 child: TextButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
+                                      FadePageRoute2(
+                                        exitPage: Visualising(),
+                                        enterPage:
                                             const HomeScreen(login: false),
                                       ),
                                     );
