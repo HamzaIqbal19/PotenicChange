@@ -9,12 +9,21 @@ import 'package:potenic_app/Screen/timeline/timeline.dart';
 import '../Screen/captureHurdles/captureHurdles_whatHurdles.dart';
 import '../Screen/timeline/coming_soon.dart';
 import '../utils/app_dimensions.dart';
+import 'fading.dart';
 
 class Navigation_Bar extends StatefulWidget {
   static int _selectedIndex = 0;
   final bool bg_colored;
+  final bool membership;
+  final bool trial;
+  final bool cancel;
 
-  const Navigation_Bar({super.key, required this.bg_colored});
+  const Navigation_Bar(
+      {super.key,
+      required this.bg_colored,
+      required this.membership,
+      required this.trial,
+      required this.cancel});
 
   @override
   Navigation_BarState createState() => Navigation_BarState();
@@ -32,16 +41,17 @@ class Navigation_BarState extends State<Navigation_Bar> {
     int index = 0;
     return Container(
       decoration: widget.bg_colored
-          ? BoxDecoration(
+          ? const BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter, end: Alignment.bottomCenter,
                   //transform: GradientRotation(3.14159),
                   colors: [Color(0xffD9B4B4), Color(0xffD9B4B4)]))
-          : BoxDecoration(shape: BoxShape.rectangle, color: Colors.transparent),
+          : const BoxDecoration(
+              shape: BoxShape.rectangle, color: Colors.transparent),
       //height: 77,
       width: AppDimensions.height10(context) * 30.5,
       padding: EdgeInsets.only(
-          bottom: AppDimensions.height10(context) * 1.7,
+          bottom: AppDimensions.height10(context) * 2.5,
           left: AppDimensions.height10(context) * 5.4,
           right: AppDimensions.height10(context) * 5.4),
       child: BottomNavigationBar(
@@ -57,8 +67,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
             icon: GestureDetector(
               onTap: () {
                 //  timeline_sheet(context);
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => timeline()));
+                Navigator.push(context, FadePageRoute(page: const timeline()));
               },
               child: Container(
                 margin:
@@ -68,7 +77,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                 child: Container(
                     height: AppDimensions.height10(context) * 2.612,
                     width: AppDimensions.height10(context) * 3.318,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
                             begin: Alignment.topCenter,
@@ -76,7 +85,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                             colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
                     padding:
                         EdgeInsets.all(AppDimensions.height10(context) * 1.2),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage('assets/images/timeline_icon.png'),
                       color: Colors.white,
                     )),
@@ -89,16 +98,16 @@ class Navigation_BarState extends State<Navigation_Bar> {
                 onTap: () {
                   Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => inspiration_motivation(
-                                goal_delete: false,
-                              )));
+                      FadePageRoute(
+                          page: const inspiration_motivation(
+                        goal_delete: false,
+                      )));
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 6.0,
                   height: AppDimensions.height10(context) * 6.0,
                   //margin: EdgeInsets.only(right: 30),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: LinearGradient(
                           begin: Alignment.topCenter,
@@ -109,7 +118,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                       width: AppDimensions.height10(context) * 2.444,
                       padding:
                           EdgeInsets.all(AppDimensions.height10(context) * 1.2),
-                      child: ImageIcon(
+                      child: const ImageIcon(
                         AssetImage('assets/images/insp (1).png'),
                         color: Colors.white,
                       )),
@@ -120,14 +129,12 @@ class Navigation_BarState extends State<Navigation_Bar> {
               icon: GestureDetector(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => hurdles_splash()));
+                      context, FadePageRoute(page: const hurdles_splash()));
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 6.0,
                   height: AppDimensions.height10(context) * 6.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: LinearGradient(
                           begin: Alignment.topCenter,
@@ -138,7 +145,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                     width: AppDimensions.height10(context) * 3.318,
                     padding:
                         EdgeInsets.all(AppDimensions.height10(context) * 1.2),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage('assets/images/hurdle_icon.png'),
                       //size: ,
                       color: Colors.white,
@@ -150,15 +157,21 @@ class Navigation_BarState extends State<Navigation_Bar> {
           BottomNavigationBarItem(
             icon: GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => your_goals_menu()));
+                Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: your_goals_menu(
+                      membership: widget.membership ? true : false,
+                      trial: widget.trial ? true : false,
+                      cancel: widget.cancel ? true : false,
+                    )));
               },
               child: Container(
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 2.0, right: 0),
                 width: AppDimensions.height10(context) * 4.0,
                 height: AppDimensions.height10(context) * 4.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -169,7 +182,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                     width: AppDimensions.height10(context) * 2.444,
                     padding:
                         EdgeInsets.all(AppDimensions.height10(context) * 1.2),
-                    child: ImageIcon(
+                    child: const ImageIcon(
                       AssetImage('assets/images/menu_icon.png'),
                       color: Colors.white,
                     )),

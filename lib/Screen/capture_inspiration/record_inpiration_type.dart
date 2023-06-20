@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_veiw_detail.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class record_inspiration extends StatefulWidget {
@@ -106,7 +108,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                           'Influencer',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
@@ -119,7 +121,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               'Nir Eyal',
                               style: TextStyle(
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.0,
+                                      AppDimensions.height10(context) * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -140,7 +142,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFFFFFFFF)),
                           ),
@@ -155,12 +157,12 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                           'Notes',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
-                      Container(
+                      SizedBox(
                         width: AppDimensions.height10(context) * 16.7,
                         height: AppDimensions.height10(context) * 3.0,
                         child: Align(
@@ -168,8 +170,10 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                               'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
                               style: TextStyle(
+                                  height:
+                                      AppDimensions.height10(context) * 0.15,
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.0,
+                                      AppDimensions.height10(context) * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -195,7 +199,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                           'Music Eye Of The Tiger ',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
@@ -208,7 +212,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               'Survivors',
                               style: TextStyle(
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.0,
+                                      AppDimensions.height10(context) * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -235,12 +239,12 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: Text(
                           'Content',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
-                      Container(
+                      SizedBox(
                         height: AppDimensions.height10(context) * 3.0,
                         child: Align(
                             alignment: Alignment.topCenter,
@@ -249,7 +253,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.0,
+                                      AppDimensions.height10(context) * 1.2,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -287,34 +291,34 @@ class _record_inspirationState extends State<record_inspiration> {
                       if (widget.type_switch == 1) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const veiw_details(
-                                    type_switch: 1,
-                                  )),
+                          FadePageRoute(
+                              page: const veiw_details(
+                            type_switch: 1,
+                          )),
                         );
                       } else if (widget.type_switch == 2) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const veiw_details(
-                                    type_switch: 3,
-                                  )),
+                          FadePageRoute(
+                              page: const veiw_details(
+                            type_switch: 3,
+                          )),
                         );
                       } else if (widget.type_switch == 3) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const veiw_details(
-                                    type_switch: 4,
-                                  )),
+                          FadePageRoute(
+                              page: const veiw_details(
+                            type_switch: 4,
+                          )),
                         );
                       } else if (widget.type_switch == 4) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const veiw_details(
-                                    type_switch: 2,
-                                  )),
+                          FadePageRoute(
+                              page: const veiw_details(
+                            type_switch: 2,
+                          )),
                         );
                       }
                     },
@@ -372,33 +376,33 @@ class _record_inspirationState extends State<record_inspiration> {
                       if (widget.type_switch == 1) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const photo_info(
-                                    edit_details: true,
-                                    image_detals: true,
-                                    image_save: true,
-                                    image_create: false,
-                                  )),
+                          FadePageRoute(
+                              page: const photo_info(
+                            edit_details: true,
+                            image_detals: true,
+                            image_save: true,
+                            image_create: false,
+                          )),
                         );
                       } else if (widget.type_switch == 2) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const note_info(
+                          FadePageRoute(
+                              page: const note_info(
                                   note_saved: true, type_switch: 1)),
                         );
                       } else if (widget.type_switch == 3) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const note_info(
+                          FadePageRoute(
+                              page: const note_info(
                                   note_saved: true, type_switch: 3)),
                         );
                       } else if (widget.type_switch == 4) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const note_info(
+                          FadePageRoute(
+                              page: const note_info(
                                   note_saved: true, type_switch: 2)),
                         );
                       }
@@ -486,7 +490,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             color: Color(0xff646464),
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10(context) * 5.0,
                           height: AppDimensions.height10(context) * 2.2,
                           child: Center(
@@ -501,44 +505,196 @@ class _record_inspirationState extends State<record_inspiration> {
                       ],
                     ),
                   ),
-                  Container(
-                    width: AppDimensions.height10(context) * 36.0,
-                    height: AppDimensions.height10(context) * 6.0,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            width: AppDimensions.height10(context) * 0.1,
-                            color: const Color(0xFFFFFFFF)),
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 2.0),
-                        color: const Color(0xff464646)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: AppDimensions.height10(context) * 2.4,
-                          height: AppDimensions.height10(context) * 2.4,
-                          margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 0.5,
+                  GestureDetector(
+                    onTap: () => showAnimatedDialog(
+                        animationType: DialogTransitionType.fadeScale,
+                        curve: Curves.easeInOut,
+                        duration: Duration(seconds: 1),
+                        context: context,
+                        builder: (BuildContext context) => SizedBox(
+                              width: AppDimensions.height10(context) * 27.0,
+                              height: AppDimensions.height10(context) * 21.4,
+                              child: AlertDialog(
+                                contentPadding: EdgeInsets.zero,
+                                actionsPadding: EdgeInsets.zero,
+                                titlePadding: EdgeInsets.zero,
+                                title: Container(
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) *
+                                            1.9,
+                                        right: AppDimensions.height10(context) *
+                                            1.6,
+                                        left: AppDimensions.height10(context) *
+                                            1.6,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                0.2),
+                                    height:
+                                        AppDimensions.height10(context) * 4.4,
+                                    width:
+                                        AppDimensions.height10(context) * 23.8,
+                                    child: RichText(
+                                        textAlign: TextAlign.center,
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.7,
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xFF000000)),
+                                            children: const [
+                                              TextSpan(
+                                                  text:
+                                                      'Are you sure you want\nto'),
+                                              TextSpan(
+                                                text: ' delete ',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              ),
+                                              TextSpan(
+                                                  text: 'this inspiration?')
+                                            ]))),
+                                content: Container(
+                                  margin: EdgeInsets.only(
+                                      bottom:
+                                          AppDimensions.height10(context) * 1.5,
+                                      left:
+                                          AppDimensions.height10(context) * 1.6,
+                                      right: AppDimensions.height10(context) *
+                                          1.6),
+                                  height: AppDimensions.height10(context) * 3.4,
+                                  width: AppDimensions.height10(context) * 23.8,
+                                  child: Text(
+                                    "By clicking 'Yes' you confirm that this\ninspiration will be deleted permanently. ",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: const Color(0xFF000000),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.3,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                                actions: <Widget>[
+                                  Column(
+                                    children: [
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.1,
+                                        child: Divider(
+                                          color: const Color(0XFF3C3C43)
+                                              .withOpacity(0.29),
+                                        ),
+                                      ),
+                                      Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.2,
+                                        width: double.infinity,
+                                        color: const Color(0xFF007AFF),
+                                        child: TextButton(
+                                          onPressed: () {},
+                                          child: Text(
+                                            'No',
+                                            style: TextStyle(
+                                                color: const Color(0xFFFFFFFF),
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.7,
+                                                fontFamily: "Laila",
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.1,
+                                        child: Divider(
+                                          color: const Color(0XFF3C3C43)
+                                              .withOpacity(0.29),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.4,
+                                        width: double.infinity,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text(
+                                            'Yes',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.7,
+                                                fontFamily: "Laila",
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xFF007AFF)),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.1,
+                                        child: Divider(
+                                          color: const Color(0XFF3C3C43)
+                                              .withOpacity(0.29),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )),
+                    child: Container(
+                      width: AppDimensions.height10(context) * 36.0,
+                      height: AppDimensions.height10(context) * 6.0,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10(context) * 0.1,
+                              color: const Color(0xFFFFFFFF)),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          color: const Color(0xff464646)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: AppDimensions.height10(context) * 2.4,
+                            height: AppDimensions.height10(context) * 2.4,
+                            margin: EdgeInsets.only(
+                              right: AppDimensions.height10(context) * 0.5,
+                            ),
+                            child: const Icon(
+                              Icons.delete,
+                              color: Color(0XFFFFFFFF),
+                            ),
                           ),
-                          child: const Icon(
-                            Icons.delete,
-                            color: Color(0XFFFFFFFF),
+                          SizedBox(
+                            width: AppDimensions.height10(context) * 5.3,
+                            height: AppDimensions.height10(context) * 2.2,
+                            child: Center(
+                                child: Text(
+                              'Delete',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xffffffff)),
+                            )),
                           ),
-                        ),
-                        Container(
-                          width: AppDimensions.height10(context) * 5.3,
-                          height: AppDimensions.height10(context) * 2.2,
-                          child: Center(
-                              child: Text(
-                            'Delete',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xffffffff)),
-                          )),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
 import 'package:potenic_app/Screen/ResetPassword/reset.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -255,9 +256,8 @@ class _PasswordResetState extends State<PasswordReset> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          Loginemailandpassword(),
+                                    FadePageRoute(
+                                      page: Loginemailandpassword(),
                                     ),
                                   );
                                 },

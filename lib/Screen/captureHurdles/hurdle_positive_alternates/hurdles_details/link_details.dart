@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../../../Widgets/fading.dart';
 import '../../../../utils/app_dimensions.dart';
 
 class link_details extends StatelessWidget {
@@ -37,7 +38,7 @@ class link_details extends StatelessWidget {
                 fontSize: AppDimensions.height10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
-              colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+              colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
           actions: [
@@ -56,12 +57,12 @@ class link_details extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/practicebackground.png'),
                 fit: BoxFit.cover)),
         child: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -77,7 +78,7 @@ class link_details extends StatelessWidget {
                     fontSize: AppDimensions.height10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
@@ -92,7 +93,7 @@ class link_details extends StatelessWidget {
                     fontSize: AppDimensions.height10(context) * 1.8,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
@@ -120,7 +121,7 @@ class link_details extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: AssetImage(
                                   'assets/images/Image_Subtract.png'),
                               fit: BoxFit.cover)),
@@ -134,20 +135,20 @@ class link_details extends StatelessWidget {
                               height: AppDimensions.height10(context) * 6.6,
                               margin: EdgeInsets.only(
                                   right: AppDimensions.height10(context) * 1.0),
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   //  shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
                                           'assets/images/link_image.png'),
                                       fit: BoxFit.cover)),
                             ),
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10(context) * 25.6,
                               height: AppDimensions.height10(context) * 6.6,
                               child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: AppDimensions.height10(context) *
                                           25.3,
                                       height:
@@ -159,7 +160,7 @@ class link_details extends StatelessWidget {
                                                     context) *
                                                 1.4,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xffffffff)),
+                                            color: const Color(0xffffffff)),
                                       ),
                                     ),
                                     Container(
@@ -180,7 +181,7 @@ class link_details extends StatelessWidget {
                                                     context) *
                                                 1.1,
                                             fontWeight: FontWeight.w400,
-                                            color: Color(0xffffffff)),
+                                            color: const Color(0xffffffff)),
                                       ),
                                     )
                                   ]),
@@ -207,7 +208,7 @@ class link_details extends StatelessWidget {
                       hintStyle: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff828282)),
+                          color: const Color(0xff828282)),
                       focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.transparent)),
                       enabledBorder: const OutlineInputBorder(
@@ -230,7 +231,7 @@ class link_details extends StatelessWidget {
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.4,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff828282)),
+                            color: const Color(0xff828282)),
                         focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent)),
                         enabledBorder: const OutlineInputBorder(
@@ -257,10 +258,8 @@ class link_details extends StatelessWidget {
                   ),
                   child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => supporting_mat_link()));
+                        Navigator.push(context,
+                            FadePageRoute(page: const supporting_mat_link()));
                       },
                       child: Text(
                         'Next',
@@ -311,7 +310,7 @@ class supporting_mat_link extends StatelessWidget {
                 fontSize: AppDimensions.height10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
-              colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+              colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
           actions: [
@@ -330,12 +329,12 @@ class supporting_mat_link extends StatelessWidget {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/practicebackground.png'),
                 fit: BoxFit.cover)),
         child: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -351,7 +350,7 @@ class supporting_mat_link extends StatelessWidget {
                     fontSize: AppDimensions.height10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
               Container(
@@ -365,7 +364,7 @@ class supporting_mat_link extends StatelessWidget {
                   decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           image: AssetImage('assets/images/Image_Subtract.png'),
                           fit: BoxFit.cover)),
                   child: Center(
@@ -378,20 +377,20 @@ class supporting_mat_link extends StatelessWidget {
                           height: AppDimensions.height10(context) * 6.6,
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 1.0),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               //  shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/link_image.png'),
                                   fit: BoxFit.cover)),
                         ),
-                        Container(
+                        SizedBox(
                           width: AppDimensions.height10(context) * 25.6,
                           height: AppDimensions.height10(context) * 6.6,
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
+                                SizedBox(
                                   width: AppDimensions.height10(context) * 25.3,
                                   height: AppDimensions.height10(context) * 3.6,
                                   child: Text(
@@ -401,7 +400,7 @@ class supporting_mat_link extends StatelessWidget {
                                             AppDimensions.height10(context) *
                                                 1.4,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xffffffff)),
+                                        color: const Color(0xffffffff)),
                                   ),
                                 ),
                                 Container(
@@ -419,7 +418,7 @@ class supporting_mat_link extends StatelessWidget {
                                             AppDimensions.height10(context) *
                                                 1.1,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(0xffffffff)),
+                                        color: const Color(0xffffffff)),
                                   ),
                                 )
                               ]),
@@ -455,7 +454,7 @@ class supporting_mat_link extends StatelessWidget {
                                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quis aliquam ligula, sit amet viverra nibh. Quisque finibus volutpat dapibus.',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  color: Color(0xffB353C9),
+                                  color: const Color(0xffB353C9),
                                   fontSize:
                                       AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
@@ -470,7 +469,7 @@ class supporting_mat_link extends StatelessWidget {
                               child: Text(
                                 '#Tag name 1 #Tag name 1',
                                 style: TextStyle(
-                                    color: Color(0xff828282),
+                                    color: const Color(0xff828282),
                                     fontSize:
                                         AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w400),
@@ -491,7 +490,7 @@ class supporting_mat_link extends StatelessWidget {
                               color: Colors.transparent,
                               border:
                                   Border.all(width: 1, color: Colors.white)),
-                          child: ImageIcon(
+                          child: const ImageIcon(
                             AssetImage('assets/images/edit_icon.png'),
                             color: Colors.white,
                             //size: 10,
@@ -504,7 +503,7 @@ class supporting_mat_link extends StatelessWidget {
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 1.1,
                     top: AppDimensions.height10(context) * 3.6),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     // border: Border.all(
                     //     width: AppDimensions.height10(context) * 0.3,
@@ -512,7 +511,7 @@ class supporting_mat_link extends StatelessWidget {
                     image: DecorationImage(
                         image: AssetImage('assets/images/Addgoal.png'))),
               ),
-              Container(
+              SizedBox(
                 width: AppDimensions.height10(context) * 26.0,
                 height: AppDimensions.height10(context) * 1.9,
                 child: Text(

@@ -10,6 +10,8 @@ import 'package:http/http.dart' as http;
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/fading.dart';
+
 class SignUpWithEmail extends StatefulWidget {
   @override
   _SignUpWithEmailState createState() => _SignUpWithEmailState();
@@ -67,11 +69,13 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
   final _formkey2 = GlobalKey<FormState>();
 
   @override
+  bool pass_obscure = true;
   Widget build(BuildContext context) {
     // return WillPopScope(
     //     onWillPop: () async => false,
     // =>
     // SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         extendBodyBehindAppBar: true,
@@ -199,7 +203,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
-                                    bottom: 15.0,
+                                    //bottom: 15.0,
                                     left: 10.0,
                                     right: 10.0),
                                 floatingLabelBehavior:
@@ -261,7 +265,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
-                                    bottom: 15.0,
+                                    //bottom: 15.0,
                                     left: 10.0,
                                     right: 10.0),
                                 floatingLabelBehavior:

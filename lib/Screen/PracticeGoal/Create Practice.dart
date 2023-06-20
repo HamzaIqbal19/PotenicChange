@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet_Practice.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 import '../../API/Practice.dart';
@@ -53,7 +54,7 @@ class _CreatePracticeState extends State<CreatePractice> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
@@ -474,11 +475,15 @@ class _CreatePracticeState extends State<CreatePractice> {
         notchMargin: 10,
         child: Container(
           // color: Colors.blue,
+          margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           padding: EdgeInsets.only(
               left: AppDimensions.height10(context) * 2.2,
               right: AppDimensions.height10(context) * 2.2),
           height: AppDimensions.height10(context) * 7.0,
           width: AppDimensions.height10(context) * 41.4,
+
           child: SearchIcon == true
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -528,7 +533,25 @@ class _CreatePracticeState extends State<CreatePractice> {
                         ),
                       ],
                     ),
+                    // fit: BoxFit.contain,
+                    // fit: BoxFit.contain,
 
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          SearchIcon = false;
+                        });
+                      },
+                      child: Text(
+                        "Cancel",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 1.7,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFF007AFF),
+                        ),
+                      ),
+                    ),
                     GestureDetector(
                       onTap: () {
                         setState(() {
@@ -549,6 +572,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                     //const Padding(padding: EdgeInsets.all(10))
                   ],
                 )
+              //const Padding(padding: EdgeInsets.all(10))
+
               : Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -609,10 +634,31 @@ class _CreatePracticeState extends State<CreatePractice> {
                         ),
                       ),
                     ),
+                    Container(
+                      width: AppDimensions.height10(context) * 4.7,
+                      height: AppDimensions.height10(context) * 4.7,
+                      padding: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 0.5,
+                          bottom: AppDimensions.height10(context) * 0.5),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            SearchIcon = true;
+                          });
+                        },
+                        child: Image.asset(
+                          'assets/images/Search.png',
+                          width: AppDimensions.height10(context) * 5,
+                          height: AppDimensions.height10(context) * 5,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
 
                     //const Padding(padding: EdgeInsets.all(10))
                   ],
                 ),
+          //const Padding(padding: EdgeInsets.all(10))
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/capture_inspiration/record_inpiration_type.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -17,6 +18,24 @@ class inspiration_landing extends StatefulWidget {
 
 class _inspiration_landingState extends State<inspiration_landing> {
   @override
+  final List<String> _tags = [
+    'All ',
+    '[Tag 1]',
+    '[Tag 2]',
+    '[Tag 3]',
+    '[Tag 4]',
+  ];
+  final List<String> _goals = [
+    'All ',
+    'Goal name 1',
+    'Goal name 2 ',
+    'Goal name 3 ',
+    'Practice name 1 (goal name)',
+  ];
+  int _selectedTag = 0;
+  int _Goal_Index = 0;
+  String _selected_activity = 'All';
+  String _selected_goal = 'All';
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -47,121 +66,120 @@ class _inspiration_landingState extends State<inspiration_landing> {
                 colorFilter: ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
-        child: Column(
-          children: [
-            Container(
-              width: AppDimensions.height10(context) * 34.3,
-              height: AppDimensions.height10(context) * 27.0,
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10(context) * 12.0),
-              child: Stack(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      widget.muliple_insp
-                          ? Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => inspiration_motivation(
-                                      goal_delete: false)),
-                            )
-                          : Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const inspiration_landing(
-                                        muliple_insp: true,
-                                        is_Updated: false,
-                                      )),
-                            );
-                    },
-                    child: SizedBox(
-                      width: AppDimensions.height10(context) * 34.3,
-                      height: AppDimensions.height10(context) * 7.3,
-                      child: Center(
-                        child: GradientText(
-                          'My current\ninspirations',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            height: 1.5,
-                            fontSize: AppDimensions.height10(context) * 3.0,
-                            fontWeight: FontWeight.w700,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              Container(
+                width: AppDimensions.height10(context) * 34.3,
+                height: AppDimensions.height10(context) * 27.0,
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 12.0),
+                child: Stack(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        widget.muliple_insp
+                            ? Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const inspiration_motivation(
+                                        goal_delete: false)),
+                              )
+                            : Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const inspiration_landing(
+                                  muliple_insp: true,
+                                  is_Updated: false,
+                                )),
+                              );
+                      },
+                      child: SizedBox(
+                        width: AppDimensions.height10(context) * 34.3,
+                        height: AppDimensions.height10(context) * 7.3,
+                        child: Center(
+                          child: GradientText(
+                            'My current\ninspirations',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              height: 1.5,
+                              fontSize: AppDimensions.height10(context) * 3.0,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            colors: const [
+                              Color(0xffFA9934),
+                              Color(0xffEDD15E)
+                            ],
                           ),
-                          colors: [
-                            const Color(0xffFA9934),
-                            const Color(0xffEDD15E)
-                          ],
                         ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: const Alignment(0, 0.525),
-                    child: Container(
-                      width: AppDimensions.height10(context) * 16.43,
-                      height: AppDimensions.height10(context) * 16.43,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        opacity: 0.2,
-                        image: AssetImage('assets/images/Star.png'),
-                      )),
-                      child: Center(
-                        child: Container(
-                          width: AppDimensions.height10(context) * 15.6,
-                          height: AppDimensions.height10(context) * 15.6,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/Inspiration_center 1.png'))),
-                          child: Center(
-                              child: Container(
-                            width: AppDimensions.height10(context) * 6.8,
-                            height: AppDimensions.height10(context) * 6.8,
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xFFFFFFFF)),
-                            child: Center(
-                                child: SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 3.2,
-                                    height:
-                                        AppDimensions.height10(context) * 3.2,
-                                    child:
-                                        Image.asset('assets/images/plus.png'))),
-                          )),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: const Alignment(0.1, 0.85),
-                    child: SizedBox(
-                      width: AppDimensions.height10(context) * 13.5,
-                      height: AppDimensions.height10(context) * 2.2,
-                      child: Text(
-                        'New inspiration',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.8,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0xFFFFFFFF)),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            widget.muliple_insp
-                ? Container(
-                    //  color: Colors.red,
-                    height: AppDimensions.height10(context) * 47.0,
-                    margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 2.4,
-                    ),
-                    child: Row(
-                      children: [
-                        SingleChildScrollView(
-                          scrollDirection: Axis.vertical,
+                    Align(
+                      alignment: const Alignment(0, 0.525),
+                      child: Container(
+                        width: AppDimensions.height10(context) * 16.43,
+                        height: AppDimensions.height10(context) * 16.43,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                          opacity: 0.2,
+                          image: AssetImage('assets/images/Star.png'),
+                        )),
+                        child: Center(
                           child: Container(
+                            width: AppDimensions.height10(context) * 15.6,
+                            height: AppDimensions.height10(context) * 15.6,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/Inspiration_center 1.png'))),
+                            child: Center(
+                                child: Container(
+                              width: AppDimensions.height10(context) * 6.8,
+                              height: AppDimensions.height10(context) * 6.8,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Color(0xFFFFFFFF)),
+                              child: Center(
+                                  child: SizedBox(
+                                      width:
+                                          AppDimensions.height10(context) * 3.2,
+                                      height:
+                                          AppDimensions.height10(context) * 3.2,
+                                      child: Image.asset(
+                                          'assets/images/plus.png'))),
+                            )),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: const Alignment(0.1, 0.85),
+                      child: SizedBox(
+                        width: AppDimensions.height10(context) * 13.5,
+                        height: AppDimensions.height10(context) * 2.2,
+                        child: Text(
+                          'New inspiration',
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.8,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFFFFFFFF)),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              widget.muliple_insp
+                  ? Container(
+                      //  color: Colors.red,
+                      // height: AppDimensions.height10(context) * 47.0,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 2.4,
+                          bottom: AppDimensions.height10(context) * 2.5),
+                      child: Row(
+                        children: [
+                          Container(
                             width: AppDimensions.height10(context) * 16.7,
                             //  height: AppDimensions.height10(context) * 71.0,
                             margin: EdgeInsets.only(
@@ -292,11 +310,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   onTap: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const record_inspiration(
-                                                type_switch: 2,
-                                              )),
+                                      FadePageRoute(
+                                          page: const record_inspiration(
+                                        type_switch: 2,
+                                      )),
                                     );
                                   },
                                   child: Container(
@@ -379,28 +396,24 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               ],
                             ),
                           ),
-                        ),
-                        Container(
-                          // color: Colors.amber,
-                          width: AppDimensions.height10(context) * 16.7,
+                          Container(
+                            // color: Colors.amber,
+                            width: AppDimensions.height10(context) * 16.7,
 
-                          //height: AppDimensions.height10(context) * 71.0,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 3.0,
-                              top: AppDimensions.height10(context) * 7.0),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.vertical,
+                            //height: AppDimensions.height10(context) * 71.0,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 3.0,
+                                top: AppDimensions.height10(context) * 7.0),
                             child: Column(
                               children: [
                                 GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const record_inspiration(
-                                                type_switch: 3,
-                                              )),
+                                      FadePageRoute(
+                                          page: const record_inspiration(
+                                        type_switch: 3,
+                                      )),
                                     );
                                   },
                                   child: SizedBox(
@@ -462,11 +475,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   onTap: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const record_inspiration(
-                                                type_switch: 1,
-                                              )),
+                                      FadePageRoute(
+                                          page: const record_inspiration(
+                                        type_switch: 1,
+                                      )),
                                     );
                                   },
                                   child: Container(
@@ -533,11 +545,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   onTap: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const record_inspiration(
-                                                type_switch: 4,
-                                              )),
+                                      FadePageRoute(
+                                          page: const record_inspiration(
+                                        type_switch: 4,
+                                      )),
                                     );
                                   },
                                   child: Container(
@@ -604,171 +615,174 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               ],
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                : GestureDetector(
-                    onTap: () {
-                      widget.is_Updated
-                          ? NavigatorState()
-                          : Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const record_inspiration(
-                                        type_switch: 1,
-                                      )),
-                            );
-                    },
-                    child: Container(
-                      width: AppDimensions.height10(context) * 16.7,
-                      height: AppDimensions.height10(context) * 21.2,
-                      margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 5.3,
-                        right: AppDimensions.height10(context) * 21.7,
-                        left: AppDimensions.height10(context) * 3.0,
+                        ],
                       ),
-                      child: Column(children: [
-                        Container(
-                          width: AppDimensions.height10(context) * 16.7,
-                          height: AppDimensions.height10(context) * 16.7,
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Color(0xFFD9D9D9),
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage('assets/images/sir_nyal.png'),
-                                  fit: BoxFit.cover)),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        widget.is_Updated
+                            ? NavigatorState()
+                            : Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const record_inspiration(
+                                  type_switch: 1,
+                                )),
+                              );
+                      },
+                      child: Container(
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 21.2,
+                        margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 5.3,
+                          right: AppDimensions.height10(context) * 21.7,
+                          left: AppDimensions.height10(context) * 3.0,
                         ),
-                        Container(
-                          width: AppDimensions.height10(context) * 16.7,
-                          height: AppDimensions.height10(context) * 1.9,
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 0.5),
-                          child: Center(
-                              child: Text(
-                            'Influencer',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.4,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xFFFFFFFF)),
-                          )),
-                        ),
-                        SizedBox(
-                          child: Center(
-                              child: Text(
-                            'Nir Eyal',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.0,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xFFFFFFFF)),
-                          )),
-                        )
-                      ]),
-                    ),
-                  ),
-            widget.muliple_insp
-                ? Container()
-                : Container(
-                    width: AppDimensions.height10(context) * 38.259,
-                    height: AppDimensions.height10(context) * 9.707,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 12.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 2.0),
-                        gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 1.261),
-                          width: AppDimensions.height10(context) * 4.437,
-                          height: AppDimensions.height10(context) * 4.437,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/circle_tick.png'))),
-                        ),
-                        Container(
-                          width: AppDimensions.height10(context) * 6.9,
-                          height: AppDimensions.height10(context) * 3.6,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 1.232),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.height10(context) * 4.6,
-                                height: AppDimensions.height10(context) * 1.4,
-                                //   color: Colors.amber,
-                                child: Text(
-                                  widget.is_Updated ? 'Updated' : 'SAVED',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.3,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color(0xFFFFFFFF)),
-                                ),
-                              ),
-                              SizedBox(
-                                width: AppDimensions.height10(context) * 6.9,
-                                height: AppDimensions.height10(context) * 2.2,
-                                child: Text(
-                                  'Nir Eyal',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color(0xFFFFFFFF)),
-                                ),
-                              ),
-                            ],
+                        child: Column(children: [
+                          Container(
+                            width: AppDimensions.height10(context) * 16.7,
+                            height: AppDimensions.height10(context) * 16.7,
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xFFD9D9D9),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/sir_nyal.png'),
+                                    fit: BoxFit.cover)),
                           ),
-                        ),
-                        Container(
-                          width: AppDimensions.height10(context) * 8.1,
-                          height: AppDimensions.height10(context) * 6.0,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 15.1),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(0xFFFFFFFF), width: 1),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Veiw',
+                          Container(
+                            width: AppDimensions.height10(context) * 16.7,
+                            height: AppDimensions.height10(context) * 1.9,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 0.5),
+                            child: Center(
+                                child: Text(
+                              'Influencer',
                               style: TextStyle(
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w500,
+                                      AppDimensions.height10(context) * 1.4,
+                                  fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFFFFFF)),
+                            )),
+                          ),
+                          SizedBox(
+                            child: Center(
+                                child: Text(
+                              'Nir Eyal',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.0,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xFFFFFFFF)),
+                            )),
+                          )
+                        ]),
+                      ),
+                    ),
+              widget.muliple_insp
+                  ? Container()
+                  : Container(
+                      width: AppDimensions.height10(context) * 38.259,
+                      height: AppDimensions.height10(context) * 9.707,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 12.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          gradient: const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 1.261),
+                            width: AppDimensions.height10(context) * 4.437,
+                            height: AppDimensions.height10(context) * 4.437,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/circle_tick.png'))),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 6.9,
+                            height: AppDimensions.height10(context) * 3.6,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 1.232),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.height10(context) * 4.6,
+                                  height: AppDimensions.height10(context) * 1.4,
+                                  //   color: Colors.amber,
+                                  child: Text(
+                                    widget.is_Updated ? 'Updated' : 'SAVED',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.3,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: AppDimensions.height10(context) * 6.9,
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  child: Text(
+                                    'Nir Eyal',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        )
-                      ],
+                          Container(
+                            width: AppDimensions.height10(context) * 8.1,
+                            height: AppDimensions.height10(context) * 6.0,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 15.1),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color(0xFFFFFFFF), width: 1),
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 2.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Veiw',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xFFFFFFFF)),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-            widget.muliple_insp
-                ? Container()
-                : Container(
-                    width: AppDimensions.height10(context) * 17.0,
-                    height: AppDimensions.height10(context) * 0.5,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 0.29),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 2.0),
-                        color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                  ),
-          ],
+              widget.muliple_insp
+                  ? Container()
+                  : Container(
+                      width: AppDimensions.height10(context) * 17.0,
+                      height: AppDimensions.height10(context) * 0.5,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 0.29),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                    ),
+            ],
+          ),
         ),
       ),
       extendBody: true,
@@ -782,199 +796,521 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     left: AppDimensions.height10(context) * 2.2,
                     right: AppDimensions.height10(context) * 2.2),
                 height: AppDimensions.height10(context) * 7.0,
-                width: AppDimensions.height10(context) * 41.4,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                // width: AppDimensions.height10(context) * 41.4,
+                child: Stack(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: AppDimensions.height10(context) * 2.4,
-                          height: AppDimensions.height10(context) * 2.4,
-                          // padding: EdgeInsets.only(
-                          //     top: AppDimensions.height10(context) * 0.5,
-                          //     bottom: AppDimensions.height10(context) * 0.5),
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Image.asset(
-                              'assets/images/ic_filter_list.png',
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            SizedBox(
                               width: AppDimensions.height10(context) * 2.4,
                               height: AppDimensions.height10(context) * 2.4,
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          width: AppDimensions.height10(context) * 0.5,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            _showBottomSheet(context);
-                          },
-                          child: Container(
-                            width: AppDimensions.height10(context) * 11.5,
-                            height: AppDimensions.height10(context) * 3.4,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 1.0),
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: const Color(0xFFE0E0E0))),
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.3,
-                                right: AppDimensions.height10(context) * 1.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          1.0),
-                                  child: Text(
-                                    'Goal:',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xffFA9934)),
-                                  ),
-                                ),
-                                Container(
-                                  width: AppDimensions.height10(context) * 1.9,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          0.8),
-                                  child: Center(
-                                    child: Text(
-                                      'All',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xffFA9934)),
-                                    ),
-                                  ),
-                                ),
-                                Container(
+                              // padding: EdgeInsets.only(
+                              //     top: AppDimensions.height10(context) * 0.5,
+                              //     bottom: AppDimensions.height10(context) * 0.5),
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'assets/images/ic_filter_list.png',
                                   width: AppDimensions.height10(context) * 2.4,
                                   height: AppDimensions.height10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.height10(context) * 0.8,
-                                      bottom: AppDimensions.height10(context) *
-                                          0.3),
-                                  child: const Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Color(0xffFA9934),
-                                  ),
-                                )
-                              ],
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            _showTagSheet(context);
-                          },
-                          child: Container(
-                            width: AppDimensions.height10(context) * 11.6,
-                            height: AppDimensions.height10(context) * 3.4,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 1.0),
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: const Color(0xFFE0E0E0))),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          1.0),
-                                  child: Text(
-                                    'Tags:',
-                                    style: TextStyle(
-                                        fontSize:
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 0.5,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => Navigator.of(context).pop(),
+                                      child: Container(
+                                        height:
                                             AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xffFA9934)),
-                                  ),
-                                ),
-                                Container(
-                                  width: AppDimensions.height10(context) * 1.9,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          0.8),
-                                  child: Center(
-                                    child: Text(
-                                      'All',
-                                      style: TextStyle(
-                                          fontSize:
+                                                30.3,
+                                        color: const Color.fromRGBO(
+                                            0, 0, 0, 0.001),
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.0,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      41.4,
+                                                  decoration: BoxDecoration(
+                                                      border: Border(
+                                                          bottom: BorderSide(
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.1,
+                                                              color: const Color(
+                                                                  0xFF828282)))),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Container(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              5.0,
+                                                          margin: EdgeInsets.only(
+                                                              right: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.0),
+                                                          child: Text(
+                                                            'Cancel',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            _selected_goal =
+                                                                _goals[
+                                                                    _Goal_Index];
+                                                          });
+
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: SizedBox(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              3.7,
+                                                          child: Text(
+                                                            'Done',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: ListWheelScrollView(
+                                                    itemExtent: 40,
+                                                    magnification: 1.2,
+                                                    useMagnifier:
+                                                        true, // Set the height of each statement
+                                                    children: _goals
+                                                        .map((statement) =>
+                                                            Text(statement,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          2.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )))
+                                                        .toList(),
+                                                    onSelectedItemChanged:
+                                                        (int index) {
+                                                      setState(() {
+                                                        _Goal_Index = index;
+                                                        //activity_duration = _statements[_selectedIndex];
+                                                        // _selected_activity =
+                                                        //     _statements[index];
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: Container(
+                                // width: AppDimensions.height10(context) * 11.5,
+                                height: AppDimensions.height10(context) * 3.4,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10(context) * 1.0),
+                                    border: Border.all(
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
+                                        color: const Color(0xFFE0E0E0))),
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 1.3,
+                                    right:
+                                        AppDimensions.height10(context) * 1.0),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          left:
                                               AppDimensions.height10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xffFA9934)),
+                                                  1.0),
+                                      child: Text(
+                                        'Goal:',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xffFA9934)),
+                                      ),
                                     ),
-                                  ),
+                                    Container(
+                                      //width: AppDimensions.height10(context) * 1.9,
+                                      height:
+                                          AppDimensions.height10(context) * 2.4,
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  0.8),
+                                      child: Center(
+                                        child: Text(
+                                          _selected_goal,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color(0xffFA9934)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width:
+                                          AppDimensions.height10(context) * 2.4,
+                                      height:
+                                          AppDimensions.height10(context) * 2.4,
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  0.8,
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  1.0,
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  0.3),
+                                      child: const Icon(
+                                        Icons.arrow_drop_down,
+                                        color: Color(0xffFA9934),
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                Container(
-                                  width: AppDimensions.height10(context) * 2.4,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  margin: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.height10(context) * 0.8,
-                                      bottom: AppDimensions.height10(context) *
-                                          0.3),
-                                  child: const Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Color(0xffFA9934),
-                                  ),
-                                )
-                              ],
+                              ),
                             ),
-                          ),
+                            GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => Navigator.of(context).pop(),
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                30.3,
+                                        color: const Color.fromRGBO(
+                                            0, 0, 0, 0.001),
+                                        child: GestureDetector(
+                                          onTap: () {},
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.0,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      41.4,
+                                                  decoration: BoxDecoration(
+                                                      border: Border(
+                                                          bottom: BorderSide(
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.1,
+                                                              color: const Color(
+                                                                  0xFF828282)))),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
+                                                    children: [
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Container(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              5.0,
+                                                          margin: EdgeInsets.only(
+                                                              right: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.0),
+                                                          child: Text(
+                                                            'Cancel',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            _selected_activity =
+                                                                _tags[
+                                                                    _selectedTag];
+                                                          });
+                                                          print('asf');
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: SizedBox(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              3.7,
+                                                          child: Text(
+                                                            'Done',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.4,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: const Color(
+                                                                    0xFF2F80ED)),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: ListWheelScrollView(
+                                                    itemExtent: 40,
+                                                    magnification: 1.2,
+                                                    useMagnifier:
+                                                        true, // Set the height of each statement
+                                                    children: _tags
+                                                        .map((statement) =>
+                                                            Text(statement,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          2.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                )))
+                                                        .toList(),
+                                                    onSelectedItemChanged:
+                                                        (int index) {
+                                                      setState(() {
+                                                        _selectedTag = index;
+                                                        //activity_duration = _statements[_selectedIndex];
+                                                        // _selected_activity =
+                                                        //     _statements[index];
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              child: Container(
+                                //width: AppDimensions.height10(context) * 11.6,
+                                height: AppDimensions.height10(context) * 3.4,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10(context) * 1.0),
+                                    border: Border.all(
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
+                                        color: const Color(0xFFE0E0E0))),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  1.0),
+                                      child: Text(
+                                        'Type:',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xffFA9934)),
+                                      ),
+                                    ),
+                                    Container(
+                                      // width: AppDimensions.height10(context) * 1.9,
+                                      height:
+                                          AppDimensions.height10(context) * 2.4,
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  0.8),
+                                      child: Center(
+                                        child: Text(
+                                          _selected_activity,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color(0xffFA9934)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width:
+                                          AppDimensions.height10(context) * 2.4,
+                                      height:
+                                          AppDimensions.height10(context) * 2.4,
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  0.8,
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  0.3,
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  1.0),
+                                      child: const Icon(
+                                        Icons.arrow_drop_down,
+                                        color: Color(0xffFA9934),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              child: Container(
+                                width: AppDimensions.height10(context) * 3.9,
+                                height: AppDimensions.height10(context) * 3.4,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 1.0,
+                                    right:
+                                        AppDimensions.height10(context) * 3.0),
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Clec',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.4,
+                                      fontWeight: FontWeight.w400,
+                                      decoration: TextDecoration.underline,
+                                      color: const Color(0xFFFA9934)
+                                          .withOpacity(0.30)),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        GestureDetector(
-                          child: Container(
-                            width: AppDimensions.height10(context) * 3.9,
-                            height: AppDimensions.height10(context) * 3.4,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.0),
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Clec',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  decoration: TextDecoration.underline,
-                                  color: const Color(0xFFFA9934)
-                                      .withOpacity(0.30)),
-                            ),
-                          ),
-                        )
-                      ],
+                      ),
                     ),
 
-                    SizedBox(
-                      width: AppDimensions.height10(context) * 4.9,
-                      height: AppDimensions.height10(context) * 5.0,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Image.asset(
-                          'assets/images/Search.png',
-                          width: AppDimensions.height10(context) * 5,
-                          height: AppDimensions.height10(context) * 5,
-                          fit: BoxFit.contain,
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        width: AppDimensions.height10(context) * 4.9,
+                        height: AppDimensions.height10(context) * 5.0,
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Color(0xFFFBFBFB)),
+                        child: GestureDetector(
+                          onTap: () {},
+                          child: Image.asset(
+                            'assets/images/Search.png',
+                            width: AppDimensions.height10(context) * 5,
+                            height: AppDimensions.height10(context) * 5,
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
                     ),

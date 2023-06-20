@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -105,6 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     )),
+                SizedBox(height: AppDimensions.height10(context) * 4.4),
                 SizedBox(height: AppDimensions.height10(context) * 4.4),
                 Center(
                   child: GestureDetector(

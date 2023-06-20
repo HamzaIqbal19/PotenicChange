@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 bool note_check = false;
@@ -44,7 +45,7 @@ class feelingsAfter extends StatelessWidget {
           ]),
       extendBodyBehindAppBar: true,
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -52,7 +53,7 @@ class feelingsAfter extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         child: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
           //scrollDirection: Axis.vertical,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -104,7 +105,7 @@ class feelingsAfter extends StatelessWidget {
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 2.8,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff8C648A)),
+                              color: const Color(0xff8C648A)),
                         ),
                         Text(
                           ' your practice?',
@@ -142,7 +143,7 @@ class feelingsAfter extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(width: 2, color: Colors.white),
-                        color: Color(0xff546096),
+                        color: const Color(0xff546096),
                       ),
                       child: Text(
                         'I feel very low\n& irritated',
@@ -165,7 +166,7 @@ class feelingsAfter extends StatelessWidget {
                         border: Border.all(
                             width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
-                        color: Color(0xff7291A0),
+                        color: const Color(0xff7291A0),
                       ),
                       child: Text(
                         'I feel alright,\n but slightly\ndown',
@@ -188,7 +189,7 @@ class feelingsAfter extends StatelessWidget {
                         border: Border.all(
                             width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
-                        color: Color(0xffE1C44F),
+                        color: const Color(0xffE1C44F),
                       ),
                       child: Text(
                         'I feel ok',
@@ -210,7 +211,7 @@ class feelingsAfter extends StatelessWidget {
                         border: Border.all(
                             width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
-                        color: Color(0xffFA9458),
+                        color: const Color(0xffFA9458),
                       ),
                       child: Text(
                         ' I feel focused\nand motivated',
@@ -244,7 +245,7 @@ class feelingsAfter extends StatelessWidget {
                           border: Border.all(
                               width: AppDimensions.height10(context) * 0.2,
                               color: Colors.white),
-                          color: Color(0xffFF7C42),
+                          color: const Color(0xffFF7C42),
                         ),
                         child: Text(
                           'I feel excited\nand good in\nmyself',
@@ -311,7 +312,7 @@ class _addNotesState extends State<addNotes> {
                 child: Container(
                   height: AppDimensions.height10(context) * 2.7,
                   width: AppDimensions.height10(context) * 2.7,
-                  margin: EdgeInsets.only(left: 3),
+                  margin: const EdgeInsets.only(left: 3),
                   child: IconButton(
                       onPressed: () {
                         note_check
@@ -384,7 +385,7 @@ class notes extends StatelessWidget {
       children: [
         Container(
           width: AppDimensions.height10(context) * 36.0,
-          height: AppDimensions.height10(context) * 11.0,
+          // height: AppDimensions.height10(context) * 11.0,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(
                   Radius.circular(AppDimensions.height10(context) * 1.8)),
@@ -393,13 +394,15 @@ class notes extends StatelessWidget {
             children: [
               Container(
                 child: TextField(
-                  // maxLines: 4,
+                  //maxLength: 200,
+                  maxLines: null,
+                  minLines: null,
                   decoration: InputDecoration(
                       hintText: 'Add notes here',
                       hintStyle: TextStyle(
                         fontSize: AppDimensions.height10(context) * 1.6,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff646464),
+                        color: const Color(0xff646464),
                       ),
                       focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.transparent)),
@@ -423,14 +426,14 @@ class notes extends StatelessWidget {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.3,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff464646)),
+                          color: const Color(0xff464646)),
                     ),
                     Text(
                       '200',
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.3,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xff464646)),
+                          color: const Color(0xff464646)),
                     )
                   ],
                 ),
@@ -483,9 +486,7 @@ class next_botton extends StatelessWidget {
             ? TextButton(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => practice_summary()));
+                      context, FadePageRoute(page: const practice_summary()));
                 },
                 child: Text(
                   'Update Summary',
@@ -499,10 +500,10 @@ class next_botton extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => endofSession(
-                                summary: false,
-                              )));
+                      FadePageRoute(
+                          page: const endofSession(
+                        summary: false,
+                      )));
                 },
                 child: Text(
                   'Next',

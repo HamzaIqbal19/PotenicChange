@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 
+import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
+import '../capture_inpirations_goals.dart';
 
 class note_info extends StatefulWidget {
   final int type_switch;
@@ -28,7 +30,7 @@ class _note_infoState extends State<note_info> {
           color: const Color(0xffC4C4C4),
           shape: const CircularNotchedRectangle(),
           child: Container(
-            height: AppDimensions.height10(context) * 84.8,
+            //  height: AppDimensions.height10(context) * 84.8,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(children: [
@@ -66,7 +68,7 @@ class _note_infoState extends State<note_info> {
                           ),
                         ),
                         Center(
-                          child: Container(
+                          child: SizedBox(
                             height: AppDimensions.height10(context) * 2.2,
                             width: AppDimensions.height10(context) * 23.1,
                             child: Center(
@@ -118,19 +120,34 @@ class _note_infoState extends State<note_info> {
                             ),
                           ),
                         ),
-                        Container(
-                          height: AppDimensions.height10(context) * 2.2,
-                          width: AppDimensions.height10(context) * 4.3,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 4.9),
-                          child: Text(
-                            'Create',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
-                                fontWeight: FontWeight.w400,
-                                color: widget.note_saved
-                                    ? const Color(0xff007AFF)
-                                    : const Color(0xff007AFF).withOpacity(0.4)),
+                        GestureDetector(
+                          onTap: () {
+                            if (widget.note_saved == false) {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const note_info(
+                                    note_saved: true,
+                                    type_switch: 1,
+                                  )));
+                            }
+                          },
+                          child: Container(
+                            height: AppDimensions.height10(context) * 2.2,
+                            width: AppDimensions.height10(context) * 4.3,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 4.9),
+                            child: Text(
+                              'Create',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: widget.note_saved
+                                      ? const Color(0xff007AFF)
+                                      : const Color(0xff007AFF)
+                                          .withOpacity(0.4)),
+                            ),
                           ),
                         )
                       ]),
@@ -156,9 +173,8 @@ class _note_infoState extends State<note_info> {
                               Text(
                                 'Video Destination Link',
                                 style: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.height10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -166,9 +182,8 @@ class _note_infoState extends State<note_info> {
                               Text(
                                 'Content Destination Link',
                                 style: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.height10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -176,9 +191,8 @@ class _note_infoState extends State<note_info> {
                               Text(
                                 'Title',
                                 style: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.4,
+                                        AppDimensions.height10(context) * 1.5,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xff828282)),
                               ),
@@ -212,11 +226,10 @@ class _note_infoState extends State<note_info> {
                                       Text(
                                         'Lorem ipsum dolor\nsit amet, consectetur adipiscing elit. ',
                                         style: TextStyle(
-                                            fontFamily: 'Poppins',
                                             height: 1.5,
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.6,
+                                                1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF464646)),
                                       ),
@@ -228,14 +241,13 @@ class _note_infoState extends State<note_info> {
                                           Text(
                                             'https://www.nirandfar.com/\ndistractions/',
                                             style: TextStyle(
-                                                fontFamily: 'Poppins',
                                                 height: 1.5,
                                                 decoration:
                                                     TextDecoration.underline,
                                                 fontSize:
                                                     AppDimensions.height10(
                                                             context) *
-                                                        1.6,
+                                                        1.7,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFF464646)),
                                           ),
@@ -284,8 +296,7 @@ class _note_infoState extends State<note_info> {
                                                 fontSize:
                                                     AppDimensions.height10(
                                                             context) *
-                                                        1.6,
-                                                fontFamily: 'Poppins',
+                                                        1.7,
                                                 fontWeight: FontWeight.w500,
                                                 color: const Color(0xFF464646)),
                                           ),
@@ -327,7 +338,7 @@ class _note_infoState extends State<note_info> {
                                   textAlignVertical: TextAlignVertical.center,
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.height10(context) * 1.7,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
@@ -338,10 +349,9 @@ class _note_infoState extends State<note_info> {
                                           0),
                                       hintText: 'Give your inspiration a title',
                                       hintStyle: TextStyle(
-                                          fontFamily: 'Poppins',
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
                                       focusedBorder: const OutlineInputBorder(
@@ -366,9 +376,8 @@ class _note_infoState extends State<note_info> {
                                 Text(
                                   'Description',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.4,
+                                          AppDimensions.height10(context) * 1.5,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff828282)),
                                 ),
@@ -376,9 +385,8 @@ class _note_infoState extends State<note_info> {
                                 Text(
                                   'Why is it inspirational to you',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.4,
+                                          AppDimensions.height10(context) * 1.5,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff828282)),
                                 ),
@@ -386,9 +394,8 @@ class _note_infoState extends State<note_info> {
                                 Text(
                                   'What it means to me',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.4,
+                                          AppDimensions.height10(context) * 1.5,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff828282)),
                                 ),
@@ -421,10 +428,9 @@ class _note_infoState extends State<note_info> {
                                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aen`qean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. Pellentesque non pellentesque diam. Nulla interdum condimentum lorem ac interdum. Quisque tristique lacinia malesuada. Sed sed mattis orci, id pulvinar elit. Donec semper libero quis mauris rutrum, sit amet posuere lacus sodales. Donec a suscipit dolor. Vivamus ut tempus neque. ',
                                         style: TextStyle(
                                             height: 1.5,
-                                            fontFamily: 'Poppins',
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.6,
+                                                1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF464646)),
                                       ),
@@ -435,8 +441,7 @@ class _note_infoState extends State<note_info> {
                                             height: 1.5,
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.6,
-                                            fontFamily: 'Poppins',
+                                                1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF464646)),
                                       ),
@@ -444,18 +449,17 @@ class _note_infoState extends State<note_info> {
                                       Text(
                                         'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit. Nulla eu\nvestibulum est, ut rhoncus ligula.\nAenean quis ultrices odio. Nullam\neleifend eu lectus non tincidunt.\nPhasellus sed nibh pulvinar, ultrices\naugue viverra, varius neque.Mauris sollicitudin hendrerit libero, eu\ntempus leo ultricies quis. Proin\nhendrerit leo leo, eget hendrerit\nipsum accumsan at. Mauris id ipsum\nfeugiat, vestibulum nibh sit amet,\nscelerisque ex. Cras congue sagittis\ncondimentum. ',
                                         style: TextStyle(
-                                            fontFamily: 'Poppins',
                                             height: 1.5,
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.6,
+                                                1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xFF464646)),
                                       ),
                                     ]
                                   ],
                                 )
-                              : Container(
+                              : SizedBox(
                                   height: widget.note_saved
                                       ? AppDimensions.height10(context) * 39.0
                                       : AppDimensions.height10(context) * 2.4,
@@ -479,10 +483,9 @@ class _note_infoState extends State<note_info> {
                                         hintText:
                                             'Say more about this inspiration ',
                                         hintStyle: TextStyle(
-                                            fontFamily: 'Poppins',
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.6,
+                                                1.7,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0xff828282)),
                                         focusedBorder: const OutlineInputBorder(
@@ -505,9 +508,8 @@ class _note_infoState extends State<note_info> {
                             child: Text(
                               'Content Author',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                      AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -527,10 +529,9 @@ class _note_infoState extends State<note_info> {
                             child: Text(
                               'Author name',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   color: const Color(0xFF282828),
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.6,
+                                      AppDimensions.height10(context) * 1.7,
                                   fontWeight: FontWeight.w500),
                             ),
                           )
@@ -545,8 +546,7 @@ class _note_infoState extends State<note_info> {
                           child: Text(
                             'Tags',
                             style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -568,10 +568,9 @@ class _note_infoState extends State<note_info> {
                               ? Text(
                                   'Add #hashtag',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
                                       color: const Color(0xFF282828),
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.height10(context) * 1.7,
                                       fontWeight: FontWeight.w500),
                                 )
                               : TextField(
@@ -589,10 +588,9 @@ class _note_infoState extends State<note_info> {
                                           0),
                                       hintText: 'Add #hashtag',
                                       hintStyle: TextStyle(
-                                          fontFamily: 'Poppins',
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.7,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff828282)),
                                       focusedBorder: const OutlineInputBorder(
@@ -613,8 +611,7 @@ class _note_infoState extends State<note_info> {
                           child: Text(
                             'Attached goals',
                             style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff828282)),
                           ),
@@ -624,19 +621,16 @@ class _note_infoState extends State<note_info> {
                             widget.note_saved
                                 ? Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const inspiration_landing(
-                                              muliple_insp: true,
-                                              is_Updated: false,
-                                            )))
+                                    FadePageRoute(
+                                        page: const inspiration_landing(
+                                      muliple_insp: true,
+                                      is_Updated: false,
+                                    )))
                                 : Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const note_info(
-                                              note_saved: true,
-                                              type_switch: 1,
-                                            )));
+                                    FadePageRoute(
+                                        page: inspiraton_goals(
+                                            data_saved: false)));
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 6.0,
@@ -644,6 +638,7 @@ class _note_infoState extends State<note_info> {
                             margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
                               right: AppDimensions.height10(context) * 1.9,
+                              // bottom: AppDimensions.height10(context) * 1.0
                             ),
                             decoration: BoxDecoration(
                                 border: Border.all(

@@ -140,7 +140,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         subDescription: '',
         image1: "assets/images/image1.png",
         description2:
-            "To support your goal, you’ll set a practice that will become your planet (e.g. ‘practice saying NO’)",
+            "To support your goal, you’ll set a\npractice that will become your planet\n(e.g. ‘practice saying NO’)",
         image2: "assets/images/image2.png",
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
@@ -185,7 +185,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         index: 9,
         backbutton: true,
         description:
-            'We treat personal information \n seriously. Remember, your data is \n safe with us. You would be able to \n export it and take it away if you ever \n feel the need. ',
+            'We treat personal information \n seriously. Remember, your data is \n safe with us. You would be able to \n export it and take it away if you\never feel the need. ',
         subDescription: '',
         image1: "",
         description2: "",

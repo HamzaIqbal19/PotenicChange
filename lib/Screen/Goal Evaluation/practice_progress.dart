@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Widgets/calender.dart';
 
+import '../../Widgets/circle_dates.dart';
 import '../../utils/app_dimensions.dart';
 
 String activity_duration = 'Last week ';
@@ -53,12 +54,13 @@ class _practice_progressState extends State<practice_progress> {
                   height: AppDimensions.height10(context) * 2.3,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 5.2),
-                  child: const Text(
+                  child: Text(
                     'Practice Progress',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         height: 1.2,
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                         fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -69,6 +71,7 @@ class _practice_progressState extends State<practice_progress> {
                       top: AppDimensions.height10(context) * 0.5),
                   child: Text(
                     'Control my anger',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: AppDimensions.height10(context) * 2.0,
                       fontWeight: FontWeight.w600,
@@ -112,7 +115,7 @@ class _practice_progressState extends State<practice_progress> {
                       ),
                       Align(
                         alignment: const Alignment(0.7, -0.175),
-                        child: Container(
+                        child: SizedBox(
                           width: AppDimensions.height10(context) * 10.6,
                           height: AppDimensions.height10(context) * 2.4,
                           child: Text(
@@ -145,51 +148,51 @@ class _practice_progressState extends State<practice_progress> {
                     ),
                   ),
                 ),
-                Container(
-                  width: AppDimensions.height10(context) * 30.3,
-                  height: AppDimensions.height10(context) * 5.1,
-                  margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 2.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        AppDimensions.height10(context) * 1.8),
-                    border:
-                        Border.all(width: 1, color: const Color(0xFFFBFBFB)),
-                  ),
-                  child: Center(
-                    child: Container(
-                      width: AppDimensions.height10(context) * 21.0,
-                      height: AppDimensions.height10(context) * 2.6,
-                      margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10(context) * 0.8),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            //width: AppDimensions.height10(context) * 16.7,
-                            height: AppDimensions.height10(context) * 2.6,
-                            child: RichText(
-                                text: TextSpan(
-                                    style: TextStyle(
-                                        color: const Color(0xFFFBFBFB),
-                                        fontFamily: 'laila',
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.2,
-                                        fontWeight: FontWeight.w400),
-                                    children: [
-                                  const TextSpan(text: 'View: '),
-                                  const TextSpan(
-                                      text: 'Last week',
+                GestureDetector(
+                  onTap: () {
+                    _showBottomSheet(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.height10(context) * 30.3,
+                    height: AppDimensions.height10(context) * 5.1,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 2.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 1.8),
+                      border:
+                          Border.all(width: 1, color: const Color(0xFFFBFBFB)),
+                    ),
+                    child: Center(
+                      child: Container(
+                        width: AppDimensions.height10(context) * 21.0,
+                        height: AppDimensions.height10(context) * 2.6,
+                        margin: EdgeInsets.only(
+                            bottom: AppDimensions.height10(context) * 0.8),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              //width: AppDimensions.height10(context) * 16.7,
+                              height: AppDimensions.height10(context) * 2.6,
+                              child: RichText(
+                                  text: TextSpan(
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600))
-                                ])),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              _showBottomSheet(context);
-                            },
-                            child: Container(
+                                          color: const Color(0xFFFBFBFB),
+                                          fontFamily: 'laila',
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  2.2,
+                                          fontWeight: FontWeight.w400),
+                                      children: const [
+                                    TextSpan(text: 'View: '),
+                                    TextSpan(
+                                        text: 'Past week',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600))
+                                  ])),
+                            ),
+                            Container(
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 0.8,
                                     left:
@@ -202,15 +205,15 @@ class _practice_progressState extends State<practice_progress> {
                                   width: AppDimensions.height10(context) * 1.7,
                                   height: AppDimensions.height10(context) * 1.7,
                                 )),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
                 Container(
                     width: AppDimensions.height10(context) * 38.2,
-                    height: AppDimensions.height10(context) * 62.4,
+                    height: AppDimensions.height10(context) * 66.4,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 4.0),
                     decoration: BoxDecoration(
@@ -244,7 +247,7 @@ class _practice_progressState extends State<practice_progress> {
                               top: AppDimensions.height10(context) * 1.0),
                           child: Column(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10(context) * 22.0,
                                 height: AppDimensions.height10(context) * 2.4,
                                 // color: Colors.amber,
@@ -297,7 +300,7 @@ class _practice_progressState extends State<practice_progress> {
                                           horizontal:
                                               AppDimensions.height10(context) *
                                                   0.25),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           color: Color(0xFFB695B7),
                                           shape: BoxShape.circle),
                                     ),
@@ -322,7 +325,7 @@ class _practice_progressState extends State<practice_progress> {
                               top: AppDimensions.height10(context) * 1.0),
                           child: Column(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10(context) * 22.0,
                                 height: AppDimensions.height10(context) * 2.4,
                                 // color: Colors.amber,
@@ -375,7 +378,7 @@ class _practice_progressState extends State<practice_progress> {
                                           horizontal:
                                               AppDimensions.height10(context) *
                                                   0.25),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           color: Color(0xFFB695B7),
                                           shape: BoxShape.circle),
                                     ),
@@ -395,18 +398,19 @@ class _practice_progressState extends State<practice_progress> {
                         ),
                         Container(
                           width: AppDimensions.height10(context) * 22.0,
-                          height: AppDimensions.height10(context) * 8.8,
+                          height: AppDimensions.height10(context) * 11.2,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.0),
                           child: Column(
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10(context) * 22.0,
-                                height: AppDimensions.height10(context) * 2.4,
+                                height: AppDimensions.height10(context) * 4.8,
                                 // color: Colors.amber,
                                 child: Center(
                                   child: Text(
-                                    '“I felt low and irritated ”',
+                                    '“Had distractions, it\nwas hard to focus”',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: const Color(0xFFB695B7),
                                         height: 1.2,
@@ -453,7 +457,7 @@ class _practice_progressState extends State<practice_progress> {
                                           horizontal:
                                               AppDimensions.height10(context) *
                                                   0.25),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           color: Color(0xFFB695B7),
                                           shape: BoxShape.circle),
                                     ),
@@ -527,7 +531,7 @@ class _practice_progressState extends State<practice_progress> {
                     )),
                 Container(
                   width: AppDimensions.height10(context) * 38.2,
-                  height: AppDimensions.height10(context) * 57.6,
+                  height: AppDimensions.height10(context) * 59.6,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 2.0),
                   decoration: BoxDecoration(
@@ -560,7 +564,7 @@ class _practice_progressState extends State<practice_progress> {
                             top: AppDimensions.height10(context) * 1.0),
                         child: Column(
                           children: [
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10(context) * 22.0,
                               height: AppDimensions.height10(context) * 2.4,
                               // color: Colors.amber,
@@ -611,7 +615,7 @@ class _practice_progressState extends State<practice_progress> {
                                         horizontal:
                                             AppDimensions.height10(context) *
                                                 0.25),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Color(0xFFB695B7),
                                         shape: BoxShape.circle),
                                   ),
@@ -636,7 +640,7 @@ class _practice_progressState extends State<practice_progress> {
                             top: AppDimensions.height10(context) * 1.0),
                         child: Column(
                           children: [
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10(context) * 22.0,
                               height: AppDimensions.height10(context) * 4.8,
                               // color: Colors.amber,
@@ -688,7 +692,7 @@ class _practice_progressState extends State<practice_progress> {
                                         horizontal:
                                             AppDimensions.height10(context) *
                                                 0.25),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Color(0xFFB695B7),
                                         shape: BoxShape.circle),
                                   ),
@@ -708,18 +712,19 @@ class _practice_progressState extends State<practice_progress> {
                       ),
                       Container(
                         width: AppDimensions.height10(context) * 22.0,
-                        height: AppDimensions.height10(context) * 8.8,
+                        height: AppDimensions.height10(context) * 11.2,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.0),
                         child: Column(
                           children: [
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10(context) * 22.0,
-                              height: AppDimensions.height10(context) * 2.4,
+                              height: AppDimensions.height10(context) * 4.8,
                               // color: Colors.amber,
                               child: Center(
                                 child: Text(
-                                  '“I felt low and irritated ”',
+                                  '“Had distractions, it\nwas hard to focus”',
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: const Color(0xFFB695B7),
                                       height: 1.2,
@@ -764,7 +769,7 @@ class _practice_progressState extends State<practice_progress> {
                                         horizontal:
                                             AppDimensions.height10(context) *
                                                 0.25),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Color(0xFFB695B7),
                                         shape: BoxShape.circle),
                                   ),
@@ -781,7 +786,7 @@ class _practice_progressState extends State<practice_progress> {
                   // width: AppDimensions.height10(context) * 2.1,
                   //height: AppDimensions.height10(context) * 4.3,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 3.0),
+                      top: AppDimensions.height10(context) * 4.0),
                   child: Image.asset(
                     'assets/images/Arrow.png',
                     width: AppDimensions.height10(context) * 4.1,
@@ -792,14 +797,14 @@ class _practice_progressState extends State<practice_progress> {
                   width: AppDimensions.height10(context) * 37.1,
                   height: AppDimensions.height10(context) * 5.4,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 3.0),
+                      top: AppDimensions.height10(context) * 4.0),
                   child: Center(
                     child: Text(
                       'Your last practice progress\nevaluation for periods',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        height: 1.2,
-                        fontSize: AppDimensions.height10(context) * 2.2,
+                        height: AppDimensions.height10(context) * 0.12,
+                        fontSize: AppDimensions.height10(context) * 2.4,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFFBFBFB),
                       ),
@@ -815,8 +820,8 @@ class _practice_progressState extends State<practice_progress> {
                     child: Text(
                       'DD/MMM/YY to DD/MMM/YY.',
                       style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.8,
-                        height: 1.2,
+                        fontSize: AppDimensions.height10(context) * 2.0,
+                        height: AppDimensions.height10(context) * 0.12,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFFBFBFB),
                       ),
@@ -845,8 +850,8 @@ class _practice_progressState extends State<practice_progress> {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: const Color(0xFF437296),
-                                height: 1.2,
-                                fontSize: AppDimensions.height10(context) * 2.0,
+                                height: AppDimensions.height10(context) * 0.12,
+                                fontSize: AppDimensions.height10(context) * 2.2,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -858,7 +863,7 @@ class _practice_progressState extends State<practice_progress> {
                             top: AppDimensions.height10(context) * 2.0),
                         child: Column(
                           children: [
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10(context) * 7.6,
                               height: AppDimensions.height10(context) * 5.3,
                               child: Center(
@@ -992,12 +997,12 @@ class _practice_progressState extends State<practice_progress> {
                             top: AppDimensions.height10(context) * 2.7,
                             bottom: AppDimensions.height10(context) * 2.7),
                       ),
-                      Container(
+                      SizedBox(
                         width: AppDimensions.height10(context) * 30.0,
                         height: AppDimensions.height10(context) * 17.5,
                         child: Column(
                           children: [
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10(context) * 30.0,
                               height: AppDimensions.height10(context) * 4.8,
                               child: Center(
@@ -1150,12 +1155,12 @@ class _practice_progressState extends State<practice_progress> {
                             top: AppDimensions.height10(context) * 2.7,
                             bottom: AppDimensions.height10(context) * 2.7),
                       ),
-                      Container(
+                      SizedBox(
                         width: AppDimensions.height10(context) * 34.8,
                         height: AppDimensions.height10(context) * 19.9,
                         child: Column(
                           children: [
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10(context) * 34.8,
                               height: AppDimensions.height10(context) * 7.2,
                               child: Center(
@@ -1307,12 +1312,12 @@ class _practice_progressState extends State<practice_progress> {
                             top: AppDimensions.height10(context) * 2.7,
                             bottom: AppDimensions.height10(context) * 2.7),
                       ),
-                      Container(
+                      SizedBox(
                         width: AppDimensions.height10(context) * 34.8,
                         height: AppDimensions.height10(context) * 19.9,
                         child: Column(
                           children: [
-                            Container(
+                            SizedBox(
                               width: AppDimensions.height10(context) * 34.8,
                               height: AppDimensions.height10(context) * 7.2,
                               child: Center(
@@ -1522,7 +1527,7 @@ class _practice_progressState extends State<practice_progress> {
                   // width: AppDimensions.height10(context) * 2.1,
                   //height: AppDimensions.height10(context) * 4.3,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 3.0),
+                      top: AppDimensions.height10(context) * 4.0),
                   child: Image.asset(
                     'assets/images/Arrow.png',
                     width: AppDimensions.height10(context) * 4.1,
@@ -1533,14 +1538,14 @@ class _practice_progressState extends State<practice_progress> {
                   width: AppDimensions.height10(context) * 35.8,
                   height: AppDimensions.height10(context) * 5.2,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 3.0),
+                      top: AppDimensions.height10(context) * 4.0),
                   child: Center(
                     child: Text(
                       'Your next practice report will be\ndelivered in 9 Active Days',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        height: 1.2,
-                        fontSize: AppDimensions.height10(context) * 2.2,
+                        height: AppDimensions.height10(context) * 0.12,
+                        fontSize: AppDimensions.height10(context) * 2.4,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFFBFBFB),
                       ),
@@ -1558,18 +1563,264 @@ class _practice_progressState extends State<practice_progress> {
                       color: const Color(0xFFFFFFFF)),
                   child: Column(
                     children: [
-                      Container(
-                        height: AppDimensions.height10(context) * 24.8,
-                        // color: Colors.amber,
-                        margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.6,
-                        ),
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/Group 9458.png'))),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 5.0,
                       ),
-                      Container(
+                      GestureDetector(
+                          onTap: () {},
+                          child: Circulardates(
+                            size: AppDimensions.height10(context) * 24.0,
+                            outerCircleContainers: [
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Tick_dates.png'))),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xFFF2F2F2)),
+                              ),
+                            ],
+                            centerContainer: Container(
+                              height: AppDimensions.height10(context) * 18.6,
+                              width: AppDimensions.height10(context) * 9.3,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 3.0),
+
+                              // color: Colors.amber,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 9.3,
+                                    height:
+                                        AppDimensions.height10(context) * 7.7,
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          // margin: EdgeInsets.only(left: AppDimensions.height10(context)*1.0),
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  7.7,
+                                          child: Text(
+                                            '11',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        7.4,
+                                                color: Color(0xFF156F6D),
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                        ),
+                                        Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  7.7,
+                                          alignment: Alignment.bottomCenter,
+                                          child: Text(
+                                            '/20',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.4,
+                                                color: Color(0xFF646464),
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 9.3,
+                                    height:
+                                        AppDimensions.height10(context) * 2.3,
+                                    child: Text(
+                                      'Active days',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          color: Color(0xFF156F6D),
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 9.3,
+                                    height:
+                                        AppDimensions.height10(context) * 2.3,
+                                    child: Text(
+                                      'completed!',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          color: Color(0xFF156F6D),
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )),
+                      SizedBox(
                         height: AppDimensions.height10(context) * 8.0,
                         width: AppDimensions.height10(context) * 23,
                         child: Center(
@@ -1584,18 +1835,21 @@ class _practice_progressState extends State<practice_progress> {
                                     color: const Color(0xFF5B74A6),
                                   ),
                                   children: [
-                                    TextSpan(
+                                    const TextSpan(
                                         text: 'You have completed this\nover '),
-                                    TextSpan(
+                                    const TextSpan(
                                         text: '2 months',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700))
                                   ])),
                         ),
                       ),
-                      Container(
-                          height: AppDimensions.height10(context) * 46.8,
-                          child: CalendarWithRadioButtons()),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 46.8,
+                        child: CalendarWithRadioButtons(
+                          status: false,
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -1712,16 +1966,16 @@ class MyBottomSheet extends StatefulWidget {
 class _MyBottomSheetState extends State<MyBottomSheet> {
   int _selectedIndex = 0;
   final List<String> _statements = [
-    'Last week',
-    'Last 2 weeks ',
-    'Last month ',
-    'Last 2 month ',
-    'Last 3 month ',
+    'Past week',
+    'Past 2 weeks ',
+    'Past month ',
+    'Past 2 month ',
+    'Past 3 month ',
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: AppDimensions.height10(context) *
           31.3, // Set the height of the bottom sheet
       child: Column(
@@ -1731,7 +1985,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
             decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(
-                        color: Color(0xFF828282),
+                        color: const Color(0xFF828282),
                         width: AppDimensions.height10(context) * 0.1))),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -1751,7 +2005,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF2F80ED)),
+                          color: const Color(0xFF2F80ED)),
                     ),
                   ),
                 ),
@@ -1774,7 +2028,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF2F80ED)),
+                          color: const Color(0xFF2F80ED)),
                     ),
                   ),
                 ),
@@ -1783,8 +2037,8 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
           ),
           Expanded(
             child: ListWheelScrollView(
-              itemExtent: 60,
-              magnification: 1.2,
+              itemExtent: 40,
+              magnification: 1.4,
               useMagnifier: true, // Set the height of each statement
               children: _statements
                   .map((statement) => Text(statement,

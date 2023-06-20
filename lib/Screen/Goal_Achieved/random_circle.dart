@@ -53,8 +53,8 @@ class _RandomCirclesState extends State<RandomCircles> {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
-        width: containerWidth,
-        height: containerHeight,
+        width: AppDimensions.height10(context) * 95.00,
+        height: AppDimensions.height10(context) * 31.40,
         child: Stack(
           children: _circles,
         ),
@@ -63,13 +63,19 @@ class _RandomCirclesState extends State<RandomCircles> {
   }
 
   void _addCircle() {
-    final circleX = _random.nextDouble() * (containerWidth - circleWidth);
-    final circleY = _random.nextDouble() * (containerHeight - circleHeight);
+    final circleX = _random.nextDouble() *
+        (AppDimensions.height10(context) * 95.00 -
+            AppDimensions.height10(context) * 6.50);
+    final circleY = _random.nextDouble() *
+        (AppDimensions.height10(context) * 31.40 -
+            AppDimensions.height10(context) * 7.40);
 
     for (var existingCircle in _circles) {
       final minDistance = overlapFactor *
           (max(existingCircle.width, existingCircle.height) / 2 +
-              max(circleWidth, circleHeight) / 2);
+              max(AppDimensions.height10(context) * 6.50,
+                      AppDimensions.height10(context) * 7.40) /
+                  2);
       final actualDistance = sqrt(pow(existingCircle.x - circleX, 2) +
           pow(existingCircle.y - circleY, 2));
 
@@ -83,8 +89,8 @@ class _RandomCirclesState extends State<RandomCircles> {
         Circle(
           x: circleX,
           y: circleY,
-          width: circleWidth,
-          height: circleHeight,
+          width: AppDimensions.height10(context) * 6.50,
+          height: AppDimensions.height10(context) * 7.40,
         ),
       );
     });

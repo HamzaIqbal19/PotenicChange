@@ -1,7 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:potenic_app/API/Practice.dart';
-import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
-import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
+
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -191,8 +191,9 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10(context) * 10.5,
                   width: AppDimensions.height10(context) * 36.0,
                   padding: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 2,
-                    bottom: AppDimensions.height10(context) * 4.8,
+                    left: AppDimensions.height10(context) * 2.0,
+                    // top: AppDimensions.height10(context) * 2,
+                    bottom: AppDimensions.height10(context) * 1.0,
                   ),
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -200,8 +201,16 @@ class _PracticeNameState extends State<PracticeName> {
                       borderRadius: BorderRadius.all(Radius.circular(
                           AppDimensions.height10(context) * 1.8))),
                   child: TextFormField(
+                      maxLines: null,
+                      minLines: null,
+                      maxLength: 80,
                       decoration: InputDecoration(
-                          hintText: widget.Circletitle,
+                          counterText: "",
+                          counterStyle: TextStyle(
+                            height: double.minPositive,
+                          ),
+                          contentPadding: EdgeInsets.zero,
+                          hintText: widget.title,
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10(context) * 2.4,
                               fontWeight: FontWeight.w500,
@@ -217,7 +226,7 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  // width: AppDimensions.height10(context) *12.3,
+                  // width: AppDimensions.height10(context)*12.3,
                   width: AppDimensions.height10(context) * 34.7,
 
                   margin: EdgeInsets.only(

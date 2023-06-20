@@ -40,7 +40,7 @@ class Success extends StatelessWidget {
                         color: const Color(0XFF000000)),
                   )),
                 ),
-                Container(
+                SizedBox(
                   width: AppDimensions.height10(context) * 23.8,
                   height: AppDimensions.height10(context) * 3.2,
                   child: Center(
@@ -48,7 +48,7 @@ class Success extends StatelessWidget {
                     'Please check your inbox and follow\ninstructions to reset your password.',
                     style: TextStyle(
                         fontSize: AppDimensions.height10(context) * 1.3,
-                        // height: AppDimensions.height10(context) * 0.12,
+                        height: AppDimensions.height10(context) * 0.14,
                         fontWeight: FontWeight.w400,
                         color: const Color(0XFF000000)),
                   )),

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class welldone_splash extends StatefulWidget {
@@ -31,8 +32,8 @@ class welldone_splashState extends State<welldone_splash> {
   onDoneLoading() async {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => feelingsAfter(
+      FadePageRoute(
+        page: const feelingsAfter(
           summary: false,
         ),
       ),

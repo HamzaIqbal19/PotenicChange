@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 
+import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 
 class photo_pop_up extends StatefulWidget {
@@ -78,13 +80,13 @@ class _photo_pop_upState extends State<photo_pop_up> {
                     onTap: () {
                       Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const photo_info(
-                                    edit_details: false,
-                                    image_detals: false,
-                                    image_save: false,
-                                    image_create: false,
-                                  )));
+                          FadePageRoute(
+                              page: const photo_info(
+                            edit_details: false,
+                            image_detals: false,
+                            image_save: false,
+                            image_create: false,
+                          )));
                     },
                     child: SizedBox(
                       height: AppDimensions.height10(context) * 4.3,
@@ -233,7 +235,7 @@ class _photo_infoState extends State<photo_info> {
                         ),
                       ),
                       Center(
-                        child: Container(
+                        child: SizedBox(
                           height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.height10(context) * 19.9,
                           child: Center(
@@ -270,17 +272,22 @@ class _photo_infoState extends State<photo_info> {
                                         onTap: () => widget.image_create
                                             ? Navigator.push(
                                                 context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
+                                                FadePageRoute(
+                                                    page:
                                                         const inspiration_landing(
-                                                          muliple_insp: false,
-                                                          is_Updated: false,
-                                                        )))
-                                            : showDialog<String>(
+                                                  muliple_insp: false,
+                                                  is_Updated: false,
+                                                )))
+                                            : showAnimatedDialog(
+                                                animationType:
+                                                    DialogTransitionType
+                                                        .fadeScale,
+                                                curve: Curves.easeInOut,
+                                                duration: Duration(seconds: 1),
                                                 context: context,
                                                 builder:
                                                     (BuildContext context) =>
-                                                        Container(
+                                                        SizedBox(
                                                           width: AppDimensions
                                                                   .height10(
                                                                       context) *
@@ -290,6 +297,11 @@ class _photo_infoState extends State<photo_info> {
                                                                       context) *
                                                               18.2,
                                                           child: AlertDialog(
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                        AppDimensions.height10(context) *
+                                                                            1.4)),
                                                             contentPadding:
                                                                 EdgeInsets.zero,
                                                             actionsPadding:
@@ -333,6 +345,8 @@ class _photo_infoState extends State<photo_info> {
                                                                       AppDimensions.height10(
                                                                               context) *
                                                                           1.7,
+                                                                  fontFamily:
+                                                                      'laila',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w400,
@@ -372,6 +386,8 @@ class _photo_infoState extends State<photo_info> {
                                                                       AppDimensions.height10(
                                                                               context) *
                                                                           1.3,
+                                                                  fontFamily:
+                                                                      'laila',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w400,
@@ -407,8 +423,8 @@ class _photo_infoState extends State<photo_info> {
                                                                           () {
                                                                         Navigator.push(
                                                                             context,
-                                                                            MaterialPageRoute(
-                                                                                builder: (context) => widget.edit_details
+                                                                            FadePageRoute(
+                                                                                page: widget.edit_details
                                                                                     ? const inspiration_landing(
                                                                                         muliple_insp: false,
                                                                                         is_Updated: true,
@@ -445,7 +461,7 @@ class _photo_infoState extends State<photo_info> {
                                                                               0.29),
                                                                     ),
                                                                   ),
-                                                                  Container(
+                                                                  SizedBox(
                                                                     height:
                                                                         AppDimensions.height10(context) *
                                                                             4.4,
@@ -564,9 +580,8 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Title',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                      AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -584,21 +599,19 @@ class _photo_infoState extends State<photo_info> {
                                   ? Text(
                                       'Nir Eyal',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.7,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
                                       'Give your inspiration a title',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.7,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
@@ -613,20 +626,18 @@ class _photo_infoState extends State<photo_info> {
                                 ? Text(
                                     'Description',
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
                                         fontSize:
                                             AppDimensions.height10(context) *
-                                                1.4,
+                                                1.5,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xff828282)),
                                   )
                                 : Text(
                                     'Why is it inspirational to you',
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
                                         fontSize:
                                             AppDimensions.height10(context) *
-                                                1.4,
+                                                1.5,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xff828282)),
                                   ),
@@ -643,21 +654,19 @@ class _photo_infoState extends State<photo_info> {
                                   ? Text(
                                       'Behavioural Coach',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.7,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
                                       'Say more about this inspiration ',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.7,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
@@ -671,9 +680,8 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Destination website',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                      AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -695,11 +703,10 @@ class _photo_infoState extends State<photo_info> {
                                             'https://www.nirandfar.com/',
                                             style: TextStyle(
                                                 color: const Color(0xFF282828),
-                                                fontFamily: 'Poppins',
                                                 fontSize:
                                                     AppDimensions.height10(
                                                             context) *
-                                                        1.6,
+                                                        1.7,
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         )
@@ -709,11 +716,10 @@ class _photo_infoState extends State<photo_info> {
                                             'Add a link',
                                             style: TextStyle(
                                                 color: const Color(0xFF828282),
-                                                fontFamily: 'Poppins',
                                                 fontSize:
                                                     AppDimensions.height10(
                                                             context) *
-                                                        1.6,
+                                                        1.7,
                                                 fontWeight: FontWeight.w500),
                                           ),
                                         )),
@@ -721,12 +727,6 @@ class _photo_infoState extends State<photo_info> {
                                   ? Row(
                                       children: [
                                         GestureDetector(
-                                          onTap: () {
-                                            // Navigator.push(
-                                            //     context,
-                                            //     MaterialPageRoute(
-                                            //         builder: (context) => link_editer()));
-                                          },
                                           child: Container(
                                             width: AppDimensions.height10(
                                                     context) *
@@ -793,10 +793,8 @@ class _photo_infoState extends State<photo_info> {
                                     )
                                   : GestureDetector(
                                       onTap: () {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) => link_editer()));
+                                        Navigator.push(context,
+                                            FadePageRoute(page: link_set()));
                                       },
                                       child: Container(
                                         width: AppDimensions.height10(context) *
@@ -846,9 +844,8 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Tags',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                      AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -864,21 +861,19 @@ class _photo_infoState extends State<photo_info> {
                                   ? Text(
                                       'Add #hashtag',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.5,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
                                       'Add #hashtag',
                                       style: TextStyle(
-                                          fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.6,
+                                                  1.7,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
@@ -893,9 +888,8 @@ class _photo_infoState extends State<photo_info> {
                             child: Text(
                               'Attached goals',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.4,
+                                      AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -905,16 +899,15 @@ class _photo_infoState extends State<photo_info> {
                               widget.image_detals
                                   ? Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const inspiraton_goals(
-                                                data_saved: true,
-                                              )))
+                                      FadePageRoute(
+                                          page: const inspiraton_goals(
+                                        data_saved: true,
+                                      )))
                                   : Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const link_set()));
+                                      FadePageRoute(
+                                          page: inspiraton_goals(
+                                              data_saved: false)));
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 6.0,
@@ -946,6 +939,7 @@ class _photo_infoState extends State<photo_info> {
                                         child: Text(
                                           '00 impacted goals',
                                           style: TextStyle(
+                                            fontFamily: 'laila',
                                             color: const Color(0xFF646464),
                                             fontSize: AppDimensions.height10(
                                                     context) *
@@ -1086,7 +1080,7 @@ class _link_setState extends State<link_set> {
                                                 'assets/images/Light.png'),
                                             fit: BoxFit.fill)),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         AppDimensions.height10(context) * 23.8,
                                     height:
@@ -1174,14 +1168,13 @@ class _link_setState extends State<link_set> {
                                 onTap: () {
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const photo_info(
-                                                edit_details: false,
-                                                image_detals: true,
-                                                image_save: false,
-                                                image_create: false,
-                                              )));
+                                      FadePageRoute(
+                                          page: const photo_info(
+                                        edit_details: false,
+                                        image_detals: true,
+                                        image_save: true,
+                                        image_create: true,
+                                      )));
                                 },
                                 child: Text(
                                   'Add link',
@@ -1225,7 +1218,7 @@ class _link_setState extends State<link_set> {
                                                 'assets/images/Light.png'),
                                             fit: BoxFit.fill)),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width:
                                         AppDimensions.height10(context) * 28.3,
                                     height:
@@ -1300,14 +1293,13 @@ class _link_setState extends State<link_set> {
                                         onTap: () {
                                           Navigator.push(
                                               context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const photo_info(
-                                                        edit_details: false,
-                                                        image_detals: true,
-                                                        image_save: false,
-                                                        image_create: false,
-                                                      )));
+                                              FadePageRoute(
+                                                  page: const photo_info(
+                                                edit_details: false,
+                                                image_detals: true,
+                                                image_save: false,
+                                                image_create: false,
+                                              )));
                                         },
                                         child: Text(
                                           'Add Link',

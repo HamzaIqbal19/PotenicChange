@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 void signupSheet(context, String ButtonName, String Route) {
@@ -34,14 +35,14 @@ void signupSheet(context, String ButtonName, String Route) {
                         Route == "OnBoarding"
                             ? Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => const OnBoarding(),
+                                FadePageRoute(
+                                  page: const OnBoarding(),
                                 ),
                               )
                             : Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => Loginemailandpassword(),
+                                FadePageRoute(
+                                  page: Loginemailandpassword(),
                                 ),
                               );
                       },
@@ -65,8 +66,15 @@ void signupSheet(context, String ButtonName, String Route) {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => dashBoard(),
+                          FadePageRoute(
+                            page: const dashBoard(
+                              saved: false,
+                              helpful_tips: false,
+                              dashboard_ctrl: true,
+                              membership: true,
+                              cancel: false,
+                              trial: false,
+                            ),
                           ),
                         );
                       },

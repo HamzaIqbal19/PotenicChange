@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -48,6 +49,7 @@ class _message_centerState extends State<message_center> {
                       'Delete All',
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.6,
+                          height: AppDimensions.height10(context) * 0.16,
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.underline,
                           color: const Color(0xFFFBFBFB)),
@@ -68,21 +70,24 @@ class _message_centerState extends State<message_center> {
                       }
                     },
                     child: SizedBox(
-                      //  color: Colors.amber,
                       width: AppDimensions.height10(context) * 5.8,
                       height: AppDimensions.height10(context) * 2.4,
                       child: Text(
                         'Cancel',
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
+                            height: AppDimensions.height10(context) * 0.16,
                             fontWeight: FontWeight.w500,
                             decoration: TextDecoration.underline,
+                            // decorationThickness: 3,
                             color: const Color(0xFFFBFBFB)),
                       ),
                     ),
                   )
                 : IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     icon: Image.asset(
                       'assets/images/Close.png',
                       width: AppDimensions.height10(context) * 2.6,
@@ -109,12 +114,24 @@ class _message_centerState extends State<message_center> {
                 height: AppDimensions.height10(context) * 9.2,
               ),
               Container(
-                width: AppDimensions.height10(context) * 9.0,
-                height: AppDimensions.height10(context) * 9.0,
+                width: AppDimensions.height10(context) * 7.6,
+                height: AppDimensions.height10(context) * 7.6,
+                padding: EdgeInsets.symmetric(
+                    vertical: AppDimensions.height10(context) * 0.85,
+                    horizontal: AppDimensions.height10(context) * 1.162),
                 decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/Group.png'),
-                        fit: BoxFit.cover)),
+                  shape: BoxShape.circle,
+                  color: Color(0xFFFFFFFF),
+                  // image: DecorationImage(
+                  //     image: AssetImage(
+                  //         'assets/images/Vector Smart Object_1.png'),
+                  //     fit: BoxFit.contain)
+                ),
+                child: Image.asset(
+                  'assets/images/Vector Smart Object_1.png',
+                  width: AppDimensions.height10(context) * 5.275,
+                  height: AppDimensions.height10(context) * 5.991,
+                ),
               ),
               Container(
                 width: AppDimensions.height10(context) * 32.9,
@@ -166,20 +183,19 @@ class _message_centerState extends State<message_center> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 33.2,
-                          height: AppDimensions.height10(context) * 9.7,
+                          width: AppDimensions.height10(context) * 34.4,
+                          height: AppDimensions.height10(context) * 5.9,
+                          //color: Colors.amber,
+                          alignment: Alignment.topCenter,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.2),
-                          child: Center(
-                            child: Text(
-                              'You currently have no\nmessages, your new\nalerts will appear\nhere.',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFBFBFB)),
-                            ),
+                          child: Text(
+                            'You currently have no messages, your\nnew alerts will appear here.',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xFFFBFBFB)),
                           ),
                         ),
                       ],
@@ -220,7 +236,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_1
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -276,7 +292,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_2
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -330,7 +346,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_3
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -386,7 +402,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_4
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -442,7 +458,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_5
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -498,7 +514,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_6
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -554,7 +570,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_7
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -611,7 +627,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_8
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -667,7 +683,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_9
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -723,7 +739,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_10
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -780,7 +796,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_11
                                             ? Image.asset(
-                                                'assets/images/circle_tick.png')
+                                                'assets/images/Select.png')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -820,6 +836,14 @@ class _message_centerState extends State<message_center> {
                   left: AppDimensions.height10(context) * 1.6,
                   right: AppDimensions.height10(context) * 1.6),
               decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.4),
+                      spreadRadius: AppDimensions.height10(context) * 0.5,
+                      blurRadius: AppDimensions.height10(context) * 0.7,
+                      offset: const Offset(2, 3),
+                    )
+                  ],
                   borderRadius: BorderRadius.circular(
                       AppDimensions.height10(context) * 2.0),
                   gradient: const LinearGradient(
@@ -910,6 +934,16 @@ class _message_centerState extends State<message_center> {
                       left: AppDimensions.height10(context) * 6.2,
                       bottom: AppDimensions.height10(context) * 2.2),
               decoration: BoxDecoration(
+                  boxShadow: [
+                    options
+                        ? BoxShadow(
+                            color: const Color(0xFF000000).withOpacity(0.25),
+                            spreadRadius: AppDimensions.height10(context) * 0.5,
+                            blurRadius: AppDimensions.height10(context) * 0.7,
+                            offset: const Offset(2, 3),
+                          )
+                        : const BoxShadow()
+                  ],
                   borderRadius: BorderRadius.circular(options
                       ? AppDimensions.height10(context) * 0
                       : AppDimensions.height10(context) * 5.0),
@@ -925,9 +959,12 @@ class _message_centerState extends State<message_center> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
+                                builder: (BuildContext context) => SizedBox(
                                       width: AppDimensions.height10(context) *
                                           27.0,
                                       height: AppDimensions.height10(context) *
@@ -951,7 +988,7 @@ class _message_centerState extends State<message_center> {
                                                     1.6,
                                                 bottom:
                                                     AppDimensions.height10(context) *
-                                                        0.2),
+                                                        1.2),
                                             height:
                                                 AppDimensions.height10(context) *
                                                     4.4,
@@ -964,23 +1001,22 @@ class _message_centerState extends State<message_center> {
                                                         fontFamily: 'laila',
                                                         height:
                                                             AppDimensions.height10(context) *
-                                                                0.12,
-                                                        fontSize:
-                                                            AppDimensions.height10(context) * 1.7,
+                                                                0.15,
+                                                        fontSize: AppDimensions.height10(context) * 1.7,
                                                         fontWeight: FontWeight.w400,
                                                         color: const Color(0xFF000000)),
-                                                    children: [
-                                                      const TextSpan(
+                                                    children: const [
+                                                      TextSpan(
                                                           text:
                                                               'Are you sure you want\nto'),
-                                                      const TextSpan(
+                                                      TextSpan(
                                                         text: ' delete ',
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight
                                                                     .w700),
                                                       ),
-                                                      const TextSpan(
+                                                      TextSpan(
                                                           text: 'this alert?')
                                                     ]))),
                                         content: Container(
@@ -997,7 +1033,7 @@ class _message_centerState extends State<message_center> {
                                                   1.6),
                                           height:
                                               AppDimensions.height10(context) *
-                                                  3.4,
+                                                  3.2,
                                           width:
                                               AppDimensions.height10(context) *
                                                   23.8,
@@ -1006,10 +1042,8 @@ class _message_centerState extends State<message_center> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                               color: const Color(0XFF000000),
-                                              letterSpacing:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      0.1,
+                                              // letterSpacing:
+                                              //     AppDimensions.height10(context) * 0.1,
                                               fontSize: AppDimensions.height10(
                                                       context) *
                                                   1.3,
@@ -1063,7 +1097,7 @@ class _message_centerState extends State<message_center> {
                                                       .withOpacity(0.29),
                                                 ),
                                               ),
-                                              Container(
+                                              SizedBox(
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     4.4,
@@ -1182,7 +1216,7 @@ class messages extends StatelessWidget {
       //color: Colors.blue,
       child: Stack(children: [
         Align(
-          alignment: const Alignment(0.93, 0),
+          alignment: const Alignment(1, -0.1),
           child: Image.asset(
             "assets/images/Vector Smart Object.png",
             height: AppDimensions.height10(context) * 9.296,
@@ -1201,7 +1235,7 @@ class messages extends StatelessWidget {
                 margin: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 3.2),
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: const Alignment(-1, 0.6),
                   child: Text(
                     title,
                     style: TextStyle(
@@ -1364,11 +1398,11 @@ void notifications_sheet(context) {
                             top: AppDimensions.height10(context) * 1.4),
                         child: Center(
                             child: Text(
-                          'We will check in with you to remind you\nabout your practices. You would be able to customise your\nnotifications later in your Account Settings. ',
+                          'We will check in with you to remind you about your\npractices. You would be able to customise your\nnotifications later in your Account Settings. ',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 0.12,
+                              height: AppDimensions.height10(context) * 0.15,
                               //letterSpacing: AppDimensions.height10(context) * 0.2,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFFFFFFFF)),

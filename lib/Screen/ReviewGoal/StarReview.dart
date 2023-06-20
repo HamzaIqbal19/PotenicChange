@@ -950,7 +950,7 @@ class _StarReviewState extends State<StarReview> {
                                       textAlign: TextAlign.end,
                                       style: TextStyle(
                                         color: Colors.white,
-                                        // height: AppDimensions.height10(context) *0.1,
+                                        // height: AppDimensions.height10*0.1,
                                         fontSize:
                                             AppDimensions.height10(context) *
                                                 1.8,

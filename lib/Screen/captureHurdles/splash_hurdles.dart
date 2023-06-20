@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dar
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class hurdles_splash extends StatefulWidget {
@@ -40,7 +41,7 @@ class hurdles_splashState extends State<hurdles_splash> {
       body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/images/Capture_hurdle_landing.png'),
             fit: BoxFit.cover,
@@ -51,10 +52,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => landing_hurdles(
-                              multiple_hurdle: false,
-                            )),
+                    FadePageRoute(page: const landing_hurdles()),
                   );
                 },
                 child: Container(
@@ -70,7 +68,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                       fontSize: AppDimensions.height10(context) * 3.0,
                       fontWeight: FontWeight.w700,
                     ),
-                    colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                    colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                   ),
                 ),
               ),
@@ -84,6 +82,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: AppDimensions.height10(context) * 1.8,
+                        height: AppDimensions.height10(context) * 0.15,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                         fontFamily: 'laila')),
@@ -92,8 +91,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => hurdles_goal_impact()),
+                    FadePageRoute(page: const hurdles_goal_impact()),
                   );
                 },
                 child: Container(
@@ -110,7 +108,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFFFFFFFF)),
+                          color: const Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),

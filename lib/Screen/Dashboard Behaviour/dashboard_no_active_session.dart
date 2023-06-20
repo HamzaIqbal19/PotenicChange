@@ -43,6 +43,9 @@ class no_active_session extends StatelessWidget {
         extendBody: true,
         bottomNavigationBar: Navigation_Bar(
           bg_colored: true,
+          membership: true,
+          cancel: false,
+          trial: false,
         ),
         body: Container(
             decoration: BoxDecoration(

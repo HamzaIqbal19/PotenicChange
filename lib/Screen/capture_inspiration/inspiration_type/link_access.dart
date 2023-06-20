@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../../utils/app_dimensions.dart';
+import '../capture_inpirations_goals.dart';
 
 class link_info extends StatefulWidget {
   const link_info({super.key});
@@ -72,17 +74,26 @@ class _link_infoState extends State<link_info> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: AppDimensions.height10(context) * 2.2,
-                    width: AppDimensions.height10(context) * 4.3,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 4.0),
-                    child: Text(
-                      'Create',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.5,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff007AFF).withOpacity(0.4)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const note_info(
+                                  note_saved: true, type_switch: 2)));
+                    },
+                    child: Container(
+                      height: AppDimensions.height10(context) * 2.2,
+                      width: AppDimensions.height10(context) * 4.3,
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 4.0),
+                      child: Text(
+                        'Create',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.5,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xff007AFF).withOpacity(0.4)),
+                      ),
                     ),
                   )
                 ]),
@@ -103,8 +114,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Content Destination Link',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -126,7 +136,7 @@ class _link_infoState extends State<link_info> {
                             },
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -137,9 +147,8 @@ class _link_infoState extends State<link_info> {
                                     0),
                                 hintText: 'Add a link',
                                 hintStyle: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.height10(context) * 1.7,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
@@ -191,10 +200,10 @@ class _link_infoState extends State<link_info> {
                                       shape: BoxShape.circle,
                                       color: Colors.black,
                                     ),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.delete,
                                       color: Colors.white,
-                                      size: AppDimensions.height10(context) * 2,
+                                      // size: AppDimensions.height10(context) * 1,
                                     ),
                                   )
                                 ],
@@ -234,8 +243,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Why is it inspirational to you',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -250,7 +258,7 @@ class _link_infoState extends State<link_info> {
                       child: TextField(
                         textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -261,8 +269,7 @@ class _link_infoState extends State<link_info> {
                                 0),
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -283,8 +290,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Content Author',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -299,7 +305,7 @@ class _link_infoState extends State<link_info> {
                       child: TextField(
                         textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -310,8 +316,7 @@ class _link_infoState extends State<link_info> {
                                 0),
                             hintText: 'Who created the content',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 height: 1.5,
                                 color: const Color(0xff828282)),
@@ -333,8 +338,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Tags',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -360,8 +364,7 @@ class _link_infoState extends State<link_info> {
                                 0),
                             hintText: 'Add #hashtag',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -382,8 +385,7 @@ class _link_infoState extends State<link_info> {
                       child: Text(
                         'Attached goals',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -392,9 +394,9 @@ class _link_infoState extends State<link_info> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const note_info(
-                                    note_saved: true, type_switch: 2)));
+                            FadePageRoute(
+                                page:
+                                    const inspiraton_goals(data_saved: false)));
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 6.0,

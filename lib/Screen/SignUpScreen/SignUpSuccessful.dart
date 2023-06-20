@@ -75,7 +75,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                     // color: Colors.orange,
                     image: const AssetImage("assets/images/logo.png"),
                     height: AppDimensions.height10(context) * 7.75,
-                    width: AppDimensions.width10(context) * 7.75,
+                    width: AppDimensions.height10(context) * 7.75,
                   ),
                 ),
 
@@ -96,9 +96,9 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                 // SizedBox(height: AppDimensions.height2),
                 Container(
                     height: AppDimensions.height10(context) * 2.4,
-                    width: AppDimensions.screenWidth(context) - 100,
+                    width: AppDimensions.height10(context) * 24.1,
                     child: Text(
-                      'Welcome aboard ${widget.name}',
+                      'Welcome aboard [Name]',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,

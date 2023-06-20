@@ -1,8 +1,11 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/captureHurdles/hurdle_positive_alternates/select_image.dart';
 import 'package:potenic_app/Screen/captureHurdles/new_hurdle_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:dotted_border/dotted_border.dart';
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import 'hurdle_positive_alternates/select_link.dart';
 import 'hurdle_positive_alternates/select_notes.dart';
@@ -41,7 +44,7 @@ class new_hurdles extends StatelessWidget {
                 fontSize: AppDimensions.height10(context) * 2.0,
                 fontWeight: FontWeight.w600,
               ),
-              colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+              colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
           actions: [
@@ -60,7 +63,7 @@ class new_hurdles extends StatelessWidget {
       body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/practicebackground.png'),
                   fit: BoxFit.cover)),
@@ -79,7 +82,7 @@ class new_hurdles extends StatelessWidget {
                     fontSize: AppDimensions.height10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
             ),
@@ -96,7 +99,7 @@ class new_hurdles extends StatelessWidget {
                     fontSize: AppDimensions.height10(context) * 1.8,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ),
             ),
@@ -117,7 +120,7 @@ class new_hurdles extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: AssetImage(
                                   'assets/images/Image_Subtract.png'))),
                       child: Container(
@@ -145,7 +148,7 @@ class new_hurdles extends StatelessWidget {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 0.68),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/image_icon.png'))),
@@ -170,9 +173,9 @@ class new_hurdles extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  upload_image_popup()));
+                                          FadePageRoute(
+                                              page:
+                                                  const upload_image_popup()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10(context) *
@@ -183,7 +186,7 @@ class new_hurdles extends StatelessWidget {
                                           bottom:
                                               AppDimensions.height10(context) *
                                                   0.178),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -215,7 +218,7 @@ class new_hurdles extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: AssetImage(
                                   'assets/images/Video_Subtract.png'))),
                       child: Container(
@@ -243,7 +246,7 @@ class new_hurdles extends StatelessWidget {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 0.68),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/video_icon.png'))),
@@ -268,9 +271,8 @@ class new_hurdles extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  select_video()));
+                                          FadePageRoute(
+                                              page: const select_video()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10(context) *
@@ -281,7 +283,7 @@ class new_hurdles extends StatelessWidget {
                                           bottom:
                                               AppDimensions.height10(context) *
                                                   0.178),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -313,7 +315,7 @@ class new_hurdles extends StatelessWidget {
                       decoration: BoxDecoration(
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: AssetImage(
                                   'assets/images/Video_Subtract.png'))),
                       child: Container(
@@ -341,7 +343,7 @@ class new_hurdles extends StatelessWidget {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 0.68),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/note_icon.png'))),
@@ -366,9 +368,8 @@ class new_hurdles extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  select_note()));
+                                          FadePageRoute(
+                                              page: const select_note()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10(context) *
@@ -379,7 +380,7 @@ class new_hurdles extends StatelessWidget {
                                           bottom:
                                               AppDimensions.height10(context) *
                                                   0.178),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -412,7 +413,7 @@ class new_hurdles extends StatelessWidget {
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 1.0),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                               image: AssetImage(
                                   'assets/images/Image_Subtract.png'))),
                       child: Container(
@@ -442,7 +443,7 @@ class new_hurdles extends StatelessWidget {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 0.68),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
                                                 'assets/images/link_icon.png'))),
@@ -467,9 +468,8 @@ class new_hurdles extends StatelessWidget {
                                     onTap: () {
                                       Navigator.push(
                                           context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  select_link()));
+                                          FadePageRoute(
+                                              page: const select_link()));
                                     },
                                     child: Container(
                                       width: AppDimensions.height10(context) *
@@ -480,7 +480,7 @@ class new_hurdles extends StatelessWidget {
                                           bottom:
                                               AppDimensions.height10(context) *
                                                   0.178),
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -521,7 +521,8 @@ class new_hurdles extends StatelessWidget {
                           right: AppDimensions.height10(context) * 1.0),
                       decoration: BoxDecoration(
                         color: Colors.transparent,
-                        border: Border.all(width: 1, color: Color(0xffFA9934)),
+                        border: Border.all(
+                            width: 1, color: const Color(0xffFA9934)),
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 5.0),
                       ),
@@ -544,7 +545,7 @@ class new_hurdles extends StatelessWidget {
                       height: AppDimensions.height10(context) * 5.0,
                       width: AppDimensions.height10(context) * 16.7,
                       decoration: BoxDecoration(
-                        color: Color(0xff282828),
+                        color: const Color(0xff282828),
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 5.0),
                       ),
@@ -552,9 +553,8 @@ class new_hurdles extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        new_hurdles_summary()));
+                                FadePageRoute(
+                                    page: const new_hurdles_summary()));
                           },
                           child: Text(
                             'Next',

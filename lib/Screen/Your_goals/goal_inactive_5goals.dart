@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import '../PracticeGoal/Create Practice.dart';
 
 class multiple_goal_inactive extends StatefulWidget {
   final bool isActive;
@@ -174,7 +177,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10(context) * 9.3,
                             height: AppDimensions.height10(context) * 3.4,
                             child: Text(
@@ -183,6 +186,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.4,
+                                  height:
+                                      AppDimensions.height10(context) * 0.15,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF437296)),
                             ),
@@ -213,7 +218,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10(context) * 9.3,
                             height: AppDimensions.height10(context) * 3.4,
                             child: Text(
@@ -276,10 +281,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                   )),
               Container(
-                width: AppDimensions.height10(context) * 41.8,
+                //  width: AppDimensions.height10(context) * 41.8,
                 height: AppDimensions.height10(context) * 10.0,
                 margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.9),
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.7),
                 decoration: BoxDecoration(
                     color:
                         color1 ? Colors.transparent : const Color(0xFF828282),
@@ -293,12 +298,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10(context) * 5.4,
                       height: AppDimensions.height10(context) * 5.4,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse 158.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          left: AppDimensions.height10(context) * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10(context) * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 18.6,
@@ -308,7 +317,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10(context) * 9.2,
                             height: AppDimensions.height10(context) * 2.2,
                             child: Text(
@@ -320,7 +329,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 2.7,
                             child: Row(
                               children: [
@@ -330,17 +339,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             AppDimensions.height10(context) *
                                                 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
-                                          0.5),
+                                          0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.0,
-                                          fontWeight: FontWeight.w300,
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -352,158 +361,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
-                                      height: AppDimensions.height10(context) *
-                                          18.2,
-                                      child: AlertDialog(
-                                        contentPadding: EdgeInsets.zero,
-                                        actionsPadding: EdgeInsets.zero,
-                                        titlePadding: EdgeInsets.zero,
-                                        title: Container(
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  1.9,
-                                              right:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  0.2),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Delete practice?",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.7,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        content: Container(
-                                          margin: EdgeInsets.only(
-                                              bottom:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.5,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  1.6),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.4,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Are you sure you want to delete your\nlast practice? If you do so, your data will\nbe lost.",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.3,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.2,
-                                                width: double.infinity,
-                                                color: const Color(0xFF007AFF),
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'No',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFFFFFFF),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.4,
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'Yes',
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF007AFF)),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )),
+                                builder: (BuildContext context) =>
+                                    showDeleteAlert(context)),
                             child: Container(
                               width: AppDimensions.height10(context) * 1.4,
                               height: AppDimensions.height10(context) * 1.6,
@@ -565,7 +429,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 41.8,
+                //  width: AppDimensions.height10(context) * 41.8,
                 height: AppDimensions.height10(context) * 10.0,
                 decoration: BoxDecoration(
                     color:
@@ -579,12 +443,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10(context) * 5.4,
                       height: AppDimensions.height10(context) * 5.4,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse purple.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          left: AppDimensions.height10(context) * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10(context) * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image:
+                                AssetImage('assets/images/Ellipse purple.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 18.6,
@@ -594,8 +463,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 9.2,
+                          SizedBox(
+                            //width: AppDimensions.height10(context) * 9.2,
                             height: AppDimensions.height10(context) * 2.2,
                             child: Text(
                               'Count down',
@@ -606,7 +475,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 2.7,
                             child: Row(
                               children: [
@@ -616,17 +485,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             AppDimensions.height10(context) *
                                                 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
-                                          0.5),
+                                          0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.0,
-                                          fontWeight: FontWeight.w300,
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -638,158 +507,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
-                                      height: AppDimensions.height10(context) *
-                                          18.2,
-                                      child: AlertDialog(
-                                        contentPadding: EdgeInsets.zero,
-                                        actionsPadding: EdgeInsets.zero,
-                                        titlePadding: EdgeInsets.zero,
-                                        title: Container(
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  1.9,
-                                              right:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  0.2),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Delete practice?",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.7,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        content: Container(
-                                          margin: EdgeInsets.only(
-                                              bottom:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.5,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  1.6),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.4,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Are you sure you want to delete your\nlast practice? If you do so, your data will\nbe lost.",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.3,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.2,
-                                                width: double.infinity,
-                                                color: const Color(0xFF007AFF),
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'No',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFFFFFFF),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.4,
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'Yes',
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF007AFF)),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )),
+                                builder: (BuildContext context) =>
+                                    showDeleteAlert(context)),
                             child: Container(
                               width: AppDimensions.height10(context) * 1.4,
                               height: AppDimensions.height10(context) * 1.6,
@@ -851,7 +575,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 41.8,
+                //  width: AppDimensions.height10(context) * 41.8,
                 height: AppDimensions.height10(context) * 10.0,
                 decoration: BoxDecoration(
                     color:
@@ -865,12 +589,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10(context) * 5.4,
                       height: AppDimensions.height10(context) * 5.4,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse orange.png'),
-                        fit: BoxFit.contain,
-                      )),
+                          left: AppDimensions.height10(context) * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10(context) * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image:
+                                AssetImage('assets/images/Ellipse orange.png'),
+                            fit: BoxFit.contain,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 18.6,
@@ -880,7 +609,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10(context) * 12.6,
                             height: AppDimensions.height10(context) * 4.5,
                             child: Text(
@@ -892,7 +621,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 2.7,
                             child: Row(
                               children: [
@@ -902,17 +631,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             AppDimensions.height10(context) *
                                                 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
-                                          0.5),
+                                          0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.0,
-                                          fontWeight: FontWeight.w300,
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -924,158 +653,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
-                                      height: AppDimensions.height10(context) *
-                                          18.2,
-                                      child: AlertDialog(
-                                        contentPadding: EdgeInsets.zero,
-                                        actionsPadding: EdgeInsets.zero,
-                                        titlePadding: EdgeInsets.zero,
-                                        title: Container(
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  1.9,
-                                              right:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  0.2),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Delete practice?",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.7,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        content: Container(
-                                          margin: EdgeInsets.only(
-                                              bottom:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.5,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  1.6),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.4,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Are you sure you want to delete your\nlast practice? If you do so, your data will\nbe lost.",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.3,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.2,
-                                                width: double.infinity,
-                                                color: const Color(0xFF007AFF),
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'No',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFFFFFFF),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.4,
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'Yes',
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF007AFF)),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )),
+                                builder: (BuildContext context) =>
+                                    showDeleteAlert(context)),
                             child: Container(
                               width: AppDimensions.height10(context) * 1.4,
                               height: AppDimensions.height10(context) * 1.6,
@@ -1137,7 +721,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 41.8,
+                //   width: AppDimensions.height10(context) * 41.8,
                 height: AppDimensions.height10(context) * 10.0,
                 decoration: BoxDecoration(
                     color:
@@ -1151,12 +735,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10(context) * 5.4,
                       height: AppDimensions.height10(context) * 5.4,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse 158.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          left: AppDimensions.height10(context) * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10(context) * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 18.6,
@@ -1166,7 +754,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10(context) * 9.2,
                             height: AppDimensions.height10(context) * 2.2,
                             child: Text(
@@ -1178,7 +766,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 2.7,
                             child: Row(
                               children: [
@@ -1188,17 +776,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             AppDimensions.height10(context) *
                                                 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
-                                          0.5),
+                                          0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.0,
-                                          fontWeight: FontWeight.w300,
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -1210,158 +798,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
-                                      height: AppDimensions.height10(context) *
-                                          18.2,
-                                      child: AlertDialog(
-                                        contentPadding: EdgeInsets.zero,
-                                        actionsPadding: EdgeInsets.zero,
-                                        titlePadding: EdgeInsets.zero,
-                                        title: Container(
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  1.9,
-                                              right:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  0.2),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Delete practice?",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.7,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        content: Container(
-                                          margin: EdgeInsets.only(
-                                              bottom:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.5,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  1.6),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.4,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Are you sure you want to delete your\nlast practice? If you do so, your data will\nbe lost.",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.3,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.2,
-                                                width: double.infinity,
-                                                color: const Color(0xFF007AFF),
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'No',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFFFFFFF),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.4,
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'Yes',
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF007AFF)),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )),
+                                builder: (BuildContext context) =>
+                                    showDeleteAlert(context)),
                             child: Container(
                               width: AppDimensions.height10(context) * 1.4,
                               height: AppDimensions.height10(context) * 1.6,
@@ -1423,7 +866,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 41.8,
+                //  width: AppDimensions.height10(context) * 41.8,
                 height: AppDimensions.height10(context) * 10.0,
                 decoration: BoxDecoration(
                     color:
@@ -1437,12 +880,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10(context) * 5.4,
                       height: AppDimensions.height10(context) * 5.4,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse blue.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          left: AppDimensions.height10(context) * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10(context) * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/Ellipse blue.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 18.6,
@@ -1452,7 +899,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10(context) * 12.6,
                             height: AppDimensions.height10(context) * 2.2,
                             child: Text(
@@ -1464,7 +911,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 2.7,
                             child: Row(
                               children: [
@@ -1474,17 +921,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             AppDimensions.height10(context) *
                                                 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
-                                          0.5),
+                                          0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.0,
-                                          fontWeight: FontWeight.w300,
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -1496,158 +943,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
-                                      height: AppDimensions.height10(context) *
-                                          18.2,
-                                      child: AlertDialog(
-                                        contentPadding: EdgeInsets.zero,
-                                        actionsPadding: EdgeInsets.zero,
-                                        titlePadding: EdgeInsets.zero,
-                                        title: Container(
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  1.9,
-                                              right:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  0.2),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Delete practice?",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.7,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        content: Container(
-                                          margin: EdgeInsets.only(
-                                              bottom:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.5,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  1.6),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.4,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Are you sure you want to delete your\nlast practice? If you do so, your data will\nbe lost.",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.3,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.2,
-                                                width: double.infinity,
-                                                color: const Color(0xFF007AFF),
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'No',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFFFFFFF),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.4,
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'Yes',
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF007AFF)),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )),
+                                builder: (BuildContext context) =>
+                                    showDeleteAlert(context)),
                             child: Container(
                               width: AppDimensions.height10(context) * 1.4,
                               height: AppDimensions.height10(context) * 1.6,
@@ -1709,7 +1011,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10(context) * 41.8,
+                //  width: AppDimensions.height10(context) * 41.8,
                 height: AppDimensions.height10(context) * 10.0,
                 decoration: const BoxDecoration(
                     color: Color(0xFF828282),
@@ -1722,12 +1024,16 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       width: AppDimensions.height10(context) * 5.4,
                       height: AppDimensions.height10(context) * 5.4,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.2),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse 158.png'),
-                        fit: BoxFit.cover,
-                      )),
+                          left: AppDimensions.height10(context) * 2.5),
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: AppDimensions.height10(context) * 0.15,
+                              color: const Color(0xFFFBFBFB)),
+                          shape: BoxShape.circle,
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            fit: BoxFit.cover,
+                          )),
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 18.6,
@@ -1737,7 +1043,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             width: AppDimensions.height10(context) * 9.2,
                             height: AppDimensions.height10(context) * 2.2,
                             child: Text(
@@ -1749,7 +1055,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
-                          Container(
+                          SizedBox(
                             height: AppDimensions.height10(context) * 2.7,
                             child: Row(
                               children: [
@@ -1759,17 +1065,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                             AppDimensions.height10(context) *
                                                 2.0,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF))),
+                                        color: const Color(0xFFFBFBFB))),
                                 Container(
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
-                                          0.5),
+                                          0.4),
                                   child: Text('/20 active days',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.0,
-                                          fontWeight: FontWeight.w300,
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
                                           // fontFamily: 'Poppins',
                                           color: const Color(0xFFF6F6F6))),
                                 ),
@@ -1781,158 +1087,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     ),
                     bt_switch
                         ? GestureDetector(
-                            onTap: () => showDialog<String>(
+                            onTap: () => showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
-                                      width: AppDimensions.height10(context) *
-                                          27.0,
-                                      height: AppDimensions.height10(context) *
-                                          18.2,
-                                      child: AlertDialog(
-                                        contentPadding: EdgeInsets.zero,
-                                        actionsPadding: EdgeInsets.zero,
-                                        titlePadding: EdgeInsets.zero,
-                                        title: Container(
-                                          margin: EdgeInsets.only(
-                                              top: AppDimensions.height10(
-                                                      context) *
-                                                  1.9,
-                                              right:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.6,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  0.2),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Delete practice?",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.7,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        content: Container(
-                                          margin: EdgeInsets.only(
-                                              bottom:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      1.5,
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.6,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  1.6),
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.4,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.8,
-                                          child: Text(
-                                            "Are you sure you want to delete your\nlast practice? If you do so, your data will\nbe lost.",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.3,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.2,
-                                                width: double.infinity,
-                                                color: const Color(0xFF007AFF),
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'No',
-                                                    style: TextStyle(
-                                                        color: const Color(
-                                                            0xFFFFFFFF),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.4,
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                    'Yes',
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF007AFF)),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )),
+                                builder: (BuildContext context) =>
+                                    showDeleteAlert(context)),
                             child: Container(
                               width: AppDimensions.height10(context) * 1.4,
                               height: AppDimensions.height10(context) * 1.6,
@@ -1985,182 +1146,55 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                   ],
                 ),
               ),
-              Container(
-                width: AppDimensions.height10(context) * 13.4,
-                height: AppDimensions.height10(context) * 13.2,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 5.5),
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/circle_grey.png'))),
-                child: Center(
-                  child: Text(
-                    'Add new\npractice',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.8,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xFFFFFFFF)),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context, FadePageRoute(page: const CreatePractice()));
+                },
+                child: Container(
+                  width: AppDimensions.height10(context) * 13.4,
+                  height: AppDimensions.height10(context) * 13.4,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 5.0,
+                      bottom: AppDimensions.height10(context) * 38.9),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                          width: AppDimensions.height10(context) * 0.3,
+                          color: const Color(0xFFFFFFFF))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        // width: AppDimensions.height10(context) * 5.8,
+                        height: AppDimensions.height10(context) * 5.8,
+                        child: Center(
+                          child: Text(
+                            'Add new\npractice',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                height: AppDimensions.height10(context) * 0.15,
+                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFFFFFFFF)),
+                          ),
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/images/Addgoal.png',
+                        width: AppDimensions.height10(context) * 2.3,
+                        height: AppDimensions.height10(context) * 2.3,
+                      )
+                    ],
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) => Container(
-                          width: AppDimensions.height10(context) * 27.0,
-                          height: AppDimensions.height10(context) * 24.6,
-                          child: AlertDialog(
-                            contentPadding: EdgeInsets.zero,
-                            actionsPadding: EdgeInsets.zero,
-                            titlePadding: EdgeInsets.zero,
-                            title: Container(
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 1.9,
-                                  right: AppDimensions.height10(context) * 1.6,
-                                  left: AppDimensions.height10(context) * 1.6,
-                                  bottom:
-                                      AppDimensions.height10(context) * 0.2),
-                              height: AppDimensions.height10(context) * 4.4,
-                              width: AppDimensions.height10(context) * 23.8,
-                              child: Text(
-                                "Are you sure you want\nto delete this goal?",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ),
-                            content: Container(
-                              margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10(context) * 1.5,
-                                  left: AppDimensions.height10(context) * 1.6,
-                                  right: AppDimensions.height10(context) * 1.6),
-                              height: AppDimensions.height10(context) * 6.4,
-                              width: AppDimensions.height10(context) * 23.8,
-                              child: Text(
-                                "By clicking 'Yes' you confirm that this\ngoal will be deleted and all your data\nthat relates to this goal won't berecoverable. ",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ),
-                            actions: <Widget>[
-                              Column(
-                                children: [
-                                  SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 0.1,
-                                    child: Divider(
-                                      color: const Color(0XFF3C3C43)
-                                          .withOpacity(0.29),
-                                    ),
-                                  ),
-                                  Container(
-                                    height:
-                                        AppDimensions.height10(context) * 4.2,
-                                    width: double.infinity,
-                                    color: const Color(0xFF007AFF),
-                                    child: TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'No',
-                                        style: TextStyle(
-                                            color: const Color(0xFFFFFFFF),
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
-                                            fontFamily: "Laila",
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 0.1,
-                                    child: Divider(
-                                      color: const Color(0XFF3C3C43)
-                                          .withOpacity(0.29),
-                                    ),
-                                  ),
-                                  Container(
-                                    height:
-                                        AppDimensions.height10(context) * 4.4,
-                                    width: double.infinity,
-                                    child: TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'Yes',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
-                                            fontFamily: "Laila",
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xFF007AFF)),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 0.1,
-                                    child: Divider(
-                                      color: const Color(0XFF3C3C43)
-                                          .withOpacity(0.29),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        )),
-                child: Container(
-                    width: AppDimensions.height10(context) * 31.3,
-                    height: AppDimensions.height10(context) * 5.0,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 3.0,
-                        bottom: AppDimensions.height10(context) * 12.7),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF464646),
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.delete,
-                          color: Colors.white,
-                          size: AppDimensions.height10(context) * 2.4,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.8),
-                          child: Text(
-                            'Delete Goal',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Arial'),
-                          ),
-                        ),
-                      ],
-                    )),
               ),
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: AppDimensions.height10(context) * 12.0,
           width: AppDimensions.height10(context) * 41.6,
           child: Row(
@@ -2196,7 +1230,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
               ),
               widget.isActive
                   ? GestureDetector(
-                      onTap: () => showDialog<String>(
+                      onTap: () => showAnimatedDialog(
+                          animationType: DialogTransitionType.fadeScale,
+                          curve: Curves.easeInOut,
+                          duration: Duration(seconds: 1),
                           context: context,
                           builder: (BuildContext context) => Container(
                                 width: AppDimensions.height10(context) * 27.0,
@@ -2205,6 +1242,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     borderRadius: BorderRadius.circular(
                                         AppDimensions.height10(context) * 1.4)),
                                 child: AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              1.4)),
                                   contentPadding: EdgeInsets.zero,
                                   actionsPadding: EdgeInsets.zero,
                                   titlePadding: EdgeInsets.zero,
@@ -2277,7 +1318,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                           width: double.infinity,
                                           color: const Color(0xFF007AFF),
                                           child: TextButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
                                             child: Text(
                                               'No',
                                               style: TextStyle(
@@ -2301,7 +1344,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                 .withOpacity(0.29),
                                           ),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height:
                                               AppDimensions.height10(context) *
                                                   4.4,
@@ -2385,10 +1428,9 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const multiple_goal_inactive(
-                                        isActive: true)));
+                            FadePageRoute(
+                                page: const multiple_goal_inactive(
+                                    isActive: true)));
                       },
                       child: Container(
                           width: AppDimensions.height10(context) * 9.1,
@@ -2466,3 +1508,113 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 //         ]);
 //   }
 // }
+
+Widget showDeleteAlert(BuildContext context) {
+  return SizedBox(
+    width: AppDimensions.height10(context) * 27.0,
+    height: AppDimensions.height10(context) * 18.2,
+    child: AlertDialog(
+      shape: RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+      contentPadding: EdgeInsets.zero,
+      actionsPadding: EdgeInsets.zero,
+      titlePadding: EdgeInsets.zero,
+      title: Container(
+        decoration: BoxDecoration(
+            borderRadius:
+                BorderRadius.circular(AppDimensions.height10(context) * 1.4)),
+        margin: EdgeInsets.only(
+            top: AppDimensions.height10(context) * 1.9,
+            right: AppDimensions.height10(context) * 1.6,
+            left: AppDimensions.height10(context) * 1.6,
+            bottom: AppDimensions.height10(context) * 0.2),
+        height: AppDimensions.height10(context) * 2.2,
+        width: AppDimensions.height10(context) * 23.8,
+        child: Text(
+          "Delete practice?",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: AppDimensions.height10(context) * 1.7,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+      content: Container(
+        margin: EdgeInsets.only(
+            bottom: AppDimensions.height10(context) * 1.5,
+            left: AppDimensions.height10(context) * 1.6,
+            right: AppDimensions.height10(context) * 1.6),
+        height: AppDimensions.height10(context) * 4.8,
+        width: AppDimensions.height10(context) * 23.8,
+        child: Text(
+          "Are you sure you want to delete your\nlast practice? If you do so, your data will\nbe lost.",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: AppDimensions.height10(context) * 1.3,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
+      actions: <Widget>[
+        Column(
+          children: [
+            SizedBox(
+              height: AppDimensions.height10(context) * 0.1,
+              child: Divider(
+                color: const Color(0XFF3C3C43).withOpacity(0.29),
+              ),
+            ),
+            Container(
+              height: AppDimensions.height10(context) * 4.2,
+              width: double.infinity,
+              color: const Color(0xFF007AFF),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Center(
+                  child: Text(
+                    'No',
+                    style: TextStyle(
+                        color: const Color(0xFFFFFFFF),
+                        fontSize: AppDimensions.height10(context) * 1.7,
+                        fontFamily: "Laila",
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: AppDimensions.height10(context) * 0.1,
+              child: Divider(
+                color: const Color(0XFF3C3C43).withOpacity(0.29),
+              ),
+            ),
+            SizedBox(
+              height: AppDimensions.height10(context) * 4.4,
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {},
+                child: Text(
+                  'Yes',
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10(context) * 1.7,
+                      fontFamily: "Laila",
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xFF007AFF)),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: AppDimensions.height10(context) * 0.1,
+              child: Divider(
+                color: const Color(0XFF3C3C43).withOpacity(0.29),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}

@@ -438,7 +438,7 @@ class _notificationsState extends State<notifications> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
                       AppDimensions.height10(context) * 5.0),
-                  color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             )
           ],
         ),
@@ -480,7 +480,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
   Widget build(BuildContext context) {
     return Container(
       height: AppDimensions.height10(context) * 23.8,
-      color: Color(0xFF282828), // Set the height of the bottom sheet
+      color: const Color(0xFF282828), // Set the height of the bottom sheet
       child: Column(
         children: [
           Expanded(
@@ -493,7 +493,7 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
               children: _statements
                   .map((statement) => Text(statement,
                       style: TextStyle(
-                        color: Color(0xFFFBFBFB),
+                        color: const Color(0xFFFBFBFB),
                         fontSize: AppDimensions.height10(context) * 2.2,
                         fontWeight: FontWeight.w400,
                       )))

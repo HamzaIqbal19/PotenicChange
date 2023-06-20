@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class endofSession extends StatelessWidget {
@@ -378,10 +379,8 @@ class endofSession extends StatelessWidget {
                   child: summary
                       ? TextButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => practice_summary()));
+                            Navigator.push(context,
+                                FadePageRoute(page: const practice_summary()));
                           },
                           child: Text(
                             'Update Summary',
@@ -393,10 +392,8 @@ class endofSession extends StatelessWidget {
                         )
                       : TextButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => practice_summary()));
+                            Navigator.push(context,
+                                FadePageRoute(page: const practice_summary()));
                           },
                           child: Text(
                             'Summary',

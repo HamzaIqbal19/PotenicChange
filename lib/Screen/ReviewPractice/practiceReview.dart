@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/routinecommitment.dart';
@@ -96,7 +97,7 @@ class _PracticeReviewState extends State<PracticeReview> {
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -107,7 +108,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                       "Review",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF5B74A6),
+                        color: const Color(0xFF5B74A6),
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
@@ -122,7 +123,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                       "Control my anger",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF5B74A6),
+                        color: const Color(0xFF5B74A6),
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
@@ -152,7 +153,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF156F6D),
+                            color: const Color(0xFF156F6D),
                             fontSize: AppDimensions.height10(context) * 2.0,
                           ),
                         ),
@@ -169,7 +170,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                       "Practice Details",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Color(0xFF437296),
+                        color: const Color(0xFF437296),
                         fontSize: AppDimensions.height10(context) * 3.0,
                       ),
                     ),
@@ -199,9 +200,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                     width: AppDimensions.height10(context) * 38.2,
                     height: AppDimensions.height10(context) * 40.6,
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color(0xFFFBFBFB),
                         border: Border.all(
-                            color: Colors.white,
+                            color: const Color(0xFFFBFBFB),
                             width: AppDimensions.height10(context) * 0.2),
                         borderRadius: BorderRadius.all(Radius.circular(
                             AppDimensions.height10(context) * 1.8))),
@@ -219,13 +220,16 @@ class _PracticeReviewState extends State<PracticeReview> {
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
                                     height:
                                         AppDimensions.height10(context) * 3.7,
                                     width:
-                                        AppDimensions.height10(context) * 30.5,
+                                        AppDimensions.height10(context) * 28.0,
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            2.5),
 
                                     // color: Colors.blue,
                                     decoration: const BoxDecoration(
@@ -327,9 +331,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                     width: AppDimensions.height10(context) * 38.2,
                     height: AppDimensions.height10(context) * 91.3,
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color(0xFFFBFBFB),
                         border: Border.all(
-                            color: Colors.white,
+                            color: const Color(0xFFFBFBFB),
                             width: AppDimensions.height10(context) * 0.2),
                         borderRadius: BorderRadius.all(Radius.circular(
                             AppDimensions.height10(context) * 1.8))),
@@ -354,7 +358,11 @@ class _PracticeReviewState extends State<PracticeReview> {
                                       height:
                                           AppDimensions.height10(context) * 3.7,
                                       width: AppDimensions.height10(context) *
-                                          30.5,
+                                          28.0,
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  2.5),
 
                                       // color: Colors.blue,
                                       decoration: const BoxDecoration(
@@ -366,27 +374,23 @@ class _PracticeReviewState extends State<PracticeReview> {
                                       ),
                                     ),
                                     // SizedBox(width: ),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                3.0,
-                                        width: AppDimensions.height10(context) *
-                                            3.0,
+                                    Container(
+                                      height:
+                                          AppDimensions.height10(context) * 3.0,
+                                      width:
+                                          AppDimensions.height10(context) * 3.0,
 
-                                        // color: Colors.blue,
-                                        margin: EdgeInsets.only(
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  1.5,
-                                        ),
-                                        decoration: const BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                "assets/images/btnedit.png"),
-                                            fit: BoxFit.fitHeight,
-                                          ),
+                                      // color: Colors.blue,
+                                      margin: EdgeInsets.only(
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                      ),
+                                      decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/btnedit.png"),
+                                          fit: BoxFit.fitHeight,
                                         ),
                                       ),
                                     ),
@@ -448,9 +452,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                     width: AppDimensions.height10(context) * 38.2,
                     height: AppDimensions.height10(context) * 29.9,
                     decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color(0xFFFBFBFB),
                         border: Border.all(
-                            color: Colors.white,
+                            color: const Color(0xFFFBFBFB),
                             width: AppDimensions.height10(context) * 0.2),
                         borderRadius: BorderRadius.all(Radius.circular(
                             AppDimensions.height10(context) * 1.8))),
@@ -475,7 +479,11 @@ class _PracticeReviewState extends State<PracticeReview> {
                                       height:
                                           AppDimensions.height10(context) * 3.7,
                                       width: AppDimensions.height10(context) *
-                                          30.5,
+                                          28.0,
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  2.5),
 
                                       // color: Colors.blue,
                                       decoration: const BoxDecoration(
@@ -535,7 +543,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                   height:
                                       AppDimensions.height10(context) * 17.0,
                                   width: AppDimensions.height10(context) * 36.4,
-                                  // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.height10(context) *3.5),
+                                  // padding:  EdgeInsets.only(top: AppDimensions.height10(context)*2, bottom: AppDimensions.height10(context)*4.8, left: AppDimensions.height10(context)*2.0,right: AppDimensions.height10(context)*3.5),
                                   decoration: BoxDecoration(
                                       // color: Colors.white,
                                       gradient: const LinearGradient(
@@ -701,12 +709,18 @@ class _PracticeReviewState extends State<PracticeReview> {
                           fit: BoxFit.contain,
                         )),
                     GestureDetector(
-                      onTap: () => showDialog<String>(
+                      onTap: () => showAnimatedDialog(
+                        animationType: DialogTransitionType.fadeScale,
+                        curve: Curves.easeInOut,
+                        duration: Duration(seconds: 1),
                         context: context,
                         builder: (BuildContext context) => Container(
                           width: AppDimensions.height10(context) * 27.0,
                           height: AppDimensions.height10(context) * 24.6,
                           child: AlertDialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 1.4)),
                             actionsPadding: const EdgeInsets.all(0.0),
                             contentPadding: const EdgeInsets.all(0.0),
                             titlePadding: const EdgeInsets.all(0.0),

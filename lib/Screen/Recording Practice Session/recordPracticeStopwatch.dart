@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -101,10 +102,8 @@ class clocks extends StatelessWidget {
                               Border.all(width: 2, color: Color(0xffFA9934))),
                       child: TextButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => welldone_splash()));
+                            Navigator.push(context,
+                                FadePageRoute(page: (welldone_splash())));
                           },
                           child: Text(
                             'Skip',
@@ -132,10 +131,8 @@ class clocks extends StatelessWidget {
                               color: Colors.transparent)),
                       child: TextButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => welldone_splash()));
+                            Navigator.push(context,
+                                FadePageRoute(page: (welldone_splash())));
                           },
                           child: Text(
                             'Finished Practice',
@@ -361,9 +358,12 @@ class _watch_timeState extends State<watch_time> {
                       width: AppDimensions.height10(context) * 7,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        // crossAxisAlignment: CrossAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          GestureDetector(
+                          Container(
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 0.3,
+                                left: AppDimensions.height10(context) * 1.0),
                             child: Image.asset(
                               'assets/images/start_icon.png',
                               width: AppDimensions.height10(context) * 1.8,
@@ -374,6 +374,9 @@ class _watch_timeState extends State<watch_time> {
                           Container(
                             width: AppDimensions.height10(context) * 3.5,
                             height: AppDimensions.height10(context) * 2.2,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 0.5,
+                                left: AppDimensions.height10(context) * 0.5),
                             child: Text(button_text,
                                 style: TextStyle(
                                     fontSize:

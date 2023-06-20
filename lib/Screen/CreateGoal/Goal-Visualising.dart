@@ -163,6 +163,7 @@ class _VisualisingState extends State<Visualising> {
                 ),
                 onPressed: () {
                   Navigator.pop(context, true);
+                  Navigator.pop(context, true);
                   // Add code for performing close action
                 },
               ),
@@ -376,6 +377,8 @@ class _VisualisingState extends State<Visualising> {
                     // color: Colors.blue,
                     width: AppDimensions.height10(context) * 10.4,
                     height: AppDimensions.height10(context) * 7.6,
+                    // color: Colors.blue,
+
                     padding: EdgeInsets.only(
                         left: AppDimensions.height10(context) * 1.5,
                         right: AppDimensions.height10(context) * 1.5),
@@ -404,6 +407,7 @@ class _VisualisingState extends State<Visualising> {
                 Container(
                   // height: AppDimensions.height10(context) * 4.9,
                   width: AppDimensions.height10(context) * 37.2,
+                  // height: AppDimensions.height10(context) * 4.9,
                   child: Center(
                     child: Text(
                       "What does it look like? What are you \n  doing? What emotions do you have and \n how does it feel?",
@@ -569,6 +573,13 @@ class _VisualisingState extends State<Visualising> {
                     : SizedBox(
                         height: AppDimensions.height10(context) * 5.0,
                       ),
+                MediaQuery.of(context).viewInsets.bottom == 0
+                    ? SizedBox(
+                        height: AppDimensions.height10(context) * 12.2,
+                      )
+                    : SizedBox(
+                        height: AppDimensions.height10(context) * 5.0,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -576,6 +587,8 @@ class _VisualisingState extends State<Visualising> {
                         // color: Colors.blue,
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
+                        // color: Colors.blue,
+
                         child: Image.asset(
                           "assets/images/Moreactions.png",
                           fit: BoxFit.contain,
@@ -588,7 +601,6 @@ class _VisualisingState extends State<Visualising> {
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
                         decoration: BoxDecoration(
-                          // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,

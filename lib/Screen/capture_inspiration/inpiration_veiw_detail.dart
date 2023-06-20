@@ -116,7 +116,7 @@ class _veiw_detailsState extends State<veiw_details> {
                     'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        height: 1.5,
+                        height: AppDimensions.height10(context) * 0.15,
                         fontSize: AppDimensions.height10(context) * 2.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFFFFFFFF)),
@@ -139,7 +139,7 @@ class _veiw_detailsState extends State<veiw_details> {
                   ? AppDimensions.height10(context) * 52.465
                   : AppDimensions.height10(context) * 48.465,
           decoration: BoxDecoration(
-            color: const Color(0xFFFFFFFFF),
+            color: const Color(0xFFFFFFFF),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(AppDimensions.height10(context) * 4.0),
                 topRight:
@@ -149,11 +149,11 @@ class _veiw_detailsState extends State<veiw_details> {
             scrollDirection: Axis.vertical,
             //reverse: true,
             child: Container(
-              height: widget.type_switch == 3
-                  ? AppDimensions.height10(context) * 69.2
-                  : widget.type_switch == 1
-                      ? AppDimensions.height10(context) * 38.465
-                      : AppDimensions.height10(context) * 60.2,
+              // height: widget.type_switch == 3
+              //     ? AppDimensions.height10(context) * 70.2
+              //     : widget.type_switch == 1
+              //         ? AppDimensions.height10(context) * 38.465
+              //         : AppDimensions.height10(context) * 60.2,
               child: Column(
                 children: [
                   Container(
@@ -188,7 +188,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Nir Eyal',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize:
@@ -199,7 +198,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Learn How To Avoid Distraction In A World\nThat Is Full Of It',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize:
@@ -210,7 +208,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Survivors:  Music Eye Of The Tiger ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize:
@@ -221,7 +218,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor\nsit amet, consectetur adipiscing elit. ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize:
@@ -347,7 +343,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Behavioural Coach',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize:
@@ -358,7 +353,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize:
@@ -369,7 +363,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. Pellentesque non pellentesque diam. Nulla interdum condimentum lorem ac interdum. Quisque tristique lacinia malesuada. Sed sed mattis orci, id pulvinar elit. Donec semper libero quis mauris rutrum, sit amet posuere lacus sodales. Donec a suscipit dolor. Vivamus ut tempus neque. ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize:
@@ -380,7 +373,6 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. ',
                               style: TextStyle(
-                                  fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
                                   fontSize:
@@ -417,7 +409,6 @@ class _veiw_detailsState extends State<veiw_details> {
                       child: Text(
                         '#tag1 #tag2',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
                             height: 1.5,
                             color: const Color(0xFF282828),
                             fontSize: AppDimensions.height10(context) * 1.6,
@@ -445,7 +436,7 @@ class _veiw_detailsState extends State<veiw_details> {
                       height: AppDimensions.height10(context) * 6.0,
                       width: AppDimensions.height10(context) * 37.5,
                       margin: EdgeInsets.only(
-                          // bottom: AppDimensions.height10(context) * 1.0,
+                          bottom: AppDimensions.height10(context) * 1.0,
                           left: AppDimensions.height10(context) * 2.2,
                           right: AppDimensions.height10(context) * 1.7,
                           top: AppDimensions.height10(context) * 0.5),
@@ -461,7 +452,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             width: AppDimensions.height10(context) * 23.9,
                             height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.99),
+                              left: AppDimensions.height10(context) * 1.99,
+                            ),
                             child: GestureDetector(
                                 onTap: () {},
                                 child: Text(

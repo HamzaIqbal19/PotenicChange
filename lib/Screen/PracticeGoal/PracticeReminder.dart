@@ -1,8 +1,10 @@
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -27,6 +29,7 @@ class PracticeReminder extends StatefulWidget {
 class _PracticeReminderState extends State<PracticeReminder> {
   bool radio1 = false;
   bool radio2 = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +99,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -227,6 +230,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.4,
                       ),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 2.4,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -235,6 +241,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             // color: Colors.blue,
                             width: AppDimensions.height10(context) * 25.9,
                             height: AppDimensions.height10(context) * 3.6,
+
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
@@ -248,19 +255,21 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       fit: BoxFit.contain,
                                     )),
                                 Container(
-                                  width: AppDimensions.height10(context) * 20.4,
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  child: Text(
-                                    "Yes, remind me",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: "Laila",
-                                      color: const Color(0xFFFFFFFF),
-                                      fontSize:
-                                          AppDimensions.height10(context) * 2.0,
-                                    ),
-                                  ),
-                                ),
+                                    width:
+                                        AppDimensions.height10(context) * 20.4,
+                                    height:
+                                        AppDimensions.height10(context) * 2.4,
+                                    child: Text(
+                                      "Yes, remind me",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: "Laila",
+                                        color: const Color(0xFFFFFFFF),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
+                                      ),
+                                    )),
                               ],
                             ),
                           ),
@@ -442,6 +451,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.height10(context) *3.5),
                   decoration: BoxDecoration(
                       // color: Colors.white,
+                      // color: Colors.white,
                       gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -457,6 +467,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 2.4,
+                      ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.4,
                       ),
@@ -501,9 +514,11 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               if (radio2 == false) {
                                 setState(() {
                                   radio2 = true;
+                                  radio2 = true;
                                 });
                               } else {
                                 setState(() {
+                                  radio2 = false;
                                   radio2 = false;
                                 });
                               }
@@ -517,6 +532,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     : Image.asset("assets/images/circle.png")),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 1.5,
                       ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 1.5,
@@ -576,8 +594,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             widget.pracId);
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => PracticeFinished(),
+                          FadePageRoute(
+                            page: const PracticeFinished(),
                           ),
                         );
                       },

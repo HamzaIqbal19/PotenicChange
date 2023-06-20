@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -114,16 +116,16 @@ class _practice_summaryState extends State<practice_summary> {
                         fit: BoxFit.cover)),
                 child: Stack(children: [
                   Align(
-                      alignment: Alignment(0, -0.65),
+                      alignment: const Alignment(0, -0.65),
                       child: Text(
                         'Control my anger',
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.0,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff5B74A6)),
+                            color: const Color(0xff5B74A6)),
                       )),
                   Align(
-                    alignment: Alignment(0, -0.35),
+                    alignment: const Alignment(0, -0.35),
                     child: Text(
                         '“I am someone who is in\n control of my anger”',
                         textAlign: TextAlign.center,
@@ -131,7 +133,7 @@ class _practice_summaryState extends State<practice_summary> {
                             fontStyle: FontStyle.italic,
                             fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xff5B74A6))),
+                            color: const Color(0xff5B74A6))),
                   ),
                   Align(
                     alignment: const Alignment(0, 0.975),
@@ -140,8 +142,8 @@ class _practice_summaryState extends State<practice_summary> {
                       width: AppDimensions.height10(context) * 13.8,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border:
-                              Border.all(width: 5, color: Color(0xFF52855E)),
+                          border: Border.all(
+                              width: 5, color: const Color(0xFF52855E)),
                           gradient: const RadialGradient(
                             // radius: 0.5,
                             colors: <Color>[
@@ -154,7 +156,7 @@ class _practice_summaryState extends State<practice_summary> {
                             child: Text(
                           'Meditation',
                           style: TextStyle(
-                              color: Color(0xff1A481C),
+                              color: const Color(0xff1A481C),
                               fontSize: AppDimensions.height10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                               fontFamily: 'Laila'),
@@ -169,7 +171,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Color(0xFF52855E)),
-                                child: ImageIcon(
+                                child: const ImageIcon(
                                   AssetImage('assets/images/tick_icon.png'),
                                   color: Color(0xFFFFFFFF),
                                 )))
@@ -178,110 +180,103 @@ class _practice_summaryState extends State<practice_summary> {
                   ),
                 ]),
               ),
-              Container(
-                width: AppDimensions.height10(context) * 26.8,
-                height: AppDimensions.height10(context) * 5.0,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        AppDimensions.height10(context) * 1.8),
-                    border: Border.all(width: 1, color: Colors.white),
-                    color: Colors.transparent),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                        //margin: EdgeInsets.only(left: 92, right: 66),
-                        height: AppDimensions.height10(context) * 2.6,
-                        width: AppDimensions.height10(context) * 21.0,
-                        child: Text(
-                          date_time,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.0,
-                            fontFamily: 'Laila',
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        )),
-                    GestureDetector(
-                        onTap: () {
-                          showCupertinoModalPopup(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return _buildBottomPicker(
-                                  context,
-                                  CupertinoDatePicker(
-                                      mode: CupertinoDatePickerMode.dateAndTime,
-                                      //initialDateTime: date_time,
-                                      onDateTimeChanged:
-                                          (DateTime newDateTime) {
-                                        if (mounted) {
-                                          setState(() {
-                                            if (newDateTime.weekday == 2) {
-                                              setState(() {
-                                                day = 'Tue';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                3) {
-                                              setState(() {
-                                                day = 'Wed';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                4) {
-                                              setState(() {
-                                                day = 'Thu';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                5) {
-                                              setState(() {
-                                                day = 'Fri';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                6) {
-                                              setState(() {
-                                                day = 'Sat';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                7) {
-                                              setState(() {
-                                                day = 'Sun';
-                                              });
-                                            } else {
-                                              setState(() {
-                                                day = 'Mon';
-                                              });
-                                            }
-                                          });
-                                          setState(() {
-                                            if (newDateTime.hour > 11) {
-                                              setState(() {
-                                                time = 'Pm';
-                                              });
-                                            } else {
-                                              setState(() {
-                                                time = 'Am';
-                                                //print(time);
-                                              });
-                                            }
-                                          });
-                                          setState(() => date_time =
-                                              " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                          print(
-                                              "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                        }
-                                      }));
-                            },
-                          );
-                        },
-                        child: Icon(
-                          Icons.arrow_drop_down,
-                          color: Colors.white,
-                          size: 30,
-                        ))
-                  ],
+              GestureDetector(
+                onTap: () {
+                  showCupertinoModalPopup(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return _buildBottomPicker(CupertinoDatePicker(
+                          mode: CupertinoDatePickerMode.dateAndTime,
+                          //initialDateTime: date_time,
+                          onDateTimeChanged: (DateTime newDateTime) {
+                            if (mounted) {
+                              setState(() {
+                                if (newDateTime.weekday == 2) {
+                                  setState(() {
+                                    day = 'Tue';
+                                  });
+                                } else if (newDateTime.weekday == 3) {
+                                  setState(() {
+                                    day = 'Wed';
+                                  });
+                                } else if (newDateTime.weekday == 4) {
+                                  setState(() {
+                                    day = 'Thu';
+                                  });
+                                } else if (newDateTime.weekday == 5) {
+                                  setState(() {
+                                    day = 'Fri';
+                                  });
+                                } else if (newDateTime.weekday == 6) {
+                                  setState(() {
+                                    day = 'Sat';
+                                  });
+                                } else if (newDateTime.weekday == 7) {
+                                  setState(() {
+                                    day = 'Sun';
+                                  });
+                                } else {
+                                  setState(() {
+                                    day = 'Mon';
+                                  });
+                                }
+                              });
+                              setState(() {
+                                if (newDateTime.hour > 11) {
+                                  setState(() {
+                                    time = 'Pm';
+                                  });
+                                } else {
+                                  setState(() {
+                                    time = 'Am';
+                                    //print(time);
+                                  });
+                                }
+                              });
+                              setState(() => date_time =
+                                  " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                              print(
+                                  "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                            }
+                          }));
+                    },
+                  );
+                },
+                child: Container(
+                  width: AppDimensions.height10(context) * 26.8,
+                  height: AppDimensions.height10(context) * 5.0,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 4.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 1.8),
+                      border: Border.all(width: 1, color: Colors.white),
+                      color: Colors.transparent),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                          //margin: EdgeInsets.only(left: 92, right: 66),
+                          height: AppDimensions.height10(context) * 2.6,
+                          width: AppDimensions.height10(context) * 21.0,
+                          child: Text(
+                            date_time,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontFamily: 'Laila',
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          )),
+                      const Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.white,
+                        size: 30,
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(
@@ -300,13 +295,13 @@ class _practice_summaryState extends State<practice_summary> {
                           color: Colors.white,
                         ),
                         children: [
-                          TextSpan(
+                          const TextSpan(
                             text: 'How did you feel',
                           ),
-                          TextSpan(
+                          const TextSpan(
                               text: '\nbefore',
                               style: TextStyle(color: Color(0xff8C648A))),
-                          TextSpan(
+                          const TextSpan(
                             text: ' your practice?',
                           ),
                         ])),
@@ -315,7 +310,7 @@ class _practice_summaryState extends State<practice_summary> {
                 width: AppDimensions.height10(context) * 13.4,
                 height: AppDimensions.height10(context) * 13.4,
                 margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.3),
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -339,15 +334,15 @@ class _practice_summaryState extends State<practice_summary> {
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0, 0.8),
+                    alignment: const Alignment(0, 0.8),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => emotions(
-                                      summary: true,
-                                    )));
+                            FadePageRoute(
+                                page: const emotions(
+                              summary: true,
+                            )));
                       },
                       child: Container(
                           height: AppDimensions.height10(context) * 2.0,
@@ -359,7 +354,7 @@ class _practice_summaryState extends State<practice_summary> {
                               color: Colors.transparent,
                               border:
                                   Border.all(width: 1, color: Colors.white)),
-                          child: ImageIcon(
+                          child: const ImageIcon(
                             AssetImage('assets/images/edit_icon.png'),
                             color: Colors.white,
                           )),
@@ -372,7 +367,7 @@ class _practice_summaryState extends State<practice_summary> {
                 height: AppDimensions.height10(context) * 4.8,
 //color: Colors.amber,
                 margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
@@ -384,13 +379,13 @@ class _practice_summaryState extends State<practice_summary> {
                           color: Colors.white,
                         ),
                         children: [
-                          TextSpan(
+                          const TextSpan(
                             text: 'How do you feel',
                           ),
-                          TextSpan(
+                          const TextSpan(
                               text: '\nafter',
                               style: TextStyle(color: Color(0xff8C648A))),
-                          TextSpan(
+                          const TextSpan(
                             text: ' your practice?',
                           ),
                         ])),
@@ -399,7 +394,7 @@ class _practice_summaryState extends State<practice_summary> {
                 width: AppDimensions.height10(context) * 13.4,
                 height: AppDimensions.height10(context) * 13.4,
                 margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -424,15 +419,15 @@ class _practice_summaryState extends State<practice_summary> {
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0, 0.8),
+                    alignment: const Alignment(0, 0.8),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => feelingsAfter(
-                                      summary: true,
-                                    )));
+                            FadePageRoute(
+                                page: const feelingsAfter(
+                              summary: true,
+                            )));
                       },
                       child: Container(
                           height: AppDimensions.height10(context) * 2.0,
@@ -444,7 +439,7 @@ class _practice_summaryState extends State<practice_summary> {
                               color: Colors.transparent,
                               border:
                                   Border.all(width: 1, color: Colors.white)),
-                          child: ImageIcon(
+                          child: const ImageIcon(
                             AssetImage('assets/images/edit_icon.png'),
                             color: Colors.white,
                           )),
@@ -456,26 +451,25 @@ class _practice_summaryState extends State<practice_summary> {
                 width: AppDimensions.height10(context) * 36.0,
                 height: AppDimensions.height10(context) * 7.3,
                 margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
                         AppDimensions.height10(context) * 2.0),
                     color: Colors.white),
-                child: Center(
-                  child: Container(
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 2.0,
-                        right: AppDimensions.height10(context) * 2.0),
-                    height: AppDimensions.height10(context) * 3.9,
-                    width: AppDimensions.height10(context) * 32.5,
-                    child: Text(
-                      'This session works for me, it clears my head and makes me feel positive :)',
-                      style: TextStyle(
-                          color: Color(0xff646464),
-                          fontSize: AppDimensions.height10(context) * 1.6,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Laila'),
-                    ),
+                child: Container(
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.4,
+                      left: AppDimensions.height10(context) * 2.0,
+                      right: AppDimensions.height10(context) * 2.0),
+                  height: AppDimensions.height10(context) * 3.8,
+                  width: AppDimensions.height10(context) * 32.0,
+                  child: Text(
+                    'This session works for me, it clears my head and makes me feel positive :)',
+                    style: TextStyle(
+                        color: const Color(0xff646464),
+                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'Laila'),
                   ),
                 ),
               ),
@@ -483,7 +477,7 @@ class _practice_summaryState extends State<practice_summary> {
                 width: AppDimensions.height10(context) * 32.6,
                 height: AppDimensions.height10(context) * 2.4,
                 margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 child: Center(
                   child: Text(
                     'How did the practice go?',
@@ -500,7 +494,7 @@ class _practice_summaryState extends State<practice_summary> {
                 width: AppDimensions.height10(context) * 13.4,
                 height: AppDimensions.height10(context) * 13.2,
                 margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.6),
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -515,7 +509,7 @@ class _practice_summaryState extends State<practice_summary> {
                 child: Stack(children: [
                   Center(
                     child: Text(
-                      'Good, I liked it',
+                      'Good, I liked\nit',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.6,
@@ -525,15 +519,15 @@ class _practice_summaryState extends State<practice_summary> {
                     ),
                   ),
                   Align(
-                    alignment: Alignment(0, 0.8),
+                    alignment: const Alignment(0, 0.8),
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => endofSession(
-                                      summary: true,
-                                    )));
+                            FadePageRoute(
+                                page: const endofSession(
+                              summary: true,
+                            )));
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 2.0,
@@ -544,7 +538,7 @@ class _practice_summaryState extends State<practice_summary> {
                             shape: BoxShape.circle,
                             color: Colors.transparent,
                             border: Border.all(width: 1, color: Colors.white)),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/images/edit_icon.png'),
                           color: Colors.white,
                         ),
@@ -577,7 +571,7 @@ class _practice_summaryState extends State<practice_summary> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.delete,
                                 color: Colors.white,
                               ),
@@ -616,10 +610,15 @@ class _practice_summaryState extends State<practice_summary> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => view_goals(
-                                          missed: false,
-                                        )));
+                                FadePageRoute(
+                                    page: const dashBoard(
+                                  helpful_tips: false,
+                                  dashboard_ctrl: false,
+                                  membership: true,
+                                  trial: false,
+                                  cancel: false,
+                                  saved: true,
+                                )));
                           },
                           child: Text(
                             'Save Practice',
@@ -651,24 +650,26 @@ class _practice_summaryState extends State<practice_summary> {
   }
 }
 
-Widget _buildBottomPicker(context, Widget picker) {
-  return Container(
-    height: AppDimensions.height10(context) * 30.3,
-    padding: EdgeInsets.only(top: AppDimensions.height10(context) * 0.60),
-    color: CupertinoColors.white,
-    child: DefaultTextStyle(
-      style: TextStyle(
-        color: CupertinoColors.black,
-        fontSize: AppDimensions.height10(context) * 2.20,
-      ),
-      child: GestureDetector(
-        // Blocks taps from propagating to the modal sheet and popping.
-        onTap: () {},
-        child: SafeArea(
-          top: false,
-          child: picker,
+Widget _buildBottomPicker(Widget picker) {
+  return Builder(builder: (context) {
+    return Container(
+      height: AppDimensions.height10(context) * 30.3,
+      padding: EdgeInsets.only(top: AppDimensions.height10(context) * 0.60),
+      color: CupertinoColors.white,
+      child: DefaultTextStyle(
+        style: TextStyle(
+          color: CupertinoColors.black,
+          fontSize: AppDimensions.height10(context) * 2.20,
+        ),
+        child: GestureDetector(
+          // Blocks taps from propagating to the modal sheet and popping.
+          onTap: () {},
+          child: SafeArea(
+            top: false,
+            child: picker,
+          ),
         ),
       ),
-    ),
-  );
+    );
+  });
 }

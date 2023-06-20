@@ -1,8 +1,10 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,6 +38,7 @@ void bottom_sheet(context, int id) {
         // color:Colors.lightGreen,
         height: AppDimensions.height10(context) * 45.0,
         width: AppDimensions.height10(context) * 41.4,
+
         child: Padding(
           padding: const EdgeInsets.only(top: 10),
           child: Column(
@@ -46,6 +49,7 @@ void bottom_sheet(context, int id) {
               Container(
                 height: AppDimensions.height10(context) * 3.4,
                 width: AppDimensions.height10(context) * 35.5,
+
                 // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                 child: Text(
                   'Create a new goal',
@@ -179,7 +183,9 @@ void bottom_sheet(context, int id) {
                       border: Border.all(
                           width: 2, color: Color.fromARGB(209, 250, 154, 52))),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       child: Text(
                         'Cancel',
                         style: TextStyle(

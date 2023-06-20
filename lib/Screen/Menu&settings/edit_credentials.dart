@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Menu&settings/success.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class edit_credentials extends StatefulWidget {
@@ -50,7 +51,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                 width: AppDimensions.height10(context) * 28.5,
                 height: AppDimensions.height10(context) * 3.6,
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 18.0),
+                  top: AppDimensions.height10(context) * 18.0,
+                ),
                 child: Center(
                   child: Text(
                     widget.email
@@ -61,6 +63,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                     style: TextStyle(
                         fontSize: AppDimensions.height10(context) * 3.0,
                         height: AppDimensions.height10(context) * 0.12,
+                        wordSpacing: AppDimensions.height10(context) * 0.5,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFFFBFBFB)),
                   ),
@@ -71,8 +74,10 @@ class _edit_credentialsState extends State<edit_credentials> {
                       width: AppDimensions.height10(context) * 35.7,
                       height: AppDimensions.height10(context) * 1.9,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.6,
-                          top: AppDimensions.height10(context) * 6.5),
+                        left: AppDimensions.height10(context) * 2.4,
+                        right: AppDimensions.height10(context) * 3.6,
+                        top: AppDimensions.height10(context) * 6.5,
+                      ),
                       child: Text(
                         'We will email you a link to reset your password',
                         style: TextStyle(
@@ -90,6 +95,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                         : AppDimensions.height10(context) * 8.6,
                 width: AppDimensions.height10(context) * 36.0,
                 margin: EdgeInsets.only(
+                    left: AppDimensions.height10(context) * 1.8,
+                    right: AppDimensions.height10(context) * 3.6,
                     top: widget.email
                         ? AppDimensions.height10(context) * 4.1
                         : widget.password_edit
@@ -103,6 +110,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                             child: Container(
                               height: AppDimensions.height10(context) * 3.8,
                               width: AppDimensions.height10(context) * 22.2,
+                              alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
                                   bottom: AppDimensions.height10(context) * 1.3,
                                   left: AppDimensions.height10(context) * 0.6),
@@ -111,7 +119,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                 style: TextStyle(
                                   color: const Color(0xFFFBFBFB),
                                   height:
-                                      AppDimensions.height10(context) * 0.12,
+                                      AppDimensions.height10(context) * 0.15,
                                   fontWeight: FontWeight.w500,
                                   fontSize:
                                       AppDimensions.height10(context) * 1.6,
@@ -154,7 +162,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       color: const Color(0xFF282828),
                                       fontWeight: FontWeight.w500,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.height10(context) * 2.1,
                                     ),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -212,7 +220,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       color: const Color(0xFF282828),
                                       fontWeight: FontWeight.w500,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.height10(context) * 2.1,
                                     ),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -275,9 +283,10 @@ class _edit_credentialsState extends State<edit_credentials> {
                                         : "Name",
                                     labelStyle: TextStyle(
                                       color: const Color(0xFF282828),
+                                      fontFamily: 'laila',
                                       fontWeight: FontWeight.w500,
                                       fontSize:
-                                          AppDimensions.height10(context) * 1.6,
+                                          AppDimensions.height10(context) * 2.1,
                                     ),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -319,9 +328,9 @@ class _edit_credentialsState extends State<edit_credentials> {
                 onTap: () {
                   if (widget.password_edit == true) {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Success()));
+                      context,
+                      FadePageRoute(page: const Success()),
+                    );
                   }
                 },
                 child: Container(
@@ -329,16 +338,10 @@ class _edit_credentialsState extends State<edit_credentials> {
                   width: AppDimensions.height10(context) * 36.0,
                   margin: EdgeInsets.only(
                       top: widget.email
-                          ? MediaQuery.of(context).viewInsets.bottom == 0
-                              ? AppDimensions.height10(context) * 4.4
-                              : AppDimensions.height10(context) * 1.0
+                          ? AppDimensions.height10(context) * 4.4
                           : widget.password_edit
-                              ? MediaQuery.of(context).viewInsets.bottom == 0
-                                  ? AppDimensions.height10(context) * 15.3
-                                  : AppDimensions.height10(context) * 11.9
-                              : MediaQuery.of(context).viewInsets.bottom == 0
-                                  ? AppDimensions.height10(context) * 15.5
-                                  : AppDimensions.height10(context) * 12.0),
+                              ? AppDimensions.height10(context) * 15.3
+                              : AppDimensions.height10(context) * 15.5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
                           AppDimensions.height10(context) * 3.6),
@@ -347,7 +350,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                     child: Text(
                       widget.password_edit ? 'Send' : 'Save updates',
                       style: TextStyle(
-                        color: const Color(0xFFFFFFFFF).withOpacity(0.5),
+                        color: const Color(0xFFFFFFFF).withOpacity(0.9),
                         fontSize: AppDimensions.height10(context) * 1.6,
                         height: AppDimensions.height10(context) * 0.12,
                         fontWeight: FontWeight.w600,

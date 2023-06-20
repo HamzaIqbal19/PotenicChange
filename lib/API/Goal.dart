@@ -85,7 +85,6 @@ class AdminGoal {
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '${Accestoken}',
-
     };
 
     var response = await http.get(
@@ -115,7 +114,6 @@ class AdminGoal {
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '${Accestoken}',
-
     };
     var response = await http.get(
       Uri.parse('${URL.BASE_URL}api/goal/all-goals'),
@@ -137,7 +135,6 @@ class AdminGoal {
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '${Accestoken}',
-
     };
     var response = await http.get(
       Uri.parse('${URL.BASE_URL}api/goal/all-goals?goalCategoryId=$id'),
@@ -152,18 +149,15 @@ class AdminGoal {
     }
   }
 
-   Future<List<Map<String, dynamic>>> searchAllGoal() async {
+  Future<List<Map<String, dynamic>>> searchAllGoal() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken',
-
     };
     var response = await http.get(
-
       Uri.parse('${URL.BASE_URL}api/goal/all-goals'),
-
       headers: headers,
     );
 
@@ -176,7 +170,6 @@ class AdminGoal {
       throw Exception('Failed to fetch goal names');
     }
   }
-
 
 /////////////////////////////////
   ///
@@ -242,7 +235,6 @@ class AdminGoal {
     };
     var Body = json.encode(goal);
 
-
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userGoal/add-user-goal'),
         headers: headers,
@@ -261,7 +253,6 @@ class AdminGoal {
       // print("response:${}");
       print("request==========>$request");
       return false;
-
     }
   }
 
@@ -270,7 +261,6 @@ class AdminGoal {
     var Accestoken = prefs.getString("usertoken");
 
     int UserGoalId = 12;
-
 
     var headers = {
       'Content-Type': 'application/json',
@@ -281,7 +271,6 @@ class AdminGoal {
     });
 
     var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/12'),
-
         headers: headers, body: body);
     print("request: Update");
     print(request.body);
@@ -291,8 +280,6 @@ class AdminGoal {
       var jsonData = jsonDecode(request.body);
       print("Result: $jsonData");
       return true;
-
-
     } else {
       print("Update failed");
       client.close();
@@ -301,12 +288,10 @@ class AdminGoal {
   }
 
   static Future getUserGoal() async {
-
     var goalName;
 
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
-
 
     var headers = {
       'Content-Type': 'application/json',

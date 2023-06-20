@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Widgets/PopupAlert.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -69,7 +70,7 @@ void termsSheet(context) {
 
           Container(
               margin: EdgeInsets.only(
-                  top: AppDimensions.height10(context) * 1.0,
+                  top: AppDimensions.height10(context) * 2.0,
                   left: AppDimensions.height10(context) * 1.8,
                   right: AppDimensions.height10(context) * 1.8),
               height: AppDimensions.height10(context) * 6.0,
@@ -147,6 +148,7 @@ void termsSheet(context) {
                   ),
                 ],
               )),
+
           SizedBox(
             height: AppDimensions.height10(context) * 3.1,
           ),

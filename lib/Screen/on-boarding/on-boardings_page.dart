@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 // import 'package:go_eventio/pages/authentication/sign_in_page.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding_model.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -149,15 +150,22 @@ class OnboardingPageState extends State<OnboardingPage> {
         ),
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 0),
+          child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    image:
+                        AssetImage('assets/images/Onboarding-background3.png'),
+                    fit: BoxFit.cover)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                // SizedBox(height: AppDimensions.height10),
+                // SizedBox(height: AppDimensions.height10(context)),
                 Container(
-                  height: AppDimensions.screenHeight(context),
+                  height: AppDimensions.height10(context) * 90.1,
+
                   // width: AppDimensions.height10(context) * 90,
                   // color: Colors.blue,
                   child: PageView(
@@ -346,7 +354,7 @@ class OnboardingPageState extends State<OnboardingPage> {
               // :NextButton("Start your journey")
             ],
           ),
-          SizedBox(height: AppDimensions.height10(context)),
+          SizedBox(height: AppDimensions.height10(context) * 0.1),
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -425,9 +433,9 @@ class OnboardingPageState extends State<OnboardingPage> {
 
     return new Padding(
       padding: EdgeInsets.only(
-        left: AppDimensions.width10(context) - 2,
-        right: AppDimensions.width10(context) - 2,
-        top: AppDimensions.height10(context) * 0.5,
+        left: AppDimensions.height10(context) - 2,
+        right: AppDimensions.height10(context) - 2,
+        top: AppDimensions.height10(context) - 5,
         bottom: AppDimensions.height10(context) * 3,
       ),
       child: loginButtonWithGesture,
@@ -469,9 +477,9 @@ class OnboardingPageState extends State<OnboardingPage> {
 
     return Padding(
       padding: EdgeInsets.only(
-        left: AppDimensions.width10(context) - 2,
-        right: AppDimensions.width10(context) - 2,
-        top: AppDimensions.height10(context) * 0.5,
+        left: AppDimensions.height10(context) - 2,
+        right: AppDimensions.height10(context) - 2,
+        top: AppDimensions.height10(context) - 5,
         bottom: AppDimensions.height10(context) * 3,
       ),
       child: loginButtonWithGesture,

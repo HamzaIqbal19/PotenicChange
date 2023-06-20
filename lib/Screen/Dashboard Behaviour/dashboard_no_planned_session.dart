@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_noPast_sessio
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import '../../Widgets/bottom_navigation.dart';
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class no_planned_session extends StatelessWidget {
@@ -52,13 +53,16 @@ class no_planned_session extends StatelessWidget {
             ]),
         extendBodyBehindAppBar: true,
         extendBody: true,
-        bottomNavigationBar: Navigation_Bar(
+        bottomNavigationBar: const Navigation_Bar(
           bg_colored: false,
+          membership: true,
+          cancel: false,
+          trial: false,
         ),
         body: Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/Mask Group.png'),
                 fit: BoxFit.cover,
@@ -78,14 +82,13 @@ class no_planned_session extends StatelessWidget {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: Alignment(-1, 1),
+                                alignment: const Alignment(-1, 1),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                no_past_session()));
+                                        FadePageRoute(
+                                            page: const no_past_session()));
                                   },
                                   child: Container(
                                     height:
@@ -103,8 +106,7 @@ class no_planned_session extends StatelessWidget {
                                                 0.3,
                                             color: Colors.white),
                                         color: Colors.transparent),
-                                    child: Container(
-                                        child: Column(
+                                    child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
@@ -115,19 +117,24 @@ class no_planned_session extends StatelessWidget {
                                                       context) *
                                                   1.2,
                                               fontWeight: FontWeight.w600,
-                                              color: Colors.white),
+                                              color: Color(0xFFFBFBFB)),
                                         ),
                                         Text(
                                           '02.06',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
                                         ),
                                         Container(
                                           height:
                                               AppDimensions.height10(context) *
-                                                  2.7,
+                                                  2.5,
                                           width:
                                               AppDimensions.height10(context) *
-                                                  2.7,
+                                                  2.5,
                                           margin: EdgeInsets.only(
                                               top: AppDimensions.height10(
                                                       context) *
@@ -138,7 +145,7 @@ class no_planned_session extends StatelessWidget {
                                                 width: AppDimensions.height10(
                                                         context) *
                                                     0.1,
-                                                color: Colors.white),
+                                                color: Color(0xFFFBFBFB)),
                                           ),
                                           child: Container(
                                               width: AppDimensions.height10(
@@ -167,20 +174,20 @@ class no_planned_session extends StatelessWidget {
                                               )),
                                         )
                                       ],
-                                    )),
+                                    ),
                                   ),
                                 ),
                               ),
                               Align(
-                                alignment: Alignment(0, 0),
+                                alignment: const Alignment(0, 0),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                            builder: (context) => view_goals(
-                                                  missed: false,
-                                                )));
+                                        FadePageRoute(
+                                            page: const view_goals(
+                                          missed: false,
+                                        )));
                                   },
                                   child: Container(
                                     width:
@@ -188,7 +195,7 @@ class no_planned_session extends StatelessWidget {
                                     height:
                                         AppDimensions.height10(context) * 8.3,
                                     //  margin: EdgeInsets.only(right: 121, left: 121),
-                                    padding: EdgeInsets.all(4),
+                                    padding: const EdgeInsets.all(4),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
@@ -204,75 +211,80 @@ class no_planned_session extends StatelessWidget {
                                           border: Border.all(
                                               width: 3, color: Colors.white),
                                           color: Colors.transparent),
-                                      child: Stack(children: [
-                                        Align(
-                                          alignment: Alignment(0, 0),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'TUE',
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.4,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.white),
-                                              ),
-                                              Text(
-                                                '02.07',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.3,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                              Container(
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.5,
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      2.5,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    shape: BoxShape.circle,
+                                      child: Stack(
+                                          alignment: Alignment.center,
+                                          children: [
+                                            Align(
+                                              alignment: const Alignment(0, 0),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'TUE',
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.2,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white),
                                                   ),
-                                                  child: DottedBorder(
-                                                    borderType:
-                                                        BorderType.Circle,
-                                                    color: Colors.white,
-                                                    child: Center(
-                                                      child: Text(
-                                                        '0/0',
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.0,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color:
-                                                                Colors.white),
+                                                  Text(
+                                                    '02.07',
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.4,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                  Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.5,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.5,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
                                                       ),
-                                                    ),
-                                                  )),
-                                            ],
-                                          ),
-                                        ),
-                                      ]),
+                                                      child: DottedBorder(
+                                                        borderType:
+                                                            BorderType.Circle,
+                                                        color: Colors.white,
+                                                        child: Center(
+                                                          child: Text(
+                                                            '0/0',
+                                                            style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
+                                                      )),
+                                                ],
+                                              ),
+                                            ),
+                                          ]),
                                     ),
                                   ),
                                 ),
                               ),
                               Align(
-                                alignment: Alignment(1, 1),
+                                alignment: const Alignment(1, 1),
                                 child: Container(
                                     height:
                                         AppDimensions.height10(context) * 7.9,
@@ -306,15 +318,20 @@ class no_planned_session extends StatelessWidget {
                                         ),
                                         Text(
                                           '03.07',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
                                         ),
                                         Container(
                                           height:
                                               AppDimensions.height10(context) *
-                                                  2.7,
+                                                  2.5,
                                           width:
                                               AppDimensions.height10(context) *
-                                                  2.7,
+                                                  2.5,
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             border: Border.all(
@@ -339,7 +356,7 @@ class no_planned_session extends StatelessWidget {
                                                       fontSize: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          0.10,
+                                                          1.0,
                                                       fontWeight:
                                                           FontWeight.w400,
                                                       color: Colors.white),
@@ -389,8 +406,10 @@ class no_planned_session extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => record_session()));
+                              FadePageRoute(
+                                  page: const record_session(
+                                past_session: false,
+                              )));
                         },
                         child: Container(
                           width: AppDimensions.height10(context) * 10.1,
@@ -413,8 +432,9 @@ class no_planned_session extends StatelessWidget {
                                       AppDimensions.height10(context) * 0.12,
                                   fontFamily: 'laila',
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w400),
+                                      AppDimensions.height10(context) * 1.6,
+                                  //add 2 px font size from feedback
+                                  fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),

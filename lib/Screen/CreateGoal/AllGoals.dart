@@ -359,12 +359,17 @@ class _AllGoalsState extends State<AllGoals> {
                             Container(
                               padding: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.4),
+                                  top: AppDimensions.height10(context) * 0.4),
                               child: circles(
                                   circle_text: '',
                                   circle_color1: 0xFFFC854F,
                                   circle_color2: 0xFFFAA960,
                                   circle_border: 1,
                                   circle_bordercolor: 0xFFFFFFFF,
+                                  circle_height:
+                                      AppDimensions.height10(context) * 2.5,
+                                  circle_width:
+                                      AppDimensions.height10(context) * 2.5,
                                   circle_height: AppDimensions.height10(context) * 2.5,
                                   circle_width: AppDimensions.height10(context) * 2.5,
                                   textfont: 0,
@@ -372,9 +377,11 @@ class _AllGoalsState extends State<AllGoals> {
                             ),
                             SizedBox(
                               width: AppDimensions.height10(context) * 0.8,
+                              width: AppDimensions.height10(context) * 0.8,
                             ),
                             Container(
                               // color: Colors.yellow,
+                              height: AppDimensions.height10(context) * 2.4,
                               height: AppDimensions.height10(context) * 2.4,
                               child: Text(
                                 "Self Control ",
@@ -382,6 +389,8 @@ class _AllGoalsState extends State<AllGoals> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.0,
                                   fontSize: AppDimensions.height10(context) * 2.0,
                                 ),
                               ),
@@ -390,8 +399,10 @@ class _AllGoalsState extends State<AllGoals> {
                         ),
                         SizedBox(
                           height: AppDimensions.height10(context) * 2.0,
+                          height: AppDimensions.height10(context) * 2.0,
                         ),
                         Container(
+                          height: AppDimensions.height10(context) * 41.9,
                           height: AppDimensions.height10(context) * 41.9,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -407,8 +418,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -419,8 +436,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -437,8 +460,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -449,8 +478,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -468,8 +503,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -480,8 +521,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -494,6 +541,7 @@ class _AllGoalsState extends State<AllGoals> {
                     ),
                     SizedBox(
                       height: AppDimensions.height10(context) * 3.1,
+                      height: AppDimensions.height10(context) * 3.1,
                     ),
                     Column(
                       children: [
@@ -503,9 +551,11 @@ class _AllGoalsState extends State<AllGoals> {
                           children: [
                             SizedBox(
                               width: AppDimensions.height10(context) * 3.6,
+                              width: AppDimensions.height10(context) * 3.6,
                             ),
                             Container(
                               padding: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 0.4),
                                   top: AppDimensions.height10(context) * 0.4),
                               child: circles(
                                   circle_text: '',
@@ -513,6 +563,10 @@ class _AllGoalsState extends State<AllGoals> {
                                   circle_color2: 0xFFFAA960,
                                   circle_border: 1,
                                   circle_bordercolor: 0xFFFFFFFF,
+                                  circle_height:
+                                      AppDimensions.height10(context) * 2.5,
+                                  circle_width:
+                                      AppDimensions.height10(context) * 2.5,
                                   circle_height: AppDimensions.height10(context) * 2.5,
                                   circle_width: AppDimensions.height10(context) * 2.5,
                                   textfont: 0,
@@ -520,9 +574,11 @@ class _AllGoalsState extends State<AllGoals> {
                             ),
                             SizedBox(
                               width: AppDimensions.height10(context) * 0.8,
+                              width: AppDimensions.height10(context) * 0.8,
                             ),
                             Container(
                               // color: Colors.yellow,
+                              height: AppDimensions.height10(context) * 2.4,
                               height: AppDimensions.height10(context) * 2.4,
                               child: Text(
                                 "Happiness & Wellbeing ",
@@ -530,6 +586,8 @@ class _AllGoalsState extends State<AllGoals> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.0,
                                   fontSize: AppDimensions.height10(context) * 2.0,
                                 ),
                               ),
@@ -538,8 +596,10 @@ class _AllGoalsState extends State<AllGoals> {
                         ),
                         SizedBox(
                           height: AppDimensions.height10(context) * 2.0,
+                          height: AppDimensions.height10(context) * 2.0,
                         ),
                         Container(
+                          height: AppDimensions.height10(context) * 41.9,
                           height: AppDimensions.height10(context) * 41.9,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -555,8 +615,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -567,8 +633,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -585,8 +657,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -597,8 +675,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -615,8 +699,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -627,8 +717,14 @@ class _AllGoalsState extends State<AllGoals> {
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
                                       circle_height:
+                                          AppDimensions.height10(context) *
+                                              13.4,
                                           AppDimensions.height10(context) * 13.4,
                                       circle_width:
+                                          AppDimensions.height10(context) *
+                                              13.4,
+                                      textfont:
+                                          AppDimensions.height10(context) * 1.6,
                                           AppDimensions.height10(context) * 13.4,
                                       textfont: AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -661,11 +757,15 @@ class _AllGoalsState extends State<AllGoals> {
         notchMargin: 10,
         child: Container(
           // color: Colors.blue,
+          margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           padding: EdgeInsets.only(
               left: AppDimensions.height10(context) * 2.2,
               right: AppDimensions.height10(context) * 2.2),
           height: AppDimensions.height10(context) * 7.0,
           width: AppDimensions.height10(context) * 41.4,
+
           child: SearchIcon == true
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -692,7 +792,7 @@ class _AllGoalsState extends State<AllGoals> {
                                   _searchGoals(value);
                                 },
                                 decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.only(),
+                                    contentPadding: EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(
                                       'assets/images/Light.png',
                                       width:
@@ -709,6 +809,7 @@ class _AllGoalsState extends State<AllGoals> {
                                           AppDimensions.height10(context) * 2.3,
                                       height:
                                           AppDimensions.height10(context) * 2.3,
+
                                       // fit: BoxFit.contain,
                                     ),
                                     hintText: "Search",

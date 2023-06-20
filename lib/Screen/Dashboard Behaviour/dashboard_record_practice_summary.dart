@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/recordPracticeEmotions.dart';
 
@@ -43,7 +44,7 @@ class _record_summaryState extends State<record_summary> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/prac_assesment.png'),
           fit: BoxFit.cover,
         )),
         child: SingleChildScrollView(
@@ -75,9 +76,10 @@ class _record_summaryState extends State<record_summary> {
                     EdgeInsets.only(top: AppDimensions.height10(context) * 0.5),
                 child: Center(
                   child: Text(
-                    'Well done for recording\nyour practice!',
+                    'Well done for recording your\npractice!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                        height: AppDimensions.height10(context) * 0.15,
                         fontSize: AppDimensions.height10(context) * 1.6,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
@@ -95,7 +97,7 @@ class _record_summaryState extends State<record_summary> {
                     // color: const Color(0xff7c94b6),
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage('assets/images/image3.png'),
+                        image: AssetImage('assets/images/orange_moon.png'),
                         colorFilter: ColorFilter.mode(
                             Color.fromRGBO(0, 0, 0, 0.5), BlendMode.dstATop),
                         fit: BoxFit.cover)),
@@ -126,40 +128,9 @@ class _record_summaryState extends State<record_summary> {
                       width: AppDimensions.height10(context) * 13.8,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.5,
-                              color: Colors.white),
-                          gradient: const RadialGradient(
-                            // radius: 0.5,
-                            colors: <Color>[
-                              Color(0xFFDFF8EB), // yellow sun
-                              Color(0xFFA3B6A4), // blue sky
-                            ],
-                          )),
-                      child: Stack(children: [
-                        Center(
-                            child: Text(
-                          'Meditation',
-                          style: TextStyle(
-                              color: Color(0xff1A481C),
-                              fontSize: AppDimensions.height10(context) * 1.8,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Laila'),
-                        )),
-                        Align(
-                            alignment: const Alignment(0, 1.3),
-                            child: Container(
-                                height: 29,
-                                width: 29,
-                                padding: EdgeInsets.all(7),
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.white),
-                                child: ImageIcon(
-                                  AssetImage('assets/images/tick_icon.png'),
-                                  color: Color(0xff1A481C),
-                                )))
-                      ]),
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/images/Meditation Completed.png'))),
                     ),
                   ),
                 ]),
@@ -198,67 +169,61 @@ class _record_summaryState extends State<record_summary> {
                             context: context,
                             builder: (BuildContext context) {
                               return _buildBottomPicker(
-                                  CupertinoDatePicker(
-                                      mode: CupertinoDatePickerMode.dateAndTime,
-                                      //initialDateTime: date_time,
-                                      onDateTimeChanged:
-                                          (DateTime newDateTime) {
-                                        if (mounted) {
-                                          setState(() {
-                                            if (newDateTime.weekday == 2) {
-                                              setState(() {
-                                                day = 'Tue';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                3) {
-                                              setState(() {
-                                                day = 'Wed';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                4) {
-                                              setState(() {
-                                                day = 'Thur';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                5) {
-                                              setState(() {
-                                                day = 'Fri';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                6) {
-                                              setState(() {
-                                                day = 'Sat';
-                                              });
-                                            } else if (newDateTime.weekday ==
-                                                7) {
-                                              setState(() {
-                                                day = 'Sun';
-                                              });
-                                            } else {
-                                              setState(() {
-                                                day = 'Mon';
-                                              });
-                                            }
-                                          });
-                                          setState(() {
-                                            if (newDateTime.hour > 11) {
-                                              setState(() {
-                                                time = 'Pm';
-                                              });
-                                            } else {
-                                              setState(() {
-                                                time = 'Am';
-                                                //print(time);
-                                              });
-                                            }
-                                          });
-                                          setState(() => date_time =
-                                              " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                          print(
-                                              "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                        }
-                                      }),
-                                  context);
+                                CupertinoDatePicker(
+                                    mode: CupertinoDatePickerMode.dateAndTime,
+                                    //initialDateTime: date_time,
+                                    onDateTimeChanged: (DateTime newDateTime) {
+                                      if (mounted) {
+                                        setState(() {
+                                          if (newDateTime.weekday == 2) {
+                                            setState(() {
+                                              day = 'Tue';
+                                            });
+                                          } else if (newDateTime.weekday == 3) {
+                                            setState(() {
+                                              day = 'Wed';
+                                            });
+                                          } else if (newDateTime.weekday == 4) {
+                                            setState(() {
+                                              day = 'Thur';
+                                            });
+                                          } else if (newDateTime.weekday == 5) {
+                                            setState(() {
+                                              day = 'Fri';
+                                            });
+                                          } else if (newDateTime.weekday == 6) {
+                                            setState(() {
+                                              day = 'Sat';
+                                            });
+                                          } else if (newDateTime.weekday == 7) {
+                                            setState(() {
+                                              day = 'Sun';
+                                            });
+                                          } else {
+                                            setState(() {
+                                              day = 'Mon';
+                                            });
+                                          }
+                                        });
+                                        setState(() {
+                                          if (newDateTime.hour > 11) {
+                                            setState(() {
+                                              time = 'Pm';
+                                            });
+                                          } else {
+                                            setState(() {
+                                              time = 'Am';
+                                              //print(time);
+                                            });
+                                          }
+                                        });
+                                        setState(() => date_time =
+                                            " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                                        print(
+                                            "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                                      }
+                                    }),
+                              );
                             },
                           );
                         },
@@ -313,10 +278,10 @@ class _record_summaryState extends State<record_summary> {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) => emotions(
-                                        summary: true,
-                                      )));
+                              FadePageRoute(
+                                  page: const emotions(
+                                summary: true,
+                              )));
                         },
                         child: Container(
                             height: AppDimensions.height10(context) * 2.8,
@@ -387,9 +352,8 @@ class _record_summaryState extends State<record_summary> {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      feelingsAfter(summary: true)));
+                              FadePageRoute(
+                                  page: const feelingsAfter(summary: true)));
                         },
                         child: Container(
                             height: AppDimensions.height10(context) * 2.8,
@@ -451,9 +415,8 @@ class _record_summaryState extends State<record_summary> {
                         onTap: () {
                           Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      endofSession(summary: true)));
+                              FadePageRoute(
+                                  page: const endofSession(summary: true)));
                         },
                         child: Container(
                             height: AppDimensions.height10(context) * 2.8,
@@ -556,24 +519,26 @@ class _record_summaryState extends State<record_summary> {
   }
 }
 
-Widget _buildBottomPicker(Widget picker, context) {
-  return Container(
-    height: AppDimensions.height10(context) * 21.6,
-    padding: EdgeInsets.only(top: AppDimensions.height10(context) * 0.60),
-    color: CupertinoColors.white,
-    child: DefaultTextStyle(
-      style: TextStyle(
-        color: CupertinoColors.black,
-        fontSize: AppDimensions.height10(context) * 2.20,
-      ),
-      child: GestureDetector(
-        // Blocks taps from propagating to the modal sheet and popping.
-        onTap: () {},
-        child: SafeArea(
-          top: false,
-          child: picker,
+Widget _buildBottomPicker(Widget picker) {
+  return Builder(builder: (context) {
+    return Container(
+      height: AppDimensions.height10(context) * 21.6,
+      padding: EdgeInsets.only(top: AppDimensions.height10(context) * 0.60),
+      color: CupertinoColors.white,
+      child: DefaultTextStyle(
+        style: TextStyle(
+          color: CupertinoColors.black,
+          fontSize: AppDimensions.height10(context) * 2.20,
+        ),
+        child: GestureDetector(
+          // Blocks taps from propagating to the modal sheet and popping.
+          onTap: () {},
+          child: SafeArea(
+            top: false,
+            child: picker,
+          ),
         ),
       ),
-    ),
-  );
+    );
+  });
 }

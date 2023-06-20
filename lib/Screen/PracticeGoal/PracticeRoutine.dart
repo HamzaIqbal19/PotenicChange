@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class PracticeRoutine extends StatefulWidget {
@@ -96,7 +97,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
           ),
           SingleChildScrollView(
             reverse: true,
-            physics: ClampingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
                 Container(
@@ -152,7 +153,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF156F6D),
+                            color: const Color(0xFF156F6D),
                             fontSize: AppDimensions.height10(context) * 2.0,
                           ),
                         ),

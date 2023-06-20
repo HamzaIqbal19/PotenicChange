@@ -13,20 +13,6 @@ class add_your_practice extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
-          centerTitle: true,
-          title: Container(
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 01),
-            width: AppDimensions.height10(context) * 17.0,
-            height: AppDimensions.height10(context) * 4.8,
-            child: Text(
-              'Menu',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: AppDimensions.height10(context) * 2.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-          ),
           actions: [
             Center(
               child: IconButton(
@@ -51,70 +37,64 @@ class add_your_practice extends StatelessWidget {
         height: double.infinity,
         child: Column(children: [
           Container(
-            width: AppDimensions.height10(context) * 27.5,
-            height: AppDimensions.height10(context) * 11.2,
+            // color: Colors.amber,
+            //width: AppDimensions.height10(context) * 17.1,
+            height: AppDimensions.height10(context) * 2.2,
             margin: EdgeInsets.only(
-                top: AppDimensions.height10(context) * 9.7,
-                right: AppDimensions.height10(context) * 8.3,
-                left: AppDimensions.height10(context) * 5.1),
-            child: Stack(
-              children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    width: AppDimensions.height10(context) * 10.4,
-                    height: AppDimensions.height10(context) * 11.2,
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        width: AppDimensions.height10(context) * 7.9,
-                        height: AppDimensions.height10(context) * 7.9,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                          image: AssetImage('assets/images/image3.png'),
-                          fit: BoxFit.cover,
-                        )),
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: const Alignment(1, -0.4),
-                  child: Container(
-                    // color: Colors.amber,
-                    width: AppDimensions.height10(context) * 17.1,
-                    height: AppDimensions.height10(context) * 2.4,
-                    child: Text(
-                      'Control my anger',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 2.0,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xffffffff)),
-                    ),
-                  ),
-                ),
-              ],
+              top: AppDimensions.height10(context) * 5.2,
+              // left: AppDimensions.height10(context) * 12.2,
+              // right: AppDimensions.height10(context) * 12.1
+            ),
+            child: Center(
+              child: Text(
+                'Goal Menu',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    fontSize: AppDimensions.height10(context) * 1.8,
+                    fontWeight: FontWeight.w600,
+                    color: const Color(0xffffffff)),
+              ),
             ),
           ),
           Container(
-            width: AppDimensions.height10(context) * 32.0,
-            height: AppDimensions.height10(context) * 2.6,
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 0),
-            child: Center(
-              child: Text(
-                'What do you want to do?',
-                style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 2.2,
-                    fontWeight: FontWeight.w600,
-                    color: const Color(0xff437296)),
-              ),
+            // color: Colors.amber,
+            width: AppDimensions.height10(context) * 17.1,
+            height: AppDimensions.height10(context) * 2.4,
+            margin: EdgeInsets.only(
+                top: AppDimensions.height10(context) * 0.5,
+                left: AppDimensions.height10(context) * 12.2,
+                right: AppDimensions.height10(context) * 12.1),
+            child: Text(
+              'Control my anger',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: AppDimensions.height10(context) * 2.0,
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xffffffff)),
             ),
+          ),
+          Container(
+            width: AppDimensions.height10(context) * 8.39,
+            height: AppDimensions.height10(context) * 9.3,
+            margin:
+                EdgeInsets.only(top: AppDimensions.height10(context) * 2.03),
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage('assets/images/orange_flair.png'),
+              fit: BoxFit.cover,
+            )),
+          ),
+          Container(
+            width: double.infinity,
+            height: AppDimensions.height10(context) * 0.1,
+            color: const Color(0xFFFFFFFF).withOpacity(0.5),
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.9),
           ),
           Container(
             width: AppDimensions.height10(context) * 17.5,
             height: AppDimensions.height10(context) * 17.5,
             padding: EdgeInsets.all(AppDimensions.height10(context) * 1.0),
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 4.4),
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(color: const Color(0xFFFFFFFF), width: 3)),
@@ -144,6 +124,12 @@ class add_your_practice extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+          Container(
+            width: double.infinity,
+            height: AppDimensions.height10(context) * 0.1,
+            color: const Color(0xFFFFFFFF).withOpacity(0.5),
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
           ),
           Container(
             width: AppDimensions.height10(context) * 36.4,

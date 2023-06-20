@@ -1,11 +1,11 @@
-import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class inspiraton_goals extends StatefulWidget {
@@ -32,13 +32,13 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const photo_info(
-                                    edit_details: false,
-                                    image_detals: true,
-                                    image_save: true,
-                                    image_create: true,
-                                  )),
+                          FadePageRoute(
+                              page: const photo_info(
+                            edit_details: false,
+                            image_detals: true,
+                            image_save: true,
+                            image_create: true,
+                          )),
                         );
                       },
                       icon: Image.asset(
@@ -65,10 +65,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                         ),
-                        colors: [
-                          const Color(0xffFA9934),
-                          const Color(0xffEDD15E)
-                        ],
+                        colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                       ),
                       GradientText(
                         '/2',
@@ -77,10 +74,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w400,
                         ),
-                        colors: [
-                          const Color(0xffFA9934),
-                          const Color(0xffEDD15E)
-                        ],
+                        colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                       ),
                     ],
                   ),
@@ -90,13 +84,20 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                 ? Container()
                 : Center(
                     child: IconButton(
-                        onPressed: () => showDialog<String>(
+                        onPressed: () => showAnimatedDialog(
+                            animationType: DialogTransitionType.fadeScale,
+                            curve: Curves.easeInOut,
+                            duration: Duration(seconds: 1),
                             context: context,
-                            builder: (BuildContext context) => Container(
+                            builder: (BuildContext context) => SizedBox(
                                   width: AppDimensions.height10(context) * 27.0,
                                   height:
                                       AppDimensions.height10(context) * 21.0,
                                   child: AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10(context) *
+                                                1.4)),
                                     contentPadding: EdgeInsets.zero,
                                     actionsPadding: EdgeInsets.zero,
                                     titlePadding: EdgeInsets.zero,
@@ -111,7 +112,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       width: AppDimensions.height10(context) *
                                           23.8,
                                       child: const Text(
-                                        "Exit hurdle?",
+                                        "Exit Inspiration?",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           fontSize: 17,
@@ -171,7 +172,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   .withOpacity(0.29),
                                             ),
                                           ),
-                                          Container(
+                                          SizedBox(
                                             height: 44,
                                             width: double.infinity,
                                             child: TextButton(
@@ -266,9 +267,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               fontSize: AppDimensions.height10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                             ),
-                            colors: [
-                              const Color(0xffFA9934),
-                              const Color(0xffEDD15E)
+                            colors: const [
+                              Color(0xffFA9934),
+                              Color(0xffEDD15E)
                             ],
                           ),
                         ),
@@ -637,8 +638,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const inspiration_type()),
+                            FadePageRoute(page: const inspiration_type()),
                           );
                         },
                         child: Text(

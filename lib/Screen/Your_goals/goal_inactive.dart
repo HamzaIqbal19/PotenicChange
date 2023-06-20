@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
+import '../PracticeGoal/Create Practice.dart';
 //import 'package:custom_switch/custom_switch.dart';
 
 class goal_inactive extends StatefulWidget {
@@ -14,6 +18,7 @@ class goal_inactive extends StatefulWidget {
 
 class _goal_inactiveState extends State<goal_inactive> {
   bool status4 = true;
+  bool status1 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,14 +47,14 @@ class _goal_inactiveState extends State<goal_inactive> {
                 style: TextStyle(
                     fontSize: AppDimensions.height10(context) * 1.8,
                     fontWeight: FontWeight.w500,
-                    color: Color(0xFFFFFFFF)),
+                    color: const Color(0xFFFFFFFF)),
               ),
             ),
           )
         ],
       ),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
           image: AssetImage('assets/images/Mask Group.png'),
           fit: BoxFit.cover,
@@ -58,487 +63,482 @@ class _goal_inactiveState extends State<goal_inactive> {
         height: double.infinity,
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              Container(
-                width: AppDimensions.height10(context) * 27.8,
-                height: AppDimensions.height10(context) * 3.6,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 11.0),
-                child: Center(
-                  child: Text(
-                    'Control My Anger',
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 3.0,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFFFFFFFF)),
-                  ),
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 18.0,
-                height: AppDimensions.height10(context) * 2.2,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.9),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Status: ',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.8,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFFFFFFFF)),
-                    ),
-                    widget.isActive
-                        ? Text(
-                            'Active',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF156F6D)),
-                          )
-                        : Text(
-                            'Inactive',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFFDE7A11)),
-                          )
-                  ],
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 26.8,
-                height: AppDimensions.height10(context) * 11.4,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.3),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 11.4,
-                      height: AppDimensions.height10(context) * 11.4,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 9.3,
-                            height: AppDimensions.height10(context) * 3.4,
-                            child: Text(
-                              'No. of\nActive days',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF437296)),
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 6.3,
-                            height: AppDimensions.height10(context) * 3.3,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.8),
-                            child: widget.isActive
-                                ? Text(
-                                    '10',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.8,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xFF464646)),
-                                  )
-                                : Text(
-                                    '0',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.8,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xFF464646)),
-                                  ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 11.4,
-                      height: AppDimensions.height10(context) * 11.4,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 9.3,
-                            height: AppDimensions.height10(context) * 3.4,
-                            child: Text(
-                              'Goal\nLevel',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF437296)),
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 6.3,
-                            height: AppDimensions.height10(context) * 3.3,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                widget.isActive
-                                    ? Text(
-                                        '1',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xFF464646)),
-                                      )
-                                    : Text(
-                                        '-',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xFF464646)),
-                                      ),
-                                Text(
-                                  '/5',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.0,
-                                      fontWeight: FontWeight.w300,
-                                      color: Color(0xFF464646)),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                  width: AppDimensions.height10(context) * 37.2,
-                  height: AppDimensions.height10(context) * 2.9,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: [
+                Container(
+                  width: AppDimensions.height10(context) * 27.8,
+                  height: AppDimensions.height10(context) * 3.6,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 3.7),
+                      top: AppDimensions.height10(context) * 11.0),
                   child: Center(
                     child: Text(
-                      'Assign up to 5 practices:',
+                      'Control My Anger',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 2.4,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFFFFFFFF)),
+                          fontSize: AppDimensions.height10(context) * 3.0,
+                          fontWeight: FontWeight.w700,
+                          color: const Color(0xFFFFFFFF)),
                     ),
-                  )),
-              Container(
-                width: AppDimensions.height10(context) * 41.8,
-                height: AppDimensions.height10(context) * 10.0,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.9),
-                decoration: BoxDecoration(
-                    border: Border(
-                        top: BorderSide(color: Color(0xFFFFFFFF), width: 1),
-                        bottom:
-                            BorderSide(color: Color(0xFFFFFFFF), width: 1))),
-                child: Row(
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 5.4,
-                      height: AppDimensions.height10(context) * 5.4,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.2),
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                        image: AssetImage('assets/images/Ellipse 158.png'),
-                        fit: BoxFit.cover,
-                      )),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 18.6,
-                      height: AppDimensions.height10(context) * 4.9,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 9.2,
-                            height: AppDimensions.height10(context) * 2.2,
-                            child: Text(
-                              'Meditation',
+                  ),
+                ),
+                Container(
+                  width: AppDimensions.height10(context) * 18.0,
+                  height: AppDimensions.height10(context) * 2.2,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 0.9),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Status: ',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFFFFFFFF)),
+                      ),
+                      widget.isActive
+                          ? Text(
+                              'Active',
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFFFFFFFF)),
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color(0xFF156F6D)),
+                            )
+                          : Text(
+                              'Inactive',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
+                                  fontWeight: FontWeight.w700,
+                                  color: const Color(0xFFDE7A11)),
+                            )
+                    ],
+                  ),
+                ),
+                Container(
+                  width: AppDimensions.height10(context) * 26.8,
+                  height: AppDimensions.height10(context) * 11.4,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 3.3),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: AppDimensions.height10(context) * 11.4,
+                        height: AppDimensions.height10(context) * 11.4,
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 9.3,
+                              height: AppDimensions.height10(context) * 3.4,
+                              child: Text(
+                                'No. of\nActive days',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    height:
+                                        AppDimensions.height10(context) * 0.15,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
+                                    fontWeight: FontWeight.w600,
+                                    color: const Color(0xFF437296)),
+                              ),
                             ),
-                          ),
-                          Container(
-                            height: AppDimensions.height10(context) * 2.7,
-                            child: Row(
-                              children: [
-                                widget.isActive
-                                    ? Text('10',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xFFFFFFFF)))
-                                    : Text('0',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            fontWeight: FontWeight.w600,
-                                            color: Color(0xFFFFFFFF))),
-                                Text('/20 active days',
+                            Container(
+                              width: AppDimensions.height10(context) * 6.3,
+                              height: AppDimensions.height10(context) * 3.3,
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 0.8),
+                              child: widget.isActive
+                                  ? Text(
+                                      '10',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  2.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFF464646)),
+                                    )
+                                  : Text(
+                                      '0',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  2.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFF464646)),
+                                    ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: AppDimensions.height10(context) * 11.4,
+                        height: AppDimensions.height10(context) * 11.4,
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 9.3,
+                              height: AppDimensions.height10(context) * 3.4,
+                              child: Text(
+                                'Goal\nLevel',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
+                                    fontWeight: FontWeight.w600,
+                                    color: const Color(0xFF437296)),
+                              ),
+                            ),
+                            Container(
+                              width: AppDimensions.height10(context) * 6.3,
+                              height: AppDimensions.height10(context) * 3.3,
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 0.8),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  widget.isActive
+                                      ? Text(
+                                          '1',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFF464646)),
+                                        )
+                                      : Text(
+                                          '-',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFF464646)),
+                                        ),
+                                  Text(
+                                    '/5',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
                                             AppDimensions.height10(context) *
                                                 1.0,
                                         fontWeight: FontWeight.w300,
-                                        // fontFamily: 'Poppins',
-                                        color: Color(0xFFF6F6F6))),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0),
-                      child: FlutterSwitch(
-                        width: AppDimensions.height10(context) * 6.2,
-                        height: AppDimensions.height10(context) * 3.4,
-                        valueFontSize: 12.0,
-                        toggleSize: 18.0,
-                        activeColor: Color(0xFFFA9934),
-                        inactiveColor: Color(0xFF2F3A4B),
-                        value: status4,
-                        onToggle: (val) {
-                          setState(() {
-                            status4 = val;
-                          });
-                        },
-                      ),
-                    ),
-                    Container(
-                        width: AppDimensions.height10(context) * 2.4,
-                        height: AppDimensions.height10(context) * 1.31,
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 2.0),
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Image.asset(
-                            'assets/images/BTN Back.png',
-                            color: widget.isActive
-                                ? Color(0xFF828282)
-                                : Color(0xFFFFFFFF),
-                            //width: AppDimensions.height10(context) * 2.6,
-                            //height: AppDimensions.height10(context) * 2.6,
-                            fit: BoxFit.cover,
-                          ),
-                        )),
-                  ],
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 13.4,
-                height: AppDimensions.height10(context) * 13.2,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 5.0),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/circle_grey.png'))),
-                child: Center(
-                  child: Text(
-                    'Add new\npractice',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.8,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFFFFFFFF)),
+                                        color: const Color(0xFF464646)),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => showDialog<String>(
-                    context: context,
-                    builder: (BuildContext context) => Container(
-                          width: AppDimensions.height10(context) * 27.0,
-                          height: AppDimensions.height10(context) * 24.6,
-                          child: AlertDialog(
-                            contentPadding: EdgeInsets.zero,
-                            actionsPadding: EdgeInsets.zero,
-                            titlePadding: EdgeInsets.zero,
-                            title: Container(
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 1.9,
-                                  right: AppDimensions.height10(context) * 1.6,
-                                  left: AppDimensions.height10(context) * 1.6,
-                                  bottom:
-                                      AppDimensions.height10(context) * 0.2),
-                              height: AppDimensions.height10(context) * 4.4,
-                              width: AppDimensions.height10(context) * 23.8,
+                Container(
+                    width: AppDimensions.height10(context) * 37.2,
+                    height: AppDimensions.height10(context) * 2.9,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 3.7),
+                    child: Center(
+                      child: Text(
+                        'Assign up to 5 practices:',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 2.4,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFFFFFFFF)),
+                      ),
+                    )),
+                Container(
+                  // width: AppDimensions.height10(context) * 41.8,
+                  height: AppDimensions.height10(context) * 10.0,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.7),
+                  decoration: const BoxDecoration(
+                      border: Border(
+                          top: BorderSide(color: Color(0xFFFFFFFF), width: 1),
+                          bottom:
+                              BorderSide(color: Color(0xFFFFFFFF), width: 1))),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: AppDimensions.height10(context) * 5.4,
+                        height: AppDimensions.height10(context) * 5.4,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 2.5),
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                width: AppDimensions.height10(context) * 0.15,
+                                color: const Color(0xFFFBFBFB)),
+                            shape: BoxShape.circle,
+                            image: const DecorationImage(
+                              image:
+                                  AssetImage('assets/images/Ellipse 158.png'),
+                              fit: BoxFit.cover,
+                            )),
+                      ),
+                      Container(
+                        width: AppDimensions.height10(context) * 18.6,
+                        height: AppDimensions.height10(context) * 4.9,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 0.8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 9.2,
+                              height: AppDimensions.height10(context) * 2.2,
                               child: Text(
-                                "Are you sure you want\nto delete this goal?",
-                                textAlign: TextAlign.center,
+                                'Meditation',
                                 style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
+                                    fontWeight: FontWeight.w600,
+                                    color: const Color(0xFFFFFFFF)),
                               ),
                             ),
-                            content: Container(
-                              margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10(context) * 1.5,
-                                  left: AppDimensions.height10(context) * 1.6,
-                                  right: AppDimensions.height10(context) * 1.6),
-                              height: AppDimensions.height10(context) * 6.4,
-                              width: AppDimensions.height10(context) * 23.8,
-                              child: Text(
-                                "By clicking 'Yes' you confirm that this\ngoal will be deleted and all your data\nthat relates to this goal won't berecoverable. ",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 2.7,
+                              child: Row(
+                                children: [
+                                  widget.isActive
+                                      ? Text('10',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFFFFFFFF)))
+                                      : Text('0',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFFFBFBFB))),
+                                  Text('/20 active days',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
+                                          // fontFamily: 'Poppins',
+                                          color: const Color(0xFFF6F6F6))),
+                                ],
                               ),
                             ),
-                            actions: <Widget>[
-                              Column(
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 2.0),
+                        child: FlutterSwitch(
+                          width: AppDimensions.height10(context) * 6.2,
+                          height: AppDimensions.height10(context) * 3.4,
+                          valueFontSize: 12.0,
+                          toggleSize: 18.0,
+                          activeColor: const Color(0xFFFA9934),
+                          inactiveColor: const Color(0xFF2F3A4B),
+                          value: widget.isActive ? status4 : status1,
+                          onToggle: (val) {
+                            setState(() {
+                              status4 = val;
+                              status1 = val;
+                            });
+                          },
+                        ),
+                      ),
+                      Container(
+                          width: AppDimensions.height10(context) * 2.4,
+                          height: AppDimensions.height10(context) * 1.31,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const PracticeReview()));
+                            },
+                            child: Image.asset(
+                              'assets/images/BTN Back.png',
+                              color: widget.isActive
+                                  ? const Color(0xFF828282)
+                                  : const Color(0xFFFFFFFF),
+                              //width: AppDimensions.height10(context) * 2.6,
+                              //height: AppDimensions.height10(context) * 2.6,
+                              fit: BoxFit.cover,
+                            ),
+                          )),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context, FadePageRoute(page: const CreatePractice()));
+                  },
+                  child: Container(
+                    width: AppDimensions.height10(context) * 13.4,
+                    height: AppDimensions.height10(context) * 13.4,
+                    margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 5.0,
+                    ),
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                            width: AppDimensions.height10(context) * 0.3,
+                            color: const Color(0xFFFFFFFF))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          // width: AppDimensions.height10(context) * 5.8,
+                          height: AppDimensions.height10(context) * 5.8,
+                          child: Center(
+                            child: Text(
+                              'Add new\npractice',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  height:
+                                      AppDimensions.height10(context) * 0.15,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xFFFFFFFF)),
+                            ),
+                          ),
+                        ),
+                        Image.asset(
+                          'assets/images/Addgoal.png',
+                          width: AppDimensions.height10(context) * 2.3,
+                          height: AppDimensions.height10(context) * 2.3,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                //  SizedBox(
+                //   height: AppDimensions.height10(context) * 46.7,
+                // ),
+                status1
+                    ? Container(
+                        width: AppDimensions.height10(context) * 38.259,
+                        height: AppDimensions.height10(context) * 9.707,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 12.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFFD4B7B9),
+                                  Color(0xFF91698C)
+                                ])),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.261),
+                              width: AppDimensions.height10(context) * 4.437,
+                              height: AppDimensions.height10(context) * 4.437,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/circle_tick.png'))),
+                            ),
+                            Container(
+                              width: AppDimensions.height10(context) * 6.9,
+                              height: AppDimensions.height10(context) * 3.6,
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.232),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   SizedBox(
+                                    // width: AppDimensions.height10(context) * 4.6,
                                     height:
-                                        AppDimensions.height10(context) * 0.1,
-                                    child: Divider(
-                                      color:
-                                          Color(0XFF3C3C43).withOpacity(0.29),
-                                    ),
-                                  ),
-                                  Container(
-                                    height:
-                                        AppDimensions.height10(context) * 4.2,
-                                    width: double.infinity,
-                                    color: Color(0xFF007AFF),
-                                    child: TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'No',
-                                        style: TextStyle(
-                                            color: Color(0xFFFFFFFF),
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
-                                            fontFamily: "Laila",
-                                            fontWeight: FontWeight.w400),
-                                      ),
+                                        AppDimensions.height10(context) * 1.4,
+                                    //   color: Colors.amber,
+                                    child: Text(
+                                      "Goal Active",
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
                                     ),
                                   ),
                                   SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 6.9,
                                     height:
-                                        AppDimensions.height10(context) * 0.1,
-                                    child: Divider(
-                                      color:
-                                          Color(0XFF3C3C43).withOpacity(0.29),
-                                    ),
-                                  ),
-                                  Container(
-                                    height:
-                                        AppDimensions.height10(context) * 4.4,
-                                    width: double.infinity,
-                                    child: TextButton(
-                                      onPressed: () {},
-                                      child: Text(
-                                        'Yes',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
-                                            fontFamily: "Laila",
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xFF007AFF)),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 0.1,
-                                    child: Divider(
-                                      color:
-                                          Color(0XFF3C3C43).withOpacity(0.29),
+                                        AppDimensions.height10(context) * 2.2,
+                                    child: Text(
+                                      'Control My Anger',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
                                     ),
                                   ),
                                 ],
                               ),
-                            ],
-                          ),
-                        )),
-                child: Container(
-                    width: AppDimensions.height10(context) * 31.3,
-                    height: AppDimensions.height10(context) * 5.0,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 3.0,
-                        bottom: AppDimensions.height10(context) * 32.8),
-                    decoration: BoxDecoration(
-                      color: Color(0xFF464646),
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.delete,
-                          color: Colors.white,
-                          size: AppDimensions.height10(context) * 2.4,
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.8),
-                          child: Text(
-                            'Delete Goal',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Arial'),
-                          ),
-                        ),
-                      ],
-                    )),
-              ),
-            ],
+                            ),
+                            Container(
+                              width: AppDimensions.height10(context) * 8.1,
+                              height: AppDimensions.height10(context) * 6.0,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 15.1),
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: const Color(0xFFFFFFFF), width: 1),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Veiw',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFFFFFFFF)),
+                                ),
+                              ),
+                            )
+                          ],
+                        ))
+                    : Container(),
+              ],
+            ),
           ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: AppDimensions.height10(context) * 12.0,
           width: AppDimensions.height10(context) * 41.6,
           child: Row(
@@ -559,14 +559,14 @@ class _goal_inactiveState extends State<goal_inactive> {
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xFF5B74A6)),
+                            color: const Color(0xFF5B74A6)),
                       ),
                       Text(
                         'have been selected',
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF5B74A6)),
+                            color: const Color(0xFF5B74A6)),
                       ),
                     ],
                   ),
@@ -574,12 +574,19 @@ class _goal_inactiveState extends State<goal_inactive> {
               ),
               widget.isActive
                   ? GestureDetector(
-                      onTap: () => showDialog<String>(
+                      onTap: () => showAnimatedDialog(
+                          animationType: DialogTransitionType.fadeScale,
+                          curve: Curves.easeInOut,
+                          duration: Duration(seconds: 1),
                           context: context,
-                          builder: (BuildContext context) => Container(
+                          builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.height10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 18.2,
                                 child: AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              1.4)),
                                   contentPadding: EdgeInsets.zero,
                                   actionsPadding: EdgeInsets.zero,
                                   titlePadding: EdgeInsets.zero,
@@ -641,7 +648,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                               AppDimensions.height10(context) *
                                                   0.1,
                                           child: Divider(
-                                            color: Color(0XFF3C3C43)
+                                            color: const Color(0XFF3C3C43)
                                                 .withOpacity(0.29),
                                           ),
                                         ),
@@ -650,13 +657,16 @@ class _goal_inactiveState extends State<goal_inactive> {
                                               AppDimensions.height10(context) *
                                                   4.2,
                                           width: double.infinity,
-                                          color: Color(0xFF007AFF),
+                                          color: const Color(0xFF007AFF),
                                           child: TextButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
                                             child: Text(
                                               'No',
                                               style: TextStyle(
-                                                  color: Color(0xFFFFFFFF),
+                                                  color:
+                                                      const Color(0xFFFFFFFF),
                                                   fontSize:
                                                       AppDimensions.height10(
                                                               context) *
@@ -671,11 +681,11 @@ class _goal_inactiveState extends State<goal_inactive> {
                                               AppDimensions.height10(context) *
                                                   0.1,
                                           child: Divider(
-                                            color: Color(0XFF3C3C43)
+                                            color: const Color(0XFF3C3C43)
                                                 .withOpacity(0.29),
                                           ),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height:
                                               AppDimensions.height10(context) *
                                                   4.4,
@@ -691,7 +701,8 @@ class _goal_inactiveState extends State<goal_inactive> {
                                                           1.7,
                                                   fontFamily: "Laila",
                                                   fontWeight: FontWeight.w400,
-                                                  color: Color(0xFF007AFF)),
+                                                  color:
+                                                      const Color(0xFF007AFF)),
                                             ),
                                           ),
                                         ),
@@ -700,7 +711,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                               AppDimensions.height10(context) *
                                                   0.1,
                                           child: Divider(
-                                            color: Color(0XFF3C3C43)
+                                            color: const Color(0XFF3C3C43)
                                                 .withOpacity(0.29),
                                           ),
                                         ),
@@ -717,7 +728,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(width: 3, color: Colors.white),
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
@@ -732,7 +743,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                               Container(
                                 width: AppDimensions.height10(context) * 2.0,
                                 height: AppDimensions.height10(context) * 2.0,
-                                color: Color(0xFFFFFFFF),
+                                color: const Color(0xFFFFFFFF),
                               ),
                               Container(
                                 margin: EdgeInsets.only(
@@ -743,7 +754,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                       fontSize:
                                           AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFFFFFFFF)),
+                                      color: const Color(0xFFFFFFFF)),
                                 ),
                               )
                             ],
@@ -755,7 +766,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    goal_inactive(isActive: true)));
+                                    const goal_inactive(isActive: true)));
                       },
                       child: Container(
                           width: AppDimensions.height10(context) * 9.1,
@@ -764,8 +775,8 @@ class _goal_inactiveState extends State<goal_inactive> {
                               right: AppDimensions.height10(context) * 3.3),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border:
-                                Border.all(width: 3, color: Color(0xFFFFA511)),
+                            border: Border.all(
+                                width: 3, color: const Color(0xFFFFA511)),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -776,7 +787,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                 margin: EdgeInsets.only(
                                     left:
                                         AppDimensions.height10(context) * 0.6),
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
                                             'assets/images/start_icon.png'))),
@@ -790,7 +801,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                       fontSize:
                                           AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w500,
-                                      color: Color(0xFFFFA511)),
+                                      color: const Color(0xFFFFA511)),
                                 ),
                               )
                             ],
@@ -836,3 +847,93 @@ class _goal_inactiveState extends State<goal_inactive> {
 //         ]);
 //   }
 // }
+
+
+// Container(
+//                         width: AppDimensions.height10(context) * 38.259,
+//                         height: AppDimensions.height10(context) * 9.707,
+//                         margin: EdgeInsets.only(
+//                             bottom: AppDimensions.height10(context) * 14.0),
+//                         decoration: BoxDecoration(
+//                             borderRadius: BorderRadius.circular(
+//                                 AppDimensions.height10(context) * 2.0),
+//                             gradient: const LinearGradient(
+//                                 begin: Alignment.topCenter,
+//                                 end: Alignment.bottomCenter,
+//                                 colors: [
+//                                   Color(0xFFD4B7B9),
+//                                   Color(0xFF91698C)
+//                                 ])),
+//                         child: Row(
+//                           crossAxisAlignment: CrossAxisAlignment.center,
+//                           children: [
+//                             Container(
+//                               margin: EdgeInsets.only(
+//                                   left: AppDimensions.height10(context) * 1.261),
+//                               width: AppDimensions.height10(context) * 4.437,
+//                               height: AppDimensions.height10(context) * 4.437,
+//                               decoration: const BoxDecoration(
+//                                   image: DecorationImage(
+//                                       image: AssetImage(
+//                                           'assets/images/circle_tick.png'))),
+//                             ),
+//                             Container(
+//                               width: AppDimensions.height10(context) * 16.3,
+//                               height: AppDimensions.height10(context) * 3.6,
+//                               margin: EdgeInsets.only(
+//                                   left: AppDimensions.height10(context) * 1.232),
+//                               child: Column(
+//                                 crossAxisAlignment: CrossAxisAlignment.start,
+//                                 children: [
+//                                   SizedBox(
+//                                     //  / width: AppDimensions.height10(context) * 4.6,
+//                                     height: AppDimensions.height10(context) * 1.4,
+//                                     //   color: Colors.amber,
+//                                     child: Text(
+//                                       'Goal Active',
+//                                       style: TextStyle(
+//                                           fontSize:
+//                                               AppDimensions.height10(context) * 1.3,
+//                                           fontWeight: FontWeight.w500,
+//                                           color: const Color(0xFFFFFFFF)),
+//                                     ),
+//                                   ),
+//                                   SizedBox(
+//                                     //width: AppDimensions.height10(context) * 6.9,
+//                                     height: AppDimensions.height10(context) * 2.2,
+//                                     child: Text(
+//                                       'Control My Anger',
+//                                       style: TextStyle(
+//                                           fontSize:
+//                                               AppDimensions.height10(context) * 1.8,
+//                                           fontWeight: FontWeight.w500,
+//                                           color: const Color(0xFFFFFFFF)),
+//                                     ),
+//                                   ),
+//                                 ],
+//                               ),
+//                             ),
+//                             Container(
+//                               width: AppDimensions.height10(context) * 8.1,
+//                               height: AppDimensions.height10(context) * 6.0,
+//                               margin: EdgeInsets.only(
+//                                   left: AppDimensions.height10(context) * 5.1),
+//                               decoration: BoxDecoration(
+//                                 border: Border.all(
+//                                     color: const Color(0xFFFFFFFF), width: 1),
+//                                 borderRadius: BorderRadius.circular(
+//                                     AppDimensions.height10(context) * 2.0),
+//                               ),
+//                               child: Center(
+//                                 child: Text(
+//                                   'Undo',
+//                                   style: TextStyle(
+//                                       fontSize: AppDimensions.height10(context) * 1.8,
+//                                       fontWeight: FontWeight.w500,
+//                                       color: const Color(0xFFFFFFFF)),
+//                                 ),
+//                               ),
+//                             )
+//                           ],
+//                         ),
+//                       )

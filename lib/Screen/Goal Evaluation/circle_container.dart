@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Circle of Checkmark Containers'),
+          title: const Text('Circle of Checkmark Containers'),
         ),
         body: Center(
           child: CircleOfCheckmarkContainers(),
@@ -71,7 +71,7 @@ class _CircleOfCheckmarkContainersState
               ),
               child: Center(
                 child: _isCheckedList[i]
-                    ? Icon(
+                    ? const Icon(
                         Icons.check,
                         color: Colors.white,
                         size: 12.5,

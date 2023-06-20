@@ -36,7 +36,7 @@ void timeline_sheet(context) {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
                   top: Radius.circular(AppDimensions.height10(context) * 2.0)),
-              color: Color(0xFFF5F5F5)),
+              color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
@@ -46,7 +46,7 @@ void timeline_sheet(context) {
               Container(
                 //color: Colors.amber,
                 // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
-                alignment: Alignment(1, 0),
+                alignment: const Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
@@ -57,7 +57,7 @@ void timeline_sheet(context) {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
                         right: AppDimensions.height10(context) * 1.5),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             image: AssetImage('assets/images/Close_blue.png'))),
@@ -86,7 +86,7 @@ void timeline_sheet(context) {
                       fontSize: AppDimensions.height10(context) * 3.0,
                       letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF437296)),
+                      color: const Color(0xFF437296)),
                 ),
               ),
               Container(
@@ -102,9 +102,9 @@ void timeline_sheet(context) {
                           fontFamily: 'laila',
                           fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF437296)),
+                          color: const Color(0xFF437296)),
                       children: [
-                        TextSpan(
+                        const TextSpan(
                             text:
                                 'Your Timeline journey experience is being built behind\nthe scenes. We will notify you when it’s released.\n\nIn the meantime, '),
                         TextSpan(
@@ -124,7 +124,8 @@ void timeline_sheet(context) {
                                 decorationStyle: TextDecorationStyle.solid,
                                 decorationThickness:
                                     AppDimensions.height10(context) * 0.1)),
-                        TextSpan(text: ' to get updates\non further releases.')
+                        const TextSpan(
+                            text: ' to get updates\non further releases.')
                       ]),
                 ),
               ),
@@ -136,7 +137,7 @@ void timeline_sheet(context) {
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 1.5,
                       bottom: AppDimensions.height10(context) * 3.9),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       // color: Colors.amber,
                       image: DecorationImage(
                           image: AssetImage(

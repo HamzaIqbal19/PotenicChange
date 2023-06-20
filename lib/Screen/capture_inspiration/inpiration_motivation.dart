@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -76,10 +77,10 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const inspiraton_goals(
-                                    data_saved: false,
-                                  )),
+                          FadePageRoute(
+                              page: (const inspiraton_goals(
+                            data_saved: false,
+                          ))),
                         );
                       },
                       child: Container(
@@ -95,9 +96,9 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                               fontSize: AppDimensions.height10(context) * 2.0,
                               fontWeight: FontWeight.w600,
                             ),
-                            colors: [
-                              const Color(0xffFA9934),
-                              const Color(0xffEDD15E)
+                            colors: const [
+                              Color(0xffFA9934),
+                              Color(0xffEDD15E)
                             ],
                           ),
                         ),
@@ -116,18 +117,19 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const inspiration_landing(
-                                muliple_insp: true,
-                                is_Updated: false,
-                              )),
+                      FadePageRoute(
+                          page: const inspiration_landing(
+                        muliple_insp: true,
+                        is_Updated: false,
+                      )),
                     );
                   },
                   child: Container(
                     width: AppDimensions.height10(context) * 34.3,
                     height: AppDimensions.height10(context) * 7.9,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 10.3,
+                        //increased 10 px
+                        top: AppDimensions.height10(context) * 11.6,
                         bottom: AppDimensions.height10(context) * 1.7),
                     child: GradientText(
                       'My current\ninspirations',
@@ -136,14 +138,11 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           fontSize: AppDimensions.height10(context) * 3.0,
                           fontWeight: FontWeight.w700,
                           height: 1.3),
-                      colors: [
-                        const Color(0xffFA9934),
-                        const Color(0xffEDD15E)
-                      ],
+                      colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: AppDimensions.height10(context) * 34.9,
                   height: AppDimensions.height10(context) * 12.1,
                   //margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 2.0),
@@ -198,7 +197,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10(context) * 4.2,
                                 height: AppDimensions.height10(context) * 1.4,
                                 child: Text(
@@ -210,7 +209,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                                       color: const Color(0xFFFFFFFF)),
                                 ),
                               ),
-                              Container(
+                              SizedBox(
                                 width: AppDimensions.height10(context) * 6.9,
                                 height: AppDimensions.height10(context) * 2.2,
                                 child: Text(

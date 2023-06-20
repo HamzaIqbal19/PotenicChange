@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
+import '../capture_inpirations_goals.dart';
 import 'note_access.dart';
 
 class video_info extends StatefulWidget {
@@ -72,17 +74,26 @@ class _video_infoState extends State<video_info> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: AppDimensions.height10(context) * 2.2,
-                    width: AppDimensions.height10(context) * 4.3,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 4.0),
-                    child: Text(
-                      'Create',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.5,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff007AFF).withOpacity(0.4)),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const note_info(
+                                  note_saved: true, type_switch: 3)));
+                    },
+                    child: Container(
+                      height: AppDimensions.height10(context) * 2.2,
+                      width: AppDimensions.height10(context) * 4.3,
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 4.0),
+                      child: Text(
+                        'Create',
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.5,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xff007AFF).withOpacity(0.4)),
+                      ),
                     ),
                   )
                 ]),
@@ -103,8 +114,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Video Destination Link',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -127,8 +137,7 @@ class _video_infoState extends State<video_info> {
                             },
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
@@ -139,9 +148,8 @@ class _video_infoState extends State<video_info> {
                                     0),
                                 hintText: 'Add a link',
                                 hintStyle: TextStyle(
-                                    fontFamily: 'Poppins',
                                     fontSize:
-                                        AppDimensions.height10(context) * 1.6,
+                                        AppDimensions.height10(context) * 1.7,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff828282)),
                                 focusedBorder: const OutlineInputBorder(
@@ -236,8 +244,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Why is it inspirational to you',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -252,7 +259,7 @@ class _video_infoState extends State<video_info> {
                       ),
                       child: TextField(
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -263,8 +270,7 @@ class _video_infoState extends State<video_info> {
                                 0),
                             hintText: 'Say more about this inspiration ',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -285,8 +291,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Tags',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -301,7 +306,7 @@ class _video_infoState extends State<video_info> {
                       ),
                       child: TextField(
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff282828)),
                         decoration: InputDecoration(
@@ -312,8 +317,7 @@ class _video_infoState extends State<video_info> {
                                 0),
                             hintText: 'Add #hashtag',
                             hintStyle: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff828282)),
                             focusedBorder: const OutlineInputBorder(
@@ -334,8 +338,7 @@ class _video_infoState extends State<video_info> {
                       child: Text(
                         'Attached goals',
                         style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.5,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff828282)),
                       ),
@@ -344,9 +347,8 @@ class _video_infoState extends State<video_info> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => const note_info(
-                                    note_saved: true, type_switch: 3)));
+                            FadePageRoute(
+                                page: inspiraton_goals(data_saved: false)));
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 6.0,

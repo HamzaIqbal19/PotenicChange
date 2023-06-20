@@ -36,10 +36,7 @@ void community_sheet(context) {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
                   top: Radius.circular(AppDimensions.height10(context) * 2.0)),
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFE1B3B7), Color(0xFFC9B9CB)])),
+              color: const Color(0xFFF5F5F5)),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -51,7 +48,7 @@ void community_sheet(context) {
                 Container(
                   //color: Colors.amber,
                   // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
-                  alignment: Alignment(1, 0),
+                  alignment: const Alignment(1, 0),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
@@ -62,12 +59,22 @@ void community_sheet(context) {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.5,
                           right: AppDimensions.height10(context) * 1.5),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image:
                                   AssetImage('assets/images/Close_blue.png'))),
                     ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.9,
+                      bottom: AppDimensions.height10(context) * 1.9),
+                  child: Image.asset(
+                    'assets/images/potenic__icon.png',
+                    width: AppDimensions.height10(context) * 8.202,
+                    height: AppDimensions.height10(context) * 11.2,
                   ),
                 ),
                 Container(
@@ -83,7 +90,8 @@ void community_sheet(context) {
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 3.0,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFF437296)),
+                              height: AppDimensions.height10(context) * 0.15,
+                              color: const Color(0xFF437296)),
                         ),
                         Container(
                           // padding: EdgeInsets.only(
@@ -91,9 +99,10 @@ void community_sheet(context) {
                           child: Text(
                             ' coming soon...',
                             style: TextStyle(
+                                height: AppDimensions.height10(context) * 0.15,
                                 fontSize: AppDimensions.height10(context) * 2.2,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF437296)),
+                                color: const Color(0xFF437296)),
                           ),
                         )
                       ],
@@ -108,11 +117,13 @@ void community_sheet(context) {
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
+                            fontFamily: 'laila',
+                            height: AppDimensions.height10(context) * 0.15,
                             fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF437296)),
+                            color: const Color(0xFF437296)),
                         children: [
-                          TextSpan(
+                          const TextSpan(
                               text:
                                   'App community is coming in future releases to\ntake the experience to another level. If you have\na real life story that you would like to share to\ninspire others and make an impact, please\ncontact us :) \n\nMeanwhile, we invite you to join '),
                           TextSpan(
@@ -144,7 +155,7 @@ void community_sheet(context) {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
                         bottom: AppDimensions.height10(context) * 6.2),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         // color: Colors.amber,
                         image: DecorationImage(
                             image: AssetImage(

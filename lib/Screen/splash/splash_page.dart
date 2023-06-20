@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -92,8 +93,8 @@ class SplashPageState extends State<SplashPage> {
   onDoneLoading() async {
     Navigator.push(
       context,
-      MaterialPageRoute(
-        builder: (context) => OnBoarding(),
+      FadePageRoute(
+        page: OnBoarding(),
       ),
     );
     // print('==================================');
@@ -104,12 +105,13 @@ class SplashPageState extends State<SplashPage> {
     print("app dimension:${AppDimensions.height10}");
     print("app dimension:${AppDimensions.screenHeight}");
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
+        backgroundColor: Colors.transparent,
+        body: Center(
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Container(
+            width: AppDimensions.height10(context) * 41.4,
+            height: AppDimensions.height10(context) * 88.8,
+            child: Container(
               width: AppDimensions.width10(context) * 40.65,
               height: AppDimensions.height10(context) * 6.5,
               // width: 423.5,
@@ -123,9 +125,7 @@ class SplashPageState extends State<SplashPage> {
                 ),
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ])));
   }
 }

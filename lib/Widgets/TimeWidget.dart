@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:potenic_app/Widgets/DateTimeBottomSheet.dart';
-import 'package:potenic_app/Widgets/routinecommitment.dart';
+// import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 String start_time = '00:00';
@@ -11,8 +11,7 @@ String end_time = '07:00';
 
 String? minutes;
 String? hours;
-
-List<String> selectedDays = []; // Declare the selectedDays list here
+List<String> selectedDays = [];
 int count = 0;
 String day = '';
 String hour = '';
@@ -219,7 +218,7 @@ class _schedule_cardState extends State<schedule_card> {
                           text: ' 1) Time: ',
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
+                          padding: const EdgeInsets.only(left: 11.5),
                           child: Container(
                               height: 37,
                               width: 37,

@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
 class select_hurdle extends StatefulWidget {
@@ -33,7 +34,7 @@ class _select_hurdleState extends State<select_hurdle> {
                 )),
           ),
           centerTitle: true,
-          title: Container(
+          title: SizedBox(
             width: AppDimensions.height10(context) * 19.0,
             height: AppDimensions.height10(context) * 2.4,
             child: Row(
@@ -45,7 +46,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     fontSize: AppDimensions.height10(context) * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   ' 2',
@@ -54,7 +55,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     fontSize: AppDimensions.height10(context) * 2.2,
                     fontWeight: FontWeight.w600,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
                 GradientText(
                   '/5',
@@ -63,7 +64,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     fontSize: AppDimensions.height10(context) * 2.2,
                     fontWeight: FontWeight.w400,
                   ),
-                  colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                  colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                 ),
               ],
             ),
@@ -84,8 +85,8 @@ class _select_hurdleState extends State<select_hurdle> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
-        decoration: BoxDecoration(
+        // margin: EdgeInsets.only(top:   AppDimensions.height10(context)(context)* 6.0),
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/practicebackground.png'),
                 fit: BoxFit.cover)),
@@ -104,7 +105,7 @@ class _select_hurdleState extends State<select_hurdle> {
                   fontSize: AppDimensions.height10(context) * 2.8,
                   fontWeight: FontWeight.w700,
                 ),
-                colors: [Color(0xffFA9934), Color(0xffEDD15E)],
+                colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
               ),
             ),
           ),
@@ -132,7 +133,7 @@ class _select_hurdleState extends State<select_hurdle> {
                         border: Border.all(
                             width: AppDimensions.height10(context) * 0.1,
                             color: Colors.white),
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -156,7 +157,7 @@ class _select_hurdleState extends State<select_hurdle> {
                       border: Border.all(
                           width: AppDimensions.height10(context) * 0.1,
                           color: Colors.white),
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
                           colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -192,7 +193,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     border: Border.all(
                         width: AppDimensions.height10(context) * 0.1,
                         color: Colors.white),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -215,7 +216,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     border: Border.all(
                         width: AppDimensions.height10(context) * 0.1,
                         color: Colors.white),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -244,7 +245,7 @@ class _select_hurdleState extends State<select_hurdle> {
                 border: Border.all(
                     width: AppDimensions.height10(context) * 0.1,
                     color: Colors.white),
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [Color(0xffBE3FC6), Color(0xff642445)])),
@@ -279,8 +280,8 @@ class _select_hurdleState extends State<select_hurdle> {
             ),
             child: TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => hurdle_name()));
+                  Navigator.push(
+                      context, FadePageRoute(page: const hurdle_name()));
                 },
                 child: Text(
                   'Next',
@@ -299,7 +300,7 @@ class _select_hurdleState extends State<select_hurdle> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
                     AppDimensions.height10(context) * 2.0),
-                color: Color(0xFFFFFFFF).withOpacity(0.3)),
+                color: const Color(0xFFFFFFFF).withOpacity(0.3)),
           )
         ]),
       ),

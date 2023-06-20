@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
+import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/recordPracticeMenu.dart';
@@ -29,7 +31,9 @@ class menu_behaviour extends StatelessWidget {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: Image.asset(
                     'assets/images/Close.png',
                     width: AppDimensions.height10(context) * 2.6,
@@ -153,9 +157,6 @@ class menu_behaviour extends StatelessWidget {
                                   Container(
                                     height:
                                         AppDimensions.height10(context) * 2.5,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            0.6),
                                     child: Text(
                                       'Session completed',
                                       style: TextStyle(
@@ -260,7 +261,11 @@ class menu_behaviour extends StatelessWidget {
                                       color: Colors.white)),
                               child: Center(
                                 child: GestureDetector(
-                                    onTap: () => showDialog<String>(
+                                    onTap: () => showAnimatedDialog(
+                                        animationType:
+                                            DialogTransitionType.fadeScale,
+                                        curve: Curves.easeInOut,
+                                        duration: Duration(seconds: 1),
                                         context: context,
                                         builder: (BuildContext context) =>
                                             Container(
@@ -271,6 +276,12 @@ class menu_behaviour extends StatelessWidget {
                                                       context) *
                                                   18.2,
                                               child: AlertDialog(
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius
+                                                        .circular(AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.4)),
                                                 contentPadding: EdgeInsets.zero,
                                                 actionsPadding: EdgeInsets.zero,
                                                 titlePadding: EdgeInsets.zero,
@@ -299,9 +310,9 @@ class menu_behaviour extends StatelessWidget {
                                                                 fontFamily: 'laila',
                                                                 fontSize: AppDimensions.height10(context) * 1.7,
                                                                 fontWeight: FontWeight.w400,
-                                                                color: Color(0xFF000000)),
+                                                                color: const Color(0xFF000000)),
                                                             children: [
-                                                              TextSpan(
+                                                              const TextSpan(
                                                                   text:
                                                                       'Are you sure?'),
                                                             ]))),
@@ -366,12 +377,11 @@ class menu_behaviour extends StatelessWidget {
                                                           onPressed: () {
                                                             Navigator.push(
                                                                 context,
-                                                                MaterialPageRoute(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            view_goals(
-                                                                              missed: true,
-                                                                            )));
+                                                                FadePageRoute(
+                                                                    page:
+                                                                        const view_goals(
+                                                                  missed: true,
+                                                                )));
                                                           },
                                                           child: Text(
                                                             'Yes',
@@ -548,6 +558,8 @@ class menu_behaviour extends StatelessWidget {
                                 child: Text(
                                   'Here is your latest 20 active day evaluation.',
                                   style: TextStyle(
+                                      height: AppDimensions.height10(context) *
+                                          0.15,
                                       fontSize:
                                           AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w400,
@@ -561,6 +573,10 @@ class menu_behaviour extends StatelessWidget {
                                 child: RichText(
                                     text: TextSpan(
                                         style: TextStyle(
+                                            fontFamily: 'laila',
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.15,
                                             fontSize: AppDimensions.height10(
                                                     context) *
                                                 1.4,
@@ -588,18 +604,24 @@ class menu_behaviour extends StatelessWidget {
                                   child: const button_feilds(
                                     feild_text: 'Progress report',
                                     icon_viible: true,
-                                    text_color: 0xff828282,
+                                    text_color: 0xff646464,
                                     feild_text_2: ' DD/MMM/YY',
+                                    text_color_2: 0xff8EA1B1,
+                                    feild_text_3: '',
+                                    feild_text_4: '',
                                   ),
                                 ),
                               ),
                               GestureDetector(
                                 onTap: () {},
                                 child: const button_feilds(
-                                  feild_text: 'Evaluation level (2/5)',
+                                  feild_text: 'Evaluation level ',
                                   icon_viible: true,
-                                  text_color: 0xff828282,
-                                  feild_text_2: '',
+                                  text_color: 0xff646464,
+                                  feild_text_2: '(',
+                                  text_color_2: 0xff8EA1B1,
+                                  feild_text_3: '2',
+                                  feild_text_4: '/5)',
                                 ),
                               )
                             ],
@@ -629,6 +651,9 @@ class menu_behaviour extends StatelessWidget {
                       icon_viible: true,
                       text_color: 0xff646464,
                       feild_text_2: '',
+                      text_color_2: 0xffEA1B1,
+                      feild_text_3: '',
+                      feild_text_4: '',
                     ),
                     Container(
                       margin: EdgeInsets.only(
@@ -639,6 +664,9 @@ class menu_behaviour extends StatelessWidget {
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
+                        text_color_2: 0xffEA1B1,
+                        feild_text_3: '',
+                        feild_text_4: '',
                       ),
                     ),
                     Container(
@@ -649,6 +677,9 @@ class menu_behaviour extends StatelessWidget {
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
+                        text_color_2: 0xffEA1B1,
+                        feild_text_3: '',
+                        feild_text_4: '',
                       ),
                     ),
                     const button_feilds(
@@ -656,6 +687,9 @@ class menu_behaviour extends StatelessWidget {
                       icon_viible: true,
                       text_color: 0xff646464,
                       feild_text_2: '',
+                      text_color_2: 0xffEA1B1,
+                      feild_text_3: '',
+                      feild_text_4: '',
                     )
                   ],
                 ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+
+import 'fading.dart';
 // import 'package:flutter_ui/utilities/app_contants.dart';
 
 List<String> categories = [
@@ -42,6 +44,7 @@ void bottom_sheet(context) {
         // color:Colors.lightGreen,
         height: AppDimensions.height10(context) * 45.0,
         width: AppDimensions.height10(context) * 41.4,
+
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(top: 10),
@@ -53,7 +56,6 @@ void bottom_sheet(context) {
                 Container(
                   height: AppDimensions.height10(context) * 6.3,
                   width: AppDimensions.height10(context) * 35.5,
-                  // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                   child: Text(
                     'Create a new practice \n for ‘Control My Anger’ goal ',
                     textAlign: TextAlign.center,
@@ -63,6 +65,9 @@ void bottom_sheet(context) {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10(context) * 3.9,
                 ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 3.9,
@@ -95,6 +100,9 @@ void bottom_sheet(context) {
                 SizedBox(
                   height: AppDimensions.height10(context) * 1,
                 ),
+                SizedBox(
+                  height: AppDimensions.height10(context) * 1,
+                ),
                 Container(
                   height: AppDimensions.height10(context) * 2,
                   padding: EdgeInsets.only(
@@ -123,6 +131,9 @@ void bottom_sheet(context) {
                       ),
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: AppDimensions.height10(context) * 3.0,
                 ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 3.0,

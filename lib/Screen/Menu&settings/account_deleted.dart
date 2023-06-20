@@ -97,11 +97,11 @@ class Acc_deleted extends StatelessWidget {
                                         AppDimensions.height10(context) * 2.0,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFBFBFB)),
-                                children: [
-                                  const TextSpan(
+                                children: const [
+                                  TextSpan(
                                       text:
                                           'It’s sad to see you go. Is there\nsomething we did wrong?\nLet us know by emailing us at\n'),
-                                  const TextSpan(
+                                  TextSpan(
                                       text: 'info@potenic.com.',
                                       style: TextStyle(
                                           decoration: TextDecoration.underline))
@@ -117,7 +117,7 @@ class Acc_deleted extends StatelessWidget {
                 decoration: BoxDecoration(
                     border: Border.all(
                         width: AppDimensions.height10(context) * 0.1,
-                        color: Color(0xFFFBFBFB)),
+                        color: const Color(0xFFFBFBFB)),
                     borderRadius: BorderRadius.circular(
                         AppDimensions.height10(context) * 5.0),
                     gradient: const LinearGradient(

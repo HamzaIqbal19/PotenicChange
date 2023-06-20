@@ -8,10 +8,9 @@ import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../Widgets/fading.dart';
 
 class GoalWhy extends StatefulWidget {
   GoalWhy({
@@ -551,7 +550,7 @@ class _goalwhyState extends State<GoalWhy> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    SizedBox(
+                    Container(
                         // color: Colors.blue,
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
@@ -561,9 +560,7 @@ class _goalwhyState extends State<GoalWhy> {
                         )),
                     GestureDetector(
                       onTap: () {
-                        updateGoalReason(myTextFields);
-                        // print(myTextFields[2]);
-                        Navigator.pushReplacement(
+                        Navigator.push(
                           context,
                           FadePageRoute(
                             page: Goal_Identity(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations_journey.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -66,7 +67,7 @@ class _congratulationsState extends State<congratulations> {
               },
               child: Container(
                 width: AppDimensions.height10(context) * 35.5,
-                height: AppDimensions.height10(context) * 13.2,
+                //height: AppDimensions.height10(context) * 13.2,
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 10.0),
                 child: RichText(
@@ -119,10 +120,10 @@ class _congratulationsState extends State<congratulations> {
                     ),
                   ),
                   Align(
-                    alignment: const Alignment(0, 1.2),
+                    alignment: const Alignment(0, 1.625),
                     child: Container(
-                      width: AppDimensions.height10(context) * 21.2,
-                      height: AppDimensions.height10(context) * 21.2,
+                      width: AppDimensions.height10(context) * 23.2,
+                      height: AppDimensions.height10(context) * 23.2,
                       //same dimensions as design
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -228,8 +229,7 @@ class _congratulationsState extends State<congratulations> {
                 if (goal_level > 3) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const Congratulations_journey()),
+                    FadePageRoute(page: const Congratulations_journey()),
                   );
                 }
               },
@@ -325,15 +325,14 @@ void goal_achieved_sheet(context) {
           }
 
           return Container(
-            margin:
-                EdgeInsets.only(top: AppDimensions.height10(context) * 26.5),
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 4.6),
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Container(
                 width: AppDimensions.height10(context) * 41.4,
-                height: AppDimensions.height10(context) * 96.3,
+                //  height: AppDimensions.height10(context) * 87.6,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                         top: Radius.circular(
@@ -341,7 +340,7 @@ void goal_achieved_sheet(context) {
                     gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [Color(0xFFC9B9CB), Color(0xFFE1B3B7)])),
+                        colors: [Color(0xFFE7DEDF), Color(0xFFF9F7F9)])),
                 child: Column(
                   children: [
                     Container(
@@ -373,16 +372,15 @@ void goal_achieved_sheet(context) {
                       },
                       child: Container(
                         // width: AppDimensions.height10(context) * 35.5,
-                        height: AppDimensions.height10(context) * 3.4,
+                        //  height: AppDimensions.height10(context) * 3.4,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.5),
                         child: Text(
                           'Goal level has gone down',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.8,
-                              letterSpacing:
-                                  AppDimensions.height10(context) * 0.2,
+                              fontSize: AppDimensions.height10(context) * 3.0,
+                              // letterSpacing: AppDimensions.height10(context) * 0.2,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF437296)),
                         ),
@@ -390,14 +388,14 @@ void goal_achieved_sheet(context) {
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 32.7,
-                      height: AppDimensions.height10(context) * 14.1,
+                      height: AppDimensions.height10(context) * 16.1,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.6),
+                          top: AppDimensions.height10(context) * 1.6),
                       child: Text(
-                        'Based on your latest evaluation, your total goal\nscore level has gone down. Please don’t beat\nyourself up life is a journey of ups and downs\nworking on yourself is part of the growing\nprocess. Please review your latest assessment and\nadjust your original ‘why’ reasons if needed.',
+                        'Based on your latest evaluation, your total goal\nscore level has gone down. Don’t despair yet.\nLife is a journey of ups and downs, and working\non yourself is part of the transformation\nprocess. Please review your latest assessment\nand adjust your original ‘why’ reasons if needed.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF437296)),
                       ),
@@ -406,7 +404,7 @@ void goal_achieved_sheet(context) {
                       width: AppDimensions.height10(context) * 26.8,
                       height: AppDimensions.height10(context) * 26.8,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.7),
+                          top: AppDimensions.height10(context) * 5.7),
                       child: Stack(
                         children: [
                           Container(
@@ -432,9 +430,7 @@ void goal_achieved_sheet(context) {
                                         fontSize:
                                             AppDimensions.height10(context) *
                                                 2.0,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.12,
+                                        //  height: AppDimensions.height10(context) * 0.12,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xff5B74A6)),
                                   ),
@@ -442,6 +438,9 @@ void goal_achieved_sheet(context) {
                                 Container(
                                   //width: AppDimensions.height10(context) * 20.2,
                                   height: AppDimensions.height10(context) * 4.0,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          0.3),
                                   child: Text(
                                     '“I am someone who is in\ncontrol of my anger”',
                                     textAlign: TextAlign.center,
@@ -459,10 +458,10 @@ void goal_achieved_sheet(context) {
                             ),
                           ),
                           Align(
-                            alignment: const Alignment(0, 4.5),
+                            alignment: const Alignment(0, 10.5),
                             child: Container(
-                              width: AppDimensions.height10(context) * 21.2,
-                              height: AppDimensions.height10(context) * 21.2,
+                              width: AppDimensions.height10(context) * 24.2,
+                              height: AppDimensions.height10(context) * 24.2,
                               decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
@@ -585,7 +584,7 @@ void goal_achieved_sheet(context) {
                         width: AppDimensions.height10(context) * 29.0,
                         height: AppDimensions.height10(context) * 5.0,
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 15.1),
+                            top: AppDimensions.height10(context) * 13.1),
                         decoration: BoxDecoration(
                             gradient: const LinearGradient(
                                 colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
@@ -611,7 +610,8 @@ void goal_achieved_sheet(context) {
                       width: AppDimensions.height10(context) * 29.0,
                       height: AppDimensions.height10(context) * 5.0,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.8),
+                          top: AppDimensions.height10(context) * 1.8,
+                          bottom: AppDimensions.height10(context) * 4.3),
                       decoration: BoxDecoration(
                           color: const Color(0xFFF5F5F5),
                           borderRadius: BorderRadius.circular(

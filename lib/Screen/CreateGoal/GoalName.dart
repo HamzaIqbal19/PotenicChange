@@ -10,8 +10,6 @@ import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class GoalName extends StatefulWidget {
   GoalName();
@@ -97,6 +95,9 @@ class _GoalNameState extends State<GoalName> {
                         contentPadding: EdgeInsets.zero,
                         actionsPadding: EdgeInsets.zero,
                         titlePadding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 1.4)),
                         title: Container(
                           margin: EdgeInsets.only(
                               top: 19, right: 16, left: 16, bottom: 2),
@@ -208,8 +209,7 @@ class _GoalNameState extends State<GoalName> {
                               ),
                               Container(
                                 height: 42,
-                                width: double.infinity,
-                                color: Colors.white,
+                                width: AppDimensions.height10(context) * 27.0,
                                 child: TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
@@ -411,7 +411,7 @@ class _GoalNameState extends State<GoalName> {
                       right: AppDimensions.height10(context) * 1.3),
                   child: Center(
                     child: Text(
-                      "You can change the name of your practice later by going into your Dashboard.  ",
+                      "You can change the name of your goal later by going into your Dashboard.  ",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: Colors.white,

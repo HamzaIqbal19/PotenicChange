@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/recordPracticeMenu.dart';
@@ -24,8 +25,8 @@ class goal_menu_inactive extends StatefulWidget {
 
 class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   @override
+  int goal_level = 2;
   Widget build(BuildContext context) {
-    int goal_level = 2;
     //bool premium = false;
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -51,7 +52,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/prac_assesment.png'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -102,20 +103,20 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                   widget.premium
                       ? Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const goal_menu_inactive(
-                                    premium: false,
-                                    isActive: true,
-                                    goal_evaluation: true,
-                                  )))
+                          FadePageRoute(
+                              page: (const goal_menu_inactive(
+                            premium: false,
+                            isActive: true,
+                            goal_evaluation: true,
+                          ))))
                       : Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const goal_menu_inactive(
-                                    premium: true,
-                                    isActive: true,
-                                    goal_evaluation: true,
-                                  )));
+                          FadePageRoute(
+                              page: (const goal_menu_inactive(
+                            premium: true,
+                            isActive: true,
+                            goal_evaluation: true,
+                          ))));
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 8.39,
@@ -137,22 +138,41 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
                         AppDimensions.height10(context) * 2.0),
-                    color: Color(0xFFF5F5F5)),
+                    color: const Color(0xFFF5F5F5)),
                 child: Stack(
                   children: [
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        if (goal_level == 0) {
+                          setState(() {
+                            goal_level = 2;
+                          });
+                        } else if (goal_level == 2) {
+                          setState(() {
+                            goal_level = 0;
+                          });
+                        }
+                        print(goal_level);
+                      },
                       child: Container(
                         width: AppDimensions.height10(context) * 37.4,
                         height: AppDimensions.height10(context) * 12.0,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                            image: const DecorationImage(
-                              image:
-                                  AssetImage('assets/images/Rectangle 192.png'),
-                              fit: BoxFit.cover,
-                            )),
+                        decoration: widget.premium
+                            ? BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                                image: const DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/Rectangle 192.png'),
+                                  fit: BoxFit.cover,
+                                ))
+                            : BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                                gradient: LinearGradient(colors: [
+                                  const Color(0xFFFF7975).withOpacity(0.8),
+                                  const Color(0xFFF9DCC0).withOpacity(0)
+                                ])),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -160,33 +180,53 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const new_progress_score()));
+                                    FadePageRoute(
+                                        page: const new_progress_score()));
                               },
                               child: Container(
-                                width: AppDimensions.height10(context) * 8.1,
-                                height: AppDimensions.height10(context) * 8.1,
+                                width: goal_level == 2
+                                    ? AppDimensions.height10(context) * 10.135
+                                    : AppDimensions.height10(context) * 10.1,
+                                height: goal_level == 2
+                                    ? AppDimensions.height10(context) * 10.135
+                                    : AppDimensions.height10(context) * 10.1,
                                 margin: EdgeInsets.only(
                                     right:
-                                        AppDimensions.height10(context) * 1.6),
-                                decoration: const BoxDecoration(
+                                        AppDimensions.height10(context) * 0.6),
+                                decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Nebula Pie.png'),
+                                    image: AssetImage(goal_level == 2
+                                        ? 'assets/images/Nebula pie 2.png'
+                                        : goal_level == 3
+                                            ? 'assets/images/Nebula pie 3.png'
+                                            : "assets/images/Nebula Pie.png"),
                                   ),
                                   // color: Colors.amber,
                                 ),
-                                child: Center(
+                                child: Align(
+                                  alignment: goal_level != 0
+                                      ? const Alignment(0, -0.1)
+                                      : const Alignment(0, -0.07),
                                   child: Text(
-                                    '$goal_level',
+                                    widget.premium
+                                        ? goal_level == 0
+                                            ? '-'
+                                            : '$goal_level'
+                                        : '-',
                                     style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
+                                        fontSize: widget.premium
+                                            ? goal_level == 0
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    2.8
+                                                : AppDimensions.height10(
+                                                        context) *
+                                                    2.0
+                                            : AppDimensions.height10(context) *
+                                                2.8,
                                         fontWeight: FontWeight.w500,
-                                        color: Color(0xFF464646)),
+                                        color: const Color(0xFF464646)),
                                   ),
                                 ),
                               ),
@@ -208,11 +248,11 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.6,
+                                                1.7,
                                             fontWeight: FontWeight.w700,
                                             color: widget.premium
-                                                ? Color(0xFFFFFFFF)
-                                                : Color(0xFF464646)),
+                                                ? const Color(0xFFFFFFFF)
+                                                : const Color(0xFF464646)),
                                       ),
                                     ),
                                   ),
@@ -228,11 +268,11 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.4,
+                                                1.5,
                                             fontWeight: FontWeight.w500,
                                             color: widget.premium
-                                                ? Color(0xFFFFFFFF)
-                                                : Color(0xFF464646)),
+                                                ? const Color(0xFFFFFFFF)
+                                                : const Color(0xFF464646)),
                                       ),
                                     ),
                                   ),
@@ -243,16 +283,16 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       widget.premium
-                                          ? 'Evaluate how close you’re\ncurrently to living your goal'
+                                          ? "I'm making small steps\nforward"
                                           : 'Only available to Premium\nCustomers',
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
-                                                  1.4,
+                                                  1.5,
                                           fontWeight: FontWeight.w400,
                                           color: widget.premium
-                                              ? Color(0xFFFFFFFF)
-                                              : Color(0xFF464646)),
+                                              ? const Color(0xFFFFFFFF)
+                                              : const Color(0xFF464646)),
                                     ),
                                   ),
                                 ],
@@ -281,15 +321,15 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     Align(
                       alignment: const Alignment(-0.8, 0.875),
                       child: Container(
-                        width: AppDimensions.height10(context) * 15.7,
-                        height: AppDimensions.height10(context) * 1.3,
+                        width: AppDimensions.height10(context) * 18.5,
+                        height: AppDimensions.height10(context) * 1.6,
                         child: Row(
                           children: [
                             Text(
                               'Next score needed in ',
                               style: TextStyle(
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.1,
+                                      AppDimensions.height10(context) * 1.3,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff464646)),
                             ),
@@ -297,7 +337,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               '-00',
                               style: TextStyle(
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.1,
+                                      AppDimensions.height10(context) * 1.3,
                                   fontWeight: FontWeight.w700,
                                   color: const Color(0xff464646)),
                             ),
@@ -305,7 +345,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               ' days',
                               style: TextStyle(
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.1,
+                                      AppDimensions.height10(context) * 1.3,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff464646)),
                             ),
@@ -318,7 +358,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         : Align(
                             alignment: const Alignment(-0.975, -1.275),
                             child: Container(
-                              width: AppDimensions.height10(context) * 18.0,
+                              width: AppDimensions.height10(context) * 11.9,
                               height: AppDimensions.height10(context) * 2.9,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
@@ -344,81 +384,81 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                   ],
                 ),
               ),
-              Container(
-                width: AppDimensions.height10(context) * 36.4,
-                height: AppDimensions.height10(context) * 6.0,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.0),
-                padding: EdgeInsets.only(
-                    left: AppDimensions.height10(context) * 2.0,
-                    right: AppDimensions.height10(context) * 1.9),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                      AppDimensions.height10(context) * 2.0),
-                  color: const Color(0xFFF5F5F5),
-                  border: Border.all(
-                      color: const Color(0xFFFFFFFF),
-                      width: AppDimensions.height10(context) * 0.1),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          Text(
-                            'This goal is ',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w500,
-                                color: widget.isActive
-                                    ? Color(0xFF156F6D)
-                                    : Color(0xFFDE7A11)),
-                          ),
-                          widget.isActive
-                              ? Text(
-                                  'Active',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color(0xFF156F6D)),
-                                )
-                              : Text(
-                                  'Inactive',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color(0xFFDE7A11)),
-                                )
-                        ],
+              GestureDetector(
+                onTap: () {
+                  widget.isActive
+                      ? widget.goal_evaluation
+                          ? Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const multiple_goal_inactive(
+                                      isActive: true)))
+                          : Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const goal_inactive(isActive: true)))
+                      : Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const goal_inactive(
+                            isActive: false,
+                          )));
+                },
+                child: Container(
+                  width: AppDimensions.height10(context) * 37.4,
+                  height: AppDimensions.height10(context) * 6.0,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.0),
+                  padding: EdgeInsets.only(
+                      left: AppDimensions.height10(context) * 2.0,
+                      right: AppDimensions.height10(context) * 1.9),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
+                    color: const Color(0xFFF5F5F5),
+                    border: Border.all(
+                        color: const Color(0xFFFFFFFF),
+                        width: AppDimensions.height10(context) * 0.1),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Text(
+                              'This goal is ',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
+                                  fontWeight: FontWeight.w500,
+                                  color: widget.isActive
+                                      ? const Color(0xFF156F6D)
+                                      : const Color(0xFFDE7A11)),
+                            ),
+                            widget.isActive
+                                ? Text(
+                                    'Active',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xFF156F6D)),
+                                  )
+                                : Text(
+                                    'Inactive',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xFFDE7A11)),
+                                  )
+                          ],
+                        ),
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        widget.isActive
-                            ? widget.goal_evaluation
-                                ? Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const multiple_goal_inactive(
-                                                isActive: true)))
-                                : Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const goal_inactive(
-                                                isActive: true)))
-                            : Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const goal_inactive(
-                                          isActive: false,
-                                        )));
-                      },
-                      child: Container(
+                      Container(
                         width: AppDimensions.height10(context) * 3.6,
                         height: AppDimensions.height10(context) * 2.2,
                         child: Center(
@@ -431,9 +471,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 decoration: TextDecoration.underline),
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(
@@ -458,10 +498,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               onTap: () {
                                 Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) => practiceMenu(
-                                              goal_eval: true,
-                                            )));
+                                    FadePageRoute(
+                                        page: const practiceMenu(
+                                      goal_eval: true,
+                                    )));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 13.8,
@@ -514,6 +554,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             Container(
                               height: AppDimensions.height10(context) * 13.8,
                               width: AppDimensions.height10(context) * 13.8,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.height10(context) * 4.0),
                               decoration: const BoxDecoration(
                                   //color: Colors.amber,
                                   image: DecorationImage(
@@ -539,10 +581,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       onTap: () {
                         Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => practiceMenu(
-                                      goal_eval: true,
-                                    )));
+                            FadePageRoute(
+                                page: const practiceMenu(
+                              goal_eval: true,
+                            )));
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 13.8,
@@ -635,8 +677,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 2.0),
                           color: widget.premium
-                              ? Color(0xFFFFFFFF)
-                              : Color(0xFFFFFFFF).withOpacity(0.5),
+                              ? const Color(0xFFFFFFFF)
+                              : const Color(0xFFFFFFFF).withOpacity(0.5),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -677,27 +719,25 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.height10(context) * 36.0,
-                      height: AppDimensions.height10(context) * 6.0,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 2.0),
-                        color: const Color(0xFFFFFFFF),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => StarReview()));
-                            },
-                            child: Container(
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context, FadePageRoute(page: const StarReview()));
+                      },
+                      child: Container(
+                        width: AppDimensions.height10(context) * 36.0,
+                        height: AppDimensions.height10(context) * 6.0,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 1.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          color: const Color(0xFFFFFFFF),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
                               width: AppDimensions.height10(context) * 18.5,
                               height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
@@ -712,23 +752,23 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 ),
                               ),
                             ),
-                          ),
-                          Container(
-                              width: AppDimensions.height10(context) * 2.4,
-                              height: AppDimensions.height10(context) * 1.39,
-                              margin: EdgeInsets.only(
-                                  right:
-                                      AppDimensions.height10(context) * 2.391),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.png',
-                                  //width: AppDimensions.height10(context) * 2.6,
-                                  //height: AppDimensions.height10(context) * 2.6,
-                                  fit: BoxFit.cover,
-                                ),
-                              ))
-                        ],
+                            Container(
+                                width: AppDimensions.height10(context) * 2.4,
+                                height: AppDimensions.height10(context) * 1.39,
+                                margin: EdgeInsets.only(
+                                    right: AppDimensions.height10(context) *
+                                        2.391),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Image.asset(
+                                    'assets/images/BTN Back.png',
+                                    //width: AppDimensions.height10(context) * 2.6,
+                                    //height: AppDimensions.height10(context) * 2.6,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ))
+                          ],
+                        ),
                       ),
                     ),
                   ],
