@@ -4,6 +4,7 @@ import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -387,9 +388,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                   onTap: () {
                                     Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) => PasswordReset(),
-                                      ),
+                                      FadePageRoute2(
+                                          enterPage: PasswordReset(),
+                                          exitPage: Loginemailandpassword()),
                                     );
                                   },
                                   child: Container(
@@ -457,9 +458,11 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                           Text("User Login Successfully!!")));
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => StartProcess(),
-                                ),
+                                FadePageRoute2(
+                                    enterPage: StartProcess(),
+                                    exitPage: HomeScreen(
+                                      login: true,
+                                    )),
                               );
                             } else if (response == 404) {
                               setState(() {

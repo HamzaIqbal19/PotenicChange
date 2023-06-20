@@ -109,20 +109,16 @@ class SplashPageState extends State<SplashPage> {
         body: Center(
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
-            width: AppDimensions.height10(context) * 41.4,
-            height: AppDimensions.height10(context) * 88.8,
-            child: Container(
-              width: AppDimensions.width10(context) * 40.65,
-              height: AppDimensions.height10(context) * 6.5,
-              // width: 423.5,
+            //width: AppDimensions.width10(context) * 40.65,
+            //  height: AppDimensions.height10(context) * 6.5,
+            // width: 423.5,
 
-              margin: EdgeInsets.only(right: 0, top: 0, bottom: 0),
-              decoration: BoxDecoration(
-                // color: Colors.transparent,
-                image: DecorationImage(
-                  image: AssetImage('assets/images/splashpage.png'),
-                  fit: BoxFit.cover,
-                ),
+            margin: EdgeInsets.only(right: 0, top: 0, bottom: 0),
+            decoration: BoxDecoration(
+              // color: Colors.transparent,
+              image: DecorationImage(
+                image: AssetImage('assets/images/splashpage.png'),
+                fit: BoxFit.cover,
               ),
             ),
           ),

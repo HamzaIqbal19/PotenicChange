@@ -85,7 +85,6 @@ class AdminGoal {
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '${Accestoken}',
-
     };
 
     var response = await http.get(
@@ -115,7 +114,6 @@ class AdminGoal {
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '${Accestoken}',
-
     };
     var response = await http.get(
       Uri.parse('${URL.BASE_URL}api/goal/all-goals'),
@@ -137,7 +135,6 @@ class AdminGoal {
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '${Accestoken}',
-
     };
     var response = await http.get(
       Uri.parse('${URL.BASE_URL}api/goal/all-goals?goalCategoryId=$id'),
@@ -152,18 +149,15 @@ class AdminGoal {
     }
   }
 
-   Future<List<Map<String, dynamic>>> searchAllGoal() async {
+  Future<List<Map<String, dynamic>>> searchAllGoal() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken',
-
     };
     var response = await http.get(
-
       Uri.parse('${URL.BASE_URL}api/goal/all-goals'),
-
       headers: headers,
     );
 
@@ -176,7 +170,6 @@ class AdminGoal {
       throw Exception('Failed to fetch goal names');
     }
   }
-
 
 /////////////////////////////////
   ///
@@ -236,12 +229,12 @@ class AdminGoal {
   Future userAddGoal(var goal) async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
+
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
     };
     var Body = json.encode(goal);
-
 
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userGoal/add-user-goal'),
@@ -261,29 +254,32 @@ class AdminGoal {
       // print("response:${}");
       print("request==========>$request");
       return false;
-
     }
   }
 
-  Future updateUserGoal(var reason) async {
+  Future updateUserGoal(String reason) async {
+    final SharedPreferences login = await _prefs;
     final SharedPreferences prefs = await _prefs;
+
     var Accestoken = prefs.getString("usertoken");
-
-    int UserGoalId = 12;
-
-
+    var userGoalId = login.getInt('goalid');
+    print('$userGoalId');
+    //int UserGoalId = 12;
+    print("request: Update");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
     var body = jsonEncode({
-      "reason": '$reason',
+      "[reason]": '$reason',
     });
 
-    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/12'),
-
-        headers: headers, body: body);
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/userGoal/$userGoalId'),
+        headers: headers,
+        body: body);
     print("request: Update");
+    print('=====>$request.statusCode');
     print(request.body);
     if (request.statusCode == 200) {
       // print("$request.statusCode");
@@ -291,8 +287,6 @@ class AdminGoal {
       var jsonData = jsonDecode(request.body);
       print("Result: $jsonData");
       return true;
-
-
     } else {
       print("Update failed");
       client.close();
@@ -301,19 +295,20 @@ class AdminGoal {
   }
 
   static Future getUserGoal() async {
-
     var goalName;
 
+    final SharedPreferences login = await _prefs;
     final SharedPreferences prefs = await _prefs;
+
     var Accestoken = prefs.getString("usertoken");
-
-
+    var userGoalId = login.getInt('goalid');
+    print('$userGoalId');
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userGoal/12'),
+      Uri.parse('${URL.BASE_URL}api/userGoal/$userGoalId'),
       headers: headers,
     );
 
@@ -328,15 +323,21 @@ class AdminGoal {
   }
 
   Future deleteUserGoal() async {
+    final SharedPreferences login = await _prefs;
     final SharedPreferences prefs = await _prefs;
+
+    var UserGoalId = login.getInt('goalId');
+    print('$UserGoalId');
+
     var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
 
-    var request = await client
-        .delete(Uri.parse('${URL.BASE_URL}api/userGoal/1'), headers: headers);
+    var request = await client.delete(
+        Uri.parse('${URL.BASE_URL}api/userGoal/$UserGoalId'),
+        headers: headers);
 
     var responses = jsonDecode(request.body);
     print("Goal to be deleted");

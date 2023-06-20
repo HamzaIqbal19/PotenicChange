@@ -7,6 +7,8 @@ import 'package:potenic_app/utils/app_constants.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading2.dart';
+
 class StartProcess extends StatefulWidget {
   const StartProcess({Key? key}) : super(key: key);
 
@@ -242,8 +244,9 @@ class _StartProcessState extends State<StartProcess> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => Categories(),
+                      FadePageRoute2(
+                        enterPage: Categories(),
+                        exitPage: StartProcess(),
                       ),
                     );
                   },

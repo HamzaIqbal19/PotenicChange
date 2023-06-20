@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -113,9 +114,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        FadePageRoute(
-                          // Pass the current page widget here
-                          page: StartProcess(),
+                        FadePageRoute2(
+                          enterPage: StartProcess(),
+                          exitPage: const HomeScreen(login: false),
                         ),
                       );
                     },
@@ -216,16 +217,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                                         .remove('userId');
                                                     await prefs
                                                         .remove('refreshtoken');
-                                                    // Navigator.pushReplacement(
-                                                    //   context,
-                                                    //   FadePageRoute(
-                                                    //       page:
-                                                    //           const HomeScreen(
-                                                    //               login: false),
-                                                    //       currentPage:
-                                                    //           HomeScreen(
-                                                    //               login: true)),
-                                                    // );
+
+                                                    Navigator.push(
+                                                      context,
+                                                      FadePageRoute2(
+                                                        enterPage: HomeScreen(
+                                                          login: false,
+                                                        ),
+                                                        exitPage:
+                                                            const HomeScreen(
+                                                                login: true),
+                                                      ),
+                                                    );
                                                   },
                                                   child: Container(
                                                     height: 44,
@@ -354,8 +357,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => SignUpPage(),
+                                FadePageRoute(
+                                  page: SignUpPage(),
                                 ),
                               );
                             },
@@ -385,8 +388,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => LoginPage(),
+                                FadePageRoute2(
+                                  enterPage: LoginPage(),
+                                  exitPage: HomeScreen(login: false),
                                 ),
                               );
                             },

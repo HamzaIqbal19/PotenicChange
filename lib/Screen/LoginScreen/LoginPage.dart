@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -159,9 +160,9 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => Loginemailandpassword(),
-                              ),
+                              FadePageRoute2(
+                                  enterPage: Loginemailandpassword(),
+                                  exitPage: LoginPage()),
                             );
                           },
                           icon: Icon(

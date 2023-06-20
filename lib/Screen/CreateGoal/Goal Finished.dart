@@ -6,6 +6,8 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/fading2.dart';
+
 class GoalFinished extends StatefulWidget {
   const GoalFinished({Key? key}) : super(key: key);
 
@@ -130,8 +132,9 @@ class _GoalFinishedState extends State<GoalFinished> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const StarReview(),
+                        FadePageRoute2(
+                          exitPage: GoalFinished(),
+                          enterPage: const StarReview(),
                         ),
                       );
                     },
@@ -163,8 +166,9 @@ class _GoalFinishedState extends State<GoalFinished> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(
-                                builder: (context) => const CreatePractice(),
+                              FadePageRoute2(
+                                exitPage: GoalFinished(),
+                                enterPage: const CreatePractice(),
                               ),
                             );
                           },

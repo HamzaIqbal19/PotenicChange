@@ -12,6 +12,8 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/fading2.dart';
+
 // ignore: camel_case_types
 class Goal_Identity extends StatefulWidget {
   const Goal_Identity({Key? key}) : super(key: key);
@@ -221,13 +223,12 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                         await _prefs;
                                     var GoalIdentity = prefs.setString(
                                         'route', "GoalIdentity");
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            HomeScreenProgressSaved(
-                                                login: true,
-                                                route: "GoalIdentity"),
+                                      FadePageRoute2(
+                                        exitPage: Goal_Identity(),
+                                        enterPage: HomeScreenProgressSaved(
+                                            login: true, route: "GoalIdentity"),
                                       ),
                                     );
                                   },
@@ -254,10 +255,11 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 width: double.infinity,
                                 child: TextButton(
                                   onPressed: () {
-                                    Navigator.pushReplacement(
+                                    Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
+                                      FadePageRoute2(
+                                        exitPage: Goal_Identity(),
+                                        enterPage:
                                             const HomeScreen(login: false),
                                       ),
                                     );
@@ -569,8 +571,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         updateGoalReason(myIdentity);
                         Navigator.push(
                           context,
-                          FadePageRoute(
-                            page: Visualising(),
+                          FadePageRoute2(
+                            exitPage: Goal_Identity(),
+                            enterPage: Visualising(),
                           ),
                         );
                       },

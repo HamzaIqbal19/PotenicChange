@@ -37,7 +37,7 @@ class _reviewboxState extends State<reviewbox> {
       if (response.length != 0) {
         setState(() {
           Loading = false;
-          reason = response["reason"][0];
+          reason = response["reason"][0]['text'];
         });
       } else {
         print("response:$response");

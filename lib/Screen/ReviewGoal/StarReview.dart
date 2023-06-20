@@ -9,6 +9,9 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../../Widgets/fading2.dart';
+import '../HomeScreen/HomeScreen.dart';
+
 class StarReview extends StatefulWidget {
   const StarReview({Key? key}) : super(key: key);
 
@@ -36,9 +39,9 @@ class _StarReviewState extends State<StarReview> {
         setState(() {
           Loading = false;
           goalName = response["name"];
-          reason = response["reason"][0];
-          identity = response["identityStatement"][0];
-          visualize = response["visualizingYourSelf"][0];
+          reason = response["reason"][0]['text'];
+          identity = response["identityStatement"][0]['text'];
+          visualize = response["visualizingYourSelf"][0]['text'];
         });
       } else {
         setState(() {
@@ -91,12 +94,7 @@ class _StarReviewState extends State<StarReview> {
                   ),
                   onPressed: () {
                     Navigator.pop(context);
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
-                    //   ),
-                    // );
+
                     // Add code for performing close action
                   },
                 )
@@ -378,9 +376,9 @@ class _StarReviewState extends State<StarReview> {
                                             onTap: () {
                                               Navigator.push(
                                                 context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      StarReviewWhy(),
+                                                FadePageRoute2(
+                                                  exitPage: StarReview(),
+                                                  enterPage: StarReviewWhy(),
                                                 ),
                                               );
                                             },
@@ -877,7 +875,14 @@ class _StarReviewState extends State<StarReview> {
                                                 if (response == true) {
                                                   print(
                                                       "==================>Successfully deleted");
-                                                  Navigator.pop(context);
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            HomeScreen(
+                                                          login: true,
+                                                        ),
+                                                      ));
                                                 } else {
                                                   print('Goal is not deleted');
                                                 }
