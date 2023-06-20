@@ -6,8 +6,10 @@ import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet_Practice.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../API/Practice.dart';
+import 'Loaders/create_practice_shimmer.dart';
 
 class CreatePractice extends StatefulWidget {
   const CreatePractice({Key? key}) : super(key: key);
@@ -103,18 +105,19 @@ class _CreatePracticeState extends State<CreatePractice> {
             ],
           )),
       body: Stack(children: [
-        Loading == false
-            ? Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/Categories.png"),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              )
-            : Container(
-                color: Colors.white,
-              ),
+        // Loading == false
+        //     ?
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/Categories.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        // : Container(
+        //     color: Colors.white,
+        //   ),
 
         // SingleChildScrollView(
         //   child: ,
@@ -243,232 +246,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                           );
                         }),
                   ),
-
-                  /*
-              Container(
-                  height: AppDimensions.height10(context) * 52.9,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Meditation", "Meditation", '1'),
-                                  ),
-                                );
-                              },
-                              child: circles(
-                                  circle_text: "Meditation",
-                                  circle_color1: 0xFF83BB9A,
-                                  circle_color2: 0xFF1E4A22,
-                                  circle_border: 3.0,
-                                  circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10(context) * 13.4,
-                                  circle_width: AppDimensions.height10(context) * 13.4,
-                                  textfont: AppDimensions.height10(context) * 1.6,
-                                  textcolor: 0xFFFFFFFF),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Count temper episodes",
-                                        "Count temper \n episodes",
-                                        '2'),
-                                  ),
-                                );
-                              },
-                              child: circles(
-                                  circle_text: "Count temper \n episodes",
-                                  circle_color1: 0xFF83BB9A,
-                                  circle_color2: 0xFF1E4A22,
-                                  circle_border: 3.0,
-                                  circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10(context) * 13.4,
-                                  circle_width: AppDimensions.height10(context) * 13.4,
-                                  textfont: AppDimensions.height10(context) * 1.6,
-                                  textcolor: 0xFFFFFFFF),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: AppDimensions.height10(context) * 0.79,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Take time to understand",
-                                        "Take time to \n understand",
-                                        '3'),
-                                  ),
-                                );
-                              },
-                              child: circles(
-                                  circle_text: "Take time to \n understand",
-                                  circle_color1: 0xFF83BB9A,
-                                  circle_color2: 0xFF1E4A22,
-                                  circle_border: 3.0,
-                                  circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10(context) * 13.4,
-                                  circle_width: AppDimensions.height10(context) * 13.4,
-                                  textfont: AppDimensions.height10(context) * 1.6,
-                                  textcolor: 0xFFFFFFFF),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Laugh it off", "Laugh it off", '4'),
-                                  ),
-                                );
-                              },
-                              child: circles(
-                                  circle_text: "Laugh it off",
-                                  circle_color1: 0xFF83BB9A,
-                                  circle_color2: 0xFF1E4A22,
-                                  circle_border: 3.0,
-                                  circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10(context) * 13.4,
-                                  circle_width: AppDimensions.height10(context) * 13.4,
-                                  textfont: AppDimensions.height10(context) * 1.6,
-                                  textcolor: 0xFFFFFFFF),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: AppDimensions.height10(context) * 0.79,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Count  down", "Count \n down", '5'),
-                                  ),
-                                );
-                              },
-                              child: circles(
-                                  circle_text: "Count \n down",
-                                  circle_color1: 0xFF83BB9A,
-                                  circle_color2: 0xFF1E4A22,
-                                  circle_border: 3.0,
-                                  circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10(context) * 13.4,
-                                  circle_width: AppDimensions.height10(context) * 13.4,
-                                  textfont: AppDimensions.height10(context) * 1.6,
-                                  textcolor: 0xFFFFFFFF),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Practice gratitude",
-                                        "Practice \n gratitude",
-                                        '6'),
-                                  ),
-                                );
-                              },
-                              child: circles(
-                                  circle_text: "Practice \n gratitude",
-                                  circle_color1: 0xFF83BB9A,
-                                  circle_color2: 0xFF1E4A22,
-                                  circle_border: 3.0,
-                                  circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10(context) * 13.4,
-                                  circle_width: AppDimensions.height10(context) * 13.4,
-                                  textfont: AppDimensions.height10(context) * 1.6,
-                                  textcolor: 0xFFFFFFFF),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: AppDimensions.height10(context) * 0.79,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Walk away", "Walk away", '7'),
-                                  ),
-                                );
-                              },
-                              child: circles(
-                                  circle_text: "Walk away",
-                                  circle_color1: 0xFF83BB9A,
-                                  circle_color2: 0xFF1E4A22,
-                                  circle_border: 3.0,
-                                  circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10(context) * 13.4,
-                                  circle_width: AppDimensions.height10(context) * 13.4,
-                                  textfont: AppDimensions.height10(context) * 1.6,
-                                  textcolor: 0xFFFFFFFF),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => PracticeName(
-                                        "Get it out,express your feelings",
-                                        "Get it out, \n express your \n feelings",
-                                        '8'),
-                                  ),
-                                );
-                              },
-                              child: circles(
-                                  circle_text:
-                                      "Get it out, \n express your \n feelings",
-                                  circle_color1: 0xFF83BB9A,
-                                  circle_color2: 0xFF1E4A22,
-                                  circle_border: 3.0,
-                                  circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10(context) * 13.4,
-                                  circle_width: AppDimensions.height10(context) * 13.4,
-                                  textfont: AppDimensions.height10(context) * 1.6,
-                                  textcolor: 0xFFFFFFFF),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )),
-          */
                 ],
               )
-            : const Center(
-                child: SpinKitFadingCircle(
-                  color: Color(0xFFB1B8FF),
-                  size: 80,
-                ),
-              ),
+            : Create_practice_shimmer(),
       ]),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),

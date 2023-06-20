@@ -10,8 +10,11 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:simple_gradient_text/simple_gradient_text.dart';
+
+import 'Loaders/categories_shimmer.dart';
 
 class Categories extends StatefulWidget {
   @override
@@ -86,18 +89,19 @@ class _CategoriesState extends State<Categories> {
       ),
       body: Stack(
         children: [
-          Loading == false
-              ? Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/Categories.png"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                )
-              : Container(
-                  color: Colors.white,
-                ),
+          // Loading == false
+          //     ?
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/Categories.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          // : Container(
+          //     color: Colors.white,
+          //   ),
           Loading == false
               ? Column(
                   children: [
@@ -298,12 +302,7 @@ class _CategoriesState extends State<Categories> {
                     )
                   ],
                 )
-              : Center(
-                  child: SpinKitFadingCircle(
-                    color: Color(0xFFB1B8FF),
-                    size: 80,
-                  ),
-                ),
+              : const categories_shimmer(),
         ],
       ),
     );

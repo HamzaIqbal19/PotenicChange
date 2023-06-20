@@ -25,39 +25,36 @@ class circles extends StatelessWidget {
     required this.circle_width,
     required this.textfont,
     required this.textcolor,
-
-
-
     this.state = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: circle_height,
-      width: circle_width,
-      decoration: BoxDecoration(
-          borderRadius:  const BorderRadius.all(Radius.circular(70.0)),
-          border:  Border.all(width:circle_border,color:Color(circle_bordercolor)),
-          gradient:   LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color(circle_color1), Color(circle_color2)])),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            circle_text,textAlign: TextAlign.center,style: TextStyle(
-            fontSize: textfont,
-            color: Color(textcolor),
-            fontWeight: FontWeight.w500,
-
-          ),
-          ),
-        ],
-      )
-    );
+        height: circle_height,
+        width: circle_width,
+        decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(70.0)),
+            border: Border.all(
+                width: circle_border, color: Color(circle_bordercolor)),
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(circle_color1), Color(circle_color2)])),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              circle_text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: textfont,
+                color: Color(textcolor),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        ));
   }
 }
-
