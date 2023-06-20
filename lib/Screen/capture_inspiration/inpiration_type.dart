@@ -25,23 +25,24 @@ class inspiration_type extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
           //centerTitle: true,
           title: Container(
-            width: AppDimensions.height10 * 18.9,
-            height: AppDimensions.height10 * 2.4,
-            margin: EdgeInsets.only(left: AppDimensions.height10 * 6.6),
+            width: AppDimensions.height10(context) * 18.9,
+            height: AppDimensions.height10(context) * 2.4,
+            margin:
+                EdgeInsets.only(left: AppDimensions.height10(context) * 6.6),
             child: Row(
               children: [
                 GradientText(
                   'Inspiration 2',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10(context) * 2.0,
                     fontWeight: FontWeight.w600,
                   ),
                   colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
@@ -50,7 +51,7 @@ class inspiration_type extends StatelessWidget {
                   '/2',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.0,
+                    fontSize: AppDimensions.height10(context) * 2.0,
                     fontWeight: FontWeight.w400,
                   ),
                   colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
@@ -64,8 +65,8 @@ class inspiration_type extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -80,17 +81,17 @@ class inspiration_type extends StatelessWidget {
                   fit: BoxFit.cover)),
           child: Column(children: [
             Container(
-              width: AppDimensions.height10 * 34.3,
-              height: AppDimensions.height10 * 3.9,
+              width: AppDimensions.height10(context) * 34.3,
+              height: AppDimensions.height10(context) * 3.9,
               margin: EdgeInsets.only(
-                  bottom: AppDimensions.height10 * 1.1,
-                  top: AppDimensions.height10 * 17.2),
+                  bottom: AppDimensions.height10(context) * 1.1,
+                  top: AppDimensions.height10(context) * 17.2),
               child: Center(
                 child: GradientText(
                   'Your inspiration',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.8,
+                    fontSize: AppDimensions.height10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                   ),
                   colors: [const Color(0xffFA9934), const Color(0xffEDD15E)],
@@ -98,33 +99,34 @@ class inspiration_type extends StatelessWidget {
               ),
             ),
             Container(
-              width: AppDimensions.height10 * 34.3,
-              // height: AppDimensions.height10 * 7.5,
-              margin: EdgeInsets.only(bottom: AppDimensions.height10 * 11.50),
+              width: AppDimensions.height10(context) * 34.3,
+              // height: AppDimensions.height10(context) * 7.5,
+              margin: EdgeInsets.only(
+                  bottom: AppDimensions.height10(context) * 11.50),
               child: Center(
                 child: Text(
                   'What type of inspiration do you want to\nrecord?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 1.8,
+                      fontSize: AppDimensions.height10(context) * 1.8,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFFFFFFFF)),
                 ),
               ),
             ),
             Container(
-              height: AppDimensions.height10 * 13.3,
-              //margin: EdgeInsets.only(left: AppDimensions.height10 * 1.6),
+              height: AppDimensions.height10(context) * 13.3,
+              //margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.6),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 13.3,
-                      height: AppDimensions.height10 * 13.3,
+                      width: AppDimensions.height10(context) * 13.3,
+                      height: AppDimensions.height10(context) * 13.3,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10 * 1.4,
-                          left: AppDimensions.height10 * 4.0),
+                          right: AppDimensions.height10(context) * 1.4,
+                          left: AppDimensions.height10(context) * 4.0),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           //borderRadius: BorderRadius.circular(10),
@@ -133,7 +135,8 @@ class inspiration_type extends StatelessWidget {
                                   'assets/images/Image_Subtract.png'),
                               fit: BoxFit.cover)),
                       child: Container(
-                        margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
+                        margin: EdgeInsets.all(
+                            AppDimensions.height10(context) * 0.758),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           // borderRadius: BorderRadius.circular(5)
@@ -147,10 +150,14 @@ class inspiration_type extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10 * 3.032,
-                                    height: AppDimensions.height10 * 3.032,
+                                    width:
+                                        AppDimensions.height10(context) * 3.032,
+                                    height:
+                                        AppDimensions.height10(context) * 3.032,
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 0.68),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                0.68),
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -158,13 +165,16 @@ class inspiration_type extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 1.0),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.0),
                                     child: Text(
                                       'Image',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
@@ -178,11 +188,14 @@ class inspiration_type extends StatelessWidget {
                                                   const photo_pop_up()));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10 * 2.122,
-                                      height: AppDimensions.height10 * 2.122,
+                                      width: AppDimensions.height10(context) *
+                                          2.122,
+                                      height: AppDimensions.height10(context) *
+                                          2.122,
                                       margin: EdgeInsets.only(
                                           bottom:
-                                              AppDimensions.height10 * 0.178),
+                                              AppDimensions.height10(context) *
+                                                  0.178),
                                       decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
@@ -196,10 +209,10 @@ class inspiration_type extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 13.3,
-                      height: AppDimensions.height10 * 13.3,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.4),
+                      width: AppDimensions.height10(context) * 13.3,
+                      height: AppDimensions.height10(context) * 13.3,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.4),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -207,25 +220,30 @@ class inspiration_type extends StatelessWidget {
                                   'assets/images/Video_Subtract.png'),
                               fit: BoxFit.cover)),
                       child: Container(
-                        margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
+                        margin: EdgeInsets.all(
+                            AppDimensions.height10(context) * 0.758),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
                         child: DottedBorder(
                             borderType: BorderType.Circle,
                             color: Colors.white,
-                            radius:
-                                Radius.circular(AppDimensions.height10 * 1.5),
+                            radius: Radius.circular(
+                                AppDimensions.height10(context) * 1.5),
                             child: Container(
                               alignment: Alignment.center,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10 * 3.032,
-                                    height: AppDimensions.height10 * 3.032,
+                                    width:
+                                        AppDimensions.height10(context) * 3.032,
+                                    height:
+                                        AppDimensions.height10(context) * 3.032,
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 0.68),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                0.68),
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -233,13 +251,16 @@ class inspiration_type extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 1.0),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.0),
                                     child: Text(
                                       'Note',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
@@ -256,11 +277,14 @@ class inspiration_type extends StatelessWidget {
                                                   )));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10 * 2.122,
-                                      height: AppDimensions.height10 * 2.122,
+                                      width: AppDimensions.height10(context) *
+                                          2.122,
+                                      height: AppDimensions.height10(context) *
+                                          2.122,
                                       margin: EdgeInsets.only(
                                           bottom:
-                                              AppDimensions.height10 * 0.178),
+                                              AppDimensions.height10(context) *
+                                                  0.178),
                                       decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
@@ -274,10 +298,10 @@ class inspiration_type extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 13.3,
-                      height: AppDimensions.height10 * 13.3,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.4),
+                      width: AppDimensions.height10(context) * 13.3,
+                      height: AppDimensions.height10(context) * 13.3,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.4),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -285,14 +309,15 @@ class inspiration_type extends StatelessWidget {
                                   'assets/images/Image_Subtract.png'),
                               fit: BoxFit.cover)),
                       child: Container(
-                        margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
+                        margin: EdgeInsets.all(
+                            AppDimensions.height10(context) * 0.758),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
                         child: DottedBorder(
                             borderType: BorderType.Circle,
-                            radius:
-                                Radius.circular(AppDimensions.height10 * 1.5),
+                            radius: Radius.circular(
+                                AppDimensions.height10(context) * 1.5),
                             // dashPattern: [10, 10],
                             color: Colors.white,
                             child: Container(
@@ -301,10 +326,14 @@ class inspiration_type extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10 * 3.032,
-                                    height: AppDimensions.height10 * 3.032,
+                                    width:
+                                        AppDimensions.height10(context) * 3.032,
+                                    height:
+                                        AppDimensions.height10(context) * 3.032,
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 0.68),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                0.68),
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -312,13 +341,16 @@ class inspiration_type extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 1.0),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.0),
                                     child: Text(
                                       'Link to connect',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
@@ -332,11 +364,14 @@ class inspiration_type extends StatelessWidget {
                                                   const link_info()));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10 * 2.122,
-                                      height: AppDimensions.height10 * 2.122,
+                                      width: AppDimensions.height10(context) *
+                                          2.122,
+                                      height: AppDimensions.height10(context) *
+                                          2.122,
                                       margin: EdgeInsets.only(
                                           bottom:
-                                              AppDimensions.height10 * 0.178),
+                                              AppDimensions.height10(context) *
+                                                  0.178),
                                       decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
@@ -350,10 +385,10 @@ class inspiration_type extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 13.3,
-                      height: AppDimensions.height10 * 13.30,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 0.7),
+                      width: AppDimensions.height10(context) * 13.3,
+                      height: AppDimensions.height10(context) * 13.30,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 0.7),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -361,25 +396,30 @@ class inspiration_type extends StatelessWidget {
                                   'assets/images/Video_Subtract.png'),
                               fit: BoxFit.cover)),
                       child: Container(
-                        margin: EdgeInsets.all(AppDimensions.height10 * 0.758),
+                        margin: EdgeInsets.all(
+                            AppDimensions.height10(context) * 0.758),
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
                         child: DottedBorder(
                             borderType: BorderType.Circle,
                             color: Colors.white,
-                            radius:
-                                Radius.circular(AppDimensions.height10 * 1.5),
+                            radius: Radius.circular(
+                                AppDimensions.height10(context) * 1.5),
                             child: Container(
                               alignment: Alignment.center,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10 * 3.032,
-                                    height: AppDimensions.height10 * 3.032,
+                                    width:
+                                        AppDimensions.height10(context) * 3.032,
+                                    height:
+                                        AppDimensions.height10(context) * 3.032,
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 0.68),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                0.68),
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -387,13 +427,16 @@ class inspiration_type extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 1.0),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.0),
                                     child: Text(
                                       'Video link',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
@@ -407,11 +450,14 @@ class inspiration_type extends StatelessWidget {
                                                   const video_info()));
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10 * 2.122,
-                                      height: AppDimensions.height10 * 2.122,
+                                      width: AppDimensions.height10(context) *
+                                          2.122,
+                                      height: AppDimensions.height10(context) *
+                                          2.122,
                                       margin: EdgeInsets.only(
                                           bottom:
-                                              AppDimensions.height10 * 0.178),
+                                              AppDimensions.height10(context) *
+                                                  0.178),
                                       decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(

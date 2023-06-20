@@ -70,46 +70,45 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: AppDimensions.height10 * 7.0,
+                  height: AppDimensions.height10(context) * 7.0,
                 ),
                 Center(
                   child: Image(
                     // color: Colors.orange,
                     image: const AssetImage("assets/images/homelogo.png"),
-                    height: AppDimensions.height10 * 10.0,
-                    width: AppDimensions.width10 * 10.0,
+                    height: AppDimensions.height10(context) * 10.0,
+                    width: AppDimensions.width10(context) * 10.0,
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 2.32),
+                SizedBox(height: AppDimensions.height10(context) * 2.32),
                 Container(
-                  height: AppDimensions.height10 * 8.5,
+                  height: AppDimensions.height10(context) * 8.5,
                   child: Text(
                     "Your Destiny is at \n Your Fingertips",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontSize: AppDimensions.height10 * 3.0,
+                      fontSize: AppDimensions.height10(context) * 3.0,
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 0.5),
+                SizedBox(height: AppDimensions.height10(context) * 0.5),
                 Container(
-                    height: AppDimensions.height10 * 11.5,
+                    height: AppDimensions.height10(context) * 11.5,
                     child: Text(
                       'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     )),
-                SizedBox(height: AppDimensions.height10 * 4.4),
+                SizedBox(height: AppDimensions.height10(context) * 4.4),
                 Center(
                   child: GestureDetector(
                     onTap: () {
-
                       Navigator.push(
                         context,
                         FadePageRoute(
@@ -121,12 +120,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Image(
                       // color: Colors.orange,
                       image: const AssetImage("assets/images/createstar.png"),
-                      height: AppDimensions.height10 * 23,
-                      width: AppDimensions.width10 * 26,
+                      height: AppDimensions.height10(context) * 23,
+                      width: AppDimensions.width10(context) * 26,
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 12.1),
+                SizedBox(height: AppDimensions.height10(context) * 12.1),
                 widget.login == true
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -139,13 +138,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   duration: Duration(seconds: 1),
                                   context: context,
                                   builder: (BuildContext context) => SizedBox(
-                                        width: AppDimensions.height10 * 27.0,
-                                        height: AppDimensions.height10 * 19.8,
+                                        width: AppDimensions.height10(context) *
+                                            27.0,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                19.8,
                                         child: AlertDialog(
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.4)),
                                           contentPadding: EdgeInsets.zero,
                                           actionsPadding: EdgeInsets.zero,
@@ -156,16 +159,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 right: 16,
                                                 left: 16,
                                                 bottom: 2),
-                                            height:
-                                                AppDimensions.height10 * 2.2,
-                                            width:
-                                                AppDimensions.height10 * 23.8,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.2,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                23.8,
                                             child: Text(
                                               "Log out?",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.7,
                                                 fontWeight: FontWeight.w400,
                                               ),
@@ -176,17 +182,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 bottom: 19,
                                                 left: 16,
                                                 right: 16),
-                                            height:
-                                                AppDimensions.height10 * 4.8,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                4.8,
                                             width: 238,
                                             child: Text(
                                               "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     0.15,
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.5,
                                                 fontWeight: FontWeight.w400,
                                               ),
@@ -238,7 +247,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                                 SizedBox(
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           0.1,
                                                   child: Divider(
                                                     color:
@@ -251,7 +261,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   width: double.infinity,
                                                   margin: EdgeInsets.only(
                                                       bottom: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.0),
                                                   color: Colors.white,
                                                   child: TextButton(
@@ -283,20 +294,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               // );
                             },
                             child: Container(
-                              height: AppDimensions.height10 * 5,
-                              width: AppDimensions.height10 * 13,
+                              height: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.height10(context) * 13,
                               decoration: BoxDecoration(
                                 color: const Color(0xFFF5F5F5),
                                 border: Border.all(color: Colors.white),
                                 borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10 * 5.0)),
+                                    AppDimensions.height10(context) * 5.0)),
                               ),
                               child: Center(
                                 child: Text(
                                   "logout",
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
-                                    fontSize: AppDimensions.font16 - 2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -304,7 +316,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10 * 1.4,
+                            width: AppDimensions.height10(context) * 1.4,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -312,8 +324,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context, "Introduction", "OnBoarding");
                             },
                             child: Container(
-                              height: AppDimensions.height10 * 5,
-                              width: AppDimensions.height10 * 5,
+                              height: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.height10(context) * 5,
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 border: Border.all(color: Colors.transparent),
@@ -325,8 +337,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   // color: Colors.orange,
                                   image: const AssetImage(
                                       "assets/images/Moreactions.png"),
-                                  height: AppDimensions.height10 * 5,
-                                  width: AppDimensions.width10 * 5,
+                                  height: AppDimensions.height10(context) * 5,
+                                  width: AppDimensions.width10(context) * 5,
                                 ),
                               ),
                             ),
@@ -346,20 +358,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             },
                             child: Container(
-                              height: AppDimensions.height10 * 5,
-                              width: AppDimensions.height10 * 13,
+                              height: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.height10(context) * 13,
                               decoration: BoxDecoration(
                                 color: const Color(0xFFF5F5F5),
                                 border: Border.all(color: Colors.white),
                                 borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10 * 5.0)),
+                                    AppDimensions.height10(context) * 5.0)),
                               ),
                               child: Center(
                                 child: Text(
                                   "I’m new here",
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
-                                    fontSize: AppDimensions.font16 - 2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -376,21 +389,22 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             },
                             child: Container(
-                              height: AppDimensions.height10 * 5,
-                              width: AppDimensions.height10 * 13,
+                              height: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.height10(context) * 13,
                               decoration: BoxDecoration(
                                 color: const Color(0xFF5A4D73),
                                 border:
                                     Border.all(color: const Color(0xFF5A4D73)),
                                 borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10 * 5.0)),
+                                    AppDimensions.height10(context) * 5.0)),
                               ),
                               child: Center(
                                 child: Text(
                                   "Log in",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: AppDimensions.font16 - 2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -403,8 +417,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context, "Introduction", "OnBoarding");
                             },
                             child: Container(
-                              height: AppDimensions.height10 * 5,
-                              width: AppDimensions.height10 * 5,
+                              height: AppDimensions.height10(context) * 5,
+                              width: AppDimensions.height10(context) * 5,
                               decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 border: Border.all(color: Colors.transparent),
@@ -416,8 +430,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   // color: Colors.orange,
                                   image: const AssetImage(
                                       "assets/images/Moreactions.png"),
-                                  height: AppDimensions.height10 * 5,
-                                  width: AppDimensions.width10 * 5,
+                                  height: AppDimensions.height10(context) * 5,
+                                  width: AppDimensions.width10(context) * 5,
                                 ),
                               ),
                             ),

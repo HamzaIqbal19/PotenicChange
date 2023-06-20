@@ -51,41 +51,41 @@ class missed_Menu extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10 * 30.4,
-                height: AppDimensions.height10 * 18.6,
+                width: AppDimensions.height10(context) * 30.4,
+                height: AppDimensions.height10(context) * 18.6,
                 // color: Colors.grey.withOpacity(0.5),
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 5.0,
-                    bottom: AppDimensions.height10 * 1.0),
+                    top: AppDimensions.height10(context) * 5.0,
+                    bottom: AppDimensions.height10(context) * 1.0),
                 child: Column(
                   children: [
                     Text(
                       'Practice Menu',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: AppDimensions.height10 * 2.0,
+                          fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600),
                     ),
                     Text(
                       'Control my anger',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: AppDimensions.height10 * 2.0,
+                          fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 40.0,
-                      height: AppDimensions.height10 * 11.2,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 1.6),
+                      width: AppDimensions.height10(context) * 40.0,
+                      height: AppDimensions.height10(context) * 11.2,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.6),
                       // color: Colors.blue,
                       child: Stack(
                         children: [
                           Align(
                             alignment: const Alignment(-1, 0),
                             child: Container(
-                              width: AppDimensions.height10 * 10.4,
-                              height: AppDimensions.height10 * 11.2,
+                              width: AppDimensions.height10(context) * 10.4,
+                              height: AppDimensions.height10(context) * 11.2,
                               decoration: const BoxDecoration(
                                 // color: Colors.amber,
                                 image: DecorationImage(
@@ -98,8 +98,8 @@ class missed_Menu extends StatelessWidget {
                           Align(
                             alignment: const Alignment(-0.6, -0.2),
                             child: Container(
-                              height: AppDimensions.height10 * 5.0,
-                              width: AppDimensions.height10 * 4.6,
+                              height: AppDimensions.height10(context) * 5.0,
+                              width: AppDimensions.height10(context) * 4.6,
                               decoration: const BoxDecoration(
                                   //color: Colors.amber,
                                   image: DecorationImage(
@@ -111,8 +111,8 @@ class missed_Menu extends StatelessWidget {
                           Align(
                             alignment: const Alignment(1.3, 6),
                             child: Container(
-                              width: AppDimensions.height10 * 21,
-                              height: AppDimensions.height10 * 10.6,
+                              width: AppDimensions.height10(context) * 21,
+                              height: AppDimensions.height10(context) * 10.6,
                               // color: Colors.amber.withOpacity(0.2),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,18 +122,23 @@ class missed_Menu extends StatelessWidget {
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                         color: const Color(0xffffffff),
-                                        fontSize: AppDimensions.height10 * 2.0,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
                                         fontWeight: FontWeight.w600),
                                   ),
                                   Container(
-                                    height: AppDimensions.height10 * 2.5,
+                                    height:
+                                        AppDimensions.height10(context) * 2.5,
                                     margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 0.6),
+                                        top: AppDimensions.height10(context) *
+                                            0.6),
                                     child: Text(
                                       'Session missed',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xffEB5757)),
                                     ),
@@ -152,14 +157,15 @@ class missed_Menu extends StatelessWidget {
               GestureDetector(
                 onTap: () {},
                 child: Container(
-                  width: AppDimensions.height10 * 9.36,
-                  height: AppDimensions.height10 * 12.0,
-                  margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.9),
+                  width: AppDimensions.height10(context) * 9.36,
+                  height: AppDimensions.height10(context) * 12.0,
+                  margin: EdgeInsets.only(
+                      bottom: AppDimensions.height10(context) * 1.9),
                   child: Column(
                     children: [
                       Container(
-                        width: AppDimensions.height10 * 7.0,
-                        height: AppDimensions.height10 * 7.0,
+                        width: AppDimensions.height10(context) * 7.0,
+                        height: AppDimensions.height10(context) * 7.0,
                         decoration: BoxDecoration(
                             gradient: const LinearGradient(
                                 begin: Alignment.topCenter,
@@ -169,10 +175,10 @@ class missed_Menu extends StatelessWidget {
                                   Color(0xffFDA210),
                                 ]),
                             shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.all(
-                                Radius.circular(AppDimensions.height10 * 13.9)),
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                AppDimensions.height10(context) * 13.9)),
                             border: Border.all(
-                                width: AppDimensions.height10 * 0.3,
+                                width: AppDimensions.height10(context) * 0.3,
                                 color: Colors.white)),
                         child: Center(
                             child: GestureDetector(
@@ -180,22 +186,22 @@ class missed_Menu extends StatelessWidget {
                           child: Icon(
                             Icons.add_task,
                             color: Colors.white,
-                            // fill: AppDimensions.height10 * 0.10,
-                            size: AppDimensions.height10 * 2.8,
+                            // fill: AppDimensions.height10(context) * 0.10,
+                            size: AppDimensions.height10(context) * 2.8,
                           ),
                         )),
                       ),
                       Container(
                         // color: Colors.red,
-                        height: AppDimensions.height10 * 4.921,
-                        width: AppDimensions.height10 * 9.36,
+                        height: AppDimensions.height10(context) * 4.921,
+                        width: AppDimensions.height10(context) * 9.36,
                         child: Text(
                           'Record\npractice',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              height: AppDimensions.height10 * 0.12,
+                              height: AppDimensions.height10(context) * 0.12,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w500),
                         ),
                       )
@@ -204,23 +210,24 @@ class missed_Menu extends StatelessWidget {
                 ),
               ),
               // SizedBox(
-              //   width: AppDimensions.height10 * 36.0,
+              //   width: AppDimensions.height10(context) * 36.0,
               //   child: Divider(
-              //     thickness: AppDimensions.height10 * 0.1,
-              //     height: AppDimensions.height10 * 0.1,
+              //     thickness: AppDimensions.height10(context) * 0.1,
+              //     height: AppDimensions.height10(context) * 0.1,
               //     color: Colors.white,
               //   ),
               // ),
               Container(
                 width: double.infinity,
-                height: AppDimensions.height10 * 0.1,
+                height: AppDimensions.height10(context) * 0.1,
                 color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               ),
               Container(
-                width: AppDimensions.height10 * 41.3,
-                height: AppDimensions.height10 * 22.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
+                width: AppDimensions.height10(context) * 41.3,
+                height: AppDimensions.height10(context) * 22.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.2),
                 child: Stack(children: [
                   Align(
                     alignment: const Alignment(1, -1.3),
@@ -228,55 +235,58 @@ class missed_Menu extends StatelessWidget {
                         onPressed: () {},
                         icon: Image.asset(
                           'assets/images/ic_info_outline.png',
-                          height: AppDimensions.height10 * 3.0,
-                          width: AppDimensions.height10 * 3.0,
+                          height: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.height10(context) * 3.0,
                         )),
                   ),
                   Align(
                     alignment: const Alignment(0, -1),
                     child: Container(
-                      width: AppDimensions.height10 * 36.0,
-                      height: AppDimensions.height10 * 24.7,
+                      width: AppDimensions.height10(context) * 36.0,
+                      height: AppDimensions.height10(context) * 24.7,
                       child: Column(
                         children: [
                           Container(
-                            height: AppDimensions.height10 * 5.9,
-                            width: AppDimensions.height10 * 36.0,
+                            height: AppDimensions.height10(context) * 5.9,
+                            width: AppDimensions.height10(context) * 36.0,
                             margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10 * 1.2),
+                                bottom: AppDimensions.height10(context) * 1.2),
                             child: Column(children: [
                               Container(
-                                height: AppDimensions.height10 * 1.9,
+                                height: AppDimensions.height10(context) * 1.9,
                                 child: Text(
                                   'Practice Assessment',
                                   style: TextStyle(
                                       //increase font size by 2 px
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xfff5f5f5)),
                                 ),
                               ),
                               Container(
-                                height: AppDimensions.height10 * 1.7,
+                                height: AppDimensions.height10(context) * 1.7,
                                 margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 0.2),
+                                    top: AppDimensions.height10(context) * 0.2),
                                 child: Text(
                                   'Here is your latest 20 active day evaluation.',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.4,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xfff5f5f5)),
                                 ),
                               ),
                               Container(
-                                height: AppDimensions.height10 * 1.7,
+                                height: AppDimensions.height10(context) * 1.7,
                                 margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 0.3),
+                                    top: AppDimensions.height10(context) * 0.3),
                                 child: RichText(
                                     text: TextSpan(
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.4,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xfff5f5f5)),
                                         children: [
@@ -294,7 +304,8 @@ class missed_Menu extends StatelessWidget {
                             children: [
                               Container(
                                 margin: EdgeInsets.only(
-                                    bottom: AppDimensions.height10 * 1.2),
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.2),
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: const button_feilds(
@@ -324,16 +335,16 @@ class missed_Menu extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                height: AppDimensions.height10 * 0.1,
+                height: AppDimensions.height10(context) * 0.1,
                 color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               ),
 
               Container(
-                height: AppDimensions.height10 * 28.0,
+                height: AppDimensions.height10(context) * 28.0,
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 2.5,
-                    top: AppDimensions.height10 * 3.0),
+                    bottom: AppDimensions.height10(context) * 2.5,
+                    top: AppDimensions.height10(context) * 3.0),
                 child: Column(
                   children: [
                     button_feilds(
@@ -344,8 +355,8 @@ class missed_Menu extends StatelessWidget {
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10 * 1.0,
-                          top: AppDimensions.height10 * 1.0),
+                          bottom: AppDimensions.height10(context) * 1.0,
+                          top: AppDimensions.height10(context) * 1.0),
                       child: button_feilds(
                         feild_text: 'View practice settings',
                         icon_viible: true,
@@ -354,8 +365,8 @@ class missed_Menu extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin:
-                          EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 1.0),
                       child: button_feilds(
                         feild_text: 'Veiw upcoming schedules',
                         icon_viible: true,

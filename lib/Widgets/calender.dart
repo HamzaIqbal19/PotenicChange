@@ -54,7 +54,7 @@ class CalendarWithRadioButtons extends HookWidget {
     }
   }
 
-  Widget _buildDayCell(DateTime date) {
+  Widget _buildDayCell(context, DateTime date) {
     String? status = getStatus(date);
     IconData? iconData = getIcon(status);
 
@@ -62,7 +62,8 @@ class CalendarWithRadioButtons extends HookWidget {
       margin: const EdgeInsets.all(2.0),
       padding: const EdgeInsets.symmetric(vertical: 2.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+        borderRadius:
+            BorderRadius.circular(AppDimensions.height10(context) * 2.0),
         //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
       ),
       child: Center(
@@ -134,9 +135,9 @@ class CalendarWithRadioButtons extends HookWidget {
         },
         onPageChanged: (focusedDay) {},
         calendarBuilders: CalendarBuilders(
-          defaultBuilder: (context, date, _) => _buildDayCell(date),
-          todayBuilder: (context, date, _) => _buildDayCell(date),
-          selectedBuilder: (context, date, _) => _buildDayCell(date),
+          defaultBuilder: (context, date, _) => _buildDayCell(context, date),
+          todayBuilder: (context, date, _) => _buildDayCell(context, date),
+          selectedBuilder: (context, date, _) => _buildDayCell(context, date),
         ),
         eventLoader: (day) {
           return [];

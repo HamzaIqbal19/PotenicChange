@@ -40,7 +40,8 @@ class _PasswordResetState extends State<PasswordReset> {
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+            preferredSize:
+                Size.fromHeight(AppDimensions.height10(context) * 5.0),
             child: AppBar(
               elevation: 0,
               centerTitle: true,
@@ -51,8 +52,8 @@ class _PasswordResetState extends State<PasswordReset> {
               //   child: IconButton(
               //     icon: Image.asset(
               //       'assets/images/Back.png',
-              //       width: AppDimensions.height10 * 3,
-              //       height: AppDimensions.height10 * 3,
+              //       width: AppDimensions.height10(context) * 3,
+              //       height: AppDimensions.height10(context) * 3,
               //       fit: BoxFit.contain,
               //     ),
               //     onPressed: () {
@@ -67,8 +68,8 @@ class _PasswordResetState extends State<PasswordReset> {
                   child: IconButton(
                     icon: Image.asset(
                       'assets/images/Close.png',
-                      width: AppDimensions.height10 * 3.0,
-                      height: AppDimensions.height10 * 3.0,
+                      width: AppDimensions.height10(context) * 3.0,
+                      height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
@@ -99,89 +100,92 @@ class _PasswordResetState extends State<PasswordReset> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: AppDimensions.height10 * 8.02,
+                  height: AppDimensions.height10(context) * 8.02,
                 ),
                 Center(
                   child: GestureDetector(
                     onTap: () {},
                     child: Image(
                       image: const AssetImage("assets/images/logo.png"),
-                      height: AppDimensions.height10 * 7.75,
-                      width: AppDimensions.width10 * 7.75,
+                      height: AppDimensions.height10(context) * 7.75,
+                      width: AppDimensions.width10(context) * 7.75,
                     ),
                   ),
                 ),
 
-                SizedBox(height: AppDimensions.height10 * 2.35),
+                SizedBox(height: AppDimensions.height10(context) * 2.35),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.9,
+                  height: AppDimensions.height10(context) * 3.9,
                   child: Text(
                     "Reset your password",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
-                      fontSize: AppDimensions.font26 + 2.9384698,
+                      fontSize: AppDimensions.height10(context) * 2.9,
                     ),
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10 * 0.9),
+                SizedBox(height: AppDimensions.height10(context) * 0.9),
 
                 // SizedBox(height: AppDimensions.height0),
                 SizedBox(
-                  height: AppDimensions.height10 * 26 + 6,
+                  height: AppDimensions.height10(context) * 26 + 6,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: AppDimensions.height10 * 1.7,
-                        // padding:  EdgeInsets.only(left:AppDimensions.height10*1.2),
+                        height: AppDimensions.height10(context) * 1.7,
+                        // padding:  EdgeInsets.only(left:AppDimensions.height10(context) *1.2),
                         child: Text(
                           "Please enter your registered email to get a new password",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: const Color(0xFFFFFFFF),
-                            fontSize: AppDimensions.height10 * 1.4,
+                            fontSize: AppDimensions.height10(context) * 1.4,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),
-                      SizedBox(height: AppDimensions.height10 * 1.6),
+                      SizedBox(height: AppDimensions.height10(context) * 1.6),
                       Container(
-                          height: AppDimensions.height10 * 6,
-                          width: AppDimensions.height10 * 36.0,
+                          height: AppDimensions.height10(context) * 6,
+                          width: AppDimensions.height10(context) * 36.0,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(color: Colors.white, width: 2),
                               borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10 * 1.8))),
+                                  AppDimensions.height10(context) * 1.8))),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 2.0,
-                                    bottom: AppDimensions.height10 * 0.5),
-                                width: AppDimensions.height10 * 3.7,
-                                height: AppDimensions.height10 * 1.7,
+                                    left: AppDimensions.height10(context) * 2.0,
+                                    bottom:
+                                        AppDimensions.height10(context) * 0.5),
+                                width: AppDimensions.height10(context) * 3.7,
+                                height: AppDimensions.height10(context) * 1.7,
                                 child: Text(
                                   "Email",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFF282828),
-                                      fontSize: AppDimensions.height10 * 1.4),
+                                      fontSize:
+                                          AppDimensions.height10(context) *
+                                              1.4),
                                 ),
                               ),
                               Form(
                                 key: _formkey2,
                                 child: Container(
                                   margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 2.0,
+                                    left: AppDimensions.height10(context) * 2.0,
                                   ),
-                                  width: AppDimensions.height10 * 20.9,
-                                  height: AppDimensions.height10 * 2.2,
+                                  width: AppDimensions.height10(context) * 20.9,
+                                  height: AppDimensions.height10(context) * 2.2,
                                   child: TextFormField(
                                     decoration: const InputDecoration(
                                         contentPadding: EdgeInsets.zero,
@@ -215,32 +219,34 @@ class _PasswordResetState extends State<PasswordReset> {
                               )
                             ],
                           )),
-                      SizedBox(height: AppDimensions.height10 * 0.3),
+                      SizedBox(height: AppDimensions.height10(context) * 0.3),
                       errorEmail
                           ? Container(
                               // color: Colors.blue,
-                              height: AppDimensions.height10 * 1.7,
-                              width: AppDimensions.height10 * 23.3,
+                              height: AppDimensions.height10(context) * 1.7,
+                              width: AppDimensions.height10(context) * 23.3,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 4.4,
-                                  right: AppDimensions.height10 * 15.6),
+                                  left: AppDimensions.height10(context) * 4.4,
+                                  right:
+                                      AppDimensions.height10(context) * 15.6),
                               child: Text(
                                 "Ooops! Needs to be an email format",
                                 style: TextStyle(
                                   color: const Color(0xFFFE6624),
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
                             )
                           : Container(),
-                      SizedBox(height: AppDimensions.height10 * 1.1),
+                      SizedBox(height: AppDimensions.height10(context) * 1.1),
                       Container(
-                          height: AppDimensions.height10 * 2.2,
-                          width: AppDimensions.height10 * 26.1,
+                          height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 26.1,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 3.6,
-                              right: AppDimensions.height10 * 15.6),
+                              left: AppDimensions.height10(context) * 3.6,
+                              right: AppDimensions.height10(context) * 15.6),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -256,15 +262,16 @@ class _PasswordResetState extends State<PasswordReset> {
                                   );
                                 },
                                 child: SizedBox(
-                                  width: AppDimensions.height10 * 12.6,
-                                  height: AppDimensions.height10 * 2.2,
+                                  width: AppDimensions.height10(context) * 12.6,
+                                  height: AppDimensions.height10(context) * 2.2,
                                   child: Text(
                                     "Login",
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                       decoration: TextDecoration.underline,
                                       color: const Color(0xFFFFFFFF),
-                                      fontSize: AppDimensions.height10 * 1.4,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -278,20 +285,20 @@ class _PasswordResetState extends State<PasswordReset> {
                   ),
                 ),
 
-                SizedBox(height: AppDimensions.height10 * 5.0),
+                SizedBox(height: AppDimensions.height10(context) * 5.0),
 
                 SizedBox(
-                  height: AppDimensions.height10 * 4.4,
-                  width: AppDimensions.height10 * 26.7,
-                  // padding: EdgeInsets.only(left:AppDimensions.height10*0.8,top:AppDimensions.height10*1.6,right: AppDimensions.height10*0.8),
+                  height: AppDimensions.height10(context) * 4.4,
+                  width: AppDimensions.height10(context) * 26.7,
+                  // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
 
                   child: OutlinedButton.icon(
                     // <-- OutlinedButton
                     style: OutlinedButton.styleFrom(
                       backgroundColor: const Color(0xFFFFFFFF),
                       shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 5.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
                       ),
                       //<-- SEE HERE
                     ),
@@ -340,7 +347,8 @@ class _PasswordResetState extends State<PasswordReset> {
                                 'Reset password',
                                 style: TextStyle(
                                   color: const Color(0xFF8C648A),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w600,
                                 ),
                               )

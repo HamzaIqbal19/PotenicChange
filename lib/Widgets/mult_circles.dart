@@ -64,16 +64,16 @@ class align_circles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10 * 26.8,
-      height: AppDimensions.height10 * 30.2,
+      width: AppDimensions.height10(context) * 26.8,
+      height: AppDimensions.height10(context) * 30.2,
       // color: Colors.blue,
       // margin: const EdgeInsets.only(top: 29, bottom: 12, right: 45),
       child: Stack(children: [
         Align(
           alignment: Alignment.center,
           child: Container(
-            width: AppDimensions.height10 * 26.8,
-            height: AppDimensions.height10 * 26.8,
+            width: AppDimensions.height10(context) * 26.8,
+            height: AppDimensions.height10(context) * 26.8,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage(asset_1), fit: BoxFit.cover)),
@@ -86,8 +86,8 @@ class align_circles extends StatelessWidget {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              bottom: AppDimensions.height10 * 0),
-                          width: AppDimensions.height10 * 19.9,
+                              bottom: AppDimensions.height10(context) * 0),
+                          width: AppDimensions.height10(context) * 19.9,
                           child: Text(
                             head_text,
                             textAlign: TextAlign.center,
@@ -117,8 +117,8 @@ class align_circles extends StatelessWidget {
           alignment:
               is_right ? const Alignment(0.5, 1) : const Alignment(-0.5, 1),
           child: Container(
-            height: AppDimensions.height10 * 13.8,
-            width: AppDimensions.height10 * 13.8,
+            height: AppDimensions.height10(context) * 13.8,
+            width: AppDimensions.height10(context) * 13.8,
             decoration: BoxDecoration(
                 //color: Colors.amber,
                 image: DecorationImage(
@@ -130,7 +130,7 @@ class align_circles extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color(s_circle_text_col),
-                    fontSize: AppDimensions.height10 * 1.8,
+                    fontSize: AppDimensions.height10(context) * 1.8,
                     fontWeight: FontWeight.w500),
               )),
               Container(
@@ -138,8 +138,8 @@ class align_circles extends StatelessWidget {
                     ? Align(
                         alignment: const Alignment(0, 1.25),
                         child: Container(
-                            height: AppDimensions.height10 * 2.9,
-                            width: AppDimensions.height10 * 2.9,
+                            height: AppDimensions.height10(context) * 2.9,
+                            width: AppDimensions.height10(context) * 2.9,
                             padding: const EdgeInsets.all(7),
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,

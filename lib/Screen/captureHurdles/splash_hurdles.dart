@@ -31,8 +31,8 @@ class hurdles_splashState extends State<hurdles_splash> {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             ),
@@ -58,16 +58,16 @@ class hurdles_splashState extends State<hurdles_splash> {
                   );
                 },
                 child: Container(
-                  width: AppDimensions.height10 * 34.3,
-                  height: AppDimensions.height10 * 7.3,
+                  width: AppDimensions.height10(context) * 34.3,
+                  height: AppDimensions.height10(context) * 7.3,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 12.0,
-                      bottom: AppDimensions.height10 * 1.9),
+                      top: AppDimensions.height10(context) * 12.0,
+                      bottom: AppDimensions.height10(context) * 1.9),
                   child: GradientText(
                     'My faced\nhurdles & obstacles',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.height10 * 3.0,
+                      fontSize: AppDimensions.height10(context) * 3.0,
                       fontWeight: FontWeight.w700,
                     ),
                     colors: [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -75,14 +75,15 @@ class hurdles_splashState extends State<hurdles_splash> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 35.1,
-                height: AppDimensions.height10 * 8.3,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 3.7),
+                width: AppDimensions.height10(context) * 35.1,
+                height: AppDimensions.height10(context) * 8.3,
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 3.7),
                 child: Text(
                     'Use this space to capture obstacles that\nmay hold you back from achieving your\npersonal growth goals.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                         fontFamily: 'laila')),
@@ -96,18 +97,18 @@ class hurdles_splashState extends State<hurdles_splash> {
                   );
                 },
                 child: Container(
-                  width: AppDimensions.height10 * 16.8,
-                  height: AppDimensions.height10 * 17.0,
+                  width: AppDimensions.height10(context) * 16.8,
+                  height: AppDimensions.height10(context) * 17.0,
                   // color: Colors.amber,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 5.5,
-                      right: AppDimensions.height10 * 1.9),
+                      top: AppDimensions.height10(context) * 5.5,
+                      right: AppDimensions.height10(context) * 1.9),
                   child: Center(
                     child: Text(
                       'Record your\nhurdles',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 2.0,
+                          fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Color(0xFFFFFFFF)),
                     ),

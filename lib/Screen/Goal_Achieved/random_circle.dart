@@ -31,11 +31,11 @@ class _RandomCirclesState extends State<RandomCircles> {
   final Random _random = Random();
   final List<Circle> _circles = [];
 
-  final double containerHeight = AppDimensions.height10 * 31.40;
-  final double circleWidth = AppDimensions.height10 * 6.50;
-  final double circleHeight = AppDimensions.height10 * 7.40;
+  final double containerHeight = AppDimensions2.height10 * 31.40;
+  final double circleWidth = AppDimensions2.height10 * 6.50;
+  final double circleHeight = AppDimensions2.height10 * 7.40;
   final double containerWidth =
-      AppDimensions.height10 * 95.00; // You can adjust this value
+      AppDimensions2.height10 * 95.00; // You can adjust this value
   final double overlapFactor = 0.85; // You can adjust this value
 
   @override
@@ -121,13 +121,13 @@ class Circle extends StatelessWidget {
         child: Stack(children: [
           Center(
               child: SizedBox(
-            width: AppDimensions.height10 * 2.7,
-            height: AppDimensions.height10 * 3.4,
+            width: AppDimensions.height10(context) * 2.7,
+            height: AppDimensions.height10(context) * 3.4,
             child: RichText(
                 text: TextSpan(
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.4,
+                        fontSize: AppDimensions.height10(context) * 1.4,
                         fontWeight: FontWeight.w400),
                     children: [
                   TextSpan(
@@ -135,14 +135,15 @@ class Circle extends StatelessWidget {
                   ),
                   TextSpan(
                       text: '01/07',
-                      style: TextStyle(fontSize: AppDimensions.height10 * 0.9))
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 0.9))
                 ])),
           )),
           Align(
             alignment: Alignment(0, 1.15),
             child: Container(
-              width: AppDimensions.height10 * 2.0,
-              height: AppDimensions.height10 * 2.0,
+              width: AppDimensions.height10(context) * 2.0,
+              height: AppDimensions.height10(context) * 2.0,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/task_comp.png'))),

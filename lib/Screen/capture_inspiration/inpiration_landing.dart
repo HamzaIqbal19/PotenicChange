@@ -29,8 +29,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           )
@@ -40,7 +40,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
+        // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/bg_inpiration_purple.png'),
@@ -50,9 +50,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
         child: Column(
           children: [
             Container(
-              width: AppDimensions.height10 * 34.3,
-              height: AppDimensions.height10 * 27.0,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 12.0),
+              width: AppDimensions.height10(context) * 34.3,
+              height: AppDimensions.height10(context) * 27.0,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 12.0),
               child: Stack(
                 children: [
                   GestureDetector(
@@ -75,15 +76,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             );
                     },
                     child: SizedBox(
-                      width: AppDimensions.height10 * 34.3,
-                      height: AppDimensions.height10 * 7.3,
+                      width: AppDimensions.height10(context) * 34.3,
+                      height: AppDimensions.height10(context) * 7.3,
                       child: Center(
                         child: GradientText(
                           'My current\ninspirations',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             height: 1.5,
-                            fontSize: AppDimensions.height10 * 3.0,
+                            fontSize: AppDimensions.height10(context) * 3.0,
                             fontWeight: FontWeight.w700,
                           ),
                           colors: [
@@ -97,8 +98,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                   Align(
                     alignment: const Alignment(0, 0.525),
                     child: Container(
-                      width: AppDimensions.height10 * 16.43,
-                      height: AppDimensions.height10 * 16.43,
+                      width: AppDimensions.height10(context) * 16.43,
+                      height: AppDimensions.height10(context) * 16.43,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                         opacity: 0.2,
@@ -106,23 +107,25 @@ class _inspiration_landingState extends State<inspiration_landing> {
                       )),
                       child: Center(
                         child: Container(
-                          width: AppDimensions.height10 * 15.6,
-                          height: AppDimensions.height10 * 15.6,
+                          width: AppDimensions.height10(context) * 15.6,
+                          height: AppDimensions.height10(context) * 15.6,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/Inspiration_center 1.png'))),
                           child: Center(
                               child: Container(
-                            width: AppDimensions.height10 * 6.8,
-                            height: AppDimensions.height10 * 6.8,
+                            width: AppDimensions.height10(context) * 6.8,
+                            height: AppDimensions.height10(context) * 6.8,
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: Color(0xFFFFFFFF)),
                             child: Center(
                                 child: SizedBox(
-                                    width: AppDimensions.height10 * 3.2,
-                                    height: AppDimensions.height10 * 3.2,
+                                    width:
+                                        AppDimensions.height10(context) * 3.2,
+                                    height:
+                                        AppDimensions.height10(context) * 3.2,
                                     child:
                                         Image.asset('assets/images/plus.png'))),
                           )),
@@ -133,12 +136,12 @@ class _inspiration_landingState extends State<inspiration_landing> {
                   Align(
                     alignment: const Alignment(0.1, 0.85),
                     child: SizedBox(
-                      width: AppDimensions.height10 * 13.5,
-                      height: AppDimensions.height10 * 2.2,
+                      width: AppDimensions.height10(context) * 13.5,
+                      height: AppDimensions.height10(context) * 2.2,
                       child: Text(
                         'New inspiration',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.8,
+                            fontSize: AppDimensions.height10(context) * 1.8,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFFFFFFFF)),
                       ),
@@ -150,31 +153,36 @@ class _inspiration_landingState extends State<inspiration_landing> {
             widget.muliple_insp
                 ? Container(
                     //  color: Colors.red,
-                    height: AppDimensions.height10 * 47.0,
+                    height: AppDimensions.height10(context) * 47.0,
                     margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 2.4,
+                      top: AppDimensions.height10(context) * 2.4,
                     ),
                     child: Row(
                       children: [
                         SingleChildScrollView(
                           scrollDirection: Axis.vertical,
                           child: Container(
-                            width: AppDimensions.height10 * 16.7,
-                            //  height: AppDimensions.height10 * 71.0,
+                            width: AppDimensions.height10(context) * 16.7,
+                            //  height: AppDimensions.height10(context) * 71.0,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 3.0),
+                                left: AppDimensions.height10(context) * 3.0),
 
                             child: Column(
                               children: [
                                 GestureDetector(
                                   onTap: () {},
                                   child: SizedBox(
-                                    width: AppDimensions.height10 * 16.7,
-                                    height: AppDimensions.height10 * 22,
+                                    width:
+                                        AppDimensions.height10(context) * 16.7,
+                                    height:
+                                        AppDimensions.height10(context) * 22,
                                     child: Column(children: [
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 16.7,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                16.7,
                                         decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
@@ -183,16 +191,21 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 fit: BoxFit.cover)),
                                       ),
                                       Container(
-                                        // width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 1.9,
+                                        // width: AppDimensions.height10(context) * 16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.9,
                                         margin: EdgeInsets.only(
-                                            top: AppDimensions.height10 * 0.5),
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.5),
                                         child: Center(
                                             child: Text(
                                           'Feelings and thoughts',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -202,8 +215,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             child: Text(
                                           'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.0,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.0,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -214,15 +228,23 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 GestureDetector(
                                   onTap: () {},
                                   child: Container(
-                                    width: AppDimensions.height10 * 16.7,
-                                    height: AppDimensions.height10 * 22,
+                                    width:
+                                        AppDimensions.height10(context) * 16.7,
+                                    height:
+                                        AppDimensions.height10(context) * 22,
                                     margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 3.0,
-                                        bottom: AppDimensions.height10 * 3.0),
+                                        top: AppDimensions.height10(context) *
+                                            3.0,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                3.0),
                                     child: Column(children: [
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 16.7,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                16.7,
                                         decoration: const BoxDecoration(
                                             color: Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
@@ -231,16 +253,22 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                     'assets/images/image 65.png'))),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 1.9,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.9,
                                         margin: EdgeInsets.only(
-                                            top: AppDimensions.height10 * 0.5),
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.5),
                                         child: Center(
                                             child: Text(
                                           'Quote',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -250,8 +278,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             child: Text(
                                           'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.0,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.0,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -271,14 +300,21 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     );
                                   },
                                   child: Container(
-                                    width: AppDimensions.height10 * 16.7,
-                                    height: AppDimensions.height10 * 22,
+                                    width:
+                                        AppDimensions.height10(context) * 16.7,
+                                    height:
+                                        AppDimensions.height10(context) * 22,
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 3.0),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                3.0),
                                     child: Column(children: [
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 16.7,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                16.7,
                                         decoration: const BoxDecoration(
                                           color: Color(0xFFD9D9D9),
                                           shape: BoxShape.circle,
@@ -293,7 +329,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.4,
                                                 fontWeight: FontWeight.w400,
                                                 color: const Color(0xFFFFFFFF)),
@@ -301,16 +338,22 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         ),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 1.9,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.9,
                                         margin: EdgeInsets.only(
-                                            top: AppDimensions.height10 * 0.5),
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.5),
                                         child: Center(
                                             child: Text(
                                           'Quote',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -320,8 +363,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             child: Text(
                                           'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.0,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.0,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -330,7 +374,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 3.0,
+                                  height: AppDimensions.height10(context) * 3.0,
                                 )
                               ],
                             ),
@@ -338,12 +382,12 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         ),
                         Container(
                           // color: Colors.amber,
-                          width: AppDimensions.height10 * 16.7,
+                          width: AppDimensions.height10(context) * 16.7,
 
-                          //height: AppDimensions.height10 * 71.0,
+                          //height: AppDimensions.height10(context) * 71.0,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 3.0,
-                              top: AppDimensions.height10 * 7.0),
+                              left: AppDimensions.height10(context) * 3.0,
+                              top: AppDimensions.height10(context) * 7.0),
                           child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
                             child: Column(
@@ -360,12 +404,17 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     );
                                   },
                                   child: SizedBox(
-                                    width: AppDimensions.height10 * 16.7,
-                                    height: AppDimensions.height10 * 21.2,
+                                    width:
+                                        AppDimensions.height10(context) * 16.7,
+                                    height:
+                                        AppDimensions.height10(context) * 21.2,
                                     child: Column(children: [
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 16.7,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                16.7,
                                         decoration: const BoxDecoration(
                                             color: Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
@@ -375,16 +424,21 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 fit: BoxFit.cover)),
                                       ),
                                       Container(
-                                        // width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 1.9,
+                                        // width: AppDimensions.height10(context) * 16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.9,
                                         margin: EdgeInsets.only(
-                                            top: AppDimensions.height10 * 0.5),
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.5),
                                         child: Center(
                                             child: Text(
                                           'Music Eye Of The Tiger ',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -394,8 +448,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             child: Text(
                                           'Survivors',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.0,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.0,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -415,15 +470,23 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     );
                                   },
                                   child: Container(
-                                    width: AppDimensions.height10 * 16.7,
-                                    height: AppDimensions.height10 * 21.2,
+                                    width:
+                                        AppDimensions.height10(context) * 16.7,
+                                    height:
+                                        AppDimensions.height10(context) * 21.2,
                                     margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 3.0,
-                                        bottom: AppDimensions.height10 * 3.0),
+                                        top: AppDimensions.height10(context) *
+                                            3.0,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                3.0),
                                     child: Column(children: [
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 16.7,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                16.7,
                                         decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
@@ -431,16 +494,22 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                     'assets/images/sir_nyal.png'))),
                                       ),
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 1.9,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.9,
                                         margin: EdgeInsets.only(
-                                            top: AppDimensions.height10 * 0.5),
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.5),
                                         child: Center(
                                             child: Text(
                                           'Influencer',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -450,8 +519,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             child: Text(
                                           'Nir Eyal',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.0,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.0,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -471,14 +541,21 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     );
                                   },
                                   child: Container(
-                                    width: AppDimensions.height10 * 16.7,
-                                    height: AppDimensions.height10 * 22,
+                                    width:
+                                        AppDimensions.height10(context) * 16.7,
+                                    height:
+                                        AppDimensions.height10(context) * 22,
                                     margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 3.0),
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                3.0),
                                     child: Column(children: [
                                       Container(
-                                        width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 16.7,
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                16.7,
                                         decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: Color(0xFFD9D9D9),
@@ -487,16 +564,21 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                     'assets/images/distraction content.png'))),
                                       ),
                                       Container(
-                                        // width: AppDimensions.height10 * 16.7,
-                                        height: AppDimensions.height10 * 1.9,
+                                        // width: AppDimensions.height10(context) * 16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.9,
                                         margin: EdgeInsets.only(
-                                            top: AppDimensions.height10 * 0.5),
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.5),
                                         child: Center(
                                             child: Text(
                                           'Content',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.4,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -506,8 +588,9 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             child: Text(
                                           'Learn How To Avoid Distraction In A\nWorld That Is Full Of It.',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.0,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.0,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFFFFFFFF)),
                                         )),
@@ -516,7 +599,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 3.0,
+                                  height: AppDimensions.height10(context) * 3.0,
                                 )
                               ],
                             ),
@@ -539,17 +622,17 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             );
                     },
                     child: Container(
-                      width: AppDimensions.height10 * 16.7,
-                      height: AppDimensions.height10 * 21.2,
+                      width: AppDimensions.height10(context) * 16.7,
+                      height: AppDimensions.height10(context) * 21.2,
                       margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 5.3,
-                        right: AppDimensions.height10 * 21.7,
-                        left: AppDimensions.height10 * 3.0,
+                        top: AppDimensions.height10(context) * 5.3,
+                        right: AppDimensions.height10(context) * 21.7,
+                        left: AppDimensions.height10(context) * 3.0,
                       ),
                       child: Column(children: [
                         Container(
-                          width: AppDimensions.height10 * 16.7,
-                          height: AppDimensions.height10 * 16.7,
+                          width: AppDimensions.height10(context) * 16.7,
+                          height: AppDimensions.height10(context) * 16.7,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color(0xFFD9D9D9),
@@ -559,15 +642,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   fit: BoxFit.cover)),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 16.7,
-                          height: AppDimensions.height10 * 1.9,
+                          width: AppDimensions.height10(context) * 16.7,
+                          height: AppDimensions.height10(context) * 1.9,
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 0.5),
+                              top: AppDimensions.height10(context) * 0.5),
                           child: Center(
                               child: Text(
                             'Influencer',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.4,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFFFFFF)),
                           )),
@@ -577,7 +660,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               child: Text(
                             'Nir Eyal',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.0,
+                                fontSize: AppDimensions.height10(context) * 1.0,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFFFFFFFF)),
                           )),
@@ -588,12 +671,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
             widget.muliple_insp
                 ? Container()
                 : Container(
-                    width: AppDimensions.height10 * 38.259,
-                    height: AppDimensions.height10 * 9.707,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 12.0),
+                    width: AppDimensions.height10(context) * 38.259,
+                    height: AppDimensions.height10(context) * 9.707,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 12.0),
                     decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0),
                         gradient: const LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -603,41 +687,43 @@ class _inspiration_landingState extends State<inspiration_landing> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.261),
-                          width: AppDimensions.height10 * 4.437,
-                          height: AppDimensions.height10 * 4.437,
+                              left: AppDimensions.height10(context) * 1.261),
+                          width: AppDimensions.height10(context) * 4.437,
+                          height: AppDimensions.height10(context) * 4.437,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
                                       'assets/images/circle_tick.png'))),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 6.9,
-                          height: AppDimensions.height10 * 3.6,
+                          width: AppDimensions.height10(context) * 6.9,
+                          height: AppDimensions.height10(context) * 3.6,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 1.232),
+                              left: AppDimensions.height10(context) * 1.232),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                width: AppDimensions.height10 * 4.6,
-                                height: AppDimensions.height10 * 1.4,
+                                width: AppDimensions.height10(context) * 4.6,
+                                height: AppDimensions.height10(context) * 1.4,
                                 //   color: Colors.amber,
                                 child: Text(
                                   widget.is_Updated ? 'Updated' : 'SAVED',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.3,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.3,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xFFFFFFFF)),
                                 ),
                               ),
                               SizedBox(
-                                width: AppDimensions.height10 * 6.9,
-                                height: AppDimensions.height10 * 2.2,
+                                width: AppDimensions.height10(context) * 6.9,
+                                height: AppDimensions.height10(context) * 2.2,
                                 child: Text(
                                   'Nir Eyal',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xFFFFFFFF)),
                                 ),
@@ -646,21 +732,22 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 8.1,
-                          height: AppDimensions.height10 * 6.0,
+                          width: AppDimensions.height10(context) * 8.1,
+                          height: AppDimensions.height10(context) * 6.0,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10 * 15.1),
+                              left: AppDimensions.height10(context) * 15.1),
                           decoration: BoxDecoration(
                             border: Border.all(
                                 color: const Color(0xFFFFFFFF), width: 1),
                             borderRadius: BorderRadius.circular(
-                                AppDimensions.height10 * 2.0),
+                                AppDimensions.height10(context) * 2.0),
                           ),
                           child: Center(
                             child: Text(
                               'Veiw',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFFFFFFFF)),
                             ),
@@ -672,12 +759,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
             widget.muliple_insp
                 ? Container()
                 : Container(
-                    width: AppDimensions.height10 * 17.0,
-                    height: AppDimensions.height10 * 0.5,
-                    margin: EdgeInsets.only(top: AppDimensions.height10 * 0.29),
+                    width: AppDimensions.height10(context) * 17.0,
+                    height: AppDimensions.height10(context) * 0.5,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 0.29),
                     decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0),
                         color: const Color(0xFFFFFFFF).withOpacity(0.3)),
                   ),
           ],
@@ -691,10 +779,10 @@ class _inspiration_landingState extends State<inspiration_landing> {
               child: Container(
                 // color: Colors.blue,
                 padding: EdgeInsets.only(
-                    left: AppDimensions.height10 * 2.2,
-                    right: AppDimensions.height10 * 2.2),
-                height: AppDimensions.height10 * 7.0,
-                width: AppDimensions.height10 * 41.4,
+                    left: AppDimensions.height10(context) * 2.2,
+                    right: AppDimensions.height10(context) * 2.2),
+                height: AppDimensions.height10(context) * 7.0,
+                width: AppDimensions.height10(context) * 41.4,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -702,76 +790,84 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     Row(
                       children: [
                         SizedBox(
-                          width: AppDimensions.height10 * 2.4,
-                          height: AppDimensions.height10 * 2.4,
+                          width: AppDimensions.height10(context) * 2.4,
+                          height: AppDimensions.height10(context) * 2.4,
                           // padding: EdgeInsets.only(
-                          //     top: AppDimensions.height10 * 0.5,
-                          //     bottom: AppDimensions.height10 * 0.5),
+                          //     top: AppDimensions.height10(context) * 0.5,
+                          //     bottom: AppDimensions.height10(context) * 0.5),
                           child: GestureDetector(
                             onTap: () {},
                             child: Image.asset(
                               'assets/images/ic_filter_list.png',
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 2.4,
+                              width: AppDimensions.height10(context) * 2.4,
+                              height: AppDimensions.height10(context) * 2.4,
                               fit: BoxFit.contain,
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: AppDimensions.height10 * 0.5,
+                          width: AppDimensions.height10(context) * 0.5,
                         ),
                         GestureDetector(
                           onTap: () {
                             _showBottomSheet(context);
                           },
                           child: Container(
-                            width: AppDimensions.height10 * 11.5,
-                            height: AppDimensions.height10 * 3.4,
+                            width: AppDimensions.height10(context) * 11.5,
+                            height: AppDimensions.height10(context) * 3.4,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10 * 1.0),
+                                    AppDimensions.height10(context) * 1.0),
                                 border: Border.all(
-                                    width: AppDimensions.height10 * 0.1,
+                                    width:
+                                        AppDimensions.height10(context) * 0.1,
                                     color: const Color(0xFFE0E0E0))),
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.3,
-                                right: AppDimensions.height10 * 1.0),
+                                left: AppDimensions.height10(context) * 1.3,
+                                right: AppDimensions.height10(context) * 1.0),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 1.0),
+                                      left: AppDimensions.height10(context) *
+                                          1.0),
                                   child: Text(
                                     'Goal:',
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xffFA9934)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10 * 1.9,
-                                  height: AppDimensions.height10 * 2.4,
+                                  width: AppDimensions.height10(context) * 1.9,
+                                  height: AppDimensions.height10(context) * 2.4,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 0.8),
+                                      left: AppDimensions.height10(context) *
+                                          0.8),
                                   child: Center(
                                     child: Text(
                                       'All',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w700,
                                           color: const Color(0xffFA9934)),
                                     ),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10 * 2.4,
-                                  height: AppDimensions.height10 * 2.4,
+                                  width: AppDimensions.height10(context) * 2.4,
+                                  height: AppDimensions.height10(context) * 2.4,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 0.8,
-                                      bottom: AppDimensions.height10 * 0.3),
+                                      left:
+                                          AppDimensions.height10(context) * 0.8,
+                                      bottom: AppDimensions.height10(context) *
+                                          0.3),
                                   child: const Icon(
                                     Icons.arrow_drop_down,
                                     color: Color(0xffFA9934),
@@ -786,50 +882,58 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             _showTagSheet(context);
                           },
                           child: Container(
-                            width: AppDimensions.height10 * 11.6,
-                            height: AppDimensions.height10 * 3.4,
+                            width: AppDimensions.height10(context) * 11.6,
+                            height: AppDimensions.height10(context) * 3.4,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10 * 1.0),
+                                    AppDimensions.height10(context) * 1.0),
                                 border: Border.all(
-                                    width: AppDimensions.height10 * 0.1,
+                                    width:
+                                        AppDimensions.height10(context) * 0.1,
                                     color: const Color(0xFFE0E0E0))),
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 1.0),
+                                      left: AppDimensions.height10(context) *
+                                          1.0),
                                   child: Text(
                                     'Tags:',
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xffFA9934)),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10 * 1.9,
-                                  height: AppDimensions.height10 * 2.4,
+                                  width: AppDimensions.height10(context) * 1.9,
+                                  height: AppDimensions.height10(context) * 2.4,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 0.8),
+                                      left: AppDimensions.height10(context) *
+                                          0.8),
                                   child: Center(
                                     child: Text(
                                       'All',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w700,
                                           color: const Color(0xffFA9934)),
                                     ),
                                   ),
                                 ),
                                 Container(
-                                  width: AppDimensions.height10 * 2.4,
-                                  height: AppDimensions.height10 * 2.4,
+                                  width: AppDimensions.height10(context) * 2.4,
+                                  height: AppDimensions.height10(context) * 2.4,
                                   margin: EdgeInsets.only(
-                                      left: AppDimensions.height10 * 0.8,
-                                      bottom: AppDimensions.height10 * 0.3),
+                                      left:
+                                          AppDimensions.height10(context) * 0.8,
+                                      bottom: AppDimensions.height10(context) *
+                                          0.3),
                                   child: const Icon(
                                     Icons.arrow_drop_down,
                                     color: Color(0xffFA9934),
@@ -841,15 +945,16 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         ),
                         GestureDetector(
                           child: Container(
-                            width: AppDimensions.height10 * 3.9,
-                            height: AppDimensions.height10 * 3.4,
+                            width: AppDimensions.height10(context) * 3.9,
+                            height: AppDimensions.height10(context) * 3.4,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.0),
+                                left: AppDimensions.height10(context) * 1.0),
                             alignment: Alignment.centerLeft,
                             child: Text(
                               'Clec',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   decoration: TextDecoration.underline,
                                   color: const Color(0xFFFA9934)
@@ -861,14 +966,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     ),
 
                     SizedBox(
-                      width: AppDimensions.height10 * 4.9,
-                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10(context) * 4.9,
+                      height: AppDimensions.height10(context) * 5.0,
                       child: GestureDetector(
                         onTap: () {},
                         child: Image.asset(
                           'assets/images/Search.png',
-                          width: AppDimensions.height10 * 5,
-                          height: AppDimensions.height10 * 5,
+                          width: AppDimensions.height10(context) * 5,
+                          height: AppDimensions.height10(context) * 5,
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -904,7 +1009,7 @@ _showBottomSheet(BuildContext context) {
       return GestureDetector(
         onTap: () => Navigator.of(context).pop(),
         child: Container(
-          height: AppDimensions.height10 * 30.3,
+          height: AppDimensions.height10(context) * 30.3,
           color: const Color.fromRGBO(0, 0, 0, 0.001),
           child: GestureDetector(
             onTap: () {},
@@ -915,12 +1020,12 @@ _showBottomSheet(BuildContext context) {
               child: Column(
                 children: [
                   Container(
-                    height: AppDimensions.height10 * 4.0,
-                    width: AppDimensions.height10 * 41.4,
+                    height: AppDimensions.height10(context) * 4.0,
+                    width: AppDimensions.height10(context) * 41.4,
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
-                                width: AppDimensions.height10 * 0.1,
+                                width: AppDimensions.height10(context) * 0.1,
                                 color: const Color(0xFF828282)))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -930,24 +1035,25 @@ _showBottomSheet(BuildContext context) {
                             Navigator.pop(context);
                           },
                           child: Container(
-                            width: AppDimensions.height10 * 5.0,
+                            width: AppDimensions.height10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10 * 2.0),
+                                right: AppDimensions.height10(context) * 2.0),
                             child: Text(
                               'Cancel',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFF2F80ED)),
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: AppDimensions.height10 * 3.7,
+                          width: AppDimensions.height10(context) * 3.7,
                           child: Text(
                             'Done',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF2F80ED)),
                           ),
@@ -956,27 +1062,29 @@ _showBottomSheet(BuildContext context) {
                     ),
                   ),
                   SizedBox(
-                    width: AppDimensions.height10 * 37.5,
-                    height: AppDimensions.height10 * 24.8,
+                    width: AppDimensions.height10(context) * 37.5,
+                    height: AppDimensions.height10(context) * 24.8,
                     // color: Colors.amber,
                     child: ListWheelScrollView(
                         onSelectedItemChanged: (value) {},
                         diameterRatio: 1.5,
                         // magnification: 1.5,
                         overAndUnderCenterOpacity: 0.5,
-                        itemExtent: AppDimensions.height10 * 3.1,
+                        itemExtent: AppDimensions.height10(context) * 3.1,
                         children: [
                           Container(
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
                                         color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 'All',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -985,13 +1093,15 @@ _showBottomSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
                                         color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 1',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -1000,13 +1110,15 @@ _showBottomSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
                                         color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 2',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -1015,13 +1127,15 @@ _showBottomSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
                                         color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 3',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -1049,7 +1163,7 @@ _showTagSheet(BuildContext context) {
       return GestureDetector(
         onTap: () => Navigator.of(context).pop(),
         child: Container(
-          height: AppDimensions.height10 * 30.3,
+          height: AppDimensions.height10(context) * 30.3,
           color: const Color.fromRGBO(0, 0, 0, 0.001),
           child: GestureDetector(
             onTap: () {},
@@ -1060,12 +1174,12 @@ _showTagSheet(BuildContext context) {
               child: Column(
                 children: [
                   Container(
-                    height: AppDimensions.height10 * 4.0,
-                    width: AppDimensions.height10 * 41.4,
+                    height: AppDimensions.height10(context) * 4.0,
+                    width: AppDimensions.height10(context) * 41.4,
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(
-                                width: AppDimensions.height10 * 0.1,
+                                width: AppDimensions.height10(context) * 0.1,
                                 color: const Color(0xFF828282)))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -1075,24 +1189,25 @@ _showTagSheet(BuildContext context) {
                             Navigator.pop(context);
                           },
                           child: Container(
-                            width: AppDimensions.height10 * 5.0,
+                            width: AppDimensions.height10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                right: AppDimensions.height10 * 2.0),
+                                right: AppDimensions.height10(context) * 2.0),
                             child: Text(
                               'Cancel',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFF2F80ED)),
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: AppDimensions.height10 * 3.7,
+                          width: AppDimensions.height10(context) * 3.7,
                           child: Text(
                             'Done',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF2F80ED)),
                           ),
@@ -1101,27 +1216,29 @@ _showTagSheet(BuildContext context) {
                     ),
                   ),
                   SizedBox(
-                    width: AppDimensions.height10 * 37.5,
-                    height: AppDimensions.height10 * 24.8,
+                    width: AppDimensions.height10(context) * 37.5,
+                    height: AppDimensions.height10(context) * 24.8,
                     // color: Colors.amber,
                     child: ListWheelScrollView(
                         onSelectedItemChanged: (value) {},
                         diameterRatio: 1.5,
                         // magnification: 1.5,
                         overAndUnderCenterOpacity: 0.5,
-                        itemExtent: AppDimensions.height10 * 3.1,
+                        itemExtent: AppDimensions.height10(context) * 3.1,
                         children: [
                           Container(
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
                                         color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 'All',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -1131,13 +1248,15 @@ _showTagSheet(BuildContext context) {
                                 border: Border(
                                     //when it will be reconstructed bottom decororation will be set, at the moment it is there to show presence.
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
                                         color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 1',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -1146,13 +1265,15 @@ _showTagSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
                                         color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 2',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -1161,13 +1282,15 @@ _showTagSheet(BuildContext context) {
                             decoration: BoxDecoration(
                                 border: Border(
                                     bottom: BorderSide(
-                                        width: AppDimensions.height10 * 0.1,
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
                                         color: const Color(0xFF828282)))),
                             child: Center(
                               child: Text(
                                 '$goal 3',
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 2.2,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.2,
                                     fontWeight: FontWeight.w400),
                               ),
                             ),
@@ -1194,11 +1317,11 @@ _showTagSheet(BuildContext context) {
 //                       itemBuilder: (_, index) {
 //                         return Container(
 //                           margin: EdgeInsets.symmetric(
-//                               horizontal: AppDimensions.height10 * 2.0),
+//                               horizontal: AppDimensions.height10(context) * 2.0),
 //                           decoration: BoxDecoration(
 //                               border: Border(
 //                                   bottom: BorderSide(
-//                                       width: AppDimensions.height10 * 0.1,
+//                                       width: AppDimensions.height10(context) * 0.1,
 //                                       color: Color(0xFF828282)))),
 //                           padding: EdgeInsets.all(8),
 //                           child: Center(child: Text("Goal name $index")),

@@ -25,8 +25,8 @@ class _veiw_detailsState extends State<veiw_details> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           )),
@@ -49,12 +49,12 @@ class _veiw_detailsState extends State<veiw_details> {
                 width: double.infinity,
                 //color: Colors.amber,
                 child: Container(
-                  width: AppDimensions.height10 * 34.7,
-                  height: AppDimensions.height10 * 36.188,
+                  width: AppDimensions.height10(context) * 34.7,
+                  height: AppDimensions.height10(context) * 36.188,
                   margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 12.0,
-                    left: AppDimensions.height10 * 3.4,
-                    right: AppDimensions.height10 * 3.4,
+                    top: AppDimensions.height10(context) * 12.0,
+                    left: AppDimensions.height10(context) * 3.4,
+                    right: AppDimensions.height10(context) * 3.4,
                   ),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
@@ -67,13 +67,13 @@ class _veiw_detailsState extends State<veiw_details> {
                 width: double.infinity,
                 // color: Colors.amber,
                 child: Container(
-                  width: AppDimensions.height10 * 37.7,
-                  height: AppDimensions.height10 * 24.7,
+                  width: AppDimensions.height10(context) * 37.7,
+                  height: AppDimensions.height10(context) * 24.7,
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 11.50,
-                    left: AppDimensions.height10 * 1.8,
-                    right: AppDimensions.height10 * 1.8,
+                    top: AppDimensions.height10(context) * 11.50,
+                    left: AppDimensions.height10(context) * 1.8,
+                    right: AppDimensions.height10(context) * 1.8,
                   ),
                   decoration: const BoxDecoration(
                       //  color: Colors.amber,
@@ -87,25 +87,25 @@ class _veiw_detailsState extends State<veiw_details> {
               Container(
                 alignment: Alignment.center,
 //IT'S HEIGHT IS SET SO BACKGROUND DOES'NT BECOME VISIBLE
-                // width: AppDimensions.height10 * 41.4,
-                // margin: EdgeInsets.only(bottom: AppDimensions.height10 * 20.0),
-                height: AppDimensions.height10 * 44.5,
+                // width: AppDimensions.height10(context) * 41.4,
+                // margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 20.0),
+                height: AppDimensions.height10(context) * 44.5,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/images/video_image.png'),
                         fit: BoxFit.cover)),
                 child: Center(
                   child: SizedBox(
-                    width: AppDimensions.height10 * 8.6,
-                    height: AppDimensions.height10 * 8.6,
+                    width: AppDimensions.height10(context) * 8.6,
+                    height: AppDimensions.height10(context) * 8.6,
                     child: Image.asset('assets/images/play_button.png'),
                   ),
                 ),
               ),
             ] else if (widget.type_switch == 3) ...[
               Container(
-                // width: AppDimensions.height10 * 34.7,
-                height: AppDimensions.height10 * 52.5,
+                // width: AppDimensions.height10(context) * 34.7,
+                height: AppDimensions.height10(context) * 52.5,
 
                 decoration: const BoxDecoration(
                   gradient: RadialGradient(
@@ -117,7 +117,7 @@ class _veiw_detailsState extends State<veiw_details> {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         height: 1.5,
-                        fontSize: AppDimensions.height10 * 2.4,
+                        fontSize: AppDimensions.height10(context) * 2.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xFFFFFFFF)),
                   ),
@@ -134,53 +134,54 @@ class _veiw_detailsState extends State<veiw_details> {
         child: Container(
           //should change according to screen
           height: widget.type_switch == 1
-              ? AppDimensions.height10 * 38.465
+              ? AppDimensions.height10(context) * 38.465
               : widget.type_switch == 2
-                  ? AppDimensions.height10 * 52.465
-                  : AppDimensions.height10 * 48.465,
+                  ? AppDimensions.height10(context) * 52.465
+                  : AppDimensions.height10(context) * 48.465,
           decoration: BoxDecoration(
             color: const Color(0xFFFFFFFFF),
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(AppDimensions.height10 * 4.0),
-                topRight: Radius.circular(AppDimensions.height10 * 4.0)),
+                topLeft: Radius.circular(AppDimensions.height10(context) * 4.0),
+                topRight:
+                    Radius.circular(AppDimensions.height10(context) * 4.0)),
           ),
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             //reverse: true,
             child: Container(
               height: widget.type_switch == 3
-                  ? AppDimensions.height10 * 69.2
+                  ? AppDimensions.height10(context) * 69.2
                   : widget.type_switch == 1
-                      ? AppDimensions.height10 * 38.465
-                      : AppDimensions.height10 * 60.2,
+                      ? AppDimensions.height10(context) * 38.465
+                      : AppDimensions.height10(context) * 60.2,
               child: Column(
                 children: [
                   Container(
-                    height: AppDimensions.height10 * 2.1,
-                    width: AppDimensions.height10 * 30.5,
+                    height: AppDimensions.height10(context) * 2.1,
+                    width: AppDimensions.height10(context) * 30.5,
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 3.6,
-                        right: AppDimensions.height10 * 8.9,
-                        top: AppDimensions.height10 * 3.4),
+                        left: AppDimensions.height10(context) * 3.6,
+                        right: AppDimensions.height10(context) * 8.9,
+                        top: AppDimensions.height10(context) * 3.4),
                     child: Text(
                       'Title',
                       style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.4,
+                        fontSize: AppDimensions.height10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                         color: const Color(0xff828282),
                       ),
                     ),
                   ),
                   Container(
-                      // height: AppDimensions.height10 * 2.4,
-                      // width: AppDimensions.height10 * 30.5,
+                      // height: AppDimensions.height10(context) * 2.4,
+                      // width: AppDimensions.height10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       // color: Colors.amber,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 3.6,
-                          right: AppDimensions.height10 * 9.0,
-                          top: AppDimensions.height10 * 0.3),
+                          left: AppDimensions.height10(context) * 3.6,
+                          right: AppDimensions.height10(context) * 9.0,
+                          top: AppDimensions.height10(context) * 0.3),
                       child: Column(
                         children: [
                           if (widget.type_switch == 1) ...[
@@ -190,7 +191,8 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
                           ] else if (widget.type_switch == 2) ...[
@@ -200,7 +202,8 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
                           ] else if (widget.type_switch == 4) ...[
@@ -210,7 +213,8 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
                           ] else if (widget.type_switch == 3) ...[
@@ -220,7 +224,8 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
                           ]
@@ -230,21 +235,22 @@ class _veiw_detailsState extends State<veiw_details> {
                     children: [
                       if (widget.type_switch == 4) ...[
                         Container(
-                          height: AppDimensions.height10 * 3.0,
-                          width: AppDimensions.height10 * 25.3,
+                          height: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.height10(context) * 25.3,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10 * 10.0,
-                              top: AppDimensions.height10 * 1.0),
+                              right: AppDimensions.height10(context) * 10.0,
+                              top: AppDimensions.height10(context) * 1.0),
                           decoration: BoxDecoration(
                               border: Border.all(
                                   width: 1, color: const Color(0xFF282828)),
                               borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10 * 2.0)),
+                                  AppDimensions.height10(context) * 2.0)),
                           child: Center(
                             child: Text(
                               'Listen from this website',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFF646464)),
                             ),
@@ -254,21 +260,22 @@ class _veiw_detailsState extends State<veiw_details> {
                         Container(),
                       ] else ...[
                         Container(
-                          height: AppDimensions.height10 * 3.0,
-                          width: AppDimensions.height10 * 15.0,
+                          height: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.height10(context) * 15.0,
                           margin: EdgeInsets.only(
-                              right: AppDimensions.height10 * 21.0,
-                              top: AppDimensions.height10 * 1.0),
+                              right: AppDimensions.height10(context) * 21.0,
+                              top: AppDimensions.height10(context) * 1.0),
                           decoration: BoxDecoration(
                               border: Border.all(
                                   width: 1, color: const Color(0xFF282828)),
                               borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10 * 2.0)),
+                                  AppDimensions.height10(context) * 2.0)),
                           child: Center(
                             child: Text(
                               'Visit website',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFF646464)),
                             ),
@@ -278,20 +285,21 @@ class _veiw_detailsState extends State<veiw_details> {
                     ],
                   ),
                   Container(
-                      // height: AppDimensions.height10 * 2.1,
-                      // width: AppDimensions.height10 * 30.5,
+                      // height: AppDimensions.height10(context) * 2.1,
+                      // width: AppDimensions.height10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 3.6,
-                          right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 2.0),
+                          left: AppDimensions.height10(context) * 3.6,
+                          right: AppDimensions.height10(context) * 8.9,
+                          top: AppDimensions.height10(context) * 2.0),
                       child: Column(
                         children: [
                           if (widget.type_switch == 1) ...[
                             Text(
                               'Description',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -299,7 +307,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Why is it inspirational to you',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -307,7 +316,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'What it means to me',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -315,7 +325,8 @@ class _veiw_detailsState extends State<veiw_details> {
                             Text(
                               'Description',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -323,13 +334,13 @@ class _veiw_detailsState extends State<veiw_details> {
                         ],
                       )),
                   Container(
-                      // height: AppDimensions.height10 * 2.4,
-                      // width: AppDimensions.height10 * 30.5,
+                      // height: AppDimensions.height10(context) * 2.4,
+                      // width: AppDimensions.height10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 3.6,
-                          right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 0.2),
+                          left: AppDimensions.height10(context) * 3.6,
+                          right: AppDimensions.height10(context) * 8.9,
+                          top: AppDimensions.height10(context) * 0.2),
                       child: Column(
                         children: [
                           if (widget.type_switch == 1) ...[
@@ -339,7 +350,8 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
                           ] else if (widget.type_switch == 2) ...[
@@ -349,7 +361,8 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
                           ] else if (widget.type_switch == 3) ...[
@@ -359,7 +372,8 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
                           ] else if (widget.type_switch == 4) ...[
@@ -369,57 +383,58 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontFamily: 'Poppins',
                                   height: 1.5,
                                   color: const Color(0xFF282828),
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
                           ]
                         ],
                       )),
                   Container(
-                    height: AppDimensions.height10 * 2.1,
-                    width: AppDimensions.height10 * 30.5,
+                    height: AppDimensions.height10(context) * 2.1,
+                    width: AppDimensions.height10(context) * 30.5,
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 3.6,
-                        right: AppDimensions.height10 * 8.9,
-                        top: AppDimensions.height10 * 2.0),
+                        left: AppDimensions.height10(context) * 3.6,
+                        right: AppDimensions.height10(context) * 8.9,
+                        top: AppDimensions.height10(context) * 2.0),
                     child: Text(
                       'Tags',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.4,
+                          fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xff828282)),
                     ),
                   ),
                   Container(
-                      // height: AppDimensions.height10 * 2.4,
-                      // width: AppDimensions.height10 * 30.5,
+                      // height: AppDimensions.height10(context) * 2.4,
+                      // width: AppDimensions.height10(context) * 30.5,
                       alignment: Alignment.centerLeft,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.height10 * 3.6,
-                          right: AppDimensions.height10 * 8.9,
-                          top: AppDimensions.height10 * 0.2),
+                          left: AppDimensions.height10(context) * 3.6,
+                          right: AppDimensions.height10(context) * 8.9,
+                          top: AppDimensions.height10(context) * 0.2),
                       child: Text(
                         '#tag1 #tag2',
                         style: TextStyle(
                             fontFamily: 'Poppins',
                             height: 1.5,
                             color: const Color(0xFF282828),
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w500),
                       )),
                   Container(
-                    height: AppDimensions.height10 * 2.1,
-                    width: AppDimensions.height10 * 30.5,
+                    height: AppDimensions.height10(context) * 2.1,
+                    width: AppDimensions.height10(context) * 30.5,
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 3.6,
-                        right: AppDimensions.height10 * 8.9,
-                        top: AppDimensions.height10 * 2.0),
+                        left: AppDimensions.height10(context) * 3.6,
+                        right: AppDimensions.height10(context) * 8.9,
+                        top: AppDimensions.height10(context) * 2.0),
                     child: Text(
                       'Attached goals',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.4,
+                          fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xff828282)),
                     ),
@@ -427,48 +442,50 @@ class _veiw_detailsState extends State<veiw_details> {
                   GestureDetector(
                     onTap: () {},
                     child: Container(
-                      height: AppDimensions.height10 * 6.0,
-                      width: AppDimensions.height10 * 37.5,
+                      height: AppDimensions.height10(context) * 6.0,
+                      width: AppDimensions.height10(context) * 37.5,
                       margin: EdgeInsets.only(
-                          // bottom: AppDimensions.height10 * 1.0,
-                          left: AppDimensions.height10 * 2.2,
-                          right: AppDimensions.height10 * 1.7,
-                          top: AppDimensions.height10 * 0.5),
+                          // bottom: AppDimensions.height10(context) * 1.0,
+                          left: AppDimensions.height10(context) * 2.2,
+                          right: AppDimensions.height10(context) * 1.7,
+                          top: AppDimensions.height10(context) * 0.5),
                       decoration: BoxDecoration(
                           border: Border.all(
                               width: 1, color: const Color(0xFF464646)),
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0)),
+                              AppDimensions.height10(context) * 2.0)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 23.9,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 23.9,
+                            height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.99),
+                                left: AppDimensions.height10(context) * 1.99),
                             child: GestureDetector(
                                 onTap: () {},
                                 child: Text(
                                   '00 impacted goals',
                                   style: TextStyle(
                                     color: const Color(0xFF646464),
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 )),
                           ),
                           Container(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.39,
+                              width: AppDimensions.height10(context) * 2.4,
+                              height: AppDimensions.height10(context) * 1.39,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 2.391),
+                                  right:
+                                      AppDimensions.height10(context) * 2.391),
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
                                   'assets/images/BTN Back.png',
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
+                                  //width: AppDimensions.height10(context) * 2.6,
+                                  //height: AppDimensions.height10(context) * 2.6,
                                   color: const Color(0xFF646464),
                                   fit: BoxFit.cover,
                                 ),

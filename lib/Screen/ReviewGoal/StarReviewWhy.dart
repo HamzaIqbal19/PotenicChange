@@ -28,7 +28,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+          preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
           child: AppBar(
             elevation: 0,
             centerTitle: true,
@@ -39,8 +39,8 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 3,
-                  height: AppDimensions.height10 * 3,
+                  width: AppDimensions.height10(context) * 3,
+                  height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
@@ -61,8 +61,8 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
             //     child: IconButton(
             //       icon: Image.asset(
             //         'assets/images/Close.png',
-            //         width: AppDimensions.height10 * 3.0,
-            //         height: AppDimensions.height10 * 3.0,
+            //         width: AppDimensions.height10(context) * 3.0,
+            //         height: AppDimensions.height10(context) * 3.0,
             //         fit: BoxFit.contain,
             //       ),
             //       onPressed: () {
@@ -94,20 +94,21 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
+                  padding: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
                       "View and edit mode",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF437296),
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.6,
+                  height: AppDimensions.height10(context) * 0.6,
                 ),
                 Container(
                   child: Center(
@@ -116,13 +117,13 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF437296),
-                        fontSize: AppDimensions.height10 * 2.0,
+                        fontSize: AppDimensions.height10(context) * 2.0,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 4.0,
+                  height: AppDimensions.height10(context) * 4.0,
                 ),
                 Container(
                   child: Center(
@@ -131,23 +132,23 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF437296),
-                        fontSize: AppDimensions.height10 * 2.8,
+                        fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.8,
+                  height: AppDimensions.height10(context) * 0.8,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 4.6,
-                  width: AppDimensions.height10 * 37.2,
+                  height: AppDimensions.height10(context) * 4.6,
+                  width: AppDimensions.height10(context) * 37.2,
                   child: Center(
                     child: Text(
                       "Why pursuing this goal is important to \n you? ",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF437296),
                       ),
@@ -155,15 +156,15 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.4,
+                  height: AppDimensions.height10(context) * 3.4,
                 ),
                 reviewbox(),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10 * 7.2,
+                        height: AppDimensions.height10(context) * 7.2,
                       )
                     : SizedBox(
-                        height: AppDimensions.height10 * 5.0,
+                        height: AppDimensions.height10(context) * 5.0,
                       ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -171,8 +172,8 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                     GestureDetector(
                       onTap: () {},
                       child: Container(
-                        height: AppDimensions.height10 * 5,
-                        width: AppDimensions.height10 * 10.0,
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 10.0,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Color(0xFF282828)),
@@ -188,7 +189,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                             "Reset",
                             style: TextStyle(
                               color: Color(0xFF282828),
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -215,8 +216,8 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                         // );
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 5,
-                        width: AppDimensions.height10 * 26.2,
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 26.2,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
@@ -232,7 +233,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                             "Save",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -242,7 +243,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.5,
+                  height: AppDimensions.height10(context) * 2.5,
                 ),
                 Padding(
                     padding: EdgeInsets.only(

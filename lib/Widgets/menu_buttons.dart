@@ -17,27 +17,29 @@ class button_feilds extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // margin: EdgeInsets.only(
-      //     left: AppDimensions.height10 * 0.8,
-      //     right: AppDimensions.height10 * 0.8),
-      height: AppDimensions.height10 * 6.0,
-      width: AppDimensions.height10 * 36.0,
+      //     left: AppDimensions.height10(context) * 0.8,
+      //     right: AppDimensions.height10(context) * 0.8),
+      height: AppDimensions.height10(context) * 6.0,
+      width: AppDimensions.height10(context) * 36.0,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppDimensions.height10 * 2.0),
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 2.0),
           color: Colors.white),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            width: AppDimensions.height10 * 23.9,
-            height: AppDimensions.height10 * 2.2,
-            margin: EdgeInsets.only(left: AppDimensions.height10 * 1.99),
+            width: AppDimensions.height10(context) * 23.9,
+            height: AppDimensions.height10(context) * 2.2,
+            margin:
+                EdgeInsets.only(left: AppDimensions.height10(context) * 1.99),
             child: GestureDetector(
               onTap: () {},
               child: RichText(
                   text: TextSpan(
                       style: TextStyle(
                         color: Color(text_color),
-                        fontSize: AppDimensions.height10 * 1.6,
+                        fontSize: AppDimensions.height10(context) * 1.6,
                         fontWeight: FontWeight.w500,
                       ),
                       children: [
@@ -47,7 +49,7 @@ class button_feilds extends StatelessWidget {
                       style: TextStyle(
                         color: Color(text_color),
                         fontFamily: '',
-                        fontSize: AppDimensions.height10 * 1.4,
+                        fontSize: AppDimensions.height10(context) * 1.4,
                         fontWeight: FontWeight.w400,
                       ),
                     )
@@ -55,16 +57,17 @@ class button_feilds extends StatelessWidget {
             ),
           ),
           Container(
-              width: AppDimensions.height10 * 2.4,
-              height: AppDimensions.height10 * 1.39,
-              margin: EdgeInsets.only(right: AppDimensions.height10 * 2.391),
+              width: AppDimensions.height10(context) * 2.4,
+              height: AppDimensions.height10(context) * 1.39,
+              margin: EdgeInsets.only(
+                  right: AppDimensions.height10(context) * 2.391),
               child: icon_viible
                   ? GestureDetector(
                       onTap: () {},
                       child: Image.asset(
                         'assets/images/BTN Back.png',
-                        //width: AppDimensions.height10 * 2.6,
-                        //height: AppDimensions.height10 * 2.6,
+                        //width: AppDimensions.height10(context) * 2.6,
+                        //height: AppDimensions.height10(context) * 2.6,
                         fit: BoxFit.cover,
                       ),
                     )

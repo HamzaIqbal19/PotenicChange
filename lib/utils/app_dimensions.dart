@@ -1,6 +1,29 @@
+// import 'package:get/get.dart';
+
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class AppDimensions {
+  static screenHeight(BuildContext context) =>
+      MediaQuery.of(context).size.height;
+  static screenWidth(BuildContext context) => MediaQuery.of(context).size.width;
+
+  // screen height 866.2857142857143
+  // screen width  411.4285714285714
+  double pageView(BuildContext context) => screenHeight(context) / 2.71;
+  double pageViewContainer(BuildContext context) =>
+      screenHeight(context) / 3.94;
+  double pageViewTextContainer(BuildContext context) =>
+      screenHeight(context) / 7.22;
+
+  // dynamic heights
+
+  static double height10(BuildContext context) =>
+      screenHeight(context) / 90.196080;
+  static double width10(BuildContext context) => screenHeight(context) / 86.63;
+}
+
+class AppDimensions2 {
   static double screenHeight = Get.height;
   static double screenWidth = Get.width;
 
@@ -21,11 +44,11 @@ class AppDimensions {
   static double height20 = screenHeight / 43.31;
   static double height30 = screenHeight / 28.8;
   static double height45 = screenHeight / 19.25;
-  static double height72 = screenHeight/ 12.527;
+  static double height72 = screenHeight / 12.527;
   static double height120 = screenHeight / 7.22;
-  static double height350=screenHeight/1.577;
+  static double height350 = screenHeight / 1.577;
 
-  static double height254=screenHeight/3.55;
+  static double height254 = screenHeight / 3.55;
 
   // dynamic widths
   static double width5 = screenHeight / 173.26;

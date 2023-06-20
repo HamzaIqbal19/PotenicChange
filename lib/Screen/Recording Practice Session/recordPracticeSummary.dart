@@ -32,8 +32,8 @@ class _practice_summaryState extends State<practice_summary> {
                 },
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -43,8 +43,8 @@ class _practice_summaryState extends State<practice_summary> {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -63,15 +63,16 @@ class _practice_summaryState extends State<practice_summary> {
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10 * 33.4,
-                height: AppDimensions.height10 * 3.4,
+                width: AppDimensions.height10(context) * 33.4,
+                height: AppDimensions.height10(context) * 3.4,
                 // color: Colors.amber,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
                 child: Center(
                   child: Text(
                     'Your Practice Summary',
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 2.8,
+                        fontSize: AppDimensions.height10(context) * 2.8,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                         fontFamily: 'Laila'),
@@ -79,17 +80,18 @@ class _practice_summaryState extends State<practice_summary> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 23.2,
-                height: AppDimensions.height10 * 3.8,
+                width: AppDimensions.height10(context) * 23.2,
+                height: AppDimensions.height10(context) * 3.8,
                 //  color: Colors.red,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 0.5),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.5),
                 child: Center(
                   child: Text(
                     'Well done for recording\nyour practice!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        height: AppDimensions.height10 * 0.12,
-                        fontSize: AppDimensions.height10 * 1.6,
+                        height: AppDimensions.height10(context) * 0.12,
+                        fontSize: AppDimensions.height10(context) * 1.6,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
                         fontFamily: 'Laila'),
@@ -97,10 +99,11 @@ class _practice_summaryState extends State<practice_summary> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 26.8,
-                height: AppDimensions.height10 * 26.8,
+                width: AppDimensions.height10(context) * 26.8,
+                height: AppDimensions.height10(context) * 26.8,
                 //color: Colors.amber,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.4),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.4),
                 decoration: const BoxDecoration(
                     // color: const Color(0xff7c94b6),
                     shape: BoxShape.circle,
@@ -115,7 +118,7 @@ class _practice_summaryState extends State<practice_summary> {
                       child: Text(
                         'Control my anger',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 2.0,
+                            fontSize: AppDimensions.height10(context) * 2.0,
                             fontWeight: FontWeight.w600,
                             color: Color(0xff5B74A6)),
                       )),
@@ -126,15 +129,15 @@ class _practice_summaryState extends State<practice_summary> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff5B74A6))),
                   ),
                   Align(
                     alignment: const Alignment(0, 0.975),
                     child: Container(
-                      height: AppDimensions.height10 * 13.8,
-                      width: AppDimensions.height10 * 13.8,
+                      height: AppDimensions.height10(context) * 13.8,
+                      width: AppDimensions.height10(context) * 13.8,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border:
@@ -152,17 +155,17 @@ class _practice_summaryState extends State<practice_summary> {
                           'Meditation',
                           style: TextStyle(
                               color: Color(0xff1A481C),
-                              fontSize: AppDimensions.height10 * 1.8,
+                              fontSize: AppDimensions.height10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                               fontFamily: 'Laila'),
                         )),
                         Align(
                             alignment: const Alignment(0, 1.3),
                             child: Container(
-                                height: AppDimensions.height10 * 2.9,
-                                width: AppDimensions.height10 * 2.9,
+                                height: AppDimensions.height10(context) * 2.9,
+                                width: AppDimensions.height10(context) * 2.9,
                                 padding: EdgeInsets.all(
-                                    AppDimensions.height10 * 0.7),
+                                    AppDimensions.height10(context) * 0.7),
                                 decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Color(0xFF52855E)),
@@ -176,12 +179,13 @@ class _practice_summaryState extends State<practice_summary> {
                 ]),
               ),
               Container(
-                width: AppDimensions.height10 * 26.8,
-                height: AppDimensions.height10 * 5.0,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
+                width: AppDimensions.height10(context) * 26.8,
+                height: AppDimensions.height10(context) * 5.0,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 1.8),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 1.8),
                     border: Border.all(width: 1, color: Colors.white),
                     color: Colors.transparent),
                 child: Row(
@@ -190,13 +194,13 @@ class _practice_summaryState extends State<practice_summary> {
                   children: [
                     Container(
                         //margin: EdgeInsets.only(left: 92, right: 66),
-                        height: AppDimensions.height10 * 2.6,
-                        width: AppDimensions.height10 * 21.0,
+                        height: AppDimensions.height10(context) * 2.6,
+                        width: AppDimensions.height10(context) * 21.0,
                         child: Text(
                           date_time,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: AppDimensions.height10 * 2.0,
+                            fontSize: AppDimensions.height10(context) * 2.0,
                             fontFamily: 'Laila',
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
@@ -207,60 +211,68 @@ class _practice_summaryState extends State<practice_summary> {
                           showCupertinoModalPopup(
                             context: context,
                             builder: (BuildContext context) {
-                              return _buildBottomPicker(CupertinoDatePicker(
-                                  mode: CupertinoDatePickerMode.dateAndTime,
-                                  //initialDateTime: date_time,
-                                  onDateTimeChanged: (DateTime newDateTime) {
-                                    if (mounted) {
-                                      setState(() {
-                                        if (newDateTime.weekday == 2) {
+                              return _buildBottomPicker(
+                                  context,
+                                  CupertinoDatePicker(
+                                      mode: CupertinoDatePickerMode.dateAndTime,
+                                      //initialDateTime: date_time,
+                                      onDateTimeChanged:
+                                          (DateTime newDateTime) {
+                                        if (mounted) {
                                           setState(() {
-                                            day = 'Tue';
+                                            if (newDateTime.weekday == 2) {
+                                              setState(() {
+                                                day = 'Tue';
+                                              });
+                                            } else if (newDateTime.weekday ==
+                                                3) {
+                                              setState(() {
+                                                day = 'Wed';
+                                              });
+                                            } else if (newDateTime.weekday ==
+                                                4) {
+                                              setState(() {
+                                                day = 'Thu';
+                                              });
+                                            } else if (newDateTime.weekday ==
+                                                5) {
+                                              setState(() {
+                                                day = 'Fri';
+                                              });
+                                            } else if (newDateTime.weekday ==
+                                                6) {
+                                              setState(() {
+                                                day = 'Sat';
+                                              });
+                                            } else if (newDateTime.weekday ==
+                                                7) {
+                                              setState(() {
+                                                day = 'Sun';
+                                              });
+                                            } else {
+                                              setState(() {
+                                                day = 'Mon';
+                                              });
+                                            }
                                           });
-                                        } else if (newDateTime.weekday == 3) {
                                           setState(() {
-                                            day = 'Wed';
+                                            if (newDateTime.hour > 11) {
+                                              setState(() {
+                                                time = 'Pm';
+                                              });
+                                            } else {
+                                              setState(() {
+                                                time = 'Am';
+                                                //print(time);
+                                              });
+                                            }
                                           });
-                                        } else if (newDateTime.weekday == 4) {
-                                          setState(() {
-                                            day = 'Thu';
-                                          });
-                                        } else if (newDateTime.weekday == 5) {
-                                          setState(() {
-                                            day = 'Fri';
-                                          });
-                                        } else if (newDateTime.weekday == 6) {
-                                          setState(() {
-                                            day = 'Sat';
-                                          });
-                                        } else if (newDateTime.weekday == 7) {
-                                          setState(() {
-                                            day = 'Sun';
-                                          });
-                                        } else {
-                                          setState(() {
-                                            day = 'Mon';
-                                          });
+                                          setState(() => date_time =
+                                              " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                                          print(
+                                              "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
                                         }
-                                      });
-                                      setState(() {
-                                        if (newDateTime.hour > 11) {
-                                          setState(() {
-                                            time = 'Pm';
-                                          });
-                                        } else {
-                                          setState(() {
-                                            time = 'Am';
-                                            //print(time);
-                                          });
-                                        }
-                                      });
-                                      setState(() => date_time =
-                                          " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                      print(
-                                          "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
-                                    }
-                                  }));
+                                      }));
                             },
                           );
                         },
@@ -273,16 +285,17 @@ class _practice_summaryState extends State<practice_summary> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 32.6,
-                height: AppDimensions.height10 * 4.8,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 4.0),
+                width: AppDimensions.height10(context) * 32.6,
+                height: AppDimensions.height10(context) * 4.8,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
                           fontFamily: 'Laila',
-                          height: AppDimensions.height10 * 0.12,
-                          fontSize: AppDimensions.height10 * 2.0,
+                          height: AppDimensions.height10(context) * 0.12,
+                          fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
@@ -299,9 +312,10 @@ class _practice_summaryState extends State<practice_summary> {
                         ])),
               ),
               Container(
-                width: AppDimensions.height10 * 13.4,
-                height: AppDimensions.height10 * 13.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.3),
+                width: AppDimensions.height10(context) * 13.4,
+                height: AppDimensions.height10(context) * 13.4,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.3),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -318,7 +332,7 @@ class _practice_summaryState extends State<practice_summary> {
                     child: Text(
                       'I felt good',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                           fontFamily: 'Laila'),
@@ -336,9 +350,10 @@ class _practice_summaryState extends State<practice_summary> {
                                     )));
                       },
                       child: Container(
-                          height: AppDimensions.height10 * 2.0,
-                          width: AppDimensions.height10 * 2.0,
-                          padding: EdgeInsets.all(AppDimensions.height10 * 0.4),
+                          height: AppDimensions.height10(context) * 2.0,
+                          width: AppDimensions.height10(context) * 2.0,
+                          padding: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.4),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.transparent,
@@ -353,17 +368,18 @@ class _practice_summaryState extends State<practice_summary> {
                 ]),
               ),
               Container(
-                width: AppDimensions.height10 * 32.6,
-                height: AppDimensions.height10 * 4.8,
+                width: AppDimensions.height10(context) * 32.6,
+                height: AppDimensions.height10(context) * 4.8,
 //color: Colors.amber,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
                 child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
                           fontFamily: 'Laila',
-                          height: AppDimensions.height10 * 0.12,
-                          fontSize: AppDimensions.height10 * 2.0,
+                          height: AppDimensions.height10(context) * 0.12,
+                          fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
@@ -380,9 +396,10 @@ class _practice_summaryState extends State<practice_summary> {
                         ])),
               ),
               Container(
-                width: AppDimensions.height10 * 13.4,
-                height: AppDimensions.height10 * 13.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.7),
+                width: AppDimensions.height10(context) * 13.4,
+                height: AppDimensions.height10(context) * 13.4,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -400,7 +417,7 @@ class _practice_summaryState extends State<practice_summary> {
                       'I feel focused\n& good',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                           fontFamily: 'Laila'),
@@ -418,9 +435,10 @@ class _practice_summaryState extends State<practice_summary> {
                                     )));
                       },
                       child: Container(
-                          height: AppDimensions.height10 * 2.0,
-                          width: AppDimensions.height10 * 2.0,
-                          padding: EdgeInsets.all(AppDimensions.height10 * 0.4),
+                          height: AppDimensions.height10(context) * 2.0,
+                          width: AppDimensions.height10(context) * 2.0,
+                          padding: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.4),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.transparent,
@@ -435,25 +453,26 @@ class _practice_summaryState extends State<practice_summary> {
                 ]),
               ),
               Container(
-                width: AppDimensions.height10 * 36.0,
-                height: AppDimensions.height10 * 7.3,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                width: AppDimensions.height10(context) * 36.0,
+                height: AppDimensions.height10(context) * 7.3,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
                 decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 2.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
                     color: Colors.white),
                 child: Center(
                   child: Container(
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 2.0,
-                        right: AppDimensions.height10 * 2.0),
-                    height: AppDimensions.height10 * 3.9,
-                    width: AppDimensions.height10 * 32.5,
+                        left: AppDimensions.height10(context) * 2.0,
+                        right: AppDimensions.height10(context) * 2.0),
+                    height: AppDimensions.height10(context) * 3.9,
+                    width: AppDimensions.height10(context) * 32.5,
                     child: Text(
                       'This session works for me, it clears my head and makes me feel positive :)',
                       style: TextStyle(
                           color: Color(0xff646464),
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           fontFamily: 'Laila'),
                     ),
@@ -461,15 +480,16 @@ class _practice_summaryState extends State<practice_summary> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 32.6,
-                height: AppDimensions.height10 * 2.4,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 3.0),
+                width: AppDimensions.height10(context) * 32.6,
+                height: AppDimensions.height10(context) * 2.4,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
                 child: Center(
                   child: Text(
                     'How did the practice go?',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontSize: AppDimensions.height10 * 2.0,
+                        fontSize: AppDimensions.height10(context) * 2.0,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                         fontFamily: 'Laila'),
@@ -477,9 +497,10 @@ class _practice_summaryState extends State<practice_summary> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 13.4,
-                height: AppDimensions.height10 * 13.2,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.6),
+                width: AppDimensions.height10(context) * 13.4,
+                height: AppDimensions.height10(context) * 13.2,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.6),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -497,7 +518,7 @@ class _practice_summaryState extends State<practice_summary> {
                       'Good, I liked it',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w700,
                           color: Colors.white,
                           fontFamily: 'Poppins'),
@@ -515,9 +536,10 @@ class _practice_summaryState extends State<practice_summary> {
                                     )));
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 2.0,
-                        width: AppDimensions.height10 * 2.0,
-                        padding: EdgeInsets.all(AppDimensions.height10 * 0.4),
+                        height: AppDimensions.height10(context) * 2.0,
+                        width: AppDimensions.height10(context) * 2.0,
+                        padding: EdgeInsets.all(
+                            AppDimensions.height10(context) * 0.4),
                         decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.transparent,
@@ -532,21 +554,22 @@ class _practice_summaryState extends State<practice_summary> {
                 ]),
               ),
               Container(
-                width: AppDimensions.height10 * 38.3,
-                height: AppDimensions.height10 * 5.0,
+                width: AppDimensions.height10(context) * 38.3,
+                height: AppDimensions.height10(context) * 5.0,
 //color: Colors.red,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 6.4),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 6.4),
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                      height: AppDimensions.height10 * 5.0,
-                      width: AppDimensions.height10 * 15.7,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.4),
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 15.7,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.4),
                       decoration: BoxDecoration(
                         color: const Color(0xff464646),
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 5.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
                       ),
                       child: TextButton(
                           onPressed: () {},
@@ -560,12 +583,14 @@ class _practice_summaryState extends State<practice_summary> {
                               ),
                               Container(
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 0.8),
+                                    left:
+                                        AppDimensions.height10(context) * 0.8),
                                 child: Text(
                                   'Delete',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 1.6,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -573,8 +598,8 @@ class _practice_summaryState extends State<practice_summary> {
                             ],
                           ))),
                   Container(
-                      height: AppDimensions.height10 * 5.0,
-                      width: AppDimensions.height10 * 21.2,
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 21.2,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           begin: Alignment.topCenter,
@@ -584,8 +609,8 @@ class _practice_summaryState extends State<practice_summary> {
                             Color(0xffFDA210),
                           ],
                         ),
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 5.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
                       ),
                       child: TextButton(
                           onPressed: () {
@@ -600,23 +625,23 @@ class _practice_summaryState extends State<practice_summary> {
                             'Save Practice',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           )))
                 ]),
               ),
               Container(
-                width: AppDimensions.height10 * 17.0,
-                height: AppDimensions.height10 * 0.5,
+                width: AppDimensions.height10(context) * 17.0,
+                height: AppDimensions.height10(context) * 0.5,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 5.0),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 5.0),
                 ),
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 3.7,
-                    bottom: AppDimensions.height10 * 5.0),
+                    top: AppDimensions.height10(context) * 3.7,
+                    bottom: AppDimensions.height10(context) * 5.0),
               )
             ],
           ),
@@ -626,15 +651,15 @@ class _practice_summaryState extends State<practice_summary> {
   }
 }
 
-Widget _buildBottomPicker(Widget picker) {
+Widget _buildBottomPicker(context, Widget picker) {
   return Container(
-    height: AppDimensions.height10 * 30.3,
-    padding: EdgeInsets.only(top: AppDimensions.height10 * 0.60),
+    height: AppDimensions.height10(context) * 30.3,
+    padding: EdgeInsets.only(top: AppDimensions.height10(context) * 0.60),
     color: CupertinoColors.white,
     child: DefaultTextStyle(
       style: TextStyle(
         color: CupertinoColors.black,
-        fontSize: AppDimensions.height10 * 2.20,
+        fontSize: AppDimensions.height10(context) * 2.20,
       ),
       child: GestureDetector(
         // Blocks taps from propagating to the modal sheet and popping.

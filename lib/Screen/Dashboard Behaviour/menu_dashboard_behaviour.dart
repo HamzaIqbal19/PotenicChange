@@ -32,8 +32,8 @@ class menu_behaviour extends StatelessWidget {
                   onPressed: () {},
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             )
@@ -52,41 +52,41 @@ class menu_behaviour extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10 * 30.4,
-                height: AppDimensions.height10 * 18.6,
+                width: AppDimensions.height10(context) * 30.4,
+                height: AppDimensions.height10(context) * 18.6,
                 // color: Colors.grey.withOpacity(0.5),
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 5.0,
-                    bottom: AppDimensions.height10 * 1.0),
+                    top: AppDimensions.height10(context) * 5.0,
+                    bottom: AppDimensions.height10(context) * 1.0),
                 child: Column(
                   children: [
                     Text(
                       'Practice Menu',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: AppDimensions.height10 * 2.0,
+                          fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600),
                     ),
                     Text(
                       'Control my anger',
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: AppDimensions.height10 * 2.0,
+                          fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 40.0,
-                      height: AppDimensions.height10 * 11.2,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 1.6),
+                      width: AppDimensions.height10(context) * 40.0,
+                      height: AppDimensions.height10(context) * 11.2,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.6),
                       // color: Colors.blue,
                       child: Stack(
                         children: [
                           Align(
                             alignment: const Alignment(-1, 0),
                             child: Container(
-                              width: AppDimensions.height10 * 10.4,
-                              height: AppDimensions.height10 * 11.2,
+                              width: AppDimensions.height10(context) * 10.4,
+                              height: AppDimensions.height10(context) * 11.2,
                               decoration: const BoxDecoration(
                                 // color: Colors.amber,
                                 image: DecorationImage(
@@ -99,8 +99,8 @@ class menu_behaviour extends StatelessWidget {
                           Align(
                             alignment: const Alignment(-0.6, -0.2),
                             child: Container(
-                                height: AppDimensions.height10 * 5.0,
-                                width: AppDimensions.height10 * 4.6,
+                                height: AppDimensions.height10(context) * 5.0,
+                                width: AppDimensions.height10(context) * 4.6,
                                 decoration: const BoxDecoration(
                                     //color: Colors.amber,
                                     image: DecorationImage(
@@ -110,26 +110,32 @@ class menu_behaviour extends StatelessWidget {
                                 child: Align(
                                     alignment: const Alignment(0, 1.125),
                                     child: Container(
-                                      height: AppDimensions.height10 * 0.98,
-                                      width: AppDimensions.height10 * 0.967,
+                                      height: AppDimensions.height10(context) *
+                                          0.98,
+                                      width: AppDimensions.height10(context) *
+                                          0.967,
                                       padding: EdgeInsets.all(
-                                          AppDimensions.height10 * 0.2),
+                                          AppDimensions.height10(context) *
+                                              0.2),
                                       decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: Color(0xff52855E)),
                                       child: Image.asset(
                                         'assets/images/tick_icon.png',
                                         color: const Color(0xFFFFFFFF),
-                                        height: AppDimensions.height10 * 0.5,
-                                        width: AppDimensions.height10 * 0.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.5,
+                                        width: AppDimensions.height10(context) *
+                                            0.5,
                                       ),
                                     ))),
                           ),
                           Align(
                             alignment: const Alignment(1.3, 6),
                             child: Container(
-                              width: AppDimensions.height10 * 21,
-                              height: AppDimensions.height10 * 10.6,
+                              width: AppDimensions.height10(context) * 21,
+                              height: AppDimensions.height10(context) * 10.6,
                               // color: Colors.amber.withOpacity(0.2),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,18 +145,23 @@ class menu_behaviour extends StatelessWidget {
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                         color: const Color(0xffffffff),
-                                        fontSize: AppDimensions.height10 * 2.0,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
                                         fontWeight: FontWeight.w600),
                                   ),
                                   Container(
-                                    height: AppDimensions.height10 * 2.5,
+                                    height:
+                                        AppDimensions.height10(context) * 2.5,
                                     margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 * 0.6),
+                                        top: AppDimensions.height10(context) *
+                                            0.6),
                                     child: Text(
                                       'Session completed',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff156F6D)),
                                     ),
@@ -167,20 +178,20 @@ class menu_behaviour extends StatelessWidget {
               ),
 
               Container(
-                width: AppDimensions.height10 * 21.1,
-                height: AppDimensions.height10 * 11.8,
+                width: AppDimensions.height10(context) * 21.1,
+                height: AppDimensions.height10(context) * 11.8,
                 // color: Colors.amber,
                 child: Row(
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 9.6,
-                      height: AppDimensions.height10 * 11.8,
+                      width: AppDimensions.height10(context) * 9.6,
+                      height: AppDimensions.height10(context) * 11.8,
                       //margin: EdgeInsets.only(bottom: 19),
                       child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 7.0,
-                            height: AppDimensions.height10 * 7.0,
+                            width: AppDimensions.height10(context) * 7.0,
+                            height: AppDimensions.height10(context) * 7.0,
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(
                                     begin: Alignment.topCenter,
@@ -191,15 +202,18 @@ class menu_behaviour extends StatelessWidget {
                                     ]),
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                    width: AppDimensions.height10 * 0.3,
+                                    width:
+                                        AppDimensions.height10(context) * 0.3,
                                     color: Colors.white)),
                             child: Center(
                                 child: GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
                                       'assets/images/visibility_black_24dp 1.png',
-                                      height: AppDimensions.height10 * 2.9,
-                                      width: AppDimensions.height10 * 21.9,
+                                      height:
+                                          AppDimensions.height10(context) * 2.9,
+                                      width: AppDimensions.height10(context) *
+                                          21.9,
                                     ))),
                           ),
                           Text(
@@ -207,30 +221,30 @@ class menu_behaviour extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
                             'session',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                height: AppDimensions.height10 * 0.12,
+                                height: AppDimensions.height10(context) * 0.12,
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500),
                           )
                         ],
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 9.3,
-                      height: AppDimensions.height10 * 11.8,
+                      width: AppDimensions.height10(context) * 9.3,
+                      height: AppDimensions.height10(context) * 11.8,
                       //margin: EdgeInsets.only(bottom: 19),
                       child: Column(
                         children: [
                           Container(
-                              width: AppDimensions.height10 * 7.0,
-                              height: AppDimensions.height10 * 7.0,
+                              width: AppDimensions.height10(context) * 7.0,
+                              height: AppDimensions.height10(context) * 7.0,
                               decoration: BoxDecoration(
                                   gradient: const LinearGradient(
                                       begin: Alignment.topCenter,
@@ -241,7 +255,8 @@ class menu_behaviour extends StatelessWidget {
                                       ]),
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                      width: AppDimensions.height10 * 0.3,
+                                      width:
+                                          AppDimensions.height10(context) * 0.3,
                                       color: Colors.white)),
                               child: Center(
                                 child: GestureDetector(
@@ -249,42 +264,41 @@ class menu_behaviour extends StatelessWidget {
                                         context: context,
                                         builder: (BuildContext context) =>
                                             Container(
-                                              width:
-                                                  AppDimensions.height10 * 27.0,
-                                              height:
-                                                  AppDimensions.height10 * 18.2,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  27.0,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  18.2,
                                               child: AlertDialog(
                                                 contentPadding: EdgeInsets.zero,
                                                 actionsPadding: EdgeInsets.zero,
                                                 titlePadding: EdgeInsets.zero,
                                                 title: Container(
                                                     margin: EdgeInsets.only(
-                                                        top: AppDimensions.height10 *
+                                                        top: AppDimensions.height10(context) *
                                                             1.9,
-                                                        right: AppDimensions.height10 *
+                                                        right: AppDimensions.height10(context) *
                                                             1.6,
-                                                        left: AppDimensions.height10 *
+                                                        left: AppDimensions.height10(context) *
                                                             1.6,
-                                                        bottom: AppDimensions
-                                                                .height10 *
-                                                            0.2),
+                                                        bottom:
+                                                            AppDimensions.height10(context) *
+                                                                0.2),
                                                     height:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(context) *
                                                             2.2,
-                                                    width: AppDimensions.height10 *
+                                                    width: AppDimensions.height10(
+                                                            context) *
                                                         23.8,
                                                     child: RichText(
                                                         textAlign:
                                                             TextAlign.center,
                                                         text: TextSpan(
                                                             style: TextStyle(
-                                                                fontFamily:
-                                                                    'laila',
-                                                                fontSize:
-                                                                    AppDimensions.height10 *
-                                                                        1.7,
-                                                                fontWeight:
-                                                                    FontWeight.w400,
+                                                                fontFamily: 'laila',
+                                                                fontSize: AppDimensions.height10(context) * 1.7,
+                                                                fontWeight: FontWeight.w400,
                                                                 color: Color(0xFF000000)),
                                                             children: [
                                                               TextSpan(
@@ -294,26 +308,31 @@ class menu_behaviour extends StatelessWidget {
                                                 content: Container(
                                                   margin: EdgeInsets.only(
                                                       bottom: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.5,
                                                       left: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.6,
                                                       right: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.6),
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           3.4,
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          23.8,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      23.8,
                                                   child: Text(
                                                     "Are you sure you want to change this\nscheduled session to missed?",
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.3,
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -325,7 +344,8 @@ class menu_behaviour extends StatelessWidget {
                                                     children: [
                                                       SizedBox(
                                                         height: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.1,
                                                         child: Divider(
                                                           color: const Color(
@@ -336,7 +356,8 @@ class menu_behaviour extends StatelessWidget {
                                                       ),
                                                       Container(
                                                         height: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             4.2,
                                                         width: double.infinity,
                                                         color: const Color(
@@ -358,7 +379,8 @@ class menu_behaviour extends StatelessWidget {
                                                                 color: const Color(
                                                                     0xFFFFFFFF),
                                                                 fontSize: AppDimensions
-                                                                        .height10 *
+                                                                        .height10(
+                                                                            context) *
                                                                     1.7,
                                                                 fontFamily:
                                                                     "Laila",
@@ -370,7 +392,8 @@ class menu_behaviour extends StatelessWidget {
                                                       ),
                                                       SizedBox(
                                                         height: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.1,
                                                         child: Divider(
                                                           color: const Color(
@@ -381,7 +404,8 @@ class menu_behaviour extends StatelessWidget {
                                                       ),
                                                       Container(
                                                         height: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             4.4,
                                                         width: double.infinity,
                                                         child: TextButton(
@@ -393,7 +417,8 @@ class menu_behaviour extends StatelessWidget {
                                                             'Cancel',
                                                             style: TextStyle(
                                                                 fontSize: AppDimensions
-                                                                        .height10 *
+                                                                        .height10(
+                                                                            context) *
                                                                     1.7,
                                                                 fontFamily:
                                                                     "Laila",
@@ -407,7 +432,8 @@ class menu_behaviour extends StatelessWidget {
                                                       ),
                                                       SizedBox(
                                                         height: AppDimensions
-                                                                .height10 *
+                                                                .height10(
+                                                                    context) *
                                                             0.1,
                                                         child: Divider(
                                                           color: const Color(
@@ -422,8 +448,10 @@ class menu_behaviour extends StatelessWidget {
                                               ),
                                             )),
                                     child: Container(
-                                      width: AppDimensions.height10 * 2.9,
-                                      height: AppDimensions.height10 * 2.9,
+                                      width:
+                                          AppDimensions.height10(context) * 2.9,
+                                      height:
+                                          AppDimensions.height10(context) * 2.9,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.red,
@@ -438,16 +466,16 @@ class menu_behaviour extends StatelessWidget {
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500),
                           ),
                           Text(
                             'session',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                height: AppDimensions.height10 * 0.12,
+                                height: AppDimensions.height10(context) * 0.12,
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w500),
                           )
                         ],
@@ -466,14 +494,15 @@ class menu_behaviour extends StatelessWidget {
               // ),
               Container(
                 width: double.infinity,
-                height: AppDimensions.height10 * 0.1,
+                height: AppDimensions.height10(context) * 0.1,
                 color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               ),
               Container(
-                width: AppDimensions.height10 * 41.3,
-                height: AppDimensions.height10 * 22.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
+                width: AppDimensions.height10(context) * 41.3,
+                height: AppDimensions.height10(context) * 22.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.2),
                 child: Stack(children: [
                   Align(
                     alignment: const Alignment(1, -1.3),
@@ -483,55 +512,58 @@ class menu_behaviour extends StatelessWidget {
                         },
                         icon: Image.asset(
                           'assets/images/ic_info_outline.png',
-                          height: AppDimensions.height10 * 3.0,
-                          width: AppDimensions.height10 * 3.0,
+                          height: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.height10(context) * 3.0,
                         )),
                   ),
                   Align(
                     alignment: const Alignment(0, -1),
                     child: Container(
-                      width: AppDimensions.height10 * 36.0,
-                      height: AppDimensions.height10 * 24.7,
+                      width: AppDimensions.height10(context) * 36.0,
+                      height: AppDimensions.height10(context) * 24.7,
                       child: Column(
                         children: [
                           Container(
-                            height: AppDimensions.height10 * 5.9,
-                            width: AppDimensions.height10 * 36.0,
+                            height: AppDimensions.height10(context) * 5.9,
+                            width: AppDimensions.height10(context) * 36.0,
                             margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10 * 1.2),
+                                bottom: AppDimensions.height10(context) * 1.2),
                             child: Column(children: [
                               Container(
-                                height: AppDimensions.height10 * 1.9,
+                                height: AppDimensions.height10(context) * 1.9,
                                 child: Text(
                                   'Practice Assessment',
                                   style: TextStyle(
                                       //increase font size by 2 px
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xfff5f5f5)),
                                 ),
                               ),
                               Container(
-                                height: AppDimensions.height10 * 1.7,
+                                height: AppDimensions.height10(context) * 1.7,
                                 margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 0.2),
+                                    top: AppDimensions.height10(context) * 0.2),
                                 child: Text(
                                   'Here is your latest 20 active day evaluation.',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.4,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xfff5f5f5)),
                                 ),
                               ),
                               Container(
-                                height: AppDimensions.height10 * 1.7,
+                                height: AppDimensions.height10(context) * 1.7,
                                 margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 0.3),
+                                    top: AppDimensions.height10(context) * 0.3),
                                 child: RichText(
                                     text: TextSpan(
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.4,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xfff5f5f5)),
                                         children: [
@@ -549,7 +581,8 @@ class menu_behaviour extends StatelessWidget {
                             children: [
                               Container(
                                 margin: EdgeInsets.only(
-                                    bottom: AppDimensions.height10 * 1.2),
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.2),
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: const button_feilds(
@@ -579,16 +612,16 @@ class menu_behaviour extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                height: AppDimensions.height10 * 0.1,
+                height: AppDimensions.height10(context) * 0.1,
                 color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               ),
 
               Container(
-                height: AppDimensions.height10 * 28.0,
+                height: AppDimensions.height10(context) * 28.0,
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 2.5,
-                    top: AppDimensions.height10 * 3.0),
+                    bottom: AppDimensions.height10(context) * 2.5,
+                    top: AppDimensions.height10(context) * 3.0),
                 child: Column(
                   children: [
                     const button_feilds(
@@ -599,8 +632,8 @@ class menu_behaviour extends StatelessWidget {
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10 * 1.0,
-                          top: AppDimensions.height10 * 1.0),
+                          bottom: AppDimensions.height10(context) * 1.0,
+                          top: AppDimensions.height10(context) * 1.0),
                       child: const button_feilds(
                         feild_text: 'View practice settings',
                         icon_viible: true,
@@ -609,8 +642,8 @@ class menu_behaviour extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin:
-                          EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 1.0),
                       child: const button_feilds(
                         feild_text: 'Veiw upcoming schedules',
                         icon_viible: true,

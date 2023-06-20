@@ -32,8 +32,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
           child: IconButton(
             icon: Image.asset(
               'assets/images/Back.png',
-              width: AppDimensions.height10 * 3,
-              height: AppDimensions.height10 * 3,
+              width: AppDimensions.height10(context) * 3,
+              height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
             ),
             onPressed: () {
@@ -54,15 +54,17 @@ class _PracticeFinishedState extends State<PracticeFinished> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Close.png',
-                width: AppDimensions.height10 * 3.0,
-                height: AppDimensions.height10 * 3.0,
+                width: AppDimensions.height10(context) * 3.0,
+                height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
               ),
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const HomeScreen(login: false,),
+                    builder: (context) => const HomeScreen(
+                      login: false,
+                    ),
                   ),
                 );
                 // Add code for performing close action
@@ -86,12 +88,12 @@ class _PracticeFinishedState extends State<PracticeFinished> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: AppDimensions.height10 * 8.9,
+                height: AppDimensions.height10(context) * 8.9,
               ),
               Container(
-                width: AppDimensions.height10 * 20.7,
-                height: AppDimensions.height10 * 7.2,
-                // padding: EdgeInsets.only(top: AppDimensions.height10 * 10),
+                width: AppDimensions.height10(context) * 20.7,
+                height: AppDimensions.height10(context) * 7.2,
+                // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
                 child: Center(
                   child: GradientText(
                     "Star & planet created! ",
@@ -99,7 +101,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       // color: Colors.white,
-                      fontSize: AppDimensions.height10 * 3,
+                      fontSize: AppDimensions.height10(context) * 3,
                     ),
                     colors: [
                       const Color(0xFFFA9934),
@@ -109,12 +111,12 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 2.2,
+                height: AppDimensions.height10(context) * 2.2,
               ),
               Container(
                   // color: Colors.black,
-                  height: AppDimensions.height10 * 5.1,
-                  width: AppDimensions.height10 * 34.0,
+                  height: AppDimensions.height10(context) * 5.1,
+                  width: AppDimensions.height10(context) * 34.0,
                   child: Column(
                     children: [
                       Container(
@@ -125,7 +127,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 2.2,
+                              fontSize: AppDimensions.height10(context) * 2.2,
                             ),
                           ),
                         ),
@@ -133,15 +135,15 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                     ],
                   )),
               SizedBox(
-                height: AppDimensions.height10 * 5.7,
+                height: AppDimensions.height10(context) * 5.7,
               ),
               Stack(
                 children: [
                   Container(
                     child: Image(
                       image: const AssetImage('assets/images/anger.png'),
-                      height: AppDimensions.height10 * 38.1,
-                      width: AppDimensions.height10 * 35.3,
+                      height: AppDimensions.height10(context) * 38.1,
+                      width: AppDimensions.height10(context) * 35.3,
                     ),
                   ),
                   Positioned(
@@ -152,12 +154,12 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                     child: Align(
                       // alignment: Alignment.bottomCenter,
 
-                      alignment:
-                          Alignment(0.49, AppDimensions.height10 * 0.016 + 1.4),
+                      alignment: Alignment(
+                          0.49, AppDimensions.height10(context) * 0.016 + 1.4),
                       //heightFactor: 0.5,
                       child: Container(
-                        // height: AppDimensions.height10*17.5,
-                        // width:  AppDimensions.height10*17.5,
+                        // height: AppDimensions.height10(context) *17.5,
+                        // width:  AppDimensions.height10(context) *17.5,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
@@ -173,8 +175,9 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                           child: Image(
                             image: const AssetImage(
                                 'assets/images/practicefinal.png'),
-                            height: AppDimensions.height10 * 1.5 * 14.7,
-                            width: AppDimensions.height10 * 1.5 * 14.7,
+                            height:
+                                AppDimensions.height10(context) * 1.5 * 14.7,
+                            width: AppDimensions.height10(context) * 1.5 * 14.7,
                           ),
                         ),
                       ),
@@ -183,15 +186,15 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 ],
               ),
               SizedBox(
-                height: AppDimensions.height10 * 13.7,
+                height: AppDimensions.height10(context) * 13.7,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
                       // color: Colors.blue,
-                      width: AppDimensions.height10 * 5.0,
-                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10(context) * 5.0,
+                      height: AppDimensions.height10(context) * 5.0,
                       child: Image.asset(
                         "assets/images/Moreactions.png",
                         fit: BoxFit.contain,
@@ -205,8 +208,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                           ));
                     },
                     child: Container(
-                      height: AppDimensions.height10 * 5,
-                      width: AppDimensions.height10 * 31.3,
+                      height: AppDimensions.height10(context) * 5,
+                      width: AppDimensions.height10(context) * 31.3,
                       decoration: BoxDecoration(
                         // color: Color(0xFFFF7D50),
                         border: Border.all(color: Colors.transparent),
@@ -222,7 +225,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                           "Next",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                           ),
                         ),

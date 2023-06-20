@@ -34,7 +34,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+          preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
           child: AppBar(
             elevation: 0,
             centerTitle: true,
@@ -45,8 +45,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 3,
-                  height: AppDimensions.height10 * 3,
+                  width: AppDimensions.height10(context) * 3,
+                  height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
@@ -67,8 +67,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 3.0,
-                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10(context) * 3.0,
+                    height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
@@ -100,20 +100,21 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.3),
+                  padding: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 5.3),
                   child: Center(
                     child: Text(
                       "Practice Creation 3/3",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.5,
+                  height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
                   child: Center(
@@ -122,13 +123,13 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.2,
+                        fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10,
+                  height: AppDimensions.height10(context),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -136,10 +137,10 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   children: [
                     Container(
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 1.0,
-                            right: AppDimensions.height10 * 1.0),
-                        width: AppDimensions.height10 * 10.4,
-                        height: AppDimensions.height10 * 11.2,
+                            left: AppDimensions.height10(context) * 1.0,
+                            right: AppDimensions.height10(context) * 1.0),
+                        width: AppDimensions.height10(context) * 10.4,
+                        height: AppDimensions.height10(context) * 11.2,
                         child: Image.asset(
                           "assets/images/createprac.png",
                           fit: BoxFit.contain,
@@ -152,7 +153,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Color(0xFF156F6D),
-                            fontSize: AppDimensions.height10 * 2.0,
+                            fontSize: AppDimensions.height10(context) * 2.0,
                           ),
                         ),
                       ),
@@ -160,11 +161,11 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.3,
+                  height: AppDimensions.height10(context) * 2.3,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 3.4,
-                  width: AppDimensions.height10 * 36.4,
+                  height: AppDimensions.height10(context) * 3.4,
+                  width: AppDimensions.height10(context) * 36.4,
                   child: Center(
                     child: Text(
                       "Your routine commitment",
@@ -172,20 +173,20 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.8,
+                        fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 - 2,
+                  height: AppDimensions.height10(context) - 2,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height: AppDimensions.height10 * 8.6,
-                      width: AppDimensions.height10 * 37.2,
+                      height: AppDimensions.height10(context) * 8.6,
+                      width: AppDimensions.height10(context) * 37.2,
                       child: Center(
                         child: Text.rich(
                           textAlign: TextAlign.center,
@@ -194,7 +195,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 'It’s important to set a consistent routine that works for you. Please select time slots\n ',
                             style: TextStyle(
                               color: const Color(0xFFFFFFFF),
-                              fontSize: AppDimensions.height10 * 1.8,
+                              fontSize: AppDimensions.height10(context) * 1.8,
                               fontWeight: FontWeight.w500,
                             ),
                             children: <TextSpan>[
@@ -202,7 +203,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                   text: 'for 3 or more days.',
                                   style: TextStyle(
                                     color: const Color(0xFFFFFFFF),
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                   )),
                               // can add more TextSpans here...
@@ -218,7 +220,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.1,
+                  height: AppDimensions.height10(context) * 2.1,
                 ),
                 Container(child: schedule(onCountChanged: (int count) {
                   setState(() {
@@ -227,7 +229,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   print("Updated count: $count");
                 })),
                 SizedBox(
-                  height: AppDimensions.height10 * 6.85,
+                  height: AppDimensions.height10(context) * 6.85,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -250,8 +252,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                         print("successfull${widget.pracTitle}");
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 5,
-                        width: AppDimensions.height10 * 31.3,
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 31.3,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
@@ -279,7 +281,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             "More than 2 days selected - Next",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -289,7 +291,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 4.2,
+                  height: AppDimensions.height10(context) * 4.2,
                 ),
                 Padding(
                     padding: EdgeInsets.only(

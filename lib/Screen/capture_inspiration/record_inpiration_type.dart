@@ -29,8 +29,8 @@ class _record_inspirationState extends State<record_inspiration> {
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           )
@@ -38,13 +38,13 @@ class _record_inspirationState extends State<record_inspiration> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         // title: Container(
-        //   width: AppDimensions.height10 * 5.5,
-        //   height: AppDimensions.height10 * 2.4,
+        //   width: AppDimensions.height10(context) * 5.5,
+        //   height: AppDimensions.height10(context) * 2.4,
         //   child: Center(
         //     child: Text(
         //       'Menu',
         //       style: TextStyle(
-        //           fontSize: AppDimensions.height10 * 2.00,
+        //           fontSize: AppDimensions.height10(context) * 2.00,
         //           fontWeight: FontWeight.w600,
         //           color: Color(0xFFFFFFFF)),
         //     ),
@@ -54,7 +54,7 @@ class _record_inspirationState extends State<record_inspiration> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        // margin: EdgeInsets.only(top: AppDimensions.height10 * 6.0),
+        // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/bg_inpiration_purple.png'),
@@ -64,32 +64,33 @@ class _record_inspirationState extends State<record_inspiration> {
         child: Column(
           children: [
             Container(
-              width: AppDimensions.height10 * 5.5,
-              height: AppDimensions.height10 * 2.5,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 4.8),
+              width: AppDimensions.height10(context) * 5.5,
+              height: AppDimensions.height10(context) * 2.5,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 4.8),
               child: Center(
                 child: Text(
                   'Menu',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.00,
+                      fontSize: AppDimensions.height10(context) * 2.00,
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFFFFFFFF)),
                 ),
               ),
             ),
             Container(
-              // width: AppDimensions.height10 * 16.7,
-              //height: AppDimensions.height10 * 21.2,
+              // width: AppDimensions.height10(context) * 16.7,
+              //height: AppDimensions.height10(context) * 21.2,
               margin: EdgeInsets.only(
-                top: AppDimensions.height10 * 4.3,
+                top: AppDimensions.height10(context) * 4.3,
               ),
               child: Column(
                 children: [
                   if (widget.type_switch == 1) ...[
                     Column(children: [
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 16.7,
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 16.7,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -97,27 +98,28 @@ class _record_inspirationState extends State<record_inspiration> {
                                 fit: BoxFit.cover)),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 1.9,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 0.5),
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 1.9,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.5),
                         child: Center(
                             child: Text(
                           'Influencer',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.4,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       SizedBox(
-                        height: AppDimensions.height10 * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
                         child: Align(
                             alignment: Alignment.topCenter,
                             child: Text(
                               'Nir Eyal',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.0,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -126,8 +128,8 @@ class _record_inspirationState extends State<record_inspiration> {
                   ] else if (widget.type_switch == 2) ...[
                     Column(children: [
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 16.7,
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 16.7,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           gradient: RadialGradient(
@@ -138,35 +140,36 @@ class _record_inspirationState extends State<record_inspiration> {
                             'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.4,
+                                fontSize: AppDimensions.height10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFFFFFFFF)),
                           ),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 1.9,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 0.5),
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 1.9,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.5),
                         child: Center(
                             child: Text(
                           'Notes',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.4,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 3.0,
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 3.0,
                         child: Align(
                             alignment: Alignment.topCenter,
                             child: Text(
                               'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.0,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -175,8 +178,8 @@ class _record_inspirationState extends State<record_inspiration> {
                   ] else if (widget.type_switch == 3) ...[
                     Column(children: [
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 16.7,
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 16.7,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -184,27 +187,28 @@ class _record_inspirationState extends State<record_inspiration> {
                                     'assets/images/video_play.png'))),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 1.9,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 0.5),
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 1.9,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.5),
                         child: Center(
                             child: Text(
                           'Music Eye Of The Tiger ',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.4,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       SizedBox(
-                        height: AppDimensions.height10 * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
                         child: Align(
                             alignment: Alignment.topCenter,
                             child: Text(
                               'Survivors',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.0,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -213,8 +217,8 @@ class _record_inspirationState extends State<record_inspiration> {
                   ] else if (widget.type_switch == 4) ...[
                     Column(children: [
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 16.7,
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 16.7,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color(0xFFD9D9D9),
@@ -223,28 +227,29 @@ class _record_inspirationState extends State<record_inspiration> {
                                     'assets/images/distraction content.png'))),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 16.7,
-                        height: AppDimensions.height10 * 1.9,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 0.5),
+                        width: AppDimensions.height10(context) * 16.7,
+                        height: AppDimensions.height10(context) * 1.9,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.5),
                         child: Center(
                             child: Text(
                           'Content',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.4,
+                              fontSize: AppDimensions.height10(context) * 1.4,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         )),
                       ),
                       Container(
-                        height: AppDimensions.height10 * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
                         child: Align(
                             alignment: Alignment.topCenter,
                             child: Text(
                               'Learn How To Avoid Distraction In A\nWorld That Is Full Of It',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.0,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.0,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xFFFFFFFF)),
                             )),
@@ -255,23 +260,24 @@ class _record_inspirationState extends State<record_inspiration> {
               ),
             ),
             Container(
-              width: AppDimensions.height10 * 32.0,
-              height: AppDimensions.height10 * 2.6,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 2.9),
+              width: AppDimensions.height10(context) * 32.0,
+              height: AppDimensions.height10(context) * 2.6,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 2.9),
               child: Center(
                   child: Text(
                 'What do you want to do?',
                 style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.2,
+                    fontSize: AppDimensions.height10(context) * 2.2,
                     fontWeight: FontWeight.w600,
                     color: Colors.white),
               )),
             ),
             Container(
-              width: AppDimensions.height10 * 36.0,
-              height: AppDimensions.height10 * 28.5,
+              width: AppDimensions.height10(context) * 36.0,
+              height: AppDimensions.height10(context) * 28.5,
               margin: EdgeInsets.only(
-                top: AppDimensions.height10 * 3.4,
+                top: AppDimensions.height10(context) * 3.4,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -313,45 +319,47 @@ class _record_inspirationState extends State<record_inspiration> {
                       }
                     },
                     child: Container(
-                      width: AppDimensions.height10 * 36.0,
-                      height: AppDimensions.height10 * 6.0,
-                      margin:
-                          EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                      width: AppDimensions.height10(context) * 36.0,
+                      height: AppDimensions.height10(context) * 6.0,
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 1.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0),
+                              AppDimensions.height10(context) * 2.0),
                           color: Colors.white),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 23.9,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 23.9,
+                            height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.99),
+                                left: AppDimensions.height10(context) * 1.99),
                             child: GestureDetector(
                                 onTap: () {},
                                 child: Text(
                                   'View details',
                                   style: TextStyle(
                                     color: const Color(0xFF646464),
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 )),
                           ),
                           Container(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.39,
+                              width: AppDimensions.height10(context) * 2.4,
+                              height: AppDimensions.height10(context) * 1.39,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 2.391),
+                                  right:
+                                      AppDimensions.height10(context) * 2.391),
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
                                   'assets/images/BTN Back.png',
                                   color: const Color(0xFF646464),
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
+                                  //width: AppDimensions.height10(context) * 2.6,
+                                  //height: AppDimensions.height10(context) * 2.6,
                                   fit: BoxFit.cover,
                                 ),
                               ))
@@ -396,45 +404,47 @@ class _record_inspirationState extends State<record_inspiration> {
                       }
                     },
                     child: Container(
-                      width: AppDimensions.height10 * 36.0,
-                      height: AppDimensions.height10 * 6.0,
-                      margin:
-                          EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                      width: AppDimensions.height10(context) * 36.0,
+                      height: AppDimensions.height10(context) * 6.0,
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 1.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 2.0),
+                              AppDimensions.height10(context) * 2.0),
                           color: Colors.white),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                            width: AppDimensions.height10 * 23.9,
-                            height: AppDimensions.height10 * 2.2,
+                            width: AppDimensions.height10(context) * 23.9,
+                            height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 1.99),
+                                left: AppDimensions.height10(context) * 1.99),
                             child: GestureDetector(
                                 onTap: () {},
                                 child: Text(
                                   'Edit details',
                                   style: TextStyle(
                                     color: const Color(0xFF646464),
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                   ),
                                 )),
                           ),
                           Container(
-                              width: AppDimensions.height10 * 2.4,
-                              height: AppDimensions.height10 * 1.39,
+                              width: AppDimensions.height10(context) * 2.4,
+                              height: AppDimensions.height10(context) * 1.39,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 2.391),
+                                  right:
+                                      AppDimensions.height10(context) * 2.391),
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
                                   'assets/images/BTN Back.png',
                                   color: const Color(0xFF646464),
-                                  //width: AppDimensions.height10 * 2.6,
-                                  //height: AppDimensions.height10 * 2.6,
+                                  //width: AppDimensions.height10(context) * 2.6,
+                                  //height: AppDimensions.height10(context) * 2.6,
                                   fit: BoxFit.cover,
                                 ),
                               ))
@@ -443,33 +453,33 @@ class _record_inspirationState extends State<record_inspiration> {
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10 * 17.0,
-                    height: AppDimensions.height10 * 0.5,
-                    margin:
-                        EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                    width: AppDimensions.height10(context) * 17.0,
+                    height: AppDimensions.height10(context) * 0.5,
+                    margin: EdgeInsets.only(
+                        bottom: AppDimensions.height10(context) * 1.0),
                     decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0),
                         color: Colors.white),
                   ),
                   Container(
-                    width: AppDimensions.height10 * 36.0,
-                    height: AppDimensions.height10 * 6.0,
-                    margin:
-                        EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                    width: AppDimensions.height10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 6.0,
+                    margin: EdgeInsets.only(
+                        bottom: AppDimensions.height10(context) * 1.0),
                     decoration: BoxDecoration(
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0),
                         color: Colors.white),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: AppDimensions.height10 * 2.4,
-                          height: AppDimensions.height10 * 2.4,
+                          width: AppDimensions.height10(context) * 2.4,
+                          height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 0.5,
+                            right: AppDimensions.height10(context) * 0.5,
                           ),
                           child: const Icon(
                             Icons.share,
@@ -477,13 +487,13 @@ class _record_inspirationState extends State<record_inspiration> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 5.0,
-                          height: AppDimensions.height10 * 2.2,
+                          width: AppDimensions.height10(context) * 5.0,
+                          height: AppDimensions.height10(context) * 2.2,
                           child: Center(
                               child: Text(
                             'Share',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFF646464)),
                           )),
@@ -492,24 +502,24 @@ class _record_inspirationState extends State<record_inspiration> {
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10 * 36.0,
-                    height: AppDimensions.height10 * 6.0,
+                    width: AppDimensions.height10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 6.0,
                     decoration: BoxDecoration(
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.1,
+                            width: AppDimensions.height10(context) * 0.1,
                             color: const Color(0xFFFFFFFF)),
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 2.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0),
                         color: const Color(0xff464646)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          width: AppDimensions.height10 * 2.4,
-                          height: AppDimensions.height10 * 2.4,
+                          width: AppDimensions.height10(context) * 2.4,
+                          height: AppDimensions.height10(context) * 2.4,
                           margin: EdgeInsets.only(
-                            right: AppDimensions.height10 * 0.5,
+                            right: AppDimensions.height10(context) * 0.5,
                           ),
                           child: const Icon(
                             Icons.delete,
@@ -517,13 +527,13 @@ class _record_inspirationState extends State<record_inspiration> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10 * 5.3,
-                          height: AppDimensions.height10 * 2.2,
+                          width: AppDimensions.height10(context) * 5.3,
+                          height: AppDimensions.height10(context) * 2.2,
                           child: Center(
                               child: Text(
                             'Delete',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xffffffff)),
                           )),
@@ -535,13 +545,14 @@ class _record_inspirationState extends State<record_inspiration> {
               ),
             ),
             Container(
-              width: AppDimensions.height10 * 17.0,
-              height: AppDimensions.height10 * 0.5,
+              width: AppDimensions.height10(context) * 17.0,
+              height: AppDimensions.height10(context) * 0.5,
               //alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 18.0),
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 18.0),
               decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 2.0),
                   color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             ),
           ],

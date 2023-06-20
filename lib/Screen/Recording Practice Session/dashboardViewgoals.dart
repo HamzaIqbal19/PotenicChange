@@ -23,19 +23,19 @@ class dashBoard extends StatelessWidget {
                 Container(
                   child: Image.asset(
                     'assets/images/Add goal.png',
-                    height: AppDimensions.height10 * 2.1,
-                    width: AppDimensions.height10 * 2.2,
+                    height: AppDimensions.height10(context) * 2.1,
+                    width: AppDimensions.height10(context) * 2.2,
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(
-                      left: AppDimensions.height10 * 1.7,
-                      right: AppDimensions.height10 * 0.9,
-                      bottom: AppDimensions.height10 * 0.3),
+                      left: AppDimensions.height10(context) * 1.7,
+                      right: AppDimensions.height10(context) * 0.9,
+                      bottom: AppDimensions.height10(context) * 0.3),
                   child: Image.asset(
                     'assets/images/calendar_month_black_24dp 1.png',
-                    height: AppDimensions.height10 * 2.4,
-                    width: AppDimensions.height10 * 2.4,
+                    height: AppDimensions.height10(context) * 2.4,
+                    width: AppDimensions.height10(context) * 2.4,
                   ),
                 ),
               ],
@@ -57,21 +57,21 @@ class dashBoard extends StatelessWidget {
           height: double.infinity,
           child: SizedBox(
             width: double.infinity,
-            height: AppDimensions.height10 * 19.2,
+            height: AppDimensions.height10(context) * 19.2,
             child: Column(
               children: [
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: SizedBox(
-                    height: AppDimensions.height10 * 19.2,
-                    width: AppDimensions.height10 * 45.7,
+                    height: AppDimensions.height10(context) * 19.2,
+                    width: AppDimensions.height10(context) * 45.7,
                     child: Stack(
                       children: [
                         Align(
                           alignment: const Alignment(-1, 1),
                           child: Container(
-                            height: AppDimensions.height10 * 7.9,
-                            width: AppDimensions.height10 * 7.9,
+                            height: AppDimensions.height10(context) * 7.9,
+                            width: AppDimensions.height10(context) * 7.9,
                             //margin: const EdgeInsets.only(top: 84),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
@@ -94,7 +94,8 @@ class dashBoard extends StatelessWidget {
                                       'MON',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.2,
+                                              AppDimensions.height10(context) *
+                                                  1.2,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.white),
                                     ),
@@ -104,11 +105,15 @@ class dashBoard extends StatelessWidget {
                                           color: Colors.white,
                                           fontWeight: FontWeight.w400,
                                           fontSize:
-                                              AppDimensions.height10 * 1.7),
+                                              AppDimensions.height10(context) *
+                                                  1.7),
                                     ),
                                     Container(
-                                        height: AppDimensions.height10 * 2.5,
-                                        width: AppDimensions.height10 * 2.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.5,
+                                        width: AppDimensions.height10(context) *
+                                            2.5,
                                         //  margin: const EdgeInsets.only(top: 3.32),
                                         decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
@@ -121,7 +126,8 @@ class dashBoard extends StatelessWidget {
                                               '0/0',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.0,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.white),
@@ -135,12 +141,12 @@ class dashBoard extends StatelessWidget {
                         Align(
                           alignment: const Alignment(0, 0),
                           child: Container(
-                            height: AppDimensions.height10 * 19.2,
-                            width: AppDimensions.height10 * 18.8,
+                            height: AppDimensions.height10(context) * 19.2,
+                            width: AppDimensions.height10(context) * 18.8,
                             // margin: EdgeInsets.only(left: 55.5, right: 55.5),
                             child: Container(
-                              height: AppDimensions.height10 * 13.81,
-                              width: AppDimensions.height10 * 13.265,
+                              height: AppDimensions.height10(context) * 13.81,
+                              width: AppDimensions.height10(context) * 13.265,
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -150,8 +156,10 @@ class dashBoard extends StatelessWidget {
                                 Align(
                                   alignment: const Alignment(0.185, 0.215),
                                   child: Container(
-                                    height: AppDimensions.height10 * 1.3,
-                                    width: AppDimensions.height10 * 1.3,
+                                    height:
+                                        AppDimensions.height10(context) * 1.3,
+                                    width:
+                                        AppDimensions.height10(context) * 1.3,
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         gradient: LinearGradient(colors: [
@@ -168,8 +176,9 @@ class dashBoard extends StatelessWidget {
                                       Text(
                                         'TUE',
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.4,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4,
                                             fontWeight: FontWeight.w600,
                                             color: const Color(0xff5B74A6)),
                                       ),
@@ -177,13 +186,18 @@ class dashBoard extends StatelessWidget {
                                         '02.07',
                                         style: TextStyle(
                                             color: const Color(0xff5B74A6),
-                                            fontSize:
-                                                AppDimensions.height10 * 1.3,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
                                             fontWeight: FontWeight.w400),
                                       ),
                                       Container(
-                                          height: AppDimensions.height10 * 2.5,
-                                          width: AppDimensions.height10 * 2.5,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.5,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.5,
                                           // margin: const EdgeInsets.only(top: 2),
                                           decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
@@ -193,7 +207,8 @@ class dashBoard extends StatelessWidget {
                                               '0/2',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.0,
                                                   fontWeight: FontWeight.w400,
                                                   color:
@@ -211,8 +226,8 @@ class dashBoard extends StatelessWidget {
                         Align(
                           alignment: const Alignment(1, 1),
                           child: Container(
-                              height: AppDimensions.height10 * 7.9,
-                              width: AppDimensions.height10 * 7.9,
+                              height: AppDimensions.height10(context) * 7.9,
+                              width: AppDimensions.height10(context) * 7.9,
                               // margin: const EdgeInsets.only(
                               //   top: 84,
                               // ),
@@ -235,7 +250,9 @@ class dashBoard extends StatelessWidget {
                                   Text(
                                     'MON',
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 1.2,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.2,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xff5B74A6)),
                                   ),
@@ -244,18 +261,25 @@ class dashBoard extends StatelessWidget {
                                     style: TextStyle(color: Color(0xff5B74A6)),
                                   ),
                                   Container(
-                                    height: AppDimensions.height10 * 2.7,
-                                    width: AppDimensions.height10 * 2.7,
+                                    height:
+                                        AppDimensions.height10(context) * 2.7,
+                                    width:
+                                        AppDimensions.height10(context) * 2.7,
                                     //margin: const EdgeInsets.only(top: 3.32),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                          width: AppDimensions.height10 * 0.1,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  0.1,
                                           color: Colors.white),
                                     ),
                                     child: Container(
-                                        width: AppDimensions.height10 * 1.7,
-                                        height: AppDimensions.height10 * 1.5,
+                                        width: AppDimensions.height10(context) *
+                                            1.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
                                         // margin:
                                         //     const EdgeInsets.only(top: 3.32),
                                         // margin: const EdgeInsets.only(left: 1),
@@ -264,7 +288,8 @@ class dashBoard extends StatelessWidget {
                                             '0/2',
                                             style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.0,
                                                 fontWeight: FontWeight.w400,
                                                 color: const Color(0xff5B74A6)),
@@ -279,31 +304,32 @@ class dashBoard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: AppDimensions.height10 * 35.6,
-                  height: AppDimensions.height10 * 4.2,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                  width: AppDimensions.height10(context) * 35.6,
+                  height: AppDimensions.height10(context) * 4.2,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 2.0),
                   child: Column(children: [
                     Container(
-                      margin:
-                          EdgeInsets.only(bottom: AppDimensions.height10 * 0.3),
-                      height: AppDimensions.height10 * 2.2,
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 0.3),
+                      height: AppDimensions.height10(context) * 2.2,
                       alignment: Alignment.centerLeft,
                       child: Text(
                         '8.00',
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.8,
+                          fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Divider(
-                      height: AppDimensions.height10 * 0.1,
-                      thickness: AppDimensions.height10 * 0.1,
+                      height: AppDimensions.height10(context) * 0.1,
+                      thickness: AppDimensions.height10(context) * 0.1,
                       color: Colors.white,
                     ),
                     Container(
-                      height: AppDimensions.height10 * 1.2,
+                      height: AppDimensions.height10(context) * 1.2,
                       alignment: Alignment.centerLeft,
                       child: const Text(
                         'AM',
@@ -318,19 +344,19 @@ class dashBoard extends StatelessWidget {
                 ),
                 Container(
                   width: dashboard_ctrl
-                      ? AppDimensions.height10 * 40.1
-                      : AppDimensions.height10 * 31.3,
-                  height: AppDimensions.height10 * 31.3,
+                      ? AppDimensions.height10(context) * 40.1
+                      : AppDimensions.height10(context) * 31.3,
+                  height: AppDimensions.height10(context) * 31.3,
                   // color: Colors.blue,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10 * 2.9,
-                      bottom: AppDimensions.height10 * 1.2,
+                      top: AppDimensions.height10(context) * 2.9,
+                      bottom: AppDimensions.height10(context) * 1.2,
                       right: dashboard_ctrl
-                          ? AppDimensions.height10 * 0.9
-                          : AppDimensions.height10 * 7.3,
+                          ? AppDimensions.height10(context) * 0.9
+                          : AppDimensions.height10(context) * 7.3,
                       left: dashboard_ctrl
-                          ? AppDimensions.height10 * 0.4
-                          : AppDimensions.height10 * 2.3),
+                          ? AppDimensions.height10(context) * 0.4
+                          : AppDimensions.height10(context) * 2.3),
                   child: dashboard_ctrl
                       ? Stack(children: [
                           Align(
@@ -346,8 +372,8 @@ class dashBoard extends StatelessWidget {
                                             )));
                               },
                               child: Container(
-                                height: AppDimensions.height10 * 13.8,
-                                width: AppDimensions.height10 * 13.8,
+                                height: AppDimensions.height10(context) * 13.8,
+                                width: AppDimensions.height10(context) * 13.8,
                                 decoration: const BoxDecoration(
                                     //color: Colors.amber,
                                     image: DecorationImage(
@@ -359,7 +385,8 @@ class dashBoard extends StatelessWidget {
                                   'Meditation',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w500),
                                 )),
                               ),
@@ -370,8 +397,8 @@ class dashBoard extends StatelessWidget {
                             child: GestureDetector(
                               onTap: () {},
                               child: Container(
-                                height: AppDimensions.height10 * 13.8,
-                                width: AppDimensions.height10 * 13.8,
+                                height: AppDimensions.height10(context) * 13.8,
+                                width: AppDimensions.height10(context) * 13.8,
                                 decoration: const BoxDecoration(
                                     //color: Colors.amber,
                                     image: DecorationImage(
@@ -383,7 +410,8 @@ class dashBoard extends StatelessWidget {
                                   'Count\ndown',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w500),
                                   textAlign: TextAlign.center,
                                 )),
@@ -405,8 +433,8 @@ class dashBoard extends StatelessWidget {
                                             )));
                               },
                               child: Container(
-                                width: AppDimensions.height10 * 26.8,
-                                height: AppDimensions.height10 * 26.8,
+                                width: AppDimensions.height10(context) * 26.8,
+                                height: AppDimensions.height10(context) * 26.8,
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
@@ -419,8 +447,9 @@ class dashBoard extends StatelessWidget {
                                         child: Text(
                                           'Control my anger',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 2.0,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xff5B74A6)),
                                         )),
@@ -431,8 +460,9 @@ class dashBoard extends StatelessWidget {
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontStyle: FontStyle.italic,
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.6,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff5B74A6))),
                                     ),
@@ -447,8 +477,12 @@ class dashBoard extends StatelessWidget {
                                                       const congratulations()));
                                         },
                                         child: Container(
-                                          height: AppDimensions.height10 * 13.8,
-                                          width: AppDimensions.height10 * 13.8,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  13.8,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  13.8,
                                           decoration: const BoxDecoration(
                                               //color: Colors.amber,
                                               image: DecorationImage(
@@ -462,7 +496,8 @@ class dashBoard extends StatelessWidget {
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.8,
                                                 fontWeight: FontWeight.w500),
                                           )),
@@ -479,8 +514,8 @@ class dashBoard extends StatelessWidget {
                           Align(
                             alignment: Alignment.topRight,
                             child: Container(
-                              width: AppDimensions.height10 * 26.8,
-                              height: AppDimensions.height10 * 26.8,
+                              width: AppDimensions.height10(context) * 26.8,
+                              height: AppDimensions.height10(context) * 26.8,
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
@@ -493,8 +528,9 @@ class dashBoard extends StatelessWidget {
                                       child: Text(
                                         'Control my anger',
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 2.0,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
                                             fontWeight: FontWeight.w600,
                                             color: const Color(0xff5B74A6)),
                                       )),
@@ -504,8 +540,9 @@ class dashBoard extends StatelessWidget {
                                         '“I am someone who is in\n control of my anger”',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.6,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xff5B74A6))),
                                   )
@@ -526,8 +563,8 @@ class dashBoard extends StatelessWidget {
                                             )));
                               },
                               child: Container(
-                                height: AppDimensions.height10 * 13.8,
-                                width: AppDimensions.height10 * 13.8,
+                                height: AppDimensions.height10(context) * 13.8,
+                                width: AppDimensions.height10(context) * 13.8,
                                 decoration: const BoxDecoration(
                                     //color: Colors.amber,
                                     image: DecorationImage(
@@ -539,7 +576,8 @@ class dashBoard extends StatelessWidget {
                                   'Meditation',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w500),
                                 )),
                               ),
@@ -548,8 +586,8 @@ class dashBoard extends StatelessWidget {
                           Align(
                             alignment: const Alignment(-1, 0.4),
                             child: Container(
-                              height: AppDimensions.height10 * 13.8,
-                              width: AppDimensions.height10 * 13.8,
+                              height: AppDimensions.height10(context) * 13.8,
+                              width: AppDimensions.height10(context) * 13.8,
                               decoration: const BoxDecoration(
                                   //color: Colors.amber,
                                   image: DecorationImage(
@@ -561,7 +599,8 @@ class dashBoard extends StatelessWidget {
                                 'Count\ndown',
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: AppDimensions.height10 * 1.8,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w500),
                                 textAlign: TextAlign.center,
                               )),
@@ -574,8 +613,8 @@ class dashBoard extends StatelessWidget {
                     notifications_sheet(context);
                   },
                   child: Container(
-                    height: AppDimensions.height10 * 14.432,
-                    width: AppDimensions.height10 * 35.335,
+                    height: AppDimensions.height10(context) * 14.432,
+                    width: AppDimensions.height10(context) * 35.335,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                       image: AssetImage(
@@ -597,8 +636,8 @@ class dashBoard extends StatelessWidget {
                           },
                           child: Image.asset(
                             "assets/images/Group.png",
-                            height: AppDimensions.height10 * 4.366,
-                            width: AppDimensions.height10 * 4.366,
+                            height: AppDimensions.height10(context) * 4.366,
+                            width: AppDimensions.height10(context) * 4.366,
                           ),
                         ),
                       ),
@@ -606,51 +645,55 @@ class dashBoard extends StatelessWidget {
                         alignment: const Alignment(0.93, 0),
                         child: Image.asset(
                           "assets/images/Vector Smart Object.png",
-                          height: AppDimensions.height10 * 9.296,
-                          width: AppDimensions.height10 * 4.16,
+                          height: AppDimensions.height10(context) * 9.296,
+                          width: AppDimensions.height10(context) * 4.16,
                         ),
                       ),
                       Container(
                         margin: EdgeInsets.only(
-                          top: AppDimensions.height10 * 2.1,
+                          top: AppDimensions.height10(context) * 2.1,
                         ),
                         child: Column(
                           children: [
                             Container(
-                              width: AppDimensions.height10 * 28.0,
-                              height: AppDimensions.height10 * 2.3,
+                              width: AppDimensions.height10(context) * 28.0,
+                              height: AppDimensions.height10(context) * 2.3,
                               alignment: const Alignment(-0.65, 0),
                               child: Text(
                                 "Hi, it's Reda here",
                                 style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.6,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w700,
                                   color: const Color.fromRGBO(91, 116, 166, 1),
                                 ),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10 * 5.245,
-                              height: AppDimensions.height10 * 1.3,
+                              width: AppDimensions.height10(context) * 5.245,
+                              height: AppDimensions.height10(context) * 1.3,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.height10 * 17.5),
+                                  right:
+                                      AppDimensions.height10(context) * 17.5),
                               child: const Divider(
                                 thickness: 1,
                                 color: Color.fromRGBO(91, 116, 166, 1),
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10 * 26.7,
-                              // height: AppDimensions.height10 * 5.3,
+                              width: AppDimensions.height10(context) * 26.7,
+                              // height: AppDimensions.height10(context) * 5.3,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 3.4,
-                                  bottom: AppDimensions.height10 * 1.2),
+                                  left: AppDimensions.height10(context) * 3.4,
+                                  bottom:
+                                      AppDimensions.height10(context) * 1.2),
                               child: Text(
                                 "You have an extra 20% chance of\nsuccess if you have a support buddy.\nHave you got one?",
                                 // textAlign: TextAlign.left,
 
                                 style: TextStyle(
-                                    fontSize: AppDimensions.height10 * 1.4,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w400,
                                     color:
                                         const Color.fromRGBO(91, 116, 166, 1)),

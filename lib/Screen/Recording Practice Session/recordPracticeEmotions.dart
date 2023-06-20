@@ -26,8 +26,8 @@ class _emotionsState extends State<emotions> {
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           )
@@ -50,31 +50,32 @@ class _emotionsState extends State<emotions> {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: AppDimensions.height10 * 18.6,
-                height: AppDimensions.height10 * 2.4,
+                width: AppDimensions.height10(context) * 18.6,
+                height: AppDimensions.height10(context) * 2.4,
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 10.5,
-                    top: AppDimensions.height10 * 4.6),
+                    bottom: AppDimensions.height10(context) * 10.5,
+                    top: AppDimensions.height10(context) * 4.6),
                 alignment: Alignment.center,
                 child: Text(
                   'Meditation Session',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.0,
+                      fontSize: AppDimensions.height10(context) * 2.0,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 35.9,
-                height: AppDimensions.height10 * 14.8,
+                width: AppDimensions.height10(context) * 35.9,
+                height: AppDimensions.height10(context) * 14.8,
                 alignment: Alignment.center,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 8.6),
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 8.6),
                 child: Column(
                   children: [
                     Text(
                       'How do you feel',
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 2.8,
+                          fontSize: AppDimensions.height10(context) * 2.8,
                           fontWeight: FontWeight.w700,
                           color: Colors.white),
                     ),
@@ -84,14 +85,14 @@ class _emotionsState extends State<emotions> {
                         Text(
                           'before',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.8,
+                              fontSize: AppDimensions.height10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                               color: Color(0xff8C648A)),
                         ),
                         Text(
                           ' your practice?',
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 2.8,
+                              fontSize: AppDimensions.height10(context) * 2.8,
                               fontWeight: FontWeight.w700,
                               color: Colors.white),
                         ),
@@ -102,85 +103,85 @@ class _emotionsState extends State<emotions> {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 5.2,
-                    left: AppDimensions.height10 * 1.0),
-                height: AppDimensions.height10 * 13.7,
+                    bottom: AppDimensions.height10(context) * 5.2,
+                    left: AppDimensions.height10(context) * 1.0),
+                height: AppDimensions.height10(context) * 13.7,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(children: [
                     Container(
-                      height: AppDimensions.height10 * 12.7,
-                      width: AppDimensions.height10 * 12.5,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      height: AppDimensions.height10(context) * 12.7,
+                      width: AppDimensions.height10(context) * 12.5,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.2,
+                            width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
                         color: Color(0xff546096),
                       ),
                       child: Text(
                         'I feel very \nlow & dis-\nmotivated',
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 12.7,
-                      width: AppDimensions.height10 * 12.5,
+                      height: AppDimensions.height10(context) * 12.7,
+                      width: AppDimensions.height10(context) * 12.5,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.2,
+                            width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
                         color: Color(0xff7291A0),
                       ),
                       child: Text(
                         'I feel slightly \nirritated, not \nfussed really',
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 13.7,
-                      height: AppDimensions.height10 * 13.7,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      width: AppDimensions.height10(context) * 13.7,
+                      height: AppDimensions.height10(context) * 13.7,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                           color: Colors.transparent,
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
+                              width: AppDimensions.height10(context) * 0.2,
                               color: Colors.white)),
                       child: Container(
-                        height: AppDimensions.height10 * 12.7,
-                        width: AppDimensions.height10 * 12.5,
+                        height: AppDimensions.height10(context) * 12.7,
+                        width: AppDimensions.height10(context) * 12.5,
                         alignment: Alignment.center,
                         margin: EdgeInsets.symmetric(
-                            vertical: AppDimensions.height10 * 0.4,
-                            horizontal: AppDimensions.height10 * 0.3),
+                            vertical: AppDimensions.height10(context) * 0.4,
+                            horizontal: AppDimensions.height10(context) * 0.3),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
+                              width: AppDimensions.height10(context) * 0.2,
                               color: Colors.white),
                           color: Color(0xffE1C44F),
                         ),
                         child: Text(
                           'I feel ok',
                           style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
@@ -188,44 +189,44 @@ class _emotionsState extends State<emotions> {
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 12.7,
-                      width: AppDimensions.height10 * 12.5,
+                      height: AppDimensions.height10(context) * 12.7,
+                      width: AppDimensions.height10(context) * 12.5,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.5),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.5),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.2,
+                            width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
                         color: Color(0xffFA9458),
                       ),
                       child: Text(
                         'Motivated and \nready to start',
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 12.7,
-                      width: AppDimensions.height10 * 12.5,
+                      height: AppDimensions.height10(context) * 12.7,
+                      width: AppDimensions.height10(context) * 12.5,
                       alignment: Alignment.center,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 5.0),
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 5.0),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                            width: AppDimensions.height10 * 0.2,
+                            width: AppDimensions.height10(context) * 0.2,
                             color: Colors.white),
                         color: Color(0xffFF7C42),
                       ),
                       child: Text(
                         'Great, cannot \nwait to start!',
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.6,
+                          fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
                         ),
@@ -235,25 +236,26 @@ class _emotionsState extends State<emotions> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 7.6,
-                height: AppDimensions.height10 * 7.6,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 11.3),
+                width: AppDimensions.height10(context) * 7.6,
+                height: AppDimensions.height10(context) * 7.6,
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 11.3),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 5.0,
-                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10(context) * 5.0,
+                      height: AppDimensions.height10(context) * 5.0,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
+                              width: AppDimensions.height10(context) * 0.2,
                               color: Colors.white)),
                       child: Container(
-                        height: AppDimensions.height10 * 2.7,
-                        width: AppDimensions.height10 * 2.7,
-                        margin:
-                            EdgeInsets.only(left: AppDimensions.height10 * 0.3),
+                        height: AppDimensions.height10(context) * 2.7,
+                        width: AppDimensions.height10(context) * 2.7,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 0.3),
                         child: IconButton(
                             onPressed: () {},
                             icon: Icon(
@@ -264,14 +266,14 @@ class _emotionsState extends State<emotions> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 7.6,
-                      height: AppDimensions.height10 * 1.9,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 0.6),
+                      width: AppDimensions.height10(context) * 7.6,
+                      height: AppDimensions.height10(context) * 1.9,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 0.6),
                       child: Text(
                         'Add Notes',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w500,
                             color: Colors.white),
                       ),
@@ -280,21 +282,21 @@ class _emotionsState extends State<emotions> {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 32.5,
-                height: AppDimensions.height10 * 6.0,
+                width: AppDimensions.height10(context) * 32.5,
+                height: AppDimensions.height10(context) * 6.0,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Container(
-                      height: AppDimensions.height10 * 5.0,
-                      width: AppDimensions.height10 * 14.3,
-                      margin:
-                          EdgeInsets.only(right: AppDimensions.height10 * 1.2),
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 14.3,
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.2),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(
-                              AppDimensions.height10 * 5.0),
+                              AppDimensions.height10(context) * 5.0),
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.2,
+                              width: AppDimensions.height10(context) * 0.2,
                               color: Color(0xffFA9934))),
                       child: TextButton(
                           onPressed: () {
@@ -307,12 +309,12 @@ class _emotionsState extends State<emotions> {
                             'Use Timer',
                             style: TextStyle(
                                 color: Color(0xffFA9934),
-                                fontSize: AppDimensions.height10 * 1.6,
+                                fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w600),
                           ))),
                   Container(
-                      height: AppDimensions.height10 * 5.0,
-                      width: AppDimensions.height10 * 17.0,
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 17.0,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
                           begin: Alignment.topCenter,
@@ -322,8 +324,8 @@ class _emotionsState extends State<emotions> {
                             Color(0xffFDA210),
                           ],
                         ),
-                        borderRadius:
-                            BorderRadius.circular(AppDimensions.height10 * 5.0),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
                       ),
                       child: Container(
                         child: widget.summary
@@ -339,7 +341,8 @@ class _emotionsState extends State<emotions> {
                                   'Update Summary',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
                                       fontWeight: FontWeight.w600),
                                 ))
                             : TextButton(
@@ -354,7 +357,8 @@ class _emotionsState extends State<emotions> {
                                   'Finished practice',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: AppDimensions.height10 * 1.6,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
                                       fontWeight: FontWeight.w600),
                                 )),
                       ))

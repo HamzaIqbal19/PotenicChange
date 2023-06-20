@@ -59,7 +59,7 @@ class _PracticeReviewState extends State<PracticeReview> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        // title: Text("Review",style: TextStyle(color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontSize: AppDimensions.height10*2.0),),
+        // title: Text("Review",style: TextStyle(color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontSize: AppDimensions.height10(context) *2.0),),
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: true,
         leading: Center(
@@ -67,8 +67,8 @@ class _PracticeReviewState extends State<PracticeReview> {
           child: IconButton(
             icon: Image.asset(
               'assets/images/Back.png',
-              width: AppDimensions.height10 * 3,
-              height: AppDimensions.height10 * 3,
+              width: AppDimensions.height10(context) * 3,
+              height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
             ),
             onPressed: () {
@@ -100,20 +100,21 @@ class _PracticeReviewState extends State<PracticeReview> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
+                  padding: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
                       "Review",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF5B74A6),
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.0,
+                  height: AppDimensions.height10(context) * 0.0,
                 ),
                 Container(
                   child: Center(
@@ -122,13 +123,13 @@ class _PracticeReviewState extends State<PracticeReview> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF5B74A6),
-                        fontSize: AppDimensions.height10 * 2.2,
+                        fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10,
+                  height: AppDimensions.height10(context),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -136,10 +137,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                   children: [
                     Container(
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 1.0,
-                            right: AppDimensions.height10 * 1.0),
-                        width: AppDimensions.height10 * 10.4,
-                        height: AppDimensions.height10 * 11.2,
+                            left: AppDimensions.height10(context) * 1.0,
+                            right: AppDimensions.height10(context) * 1.0),
+                        width: AppDimensions.height10(context) * 10.4,
+                        height: AppDimensions.height10(context) * 11.2,
                         child: Image.asset(
                           "assets/images/createprac.png",
                           fit: BoxFit.contain,
@@ -152,7 +153,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Color(0xFF156F6D),
-                            fontSize: AppDimensions.height10 * 2.0,
+                            fontSize: AppDimensions.height10(context) * 2.0,
                           ),
                         ),
                       ),
@@ -160,7 +161,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.6,
+                  height: AppDimensions.height10(context) * 1.6,
                 ),
                 Container(
                   child: Center(
@@ -169,60 +170,62 @@ class _PracticeReviewState extends State<PracticeReview> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Color(0xFF437296),
-                        fontSize: AppDimensions.height10 * 3.0,
+                        fontSize: AppDimensions.height10(context) * 3.0,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.7,
+                  height: AppDimensions.height10(context) * 0.7,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 2.2,
-                  width: AppDimensions.height10 * 23.9,
+                  height: AppDimensions.height10(context) * 2.2,
+                  width: AppDimensions.height10(context) * 23.9,
                   child: Center(
                     child: Text(
                       "Review your summary here.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.8,
+                          fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFF5B74A6)),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.4,
+                  height: AppDimensions.height10(context) * 3.4,
                 ),
                 Container(
-                    width: AppDimensions.height10 * 38.2,
-                    height: AppDimensions.height10 * 40.6,
+                    width: AppDimensions.height10(context) * 38.2,
+                    height: AppDimensions.height10(context) * 40.6,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(
                             color: Colors.white,
-                            width: AppDimensions.height10 * 0.2),
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(AppDimensions.height10 * 1.8))),
+                            width: AppDimensions.height10(context) * 0.2),
+                        borderRadius: BorderRadius.all(Radius.circular(
+                            AppDimensions.height10(context) * 1.8))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: AppDimensions.height10 * 39.5,
+                          height: AppDimensions.height10(context) * 39.5,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               SizedBox(
-                                height: AppDimensions.height10 * 2.0,
+                                height: AppDimensions.height10(context) * 2.0,
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: AppDimensions.height10 * 3.7,
-                                    width: AppDimensions.height10 * 30.5,
+                                    height:
+                                        AppDimensions.height10(context) * 3.7,
+                                    width:
+                                        AppDimensions.height10(context) * 30.5,
 
                                     // color: Colors.blue,
                                     decoration: const BoxDecoration(
@@ -235,12 +238,15 @@ class _PracticeReviewState extends State<PracticeReview> {
                                   ),
                                   // SizedBox(width: ),
                                   Container(
-                                    height: AppDimensions.height10 * 3.0,
-                                    width: AppDimensions.height10 * 3.0,
+                                    height:
+                                        AppDimensions.height10(context) * 3.0,
+                                    width:
+                                        AppDimensions.height10(context) * 3.0,
 
                                     // color: Colors.blue,
                                     margin: EdgeInsets.only(
-                                      bottom: AppDimensions.height10 * 1.5,
+                                      bottom:
+                                          AppDimensions.height10(context) * 1.5,
                                     ),
                                     decoration: const BoxDecoration(
                                       image: DecorationImage(
@@ -253,49 +259,53 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 ],
                               ),
                               SizedBox(
-                                height: AppDimensions.height10 * 0.5,
+                                height: AppDimensions.height10(context) * 0.5,
                               ),
                               Container(
-                                height: AppDimensions.height10 * 2.2,
-                                width: AppDimensions.height10 * 23.9,
+                                height: AppDimensions.height10(context) * 2.2,
+                                width: AppDimensions.height10(context) * 23.9,
                                 child: Center(
                                   child: Text(
                                     "$goalName",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 2.0,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xFF5B74A6)),
                                   ),
                                 ),
                               ),
                               SizedBox(
-                                height: AppDimensions.height10 * 2.3,
+                                height: AppDimensions.height10(context) * 2.3,
                               ),
                               inner_text1('Meditation'),
                               SizedBox(
-                                height: AppDimensions.height10 * 2.0,
+                                height: AppDimensions.height10(context) * 2.0,
                               ),
                               Container(
-                                height: AppDimensions.height10 * 2.2,
-                                width: AppDimensions.height10 * 23.9,
+                                height: AppDimensions.height10(context) * 2.2,
+                                width: AppDimensions.height10(context) * 23.9,
                                 child: Center(
                                   child: Text(
                                     "Select colour",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                        fontSize: AppDimensions.height10 * 2.0,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xFF5B74A6)),
                                   ),
                                 ),
                               ),
                               SizedBox(
-                                height: AppDimensions.height10 * 1.6,
+                                height: AppDimensions.height10(context) * 1.6,
                               ),
                               Container(
-                                height: AppDimensions.height10 * 12.6,
-                                width: AppDimensions.height10 * 20.1,
+                                height: AppDimensions.height10(context) * 12.6,
+                                width: AppDimensions.height10(context) * 20.1,
                                 // color: Colors.blue,
                                 decoration: const BoxDecoration(
                                   image: DecorationImage(
@@ -311,38 +321,40 @@ class _PracticeReviewState extends State<PracticeReview> {
                       ],
                     )),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.5,
+                  height: AppDimensions.height10(context) * 2.5,
                 ),
                 Container(
-                    width: AppDimensions.height10 * 38.2,
-                    height: AppDimensions.height10 * 91.3,
+                    width: AppDimensions.height10(context) * 38.2,
+                    height: AppDimensions.height10(context) * 91.3,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(
                             color: Colors.white,
-                            width: AppDimensions.height10 * 0.2),
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(AppDimensions.height10 * 1.8))),
+                            width: AppDimensions.height10(context) * 0.2),
+                        borderRadius: BorderRadius.all(Radius.circular(
+                            AppDimensions.height10(context) * 1.8))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: AppDimensions.height10 * 90.3,
+                          height: AppDimensions.height10(context) * 90.3,
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  height: AppDimensions.height10 * 2.0,
+                                  height: AppDimensions.height10(context) * 2.0,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      height: AppDimensions.height10 * 3.7,
-                                      width: AppDimensions.height10 * 30.5,
+                                      height:
+                                          AppDimensions.height10(context) * 3.7,
+                                      width: AppDimensions.height10(context) *
+                                          30.5,
 
                                       // color: Colors.blue,
                                       decoration: const BoxDecoration(
@@ -357,12 +369,17 @@ class _PracticeReviewState extends State<PracticeReview> {
                                     GestureDetector(
                                       onTap: () {},
                                       child: Container(
-                                        height: AppDimensions.height10 * 3.0,
-                                        width: AppDimensions.height10 * 3.0,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.0,
+                                        width: AppDimensions.height10(context) *
+                                            3.0,
 
                                         // color: Colors.blue,
                                         margin: EdgeInsets.only(
-                                          bottom: AppDimensions.height10 * 1.5,
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  1.5,
                                         ),
                                         decoration: const BoxDecoration(
                                           image: DecorationImage(
@@ -376,44 +393,47 @@ class _PracticeReviewState extends State<PracticeReview> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 0.5,
+                                  height: AppDimensions.height10(context) * 0.5,
                                 ),
                                 Container(
-                                  height: AppDimensions.height10 * 2.2,
-                                  width: AppDimensions.height10 * 23.9,
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  width: AppDimensions.height10(context) * 23.9,
                                   child: Center(
                                     child: Text(
                                       "Your routine commitment",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 2.0,
+                                              AppDimensions.height10(context) *
+                                                  2.0,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFF5B74A6)),
                                     ),
                                   ),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 2.9,
+                                  height: AppDimensions.height10(context) * 2.9,
                                 ),
                                 Container(
-                                  height: AppDimensions.height10 * 0.5,
-                                  width: AppDimensions.height10 * 6.1,
+                                  height: AppDimensions.height10(context) * 0.5,
+                                  width: AppDimensions.height10(context) * 6.1,
                                   decoration: BoxDecoration(
                                       color: const Color(0xFF437296),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(
-                                              AppDimensions.height10 * 0.5))),
+                                              AppDimensions.height10(context) *
+                                                  0.5))),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 1.5,
+                                  height: AppDimensions.height10(context) * 1.5,
                                 ),
                                 Container(
-                                  height: AppDimensions.height10 * 89.5,
+                                  height:
+                                      AppDimensions.height10(context) * 89.5,
                                   child: routinecommitment(),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 1.6,
+                                  height: AppDimensions.height10(context) * 1.6,
                                 ),
                               ],
                             ),
@@ -422,38 +442,40 @@ class _PracticeReviewState extends State<PracticeReview> {
                       ],
                     )),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.1,
+                  height: AppDimensions.height10(context) * 3.1,
                 ),
                 Container(
-                    width: AppDimensions.height10 * 38.2,
-                    height: AppDimensions.height10 * 29.9,
+                    width: AppDimensions.height10(context) * 38.2,
+                    height: AppDimensions.height10(context) * 29.9,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(
                             color: Colors.white,
-                            width: AppDimensions.height10 * 0.2),
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(AppDimensions.height10 * 1.8))),
+                            width: AppDimensions.height10(context) * 0.2),
+                        borderRadius: BorderRadius.all(Radius.circular(
+                            AppDimensions.height10(context) * 1.8))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: AppDimensions.height10 * 29,
+                          height: AppDimensions.height10(context) * 29,
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  height: AppDimensions.height10 * 2.0,
+                                  height: AppDimensions.height10(context) * 2.0,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      height: AppDimensions.height10 * 3.7,
-                                      width: AppDimensions.height10 * 30.5,
+                                      height:
+                                          AppDimensions.height10(context) * 3.7,
+                                      width: AppDimensions.height10(context) *
+                                          30.5,
 
                                       // color: Colors.blue,
                                       decoration: const BoxDecoration(
@@ -466,12 +488,16 @@ class _PracticeReviewState extends State<PracticeReview> {
                                     ),
                                     // SizedBox(width: ),
                                     Container(
-                                      height: AppDimensions.height10 * 3.0,
-                                      width: AppDimensions.height10 * 3.0,
+                                      height:
+                                          AppDimensions.height10(context) * 3.0,
+                                      width:
+                                          AppDimensions.height10(context) * 3.0,
 
                                       // color: Colors.blue,
                                       margin: EdgeInsets.only(
-                                        bottom: AppDimensions.height10 * 1.5,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.5,
                                       ),
                                       decoration: const BoxDecoration(
                                         image: DecorationImage(
@@ -484,30 +510,32 @@ class _PracticeReviewState extends State<PracticeReview> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 0.5,
+                                  height: AppDimensions.height10(context) * 0.5,
                                 ),
                                 Container(
-                                  height: AppDimensions.height10 * 2.4,
-                                  width: AppDimensions.height10 * 38.4,
+                                  height: AppDimensions.height10(context) * 2.4,
+                                  width: AppDimensions.height10(context) * 38.4,
                                   child: Center(
                                     child: Text(
                                       "Your Reminders",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 2.0,
+                                              AppDimensions.height10(context) *
+                                                  2.0,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFF5B74A6)),
                                     ),
                                   ),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10 * 2.3,
+                                  height: AppDimensions.height10(context) * 2.3,
                                 ),
                                 Container(
-                                  height: AppDimensions.height10 * 17.0,
-                                  width: AppDimensions.height10 * 36.4,
-                                  // padding:  EdgeInsets.only(top: AppDimensions.height10*2, bottom: AppDimensions.height10*4.8, left: AppDimensions.height10*2.0,right: AppDimensions.height10*3.5),
+                                  height:
+                                      AppDimensions.height10(context) * 17.0,
+                                  width: AppDimensions.height10(context) * 36.4,
+                                  // padding:  EdgeInsets.only(top: AppDimensions.height10(context) *2, bottom: AppDimensions.height10(context) *4.8, left: AppDimensions.height10(context) *2.0,right: AppDimensions.height10(context) *3.5),
                                   decoration: BoxDecoration(
                                       // color: Colors.white,
                                       gradient: const LinearGradient(
@@ -522,14 +550,17 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           color: Colors.white, width: 0),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(
-                                              AppDimensions.height10 * 2.0))),
+                                              AppDimensions.height10(context) *
+                                                  2.0))),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
                                       SizedBox(
-                                        height: AppDimensions.height10 * 2.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.4,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -539,31 +570,35 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         children: [
                                           Container(
                                             // color: Colors.blue,
-                                            width:
-                                                AppDimensions.height10 * 25.9,
-                                            height:
-                                                AppDimensions.height10 * 3.6,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                25.9,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.6,
                                             child: Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceAround,
                                               children: [
                                                 Container(
-                                                    width:
-                                                        AppDimensions.height10 *
-                                                            3.5,
+                                                    width: AppDimensions
+                                                            .height10(context) *
+                                                        3.5,
                                                     height:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             3.5,
                                                     child: Image.asset(
                                                       "assets/images/notifications.png",
                                                       fit: BoxFit.contain,
                                                     )),
                                                 Container(
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          20.4,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      20.4,
                                                   height:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           2.4,
                                                   child: Text(
                                                     "Yes, remind me",
@@ -574,7 +609,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                       color: const Color(
                                                           0xFFFFFFFF),
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           2.0,
                                                     ),
                                                   ),
@@ -586,9 +622,11 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             onTap: () {},
                                             child: Container(
                                                 // color: Colors.red,
-                                                width: AppDimensions.height10 *
+                                                width: AppDimensions.height10(
+                                                        context) *
                                                     3.3,
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     3.3,
                                                 child: Image.asset(
                                                     "assets/images/uncheckradio.png")),
@@ -596,7 +634,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         ],
                                       ),
                                       SizedBox(
-                                        height: AppDimensions.height10 * 3.0,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                3.0,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -605,14 +645,18 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            height:
-                                                AppDimensions.height10 * 5.1,
-                                            width:
-                                                AppDimensions.height10 * 34.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                5.1,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                34.5,
                                             padding: EdgeInsets.only(
-                                                right: AppDimensions.height10 *
+                                                right: AppDimensions.height10(
+                                                        context) *
                                                     2.0,
-                                                left: AppDimensions.height10 *
+                                                left: AppDimensions.height10(
+                                                        context) *
                                                     1.7),
                                             child: Text(
                                               "We will check in with you to remind you about your practices. You would be able to customise your notifications later in your Account Settings. ",
@@ -621,7 +665,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                 fontFamily: "Laila-Regular",
                                                 color: const Color(0xFFFFFFFF),
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.4,
                                               ),
                                             ),
@@ -639,18 +684,18 @@ class _PracticeReviewState extends State<PracticeReview> {
                     )),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10 * 7.2,
+                        height: AppDimensions.height10(context) * 7.2,
                       )
                     : SizedBox(
-                        height: AppDimensions.height10 * 5.0,
+                        height: AppDimensions.height10(context) * 5.0,
                       ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                         // color: Colors.blue,
-                        width: AppDimensions.height10 * 5.0,
-                        height: AppDimensions.height10 * 5.0,
+                        width: AppDimensions.height10(context) * 5.0,
+                        height: AppDimensions.height10(context) * 5.0,
                         child: Image.asset(
                           "assets/images/Moreactions.png",
                           fit: BoxFit.contain,
@@ -659,26 +704,27 @@ class _PracticeReviewState extends State<PracticeReview> {
                       onTap: () => showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => Container(
-                          width: AppDimensions.height10 * 27.0,
-                          height: AppDimensions.height10 * 24.6,
+                          width: AppDimensions.height10(context) * 27.0,
+                          height: AppDimensions.height10(context) * 24.6,
                           child: AlertDialog(
                             actionsPadding: const EdgeInsets.all(0.0),
                             contentPadding: const EdgeInsets.all(0.0),
                             titlePadding: const EdgeInsets.all(0.0),
                             title: Container(
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.9,
-                                  right: AppDimensions.height10 * 1.6,
-                                  left: AppDimensions.height10 * 1.6,
-                                  bottom: AppDimensions.height10 * 0),
-                              width: AppDimensions.height10 * 23.8,
+                                  top: AppDimensions.height10(context) * 1.9,
+                                  right: AppDimensions.height10(context) * 1.6,
+                                  left: AppDimensions.height10(context) * 1.6,
+                                  bottom: AppDimensions.height10(context) * 0),
+                              width: AppDimensions.height10(context) * 23.8,
                               child: Text.rich(
                                 textAlign: TextAlign.center,
                                 TextSpan(
                                   text: 'Are you sure you want\n to ',
                                   style: TextStyle(
                                     color: const Color(0xFF000000),
-                                    fontSize: AppDimensions.height10 * 1.9,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.9,
                                     fontWeight: FontWeight.w400,
                                   ),
                                   children: <TextSpan>[
@@ -687,7 +733,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         style: TextStyle(
                                           color: const Color(0xFF000000),
                                           fontSize:
-                                              AppDimensions.height10 * 1.9,
+                                              AppDimensions.height10(context) *
+                                                  1.9,
                                           fontWeight: FontWeight.w700,
                                         )),
 
@@ -696,7 +743,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         style: TextStyle(
                                           color: const Color(0xFF000000),
                                           fontSize:
-                                              AppDimensions.height10 * 1.9,
+                                              AppDimensions.height10(context) *
+                                                  1.9,
                                           fontWeight: FontWeight.w400,
                                         )),
                                     // can add more TextSpans here...
@@ -711,17 +759,18 @@ class _PracticeReviewState extends State<PracticeReview> {
                             content: Container(
                               // color:Colors.red,
                               margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10 * 1.9,
-                                  left: AppDimensions.height10 * 1.6,
-                                  right: AppDimensions.height10 * 1.6,
-                                  top: AppDimensions.height10 * 0.5),
+                                  bottom: AppDimensions.height10(context) * 1.9,
+                                  left: AppDimensions.height10(context) * 1.6,
+                                  right: AppDimensions.height10(context) * 1.6,
+                                  top: AppDimensions.height10(context) * 0.5),
 
-                              width: AppDimensions.height10 * 23.8,
+                              width: AppDimensions.height10(context) * 23.8,
                               child: Text(
                                 "By clicking 'Yes' you confirm that this\ngoal will be deleted and all your data\nthat relates to this goal won't be\nrecoverable. ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.5,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.5,
                                   fontFamily: "Laila",
                                   fontWeight: FontWeight.w400,
                                 ),
@@ -731,7 +780,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                               Column(
                                 children: [
                                   Container(
-                                    height: AppDimensions.height10 * 4.4,
+                                    height:
+                                        AppDimensions.height10(context) * 4.4,
                                     width: double.infinity,
                                     color: const Color.fromRGBO(0, 122, 255, 1),
                                     child: TextButton(
@@ -742,23 +792,27 @@ class _PracticeReviewState extends State<PracticeReview> {
                                         'No',
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize:
-                                                AppDimensions.height10 * 1.7,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.7,
                                             fontFamily: "Laila",
                                             fontWeight: FontWeight.w400),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    height: AppDimensions.height10 * 4.4,
-                                    width: AppDimensions.height10 * 27.0,
+                                    height:
+                                        AppDimensions.height10(context) * 4.4,
+                                    width:
+                                        AppDimensions.height10(context) * 27.0,
                                     child: TextButton(
                                       onPressed: () {},
                                       child: Text(
                                         'Yes',
                                         style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.7,
+                                              AppDimensions.height10(context) *
+                                                  1.7,
                                           fontFamily: "Laila",
                                           fontWeight: FontWeight.w400,
                                           color: const Color.fromRGBO(
@@ -774,8 +828,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                         ),
                       ),
                       child: Container(
-                        height: AppDimensions.height10 * 5,
-                        width: AppDimensions.height10 * 31.3,
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 31.3,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
@@ -793,18 +847,19 @@ class _PracticeReviewState extends State<PracticeReview> {
                           children: [
                             Image.asset(
                               "assets/images/bin.png",
-                              height: AppDimensions.height10 * 1.8,
-                              width: AppDimensions.height10 * 1.4,
+                              height: AppDimensions.height10(context) * 1.8,
+                              width: AppDimensions.height10(context) * 1.4,
                             ),
                             SizedBox(
-                              width: AppDimensions.height10 * 1.3,
+                              width: AppDimensions.height10(context) * 1.3,
                             ),
                             Container(
                               child: Text(
                                 "Delete Practice",
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -816,7 +871,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.5,
+                  height: AppDimensions.height10(context) * 2.5,
                 ),
                 Padding(
                     padding: EdgeInsets.only(
@@ -858,13 +913,13 @@ class _inner_text1State extends State<inner_text1> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppDimensions.height10 * 8.9,
-      width: AppDimensions.height10 * 36.0,
+      height: AppDimensions.height10(context) * 8.9,
+      width: AppDimensions.height10(context) * 36.0,
       padding: EdgeInsets.only(
-          top: AppDimensions.height10 * 2,
+          top: AppDimensions.height10(context) * 2,
           bottom: 1,
-          left: AppDimensions.height10,
-          right: AppDimensions.height10 * 6.0),
+          left: AppDimensions.height10(context),
+          right: AppDimensions.height10(context) * 6.0),
       decoration: BoxDecoration(
           gradient: _focusNode.hasFocus
               ? const LinearGradient(
@@ -878,21 +933,21 @@ class _inner_text1State extends State<inner_text1> {
           // color: Colors.white,
 
           border: Border.all(color: Colors.white, width: 2),
-          borderRadius:
-              BorderRadius.all(Radius.circular(AppDimensions.height10 * 1.8))),
+          borderRadius: BorderRadius.all(
+              Radius.circular(AppDimensions.height10(context) * 1.8))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-              height: AppDimensions.height10 * 3.6,
-              width: AppDimensions.height10 * 26.9,
+              height: AppDimensions.height10(context) * 3.6,
+              width: AppDimensions.height10(context) * 26.9,
               child: Text("${widget.circle_text}",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: _focusNode.hasFocus
                         ? const Color(0xFFFFFFFF)
                         : const Color(0xFFFFFFFF),
-                    fontSize: AppDimensions.height10 * 2.2,
+                    fontSize: AppDimensions.height10(context) * 2.2,
                   ))),
         ],
       ),

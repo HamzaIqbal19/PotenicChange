@@ -24,7 +24,7 @@ class _VisualisingState extends State<Visualising> {
   List<Map<String, String>> goalVisualising = [];
   //closing the focus
   final FocusNode blankNode = FocusNode();
-  bool Loading=false;
+  bool Loading = false;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   @override
   void initState() {
@@ -107,33 +107,28 @@ class _VisualisingState extends State<Visualising> {
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
-      AdminGoal().userAddGoal(
-       jsonMap
-      ) .then((response) async {
+      AdminGoal().userAddGoal(jsonMap).then((response) async {
         setState(() {
-          Loading=false;
+          Loading = false;
         });
-        if(response==true){
+        if (response == true) {
           print("visualizeResponse: $response");
           // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           //     content: Text("User Login Successfully!!")));
-          await prefs
-              .remove('goal');
+          await prefs.remove('goal');
           Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => const GoalFinished(),
             ),
           );
-        }
-        else{
+        } else {
           setState(() {
-            Loading=false;
+            Loading = false;
           });
           // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           //     content: Text("Your sign in details are incorrect, please try again!!")));
         }
-
       }).catchError((error) {
         print("error");
       });
@@ -151,7 +146,7 @@ class _VisualisingState extends State<Visualising> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+          preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
           child: AppBar(
             elevation: 0,
             centerTitle: true,
@@ -162,8 +157,8 @@ class _VisualisingState extends State<Visualising> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 3,
-                  height: AppDimensions.height10 * 3,
+                  width: AppDimensions.height10(context) * 3,
+                  height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
@@ -178,15 +173,15 @@ class _VisualisingState extends State<Visualising> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 3.0,
-                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10(context) * 3.0,
+                    height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
                   onPressed: () => showDialog<String>(
                     context: context,
                     builder: (BuildContext context) => Container(
-                      width: AppDimensions.height10 * 27.0,
-                      height: AppDimensions.height10 * 21.0,
+                      width: AppDimensions.height10(context) * 27.0,
+                      height: AppDimensions.height10(context) * 21.0,
                       child: AlertDialog(
                         contentPadding: EdgeInsets.zero,
                         actionsPadding: EdgeInsets.zero,
@@ -194,8 +189,8 @@ class _VisualisingState extends State<Visualising> {
                         title: Container(
                           margin: EdgeInsets.only(
                               top: 19, right: 16, left: 16, bottom: 2),
-                          height: AppDimensions.height10 * 2.2,
-                          width: AppDimensions.height10 * 23.8,
+                          height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 23.8,
                           child: const Text(
                             "Exit onboarding?",
                             textAlign: TextAlign.center,
@@ -207,7 +202,7 @@ class _VisualisingState extends State<Visualising> {
                         ),
                         content: Container(
                           margin:
-                          EdgeInsets.only(bottom: 19, left: 16, right: 16),
+                              EdgeInsets.only(bottom: 19, left: 16, right: 16),
                           height: 32,
                           width: 238,
                           child: const Text(
@@ -224,7 +219,7 @@ class _VisualisingState extends State<Visualising> {
                             children: [
                               FDottedLine(
                                 color:
-                                const Color(0xFF3C3C43).withOpacity(0.29),
+                                    const Color(0xFF3C3C43).withOpacity(0.29),
                                 width: double.infinity,
                                 strokeWidth: 2.0,
                                 dottedLength: 10.0,
@@ -237,13 +232,18 @@ class _VisualisingState extends State<Visualising> {
                                 child: TextButton(
                                   onPressed: () async {
                                     updateGoalReason(goalVisualising);
-                                    final SharedPreferences prefs = await _prefs;
-                                    var goalvisualising = prefs.setString('route', "goalVisualising");
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    var goalvisualising = prefs.setString(
+                                        'route', "goalVisualising");
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            HomeScreenProgressSaved(login: true,route: "goalVisualising",),
+                                            HomeScreenProgressSaved(
+                                          login: true,
+                                          route: "goalVisualising",
+                                        ),
                                       ),
                                     );
                                   },
@@ -259,7 +259,7 @@ class _VisualisingState extends State<Visualising> {
                               ),
                               FDottedLine(
                                 color:
-                                const Color(0xFF3C3C43).withOpacity(0.29),
+                                    const Color(0xFF3C3C43).withOpacity(0.29),
                                 width: double.infinity,
                                 strokeWidth: 2.0,
                                 dottedLength: 10.0,
@@ -274,7 +274,7 @@ class _VisualisingState extends State<Visualising> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                        const HomeScreen(login: false),
+                                            const HomeScreen(login: false),
                                       ),
                                     );
                                   },
@@ -290,7 +290,7 @@ class _VisualisingState extends State<Visualising> {
                               ),
                               FDottedLine(
                                 color:
-                                const Color(0xFF3C3C43).withOpacity(0.29),
+                                    const Color(0xFF3C3C43).withOpacity(0.29),
                                 width: double.infinity,
                                 strokeWidth: 2.0,
                                 dottedLength: 10.0,
@@ -342,20 +342,20 @@ class _VisualisingState extends State<Visualising> {
               children: [
                 Container(
                   padding: EdgeInsets.only(
-                      top: AppDimensions.height10 * 5.2),
+                      top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
                       "Star Creation 5/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 1.8,
+                        fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 0.5,
+                  height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
                   child: Center(
@@ -364,27 +364,27 @@ class _VisualisingState extends State<Visualising> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.2,
+                        fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.0,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
-                  // color: Colors.blue,
-                    width: AppDimensions.height10 * 10.4,
-                    height: AppDimensions.height10 * 7.6,
+                    // color: Colors.blue,
+                    width: AppDimensions.height10(context) * 10.4,
+                    height: AppDimensions.height10(context) * 7.6,
                     padding: EdgeInsets.only(
-                        left: AppDimensions.height10 * 1.5,
-                        right: AppDimensions.height10 * 1.5),
+                        left: AppDimensions.height10(context) * 1.5,
+                        right: AppDimensions.height10(context) * 1.5),
                     child: Image.asset(
                       "assets/images/image3.png",
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.0,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
                   child: Center(
@@ -393,50 +393,50 @@ class _VisualisingState extends State<Visualising> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontSize: AppDimensions.height10 * 2.8,
+                        fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1.0,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
-                  // height: AppDimensions.height10 * 4.9,
-                  width: AppDimensions.height10 * 37.2,
+                  // height: AppDimensions.height10(context) * 4.9,
+                  width: AppDimensions.height10(context) * 37.2,
                   child: Center(
                     child: Text(
                       "What does it look like? What are you \n  doing? What emotions do you have and \n how does it feel?",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.8,
+                          fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.4,
+                  height: AppDimensions.height10(context) * 3.4,
                 ),
                 Container(
-                  width: AppDimensions.height10 * 38.2,
+                  width: AppDimensions.height10(context) * 38.2,
                   height: item == 1
-                      ? AppDimensions.height10 * 21.0
-                      : AppDimensions.height10 * 34.0,
+                      ? AppDimensions.height10(context) * 21.0
+                      : AppDimensions.height10(context) * 34.0,
                   child: Stack(children: [
                     Container(
-                      // width: AppDimensions.height10 * 38.2,
-                      //height: AppDimensions.height10 * 33.0,
+                      // width: AppDimensions.height10(context) * 38.2,
+                      //height: AppDimensions.height10(context) * 33.0,
                       padding: EdgeInsets.only(
-                        top: AppDimensions.height10 * 1.1,
+                        top: AppDimensions.height10(context) * 1.1,
                       ),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           border: Border.all(
                               color: Colors.white,
-                              width: AppDimensions.height10 * 0.2),
+                              width: AppDimensions.height10(context) * 0.2),
                           borderRadius: BorderRadius.all(Radius.circular(
-                              AppDimensions.height10 * 1.8))),
+                              AppDimensions.height10(context) * 1.8))),
                       child: ListView.builder(
                         itemCount: goalVisualising.length,
                         padding: EdgeInsets.zero,
@@ -455,15 +455,14 @@ class _VisualisingState extends State<Visualising> {
                                 handleTextChanged(index, newText);
                               },
                               onDelete: () => handleDelete(index),
-
                               index: index,
                               placeHolder: '',
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 1.5,
+                                  left: AppDimensions.height10(context) * 1.5,
                                   bottom:
-                                  AppDimensions.height10 * 1.3),
+                                      AppDimensions.height10(context) * 1.3),
                               child: Row(
                                 children: [
                                   Center(
@@ -473,8 +472,8 @@ class _VisualisingState extends State<Visualising> {
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF464646),
                                         fontSize:
-                                        AppDimensions.height10 *
-                                            1.3,
+                                            AppDimensions.height10(context) *
+                                                1.3,
                                       ),
                                     ),
                                   ),
@@ -485,24 +484,24 @@ class _VisualisingState extends State<Visualising> {
                                         fontWeight: FontWeight.w700,
                                         color: const Color(0xFF464646),
                                         fontSize:
-                                        AppDimensions.height10 *
-                                            1.3,
+                                            AppDimensions.height10(context) *
+                                                1.3,
                                       ),
                                     ),
                                   ),
                                   Container(
                                     height:
-                                    AppDimensions.height10 * 0.3,
+                                        AppDimensions.height10(context) * 0.3,
                                     width:
-                                    AppDimensions.height10 * 4.0,
+                                        AppDimensions.height10(context) * 4.0,
                                     margin: EdgeInsets.only(
-                                        top: AppDimensions.height10 *
+                                        top: AppDimensions.height10(context) *
                                             0.5,
-                                        left: AppDimensions.height10 *
+                                        left: AppDimensions.height10(context) *
                                             4.0),
                                     decoration: BoxDecoration(
                                         color:
-                                        Color(0xFF282828).withOpacity(0.2)),
+                                            Color(0xFF282828).withOpacity(0.2)),
                                   )
                                 ],
                               ),
@@ -523,8 +522,8 @@ class _VisualisingState extends State<Visualising> {
                             : Alignment(0.01, 1.17),
                         //heightFactor: 0.5,
                         child: Container(
-                          height: AppDimensions.height10 * 4.7,
-                          width: AppDimensions.height10 * 4.7,
+                          height: AppDimensions.height10(context) * 4.7,
+                          width: AppDimensions.height10(context) * 4.7,
                           decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             gradient: LinearGradient(
@@ -541,7 +540,7 @@ class _VisualisingState extends State<Visualising> {
                                   setState(() {
                                     goalVisualising.add({
                                       'key':
-                                      'Identity ${goalVisualising.length.toString()}',
+                                          'Identity ${goalVisualising.length.toString()}',
                                       'text': '',
                                     });
                                   });
@@ -552,9 +551,9 @@ class _VisualisingState extends State<Visualising> {
                                   child: Image.asset(
                                     'assets/images/Addgoal.png',
                                     height:
-                                    AppDimensions.height10 * 4.7,
+                                        AppDimensions.height10(context) * 4.7,
                                     width:
-                                    AppDimensions.height10 * 4.7,
+                                        AppDimensions.height10(context) * 4.7,
                                   ),
                                 )),
                           ),
@@ -565,18 +564,18 @@ class _VisualisingState extends State<Visualising> {
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                  height: AppDimensions.height10 * 12.2,
-                )
+                        height: AppDimensions.height10(context) * 12.2,
+                      )
                     : SizedBox(
-                  height: AppDimensions.height10 * 5.0,
-                ),
+                        height: AppDimensions.height10(context) * 5.0,
+                      ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      // color: Colors.blue,
-                        width: AppDimensions.height10 * 5.0,
-                        height: AppDimensions.height10 * 5.0,
+                        // color: Colors.blue,
+                        width: AppDimensions.height10(context) * 5.0,
+                        height: AppDimensions.height10(context) * 5.0,
                         child: Image.asset(
                           "assets/images/Moreactions.png",
                           fit: BoxFit.contain,
@@ -586,8 +585,8 @@ class _VisualisingState extends State<Visualising> {
                         updateGoalReason(goalVisualising);
                       },
                       child: Container(
-                        height: AppDimensions.height10 * 5,
-                        width: AppDimensions.height10 * 31.3,
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 31.3,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
@@ -596,14 +595,14 @@ class _VisualisingState extends State<Visualising> {
                               end: Alignment.bottomCenter,
                               colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
                           borderRadius:
-                          const BorderRadius.all(Radius.circular(50.0)),
+                              const BorderRadius.all(Radius.circular(50.0)),
                         ),
                         child: Center(
                           child: Text(
                             "Next",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -613,7 +612,7 @@ class _VisualisingState extends State<Visualising> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 2.5,
+                  height: AppDimensions.height10(context) * 2.5,
                 ),
                 Padding(
                     padding: EdgeInsets.only(

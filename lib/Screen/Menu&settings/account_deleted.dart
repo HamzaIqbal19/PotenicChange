@@ -22,21 +22,21 @@ class Acc_deleted extends StatelessWidget {
                   },
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
             ),
           ],
           title: SizedBox(
-            width: AppDimensions.height10 * 17.0,
-            height: AppDimensions.height10 * 4.8,
+            width: AppDimensions.height10(context) * 17.0,
+            height: AppDimensions.height10(context) * 4.8,
             child: Center(
               child: Text(
                 'Account deleted',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: AppDimensions.height10 * 1.8,
+                    fontSize: AppDimensions.height10(context) * 1.8,
                     fontWeight: FontWeight.w600,
                     color: Colors.white),
               ),
@@ -54,44 +54,47 @@ class Acc_deleted extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 11.1),
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 11.1),
                 child: Image.asset(
                   'assets/images/logo.png',
-                  width: AppDimensions.height10 * 7.755,
-                  height: AppDimensions.height10 * 7.755,
+                  width: AppDimensions.height10(context) * 7.755,
+                  height: AppDimensions.height10(context) * 7.755,
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 35.4,
-                height: AppDimensions.height10 * 25.1,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 17.645),
+                width: AppDimensions.height10(context) * 35.4,
+                height: AppDimensions.height10(context) * 25.1,
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 17.645),
                 child: Column(
                   children: [
                     SizedBox(
-                      width: AppDimensions.height10 * 25.4,
-                      height: AppDimensions.height10 * 7.2,
+                      width: AppDimensions.height10(context) * 25.4,
+                      height: AppDimensions.height10(context) * 7.2,
                       child: Text(
                         'Your account\nhas been deleted',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            height: AppDimensions.height10 * 0.17,
-                            fontSize: AppDimensions.height10 * 3.0,
+                            height: AppDimensions.height10(context) * 0.17,
+                            fontSize: AppDimensions.height10(context) * 3.0,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFFFBFBFB)),
                       ),
                     ),
                     Container(
-                        width: AppDimensions.height10 * 35.4,
-                        height: AppDimensions.height10 * 12.4,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 2.5),
+                        width: AppDimensions.height10(context) * 35.4,
+                        height: AppDimensions.height10(context) * 12.4,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 2.5),
                         child: RichText(
                             textAlign: TextAlign.center,
                             text: TextSpan(
                                 style: TextStyle(
                                     fontFamily: 'laila',
-                                    // height: AppDimensions.height10 * 0.15,
-                                    fontSize: AppDimensions.height10 * 2.0,
+                                    // height: AppDimensions.height10(context) * 0.15,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.0,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFBFBFB)),
                                 children: [
@@ -107,28 +110,29 @@ class Acc_deleted extends StatelessWidget {
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 25.4,
-                height: AppDimensions.height10 * 5.0,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 16.2),
+                width: AppDimensions.height10(context) * 25.4,
+                height: AppDimensions.height10(context) * 5.0,
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 16.2),
                 decoration: BoxDecoration(
                     border: Border.all(
-                        width: AppDimensions.height10 * 0.1,
+                        width: AppDimensions.height10(context) * 0.1,
                         color: Color(0xFFFBFBFB)),
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 5.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 5.0),
                     gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
                         colors: [Color(0xFF5A4D73), Color(0xFFA57486)])),
                 child: Center(
                   child: SizedBox(
-                    width: AppDimensions.height10 * 15.3,
-                    height: AppDimensions.height10 * 2.5,
+                    width: AppDimensions.height10(context) * 15.3,
+                    height: AppDimensions.height10(context) * 2.5,
                     child: Center(
                       child: Text(
                         'Create new account',
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFFFFFFFF)),
                       ),

@@ -46,7 +46,7 @@ class SplashPageState extends State<SplashPage> {
     var Routes = prefs.getString("route");
 
     print("======================>$Routes");
-    if (Accestoken != null && Routes==null) {
+    if (Accestoken != null && Routes == null) {
       print("====================>");
 
       Authentication().refreshTokenApi(SessionToken!).then((response) {
@@ -64,10 +64,7 @@ class SplashPageState extends State<SplashPage> {
       }).catchError((error) {
         print("error");
       });
-    }
-
-    else if(Accestoken != null && Routes!=null) {
-
+    } else if (Accestoken != null && Routes != null) {
       print("====================>");
       Authentication().refreshTokenApi(SessionToken!).then((response) {
         print("???????????:$response");
@@ -75,22 +72,19 @@ class SplashPageState extends State<SplashPage> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>  HomeScreenProgressSaved(login: true,route:Routes!,),
+                builder: (context) => HomeScreenProgressSaved(
+                  login: true,
+                  route: Routes!,
+                ),
               ));
         } else {
-
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(response["message"])));
         }
-
-
-
       }).catchError((error) {
         print("error");
       });
-
-    }
-    else{
+    } else {
       onDoneLoading();
     }
   }
@@ -116,8 +110,8 @@ class SplashPageState extends State<SplashPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: AppDimensions.width10 * 40.65,
-              height: AppDimensions.height20 * 45,
+              width: AppDimensions.width10(context) * 40.65,
+              height: AppDimensions.height10(context) * 6.5,
               // width: 423.5,
 
               margin: EdgeInsets.only(right: 0, top: 0, bottom: 0),

@@ -29,8 +29,8 @@ class _GoalFinishedState extends State<GoalFinished> {
           child: IconButton(
             icon: Image.asset(
               'assets/images/Back.png',
-              width: AppDimensions.height10 * 3,
-              height: AppDimensions.height10 * 3,
+              width: AppDimensions.height10(context) * 3,
+              height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
             ),
             onPressed: () {
@@ -51,8 +51,8 @@ class _GoalFinishedState extends State<GoalFinished> {
             child: IconButton(
               icon: Image.asset(
                 'assets/images/Close.png',
-                width: AppDimensions.height10 * 3.0,
-                height: AppDimensions.height10 * 3.0,
+                width: AppDimensions.height10(context) * 3.0,
+                height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
               ),
               onPressed: () {
@@ -81,14 +81,15 @@ class _GoalFinishedState extends State<GoalFinished> {
           Column(
             children: [
               Container(
-                padding: EdgeInsets.only(top: AppDimensions.height10 * 10),
+                padding:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 10),
                 child: Center(
                   child: GradientText(
                     "Star Created!",
                     style: TextStyle(
                       fontWeight: FontWeight.w700,
                       // color: Colors.white,
-                      fontSize: AppDimensions.height10 * 3,
+                      fontSize: AppDimensions.height10(context) * 3,
                     ),
                     colors: const [
                       Color(0xFFFA9934),
@@ -98,12 +99,12 @@ class _GoalFinishedState extends State<GoalFinished> {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.height10 * 2.0,
+                height: AppDimensions.height10(context) * 2.0,
               ),
               Container(
                   // color: Colors.black,
-                  height: AppDimensions.height10 * 21.8,
-                  width: AppDimensions.height10 * 34.0,
+                  height: AppDimensions.height10(context) * 21.8,
+                  width: AppDimensions.height10(context) * 34.0,
                   child: Column(
                     children: [
                       Container(
@@ -115,7 +116,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                               fontWeight: FontWeight.w500,
                               color: Colors.white,
                               fontFamily: "LaiLa",
-                              fontSize: AppDimensions.height10 * 1.8,
+                              fontSize: AppDimensions.height10(context) * 1.8,
                             ),
                           ),
                         ),
@@ -136,8 +137,8 @@ class _GoalFinishedState extends State<GoalFinished> {
                     child: Container(
                       child: Image(
                         image: const AssetImage('assets/images/anger.png'),
-                        height: AppDimensions.height10 * 38.1,
-                        width: AppDimensions.height10 * 35.3,
+                        height: AppDimensions.height10(context) * 38.1,
+                        width: AppDimensions.height10(context) * 35.3,
                       ),
                     ),
                   ),
@@ -148,12 +149,12 @@ class _GoalFinishedState extends State<GoalFinished> {
                     right: 0,
                     child: Align(
                       // alignment: Alignment.bottomCenter,
-                      alignment:
-                          Alignment(0.01, AppDimensions.height10 * 0.015 + 1),
+                      alignment: Alignment(
+                          0.01, AppDimensions.height10(context) * 0.015 + 1),
                       //heightFactor: 0.5,
                       child: Container(
-                        height: AppDimensions.height10 * 17.5,
-                        width: AppDimensions.height10 * 17.5,
+                        height: AppDimensions.height10(context) * 17.5,
+                        width: AppDimensions.height10(context) * 17.5,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
@@ -169,8 +170,8 @@ class _GoalFinishedState extends State<GoalFinished> {
                           child: Image(
                             image:
                                 const AssetImage('assets/images/practice.png'),
-                            height: AppDimensions.height10 * 17.5,
-                            width: AppDimensions.height10 * 17.5,
+                            height: AppDimensions.height10(context) * 17.5,
+                            width: AppDimensions.height10(context) * 17.5,
                           ),
                         ),
                       ),
@@ -179,18 +180,18 @@ class _GoalFinishedState extends State<GoalFinished> {
                 ],
               ),
               SizedBox(
-                height: AppDimensions.height10 * 6.16,
+                height: AppDimensions.height10(context) * 6.16,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
-                    width: AppDimensions.height10 * 1.6,
+                    width: AppDimensions.height10(context) * 1.6,
                   ),
                   Container(
                       // color: Colors.blue,
-                      width: AppDimensions.height10 * 5.0,
-                      height: AppDimensions.height10 * 5.0,
+                      width: AppDimensions.height10(context) * 5.0,
+                      height: AppDimensions.height10(context) * 5.0,
                       child: Image.asset(
                         "assets/images/Moreactions.png",
                         fit: BoxFit.contain,

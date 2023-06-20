@@ -26,8 +26,8 @@ class practiceMenu extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.png',
-                width: AppDimensions.height10 * 2.6,
-                height: AppDimensions.height10 * 2.6,
+                width: AppDimensions.height10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
         ),
@@ -37,8 +37,8 @@ class practiceMenu extends StatelessWidget {
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/Close.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           )
@@ -58,49 +58,49 @@ class practiceMenu extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: AppDimensions.height10 * 30.4,
-                height: AppDimensions.height10 * 18.2,
+                width: AppDimensions.height10(context) * 30.4,
+                height: AppDimensions.height10(context) * 18.2,
                 margin: EdgeInsets.only(
-                  top: AppDimensions.height10 * 5.2,
+                  top: AppDimensions.height10(context) * 5.2,
                 ),
                 child: Column(
                   children: [
                     Container(
-                      height: AppDimensions.height10 * 2.4,
+                      height: AppDimensions.height10(context) * 2.4,
                       child: Text(
                         'Practice Menu',
                         style: TextStyle(
                             color: Colors.white,
-                            height: AppDimensions.height10 * 0.12,
-                            fontSize: AppDimensions.height10 * 1.8,
+                            height: AppDimensions.height10(context) * 0.12,
+                            fontSize: AppDimensions.height10(context) * 1.8,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10 * 2.4,
+                      height: AppDimensions.height10(context) * 2.4,
                       child: Text(
                         'Control my anger',
                         style: TextStyle(
                             color: Colors.white,
-                            height: AppDimensions.height10 * 0.12,
-                            fontSize: AppDimensions.height10 * 2.0,
+                            height: AppDimensions.height10(context) * 0.12,
+                            fontSize: AppDimensions.height10(context) * 2.0,
                             fontWeight: FontWeight.w600),
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10 * 21.0,
-                      height: AppDimensions.height10 * 9.3,
+                      width: AppDimensions.height10(context) * 21.0,
+                      height: AppDimensions.height10(context) * 9.3,
                       // color: Colors.amber,
-                      margin:
-                          EdgeInsets.only(top: AppDimensions.height10 * 0.6),
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 0.6),
                       // color: Colors.blue,
                       child: Stack(
                         children: [
                           Align(
                             alignment: const Alignment(-1, 0),
                             child: Container(
-                              width: AppDimensions.height10 * 8.36,
-                              height: AppDimensions.height10 * 9.3,
+                              width: AppDimensions.height10(context) * 8.36,
+                              height: AppDimensions.height10(context) * 9.3,
                               decoration: const BoxDecoration(
                                 // color: Colors.amber,
                                 image: DecorationImage(
@@ -113,8 +113,8 @@ class practiceMenu extends StatelessWidget {
                           Align(
                             alignment: const Alignment(-0.495, -0.2),
                             child: Container(
-                              height: AppDimensions.height10 * 4.1,
-                              width: AppDimensions.height10 * 4.06,
+                              height: AppDimensions.height10(context) * 4.1,
+                              width: AppDimensions.height10(context) * 4.06,
                               decoration: const BoxDecoration(
                                   //color: Colors.amber,
                                   image: DecorationImage(
@@ -126,13 +126,14 @@ class practiceMenu extends StatelessWidget {
                           Align(
                             alignment: const Alignment(0.7, -0.3),
                             child: Container(
-                              width: AppDimensions.height10 * 10.6,
-                              height: AppDimensions.height10 * 2.4,
+                              width: AppDimensions.height10(context) * 10.6,
+                              height: AppDimensions.height10(context) * 2.4,
                               child: Text(
                                 'Meditation',
                                 style: TextStyle(
                                     color: const Color(0xff156F6D),
-                                    fontSize: AppDimensions.height10 * 2.0,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.0,
                                     fontWeight: FontWeight.w600),
                               ),
                             ),
@@ -144,28 +145,29 @@ class practiceMenu extends StatelessWidget {
                 ),
               ),
               // Container(
-              //   width: AppDimensions.height10 * 32.0,
-              //   height: AppDimensions.height10 * 2.6,
-              //   margin: EdgeInsets.only(bottom: AppDimensions.height10 * 2.7),
+              //   width: AppDimensions.height10(context) * 32.0,
+              //   height: AppDimensions.height10(context) * 2.6,
+              //   margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 2.7),
               //   child: Text(
               //     'What do you want to do?',
               //     textAlign: TextAlign.center,
               //     style: TextStyle(
-              //         fontSize: AppDimensions.height10 * 2.2,
+              //         fontSize: AppDimensions.height10(context) * 2.2,
               //         fontWeight: FontWeight.w600,
               //         color: const Color(0xff437296)),
               //   ),
               // ),
               Container(
-                width: AppDimensions.height10 * 9.36,
-                height: AppDimensions.height10 * 12.0,
+                width: AppDimensions.height10(context) * 9.36,
+                height: AppDimensions.height10(context) * 12.0,
                 //color: Colors.amber,
-                margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.7),
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 1.7),
                 child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10 * 7.0,
-                      height: AppDimensions.height10 * 7.0,
+                      width: AppDimensions.height10(context) * 7.0,
+                      height: AppDimensions.height10(context) * 7.0,
                       decoration: BoxDecoration(
                           gradient: const LinearGradient(
                               begin: Alignment.topCenter,
@@ -175,10 +177,10 @@ class practiceMenu extends StatelessWidget {
                                 Color(0xffFDA210),
                               ]),
                           shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.all(
-                              Radius.circular(AppDimensions.height10 * 13.9)),
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              AppDimensions.height10(context) * 13.9)),
                           border: Border.all(
-                              width: AppDimensions.height10 * 0.3,
+                              width: AppDimensions.height10(context) * 0.3,
                               color: Colors.white)),
                       child: Center(
                           child: GestureDetector(
@@ -193,23 +195,23 @@ class practiceMenu extends StatelessWidget {
                         child: Icon(
                           Icons.add_task,
                           color: Colors.white,
-                          // fill: AppDimensions.height10 * 0.10,
-                          size: AppDimensions.height10 * 2.8,
+                          // fill: AppDimensions.height10(context) * 0.10,
+                          size: AppDimensions.height10(context) * 2.8,
                         ),
                       )),
                     ),
                     Container(
                       // color: Colors.red,
-                      height: AppDimensions.height10 * 4.921,
-                      width: AppDimensions.height10 * 9.36,
+                      height: AppDimensions.height10(context) * 4.921,
+                      width: AppDimensions.height10(context) * 9.36,
                       child: Center(
                         child: Text(
                           'Record\npractice',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              height: AppDimensions.height10 * 0.12,
+                              height: AppDimensions.height10(context) * 0.12,
                               color: Colors.white,
-                              fontSize: AppDimensions.height10 * 1.6,
+                              fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w500),
                         ),
                       ),
@@ -219,14 +221,15 @@ class practiceMenu extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                height: AppDimensions.height10 * 0.1,
+                height: AppDimensions.height10(context) * 0.1,
                 color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               ),
               Container(
-                width: AppDimensions.height10 * 41.3,
-                height: AppDimensions.height10 * 22.9,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
+                width: AppDimensions.height10(context) * 41.3,
+                height: AppDimensions.height10(context) * 22.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.2),
                 child: Stack(children: [
                   Align(
                     alignment: const Alignment(1, -1.3),
@@ -236,64 +239,70 @@ class practiceMenu extends StatelessWidget {
                         },
                         icon: Image.asset(
                           'assets/images/ic_info_outline.png',
-                          height: AppDimensions.height10 * 3.0,
-                          width: AppDimensions.height10 * 3.0,
+                          height: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.height10(context) * 3.0,
                         )),
                   ),
                   Align(
                     alignment: const Alignment(0, -1),
                     child: Container(
-                      width: AppDimensions.height10 * 36.0,
+                      width: AppDimensions.height10(context) * 36.0,
                       height: goal_eval
-                          ? AppDimensions.height10 * 24.7
-                          : AppDimensions.height10 * 18.8,
+                          ? AppDimensions.height10(context) * 24.7
+                          : AppDimensions.height10(context) * 18.8,
                       child: Column(
                         children: [
                           Container(
                             height: goal_eval
-                                ? AppDimensions.height10 * 5.9
-                                : AppDimensions.height10 * 4.4,
-                            width: AppDimensions.height10 * 36.0,
+                                ? AppDimensions.height10(context) * 5.9
+                                : AppDimensions.height10(context) * 4.4,
+                            width: AppDimensions.height10(context) * 36.0,
                             margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10 * 1.2),
+                                bottom: AppDimensions.height10(context) * 1.2),
                             child: Column(children: [
                               Container(
-                                height: AppDimensions.height10 * 1.9,
+                                height: AppDimensions.height10(context) * 1.9,
                                 child: Text(
                                   'Practice Assessment',
                                   style: TextStyle(
                                       //increase font size by 2 px
-                                      fontSize: AppDimensions.height10 * 1.8,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
                                       fontWeight: FontWeight.w700,
                                       color: const Color(0xfff5f5f5)),
                                 ),
                               ),
                               goal_eval
                                   ? Container(
-                                      height: AppDimensions.height10 * 1.7,
+                                      height:
+                                          AppDimensions.height10(context) * 1.7,
                                       margin: EdgeInsets.only(
-                                          top: AppDimensions.height10 * 0.2),
+                                          top: AppDimensions.height10(context) *
+                                              0.2),
                                       child: Text(
                                         'Here is your latest 20 active day evaluation.',
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.4,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xfff5f5f5)),
                                       ),
                                     )
                                   : Container(),
                               Container(
-                                height: AppDimensions.height10 * 1.7,
+                                height: AppDimensions.height10(context) * 1.7,
                                 margin: EdgeInsets.only(
                                     top: goal_eval
-                                        ? AppDimensions.height10 * 0.3
-                                        : AppDimensions.height10 * 0.8),
+                                        ? AppDimensions.height10(context) * 0.3
+                                        : AppDimensions.height10(context) *
+                                            0.8),
                                 child: RichText(
                                     text: TextSpan(
                                         style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.height10 * 1.4,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xfff5f5f5)),
                                         children: [
@@ -313,7 +322,8 @@ class practiceMenu extends StatelessWidget {
                             children: [
                               Container(
                                 margin: EdgeInsets.only(
-                                    bottom: AppDimensions.height10 * 1.2),
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.2),
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(
@@ -357,16 +367,16 @@ class practiceMenu extends StatelessWidget {
               ),
               Container(
                 width: double.infinity,
-                height: AppDimensions.height10 * 0.1,
+                height: AppDimensions.height10(context) * 0.1,
                 color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 2.0),
+                // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
               ),
               Container(
-                height: AppDimensions.height10 * 28.0,
-                width: AppDimensions.height10 * 36.0,
+                height: AppDimensions.height10(context) * 28.0,
+                width: AppDimensions.height10(context) * 36.0,
                 margin: EdgeInsets.only(
-                    bottom: AppDimensions.height10 * 2.5,
-                    top: AppDimensions.height10 * 3.0),
+                    bottom: AppDimensions.height10(context) * 2.5,
+                    top: AppDimensions.height10(context) * 3.0),
                 child: Column(
                   children: [
                     GestureDetector(
@@ -386,8 +396,8 @@ class practiceMenu extends StatelessWidget {
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10 * 1.0,
-                          top: AppDimensions.height10 * 1.0),
+                          bottom: AppDimensions.height10(context) * 1.0,
+                          top: AppDimensions.height10(context) * 1.0),
                       child: const button_feilds(
                         feild_text: 'View practice settings',
                         icon_viible: true,
@@ -396,8 +406,8 @@ class practiceMenu extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin:
-                          EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 1.0),
                       child: const button_feilds(
                         feild_text: 'Veiw upcoming schedules',
                         icon_viible: true,
@@ -437,17 +447,17 @@ void info_sheet(context) {
     isScrollControlled: true,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-      top: Radius.circular(AppDimensions.height10 * 2.0),
+      top: Radius.circular(AppDimensions.height10(context) * 2.0),
     )),
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-          width: AppDimensions.height10 * 41.4,
-          height: AppDimensions.height10 * 54.7,
+          width: AppDimensions.height10(context) * 41.4,
+          height: AppDimensions.height10(context) * 54.7,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(AppDimensions.height10 * 2.0)),
+                  top: Radius.circular(AppDimensions.height10(context) * 2.0)),
               color: Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
@@ -457,18 +467,18 @@ void info_sheet(context) {
             children: [
               Container(
                 //color: Colors.amber,
-                // margin: EdgeInsets.only(left: AppDimensions.height10 * 1.5),
+                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
                 alignment: Alignment(1, 0),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
                   },
                   child: Container(
-                    width: AppDimensions.height10 * 2.6,
-                    height: AppDimensions.height10 * 2.6,
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10 * 1.5,
-                        right: AppDimensions.height10 * 1.5),
+                        top: AppDimensions.height10(context) * 1.5,
+                        right: AppDimensions.height10(context) * 1.5),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
@@ -478,40 +488,41 @@ void info_sheet(context) {
               ),
               Container(
                 margin: EdgeInsets.only(
-                    top: AppDimensions.height10 * 1.9,
-                    bottom: AppDimensions.height10 * 1.9),
+                    top: AppDimensions.height10(context) * 1.9,
+                    bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
                   'assets/images/potenic__icon.png',
-                  width: AppDimensions.height10 * 8.202,
-                  height: AppDimensions.height10 * 11.2,
+                  width: AppDimensions.height10(context) * 8.202,
+                  height: AppDimensions.height10(context) * 11.2,
                 ),
               ),
               Container(
-                // width: AppDimensions.height10 * 28.7,
-                height: AppDimensions.height10 * 3.4,
+                // width: AppDimensions.height10(context) * 28.7,
+                height: AppDimensions.height10(context) * 3.4,
                 // color: Colors.amber,
                 alignment: Alignment.center,
-                //  margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                 child: Text(
                   'Practice Assessment',
                   style: TextStyle(
-                      fontSize: AppDimensions.height10 * 2.8,
-                      letterSpacing: AppDimensions.height10 * 0.2,
+                      fontSize: AppDimensions.height10(context) * 2.8,
+                      letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
                       color: Color(0xFF437296)),
                 ),
               ),
               Container(
-                width: AppDimensions.height10 * 35.2,
-                height: AppDimensions.height10 * 26.9,
+                width: AppDimensions.height10(context) * 35.2,
+                height: AppDimensions.height10(context) * 26.9,
                 // color: Colors.grey,
-                margin: EdgeInsets.only(top: AppDimensions.height10 * 1.2),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
                 child: RichText(
                   text: TextSpan(
                       style: TextStyle(
                           fontFamily: 'laila',
-                          fontSize: AppDimensions.height10 * 1.4,
-                          height: AppDimensions.height10 * 0.12,
+                          fontSize: AppDimensions.height10(context) * 1.4,
+                          height: AppDimensions.height10(context) * 0.12,
                           fontWeight: FontWeight.w400,
                           color: Color(0xFF437296)),
                       children: [
@@ -529,7 +540,8 @@ void info_sheet(context) {
                         TextSpan(
                             text: '1.Progress Report\n',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.5)),
+                                fontSize:
+                                    AppDimensions.height10(context) * 1.5)),
                         TextSpan(text: 'See your '),
                         TextSpan(
                             text: 'overall practice progress',
@@ -542,7 +554,8 @@ void info_sheet(context) {
                         TextSpan(
                             text: '2.Practice Score\n',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.5)),
+                                fontSize:
+                                    AppDimensions.height10(context) * 1.5)),
                         TextSpan(text: 'Here you can'),
                         TextSpan(
                             text: ' assess your practice effectiveness ',

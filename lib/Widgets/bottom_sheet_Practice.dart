@@ -33,15 +33,15 @@ void bottom_sheet(context) {
     backgroundColor: Colors.white,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
-      top: Radius.circular(AppDimensions.height10 * 5.0),
+      top: Radius.circular(AppDimensions.height10(context) * 5.0),
     )),
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
         // color:Colors.lightGreen,
-        height: AppDimensions.height10 * 45.0,
-        width: AppDimensions.height10 * 41.4,
+        height: AppDimensions.height10(context) * 45.0,
+        width: AppDimensions.height10(context) * 41.4,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.only(top: 10),
@@ -51,24 +51,24 @@ void bottom_sheet(context) {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
-                  height: AppDimensions.height10 * 6.3,
-                  width: AppDimensions.height10 * 35.5,
+                  height: AppDimensions.height10(context) * 6.3,
+                  width: AppDimensions.height10(context) * 35.5,
                   // padding: const EdgeInsets.only(top: 8.0, bottom: 8),
                   child: Text(
                     'Create a new practice \n for ‘Control My Anger’ goal ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: const Color(0xFF464646),
-                      fontSize: AppDimensions.height10 * 2.4,
+                      fontSize: AppDimensions.height10(context) * 2.4,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.9,
+                  height: AppDimensions.height10(context) * 3.9,
                 ),
                 Container(
-                  width: AppDimensions.height10 * 36.0,
+                  width: AppDimensions.height10(context) * 36.0,
                   child: TextField(
                     controller: goalName,
                     style: const TextStyle(
@@ -93,11 +93,12 @@ void bottom_sheet(context) {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 1,
+                  height: AppDimensions.height10(context) * 1,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 2,
-                  padding: EdgeInsets.only(left: AppDimensions.height10 * 4.0),
+                  height: AppDimensions.height10(context) * 2,
+                  padding: EdgeInsets.only(
+                      left: AppDimensions.height10(context) * 4.0),
                   child: Row(
                     children: const [
                       Center(
@@ -124,14 +125,14 @@ void bottom_sheet(context) {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10 * 3.0,
+                  height: AppDimensions.height10(context) * 3.0,
                 ),
                 Container(
-                  height: AppDimensions.height10 * 5,
-                  width: AppDimensions.height10 * 25.4,
+                  height: AppDimensions.height10(context) * 5,
+                  width: AppDimensions.height10(context) * 25.4,
                   decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(AppDimensions.height10 * 5.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 5.0),
                     gradient: const LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -193,10 +194,11 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.height10 * 36,
+      width: AppDimensions.height10(context) * 36,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),
-          borderRadius: BorderRadius.circular(AppDimensions.height10 * 1.8),
+          borderRadius:
+              BorderRadius.circular(AppDimensions.height10(context) * 1.8),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Padding(
         padding: const EdgeInsets.only(left: 8, right: 8),

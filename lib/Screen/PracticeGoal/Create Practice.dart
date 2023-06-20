@@ -56,7 +56,7 @@ class _CreatePracticeState extends State<CreatePractice> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(AppDimensions.height10 * 5.0),
+          preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
           child: AppBar(
             elevation: 0,
             centerTitle: true,
@@ -67,8 +67,8 @@ class _CreatePracticeState extends State<CreatePractice> {
               child: IconButton(
                 icon: Image.asset(
                   'assets/images/Back.png',
-                  width: AppDimensions.height10 * 3,
-                  height: AppDimensions.height10 * 3,
+                  width: AppDimensions.height10(context) * 3,
+                  height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
@@ -84,8 +84,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                 child: IconButton(
                   icon: Image.asset(
                     'assets/images/Close.png',
-                    width: AppDimensions.height10 * 3.0,
-                    height: AppDimensions.height10 * 3.0,
+                    width: AppDimensions.height10(context) * 3.0,
+                    height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
@@ -122,45 +122,47 @@ class _CreatePracticeState extends State<CreatePractice> {
             ? Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(top: AppDimensions.height10 * 5.2),
+                    padding: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 5.2),
                     child: Center(
                       child: Text(
                         "Practice Creation 1/3",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
-                          fontSize: AppDimensions.height10 * 1.8,
+                          fontSize: AppDimensions.height10(context) * 1.8,
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: AppDimensions.height10 * 0.5),
+                    padding: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 0.5),
                     child: Center(
                       child: Text(
                         "Control my anger",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
-                          fontSize: AppDimensions.height10 * 2.0,
+                          fontSize: AppDimensions.height10(context) * 2.0,
                         ),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: AppDimensions.height10,
+                    height: AppDimensions.height10(context),
                   ),
                   Container(
-                    height: AppDimensions.height10 * 11.2,
-                    width: AppDimensions.height10 * 10.4,
+                    height: AppDimensions.height10(context) * 11.2,
+                    width: AppDimensions.height10(context) * 10.4,
                     margin: EdgeInsets.only(
-                        left: AppDimensions.height10 * 9.0,
-                        right: AppDimensions.height10 * 17.0),
+                        left: AppDimensions.height10(context) * 9.0,
+                        right: AppDimensions.height10(context) * 17.0),
                     // color:Colors.blue,
                     child: Image.asset(
                       'assets/images/createprac.png',
-                      height: AppDimensions.height10 * 7.9,
-                      width: AppDimensions.height10 * 7.9,
+                      height: AppDimensions.height10(context) * 7.9,
+                      width: AppDimensions.height10(context) * 7.9,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -169,28 +171,29 @@ class _CreatePracticeState extends State<CreatePractice> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        // height: AppDimensions.height10*7.1,
+                        // height: AppDimensions.height10(context) *7.1,
                         child: Text(
                           "Choose your practice",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10 * 2.8,
+                            fontSize: AppDimensions.height10(context) * 2.8,
                           ),
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: AppDimensions.height10 * 48.9,
-                    width: AppDimensions.height10 * 38,
+                    height: AppDimensions.height10(context) * 48.9,
+                    width: AppDimensions.height10(context) * 38,
                     child: GridView.builder(
                         shrinkWrap: false,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           childAspectRatio: 4.2 / 3,
-                          mainAxisSpacing: AppDimensions.height10 * 1.4,
+                          mainAxisSpacing:
+                              AppDimensions.height10(context) * 1.4,
                           crossAxisSpacing: 0.1,
                         ),
                         itemCount: practiceName!.length,
@@ -223,10 +226,14 @@ class _CreatePracticeState extends State<CreatePractice> {
                                         circle_border: 3.0,
                                         circle_bordercolor: 0xFFFFFFFF,
                                         circle_height:
-                                            AppDimensions.height10 * 13.4,
+                                            AppDimensions.height10(context) *
+                                                13.4,
                                         circle_width:
-                                            AppDimensions.height10 * 13.4,
-                                        textfont: AppDimensions.height10 * 1.6,
+                                            AppDimensions.height10(context) *
+                                                13.4,
+                                        textfont:
+                                            AppDimensions.height10(context) *
+                                                1.6,
                                         textcolor: 0xFFFFFFFF),
                                   ),
                                 ],
@@ -238,7 +245,7 @@ class _CreatePracticeState extends State<CreatePractice> {
 
                   /*
               Container(
-                  height: AppDimensions.height10 * 52.9,
+                  height: AppDimensions.height10(context) * 52.9,
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -262,9 +269,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   circle_color2: 0xFF1E4A22,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height: AppDimensions.height10(context) * 13.4,
+                                  circle_width: AppDimensions.height10(context) * 13.4,
+                                  textfont: AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF),
                             ),
                             GestureDetector(
@@ -285,15 +292,15 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   circle_color2: 0xFF1E4A22,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height: AppDimensions.height10(context) * 13.4,
+                                  circle_width: AppDimensions.height10(context) * 13.4,
+                                  textfont: AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF),
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.79,
+                          height: AppDimensions.height10(context) * 0.79,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -316,9 +323,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   circle_color2: 0xFF1E4A22,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height: AppDimensions.height10(context) * 13.4,
+                                  circle_width: AppDimensions.height10(context) * 13.4,
+                                  textfont: AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF),
                             ),
                             GestureDetector(
@@ -337,15 +344,15 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   circle_color2: 0xFF1E4A22,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height: AppDimensions.height10(context) * 13.4,
+                                  circle_width: AppDimensions.height10(context) * 13.4,
+                                  textfont: AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF),
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.79,
+                          height: AppDimensions.height10(context) * 0.79,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -366,9 +373,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   circle_color2: 0xFF1E4A22,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height: AppDimensions.height10(context) * 13.4,
+                                  circle_width: AppDimensions.height10(context) * 13.4,
+                                  textfont: AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF),
                             ),
                             GestureDetector(
@@ -389,15 +396,15 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   circle_color2: 0xFF1E4A22,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height: AppDimensions.height10(context) * 13.4,
+                                  circle_width: AppDimensions.height10(context) * 13.4,
+                                  textfont: AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF),
                             )
                           ],
                         ),
                         SizedBox(
-                          height: AppDimensions.height10 * 0.79,
+                          height: AppDimensions.height10(context) * 0.79,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -418,9 +425,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   circle_color2: 0xFF1E4A22,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height: AppDimensions.height10(context) * 13.4,
+                                  circle_width: AppDimensions.height10(context) * 13.4,
+                                  textfont: AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF),
                             ),
                             GestureDetector(
@@ -442,9 +449,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   circle_color2: 0xFF1E4A22,
                                   circle_border: 3.0,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height: AppDimensions.height10 * 13.4,
-                                  circle_width: AppDimensions.height10 * 13.4,
-                                  textfont: AppDimensions.height10 * 1.6,
+                                  circle_height: AppDimensions.height10(context) * 13.4,
+                                  circle_width: AppDimensions.height10(context) * 13.4,
+                                  textfont: AppDimensions.height10(context) * 1.6,
                                   textcolor: 0xFFFFFFFF),
                             ),
                           ],
@@ -468,10 +475,10 @@ class _CreatePracticeState extends State<CreatePractice> {
         child: Container(
           // color: Colors.blue,
           padding: EdgeInsets.only(
-              left: AppDimensions.height10 * 2.2,
-              right: AppDimensions.height10 * 2.2),
-          height: AppDimensions.height10 * 7.0,
-          width: AppDimensions.height10 * 41.4,
+              left: AppDimensions.height10(context) * 2.2,
+              right: AppDimensions.height10(context) * 2.2),
+          height: AppDimensions.height10(context) * 7.0,
+          width: AppDimensions.height10(context) * 41.4,
           child: SearchIcon == true
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -480,30 +487,34 @@ class _CreatePracticeState extends State<CreatePractice> {
                     Row(
                       children: [
                         Container(
-                          height: AppDimensions.height10 * 3.6,
-                          width: AppDimensions.height10 * 31.3,
+                          height: AppDimensions.height10(context) * 3.6,
+                          width: AppDimensions.height10(context) * 31.3,
                           padding: const EdgeInsets.all(5.0),
                           decoration: BoxDecoration(
                               color: const Color(0xFF767680).withOpacity(0.12),
                               border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(AppDimensions.height10))),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimensions.height10(context)))),
                           child: Center(
                             child: TextFormField(
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(
                                       'assets/images/Light.png',
-                                      width: AppDimensions.height10 * 1.5,
-                                      height: AppDimensions.height10 * 1.5,
+                                      width:
+                                          AppDimensions.height10(context) * 1.5,
+                                      height:
+                                          AppDimensions.height10(context) * 1.5,
 
                                       // fit: BoxFit.contain,
                                       // fit: BoxFit.contain,
                                     ),
                                     suffixIcon: Image.asset(
                                       'assets/images/cancel.png',
-                                      width: AppDimensions.height10 * 2.3,
-                                      height: AppDimensions.height10 * 2.3,
+                                      width:
+                                          AppDimensions.height10(context) * 2.3,
+                                      height:
+                                          AppDimensions.height10(context) * 2.3,
                                       // fit: BoxFit.contain,
                                     ),
                                     hintText: "Search",
@@ -528,7 +539,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                         "Cancel",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.7,
+                          fontSize: AppDimensions.height10(context) * 1.7,
                           fontWeight: FontWeight.w400,
                           color: const Color(0xFF007AFF),
                         ),
@@ -545,25 +556,25 @@ class _CreatePracticeState extends State<CreatePractice> {
                     Row(
                       children: [
                         Container(
-                          width: AppDimensions.height10 * 4.7,
-                          height: AppDimensions.height10 * 4.7,
+                          width: AppDimensions.height10(context) * 4.7,
+                          height: AppDimensions.height10(context) * 4.7,
                           padding: EdgeInsets.only(
-                              top: AppDimensions.height10 * 0.5,
-                              bottom: AppDimensions.height10 * 0.5),
+                              top: AppDimensions.height10(context) * 0.5,
+                              bottom: AppDimensions.height10(context) * 0.5),
                           child: GestureDetector(
                             onTap: () {
                               bottom_sheet(context);
                             },
                             child: Image.asset(
                               'assets/images/Add.png',
-                              width: AppDimensions.height10 * 4.7,
-                              height: AppDimensions.height10 * 4.7,
+                              width: AppDimensions.height10(context) * 4.7,
+                              height: AppDimensions.height10(context) * 4.7,
                               fit: BoxFit.contain,
                             ),
                           ),
                         ),
                         SizedBox(
-                          width: AppDimensions.height10 * 0.5,
+                          width: AppDimensions.height10(context) * 0.5,
                         ),
                         Text(
                           'Create a new practice! ',
@@ -571,7 +582,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                           style: TextStyle(
                             color: const Color(0xFFFA9934),
                             // fontFamily: ,
-                            fontSize: AppDimensions.height10 * 1.6,
+                            fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -579,11 +590,11 @@ class _CreatePracticeState extends State<CreatePractice> {
                     ),
 
                     Container(
-                      width: AppDimensions.height10 * 4.7,
-                      height: AppDimensions.height10 * 4.7,
+                      width: AppDimensions.height10(context) * 4.7,
+                      height: AppDimensions.height10(context) * 4.7,
                       padding: EdgeInsets.only(
-                          top: AppDimensions.height10 * 0.5,
-                          bottom: AppDimensions.height10 * 0.5),
+                          top: AppDimensions.height10(context) * 0.5,
+                          bottom: AppDimensions.height10(context) * 0.5),
                       child: GestureDetector(
                         onTap: () {
                           setState(() {
@@ -592,8 +603,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                         },
                         child: Image.asset(
                           'assets/images/Search.png',
-                          width: AppDimensions.height10 * 5,
-                          height: AppDimensions.height10 * 5,
+                          width: AppDimensions.height10(context) * 5,
+                          height: AppDimensions.height10(context) * 5,
                           fit: BoxFit.contain,
                         ),
                       ),

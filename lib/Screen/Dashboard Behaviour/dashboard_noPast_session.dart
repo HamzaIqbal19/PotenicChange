@@ -21,31 +21,31 @@ class no_past_session extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.32),
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.32),
                     child: Image.asset(
                       'assets/images/Asset 10 2.png',
-                      height: AppDimensions.height10 * 4.0,
-                      width: AppDimensions.height10 * 3.977,
+                      height: AppDimensions.height10(context) * 4.0,
+                      width: AppDimensions.height10(context) * 3.977,
                       fit: BoxFit.contain,
                     ),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.7),
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.7),
                     child: Image.asset(
                       'assets/images/Add goal.png',
-                      height: AppDimensions.height10 * 2.0,
-                      width: AppDimensions.height10 * 2.1,
+                      height: AppDimensions.height10(context) * 2.0,
+                      width: AppDimensions.height10(context) * 2.1,
                     ),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.32),
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.32),
                     child: Image.asset(
                       'assets/images/calendar_month_black_24dp 1.png',
-                      height: AppDimensions.height10 * 2.4,
-                      width: AppDimensions.height10 * 2.4,
+                      height: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.height10(context) * 2.4,
                     ),
                   ),
                 ],
@@ -69,22 +69,22 @@ class no_past_session extends StatelessWidget {
             height: double.infinity,
             child: SizedBox(
                 width: double.infinity,
-                height: AppDimensions.height10 * 19.2,
+                height: AppDimensions.height10(context) * 19.2,
                 child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
                     child: Column(children: [
                       SizedBox(
-                        height: AppDimensions.height10 * 19.2,
-                        width: AppDimensions.height10 * 45.7,
+                        height: AppDimensions.height10(context) * 19.2,
+                        width: AppDimensions.height10(context) * 45.7,
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: [
                               Container(
-                                height: AppDimensions.height10 * 7.9,
-                                width: AppDimensions.height10 * 7.9,
+                                height: AppDimensions.height10(context) * 7.9,
+                                width: AppDimensions.height10(context) * 7.9,
                                 margin: EdgeInsets.only(
-                                    top: AppDimensions.height10 * 8.4),
+                                    top: AppDimensions.height10(context) * 8.4),
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border:
@@ -105,7 +105,8 @@ class no_past_session extends StatelessWidget {
                                       'MON',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.height10 * 1.2,
+                                              AppDimensions.height10(context) *
+                                                  1.2,
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xff5B74A6)),
                                     ),
@@ -121,8 +122,12 @@ class no_past_session extends StatelessWidget {
                                           shape: BoxShape.circle,
                                           color: Color(0xff156F6D)),
                                       child: Container(
-                                          width: AppDimensions.height10 * 1.7,
-                                          height: AppDimensions.height10 * 1.5,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  1.7,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.5,
 
                                           // margin: const EdgeInsets.only(left: 1),
                                           child: Center(
@@ -130,7 +135,8 @@ class no_past_session extends StatelessWidget {
                                               '0/2',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.0,
                                                   fontWeight: FontWeight.w400,
                                                   color: Colors.white),
@@ -141,8 +147,8 @@ class no_past_session extends StatelessWidget {
                                 )),
                               ),
                               Container(
-                                width: AppDimensions.height10 * 8.3,
-                                height: AppDimensions.height10 * 8.3,
+                                width: AppDimensions.height10(context) * 8.3,
+                                height: AppDimensions.height10(context) * 8.3,
                                 margin: EdgeInsets.only(right: 121, left: 121),
                                 padding: EdgeInsets.all(4),
                                 decoration: BoxDecoration(
@@ -159,8 +165,10 @@ class no_past_session extends StatelessWidget {
                                                 view_goals(missed: false)));
                                   },
                                   child: Container(
-                                    height: AppDimensions.height10 * 7.9,
-                                    width: AppDimensions.height10 * 7.9,
+                                    height:
+                                        AppDimensions.height10(context) * 7.9,
+                                    width:
+                                        AppDimensions.height10(context) * 7.9,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
@@ -180,7 +188,8 @@ class no_past_session extends StatelessWidget {
                                               'TUE',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.4,
                                                   fontWeight: FontWeight.w600,
                                                   color: Color(0xff5B74A6)),
@@ -190,14 +199,17 @@ class no_past_session extends StatelessWidget {
                                               style: TextStyle(
                                                   color: Color(0xff5B74A6),
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.3,
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Container(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     2.5,
-                                                width: AppDimensions.height10 *
+                                                width: AppDimensions.height10(
+                                                        context) *
                                                     2.5,
                                                 decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
@@ -210,7 +222,8 @@ class no_past_session extends StatelessWidget {
                                                       '0/0',
                                                       style: TextStyle(
                                                           fontSize: AppDimensions
-                                                                  .height10 *
+                                                                  .height10(
+                                                                      context) *
                                                               1.0,
                                                           fontWeight:
                                                               FontWeight.w400,
@@ -234,15 +247,20 @@ class no_past_session extends StatelessWidget {
                                               no_planned_session()));
                                 },
                                 child: Container(
-                                    height: AppDimensions.height10 * 7.9,
-                                    width: AppDimensions.height10 * 7.9,
+                                    height:
+                                        AppDimensions.height10(context) * 7.9,
+                                    width:
+                                        AppDimensions.height10(context) * 7.9,
                                     margin: EdgeInsets.only(
-                                      top: AppDimensions.height10 * 8.4,
+                                      top:
+                                          AppDimensions.height10(context) * 8.4,
                                     ),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                          width: AppDimensions.height10 * 0.3,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  0.3,
                                           color: Colors.white),
                                       gradient: const LinearGradient(
                                           begin: Alignment.topCenter,
@@ -260,8 +278,9 @@ class no_past_session extends StatelessWidget {
                                         Text(
                                           'MON',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.2,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.2,
                                               fontWeight: FontWeight.w600,
                                               color: Color(0xff5B74A6)),
                                         ),
@@ -277,10 +296,12 @@ class no_past_session extends StatelessWidget {
                                               shape: BoxShape.circle,
                                               color: Color(0xff156F6D)),
                                           child: Container(
-                                              width:
-                                                  AppDimensions.height10 * 1.7,
-                                              height:
-                                                  AppDimensions.height10 * 1.5,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
 
                                               // margin: const EdgeInsets.only(left: 1),
                                               child: Center(
@@ -288,7 +309,8 @@ class no_past_session extends StatelessWidget {
                                                   '0/2',
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
-                                                              .height10 *
+                                                              .height10(
+                                                                  context) *
                                                           1.0,
                                                       fontWeight:
                                                           FontWeight.w400,
@@ -304,24 +326,24 @@ class no_past_session extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 34.3,
-                        height: AppDimensions.height10 * 4.9,
-                        margin:
-                            EdgeInsets.only(top: AppDimensions.height10 * 18.9),
+                        width: AppDimensions.height10(context) * 34.3,
+                        height: AppDimensions.height10(context) * 4.9,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 18.9),
                         child: Center(
                           child: Text(
                             'No sessions',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10 * 3.0,
+                                fontSize: AppDimensions.height10(context) * 3.0,
                                 fontWeight: FontWeight.w700,
                                 fontFamily: 'Laila'),
                           ),
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 26.9,
-                        height: AppDimensions.height10 * 5.8,
+                        width: AppDimensions.height10(context) * 26.9,
+                        height: AppDimensions.height10(context) * 5.8,
                         child: Center(
                           child: Text(
                             'There are no recorded\npractices for this date.',
@@ -329,13 +351,13 @@ class no_past_session extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'Laila',
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: AppDimensions.height10 * 1.4,
+                        height: AppDimensions.height10(context) * 1.4,
                       ),
                       GestureDetector(
                         onTap: () {
@@ -345,20 +367,20 @@ class no_past_session extends StatelessWidget {
                                   builder: (context) => record_session()));
                         },
                         child: Container(
-                          width: AppDimensions.height10 * 10.1,
-                          height: AppDimensions.height10 * 10.1,
+                          width: AppDimensions.height10(context) * 10.1,
+                          height: AppDimensions.height10(context) * 10.1,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.transparent,
                               border: Border.all(
-                                  width: AppDimensions.height10 * 0.3,
+                                  width: AppDimensions.height10(context) * 0.3,
                                   color: Colors.white)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                height: AppDimensions.height10 * 3.5,
-                                width: AppDimensions.height10 * 3.5,
+                                height: AppDimensions.height10(context) * 3.5,
+                                width: AppDimensions.height10(context) * 3.5,
                                 // padding: EdgeInsets.all(6),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
@@ -369,8 +391,10 @@ class no_past_session extends StatelessWidget {
                                     onPressed: () {},
                                     icon: Image.asset(
                                       'assets/images/Add goal.png',
-                                      height: AppDimensions.height10 * 2.9,
-                                      width: AppDimensions.height10 * 2.9,
+                                      height:
+                                          AppDimensions.height10(context) * 2.9,
+                                      width:
+                                          AppDimensions.height10(context) * 2.9,
                                     )),
                               ),
                               Container(
@@ -381,7 +405,9 @@ class no_past_session extends StatelessWidget {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'laila',
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
                                         fontWeight: FontWeight.w400),
                                   ),
                                 ),

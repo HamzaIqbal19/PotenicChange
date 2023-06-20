@@ -18,8 +18,8 @@ class goal_prac_info extends StatelessWidget {
               },
               icon: Image.asset(
                 'assets/images/Back.png',
-                width: AppDimensions.height10 * 2.6,
-                height: AppDimensions.height10 * 2.6,
+                width: AppDimensions.height10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
               )),
         ),
@@ -29,8 +29,8 @@ class goal_prac_info extends StatelessWidget {
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/Addgoal.png',
-                  width: AppDimensions.height10 * 2.6,
-                  height: AppDimensions.height10 * 2.6,
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
           ),
@@ -48,36 +48,38 @@ class goal_prac_info extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: AppDimensions.height10 * 6.5,
-              height: AppDimensions.height10 * 6.5,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 6.4),
+              width: AppDimensions.height10(context) * 6.5,
+              height: AppDimensions.height10(context) * 6.5,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 6.4),
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/menu_goals_p.png'),
                       fit: BoxFit.cover)),
             ),
             Container(
-              width: AppDimensions.height10 * 15.4,
-              height: AppDimensions.height10 * 3.4,
-              margin: EdgeInsets.only(top: AppDimensions.height10 * 0.6),
+              width: AppDimensions.height10(context) * 15.4,
+              height: AppDimensions.height10(context) * 3.4,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
               child: Text(
                 'Your Goals',
                 style: TextStyle(
-                    fontSize: AppDimensions.height10 * 2.8,
+                    fontSize: AppDimensions.height10(context) * 2.8,
                     fontWeight: FontWeight.w700,
                     color: Color(0xffffffff)),
               ),
             ),
             Container(
-              width: AppDimensions.height10 * 22.1,
-              height: AppDimensions.height10 * 2.2,
+              width: AppDimensions.height10(context) * 22.1,
+              height: AppDimensions.height10(context) * 2.2,
               margin: EdgeInsets.only(
-                top: AppDimensions.height10 * 0.4,
+                top: AppDimensions.height10(context) * 0.4,
               ),
               child: Text(
                 'All your goals in one place',
                 style: TextStyle(
-                    fontSize: AppDimensions.height10 * 1.8,
+                    fontSize: AppDimensions.height10(context) * 1.8,
                     fontWeight: FontWeight.w500,
                     color: Color(0xffffffff)),
               ),
@@ -88,12 +90,14 @@ class goal_prac_info extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
           color: Color(0xFFBFB1BE),
           child: Container(
-            height: AppDimensions.height10 * 45.1,
-            width: AppDimensions.height10 * 41.6,
+            height: AppDimensions.height10(context) * 45.1,
+            width: AppDimensions.height10(context) * 41.6,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(AppDimensions.height10 * 2.0),
-                  topRight: Radius.circular(AppDimensions.height10 * 2.0)),
+                  topLeft:
+                      Radius.circular(AppDimensions.height10(context) * 2.0),
+                  topRight:
+                      Radius.circular(AppDimensions.height10(context) * 2.0)),
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -107,8 +111,8 @@ class goal_prac_info extends StatelessWidget {
               children: [
                 Align(
                   child: Container(
-                      margin:
-                          EdgeInsets.only(left: AppDimensions.height10 * 37.3),
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 37.3),
                       child: Center(
                         child: IconButton(
                             onPressed: () {
@@ -116,35 +120,37 @@ class goal_prac_info extends StatelessWidget {
                             },
                             icon: Image.asset(
                               'assets/images/Close_blue.png',
-                              width: AppDimensions.height10 * 2.6,
-                              height: AppDimensions.height10 * 2.6,
+                              width: AppDimensions.height10(context) * 2.6,
+                              height: AppDimensions.height10(context) * 2.6,
                               fit: BoxFit.cover,
                             )),
                       )),
                 ),
                 Container(
-                  height: AppDimensions.height10 * 3.6,
-                  width: AppDimensions.height10 * 28.6,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 0.4),
+                  height: AppDimensions.height10(context) * 3.6,
+                  width: AppDimensions.height10(context) * 28.6,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 0.4),
                   child: Center(
                     child: Text(
                       'Goal & Practice',
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
-                          fontSize: AppDimensions.height10 * 3.0,
+                          fontSize: AppDimensions.height10(context) * 3.0,
                           color: Color(0xFF437296)),
                     ),
                   ),
                 ),
                 Container(
-                  height: AppDimensions.height10 * 29.9,
-                  width: AppDimensions.height10 * 32.7,
-                  margin: EdgeInsets.only(top: AppDimensions.height10 * 2.2),
+                  height: AppDimensions.height10(context) * 29.9,
+                  width: AppDimensions.height10(context) * 32.7,
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 2.2),
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
                         style: TextStyle(
-                          fontSize: AppDimensions.height10 * 1.4,
+                          fontSize: AppDimensions.height10(context) * 1.4,
                           fontWeight: FontWeight.w400,
                           color: Color(0xFF437296),
                         ),

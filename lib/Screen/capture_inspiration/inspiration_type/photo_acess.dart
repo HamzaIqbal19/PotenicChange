@@ -23,42 +23,42 @@ class _photo_pop_upState extends State<photo_pop_up> {
           Align(
             alignment: const Alignment(0, 0),
             child: Container(
-              width: AppDimensions.height10 * 27.0,
-              height: AppDimensions.height10 * 24.8,
+              width: AppDimensions.height10(context) * 27.0,
+              height: AppDimensions.height10(context) * 24.8,
               decoration: BoxDecoration(
                   color: const Color(0xff1E1E1E).withOpacity(0.75),
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 1.4)),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 1.4)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: AppDimensions.height10 * 11.6,
+                    height: AppDimensions.height10(context) * 11.6,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          // width: AppDimensions.height10 * 23.8,
-                          height: AppDimensions.height10 * 4.4,
+                          // width: AppDimensions.height10(context) * 23.8,
+                          height: AppDimensions.height10(context) * 4.4,
                           child: Text(
                             'Potenic would like to access\nyour photos',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.7,
+                                fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10 * 0.2),
-                          // width: AppDimensions.height10 * 23.8,
-                          height: AppDimensions.height10 * 3.4,
+                              top: AppDimensions.height10(context) * 0.2),
+                          // width: AppDimensions.height10(context) * 23.8,
+                          height: AppDimensions.height10(context) * 3.4,
                           child: Text(
                             'To upload from your device, allow\naccess to your photos.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.3,
+                                fontSize: AppDimensions.height10(context) * 1.3,
                                 fontWeight: FontWeight.w400,
                                 color: Colors.white),
                           ),
@@ -67,11 +67,11 @@ class _photo_pop_upState extends State<photo_pop_up> {
                     ),
                   ),
                   SizedBox(
-                    height: AppDimensions.height10 * 0.1,
+                    height: AppDimensions.height10(context) * 0.1,
                     child: Divider(
                       color: const Color(0xff545458).withOpacity(0.65),
-                      //thickness: AppDimensions.height10 * 0.5,
-                      height: AppDimensions.height10 * 0.5,
+                      //thickness: AppDimensions.height10(context) * 0.5,
+                      height: AppDimensions.height10(context) * 0.5,
                     ),
                   ),
                   GestureDetector(
@@ -87,13 +87,13 @@ class _photo_pop_upState extends State<photo_pop_up> {
                                   )));
                     },
                     child: SizedBox(
-                      height: AppDimensions.height10 * 4.3,
+                      height: AppDimensions.height10(context) * 4.3,
                       child: Center(
                         child: Text(
                           'Select Photos...',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize: AppDimensions.height10 * 1.7,
+                              fontSize: AppDimensions.height10(context) * 1.7,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xff0A84FF)),
                         ),
@@ -101,42 +101,42 @@ class _photo_pop_upState extends State<photo_pop_up> {
                     ),
                   ),
                   SizedBox(
-                    height: AppDimensions.height10 * 0.1,
+                    height: AppDimensions.height10(context) * 0.1,
                     child: Divider(
                       color: const Color(0xff545458).withOpacity(0.65),
-                      //thickness: AppDimensions.height10 * 0.5,
-                      height: AppDimensions.height10 * 0.5,
+                      //thickness: AppDimensions.height10(context) * 0.5,
+                      height: AppDimensions.height10(context) * 0.5,
                     ),
                   ),
                   SizedBox(
-                    height: AppDimensions.height10 * 4.3,
+                    height: AppDimensions.height10(context) * 4.3,
                     child: Center(
                       child: Text(
                         'Allow Access to All Photos',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.7,
+                            fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff0A84FF)),
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: AppDimensions.height10 * 0.1,
+                    height: AppDimensions.height10(context) * 0.1,
                     child: Divider(
                       color: const Color(0xff545458).withOpacity(0.65),
-                      //thickness: AppDimensions.height10 * 0.5,
-                      height: AppDimensions.height10 * 0.5,
+                      //thickness: AppDimensions.height10(context) * 0.5,
+                      height: AppDimensions.height10(context) * 0.5,
                     ),
                   ),
                   SizedBox(
-                    height: AppDimensions.height10 * 4.3,
+                    height: AppDimensions.height10(context) * 4.3,
                     child: Center(
                       child: Text(
                         'Don’t Allow',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.7,
+                            fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
                             color: const Color(0xff0A84FF)),
                       ),
@@ -149,12 +149,13 @@ class _photo_pop_upState extends State<photo_pop_up> {
           Align(
             alignment: const Alignment(0, 1),
             child: Container(
-              width: AppDimensions.height10 * 17.0,
-              height: AppDimensions.height10 * 0.5,
-              margin: EdgeInsets.only(bottom: AppDimensions.height10 * 1.0),
+              width: AppDimensions.height10(context) * 17.0,
+              height: AppDimensions.height10(context) * 0.5,
+              margin: EdgeInsets.only(
+                  bottom: AppDimensions.height10(context) * 1.0),
               decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(AppDimensions.height10 * 2.0),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 2.0),
                   color: const Color(0xFFFFFFFF).withOpacity(0.3)),
             ),
           )
@@ -196,299 +197,337 @@ class _photo_infoState extends State<photo_info> {
           shape: const CircularNotchedRectangle(),
           color: const Color(0xffC4C4C4),
           child: Container(
-            // height: AppDimensions.height10 * 84.8,
-            margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
+            // height: AppDimensions.height10(context) * 84.8,
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
             child: Column(children: [
               Container(
-                // width: AppDimensions.height10 * 41.1,
-                height: AppDimensions.height10 * 5.1,
-                //margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
+                // width: AppDimensions.height10(context) * 41.1,
+                height: AppDimensions.height10(context) * 5.1,
+                //margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
                 decoration: BoxDecoration(
                     color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(AppDimensions.height10 * 1.0),
-                        topRight:
-                            Radius.circular(AppDimensions.height10 * 1.0))),
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Container(
-                    height: AppDimensions.height10 * 2.2,
-                    width: AppDimensions.height10 * 3.3,
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 4.9),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Back',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10 * 1.5,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff007AFF)),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      height: AppDimensions.height10 * 2.2,
-                      width: AppDimensions.height10 * 19.9,
-                      child: Center(
-                          child: widget.edit_details
-                              ? Text(
-                                  'Edit image inspiration',
-                                  style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.7,
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color(0xff282828)),
-                                )
-                              : Text(
-                                  'Create image inspiration',
-                                  style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.7,
-                                      fontWeight: FontWeight.w700,
-                                      color: const Color(0xff282828)),
-                                )),
-                    ),
-                  ),
-                  Container(
-                    height: AppDimensions.height10 * 2.2,
-                    width: AppDimensions.height10 * 4.3,
-                    margin: EdgeInsets.only(left: AppDimensions.height10 * 4.9),
-                    child: widget.image_detals
-                        ? Container(
-                            child: widget.image_save
-                                ? GestureDetector(
-                                    onTap: () => widget.image_create
-                                        ? Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const inspiration_landing(
-                                                      muliple_insp: false,
-                                                      is_Updated: false,
-                                                    )))
-                                        : showDialog<String>(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                Container(
-                                                  width:
-                                                      AppDimensions.height10 *
-                                                          27.0,
-                                                  height:
-                                                      AppDimensions.height10 *
-                                                          18.2,
-                                                  child: AlertDialog(
-                                                    contentPadding:
-                                                        EdgeInsets.zero,
-                                                    actionsPadding:
-                                                        EdgeInsets.zero,
-                                                    titlePadding:
-                                                        EdgeInsets.zero,
-                                                    title: Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: AppDimensions
-                                                                  .height10 *
-                                                              1.9,
-                                                          right: AppDimensions
-                                                                  .height10 *
-                                                              1.6,
-                                                          left: AppDimensions
-                                                                  .height10 *
-                                                              1.6,
-                                                          bottom: AppDimensions
-                                                                  .height10 *
-                                                              0.2),
-                                                      height: AppDimensions
-                                                              .height10 *
-                                                          2.2,
-                                                      width: AppDimensions
-                                                              .height10 *
-                                                          23.8,
-                                                      child: Text(
-                                                        "Save changes?",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10 *
-                                                              1.7,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    content: Container(
-                                                      margin: EdgeInsets.only(
-                                                          bottom: AppDimensions
-                                                                  .height10 *
-                                                              1.5,
-                                                          left: AppDimensions
-                                                                  .height10 *
-                                                              1.6,
-                                                          right: AppDimensions
-                                                                  .height10 *
-                                                              1.6),
-                                                      height: AppDimensions
-                                                              .height10 *
-                                                          3.4,
-                                                      width: AppDimensions
-                                                              .height10 *
-                                                          23.8,
-                                                      child: Text(
-                                                        "Are you sure you want to save your\nupdates?",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .height10 *
-                                                              1.3,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    actions: <Widget>[
-                                                      Column(
-                                                        children: [
-                                                          SizedBox(
-                                                            height: AppDimensions
-                                                                    .height10 *
-                                                                0.1,
-                                                            child: Divider(
-                                                              color: const Color(
-                                                                      0XFF3C3C43)
-                                                                  .withOpacity(
-                                                                      0.29),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: AppDimensions
-                                                                    .height10 *
-                                                                4.2,
-                                                            width:
-                                                                double.infinity,
-                                                            color: const Color(
-                                                                0xFF007AFF),
-                                                            child: TextButton(
-                                                              onPressed: () {
-                                                                Navigator.push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) => widget.edit_details
-                                                                            ? const inspiration_landing(
-                                                                                muliple_insp: false,
-                                                                                is_Updated: true,
-                                                                              )
-                                                                            : const inspiration_landing(
-                                                                                muliple_insp: false,
-                                                                                is_Updated: false,
-                                                                              )));
-                                                              },
-                                                              child: Text(
-                                                                'Yes',
-                                                                style: TextStyle(
-                                                                    color: const Color(
-                                                                        0xFFFFFFFF),
-                                                                    fontSize:
-                                                                        AppDimensions.height10 *
-                                                                            1.7,
-                                                                    fontFamily:
-                                                                        "Laila",
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            height: AppDimensions
-                                                                    .height10 *
-                                                                0.1,
-                                                            child: Divider(
-                                                              color: const Color(
-                                                                      0XFF3C3C43)
-                                                                  .withOpacity(
-                                                                      0.29),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: AppDimensions
-                                                                    .height10 *
-                                                                4.4,
-                                                            width:
-                                                                double.infinity,
-                                                            child: TextButton(
-                                                              onPressed: () {
-                                                                Navigator.pop(
-                                                                    context);
-                                                              },
-                                                              child: Text(
-                                                                'Cancel',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.height10 *
-                                                                            1.7,
-                                                                    fontFamily:
-                                                                        "Laila",
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: const Color(
-                                                                        0xFF007AFF)),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            height: AppDimensions
-                                                                    .height10 *
-                                                                0.1,
-                                                            child: Divider(
-                                                              color: const Color(
-                                                                      0XFF3C3C43)
-                                                                  .withOpacity(
-                                                                      0.29),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )),
-                                    child: Text(
-                                      widget.image_create ? 'Create' : 'Save',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.5,
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xff007AFF)),
-                                    ),
-                                  )
-                                : GestureDetector(
-                                    onTap: () {},
-                                    child: Text(
-                                      'Create',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10 * 1.5,
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xff007AFF)),
-                                    ),
-                                  ),
-                          )
-                        : Text(
-                            'Create',
+                        topLeft: Radius.circular(
+                            AppDimensions.height10(context) * 1.0),
+                        topRight: Radius.circular(
+                            AppDimensions.height10(context) * 1.0))),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: AppDimensions.height10(context) * 2.2,
+                        width: AppDimensions.height10(context) * 3.3,
+                        margin: EdgeInsets.only(
+                            right: AppDimensions.height10(context) * 4.9),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            'Back',
                             style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.5,
+                                fontSize: AppDimensions.height10(context) * 1.5,
                                 fontWeight: FontWeight.w400,
-                                color:
-                                    const Color(0xff007AFF).withOpacity(0.4)),
+                                color: const Color(0xff007AFF)),
                           ),
-                  )
-                ]),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 19.9,
+                          child: Center(
+                              child: widget.edit_details
+                                  ? Text(
+                                      'Edit image inspiration',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.7,
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xff282828)),
+                                    )
+                                  : Text(
+                                      'Create image inspiration',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.7,
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xff282828)),
+                                    )),
+                        ),
+                      ),
+                      Container(
+                        height: AppDimensions.height10(context) * 2.2,
+                        width: AppDimensions.height10(context) * 4.3,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 4.9),
+                        child: widget.image_detals
+                            ? Container(
+                                child: widget.image_save
+                                    ? GestureDetector(
+                                        onTap: () => widget.image_create
+                                            ? Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const inspiration_landing(
+                                                          muliple_insp: false,
+                                                          is_Updated: false,
+                                                        )))
+                                            : showDialog<String>(
+                                                context: context,
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        Container(
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              27.0,
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              18.2,
+                                                          child: AlertDialog(
+                                                            contentPadding:
+                                                                EdgeInsets.zero,
+                                                            actionsPadding:
+                                                                EdgeInsets.zero,
+                                                            titlePadding:
+                                                                EdgeInsets.zero,
+                                                            title: Container(
+                                                              margin: EdgeInsets.only(
+                                                                  top: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.9,
+                                                                  right:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.6,
+                                                                  left: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6,
+                                                                  bottom: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      0.2),
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  2.2,
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  23.8,
+                                                              child: Text(
+                                                                "Save changes?",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.7,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            content: Container(
+                                                              margin: EdgeInsets.only(
+                                                                  bottom: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.5,
+                                                                  left: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6,
+                                                                  right: AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6),
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  3.4,
+                                                              width: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  23.8,
+                                                              child: Text(
+                                                                "Are you sure you want to save your\nupdates?",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize:
+                                                                      AppDimensions.height10(
+                                                                              context) *
+                                                                          1.3,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            actions: <Widget>[
+                                                              Column(
+                                                                children: [
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
+                                                                      color: const Color(
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
+                                                                    ),
+                                                                  ),
+                                                                  Container(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            4.2,
+                                                                    width: double
+                                                                        .infinity,
+                                                                    color: const Color(
+                                                                        0xFF007AFF),
+                                                                    child:
+                                                                        TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.push(
+                                                                            context,
+                                                                            MaterialPageRoute(
+                                                                                builder: (context) => widget.edit_details
+                                                                                    ? const inspiration_landing(
+                                                                                        muliple_insp: false,
+                                                                                        is_Updated: true,
+                                                                                      )
+                                                                                    : const inspiration_landing(
+                                                                                        muliple_insp: false,
+                                                                                        is_Updated: false,
+                                                                                      )));
+                                                                      },
+                                                                      child:
+                                                                          Text(
+                                                                        'Yes',
+                                                                        style: TextStyle(
+                                                                            color: const Color(
+                                                                                0xFFFFFFFF),
+                                                                            fontSize: AppDimensions.height10(context) *
+                                                                                1.7,
+                                                                            fontFamily:
+                                                                                "Laila",
+                                                                            fontWeight:
+                                                                                FontWeight.w400),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
+                                                                      color: const Color(
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
+                                                                    ),
+                                                                  ),
+                                                                  Container(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            4.4,
+                                                                    width: double
+                                                                        .infinity,
+                                                                    child:
+                                                                        TextButton(
+                                                                      onPressed:
+                                                                          () {
+                                                                        Navigator.pop(
+                                                                            context);
+                                                                      },
+                                                                      child:
+                                                                          Text(
+                                                                        'Cancel',
+                                                                        style: TextStyle(
+                                                                            fontSize: AppDimensions.height10(context) *
+                                                                                1.7,
+                                                                            fontFamily:
+                                                                                "Laila",
+                                                                            fontWeight:
+                                                                                FontWeight.w400,
+                                                                            color: const Color(0xFF007AFF)),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        AppDimensions.height10(context) *
+                                                                            0.1,
+                                                                    child:
+                                                                        Divider(
+                                                                      color: const Color(
+                                                                              0XFF3C3C43)
+                                                                          .withOpacity(
+                                                                              0.29),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        )),
+                                        child: Text(
+                                          widget.image_create
+                                              ? 'Create'
+                                              : 'Save',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xff007AFF)),
+                                        ),
+                                      )
+                                    : GestureDetector(
+                                        onTap: () {},
+                                        child: Text(
+                                          'Create',
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xff007AFF)),
+                                        ),
+                                      ),
+                              )
+                            : Text(
+                                'Create',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.5,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xff007AFF)
+                                        .withOpacity(0.4)),
+                              ),
+                      )
+                    ]),
               ),
               Container(
-                height: AppDimensions.height10 * 79.65,
+                height: AppDimensions.height10(context) * 79.65,
                 width: double.infinity,
                 color: Colors.white,
                 child: SingleChildScrollView(
@@ -498,11 +537,11 @@ class _photo_infoState extends State<photo_info> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(
-                          top: AppDimensions.height10 * 2.9,
-                          left: AppDimensions.height10 * 1.8,
+                          top: AppDimensions.height10(context) * 2.9,
+                          left: AppDimensions.height10(context) * 1.8,
                         ),
-                        width: AppDimensions.height10 * 24.4,
-                        height: AppDimensions.height10 * 24.4,
+                        width: AppDimensions.height10(context) * 24.4,
+                        height: AppDimensions.height10(context) * 24.4,
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
@@ -513,33 +552,34 @@ class _photo_infoState extends State<photo_info> {
                         scrollDirection: Axis.vertical,
                         child: Column(children: [
                           Container(
-                            height: AppDimensions.height10 * 2.1,
-                            width: AppDimensions.height10 * 30.5,
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                                right: AppDimensions.height10 * 8.9,
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 8.9,
                                 top: widget.image_detals
-                                    ? AppDimensions.height10 * 3.9
-                                    : AppDimensions.height10 * 3.9),
+                                    ? AppDimensions.height10(context) * 3.9
+                                    : AppDimensions.height10(context) * 3.9),
                             child: Text(
                               'Title',
                               style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
                           ),
                           Container(
-                              height: AppDimensions.height10 * 2.4,
-                              width: AppDimensions.height10 * 30.5,
+                              height: AppDimensions.height10(context) * 2.4,
+                              width: AppDimensions.height10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               // color: Colors.amber,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                  right: AppDimensions.height10 * 9.0,
-                                  top: AppDimensions.height10 * 0.2),
+                                  left: AppDimensions.height10(context) * 2.0,
+                                  right: AppDimensions.height10(context) * 9.0,
+                                  top: AppDimensions.height10(context) * 0.2),
                               child: widget.image_detals
                                   ? Text(
                                       'Nir Eyal',
@@ -547,7 +587,8 @@ class _photo_infoState extends State<photo_info> {
                                           fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
@@ -556,23 +597,26 @@ class _photo_infoState extends State<photo_info> {
                                           fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
-                            height: AppDimensions.height10 * 2.1,
-                            width: AppDimensions.height10 * 30.5,
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                                right: AppDimensions.height10 * 8.9,
-                                top: AppDimensions.height10 * 4.0),
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 4.0),
                             child: widget.image_detals
                                 ? Text(
                                     'Description',
                                     style: TextStyle(
                                         fontFamily: 'Poppins',
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xff828282)),
                                   )
@@ -580,19 +624,21 @@ class _photo_infoState extends State<photo_info> {
                                     'Why is it inspirational to you',
                                     style: TextStyle(
                                         fontFamily: 'Poppins',
-                                        fontSize: AppDimensions.height10 * 1.4,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xff828282)),
                                   ),
                           ),
                           Container(
-                              height: AppDimensions.height10 * 2.4,
-                              width: AppDimensions.height10 * 30.5,
+                              height: AppDimensions.height10(context) * 2.4,
+                              width: AppDimensions.height10(context) * 30.5,
                               alignment: Alignment.centerLeft,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                  right: AppDimensions.height10 * 9.0,
-                                  top: AppDimensions.height10 * 0.2),
+                                  left: AppDimensions.height10(context) * 2.0,
+                                  right: AppDimensions.height10(context) * 9.0,
+                                  top: AppDimensions.height10(context) * 0.2),
                               child: widget.image_detals
                                   ? Text(
                                       'Behavioural Coach',
@@ -600,7 +646,8 @@ class _photo_infoState extends State<photo_info> {
                                           fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
@@ -609,22 +656,24 @@ class _photo_infoState extends State<photo_info> {
                                           fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
-                            height: AppDimensions.height10 * 2.1,
-                            width: AppDimensions.height10 * 30.5,
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                                right: AppDimensions.height10 * 8.9,
-                                top: AppDimensions.height10 * 4.0),
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 4.0),
                             child: Text(
                               'Destination website',
                               style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -632,12 +681,12 @@ class _photo_infoState extends State<photo_info> {
                           Row(
                             children: [
                               Container(
-                                  height: AppDimensions.height10 * 3.0,
+                                  height: AppDimensions.height10(context) * 3.0,
                                   width: widget.image_detals
-                                      ? AppDimensions.height10 * 30.5
-                                      : AppDimensions.height10 * 30.5,
+                                      ? AppDimensions.height10(context) * 30.5
+                                      : AppDimensions.height10(context) * 30.5,
                                   margin: EdgeInsets.only(
-                                    left: AppDimensions.height10 * 3.0,
+                                    left: AppDimensions.height10(context) * 3.0,
                                   ),
                                   child: widget.image_detals
                                       ? Align(
@@ -648,7 +697,8 @@ class _photo_infoState extends State<photo_info> {
                                                 color: const Color(0xFF282828),
                                                 fontFamily: 'Poppins',
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.6,
                                                 fontWeight: FontWeight.w500),
                                           ),
@@ -661,7 +711,8 @@ class _photo_infoState extends State<photo_info> {
                                                 color: const Color(0xFF828282),
                                                 fontFamily: 'Poppins',
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.6,
                                                 fontWeight: FontWeight.w500),
                                           ),
@@ -677,12 +728,16 @@ class _photo_infoState extends State<photo_info> {
                                             //         builder: (context) => link_editer()));
                                           },
                                           child: Container(
-                                            width: AppDimensions.height10 * 2.5,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                2.5,
                                             margin: EdgeInsets.only(
-                                                left: AppDimensions.height10 *
+                                                left: AppDimensions.height10(
+                                                        context) *
                                                     1.15),
-                                            height:
-                                                AppDimensions.height10 * 2.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.5,
                                             decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               // image: DecorationImage(image: AssetImage()),
@@ -692,13 +747,14 @@ class _photo_infoState extends State<photo_info> {
                                               child: Icon(
                                                 Icons.add,
                                                 color: Colors.white,
-                                                size: AppDimensions.height10 *
+                                                size: AppDimensions.height10(
+                                                        context) *
                                                     1.8,
                                               ),
                                             ),
 
                                             // margin: EdgeInsets.only(
-                                            //     right: AppDimensions.height10 * 0.8),
+                                            //     right: AppDimensions.height10(context) * 0.8),
                                             // decoration: BoxDecoration(
 
                                             //     image: DecorationImage(
@@ -708,10 +764,15 @@ class _photo_infoState extends State<photo_info> {
                                           ),
                                         ),
                                         Container(
-                                          width: AppDimensions.height10 * 2.5,
-                                          height: AppDimensions.height10 * 2.5,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.5,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.5,
                                           margin: EdgeInsets.only(
-                                              left: AppDimensions.height10 *
+                                              left: AppDimensions.height10(
+                                                      context) *
                                                   0.85),
                                           decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
@@ -722,8 +783,9 @@ class _photo_infoState extends State<photo_info> {
                                             child: Icon(
                                               Icons.delete,
                                               color: Colors.white,
-                                              size:
-                                                  AppDimensions.height10 * 1.8,
+                                              size: AppDimensions.height10(
+                                                      context) *
+                                                  1.8,
                                             ),
                                           ),
                                         )
@@ -737,11 +799,15 @@ class _photo_infoState extends State<photo_info> {
                                         //         builder: (context) => link_editer()));
                                       },
                                       child: Container(
-                                        width: AppDimensions.height10 * 2.5,
+                                        width: AppDimensions.height10(context) *
+                                            2.5,
                                         margin: EdgeInsets.only(
-                                            left:
-                                                AppDimensions.height10 * 4.85),
-                                        height: AppDimensions.height10 * 2.5,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                4.85),
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.5,
                                         decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           // image: DecorationImage(image: AssetImage()),
@@ -751,12 +817,14 @@ class _photo_infoState extends State<photo_info> {
                                           child: Icon(
                                             Icons.add,
                                             color: Colors.white,
-                                            size: AppDimensions.height10 * 1.8,
+                                            size: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
                                           ),
                                         ),
 
                                         // margin: EdgeInsets.only(
-                                        //     right: AppDimensions.height10 * 0.8),
+                                        //     right: AppDimensions.height10(context) * 0.8),
                                         // decoration: BoxDecoration(
 
                                         //     image: DecorationImage(
@@ -768,29 +836,30 @@ class _photo_infoState extends State<photo_info> {
                             ],
                           ),
                           Container(
-                            height: AppDimensions.height10 * 2.1,
-                            width: AppDimensions.height10 * 30.5,
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
                             alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                                right: AppDimensions.height10 * 8.9,
-                                top: AppDimensions.height10 * 4.0),
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 4.0),
                             child: Text(
                               'Tags',
                               style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
                           ),
                           Container(
-                              height: AppDimensions.height10 * 2.4,
-                              width: AppDimensions.height10 * 30.5,
+                              height: AppDimensions.height10(context) * 2.4,
+                              width: AppDimensions.height10(context) * 30.5,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 2.0,
-                                  right: AppDimensions.height10 * 9.0,
-                                  top: AppDimensions.height10 * 0.2),
+                                  left: AppDimensions.height10(context) * 2.0,
+                                  right: AppDimensions.height10(context) * 9.0,
+                                  top: AppDimensions.height10(context) * 0.2),
                               child: widget.image_detals
                                   ? Text(
                                       'Add #hashtag',
@@ -798,7 +867,8 @@ class _photo_infoState extends State<photo_info> {
                                           fontFamily: 'Poppins',
                                           color: const Color(0xFF282828),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     )
                                   : Text(
@@ -807,23 +877,25 @@ class _photo_infoState extends State<photo_info> {
                                           fontFamily: 'Poppins',
                                           color: const Color(0xFF828282),
                                           fontSize:
-                                              AppDimensions.height10 * 1.6,
+                                              AppDimensions.height10(context) *
+                                                  1.6,
                                           fontWeight: FontWeight.w500),
                                     )),
                           Container(
-                            height: AppDimensions.height10 * 2.1,
-                            width: AppDimensions.height10 * 30.5,
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10 * 2.0,
-                                right: AppDimensions.height10 * 8.9,
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 8.9,
                                 top: widget.image_detals
-                                    ? AppDimensions.height10 * 4.0
-                                    : AppDimensions.height10 * 3.0),
+                                    ? AppDimensions.height10(context) * 4.0
+                                    : AppDimensions.height10(context) * 3.0),
                             child: Text(
                               'Attached goals',
                               style: TextStyle(
                                   fontFamily: 'Poppins',
-                                  fontSize: AppDimensions.height10 * 1.4,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
@@ -845,51 +917,58 @@ class _photo_infoState extends State<photo_info> {
                                               const link_set()));
                             },
                             child: Container(
-                              height: AppDimensions.height10 * 6.0,
-                              width: AppDimensions.height10 * 37.5,
+                              height: AppDimensions.height10(context) * 6.0,
+                              width: AppDimensions.height10(context) * 37.5,
                               margin: EdgeInsets.only(
-                                // bottom: AppDimensions.height10 * 1.0,
-                                left: AppDimensions.height10 * 2.0,
-                                right: AppDimensions.height10 * 1.9,
+                                // bottom: AppDimensions.height10(context) * 1.0,
+                                left: AppDimensions.height10(context) * 2.0,
+                                right: AppDimensions.height10(context) * 1.9,
                               ),
                               decoration: BoxDecoration(
                                   border: Border.all(
                                       width: 1, color: const Color(0xFF464646)),
                                   borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10 * 2.0)),
+                                      AppDimensions.height10(context) * 2.0)),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10 * 23.9,
-                                    height: AppDimensions.height10 * 2.2,
+                                    width:
+                                        AppDimensions.height10(context) * 23.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 1.99),
+                                        left: AppDimensions.height10(context) *
+                                            1.99),
                                     child: GestureDetector(
                                         onTap: () {},
                                         child: Text(
                                           '00 impacted goals',
                                           style: TextStyle(
                                             color: const Color(0xFF646464),
-                                            fontSize:
-                                                AppDimensions.height10 * 1.8,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         )),
                                   ),
                                   Container(
-                                      width: AppDimensions.height10 * 2.4,
-                                      height: AppDimensions.height10 * 1.39,
+                                      width:
+                                          AppDimensions.height10(context) * 2.4,
+                                      height: AppDimensions.height10(context) *
+                                          1.39,
                                       margin: EdgeInsets.only(
                                           right:
-                                              AppDimensions.height10 * 2.391),
+                                              AppDimensions.height10(context) *
+                                                  2.391),
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
                                           'assets/images/BTN Back.png',
-                                          //width: AppDimensions.height10 * 2.6,
-                                          //height: AppDimensions.height10 * 2.6,
+                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //height: AppDimensions.height10(context) * 2.6,
                                           color: const Color(0xFF646464),
                                           fit: BoxFit.cover,
                                         ),
@@ -933,26 +1012,28 @@ class _link_setState extends State<link_set> {
         // elevation: 0,
         color: const Color(0xffC4C4C4),
         child: Container(
-          margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
-          //height: AppDimensions.height10 * 83.517,
+          margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
+          //height: AppDimensions.height10(context) * 83.517,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(AppDimensions.height10 * 1.0),
-                topRight: Radius.circular(AppDimensions.height10 * 1.0)),
+                topLeft: Radius.circular(AppDimensions.height10(context) * 1.0),
+                topRight:
+                    Radius.circular(AppDimensions.height10(context) * 1.0)),
             color: const Color(0xFF828282),
           ),
           child: Column(
             children: [
               Container(
-                // width: AppDimensions.height10 * 41.1,
-                height: AppDimensions.height10 * 5.1,
-                // margin: EdgeInsets.only(top: AppDimensions.height10 * 5.4),
+                // width: AppDimensions.height10(context) * 41.1,
+                height: AppDimensions.height10(context) * 5.1,
+                // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
                 decoration: BoxDecoration(
                     color: const Color(0xffF5F5F5).withOpacity(0.8),
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(AppDimensions.height10 * 1.0),
-                        topRight:
-                            Radius.circular(AppDimensions.height10 * 1.0))),
+                        topLeft: Radius.circular(
+                            AppDimensions.height10(context) * 1.0),
+                        topRight: Radius.circular(
+                            AppDimensions.height10(context) * 1.0))),
                 child: link_bt
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -964,10 +1045,11 @@ class _link_setState extends State<link_set> {
                                 });
                               },
                               child: Container(
-                                width: AppDimensions.height10 * 3.0,
-                                height: AppDimensions.height10 * 3.0,
+                                width: AppDimensions.height10(context) * 3.0,
+                                height: AppDimensions.height10(context) * 3.0,
                                 margin: EdgeInsets.only(
-                                    right: AppDimensions.height10 * 0.8),
+                                    right:
+                                        AppDimensions.height10(context) * 0.8),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: const Color(0xFF828282)
@@ -978,22 +1060,25 @@ class _link_setState extends State<link_set> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.height10 * 29.2,
-                              height: AppDimensions.height10 * 3.4,
+                              width: AppDimensions.height10(context) * 29.2,
+                              height: AppDimensions.height10(context) * 3.4,
                               // color: Colors.amber,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10 * 1.0),
+                                      AppDimensions.height10(context) * 1.0),
                                   color: const Color(0xff767680)
                                       .withOpacity(0.12)),
                               child: Row(
                                 // mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10 * 1.4,
-                                    height: AppDimensions.height10 * 1.413,
+                                    width:
+                                        AppDimensions.height10(context) * 1.4,
+                                    height:
+                                        AppDimensions.height10(context) * 1.413,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 0.8),
+                                        left: AppDimensions.height10(context) *
+                                            0.8),
                                     decoration: const BoxDecoration(
                                         //shape: BoxShape.circle,
                                         image: DecorationImage(
@@ -1002,11 +1087,13 @@ class _link_setState extends State<link_set> {
                                             fit: BoxFit.fill)),
                                   ),
                                   Container(
-                                    width: AppDimensions.height10 * 23.8,
-                                    height: AppDimensions.height10 * 2.2,
+                                    width:
+                                        AppDimensions.height10(context) * 23.8,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
                                     //color: Colors.amber,
                                     // margin: EdgeInsets.only(
-                                    //     top: AppDimensions.height10 * 1.5),
+                                    //     top: AppDimensions.height10(context) * 1.5),
                                     child: TextFormField(
                                       controller: linkController,
                                       onChanged: (value) {
@@ -1021,33 +1108,33 @@ class _link_setState extends State<link_set> {
                                           decoration: TextDecoration.none,
                                           decorationThickness: 0,
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff3C3C43)
                                               .withOpacity(0.6)),
                                       decoration: InputDecoration(
                                           contentPadding: EdgeInsets.fromLTRB(
-                                              AppDimensions.height10 * 0.6,
-                                              AppDimensions.height10 * 0.4,
+                                              AppDimensions.height10(context) *
+                                                  0.6,
+                                              AppDimensions.height10(context) *
+                                                  0.4,
                                               0,
                                               0),
                                           hintText: 'Enter website address',
                                           hintStyle: TextStyle(
-                                              fontSize: AppDimensions.height10 *
-                                                  1.4,
+                                              fontSize:
+                                                  AppDimensions.height10(context) *
+                                                      1.4,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff3C3C43)
                                                   .withOpacity(0.6)),
-                                          focusedBorder:
-                                              const OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      color: Colors
-                                                          .transparent)),
-                                          enabledBorder:
-                                              const OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      color:
-                                                          Colors.transparent))),
+                                          focusedBorder: const OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.transparent)),
+                                          enabledBorder: const OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  color: Colors.transparent))),
                                     ),
                                   ),
                                   GestureDetector(
@@ -1055,8 +1142,10 @@ class _link_setState extends State<link_set> {
                                       setState(() {});
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10 * 2.3,
-                                      height: AppDimensions.height10 * 2.3,
+                                      width:
+                                          AppDimensions.height10(context) * 2.3,
+                                      height:
+                                          AppDimensions.height10(context) * 2.3,
                                       decoration: const BoxDecoration(
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
@@ -1066,8 +1155,8 @@ class _link_setState extends State<link_set> {
                                           ),
                                       // child: Image.asset(
                                       //   'assets/images/ic_refresh.png',
-                                      //  // width: AppDimensions.height10 * 0.941,
-                                      //   //height: AppDimensions.height10 * 1.4,
+                                      //  // width: AppDimensions.height10(context) * 0.941,
+                                      //   //height: AppDimensions.height10(context) * 1.4,
                                       //   color: Color(0xff282828),
                                       // ),
                                     ),
@@ -1076,10 +1165,10 @@ class _link_setState extends State<link_set> {
                               ),
                             ),
                             Container(
-                              height: AppDimensions.height10 * 4.2,
-                              width: AppDimensions.height10 * 6.2,
+                              height: AppDimensions.height10(context) * 4.2,
+                              width: AppDimensions.height10(context) * 6.2,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.height10 * 0.9),
+                                  left: AppDimensions.height10(context) * 0.9),
                               child: Center(
                                   child: GestureDetector(
                                 onTap: () {
@@ -1097,7 +1186,8 @@ class _link_setState extends State<link_set> {
                                 child: Text(
                                   'Add link',
                                   style: TextStyle(
-                                      fontSize: AppDimensions.height10 * 1.5,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.5,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xff007AFF)),
                                 ),
@@ -1109,22 +1199,25 @@ class _link_setState extends State<link_set> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                             Container(
-                              width: AppDimensions.height10 * 33.7,
-                              height: AppDimensions.height10 * 3.4,
+                              width: AppDimensions.height10(context) * 33.7,
+                              height: AppDimensions.height10(context) * 3.4,
                               // color: Colors.amber,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10 * 1.0),
+                                      AppDimensions.height10(context) * 1.0),
                                   color: const Color(0xff767680)
                                       .withOpacity(0.12)),
                               child: Row(
                                 // mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: AppDimensions.height10 * 1.4,
-                                    height: AppDimensions.height10 * 1.413,
+                                    width:
+                                        AppDimensions.height10(context) * 1.4,
+                                    height:
+                                        AppDimensions.height10(context) * 1.413,
                                     margin: EdgeInsets.only(
-                                        left: AppDimensions.height10 * 0.8),
+                                        left: AppDimensions.height10(context) *
+                                            0.8),
                                     decoration: const BoxDecoration(
                                         //shape: BoxShape.circle,
                                         image: DecorationImage(
@@ -1133,11 +1226,13 @@ class _link_setState extends State<link_set> {
                                             fit: BoxFit.fill)),
                                   ),
                                   Container(
-                                    width: AppDimensions.height10 * 28.3,
-                                    height: AppDimensions.height10 * 2.2,
+                                    width:
+                                        AppDimensions.height10(context) * 28.3,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
                                     //color: Colors.amber,
                                     // margin: EdgeInsets.only(
-                                    //     top: AppDimensions.height10 * 1.5),
+                                    //     top: AppDimensions.height10(context) * 1.5),
                                     child: TextFormField(
                                       controller: linkController,
                                       onChanged: (value) {
@@ -1152,14 +1247,16 @@ class _link_setState extends State<link_set> {
                                           decoration: TextDecoration.none,
                                           decorationThickness: 0,
                                           fontSize:
-                                              AppDimensions.height10 * 1.4,
+                                              AppDimensions.height10(context) *
+                                                  1.4,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xff3C3C43)
                                               .withOpacity(0.6)),
                                       decoration: InputDecoration(
                                           hintText: 'Enter website address',
                                           hintStyle: TextStyle(
-                                              fontSize: AppDimensions.height10 *
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
                                                   1.4,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff3C3C43)
@@ -1181,8 +1278,10 @@ class _link_setState extends State<link_set> {
                                       setState(() {});
                                     },
                                     child: Container(
-                                      width: AppDimensions.height10 * 2.3,
-                                      height: AppDimensions.height10 * 2.3,
+                                      width:
+                                          AppDimensions.height10(context) * 2.3,
+                                      height:
+                                          AppDimensions.height10(context) * 2.3,
                                       decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
@@ -1193,8 +1292,8 @@ class _link_setState extends State<link_set> {
                               ),
                             ),
                             SizedBox(
-                              height: AppDimensions.height10 * 4.2,
-                              width: AppDimensions.height10 * 6.2,
+                              height: AppDimensions.height10(context) * 4.2,
+                              width: AppDimensions.height10(context) * 6.2,
                               child: Center(
                                 child: link_bt
                                     ? GestureDetector(
@@ -1213,8 +1312,9 @@ class _link_setState extends State<link_set> {
                                         child: Text(
                                           'Add Link',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.5,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff007AFF)),
                                         ),
@@ -1226,8 +1326,9 @@ class _link_setState extends State<link_set> {
                                         child: Text(
                                           'Cancel',
                                           style: TextStyle(
-                                              fontSize:
-                                                  AppDimensions.height10 * 1.5,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xff007AFF)),
                                         ),

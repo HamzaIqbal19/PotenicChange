@@ -24,21 +24,21 @@ class view_goals extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.7),
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.7),
                     child: Image.asset(
                       'assets/images/Add goal.png',
-                      height: AppDimensions.height10 * 2.0,
-                      width: AppDimensions.height10 * 2.1,
+                      height: AppDimensions.height10(context) * 2.0,
+                      width: AppDimensions.height10(context) * 2.1,
                     ),
                   ),
                   Container(
-                    margin:
-                        EdgeInsets.only(right: AppDimensions.height10 * 1.32),
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.32),
                     child: Image.asset(
                       'assets/images/calendar_month_black_24dp 1.png',
-                      height: AppDimensions.height10 * 2.4,
-                      width: AppDimensions.height10 * 2.4,
+                      height: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.height10(context) * 2.4,
                     ),
                   ),
                 ],
@@ -57,10 +57,10 @@ class view_goals extends StatelessWidget {
               ),
             ),
             width: double.infinity,
-            height: AppDimensions.height10 * 79.8,
+            height: AppDimensions.height10(context) * 79.8,
             child: SizedBox(
                 width: double.infinity,
-                height: AppDimensions.height10 * 19.2,
+                height: AppDimensions.height10(context) * 19.2,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
                   child: Column(
@@ -68,8 +68,8 @@ class view_goals extends StatelessWidget {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: SizedBox(
-                          height: AppDimensions.height10 * 19.2,
-                          width: AppDimensions.height10 * 45.7,
+                          height: AppDimensions.height10(context) * 19.2,
+                          width: AppDimensions.height10(context) * 45.7,
                           child: Stack(
                             children: [
                               Align(
@@ -83,8 +83,10 @@ class view_goals extends StatelessWidget {
                                                 const no_past_session()));
                                   },
                                   child: Container(
-                                    height: AppDimensions.height10 * 7.9,
-                                    width: AppDimensions.height10 * 7.9,
+                                    height:
+                                        AppDimensions.height10(context) * 7.9,
+                                    width:
+                                        AppDimensions.height10(context) * 7.9,
                                     //margin: const EdgeInsets.only(top: 84),
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
@@ -100,7 +102,9 @@ class view_goals extends StatelessWidget {
                                     ),
                                     child: Container(
                                         padding: EdgeInsets.only(
-                                            top: AppDimensions.height10 * 1),
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                1),
                                         alignment: Alignment.center,
                                         child: Column(
                                           mainAxisAlignment:
@@ -109,15 +113,17 @@ class view_goals extends StatelessWidget {
                                               CrossAxisAlignment.center,
                                           children: [
                                             SizedBox(
-                                              height:
-                                                  AppDimensions.height10 * 1.7,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
 
                                               // color: Colors.blue,
                                               child: Text(
                                                 'MON',
                                                 style: TextStyle(
                                                     fontSize:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             1.2,
                                                     fontWeight: FontWeight.w600,
                                                     color: const Color(
@@ -125,9 +131,10 @@ class view_goals extends StatelessWidget {
                                               ),
                                             ),
                                             Container(
-                                              //width: AppDimensions.height10 * 4.0,
-                                              height:
-                                                  AppDimensions.height10 * 1.7,
+                                              //width: AppDimensions.height10(context) * 4.0,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
                                               // color: Colors.amber,
                                               child: Text(
                                                 '02.06',
@@ -136,14 +143,17 @@ class view_goals extends StatelessWidget {
                                                         const Color(0xff5B74A6),
                                                     fontWeight: FontWeight.w400,
                                                     fontSize:
-                                                        AppDimensions.height10 *
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             1.7),
                                               ),
                                             ),
                                             Container(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     2.7,
-                                                width: AppDimensions.height10 *
+                                                width: AppDimensions.height10(
+                                                        context) *
                                                     2.7,
                                                 //  margin: const EdgeInsets.only(top: 3.32),
                                                 decoration: const BoxDecoration(
@@ -167,12 +177,15 @@ class view_goals extends StatelessWidget {
                               Align(
                                 alignment: const Alignment(0, 0),
                                 child: Container(
-                                  height: AppDimensions.height10 * 19.2,
-                                  width: AppDimensions.height10 * 18.8,
+                                  height:
+                                      AppDimensions.height10(context) * 19.2,
+                                  width: AppDimensions.height10(context) * 18.8,
                                   // margin: EdgeInsets.only(left: 55.5, right: 55.5),
                                   child: Container(
-                                    height: AppDimensions.height10 * 13.81,
-                                    width: AppDimensions.height10 * 13.265,
+                                    height:
+                                        AppDimensions.height10(context) * 13.81,
+                                    width: AppDimensions.height10(context) *
+                                        13.265,
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
@@ -183,8 +196,12 @@ class view_goals extends StatelessWidget {
                                         alignment:
                                             const Alignment(0.185, 0.215),
                                         child: Container(
-                                          height: AppDimensions.height10 * 1.3,
-                                          width: AppDimensions.height10 * 1.3,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
                                           decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                               gradient: LinearGradient(colors: [
@@ -203,7 +220,8 @@ class view_goals extends StatelessWidget {
                                               'TUE',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.4,
                                                   fontWeight: FontWeight.w600,
                                                   color:
@@ -215,14 +233,17 @@ class view_goals extends StatelessWidget {
                                                   color:
                                                       const Color(0xff5B74A6),
                                                   fontSize:
-                                                      AppDimensions.height10 *
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.3,
                                                   fontWeight: FontWeight.w400),
                                             ),
                                             Container(
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     2.5,
-                                                width: AppDimensions.height10 *
+                                                width: AppDimensions.height10(
+                                                        context) *
                                                     2.5,
                                                 // margin: const EdgeInsets.only(top: 2),
                                                 decoration: const BoxDecoration(
@@ -258,8 +279,10 @@ class view_goals extends StatelessWidget {
                                                 const no_planned_session()));
                                   },
                                   child: Container(
-                                      height: AppDimensions.height10 * 7.9,
-                                      width: AppDimensions.height10 * 7.9,
+                                      height:
+                                          AppDimensions.height10(context) * 7.9,
+                                      width:
+                                          AppDimensions.height10(context) * 7.9,
                                       // margin: const EdgeInsets.only(
                                       //   top: 84,
                                       // ),
@@ -284,7 +307,8 @@ class view_goals extends StatelessWidget {
                                             'MON',
                                             style: TextStyle(
                                                 fontSize:
-                                                    AppDimensions.height10 *
+                                                    AppDimensions.height10(
+                                                            context) *
                                                         1.2,
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xff5B74A6)),
@@ -295,9 +319,12 @@ class view_goals extends StatelessWidget {
                                                 color: Color(0xff5B74A6)),
                                           ),
                                           Container(
-                                            height:
-                                                AppDimensions.height10 * 2.7,
-                                            width: AppDimensions.height10 * 2.7,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.7,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                2.7,
                                             //margin: const EdgeInsets.only(top: 3.32),
                                             decoration: BoxDecoration(
                                               shape: BoxShape.circle,
@@ -306,9 +333,11 @@ class view_goals extends StatelessWidget {
                                                   color: Colors.white),
                                             ),
                                             child: Container(
-                                                width: AppDimensions.height10 *
+                                                width: AppDimensions.height10(
+                                                        context) *
                                                     1.7,
-                                                height: AppDimensions.height10 *
+                                                height: AppDimensions.height10(
+                                                        context) *
                                                     1.5,
                                                 // margin:
                                                 //     const EdgeInsets.only(top: 3.32),
@@ -334,26 +363,26 @@ class view_goals extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 35.6,
-                        height: AppDimensions.height10 * 4.2,
+                        width: AppDimensions.height10(context) * 35.6,
+                        height: AppDimensions.height10(context) * 4.2,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 2.4,
-                            right: AppDimensions.height10 * 3.4,
-                            top: AppDimensions.height10 * 1.1),
+                            left: AppDimensions.height10(context) * 2.4,
+                            right: AppDimensions.height10(context) * 3.4,
+                            top: AppDimensions.height10(context) * 1.1),
                         child: Column(children: [
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               '8:00',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
                               ),
                             ),
                           ),
                           Divider(
-                            height: AppDimensions.height10 * 0.2,
+                            height: AppDimensions.height10(context) * 0.2,
                             color: Colors.white,
                           ),
                           Container(
@@ -361,7 +390,7 @@ class view_goals extends StatelessWidget {
                             child: Text(
                               'AM',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.0,
+                                fontSize: AppDimensions.height10(context) * 1.0,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -396,34 +425,34 @@ class view_goals extends StatelessWidget {
                               '“I am someone who is in\n control of my anger”',
                           body_text_color: 0xff5B74A6,
                           head_text_color: 0xff5B74A6,
-                          body_text_size: AppDimensions.height10 * 1.6,
-                          head_text_size: AppDimensions.height10 * 2.0,
+                          body_text_size: AppDimensions.height10(context) * 1.6,
+                          head_text_size: AppDimensions.height10(context) * 2.0,
                           enable_icon: missed ? false : true,
                           is_right: false,
                           s_circle_text_col: 0xffFD6727,
                         )),
                       ),
                       Container(
-                        width: AppDimensions.height10 * 35.6,
-                        height: AppDimensions.height10 * 4.2,
+                        width: AppDimensions.height10(context) * 35.6,
+                        height: AppDimensions.height10(context) * 4.2,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 2.4,
-                            right: AppDimensions.height10 * 3.4,
-                            top: AppDimensions.height10 * 1.1),
+                            left: AppDimensions.height10(context) * 2.4,
+                            right: AppDimensions.height10(context) * 3.4,
+                            top: AppDimensions.height10(context) * 1.1),
                         child: Column(children: [
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               '11:00',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
                               ),
                             ),
                           ),
                           Divider(
-                            height: AppDimensions.height10 * 0.2,
+                            height: AppDimensions.height10(context) * 0.2,
                             color: Colors.white,
                           ),
                           Container(
@@ -431,7 +460,7 @@ class view_goals extends StatelessWidget {
                             child: Text(
                               'AM',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.0,
+                                fontSize: AppDimensions.height10(context) * 1.0,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -449,8 +478,8 @@ class view_goals extends StatelessWidget {
                             '“I am someone who is in\n control of my anger”',
                         body_text_color: 0xff5B74A6,
                         head_text_color: 0xff5B74A6,
-                        body_text_size: AppDimensions.height10 * 1.6,
-                        head_text_size: AppDimensions.height10 * 2.0,
+                        body_text_size: AppDimensions.height10(context) * 1.6,
+                        head_text_size: AppDimensions.height10(context) * 2.0,
                         enable_icon: false,
                         is_right: true,
                         s_circle_text_col: 0xffffffff,
@@ -465,33 +494,33 @@ class view_goals extends StatelessWidget {
                             '“I am someone who is in\n control of my anger”',
                         body_text_color: 0xff5B74A6,
                         head_text_color: 0xff5B74A6,
-                        body_text_size: AppDimensions.height10 * 1.6,
-                        head_text_size: AppDimensions.height10 * 2.0,
+                        body_text_size: AppDimensions.height10(context) * 1.6,
+                        head_text_size: AppDimensions.height10(context) * 2.0,
                         enable_icon: false,
                         is_right: false,
                         s_circle_text_col: 0xffFFFFFF,
                       )),
                       Container(
-                        width: AppDimensions.height10 * 35.6,
-                        height: AppDimensions.height10 * 4.2,
+                        width: AppDimensions.height10(context) * 35.6,
+                        height: AppDimensions.height10(context) * 4.2,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10 * 2.4,
-                            right: AppDimensions.height10 * 3.4,
-                            top: AppDimensions.height10 * 1.1),
+                            left: AppDimensions.height10(context) * 2.4,
+                            right: AppDimensions.height10(context) * 3.4,
+                            top: AppDimensions.height10(context) * 1.1),
                         child: Column(children: [
                           Container(
                             alignment: Alignment.centerLeft,
                             child: Text(
                               '1:00',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
                               ),
                             ),
                           ),
                           Divider(
-                            height: AppDimensions.height10 * 0.2,
+                            height: AppDimensions.height10(context) * 0.2,
                             color: Colors.white,
                           ),
                           Container(
@@ -499,7 +528,7 @@ class view_goals extends StatelessWidget {
                             child: Text(
                               'PM',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.0,
+                                fontSize: AppDimensions.height10(context) * 1.0,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -517,15 +546,15 @@ class view_goals extends StatelessWidget {
                             '“I am someone who is in\n control of my anger”',
                         body_text_color: 0xff5B74A6,
                         head_text_color: 0xff5B74A6,
-                        body_text_size: AppDimensions.height10 * 1.6,
-                        head_text_size: AppDimensions.height10 * 2.0,
+                        body_text_size: AppDimensions.height10(context) * 1.6,
+                        head_text_size: AppDimensions.height10(context) * 2.0,
                         enable_icon: false,
                         is_right: false,
                         s_circle_text_col: 0xffFFFFFF,
                       )),
                       Container(
-                        width: AppDimensions.height10 * 35.6,
-                        height: AppDimensions.height10 * 4.2,
+                        width: AppDimensions.height10(context) * 35.6,
+                        height: AppDimensions.height10(context) * 4.2,
                         margin:
                             const EdgeInsets.only(left: 24, right: 34, top: 11),
                         child: Column(children: [
@@ -534,14 +563,14 @@ class view_goals extends StatelessWidget {
                             child: Text(
                               '6:00',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
                               ),
                             ),
                           ),
                           Divider(
-                            height: AppDimensions.height10 * 0.2,
+                            height: AppDimensions.height10(context) * 0.2,
                             color: Colors.white,
                           ),
                           Container(
@@ -549,7 +578,7 @@ class view_goals extends StatelessWidget {
                             child: Text(
                               'PM',
                               style: TextStyle(
-                                fontSize: AppDimensions.height10 * 1.0,
+                                fontSize: AppDimensions.height10(context) * 1.0,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                               ),
@@ -569,8 +598,8 @@ class view_goals extends StatelessWidget {
                             'Long statement needs to\ntruncate after 2 lines...',
                         body_text_color: 0xff5B74A6,
                         head_text_color: 0xff5B74A6,
-                        body_text_size: AppDimensions.height10 * 1.6,
-                        head_text_size: AppDimensions.height10 * 1.6,
+                        body_text_size: AppDimensions.height10(context) * 1.6,
+                        head_text_size: AppDimensions.height10(context) * 1.6,
                         enable_icon: false,
                         is_right: true,
                         s_circle_text_col: 0xffFFFFFF,
@@ -585,18 +614,18 @@ class view_goals extends StatelessWidget {
                             'I am someone who is\nconfident in my abilities.',
                         body_text_color: 0xff5B74A6,
                         head_text_color: 0xff5B74A6,
-                        body_text_size: AppDimensions.height10 * 1.6,
-                        head_text_size: AppDimensions.height10 * 2.0,
+                        body_text_size: AppDimensions.height10(context) * 1.6,
+                        head_text_size: AppDimensions.height10(context) * 2.0,
                         enable_icon: false,
                         is_right: true,
                         s_circle_text_col: 0xffFFFFFF,
                       )),
                       Container(
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10 * 10.8,
-                            bottom: AppDimensions.height10 * 14.7),
-                        height: AppDimensions.height10 * 14.1,
-                        width: AppDimensions.height10 * 25.1,
+                            top: AppDimensions.height10(context) * 10.8,
+                            bottom: AppDimensions.height10(context) * 14.7),
+                        height: AppDimensions.height10(context) * 14.1,
+                        width: AppDimensions.height10(context) * 25.1,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -604,16 +633,17 @@ class view_goals extends StatelessWidget {
                             Text(
                               'No more scheduled sessions\nScroll to the next day',
                               style: TextStyle(
-                                  fontSize: AppDimensions.height10 * 1.8,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.8,
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white),
                               textAlign: TextAlign.center,
                             ),
                             Container(
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10 * 1.7),
-                              width: AppDimensions.height10 * 4.3,
-                              height: AppDimensions.height10 * 2.1,
+                                  top: AppDimensions.height10(context) * 1.7),
+                              width: AppDimensions.height10(context) * 4.3,
+                              height: AppDimensions.height10(context) * 2.1,
                               child: const ImageIcon(
                                 AssetImage('assets/images/Arrow.png'),
                                 color: Colors.white,
