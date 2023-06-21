@@ -154,14 +154,12 @@ void bottom_sheet(context, int id) {
                 child: TextButton(
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => GoalName(
-                        //         category: dropdownValue,
-                        //         goalName: goalName.text.toString()),
-                        //   ),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GoalName(),
+                          ),
+                        );
                       }
                     },
                     child: Text(

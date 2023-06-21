@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
@@ -9,6 +10,7 @@ import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,7 +38,8 @@ class SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    loadData();
+    Future.delayed(Duration(seconds: 2), loadData);
+
     super.initState();
   }
 
@@ -55,8 +58,9 @@ class SplashPageState extends State<SplashPage> {
         if (response == true) {
           Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => const HomeScreen(login: true),
+              FadePageRoute2(
+                exitPage: HomeScreen(login: true),
+                enterPage: const HomeScreen(login: true),
               ));
         } else {
           ScaffoldMessenger.of(context)

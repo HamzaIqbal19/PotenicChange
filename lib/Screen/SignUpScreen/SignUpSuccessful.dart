@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/utils/app_colors.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Widgets/fading.dart';
 
 class SignUpSuccessful extends StatefulWidget {
   final String name;
@@ -16,33 +21,31 @@ class SignUpSuccessful extends StatefulWidget {
 class _SignUpSuccessfulState extends State<SignUpSuccessful> {
   // controllers
   bool isPasswordNotVisible = true;
-  var errorMsg, jsonResponse;
   bool rememberMe = true;
   bool boolean = true;
-  var token;
-  var accountFlag;
-  var sessionRoute;
 
-  late SharedPreferences _prefs;
-  setEmail(email) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString('email', email);
-    print("SetEmail: $email");
-  }
+  // late SharedPreferences _prefs;
+  // setEmail(email) async {
+  //   SharedPreferences pref = await SharedPreferences.getInstance();
+  //   pref.setString('email', email);
+  //   print("SetEmail: $email");
+  // }
 
   @override
   void initState() {
+    loadData();
     super.initState();
   }
 
-  // final contractAddress = "0xaBE2ec3a68A15a382BcDC93499Ab751D3d954BB2";
+  Future<Timer> loadData() async {
+    return Timer(Duration(seconds: 1), onDoneLoading);
+  }
 
-  bool isLoadWallet = true;
-  bool isLoadLogin = true;
-  late bool checkBool;
-  booleanValue(value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('bool', value);
+  onDoneLoading() async {
+    Navigator.push(
+      context,
+      FadePageRoute(page: const HomeScreen(login: true)),
+    );
   }
 
   @override
@@ -96,9 +99,9 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                 // SizedBox(height: AppDimensions.height2),
                 Container(
                     height: AppDimensions.height10(context) * 2.4,
-                    width: AppDimensions.height10(context) * 24.1,
+                    // width: AppDimensions.height10(context) * 24.1,
                     child: Text(
-                      'Welcome aboard [Name]',
+                      'Welcome aboard ' + widget.name,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,

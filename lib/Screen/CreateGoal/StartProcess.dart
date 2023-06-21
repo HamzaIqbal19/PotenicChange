@@ -246,7 +246,9 @@ class _StartProcessState extends State<StartProcess> {
                       context,
                       FadePageRoute2(
                         enterPage: Categories(),
-                        exitPage: StartProcess(),
+                        exitPage: HomeScreen(
+                          login: false,
+                        ),
                       ),
                     );
                   },

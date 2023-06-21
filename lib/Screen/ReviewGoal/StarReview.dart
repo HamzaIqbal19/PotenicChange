@@ -255,7 +255,9 @@ class _StarReviewState extends State<StarReview> {
                                       //     23.9,
                                       child: Center(
                                         child: Text(
-                                          "$goalName",
+                                          goalName != null
+                                              ? "$goalName"
+                                              : "Your Goal Name",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: AppDimensions.height10(
@@ -449,9 +451,9 @@ class _StarReviewState extends State<StarReview> {
                                       ),
                                       inner_text(
                                         'Reason 1',
-                                        reason.length != 0
+                                        reason != null
                                             ? '$reason'
-                                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                                            : 'I want to achieve this goal to be in control\nof my anger and to regain control of my\nlife.',
                                       ),
                                       SizedBox(
                                         height:
@@ -460,9 +462,9 @@ class _StarReviewState extends State<StarReview> {
                                       ),
                                       inner_text(
                                         'Reason 2',
-                                        reason2.length != 0
+                                        reason2 != null
                                             ? '$reason2'
-                                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                                            : 'I want to be closer and respect my wife\nand children.',
                                       ),
                                       SizedBox(
                                         height:
@@ -471,9 +473,9 @@ class _StarReviewState extends State<StarReview> {
                                       ),
                                       inner_text(
                                         'Reason 3',
-                                        reason3.length != 0
+                                        reason3 != null
                                             ? '$reason3'
-                                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                                            : 'I don’t want my anger to hold me back\nfrom enjoying life.',
                                       ),
                                       SizedBox(
                                         height:
@@ -596,7 +598,11 @@ class _StarReviewState extends State<StarReview> {
                                             AppDimensions.height10(context) *
                                                 2.3,
                                       ),
-                                      inner_text('Statement 1', "$identity"),
+                                      inner_text(
+                                          'Statement 1',
+                                          identity != null
+                                              ? "$identity"
+                                              : 'I am someone who is in control of my\nanger'),
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
@@ -723,7 +729,11 @@ class _StarReviewState extends State<StarReview> {
                                             AppDimensions.height10(context) *
                                                 2.3,
                                       ),
-                                      inner_text('Statement 1', "$visualize"),
+                                      inner_text(
+                                          'Statement 1',
+                                          visualize != null
+                                              ? "$visualize"
+                                              : "I picture myself talking more calmly to\nmy wife when she has made a mistake. "),
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) *

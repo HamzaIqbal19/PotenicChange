@@ -534,8 +534,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                   SnackBar(content: Text(response)));
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => SignUpSuccessful(
+                                FadePageRoute(
+                                  page: SignUpSuccessful(
                                       name: nameController.text.toString()),
                                 ),
                               );
@@ -550,13 +550,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             setState(() {
                               Loading = false;
                             });
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response)));
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(content: Text('error')));
+
                             print("error");
-                          });
-                        } else {
-                          setState(() {
-                            Loading = false;
                           });
                         }
                       },

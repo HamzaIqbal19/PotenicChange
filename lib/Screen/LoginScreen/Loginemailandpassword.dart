@@ -460,9 +460,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                 context,
                                 FadePageRoute2(
                                     enterPage: StartProcess(),
-                                    exitPage: HomeScreen(
-                                      login: true,
-                                    )),
+                                    exitPage: Loginemailandpassword()),
                               );
                             } else if (response == 404) {
                               setState(() {
@@ -476,6 +474,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                           "Your sign in details are incorrect, please try again!!")));
                             }
                           }).catchError((error) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(content: Text('error')));
                             setState(() {
                               Loading = false;
                             });

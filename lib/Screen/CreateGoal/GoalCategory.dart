@@ -59,7 +59,7 @@ class _GoalCategoryState extends State<GoalCategory> {
     print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var GoalName = prefs.setString('goalName', goalName);
-    var userGoalId = prefs.setString('goalId', goalName);
+
     Goal goal = Goal(
       name: goalName,
       reason: [
@@ -78,6 +78,10 @@ class _GoalCategoryState extends State<GoalCategory> {
     String jsonString =
         jsonEncode(goal.toJson()); // converting object to json string
     prefs.setString('goal', jsonString);
+    print('====================');
+    var userGoalId = prefs.setInt('goalId', goalId);
+    print('====================');
+    print('====================$userGoalId');
 
     getGoal();
   }
@@ -259,7 +263,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                               childAspectRatio:
                                   4.2 / 3, // Two items in each row
 
-                              mainAxisSpacing: 1.0,
+                              mainAxisSpacing: 9.0,
                               crossAxisSpacing: 0.1,
                             ),
                             itemCount: Allgoal![0]["goals"].length,
@@ -413,7 +417,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                 bottom: AppDimensions.height10(context) * 0.5),
                             child: GestureDetector(
                               onTap: () {
-                                // bottom_sheet(context,widget.id);
+                                bottom_sheet(context, widget.id);
                               },
                               child: Image.asset(
                                 'assets/images/Add.png',

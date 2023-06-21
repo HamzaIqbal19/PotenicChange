@@ -18,6 +18,7 @@ class Authentication {
       "email": "$email",
       "password": "$password",
     });
+
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signup'),
         headers: headers, body: Body);
 

@@ -64,19 +64,19 @@ void signupSheet(context, String ButtonName, String Route) {
                               width: AppDimensions.height10(context) * 0.1))),
                   child: TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          FadePageRoute(
-                            page: const dashBoard(
-                              saved: false,
-                              helpful_tips: false,
-                              dashboard_ctrl: true,
-                              membership: true,
-                              cancel: false,
-                              trial: false,
-                            ),
-                          ),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   FadePageRoute(
+                        //     page: const dashBoard(
+                        //       saved: false,
+                        //       helpful_tips: false,
+                        //       dashboard_ctrl: true,
+                        //       membership: true,
+                        //       cancel: false,
+                        //       trial: false,
+                        //     ),
+                        //   ),
+                        // );
                       },
                       child: const Text(
                         " (Dev only) Dashboard logged in",
