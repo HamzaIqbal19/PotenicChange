@@ -286,9 +286,11 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                         BorderSide(color: Colors.transparent))),
                             controller: emailController,
                             validator: (val) {
-                              if (val == null ||
-                                  !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                      .hasMatch(val)) {
+                              if (val == null || val == ""
+                                  // || !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"
+                                  )
+                              //  .hasMatch(val))
+                              {
                                 setState(() {
                                   errorEmail = true;
                                 });
@@ -356,7 +358,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                         BorderSide(color: Colors.transparent))),
                             controller: passwordController,
                             validator: (val) {
-                              if (val == null || val == "" || val.length < 8) {
+                              if (val == null ||
+                                  val == "" ||
+                                  val.length < 8 ||
+                                  val == "") {
                                 setState(() {
                                   errorPassword = true;
                                 });
@@ -545,6 +550,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             setState(() {
                               Loading = false;
                             });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response)));
                             print("error");
                           });
                         } else {

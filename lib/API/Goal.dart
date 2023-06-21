@@ -258,12 +258,10 @@ class AdminGoal {
   }
 
   Future updateUserGoal(reason) async {
-    final SharedPreferences login = await _prefs;
     final SharedPreferences prefs = await _prefs;
 
     var Accestoken = prefs.getString("usertoken");
-    var userGoalId = login.getInt('goalid');
-    print('$userGoalId');
+
     //int UserGoalId = 12;
     print("request: Update");
     var headers = {
@@ -275,9 +273,13 @@ class AdminGoal {
         {"text": "$reason"}
       ],
     });
+    var userGoalId = prefs.getInt('goalId');
+    print('$userGoalId');
 
-    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/1'),
-        headers: headers, body: body);
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/userGoal/$userGoalId'),
+        headers: headers,
+        body: body);
     print("request: Update");
     print('=====>$request.statusCode');
     print(request.body);
@@ -297,11 +299,10 @@ class AdminGoal {
   static Future getUserGoal() async {
     var goalName;
 
-    final SharedPreferences login = await _prefs;
     final SharedPreferences prefs = await _prefs;
 
     var Accestoken = prefs.getString("usertoken");
-    var userGoalId = login.getInt('goalid');
+    var userGoalId = prefs.getInt('goalId');
     print('$userGoalId');
     var headers = {
       'Content-Type': 'application/json',
@@ -323,11 +324,10 @@ class AdminGoal {
   }
 
   Future deleteUserGoal() async {
-    final SharedPreferences login = await _prefs;
     final SharedPreferences prefs = await _prefs;
 
-    var UserGoalId = login.getInt('goalId');
-    print('$UserGoalId');
+    var userGoalId = prefs.getInt('goalId');
+    print('$userGoalId');
 
     var Accestoken = prefs.getString("usertoken");
     var headers = {
@@ -336,7 +336,7 @@ class AdminGoal {
     };
 
     var request = await client.delete(
-        Uri.parse('${URL.BASE_URL}api/userGoal/$UserGoalId'),
+        Uri.parse('${URL.BASE_URL}api/userGoal/$userGoalId'),
         headers: headers);
 
     var responses = jsonDecode(request.body);

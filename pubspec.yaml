@@ -60,6 +60,7 @@ dependencies:
   just_the_tooltip: ^0.0.12
   speech_balloon: ^0.0.4
   flutter_animated_dialog: ^2.0.1
+  shimmer: ^3.0.0
 
 
 

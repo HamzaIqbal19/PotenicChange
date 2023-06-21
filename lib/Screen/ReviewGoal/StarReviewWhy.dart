@@ -198,8 +198,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        print("Goals");
-                        AdminGoal().updateUserGoal("Hello").then((response) {
+                        AdminGoal().updateUserGoal('').then((response) {
                           if (response == true) {
                             print("Success");
                           } else {

@@ -23,6 +23,8 @@ class _StarReviewState extends State<StarReview> {
   Future<List<String>>? _goalNamesFuture;
   var goalName;
   var reason;
+  var reason2;
+  var reason3;
   var identity;
   var visualize;
   bool Loading = true;
@@ -40,6 +42,8 @@ class _StarReviewState extends State<StarReview> {
           Loading = false;
           goalName = response["name"];
           reason = response["reason"][0]['text'];
+          reason2 = response["reason"][1]['text'];
+          reason3 = response["reason"][2]['text'];
           identity = response["identityStatement"][0]['text'];
           visualize = response["visualizingYourSelf"][0]['text'];
         });
@@ -246,9 +250,9 @@ class _StarReviewState extends State<StarReview> {
                                     ),
                                     Container(
                                       height:
-                                          AppDimensions.height10(context) * 2.2,
-                                      width: AppDimensions.height10(context) *
-                                          23.9,
+                                          AppDimensions.height10(context) * 2.3,
+                                      // width: AppDimensions.height10(context) *
+                                      //     23.9,
                                       child: Center(
                                         child: Text(
                                           "$goalName",
@@ -257,6 +261,9 @@ class _StarReviewState extends State<StarReview> {
                                               fontSize: AppDimensions.height10(
                                                       context) *
                                                   2.0,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.15,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFF5B74A6)),
                                         ),
@@ -440,21 +447,34 @@ class _StarReviewState extends State<StarReview> {
                                             AppDimensions.height10(context) *
                                                 2.3,
                                       ),
-                                      inner_text('Reason 1', "$reason"),
+                                      inner_text(
+                                        'Reason 1',
+                                        reason.length != 0
+                                            ? '$reason'
+                                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                                      ),
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.0,
                                       ),
-                                      inner_text('Reason 2',
-                                          "I want to be closer and respect my wife\n and children."),
+                                      inner_text(
+                                        'Reason 2',
+                                        reason2.length != 0
+                                            ? '$reason2'
+                                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                                      ),
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.0,
                                       ),
-                                      inner_text('Reason 3',
-                                          "I don’t want my anger to hold me back\n from enjoying life."),
+                                      inner_text(
+                                        'Reason 3',
+                                        reason3.length != 0
+                                            ? '$reason3'
+                                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                                      ),
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) *

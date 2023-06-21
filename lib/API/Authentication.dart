@@ -44,10 +44,10 @@ class Authentication {
     var Body = json.encode({
       "sessionToken": SessionToken,
     });
-    var request = await client
-        .post(Uri.parse('${URL.BASE_URL}api/auth/refresh-access-token'),
-        headers: headers, body: Body);
-
+    var request = await client.post(
+        Uri.parse('${URL.BASE_URL}api/auth/refresh-access-token'),
+        headers: headers,
+        body: Body);
 
     var responses = jsonDecode(request.body);
 

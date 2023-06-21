@@ -25,6 +25,8 @@ class _reviewboxState extends State<reviewbox> {
   Future<List<String>>? _goalNamesFuture;
 
   var reason;
+  var reason2;
+  var reason3;
 
   @override
   void initState() {
@@ -38,6 +40,8 @@ class _reviewboxState extends State<reviewbox> {
         setState(() {
           Loading = false;
           reason = response["reason"][0]['text'];
+          reason2 = response["reason"][1]['text'];
+          reason3 = response["reason"][2]['text'];
         });
       } else {
         print("response:$response");
@@ -75,7 +79,9 @@ class _reviewboxState extends State<reviewbox> {
                       ),
                       inner_text(
                         'Reason 1',
-                        bodyText: '$reason',
+                        bodyText: reason.length != 0
+                            ? '$reason'
+                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
                       ),
                       Container(
                         padding: EdgeInsets.only(
@@ -113,8 +119,9 @@ class _reviewboxState extends State<reviewbox> {
                       ),
                       inner_text(
                         "Reason 2",
-                        bodyText:
-                            'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                        bodyText: reason2.length != 0
+                            ? '$reason2'
+                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
                       ),
                       Container(
                         padding: EdgeInsets.only(
@@ -152,8 +159,9 @@ class _reviewboxState extends State<reviewbox> {
                       ),
                       inner_text(
                         "Reason 3",
-                        bodyText:
-                            'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                        bodyText: reason3.length != 0
+                            ? '$reason3'
+                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
                       ),
                       Container(
                         padding: EdgeInsets.only(
@@ -214,7 +222,14 @@ class _reviewboxState extends State<reviewbox> {
             child: Padding(
               padding:
                   const EdgeInsets.only(top: 4, left: 4, right: 4, bottom: 4),
-              child: add_reason(context),
+              child: Container(
+                color: Colors.transparent,
+                child: Image.asset(
+                  'assets/images/Addgoal.png',
+                  height: AppDimensions.height10(context) * 4.7,
+                  width: AppDimensions.height10(context) * 4.7,
+                ),
+              ),
             ),
           ),
         ),

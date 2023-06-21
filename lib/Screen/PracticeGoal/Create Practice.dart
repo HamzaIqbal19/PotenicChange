@@ -6,9 +6,11 @@ import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet_Practice.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../API/Practice.dart';
 import '../../Widgets/fading2.dart';
+import 'Loaders/create_practice_shimmer.dart';
 
 class CreatePractice extends StatefulWidget {
   const CreatePractice({Key? key}) : super(key: key);
@@ -104,18 +106,19 @@ class _CreatePracticeState extends State<CreatePractice> {
             ],
           )),
       body: Stack(children: [
-        Loading == false
-            ? Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/Categories.png"),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              )
-            : Container(
-                color: Colors.white,
-              ),
+        // Loading == false
+        //     ?
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/Categories.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        // : Container(
+        //     color: Colors.white,
+        //   ),
 
         // SingleChildScrollView(
         //   child: ,
@@ -247,12 +250,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                   ),
                 ],
               )
-            : const Center(
-                child: SpinKitFadingCircle(
-                  color: Color(0xFFB1B8FF),
-                  size: 80,
-                ),
-              ),
+            : Create_practice_shimmer(),
       ]),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),

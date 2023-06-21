@@ -10,8 +10,10 @@ import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../../API/Goal.dart';
+import 'Loaders/GoalCategory_shimmer.dart';
 
 class GoalCategory extends StatefulWidget {
   final String title;
@@ -57,6 +59,7 @@ class _GoalCategoryState extends State<GoalCategory> {
     print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var GoalName = prefs.setString('goalName', goalName);
+    var userGoalId = prefs.setString('goalId', goalName);
     Goal goal = Goal(
       name: goalName,
       reason: [
@@ -174,18 +177,19 @@ class _GoalCategoryState extends State<GoalCategory> {
             )),
         body: Stack(
           children: [
-            Loading == false
-                ? Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/Categories.png"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  )
-                : Container(
-                    color: Colors.white,
-                  ),
+            // Loading == false
+            //     ?
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/Categories.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            // : Container(
+            //     color: Colors.white,
+            //   ),
 
             // SingleChildScrollView(
             //   child: ,
@@ -306,12 +310,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                       ),
                     ],
                   )
-                : Center(
-                    child: SpinKitFadingCircle(
-                      color: Color(0xFFB1B8FF),
-                      size: 80,
-                    ),
-                  ),
+                : GoalCategory_shimmer()
           ],
         ),
         bottomNavigationBar: BottomAppBar(
