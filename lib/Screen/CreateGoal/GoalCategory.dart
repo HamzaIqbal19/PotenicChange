@@ -51,15 +51,15 @@ class _GoalCategoryState extends State<GoalCategory> {
   Future getUserId(int categoryid, goalname, goalid) async {
     final SharedPreferences prefs = await _prefs;
     var userId = prefs.getInt("userid");
+
     saveGoalToPrefs(userId!, categoryid, goalname, goalid);
   }
 
   Future<void> saveGoalToPrefs(
       var userId, var categoryId, var goalName, var goalId) async {
-    print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var GoalName = prefs.setString('goalName', goalName);
-
+    var usergoalId = prefs.setInt("goalId", goalId);
     Goal goal = Goal(
       name: goalName,
       reason: [
@@ -87,10 +87,9 @@ class _GoalCategoryState extends State<GoalCategory> {
   }
 
   Future<Goal> getGoal() async {
-    print("hello world");
     final prefs = await SharedPreferences.getInstance();
+    print("GoalId:${prefs.getInt("goalId")}");
     String? jsonString = prefs.getString('goal');
-    print(jsonString);
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);

@@ -31,8 +31,9 @@ class OnboardingPage extends StatefulWidget {
   OnboardingPageState createState() => OnboardingPageState();
 }
 
-class OnboardingPageState extends State<OnboardingPage> {
+class OnboardingPageState extends State<OnboardingPage> with SingleTickerProviderStateMixin {
   final PageController _pageController = PageController(initialPage: 0);
+  late AnimationController _controller;
   int _currentPage = 0;
   double _value = 0.0;
 
@@ -55,6 +56,14 @@ class OnboardingPageState extends State<OnboardingPage> {
 
   @override
   void initState() {
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {});
+      });
     super.initState();
   }
 
@@ -389,59 +398,72 @@ class OnboardingPageState extends State<OnboardingPage> {
   }
 
   Widget NextButton(String text) {
-    final GestureDetector loginButtonWithGesture = new GestureDetector(
-      onTap: () {
-        if (text == "Next") {
-          _pageController.nextPage(
-              duration: Duration(milliseconds: 500), curve: Curves.ease);
-        } else {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomeScreen(login: false),
-            ),
-          );
-        }
-        // setState(() {
-        //   _currentPage=_currentPage+1;
-        //   buildOnboardingPages();
-        //
-        //
-        // });
-      },
-      child: new Container(
-        height: AppDimensions.height10(context) * 5,
-        width: AppDimensions.height10(context) * 25.4,
-        decoration: new BoxDecoration(
-          // color: Color(0xFFFF7D50),
-          border: Border.all(color: Colors.white),
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color(0xFF5A4D73), Color(0xFFA57486)]),
-          borderRadius: new BorderRadius.all(Radius.circular(40.0)),
-        ),
-        child: new Center(
-          child: new Text(
-            text,
-            style: new TextStyle(
-              color: Colors.white,
-              fontSize: AppDimensions.height10(context) * 2.0,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-      ),
-    );
+    double scale = 1 - _controller.value;
 
-    return new Padding(
+    return Padding(
       padding: EdgeInsets.only(
         left: AppDimensions.height10(context) - 2,
         right: AppDimensions.height10(context) - 2,
         top: AppDimensions.height10(context) - 5,
         bottom: AppDimensions.height10(context) * 3,
       ),
-      child: loginButtonWithGesture,
+      child: GestureDetector(
+        onTapDown: (TapDownDetails details) {
+          _controller.forward();
+        },
+        onTap: () async {
+          // Press down effect
+          _controller.forward();
+
+          // Delay for the forward animation to be visible
+          await Future.delayed(Duration(milliseconds: 200));
+
+          // Press up effect
+          _controller.reverse();
+
+          // Delay the action for the reverse animation to be visible
+          await Future.delayed(Duration(milliseconds: 200));
+
+          // Action after the press
+          if (text == "Next") {
+            _pageController.nextPage(
+                duration: Duration(milliseconds: 500), curve: Curves.ease);
+          } else {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(login: false),
+              ),
+            );
+          }
+        },
+
+        child: Transform.scale(
+          scale: scale,
+          child: Container(
+            height: AppDimensions.height10(context) * 5,
+            width: AppDimensions.height10(context) * 25.4,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white),
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Color(0xFF5A4D73), Color(0xFFA57486)]),
+              borderRadius: BorderRadius.all(Radius.circular(40.0)),
+            ),
+            child: Center(
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: AppDimensions.height10(context) * 2.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 

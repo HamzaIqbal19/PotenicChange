@@ -41,9 +41,9 @@ class _StarReviewState extends State<StarReview> {
         setState(() {
           Loading = false;
           goalName = response["name"];
-          reason = response["reason"][0]['text'];
-          reason2 = response["reason"][1]['text'];
-          reason3 = response["reason"][2]['text'];
+          // reason = response["reason"][0]['text'];
+          // reason2 = response["reason"][0]['text'];
+          // reason3 = response["reason"][0]['text'];
           identity = response["identityStatement"][0]['text'];
           visualize = response["visualizingYourSelf"][0]['text'];
         });

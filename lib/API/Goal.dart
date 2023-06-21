@@ -276,10 +276,8 @@ class AdminGoal {
     var userGoalId = prefs.getInt('goalId');
     print('$userGoalId');
 
-    var request = await client.put(
-        Uri.parse('${URL.BASE_URL}api/userGoal/$userGoalId'),
-        headers: headers,
-        body: body);
+    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/6'),
+        headers: headers, body: body);
     print("request: Update");
     print('=====>$request.statusCode');
     print(request.body);
@@ -309,15 +307,15 @@ class AdminGoal {
       'x-access-token': '$Accestoken'
     };
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userGoal/$userGoalId'),
+      Uri.parse('${URL.BASE_URL}api/userGoal/6'),
       headers: headers,
     );
-
+    print('===========$userGoalId');
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
 
-      return (jsonData);
+      return true;
     } else {
       throw Exception('Failed to fetch goal names');
     }
@@ -335,9 +333,8 @@ class AdminGoal {
       'x-access-token': '$Accestoken'
     };
 
-    var request = await client.delete(
-        Uri.parse('${URL.BASE_URL}api/userGoal/$userGoalId'),
-        headers: headers);
+    var request = await client
+        .delete(Uri.parse('${URL.BASE_URL}api/userGoal/6'), headers: headers);
 
     var responses = jsonDecode(request.body);
     print("Goal to be deleted");
