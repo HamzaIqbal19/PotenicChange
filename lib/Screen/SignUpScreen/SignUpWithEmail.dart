@@ -550,9 +550,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                             setState(() {
                               Loading = false;
                             });
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response)));
-                            print("error");
+
                           });
                         } else {
                           setState(() {
