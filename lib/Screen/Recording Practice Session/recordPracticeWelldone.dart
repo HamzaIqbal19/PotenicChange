@@ -66,7 +66,7 @@ class welldone_splashState extends State<welldone_splash> {
         height: double.infinity,
         decoration: BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         child: Center(

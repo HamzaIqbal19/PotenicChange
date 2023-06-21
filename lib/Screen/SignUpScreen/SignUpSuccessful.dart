@@ -61,7 +61,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.png"),
+                  image: AssetImage("assets/images/loginscreenBackground.webp"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -76,7 +76,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                 Center(
                   child: Image(
                     // color: Colors.orange,
-                    image: const AssetImage("assets/images/logo.png"),
+                    image: const AssetImage("assets/images/logo.webp"),
                     height: AppDimensions.height10(context) * 7.75,
                     width: AppDimensions.height10(context) * 7.75,
                   ),

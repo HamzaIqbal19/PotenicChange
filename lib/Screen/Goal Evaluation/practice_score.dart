@@ -32,7 +32,7 @@ class _prac_scoreState extends State<prac_score> {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.cover,
@@ -44,7 +44,7 @@ class _prac_scoreState extends State<prac_score> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Background.png'),
+          image: AssetImage('assets/images/Background.webp'),
           fit: BoxFit.cover,
         )),
         child: Container(
@@ -52,7 +52,7 @@ class _prac_scoreState extends State<prac_score> {
           height: double.infinity,
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('assets/images/nebula-28 2.png'),
+            image: AssetImage('assets/images/nebula-28 2.webp'),
             fit: BoxFit.cover,
           )),
           child: Container(
@@ -60,7 +60,7 @@ class _prac_scoreState extends State<prac_score> {
             height: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage('assets/images/nebula-28 1.png'),
+              image: AssetImage('assets/images/nebula-28 1.webp'),
               fit: BoxFit.cover,
             )),
             child: SingleChildScrollView(
@@ -210,7 +210,7 @@ class _prac_scoreState extends State<prac_score> {
                           //height: AppDimensions.height10(context) * 4.3,
 
                           child: Image.asset(
-                            'assets/images/Arrow.png',
+                            'assets/images/Arrow.webp',
                             width: AppDimensions.height10(context) * 4.1,
                             height: AppDimensions.height10(context) * 4.1,
                           ),
@@ -410,7 +410,7 @@ class _prac_scoreState extends State<prac_score> {
                                         shape: BoxShape.circle,
                                         image: const DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/Tick.png'))),
+                                                'assets/images/Tick.webp'))),
                                   ),
                                 )
                               ]),
@@ -641,9 +641,9 @@ class _prac_scoreState extends State<prac_score> {
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                  'assets/images/ic_info_outline.png'))),
+                                  'assets/images/ic_info_outline.webp'))),
                       // child: Image.asset(
-                      //   "assets/images/ic_info_outline.png",
+                      //   "assets/images/ic_info_outline.webp",
                       //   width: AppDimensions.height10(context) * 3.0,
                       //   height: AppDimensions.height10(context) * 3.0,
                       // ),
@@ -1654,7 +1654,7 @@ class _prac_scoreState extends State<prac_score> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/circle_tick.png'))),
+                                            'assets/images/circle_tick.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 10.8,
@@ -1902,7 +1902,8 @@ void enjoyment(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -1911,7 +1912,7 @@ void enjoyment(context) {
                     top: AppDimensions.height10(context) * 1.5,
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
-                  'assets/images/potenic__icon.png',
+                  'assets/images/potenic__icon.webp',
                   width: AppDimensions.height10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),

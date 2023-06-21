@@ -34,7 +34,7 @@ class _StartProcessState extends State<StartProcess> {
 
             child: IconButton(
               icon: Image.asset(
-                'assets/images/Close.png',
+                'assets/images/Close.webp',
                 width: AppDimensions.height10(context) * 2.8,
                 height: AppDimensions.height10(context) * 2.8,
                 fit: BoxFit.cover,
@@ -55,7 +55,7 @@ class _StartProcessState extends State<StartProcess> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/CreateGoal.png"),
+                image: AssetImage("assets/images/CreateGoal.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -119,7 +119,7 @@ class _StartProcessState extends State<StartProcess> {
                   )),
               Center(
                 child: Image(
-                  image: const AssetImage('assets/images/image1.png'),
+                  image: const AssetImage('assets/images/image1.webp'),
                   height: AppDimensions.height10(context) * 6.5,
                   width: AppDimensions.height10(context) * 6.5,
                 ),
@@ -145,7 +145,7 @@ class _StartProcessState extends State<StartProcess> {
               ),
               Center(
                 child: Image(
-                  image: const AssetImage('assets/images/Line.png'),
+                  image: const AssetImage('assets/images/Line.webp'),
                   // height: AppDimensions.height10(context) * 6.5,
                   width: AppDimensions.height10(context) * 6.5,
                 ),
@@ -189,7 +189,7 @@ class _StartProcessState extends State<StartProcess> {
                   )),
               Center(
                 child: Image(
-                  image: const AssetImage('assets/images/image2.png'),
+                  image: const AssetImage('assets/images/image2.webp'),
                   height: AppDimensions.height10(context) * 4,
                   width: AppDimensions.height10(context) * 4,
                 ),
@@ -245,6 +245,7 @@ class _StartProcessState extends State<StartProcess> {
                     Navigator.push(
                       context,
                       FadePageRoute2(
+                        true,
                         enterPage: Categories(),
                         exitPage: HomeScreen(
                           login: false,

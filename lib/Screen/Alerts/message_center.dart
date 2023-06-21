@@ -89,7 +89,7 @@ class _message_centerState extends State<message_center> {
                       Navigator.pop(context);
                     },
                     icon: Image.asset(
-                      'assets/images/Close.png',
+                      'assets/images/Close.webp',
                       width: AppDimensions.height10(context) * 2.6,
                       height: AppDimensions.height10(context) * 2.6,
                       fit: BoxFit.cover,
@@ -100,7 +100,7 @@ class _message_centerState extends State<message_center> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/Mask Group.png'),
+            image: AssetImage('assets/images/Mask Group.webp'),
             fit: BoxFit.cover,
           ),
         ),
@@ -124,11 +124,11 @@ class _message_centerState extends State<message_center> {
                   color: Color(0xFFFFFFFF),
                   // image: DecorationImage(
                   //     image: AssetImage(
-                  //         'assets/images/Vector Smart Object_1.png'),
+                  //         'assets/images/Vector Smart Object_1.webp'),
                   //     fit: BoxFit.contain)
                 ),
                 child: Image.asset(
-                  'assets/images/Vector Smart Object_1.png',
+                  'assets/images/Vector Smart Object_1.webp',
                   width: AppDimensions.height10(context) * 5.275,
                   height: AppDimensions.height10(context) * 5.991,
                 ),
@@ -236,7 +236,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_1
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -292,7 +292,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_2
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -346,7 +346,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_3
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -402,7 +402,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_4
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -458,7 +458,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_5
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -514,7 +514,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_6
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -570,7 +570,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_7
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -627,7 +627,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_8
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -683,7 +683,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_9
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -739,7 +739,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_10
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -796,7 +796,7 @@ class _message_centerState extends State<message_center> {
                                                 1.0),
                                         child: msg_11
                                             ? Image.asset(
-                                                'assets/images/Select.png')
+                                                'assets/images/Select.webp')
                                             : Container(
                                                 decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
@@ -861,7 +861,7 @@ class _message_centerState extends State<message_center> {
                     decoration: const BoxDecoration(
                         image: DecorationImage(
                             image:
-                                AssetImage('assets/images/circle_tick.png'))),
+                                AssetImage('assets/images/circle_tick.webp'))),
                   ),
                   Container(
                     width: AppDimensions.height10(context) * 6.9,
@@ -1208,7 +1208,7 @@ class messages extends StatelessWidget {
       decoration: const BoxDecoration(
           image: DecorationImage(
         image: AssetImage(
-          'assets/images/Component 2.png',
+          'assets/images/Component 2.webp',
         ),
         fit: BoxFit.cover,
       )),
@@ -1218,7 +1218,7 @@ class messages extends StatelessWidget {
         Align(
           alignment: const Alignment(1, -0.1),
           child: Image.asset(
-            "assets/images/Vector Smart Object.png",
+            "assets/images/Vector Smart Object.webp",
             height: AppDimensions.height10(context) * 9.296,
             width: AppDimensions.height10(context) * 4.16,
           ),
@@ -1317,7 +1317,7 @@ void notifications_sheet(context) {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/Close_blue.png'))),
+                                  AssetImage('assets/images/Close_blue.webp'))),
                     ),
                   ),
                 ),
@@ -1326,7 +1326,7 @@ void notifications_sheet(context) {
                       top: AppDimensions.height10(context) * 1.9,
                       bottom: AppDimensions.height10(context) * 2.9),
                   child: Image.asset(
-                    'assets/images/potenic__icon.png',
+                    'assets/images/potenic__icon.webp',
                     width: AppDimensions.height10(context) * 8.202,
                     height: AppDimensions.height10(context) * 11.2,
                   ),
@@ -1386,7 +1386,7 @@ void notifications_sheet(context) {
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.0),
                         child: Image.asset(
-                          'assets/images/notifications.png',
+                          'assets/images/notifications.webp',
                           width: AppDimensions.height10(context) * 4.8,
                           height: AppDimensions.height10(context) * 4.8,
                         ),

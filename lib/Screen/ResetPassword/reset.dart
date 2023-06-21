@@ -48,7 +48,7 @@ class _resetState extends State<reset> {
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Close.png',
+                      'assets/images/Close.webp',
                       width: AppDimensions.height10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
@@ -65,7 +65,7 @@ class _resetState extends State<reset> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.png"),
+                  image: AssetImage("assets/images/loginscreenBackground.webp"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -83,7 +83,7 @@ class _resetState extends State<reset> {
                     child: GestureDetector(
                       onTap: () {},
                       child: Image(
-                        image: const AssetImage("assets/images/logo.png"),
+                        image: const AssetImage("assets/images/logo.webp"),
                         height: AppDimensions.height10(context) * 7.75,
                         width: AppDimensions.height10(context) * 7.75,
                       ),
@@ -400,7 +400,7 @@ class _resetState extends State<reset> {
                         }
                       },
                       icon: Image.asset(
-                        "assets/images/fb.png",
+                        "assets/images/fb.webp",
                         width: 0.0,
                         height: 0.0,
                       ),
@@ -453,7 +453,7 @@ class Confirmation extends StatelessWidget {
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Close.png',
+                      'assets/images/Close.webp',
                       width: AppDimensions.height10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
@@ -470,7 +470,7 @@ class Confirmation extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.png"),
+                  image: AssetImage("assets/images/loginscreenBackground.webp"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -486,7 +486,7 @@ class Confirmation extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () {},
                     child: Image(
-                      image: const AssetImage("assets/images/logo.png"),
+                      image: const AssetImage("assets/images/logo.webp"),
                       height: AppDimensions.height10(context) * 7.75,
                       width: AppDimensions.height10(context) * 7.75,
                     ),
@@ -533,7 +533,7 @@ class Confirmation extends StatelessWidget {
                       );
                     },
                     icon: Image.asset(
-                      "assets/images/fb.png",
+                      "assets/images/fb.webp",
                       width: 0.0,
                       height: 0.0,
                     ),

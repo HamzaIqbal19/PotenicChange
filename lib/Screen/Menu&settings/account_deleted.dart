@@ -21,7 +21,7 @@ class Acc_deleted extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -46,7 +46,7 @@ class Acc_deleted extends StatelessWidget {
         body: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('assets/images/Onboarding-background2.png'),
+            image: AssetImage('assets/images/Onboarding-background2.webp'),
             fit: BoxFit.cover,
           )),
           width: double.infinity,
@@ -57,7 +57,7 @@ class Acc_deleted extends StatelessWidget {
                 margin: EdgeInsets.only(
                     top: AppDimensions.height10(context) * 11.1),
                 child: Image.asset(
-                  'assets/images/logo.png',
+                  'assets/images/logo.webp',
                   width: AppDimensions.height10(context) * 7.755,
                   height: AppDimensions.height10(context) * 7.755,
                 ),

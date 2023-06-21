@@ -42,7 +42,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     Navigator.pop(context);
                   },
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -52,7 +52,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/prac_assesment.png'),
+          image: AssetImage('assets/images/prac_assesment.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -125,7 +125,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       top: AppDimensions.height10(context) * 2.03),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                    image: AssetImage('assets/images/orange_flair.png'),
+                    image: AssetImage('assets/images/orange_flair.webp'),
                     fit: BoxFit.cover,
                   )),
                 ),
@@ -163,7 +163,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     AppDimensions.height10(context) * 2.0),
                                 image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Rectangle 192.png'),
+                                      'assets/images/Rectangle 192.webp'),
                                   fit: BoxFit.cover,
                                 ))
                             : BoxDecoration(
@@ -197,10 +197,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                     image: AssetImage(goal_level == 2
-                                        ? 'assets/images/Nebula pie 2.png'
+                                        ? 'assets/images/Nebula pie 2.webp'
                                         : goal_level == 3
-                                            ? 'assets/images/Nebula pie 3.png'
-                                            : "assets/images/Nebula Pie.png"),
+                                            ? 'assets/images/Nebula pie 3.webp'
+                                            : "assets/images/Nebula Pie.webp"),
                                   ),
                                   // color: Colors.amber,
                                 ),
@@ -307,7 +307,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
-                                    'assets/images/BTN Back.png',
+                                    'assets/images/BTN Back.webp',
                                     color: const Color(0xFFFFFFFF),
                                     //width: AppDimensions.height10(context) * 2.6,
                                     //height: AppDimensions.height10(context) * 2.6,
@@ -512,7 +512,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Ellipse 158.png'),
+                                      'assets/images/Ellipse 158.webp'),
                                   fit: BoxFit.contain,
                                 )),
                                 child: Center(
@@ -538,7 +538,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   //color: Colors.amber,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Ellipse 157.png'),
+                                          'assets/images/Ellipse 157.webp'),
                                       fit: BoxFit.cover)),
                               child: Center(
                                   child: Text(
@@ -560,7 +560,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   //color: Colors.amber,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Ellipse orange.png'),
+                                          'assets/images/Ellipse orange.webp'),
                                       fit: BoxFit.contain)),
                               child: Center(
                                   child: Text(
@@ -593,7 +593,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             top: AppDimensions.height10(context) * 3.0),
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                          image: AssetImage('assets/images/Ellipse 158.png'),
+                          image: AssetImage('assets/images/Ellipse 158.webp'),
                           fit: BoxFit.contain,
                         )),
                         child: Center(
@@ -658,7 +658,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/images/BTN Back.png',
+                                  'assets/images/BTN Back.webp',
                                   //width: AppDimensions.height10(context) * 2.6,
                                   //height: AppDimensions.height10(context) * 2.6,
                                   fit: BoxFit.cover,
@@ -709,7 +709,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
-                                    'assets/images/BTN Back.png',
+                                    'assets/images/BTN Back.webp',
                                     //width: AppDimensions.height10(context) * 2.6,
                                     //height: AppDimensions.height10(context) * 2.6,
                                     fit: BoxFit.cover,
@@ -761,7 +761,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
-                                    'assets/images/BTN Back.png',
+                                    'assets/images/BTN Back.webp',
                                     //width: AppDimensions.height10(context) * 2.6,
                                     //height: AppDimensions.height10(context) * 2.6,
                                     fit: BoxFit.cover,

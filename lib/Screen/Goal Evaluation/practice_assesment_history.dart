@@ -19,7 +19,7 @@ class practice_assesment extends StatelessWidget {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -30,7 +30,7 @@ class practice_assesment extends StatelessWidget {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/Close.png',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -42,7 +42,7 @@ class practice_assesment extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/prac_assesment.png'),
+          image: AssetImage('assets/images/prac_assesment.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -74,7 +74,7 @@ class practice_assesment extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {},
                       icon: Image.asset(
-                        'assets/images/ic_info_outline.png',
+                        'assets/images/ic_info_outline.webp',
                         height: AppDimensions.height10(context) * 3.0,
                         width: AppDimensions.height10(context) * 3.0,
                       )),
@@ -190,7 +190,7 @@ class practice_assesment extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {},
                       icon: Image.asset(
-                        'assets/images/ic_info_outline.png',
+                        'assets/images/ic_info_outline.webp',
                         height: AppDimensions.height10(context) * 3.0,
                         width: AppDimensions.height10(context) * 3.0,
                       )),
@@ -283,7 +283,7 @@ class practice_assesment extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {},
                       icon: Image.asset(
-                        'assets/images/ic_info_outline.png',
+                        'assets/images/ic_info_outline.webp',
                         height: AppDimensions.height10(context) * 3.0,
                         width: AppDimensions.height10(context) * 3.0,
                       )),
@@ -376,7 +376,7 @@ class practice_assesment extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {},
                       icon: Image.asset(
-                        'assets/images/ic_info_outline.png',
+                        'assets/images/ic_info_outline.webp',
                         height: AppDimensions.height10(context) * 3.0,
                         width: AppDimensions.height10(context) * 3.0,
                       )),

@@ -120,6 +120,7 @@ class _VisualisingState extends State<Visualising> {
           Navigator.push(
             context,
             FadePageRoute2(
+              true,
               exitPage: Visualising(),
               enterPage: const GoalFinished(),
             ),
@@ -158,7 +159,7 @@ class _VisualisingState extends State<Visualising> {
               // alignment: Alignment.center,
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
@@ -175,7 +176,7 @@ class _VisualisingState extends State<Visualising> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
@@ -242,6 +243,7 @@ class _VisualisingState extends State<Visualising> {
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
+                                        true,
                                         exitPage: Visualising(),
                                         enterPage: HomeScreenProgressSaved(
                                           login: true,
@@ -276,6 +278,7 @@ class _VisualisingState extends State<Visualising> {
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
+                                        true,
                                         exitPage: Visualising(),
                                         enterPage:
                                             const HomeScreen(login: false),
@@ -334,7 +337,7 @@ class _VisualisingState extends State<Visualising> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
+                image: AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -386,7 +389,7 @@ class _VisualisingState extends State<Visualising> {
                         left: AppDimensions.height10(context) * 1.5,
                         right: AppDimensions.height10(context) * 1.5),
                     child: Image.asset(
-                      "assets/images/image3.png",
+                      "assets/images/image3.webp",
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
@@ -556,7 +559,7 @@ class _VisualisingState extends State<Visualising> {
                                 child: Container(
                                   color: Colors.transparent,
                                   child: Image.asset(
-                                    'assets/images/Addgoal.png',
+                                    'assets/images/Addgoal.webp',
                                     height:
                                         AppDimensions.height10(context) * 4.7,
                                     width:
@@ -593,7 +596,7 @@ class _VisualisingState extends State<Visualising> {
                         // color: Colors.blue,
 
                         child: Image.asset(
-                          "assets/images/Moreactions.png",
+                          "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
                     GestureDetector(

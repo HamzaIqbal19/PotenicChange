@@ -32,7 +32,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -56,7 +56,7 @@ class _goal_inactiveState extends State<goal_inactive> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -285,7 +285,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                             shape: BoxShape.circle,
                             image: const DecorationImage(
                               image:
-                                  AssetImage('assets/images/Ellipse 158.png'),
+                                  AssetImage('assets/images/Ellipse 158.webp'),
                               fit: BoxFit.cover,
                             )),
                       ),
@@ -375,7 +375,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                           const PracticeReview()));
                             },
                             child: Image.asset(
-                              'assets/images/BTN Back.png',
+                              'assets/images/BTN Back.webp',
                               color: widget.isActive
                                   ? const Color(0xFF828282)
                                   : const Color(0xFFFFFFFF),
@@ -424,7 +424,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                           ),
                         ),
                         Image.asset(
-                          'assets/images/Addgoal.png',
+                          'assets/images/Addgoal.webp',
                           width: AppDimensions.height10(context) * 2.3,
                           height: AppDimensions.height10(context) * 2.3,
                         )
@@ -463,7 +463,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/circle_tick.png'))),
+                                          'assets/images/circle_tick.webp'))),
                             ),
                             Container(
                               width: AppDimensions.height10(context) * 6.9,
@@ -790,7 +790,7 @@ class _goal_inactiveState extends State<goal_inactive> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/start_icon.png'))),
+                                            'assets/images/start_icon.webp'))),
                               ),
                               Container(
                                 margin: EdgeInsets.only(
@@ -875,7 +875,7 @@ class _goal_inactiveState extends State<goal_inactive> {
 //                               decoration: const BoxDecoration(
 //                                   image: DecorationImage(
 //                                       image: AssetImage(
-//                                           'assets/images/circle_tick.png'))),
+//                                           'assets/images/circle_tick.webp'))),
 //                             ),
 //                             Container(
 //                               width: AppDimensions.height10(context) * 16.3,

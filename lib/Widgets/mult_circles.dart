@@ -13,9 +13,9 @@ class multiple_circle extends StatelessWidget {
       color: Colors.grey,
       child: const Center(
           child: align_circles(
-        asset_1: 'assets/images/oraange_sun.png',
+        asset_1: 'assets/images/oraange_sun.webp',
         s_circle_text: 'Meditation',
-        asset_2: 'assets/images/Ellipse 158.png',
+        asset_2: 'assets/images/Ellipse 158.webp',
         head_text: 'Control my anger',
         body_text: '“I am someone who is in\n control of my anger”',
         body_text_color: 0xff1A481C,
@@ -147,7 +147,7 @@ class align_circles extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 color: Color(0xff52855E)),
                             child: const ImageIcon(
-                              AssetImage('assets/images/tick_icon.png'),
+                              AssetImage('assets/images/tick_icon.webp'),
                               color: Color(0xffFFFFFF),
                             )))
                     : Container(),

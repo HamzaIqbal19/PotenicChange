@@ -17,7 +17,7 @@ class goal_prac_info extends StatelessWidget {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -28,7 +28,7 @@ class goal_prac_info extends StatelessWidget {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/Addgoal.png',
+                  'assets/images/Addgoal.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -40,7 +40,7 @@ class goal_prac_info extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -54,7 +54,7 @@ class goal_prac_info extends StatelessWidget {
                   EdgeInsets.only(top: AppDimensions.height10(context) * 6.4),
               decoration: const BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/images/menu_goals_p.png'),
+                      image: AssetImage('assets/images/menu_goals_p.webp'),
                       fit: BoxFit.cover)),
             ),
             Container(
@@ -132,7 +132,7 @@ class goal_prac_info extends StatelessWidget {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/Close_blue.png'))),
+                                  AssetImage('assets/images/Close_blue.webp'))),
                     ),
                   ),
                 ),
@@ -141,7 +141,7 @@ class goal_prac_info extends StatelessWidget {
                       top: AppDimensions.height10(context) * 1.5,
                       bottom: AppDimensions.height10(context) * 1.9),
                   child: Image.asset(
-                    'assets/images/potenic__icon.png',
+                    'assets/images/potenic__icon.webp',
                     width: AppDimensions.height10(context) * 8.202,
                     height: AppDimensions.height10(context) * 11.2,
                   ),
@@ -296,7 +296,8 @@ void prac_info_sheet(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -305,7 +306,7 @@ void prac_info_sheet(context) {
                     top: AppDimensions.height10(context) * 1.5,
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
-                  'assets/images/potenic__icon.png',
+                  'assets/images/potenic__icon.webp',
                   width: AppDimensions.height10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),

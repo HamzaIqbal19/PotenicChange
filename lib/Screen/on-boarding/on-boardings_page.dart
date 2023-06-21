@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 // import 'package:go_eventio/pages/authentication/sign_in_page.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding_model.dart';
 import 'package:potenic_app/Screen/splash/splash_page.dart';
@@ -10,6 +11,8 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Widgets/fading3.dart';
 
 class OnboardingPage extends StatefulWidget {
   final List<OnboardingModel> pages;
@@ -31,7 +34,8 @@ class OnboardingPage extends StatefulWidget {
   OnboardingPageState createState() => OnboardingPageState();
 }
 
-class OnboardingPageState extends State<OnboardingPage> with SingleTickerProviderStateMixin {
+class OnboardingPageState extends State<OnboardingPage>
+    with SingleTickerProviderStateMixin {
   final PageController _pageController = PageController(initialPage: 0);
   late AnimationController _controller;
   int _currentPage = 0;
@@ -111,7 +115,7 @@ class OnboardingPageState extends State<OnboardingPage> with SingleTickerProvide
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Back.png',
+                      'assets/images/Back.webp',
                       width: AppDimensions.height10(context) * 3,
                       height: AppDimensions.height10(context) * 3,
                       fit: BoxFit.contain,
@@ -142,7 +146,7 @@ class OnboardingPageState extends State<OnboardingPage> with SingleTickerProvide
 
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Close.png',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.cover,
@@ -151,8 +155,10 @@ class OnboardingPageState extends State<OnboardingPage> with SingleTickerProvide
                   Navigator.pushReplacement(
                     context,
                     FadePageRoute2(
-                        exitPage: SplashPage(),
-                        enterPage: const HomeScreen(login: false)),
+                      true,
+                      enterPage: HomeScreen(login: false),
+                      exitPage: OnBoarding(),
+                    ),
                   );
                   // Add code for performing close action
                 },
@@ -168,7 +174,7 @@ class OnboardingPageState extends State<OnboardingPage> with SingleTickerProvide
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image:
-                        AssetImage('assets/images/Onboarding-background3.png'),
+                        AssetImage('assets/images/Onboarding-background3.webp'),
                     fit: BoxFit.cover)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -429,15 +435,17 @@ class OnboardingPageState extends State<OnboardingPage> with SingleTickerProvide
             _pageController.nextPage(
                 duration: Duration(milliseconds: 500), curve: Curves.ease);
           } else {
-            Navigator.pushReplacement(
+            // ignore: use_build_context_synchronously
+            Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => const HomeScreen(login: false),
+              FadePageRoute2(
+                enterPage: HomeScreen(login: false),
+                exitPage: OnBoarding(),
+                true,
               ),
             );
           }
         },
-
         child: Transform.scale(
           scale: scale,
           child: Container(

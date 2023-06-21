@@ -51,7 +51,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               premium: true)));
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.cover,
@@ -64,7 +64,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                     evaluation_sheet(context);
                   },
                   icon: Image.asset(
-                    'assets/images/ic_info_outline.png',
+                    'assets/images/ic_info_outline.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.cover,
@@ -74,7 +74,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -326,7 +326,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         // height: AppDimensions.height10(context) * 2.4,
                                         // color: Colors.green,
                                         child: Image.asset(
-                                      'assets/images/Polygon 9.png',
+                                      'assets/images/Polygon 9.webp',
                                       width:
                                           AppDimensions.height10(context) * 1.7,
                                       height:
@@ -391,10 +391,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
 
                                 image: DecorationImage(
                                   image: AssetImage(goal_level == 2
-                                      ? 'assets/images/Nebula pie 2.png'
+                                      ? 'assets/images/Nebula pie 2.webp'
                                       : goal_level == 3
-                                          ? 'assets/images/Nebula pie 3.png'
-                                          : "assets/images/Nebula Pie.png"),
+                                          ? 'assets/images/Nebula pie 3.webp'
+                                          : "assets/images/Nebula Pie.webp"),
                                 ),
                                 // color: Colors.amber,
                               ),
@@ -500,7 +500,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             decoration: const BoxDecoration(
                                               image: DecorationImage(
                                                   image: AssetImage(
-                                                      'assets/images/colon.png'),
+                                                      'assets/images/colon.webp'),
                                                   fit: BoxFit.contain),
                                             ),
                                           ),
@@ -555,7 +555,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               // width: AppDimensions.height10(context) * 2.1,
                               // height: AppDimensions.height10(context) * 4.3,
                               child: Image.asset(
-                                'assets/images/Arrow.png',
+                                'assets/images/Arrow.webp',
                                 width: AppDimensions.height10(context) * 4.1,
                                 height: AppDimensions.height10(context) * 4.1,
                               ),
@@ -711,7 +711,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                     decoration: const BoxDecoration(
                         color: Color(0xFF437296), shape: BoxShape.circle),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                     ),
                   )
                 ],
@@ -882,7 +882,7 @@ class goal_criteria extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {},
                 child: Image.asset(
-                  'assets/images/BTN Back.png',
+                  'assets/images/BTN Back.webp',
                   color: const Color(0xFFFFFFFF),
                   //width: AppDimensions.height10(context) * 2.6,
                   //height: AppDimensions.height10(context) * 2.6,
@@ -948,7 +948,7 @@ void Upgrade_sheet(context) {
                           decoration: const BoxDecoration(
                               color: Color(0xFF437296), shape: BoxShape.circle),
                           child: Image.asset(
-                            'assets/images/Arrow_up.png',
+                            'assets/images/Arrow_up.webp',
                             color: const Color(0xFFFBFBFB),
                           ),
                         )
@@ -1047,7 +1047,7 @@ void evaluation_sheet(context) {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/Close_blue.png'))),
+                                    'assets/images/Close_blue.webp'))),
                       ),
                     ),
                   ),
@@ -1059,10 +1059,10 @@ void evaluation_sheet(context) {
                     // decoration: BoxDecoration(
                     //     image: DecorationImage(
                     //         image:
-                    //             AssetImage('assets/images/potenic__icon.png'),
+                    //             AssetImage('assets/images/potenic__icon.webp'),
                     //         fit: BoxFit.contain)),
                     child: Image.asset(
-                      'assets/images/potenic__icon.png',
+                      'assets/images/potenic__icon.webp',
                       width: AppDimensions.height10(context) * 8.202,
                       height: AppDimensions.height10(context) * 11.2,
                     ),
@@ -1291,7 +1291,7 @@ void evaluation_sheet(context) {
 //                         // height: AppDimensions.height10(context) * 2.4,
 //                         // color: Colors.green,
 //                         child: Image.asset(
-//                       'assets/images/Polygon 9.png',
+//                       'assets/images/Polygon 9.webp',
 //                       width: AppDimensions.height10(context) * 1.7,
 //                       height: AppDimensions.height10(context) * 1.7,
 //                     ))

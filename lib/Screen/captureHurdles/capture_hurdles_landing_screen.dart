@@ -45,7 +45,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/Close.png',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -84,7 +84,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                         child: GestureDetector(
                           onTap: () {},
                           child: Image.asset(
-                            'assets/images/ic_filter_list.png',
+                            'assets/images/ic_filter_list.webp',
                             width: AppDimensions.height10(context) * 2.4,
                             height: AppDimensions.height10(context) * 2.4,
                             fit: BoxFit.contain,
@@ -530,7 +530,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                   child: GestureDetector(
                     onTap: () {},
                     child: Image.asset(
-                      'assets/images/Search.png',
+                      'assets/images/Search.webp',
                       width: AppDimensions.height10(context) * 5,
                       height: AppDimensions.height10(context) * 5,
                       fit: BoxFit.contain,
@@ -550,7 +550,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
           decoration: const BoxDecoration(
               image: DecorationImage(
             image:
-                AssetImage('assets/images/capture_hurdles_landing_goals.png'),
+                AssetImage('assets/images/capture_hurdles_landing_goals.webp'),
             fit: BoxFit.cover,
           )),
           child: Column(
@@ -608,8 +608,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(deleted
-                                            ? 'assets/images/ic_info_outline_orange.png'
-                                            : 'assets/images/ic_info_outline.png')))),
+                                            ? 'assets/images/ic_info_outline_orange.webp'
+                                            : 'assets/images/ic_info_outline.webp')))),
                           ],
                         )
                       ],
@@ -665,7 +665,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/black_hole.png'))),
+                                      'assets/images/black_hole.webp'))),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -718,7 +718,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/black_hole.png'))),
+                                      'assets/images/black_hole.webp'))),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -778,7 +778,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/black_hole.png'))),
+                                      'assets/images/black_hole.webp'))),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -829,7 +829,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/black_hole.png'))),
+                                            'assets/images/black_hole.webp'))),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -905,7 +905,7 @@ class hurdle_menu extends StatelessWidget {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/Close.png',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -919,7 +919,7 @@ class hurdle_menu extends StatelessWidget {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/practicebackground.png'),
+          image: AssetImage('assets/images/practicebackground.webp'),
           fit: BoxFit.cover,
         )),
         child: Column(
@@ -934,7 +934,7 @@ class hurdle_menu extends StatelessWidget {
               decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: AssetImage('assets/images/black_hole.png'))),
+                      image: AssetImage('assets/images/black_hole.webp'))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -1037,7 +1037,7 @@ class hurdle_menu extends StatelessWidget {
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/images/BTN Back.png',
+                                  'assets/images/BTN Back.webp',
                                   //width: AppDimensions.height10(context) * 2.6,
                                   //height: AppDimensions.height10(context) * 2.6,
                                   fit: BoxFit.cover,

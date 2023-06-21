@@ -28,7 +28,7 @@ class _practice_progressState extends State<practice_progress> {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -39,7 +39,7 @@ class _practice_progressState extends State<practice_progress> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -96,7 +96,7 @@ class _practice_progressState extends State<practice_progress> {
                             // color: Colors.amber,
                             image: DecorationImage(
                                 image:
-                                    AssetImage('assets/images/Group 9398.png'),
+                                    AssetImage('assets/images/Group 9398.webp'),
                                 fit: BoxFit.cover),
                           ),
                         ),
@@ -109,7 +109,8 @@ class _practice_progressState extends State<practice_progress> {
                           decoration: const BoxDecoration(
                               //color: Colors.amber,
                               image: DecorationImage(
-                                  image: AssetImage('assets/images/image2.png'),
+                                  image:
+                                      AssetImage('assets/images/image2.webp'),
                                   fit: BoxFit.cover)),
                         ),
                       ),
@@ -201,7 +202,7 @@ class _practice_progressState extends State<practice_progress> {
                                 // height: AppDimensions.height10(context) * 2.4,
                                 // color: Colors.green,
                                 child: Image.asset(
-                                  'assets/images/Polygon 9.png',
+                                  'assets/images/Polygon 9.webp',
                                   width: AppDimensions.height10(context) * 1.7,
                                   height: AppDimensions.height10(context) * 1.7,
                                 )),
@@ -519,7 +520,7 @@ class _practice_progressState extends State<practice_progress> {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: const Color(0xFF828282),
@@ -788,7 +789,7 @@ class _practice_progressState extends State<practice_progress> {
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 4.0),
                   child: Image.asset(
-                    'assets/images/Arrow.png',
+                    'assets/images/Arrow.webp',
                     width: AppDimensions.height10(context) * 4.1,
                     height: AppDimensions.height10(context) * 4.3,
                   ),
@@ -1512,7 +1513,7 @@ class _practice_progressState extends State<practice_progress> {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
                                         color: const Color(0xFF828282),
@@ -1529,7 +1530,7 @@ class _practice_progressState extends State<practice_progress> {
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 4.0),
                   child: Image.asset(
-                    'assets/images/Arrow.png',
+                    'assets/images/Arrow.webp',
                     width: AppDimensions.height10(context) * 4.1,
                     height: AppDimensions.height10(context) * 4.3,
                   ),
@@ -1613,7 +1614,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1622,7 +1623,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1631,7 +1632,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1640,7 +1641,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1649,7 +1650,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1658,7 +1659,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1667,7 +1668,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1676,7 +1677,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1685,7 +1686,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1694,7 +1695,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,
@@ -1703,7 +1704,7 @@ class _practice_progressState extends State<practice_progress> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Tick_dates.png'))),
+                                            'assets/images/Tick_dates.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 2.3,

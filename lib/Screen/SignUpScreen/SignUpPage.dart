@@ -46,7 +46,7 @@ class _SignUpPageState extends State<SignUpPage> {
           //   // alignment: Alignment.center,
           //   child: IconButton(
           //     icon: Image.asset(
-          //       'assets/images/Back.png',
+          //       'assets/images/Back.webp',
           //       width: AppDimensions.height10(context) * 3,
           //       height: AppDimensions.height10(context) * 3,
           //       fit: BoxFit.contain,
@@ -63,18 +63,23 @@ class _SignUpPageState extends State<SignUpPage> {
 
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Close.png',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.8,
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.cover,
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(login: true),
-                    ),
-                  );
+                  Navigator.pop(context);
+                  // Navigator.pushReplacement(
+                  //   context,
+                  //   FadePageRoute2(
+                  //     enterPage:HomeScreen(
+                  //       login: false,
+                  //     ),
+                  //     exitPage:SignUpPage(),
+                  //
+                  //   ),
+                  // );
                   // Add code for performing close action
                 },
               ),
@@ -86,7 +91,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.png"),
+                  image: AssetImage("assets/images/loginscreenBackground.webp"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -101,7 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 Center(
                   child: Image(
                     // color: Colors.orange,
-                    image: const AssetImage("assets/images/logo.png"),
+                    image: const AssetImage("assets/images/logo.webp"),
                     height: AppDimensions.height10(context) * 7.75,
                     width: AppDimensions.width10(context) * 7.75,
                   ),
@@ -156,6 +161,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             Navigator.push(
                               context,
                               FadePageRoute2(
+                                true,
                                 exitPage: SignUpPage(),
                                 enterPage: SignUpWithEmail(),
                               ),
@@ -199,7 +205,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             termsSheet(context);
                           },
                           icon: Image.asset(
-                            "assets/images/Google.png",
+                            "assets/images/Google.webp",
                             width: AppDimensions.height10(context) * 2.4,
                             height: AppDimensions.height10(context) * 2.4,
                           ),
@@ -234,7 +240,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           onPressed: () {},
                           icon: Image.asset(
-                            "assets/images/fb.png",
+                            "assets/images/fb.webp",
                             width: AppDimensions.height10(context) * 2.4,
                             height: AppDimensions.height10(context) * 2.4,
                           ),
@@ -274,13 +280,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       Navigator.push(
                         context,
                         FadePageRoute2(
+                          true,
                           exitPage: SignUpPage(),
                           enterPage: LoginPage(),
                         ),
                       );
                     },
                     icon: Image.asset(
-                      "assets/images/fb.png",
+                      "assets/images/fb.webp",
                       width: 0.0,
                       height: 0.0,
                     ),

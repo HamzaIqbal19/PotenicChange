@@ -23,7 +23,7 @@ class progress_report extends StatelessWidget {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.cover,
@@ -34,7 +34,7 @@ class progress_report extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/GoalReviewBg.png'),
+          image: AssetImage('assets/images/GoalReviewBg.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -177,7 +177,7 @@ class progress_report extends StatelessWidget {
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
-                                  'assets/images/orange_flair.png'))),
+                                  'assets/images/orange_flair.webp'))),
                       child: Align(
                         alignment: const Alignment(0.7, 0.4),
                         child: Container(
@@ -191,7 +191,7 @@ class progress_report extends StatelessWidget {
                               ),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Ellipse 158.png'))),
+                                      'assets/images/Ellipse 158.webp'))),
                         ),
                       ),
                     ),
@@ -243,7 +243,7 @@ class progress_report extends StatelessWidget {
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
-                  'assets/images/Arrow.png',
+                  'assets/images/Arrow.webp',
                   width: AppDimensions.height10(context) * 4.1,
                   height: AppDimensions.height10(context) * 4.3,
                 ),
@@ -256,7 +256,7 @@ class progress_report extends StatelessWidget {
                 height: AppDimensions.height10(context) * 63.3,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/pro_report_bg#2.png'),
+                        image: AssetImage('assets/images/pro_report_bg#2.webp'),
                         fit: BoxFit.cover)),
                 child: Column(
                   children: [
@@ -288,7 +288,7 @@ class progress_report extends StatelessWidget {
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image:
-                                        AssetImage('assets/images/colon.png'),
+                                        AssetImage('assets/images/colon.webp'),
                                     fit: BoxFit.contain),
                               ),
                             ),
@@ -341,7 +341,7 @@ class progress_report extends StatelessWidget {
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Rectangle 148.png'))),
+                                          'assets/images/Rectangle 148.webp'))),
                             ),
                             Container(
                               width: AppDimensions.height10(context) * 33.153,
@@ -352,7 +352,7 @@ class progress_report extends StatelessWidget {
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Rectangle 178.png'))),
+                                          'assets/images/Rectangle 178.webp'))),
                             )
                           ],
                         ),
@@ -396,7 +396,7 @@ class progress_report extends StatelessWidget {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/Group 9458.png'))),
+                                  AssetImage('assets/images/Group 9458.webp'))),
                     ),
                     Container(
                       height: AppDimensions.height10(context) * 8.0,
@@ -440,7 +440,7 @@ class progress_report extends StatelessWidget {
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
                 child: Image.asset(
-                  'assets/images/Arrow.png',
+                  'assets/images/Arrow.webp',
                   width: AppDimensions.height10(context) * 4.1,
                   height: AppDimensions.height10(context) * 4.3,
                 ),
@@ -1013,7 +1013,7 @@ void report(context) {
                 colors: [Color(0xFFE1B3B7), Color(0XffC9B9CB)]),
             image: const DecorationImage(
                 opacity: 0.7,
-                image: AssetImage('assets/images/timeline_2.png'),
+                image: AssetImage('assets/images/timeline_2.webp'),
                 fit: BoxFit.cover),
             borderRadius:
                 BorderRadius.circular(AppDimensions.height10(context) * 2.0),
@@ -1037,7 +1037,8 @@ void report(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -1090,7 +1091,7 @@ void report(context) {
                     EdgeInsets.only(top: AppDimensions.height10(context) * 3.2),
                 decoration: BoxDecoration(
                   image: const DecorationImage(
-                      image: AssetImage('assets/images/Report card.png')),
+                      image: AssetImage('assets/images/Report card.webp')),
                   borderRadius: BorderRadius.circular(
                       AppDimensions.height10(context) * 2.0),
                 ),

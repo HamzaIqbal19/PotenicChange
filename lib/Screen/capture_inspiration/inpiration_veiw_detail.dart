@@ -24,7 +24,7 @@ class _veiw_detailsState extends State<veiw_details> {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -36,9 +36,9 @@ class _veiw_detailsState extends State<veiw_details> {
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: widget.type_switch == 4
-                    ? const AssetImage('assets/images/video_image.png')
+                    ? const AssetImage('assets/images/video_image.webp')
                     : const AssetImage(
-                        'assets/images/bg_inpiration_purple.png'),
+                        'assets/images/bg_inpiration_purple.webp'),
                 colorFilter: const ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
@@ -58,7 +58,8 @@ class _veiw_detailsState extends State<veiw_details> {
                   ),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/selected_image.png'),
+                          image:
+                              AssetImage('assets/images/selected_image.webp'),
                           fit: BoxFit.cover)),
                 ),
               ),
@@ -79,7 +80,7 @@ class _veiw_detailsState extends State<veiw_details> {
                       //  color: Colors.amber,
                       image: DecorationImage(
                           image: AssetImage(
-                              'assets/images/distraction content.png'),
+                              'assets/images/distraction content.webp'),
                           fit: BoxFit.cover)),
                 ),
               ),
@@ -92,13 +93,13 @@ class _veiw_detailsState extends State<veiw_details> {
                 height: AppDimensions.height10(context) * 44.5,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/video_image.png'),
+                        image: AssetImage('assets/images/video_image.webp'),
                         fit: BoxFit.cover)),
                 child: Center(
                   child: SizedBox(
                     width: AppDimensions.height10(context) * 8.6,
                     height: AppDimensions.height10(context) * 8.6,
-                    child: Image.asset('assets/images/play_button.png'),
+                    child: Image.asset('assets/images/play_button.webp'),
                   ),
                 ),
               ),
@@ -475,7 +476,7 @@ class _veiw_detailsState extends State<veiw_details> {
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/images/BTN Back.png',
+                                  'assets/images/BTN Back.webp',
                                   //width: AppDimensions.height10(context) * 2.6,
                                   //height: AppDimensions.height10(context) * 2.6,
                                   color: const Color(0xFF646464),

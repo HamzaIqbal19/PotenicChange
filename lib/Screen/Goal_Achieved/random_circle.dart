@@ -121,7 +121,7 @@ class Circle extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/Ellipse 158.png')),
+              image: AssetImage('assets/images/Ellipse 158.webp')),
           shape: BoxShape.circle,
         ),
         child: Stack(children: [
@@ -152,7 +152,7 @@ class Circle extends StatelessWidget {
               height: AppDimensions.height10(context) * 2.0,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/images/task_comp.png'))),
+                      image: AssetImage('assets/images/task_comp.webp'))),
             ),
           )
         ]),

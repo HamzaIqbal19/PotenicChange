@@ -31,7 +31,7 @@ class _GoalFinishedState extends State<GoalFinished> {
           // alignment: Alignment.center,
           child: IconButton(
             icon: Image.asset(
-              'assets/images/Back.png',
+              'assets/images/Back.webp',
               width: AppDimensions.height10(context) * 3,
               height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
@@ -53,7 +53,7 @@ class _GoalFinishedState extends State<GoalFinished> {
             // alignment: Alignment.center,
             child: IconButton(
               icon: Image.asset(
-                'assets/images/Close.png',
+                'assets/images/Close.webp',
                 width: AppDimensions.height10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
@@ -76,7 +76,7 @@ class _GoalFinishedState extends State<GoalFinished> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/finalGoal.png"),
+                image: AssetImage("assets/images/finalGoal.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -133,6 +133,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                       Navigator.push(
                         context,
                         FadePageRoute2(
+                          true,
                           exitPage: GoalFinished(),
                           enterPage: const StarReview(),
                         ),
@@ -140,7 +141,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                     },
                     child: Container(
                       child: Image(
-                        image: const AssetImage('assets/images/anger.png'),
+                        image: const AssetImage('assets/images/anger.webp'),
                         height: AppDimensions.height10(context) * 38.1,
                         width: AppDimensions.height10(context) * 35.3,
                       ),
@@ -167,6 +168,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                             Navigator.push(
                               context,
                               FadePageRoute2(
+                                true,
                                 exitPage: GoalFinished(),
                                 enterPage: const CreatePractice(),
                               ),
@@ -174,7 +176,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                           },
                           child: Image(
                             image:
-                                const AssetImage('assets/images/practice.png'),
+                                const AssetImage('assets/images/practice.webp'),
                             height: AppDimensions.height10(context) * 17.5,
                             width: AppDimensions.height10(context) * 17.5,
                           ),
@@ -198,7 +200,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                       width: AppDimensions.height10(context) * 5.0,
                       height: AppDimensions.height10(context) * 5.0,
                       child: Image.asset(
-                        "assets/images/Moreactions.png",
+                        "assets/images/Moreactions.webp",
                         fit: BoxFit.contain,
                       )),
                 ],

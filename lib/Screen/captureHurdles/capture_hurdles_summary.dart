@@ -24,7 +24,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/practicebackground.png'),
+                image: AssetImage('assets/images/practicebackground.webp'),
                 fit: BoxFit.cover)),
         child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -60,7 +60,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          image: AssetImage('assets/images/black_hole.png'))),
+                          image: AssetImage('assets/images/black_hole.webp'))),
                   child: Stack(
                     children: [
                       Align(
@@ -112,7 +112,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 border:
                                     Border.all(width: 1, color: Colors.white)),
                             child: const ImageIcon(
-                              AssetImage('assets/images/edit_icon.png'),
+                              AssetImage('assets/images/edit_icon.webp'),
                               color: Colors.white,
                               //size: 10,
                             )),
@@ -262,7 +262,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                           color: Colors.transparent,
                           border: Border.all(width: 1, color: Colors.white)),
                       child: const ImageIcon(
-                        AssetImage('assets/images/edit_icon.png'),
+                        AssetImage('assets/images/edit_icon.webp'),
                         color: Colors.white,
                         //size: 10,
                       )),
@@ -320,7 +320,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                           child: GestureDetector(
                             onTap: () {},
                             child: Image.asset(
-                              'assets/images/BTN Back.png',
+                              'assets/images/BTN Back.webp',
                               //width:   AppDimensions.height10(context)(context)* 2.6,
                               //height:   AppDimensions.height10(context)(context)* 2.6,
                               color: const Color(0xFF646464),
@@ -388,7 +388,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 border:
                                     Border.all(width: 2, color: Colors.white)),
                             child: const ImageIcon(
-                              AssetImage('assets/images/edit_icon.png'),
+                              AssetImage('assets/images/edit_icon.webp'),
                               color: Colors.white,
                               //size: 10,
                             )),

@@ -52,7 +52,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -76,7 +76,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -136,7 +136,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   child: GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
-                                      'assets/images/BTN Back.png',
+                                      'assets/images/BTN Back.webp',
                                       //width: AppDimensions.height10(context) * 2.6,
                                       //height: AppDimensions.height10(context) * 2.6,
                                       color: colorC,
@@ -177,7 +177,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
-                                    'assets/images/BTN Back.png',
+                                    'assets/images/BTN Back.webp',
                                     //width: AppDimensions.height10(context) * 2.6,
                                     //height: AppDimensions.height10(context) * 2.6,
                                     color: colorC,
@@ -292,7 +292,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
                                         color: colorC,
@@ -360,7 +360,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
-                                    'assets/images/BTN Back.png',
+                                    'assets/images/BTN Back.webp',
                                     //width: AppDimensions.height10(context) * 2.6,
                                     //height: AppDimensions.height10(context) * 2.6,
                                     color: colorC,
@@ -400,7 +400,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                   child: GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
-                                      'assets/images/BTN Back.png',
+                                      'assets/images/BTN Back.webp',
                                       //width: AppDimensions.height10(context) * 2.6,
                                       //height: AppDimensions.height10(context) * 2.6,
                                       color: colorC,
@@ -491,7 +491,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -549,7 +549,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -605,7 +605,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -661,7 +661,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -719,7 +719,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -779,7 +779,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -833,7 +833,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -887,7 +887,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -941,7 +941,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -997,7 +997,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -1053,7 +1053,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -1107,7 +1107,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -1163,7 +1163,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -1211,7 +1211,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -1266,7 +1266,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -1306,7 +1306,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -1415,7 +1415,8 @@ void _canceled_plan(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -1424,7 +1425,7 @@ void _canceled_plan(context) {
                     top: AppDimensions.height10(context) * 1.5,
                     bottom: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
-                  'assets/images/potenic__icon.png',
+                  'assets/images/potenic__icon.webp',
                   width: AppDimensions.height10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),

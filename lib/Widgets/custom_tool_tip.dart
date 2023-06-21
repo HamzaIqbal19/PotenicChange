@@ -76,8 +76,8 @@ class _TooltipExampleState extends State<TooltipExample> {
                                   goal_level == 4 ||
                                   goal_level == 5 ||
                                   goal_level == 6)
-                              ? 'assets/images/arrow-192-up.png'
-                              : 'assets/images/arrow-192.png',
+                              ? 'assets/images/arrow-192-up.webp'
+                              : 'assets/images/arrow-192.webp',
                           height: AppDimensions.height10(context) * 2.0,
                           width: AppDimensions.height10(context) * 2.0,
                         ),

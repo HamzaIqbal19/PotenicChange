@@ -70,7 +70,7 @@ class _CreatePracticeState extends State<CreatePractice> {
               // alignment: Alignment.center,
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
@@ -87,7 +87,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
@@ -111,7 +111,7 @@ class _CreatePracticeState extends State<CreatePractice> {
         Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/Categories.png"),
+              image: AssetImage("assets/images/Categories.webp"),
               fit: BoxFit.cover,
             ),
           ),
@@ -165,7 +165,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                         right: AppDimensions.height10(context) * 17.0),
                     // color:Colors.blue,
                     child: Image.asset(
-                      'assets/images/createprac.png',
+                      'assets/images/createprac.webp',
                       height: AppDimensions.height10(context) * 7.9,
                       width: AppDimensions.height10(context) * 7.9,
                       fit: BoxFit.contain,
@@ -214,6 +214,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                       Navigator.push(
                                         context,
                                         FadePageRoute2(
+                                          true,
                                           exitPage: CreatePractice(),
                                           enterPage: PracticeName(
                                               practiceName?[index]["name"],
@@ -287,7 +288,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(
-                                      'assets/images/Light.png',
+                                      'assets/images/Light.webp',
                                       width:
                                           AppDimensions.height10(context) * 1.5,
                                       height:
@@ -297,7 +298,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                       // fit: BoxFit.contain,
                                     ),
                                     suffixIcon: Image.asset(
-                                      'assets/images/cancel.png',
+                                      'assets/images/cancel.webp',
                                       width:
                                           AppDimensions.height10(context) * 2.3,
                                       height:
@@ -373,7 +374,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                               bottom_sheet(context);
                             },
                             child: Image.asset(
-                              'assets/images/Add.png',
+                              'assets/images/Add.webp',
                               width: AppDimensions.height10(context) * 4.7,
                               height: AppDimensions.height10(context) * 4.7,
                               fit: BoxFit.contain,
@@ -409,7 +410,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                           });
                         },
                         child: Image.asset(
-                          'assets/images/Search.png',
+                          'assets/images/Search.webp',
                           width: AppDimensions.height10(context) * 5,
                           height: AppDimensions.height10(context) * 5,
                           fit: BoxFit.contain,
@@ -429,7 +430,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                           });
                         },
                         child: Image.asset(
-                          'assets/images/Search.png',
+                          'assets/images/Search.webp',
                           width: AppDimensions.height10(context) * 5,
                           height: AppDimensions.height10(context) * 5,
                           fit: BoxFit.contain,

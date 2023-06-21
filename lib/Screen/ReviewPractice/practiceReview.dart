@@ -67,7 +67,7 @@ class _PracticeReviewState extends State<PracticeReview> {
           // alignment: Alignment.center,
           child: IconButton(
             icon: Image.asset(
-              'assets/images/Back.png',
+              'assets/images/Back.webp',
               width: AppDimensions.height10(context) * 3,
               height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
@@ -90,7 +90,7 @@ class _PracticeReviewState extends State<PracticeReview> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/GoalReviewBg.png"),
+                image: AssetImage("assets/images/GoalReviewBg.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -143,7 +143,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                         width: AppDimensions.height10(context) * 10.4,
                         height: AppDimensions.height10(context) * 11.2,
                         child: Image.asset(
-                          "assets/images/createprac.png",
+                          "assets/images/createprac.webp",
                           fit: BoxFit.contain,
                         )),
                     Container(
@@ -235,7 +235,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                     decoration: const BoxDecoration(
                                       image: DecorationImage(
                                         image: AssetImage(
-                                            "assets/images/reviewsearch.png"),
+                                            "assets/images/reviewsearch.webp"),
                                         fit: BoxFit.fitHeight,
                                       ),
                                     ),
@@ -255,7 +255,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                     decoration: const BoxDecoration(
                                       image: DecorationImage(
                                         image: AssetImage(
-                                            "assets/images/btnedit.png"),
+                                            "assets/images/btnedit.webp"),
                                         fit: BoxFit.fitHeight,
                                       ),
                                     ),
@@ -314,7 +314,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 decoration: const BoxDecoration(
                                   image: DecorationImage(
                                     image: AssetImage(
-                                        "assets/images/practicecolor.png"),
+                                        "assets/images/practicecolor.webp"),
                                     fit: BoxFit.fitHeight,
                                   ),
                                 ),
@@ -368,7 +368,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                       decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              "assets/images/reviewsearch.png"),
+                                              "assets/images/reviewsearch.webp"),
                                           fit: BoxFit.fitHeight,
                                         ),
                                       ),
@@ -389,7 +389,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                       decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              "assets/images/btnedit.png"),
+                                              "assets/images/btnedit.webp"),
                                           fit: BoxFit.fitHeight,
                                         ),
                                       ),
@@ -489,7 +489,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                       decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              "assets/images/reviewsearch.png"),
+                                              "assets/images/reviewsearch.webp"),
                                           fit: BoxFit.fitHeight,
                                         ),
                                       ),
@@ -510,7 +510,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                       decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              "assets/images/btnedit.png"),
+                                              "assets/images/btnedit.webp"),
                                           fit: BoxFit.fitHeight,
                                         ),
                                       ),
@@ -597,7 +597,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                 context) *
                                                             3.5,
                                                     child: Image.asset(
-                                                      "assets/images/notifications.png",
+                                                      "assets/images/notifications.webp",
                                                       fit: BoxFit.contain,
                                                     )),
                                                 Container(
@@ -637,7 +637,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         context) *
                                                     3.3,
                                                 child: Image.asset(
-                                                    "assets/images/uncheckradio.png")),
+                                                    "assets/images/uncheckradio.webp")),
                                           ),
                                         ],
                                       ),
@@ -705,7 +705,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
                         child: Image.asset(
-                          "assets/images/Moreactions.png",
+                          "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
                     GestureDetector(
@@ -860,7 +860,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Image.asset(
-                              "assets/images/bin.png",
+                              "assets/images/bin.webp",
                               height: AppDimensions.height10(context) * 1.8,
                               width: AppDimensions.height10(context) * 1.4,
                             ),

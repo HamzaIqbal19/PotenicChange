@@ -24,7 +24,7 @@ class _select_noteState extends State<select_note> {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -49,7 +49,7 @@ class _select_noteState extends State<select_note> {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -62,7 +62,7 @@ class _select_noteState extends State<select_note> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/practicebackground.png'),
+                image: AssetImage('assets/images/practicebackground.webp'),
                 fit: BoxFit.cover)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -76,7 +76,7 @@ class _select_noteState extends State<select_note> {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.circular(10),
                   image: const DecorationImage(
-                      image: AssetImage('assets/images/Video_Subtract.png'))),
+                      image: AssetImage('assets/images/Video_Subtract.webp'))),
               child: Container(
                 margin: EdgeInsets.all(AppDimensions.height10(context) * 0.758),
                 decoration: BoxDecoration(
@@ -100,7 +100,7 @@ class _select_noteState extends State<select_note> {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/note_icon.png'))),
+                                        'assets/images/note_icon.webp'))),
                           ),
                           Container(
                             margin: EdgeInsets.only(

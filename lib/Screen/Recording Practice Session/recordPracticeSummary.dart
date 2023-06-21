@@ -33,7 +33,7 @@ class _practice_summaryState extends State<practice_summary> {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -44,7 +44,7 @@ class _practice_summaryState extends State<practice_summary> {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -57,7 +57,7 @@ class _practice_summaryState extends State<practice_summary> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         child: SingleChildScrollView(
@@ -110,7 +110,7 @@ class _practice_summaryState extends State<practice_summary> {
                     // color: const Color(0xff7c94b6),
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage('assets/images/orange_moon.png'),
+                        image: AssetImage('assets/images/orange_moon.webp'),
                         colorFilter: ColorFilter.mode(
                             Color.fromRGBO(0, 0, 0, 0.5), BlendMode.dstATop),
                         fit: BoxFit.cover)),
@@ -172,7 +172,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     shape: BoxShape.circle,
                                     color: Color(0xFF52855E)),
                                 child: const ImageIcon(
-                                  AssetImage('assets/images/tick_icon.png'),
+                                  AssetImage('assets/images/tick_icon.webp'),
                                   color: Color(0xFFFFFFFF),
                                 )))
                       ]),
@@ -355,7 +355,7 @@ class _practice_summaryState extends State<practice_summary> {
                               border:
                                   Border.all(width: 1, color: Colors.white)),
                           child: const ImageIcon(
-                            AssetImage('assets/images/edit_icon.png'),
+                            AssetImage('assets/images/edit_icon.webp'),
                             color: Colors.white,
                           )),
                     ),
@@ -440,7 +440,7 @@ class _practice_summaryState extends State<practice_summary> {
                               border:
                                   Border.all(width: 1, color: Colors.white)),
                           child: const ImageIcon(
-                            AssetImage('assets/images/edit_icon.png'),
+                            AssetImage('assets/images/edit_icon.webp'),
                             color: Colors.white,
                           )),
                     ),
@@ -539,7 +539,7 @@ class _practice_summaryState extends State<practice_summary> {
                             color: Colors.transparent,
                             border: Border.all(width: 1, color: Colors.white)),
                         child: const ImageIcon(
-                          AssetImage('assets/images/edit_icon.png'),
+                          AssetImage('assets/images/edit_icon.webp'),
                           color: Colors.white,
                         ),
                       ),

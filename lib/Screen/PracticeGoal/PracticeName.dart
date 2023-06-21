@@ -37,7 +37,7 @@ class _PracticeNameState extends State<PracticeName> {
               // alignment: Alignment.center,
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
@@ -59,7 +59,7 @@ class _PracticeNameState extends State<PracticeName> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
@@ -82,7 +82,7 @@ class _PracticeNameState extends State<PracticeName> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
+                image: AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -135,7 +135,7 @@ class _PracticeNameState extends State<PracticeName> {
                         width: AppDimensions.height10(context) * 10.4,
                         height: AppDimensions.height10(context) * 11.2,
                         child: Image.asset(
-                          "assets/images/createprac.png",
+                          "assets/images/createprac.webp",
                           fit: BoxFit.contain,
                         )),
                     Container(
@@ -294,7 +294,7 @@ class _PracticeNameState extends State<PracticeName> {
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
                         child: Image.asset(
-                          "assets/images/Moreactions.png",
+                          "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
                     GestureDetector(
@@ -302,6 +302,7 @@ class _PracticeNameState extends State<PracticeName> {
                         Navigator.push(
                           context,
                           FadePageRoute2(
+                            true,
                             exitPage: PracticeName('', '', ''),
                             enterPage: PracticeRoutine(
                               pracId: widget.pracId,

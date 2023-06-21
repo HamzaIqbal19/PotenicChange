@@ -27,7 +27,7 @@ class _NewGoalState extends State<NewGoal> {
               // alignment: Alignment.center,
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
@@ -48,7 +48,7 @@ class _NewGoalState extends State<NewGoal> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
@@ -71,7 +71,7 @@ class _NewGoalState extends State<NewGoal> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
+                image: AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),

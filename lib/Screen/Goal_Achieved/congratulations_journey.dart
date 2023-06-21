@@ -26,7 +26,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -40,7 +40,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image:
-                    AssetImage('assets/images/Background Congratulations.png'),
+                    AssetImage('assets/images/Background Congratulations.webp'),
                 fit: BoxFit.cover)),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -51,7 +51,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                 height: AppDimensions.height10(context) * 85.3,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_0.png'),
+                        image: AssetImage('assets/images/journey_0.webp'),
                         fit: BoxFit.cover)),
                 child: Column(
                   children: [
@@ -126,7 +126,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.0),
                             child: Image.asset(
-                              'assets/images/Arrow.png',
+                              'assets/images/Arrow.webp',
                               width: AppDimensions.height10(context) * 4.3,
                               height: AppDimensions.height10(context) * 4.3,
                             ),
@@ -145,7 +145,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                 height: AppDimensions.height10(context) * 85.3,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_1.png'),
+                        image: AssetImage('assets/images/journey_1.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   Container(
@@ -233,7 +233,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                         top: AppDimensions.height10(context) * 1.1),
                     decoration: const BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage('assets/images/anger_3.png'))),
+                            image: AssetImage('assets/images/anger_3.webp'))),
                   ),
                   Container(
                     width: AppDimensions.height10(context) * 24.0,
@@ -257,7 +257,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.2),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                       width: AppDimensions.height10(context) * 4.1,
                       height: AppDimensions.height10(context) * 4.3,
                     ),
@@ -277,7 +277,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                 height: AppDimensions.height10(context) * 89.5,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_2.png'),
+                        image: AssetImage('assets/images/journey_2.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   Container(
@@ -328,7 +328,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 //color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/Ellipse orange.png'),
+                                        'assets/images/Ellipse orange.webp'),
                                     fit: BoxFit.contain)),
                             child: Center(
                                 child: Text(
@@ -354,7 +354,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 //color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/Ellipse 157.png'),
+                                        'assets/images/Ellipse 157.webp'),
                                     fit: BoxFit.cover)),
                             child: Center(
                                 child: Text(
@@ -380,7 +380,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 //color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/Ellipse 158.png'),
+                                        'assets/images/Ellipse 158.webp'),
                                     fit: BoxFit.cover)),
                             child: Center(
                                 child: Text(
@@ -418,7 +418,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.354),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                       width: AppDimensions.height10(context) * 4.1,
                       height: AppDimensions.height10(context) * 4.3,
                     ),
@@ -439,7 +439,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
 
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_1.png'),
+                        image: AssetImage('assets/images/journey_1.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   Container(
@@ -492,7 +492,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 //color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/black_hole.png'),
+                                        'assets/images/black_hole.webp'),
                                     fit: BoxFit.contain)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -544,7 +544,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 //color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/black_hole.png'),
+                                        'assets/images/black_hole.webp'),
                                     fit: BoxFit.contain)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -596,7 +596,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 //color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/black_hole.png'),
+                                        'assets/images/black_hole.webp'),
                                     fit: BoxFit.cover)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -648,7 +648,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 //color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/black_hole.png'),
+                                        'assets/images/black_hole.webp'),
                                     fit: BoxFit.cover)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -717,7 +717,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.6),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                       width: AppDimensions.height10(context) * 4.1,
                       height: AppDimensions.height10(context) * 4.3,
                     ),
@@ -741,7 +741,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
 
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_2.png'),
+                        image: AssetImage('assets/images/journey_2.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   Container(
@@ -787,7 +787,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   AppDimensions.height10(context) * 1.5),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Video_Subtract.png'))),
+                                      'assets/images/Video_Subtract.webp'))),
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1),
                           child: Column(
@@ -803,7 +803,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/video_image.png'),
+                                            'assets/images/video_image.webp'),
                                         fit: BoxFit.cover)),
                               ),
                               SizedBox(
@@ -862,7 +862,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   AppDimensions.height10(context) * 1.5),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Rectangle 10.png'),
+                                      'assets/images/Rectangle 10.webp'),
                                   fit: BoxFit.cover)),
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1),
@@ -875,7 +875,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   AppDimensions.height10(context) * 1.5),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Image_Subtract.png'))),
+                                      'assets/images/Image_Subtract.webp'))),
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1),
                           child: Column(
@@ -891,7 +891,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/link_image.png'),
+                                            'assets/images/link_image.webp'),
                                         fit: BoxFit.cover)),
                               ),
                               Container(
@@ -948,7 +948,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   AppDimensions.height10(context) * 1.5),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Video_Subtract.png'))),
+                                      'assets/images/Video_Subtract.webp'))),
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1,
                               right: AppDimensions.height10(context) * 1),
@@ -994,7 +994,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.2),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                       width: AppDimensions.height10(context) * 4.1,
                       height: AppDimensions.height10(context) * 4.3,
                     ),
@@ -1014,7 +1014,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                 height: AppDimensions.height10(context) * 89.6,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_1.png'),
+                        image: AssetImage('assets/images/journey_1.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   Container(
@@ -1100,7 +1100,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.1),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                       width: AppDimensions.height10(context) * 4.1,
                       height: AppDimensions.height10(context) * 4.3,
                     ),
@@ -1120,7 +1120,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                 height: AppDimensions.height10(context) * 89.6,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_2.png'),
+                        image: AssetImage('assets/images/journey_2.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   Container(
@@ -1162,7 +1162,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.354),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                       width: AppDimensions.height10(context) * 4.1,
                       height: AppDimensions.height10(context) * 4.3,
                     ),
@@ -1182,7 +1182,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                 height: AppDimensions.height10(context) * 89.5,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_1.png'),
+                        image: AssetImage('assets/images/journey_1.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   Container(
@@ -1213,7 +1213,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image:
-                                    AssetImage('assets/images/anger_2.png'))),
+                                    AssetImage('assets/images/anger_2.webp'))),
                       ),
                       Align(
                         alignment: const Alignment(0, 1),
@@ -1223,7 +1223,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/share_exp.png'))),
+                                      'assets/images/share_exp.webp'))),
                         ),
                       ),
                     ]),
@@ -1250,7 +1250,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.354),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                       width: AppDimensions.height10(context) * 4.1,
                       height: AppDimensions.height10(context) * 4.3,
                     ),
@@ -1270,7 +1270,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                 height: AppDimensions.height10(context) * 89.5,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/journey_2.png'),
+                        image: AssetImage('assets/images/journey_2.webp'),
                         fit: BoxFit.cover)),
                 child: Column(children: [
                   Container(
@@ -1411,7 +1411,7 @@ class _RandomContainersState extends State<RandomContainers> {
               height: AppDimensions.height10(context) * 7.4,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/Ellipse 158.png')),
+                    image: AssetImage('assets/images/Ellipse 158.webp')),
                 shape: BoxShape.circle,
               ),
               child: Center(
@@ -1442,7 +1442,7 @@ class _RandomContainersState extends State<RandomContainers> {
                 height: AppDimensions.height10(context) * 2.0,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/task_comp.png'))),
+                        image: AssetImage('assets/images/task_comp.webp'))),
               ),
             )
           ]),

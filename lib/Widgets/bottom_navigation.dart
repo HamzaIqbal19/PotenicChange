@@ -86,7 +86,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                     padding:
                         EdgeInsets.all(AppDimensions.height10(context) * 1.2),
                     child: const ImageIcon(
-                      AssetImage('assets/images/timeline_icon.png'),
+                      AssetImage('assets/images/timeline_icon.webp'),
                       color: Colors.white,
                     )),
               ),
@@ -119,7 +119,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                       padding:
                           EdgeInsets.all(AppDimensions.height10(context) * 1.2),
                       child: const ImageIcon(
-                        AssetImage('assets/images/insp (1).png'),
+                        AssetImage('assets/images/insp (1).webp'),
                         color: Colors.white,
                       )),
                 ),
@@ -146,7 +146,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                     padding:
                         EdgeInsets.all(AppDimensions.height10(context) * 1.2),
                     child: const ImageIcon(
-                      AssetImage('assets/images/hurdle_icon.png'),
+                      AssetImage('assets/images/hurdle_icon.webp'),
                       //size: ,
                       color: Colors.white,
                     ),
@@ -183,7 +183,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
                     padding:
                         EdgeInsets.all(AppDimensions.height10(context) * 1.2),
                     child: const ImageIcon(
-                      AssetImage('assets/images/menu_icon.png'),
+                      AssetImage('assets/images/menu_icon.webp'),
                       color: Colors.white,
                     )),
               ),

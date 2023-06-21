@@ -48,7 +48,7 @@ void termsSheet(context) {
                 Navigator.pop(context);
               },
               child: Image.asset(
-                'assets/images/Close.png',
+                'assets/images/Close.webp',
                 fit: BoxFit.cover,
               ),
             ),
@@ -102,7 +102,7 @@ void termsSheet(context) {
                     margin: EdgeInsets.only(
                         right: AppDimensions.height10(context) * 2.3),
                     child: Image.asset(
-                      'assets/images/backbtn.png',
+                      'assets/images/backbtn.webp',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -142,7 +142,7 @@ void termsSheet(context) {
                     margin: EdgeInsets.only(
                         right: AppDimensions.height10(context) * 2.3),
                     child: Image.asset(
-                      'assets/images/backbtn.png',
+                      'assets/images/backbtn.webp',
                       fit: BoxFit.cover,
                     ),
                   ),

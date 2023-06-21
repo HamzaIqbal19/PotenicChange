@@ -20,7 +20,7 @@ class clocks extends StatelessWidget {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -31,7 +31,7 @@ class clocks extends StatelessWidget {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -42,7 +42,7 @@ class clocks extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -365,7 +365,7 @@ class _watch_timeState extends State<watch_time> {
                                 top: AppDimensions.height10(context) * 0.3,
                                 left: AppDimensions.height10(context) * 1.0),
                             child: Image.asset(
-                              'assets/images/start_icon.png',
+                              'assets/images/start_icon.webp',
                               width: AppDimensions.height10(context) * 1.8,
                               height: AppDimensions.height10(context) * 2.7,
                               fit: BoxFit.cover,

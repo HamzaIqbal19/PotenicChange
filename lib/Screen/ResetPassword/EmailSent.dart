@@ -29,7 +29,7 @@ class _EmailSentState extends State<EmailSent> {
               //   // alignment: Alignment.center,
               //   child: IconButton(
               //     icon: Image.asset(
-              //       'assets/images/Back.png',
+              //       'assets/images/Back.webp',
               //       width: AppDimensions.height10(context) * 3,
               //       height: AppDimensions.height10(context) * 3,
               //       fit: BoxFit.contain,
@@ -45,7 +45,7 @@ class _EmailSentState extends State<EmailSent> {
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Close.png',
+                      'assets/images/Close.webp',
                       width: AppDimensions.height10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
@@ -63,7 +63,7 @@ class _EmailSentState extends State<EmailSent> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.png"),
+                  image: AssetImage("assets/images/loginscreenBackground.webp"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -78,7 +78,7 @@ class _EmailSentState extends State<EmailSent> {
                 Center(
                   child: Image(
                     // color: Colors.orange,
-                    image: const AssetImage("assets/images/logo.png"),
+                    image: const AssetImage("assets/images/logo.webp"),
                     height: AppDimensions.height10(context) * 7.75,
                     width: AppDimensions.width10(context) * 7.75,
                   ),
@@ -150,7 +150,7 @@ class _EmailSentState extends State<EmailSent> {
                       );
                     },
                     icon: Image.asset(
-                      "assets/images/fb.png",
+                      "assets/images/fb.webp",
                       width: 0.0,
                       height: 0.0,
                     ),

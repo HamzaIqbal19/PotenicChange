@@ -17,7 +17,7 @@ class no_active_session extends StatelessWidget {
               IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Asset 10 2.png',
+                    'assets/images/Asset 10 2.webp',
                     // height: 40,
                     // width: 40,
                     fit: BoxFit.contain,
@@ -25,14 +25,14 @@ class no_active_session extends StatelessWidget {
               IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Add goal.png',
+                    'assets/images/Add goal.webp',
                     height: AppDimensions.height10(context) * 2.0,
                     width: AppDimensions.height10(context) * 2.1,
                   )),
               IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/calendar_month_black_24dp 1.png',
+                    'assets/images/calendar_month_black_24dp 1.webp',
                     height: AppDimensions.height10(context) * 2.4,
                     width: AppDimensions.height10(context) * 2.4,
                   )),
@@ -50,7 +50,7 @@ class no_active_session extends StatelessWidget {
         body: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Mask Group.png'),
+                image: AssetImage('assets/images/Mask Group.webp'),
                 fit: BoxFit.cover,
               ),
             ),

@@ -67,7 +67,7 @@ class _StarReviewState extends State<StarReview> {
 
   @override
   Widget build(BuildContext context) {
-    // GoalReviewBg.png
+    // GoalReviewBg.webp
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
@@ -91,7 +91,7 @@ class _StarReviewState extends State<StarReview> {
           child: Loading == false
               ? IconButton(
                   icon: Image.asset(
-                    'assets/images/Back.png',
+                    'assets/images/Back.webp',
                     width: AppDimensions.height10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
@@ -111,7 +111,7 @@ class _StarReviewState extends State<StarReview> {
               ? Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/GoalReviewBg.png"),
+                      image: AssetImage("assets/images/GoalReviewBg.webp"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -135,7 +135,7 @@ class _StarReviewState extends State<StarReview> {
                               left: AppDimensions.height10(context) * 1.5,
                               right: AppDimensions.height10(context) * 1.5),
                           child: Image.asset(
-                            "assets/images/image3.png",
+                            "assets/images/image3.webp",
                             fit: BoxFit.contain,
                           )),
                       SizedBox(
@@ -214,7 +214,7 @@ class _StarReviewState extends State<StarReview> {
                                           decoration: const BoxDecoration(
                                             image: DecorationImage(
                                               image: AssetImage(
-                                                  "assets/images/reviewsearch.png"),
+                                                  "assets/images/reviewsearch.webp"),
                                               fit: BoxFit.fitHeight,
                                             ),
                                           ),
@@ -237,7 +237,7 @@ class _StarReviewState extends State<StarReview> {
                                           decoration: const BoxDecoration(
                                             image: DecorationImage(
                                               image: AssetImage(
-                                                  "assets/images/btnedit.png"),
+                                                  "assets/images/btnedit.webp"),
                                               fit: BoxFit.fitHeight,
                                             ),
                                           ),
@@ -311,7 +311,7 @@ class _StarReviewState extends State<StarReview> {
                                       decoration: const BoxDecoration(
                                         image: DecorationImage(
                                           image: AssetImage(
-                                              "assets/images/selectcolor.png"),
+                                              "assets/images/selectcolor.webp"),
                                           fit: BoxFit.fitHeight,
                                         ),
                                       ),
@@ -374,7 +374,7 @@ class _StarReviewState extends State<StarReview> {
                                               decoration: const BoxDecoration(
                                                 image: DecorationImage(
                                                   image: AssetImage(
-                                                      "assets/images/reviewsearch.png"),
+                                                      "assets/images/reviewsearch.webp"),
                                                   fit: BoxFit.fitHeight,
                                                 ),
                                               ),
@@ -386,6 +386,7 @@ class _StarReviewState extends State<StarReview> {
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute2(
+                                                  true,
                                                   exitPage: StarReview(),
                                                   enterPage: StarReviewWhy(),
                                                 ),
@@ -408,7 +409,7 @@ class _StarReviewState extends State<StarReview> {
                                               decoration: const BoxDecoration(
                                                 image: DecorationImage(
                                                   image: AssetImage(
-                                                      "assets/images/btnedit.png"),
+                                                      "assets/images/btnedit.webp"),
                                                   fit: BoxFit.fitHeight,
                                                 ),
                                               ),
@@ -535,7 +536,7 @@ class _StarReviewState extends State<StarReview> {
                                             decoration: const BoxDecoration(
                                               image: DecorationImage(
                                                 image: AssetImage(
-                                                    "assets/images/reviewsearch.png"),
+                                                    "assets/images/reviewsearch.webp"),
                                                 fit: BoxFit.fitHeight,
                                               ),
                                             ),
@@ -558,7 +559,7 @@ class _StarReviewState extends State<StarReview> {
                                             decoration: const BoxDecoration(
                                               image: DecorationImage(
                                                 image: AssetImage(
-                                                    "assets/images/btnedit.png"),
+                                                    "assets/images/btnedit.webp"),
                                                 fit: BoxFit.fitHeight,
                                               ),
                                             ),
@@ -666,7 +667,7 @@ class _StarReviewState extends State<StarReview> {
                                             decoration: const BoxDecoration(
                                               image: DecorationImage(
                                                 image: AssetImage(
-                                                    "assets/images/reviewsearch.png"),
+                                                    "assets/images/reviewsearch.webp"),
                                                 fit: BoxFit.fitHeight,
                                               ),
                                             ),
@@ -689,7 +690,7 @@ class _StarReviewState extends State<StarReview> {
                                             decoration: const BoxDecoration(
                                               image: DecorationImage(
                                                 image: AssetImage(
-                                                    "assets/images/btnedit.png"),
+                                                    "assets/images/btnedit.webp"),
                                                 fit: BoxFit.fitHeight,
                                               ),
                                             ),
@@ -765,7 +766,7 @@ class _StarReviewState extends State<StarReview> {
                               width: AppDimensions.height10(context) * 5.0,
                               height: AppDimensions.height10(context) * 5.0,
                               child: Image.asset(
-                                "assets/images/Moreactions.png",
+                                "assets/images/Moreactions.webp",
                                 fit: BoxFit.contain,
                               )),
                           GestureDetector(
@@ -963,7 +964,7 @@ class _StarReviewState extends State<StarReview> {
                                 // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Image.asset(
-                                    "assets/images/bin.png",
+                                    "assets/images/bin.webp",
                                     height:
                                         AppDimensions.height10(context) * 1.2,
                                     width:

@@ -155,7 +155,7 @@ void bottom_sheet(context) {
                       onPressed: () {
                         Navigator.pushReplacement(
                             context,
-                            FadePageRoute2(
+                            FadePageRoute2(true,
                                 exitPage: CreatePractice(),
                                 enterPage: PracticeName(
                                     goalName.text.toString(),

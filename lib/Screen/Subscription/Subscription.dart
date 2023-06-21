@@ -56,7 +56,7 @@ class _SubscriptionState extends State<Subscription>
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -66,7 +66,7 @@ class _SubscriptionState extends State<Subscription>
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -204,7 +204,7 @@ class _SubscriptionState extends State<Subscription>
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/tick_circle.png'))),
+                                                'assets/images/tick_circle.webp'))),
                                   ),
                                 ),
                                 SizedBox(
@@ -241,7 +241,7 @@ class _SubscriptionState extends State<Subscription>
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/tick_circle.png'))),
+                                                'assets/images/tick_circle.webp'))),
                                   ),
                                 ),
                                 SizedBox(
@@ -278,7 +278,7 @@ class _SubscriptionState extends State<Subscription>
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/tick_circle.png'))),
+                                                'assets/images/tick_circle.webp'))),
                                   ),
                                 ),
                                 SizedBox(
@@ -315,7 +315,7 @@ class _SubscriptionState extends State<Subscription>
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/tick_circle.png'))),
+                                                'assets/images/tick_circle.webp'))),
                                   ),
                                 ),
                                 SizedBox(
@@ -519,7 +519,7 @@ class _SubscriptionState extends State<Subscription>
                                                 shape: BoxShape.circle,
                                                 image: DecorationImage(
                                                     image: AssetImage(
-                                                        'assets/images/Close_blue.png'))),
+                                                        'assets/images/Close_blue.webp'))),
                                           ),
                                         ),
                                       ),
@@ -532,7 +532,7 @@ class _SubscriptionState extends State<Subscription>
                                                     context) *
                                                 1.9),
                                         child: Image.asset(
-                                          'assets/images/potenic__icon.png',
+                                          'assets/images/potenic__icon.webp',
                                           width:
                                               AppDimensions.height10(context) *
                                                   8.202,
@@ -779,7 +779,7 @@ class _SubscriptionState extends State<Subscription>
                                           top: AppDimensions.height10(context) *
                                               0),
                                       child: Image.asset(
-                                        'assets/images/Arrow.png',
+                                        'assets/images/Arrow.webp',
                                         height:
                                             AppDimensions.height10(context) *
                                                 1.2,
@@ -1901,7 +1901,7 @@ class _SubscriptionState extends State<Subscription>
                     top: AppDimensions.height10(context) * 3.235,
                     bottom: AppDimensions.height10(context) * 3.133),
                 child: Image.asset(
-                  'assets/images/Arrow.png',
+                  'assets/images/Arrow.webp',
                   height: AppDimensions.height10(context) * 4.811,
                   width: AppDimensions.height10(context) * 4.811,
                 ),
@@ -2312,7 +2312,8 @@ subscribed(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -2321,7 +2322,7 @@ subscribed(context) {
                     top: AppDimensions.height10(context) * 1.5,
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
-                  'assets/images/potenic__icon.png',
+                  'assets/images/potenic__icon.webp',
                   width: AppDimensions.height10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),

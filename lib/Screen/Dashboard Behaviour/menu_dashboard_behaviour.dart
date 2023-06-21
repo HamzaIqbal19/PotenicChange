@@ -35,7 +35,7 @@ class menu_behaviour extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -46,7 +46,7 @@ class menu_behaviour extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -95,7 +95,7 @@ class menu_behaviour extends StatelessWidget {
                                 // color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/Group 9398.png'),
+                                        'assets/images/Group 9398.webp'),
                                     fit: BoxFit.contain),
                               ),
                             ),
@@ -109,7 +109,7 @@ class menu_behaviour extends StatelessWidget {
                                     //color: Colors.amber,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Ellipse pearl_1.png'),
+                                            'assets/images/Ellipse pearl_1.webp'),
                                         fit: BoxFit.contain)),
                                 child: Align(
                                     alignment: const Alignment(0, 1.125),
@@ -125,7 +125,7 @@ class menu_behaviour extends StatelessWidget {
                                           shape: BoxShape.circle,
                                           color: Color(0xff52855E)),
                                       child: Image.asset(
-                                        'assets/images/tick_icon.png',
+                                        'assets/images/tick_icon.webp',
                                         color: const Color(0xFFFFFFFF),
                                         height:
                                             AppDimensions.height10(context) *
@@ -210,7 +210,7 @@ class menu_behaviour extends StatelessWidget {
                                 child: GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
-                                      'assets/images/visibility_black_24dp 1.png',
+                                      'assets/images/visibility_black_24dp 1.webp',
                                       height:
                                           AppDimensions.height10(context) * 2.9,
                                       width: AppDimensions.height10(context) *
@@ -467,7 +467,7 @@ class menu_behaviour extends StatelessWidget {
                                         color: Colors.red,
                                       ),
                                       child: Image.asset(
-                                        'assets/images/ic_clear.png',
+                                        'assets/images/ic_clear.webp',
                                       ),
                                     )),
                               )),
@@ -521,7 +521,7 @@ class menu_behaviour extends StatelessWidget {
                           info_sheet(context);
                         },
                         icon: Image.asset(
-                          'assets/images/ic_info_outline.png',
+                          'assets/images/ic_info_outline.webp',
                           height: AppDimensions.height10(context) * 3.0,
                           width: AppDimensions.height10(context) * 3.0,
                         )),

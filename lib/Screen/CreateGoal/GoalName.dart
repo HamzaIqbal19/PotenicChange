@@ -62,7 +62,7 @@ class _GoalNameState extends State<GoalName> {
               // alignment: Alignment.center,
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
@@ -83,7 +83,7 @@ class _GoalNameState extends State<GoalName> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
@@ -152,6 +152,7 @@ class _GoalNameState extends State<GoalName> {
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
+                                        true,
                                         exitPage: GoalName(),
                                         enterPage:
                                             const HomeScreenProgressSaved(
@@ -187,6 +188,7 @@ class _GoalNameState extends State<GoalName> {
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
+                                        true,
                                         exitPage: GoalName(),
                                         enterPage:
                                             const HomeScreen(login: false),
@@ -244,7 +246,7 @@ class _GoalNameState extends State<GoalName> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
+                image: AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -294,7 +296,7 @@ class _GoalNameState extends State<GoalName> {
                         left: AppDimensions.height10(context) * 1.5,
                         right: AppDimensions.height10(context) * 1.5),
                     child: Image.asset(
-                      "assets/images/image3.png",
+                      "assets/images/image3.webp",
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
@@ -443,7 +445,7 @@ class _GoalNameState extends State<GoalName> {
                             signupSheet(context, "Sign up / login", "login");
                           },
                           child: Image.asset(
-                            "assets/images/Moreactions.png",
+                            "assets/images/Moreactions.webp",
                             fit: BoxFit.contain,
                           ),
                         )),
@@ -452,6 +454,7 @@ class _GoalNameState extends State<GoalName> {
                         Navigator.push(
                           context,
                           FadePageRoute2(
+                            true,
                             exitPage: GoalName(),
                             enterPage: GoalWhy(),
                           ),

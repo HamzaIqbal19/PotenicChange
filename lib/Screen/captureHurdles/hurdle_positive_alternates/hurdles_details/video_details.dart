@@ -21,7 +21,7 @@ class video_details extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -46,7 +46,7 @@ class video_details extends StatelessWidget {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -59,7 +59,7 @@ class video_details extends StatelessWidget {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/practicebackground.png'),
+                image: AssetImage('assets/images/practicebackground.webp'),
                 fit: BoxFit.cover)),
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
@@ -126,7 +126,7 @@ class video_details extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Video_Subtract.png'),
+                                      'assets/images/Video_Subtract.webp'),
                                   fit: BoxFit.cover)),
                           child: Container(
                             alignment: Alignment.center,
@@ -160,7 +160,7 @@ class video_details extends StatelessWidget {
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/video_image.png'),
+                                              'assets/images/video_image.webp'),
                                           fit: BoxFit.cover)),
                                 ),
                               ],
@@ -301,7 +301,7 @@ class supporting_mat_video extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -326,7 +326,7 @@ class supporting_mat_video extends StatelessWidget {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -339,7 +339,7 @@ class supporting_mat_video extends StatelessWidget {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/practicebackground.png'),
+                image: AssetImage('assets/images/practicebackground.webp'),
                 fit: BoxFit.cover)),
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
@@ -377,7 +377,7 @@ class supporting_mat_video extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           image: const DecorationImage(
                               image: AssetImage(
-                                  'assets/images/Video_Subtract.png'),
+                                  'assets/images/Video_Subtract.webp'),
                               fit: BoxFit.cover)),
                       child: Container(
                         alignment: Alignment.center,
@@ -406,7 +406,7 @@ class supporting_mat_video extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/video_image.png'),
+                                          'assets/images/video_image.webp'),
                                       fit: BoxFit.cover)),
                             ),
                           ],
@@ -524,7 +524,7 @@ class supporting_mat_video extends StatelessWidget {
                               border:
                                   Border.all(width: 1, color: Colors.white)),
                           child: const ImageIcon(
-                            AssetImage('assets/images/edit_icon.png'),
+                            AssetImage('assets/images/edit_icon.webp'),
                             color: Colors.white,
                             //size: 10,
                           )),
@@ -542,7 +542,7 @@ class supporting_mat_video extends StatelessWidget {
                     //     width: AppDimensions.height10(context) * 0.3,
                     //     color: Colors.white)
                     image: DecorationImage(
-                        image: AssetImage('assets/images/Addgoal.png'))),
+                        image: AssetImage('assets/images/Addgoal.webp'))),
               ),
               Container(
                 width: AppDimensions.height10(context) * 26.0,

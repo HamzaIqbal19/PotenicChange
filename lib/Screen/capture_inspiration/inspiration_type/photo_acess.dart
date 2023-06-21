@@ -562,7 +562,7 @@ class _photo_infoState extends State<photo_info> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/selected_image.png'))),
+                                    'assets/images/selected_image.webp'))),
                       ),
                       SingleChildScrollView(
                         scrollDirection: Axis.vertical,
@@ -759,7 +759,7 @@ class _photo_infoState extends State<photo_info> {
 
                                             //     image: DecorationImage(
                                             //         image: AssetImage(
-                                            //             'assets/images/ic_add_circle_black.png'),
+                                            //             'assets/images/ic_add_circle_black.webp'),
                                             //         fit: BoxFit.cover)),
                                           ),
                                         ),
@@ -827,7 +827,7 @@ class _photo_infoState extends State<photo_info> {
 
                                         //     image: DecorationImage(
                                         //         image: AssetImage(
-                                        //             'assets/images/ic_add_circle_black.png'),
+                                        //             'assets/images/ic_add_circle_black.webp'),
                                         //         fit: BoxFit.cover)),
                                       ),
                                     ),
@@ -960,7 +960,7 @@ class _photo_infoState extends State<photo_info> {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: const Color(0xFF646464),
@@ -1050,7 +1050,7 @@ class _link_setState extends State<link_set> {
                                         .withOpacity(0.85),
                                     image: const DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Close.png'))),
+                                            'assets/images/Close.webp'))),
                               ),
                             ),
                             Container(
@@ -1077,7 +1077,7 @@ class _link_setState extends State<link_set> {
                                         //shape: BoxShape.circle,
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/Light.png'),
+                                                'assets/images/Light.webp'),
                                             fit: BoxFit.fill)),
                                   ),
                                   SizedBox(
@@ -1144,11 +1144,11 @@ class _link_setState extends State<link_set> {
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  'assets/images/ic_refresh.png'))
+                                                  'assets/images/ic_refresh.webp'))
                                           // color: Color(0xff282828),
                                           ),
                                       // child: Image.asset(
-                                      //   'assets/images/ic_refresh.png',
+                                      //   'assets/images/ic_refresh.webp',
                                       //  // width: AppDimensions.height10(context) * 0.941,
                                       //   //height: AppDimensions.height10(context) * 1.4,
                                       //   color: Color(0xff282828),
@@ -1215,7 +1215,7 @@ class _link_setState extends State<link_set> {
                                         //shape: BoxShape.circle,
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/Light.png'),
+                                                'assets/images/Light.webp'),
                                             fit: BoxFit.fill)),
                                   ),
                                   SizedBox(
@@ -1278,7 +1278,7 @@ class _link_setState extends State<link_set> {
                                       decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  'assets/images/close_dark.png'))),
+                                                  'assets/images/close_dark.webp'))),
                                     ),
                                   )
                                 ],

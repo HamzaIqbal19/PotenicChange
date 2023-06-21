@@ -48,7 +48,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
               // alignment: Alignment.center,
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
@@ -70,7 +70,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
@@ -93,7 +93,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
+                image: AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -146,7 +146,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                         width: AppDimensions.height10(context) * 10.4,
                         height: AppDimensions.height10(context) * 11.2,
                         child: Image.asset(
-                          "assets/images/createprac.png",
+                          "assets/images/createprac.webp",
                           fit: BoxFit.contain,
                         )),
                     Container(
@@ -244,6 +244,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           Navigator.pushReplacement(
                             context,
                             FadePageRoute2(
+                              true,
                               exitPage: CreatePractice(),
                               enterPage: PracticeReminder(
                                 pracId: widget.pracId,

@@ -194,7 +194,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             ),
                           )),
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -208,7 +208,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/practicebackground.png'),
+                  image: AssetImage('assets/images/practicebackground.webp'),
                   colorFilter: ColorFilter.mode(
                       Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                   fit: BoxFit.cover)),

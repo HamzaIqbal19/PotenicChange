@@ -72,7 +72,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/HomeScreenBackground.png"),
+                  image: AssetImage("assets/images/HomeScreenBackground.webp"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -87,7 +87,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                 Center(
                   child: Image(
                     // color: Colors.orange,
-                    image: const AssetImage("assets/images/homelogo.png"),
+                    image: const AssetImage("assets/images/homelogo.webp"),
                     height: AppDimensions.height10(context) * 10.0,
                     width: AppDimensions.width10(context) * 10.0,
                   ),
@@ -154,7 +154,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                   },
                   child: Image(
                     // color: Colors.orange,
-                    image: const AssetImage("assets/images/starprogress.png"),
+                    image: const AssetImage("assets/images/starprogress.webp"),
                     height: AppDimensions.height10(context) * 23,
                     width: AppDimensions.width10(context) * 26,
                   ),
@@ -370,7 +370,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                 child: Image(
                                   // color: Colors.orange,
                                   image: const AssetImage(
-                                      "assets/images/Moreactions.png"),
+                                      "assets/images/Moreactions.webp"),
                                   height: AppDimensions.height10(context) * 5,
                                   width: AppDimensions.width10(context) * 5,
                                 ),
@@ -463,7 +463,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                 child: Image(
                                   // color: Colors.orange,
                                   image: const AssetImage(
-                                      "assets/images/Moreactions.png"),
+                                      "assets/images/Moreactions.webp"),
                                   height: AppDimensions.height10(context) * 5,
                                   width: AppDimensions.width10(context) * 5,
                                 ),

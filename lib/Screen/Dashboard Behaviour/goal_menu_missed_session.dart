@@ -32,7 +32,7 @@ class missed_Menu extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: 26,
                     height: 26,
                     fit: BoxFit.cover,
@@ -43,7 +43,7 @@ class missed_Menu extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -92,7 +92,7 @@ class missed_Menu extends StatelessWidget {
                                 // color: Colors.amber,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/Group 9398.png'),
+                                        'assets/images/Group 9398.webp'),
                                     fit: BoxFit.contain),
                               ),
                             ),
@@ -106,7 +106,7 @@ class missed_Menu extends StatelessWidget {
                                   //color: Colors.amber,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Med Habit Practice (1).png'),
+                                          'assets/images/Med Habit Practice (1).webp'),
                                       fit: BoxFit.contain)),
                             ),
                           ),
@@ -235,7 +235,7 @@ class missed_Menu extends StatelessWidget {
                     child: IconButton(
                         onPressed: () {},
                         icon: Image.asset(
-                          'assets/images/ic_info_outline.png',
+                          'assets/images/ic_info_outline.webp',
                           height: AppDimensions.height10(context) * 3.0,
                           width: AppDimensions.height10(context) * 3.0,
                         )),

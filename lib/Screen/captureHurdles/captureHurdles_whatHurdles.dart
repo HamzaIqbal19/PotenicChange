@@ -29,7 +29,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -54,7 +54,7 @@ class _what_hurdlesState extends State<what_hurdles> {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -68,7 +68,7 @@ class _what_hurdlesState extends State<what_hurdles> {
             height: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/practicebackground.png'),
+                    image: AssetImage('assets/images/practicebackground.webp'),
                     fit: BoxFit.cover)),
             child: SingleChildScrollView(
               reverse: true,
@@ -237,7 +237,7 @@ class _what_hurdlesState extends State<what_hurdles> {
                                     //     color: Colors.white)
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Addgoal.png'))),
+                                            'assets/images/Addgoal.webp'))),
                               ),
                             ),
                             Container(

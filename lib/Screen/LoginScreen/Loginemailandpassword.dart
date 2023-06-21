@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -80,7 +81,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Back.png',
+                    'assets/images/Back.webp',
                     width: AppDimensions.height10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
@@ -96,7 +97,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Close.png',
+                      'assets/images/Close.webp',
                       width: AppDimensions.height10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
@@ -104,8 +105,11 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(login: true),
+                        FadePageRoute3(
+                          enterPage: const HomeScreen(
+                            login: false,
+                          ),
+                          exitPage: Loginemailandpassword(),
                         ),
                       );
                       // Add code for performing close action
@@ -119,7 +123,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.png"),
+                  image: AssetImage("assets/images/loginscreenBackground.webp"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -137,7 +141,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                     child: GestureDetector(
                       onTap: () {},
                       child: Image(
-                        image: const AssetImage("assets/images/logo.png"),
+                        image: const AssetImage("assets/images/logo.webp"),
                         height: AppDimensions.height10(context) * 7.75,
                         width: AppDimensions.width10(context) * 7.75,
                       ),
@@ -388,7 +392,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                   onTap: () {
                                     Navigator.push(
                                       context,
-                                      FadePageRoute2(
+                                      FadePageRoute2(true,
                                           enterPage: PasswordReset(),
                                           exitPage: Loginemailandpassword()),
                                     );
@@ -458,7 +462,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                           Text("User Login Successfully!!")));
                               Navigator.push(
                                 context,
-                                FadePageRoute2(
+                                FadePageRoute2(true,
                                     enterPage: StartProcess(),
                                     exitPage: Loginemailandpassword()),
                               );
@@ -488,7 +492,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                         }
                       },
                       icon: Image.asset(
-                        "assets/images/fb.png",
+                        "assets/images/fb.webp",
                         width: 0.0,
                         height: 0.0,
                       ),

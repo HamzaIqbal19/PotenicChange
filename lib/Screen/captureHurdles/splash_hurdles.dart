@@ -31,7 +31,7 @@ class hurdles_splashState extends State<hurdles_splash> {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -43,7 +43,7 @@ class hurdles_splashState extends State<hurdles_splash> {
           height: double.infinity,
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('assets/images/Capture_hurdle_landing.png'),
+            image: AssetImage('assets/images/Capture_hurdle_landing.webp'),
             fit: BoxFit.cover,
           )),
           child: Column(

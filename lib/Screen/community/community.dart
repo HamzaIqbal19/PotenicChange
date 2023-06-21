@@ -63,7 +63,7 @@ void community_sheet(context) {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/Close_blue.png'))),
+                                  AssetImage('assets/images/Close_blue.webp'))),
                     ),
                   ),
                 ),
@@ -72,7 +72,7 @@ void community_sheet(context) {
                       top: AppDimensions.height10(context) * 1.9,
                       bottom: AppDimensions.height10(context) * 1.9),
                   child: Image.asset(
-                    'assets/images/potenic__icon.png',
+                    'assets/images/potenic__icon.webp',
                     width: AppDimensions.height10(context) * 8.202,
                     height: AppDimensions.height10(context) * 11.2,
                   ),
@@ -159,7 +159,7 @@ void community_sheet(context) {
                         // color: Colors.amber,
                         image: DecorationImage(
                             image: AssetImage(
-                                'assets/images/Community promo 1.png'))),
+                                'assets/images/Community promo 1.webp'))),
                   ),
                 )
               ],

@@ -60,7 +60,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
               // alignment: Alignment.center,
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3,
                   height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
@@ -82,7 +82,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
@@ -105,7 +105,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
+                image: AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -158,7 +158,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           top: AppDimensions.height10(context) * 0.6,
                         ),
                         child: Image.asset(
-                          "assets/images/createprac.png",
+                          "assets/images/createprac.webp",
                           fit: BoxFit.contain,
                         )),
                     Container(
@@ -260,7 +260,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     height:
                                         AppDimensions.height10(context) * 3.5,
                                     child: Image.asset(
-                                      "assets/images/notifications.png",
+                                      "assets/images/notifications.webp",
                                       fit: BoxFit.contain,
                                     )),
                                 Container(
@@ -404,7 +404,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 height: AppDimensions.height10(context) * 3.3,
                                 child: radio1 == true
                                     ? Image.asset(
-                                        "assets/images/uncheckradio.png",
+                                        "assets/images/uncheckradio.webp",
                                         width: AppDimensions.height10(context) *
                                             3.3,
                                         height:
@@ -412,7 +412,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                                 3.3,
                                       )
                                     : Image.asset(
-                                        "assets/images/circle.png",
+                                        "assets/images/circle.webp",
                                         width: AppDimensions.height10(context) *
                                             3.3,
                                         height:
@@ -496,7 +496,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     height:
                                         AppDimensions.height10(context) * 3.5,
                                     child: Image.asset(
-                                      "assets/images/notificationsoff.png",
+                                      "assets/images/notificationsoff.webp",
                                       fit: BoxFit.contain,
                                     )),
                                 Container(
@@ -535,8 +535,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 height: AppDimensions.height10(context) * 3.3,
                                 child: radio2 == true
                                     ? Image.asset(
-                                        "assets/images/uncheckradio.png")
-                                    : Image.asset("assets/images/circle.png")),
+                                        "assets/images/uncheckradio.webp")
+                                    : Image.asset("assets/images/circle.webp")),
                           ),
                         ],
                       ),
@@ -584,7 +584,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
                         child: Image.asset(
-                          "assets/images/Moreactions.png",
+                          "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
                     GestureDetector(
@@ -613,6 +613,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             Navigator.pushReplacement(
                               context,
                               FadePageRoute2(
+                                true,
                                 exitPage:
                                     PracticeReminder(pracTitle: '', pracId: ''),
                                 enterPage: const PracticeFinished(),

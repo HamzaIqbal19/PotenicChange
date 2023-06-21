@@ -225,7 +225,7 @@ class _reviewboxState extends State<reviewbox> {
               child: Container(
                 color: Colors.transparent,
                 child: Image.asset(
-                  'assets/images/Addgoal.png',
+                  'assets/images/Addgoal.webp',
                   height: AppDimensions.height10(context) * 4.7,
                   width: AppDimensions.height10(context) * 4.7,
                 ),
@@ -405,7 +405,7 @@ class _inner_textState extends State<inner_text> {
                   // color: Colors.blue,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/bin.png"),
+                      image: AssetImage("assets/images/bin.webp"),
                       fit: BoxFit.fitHeight,
                     ),
                   ),

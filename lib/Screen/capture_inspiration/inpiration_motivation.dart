@@ -28,7 +28,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -40,7 +40,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/bg_inpiration_purple.png'),
+          image: AssetImage('assets/images/bg_inpiration_purple.webp'),
           fit: BoxFit.cover,
         )),
         child: Stack(children: [
@@ -52,7 +52,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image:
-                          AssetImage('assets/images/Inspiration_dust 1.png'))),
+                          AssetImage('assets/images/Inspiration_dust 1.webp'))),
             ),
           ),
           Align(
@@ -63,7 +63,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image:
-                          AssetImage('assets/images/Inspiration_Glow 1.png'))),
+                          AssetImage('assets/images/Inspiration_Glow 1.webp'))),
               child: Center(
                 child: Container(
                   height: AppDimensions.height10(context) * 35.9,
@@ -71,7 +71,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage(
-                              'assets/images/Inspiration_center 1.png'))),
+                              'assets/images/Inspiration_center 1.webp'))),
                   child: Center(
                     child: GestureDetector(
                       onTap: () {
@@ -187,7 +187,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/circle_tick.png'))),
+                                      'assets/images/circle_tick.webp'))),
                         ),
                         Container(
                           width: AppDimensions.height10(context) * 6.9,

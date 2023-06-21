@@ -4,12 +4,15 @@ import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
+import 'package:potenic_app/Widgets/animation.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Widgets/fading3.dart';
 
 class HomeScreen extends StatefulWidget {
   final bool login;
@@ -54,81 +57,53 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () async => false,
-        // =>
-        // SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
         child: Scaffold(
             body: Stack(
           children: <Widget>[
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/HomeScreenBackground.png"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            backgroundContainer(context),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(
-                  height: AppDimensions.height10(context) * 7.0,
-                ),
-                Center(
-                  child: Image(
-                    // color: Colors.orange,
-                    image: const AssetImage("assets/images/homelogo.png"),
-                    height: AppDimensions.height10(context) * 10.0,
-                    width: AppDimensions.width10(context) * 10.0,
-                  ),
-                ),
-                SizedBox(height: AppDimensions.height10(context) * 2.32),
+                verticalSpacing(context, 7.0),
+                centeredImage(
+                    context, "assets/images/homelogo.webp", 10.0, 10.0),
+                verticalSpacing(context, 2.32),
                 Container(
                   height: AppDimensions.height10(context) * 8.5,
-                  child: Text(
+                  child: buildText(
+                    context,
                     "Your Destiny is at \n Your Fingertips",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 3.0,
-                    ),
+                    3.0,
+                    FontWeight.w700,
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10(context) * 0.5),
+                verticalSpacing(context, 0.5),
                 Container(
-                    height: AppDimensions.height10(context) * 11.5,
-                    child: Text(
-                      'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.8,
-                      ),
-                    )),
-                SizedBox(height: AppDimensions.height10(context) * 4.4),
-                SizedBox(height: AppDimensions.height10(context) * 4.4),
-                Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        FadePageRoute2(
-                          enterPage: StartProcess(),
-                          exitPage: const HomeScreen(login: false),
-                        ),
-                      );
-                    },
-                    child: Image(
-                      // color: Colors.orange,
-                      image: const AssetImage("assets/images/createstar.png"),
-                      height: AppDimensions.height10(context) * 23,
-                      width: AppDimensions.width10(context) * 26,
-                    ),
+                  height: AppDimensions.height10(context) * 11.5,
+                  child: buildText(
+                    context,
+                    'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.',
+                    1.8,
+                    FontWeight.w600,
                   ),
                 ),
-                SizedBox(height: AppDimensions.height10(context) * 12.1),
+                verticalSpacing(context, 4.4),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      FadePageRoute2(
+                        enterPage: StartProcess(),
+                        exitPage: const HomeScreen(login: false),
+                        true,
+                      ),
+                    );
+                  },
+                  child: centeredImage(
+                      context, "assets/images/createstar.webp", 23, 26),
+                ),
+                verticalSpacing(context, 12.1),
                 widget.login == true
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -221,12 +196,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     Navigator.push(
                                                       context,
                                                       FadePageRoute2(
+                                                        false,
                                                         enterPage: HomeScreen(
                                                           login: false,
                                                         ),
-                                                        exitPage:
-                                                            const HomeScreen(
-                                                                login: true),
+                                                        exitPage: HomeScreen(
+                                                          login: true,
+                                                        ),
                                                       ),
                                                     );
                                                   },
@@ -291,12 +267,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ],
                                         ),
                                       ));
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //     builder: (context) => SignUpPage(),
-                              //   ),
-                              // );
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,
@@ -341,7 +311,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Image(
                                   // color: Colors.orange,
                                   image: const AssetImage(
-                                      "assets/images/Moreactions.png"),
+                                      "assets/images/Moreactions.webp"),
                                   height: AppDimensions.height10(context) * 5,
                                   width: AppDimensions.width10(context) * 5,
                                 ),
@@ -357,8 +327,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                FadePageRoute(
-                                  page: SignUpPage(),
+                                FadePageRoute2(
+                                  true,
+                                  enterPage: const SignUpPage(),
+                                  exitPage: const HomeScreen(
+                                    login: false,
+                                  ),
                                 ),
                               );
                             },
@@ -389,6 +363,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Navigator.push(
                                 context,
                                 FadePageRoute2(
+                                  true,
                                   enterPage: LoginPage(),
                                   exitPage: HomeScreen(login: false),
                                 ),
@@ -435,7 +410,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Image(
                                   // color: Colors.orange,
                                   image: const AssetImage(
-                                      "assets/images/Moreactions.png"),
+                                      "assets/images/Moreactions.webp"),
                                   height: AppDimensions.height10(context) * 5,
                                   width: AppDimensions.width10(context) * 5,
                                 ),
@@ -448,19 +423,47 @@ class _HomeScreenState extends State<HomeScreen> {
               // child:  Text("Hello background"),
             )
           ],
-        )
-            //   child:Column(
-            //     mainAxisAlignment: MainAxisAlignment.start,
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //
-            //     // children: [
-            //     //
-            //     //
-            //     //
-            //     //
-            //     // ],
-            //   )
-
-            ));
+        )));
   }
+}
+
+Widget buildText(
+    BuildContext context, String text, double heightFactor, FontWeight weight) {
+  return Text(
+    text,
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      fontWeight: weight,
+      color: Colors.white,
+      fontSize: AppDimensions.height10(context) * heightFactor,
+    ),
+  );
+}
+
+Widget centeredImage(BuildContext context, String assetName,
+    double heightFactor, double widthFactor) {
+  return Center(
+    child: Image(
+      image: AssetImage(assetName),
+      height: AppDimensions.height10(context) * heightFactor,
+      width: AppDimensions.width10(context) * widthFactor,
+    ),
+  );
+}
+
+Widget verticalSpacing(BuildContext context, double factor) {
+  return SizedBox(
+    height: AppDimensions.height10(context) * factor,
+  );
+}
+
+Widget backgroundContainer(BuildContext context) {
+  return Container(
+    decoration: const BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage("assets/images/HomeScreenBackground.webp"),
+        fit: BoxFit.cover,
+      ),
+    ),
+  );
 }

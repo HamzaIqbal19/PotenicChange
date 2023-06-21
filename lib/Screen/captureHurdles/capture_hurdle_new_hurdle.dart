@@ -27,7 +27,7 @@ class new_hurdles extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -52,7 +52,7 @@ class new_hurdles extends StatelessWidget {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -65,7 +65,7 @@ class new_hurdles extends StatelessWidget {
           height: double.infinity,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/practicebackground.png'),
+                  image: AssetImage('assets/images/practicebackground.webp'),
                   fit: BoxFit.cover)),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Container(
@@ -122,7 +122,7 @@ class new_hurdles extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           image: const DecorationImage(
                               image: AssetImage(
-                                  'assets/images/Image_Subtract.png'))),
+                                  'assets/images/Image_Subtract.webp'))),
                       child: Container(
                         margin: EdgeInsets.all(
                             AppDimensions.height10(context) * 0.758),
@@ -151,7 +151,7 @@ class new_hurdles extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/image_icon.png'))),
+                                                'assets/images/image_icon.webp'))),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
@@ -190,7 +190,7 @@ class new_hurdles extends StatelessWidget {
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  'assets/images/Addgoal.png'))),
+                                                  'assets/images/Addgoal.webp'))),
                                     ),
                                   ),
                                   Container(
@@ -220,7 +220,7 @@ class new_hurdles extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           image: const DecorationImage(
                               image: AssetImage(
-                                  'assets/images/Video_Subtract.png'))),
+                                  'assets/images/Video_Subtract.webp'))),
                       child: Container(
                         margin: EdgeInsets.all(
                             AppDimensions.height10(context) * 0.758),
@@ -249,7 +249,7 @@ class new_hurdles extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/video_icon.png'))),
+                                                'assets/images/video_icon.webp'))),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
@@ -287,7 +287,7 @@ class new_hurdles extends StatelessWidget {
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  'assets/images/Addgoal.png'))),
+                                                  'assets/images/Addgoal.webp'))),
                                     ),
                                   ),
                                   Container(
@@ -317,7 +317,7 @@ class new_hurdles extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           image: const DecorationImage(
                               image: AssetImage(
-                                  'assets/images/Video_Subtract.png'))),
+                                  'assets/images/Video_Subtract.webp'))),
                       child: Container(
                         margin: EdgeInsets.all(
                             AppDimensions.height10(context) * 0.758),
@@ -346,7 +346,7 @@ class new_hurdles extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/note_icon.png'))),
+                                                'assets/images/note_icon.webp'))),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
@@ -384,7 +384,7 @@ class new_hurdles extends StatelessWidget {
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  'assets/images/Addgoal.png'))),
+                                                  'assets/images/Addgoal.webp'))),
                                     ),
                                   ),
                                   Container(
@@ -415,7 +415,7 @@ class new_hurdles extends StatelessWidget {
                               AppDimensions.height10(context) * 1.0),
                           image: const DecorationImage(
                               image: AssetImage(
-                                  'assets/images/Image_Subtract.png'))),
+                                  'assets/images/Image_Subtract.webp'))),
                       child: Container(
                         margin: EdgeInsets.all(
                             AppDimensions.height10(context) * 0.758),
@@ -446,7 +446,7 @@ class new_hurdles extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/link_icon.png'))),
+                                                'assets/images/link_icon.webp'))),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
@@ -484,7 +484,7 @@ class new_hurdles extends StatelessWidget {
                                           shape: BoxShape.circle,
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  'assets/images/Addgoal.png'))),
+                                                  'assets/images/Addgoal.webp'))),
                                     ),
                                   ),
                                   Container(

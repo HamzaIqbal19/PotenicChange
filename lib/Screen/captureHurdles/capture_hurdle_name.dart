@@ -28,7 +28,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 3.0,
                   height: AppDimensions.height10(context) * 3.0,
                   fit: BoxFit.cover,
@@ -75,7 +75,7 @@ class _hurdle_nameState extends State<hurdle_name> {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -89,7 +89,7 @@ class _hurdle_nameState extends State<hurdle_name> {
             height: double.infinity,
             decoration: const BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('assets/images/practicebackground.png'),
+                    image: AssetImage('assets/images/practicebackground.webp'),
                     fit: BoxFit.cover)),
             child: SingleChildScrollView(
               reverse: true,
@@ -131,7 +131,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/black_hole.png'))),
+                                  AssetImage('assets/images/black_hole.webp'))),
                       child: Center(
                         child: Text(
                           'People',

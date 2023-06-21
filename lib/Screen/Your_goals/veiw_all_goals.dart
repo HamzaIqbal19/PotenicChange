@@ -28,7 +28,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -41,7 +41,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                   Navigator.push(context, FadePageRoute(page: Categories()));
                 },
                 icon: Image.asset(
-                  'assets/images/Addgoal.png',
+                  'assets/images/Addgoal.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -53,7 +53,7 @@ class veiw_all_goals_menu extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -77,7 +77,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                       top: AppDimensions.height10(context) * 6.4),
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/menu_goals_p.png'),
+                          image: AssetImage('assets/images/menu_goals_p.webp'),
                           fit: BoxFit.cover)),
                 ),
               ),
@@ -139,7 +139,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/menu_goals_b.png'),
+                                        'assets/images/menu_goals_b.webp'),
                                     fit: BoxFit.cover)),
                           ),
                           SizedBox(
@@ -206,7 +206,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/menu_goals_b.png'),
+                                        'assets/images/menu_goals_b.webp'),
                                     fit: BoxFit.cover)),
                           ),
                           SizedBox(
@@ -273,7 +273,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/menu_goals_b.png'),
+                                        'assets/images/menu_goals_b.webp'),
                                     fit: BoxFit.cover)),
                           ),
                           SizedBox(
@@ -308,7 +308,8 @@ class veiw_all_goals_menu extends StatelessWidget {
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
                             image: const DecorationImage(
-                              image: AssetImage('assets/images/Mask Group.png'),
+                              image:
+                                  AssetImage('assets/images/Mask Group.webp'),
                               fit: BoxFit.cover,
                             )),
                         child: Column(
@@ -357,7 +358,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/orange_moon.png'),
+                                                'assets/images/orange_moon.webp'),
                                             fit: BoxFit.cover)),
                                     child: Stack(
                                       children: [
@@ -438,7 +439,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
                                                     image: AssetImage(
-                                                        'assets/images/Ellipse blue.png'),
+                                                        'assets/images/Ellipse blue.webp'),
                                                     fit: BoxFit.contain)),
                                             child: Center(
                                                 child: Text(
@@ -468,7 +469,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
                                                     image: AssetImage(
-                                                        'assets/images/Ellipse orange.png'),
+                                                        'assets/images/Ellipse orange.webp'),
                                                     fit: BoxFit.contain)),
                                             child: Center(
                                                 child: Text(
@@ -498,7 +499,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
                                                     image: AssetImage(
-                                                        'assets/images/Ellipse purple.png'),
+                                                        'assets/images/Ellipse purple.webp'),
                                                     fit: BoxFit.contain)),
                                             child: Stack(children: [
                                               Center(
@@ -531,7 +532,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                                 //color: Colors.amber,
                                                 image: DecorationImage(
                                                     image: AssetImage(
-                                                        'assets/images/Ellipse 158.png'),
+                                                        'assets/images/Ellipse 158.webp'),
                                                     fit: BoxFit.contain)),
                                             child: Center(
                                                 child: Text(
@@ -754,7 +755,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/ic_info_outline.png'),
+                                              'assets/images/ic_info_outline.webp'),
                                           fit: BoxFit.cover)),
                                 ),
                               ),
@@ -797,7 +798,7 @@ class veiw_all_goals_menu extends StatelessWidget {
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/menu_goals_b.png'),
+                                          'assets/images/menu_goals_b.webp'),
                                       fit: BoxFit.cover)),
                             ),
                             SizedBox(
@@ -863,7 +864,7 @@ class goal_card extends StatelessWidget {
           borderRadius:
               BorderRadius.circular(AppDimensions.height10(context) * 2.0),
           image: const DecorationImage(
-            image: AssetImage('assets/images/Mask Group.png'),
+            image: AssetImage('assets/images/Mask Group.webp'),
             fit: BoxFit.cover,
           )),
       child: Column(
@@ -911,7 +912,7 @@ class goal_card extends StatelessWidget {
                   height: AppDimensions.height10(context) * 26.8,
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage('assets/images/orange_moon.png'),
+                          image: AssetImage('assets/images/orange_moon.webp'),
                           fit: BoxFit.cover)),
                   child: Stack(
                     children: [
@@ -964,7 +965,7 @@ class goal_card extends StatelessWidget {
                             //color: Colors.amber,
                             image: DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/Ellipse_dotted_grey.png'),
+                                    'assets/images/Ellipse_dotted_grey.webp'),
                                 fit: BoxFit.contain)),
                         child: Stack(children: [
                           Center(
@@ -984,8 +985,8 @@ class goal_card extends StatelessWidget {
                         decoration: const BoxDecoration(
                             //color: Colors.amber,
                             image: DecorationImage(
-                                image:
-                                    AssetImage('assets/images/Ellipse 158.png'),
+                                image: AssetImage(
+                                    'assets/images/Ellipse 158.webp'),
                                 fit: BoxFit.contain)),
                         child: Center(
                             child: Text(
@@ -1115,7 +1116,7 @@ class goal_card extends StatelessWidget {
                 height: AppDimensions.height10(context) * 3.0,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/ic_info_outline.png'),
+                        image: AssetImage('assets/images/ic_info_outline.webp'),
                         fit: BoxFit.cover)),
               ),
             ),

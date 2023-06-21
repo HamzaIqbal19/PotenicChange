@@ -39,7 +39,7 @@ class view_goals extends StatelessWidget {
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.7),
                       child: Image.asset(
-                        'assets/images/Add goal.png',
+                        'assets/images/Add goal.webp',
                         height: AppDimensions.height10(context) * 2.4,
                         width: AppDimensions.height10(context) * 2.4,
                       ),
@@ -143,7 +143,7 @@ class view_goals extends StatelessWidget {
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.32),
                       child: Image.asset(
-                        'assets/images/calendar_month_black_24dp 1.png',
+                        'assets/images/calendar_month_black_24dp 1.webp',
                         height: AppDimensions.height10(context) * 2.4,
                         width: AppDimensions.height10(context) * 2.4,
                       ),
@@ -163,7 +163,7 @@ class view_goals extends StatelessWidget {
         body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Mask Group.png'),
+                image: AssetImage('assets/images/Mask Group.webp'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -282,7 +282,7 @@ class view_goals extends StatelessWidget {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Asset 10 2.png'),
+                                            'assets/images/Asset 10 2.webp'),
                                         fit: BoxFit.cover)),
                                 child: Stack(children: [
                                   Align(
@@ -503,11 +503,11 @@ class view_goals extends StatelessWidget {
                             },
                             child: Center(
                                 child: align_circles(
-                              asset_1: 'assets/images/orange_moon.png',
+                              asset_1: 'assets/images/orange_moon.webp',
                               s_circle_text: 'Count\ntemper\nepisodes',
                               asset_2: missed
-                                  ? 'assets/images/Med Habit Practice (1).png'
-                                  : 'assets/images/Ellipse pearl_1.png',
+                                  ? 'assets/images/Med Habit Practice (1).webp'
+                                  : 'assets/images/Ellipse pearl_1.webp',
                               head_text: 'Control my anger',
                               body_text:
                                   '“I am someone who is in\n control of my anger”',
@@ -562,9 +562,9 @@ class view_goals extends StatelessWidget {
                           ),
                           Center(
                               child: align_circles(
-                            asset_1: 'assets/images/orange_moon.png',
+                            asset_1: 'assets/images/orange_moon.webp',
                             s_circle_text: 'Count\ndown',
-                            asset_2: 'assets/images/Ellipse purple.png',
+                            asset_2: 'assets/images/Ellipse purple.webp',
                             head_text: 'Control my anger',
                             body_text:
                                 '“I am someone who is in\n control of my anger”',
@@ -580,9 +580,9 @@ class view_goals extends StatelessWidget {
                           )),
                           Center(
                               child: align_circles(
-                            asset_1: 'assets/images/blue_sun.png',
+                            asset_1: 'assets/images/blue_sun.webp',
                             s_circle_text: 'Meditation',
-                            asset_2: 'assets/images/Ellipse 158.png',
+                            asset_2: 'assets/images/Ellipse 158.webp',
                             head_text: 'Control my anger',
                             body_text:
                                 '“I am someone who is in\n control of my anger”',
@@ -636,9 +636,9 @@ class view_goals extends StatelessWidget {
                           ),
                           Center(
                               child: align_circles(
-                            asset_1: 'assets/images/orange_moon.png',
+                            asset_1: 'assets/images/orange_moon.webp',
                             s_circle_text: 'Meditation',
-                            asset_2: 'assets/images/Ellipse 158.png',
+                            asset_2: 'assets/images/Ellipse 158.webp',
                             head_text: 'Control my anger',
                             body_text:
                                 '“I am someone who is in\n control of my anger”',
@@ -690,10 +690,10 @@ class view_goals extends StatelessWidget {
                           ),
                           Center(
                               child: align_circles(
-                            asset_1: 'assets/images/blue_sun.png',
+                            asset_1: 'assets/images/blue_sun.webp',
                             s_circle_text:
                                 'Long Practice\nname needs to\ntruncate...',
-                            asset_2: 'assets/images/Ellipse blue.png',
+                            asset_2: 'assets/images/Ellipse blue.webp',
                             head_text:
                                 'Long Goal name needs to\ntruncate after 2 lines...',
                             body_text:
@@ -710,9 +710,9 @@ class view_goals extends StatelessWidget {
                           )),
                           Center(
                               child: align_circles(
-                            asset_1: 'assets/images/blue_sun.png',
+                            asset_1: 'assets/images/blue_sun.webp',
                             s_circle_text: 'Talk to\nstrangers',
-                            asset_2: 'assets/images/Ellipse light-blue.png',
+                            asset_2: 'assets/images/Ellipse light-blue.webp',
                             head_text: 'Be more confident:',
                             body_text:
                                 'I am someone who is\nconfident in my abilities.',
@@ -752,7 +752,7 @@ class view_goals extends StatelessWidget {
                                   width: AppDimensions.height10(context) * 4.3,
                                   height: AppDimensions.height10(context) * 2.1,
                                   child: const ImageIcon(
-                                    AssetImage('assets/images/Arrow.png'),
+                                    AssetImage('assets/images/Arrow.webp'),
                                     color: Colors.white,
                                   ),
                                 )
@@ -781,7 +781,7 @@ class view_goals extends StatelessWidget {
                               color: Colors.white,
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Smart Object_1.png'))),
+                                      'assets/images/Smart Object_1.webp'))),
                           child: Align(
                             alignment: const Alignment(0, 2.8),
                             child: Container(
@@ -838,7 +838,7 @@ class view_goals extends StatelessWidget {
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/circle_tick.png'))),
+                                              'assets/images/circle_tick.webp'))),
                                 ),
                                 Container(
                                   width: AppDimensions.height10(context) * 16.3,

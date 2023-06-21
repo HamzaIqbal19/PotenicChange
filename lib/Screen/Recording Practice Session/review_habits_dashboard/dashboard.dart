@@ -20,7 +20,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
               children: [
                 Container(
                   child: Image.asset(
-                    'assets/images/Add goal.png',
+                    'assets/images/Add goal.webp',
                     height: AppDimensions.height10(context) * 2.1,
                     width: AppDimensions.height10(context) * 2.2,
                   ),
@@ -30,7 +30,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                       left: AppDimensions.height10(context) * 1.7,
                       right: AppDimensions.height10(context) * 0.9),
                   child: Image.asset(
-                    'assets/images/calendar_month_black_24dp 1.png',
+                    'assets/images/calendar_month_black_24dp 1.webp',
                     height: AppDimensions.height10(context) * 2.4,
                     width: AppDimensions.height10(context) * 2.4,
                   ),
@@ -51,7 +51,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
         body: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/Mask Group.png'),
+              image: AssetImage('assets/images/Mask Group.webp'),
               fit: BoxFit.cover,
             ),
           ),
@@ -163,7 +163,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Asset 10 2.png'),
+                                          'assets/images/Asset 10 2.webp'),
                                       fit: BoxFit.cover)),
                               child: Stack(children: [
                                 Align(
@@ -361,7 +361,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                         height: AppDimensions.height10(context) * 26.8,
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/image3.png'),
+                                image: AssetImage('assets/images/image3.webp'),
                                 fit: BoxFit.cover)),
                         child: Stack(
                           children: [
@@ -408,7 +408,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                               //color: Colors.amber,
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Ellipse 158.png'),
+                                      'assets/images/Ellipse 158.webp'),
                                   fit: BoxFit.cover)),
                           child: Center(
                               child: Text(
@@ -429,7 +429,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                   decoration: const BoxDecoration(
                       image: DecorationImage(
                     image: AssetImage(
-                      'assets/images/Component 1.png',
+                      'assets/images/Component 1.webp',
                     ),
                     fit: BoxFit.cover,
                   )),
@@ -441,7 +441,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                     Align(
                       alignment: const Alignment(-0.925, -1.35),
                       child: Image.asset(
-                        "assets/images/Group.png",
+                        "assets/images/Group.webp",
                         height: AppDimensions.height10(context) * 4.366,
                         width: AppDimensions.height10(context) * 4.366,
                       ),
@@ -449,7 +449,7 @@ class reviw_habit_dashBoard extends StatelessWidget {
                     Align(
                       alignment: const Alignment(0.93, 0),
                       child: Image.asset(
-                        "assets/images/Vector Smart Object.png",
+                        "assets/images/Vector Smart Object.webp",
                         height: AppDimensions.height10(context) * 9.296,
                         width: AppDimensions.height10(context) * 4.16,
                       ),

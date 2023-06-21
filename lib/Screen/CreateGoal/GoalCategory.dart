@@ -96,6 +96,7 @@ class _GoalCategoryState extends State<GoalCategory> {
       Navigator.push(
         context,
         FadePageRoute2(
+          true,
           enterPage: GoalName(),
           exitPage: GoalCategory('title', 'Circletitle', 1),
         ),
@@ -144,7 +145,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                 // alignment: Alignment.center,
                 child: IconButton(
                   icon: Image.asset(
-                    'assets/images/Back.png',
+                    'assets/images/Back.webp',
                     width: AppDimensions.height10(context) * 3,
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
@@ -160,7 +161,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                   // alignment: Alignment.center,
                   child: IconButton(
                     icon: Image.asset(
-                      'assets/images/Close.png',
+                      'assets/images/Close.webp',
                       width: AppDimensions.height10(context) * 3.0,
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
@@ -185,7 +186,7 @@ class _GoalCategoryState extends State<GoalCategory> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/Categories.png"),
+                  image: AssetImage("assets/images/Categories.webp"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -354,7 +355,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(0.0),
                                       prefixIcon: Image.asset(
-                                        'assets/images/Light.png',
+                                        'assets/images/Light.webp',
                                         width: AppDimensions.height10(context) *
                                             1.5,
                                         height:
@@ -362,7 +363,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                                 1.5,
                                       ),
                                       suffixIcon: Image.asset(
-                                        'assets/images/cancel.png',
+                                        'assets/images/cancel.webp',
                                         width: AppDimensions.height10(context) *
                                             2.3,
                                         height:
@@ -419,7 +420,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                 bottom_sheet(context, widget.id);
                               },
                               child: Image.asset(
-                                'assets/images/Add.png',
+                                'assets/images/Add.webp',
                                 width: AppDimensions.height10(context) * 4.7,
                                 height: AppDimensions.height10(context) * 4.7,
                                 fit: BoxFit.contain,
@@ -455,7 +456,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                             });
                           },
                           child: Image.asset(
-                            'assets/images/Search.png',
+                            'assets/images/Search.webp',
                             width: AppDimensions.height10(context) * 5,
                             height: AppDimensions.height10(context) * 5,
                             fit: BoxFit.contain,

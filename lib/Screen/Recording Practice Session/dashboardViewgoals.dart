@@ -84,7 +84,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
               children: [
                 Container(
                   child: Image.asset(
-                    'assets/images/Add goal.png',
+                    'assets/images/Add goal.webp',
                     height: AppDimensions.height10(context) * 2.4,
                     width: AppDimensions.height10(context) * 2.4,
                   ),
@@ -95,7 +95,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                       right: AppDimensions.height10(context) * 0.9,
                       bottom: AppDimensions.height10(context) * 0.3),
                   child: Image.asset(
-                    'assets/images/calendar_month_black_24dp 1.png',
+                    'assets/images/calendar_month_black_24dp 1.webp',
                     height: AppDimensions.height10(context) * 2.4,
                     width: AppDimensions.height10(context) * 2.4,
                   ),
@@ -134,7 +134,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/circle_tick.png'))),
+                                    'assets/images/circle_tick.webp'))),
                       ),
                       Container(
                         width: AppDimensions.height10(context) * 16.3,
@@ -186,7 +186,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 width: AppDimensions.height10(context) * 0.2,
                                 color: Colors.white)),
                         child: const ImageIcon(
-                          AssetImage('assets/images/edit_icon.png'),
+                          AssetImage('assets/images/edit_icon.webp'),
                           color: Colors.white,
                         ),
                       ),
@@ -209,7 +209,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Mask Group.png'),
+                image: AssetImage('assets/images/Mask Group.webp'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -317,7 +317,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/Asset 10 2.png'),
+                                              'assets/images/Asset 10 2.webp'),
                                           fit: BoxFit.cover)),
                                   child: Stack(children: [
                                     Align(
@@ -555,7 +555,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         //color: Colors.amber,
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/Ellipse 158.png'),
+                                                'assets/images/Ellipse 158.webp'),
                                             fit: BoxFit.cover)),
                                     child: Center(
                                         child: Text(
@@ -583,7 +583,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         //color: Colors.amber,
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/Ellipse 157.png'),
+                                                'assets/images/Ellipse 157.webp'),
                                             fit: BoxFit.cover)),
                                     child: Center(
                                         child: Text(
@@ -620,7 +620,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                     decoration: const BoxDecoration(
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/orange_moon.png'),
+                                                'assets/images/orange_moon.webp'),
                                             fit: BoxFit.cover)),
                                     child: Stack(
                                       children: [
@@ -672,7 +672,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                   //color: Colors.amber,
                                                   image: DecorationImage(
                                                       image: AssetImage(
-                                                          'assets/images/Ellipse orange.png'),
+                                                          'assets/images/Ellipse orange.webp'),
                                                       fit: BoxFit.contain)),
                                               child: Center(
                                                   child: Text(
@@ -706,7 +706,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                   decoration: const BoxDecoration(
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/orange_moon.png'),
+                                              'assets/images/orange_moon.webp'),
                                           fit: BoxFit.cover)),
                                   child: Stack(
                                     children: [
@@ -765,8 +765,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         //color: Colors.amber,
                                         image: DecorationImage(
                                             image: AssetImage(widget.saved
-                                                ? 'assets/images/Meditation Completed.png'
-                                                : 'assets/images/Ellipse 158.png'),
+                                                ? 'assets/images/Meditation Completed.webp'
+                                                : 'assets/images/Ellipse 158.webp'),
                                             fit: widget.saved
                                                 ? BoxFit.contain
                                                 : BoxFit.cover)),
@@ -796,7 +796,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         //color: Colors.amber,
                                         image: DecorationImage(
                                             image: AssetImage(
-                                                'assets/images/Ellipse 157.png'),
+                                                'assets/images/Ellipse 157.webp'),
                                             fit: BoxFit.cover)),
                                     child: Center(
                                         child: Text(
@@ -863,7 +863,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 shape: BoxShape.circle,
                                                 image: DecorationImage(
                                                     image: AssetImage(
-                                                        'assets/images/Close_blue.png'))),
+                                                        'assets/images/Close_blue.webp'))),
                                           ),
                                         ),
                                       ),
@@ -876,7 +876,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     context) *
                                                 2.9),
                                         child: Image.asset(
-                                          'assets/images/potenic__icon.png',
+                                          'assets/images/potenic__icon.webp',
                                           width:
                                               AppDimensions.height10(context) *
                                                   8.202,
@@ -970,7 +970,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                           context) *
                                                       1.0),
                                               child: Image.asset(
-                                                'assets/images/notifications.png',
+                                                'assets/images/notifications.webp',
                                                 width: AppDimensions.height10(
                                                         context) *
                                                     4.8,
@@ -1070,7 +1070,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                           image: AssetImage(
-                            'assets/images/Component 1.png',
+                            'assets/images/Component 1.webp',
                           ),
                           fit: BoxFit.cover,
                         )),
@@ -1087,7 +1087,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         page: const message_center()));
                               },
                               child: Image.asset(
-                                "assets/images/Group.png",
+                                "assets/images/Group.webp",
                                 height: AppDimensions.height10(context) * 5.0,
                                 width: AppDimensions.height10(context) * 5.0,
                               ),
@@ -1096,7 +1096,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                           Align(
                             alignment: const Alignment(0.93, 0),
                             child: Image.asset(
-                              "assets/images/Vector Smart Object.png",
+                              "assets/images/Vector Smart Object.webp",
                               height: AppDimensions.height10(context) * 9.296,
                               width: AppDimensions.height10(context) * 4.16,
                             ),
@@ -1321,8 +1321,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                   goal_level == 4 ||
                                                   goal_level == 5 ||
                                                   goal_level == 6)
-                                              ? 'assets/images/arrow-192-up.png'
-                                              : 'assets/images/arrow-192.png',
+                                              ? 'assets/images/arrow-192-up.webp'
+                                              : 'assets/images/arrow-192.webp',
                                           height:
                                               AppDimensions.height10(context) *
                                                   2.0,
@@ -1829,7 +1829,8 @@ void __share_experience(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -1880,7 +1881,7 @@ void __share_experience(context) {
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/orange_moon.png'),
+                                  AssetImage('assets/images/orange_moon.webp'),
                               fit: BoxFit.cover)),
                       child: Stack(
                         children: [
@@ -1921,7 +1922,7 @@ void __share_experience(context) {
                             //color: Colors.amber,
                             image: DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/Meditation Completed.png'),
+                                    'assets/images/Meditation Completed.webp'),
                                 fit: BoxFit.contain)),
                       ),
                     ),
@@ -1936,7 +1937,7 @@ void __share_experience(context) {
                   decoration: const BoxDecoration(
                       //color: Colors.amber,
                       image: DecorationImage(
-                          image: AssetImage('assets/images/share_exp.png'),
+                          image: AssetImage('assets/images/share_exp.webp'),
                           fit: BoxFit.contain)))
             ],
           )),

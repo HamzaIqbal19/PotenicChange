@@ -26,7 +26,7 @@ class _select_linkState extends State<select_link> {
                   Navigator.pop(context);
                 },
                 icon: Image.asset(
-                  'assets/images/Back.png',
+                  'assets/images/Back.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -51,7 +51,7 @@ class _select_linkState extends State<select_link> {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -64,7 +64,7 @@ class _select_linkState extends State<select_link> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/practicebackground.png'),
+                image: AssetImage('assets/images/practicebackground.webp'),
                 fit: BoxFit.cover)),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -79,7 +79,7 @@ class _select_linkState extends State<select_link> {
                   borderRadius: BorderRadius.circular(
                       AppDimensions.height10(context) * 1.0),
                   image: const DecorationImage(
-                      image: AssetImage('assets/images/Image_Subtract.png'))),
+                      image: AssetImage('assets/images/Image_Subtract.webp'))),
               child: Container(
                 margin: EdgeInsets.all(AppDimensions.height10(context) * 0.758),
                 decoration: BoxDecoration(
@@ -104,7 +104,7 @@ class _select_linkState extends State<select_link> {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/link_icon.png'))),
+                                        'assets/images/link_icon.webp'))),
                           ),
                           Container(
                             margin: EdgeInsets.only(

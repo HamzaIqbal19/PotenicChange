@@ -32,7 +32,7 @@ class CircularFormation extends StatelessWidget {
           decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                  image: AssetImage('assets/images/Day Count.png'))),
+                  image: AssetImage('assets/images/Day Count.webp'))),
         ),
       ),
     );

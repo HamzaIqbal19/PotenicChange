@@ -60,7 +60,8 @@ void timeline_sheet(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -69,7 +70,7 @@ void timeline_sheet(context) {
                     top: AppDimensions.height10(context) * 1.9,
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
-                  'assets/images/potenic__icon.png',
+                  'assets/images/potenic__icon.webp',
                   width: AppDimensions.height10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),
@@ -141,7 +142,7 @@ void timeline_sheet(context) {
                       // color: Colors.amber,
                       image: DecorationImage(
                           image: AssetImage(
-                              'assets/images/00 My Timeline 1.png'))),
+                              'assets/images/00 My Timeline 1.webp'))),
                 ),
               )
             ],

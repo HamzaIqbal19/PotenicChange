@@ -28,7 +28,7 @@ class _ActivateStarState extends State<ActivateStar> {
           // alignment: Alignment.center,
           child: IconButton(
             icon: Image.asset(
-              'assets/images/Back.png',
+              'assets/images/Back.webp',
               width: AppDimensions.height10(context) * 3,
               height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
@@ -50,7 +50,7 @@ class _ActivateStarState extends State<ActivateStar> {
             // alignment: Alignment.center,
             child: IconButton(
               icon: Image.asset(
-                'assets/images/Close.png',
+                'assets/images/Close.webp',
                 width: AppDimensions.height10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
@@ -73,7 +73,7 @@ class _ActivateStarState extends State<ActivateStar> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Activatestarbg.png"),
+                image: AssetImage("assets/images/Activatestarbg.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -141,7 +141,7 @@ class _ActivateStarState extends State<ActivateStar> {
                     child: Container(
                       child: Image(
                         image: const AssetImage(
-                            'assets/images/angerwithoutreview.png'),
+                            'assets/images/angerwithoutreview.webp'),
                         height: AppDimensions.height10(context) * 38.1,
                         width: AppDimensions.height10(context) * 35.3,
                       ),
@@ -182,7 +182,7 @@ class _ActivateStarState extends State<ActivateStar> {
                           },
                           child: Image(
                             image:
-                                const AssetImage('assets/images/Asfinger.png'),
+                                const AssetImage('assets/images/Asfinger.webp'),
                             height: AppDimensions.height10(context) * 16.0,
                             width: AppDimensions.height10(context) * 16.0,
                           ),
@@ -292,7 +292,8 @@ void dashboard_sheet(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -301,7 +302,7 @@ void dashboard_sheet(context) {
                     top: AppDimensions.height10(context) * 1.5,
                     bottom: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
-                  'assets/images/potenic__icon.png',
+                  'assets/images/potenic__icon.webp',
                   width: AppDimensions.height10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),
@@ -389,7 +390,8 @@ void login_sheet(context) {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -398,7 +400,7 @@ void login_sheet(context) {
                     top: AppDimensions.height10(context) * 1.5,
                     bottom: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
-                  'assets/images/potenic__icon.png',
+                  'assets/images/potenic__icon.webp',
                   width: AppDimensions.height10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),

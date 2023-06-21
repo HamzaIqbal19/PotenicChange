@@ -30,7 +30,7 @@ class no_past_session extends StatelessWidget {
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.32),
                       child: Image.asset(
-                        'assets/images/Asset 10 2.png',
+                        'assets/images/Asset 10 2.webp',
                         height: AppDimensions.height10(context) * 4.0,
                         width: AppDimensions.height10(context) * 3.977,
                         fit: BoxFit.contain,
@@ -50,7 +50,7 @@ class no_past_session extends StatelessWidget {
                       margin: EdgeInsets.only(
                           right: AppDimensions.height10(context) * 1.7),
                       child: Image.asset(
-                        'assets/images/Add goal.png',
+                        'assets/images/Add goal.webp',
                         height: AppDimensions.height10(context) * 2.0,
                         width: AppDimensions.height10(context) * 2.1,
                       ),
@@ -60,7 +60,7 @@ class no_past_session extends StatelessWidget {
                     margin: EdgeInsets.only(
                         right: AppDimensions.height10(context) * 1.32),
                     child: Image.asset(
-                      'assets/images/calendar_month_black_24dp 1.png',
+                      'assets/images/calendar_month_black_24dp 1.webp',
                       height: AppDimensions.height10(context) * 2.4,
                       width: AppDimensions.height10(context) * 2.4,
                     ),
@@ -79,7 +79,7 @@ class no_past_session extends StatelessWidget {
         body: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Mask Group.png'),
+                image: AssetImage('assets/images/Mask Group.webp'),
                 colorFilter: ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 0.2), BlendMode.darken),
                 fit: BoxFit.cover,
@@ -454,7 +454,7 @@ class no_past_session extends StatelessWidget {
                                           width: 1, color: Colors.white),
                                       color: Colors.transparent),
                                   child: Image.asset(
-                                    'assets/images/Add goal.png',
+                                    'assets/images/Add goal.webp',
                                     height:
                                         AppDimensions.height10(context) * 2.9,
                                     width:

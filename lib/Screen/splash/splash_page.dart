@@ -59,6 +59,7 @@ class SplashPageState extends State<SplashPage> {
           Navigator.push(
               context,
               FadePageRoute2(
+                true,
                 exitPage: HomeScreen(login: true),
                 enterPage: const HomeScreen(login: true),
               ));
@@ -76,12 +77,11 @@ class SplashPageState extends State<SplashPage> {
         if (response == true) {
           Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => HomeScreenProgressSaved(
-                  login: true,
-                  route: Routes!,
-                ),
-              ));
+              FadePageRoute2(
+          true,
+          enterPage:HomeScreen(login: false),
+              exitPage:SplashPage(),
+          ));
         } else {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(response["message"])));
@@ -117,7 +117,7 @@ class SplashPageState extends State<SplashPage> {
           decoration: BoxDecoration(
             // color: Colors.transparent,
             image: DecorationImage(
-              image: AssetImage('assets/images/splashpage.png'),
+              image: AssetImage('assets/images/splashpage.webp'),
               fit: BoxFit.cover,
             ),
           ),

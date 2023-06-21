@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 class FadePageRoute2<T> extends PageRouteBuilder<T> {
   final Widget enterPage;
   final Widget exitPage;
+  final bool slow_animate;
 
-  FadePageRoute2({required this.enterPage, required this.exitPage})
+  FadePageRoute2(this.slow_animate,
+      {required this.enterPage, required this.exitPage})
       : super(
           pageBuilder: (
             BuildContext context,
@@ -13,7 +15,9 @@ class FadePageRoute2<T> extends PageRouteBuilder<T> {
           ) =>
               enterPage,
           transitionDuration: Duration(
-              milliseconds: 600), // specify the transition duration here
+              milliseconds: slow_animate
+                  ? 500
+                  : 100), // specify the transition duration here
           transitionsBuilder: (
             BuildContext context,
             Animation<double> animation,
@@ -29,7 +33,7 @@ class FadePageRoute2<T> extends PageRouteBuilder<T> {
                   ).animate(
                     CurvedAnimation(
                       parent: animation,
-                      curve: Curves.easeOut,
+                      curve: Curves.linear,
                     ),
                   ),
                   child: exitPage,
@@ -41,7 +45,7 @@ class FadePageRoute2<T> extends PageRouteBuilder<T> {
                   ).animate(
                     CurvedAnimation(
                       parent: animation,
-                      curve: Curves.easeOut,
+                      curve: Curves.linear,
                     ),
                   ),
                   child: enterPage,

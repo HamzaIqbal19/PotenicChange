@@ -77,7 +77,7 @@ class _timelineState extends State<timeline> {
                     Navigator.pop(context);
                   },
                   icon: Image.asset(
-                    'assets/images/Back.png',
+                    'assets/images/Back.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.cover,
@@ -92,7 +92,7 @@ class _timelineState extends State<timeline> {
                   margin: EdgeInsets.only(
                       right: AppDimensions.height10(context) * 1.4),
                   child: Image.asset(
-                    'assets/images/Asset 10 2.png',
+                    'assets/images/Asset 10 2.webp',
                     width: AppDimensions.height10(context) * 4.1,
                     height: AppDimensions.height10(context) * 4.1,
                     fit: BoxFit.contain,
@@ -107,7 +107,7 @@ class _timelineState extends State<timeline> {
           decoration: const BoxDecoration(
               color: Colors.transparent,
               image: DecorationImage(
-                  image: AssetImage('assets/images/Background.png'),
+                  image: AssetImage('assets/images/Background.webp'),
                   fit: BoxFit.cover)),
           child: Container(
             width: double.infinity,
@@ -223,7 +223,7 @@ class _timelineState extends State<timeline> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/session_stored.png'),
+                                            'assets/images/session_stored.webp'),
                                         fit: BoxFit.contain)),
                               ),
                               SizedBox(
@@ -274,7 +274,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/orange_moon.png'),
+                                            'assets/images/orange_moon.webp'),
                                         fit: BoxFit.cover)),
                                 child: Container(
                                   width: AppDimensions.height10(context) * 15.8,
@@ -304,7 +304,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Ellipse 158.png'),
+                                            'assets/images/Ellipse 158.webp'),
                                         fit: BoxFit.contain)),
                                 child: Center(
                                   child: Text(
@@ -406,7 +406,7 @@ class _timelineState extends State<timeline> {
                                     right:
                                         AppDimensions.height10(context) * 0.8),
                                 child: Image.asset(
-                                  'assets/images/session_stored.png',
+                                  'assets/images/session_stored.webp',
                                   width: AppDimensions.height10(context) * 3.5,
                                   height: AppDimensions.height10(context) * 3.5,
                                 ),
@@ -459,7 +459,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/orange_moon.png'),
+                                            'assets/images/orange_moon.webp'),
                                         fit: BoxFit.cover)),
                                 child: Container(
                                   width: AppDimensions.height10(context) * 15.8,
@@ -488,7 +488,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Ellipse 158.png'),
+                                            'assets/images/Ellipse 158.webp'),
                                         fit: BoxFit.contain)),
                                 child: Center(
                                   child: Text(
@@ -600,7 +600,7 @@ class _timelineState extends State<timeline> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 3.5),
                     child: Image.asset(
-                      'assets/images/Arrow_up.png',
+                      'assets/images/Arrow_up.webp',
                       color: const Color(0xFF437296),
                       width: AppDimensions.height10(context) * 2.5,
                       height: AppDimensions.height10(context) * 2.5,
@@ -641,7 +641,7 @@ class _timelineState extends State<timeline> {
                       //             ])),
                       //     padding: EdgeInsets.all(AppDimensions.height10(context) * 1.2),
                       child: Image.asset(
-                        'assets/images/Asset_timeline.png',
+                        'assets/images/Asset_timeline.webp',
                         height: AppDimensions.height10(context) * 7.8,
                         width: AppDimensions.height10(context) * 7.8,
                       )),
@@ -702,7 +702,7 @@ class _timelineState extends State<timeline> {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 0.8),
                     child: Image.asset(
-                      'assets/images/Arrow.png',
+                      'assets/images/Arrow.webp',
                       color: const Color(0xFF437296),
                       width: AppDimensions.height10(context) * 2.5,
                       height: AppDimensions.height10(context) * 2.5,
@@ -774,7 +774,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/menu_goals_b.png'),
+                                      'assets/images/menu_goals_b.webp'),
                                 )),
                               ),
                               SizedBox(
@@ -802,7 +802,7 @@ class _timelineState extends State<timeline> {
                                   AppDimensions.height10(context) * 2.0),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/timeline_1.png'),
+                                      'assets/images/timeline_1.webp'),
                                   fit: BoxFit.cover)),
                           child: Column(
                             children: [
@@ -845,7 +845,7 @@ class _timelineState extends State<timeline> {
                                       decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: AssetImage(
-                                                  'assets/images/orange_moon.png'),
+                                                  'assets/images/orange_moon.webp'),
                                               fit: BoxFit.cover)),
                                       child: Column(
                                         mainAxisAlignment:
@@ -916,7 +916,7 @@ class _timelineState extends State<timeline> {
                                         decoration: const BoxDecoration(
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/Ellipse 158.png'),
+                                                    'assets/images/Ellipse 158.webp'),
                                                 fit: BoxFit.cover)),
                                         child: Center(
                                           child: Text(
@@ -975,7 +975,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/session_stored.png'),
+                                            'assets/images/session_stored.webp'),
                                         fit: BoxFit.contain)),
                               ),
                               SizedBox(
@@ -1014,7 +1014,7 @@ class _timelineState extends State<timeline> {
                                   AppDimensions.height10(context) * 2.0),
                               image: const DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/timeline_1.png'),
+                                      'assets/images/timeline_1.webp'),
                                   fit: BoxFit.cover)),
                           child: Stack(children: [
                             Align(
@@ -1025,7 +1025,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/orange_moon.png'),
+                                            'assets/images/orange_moon.webp'),
                                         fit: BoxFit.cover)),
                                 child: Container(
                                   width: AppDimensions.height10(context) * 15.8,
@@ -1054,7 +1054,7 @@ class _timelineState extends State<timeline> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Meditation Completed.png'),
+                                            'assets/images/Meditation Completed.webp'),
                                         fit: BoxFit.contain)),
                               ),
                             )
@@ -1235,8 +1235,8 @@ class _timelineState extends State<timeline> {
                             decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/session.png'),
+                                    image: AssetImage(
+                                        'assets/images/session.webp'),
                                     fit: BoxFit.contain)),
                           ),
                         ),
@@ -1275,7 +1275,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/hurdle.png'),
+                                            'assets/images/hurdle.webp'),
                                         fit: BoxFit.contain)),
                               ),
                               SizedBox(
@@ -1301,7 +1301,7 @@ class _timelineState extends State<timeline> {
                           decoration: BoxDecoration(
                             image: const DecorationImage(
                                 image:
-                                    AssetImage('assets/images/timeline_3.png'),
+                                    AssetImage('assets/images/timeline_3.webp'),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
@@ -1337,7 +1337,7 @@ class _timelineState extends State<timeline> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/black_hole.png'))),
+                                            'assets/images/black_hole.webp'))),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -1420,7 +1420,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/inspiration.png'),
+                                            'assets/images/inspiration.webp'),
                                         fit: BoxFit.cover)),
                               ),
                               SizedBox(
@@ -1446,7 +1446,7 @@ class _timelineState extends State<timeline> {
                           decoration: BoxDecoration(
                             image: const DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/bg_inpiration_purple.png'),
+                                    'assets/images/bg_inpiration_purple.webp'),
                                 fit: BoxFit.cover),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
@@ -1477,7 +1477,7 @@ class _timelineState extends State<timeline> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Rectangle 10.png'))),
+                                            'assets/images/Rectangle 10.webp'))),
                               ),
                               Container(
                                 width: AppDimensions.height10(context) * 16.7,
@@ -1547,7 +1547,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/report.png'),
+                                            'assets/images/report.webp'),
                                         fit: BoxFit.cover)),
                               ),
                               SizedBox(
@@ -1575,8 +1575,8 @@ class _timelineState extends State<timeline> {
                                 colors: [Color(0xFFE1B3B7), Color(0XffC9B9CB)]),
                             image: const DecorationImage(
                                 opacity: 0.7,
-                                image:
-                                    AssetImage('assets/images/timeline_2.png')),
+                                image: AssetImage(
+                                    'assets/images/timeline_2.webp')),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
                           ),
@@ -1622,7 +1622,7 @@ class _timelineState extends State<timeline> {
                                 decoration: BoxDecoration(
                                   image: const DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Report card.png')),
+                                          'assets/images/Report card.webp')),
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10(context) * 2.0),
                                 ),
@@ -1664,7 +1664,7 @@ class _timelineState extends State<timeline> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/menu_goals_b.png'),
+                                            'assets/images/menu_goals_b.webp'),
                                         fit: BoxFit.contain)),
                               ),
                               SizedBox(
@@ -1689,8 +1689,8 @@ class _timelineState extends State<timeline> {
                               top: AppDimensions.height10(context) * 1.5),
                           decoration: BoxDecoration(
                             image: const DecorationImage(
-                                image:
-                                    AssetImage('assets/images/timeline_4.png')),
+                                image: AssetImage(
+                                    'assets/images/timeline_4.webp')),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
                           ),
@@ -1699,8 +1699,8 @@ class _timelineState extends State<timeline> {
                               borderRadius: BorderRadius.circular(
                                   AppDimensions.height10(context) * 2.0),
                               image: const DecorationImage(
-                                  image:
-                                      AssetImage('assets/images/bg_stars.png')),
+                                  image: AssetImage(
+                                      'assets/images/bg_stars.webp')),
                             ),
                             child: Column(
                               children: [
@@ -1788,7 +1788,7 @@ class _timelineState extends State<timeline> {
                                                           const BoxDecoration(
                                                         image: DecorationImage(
                                                             image: AssetImage(
-                                                                'assets/images/colon.png'),
+                                                                'assets/images/colon.webp'),
                                                             fit:
                                                                 BoxFit.contain),
                                                       ),
@@ -1849,7 +1849,7 @@ class _timelineState extends State<timeline> {
                                           decoration: const BoxDecoration(
                                               image: DecorationImage(
                                                   image: AssetImage(
-                                                      'assets/images/orange_moon.png'),
+                                                      'assets/images/orange_moon.webp'),
                                                   fit: BoxFit.cover)),
                                           child: Column(
                                             children: [
@@ -1931,14 +1931,14 @@ class _timelineState extends State<timeline> {
                                               image: DecorationImage(
                                                   image: AssetImage(goal_level ==
                                                           1
-                                                      ? 'assets/images/goal_level_1.png'
+                                                      ? 'assets/images/goal_level_1.webp'
                                                       : goal_level == 2
-                                                          ? 'assets/images/Nebula pie 2.png'
+                                                          ? 'assets/images/Nebula pie 2.webp'
                                                           : goal_level == 3
-                                                              ? 'assets/images/Nebula pie 3.png'
+                                                              ? 'assets/images/Nebula pie 3.webp'
                                                               : goal_level == 4
-                                                                  ? 'assets/images/goal_level_4.png'
-                                                                  : 'assets/images/goal_level_5.png'),
+                                                                  ? 'assets/images/goal_level_4.webp'
+                                                                  : 'assets/images/goal_level_5.webp'),
                                                   fit: BoxFit.contain)),
                                           child: Stack(
                                             alignment: Alignment.center,
@@ -2164,7 +2164,7 @@ class _timelineState extends State<timeline> {
                                 child: GestureDetector(
                                   onTap: () {},
                                   child: Image.asset(
-                                    'assets/images/ic_filter_list.png',
+                                    'assets/images/ic_filter_list.webp',
                                     width:
                                         AppDimensions.height10(context) * 2.4,
                                     height:
@@ -2957,7 +2957,7 @@ class _timelineState extends State<timeline> {
                     child: GestureDetector(
                       onTap: () {},
                       child: Image.asset(
-                        'assets/images/Search.png',
+                        'assets/images/Search.webp',
                         width: AppDimensions.height10(context) * 5,
                         height: AppDimensions.height10(context) * 5,
                         fit: BoxFit.contain,

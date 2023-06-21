@@ -28,7 +28,7 @@ class Settings extends StatelessWidget {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -53,7 +53,7 @@ class Settings extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -469,7 +469,7 @@ class Settings extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -510,7 +510,7 @@ class Settings extends StatelessWidget {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -604,7 +604,7 @@ class Settings extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -652,7 +652,7 @@ class Settings extends StatelessWidget {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -699,7 +699,7 @@ class Settings extends StatelessWidget {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -746,7 +746,7 @@ class Settings extends StatelessWidget {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -798,7 +798,7 @@ class Settings extends StatelessWidget {
                                         child: GestureDetector(
                                           onTap: () {},
                                           child: Image.asset(
-                                            'assets/images/BTN Back.png',
+                                            'assets/images/BTN Back.webp',
                                             //width: AppDimensions.height10(context) * 2.6,
                                             //height: AppDimensions.height10(context) * 2.6,
                                             color: colorC,
@@ -849,7 +849,7 @@ class Settings extends StatelessWidget {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -889,7 +889,7 @@ class Settings extends StatelessWidget {
                                       child: GestureDetector(
                                         onTap: () {},
                                         child: Image.asset(
-                                          'assets/images/BTN Back.png',
+                                          'assets/images/BTN Back.webp',
                                           //width: AppDimensions.height10(context) * 2.6,
                                           //height: AppDimensions.height10(context) * 2.6,
                                           color: colorC,
@@ -1288,7 +1288,7 @@ class About_us extends StatelessWidget {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -1311,7 +1311,7 @@ class About_us extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -1386,7 +1386,7 @@ class About_us extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
                                         color: colorC,
@@ -1432,7 +1432,7 @@ class About_us extends StatelessWidget {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
                                         color: colorC,
@@ -1468,7 +1468,7 @@ class About_us extends StatelessWidget {
                                   child: GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
-                                      'assets/images/BTN Back.png',
+                                      'assets/images/BTN Back.webp',
                                       //width: AppDimensions.height10(context) * 2.6,
                                       //height: AppDimensions.height10(context) * 2.6,
                                       color: colorC,
@@ -1537,7 +1537,7 @@ void export_data_sheet(context) {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image:
-                                  AssetImage('assets/images/Close_blue.png'))),
+                                  AssetImage('assets/images/Close_blue.webp'))),
                     ),
                   ),
                 ),
@@ -1546,7 +1546,7 @@ void export_data_sheet(context) {
                       top: AppDimensions.height10(context) * 1.9,
                       bottom: AppDimensions.height10(context) * 3.9),
                   child: Image.asset(
-                    'assets/images/potenic__icon.png',
+                    'assets/images/potenic__icon.webp',
                     width: AppDimensions.height10(context) * 8.202,
                     height: AppDimensions.height10(context) * 11.2,
                   ),

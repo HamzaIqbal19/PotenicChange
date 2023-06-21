@@ -32,7 +32,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
           // alignment: Alignment.center,
           child: IconButton(
             icon: Image.asset(
-              'assets/images/Back.png',
+              'assets/images/Back.webp',
               width: AppDimensions.height10(context) * 3,
               height: AppDimensions.height10(context) * 3,
               fit: BoxFit.contain,
@@ -54,7 +54,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
             // alignment: Alignment.center,
             child: IconButton(
               icon: Image.asset(
-                'assets/images/Close.png',
+                'assets/images/Close.webp',
                 width: AppDimensions.height10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.contain,
@@ -79,7 +79,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/practicebackground.png"),
+                image: AssetImage("assets/images/practicebackground.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -142,7 +142,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 children: [
                   Container(
                     child: Image(
-                      image: const AssetImage('assets/images/anger.png'),
+                      image: const AssetImage('assets/images/anger.webp'),
                       height: AppDimensions.height10(context) * 38.1,
                       width: AppDimensions.height10(context) * 35.3,
                     ),
@@ -175,7 +175,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                           },
                           child: Image(
                             image: const AssetImage(
-                                'assets/images/practicefinal.png'),
+                                'assets/images/practicefinal.webp'),
                             height:
                                 AppDimensions.height10(context) * 1.5 * 14.7,
                             width: AppDimensions.height10(context) * 1.5 * 14.7,
@@ -197,7 +197,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       width: AppDimensions.height10(context) * 5.0,
                       height: AppDimensions.height10(context) * 5.0,
                       child: Image.asset(
-                        "assets/images/Moreactions.png",
+                        "assets/images/Moreactions.webp",
                         fit: BoxFit.contain,
                       )),
                   GestureDetector(

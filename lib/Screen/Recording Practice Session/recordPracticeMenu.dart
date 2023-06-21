@@ -28,7 +28,7 @@ class practiceMenu extends StatelessWidget {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -39,7 +39,7 @@ class practiceMenu extends StatelessWidget {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/Close.png',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -51,7 +51,7 @@ class practiceMenu extends StatelessWidget {
       body: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('assets/images/prac_assesment.png'),
+            image: AssetImage('assets/images/prac_assesment.webp'),
             fit: BoxFit.cover,
           )),
           width: double.infinity,
@@ -109,7 +109,7 @@ class practiceMenu extends StatelessWidget {
                                     // color: Colors.amber,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/image3.png'),
+                                            'assets/images/image3.webp'),
                                         fit: BoxFit.cover),
                                   ),
                                 ),
@@ -245,7 +245,7 @@ class practiceMenu extends StatelessWidget {
                               info_sheet(context);
                             },
                             icon: Image.asset(
-                              'assets/images/ic_info_outline.png',
+                              'assets/images/ic_info_outline.webp',
                               height: AppDimensions.height10(context) * 3.0,
                               width: AppDimensions.height10(context) * 3.0,
                             )),
@@ -552,7 +552,8 @@ void info_sheet(context) {
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                            image: AssetImage('assets/images/Close_blue.png'))),
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
                   ),
                 ),
               ),
@@ -561,7 +562,7 @@ void info_sheet(context) {
                     top: AppDimensions.height10(context) * 1.9,
                     bottom: AppDimensions.height10(context) * 1.9),
                 child: Image.asset(
-                  'assets/images/potenic__icon.png',
+                  'assets/images/potenic__icon.webp',
                   width: AppDimensions.height10(context) * 8.202,
                   height: AppDimensions.height10(context) * 11.2,
                 ),

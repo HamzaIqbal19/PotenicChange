@@ -232,7 +232,7 @@ class _image_infoState extends State<image_info> {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image:
-                              AssetImage('assets/images/selected_image.png'))),
+                              AssetImage('assets/images/selected_image.webp'))),
                 ),
                 Container(
                   height: AppDimensions.height10(context) * 2.1,
@@ -553,7 +553,7 @@ class _link_editerState extends State<link_editer> {
                         decoration: const BoxDecoration(
                             //shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: AssetImage('assets/images/Light.png'),
+                                image: AssetImage('assets/images/Light.webp'),
                                 fit: BoxFit.fill)),
                       ),
                       Container(
@@ -586,7 +586,7 @@ class _link_editerState extends State<link_editer> {
                           color: Color(0xff282828),
                         ),
                         child: Image.asset(
-                          'assets/images/ic_clear.png',
+                          'assets/images/ic_clear.webp',
                           width: AppDimensions.height10(context) * 0.941,
                           height: AppDimensions.height10(context) * 1.4,
                           color: const Color(0xff8E8E93),

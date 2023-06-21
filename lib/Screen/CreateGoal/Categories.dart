@@ -73,7 +73,7 @@ class _CategoriesState extends State<Categories> {
             // alignment: Alignment.center,
             child: IconButton(
               icon: Image.asset(
-                'assets/images/Close.png',
+                'assets/images/Close.webp',
                 width: 28.0,
                 height: 28.0,
                 fit: BoxFit.cover,
@@ -95,7 +95,7 @@ class _CategoriesState extends State<Categories> {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.png"),
+                image: AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -180,6 +180,7 @@ class _CategoriesState extends State<Categories> {
                                       Navigator.push(
                                         context,
                                         FadePageRoute2(
+                                          true,
                                           exitPage: Categories(),
                                           enterPage: GoalCategory(
                                             "Category Name",
@@ -241,6 +242,7 @@ class _CategoriesState extends State<Categories> {
                                           Navigator.push(
                                             context,
                                             FadePageRoute2(
+                                              true,
                                               exitPage: Categories(),
                                               enterPage: GoalCategory(
                                                   "Category Name",

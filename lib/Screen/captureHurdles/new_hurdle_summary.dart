@@ -21,7 +21,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/practicebackground.png'),
+                image: AssetImage('assets/images/practicebackground.webp'),
                 fit: BoxFit.cover)),
         child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
@@ -67,7 +67,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                          image: AssetImage('assets/images/black_hole.png'))),
+                          image: AssetImage('assets/images/black_hole.webp'))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -231,7 +231,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         color: Colors.transparent,
                         border: Border.all(width: 1, color: Colors.white)),
                     child: const ImageIcon(
-                      AssetImage('assets/images/edit_icon.png'),
+                      AssetImage('assets/images/edit_icon.webp'),
                       color: Colors.white,
                       //size: 10,
                     )),
@@ -262,7 +262,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                           width: AppDimensions.height10(context) * 0.1,
                           color: Colors.white),
                       image: const DecorationImage(
-                          image: AssetImage('assets/images/Ellipse 161.png'))),
+                          image: AssetImage('assets/images/Ellipse 161.webp'))),
                   child: Center(
                     child: Text(
                       'I will leave him to it\ninstead of trying to\nsolve it for him',
@@ -286,7 +286,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         color: Colors.transparent,
                         border: Border.all(width: 1, color: Colors.white)),
                     child: const ImageIcon(
-                      AssetImage('assets/images/edit_icon.png'),
+                      AssetImage('assets/images/edit_icon.webp'),
                       color: Colors.white,
                       //size: 10,
                     )),
@@ -317,7 +317,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                           width: AppDimensions.height10(context) * 0.1,
                           color: Colors.white),
                       image: const DecorationImage(
-                          image: AssetImage('assets/images/Ellipse 161.png'))),
+                          image: AssetImage('assets/images/Ellipse 161.webp'))),
                   child: Center(
                     child: Text(
                       'Remember that he\nis good to me and\ntreats me with\nrespect.',
@@ -341,7 +341,7 @@ class _new_hurdles_summaryState extends State<new_hurdles_summary> {
                         color: Colors.transparent,
                         border: Border.all(width: 1, color: Colors.white)),
                     child: const ImageIcon(
-                      AssetImage('assets/images/edit_icon.png'),
+                      AssetImage('assets/images/edit_icon.webp'),
                       color: Colors.white,
                       //size: 10,
                     )),

@@ -42,7 +42,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         );
                       },
                       icon: Image.asset(
-                        'assets/images/Back.png',
+                        'assets/images/Back.webp',
                         width: AppDimensions.height10(context) * 2.6,
                         height: AppDimensions.height10(context) * 2.6,
                         fit: BoxFit.cover,
@@ -221,7 +221,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   ),
                                 )),
                         icon: Image.asset(
-                          'assets/images/Close.png',
+                          'assets/images/Close.webp',
                           width: AppDimensions.height10(context) * 2.6,
                           height: AppDimensions.height10(context) * 2.6,
                           fit: BoxFit.cover,
@@ -235,7 +235,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
           // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/images/bg_inpiration_purple.png'),
+                  image: AssetImage('assets/images/bg_inpiration_purple.webp'),
                   colorFilter: ColorFilter.mode(
                       Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                   fit: BoxFit.cover)),

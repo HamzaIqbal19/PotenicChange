@@ -39,7 +39,7 @@ class _congratulationsState extends State<congratulations> {
                     Navigator.pop(context);
                   },
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -52,7 +52,7 @@ class _congratulationsState extends State<congratulations> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/goal_achieved_bg.png'),
+                image: AssetImage('assets/images/goal_achieved_bg.webp'),
                 fit: BoxFit.cover)),
         child: Column(
           children: [
@@ -115,7 +115,7 @@ class _congratulationsState extends State<congratulations> {
                       height: AppDimensions.height10(context) * 38.1,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage('assets/images/anger_2.png'),
+                              image: AssetImage('assets/images/anger_2.webp'),
                               fit: BoxFit.cover)),
                     ),
                   ),
@@ -129,14 +129,14 @@ class _congratulationsState extends State<congratulations> {
                           shape: BoxShape.circle,
                           image: DecorationImage(
                               image: AssetImage(goal_level == 1
-                                  ? 'assets/images/goal_level_1.png'
+                                  ? 'assets/images/goal_level_1.webp'
                                   : goal_level == 2
-                                      ? 'assets/images/goal_level_2.png'
+                                      ? 'assets/images/goal_level_2.webp'
                                       : goal_level == 3
-                                          ? 'assets/images/goal_level_3.png'
+                                          ? 'assets/images/goal_level_3.webp'
                                           : goal_level == 4
-                                              ? 'assets/images/goal_level_4.png'
-                                              : 'assets/images/goal_level_5.png'),
+                                              ? 'assets/images/goal_level_4.webp'
+                                              : 'assets/images/goal_level_5.webp'),
                               fit: BoxFit.cover)),
                       child: Center(
                         child: Container(
@@ -361,7 +361,7 @@ void goal_achieved_sheet(context) {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Close_blue.png'))),
+                                      'assets/images/Close_blue.webp'))),
                         ),
                       ),
                     ),
@@ -413,7 +413,7 @@ void goal_achieved_sheet(context) {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/orange_moon.png'),
+                                        'assets/images/orange_moon.webp'),
                                     fit: BoxFit.cover)),
                             child: Column(
                               children: [
@@ -466,14 +466,14 @@ void goal_achieved_sheet(context) {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(goal_level == 1
-                                          ? 'assets/images/goal_level_1.png'
+                                          ? 'assets/images/goal_level_1.webp'
                                           : goal_level == 2
-                                              ? 'assets/images/goal_level_2.png'
+                                              ? 'assets/images/goal_level_2.webp'
                                               : goal_level == 3
-                                                  ? 'assets/images/goal_level_3.png'
+                                                  ? 'assets/images/goal_level_3.webp'
                                                   : goal_level == 4
-                                                      ? 'assets/images/goal_level_4.png'
-                                                      : 'assets/images/goal_level_5.png'),
+                                                      ? 'assets/images/goal_level_4.webp'
+                                                      : 'assets/images/goal_level_5.webp'),
                                       fit: BoxFit.cover)),
                               child: Center(
                                 child: Container(

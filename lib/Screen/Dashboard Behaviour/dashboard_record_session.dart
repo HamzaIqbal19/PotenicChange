@@ -22,7 +22,7 @@ class record_session extends StatelessWidget {
               child: IconButton(
                   onPressed: () {},
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -33,7 +33,7 @@ class record_session extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/prac_assesment.png'),
+            image: AssetImage('assets/images/prac_assesment.webp'),
             fit: BoxFit.cover,
           ),
         ),
@@ -81,7 +81,7 @@ class record_session extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/orange_moon.png'),
+                                        'assets/images/orange_moon.webp'),
                                     colorFilter: ColorFilter.mode(
                                         Color.fromRGBO(0, 0, 0, 0.5),
                                         BlendMode.dstATop),
@@ -138,7 +138,7 @@ class record_session extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Ellipse 158.png'),
+                                          'assets/images/Ellipse 158.webp'),
                                       fit: BoxFit.cover),
                                 ),
                                 child: Center(
@@ -165,7 +165,7 @@ class record_session extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/Ellipse orange.png'),
+                                        'assets/images/Ellipse orange.webp'),
                                     fit: BoxFit.cover),
                               ),
                               child: Center(
@@ -188,7 +188,7 @@ class record_session extends StatelessWidget {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Ellipse purple.png'),
+                                          'assets/images/Ellipse purple.webp'),
                                       fit: BoxFit.cover)),
                               child: Center(
                                 child: Text(
@@ -227,7 +227,7 @@ class record_session extends StatelessWidget {
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image:
-                                      AssetImage('assets/images/blue_sun.png'),
+                                      AssetImage('assets/images/blue_sun.webp'),
                                   colorFilter: ColorFilter.mode(
                                       Color.fromRGBO(0, 0, 0, 0.5),
                                       BlendMode.dstATop),
@@ -277,7 +277,7 @@ class record_session extends StatelessWidget {
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/Ellipse 158.png'),
+                                              'assets/images/Ellipse 158.webp'),
                                           fit: BoxFit.cover),
                                     ),
                                     child: Center(
@@ -303,7 +303,7 @@ class record_session extends StatelessWidget {
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: AssetImage(
-                                              'assets/images/Ellipse blue.png'),
+                                              'assets/images/Ellipse blue.webp'),
                                           fit: BoxFit.cover),
                                     ),
                                     child: Center(

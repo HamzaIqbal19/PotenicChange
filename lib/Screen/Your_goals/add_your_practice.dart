@@ -20,7 +20,7 @@ class add_your_practice extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   icon: Image.asset(
-                    'assets/images/Close.png',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
@@ -30,7 +30,7 @@ class add_your_practice extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -80,7 +80,7 @@ class add_your_practice extends StatelessWidget {
                 EdgeInsets.only(top: AppDimensions.height10(context) * 2.03),
             decoration: const BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage('assets/images/orange_flair.png'),
+              image: AssetImage('assets/images/orange_flair.webp'),
               fit: BoxFit.cover,
             )),
           ),
@@ -111,7 +111,7 @@ class add_your_practice extends StatelessWidget {
                 decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage('assets/images/circle_grey.png'))),
+                        image: AssetImage('assets/images/circle_grey.webp'))),
                 child: Center(
                   child: Text(
                     'Add new\npractice',
@@ -165,7 +165,7 @@ class add_your_practice extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {},
                       child: Image.asset(
-                        'assets/images/BTN Back.png',
+                        'assets/images/BTN Back.webp',
                         //width: AppDimensions.height10(context) * 2.6,
                         //height: AppDimensions.height10(context) * 2.6,
                         fit: BoxFit.cover,

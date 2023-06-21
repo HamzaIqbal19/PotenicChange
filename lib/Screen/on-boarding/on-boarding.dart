@@ -47,7 +47,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
     //page 1
     OnboardingModel(
       mainTitle: "Introduction",
-      logo: 'assets/images/logo.png',
+      logo: 'assets/images/logo.webp',
       title: 'What is Potenic and \n who is it for?',
       index: 1,
       description:
@@ -60,13 +60,13 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
       image2: "",
       titleColor: Color(0xFFFFFFFF),
       descripColor: const Color(0xFFFFFFFF),
-      imagePath: 'assets/images/Onboarding-background.png',
+      imagePath: 'assets/images/Onboarding-background.webp',
       buttonText: "Next",
     ),
     //page 2
     OnboardingModel(
         mainTitle: "Introduction",
-        logo: 'assets/images/logo.png',
+        logo: 'assets/images/logo.webp',
         title: 'Define your why',
         index: 2,
         description:
@@ -78,12 +78,12 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         image2: "",
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
-        imagePath: 'assets/images/Onboarding-background2.png',
+        imagePath: 'assets/images/Onboarding-background2.webp',
         buttonText: "Next"),
     //page 3
     OnboardingModel(
         mainTitle: "Introduction",
-        logo: 'assets/images/logo.png',
+        logo: 'assets/images/logo.webp',
         index: 3,
         title: 'Evaluate the tools you’re already using',
         description:
@@ -95,11 +95,11 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         image2: "",
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
-        imagePath: 'assets/images/Onboarding-background3.png',
+        imagePath: 'assets/images/Onboarding-background3.webp',
         buttonText: "Next"),
     OnboardingModel(
         mainTitle: "Introduction",
-        logo: 'assets/images/logo.png',
+        logo: 'assets/images/logo.webp',
         title: 'Prepare for hurdles',
         index: 4,
         description:
@@ -111,11 +111,11 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         backbutton: true,
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
-        imagePath: 'assets/images/Onboarding-background3.png',
+        imagePath: 'assets/images/Onboarding-background3.webp',
         buttonText: "Next"),
     OnboardingModel(
         mainTitle: "Introduction",
-        logo: 'assets/images/logo.png',
+        logo: 'assets/images/logo.webp',
         title: 'Designed through science',
         index: 5,
         backbutton: true,
@@ -127,28 +127,28 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         image2: "",
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
-        imagePath: 'assets/images/Onboarding-background3.png',
+        imagePath: 'assets/images/Onboarding-background3.webp',
         buttonText: "Next"),
     OnboardingModel(
         mainTitle: "Introduction",
-        logo: 'assets/images/logo.png',
+        logo: 'assets/images/logo.webp',
         title: 'How it works',
         index: 6,
         backbutton: true,
         description:
             'Create a personal development goal that will become your own star (e.g. ‘set personal boundaries’)',
         subDescription: '',
-        image1: "assets/images/image1.png",
+        image1: "assets/images/image1.webp",
         description2:
             "To support your goal, you’ll set a\npractice that will become your planet\n(e.g. ‘practice saying NO’)",
-        image2: "assets/images/image2.png",
+        image2: "assets/images/image2.webp",
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
-        imagePath: 'assets/images/Onboarding-background3.png',
+        imagePath: 'assets/images/Onboarding-background3.webp',
         buttonText: "Next"),
     OnboardingModel(
         mainTitle: "Introduction",
-        logo: 'assets/images/logo2.png',
+        logo: 'assets/images/logo2.webp',
         index: 7,
         title: 'Hi, I’m Reda',
         backbutton: true,
@@ -160,11 +160,11 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         image2: "",
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
-        imagePath: 'assets/images/Onboarding-background3.png',
+        imagePath: 'assets/images/Onboarding-background3.webp',
         buttonText: "Next"),
     OnboardingModel(
         mainTitle: "Introduction",
-        logo: 'assets/images/logo.png',
+        logo: 'assets/images/logo.webp',
         title: 'Your commitment',
         index: 8,
         backbutton: true,
@@ -176,11 +176,11 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         image2: "",
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
-        imagePath: 'assets/images/Onboarding-background3.png',
+        imagePath: 'assets/images/Onboarding-background3.webp',
         buttonText: "Next"),
     OnboardingModel(
         mainTitle: "Introduction",
-        logo: 'assets/images/logo.png',
+        logo: 'assets/images/logo.webp',
         title: 'Your data',
         index: 9,
         backbutton: true,
@@ -192,7 +192,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         image2: "",
         titleColor: Color(0xFFFFFFFF),
         descripColor: const Color(0xFFFFFFFF),
-        imagePath: 'assets/images/Onboarding-background3.png',
+        imagePath: 'assets/images/Onboarding-background3.webp',
         buttonText: "Start your journey"),
   ];
 }

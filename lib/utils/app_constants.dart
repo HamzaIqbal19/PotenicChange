@@ -25,7 +25,7 @@ class AppConstants {
 
   //icons_images
   static const menuIcon = "assets/icons/menu.svg";
-  static const person = "assets/images/person.png";
+  static const person = "assets/images/person.webp";
   static const settingIcon = "assets/icons/setting.svg";
   static const searchIcon = "assets/icons/search-normal.svg";
   static const locationIcon2 = "assets/icons/location-2.svg";

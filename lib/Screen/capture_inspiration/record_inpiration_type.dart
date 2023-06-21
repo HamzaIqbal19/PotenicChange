@@ -30,7 +30,7 @@ class _record_inspirationState extends State<record_inspiration> {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/Close.png',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -59,7 +59,7 @@ class _record_inspirationState extends State<record_inspiration> {
         // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/bg_inpiration_purple.png'),
+                image: AssetImage('assets/images/bg_inpiration_purple.webp'),
                 colorFilter: ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
@@ -96,7 +96,8 @@ class _record_inspirationState extends State<record_inspiration> {
                         decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: AssetImage('assets/images/sir_nyal.png'),
+                                image:
+                                    AssetImage('assets/images/sir_nyal.webp'),
                                 fit: BoxFit.cover)),
                       ),
                       Container(
@@ -188,7 +189,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/video_play.png'))),
+                                    'assets/images/video_play.webp'))),
                       ),
                       Container(
                         width: AppDimensions.height10(context) * 16.7,
@@ -228,7 +229,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             color: Color(0xFFD9D9D9),
                             image: DecorationImage(
                                 image: AssetImage(
-                                    'assets/images/distraction content.png'))),
+                                    'assets/images/distraction content.webp'))),
                       ),
                       Container(
                         width: AppDimensions.height10(context) * 16.7,
@@ -360,7 +361,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/images/BTN Back.png',
+                                  'assets/images/BTN Back.webp',
                                   color: const Color(0xFF646464),
                                   //width: AppDimensions.height10(context) * 2.6,
                                   //height: AppDimensions.height10(context) * 2.6,
@@ -445,7 +446,7 @@ class _record_inspirationState extends State<record_inspiration> {
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/images/BTN Back.png',
+                                  'assets/images/BTN Back.webp',
                                   color: const Color(0xFF646464),
                                   //width: AppDimensions.height10(context) * 2.6,
                                   //height: AppDimensions.height10(context) * 2.6,

@@ -162,7 +162,7 @@ class _your_whyState extends State<your_why> {
                         )));
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 3.0,
                 height: AppDimensions.height10(context) * 3.0,
                 fit: BoxFit.cover,
@@ -174,7 +174,7 @@ class _your_whyState extends State<your_why> {
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         child: SingleChildScrollView(
@@ -319,7 +319,7 @@ class _your_whyState extends State<your_why> {
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image:
-                                        AssetImage('assets/images/colon.png'),
+                                        AssetImage('assets/images/colon.webp'),
                                     fit: BoxFit.contain),
                               ),
                             ),
@@ -370,7 +370,7 @@ class _your_whyState extends State<your_why> {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.5),
                       child: Image.asset(
-                        'assets/images/Arrow.png',
+                        'assets/images/Arrow.webp',
                         width: AppDimensions.height10(context) * 4.1,
                         height: AppDimensions.height10(context) * 4.1,
                       ),
@@ -573,7 +573,7 @@ class _your_whyState extends State<your_why> {
                                             shape: BoxShape.circle,
                                             image: const DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/circle_tick.png'))),
+                                                    'assets/images/circle_tick.webp'))),
                                       ),
                                     ),
                                   )
@@ -685,7 +685,7 @@ class _your_whyState extends State<your_why> {
                                             shape: BoxShape.circle,
                                             image: const DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/circle_tick.png'))),
+                                                    'assets/images/circle_tick.webp'))),
                                       ),
                                     ),
                                   )
@@ -939,7 +939,7 @@ class _your_whyState extends State<your_why> {
                                     shape: BoxShape.circle,
                                     image: const DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/circle_tick.png'))),
+                                            'assets/images/circle_tick.webp'))),
                               ),
                             ),
                           )
@@ -1246,7 +1246,7 @@ class _your_whyState extends State<your_why> {
                                           shape: BoxShape.circle,
                                           image: const DecorationImage(
                                               image: AssetImage(
-                                                  'assets/images/circle_tick.png'))),
+                                                  'assets/images/circle_tick.webp'))),
                                     ),
                                   ),
                                 )
@@ -1398,7 +1398,7 @@ class _your_whyState extends State<your_why> {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/circle_tick.png'))),
+                                        'assets/images/circle_tick.webp'))),
                           ),
                           Container(
                             width: AppDimensions.height10(context) * 10.8,

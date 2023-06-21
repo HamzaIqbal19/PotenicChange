@@ -47,7 +47,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
             child: IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  'assets/images/Close.png',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
@@ -62,7 +62,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
         // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
         decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/bg_inpiration_purple.png'),
+                image: AssetImage('assets/images/bg_inpiration_purple.webp'),
                 colorFilter: ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
@@ -123,7 +123,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         decoration: const BoxDecoration(
                             image: DecorationImage(
                           opacity: 0.2,
-                          image: AssetImage('assets/images/Star.png'),
+                          image: AssetImage('assets/images/Star.webp'),
                         )),
                         child: Center(
                           child: Container(
@@ -132,7 +132,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/Inspiration_center 1.png'))),
+                                        'assets/images/Inspiration_center 1.webp'))),
                             child: Center(
                                 child: Container(
                               width: AppDimensions.height10(context) * 6.8,
@@ -147,7 +147,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       height:
                                           AppDimensions.height10(context) * 3.2,
                                       child: Image.asset(
-                                          'assets/images/plus.png'))),
+                                          'assets/images/plus.webp'))),
                             )),
                           ),
                         ),
@@ -205,7 +205,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/Rectangle 10.png'),
+                                                    'assets/images/Rectangle 10.webp'),
                                                 fit: BoxFit.cover)),
                                       ),
                                       Container(
@@ -268,7 +268,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/image 65.png'))),
+                                                    'assets/images/image 65.webp'))),
                                       ),
                                       Container(
                                         width: AppDimensions.height10(context) *
@@ -433,7 +433,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/video_play.png'),
+                                                    'assets/images/video_play.webp'),
                                                 fit: BoxFit.cover)),
                                       ),
                                       Container(
@@ -503,7 +503,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/sir_nyal.png'))),
+                                                    'assets/images/sir_nyal.webp'))),
                                       ),
                                       Container(
                                         width: AppDimensions.height10(context) *
@@ -572,7 +572,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                             color: Color(0xFFD9D9D9),
                                             image: DecorationImage(
                                                 image: AssetImage(
-                                                    'assets/images/distraction content.png'))),
+                                                    'assets/images/distraction content.webp'))),
                                       ),
                                       Container(
                                         // width: AppDimensions.height10(context) * 16.7,
@@ -647,7 +647,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 color: Color(0xFFD9D9D9),
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/sir_nyal.png'),
+                                        'assets/images/sir_nyal.webp'),
                                     fit: BoxFit.cover)),
                           ),
                           Container(
@@ -704,7 +704,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/circle_tick.png'))),
+                                        'assets/images/circle_tick.webp'))),
                           ),
                           Container(
                             width: AppDimensions.height10(context) * 6.9,
@@ -816,7 +816,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                               child: GestureDetector(
                                 onTap: () {},
                                 child: Image.asset(
-                                  'assets/images/ic_filter_list.png',
+                                  'assets/images/ic_filter_list.webp',
                                   width: AppDimensions.height10(context) * 2.4,
                                   height: AppDimensions.height10(context) * 2.4,
                                   fit: BoxFit.contain,
@@ -1306,7 +1306,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         child: GestureDetector(
                           onTap: () {},
                           child: Image.asset(
-                            'assets/images/Search.png',
+                            'assets/images/Search.webp',
                             width: AppDimensions.height10(context) * 5,
                             height: AppDimensions.height10(context) * 5,
                             fit: BoxFit.contain,

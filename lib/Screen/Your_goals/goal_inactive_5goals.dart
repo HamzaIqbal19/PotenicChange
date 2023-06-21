@@ -39,7 +39,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 Navigator.pop(context);
               },
               icon: Image.asset(
-                'assets/images/Back.png',
+                'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
                 height: AppDimensions.height10(context) * 2.6,
                 fit: BoxFit.cover,
@@ -104,7 +104,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.png'),
+          image: AssetImage('assets/images/Mask Group.webp'),
           fit: BoxFit.cover,
         )),
         width: double.infinity,
@@ -305,7 +305,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               color: const Color(0xFFFBFBFB)),
                           shape: BoxShape.circle,
                           image: const DecorationImage(
-                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            image: AssetImage('assets/images/Ellipse 158.webp'),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -375,8 +375,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   left: AppDimensions.height10(context) * 10.6),
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/images/bin.png'))),
+                                      image: AssetImage(
+                                          'assets/images/bin.webp'))),
                             ),
                           )
                         : SizedBox(
@@ -415,7 +415,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
@@ -451,7 +451,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           shape: BoxShape.circle,
                           image: const DecorationImage(
                             image:
-                                AssetImage('assets/images/Ellipse purple.png'),
+                                AssetImage('assets/images/Ellipse purple.webp'),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -521,8 +521,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   left: AppDimensions.height10(context) * 10.6),
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/images/bin.png'))),
+                                      image: AssetImage(
+                                          'assets/images/bin.webp'))),
                             ),
                           )
                         : SizedBox(
@@ -561,7 +561,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
@@ -597,7 +597,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           shape: BoxShape.circle,
                           image: const DecorationImage(
                             image:
-                                AssetImage('assets/images/Ellipse orange.png'),
+                                AssetImage('assets/images/Ellipse orange.webp'),
                             fit: BoxFit.contain,
                           )),
                     ),
@@ -667,8 +667,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   left: AppDimensions.height10(context) * 10.6),
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/images/bin.png'))),
+                                      image: AssetImage(
+                                          'assets/images/bin.webp'))),
                             ),
                           )
                         : SizedBox(
@@ -707,7 +707,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
@@ -742,7 +742,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               color: const Color(0xFFFBFBFB)),
                           shape: BoxShape.circle,
                           image: const DecorationImage(
-                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            image: AssetImage('assets/images/Ellipse 158.webp'),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -812,8 +812,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   left: AppDimensions.height10(context) * 10.6),
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/images/bin.png'))),
+                                      image: AssetImage(
+                                          'assets/images/bin.webp'))),
                             ),
                           )
                         : SizedBox(
@@ -852,7 +852,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
@@ -887,7 +887,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               color: const Color(0xFFFBFBFB)),
                           shape: BoxShape.circle,
                           image: const DecorationImage(
-                            image: AssetImage('assets/images/Ellipse blue.png'),
+                            image:
+                                AssetImage('assets/images/Ellipse blue.webp'),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -957,8 +958,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   left: AppDimensions.height10(context) * 10.6),
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/images/bin.png'))),
+                                      image: AssetImage(
+                                          'assets/images/bin.webp'))),
                             ),
                           )
                         : SizedBox(
@@ -997,7 +998,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     child: GestureDetector(
                                       onTap: () {},
                                       child: Image.asset(
-                                        'assets/images/BTN Back.png',
+                                        'assets/images/BTN Back.webp',
                                         color: const Color(0xFFFFFFFF),
                                         //width: AppDimensions.height10(context) * 2.6,
                                         //height: AppDimensions.height10(context) * 2.6,
@@ -1031,7 +1032,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                               color: const Color(0xFFFBFBFB)),
                           shape: BoxShape.circle,
                           image: const DecorationImage(
-                            image: AssetImage('assets/images/Ellipse 158.png'),
+                            image: AssetImage('assets/images/Ellipse 158.webp'),
                             fit: BoxFit.cover,
                           )),
                     ),
@@ -1101,8 +1102,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   left: AppDimensions.height10(context) * 10.6),
                               decoration: const BoxDecoration(
                                   image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/images/bin.png'))),
+                                      image: AssetImage(
+                                          'assets/images/bin.webp'))),
                             ),
                           )
                         : Row(
@@ -1134,7 +1135,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                   child: GestureDetector(
                                     onTap: () {},
                                     child: Image.asset(
-                                      'assets/images/BTN Back.png',
+                                      'assets/images/BTN Back.webp',
                                       color: const Color(0xFFFFFFFF),
                                       //width: AppDimensions.height10(context) * 2.6,
                                       //height: AppDimensions.height10(context) * 2.6,
@@ -1181,7 +1182,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         ),
                       ),
                       Image.asset(
-                        'assets/images/Addgoal.png',
+                        'assets/images/Addgoal.webp',
                         width: AppDimensions.height10(context) * 2.3,
                         height: AppDimensions.height10(context) * 2.3,
                       )
@@ -1451,7 +1452,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                 decoration: const BoxDecoration(
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/start_icon.png'))),
+                                            'assets/images/start_icon.webp'))),
                               ),
                               Container(
                                 margin: EdgeInsets.only(
