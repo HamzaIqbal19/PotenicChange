@@ -5,6 +5,7 @@ import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -104,9 +105,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(login: true),
+                        FadePageRoute3(
+                          enterPage:const HomeScreen(
+                            login: false,
+                          ),
+                          exitPage:Loginemailandpassword(),
+
                         ),
+
                       );
                       // Add code for performing close action
                     },

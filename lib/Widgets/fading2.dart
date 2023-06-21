@@ -13,7 +13,7 @@ class FadePageRoute2<T> extends PageRouteBuilder<T> {
           ) =>
               enterPage,
           transitionDuration: Duration(
-              milliseconds: 600), // specify the transition duration here
+              milliseconds: 500), // specify the transition duration here
           transitionsBuilder: (
             BuildContext context,
             Animation<double> animation,
@@ -29,7 +29,7 @@ class FadePageRoute2<T> extends PageRouteBuilder<T> {
                   ).animate(
                     CurvedAnimation(
                       parent: animation,
-                      curve: Curves.easeOut,
+                      curve: Curves.linear,
                     ),
                   ),
                   child: exitPage,
@@ -41,7 +41,7 @@ class FadePageRoute2<T> extends PageRouteBuilder<T> {
                   ).animate(
                     CurvedAnimation(
                       parent: animation,
-                      curve: Curves.easeOut,
+                      curve: Curves.linear,
                     ),
                   ),
                   child: enterPage,

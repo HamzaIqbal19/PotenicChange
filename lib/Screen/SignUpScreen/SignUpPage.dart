@@ -69,12 +69,17 @@ class _SignUpPageState extends State<SignUpPage> {
                   fit: BoxFit.cover,
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(login: true),
-                    ),
-                  );
+                  Navigator.pop(context);
+                  // Navigator.pushReplacement(
+                  //   context,
+                  //   FadePageRoute2(
+                  //     enterPage:HomeScreen(
+                  //       login: false,
+                  //     ),
+                  //     exitPage:SignUpPage(),
+                  //
+                  //   ),
+                  // );
                   // Add code for performing close action
                 },
               ),

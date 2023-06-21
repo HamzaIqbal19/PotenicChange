@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
+import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_colors.dart';
 import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -115,10 +116,16 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                     onPressed: () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(login: false),
-                        ),
-                      );
+
+                            FadePageRoute3(
+                              enterPage:const HomeScreen(
+                                login: false,
+                              ),
+                              exitPage:SignUpWithEmail(),
+
+                            ),
+
+                          );
                       // Add code for performing close action
                     },
                   ),
@@ -486,31 +493,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                         ),
                         //<-- SEE HERE
                       ),
-                      // onPressed: (() {git
-                      //   if (_formkey1.currentState!.validate()) {
-                      //     Authentication()
-                      //         .registerApi(
-                      //             nameController.text.toString(),
-                      //             emailController.text.toString(),
-                      //             passwordController.text.toString())
-                      //         .then((value) {
-                      //       if (value == "User was registered successfully!") {
-                      //         print("New page");
-                      //       } else {
-                      //         print('error');
-                      //       }
-                      //       ;
-                      //     });
-                      //     print("hello worddd");
-                      //     // Navigator.push(
-                      //     //   context,
-                      //     //   MaterialPageRoute(
-                      //     //     builder: (context) => SignUpSuccessful(
-                      //     //         name: nameController.text.toString()),
-                      //     //   ),
-                      //     // );
-                      //   }
-                      // }),
+
 
                       onPressed: () {
                         if (_formkey1.currentState!.validate()) {
