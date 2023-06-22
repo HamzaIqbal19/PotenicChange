@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
@@ -5,7 +7,7 @@ import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_colors.dart';
 import 'package:email_validator/email_validator.dart';
-
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
@@ -240,7 +242,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                             controller: nameController,
                             keyboardType: TextInputType.name,
                             validator: (val) {
-                              if (val == null || val == "") {
+                              if (val == null ||
+                                  val == "" ||
+                                  !RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]')
+                                      .hasMatch(val)) {
                                 setState(() {
                                   errorName = true;
                                 });
@@ -598,6 +603,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           print("error");
                         });
                       } else if (rememberMe == false) {
+                        setState(() {
+                          Loading = false;
+                        });
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text('User Agreement it not checked')));
                       }
@@ -615,10 +623,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         ),
                         child: Center(
                           child: Loading
-                              ? SpinKitThreeInOut(
+                              ? SpinKitThreeBounce(
                                   color: const Color(0xFF8C648A),
-                                  delay: Duration(milliseconds: 0),
-                                  size: AppDimensions.height10(context) * 4.5,
+                                  //  delay: Duration(milliseconds: 0),
+                                  size: AppDimensions.height10(context) * 3.5,
                                 )
                               : Text(
                                   "Sign up",

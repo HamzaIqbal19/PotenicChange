@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        _buildVerticalSpacing(context, 8.02),
+        _buildVerticalSpacing(context, 8.52),
         Center(
           child: Image(
             image: const AssetImage("assets/images/logo.webp"),

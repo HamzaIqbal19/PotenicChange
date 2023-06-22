@@ -9,6 +9,7 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../API/Practice.dart';
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 import 'Loaders/create_practice_shimmer.dart';
 
@@ -57,7 +58,8 @@ class _CreatePracticeState extends State<CreatePractice> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      resizeToAvoidBottomInset: true,
+      extendBody: true,
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
@@ -209,7 +211,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  GestureDetector(
+                                  AnimatedScaleButton(
                                     onTap: () {
                                       Navigator.push(
                                         context,
@@ -319,22 +321,22 @@ class _CreatePracticeState extends State<CreatePractice> {
                     // fit: BoxFit.contain,
                     // fit: BoxFit.contain,
 
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          SearchIcon = false;
-                        });
-                      },
-                      child: Text(
-                        "Cancel",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xFF007AFF),
-                        ),
-                      ),
-                    ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     setState(() {
+                    //       SearchIcon = false;
+                    //     });
+                    //   },
+                    //   child: Text(
+                    //     "Cancel",
+                    //     textAlign: TextAlign.center,
+                    //     style: TextStyle(
+                    //       fontSize: AppDimensions.height10(context) * 1.7,
+                    //       fontWeight: FontWeight.w400,
+                    //       color: const Color(0xFF007AFF),
+                    //     ),
+                    //   ),
+                    // ),
                     GestureDetector(
                       onTap: () {
                         setState(() {
@@ -397,26 +399,26 @@ class _CreatePracticeState extends State<CreatePractice> {
                       ],
                     ),
 
-                    Container(
-                      width: AppDimensions.height10(context) * 4.7,
-                      height: AppDimensions.height10(context) * 4.7,
-                      padding: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.5,
-                          bottom: AppDimensions.height10(context) * 0.5),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            SearchIcon = true;
-                          });
-                        },
-                        child: Image.asset(
-                          'assets/images/Search.webp',
-                          width: AppDimensions.height10(context) * 5,
-                          height: AppDimensions.height10(context) * 5,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
+                    // Container(
+                    //   width: AppDimensions.height10(context) * 4.7,
+                    //   height: AppDimensions.height10(context) * 4.7,
+                    //   padding: EdgeInsets.only(
+                    //       top: AppDimensions.height10(context) * 0.5,
+                    //       bottom: AppDimensions.height10(context) * 0.5),
+                    //   child: GestureDetector(
+                    //     onTap: () {
+                    //       setState(() {
+                    //         SearchIcon = true;
+                    //       });
+                    //     },
+                    //     child: Image.asset(
+                    //       'assets/images/Search.webp',
+                    //       width: AppDimensions.height10(context) * 5,
+                    //       height: AppDimensions.height10(context) * 5,
+                    //       fit: BoxFit.contain,
+                    //     ),
+                    //   ),
+                    // ),
                     Container(
                       width: AppDimensions.height10(context) * 4.7,
                       height: AppDimensions.height10(context) * 4.7,

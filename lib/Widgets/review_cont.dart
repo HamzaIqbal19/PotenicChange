@@ -79,7 +79,7 @@ class _reviewboxState extends State<reviewbox> {
                       ),
                       inner_text(
                         'Reason 1',
-                        bodyText: reason.length != 0
+                        bodyText: reason2 != null
                             ? '$reason'
                             : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
                       ),
@@ -119,7 +119,7 @@ class _reviewboxState extends State<reviewbox> {
                       ),
                       inner_text(
                         "Reason 2",
-                        bodyText: reason2.length != 0
+                        bodyText: reason != null
                             ? '$reason2'
                             : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
                       ),
@@ -159,7 +159,7 @@ class _reviewboxState extends State<reviewbox> {
                       ),
                       inner_text(
                         "Reason 3",
-                        bodyText: reason3.length != 0
+                        bodyText: reason3 != null
                             ? '$reason3'
                             : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
                       ),

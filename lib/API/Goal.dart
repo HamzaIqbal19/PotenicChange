@@ -273,10 +273,10 @@ class AdminGoal {
         {"text": "$reason"}
       ],
     });
-    var userGoalId = prefs.getInt('goalId');
-    print('$userGoalId');
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
 
-    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/6'),
+    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/71'),
         headers: headers, body: body);
     print("request: Update");
     print('=====>$request.statusCode');
@@ -295,27 +295,27 @@ class AdminGoal {
   }
 
   static Future getUserGoal() async {
-    var goalName;
+    // var goalName;
 
     final SharedPreferences prefs = await _prefs;
 
     var Accestoken = prefs.getString("usertoken");
-    var userGoalId = prefs.getInt('goalId');
-    print('$userGoalId');
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userGoal/6'),
+      Uri.parse('${URL.BASE_URL}api/userGoal/71'),
       headers: headers,
     );
-    print('===========$userGoalId');
+    // print('===========$userGoalId');
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
 
-      return true;
+      return (jsonData);
     } else {
       throw Exception('Failed to fetch goal names');
     }

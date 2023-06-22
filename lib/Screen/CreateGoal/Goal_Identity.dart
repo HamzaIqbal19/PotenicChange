@@ -12,6 +12,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
 // ignore: camel_case_types
@@ -216,8 +217,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 height: 42,
                                 width: double.infinity,
                                 color: Colors.white,
-                                child: TextButton(
-                                  onPressed: () async {
+                                child: AnimatedScaleButton(
+                                  onTap: () async {
                                     updateGoalReason(myIdentity);
                                     final SharedPreferences prefs =
                                         await _prefs;
@@ -522,7 +523,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           child: Padding(
                             padding: const EdgeInsets.only(
                                 top: 4, left: 4, right: 4, bottom: 4),
-                            child: GestureDetector(
+                            child: AnimatedScaleButton(
                                 onTap: () {
                                   increment();
                                   setState(() {
@@ -568,7 +569,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         updateGoalReason(myIdentity);
                         Navigator.push(

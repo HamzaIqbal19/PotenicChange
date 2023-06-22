@@ -6,6 +6,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
 class GoalFinished extends StatefulWidget {
@@ -128,7 +129,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                   )),
               Stack(
                 children: [
-                  GestureDetector(
+                  AnimatedScaleButton(
                     onTap: () {
                       Navigator.push(
                         context,
@@ -163,7 +164,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child: GestureDetector(
+                        child: AnimatedScaleButton(
                           onTap: () {
                             Navigator.push(
                               context,

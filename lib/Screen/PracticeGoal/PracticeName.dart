@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
 class PracticeName extends StatefulWidget {
@@ -297,7 +298,7 @@ class _PracticeNameState extends State<PracticeName> {
                           "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                           context,

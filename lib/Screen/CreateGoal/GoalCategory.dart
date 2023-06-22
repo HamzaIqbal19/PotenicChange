@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../API/Goal.dart';
+import '../../Widgets/animatedButton.dart';
 import 'Loaders/GoalCategory_shimmer.dart';
 
 class GoalCategory extends StatefulWidget {
@@ -278,7 +279,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      GestureDetector(
+                                      AnimatedScaleButton(
                                         onTap: () {
                                           getUserId(
                                               widget.id,

@@ -11,6 +11,7 @@ import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
 import '../../Widgets/fading2.dart';
 
@@ -544,7 +545,7 @@ class _VisualisingState extends State<Visualising> {
                           child: Padding(
                             padding: const EdgeInsets.only(
                                 top: 4, left: 4, right: 4, bottom: 4),
-                            child: GestureDetector(
+                            child: AnimatedScaleButton(
                                 onTap: () {
                                   increment();
                                   setState(() {
@@ -599,7 +600,7 @@ class _VisualisingState extends State<Visualising> {
                           "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         updateGoalReason(goalVisualising);
                       },

@@ -12,6 +12,7 @@ import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
 class GoalName extends StatefulWidget {
@@ -186,7 +187,8 @@ class _GoalNameState extends State<GoalName> {
                                 width: double.infinity,
                                 child: TextButton(
                                   onPressed: () async {
-                                    final SharedPreferences prefs = await _prefs;
+                                    final SharedPreferences prefs =
+                                        await _prefs;
                                     await prefs.remove('goal');
                                     Navigator.push(
                                       context,
@@ -443,7 +445,7 @@ class _GoalNameState extends State<GoalName> {
                         // color: Colors.blue,
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
-                        child: GestureDetector(
+                        child: AnimatedScaleButton(
                           onTap: () {
                             signupSheet(context, "Sign up / login", "login");
                           },
@@ -452,7 +454,7 @@ class _GoalNameState extends State<GoalName> {
                             fit: BoxFit.contain,
                           ),
                         )),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                           context,

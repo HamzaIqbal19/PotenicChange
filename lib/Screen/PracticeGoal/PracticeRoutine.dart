@@ -5,6 +5,7 @@ import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
 class PracticeRoutine extends StatefulWidget {
@@ -238,7 +239,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         if (count >= 3) {
                           Navigator.pushReplacement(

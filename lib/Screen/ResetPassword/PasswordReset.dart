@@ -188,7 +188,7 @@ class _PasswordResetState extends State<PasswordReset> {
                                   margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 2.0,
                                   ),
-                                  width: AppDimensions.height10(context) * 20.9,
+                                  width: AppDimensions.height10(context) * 32,
                                   height: AppDimensions.height10(context) * 2.2,
                                   child: TextFormField(
                                     decoration: const InputDecoration(

@@ -7,6 +7,7 @@ import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -517,7 +518,7 @@ class _goalwhyState extends State<GoalWhy> {
                           child: Padding(
                             padding: const EdgeInsets.only(
                                 top: 4, left: 4, right: 4, bottom: 4),
-                            child: GestureDetector(
+                            child: AnimatedScaleButton(
                                 onTap: () {
                                   increment();
                                   setState(() {
@@ -563,7 +564,7 @@ class _goalwhyState extends State<GoalWhy> {
                           "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                           context,

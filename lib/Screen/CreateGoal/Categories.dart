@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/AllGoals.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalCategory.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -175,7 +176,7 @@ class _CategoriesState extends State<Categories> {
                                     width:
                                         AppDimensions.height10(context) * 2.0,
                                   ),
-                                  GestureDetector(
+                                  AnimatedScaleButton(
                                     onTap: () {
                                       Navigator.push(
                                         context,
@@ -237,7 +238,7 @@ class _CategoriesState extends State<Categories> {
                                         width: AppDimensions.height10(context) *
                                             2.0,
                                       ),
-                                      GestureDetector(
+                                      AnimatedScaleButton(
                                         onTap: () {
                                           Navigator.push(
                                             context,
@@ -284,7 +285,7 @@ class _CategoriesState extends State<Categories> {
                     SizedBox(
                       height: AppDimensions.height10(context) * 11.6,
                     ),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                           context,

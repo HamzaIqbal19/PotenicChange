@@ -15,12 +15,6 @@ class StarReviewWhy extends StatefulWidget {
 }
 
 class _StarReviewWhyState extends State<StarReviewWhy> {
-  bool Loading = true;
-
-  void _updateGoal() async {
-    print("Goal Updated");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

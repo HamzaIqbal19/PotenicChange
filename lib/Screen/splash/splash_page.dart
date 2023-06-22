@@ -58,10 +58,8 @@ class SplashPageState extends State<SplashPage> {
         if (response == true) {
           Navigator.push(
               context,
-              FadePageRoute2(
-                true,
-                exitPage: HomeScreen(login: true),
-                enterPage: const HomeScreen(login: true),
+              FadePageRoute(
+                page: const HomeScreen(login: true),
               ));
         } else {
           ScaffoldMessenger.of(context)
@@ -77,11 +75,9 @@ class SplashPageState extends State<SplashPage> {
         if (response == true) {
           Navigator.push(
               context,
-              FadePageRoute2(
-          true,
-          enterPage:HomeScreen(login: false),
-              exitPage:SplashPage(),
-          ));
+              FadePageRoute(
+                page: HomeScreen(login: false),
+              ));
         } else {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(response["message"])));

@@ -7,6 +7,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../Recording Practice Session/dashboardViewgoals.dart';
 
 class PracticeFinished extends StatefulWidget {
@@ -200,7 +201,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         "assets/images/Moreactions.webp",
                         fit: BoxFit.contain,
                       )),
-                  GestureDetector(
+                  AnimatedScaleButton(
                     onTap: () {
                       // Navigator.pushReplacement(
                       //     context,

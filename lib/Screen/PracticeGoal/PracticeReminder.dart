@@ -4,6 +4,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/routinecommitment.dart';
@@ -587,22 +588,19 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         PracticeGoalApi()
                             .userAddPractice(
                                 widget.pracTitle,
                                 "0xFF",
                                 radio1,
-                                "5",
-                                "1",
+                                "8",
                                 "Monday",
-                                '$Start_time',
-                                '$End_time',
+                                '7:00 am',
+                                '12:00 am',
                                 widget.pracId)
-                            .then((responce) {
-                          if (responce == true) {}
-                        }).then((response) {
+                            .then((response) {
                           print('$response');
                           if (response == true) {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -619,7 +617,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 enterPage: const PracticeFinished(),
                               ),
                             );
-                          } else {
+                          } else if (response == false) {
                             print('Api call failed');
                           }
                         }).catchError((error) {

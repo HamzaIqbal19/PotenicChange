@@ -37,19 +37,12 @@ void signupSheet(context, String ButtonName, String Route) {
                         Route == "OnBoarding"
                             ? Navigator.push(
                                 context,
-                           
-                              FadePageRoute3(
-                                enterPage: OnBoarding(),
-                                exitPage:const  HomeScreen(login: true),
-                              ),
-                            
-                              )
-                            : Navigator.push(
-                                context,
-                                FadePageRoute(
-                                  page: Loginemailandpassword(),
+                                FadePageRoute3(
+                                  enterPage: OnBoarding(),
+                                  exitPage: const HomeScreen(login: true),
                                 ),
-                              );
+                              )
+                            : Container();
                       },
                       child: Text(
                         ButtonName,

@@ -13,8 +13,8 @@ var client = SentryHttpClient();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class PracticeGoalApi {
-  Future userAddPractice(name, color, reminder, userId, goalCategoryId, day,
-      endTime, startTime, practiceId) async {
+  Future userAddPractice(name, color, reminder, userId, day, endTime, startTime,
+      practiceId) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var headers = {
@@ -29,7 +29,6 @@ class PracticeGoalApi {
       ],
       "color": "$color",
       "userId": "$userId",
-      "goalCategoryId": "$goalCategoryId",
       "practiceId": "$practiceId",
     });
     print("request:$Body");
@@ -87,10 +86,11 @@ class PracticeGoalApi {
   }
 
   static Future getUserPractice() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
-      'x-access-token':
-          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6InVzZXIiLCJpYXQiOjE2ODY4NDM0MDcsImV4cCI6MTY4NjkyOTgwN30.O-6z_4XbezSF1HQolEPlZHNSCgAFKBwHFwkARMp2fPs'
+      'x-access-token': '$Accestoken'
     };
 
     var response = await http.get(

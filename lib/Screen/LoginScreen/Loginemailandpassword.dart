@@ -13,6 +13,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../../Widgets/fading.dart';
+
 class Loginemailandpassword extends StatefulWidget {
   @override
   _LoginemailandpasswordState createState() => _LoginemailandpasswordState();
@@ -533,9 +535,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                         Text("User Login Successfully!!")));
                             Navigator.push(
                               context,
-                              FadePageRoute2(true,
-                                  enterPage: StartProcess(),
-                                  exitPage: Loginemailandpassword()),
+                              FadePageRoute(
+                                page: StartProcess(),
+                              ),
                             );
                           } else if (response == 404) {
                             setState(() {
@@ -550,10 +552,11 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                           }
                         }).catchError((error) {
                           ScaffoldMessenger.of(context)
-                              .showSnackBar(SnackBar(content: Text('error')));
+                              .showSnackBar(SnackBar(content: Text('Error')));
                           setState(() {
                             Loading = false;
                           });
+
                           print("error");
                         });
                       }
@@ -570,10 +573,10 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               AppDimensions.height10(context) * 5.0)),
                         ),
                         child: Loading
-                            ? SpinKitThreeInOut(
+                            ? SpinKitThreeBounce(
                                 color: const Color(0xFF8C648A),
-                                delay: Duration(milliseconds: 0),
-                                size: AppDimensions.height10(context) * 4.5,
+                                // delay: Duration(milliseconds: 0),
+                                size: AppDimensions.height10(context) * 3.5,
                               )
                             : Center(
                                 child: Text(

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 
-// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:potenic_app/Widgets/DateTimeBottomSheet.dart';
-// import 'package:potenic_app/Widgets/routinecommitment.dart';
+import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-
 String start_time = '00:00';
 String end_time = '07:00';
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 String? minutes;
 String? hours;
-List<String> selectedDays = [];
+
+List<String> selectedDays = []; // Declare the selectedDays list here
 int count = 0;
 String day = '';
 String hour = '';
@@ -111,7 +111,7 @@ class _schedule_cardState extends State<schedule_card> {
 
   @override
   Widget build(BuildContext context) {
-    bool isDaySelected = selectedDays.contains(days_name);
+    bool isDaySelected = false;
 
     return Container(
         decoration: BoxDecoration(
@@ -136,75 +136,81 @@ class _schedule_cardState extends State<schedule_card> {
                 decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
-                trailing: Container(
-                    height: 32.5,
-                    width: 32.5,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color.fromRGBO(250, 153, 52, 1),
-                    ),
-                    child: FloatingActionButton(
-                        elevation: 0,
-                        backgroundColor: Colors.transparent,
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 30,
+                trailing: isDaySelected
+                    ? null
+                    : Container(
+                        height: 32.5,
+                        width: 32.5,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromRGBO(250, 153, 52, 1),
                         ),
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return MyListWheelForm(
-                                onSelectionChanged: (selectedDay, selectedHour,
-                                    selectedMinute, selectedPeriod, Done) {
-                                  setState(() async {
-                                    if (Done) {
-                                      selectedDays.add(days_name);
-                                      _globalKey.currentState?.expand();
-                                      _globalKey.currentState?.expand();
-                                      _globalKey.currentState?.expand();
-                                      start_time =
-                                          "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-
-                                      end_time =
-                                          "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                      final SharedPreferences prefs =
-                                          await _prefs;
-                                      var Start_Time = prefs.setString(
-                                          'startTime', '$start_time');
-                                      var End_Time = prefs.setString(
-                                          'endTime', '$end_time');
-                                      Done = Done;
-                                      print("Done:$Done");
-                                      if (Done == true) {
-                                        _globalKey.currentState?.expand();
-                                        count = count + 1;
-                                        onCountChanged(count);
-                                      }
-                                    }
-                                    // date.hour.toString();
-                                    day = selectedDay;
-                                    hour = selectedHour;
-                                    minute = selectedMinute;
-                                    endday = selectedDay;
-                                    endhour = selectedHour;
-                                    endminute = selectedMinute;
-
-                                    period = selectedPeriod;
-                                    endperiod = selectedPeriod;
-                                  });
-                                },
-                              );
-                            },
-                            isScrollControlled: true,
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.vertical(
-                                top: Radius.circular(16),
-                              ),
+                        child: FloatingActionButton(
+                            elevation: 0,
+                            backgroundColor: Colors.transparent,
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 30,
                             ),
-                          );
-                        })),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return MyListWheelForm(
+                                    onSelectionChanged: (selectedDay,
+                                        selectedHour,
+                                        selectedMinute,
+                                        selectedPeriod,
+                                        Done) {
+                                      setState(() async {
+                                        if (Done) {
+                                          selectedDays.add(days_name);
+                                          _globalKey.currentState?.expand();
+                                          _globalKey.currentState?.expand();
+                                          _globalKey.currentState?.expand();
+                                          start_time =
+                                              "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                          end_time =
+                                              "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          var Start_Time = prefs.setString(
+                                              'startTime', '$start_time');
+                                          var End_Time = prefs.setString(
+                                              'endTime', '$end_time');
+
+                                          Done = Done;
+                                          print("Done:$Done");
+                                          if (Done == true) {
+                                            _globalKey.currentState?.expand();
+                                            count = count + 1;
+                                            onCountChanged(count);
+                                            Navigator.pop(context);
+                                          }
+                                        }
+                                        // date.hour.toString();
+                                        day = selectedDay;
+                                        hour = selectedHour;
+                                        minute = selectedMinute;
+                                        endday = selectedDay;
+                                        endhour = selectedHour;
+                                        endminute = selectedMinute;
+
+                                        period = selectedPeriod;
+                                        endperiod = selectedPeriod;
+                                      });
+                                    },
+                                  );
+                                },
+                                isScrollControlled: true,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
+                              );
+                            })),
                 title: Text(
                   days_name,
                   style: const TextStyle(
@@ -223,7 +229,7 @@ class _schedule_cardState extends State<schedule_card> {
                           text: ' 1) Time: ',
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 11.5),
+                          padding: const EdgeInsets.only(left: 8.0),
                           child: Container(
                               height: 37,
                               width: 37,
@@ -359,8 +365,8 @@ class _startTimerStateState extends State<startTimerState> {
           ),
           Container(
             width: AppDimensions.height10(context) * 2.4,
-            // height: AppDimensions.height10(context) *1.7,
-            // padding: EdgeInsets.only(right:AppDimensions.height10(context) *0.6),
+            // height: AppDimensions.height10*1.7,
+            // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
             child: Center(
               child: GestureDetector(
                   // elevation: 0,
@@ -372,12 +378,9 @@ class _startTimerStateState extends State<startTimerState> {
                         return MyListWheelForm(
                           onSelectionChanged: (selectedDay, selectedHour,
                               selectedMinute, selectedPeriod, Done) {
-                            setState(() async {
+                            setState(() {
                               start_time =
                                   "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
-                              final SharedPreferences prefs = await _prefs;
-                              var Start_Time =
-                                  prefs.setString('startTime', '$start_time');
                               // date.hour.toString();
                               day = selectedDay;
                               hour = selectedHour;
@@ -387,12 +390,18 @@ class _startTimerStateState extends State<startTimerState> {
                           },
                         );
                       },
+                      isScrollControlled: true,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(16),
+                        ),
+                      ),
                     );
                   },
                   child: Icon(
                     Icons.arrow_drop_down,
                     color: const Color.fromRGBO(250, 153, 52, 1),
-                    // size: AppDimensions.height10(context) *3.5,
+                    // size: AppDimensions.height10*3.5,
                   )),
             ),
           ),
@@ -460,8 +469,8 @@ class _endTimerStateState extends State<endTimerState> {
           ),
           Container(
             width: AppDimensions.height10(context) * 2.4,
-            // height: AppDimensions.height10(context) *1.7,
-            // padding: EdgeInsets.only(right:AppDimensions.height10(context) *0.6),
+            // height: AppDimensions.height10*1.7,
+            // padding: EdgeInsets.only(right:AppDimensions.height10*0.6),
             child: Center(
               child: GestureDetector(
                   // elevation: 0,
@@ -473,27 +482,30 @@ class _endTimerStateState extends State<endTimerState> {
                         return MyListWheelForm(
                           onSelectionChanged: (selectedDay, selectedHour,
                               selectedMinute, selectedPeriod, Done) {
-                            // setState(() async {
-                            //   end_time =
-                            //       "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
-                            //   final SharedPreferences prefs = await _prefs;
-                            //   var End_Time =
-                            //       prefs.setString('endTime', '$end_time');
-                            //   // date.hour.toString();
-                            //   endday = selectedDay;
-                            //   endhour = selectedHour;
-                            //   endminute = selectedMinute;
-                            //   endperiod = selectedPeriod;
-                            // });
+                            setState(() {
+                              end_time =
+                                  "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
+                              // date.hour.toString();
+                              endday = selectedDay;
+                              endhour = selectedHour;
+                              endminute = selectedMinute;
+                              endperiod = selectedPeriod;
+                            });
                           },
                         );
                       },
+                      isScrollControlled: true,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(16),
+                        ),
+                      ),
                     );
                   },
                   child: const Icon(
                     Icons.arrow_drop_down,
                     color: Color.fromRGBO(250, 153, 52, 1),
-                    // size: AppDimensions.height10(context) *3.5,
+                    // size: AppDimensions.height10*3.5,
                   )),
             ),
           ),
