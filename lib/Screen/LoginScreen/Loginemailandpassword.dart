@@ -23,6 +23,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
   final passwordController = TextEditingController();
   String fcm = 'adsfsf3423424';
   bool Loading = false;
+  bool pass_obscure = true;
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
   bool rememberMe = true;
@@ -230,6 +231,13 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                   height: AppDimensions.height10(context) * 2.2,
                                   child: TextFormField(
                                     keyboardType: TextInputType.emailAddress,
+                                    style: TextStyle(
+                                        color: const Color(0xFF8C648A),
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.none,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8),
                                     decoration: InputDecoration(
                                         errorBorder: InputBorder.none,
                                         contentPadding: EdgeInsets.zero,
@@ -295,65 +303,116 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                               border: Border.all(color: Colors.white, width: 2),
                               borderRadius: BorderRadius.all(Radius.circular(
                                   AppDimensions.height10(context) * 1.8))),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Row(
                             children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.height10(context) * 2.0,
-                                    bottom:
-                                        AppDimensions.height10(context) * 0.5),
-                                width: AppDimensions.height10(context) * 6.3,
-                                height: AppDimensions.height10(context) * 1.7,
-                                child: Text(
-                                  "Password",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xFF282828),
-                                      fontSize:
-                                          AppDimensions.height10(context) *
-                                              1.4),
+                              SizedBox(
+                                width: AppDimensions.height10(context) * 32.0,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  2.0,
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  0.5),
+                                      width:
+                                          AppDimensions.height10(context) * 6.3,
+                                      height:
+                                          AppDimensions.height10(context) * 1.7,
+                                      child: Text(
+                                        "Password",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xFF282828),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.4),
+                                      ),
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            2.0,
+                                      ),
+                                      width: AppDimensions.height10(context) *
+                                          36.0,
+                                      height:
+                                          AppDimensions.height10(context) * 2.2,
+                                      child: TextFormField(
+                                        obscureText: pass_obscure,
+                                        style: TextStyle(
+                                            color: const Color(0xFF8C648A),
+                                            fontWeight: FontWeight.w600,
+                                            decoration: TextDecoration.none,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8),
+                                        decoration: InputDecoration(
+                                            contentPadding: EdgeInsets.zero,
+                                            hintText: "*******",
+                                            hintStyle: TextStyle(
+                                              color: const Color(0xFF8C648A),
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.8,
+                                            ),
+                                            focusedBorder:
+                                                const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors
+                                                            .transparent)),
+                                            enabledBorder:
+                                                const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors
+                                                            .transparent))),
+                                        controller: passwordController,
+                                        validator: (val) {
+                                          if (val == null ||
+                                              val == "" ||
+                                              val.length < 8) {
+                                            setState(() {
+                                              errorPassword = true;
+                                            });
+                                          } else {
+                                            setState(() {
+                                              errorPassword = false;
+                                            });
+                                          }
+                                        },
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 2.0,
-                                ),
-                                width: AppDimensions.height10(context) * 36.0,
-                                height: AppDimensions.height10(context) * 2.2,
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.zero,
-                                      hintText: "*******",
-                                      hintStyle: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.8,
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent))),
-                                  controller: passwordController,
-                                  obscureText: true,
-                                  validator: (val) {
-                                    if (val == null ||
-                                        val == "" ||
-                                        val.length < 8) {
-                                      setState(() {
-                                        errorPassword = true;
-                                      });
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    if (pass_obscure == true) {
+                                      pass_obscure = false;
                                     } else {
-                                      setState(() {
-                                        errorPassword = false;
-                                      });
+                                      pass_obscure = true;
                                     }
-                                  },
+                                  });
+                                },
+                                child: SizedBox(
+                                  height: AppDimensions.height10(context) * 2.4,
+                                  width: AppDimensions.height10(context) * 2.4,
+                                  child: Image.asset(
+                                    pass_obscure
+                                        ? 'assets/images/ic_remove_red_eye.webp'
+                                        : 'assets/images/visible-icon-9.webp',
+                                    color: const Color(0xFF8C648A),
+                                    height:
+                                        AppDimensions.height10(context) * 2.4,
+                                    width:
+                                        AppDimensions.height10(context) * 2.4,
+                                  ),
                                 ),
                               )
                             ],
@@ -484,10 +543,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                               Loading = false;
                             });
                             print("error");
-                          });
-                        } else {
-                          setState(() {
-                            Loading = false;
                           });
                         }
                       },

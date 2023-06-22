@@ -25,10 +25,13 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late AnimationController _controller;
+  late AnimationController _controller_log;
+  late AnimationController _buttons_animation;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
@@ -40,6 +43,34 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    _buttons_animation = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {
+          _controller.forward();
+        });
+      });
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {
+          _controller_log.forward();
+        });
+      });
+    _controller_log = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {});
+      });
     super.initState();
   }
 
@@ -90,7 +121,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 verticalSpacing(context, 4.4),
                 GestureDetector(
-                  onTap: () {
+                  onTapDown: (TapDownDetails details) {
+                    _buttons_animation.forward();
+                  },
+                  onTap: () async {
+                    _buttons_animation.forward();
+
+                    // Delay for the forward animation to be visible
+                    await Future.delayed(Duration(milliseconds: 200));
+
+                    // Press up effect
+                    _buttons_animation.reverse();
+
+                    // Delay the action for the reverse animation to be visible
+                    await Future.delayed(Duration(milliseconds: 200));
                     Navigator.push(
                       context,
                       FadePageRoute2(
@@ -100,8 +144,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   },
-                  child: centeredImage(
-                      context, "assets/images/createstar.webp", 23, 26),
+                  child: Transform.scale(
+                    scale: 1 - _buttons_animation.value,
+                    child: centeredImage(
+                        context, "assets/images/createstar.webp", 23, 26),
+                  ),
                 ),
                 verticalSpacing(context, 12.1),
                 widget.login == true
@@ -324,7 +371,20 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           GestureDetector(
-                            onTap: () {
+                            onTapDown: (TapDownDetails details) {
+                              _controller.forward();
+                            },
+                            onTap: () async {
+                              _controller.forward();
+
+                              // Delay for the forward animation to be visible
+                              await Future.delayed(Duration(milliseconds: 200));
+
+                              // Press up effect
+                              _controller.reverse();
+
+                              // Delay the action for the reverse animation to be visible
+                              await Future.delayed(Duration(milliseconds: 200));
                               Navigator.push(
                                 context,
                                 FadePageRoute2(
@@ -336,30 +396,48 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               );
                             },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 13,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF5F5F5),
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10(context) * 5.0)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "I’m new here",
-                                  style: TextStyle(
-                                    color: const Color(0xFF8C648A),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.4,
-                                    fontWeight: FontWeight.w600,
+                            child: Transform.scale(
+                              scale: 1 - _controller.value,
+                              child: Container(
+                                height: AppDimensions.height10(context) * 5,
+                                width: AppDimensions.height10(context) * 13,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF5F5F5),
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(
+                                          AppDimensions.height10(context) *
+                                              5.0)),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "I’m new here",
+                                    style: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.4,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                           GestureDetector(
-                            onTap: () {
+                            onTapDown: (TapDownDetails details) {
+                              _controller_log.forward();
+                            },
+                            onTap: () async {
+                              _controller_log.forward();
+
+                              // Delay for the forward animation to be visible
+                              await Future.delayed(Duration(milliseconds: 200));
+
+                              // Press up effect
+                              _controller_log.reverse();
+
+                              // Delay the action for the reverse animation to be visible
+                              await Future.delayed(Duration(milliseconds: 200));
                               Navigator.push(
                                 context,
                                 FadePageRoute2(
@@ -369,24 +447,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               );
                             },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 13,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFF5A4D73),
-                                border:
-                                    Border.all(color: const Color(0xFF5A4D73)),
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10(context) * 5.0)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Log in",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.4,
-                                    fontWeight: FontWeight.w600,
+                            child: Transform.scale(
+                              scale: 1 - _controller_log.value,
+                              child: Container(
+                                height: AppDimensions.height10(context) * 5,
+                                width: AppDimensions.height10(context) * 13,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFF5A4D73),
+                                  border: Border.all(
+                                      color: const Color(0xFF5A4D73)),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(
+                                          AppDimensions.height10(context) *
+                                              5.0)),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "Log in",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.4,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                               ),

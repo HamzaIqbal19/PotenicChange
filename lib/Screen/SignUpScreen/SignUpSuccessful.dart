@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_colors.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -44,7 +45,9 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
   onDoneLoading() async {
     Navigator.push(
       context,
-      FadePageRoute(page: const HomeScreen(login: true)),
+      FadePageRoute2(true,
+          enterPage: const HomeScreen(login: true),
+          exitPage: SignUpSuccessful(name: '')),
     );
   }
 

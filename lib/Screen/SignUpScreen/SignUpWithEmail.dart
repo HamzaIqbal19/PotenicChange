@@ -32,6 +32,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
   bool errorEmail = false;
   bool errorName = false;
   bool errorPassword = false;
+  bool pass_obscure = true;
 
   late SharedPreferences _prefs;
   setEmail(email) async {
@@ -70,7 +71,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
   final _formkey2 = GlobalKey<FormState>();
 
   @override
-  bool pass_obscure = true;
   Widget build(BuildContext context) {
     // return WillPopScope(
     //     onWillPop: () async => false,
@@ -334,43 +334,79 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                               border: Border.all(color: Colors.white, width: 0),
                               borderRadius: BorderRadius.all(Radius.circular(
                                   AppDimensions.height10(context) * 1.8))),
-                          child: TextFormField(
-                            obscureText: true,
-                            textAlign: TextAlign.justify,
-                            decoration: InputDecoration(
-                                contentPadding: const EdgeInsets.only(
-                                    top: 5.0,
-                                    bottom: 15.0,
-                                    left: 10.0,
-                                    right: 10.0),
-                                alignLabelWithHint: true,
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
-                                hintText: "********",
-                                hintStyle: TextStyle(
-                                  color: const Color(0xFF8C648A),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: AppDimensions.height10(context) * 32,
+                                child: TextFormField(
+                                  obscureText: pass_obscure,
+                                  textAlign: TextAlign.justify,
+                                  decoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.only(
+                                          top: 5.0,
+                                          bottom: 15.0,
+                                          left: 10.0,
+                                          right: 10.0),
+                                      alignLabelWithHint: true,
+                                      floatingLabelBehavior:
+                                          FloatingLabelBehavior.always,
+                                      hintText: "********",
+                                      hintStyle: TextStyle(
+                                        color: const Color(0xFF8C648A),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                      ),
+                                      labelText: "Password",
+                                      focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent)),
+                                      enabledBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent))),
+                                  controller: passwordController,
+                                  validator: (val) {
+                                    if (val == null ||
+                                        val == "" ||
+                                        val.length < 8 ||
+                                        val == "") {
+                                      setState(() {
+                                        errorPassword = true;
+                                      });
+                                    }
+                                  },
                                 ),
-                                labelText: "Password",
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                            controller: passwordController,
-                            validator: (val) {
-                              if (val == null ||
-                                  val == "" ||
-                                  val.length < 8 ||
-                                  val == "") {
-                                setState(() {
-                                  errorPassword = true;
-                                });
-                              }
-                            },
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    if (pass_obscure == true) {
+                                      pass_obscure = false;
+                                    } else {
+                                      pass_obscure = true;
+                                    }
+                                  });
+                                },
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 2.4,
+                                  width: AppDimensions.height10(context) * 2.4,
+                                  margin: EdgeInsets.only(
+                                      bottom: AppDimensions.height10(context) *
+                                          1.0),
+                                  child: Image.asset(
+                                    pass_obscure
+                                        ? 'assets/images/ic_remove_red_eye.webp'
+                                        : 'assets/images/visible-icon-9.webp',
+                                    color: const Color(0xFF8C648A),
+                                    height:
+                                        AppDimensions.height10(context) * 2.4,
+                                    width:
+                                        AppDimensions.height10(context) * 2.4,
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                         errorPassword
