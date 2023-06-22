@@ -153,8 +153,7 @@ class _GoalNameState extends State<GoalName> {
                                         prefs.setString('route', "GoalName");
                                     Navigator.push(
                                       context,
-                                      FadePageRoute2(
-                                        true,
+                                      FadePageRoute3(
                                         exitPage: GoalName(),
                                         enterPage:
                                             const HomeScreenProgressSaved(
@@ -186,14 +185,16 @@ class _GoalNameState extends State<GoalName> {
                                 height: 44,
                                 width: double.infinity,
                                 child: TextButton(
-                                  onPressed: () {
+                                  onPressed: () async {
+                                    final SharedPreferences prefs = await _prefs;
+                                    await prefs.remove('goal');
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
                                         true,
                                         exitPage: GoalName(),
                                         enterPage:
-                                            const HomeScreen(login: false),
+                                            const HomeScreen(login: true),
                                       ),
                                     );
                                   },

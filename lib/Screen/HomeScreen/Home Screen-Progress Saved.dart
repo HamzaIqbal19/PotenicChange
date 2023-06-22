@@ -122,34 +122,49 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                     child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
-                    if (widget.route == "GoalName") {
+                    if (widget.route == "GoalName" && widget.login==true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => GoalName(),
                         ),
                       );
-                    } else if (widget.route == "goalVisualising") {
+                    } else if (widget.route == "goalVisualising" && widget.login==true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const Visualising(),
                         ),
                       );
-                    } else if (widget.route == "GoalIdentity") {
+                    } else if (widget.route == "GoalIdentity" && widget.login==true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const Goal_Identity(),
                         ),
                       );
-                    } else if (widget.route == "goalWhy") {
+                    } else if (widget.route == "goalWhy" && widget.login==true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => GoalWhy(),
                         ),
                       );
+                    }
+                    else if (widget.route == "" && widget.login==true) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GoalWhy(),
+                        ),
+                      );
+                    }
+
+                    else{
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content:
+                              Text("User is not logged in !!")));
                     }
                   },
                   child: Image(
@@ -338,7 +353,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "logout",
+                                  "Logout",
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontSize:

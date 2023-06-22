@@ -135,21 +135,29 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     _controller_img.forward();
 
                     // Delay for the forward animation to be visible
-                    await Future.delayed(Duration(milliseconds: 200));
+                    await Future.delayed(const Duration(milliseconds: 200));
 
                     // Press up effect
                     _controller_img.reverse();
 
                     // Delay the action for the reverse animation to be visible
-                    await Future.delayed(Duration(milliseconds: 200));
-                    Navigator.push(
-                      context,
-                      FadePageRoute2(
-                        enterPage: StartProcess(),
-                        exitPage: const HomeScreen(login: false),
-                        true,
-                      ),
-                    );
+                    await Future.delayed(const Duration(milliseconds: 200));
+                    if(widget.login==true) {
+                      Navigator.push(
+                        context,
+                        FadePageRoute2(
+                          enterPage: StartProcess(),
+                          exitPage: const HomeScreen(login: false),
+                          true,
+                        ),
+                      );
+                    }
+                    else{
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content:
+                              Text("User is not logged in !!")));
+                    }
                   },
                   child: Transform.scale(
                     scale: 1 - _controller_img.value,
@@ -357,6 +365,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w600,
                                     ),
+
                                   ),
                                 ),
                               ),

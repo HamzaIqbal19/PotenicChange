@@ -37,8 +37,11 @@ class OnboardingPage extends StatefulWidget {
 class OnboardingPageState extends State<OnboardingPage>
     with SingleTickerProviderStateMixin {
   final PageController _pageController = PageController(initialPage: 0);
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   late AnimationController _controller;
   int _currentPage = 0;
+  String Accestoken="";
+
   double _value = 0.0;
 
   List<Widget> _buildPageIndicator() {
@@ -60,6 +63,7 @@ class OnboardingPageState extends State<OnboardingPage>
 
   @override
   void initState() {
+    loadData();
     _controller = AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 200), // increased duration
@@ -69,6 +73,14 @@ class OnboardingPageState extends State<OnboardingPage>
         setState(() {});
       });
     super.initState();
+  }
+
+   loadData() async {
+    print("=============>hello world");
+    final SharedPreferences prefs = await _prefs;
+     Accestoken = prefs.getString("usertoken")!;
+
+
   }
 
   Widget _indicator(bool isActive) {
@@ -99,6 +111,7 @@ class OnboardingPageState extends State<OnboardingPage>
   Widget build(
     BuildContext context,
   ) {
+    print("AccessToken:$Accestoken");
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -152,14 +165,26 @@ class OnboardingPageState extends State<OnboardingPage>
                   fit: BoxFit.cover,
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    FadePageRoute2(
-                      true,
-                      enterPage: HomeScreen(login: false),
-                      exitPage: OnBoarding(),
-                    ),
-                  );
+                  if(Accestoken!="") {
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute2(
+                        true,
+                        enterPage: HomeScreen(login: true),
+                        exitPage: OnBoarding(),
+                      ),
+                    );
+                  }
+                  else{
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute2(
+                        true,
+                        enterPage: HomeScreen(login: false),
+                        exitPage: OnBoarding(),
+                      ),
+                    );
+                  }
                   // Add code for performing close action
                 },
               ),

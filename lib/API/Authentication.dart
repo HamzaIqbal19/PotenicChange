@@ -78,7 +78,6 @@ class Authentication {
     });
 
     print("Body:${Body}");
-
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
         headers: headers, body: Body);
 

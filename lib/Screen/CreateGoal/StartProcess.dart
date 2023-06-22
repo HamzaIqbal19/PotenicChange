@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_constants.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -57,7 +58,13 @@ class _StartProcessState extends State<StartProcess>
                 fit: BoxFit.cover,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  FadePageRoute3(
+                    enterPage: const HomeScreen(login: true,),
+                    exitPage:const  StartProcess(),
+                  ),
+                );
                 // Add code for performing close action
               },
             ),
@@ -265,7 +272,7 @@ class _StartProcessState extends State<StartProcess>
                       FadePageRoute2(
                         true,
                         enterPage: Categories(),
-                        exitPage: StartProcess(),
+                        exitPage: const StartProcess(),
                       ));
                 },
                 child: Transform.scale(
@@ -288,6 +295,7 @@ class _StartProcessState extends State<StartProcess>
                           color: Colors.white,
                           fontSize: AppDimensions.height10(context) * 1.9,
                         ),
+
                       ),
                     ),
                   ),
