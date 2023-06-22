@@ -16,11 +16,13 @@ class SignUpPage extends StatefulWidget {
   State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
+  late AnimationController _controller;
+  late AnimationController _controller_log;
   bool isPasswordNotVisible = true;
   bool boolean = true;
 
@@ -30,6 +32,20 @@ class _SignUpPageState extends State<SignUpPage> {
       pref.setString('email', email);
       print("SetEmail: $email");
     }
+  }
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {});
+      });
+    // TODO: implement initState
+    super.initState();
   }
 
   @override
@@ -264,44 +280,51 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
                 SizedBox(height: AppDimensions.height10(context) * 28.4),
-                SizedBox(
-                  height: AppDimensions.height10(context) * 5,
-                  width: AppDimensions.screenWidth(context) - 100,
-                  child: OutlinedButton.icon(
-                    // <-- OutlinedButton
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFFFFFF),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(40.0),
+                GestureDetector(
+                  onTapDown: (TapDownDetails details) {
+                    _controller.forward();
+                  },
+                  onTap: () async {
+                    _controller.forward();
+
+                    await Future.delayed(Duration(milliseconds: 200));
+
+                    _controller.reverse();
+
+                    await Future.delayed(Duration(milliseconds: 200));
+                    Navigator.push(
+                      context,
+                      FadePageRoute2(
+                        true,
+                        exitPage: SignUpPage(),
+                        enterPage: LoginPage(),
                       ),
-                      //<-- SEE HERE
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        FadePageRoute2(
-                          true,
-                          exitPage: SignUpPage(),
-                          enterPage: LoginPage(),
-                        ),
-                      );
-                    },
-                    icon: Image.asset(
-                      "assets/images/fb.webp",
-                      width: 0.0,
-                      height: 0.0,
-                    ),
-                    label: Center(
+                    );
+                  },
+                  child: Transform.scale(
+                    scale: 1 - _controller.value,
+                    child: Container(
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 29.3,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF5F5F5),
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.all(Radius.circular(
+                            AppDimensions.height10(context) * 5.0)),
+                      ),
+                      child: Center(
                         child: Text(
-                      'I already have an account',
-                      style: TextStyle(
-                        color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.height10(context) * 1.6,
-                        fontWeight: FontWeight.w600,
+                          "I already have an account",
+                          style: TextStyle(
+                            color: const Color(0xFF8C648A),
+                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                       ),
-                    )),
+                    ),
                   ),
-                ),
+                )
               ],
               // child:  Text("Hello background"),
             ),

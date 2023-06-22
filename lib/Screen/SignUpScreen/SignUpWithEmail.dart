@@ -4,9 +4,10 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_colors.dart';
+import 'package:email_validator/email_validator.dart';
+
 import 'dart:convert';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,15 +19,17 @@ class SignUpWithEmail extends StatefulWidget {
   _SignUpWithEmailState createState() => _SignUpWithEmailState();
 }
 
-class _SignUpWithEmailState extends State<SignUpWithEmail> {
+class _SignUpWithEmailState extends State<SignUpWithEmail>
+    with SingleTickerProviderStateMixin {
   // controllers
   final nameController = TextEditingController();
   final emailController = TextEditingController();
+  late AnimationController _controller;
   final passwordController = TextEditingController();
 
   // final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
-  bool rememberMe = true;
+  bool rememberMe = false;
   bool boolean = true;
   bool Loading = false;
   bool errorEmail = false;
@@ -43,6 +46,14 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
 
   @override
   void initState() {
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {});
+      });
     super.initState();
   }
 
@@ -186,7 +197,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                   // SizedBox(height: AppDimensions.height0),
 
                   SizedBox(
-                    height: AppDimensions.height10(context) * 35 + 6,
+                    // height: AppDimensions.height10(context) * 34,
                     width: AppDimensions.height10(context) * 36,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -233,6 +244,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                 setState(() {
                                   errorName = true;
                                 });
+                              } else {
+                                errorName = false;
                               }
                             },
                           ),
@@ -290,11 +303,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                         BorderSide(color: Colors.transparent))),
                             controller: emailController,
                             validator: (val) {
-                              if (val == null || val == ""
-                                  // || !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"
-                                  )
-                              //  .hasMatch(val))
-                              {
+                              if (val == null ||
+                                  val == "" ||
+                                  !EmailValidator.validate(val)) {
                                 setState(() {
                                   errorEmail = true;
                                 });
@@ -374,6 +385,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
                                       setState(() {
                                         errorPassword = true;
                                       });
+                                    } else {
+                                      errorPassword = false;
                                     }
                                   },
                                 ),
@@ -514,89 +527,112 @@ class _SignUpWithEmailState extends State<SignUpWithEmail> {
 
                   SizedBox(height: AppDimensions.height10(context) * 4.5),
 
-                  SizedBox(
-                    height: AppDimensions.height10(context) * 5,
-                    width: AppDimensions.screenWidth(context) - 100,
-                    child: OutlinedButton.icon(
-                      // <-- OutlinedButton
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFFFFFF),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(40.0),
-                        ),
-                        //<-- SEE HERE
-                      ),
+                  GestureDetector(
+                    onTapDown: (TapDownDetails details) {
+                      setState(() {
+                        Loading = true;
+                      });
+                      _controller.forward();
+                    },
+                    onTap: () async {
+                      setState(() {
+                        Loading = true;
+                      });
+                      _controller.forward();
 
-                      onPressed: () {
-                        if (_formkey1.currentState!.validate()) {
+                      await Future.delayed(Duration(milliseconds: 200));
+
+                      _controller.reverse();
+
+                      await Future.delayed(Duration(milliseconds: 200));
+
+                      if (_formkey1.currentState!.validate() &&
+                          rememberMe == true) {
+                        setState(() {
+                          Loading = true;
+                        });
+                        print("Hello WOrld 12345");
+                        Authentication()
+                            .registerApi(
+                          '${nameController.text.toString()}',
+                          '${emailController.text.toString()}',
+                          '${passwordController.text.toString()}',
+                        )
+                            .then((response) {
                           setState(() {
-                            Loading = true;
+                            Loading = false;
                           });
-                          print("Hello WOrld 12345");
-                          Authentication()
-                              .registerApi(
-                            '${nameController.text.toString()}',
-                            '${emailController.text.toString()}',
-                            '${passwordController.text.toString()}',
-                          )
-                              .then((response) {
-                            setState(() {
-                              Loading = false;
-                            });
-                            if (response ==
-                                "User was registered successfully!") {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(response)));
-                              Navigator.push(
-                                context,
-                                FadePageRoute(
-                                  page: SignUpSuccessful(
-                                      name: nameController.text.toString()),
-                                ),
-                              );
-                            } else {
-                              setState(() {
-                                Loading = false;
-                              });
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text(response["message"])));
-                            }
-                          }).catchError((error) {
-                            setState(() {
-                              Loading = false;
-                            });
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(SnackBar(content: Text('error')));
-
-                            print("error");
-                          });
-                        }
-                      },
-
-                      icon: Image.asset(
-                        "assets/images/fb.webp",
-                        width: 0.0,
-                        height: 0.0,
-                      ),
-                      label: Center(
-                        child: Loading == false
-                            ? Text(
-                                'Sign up',
-                                style: TextStyle(
-                                  color: const Color(0xFF8C648A),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )
-                            : const SpinKitThreeBounce(
-                                color: Color(0xFF8C648A),
-                                size: 30,
+                          if (response == "User was registered successfully!") {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response)));
+                            Navigator.push(
+                              context,
+                              FadePageRoute(
+                                page: SignUpSuccessful(
+                                    name: nameController.text.toString()),
                               ),
+                            );
+                          } else if (response ==
+                              '"email" must be a valid email') {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text('This email is not correct')));
+                          } else if (response ==
+                              "Failed! Email is already in use!") {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content:
+                                    Text('This email is already registered!')));
+                          } else {
+                            setState(() {
+                              Loading = false;
+                            });
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response["message"])));
+                          }
+                        }).catchError((error) {
+                          setState(() {
+                            Loading = false;
+                          });
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(SnackBar(content: Text('error')));
+
+                          print("error");
+                        });
+                      } else if (rememberMe == false) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('User Agreement it not checked')));
+                      }
+                    },
+                    child: Transform.scale(
+                      scale: 1 - _controller.value,
+                      child: Container(
+                        height: AppDimensions.height10(context) * 4.4,
+                        width: AppDimensions.height10(context) * 26.7,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF5F5F5),
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              AppDimensions.height10(context) * 5.0)),
+                        ),
+                        child: Center(
+                          child: Loading
+                              ? SpinKitThreeInOut(
+                                  color: const Color(0xFF8C648A),
+                                  delay: Duration(milliseconds: 0),
+                                  size: AppDimensions.height10(context) * 4.5,
+                                )
+                              : Text(
+                                  "Sign up",
+                                  style: TextStyle(
+                                    color: const Color(0xFF8C648A),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                        ),
                       ),
                     ),
                   ),
-                  // SizedBox(height: AppDimensions.height120+90),
                 ],
                 // child:  Text("Hello background"),
               ),

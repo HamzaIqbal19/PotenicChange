@@ -16,7 +16,24 @@ class StartProcess extends StatefulWidget {
   State<StartProcess> createState() => _StartProcessState();
 }
 
-class _StartProcessState extends State<StartProcess> {
+class _StartProcessState extends State<StartProcess>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {});
+      });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -231,38 +248,47 @@ class _StartProcessState extends State<StartProcess> {
               SizedBox(
                 height: AppDimensions.height10(context) * 1.7,
               ),
-              Container(
-                height: AppDimensions.height10(context) * 5,
-                width: AppDimensions.height10(context) * 25.4,
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xFFFCC10D), Color(0xFFFDA210)])),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
+              GestureDetector(
+                onTapDown: (TapDownDetails details) {
+                  _controller.forward();
+                },
+                onTap: () async {
+                  _controller.forward();
+
+                  await Future.delayed(Duration(milliseconds: 200));
+
+                  _controller.reverse();
+
+                  await Future.delayed(Duration(milliseconds: 200));
+                  Navigator.push(
                       context,
                       FadePageRoute2(
                         true,
                         enterPage: Categories(),
-                        exitPage: HomeScreen(
-                          login: false,
+                        exitPage: StartProcess(),
+                      ));
+                },
+                child: Transform.scale(
+                  scale: 1 - _controller.value,
+                  child: Container(
+                    height: AppDimensions.height10(context) * 5,
+                    width: AppDimensions.height10(context) * 25.4,
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xFFFCC10D), Color(0xFFFDA210)])),
+                    child: Center(
+                      child: Text(
+                        'Start your jouney',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10(context) * 1.9,
                         ),
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      shadowColor: Colors.transparent),
-                  child: Text(
-                    'Start your jouney',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 1.9,
                     ),
                   ),
                 ),

@@ -13,10 +13,26 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late AnimationController _controller;
+
   final formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {});
+      });
+    // TODO: implement initState
+    super.initState();
+  }
 
   late SharedPreferences _prefs;
 
@@ -125,6 +141,7 @@ class _LoginPageState extends State<LoginPage> {
         style: TextStyle(
           fontWeight: fontWeight,
           color: Colors.white,
+          height: AppDimensions.height10(context) * 0.16,
           fontSize: AppDimensions.height10(context) * fontSize,
         ),
       ),
@@ -240,38 +257,46 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buildBottomButton(BuildContext context) {
-    return SizedBox(
-      height: AppDimensions.height10(context) * 5,
-      width: AppDimensions.screenWidth(context) - 100,
-      child: OutlinedButton.icon(
-        style: OutlinedButton.styleFrom(
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(40.0),
+    return GestureDetector(
+      onTapDown: (TapDownDetails details) {
+        _controller.forward();
+      },
+      onTap: () async {
+        _controller.forward();
+
+        await Future.delayed(Duration(milliseconds: 200));
+
+        _controller.reverse();
+
+        await Future.delayed(Duration(milliseconds: 200));
+        Navigator.push(
+          context,
+          FadePageRoute2(
+            true,
+            enterPage: const SignUpPage(),
+            exitPage: LoginPage(),
           ),
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            FadePageRoute2(
-              true,
-              enterPage: const SignUpPage(),
-              exitPage: LoginPage(),
-            ),
-          );
-        },
-        icon: Image.asset(
-          "assets/images/fb.webp",
-          width: 0.0,
-          height: 0.0,
-        ),
-        label: Center(
-          child: Text(
-            'New account',
-            style: TextStyle(
-              color: Color(0xFF8C648A),
-              fontSize: AppDimensions.height10(context) * 1.6,
-              fontWeight: FontWeight.w600,
+        );
+      },
+      child: Transform.scale(
+        scale: 1 - _controller.value,
+        child: Container(
+          height: AppDimensions.height10(context) * 5.0,
+          width: AppDimensions.height10(context) * 29.3,
+          decoration: BoxDecoration(
+            color: const Color(0xFFF5F5F5),
+            border: Border.all(color: Colors.white),
+            borderRadius: BorderRadius.all(
+                Radius.circular(AppDimensions.height10(context) * 5.0)),
+          ),
+          child: Center(
+            child: Text(
+              "New account",
+              style: TextStyle(
+                color: const Color(0xFF8C648A),
+                fontSize: AppDimensions.height10(context) * 1.6,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/MyServices/API.dart';
@@ -17,10 +18,13 @@ class Loginemailandpassword extends StatefulWidget {
   _LoginemailandpasswordState createState() => _LoginemailandpasswordState();
 }
 
-class _LoginemailandpasswordState extends State<Loginemailandpassword> {
+class _LoginemailandpasswordState extends State<Loginemailandpassword>
+    with SingleTickerProviderStateMixin {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late AnimationController _controller;
+
   String fcm = 'adsfsf3423424';
   bool Loading = false;
   bool pass_obscure = true;
@@ -44,6 +48,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
 
   @override
   void initState() {
+    _controller = AnimationController(
+        vsync: this,
+        duration: Duration(milliseconds: 200), // increased duration
+        lowerBound: 0.0,
+        upperBound: 0.1)
+      ..addListener(() {
+        setState(() {});
+      });
     super.initState();
   }
 
@@ -58,6 +70,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
     // TODO: implement dispose
     emailController.dispose();
     passwordController.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -258,8 +271,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                     controller: emailController,
                                     validator: (val) {
                                       if (val == null ||
-                                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                              .hasMatch(val)) {
+                                          !EmailValidator.validate(val) ||
+                                          val == "") {
                                         setState(() {
                                           errorEmail = true;
                                         });
@@ -480,95 +493,103 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
 
                   SizedBox(height: AppDimensions.height10(context) * 5.0),
 
-                  Container(
-                    height: AppDimensions.height10(context) * 4.4,
-                    width: AppDimensions.height10(context) * 26.7,
-                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.height10(context) *0.8),
+                  GestureDetector(
+                    onTapDown: (TapDownDetails details) {
+                      setState(() {
+                        Loading = true;
+                      });
+                      _controller.forward();
+                    },
+                    onTap: () async {
+                      _controller.forward();
 
-                    child: OutlinedButton.icon(
-                      // <-- OutlinedButton
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFFFFFF),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 5.0),
-                        ),
-                        //<-- SEE HERE
-                      ),
-                      onPressed: () {
-                        if (_formkey.currentState!.validate()) {
+                      await Future.delayed(Duration(milliseconds: 200));
+
+                      _controller.reverse();
+
+                      await Future.delayed(Duration(milliseconds: 200));
+                      if (_formkey.currentState!.validate()) {
+                        setState(() {
+                          Loading = true;
+                        });
+                        Authentication()
+                            .SignIn(
+                          fcm,
+                          '${emailController.text.toString()}',
+                          '${passwordController.text.toString()}',
+                        )
+                            .then((response) {
                           setState(() {
-                            Loading = true;
+                            Loading = false;
                           });
-                          Authentication()
-                              .SignIn(
-                            fcm,
-                            '${emailController.text.toString()}',
-                            '${passwordController.text.toString()}',
-                          )
-                              .then((response) {
+                          if (response == 200) {
+                            setState(() {
+                              credentials = false;
+                            });
+                            print("SignrResponse: $response");
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content:
+                                        Text("User Login Successfully!!")));
+                            Navigator.push(
+                              context,
+                              FadePageRoute2(true,
+                                  enterPage: StartProcess(),
+                                  exitPage: Loginemailandpassword()),
+                            );
+                          } else if (response == 404) {
                             setState(() {
                               Loading = false;
+                              credentials = true;
                             });
-                            if (response == 200) {
-                              setState(() {
-                                credentials = false;
-                              });
-                              print("SignrResponse: $response");
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content:
-                                          Text("User Login Successfully!!")));
-                              Navigator.push(
-                                context,
-                                FadePageRoute2(true,
-                                    enterPage: StartProcess(),
-                                    exitPage: Loginemailandpassword()),
-                              );
-                            } else if (response == 404) {
-                              setState(() {
-                                Loading = false;
-                                credentials = true;
-                              });
 
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text(
-                                          "Your sign in details are incorrect, please try again!!")));
-                            }
-                          }).catchError((error) {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(SnackBar(content: Text('error')));
-                            setState(() {
-                              Loading = false;
-                            });
-                            print("error");
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text(
+                                        "Your sign in details are incorrect, please try again!!")));
+                          }
+                        }).catchError((error) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(SnackBar(content: Text('error')));
+                          setState(() {
+                            Loading = false;
                           });
-                        }
-                      },
-                      icon: Image.asset(
-                        "assets/images/fb.webp",
-                        width: 0.0,
-                        height: 0.0,
-                      ),
-                      label: Center(
-                        child: Loading == false
-                            ? Text(
-                                'Log In',
-                                style: TextStyle(
-                                  color: const Color(0xFF8C648A),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                          print("error");
+                        });
+                      }
+                    },
+                    child: Transform.scale(
+                      scale: 1 - _controller.value,
+                      child: Container(
+                        height: AppDimensions.height10(context) * 4.4,
+                        width: AppDimensions.height10(context) * 26.7,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF5F5F5),
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.all(Radius.circular(
+                              AppDimensions.height10(context) * 5.0)),
+                        ),
+                        child: Loading
+                            ? SpinKitThreeInOut(
+                                color: const Color(0xFF8C648A),
+                                delay: Duration(milliseconds: 0),
+                                size: AppDimensions.height10(context) * 4.5,
                               )
-                            : const SpinKitThreeBounce(
-                                color: Color(0xFF8C648A),
-                                size: 30,
+                            : Center(
+                                child: Text(
+                                  "Log in",
+                                  style: TextStyle(
+                                    color: const Color(0xFF8C648A),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                               ),
                       ),
                     ),
                   ),
+
                   // SizedBox(height: AppDimensions.height120+90),
                 ],
                 // child:  Text("Hello background"),

@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dar
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -70,8 +71,9 @@ class _GoalNameState extends State<GoalName> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => Categories(),
+                    FadePageRoute3(
+                      enterPage: Categories(),
+                      exitPage: GoalName(),
                     ),
                   );
                   // Add code for performing close action

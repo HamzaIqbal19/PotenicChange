@@ -29,9 +29,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
   late AnimationController _controller;
   late AnimationController _controller_log;
-  late AnimationController _buttons_animation;
+  late AnimationController _controller_img;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
@@ -43,15 +44,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    _buttons_animation = AnimationController(
+    _controller_img = AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 200), // increased duration
         lowerBound: 0.0,
         upperBound: 0.1)
       ..addListener(() {
-        setState(() {
-          _controller.forward();
-        });
+        setState(() {});
       });
     _controller = AnimationController(
         vsync: this,
@@ -59,10 +58,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         lowerBound: 0.0,
         upperBound: 0.1)
       ..addListener(() {
-        setState(() {
-          _controller_log.forward();
-        });
+        setState(() {});
       });
+
     _controller_log = AnimationController(
         vsync: this,
         duration: Duration(milliseconds: 200), // increased duration
@@ -71,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ..addListener(() {
         setState(() {});
       });
+
     super.initState();
   }
 
@@ -82,6 +81,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   booleanValue(value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('bool', value);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _controller_log.dispose();
+    _controller_img.dispose();
+    super.dispose();
   }
 
   @override
@@ -122,16 +129,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 verticalSpacing(context, 4.4),
                 GestureDetector(
                   onTapDown: (TapDownDetails details) {
-                    _buttons_animation.forward();
+                    _controller_img.forward();
                   },
                   onTap: () async {
-                    _buttons_animation.forward();
+                    _controller_img.forward();
 
                     // Delay for the forward animation to be visible
                     await Future.delayed(Duration(milliseconds: 200));
 
                     // Press up effect
-                    _buttons_animation.reverse();
+                    _controller_img.reverse();
 
                     // Delay the action for the reverse animation to be visible
                     await Future.delayed(Duration(milliseconds: 200));
@@ -145,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     );
                   },
                   child: Transform.scale(
-                    scale: 1 - _buttons_animation.value,
+                    scale: 1 - _controller_img.value,
                     child: centeredImage(
                         context, "assets/images/createstar.webp", 23, 26),
                   ),
@@ -156,7 +163,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           GestureDetector(
-                            onTap: () {
+                            onTapDown: (TapDownDetails details) {
+                              _controller.forward();
+                            },
+                            onTap: () async {
+                              _controller.forward();
+
+                              // Delay for the forward animation to be visible
+                              await Future.delayed(Duration(milliseconds: 200));
+
+                              // Press up effect
+                              _controller.reverse();
+
+                              // Delay the action for the reverse animation to be visible
+                              await Future.delayed(Duration(milliseconds: 200));
                               showAnimatedDialog(
                                   animationType: DialogTransitionType.fadeScale,
                                   curve: Curves.easeInOut,
@@ -315,23 +335,28 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         ),
                                       ));
                             },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.height10(context) * 13,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF5F5F5),
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10(context) * 5.0)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "logout",
-                                  style: TextStyle(
-                                    color: const Color(0xFF8C648A),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.4,
-                                    fontWeight: FontWeight.w600,
+                            child: Transform.scale(
+                              scale: 1 - _controller.value,
+                              child: Container(
+                                height: AppDimensions.height10(context) * 5,
+                                width: AppDimensions.height10(context) * 13,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF5F5F5),
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(
+                                          AppDimensions.height10(context) *
+                                              5.0)),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    "Log out",
+                                    style: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.4,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -377,13 +402,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             onTap: () async {
                               _controller.forward();
 
-                              // Delay for the forward animation to be visible
                               await Future.delayed(Duration(milliseconds: 200));
 
-                              // Press up effect
                               _controller.reverse();
 
-                              // Delay the action for the reverse animation to be visible
                               await Future.delayed(Duration(milliseconds: 200));
                               Navigator.push(
                                 context,
@@ -423,52 +445,60 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          GestureDetector(
-                            onTapDown: (TapDownDetails details) {
-                              _controller_log.forward();
-                            },
-                            onTap: () async {
-                              _controller_log.forward();
+                          InkWell(
+                            focusColor: Colors.black,
+                            splashColor: Colors.red,
+                            onTap: () {},
+                            child: GestureDetector(
+                              onTapDown: (TapDownDetails details) {
+                                _controller_log.forward();
+                              },
+                              onTap: () async {
+                                _controller_log.forward();
 
-                              // Delay for the forward animation to be visible
-                              await Future.delayed(Duration(milliseconds: 200));
+                                // Delay for the forward animation to be visible
+                                await Future.delayed(
+                                    Duration(milliseconds: 200));
 
-                              // Press up effect
-                              _controller_log.reverse();
+                                // Press up effect
+                                _controller_log.reverse();
 
-                              // Delay the action for the reverse animation to be visible
-                              await Future.delayed(Duration(milliseconds: 200));
-                              Navigator.push(
-                                context,
-                                FadePageRoute2(
-                                  true,
-                                  enterPage: LoginPage(),
-                                  exitPage: HomeScreen(login: false),
-                                ),
-                              );
-                            },
-                            child: Transform.scale(
-                              scale: 1 - _controller_log.value,
-                              child: Container(
-                                height: AppDimensions.height10(context) * 5,
-                                width: AppDimensions.height10(context) * 13,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xFF5A4D73),
-                                  border: Border.all(
-                                      color: const Color(0xFF5A4D73)),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          AppDimensions.height10(context) *
-                                              5.0)),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "Log in",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.4,
-                                      fontWeight: FontWeight.w600,
+                                // Delay the action for the reverse animation to be visible
+                                await Future.delayed(
+                                    Duration(milliseconds: 200));
+                                Navigator.push(
+                                  context,
+                                  FadePageRoute2(
+                                    true,
+                                    enterPage: LoginPage(),
+                                    exitPage: HomeScreen(login: false),
+                                  ),
+                                );
+                              },
+                              child: Transform.scale(
+                                scale: 1 - _controller_log.value,
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 5,
+                                  width: AppDimensions.height10(context) * 13,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xFF5A4D73),
+                                    border: Border.all(
+                                        color: const Color(0xFF5A4D73)),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(
+                                            AppDimensions.height10(context) *
+                                                5.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Log in",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
                                 ),

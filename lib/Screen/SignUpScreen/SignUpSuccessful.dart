@@ -39,15 +39,15 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(Duration(seconds: 1), onDoneLoading);
+    return Timer(Duration(seconds: 4), onDoneLoading);
   }
 
   onDoneLoading() async {
     Navigator.push(
       context,
-      FadePageRoute2(true,
-          enterPage: const HomeScreen(login: true),
-          exitPage: SignUpSuccessful(name: '')),
+      FadePageRoute(
+        page: const HomeScreen(login: true),
+      ),
     );
   }
 

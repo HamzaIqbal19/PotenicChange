@@ -4,23 +4,31 @@ class FadePageRoute<T> extends PageRouteBuilder<T> {
   final Widget page;
   FadePageRoute({required this.page})
       : super(
-          pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: Duration(milliseconds: 650),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            var begin = Offset(0.0, 0.65);
-            var end = Offset.zero;
-            var curve = Curves.easeInOut;
-            var slideAnim =
-                Tween(begin: begin, end: end).animate(CurvedAnimation(
-              parent: animation,
-              curve: curve,
-            ));
+          pageBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+          ) =>
+              page,
+          transitionDuration: Duration(
+              milliseconds: 500), // specify the transition duration here
+          transitionsBuilder: (
+            BuildContext context,
+            Animation<double> animation,
+            Animation<double> secondaryAnimation,
+            Widget child,
+          ) {
             return SlideTransition(
-              position: slideAnim,
-              child: FadeTransition(
-                opacity: animation,
-                child: child,
+              position: Tween<Offset>(
+                begin: const Offset(1.0, 0.0),
+                end: Offset.zero,
+              ).animate(
+                CurvedAnimation(
+                  parent: animation,
+                  curve: Curves.linear,
+                ),
               ),
+              child: child,
             );
           },
         );
