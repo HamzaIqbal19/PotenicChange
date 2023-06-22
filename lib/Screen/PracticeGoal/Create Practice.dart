@@ -22,15 +22,16 @@ class CreatePractice extends StatefulWidget {
 class _CreatePracticeState extends State<CreatePractice> {
   bool SearchIcon = false;
   bool Loading = true;
+  String searchText = '';
 
   List<Map<String, dynamic>>? practiceName;
   @override
   void initState() {
     super.initState();
-    _fetchGoalNames();
+    _fetchPracticeNames();
   }
 
-  void _fetchGoalNames() {
+  void _fetchPracticeNames() {
     PracticeGoalApi.getPractice().then((response) {
       if (response.length != 0) {
         setState(() {
@@ -53,11 +54,32 @@ class _CreatePracticeState extends State<CreatePractice> {
     });
   }
 
+
+
+  void _searchPractice(String searchTerm) {
+
+    setState(() {
+      //if (searchTerm) {
+      PracticeGoalApi.SearchPractice(searchTerm).then((value) {
+        print("value:$value");
+        setState(() {
+          practiceName = value;
+          Loading = false;
+          print("responses:${value[1]["goals"]}");
+        });
+      });
+      // } else {
+      //_searchResults = [];
+      //  }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
+      extendBody: true,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
@@ -285,6 +307,17 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   AppDimensions.height10(context)))),
                           child: Center(
                             child: TextFormField(
+                                onChanged: (value) {
+
+                                  print("value:$value");
+
+                                  setState(() {
+                                    searchText = value;
+                                    _searchPractice(value);
+
+                                  });
+
+                                },
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(
@@ -335,22 +368,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          SearchIcon = false;
-                        });
-                      },
-                      child: Text(
-                        "Cancel",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xFF007AFF),
-                        ),
-                      ),
-                    ),
+
 
                     //const Padding(padding: EdgeInsets.all(10))
                   ],
@@ -417,26 +435,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.height10(context) * 4.7,
-                      height: AppDimensions.height10(context) * 4.7,
-                      padding: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.5,
-                          bottom: AppDimensions.height10(context) * 0.5),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            SearchIcon = true;
-                          });
-                        },
-                        child: Image.asset(
-                          'assets/images/Search.webp',
-                          width: AppDimensions.height10(context) * 5,
-                          height: AppDimensions.height10(context) * 5,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                    ),
+
 
                     //const Padding(padding: EdgeInsets.all(10))
                   ],

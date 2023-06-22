@@ -33,7 +33,7 @@ class Authentication {
       print("return this value:$res");
       return res;
     } else {
-      client.close();
+
       // print("response:${}");
       return responses["message"];
     }
@@ -69,6 +69,8 @@ class Authentication {
   }
 
   Future SignIn(fcmRegistrationToken, email, password) async {
+
+
     var headers = {'Content-Type': 'application/json'};
 
     var Body = json.encode({
@@ -111,8 +113,6 @@ class Authentication {
     } else if (request.statusCode == 404) {
       // print("response:${}");
       return request.statusCode;
-    } else {
-      client.close();
     }
   }
 

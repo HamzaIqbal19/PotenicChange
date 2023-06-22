@@ -37,7 +37,20 @@ class _StartProcessState extends State<StartProcess>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+
+    return WillPopScope(
+        onWillPop: () async {
+          Navigator.push(
+            context,
+            FadePageRoute3(
+              enterPage: const HomeScreen(login: true,),
+              exitPage:const  StartProcess(),
+            ),
+          );
+
+          return Future.value(false);
+        },
+    child: Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
@@ -319,6 +332,7 @@ class _StartProcessState extends State<StartProcess>
           )
         ],
       ),
+    )
     );
   }
 }

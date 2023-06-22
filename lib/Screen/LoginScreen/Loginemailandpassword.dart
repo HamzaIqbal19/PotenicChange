@@ -511,51 +511,50 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       if (_formkey.currentState!.validate()) {
                         setState(() {
                           Loading = true;
+                          credentials = false;
                         });
-                        Authentication()
-                            .SignIn(
+                        Authentication().SignIn(
                           fcm,
                           '${emailController.text.toString()}',
                           '${passwordController.text.toString()}',
-                        )
-                            .then((response) {
-                          setState(() {
-                            Loading = false;
-                          });
+                        ).then((response) {
                           if (response == 200) {
                             setState(() {
+
                               credentials = false;
                             });
                             print("SignrResponse: $response");
                             ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content:
-                                        Text("User Login Successfully!!")));
+                                const SnackBar(content: Text("User Login Successfully!!"))
+                            );
                             Navigator.push(
                               context,
-                              FadePageRoute2(true,
-                                  enterPage: StartProcess(),
-                                  exitPage: Loginemailandpassword()),
+                              FadePageRoute2(
+                                true,
+                                enterPage: StartProcess(),
+                                exitPage: Loginemailandpassword(),
+                              ),
                             );
-                          } else if (response == 404) {
+                          } else if (response == 404 || response == 401) {
                             setState(() {
-                              Loading = false;
                               credentials = true;
                             });
 
                             ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text(
-                                        "Your sign in details are incorrect, please try again!!")));
+                                const SnackBar(content: Text("Your sign in details are incorrect, please try again!!"))
+                            );
                           }
                         }).catchError((error) {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(SnackBar(content: Text('error')));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('An error occurred: $error'))
+                          );
+                        }).whenComplete(() {
                           setState(() {
                             Loading = false;
+                            credentials = true;
                           });
-                          print("error");
                         });
+
                       }
                     },
                     child: Transform.scale(
