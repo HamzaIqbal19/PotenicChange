@@ -24,17 +24,25 @@ class Authentication {
 
     var responses = jsonDecode(request.body);
 
-    print("request:${responses}");
+    print("responses:$responses");
+    print("statusCode:${request.statusCode}");
 
     if (request.statusCode == 200) {
       print("response:${responses["message"]}");
 
-      var res = responses["message"];
-      print("return this value:$res");
-      return res;
+      var response={
+        "message":responses["message"],
+        "statusCode": request.statusCode,
+      };
+      print("return this value:$response");
+      return response;
     } else {
+      var response={
+        "message":responses["message"],
+        "statusCode": request.statusCode,
+      };
       // print("response:${}");
-      return responses["message"];
+      return response;
     }
   }
 

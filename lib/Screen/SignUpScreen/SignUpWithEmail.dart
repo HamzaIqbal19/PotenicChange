@@ -34,9 +34,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   bool rememberMe = false;
   bool boolean = true;
   bool Loading = false;
-  bool errorEmail = false;
-  bool errorName = false;
-  bool errorPassword = false;
+  bool errorEmail = true;
+  bool errorName = true;
+  bool errorPassword = true;
   bool pass_obscure = true;
 
   late SharedPreferences _prefs;
@@ -569,9 +569,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           setState(() {
                             Loading = false;
                           });
-                          if (response == "User was registered successfully!") {
+                          if (response["statusCode"]==200) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response)));
+                                SnackBar(content: Text(response["message"])));
                             Navigator.push(
                               context,
                               FadePageRoute(
@@ -579,28 +579,17 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     name: nameController.text.toString()),
                               ),
                             );
-                          } else if (response ==
-                              '"email" must be a valid email') {
+                          } else if (response["statusCode"]!=200){
+
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text('This email is not correct')));
-                          } else if (response ==
-                              "Failed! Email is already in use!") {
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content:
-                                    Text('This email is already registered!')));
-                          } else {
-                            setState(() {
-                              Loading = false;
-                            });
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response["message"])));
+                                content: Text(response["message"])));
                           }
                         }).catchError((error) {
                           setState(() {
                             Loading = false;
                           });
                           ScaffoldMessenger.of(context)
-                              .showSnackBar(SnackBar(content: Text('error')));
+                              .showSnackBar(const SnackBar(content: Text('error')));
 
                           print("error");
                         });
