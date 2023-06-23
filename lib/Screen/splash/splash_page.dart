@@ -59,7 +59,8 @@ class SplashPageState extends State<SplashPage> {
           Navigator.push(
               context,
               FadePageRoute(
-                page: const HomeScreen(login: true),
+                page: HomeScreen(login: true),
+                // enterPage: const HomeScreen(login: true),
               ));
         } else {
           ScaffoldMessenger.of(context)
@@ -76,7 +77,8 @@ class SplashPageState extends State<SplashPage> {
           Navigator.push(
               context,
               FadePageRoute(
-                page: HomeScreen(login: false),
+                page: HomeScreen(login: true),
+                // exitPage:SplashPage(),
               ));
         } else {
           ScaffoldMessenger.of(context)
@@ -84,6 +86,8 @@ class SplashPageState extends State<SplashPage> {
         }
       }).catchError((error) {
         print("error");
+      }).whenComplete(() {
+        onDoneLoading();
       });
     } else {
       onDoneLoading();

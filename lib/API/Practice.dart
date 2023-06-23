@@ -85,6 +85,34 @@ class PracticeGoalApi {
     }
   }
 
+  static Future<List<Map<String, dynamic>>> SearchPractice(String Search) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/practice/all-practice?practiceName=$Search'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+      List<String> practiceNames = [];
+      for (var practiceData in jsonData) {
+        var goalName = practiceData['name'];
+        practiceNames.add(goalName);
+      }
+      print("run type :${practiceNames.runtimeType}");
+      return List<Map<String, dynamic>>.from(jsonData);
+    } else {
+      throw Exception('Failed to fetch practice names');
+    }
+  }
+
   static Future getUserPractice() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");

@@ -250,7 +250,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   errorName = true;
                                 });
                               } else {
-                                errorName = false;
+                               setState(() {
+                                 errorName = false;
+                               });
                               }
                             },
                           ),

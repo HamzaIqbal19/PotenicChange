@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/animation.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -142,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
                     // Delay the action for the reverse animation to be visible
                     await Future.delayed(const Duration(milliseconds: 200));
-                    if(widget.login==true) {
+                    if (widget.login == true) {
                       Navigator.push(
                         context,
                         FadePageRoute2(
@@ -151,12 +152,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           true,
                         ),
                       );
-                    }
-                    else{
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content:
-                              Text("User is not logged in !!")));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("User is not logged in !!")));
                     }
                   },
                   child: Transform.scale(
@@ -365,7 +363,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                           AppDimensions.height10(context) * 1.4,
                                       fontWeight: FontWeight.w600,
                                     ),
-
                                   ),
                                 ),
                               ),
@@ -374,7 +371,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           SizedBox(
                             width: AppDimensions.height10(context) * 1.4,
                           ),
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
                               signupSheet(
                                   context, "Introduction", "OnBoarding");
@@ -514,7 +511,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               ),
                             ),
                           ),
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
                               signupSheet(
                                   context, "Introduction", "OnBoarding");

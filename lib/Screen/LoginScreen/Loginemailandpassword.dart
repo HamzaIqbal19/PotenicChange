@@ -513,6 +513,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       if (_formkey.currentState!.validate()) {
                         setState(() {
                           Loading = true;
+                          credentials = false;
                         });
                         Authentication()
                             .SignIn(
@@ -521,9 +522,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                           '${passwordController.text.toString()}',
                         )
                             .then((response) {
-                          setState(() {
-                            Loading = false;
-                          });
                           if (response == 200) {
                             setState(() {
                               credentials = false;
@@ -535,13 +533,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                         Text("User Login Successfully!!")));
                             Navigator.push(
                               context,
-                              FadePageRoute(
-                                page: StartProcess(),
+                              FadePageRoute2(
+                                true,
+                                enterPage: StartProcess(),
+                                exitPage: Loginemailandpassword(),
                               ),
                             );
-                          } else if (response == 404) {
+                          } else if (response == 404 || response == 401) {
                             setState(() {
-                              Loading = false;
                               credentials = true;
                             });
 
@@ -551,13 +550,13 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                         "Your sign in details are incorrect, please try again!!")));
                           }
                         }).catchError((error) {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(SnackBar(content: Text('Error')));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text('An error occurred: $error')));
+                        }).whenComplete(() {
                           setState(() {
                             Loading = false;
+                            credentials = false;
                           });
-
-                          print("error");
                         });
                       }
                     },

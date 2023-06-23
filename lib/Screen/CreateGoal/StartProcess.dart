@@ -37,288 +37,310 @@ class _StartProcessState extends State<StartProcess>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.transparent,
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        automaticallyImplyLeading: false,
-        actions: [
-          Center(
-            // alignment: Alignment.center,
+    return WillPopScope(
+        onWillPop: () async {
+          Navigator.push(
+            context,
+            FadePageRoute(
+              page: const HomeScreen(
+                login: true,
+              ),
+            ),
+          );
 
-            child: IconButton(
-              icon: Image.asset(
-                'assets/images/Close.webp',
-                width: AppDimensions.height10(context) * 2.8,
-                height: AppDimensions.height10(context) * 2.8,
-                fit: BoxFit.cover,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  FadePageRoute3(
-                    enterPage: const HomeScreen(login: true,),
-                    exitPage:const  StartProcess(),
+          return Future.value(false);
+        },
+        child: Scaffold(
+          extendBodyBehindAppBar: true,
+          resizeToAvoidBottomInset: false,
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            elevation: 0,
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: false,
+            actions: [
+              Center(
+                // alignment: Alignment.center,
+
+                child: IconButton(
+                  icon: Image.asset(
+                    'assets/images/Close.webp',
+                    width: AppDimensions.height10(context) * 2.8,
+                    height: AppDimensions.height10(context) * 2.8,
+                    fit: BoxFit.cover,
                   ),
-                );
-                // Add code for performing close action
-              },
-            ),
-          ),
-          SizedBox(
-            width: AppDimensions.width10(context),
-          )
-        ],
-      ),
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/CreateGoal.webp"),
-                fit: BoxFit.cover,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      FadePageRoute3(
+                        enterPage: const HomeScreen(
+                          login: true,
+                        ),
+                        exitPage: const StartProcess(),
+                      ),
+                    );
+                    // Add code for performing close action
+                  },
+                ),
               ),
-            ),
+              SizedBox(
+                width: AppDimensions.width10(context),
+              )
+            ],
           ),
-          Column(
+          body: Stack(
             children: [
               Container(
-                padding:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 5.7),
-                child: Center(
-                  child: GradientText(
-                    "Goal Setting",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      // color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 3,
-                    ),
-                    colors: const [
-                      Color(0xFFFA9934),
-                      Color(0xFFEDD15E),
-                    ],
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/CreateGoal.webp"),
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 3.4,
-              ),
-              Container(
-                  // color: Colors.black,
-                  height: AppDimensions.height10(context) * 7.4,
-                  width: AppDimensions.height10(context) * 36.6,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Center(
-                          child: Text(
-                            "Step 1: ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 2.4,
-                            ),
-                          ),
+              Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 5.7),
+                    child: Center(
+                      child: GradientText(
+                        "Goal Setting",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          // color: Colors.white,
+                          fontSize: AppDimensions.height10(context) * 3,
                         ),
+                        colors: const [
+                          Color(0xFFFA9934),
+                          Color(0xFFEDD15E),
+                        ],
                       ),
-                      Container(
-                        child: Center(
-                          child: Text(
-                            "Create your ‘star’ (goal) ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 2.4,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )),
-              Center(
-                child: Image(
-                  image: const AssetImage('assets/images/image1.webp'),
-                  height: AppDimensions.height10(context) * 6.5,
-                  width: AppDimensions.height10(context) * 6.5,
-                ),
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 1.1,
-              ),
-              Container(
-                child: Center(
-                  child: Text(
-                    "Create a personal development goal based \n on your vision and why to help you with \n purpose and stay focused. ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 1.8,
                     ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 2.7,
-              ),
-              Center(
-                child: Image(
-                  image: const AssetImage('assets/images/Line.webp'),
-                  // height: AppDimensions.height10(context) * 6.5,
-                  width: AppDimensions.height10(context) * 6.5,
-                ),
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 2.3,
-              ),
-              Container(
-                  // color: Colors.black,
-                  height: AppDimensions.height10(context) * 8.3,
-                  width: AppDimensions.height10(context) * 36.6,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Center(
-                          child: Text(
-                            "Step 2: ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 2.4,
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 3.4,
+                  ),
+                  Container(
+                      // color: Colors.black,
+                      height: AppDimensions.height10(context) * 7.4,
+                      width: AppDimensions.height10(context) * 36.6,
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Center(
+                              child: Text(
+                                "Step 1: ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.4,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                      Container(
-                        child: Center(
-                          child: Text(
-                            "Assign your ‘planet’ (practice)",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 2.4,
+                          Container(
+                            child: Center(
+                              child: Text(
+                                "Create your ‘star’ (goal) ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.4,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ],
-                  )),
-              Center(
-                child: Image(
-                  image: const AssetImage('assets/images/image2.webp'),
-                  height: AppDimensions.height10(context) * 4,
-                  width: AppDimensions.height10(context) * 4,
-                ),
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 1.3,
-              ),
-              Container(
-                height: AppDimensions.height10(context) * 8.6,
-                child: Center(
-                  child: Text(
-                    "Decide on a tool / practice you’ll be using \n and set your routine (you need to do this 3 \n or more times a week) ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 1.8,
+                        ],
+                      )),
+                  Center(
+                    child: Image(
+                      image: const AssetImage('assets/images/image1.webp'),
+                      height: AppDimensions.height10(context) * 6.5,
+                      width: AppDimensions.height10(context) * 6.5,
                     ),
                   ),
-                ),
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 3.5,
-              ),
-              Container(
-                height: AppDimensions.height10(context) * 5.6,
-                child: Center(
-                  child: Text(
-                    "In 25 mins and less you’ll be on your \n way towards more clarity. ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 1.9,
-                    ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 1.1,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 1.7,
-              ),
-              GestureDetector(
-                onTapDown: (TapDownDetails details) {
-                  _controller.forward();
-                },
-                onTap: () async {
-                  _controller.forward();
-
-                  await Future.delayed(Duration(milliseconds: 200));
-
-                  _controller.reverse();
-
-                  await Future.delayed(Duration(milliseconds: 200));
-                  Navigator.push(
-                      context,
-                      FadePageRoute2(
-                        true,
-                        enterPage: Categories(),
-                        exitPage: const StartProcess(),
-                      ));
-                },
-                child: Transform.scale(
-                  scale: 1 - _controller.value,
-                  child: Container(
-                    height: AppDimensions.height10(context) * 5,
-                    width: AppDimensions.height10(context) * 25.4,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(40.0)),
-                        gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xFFFCC10D), Color(0xFFFDA210)])),
+                  Container(
                     child: Center(
                       child: Text(
-                        'Start your jouney',
+                        "Create a personal development goal based \n on your vision and why to help you with \n purpose and stay focused. ",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10(context) * 1.8,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 2.7,
+                  ),
+                  Center(
+                    child: Image(
+                      image: const AssetImage('assets/images/Line.webp'),
+                      // height: AppDimensions.height10(context) * 6.5,
+                      width: AppDimensions.height10(context) * 6.5,
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 2.3,
+                  ),
+                  Container(
+                      // color: Colors.black,
+                      height: AppDimensions.height10(context) * 8.3,
+                      width: AppDimensions.height10(context) * 36.6,
+                      child: Column(
+                        children: [
+                          Container(
+                            child: Center(
+                              child: Text(
+                                "Step 2: ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.4,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            child: Center(
+                              child: Text(
+                                "Assign your ‘planet’ (practice)",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.4,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
+                  Center(
+                    child: Image(
+                      image: const AssetImage('assets/images/image2.webp'),
+                      height: AppDimensions.height10(context) * 4,
+                      width: AppDimensions.height10(context) * 4,
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 1.3,
+                  ),
+                  Container(
+                    height: AppDimensions.height10(context) * 8.6,
+                    child: Center(
+                      child: Text(
+                        "Decide on a tool / practice you’ll be using \n and set your routine (you need to do this 3 \n or more times a week) ",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10(context) * 1.8,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 3.5,
+                  ),
+                  Container(
+                    height: AppDimensions.height10(context) * 5.6,
+                    child: Center(
+                      child: Text(
+                        "In 25 mins and less you’ll be on your \n way towards more clarity. ",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                           fontSize: AppDimensions.height10(context) * 1.9,
                         ),
-
                       ),
                     ),
                   ),
-                ),
-              ),
-              Container(
-                height: AppDimensions.height10(context) * 5.6,
-                child: Center(
-                  child: Text(
-                    "You can save and exit at any time. ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 1.6,
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 1.7,
+                  ),
+                  GestureDetector(
+                    onTapDown: (TapDownDetails details) {
+                      _controller.forward();
+                    },
+                    onTap: () async {
+                      _controller.forward();
+
+                      await Future.delayed(Duration(milliseconds: 200));
+
+                      _controller.reverse();
+
+                      await Future.delayed(Duration(milliseconds: 200));
+                      Navigator.push(
+                          context,
+                          FadePageRoute2(
+                            true,
+                            enterPage: Categories(),
+                            exitPage: const StartProcess(),
+                          ));
+                    },
+                    child: Transform.scale(
+                      scale: 1 - _controller.value,
+                      child: Container(
+                        height: AppDimensions.height10(context) * 5,
+                        width: AppDimensions.height10(context) * 25.4,
+                        decoration: const BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(40.0)),
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFFFCC10D),
+                                  Color(0xFFFDA210)
+                                ])),
+                        child: Center(
+                          child: Text(
+                            'Start your jouney',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10(context) * 1.9,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
+                  Container(
+                    height: AppDimensions.height10(context) * 5.6,
+                    child: Center(
+                      child: Text(
+                        "You can save and exit at any time. ",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontSize: AppDimensions.height10(context) * 1.6,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
-          )
-        ],
-      ),
-    );
+          ),
+        ));
   }
 }

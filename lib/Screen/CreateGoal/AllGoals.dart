@@ -36,14 +36,14 @@ class _AllGoalsState extends State<AllGoals> {
           goalNamesAndCategories = response;
 
           Loading = false;
-          print("response:${response[1]["goals"]}");
+
         });
-        //  print("response123:${goalNamesAndCategories![0]}");
+
       } else {
         setState(() {
           Loading = false;
         });
-        print("response:$response");
+
       }
     }).catchError((error) {
       setState(() {
@@ -59,19 +59,20 @@ class _AllGoalsState extends State<AllGoals> {
   String searchText = ''; // Add this line
 
   void _searchGoals(String searchTerm) {
+
     setState(() {
-      if (searchTerm.isNotEmpty) {
-        print("responseFromSearch:${goalNamesAndCategories![0]}");
-        AdminGoal().searchAllGoal().then((value) => {
-              _searchResults = goalNamesAndCategories!
-                  .where((goal) => goal["goalName"]
-                      .toLowerCase()
-                      .contains(searchTerm.toLowerCase()))
-                  .toList()
+      //if (searchTerm) {
+        AdminGoal().searchAllGoal(searchTerm).then((value) => {
+          print("value:$value"),
+        setState(() {
+        goalNamesAndCategories = value;
+        Loading = false;
+        print("responses:${value[1]["goals"]}");
+        }),
             });
-      } else {
-        _searchResults = [];
-      }
+     // } else {
+        //_searchResults = [];
+    //  }
     });
   }
 
@@ -79,6 +80,7 @@ class _AllGoalsState extends State<AllGoals> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
+      extendBody: true,
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
@@ -387,10 +389,15 @@ class _AllGoalsState extends State<AllGoals> {
                             child: TextFormField(
                                 controller: _searchController,
                                 onChanged: (value) {
+
+                                  print("value:$value");
+
                                   setState(() {
-                                    searchText = value;
+                                      searchText = value;
+                                      _searchGoals(value);
+
                                   });
-                                  _searchGoals(value);
+
                                 },
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.all(0.0),

@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -119,52 +120,50 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 4.4),
                 Center(
-                    child: GestureDetector(
+                    child: AnimatedScaleButton(
                   onTap: () {
                     Navigator.pop(context);
-                    if (widget.route == "GoalName" && widget.login==true) {
+                    if (widget.route == "GoalName" && widget.login == true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => GoalName(),
                         ),
                       );
-                    } else if (widget.route == "goalVisualising" && widget.login==true) {
+                    } else if (widget.route == "goalVisualising" &&
+                        widget.login == true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const Visualising(),
                         ),
                       );
-                    } else if (widget.route == "GoalIdentity" && widget.login==true) {
+                    } else if (widget.route == "GoalIdentity" &&
+                        widget.login == true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const Goal_Identity(),
                         ),
                       );
-                    } else if (widget.route == "goalWhy" && widget.login==true) {
+                    } else if (widget.route == "goalWhy" &&
+                        widget.login == true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => GoalWhy(),
                         ),
                       );
-                    }
-                    else if (widget.route == "" && widget.login==true) {
+                    } else if (widget.route == "" && widget.login == true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => GoalWhy(),
                         ),
                       );
-                    }
-
-                    else{
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                              content:
-                              Text("User is not logged in !!")));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text("User is not logged in !!")));
                     }
                   },
                   child: Image(
@@ -179,7 +178,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
                               showAnimatedDialog(
                                   animationType: DialogTransitionType.fadeScale,
@@ -367,7 +366,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                           SizedBox(
                             width: AppDimensions.height10(context) * 1.4,
                           ),
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
                               signupSheet(
                                   context, "Introduction", "OnBoarding");

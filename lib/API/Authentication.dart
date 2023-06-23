@@ -33,7 +33,6 @@ class Authentication {
       print("return this value:$res");
       return res;
     } else {
-      client.close();
       // print("response:${}");
       return responses["message"];
     }
@@ -62,7 +61,7 @@ class Authentication {
 
       return true;
     } else {
-      client.close();
+      // client.close();
       // print("response:${}");
       return false;
     }
@@ -111,8 +110,6 @@ class Authentication {
     } else if (request.statusCode == 404) {
       // print("response:${}");
       return request.statusCode;
-    } else {
-      client.close();
     }
   }
 
@@ -142,7 +139,7 @@ class Authentication {
 
       return true;
     } else {
-      client.close();
+      // client.close();
       // print("response:${}");
       return false;
     }
@@ -174,7 +171,7 @@ class Authentication {
 
       return true;
     } else {
-      client.close();
+      // client.close();
       // print("response:${}");
       return false;
     }

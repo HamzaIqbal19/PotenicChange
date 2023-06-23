@@ -75,6 +75,7 @@ void bottom_sheet(context, int id) {
                 child: Form(
                   key: _formkey,
                   child: TextFormField(
+                    maxLength: 50,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: AppDimensions.height10(context) * 2.4,
@@ -156,8 +157,8 @@ void bottom_sheet(context, int id) {
                       if (_formkey.currentState!.validate()) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => GoalName(),
+                          FadePageRoute(
+                            page: GoalName(),
                           ),
                         );
                       }
