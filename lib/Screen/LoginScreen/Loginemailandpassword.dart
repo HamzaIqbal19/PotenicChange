@@ -4,6 +4,7 @@ import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/Menu&settings/edit_credentials.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
@@ -36,9 +37,9 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
   bool boolean = true;
   bool errorEmail = false;
   bool errorPassword = false;
-
   bool credentials = false;
-
+ String PassowordError="";
+  String EmailError="";
   late SharedPreferences _prefs;
   setEmail(email) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -187,14 +188,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        credentials
+                        EmailError!=""
                             ? Container(
                                 height: AppDimensions.height10(context) * 1.7,
                                 padding: EdgeInsets.only(
                                     left:
                                         AppDimensions.height10(context) * 1.2),
                                 child: Text(
-                                  "Your sign in details are incorrect, please try again",
+                                  "$EmailError please Signup the Account",
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
@@ -204,7 +205,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                 ),
                               )
                             : Container(),
-                        credentials
+                        EmailError!=""
                             ? SizedBox(height: AppDimensions.height10(context))
                             : Container(),
                         Container(
@@ -433,13 +434,13 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             ],
                           ),
                         ),
-                        errorPassword
+                        PassowordError!=""
                             ? Container(
                                 padding: EdgeInsets.only(
                                     left:
                                         AppDimensions.height10(context) * 1.2),
                                 child: Text(
-                                  "Minimum 8 characters",
+                                  PassowordError,
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
@@ -450,7 +451,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               )
                             : Container(),
                         SizedBox(
-                            height: errorPassword
+                            height: PassowordError!=""
                                 ? AppDimensions.height10(context)
                                 : AppDimensions.height10(context) * 3),
                         Container(
@@ -503,6 +504,11 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       _controller.forward();
                     },
                     onTap: () async {
+                      setState(() {
+                        Loading = true;
+                        EmailError="";
+                        PassowordError="";
+                      });
                       _controller.forward();
 
                       await Future.delayed(Duration(milliseconds: 200));
@@ -511,10 +517,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
 
                       await Future.delayed(Duration(milliseconds: 200));
                       if (_formkey.currentState!.validate()) {
-                        setState(() {
-                          Loading = true;
-                          credentials = false;
-                        });
+
                         Authentication()
                             .SignIn(
                           fcm,
@@ -522,15 +525,15 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                           '${passwordController.text.toString()}',
                         )
                             .then((response) {
-                          if (response == 200) {
+                          if (response["statusCode"] == 200) {
                             setState(() {
                               credentials = false;
                             });
                             print("SignrResponse: $response");
                             ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
+                                 SnackBar(
                                     content:
-                                        Text("User Login Successfully!!")));
+                                        Text("User Login Successfully !!")));
                             Navigator.push(
                               context,
                               FadePageRoute2(
@@ -539,15 +542,31 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                 exitPage: Loginemailandpassword(),
                               ),
                             );
-                          } else if (response == 404 || response == 401) {
+                          }
+                          else if (response["statusCode"] == 401 ) {
                             setState(() {
-                              credentials = true;
+                              Loading = false;
+                              EmailError="";
+                              PassowordError = response["message"];
                             });
 
                             ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
+                                 SnackBar(
                                     content: Text(
-                                        "Your sign in details are incorrect, please try again!!")));
+                                        response["message"])));
+                          }
+                          else if (response["statusCode"] == 404 ) {
+                            print("hello world");
+                            setState(() {
+                              Loading = false;
+                              credentials = false;
+                              EmailError = response["message"];
+                            });
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Text(
+                                        response["message"])));
                           }
                         }).catchError((error) {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

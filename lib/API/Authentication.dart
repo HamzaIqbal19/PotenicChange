@@ -76,40 +76,35 @@ class Authentication {
       "password": "$password",
     });
 
-    print("Body:${Body}");
+
     var request = await client.post(Uri.parse('${URL.BASE_URL}api/auth/signin'),
         headers: headers, body: Body);
 
     var response = jsonDecode(request.body);
-    print("status:${request.statusCode}");
 
-    print("request12234344:${response}");
+
+    print("statusCode:${request.statusCode}");
 
     if (request.statusCode == 200) {
-      print("request:${response["sessionToken"]}");
-      String token = response["accessToken"];
-      int userid = response['id'];
-      String Refreshtoken = response["sessionToken"];
-
-      print("token:${token}");
-      print("userid:${userid}");
-      print("Refreshtoken:${Refreshtoken}");
-
       final SharedPreferences prefs = await _prefs;
-      var accesstoken = prefs.setString('usertoken', token);
-      var UserId = prefs.setInt('userid', userid);
-      var RefreshToken = prefs.setString("refreshtoken", Refreshtoken);
-
-      var Accestoken = prefs.getString("usertoken");
-      var UsersId = prefs.getInt("userid");
-      var SessionToken = prefs.getString("refreshtoken");
-
-      print("tokenss:$Accestoken+$UsersId+$SessionToken");
-
-      return request.statusCode;
-    } else if (request.statusCode == 404) {
+      var accesstoken = prefs.setString('usertoken', response["accessToken"]);
+      var UserId = prefs.setInt('userid', response['id']);
+      var RefreshToken = prefs.setString("refreshtoken", response["sessionToken"]);
+      var responses={
+        "message":response["message"],
+        "statusCode": request.statusCode,
+      };
+      return responses;
+    }
+    else if (request.statusCode == 404 || request.statusCode == 401 || request.statusCode==400){
+      print("request12234344:$response");
       // print("response:${}");
-      return request.statusCode;
+      var responses={
+        "message":response["message"],
+         "statusCode": request.statusCode,
+      };
+      print("responseMessage:${responses["message"]}");
+      return responses;
     }
   }
 
