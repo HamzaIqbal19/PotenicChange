@@ -242,17 +242,14 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                             controller: nameController,
                             keyboardType: TextInputType.name,
                             validator: (val) {
-                              if (val == null ||
-                                  val == "" ||
-                                  !RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]')
-                                      .hasMatch(val)) {
+                              if (val == null || val == "") {
                                 setState(() {
                                   errorName = true;
                                 });
                               } else {
-                               setState(() {
-                                 errorName = false;
-                               });
+                                setState(() {
+                                  errorName = false;
+                                });
                               }
                             },
                           ),
