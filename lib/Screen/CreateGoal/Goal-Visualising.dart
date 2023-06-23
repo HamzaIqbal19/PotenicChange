@@ -602,25 +602,40 @@ class _VisualisingState extends State<Visualising> {
                         )),
                     AnimatedScaleButton(
                       onTap: () {
-                        updateGoalReason(goalVisualising);
+                        goalVisualising[0]['text'] != ""
+                            ? updateGoalReason(goalVisualising)
+                            : Container();
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.transparent),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(50.0)),
-                        ),
+                        decoration: goalVisualising[0]['text'] != ""
+                            ? BoxDecoration(
+                                border: Border.all(color: Colors.transparent),
+                                gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFFCC10D),
+                                      Color(0xFFFDA210)
+                                    ]),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(50.0)),
+                              )
+                            : BoxDecoration(
+                                // color: Color(0xFFFF7D50),
+                                border: Border.all(color: Colors.transparent),
+                                color: const Color(0xFF282828).withOpacity(0.5),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(50.0)),
+                              ),
                         child: Center(
                           child: Text(
                             "Next",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: goalVisualising[0]['text'] != ""
+                                  ? Colors.white
+                                  : Colors.white.withOpacity(0.5),
                               fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),

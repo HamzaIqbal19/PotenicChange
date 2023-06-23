@@ -471,37 +471,44 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               ],
                             )),
                         EmailError != ""
-                            ? Container(
-                                // height: AppDimensions.height10(context) * 2.7,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 2.0),
-                                child: Center(
-                                    child: RichText(
-                                        textAlign: TextAlign.center,
-                                        text: TextSpan(
-                                            style: TextStyle(
-                                              color: const Color(0xFFFE6624),
-                                              fontFamily: 'laila',
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.16,
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                            children: const [
-                                              TextSpan(
-                                                  text:
-                                                      "The user's account was not found."),
-                                              TextSpan(
-                                                  style: TextStyle(
-                                                    decoration: TextDecoration
-                                                        .underline,
-                                                  ),
-                                                  text:
-                                                      "\nPlease create an account to continue")
-                                            ]))),
+                            ? AnimatedScaleButton(
+                                onTap: () {
+                                  FadePageRoute(page: SignUpPage());
+                                },
+                                child: Container(
+                                  // height: AppDimensions.height10(context) * 2.7,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          2.0),
+                                  child: Center(
+                                      child: RichText(
+                                          textAlign: TextAlign.center,
+                                          text: TextSpan(
+                                              style: TextStyle(
+                                                color: const Color(0xFFFE6624),
+                                                fontFamily: 'laila',
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.16,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.5,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              children: const [
+                                                TextSpan(
+                                                    text:
+                                                        "The user's account was not found."),
+                                                TextSpan(
+                                                    style: TextStyle(
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                    ),
+                                                    text:
+                                                        "\nPlease create an account to continue")
+                                              ]))),
+                                ),
                               )
                             : Container(),
 

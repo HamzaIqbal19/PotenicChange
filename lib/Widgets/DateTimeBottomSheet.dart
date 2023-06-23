@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class MyListWheelForm extends StatefulWidget {
@@ -43,41 +44,60 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
         children: [
           Container(
             padding: EdgeInsets.only(
-                left: AppDimensions.height10(context) * 1.9,
+                left: AppDimensions.height10(context) * 1.0,
                 right: AppDimensions.height10(context) * 1.9,
                 top: AppDimensions.height10(context) * 1.2),
             width: AppDimensions.height10(context) * 41.5,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: AppDimensions.height10(context) * 5.0,
-                  height: AppDimensions.height10(context) * 2.1,
-                  child: Text(
-                    "Canel",
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.4,
-                        height: AppDimensions.height10(context) * 0.1,
-                        color: const Color(0xFF2F80ED)),
+                AnimatedScaleButton(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.height10(context) * 5.0,
+                    height: AppDimensions.height10(context) * 3.1,
+                    child: Center(
+                      child: Text(
+                        "Canel",
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.8,
+                            height: AppDimensions.height10(context) * 0.1,
+                            color: const Color(0xFF2F80ED)),
+                      ),
+                    ),
                   ),
                 ),
                 Row(
                   children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 2.9,
-                      height: AppDimensions.height10(context) * 2.1,
-                      child: Text(
-                        "Add",
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.4,
-                            height: AppDimensions.height10(context) * 0.1,
-                            color: const Color(0xFF2F80ED)),
+                    AnimatedScaleButton(
+                      onTap: () {
+                        setState(() {
+                          Done = true;
+                        });
+                        widget.onSelectionChanged(
+                            day, hour, minute, period, Done);
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        width: AppDimensions.height10(context) * 2.9,
+                        height: AppDimensions.height10(context) * 3.1,
+                        child: Center(
+                          child: Text(
+                            "Add",
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.8,
+                                height: AppDimensions.height10(context) * 0.1,
+                                color: const Color(0xFF2F80ED)),
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: AppDimensions.height10(context) * 3.1,
                     ),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         print("hell");
                         setState(() {
@@ -88,14 +108,16 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                         Navigator.pop(context);
                       },
                       child: Container(
-                        width: AppDimensions.height10(context) * 3.7,
-                        height: AppDimensions.height10(context) * 2.1,
-                        child: Text(
-                          "Done",
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 0.1,
-                              color: const Color(0xFF2F80ED)),
+                        // width: AppDimensions.height10(context) * 3.7,
+                        height: AppDimensions.height10(context) * 3.1,
+                        child: Center(
+                          child: Text(
+                            "Done",
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.8,
+                                height: AppDimensions.height10(context) * 0.1,
+                                color: const Color(0xFF2F80ED)),
+                          ),
                         ),
                       ),
                     ),
@@ -143,9 +165,9 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
       height: 200,
       width: MediaQuery.of(context).size.width / 5,
       child: ListWheelScrollView.useDelegate(
-        itemExtent: 50,
-        useMagnifier: true,
-        magnification: 1.2,
+        itemExtent: 30,
+        useMagnifier: false,
+        // magnification: 1.2,
         diameterRatio: 1.5,
         squeeze: 0.8,
         onSelectedItemChanged: (index) {

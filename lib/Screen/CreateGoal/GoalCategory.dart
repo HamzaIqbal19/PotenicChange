@@ -91,6 +91,7 @@ class _GoalCategoryState extends State<GoalCategory> {
     final prefs = await SharedPreferences.getInstance();
     print("GoalId:${prefs.getInt("goalId")}");
     String? jsonString = prefs.getString('goal');
+    List<Map<String, dynamic>>? goalNamesAndCategories;
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
@@ -113,6 +114,7 @@ class _GoalCategoryState extends State<GoalCategory> {
       if (response.length != 0) {
         setState(() {
           Loading = false;
+          goalNamesAndCategories = response;
           Allgoal = response;
         });
       } else {
@@ -128,10 +130,32 @@ class _GoalCategoryState extends State<GoalCategory> {
     });
   }
 
+  TextEditingController _searchController = TextEditingController();
+  List<Map<String, dynamic>> _searchResults = [];
+  List<Map<String, dynamic>>? goalNamesAndCategories;
+
+  void _searchGoals(String searchTerm) {
+    setState(() {
+      //if (searchTerm) {
+      AdminGoal().searchAllGoalById(searchTerm, widget.id).then((value) => {
+            print("value:$value"),
+            setState(() {
+              Allgoal = value;
+              Loading = false;
+              print("responses:${value[1]["goals"]}");
+            }),
+          });
+      // } else {
+      //_searchResults = [];
+      //  }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
+        extendBody: true,
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
@@ -322,6 +346,9 @@ class _GoalCategoryState extends State<GoalCategory> {
           shape: CircularNotchedRectangle(),
           notchMargin: 10,
           child: Container(
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
             // color: Colors.blue,
             padding: EdgeInsets.only(
                 left: AppDimensions.height10(context) * 2.2,
@@ -348,9 +375,13 @@ class _GoalCategoryState extends State<GoalCategory> {
                                     AppDimensions.height10(context)))),
                             child: Center(
                               child: TextFormField(
+                                  controller: _searchController,
                                   onChanged: (value) {
+                                    print("value:$value");
+
                                     setState(() {
                                       searchText = value;
+                                      _searchGoals(value);
                                     });
                                   },
                                   decoration: InputDecoration(

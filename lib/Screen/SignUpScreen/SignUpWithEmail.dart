@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_colors.dart';
@@ -14,6 +15,7 @@ import 'package:http/http.dart' as http;
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
 
 class SignUpWithEmail extends StatefulWidget {
@@ -34,10 +36,11 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   bool rememberMe = false;
   bool boolean = true;
   bool Loading = false;
-  bool errorEmail = true;
-  bool errorName = true;
-  bool errorPassword = true;
+  bool errorEmail = false;
+  bool errorName = false;
+  bool errorPassword = false;
   bool pass_obscure = true;
+  String userExist = "asda";
 
   late SharedPreferences _prefs;
   setEmail(email) async {
@@ -510,27 +513,55 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                       // can add more TextSpans here...
                                     ],
                                   ),
-                                )
-
-                                    // Text(
-                                    //   "By signing up, you agree to Potenic’s \n User Agreement and Privacy Policy.",
-                                    //   style: TextStyle(
-                                    //     color: const Color(0xFFFFFFFF),
-                                    //     fontSize: AppDimensions.font16 - 4,
-                                    //     fontWeight: FontWeight.w600,
-                                    //   ),
-                                    // ),
-                                    ),
+                                )),
                               ],
-                            ))
-
-                        //)
+                            )),
+                        userExist != ""
+                            ? AnimatedScaleButton(
+                                onTap: () {},
+                                child: Container(
+                                  // height: AppDimensions.height10(context) * 2.7,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          2.0),
+                                  child: Center(
+                                      child: RichText(
+                                          textAlign: TextAlign.center,
+                                          text: TextSpan(
+                                              style: TextStyle(
+                                                color: const Color(0xFFFE6624),
+                                                fontFamily: 'laila',
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.16,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.5,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              children: const [
+                                                TextSpan(
+                                                    text:
+                                                        "This email is already registered."),
+                                                TextSpan(
+                                                    style: TextStyle(
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                    ),
+                                                    text:
+                                                        "\nPlease Log in to continue")
+                                              ]))),
+                                ),
+                              )
+                            : Container(),
                       ],
                     ),
                   ),
 
-                  SizedBox(height: AppDimensions.height10(context) * 4.5),
-
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 3.0,
+                  ),
                   GestureDetector(
                     onTapDown: (TapDownDetails details) {
                       setState(() {
@@ -554,6 +585,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           rememberMe == true) {
                         setState(() {
                           Loading = true;
+                          errorEmail = false;
+                          errorPassword = false;
+                          errorName = false;
+                          userExist = "";
                         });
                         print("Hello WOrld 12345");
                         Authentication()
@@ -563,10 +598,11 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           '${passwordController.text.toString()}',
                         )
                             .then((response) {
+                          print(response["staussCode"]);
                           setState(() {
                             Loading = false;
                           });
-                          if (response["statusCode"]==200) {
+                          if (response["statusCode"] == 200) {
                             ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(content: Text(response["message"])));
                             Navigator.push(
@@ -576,19 +612,38 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     name: nameController.text.toString()),
                               ),
                             );
-                          } else if (response["statusCode"]!=200){
+                          } else if (response["statusCode"] == 409) {
+                            print(userExist.length);
 
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(response["message"])));
+                            print('===========>>>>>>>>>');
+                            setState(() {
+                              Loading = false;
+                              userExist = response["message"];
+                            });
+                            print(userExist.length);
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response["message"])));
+                          } else {
+                            print('===========');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(response["message"])));
                           }
                         }).catchError((error) {
                           setState(() {
                             Loading = false;
                           });
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(content: Text('error')));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('error')));
 
                           print("error");
+                        }).whenComplete(() {
+                          setState(() {
+                            Loading = false;
+                            errorEmail = false;
+                            errorPassword = false;
+                            errorName = false;
+                          });
                         });
                       } else if (rememberMe == false) {
                         setState(() {
