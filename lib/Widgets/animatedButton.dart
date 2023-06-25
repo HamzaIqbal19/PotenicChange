@@ -9,7 +9,7 @@ class AnimatedScaleButton extends StatefulWidget {
   AnimatedScaleButton({
     required this.child,
     required this.onTap,
-    this.duration = const Duration(milliseconds: 700),
+    this.duration = const Duration(milliseconds: 50),
   });
 
   @override
@@ -25,7 +25,11 @@ class _AnimatedScaleButtonState extends State<AnimatedScaleButton>
     _controller = AnimationController(
       vsync: this,
       duration: widget.duration,
-    );
+      lowerBound: 0.0,
+      upperBound: 0.1,
+    )..addListener(() {
+        setState(() {});
+      });
     super.initState();
   }
 
@@ -39,9 +43,10 @@ class _AnimatedScaleButtonState extends State<AnimatedScaleButton>
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: (details) => _controller.forward(),
-      onTapUp: (details) async {
+      onTap: () async {
+        _controller.forward();
         // Delay for the forward animation to be visible
-        await Future.delayed(Duration(milliseconds: 100));
+        await Future.delayed(Duration(milliseconds: 200));
 
         // Press up effect
         _controller.reverse();

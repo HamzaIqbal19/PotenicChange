@@ -153,29 +153,48 @@ class AdminGoal {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
 
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken',
+    };
 
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/goal/all-goals?goalName=$searchvalue'),
+      headers: headers,
+    );
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
 
+      return List<Map<String, dynamic>>.from(jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
+  Future<List<Map<String, dynamic>>> searchAllGoalById(
+      String searchvalue, int id) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
 
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken',
     };
 
-      var response = await http.get(
-        Uri.parse('${URL.BASE_URL}api/goal/all-goals?goalName=$searchvalue'),
-        headers: headers,
-      );
-      if (response.statusCode == 200) {
-        var jsonData = jsonDecode(response.body);
-        print("Result:$jsonData");
+    var response = await http.get(
+      Uri.parse(
+          '${URL.BASE_URL}api/goal/all-goals?goalName=$searchvalue?goalCategoryId=$id'),
+      headers: headers,
+    );
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
 
-        return List<Map<String, dynamic>>.from(jsonData);
-      } else {
-        throw Exception('Failed to fetch goal names');
-      }
-
-
-
+      return List<Map<String, dynamic>>.from(jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
   }
 
 /////////////////////////////////
@@ -296,7 +315,7 @@ class AdminGoal {
       return true;
     } else {
       print("Update failed");
-     // client.close();
+      // client.close();
       return false;
     }
   }
