@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
@@ -32,7 +33,8 @@ class _GoalCategoryState extends State<GoalCategory> {
   bool SearchIcon = false;
   bool Loading = true;
   String searchText = ''; // Add this line
-
+  final double overlapFactor = 0.85;
+  final Random _random = Random();
   List<String> categories = [
     'Fulfil Potential',
     'Happiness & Wellbeing',
@@ -40,6 +42,7 @@ class _GoalCategoryState extends State<GoalCategory> {
     'Relationship'
   ];
   List<Map<String, dynamic>>? Allgoal;
+  final List<circles> _circles = [];
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override

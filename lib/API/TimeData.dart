@@ -39,13 +39,6 @@
 //   }
 // }
 
-class DayTime {
-  String start;
-  String end;
-
-  DayTime({required this.start, required this.end});
-}
-
 class Practice {
   String name;
   bool routine;

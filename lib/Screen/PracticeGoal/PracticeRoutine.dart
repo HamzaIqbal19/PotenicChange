@@ -19,6 +19,15 @@ class PracticeRoutine extends StatefulWidget {
 class _PracticeRoutineState extends State<PracticeRoutine> {
   bool buttonActive = false;
   int Count = 0;
+  Map<String, Map<String, String>> timesPerDay = {
+    'Monday': {'start': '', 'end': ''},
+    'Tuesday': {'start': '', 'end': ''},
+    'Wednesday': {'start': '', 'end': ''},
+    'Thursday': {'start': '', 'end': ''},
+    'Friday': {'start': '', 'end': ''},
+    'Saturday': {'start': '', 'end': ''},
+    'Sunday': {'start': '', 'end': ''}
+  };
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   var mygoal;

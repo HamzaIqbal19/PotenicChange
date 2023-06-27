@@ -221,6 +221,12 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                               borderRadius: BorderRadius.all(Radius.circular(
                                   AppDimensions.height10(context) * 1.8))),
                           child: TextFormField(
+                            style: TextStyle(
+                                color: const Color(0xFF8C648A),
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.none,
+                                fontSize:
+                                    AppDimensions.height10(context) * 1.8),
                             decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
@@ -287,6 +293,12 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                               borderRadius: BorderRadius.all(Radius.circular(
                                   AppDimensions.height10(context) * 1.8))),
                           child: TextFormField(
+                            style: TextStyle(
+                                color: const Color(0xFF8C648A),
+                                fontWeight: FontWeight.w600,
+                                decoration: TextDecoration.none,
+                                fontSize:
+                                    AppDimensions.height10(context) * 1.8),
                             decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.only(
                                     top: 5.0,
@@ -360,6 +372,13 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 child: TextFormField(
                                   obscureText: pass_obscure,
                                   textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.none,
+                                      fontSize:
+                                          AppDimensions.height10(context) *
+                                              1.8),
                                   decoration: InputDecoration(
                                       contentPadding: const EdgeInsets.only(
                                           top: 5.0,
