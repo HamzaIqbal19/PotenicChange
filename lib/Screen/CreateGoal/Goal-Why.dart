@@ -13,6 +13,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/SignupBottomSheet.dart';
 import '../../Widgets/fading2.dart';
 
 class GoalWhy extends StatefulWidget {
@@ -114,6 +115,17 @@ class _goalwhyState extends State<GoalWhy> {
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
+      print("GoalWhy:$jsonString");
+      myTextFields[0]['text'] != ""
+          ? Navigator.push(
+              context,
+              FadePageRoute2(
+                true,
+                exitPage: GoalWhy(),
+                enterPage: const Goal_Identity(),
+              ),
+            )
+          : Container();
       return Goal.fromJson(jsonMap);
     }
 
@@ -564,22 +576,19 @@ class _goalwhyState extends State<GoalWhy> {
                         // color: Colors.blue,
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
-                        child: Image.asset(
-                          "assets/images/Moreactions.webp",
-                          fit: BoxFit.contain,
+                        child: AnimatedScaleButton(
+                          onTap: () {
+                            //   signupSheet(context, "Sign up / login", "login");
+                          },
+                          child: Image.asset(
+                            "assets/images/Moreactions.webp",
+                            fit: BoxFit.contain,
+                          ),
                         )),
                     AnimatedScaleButton(
                       onTap: () {
-                        myTextFields[0]['text'] != ""
-                            ? Navigator.push(
-                                context,
-                                FadePageRoute2(
-                                  true,
-                                  exitPage: GoalWhy(),
-                                  enterPage: const Goal_Identity(),
-                                ),
-                              )
-                            : Container();
+                        print('===================>${myTextFields[0]['text']}');
+                        updateGoalReason(myTextFields);
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,

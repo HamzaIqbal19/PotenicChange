@@ -6,6 +6,7 @@ import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet_Practice.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../API/Practice.dart';
@@ -24,12 +25,23 @@ class _CreatePracticeState extends State<CreatePractice> {
   bool SearchIcon = false;
   bool Loading = true;
   String searchText = '';
+  var mygoal;
 
   List<Map<String, dynamic>>? practiceName;
   @override
   void initState() {
+    getGoalName();
     super.initState();
     _fetchPracticeNames();
+  }
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  getGoalName() async {
+    print("hello world1224");
+    final SharedPreferences prefs = await _prefs;
+    var goalName = prefs.getString("goalName");
+    mygoal = goalName!;
   }
 
   void _fetchPracticeNames() {
@@ -125,156 +137,162 @@ class _CreatePracticeState extends State<CreatePractice> {
               ),
             ],
           )),
-      body: Stack(children: [
-        // Loading == false
-        //     ?
-        Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/Categories.webp"),
-              fit: BoxFit.cover,
-            ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/Categories.webp"),
+            fit: BoxFit.cover,
           ),
         ),
-        // : Container(
-        //     color: Colors.white,
-        //   ),
-
-        // SingleChildScrollView(
-        //   child: ,
-        // )
-        Loading == false
-            ? Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 5.2),
-                    child: Center(
-                      child: Text(
-                        "Practice Creation 1/3",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.8,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 0.5),
-                    child: Center(
-                      child: Text(
-                        "Control my anger",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 2.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: AppDimensions.height10(context),
-                  ),
-                  Container(
-                    height: AppDimensions.height10(context) * 11.2,
-                    width: AppDimensions.height10(context) * 10.4,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 9.0,
-                        right: AppDimensions.height10(context) * 17.0),
-                    // color:Colors.blue,
-                    child: Image.asset(
-                      'assets/images/createprac.webp',
-                      height: AppDimensions.height10(context) * 7.9,
-                      width: AppDimensions.height10(context) * 7.9,
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        // height: AppDimensions.height10(context) *7.1,
+        child: Loading == false
+            ? SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 5.2),
+                      child: Center(
                         child: Text(
-                          "Choose your practice",
-                          textAlign: TextAlign.center,
+                          "Practice Creation 1/3",
                           style: TextStyle(
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w600,
                             color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 2.8,
+                            fontSize: AppDimensions.height10(context) * 1.8,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: AppDimensions.height10(context) * 48.9,
-                    width: AppDimensions.height10(context) * 38,
-                    child: GridView.builder(
-                        shrinkWrap: false,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 4.2 / 3,
-                          mainAxisSpacing:
-                              AppDimensions.height10(context) * 1.4,
-                          crossAxisSpacing: 0.1,
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 0.5),
+                      child: Center(
+                        child: Text(
+                          mygoal,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: AppDimensions.height10(context) * 2.0,
+                          ),
                         ),
-                        itemCount: practiceName!.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  AnimatedScaleButton(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute2(
-                                          true,
-                                          exitPage: CreatePractice(),
-                                          enterPage: PracticeName(
-                                              practiceName?[index]["name"],
-                                              practiceName?[index]["name"],
-                                              '1'),
-                                        ),
-                                      );
-                                      // bottom_sheet(context,Allgoal![0]["goals"][index1]
-                                      // ["id"]);
-                                    },
-                                    child: circles(
-                                        circle_text: practiceName![index]
-                                            ['name'],
-                                        circle_color1: 0xFF83BB9A,
-                                        circle_color2: 0xFF1E4A22,
-                                        circle_border: 3.0,
-                                        circle_bordercolor: 0xFFFFFFFF,
-                                        circle_height:
-                                            AppDimensions.height10(context) *
-                                                13.4,
-                                        circle_width:
-                                            AppDimensions.height10(context) *
-                                                13.4,
-                                        textfont:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        textcolor: 0xFFFFFFFF),
-                                  ),
-                                ],
-                              )
-                            ],
-                          );
-                        }),
-                  ),
-                ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context),
+                    ),
+                    Container(
+                      height: AppDimensions.height10(context) * 11.2,
+                      width: AppDimensions.height10(context) * 10.4,
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 9.0,
+                          right: AppDimensions.height10(context) * 17.0),
+                      // color:Colors.blue,
+                      child: Image.asset(
+                        'assets/images/createprac.webp',
+                        height: AppDimensions.height10(context) * 7.9,
+                        width: AppDimensions.height10(context) * 7.9,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          // height: AppDimensions.height10(context) *7.1,
+                          child: Text(
+                            "Choose your practice",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10(context) * 2.8,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: AppDimensions.height10(context) * 2.0),
+                      child: GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 4.2 / 3,
+                            mainAxisSpacing:
+                                AppDimensions.height10(context) * 1.4,
+                            crossAxisSpacing: 0.1,
+                          ),
+                          itemCount: practiceName!.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    AnimatedScaleButton(
+                                      onTap: () async {
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+                                        var pracName = prefs.setString(
+                                          'pracName',
+                                          practiceName?[index]["name"],
+                                        );
+                                        var pracId = prefs.setInt(
+                                          'pracId',
+                                          practiceName?[index]["id"],
+                                        );
+                                        print(pracId);
+                                        Navigator.push(
+                                          context,
+                                          FadePageRoute2(
+                                            true,
+                                            exitPage: const CreatePractice(),
+                                            enterPage: PracticeName(),
+                                          ),
+                                        );
+
+                                        print(index);
+                                        // bottom_sheet(context,Allgoal![0]["goals"][index1]
+                                        // ["id"]);
+                                      },
+                                      child: circles(
+                                          circle_text: practiceName![index]
+                                              ['name'],
+                                          circle_color1: 0xFF83BB9A,
+                                          circle_color2: 0xFF1E4A22,
+                                          circle_border: 3.0,
+                                          circle_bordercolor: 0xFFFFFFFF,
+                                          circle_height:
+                                              AppDimensions.height10(context) *
+                                                  13.4,
+                                          circle_width:
+                                              AppDimensions.height10(context) *
+                                                  13.4,
+                                          textfont:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          textcolor: 0xFFFFFFFF),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            );
+                          }),
+                    ),
+                  ],
+                ),
               )
-            : Create_practice_shimmer(),
-      ]),
+            : const Create_practice_shimmer(),
+      ),
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         child: Container(
           // color: Colors.blue,
@@ -314,7 +332,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   });
                                 },
                                 decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.all(0.0),
+                                    contentPadding: const EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(
                                       'assets/images/Light.webp',
                                       width:

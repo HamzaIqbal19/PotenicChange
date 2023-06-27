@@ -473,7 +473,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                         EmailError != ""
                             ? AnimatedScaleButton(
                                 onTap: () {
-                                  FadePageRoute(page: SignUpPage());
+                                  Navigator.push(context,
+                                      FadePageRoute(page: SignUpPage()));
                                 },
                                 child: Container(
                                   // height: AppDimensions.height10(context) * 2.7,

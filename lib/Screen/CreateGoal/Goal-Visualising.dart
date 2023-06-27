@@ -7,6 +7,7 @@ import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -243,10 +244,8 @@ class _VisualisingState extends State<Visualising> {
                                         'route', "goalVisualising");
                                     Navigator.push(
                                       context,
-                                      FadePageRoute2(
-                                        true,
-                                        exitPage: Visualising(),
-                                        enterPage: HomeScreenProgressSaved(
+                                      FadePageRoute(
+                                        page: HomeScreenProgressSaved(
                                           login: true,
                                           route: "goalVisualising",
                                         ),
@@ -282,7 +281,7 @@ class _VisualisingState extends State<Visualising> {
                                         true,
                                         exitPage: Visualising(),
                                         enterPage:
-                                            const HomeScreen(login: false),
+                                            const HomeScreen(login: true),
                                       ),
                                     );
                                   },
@@ -594,11 +593,14 @@ class _VisualisingState extends State<Visualising> {
                         // color: Colors.blue,
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
-                        // color: Colors.blue,
-
-                        child: Image.asset(
-                          "assets/images/Moreactions.webp",
-                          fit: BoxFit.contain,
+                        child: AnimatedScaleButton(
+                          onTap: () {
+                            // signupSheet(context, "Sign up / login", "login");
+                          },
+                          child: Image.asset(
+                            "assets/images/Moreactions.webp",
+                            fit: BoxFit.contain,
+                          ),
                         )),
                     AnimatedScaleButton(
                       onTap: () {

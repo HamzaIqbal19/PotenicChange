@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_constants.dart';
@@ -17,21 +18,9 @@ class StartProcess extends StatefulWidget {
   State<StartProcess> createState() => _StartProcessState();
 }
 
-class _StartProcessState extends State<StartProcess>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-
+class _StartProcessState extends State<StartProcess> {
   @override
   void initState() {
-    _controller = AnimationController(
-        vsync: this,
-        duration: Duration(milliseconds: 200), // increased duration
-        lowerBound: 0.0,
-        upperBound: 0.1)
-      ..addListener(() {
-        setState(() {});
-      });
-
     super.initState();
   }
 
@@ -274,18 +263,8 @@ class _StartProcessState extends State<StartProcess>
                   SizedBox(
                     height: AppDimensions.height10(context) * 1.7,
                   ),
-                  GestureDetector(
-                    onTapDown: (TapDownDetails details) {
-                      _controller.forward();
-                    },
-                    onTap: () async {
-                      _controller.forward();
-
-                      await Future.delayed(Duration(milliseconds: 200));
-
-                      _controller.reverse();
-
-                      await Future.delayed(Duration(milliseconds: 200));
+                  AnimatedScaleButton(
+                    onTap: () {
                       Navigator.push(
                           context,
                           FadePageRoute2(
@@ -294,30 +273,23 @@ class _StartProcessState extends State<StartProcess>
                             exitPage: const StartProcess(),
                           ));
                     },
-                    child: Transform.scale(
-                      scale: 1 - _controller.value,
-                      child: Container(
-                        height: AppDimensions.height10(context) * 5,
-                        width: AppDimensions.height10(context) * 25.4,
-                        decoration: const BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(40.0)),
-                            gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                  Color(0xFFFCC10D),
-                                  Color(0xFFFDA210)
-                                ])),
-                        child: Center(
-                          child: Text(
-                            'Start your jouney',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.9,
-                            ),
+                    child: Container(
+                      height: AppDimensions.height10(context) * 5,
+                      width: AppDimensions.height10(context) * 25.4,
+                      decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(40.0)),
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)])),
+                      child: Center(
+                        child: Text(
+                          'Start your jouney',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize: AppDimensions.height10(context) * 1.9,
                           ),
                         ),
                       ),

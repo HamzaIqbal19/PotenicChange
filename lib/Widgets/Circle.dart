@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/utils/app_dimensions.dart';
 //import 'package:flutter_ui/utilities/icons.dart';
 // import 'package:flutter_ui/utilities/app_textstyles.dart';
 
@@ -45,13 +46,16 @@ class circles extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              circle_text,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: textfont,
-                color: Color(textcolor),
-                fontWeight: FontWeight.w500,
+            Container(
+              width: AppDimensions.height10(context) * 10.9,
+              child: Text(
+                circle_text,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: textfont,
+                  color: Color(textcolor),
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],

@@ -144,56 +144,16 @@ class _AllGoalsState extends State<AllGoals> {
           //   child: ,
           // )
           Loading == false
-              ? Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.2),
-                      child: Center(
-                        child: Text(
-                          "Star Creation 1/5",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.8,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 2.7,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          child: Center(
-                            child: Text(
-                              "All Goals ",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 2.8,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 1.6,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          // height: AppDimensions.height10(context) *7.1,
+              ? SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 4.2),
+                        child: Center(
                           child: Text(
-                            "Which category does your goal belong to? ",
-                            textAlign: TextAlign.center,
+                            "Star Creation 1/5",
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
@@ -201,13 +161,56 @@ class _AllGoalsState extends State<AllGoals> {
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                    Container(
-                        // color: Colors.blue,
-                        height: AppDimensions.height10(context) * 65.695,
-                        padding: const EdgeInsets.only(top: 0, bottom: 0),
+                      ),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 2.7,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            child: Center(
+                              child: Text(
+                                "All Goals ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.8,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 1.6,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            // height: AppDimensions.height10(context) *7.1,
+                            child: Text(
+                              "Which category does your goal belong to? ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10(context) * 1.8,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                            horizontal: AppDimensions.height10(context) * 2.0),
                         child: ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: goalNamesAndCategories!.length,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
@@ -240,6 +243,10 @@ class _AllGoalsState extends State<AllGoals> {
                                             textfont: 0,
                                             textcolor: 0),
                                       ),
+                                      SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            1.0,
+                                      ),
                                       Container(
                                         // color: Colors.yellow,
                                         height:
@@ -262,38 +269,39 @@ class _AllGoalsState extends State<AllGoals> {
                                   ),
                                   SizedBox(
                                     height:
-                                        AppDimensions.height10(context) * 2.0,
+                                        AppDimensions.height10(context) * 3.0,
                                   ),
                                   Container(
                                     height: (goalNamesAndCategories![index]["goals"].length <=
-                                            7)
+                                            2)
                                         ? AppDimensions.height10(context) *
-                                            13.0 *
+                                            20.0 *
                                             (goalNamesAndCategories![index]["goals"]
                                                 .length)
-                                        : (goalNamesAndCategories![index]["goals"]
-                                                    .length <=
-                                                17)
+                                        : (goalNamesAndCategories![index]["goals"].length <=
+                                                7)
                                             ? AppDimensions.height10(context) *
-                                                9.1 *
-                                                (goalNamesAndCategories![index]
-                                                        ["goals"]
+                                                10.0 *
+                                                (goalNamesAndCategories![index]["goals"]
                                                     .length)
-                                            : (goalNamesAndCategories![index]
-                                                            ["goals"]
-                                                        .length <=
-                                                    8)
+                                            : (goalNamesAndCategories![index]["goals"].length <=
+                                                    18)
                                                 ? AppDimensions.height10(context) *
-                                                    5.9 *
+                                                    8.6 *
                                                     (goalNamesAndCategories![index]
                                                             ["goals"]
                                                         .length)
-                                                : AppDimensions.height10(context) *
-                                                        12.4 *
+                                                : (goalNamesAndCategories![index]["goals"].length <=
+                                                        8)
+                                                    ? AppDimensions.height10(context) *
+                                                        6.9 *
                                                         (goalNamesAndCategories![index]
                                                                 ["goals"]
-                                                            .length) -
-                                                    250,
+                                                            .length)
+                                                    : AppDimensions.height10(context) *
+                                                            12.4 *
+                                                            (goalNamesAndCategories![index]["goals"].length) -
+                                                        250,
                                     width: AppDimensions.height10(context) * 38,
                                     child: GridView.builder(
                                         shrinkWrap: false,
@@ -359,14 +367,16 @@ class _AllGoalsState extends State<AllGoals> {
                                   )
                                 ],
                               );
-                            })),
-                  ],
+                            }),
+                      ),
+                    ],
+                  ),
                 )
-              : AllGoals_shimmer(),
+              : const AllGoals_shimmer(),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
+        shape: const CircularNotchedRectangle(),
         notchMargin: 10,
         child: Container(
           // color: Colors.blue,
@@ -407,7 +417,7 @@ class _AllGoalsState extends State<AllGoals> {
                                   });
                                 },
                                 decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.all(0.0),
+                                    contentPadding: const EdgeInsets.all(0.0),
                                     prefixIcon: Image.asset(
                                       'assets/images/Light.webp',
                                       width:

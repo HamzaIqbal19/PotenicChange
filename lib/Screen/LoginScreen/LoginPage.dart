@@ -3,6 +3,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -161,14 +162,52 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildOutlinedButton(
-              context, Icons.mail_outline, 'Email and Password', () {
-            Navigator.push(
-              context,
-              FadePageRoute2(true,
-                  enterPage: Loginemailandpassword(), exitPage: LoginPage()),
-            );
-          }, Color(0xFF5A4D73), Colors.white),
+          AnimatedScaleButton(
+            onTap: () {
+              Navigator.push(
+                context,
+                FadePageRoute2(true,
+                    enterPage: Loginemailandpassword(), exitPage: LoginPage()),
+              );
+            },
+            child: Container(
+              height: AppDimensions.height10(context) * 5.5,
+              width: AppDimensions.height10(context) * 34.1,
+              decoration: BoxDecoration(
+                  color: Color(0xFF5A4D73),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 4.0),
+                  border: Border.all(
+                      width: AppDimensions.height10(context) * 0.1,
+                      color: Color(0xFFFFFFFF))),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 1.6),
+                    child: Icon(
+                      Icons.mail_outline,
+                      color: Colors.white,
+                      size: AppDimensions.height10(context) * 2.4,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(
+                        left: AppDimensions.height10(context) * 0.8,
+                        top: AppDimensions.height10(context) * 0.1),
+                    child: Text(
+                      '  Email and Password',
+                      style: TextStyle(
+                        color: const Color(0xFFFFFFFF),
+                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
           _buildOutlinedButtonWithImage(context, 'assets/images/Google.webp',
               'Sign in with Google', () {}, Colors.white, Colors.black45),
           _buildOutlinedButtonWithImage(context, 'assets/images/fb.webp',
@@ -191,7 +230,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
             borderRadius: BorderRadius.circular(40.0),
           ),
         ),
-        onPressed: onPressed as void Function()?,
+        onPressed: () {},
         icon: Icon(
           icon,
           color: Colors.white,

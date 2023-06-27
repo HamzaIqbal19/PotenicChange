@@ -9,6 +9,8 @@ import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/animatedButton.dart';
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
@@ -38,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
   void initState() {
     _controller = AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: 200), // increased duration
+        duration: const Duration(milliseconds: 200), // increased duration
         lowerBound: 0.0,
         upperBound: 0.1)
       ..addListener(() {
@@ -159,48 +161,51 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        height: AppDimensions.height10(context) * 5.5,
-                        width: AppDimensions.height10(context) * 34.1,
-                        child: OutlinedButton.icon(
-                          // <-- OutlinedButton
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(
-                                width: 1.0, color: Colors.white),
-                            backgroundColor: const Color(0xFF5A4D73),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            //<-- SEE HERE
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              FadePageRoute2(
-                                true,
-                                exitPage: SignUpPage(),
+                      AnimatedScaleButton(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            FadePageRoute2(true,
                                 enterPage: SignUpWithEmail(),
-                              ),
-                            );
-                          },
-                          icon: Icon(
-                            Icons.mail_outline,
-                            color: Colors.white,
-                            size: AppDimensions.height10(context) * 2.4,
-                          ),
-                          label: Row(
+                                exitPage: const SignUpPage()),
+                          );
+                        },
+                        child: Container(
+                          height: AppDimensions.height10(context) * 5.5,
+                          width: AppDimensions.height10(context) * 34.1,
+                          decoration: BoxDecoration(
+                              color: const Color(0xFF5A4D73),
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 4.0),
+                              border: Border.all(
+                                  width: AppDimensions.height10(context) * 0.1,
+                                  color: const Color(0xFFFFFFFF))),
+                          child: Row(
                             children: [
-                              Expanded(
-                                  // alignment: Alignment.centerLeft,
-                                  child: Text(
-                                '  Sign up with email',
-                                style: TextStyle(
-                                  color: const Color(0xFFFFFFFF),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left:
+                                        AppDimensions.height10(context) * 1.6),
+                                child: Icon(
+                                  Icons.mail_outline,
+                                  color: Colors.white,
+                                  size: AppDimensions.height10(context) * 2.4,
                                 ),
-                              )),
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 0.8,
+                                    top: AppDimensions.height10(context) * 0.1),
+                                child: Text(
+                                  '  Sign up with email',
+                                  style: TextStyle(
+                                    color: const Color(0xFFFFFFFF),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -287,16 +292,16 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                   onTap: () async {
                     _controller.forward();
 
-                    await Future.delayed(Duration(milliseconds: 200));
+                    await Future.delayed(const Duration(milliseconds: 200));
 
                     _controller.reverse();
 
-                    await Future.delayed(Duration(milliseconds: 200));
+                    await Future.delayed(const Duration(milliseconds: 200));
                     Navigator.push(
                       context,
                       FadePageRoute2(
                         true,
-                        exitPage: SignUpPage(),
+                        exitPage: const SignUpPage(),
                         enterPage: LoginPage(),
                       ),
                     );

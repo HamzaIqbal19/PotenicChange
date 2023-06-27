@@ -4,11 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
+import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 import '../HomeScreen/HomeScreen.dart';
 
@@ -28,11 +30,16 @@ class _StarReviewState extends State<StarReview> {
   var identity;
   var visualize;
   bool Loading = true;
-
+  late FocusNode _focusNode;
   @override
   void initState() {
+    _focusNode = FocusNode()..addListener(_onFocus);
     super.initState();
     _fetchGoalNames();
+  }
+
+  void _onFocus() {
+    setState(() {});
   }
 
   void _fetchGoalNames() async {
@@ -41,11 +48,11 @@ class _StarReviewState extends State<StarReview> {
         setState(() {
           Loading = false;
           goalName = response["name"];
-          reason = response["reason"][0]['text'];
-          reason2 = response["reason"][1]['text'];
-          reason3 = response["reason"][2]['text'];
-          identity = response["identityStatement"][0]['text'];
-          visualize = response["visualizingYourSelf"][0]['text'];
+          reason = response["reason"][0]["text"];
+          identity = response["identityStatement"][0]["text"];
+          visualize = response["visualizingYourSelf"][0]["text"];
+          reason2 = response["reason"][1]["text"];
+          reason3 = response["reason"][2]["text"];
         });
       } else {
         setState(() {
@@ -255,9 +262,7 @@ class _StarReviewState extends State<StarReview> {
                                       //     23.9,
                                       child: Center(
                                         child: Text(
-                                          goalName != null
-                                              ? "$goalName"
-                                              : "Your Goal Name",
+                                          "Your Goal Name",
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: AppDimensions.height10(
@@ -275,7 +280,74 @@ class _StarReviewState extends State<StarReview> {
                                       height:
                                           AppDimensions.height10(context) * 2.3,
                                     ),
-                                    inner_text1('Control my anger'),
+                                    Container(
+                                      height:
+                                          AppDimensions.height10(context) * 8.9,
+                                      width: AppDimensions.height10(context) *
+                                          36.0,
+                                      padding: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              2,
+                                          bottom: 1,
+                                          left: AppDimensions.height10(context),
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  6.0),
+                                      decoration: BoxDecoration(
+                                          gradient: _focusNode.hasFocus
+                                              ? const LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                      Color(0xFFEFBEB2),
+                                                      Color(0xFFFEAA897)
+                                                    ])
+                                              : const LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                      Color(0xFFEECDC5),
+                                                      Color(0xFFF6E0DB)
+                                                    ]),
+                                          // color: Colors.white,
+
+                                          border: Border.all(
+                                              color: Colors.white, width: 2),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      1.8))),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  3.6,
+                                              // width: AppDimensions.height10(
+                                              //         context) *
+                                              //     26.9,
+                                              child: Text(
+                                                  goalName != null
+                                                      ? "$goalName"
+                                                      : "Control my anger",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    color: _focusNode.hasFocus
+                                                        ? const Color(
+                                                            0xFFFFFFFF)
+                                                        : const Color(
+                                                            0xFFFFFFFF),
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.2,
+                                                  ))),
+                                        ],
+                                      ),
+                                    ),
                                     SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 2.0,
@@ -765,11 +837,17 @@ class _StarReviewState extends State<StarReview> {
                               // color: Colors.blue,
                               width: AppDimensions.height10(context) * 5.0,
                               height: AppDimensions.height10(context) * 5.0,
-                              child: Image.asset(
-                                "assets/images/Moreactions.webp",
-                                fit: BoxFit.contain,
+                              child: AnimatedScaleButton(
+                                onTap: () {
+                                  // signupSheet(
+                                  //     context, "Sign up / login", "login");
+                                },
+                                child: Image.asset(
+                                  "assets/images/Moreactions.webp",
+                                  fit: BoxFit.contain,
+                                ),
                               )),
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () => showDialog<String>(
                               context: context,
                               builder: (BuildContext context) => Container(

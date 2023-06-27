@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 // import 'package:go_eventio/pages/authentication/sign_in_page.dart';
@@ -38,9 +39,9 @@ class OnboardingPageState extends State<OnboardingPage>
     with SingleTickerProviderStateMixin {
   final PageController _pageController = PageController(initialPage: 0);
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  late AnimationController _controller;
   int _currentPage = 0;
-  String Accestoken="";
+  String Accestoken = "";
+  var Routes = '';
 
   double _value = 0.0;
 
@@ -64,23 +65,14 @@ class OnboardingPageState extends State<OnboardingPage>
   @override
   void initState() {
     loadData();
-    _controller = AnimationController(
-        vsync: this,
-        duration: Duration(milliseconds: 200), // increased duration
-        lowerBound: 0.0,
-        upperBound: 0.1)
-      ..addListener(() {
-        setState(() {});
-      });
+
     super.initState();
   }
 
-   loadData() async {
-    print("=============>hello world");
+  Future loadData() async {
     final SharedPreferences prefs = await _prefs;
-     Accestoken = prefs.getString("usertoken")!;
-
-
+    Accestoken = prefs.getString("usertoken")!;
+    Routes = prefs.getString("route")!;
   }
 
   Widget _indicator(bool isActive) {
@@ -164,8 +156,20 @@ class OnboardingPageState extends State<OnboardingPage>
                   height: AppDimensions.height10(context) * 2.8,
                   fit: BoxFit.cover,
                 ),
-                onPressed: () {
-                  if(Accestoken!="") {
+                onPressed: () async {
+                  if (Accestoken != "" || Routes != "") {
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute2(
+                        true,
+                        enterPage: HomeScreenProgressSaved(
+                          login: true,
+                          route: '$Routes',
+                        ),
+                        exitPage: OnBoarding(),
+                      ),
+                    );
+                  } else if (Accestoken != "" || Routes == null) {
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
@@ -174,8 +178,7 @@ class OnboardingPageState extends State<OnboardingPage>
                         exitPage: OnBoarding(),
                       ),
                     );
-                  }
-                  else{
+                  } else if (Accestoken == "" || Routes == null) {
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(
@@ -429,8 +432,6 @@ class OnboardingPageState extends State<OnboardingPage>
   }
 
   Widget NextButton(String text) {
-    double scale = 1 - _controller.value;
-
     return Padding(
       padding: EdgeInsets.only(
         left: AppDimensions.height10(context) - 2,
@@ -439,59 +440,63 @@ class OnboardingPageState extends State<OnboardingPage>
         bottom: AppDimensions.height10(context) * 3,
       ),
       child: GestureDetector(
-        onTapDown: (TapDownDetails details) {
-          _controller.forward();
-        },
-        onTap: () async {
-          // Press down effect
-          _controller.forward();
-
-          // Delay for the forward animation to be visible
-          await Future.delayed(Duration(milliseconds: 200));
-
-          // Press up effect
-          _controller.reverse();
-
-          // Delay the action for the reverse animation to be visible
-          await Future.delayed(Duration(milliseconds: 200));
-
-          // Action after the press
+        onTap: () {
           if (text == "Next") {
             _pageController.nextPage(
                 duration: Duration(milliseconds: 500), curve: Curves.ease);
           } else {
             // ignore: use_build_context_synchronously
-            Navigator.push(
-              context,
-              FadePageRoute2(
-                enterPage: HomeScreen(login: false),
-                exitPage: OnBoarding(),
-                true,
-              ),
-            );
+            if (Accestoken != "" || Routes != "") {
+              Navigator.pushReplacement(
+                context,
+                FadePageRoute2(
+                  true,
+                  enterPage: HomeScreenProgressSaved(
+                    login: true,
+                    route: '$Routes',
+                  ),
+                  exitPage: OnBoarding(),
+                ),
+              );
+            } else if (Accestoken != "" || Routes == null) {
+              Navigator.pushReplacement(
+                context,
+                FadePageRoute2(
+                  true,
+                  enterPage: HomeScreen(login: true),
+                  exitPage: OnBoarding(),
+                ),
+              );
+            } else if (Accestoken == "" || Routes == null) {
+              Navigator.pushReplacement(
+                context,
+                FadePageRoute2(
+                  true,
+                  enterPage: HomeScreen(login: false),
+                  exitPage: OnBoarding(),
+                ),
+              );
+            }
           }
         },
-        child: Transform.scale(
-          scale: scale,
-          child: Container(
-            height: AppDimensions.height10(context) * 5,
-            width: AppDimensions.height10(context) * 25.4,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white),
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFF5A4D73), Color(0xFFA57486)]),
-              borderRadius: BorderRadius.all(Radius.circular(40.0)),
-            ),
-            child: Center(
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: AppDimensions.height10(context) * 2.0,
-                  fontWeight: FontWeight.w600,
-                ),
+        child: Container(
+          height: AppDimensions.height10(context) * 5,
+          width: AppDimensions.height10(context) * 25.4,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.white),
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xFF5A4D73), Color(0xFFA57486)]),
+            borderRadius: BorderRadius.all(Radius.circular(40.0)),
+          ),
+          child: Center(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: AppDimensions.height10(context) * 2.0,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),

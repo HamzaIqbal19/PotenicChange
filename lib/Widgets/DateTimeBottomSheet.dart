@@ -60,7 +60,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                     height: AppDimensions.height10(context) * 3.1,
                     child: Center(
                       child: Text(
-                        "Canel",
+                        "Cancel",
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.8,
                             height: AppDimensions.height10(context) * 0.1,

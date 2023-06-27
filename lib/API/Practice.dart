@@ -13,8 +13,8 @@ var client = SentryHttpClient();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class PracticeGoalApi {
-  Future userAddPractice(name, color, reminder, userId, day, endTime, startTime,
-      practiceId) async {
+  Future userAddPractice(
+      name, reminder, userId, day, endTime, startTime, practiceId) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var headers = {
@@ -27,7 +27,6 @@ class PracticeGoalApi {
       "schedule": [
         {"day": "$day", "starttime": "$startTime", "endtime": "$endTime"}
       ],
-      "color": "$color",
       "userId": "$userId",
       "practiceId": "$practiceId",
     });
@@ -85,7 +84,8 @@ class PracticeGoalApi {
     }
   }
 
-  static Future<List<Map<String, dynamic>>> SearchPractice(String Search) async {
+  static Future<List<Map<String, dynamic>>> SearchPractice(
+      String Search) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var headers = {
@@ -94,7 +94,8 @@ class PracticeGoalApi {
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/practice/all-practice?practiceName=$Search'),
+      Uri.parse(
+          '${URL.BASE_URL}api/practice/all-practice?practiceName=$Search'),
       headers: headers,
     );
 

@@ -249,6 +249,8 @@ class _inner_textState extends State<inner_text> {
               child: CupertinoTextField(
                 onChanged: widget.onChanged,
                 maxLength: widget.length,
+                // suffix: Text('/200'),
+                suffixMode: OverlayVisibilityMode.editing,
                 placeholder: widget.placeHolder,
                 placeholderStyle: TextStyle(
                     height: AppDimensions.height10(context) * 0.15,

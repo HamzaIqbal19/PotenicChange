@@ -12,6 +12,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/SignupBottomSheet.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
@@ -115,6 +116,19 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
+      print('identity====>');
+      print(jsonString);
+      myIdentity[0]['text'] != ""
+          ? Navigator.push(
+              context,
+              FadePageRoute2(
+                true,
+                exitPage: const Goal_Identity(),
+                enterPage: const Visualising(),
+              ),
+            )
+          : Container();
+
       return Goal.fromJson(jsonMap);
     }
 
@@ -175,7 +189,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         actionsPadding: EdgeInsets.zero,
                         titlePadding: EdgeInsets.zero,
                         title: Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                               top: 19, right: 16, left: 16, bottom: 2),
                           height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.height10(context) * 23.8,
@@ -189,8 +203,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           ),
                         ),
                         content: Container(
-                          margin:
-                              EdgeInsets.only(bottom: 19, left: 16, right: 16),
+                          margin: const EdgeInsets.only(
+                              bottom: 19, left: 16, right: 16),
                           height: 32,
                           width: 238,
                           child: const Text(
@@ -228,19 +242,23 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: Goal_Identity(),
-                                        enterPage: HomeScreenProgressSaved(
-                                            login: true, route: "GoalIdentity"),
+                                        exitPage: const Goal_Identity(),
+                                        enterPage:
+                                            const HomeScreenProgressSaved(
+                                                login: true,
+                                                route: "GoalIdentity"),
                                       ),
                                     );
                                   },
-                                  child: const Text(
-                                    'Exit & save progress',
-                                    style: TextStyle(
-                                        color: Color(0xFF007AFF),
-                                        fontSize: 17,
-                                        fontFamily: "Laila",
-                                        fontWeight: FontWeight.w400),
+                                  child: Center(
+                                    child: const Text(
+                                      'Exit & save progress',
+                                      style: TextStyle(
+                                          color: Color(0xFF007AFF),
+                                          fontSize: 17,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -261,7 +279,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: Goal_Identity(),
+                                        exitPage: const Goal_Identity(),
                                         enterPage:
                                             const HomeScreen(login: false),
                                       ),
@@ -489,8 +507,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                         left: AppDimensions.height10(context) *
                                             4.0),
                                     decoration: BoxDecoration(
-                                        color:
-                                            Color(0xFF282828).withOpacity(0.2)),
+                                        color: const Color(0xFF282828)
+                                            .withOpacity(0.2)),
                                   )
                                 ],
                               ),
@@ -507,8 +525,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       child: Align(
                         //alignment: Alignment.bottomCenter,
                         alignment: item == 1
-                            ? Alignment(0.01, 1.3)
-                            : Alignment(0.01, 1.17),
+                            ? const Alignment(0.01, 1.3)
+                            : const Alignment(0.01, 1.17),
                         //heightFactor: 0.5,
                         child: Container(
                           height: AppDimensions.height10(context) * 4.7,
@@ -565,23 +583,28 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         // color: Colors.blue,
                         width: AppDimensions.height10(context) * 5.0,
                         height: AppDimensions.height10(context) * 5.0,
-                        child: Image.asset(
-                          "assets/images/Moreactions.webp",
-                          fit: BoxFit.contain,
+                        child: AnimatedScaleButton(
+                          onTap: () {
+                            //signupSheet(context, "Sign up / login", "login");
+                          },
+                          child: Image.asset(
+                            "assets/images/Moreactions.webp",
+                            fit: BoxFit.contain,
+                          ),
                         )),
                     AnimatedScaleButton(
                       onTap: () {
                         updateGoalReason(myIdentity);
-                        myIdentity[0]['text'] != ""
-                            ? Navigator.push(
-                                context,
-                                FadePageRoute2(
-                                  true,
-                                  exitPage: Goal_Identity(),
-                                  enterPage: Visualising(),
-                                ),
-                              )
-                            : Container();
+                        // myIdentity[0]['text'] != ""
+                        //     ? Navigator.push(
+                        //         context,
+                        //         FadePageRoute2(
+                        //           true,
+                        //           exitPage: const Goal_Identity(),
+                        //           enterPage: const Visualising(),
+                        //         ),
+                        //       )
+                        //     : Container();
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,

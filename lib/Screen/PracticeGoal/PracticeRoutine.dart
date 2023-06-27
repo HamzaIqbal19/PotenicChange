@@ -4,16 +4,13 @@ import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
 class PracticeRoutine extends StatefulWidget {
-  final String pracTitle;
-  final String pracId;
-  const PracticeRoutine(
-      {Key? key, required this.pracTitle, required this.pracId})
-      : super(key: key);
+  const PracticeRoutine({Key? key}) : super(key: key);
 
   @override
   State<PracticeRoutine> createState() => _PracticeRoutineState();
@@ -23,13 +20,28 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
   bool buttonActive = false;
   int Count = 0;
 
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  var mygoal;
+  var practiceName = "";
+
   @override
   void initState() {
-    // TODO: implement initState
+    getGoalName();
     setState(() {
       count = 0;
     });
     super.initState();
+  }
+
+  getGoalName() async {
+    print("hello world1224");
+    final SharedPreferences prefs = await _prefs;
+    var my_goal = prefs.getString("goalName");
+    var practice_Name = prefs.getString('pracName');
+    setState(() {
+      mygoal = my_goal!;
+      practiceName = practice_Name!;
+    });
   }
 
   @override
@@ -124,7 +136,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 Container(
                   child: Center(
                     child: Text(
-                      "Control my anger",
+                      mygoal,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -153,7 +165,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     Container(
                       child: Center(
                         child: Text(
-                          widget.pracTitle,
+                          practiceName,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -247,14 +259,11 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             FadePageRoute2(
                               true,
                               exitPage: CreatePractice(),
-                              enterPage: PracticeReminder(
-                                pracId: widget.pracId,
-                                pracTitle: widget.pracTitle,
-                              ),
+                              enterPage: PracticeReminder(),
                             ),
                           );
                         } else {}
-                        print("successfull${widget.pracTitle}");
+                        // print("successfull${widget.pracTitle}");
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,

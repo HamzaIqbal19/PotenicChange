@@ -4,23 +4,43 @@ import 'package:flutter/material.dart';
 
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
 class PracticeName extends StatefulWidget {
-  final String title;
-  final String Circletitle;
-  final String pracId;
   // final String message;
 
-  PracticeName(this.title, this.Circletitle, this.pracId);
+  PracticeName();
 
   @override
   State<PracticeName> createState() => _PracticeNameState();
 }
 
 class _PracticeNameState extends State<PracticeName> {
+  var mygoal = TextEditingController();
+  var practiceName = TextEditingController();
+
+  @override
+  void initState() {
+    getGoalName();
+    super.initState();
+  }
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  getGoalName() async {
+    print("hello world1224");
+    final SharedPreferences prefs = await _prefs;
+    var my_goal = prefs.getString("goalName");
+    var practice_Name = prefs.getString('pracName');
+    setState(() {
+      mygoal.text = my_goal!;
+      practiceName.text = practice_Name!;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,7 +133,7 @@ class _PracticeNameState extends State<PracticeName> {
                 Container(
                   child: Center(
                     child: Text(
-                      "Control my anger",
+                      "${mygoal.text.toString()}",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -142,7 +162,7 @@ class _PracticeNameState extends State<PracticeName> {
                     Container(
                       child: Center(
                         child: Text(
-                          widget.title,
+                          "${practiceName.text.toString()}",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -160,7 +180,7 @@ class _PracticeNameState extends State<PracticeName> {
                 Container(
                   child: Center(
                     child: Text(
-                      widget.Circletitle,
+                      "Practice Name",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
@@ -207,13 +227,14 @@ class _PracticeNameState extends State<PracticeName> {
                       maxLines: null,
                       minLines: null,
                       maxLength: 80,
+                      controller: practiceName,
                       decoration: InputDecoration(
                           counterText: "",
                           counterStyle: TextStyle(
                             height: double.minPositive,
                           ),
                           contentPadding: EdgeInsets.zero,
-                          hintText: widget.title,
+                          hintText: "${practiceName.text.toString()}",
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10(context) * 2.4,
                               fontWeight: FontWeight.w500,
@@ -304,11 +325,8 @@ class _PracticeNameState extends State<PracticeName> {
                           context,
                           FadePageRoute2(
                             true,
-                            exitPage: PracticeName('', '', ''),
-                            enterPage: PracticeRoutine(
-                              pracId: widget.pracId,
-                              pracTitle: widget.title,
-                            ),
+                            exitPage: PracticeName(),
+                            enterPage: PracticeRoutine(),
                           ),
                         );
                       },

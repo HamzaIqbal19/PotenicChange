@@ -94,6 +94,16 @@ class schedule_card extends StatefulWidget {
 }
 
 class _schedule_cardState extends State<schedule_card> {
+  Map<String, Map<String, String>> timesPerDay = {
+    'Monday': {'start': '', 'end': ''},
+    'Tuesday': {'start': '', 'end': ''},
+    'Wednesday': {'start': '', 'end': ''},
+    'Thursday': {'start': '', 'end': ''},
+    'Friday': {'start': '', 'end': ''},
+    'Saturday': {'start': '', 'end': ''},
+    'Sunday': {'start': '', 'end': ''}
+  };
+
   final String days_name;
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
   void removeSelectedDay(String day) {

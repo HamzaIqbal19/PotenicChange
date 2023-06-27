@@ -45,9 +45,14 @@ class _GoalNameState extends State<GoalName> {
     mygoal.text = goalName!;
   }
 
+  // @override
+  // void dispose() {
+  //   mygoal;
+  // }
+
   @override
   Widget build(BuildContext context) {
-    final _formkey1 = GlobalKey<FormState>();
+    //final _formkey1 = GlobalKey<FormState>();
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -352,7 +357,11 @@ class _GoalNameState extends State<GoalName> {
                       borderRadius: BorderRadius.all(Radius.circular(
                           AppDimensions.height10(context) * 1.8))),
                   child: TextFormField(
-                    key: _formkey1,
+                    //  key: _formkey1,
+                    style: TextStyle(
+                        fontSize: AppDimensions.height10(context) * 2.4,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xFFFA9934)),
                     decoration: InputDecoration(
                         hintText: "Control my anger",
                         hintStyle: TextStyle(
@@ -447,7 +456,7 @@ class _GoalNameState extends State<GoalName> {
                         height: AppDimensions.height10(context) * 5.0,
                         child: AnimatedScaleButton(
                           onTap: () {
-                            signupSheet(context, "Sign up / login", "login");
+                            // signupSheet(context, "Sign up / login", "login");
                           },
                           child: Image.asset(
                             "assets/images/Moreactions.webp",
@@ -455,7 +464,10 @@ class _GoalNameState extends State<GoalName> {
                           ),
                         )),
                     AnimatedScaleButton(
-                      onTap: () {
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+                        var goal_Name = prefs.setString(
+                            'goalName', '${mygoal.text.toString()}');
                         Navigator.push(
                           context,
                           FadePageRoute2(

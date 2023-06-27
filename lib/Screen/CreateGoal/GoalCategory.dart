@@ -91,16 +91,14 @@ class _GoalCategoryState extends State<GoalCategory> {
     final prefs = await SharedPreferences.getInstance();
     print("GoalId:${prefs.getInt("goalId")}");
     String? jsonString = prefs.getString('goal');
-    List<Map<String, dynamic>>? goalNamesAndCategories;
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
+      print("Goal===============>$jsonString");
       Navigator.push(
         context,
-        FadePageRoute2(
-          true,
-          enterPage: GoalName(),
-          exitPage: GoalCategory('title', 'Circletitle', 1),
+        FadePageRoute(
+          page: GoalName(),
         ),
       );
       return Goal.fromJson(jsonMap);
@@ -134,11 +132,11 @@ class _GoalCategoryState extends State<GoalCategory> {
   List<Map<String, dynamic>> _searchResults = [];
   List<Map<String, dynamic>>? goalNamesAndCategories;
 
-  void _searchGoals(String searchTerm) {
+  void _searchGoals(String searchTerm, int id) {
     setState(() {
       //if (searchTerm) {
       AdminGoal().searchAllGoalById(searchTerm, widget.id).then((value) => {
-            print("value:$value"),
+            print("======>:$value"),
             setState(() {
               Allgoal = value;
               Loading = false;
@@ -224,126 +222,135 @@ class _GoalCategoryState extends State<GoalCategory> {
             //   child: ,
             // )
             Loading == false
-                ? Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 4.2),
-                        child: Center(
-                          child: Text(
-                            "Star Creation 2/5",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.8,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.7,
-                      ),
-                      circles(
-                          circle_text: widget.Circletitle,
-                          circle_color1: 0xFFFC854F,
-                          circle_color2: 0xFFFAA960,
-                          circle_border: 3,
-                          circle_bordercolor: 0xFFFFFFFF,
-                          circle_height: AppDimensions.height10(context) * 13.4,
-                          circle_width: AppDimensions.height10(context) * 13.4,
-                          textfont: AppDimensions.height10(context) * 1.6,
-                          textcolor: 0XFFFFFFFF),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 1.6,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 1.5,
-                          ),
-                          Container(
-                            height: AppDimensions.height10(context) * 8.9,
+                ? SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 4.2),
+                          child: Center(
                             child: Text(
-                              "Select your goal for \n ‘${widget.Circletitle}’ ",
-                              textAlign: TextAlign.center,
+                              "Star Creation 2/5",
                               style: TextStyle(
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w600,
                                 color: Colors.white,
-                                fontSize: AppDimensions.height10(context) * 2.8,
+                                fontSize: AppDimensions.height10(context) * 1.8,
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 48.9,
-                        width: AppDimensions.height10(context) * 38,
-                        child: GridView.builder(
-                            shrinkWrap: false,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              childAspectRatio:
-                                  4.2 / 3, // Two items in each row
-
-                              mainAxisSpacing: 9.0,
-                              crossAxisSpacing: 0.1,
+                        ),
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 2.7,
+                        ),
+                        circles(
+                            circle_text: widget.Circletitle,
+                            circle_color1: 0xFFFC854F,
+                            circle_color2: 0xFFFAA960,
+                            circle_border: 3,
+                            circle_bordercolor: 0xFFFFFFFF,
+                            circle_height:
+                                AppDimensions.height10(context) * 13.4,
+                            circle_width:
+                                AppDimensions.height10(context) * 13.4,
+                            textfont: AppDimensions.height10(context) * 1.6,
+                            textcolor: 0XFFFFFFFF),
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 1.6,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 1.5,
                             ),
-                            itemCount: Allgoal![0]["goals"].length,
-                            itemBuilder: (context, index1) {
-                              final goalName = Allgoal![0]["goals"][index1]
-                                      ["goalName"]
-                                  .toString();
+                            Container(
+                              height: AppDimensions.height10(context) * 8.9,
+                              child: Text(
+                                "Select your goal for \n ‘${widget.Circletitle}’ ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.8,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal:
+                                  AppDimensions.height10(context) * 2.0),
+                          child: GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio:
+                                    4.2 / 3, // Two items in each row
 
-                              return Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      AnimatedScaleButton(
-                                        onTap: () {
-                                          getUserId(
-                                              widget.id,
-                                              Allgoal![0]["goals"][index1]
-                                                  ["goalName"],
-                                              Allgoal![0]["goals"][index1]
-                                                  ["id"]);
-                                        },
-                                        child: circles(
-                                            circle_text: Allgoal![0]["goals"]
-                                                [index1]["goalName"],
-                                            circle_color1: 0xFFFFFFFF,
-                                            circle_color2: 0xFFFFFFFF,
-                                            circle_border: 3.0,
-                                            circle_bordercolor: 0xFFEE8E6F,
-                                            circle_height: AppDimensions
-                                                    .height10(context) *
-                                                13.4,
-                                            circle_width:
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    13.4,
-                                            textfont: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            textcolor: 0xFFFA9934),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              );
-                            }),
-                      ),
-                    ],
+                                mainAxisSpacing: 9.0,
+                                crossAxisSpacing: 0.0,
+                              ),
+                              itemCount: Allgoal![0]["goals"].length,
+                              itemBuilder: (context, index1) {
+                                final goalName =
+                                    Allgoal![0]["goals"][index1]["goalName"];
+
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        AnimatedScaleButton(
+                                          onTap: () {
+                                            getUserId(
+                                                widget.id,
+                                                Allgoal![0]["goals"][index1]
+                                                    ["goalName"],
+                                                Allgoal![0]["goals"][index1]
+                                                    ["id"]);
+                                          },
+                                          child: circles(
+                                              circle_text: Allgoal![0]["goals"]
+                                                  [index1]["goalName"],
+                                              circle_color1: 0xFFFFFFFF,
+                                              circle_color2: 0xFFFFFFFF,
+                                              circle_border: 3.0,
+                                              circle_bordercolor: 0xFFEE8E6F,
+                                              circle_height:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              circle_width:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              textfont: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              textcolor: 0xFFFA9934),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                );
+                              }),
+                        ),
+                      ],
+                    ),
                   )
-                : GoalCategory_shimmer()
+                : const GoalCategory_shimmer()
           ],
         ),
         bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
+          shape: const CircularNotchedRectangle(),
           notchMargin: 10,
           child: Container(
             margin: EdgeInsets.only(
@@ -377,15 +384,15 @@ class _GoalCategoryState extends State<GoalCategory> {
                               child: TextFormField(
                                   controller: _searchController,
                                   onChanged: (value) {
-                                    print("value:$value");
+                                    //  print("value:$value");
 
                                     setState(() {
                                       searchText = value;
-                                      _searchGoals(value);
+                                      _searchGoals(value, widget.id);
                                     });
                                   },
                                   decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(0.0),
+                                      contentPadding: const EdgeInsets.all(0.0),
                                       prefixIcon: Image.asset(
                                         'assets/images/Light.webp',
                                         width: AppDimensions.height10(context) *

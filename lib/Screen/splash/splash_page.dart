@@ -48,7 +48,7 @@ class SplashPageState extends State<SplashPage> {
     var Accestoken = prefs.getString("usertoken");
     var SessionToken = prefs.getString("refreshtoken");
     var Routes = prefs.getString("route");
-
+//
     print("======================>$Routes");
     if (Accestoken != null && Routes == null) {
       print("====================>");

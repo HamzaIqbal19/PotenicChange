@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
+import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -200,9 +201,14 @@ class _GoalFinishedState extends State<GoalFinished> {
                       // color: Colors.blue,
                       width: AppDimensions.height10(context) * 5.0,
                       height: AppDimensions.height10(context) * 5.0,
-                      child: Image.asset(
-                        "assets/images/Moreactions.webp",
-                        fit: BoxFit.contain,
+                      child: AnimatedScaleButton(
+                        onTap: () {
+                          //  signupSheet(context, "Sign up / login", "login");
+                        },
+                        child: Image.asset(
+                          "assets/images/Moreactions.webp",
+                          fit: BoxFit.contain,
+                        ),
                       )),
                 ],
               )

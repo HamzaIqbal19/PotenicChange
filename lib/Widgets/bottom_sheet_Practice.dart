@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Screen/PracticeGoal/Create Practice.dart';
 import 'fading.dart';
@@ -14,6 +15,9 @@ List<String> categories = [
   'Self Control',
   'Relationship'
 ];
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
 final goalName = TextEditingController();
 
 class BottomSheet extends StatelessWidget {
@@ -71,9 +75,6 @@ void bottom_sheet(context) {
                 SizedBox(
                   height: AppDimensions.height10(context) * 3.9,
                 ),
-                SizedBox(
-                  height: AppDimensions.height10(context) * 3.9,
-                ),
                 Container(
                   width: AppDimensions.height10(context) * 36.0,
                   child: TextField(
@@ -98,9 +99,6 @@ void bottom_sheet(context) {
                             borderSide: const BorderSide(
                                 width: 3, color: Colors.transparent))),
                   ),
-                ),
-                SizedBox(
-                  height: AppDimensions.height10(context) * 1,
                 ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 1,
@@ -137,9 +135,6 @@ void bottom_sheet(context) {
                 SizedBox(
                   height: AppDimensions.height10(context) * 3.0,
                 ),
-                SizedBox(
-                  height: AppDimensions.height10(context) * 3.0,
-                ),
                 Container(
                   height: AppDimensions.height10(context) * 5,
                   width: AppDimensions.height10(context) * 25.4,
@@ -152,15 +147,15 @@ void bottom_sheet(context) {
                         colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
                   ),
                   child: TextButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        final SharedPreferences prefs = await _prefs;
+                        var pracName = prefs.setString(
+                            'goalName', '${goalName.text.toString()}');
                         Navigator.pushReplacement(
                             context,
                             FadePageRoute2(true,
                                 exitPage: CreatePractice(),
-                                enterPage: PracticeName(
-                                    goalName.text.toString(),
-                                    goalName.text.toString(),
-                                    '9')));
+                                enterPage: PracticeName()));
                       },
                       child: const Text(
                         'Save',

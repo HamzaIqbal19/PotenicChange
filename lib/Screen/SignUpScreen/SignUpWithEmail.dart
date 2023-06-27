@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
+import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_colors.dart';
@@ -40,7 +41,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
   bool errorName = false;
   bool errorPassword = false;
   bool pass_obscure = true;
-  String userExist = "asda";
+  String userExist = "";
 
   late SharedPreferences _prefs;
   setEmail(email) async {
@@ -518,7 +519,12 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                             )),
                         userExist != ""
                             ? AnimatedScaleButton(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: Loginemailandpassword()));
+                                },
                                 child: Container(
                                   // height: AppDimensions.height10(context) * 2.7,
                                   margin: EdgeInsets.only(

@@ -27,6 +27,8 @@ class HomeScreenProgressSaved extends StatefulWidget {
 }
 
 class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -39,13 +41,6 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
   var accountFlag;
   var sessionRoute;
 
-  late SharedPreferences _prefs;
-  setEmail(email) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString('email', email);
-    print("SetEmail: $email");
-  }
-
   @override
   void initState() {
     super.initState();
@@ -55,11 +50,6 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
 
   bool isLoadWallet = true;
   bool isLoadLogin = true;
-  late bool checkBool;
-  booleanValue(value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('bool', value);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -254,8 +244,10 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                               children: [
                                                 GestureDetector(
                                                   onTap: () async {
+                                                    print(
+                                                        "======================>");
                                                     final SharedPreferences
-                                                        prefs = _prefs;
+                                                        prefs = await _prefs;
                                                     await prefs
                                                         .remove('usertoken');
                                                     await prefs
@@ -431,8 +423,8 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: (context) => LoginPage(),
+                                FadePageRoute(
+                                  page: LoginPage(),
                                 ),
                               );
                             },

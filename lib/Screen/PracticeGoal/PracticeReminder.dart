@@ -16,12 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class PracticeReminder extends StatefulWidget {
-  final String pracTitle;
-
-  final String pracId;
-  const PracticeReminder(
-      {Key? key, required this.pracTitle, required this.pracId})
-      : super(key: key);
+  const PracticeReminder({Key? key}) : super(key: key);
 
   @override
   State<PracticeReminder> createState() => _PracticeReminderState();
@@ -33,9 +28,26 @@ class _PracticeReminderState extends State<PracticeReminder> {
   var Start_time;
   var End_time;
 
+  var mygoal;
+  var practiceName;
+
   @override
   void initState() {
+    getGoalName();
     super.initState();
+  }
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  getGoalName() async {
+    print("hello world1224");
+    final SharedPreferences prefs = await _prefs;
+    var my_goal = prefs.getString("goalName");
+    var practice_Name = prefs.getString('pracName');
+    setState(() {
+      mygoal = my_goal!;
+      practiceName = practice_Name!;
+    });
   }
 
   Future getData() async {
@@ -136,7 +148,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 Container(
                   child: Center(
                     child: Text(
-                      "Control my anger",
+                      mygoal,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -165,7 +177,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     Container(
                       child: Center(
                         child: Text(
-                          widget.pracTitle,
+                          practiceName,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -589,17 +601,13 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           fit: BoxFit.contain,
                         )),
                     AnimatedScaleButton(
-                      onTap: () {
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+                        var reminder = prefs.setBool('pracReminder', radio1);
+                        //add Id
                         PracticeGoalApi()
-                            .userAddPractice(
-                                widget.pracTitle,
-                                "0xFF",
-                                radio1,
-                                "8",
-                                "Monday",
-                                '7:00 am',
-                                '12:00 am',
-                                widget.pracId)
+                            .userAddPractice(practiceName, radio1, "8",
+                                "Monday", '7:00 am', '12:00 am', 2)
                             .then((response) {
                           print('$response');
                           if (response == true) {
@@ -612,8 +620,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               context,
                               FadePageRoute2(
                                 true,
-                                exitPage:
-                                    PracticeReminder(pracTitle: '', pracId: ''),
+                                exitPage: PracticeReminder(),
                                 enterPage: const PracticeFinished(),
                               ),
                             );

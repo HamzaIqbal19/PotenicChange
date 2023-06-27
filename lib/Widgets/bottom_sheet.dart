@@ -12,10 +12,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 List<String> categories = [
-  'Fulfil Potential',
-  'Happiness & Wellbeing',
   'Self Control',
-  'Relationship'
+  'Overcome Insecurities',
+  'Self-Care',
+  'Life Style',
+  'Sprituality And Mindfulness',
+  'Family And Friends',
+  'Personal Growth',
+  'Love And Relationship'
 ];
 String dropdownValue = categories.first;
 
@@ -79,6 +83,7 @@ void bottom_sheet(context, int id) {
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: AppDimensions.height10(context) * 2.4,
+                      height: AppDimensions.height10(context) * 0.15,
                       color: const Color.fromARGB(209, 250, 154, 52),
                     ),
                     decoration: InputDecoration(
@@ -155,6 +160,9 @@ void bottom_sheet(context, int id) {
                 child: TextButton(
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
+                        final SharedPreferences prefs = await _prefs;
+                        var goal_Name = prefs.setString(
+                            'goalName', '${goalName.text.toString()}');
                         Navigator.push(
                           context,
                           FadePageRoute(
@@ -238,31 +246,39 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
                     ),
                   )),
             ),
-            DropdownButton2<String>(
-              value: dropdownValue,
-              isExpanded: true,
-              iconStyleData: IconStyleData(
-                  iconSize: AppDimensions.height10(context) * 4.0,
-                  iconEnabledColor: Color(0xFFFA9934)),
-              underline: Container(),
-              // elevation: 16,
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: AppDimensions.height10(context) * 2.4,
-                  fontFamily: "Laila",
-                  color: const Color.fromARGB(209, 250, 154, 52)),
-              onChanged: (String? value) {
-                // This is called when the user selects an item.
-                setState(() {
-                  dropdownValue = value!;
-                });
-              },
-              items: categories.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+            Container(
+              //  height: AppDimensions.height10(context) * 9.0,
+              child: DropdownButton2<String>(
+                value: dropdownValue,
+                isExpanded: true,
+                iconStyleData: IconStyleData(
+                    iconSize: AppDimensions.height10(context) * 4.0,
+                    iconEnabledColor: Color(0xFFFA9934)),
+                underline: Container(),
+                // elevation: 16,
+                style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: AppDimensions.height10(context) * 2.4,
+                    fontFamily: "Laila",
+                    color: const Color.fromARGB(209, 250, 154, 52)),
+                onChanged: (String? value) {
+                  // This is called when the user selects an item.
+                  setState(() {
+                    dropdownValue = value!;
+                  });
+                },
+                dropdownStyleData: DropdownStyleData(
+                    maxHeight: AppDimensions.height10(context) * 25.0,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0))),
+                items: categories.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
             ),
           ],
         ),

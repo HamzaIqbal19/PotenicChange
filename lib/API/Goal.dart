@@ -184,7 +184,7 @@ class AdminGoal {
 
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/goal/all-goals?goalName=$searchvalue?goalCategoryId=$id'),
+          '${URL.BASE_URL}api/goal/all-goals?goalName=$searchvalue&goalCategoryId=$id'),
       headers: headers,
     );
     if (response.statusCode == 200) {
@@ -270,9 +270,12 @@ class AdminGoal {
     var responses = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
+      final SharedPreferences prefs = await _prefs;
       print("response for api call:${responses}");
-      print("response:${responses["message"]}");
-
+      print("response:${responses['message']}");
+      print('${responses['result']['id']}');
+      var goal_num = prefs.setInt("goal_num", responses["result"]["id"]);
+      print('$goal_num');
       return true;
     } else {
       //client.close();
@@ -285,7 +288,7 @@ class AdminGoal {
 
   Future updateUserGoal(reason) async {
     final SharedPreferences prefs = await _prefs;
-
+    var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
 
     //int UserGoalId = 12;
@@ -302,8 +305,10 @@ class AdminGoal {
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
 
-    var request = await client.put(Uri.parse('${URL.BASE_URL}api/userGoal/71'),
-        headers: headers, body: body);
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/userGoal/$goal_num'),
+        headers: headers,
+        body: body);
     print("request: Update");
     print('=====>$request.statusCode');
     print(request.body);
@@ -324,7 +329,7 @@ class AdminGoal {
     // var goalName;
 
     final SharedPreferences prefs = await _prefs;
-
+    var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
@@ -333,7 +338,7 @@ class AdminGoal {
       'x-access-token': '$Accestoken'
     };
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userGoal/71'),
+      Uri.parse('${URL.BASE_URL}api/userGoal/$goal_num'),
       headers: headers,
     );
     // print('===========$userGoalId');
@@ -349,7 +354,7 @@ class AdminGoal {
 
   Future deleteUserGoal() async {
     final SharedPreferences prefs = await _prefs;
-
+    var goal_num = prefs.getInt('goal_num');
     var userGoalId = prefs.getInt('goalId');
     print('$userGoalId');
 
@@ -359,8 +364,9 @@ class AdminGoal {
       'x-access-token': '$Accestoken'
     };
 
-    var request = await client
-        .delete(Uri.parse('${URL.BASE_URL}api/userGoal/6'), headers: headers);
+    var request = await client.delete(
+        Uri.parse('${URL.BASE_URL}api/userGoal/$goal_num'),
+        headers: headers);
 
     var responses = jsonDecode(request.body);
     print("Goal to be deleted");

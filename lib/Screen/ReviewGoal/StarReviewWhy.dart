@@ -39,38 +39,9 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                 ),
                 onPressed: () {
                   Navigator.pop(context);
-                  // Navigator.pushReplacement(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => HomeScreen(),
-                  //   ),
-                  // );
-                  // Add code for performing close action
                 },
               ),
             ),
-            // actions: [
-            //   Center(
-            //     // alignment: Alignment.center,
-            //     child: IconButton(
-            //       icon: Image.asset(
-            //         'assets/images/Close.webp',
-            //         width: AppDimensions.height10(context) * 3.0,
-            //         height: AppDimensions.height10(context) * 3.0,
-            //         fit: BoxFit.contain,
-            //       ),
-            //       onPressed: () {
-            //         // Navigator.pushReplacement(
-            //         //   context,
-            //         //   MaterialPageRoute(
-            //         //     builder: (context) => HomeScreen(),
-            //         //   ),
-            //         // );
-            //         // Add code for performing close action
-            //       },
-            //     ),
-            //   ),
-            // ],
           )),
       body: Stack(
         children: [

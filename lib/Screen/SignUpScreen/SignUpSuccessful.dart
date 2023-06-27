@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
+import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_colors.dart';
 
@@ -27,30 +28,10 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
   bool rememberMe = true;
   bool boolean = true;
 
-  // late SharedPreferences _prefs;
-  // setEmail(email) async {
-  //   SharedPreferences pref = await SharedPreferences.getInstance();
-  //   pref.setString('email', email);
-  //   print("SetEmail: $email");
-  // }
-
   @override
   void initState() {
     super.initState();
   }
-
-  // Future<Timer> loadData() async {
-  //   return Timer(Duration(seconds: 4), onDoneLoading);
-  // }
-
-  // onDoneLoading() async {
-  //   Navigator.push(
-  //     context,
-  //     FadePageRoute(
-  //       page: const HomeScreen(login: true),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +40,7 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
           Navigator.push(
             context,
             FadePageRoute(
-              page: LoginPage(),
+              page: Loginemailandpassword(),
             ),
           );
 
@@ -68,7 +49,34 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
 
         // SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
         child: Scaffold(
+            extendBodyBehindAppBar: true,
             resizeToAvoidBottomInset: false,
+            appBar: AppBar(
+              elevation: 0,
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              automaticallyImplyLeading: false,
+              actions: [
+                Center(
+                  child: IconButton(
+                    icon: Image.asset(
+                      'assets/images/Close.webp',
+                      width: AppDimensions.height10(context) * 2.8,
+                      height: AppDimensions.height10(context) * 2.8,
+                      fit: BoxFit.cover,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        FadePageRoute(
+                          page: LoginPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
             body: Stack(
               children: <Widget>[
                 Container(
@@ -138,8 +146,13 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
                         )),
                     SizedBox(height: AppDimensions.height10(context) * 12.4),
                     AnimatedScaleButton(
-                      onTap: () async {
-                        FadePageRoute(page: LoginPage());
+                      onTap: () {
+                        print('===============>asdas');
+                        Navigator.push(
+                            context,
+                            FadePageRoute2(false,
+                                enterPage: Loginemailandpassword(),
+                                exitPage: const SignUpSuccessful(name: '')));
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 4.4,
