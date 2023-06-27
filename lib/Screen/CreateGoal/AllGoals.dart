@@ -36,14 +36,11 @@ class _AllGoalsState extends State<AllGoals> {
           goalNamesAndCategories = response;
 
           Loading = false;
-
         });
-
       } else {
         setState(() {
           Loading = false;
         });
-
       }
     }).catchError((error) {
       setState(() {
@@ -59,20 +56,19 @@ class _AllGoalsState extends State<AllGoals> {
   String searchText = ''; // Add this line
 
   void _searchGoals(String searchTerm) {
-
     setState(() {
       //if (searchTerm) {
-        AdminGoal().searchAllGoal(searchTerm).then((value) => {
-          print("value:$value"),
-        setState(() {
-        goalNamesAndCategories = value;
-        Loading = false;
-        print("responses:${value[1]["goals"]}");
-        }),
-            });
-     // } else {
-        //_searchResults = [];
-    //  }
+      AdminGoal().searchAllGoal(searchTerm).then((value) => {
+            print("value:$value"),
+            setState(() {
+              goalNamesAndCategories = value;
+              Loading = false;
+              print("responses:${value[1]["goals"]}");
+            }),
+          });
+      // } else {
+      //_searchResults = [];
+      //  }
     });
   }
 
@@ -269,21 +265,35 @@ class _AllGoalsState extends State<AllGoals> {
                                         AppDimensions.height10(context) * 2.0,
                                   ),
                                   Container(
-                                    height: (goalNamesAndCategories![index]
-                                                    ["goals"]
-                                                .length <=
+                                    height: (goalNamesAndCategories![index]["goals"].length <=
                                             7)
                                         ? AppDimensions.height10(context) *
-                                            13.4 *
-                                            (goalNamesAndCategories![index]
-                                                    ["goals"]
+                                            13.0 *
+                                            (goalNamesAndCategories![index]["goals"]
                                                 .length)
-                                        : AppDimensions.height10(context) *
-                                                13.4 *
+                                        : (goalNamesAndCategories![index]["goals"]
+                                                    .length <=
+                                                17)
+                                            ? AppDimensions.height10(context) *
+                                                9.1 *
                                                 (goalNamesAndCategories![index]
                                                         ["goals"]
-                                                    .length) -
-                                            250,
+                                                    .length)
+                                            : (goalNamesAndCategories![index]
+                                                            ["goals"]
+                                                        .length <=
+                                                    8)
+                                                ? AppDimensions.height10(context) *
+                                                    5.9 *
+                                                    (goalNamesAndCategories![index]
+                                                            ["goals"]
+                                                        .length)
+                                                : AppDimensions.height10(context) *
+                                                        12.4 *
+                                                        (goalNamesAndCategories![index]
+                                                                ["goals"]
+                                                            .length) -
+                                                    250,
                                     width: AppDimensions.height10(context) * 38,
                                     child: GridView.builder(
                                         shrinkWrap: false,
@@ -389,15 +399,12 @@ class _AllGoalsState extends State<AllGoals> {
                             child: TextFormField(
                                 controller: _searchController,
                                 onChanged: (value) {
-
                                   print("value:$value");
 
                                   setState(() {
-                                      searchText = value;
-                                      _searchGoals(value);
-
+                                    searchText = value;
+                                    _searchGoals(value);
                                   });
-
                                 },
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.all(0.0),

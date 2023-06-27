@@ -125,6 +125,7 @@ class _goalwhyState extends State<GoalWhy> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
+      extendBody: true,
       backgroundColor: Colors.transparent,
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(AppDimensions.height10(context) * 5.0),
@@ -168,7 +169,7 @@ class _goalwhyState extends State<GoalWhy> {
                         actionsPadding: EdgeInsets.zero,
                         titlePadding: EdgeInsets.zero,
                         title: Container(
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                               top: 19, right: 16, left: 16, bottom: 2),
                           height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.height10(context) * 23.8,
@@ -182,8 +183,8 @@ class _goalwhyState extends State<GoalWhy> {
                           ),
                         ),
                         content: Container(
-                          margin:
-                              EdgeInsets.only(bottom: 19, left: 16, right: 16),
+                          margin: const EdgeInsets.only(
+                              bottom: 19, left: 16, right: 16),
                           height: 32,
                           width: 238,
                           child: const Text(
@@ -222,7 +223,8 @@ class _goalwhyState extends State<GoalWhy> {
                                       FadePageRoute2(
                                         true,
                                         exitPage: GoalWhy(),
-                                        enterPage: HomeScreenProgressSaved(
+                                        enterPage:
+                                            const HomeScreenProgressSaved(
                                           login: true,
                                           route: "goalWhy",
                                         ),
@@ -484,8 +486,8 @@ class _goalwhyState extends State<GoalWhy> {
                                         left: AppDimensions.height10(context) *
                                             4.0),
                                     decoration: BoxDecoration(
-                                        color:
-                                            Color(0xFF282828).withOpacity(0.2)),
+                                        color: const Color(0xFF282828)
+                                            .withOpacity(0.2)),
                                   )
                                 ],
                               ),
@@ -502,44 +504,46 @@ class _goalwhyState extends State<GoalWhy> {
                       child: Align(
                         //alignment: Alignment.bottomCenter,
                         alignment: item == 1
-                            ? Alignment(0.01, 1.3)
-                            : Alignment(0.01, 1.17),
+                            ? const Alignment(0.01, 1.3)
+                            : const Alignment(0.01, 1.17),
                         //heightFactor: 0.5,
-                        child: Container(
-                          height: AppDimensions.height10(context) * 4.7,
-                          width: AppDimensions.height10(context) * 4.7,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [Color(0xFFB1B8FF), Color(0xFFC5CAFF)]),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 4, left: 4, right: 4, bottom: 4),
-                            child: AnimatedScaleButton(
-                                onTap: () {
-                                  increment();
-                                  setState(() {
-                                    myTextFields.add({
-                                      'key':
-                                          'Reason ${myTextFields.length.toString()}',
-                                      'text': '',
-                                    });
-                                  });
-                                  print("=============>Pressed");
-                                },
-                                child: Container(
-                                  color: Colors.transparent,
-                                  child: Image.asset(
-                                    'assets/images/Addgoal.webp',
-                                    height:
-                                        AppDimensions.height10(context) * 4.7,
-                                    width:
-                                        AppDimensions.height10(context) * 4.7,
-                                  ),
-                                )),
+                        child: AnimatedScaleButton(
+                          onTap: () {
+                            increment();
+                            setState(() {
+                              myTextFields.add({
+                                'key':
+                                    'Reason ${myTextFields.length.toString()}',
+                                'text': '',
+                              });
+                            });
+                            print("=============>Pressed");
+                          },
+                          child: Container(
+                            height: AppDimensions.height10(context) * 4.7,
+                            width: AppDimensions.height10(context) * 4.7,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xFFB1B8FF),
+                                    Color(0xFFC5CAFF)
+                                  ]),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 4, left: 4, right: 4, bottom: 4),
+                              child: Container(
+                                color: Colors.transparent,
+                                child: Image.asset(
+                                  'assets/images/Addgoal.webp',
+                                  height: AppDimensions.height10(context) * 4.7,
+                                  width: AppDimensions.height10(context) * 4.7,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -566,33 +570,48 @@ class _goalwhyState extends State<GoalWhy> {
                         )),
                     AnimatedScaleButton(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          FadePageRoute2(
-                            true,
-                            exitPage: GoalWhy(),
-                            enterPage: Goal_Identity(),
-                          ),
-                        );
+                        myTextFields[0]['text'] != ""
+                            ? Navigator.push(
+                                context,
+                                FadePageRoute2(
+                                  true,
+                                  exitPage: GoalWhy(),
+                                  enterPage: const Goal_Identity(),
+                                ),
+                              )
+                            : Container();
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
-                        decoration: BoxDecoration(
-                          // color: Color(0xFFFF7D50),
-                          border: Border.all(color: Colors.transparent),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(50.0)),
-                        ),
+                        decoration: myTextFields[0]['text'] != ""
+                            ? BoxDecoration(
+                                // color: Color(0xFFFF7D50),
+                                border: Border.all(color: Colors.transparent),
+                                gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFFCC10D),
+                                      Color(0xFFFDA210)
+                                    ]),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(50.0)),
+                              )
+                            : BoxDecoration(
+                                // color: Color(0xFFFF7D50),
+                                border: Border.all(color: Colors.transparent),
+                                color: const Color(0xFF282828).withOpacity(0.5),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(50.0)),
+                              ),
                         child: Center(
                           child: Text(
                             "Next",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: myTextFields[0]['text'] != ""
+                                  ? Colors.white
+                                  : Colors.white.withOpacity(0.5),
                               fontSize: AppDimensions.height10(context) * 1.6,
                               fontWeight: FontWeight.w600,
                             ),

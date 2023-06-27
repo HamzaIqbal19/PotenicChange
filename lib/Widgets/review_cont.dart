@@ -77,12 +77,11 @@ class _reviewboxState extends State<reviewbox> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.4,
                       ),
-                      inner_text(
-                        'Reason 1',
-                        bodyText: reason2 != null
-                            ? '$reason'
-                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
-                      ),
+                      inner_text('Reason 1',
+                          bodyText: reason2 != null
+                              ? '$reason'
+                              : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                          delete: false),
                       Container(
                         padding: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
@@ -117,12 +116,11 @@ class _reviewboxState extends State<reviewbox> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.8,
                       ),
-                      inner_text(
-                        "Reason 2",
-                        bodyText: reason != null
-                            ? '$reason2'
-                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
-                      ),
+                      inner_text("Reason 2",
+                          bodyText: reason != null
+                              ? '$reason2'
+                              : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                          delete: true),
                       Container(
                         padding: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
@@ -162,6 +160,7 @@ class _reviewboxState extends State<reviewbox> {
                         bodyText: reason3 != null
                             ? '$reason3'
                             : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
+                        delete: true,
                       ),
                       Container(
                         padding: EdgeInsets.only(
@@ -239,10 +238,12 @@ class _reviewboxState extends State<reviewbox> {
 }
 
 class inner_text extends StatefulWidget {
+  final bool delete;
   final String circle_text;
   final String bodyText;
 
-  inner_text(this.circle_text, {super.key, required this.bodyText});
+  const inner_text(this.circle_text,
+      {super.key, required this.bodyText, required this.delete});
 
   @override
   State<inner_text> createState() => _inner_textState();
@@ -307,110 +308,120 @@ class _inner_textState extends State<inner_text> {
                             : const Color(0xFFFFFFFF),
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ))),
-              GestureDetector(
-                onTap: () => showDialog<String>(
-                  context: context,
-                  builder: (BuildContext context) => Container(
-                    width: AppDimensions.height10(context) * 27.0,
-                    height: AppDimensions.height10(context) * 18.2,
-                    child: AlertDialog(
-                      actionsPadding: const EdgeInsets.all(0.0),
-                      contentPadding: const EdgeInsets.all(0.0),
-                      titlePadding: const EdgeInsets.all(0.0),
-                      title: Container(
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 1.9,
-                            right: AppDimensions.height10(context) * 1.6,
-                            left: AppDimensions.height10(context) * 1.6,
-                            bottom: AppDimensions.height10(context) * 0),
-                        height: AppDimensions.height10(context) * 2.2,
-                        width: AppDimensions.height10(context) * 23.8,
-                        child: Text(
-                          "Delete",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: "Laila",
-                            fontSize: AppDimensions.height10(context) * 1.7,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      content: Container(
-                        // color:Colors.red,
-                        margin: EdgeInsets.only(
-                            bottom: AppDimensions.height10(context) * 1.9,
-                            left: AppDimensions.height10(context) * 1.6,
-                            right: AppDimensions.height10(context) * 1.6),
-                        height: AppDimensions.height10(context) * 3.2,
-                        width: AppDimensions.height10(context) * 23.8,
-                        child: Text(
-                          "Are you sure you want to delete this \n item?",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.3,
-                            fontFamily: "Laila",
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ),
-                      actions: <Widget>[
-                        Column(
-                          children: [
-                            Container(
-                              height: AppDimensions.height10(context) * 4.4,
-                              width: double.infinity,
-                              color: const Color.fromRGBO(0, 122, 255, 1),
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text(
-                                  'No',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.7,
-                                      fontFamily: "Laila",
-                                      fontWeight: FontWeight.w400),
+              widget.delete
+                  ? GestureDetector(
+                      onTap: () => showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => Container(
+                          width: AppDimensions.height10(context) * 27.0,
+                          height: AppDimensions.height10(context) * 18.2,
+                          child: AlertDialog(
+                            actionsPadding: const EdgeInsets.all(0.0),
+                            contentPadding: const EdgeInsets.all(0.0),
+                            titlePadding: const EdgeInsets.all(0.0),
+                            title: Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 1.9,
+                                  right: AppDimensions.height10(context) * 1.6,
+                                  left: AppDimensions.height10(context) * 1.6,
+                                  bottom: AppDimensions.height10(context) * 0),
+                              height: AppDimensions.height10(context) * 2.2,
+                              width: AppDimensions.height10(context) * 23.8,
+                              child: Text(
+                                "Delete",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontFamily: "Laila",
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             ),
-                            Container(
-                              height: AppDimensions.height10(context) * 4.4,
-                              width: AppDimensions.height10(context) * 27.0,
-                              child: TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Yes',
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.7,
-                                    fontFamily: "Laila",
-                                    fontWeight: FontWeight.w400,
+                            content: Container(
+                              // color:Colors.red,
+                              margin: EdgeInsets.only(
+                                  bottom: AppDimensions.height10(context) * 1.9,
+                                  left: AppDimensions.height10(context) * 1.6,
+                                  right: AppDimensions.height10(context) * 1.6),
+                              height: AppDimensions.height10(context) * 3.2,
+                              width: AppDimensions.height10(context) * 23.8,
+                              child: Text(
+                                "Are you sure you want to delete this \n item?",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.3,
+                                  fontFamily: "Laila",
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            actions: <Widget>[
+                              Column(
+                                children: [
+                                  Container(
+                                    height:
+                                        AppDimensions.height10(context) * 4.4,
+                                    width: double.infinity,
                                     color: const Color.fromRGBO(0, 122, 255, 1),
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text(
+                                        'No',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.7,
+                                            fontFamily: "Laila",
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Container(
+                                    height:
+                                        AppDimensions.height10(context) * 4.4,
+                                    width:
+                                        AppDimensions.height10(context) * 27.0,
+                                    child: TextButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        'Yes',
+                                        style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.7,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color.fromRGBO(
+                                              0, 122, 255, 1),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-                child: Container(
-                  height: AppDimensions.height10(context) * 2.1,
-                  width: AppDimensions.height10(context) * 2.1,
+                      ),
+                      child: Container(
+                        height: AppDimensions.height10(context) * 2.1,
+                        width: AppDimensions.height10(context) * 2.1,
 
-                  // color: Colors.blue,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/bin.webp"),
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
-                ),
-              )
+                        // color: Colors.blue,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/bin.webp"),
+                            fit: BoxFit.fitHeight,
+                          ),
+                        ),
+                      ),
+                    )
+                  : Container()
             ],
           ),
           SizedBox(

@@ -6,6 +6,8 @@ import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Menu&settings/edit_credentials.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
+import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -38,8 +40,8 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
   bool errorEmail = false;
   bool errorPassword = false;
   bool credentials = false;
- String PassowordError="";
-  String EmailError="";
+  String PassowordError = "";
+  String EmailError = "";
   late SharedPreferences _prefs;
   setEmail(email) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -53,7 +55,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
   void initState() {
     _controller = AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: 200), // increased duration
+        duration: const Duration(milliseconds: 200), // increased duration
         lowerBound: 0.0,
         upperBound: 0.1)
       ..addListener(() {
@@ -188,26 +190,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        EmailError!=""
-                            ? Container(
-                                height: AppDimensions.height10(context) * 1.7,
-                                padding: EdgeInsets.only(
-                                    left:
-                                        AppDimensions.height10(context) * 1.2),
-                                child: Text(
-                                  "$EmailError please Signup the Account",
-                                  style: TextStyle(
-                                    color: const Color(0xFFFE6624),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.4,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )
-                            : Container(),
-                        EmailError!=""
-                            ? SizedBox(height: AppDimensions.height10(context))
-                            : Container(),
                         Container(
                             height: AppDimensions.height10(context) * 6,
                             width: AppDimensions.height10(context) * 36.0,
@@ -434,7 +416,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             ],
                           ),
                         ),
-                        PassowordError!=""
+                        PassowordError != ""
                             ? Container(
                                 padding: EdgeInsets.only(
                                     left:
@@ -451,7 +433,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               )
                             : Container(),
                         SizedBox(
-                            height: PassowordError!=""
+                            height: PassowordError != ""
                                 ? AppDimensions.height10(context)
                                 : AppDimensions.height10(context) * 3),
                         Container(
@@ -468,7 +450,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(true,
-                                          enterPage: PasswordReset(),
+                                          enterPage: const PasswordReset(),
                                           exitPage: Loginemailandpassword()),
                                     );
                                   },
@@ -487,14 +469,55 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                   ),
                                 ),
                               ],
-                            ))
+                            )),
+                        EmailError != ""
+                            ? AnimatedScaleButton(
+                                onTap: () {
+                                  FadePageRoute(page: SignUpPage());
+                                },
+                                child: Container(
+                                  // height: AppDimensions.height10(context) * 2.7,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          2.0),
+                                  child: Center(
+                                      child: RichText(
+                                          textAlign: TextAlign.center,
+                                          text: TextSpan(
+                                              style: TextStyle(
+                                                color: const Color(0xFFFE6624),
+                                                fontFamily: 'laila',
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.16,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.5,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              children: const [
+                                                TextSpan(
+                                                    text:
+                                                        "The user's account was not found."),
+                                                TextSpan(
+                                                    style: TextStyle(
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                    ),
+                                                    text:
+                                                        "\nPlease create an account to continue")
+                                              ]))),
+                                ),
+                              )
+                            : Container(),
 
                         //)
                       ],
                     ),
                   ),
 
-                  SizedBox(height: AppDimensions.height10(context) * 5.0),
+                  SizedBox(height: AppDimensions.height10(context) * 3.0),
 
                   GestureDetector(
                     onTapDown: (TapDownDetails details) {
@@ -506,18 +529,17 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                     onTap: () async {
                       setState(() {
                         Loading = true;
-                        EmailError="";
-                        PassowordError="";
+                        EmailError = "";
+                        PassowordError = "";
                       });
                       _controller.forward();
 
-                      await Future.delayed(Duration(milliseconds: 200));
+                      await Future.delayed(const Duration(milliseconds: 200));
 
                       _controller.reverse();
 
-                      await Future.delayed(Duration(milliseconds: 200));
+                      await Future.delayed(const Duration(milliseconds: 200));
                       if (_formkey.currentState!.validate()) {
-
                         Authentication()
                             .SignIn(
                           fcm,
@@ -531,31 +553,27 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             });
                             print("SignrResponse: $response");
                             ScaffoldMessenger.of(context).showSnackBar(
-                                 SnackBar(
+                                const SnackBar(
                                     content:
                                         Text("User Login Successfully !!")));
                             Navigator.push(
                               context,
                               FadePageRoute2(
                                 true,
-                                enterPage: StartProcess(),
+                                enterPage: const StartProcess(),
                                 exitPage: Loginemailandpassword(),
                               ),
                             );
-                          }
-                          else if (response["statusCode"] == 401 ) {
+                          } else if (response["statusCode"] == 401) {
                             setState(() {
                               Loading = false;
-                              EmailError="";
+                              EmailError = "";
                               PassowordError = response["message"];
                             });
 
                             ScaffoldMessenger.of(context).showSnackBar(
-                                 SnackBar(
-                                    content: Text(
-                                        response["message"])));
-                          }
-                          else if (response["statusCode"] == 404 ) {
+                                SnackBar(content: Text(response["message"])));
+                          } else if (response["statusCode"] == 404) {
                             print("hello world");
                             setState(() {
                               Loading = false;
@@ -564,9 +582,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             });
 
                             ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                    content: Text(
-                                        response["message"])));
+                                SnackBar(content: Text(response["message"])));
                           }
                         }).catchError((error) {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(

@@ -94,6 +94,7 @@ class _GoalCategoryState extends State<GoalCategory> {
     final prefs = await SharedPreferences.getInstance();
     print("GoalId:${prefs.getInt("goalId")}");
     String? jsonString = prefs.getString('goal');
+    List<Map<String, dynamic>>? goalNamesAndCategories;
 
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = json.decode(jsonString);
@@ -116,6 +117,7 @@ class _GoalCategoryState extends State<GoalCategory> {
       if (response.length != 0) {
         setState(() {
           Loading = false;
+          goalNamesAndCategories = response;
           Allgoal = response;
         });
       } else {
@@ -131,63 +133,33 @@ class _GoalCategoryState extends State<GoalCategory> {
     });
   }
 
-   _addCircle( var goals) {
-    for (var attempt = 0; attempt < goals.length; attempt++) {  // Maximum 1000 attempts
-      final circleX = _random.nextDouble() *
-          (AppDimensions.height10(context) * 95.00 -
-              AppDimensions.height10(context) * 6.50);
-      final circleY = _random.nextDouble() *
-          (AppDimensions.height10(context) * 31.40 -
-              AppDimensions.height10(context) * 7.40);
-      bool overlap = false;
 
-      for (var existingCircle in _circles) {
-        final minDistance = overlapFactor *
-            (max(existingCircle.circle_width, existingCircle.circle_height) / 2 +
-                max(AppDimensions.height10(context) * 6.50,
-                    AppDimensions.height10(context) * 7.40) /
-                    2);
-        final actualDistance = sqrt(pow(existingCircle.circle_width - circleX, 2) +
-            pow(existingCircle.circle_height - circleY, 2));
+  TextEditingController _searchController = TextEditingController();
+  List<Map<String, dynamic>> _searchResults = [];
+  List<Map<String, dynamic>>? goalNamesAndCategories;
 
-        if (actualDistance <= minDistance) {
-          overlap = true; // If the circle overlaps an existing one, we don't add it
-          break;
-        }
-      }
-
-      if (!overlap) {  // If there's no overlap, we can add the circle
-        setState(() {
-          _circles.add(
-            circles(
-                circle_text: Allgoal![0]["goals"]
-                [attempt]["goalName"],
-                circle_color1: 0xFFFFFFFF,
-                circle_color2: 0xFFFFFFFF,
-                circle_border: 3.0,
-                circle_bordercolor: 0xFFEE8E6F,
-                circle_height: AppDimensions
-                    .height10(context) *
-                    13.4,
-                circle_width:
-                AppDimensions.height10(
-                    context) *
-                    13.4,
-                textfont: AppDimensions.height10(
-                    context) *
-                    1.6,
-                textcolor: 0xFFFA9934),
-          );
-        });
-        break;  // Break the loop since we successfully placed a circle
-      }
-    }
+  void _searchGoals(String searchTerm) {
+    setState(() {
+      //if (searchTerm) {
+      AdminGoal().searchAllGoalById(searchTerm, widget.id).then((value) => {
+            print("value:$value"),
+            setState(() {
+              Allgoal = value;
+              Loading = false;
+              print("responses:${value[1]["goals"]}");
+            }),
+          });
+      // } else {
+      //_searchResults = [];
+      //  }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
+        extendBody: true,
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
@@ -310,11 +282,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                         ],
                       ),
 
-                      Stack(
-                        children: [
-                          _addCircle(Allgoal![0]["goals"])
-                        ],
-                      ),
+
 
                       SizedBox(
                         height: AppDimensions.height10(context) * 48.9,
@@ -385,6 +353,9 @@ class _GoalCategoryState extends State<GoalCategory> {
           shape: CircularNotchedRectangle(),
           notchMargin: 10,
           child: Container(
+            margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
             // color: Colors.blue,
             padding: EdgeInsets.only(
                 left: AppDimensions.height10(context) * 2.2,
@@ -411,9 +382,13 @@ class _GoalCategoryState extends State<GoalCategory> {
                                     AppDimensions.height10(context)))),
                             child: Center(
                               child: TextFormField(
+                                  controller: _searchController,
                                   onChanged: (value) {
+                                    print("value:$value");
+
                                     setState(() {
                                       searchText = value;
+                                      _searchGoals(value);
                                     });
                                   },
                                   decoration: InputDecoration(

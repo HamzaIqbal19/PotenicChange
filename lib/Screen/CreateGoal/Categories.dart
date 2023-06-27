@@ -306,6 +306,7 @@ class _CategoriesState extends State<Categories> {
                           ),
                         );
                       },
+
                       child: circles(
                           circle_text: "View all \n goals",
                           circle_color1: 0xFFFC854F,
