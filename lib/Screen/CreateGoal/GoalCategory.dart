@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
@@ -32,7 +33,8 @@ class _GoalCategoryState extends State<GoalCategory> {
   bool SearchIcon = false;
   bool Loading = true;
   String searchText = ''; // Add this line
-
+  final double overlapFactor = 0.85;
+  final Random _random = Random();
   List<String> categories = [
     'Fulfil Potential',
     'Happiness & Wellbeing',
@@ -40,6 +42,7 @@ class _GoalCategoryState extends State<GoalCategory> {
     'Relationship'
   ];
   List<Map<String, dynamic>>? Allgoal;
+  final List<circles> _circles = [];
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override
@@ -126,6 +129,59 @@ class _GoalCategoryState extends State<GoalCategory> {
       });
       print("error");
     });
+  }
+
+   _addCircle( var goals) {
+    for (var attempt = 0; attempt < goals.length; attempt++) {  // Maximum 1000 attempts
+      final circleX = _random.nextDouble() *
+          (AppDimensions.height10(context) * 95.00 -
+              AppDimensions.height10(context) * 6.50);
+      final circleY = _random.nextDouble() *
+          (AppDimensions.height10(context) * 31.40 -
+              AppDimensions.height10(context) * 7.40);
+      bool overlap = false;
+
+      for (var existingCircle in _circles) {
+        final minDistance = overlapFactor *
+            (max(existingCircle.circle_width, existingCircle.circle_height) / 2 +
+                max(AppDimensions.height10(context) * 6.50,
+                    AppDimensions.height10(context) * 7.40) /
+                    2);
+        final actualDistance = sqrt(pow(existingCircle.circle_width - circleX, 2) +
+            pow(existingCircle.circle_height - circleY, 2));
+
+        if (actualDistance <= minDistance) {
+          overlap = true; // If the circle overlaps an existing one, we don't add it
+          break;
+        }
+      }
+
+      if (!overlap) {  // If there's no overlap, we can add the circle
+        setState(() {
+          _circles.add(
+            circles(
+                circle_text: Allgoal![0]["goals"]
+                [attempt]["goalName"],
+                circle_color1: 0xFFFFFFFF,
+                circle_color2: 0xFFFFFFFF,
+                circle_border: 3.0,
+                circle_bordercolor: 0xFFEE8E6F,
+                circle_height: AppDimensions
+                    .height10(context) *
+                    13.4,
+                circle_width:
+                AppDimensions.height10(
+                    context) *
+                    13.4,
+                textfont: AppDimensions.height10(
+                    context) *
+                    1.6,
+                textcolor: 0xFFFA9934),
+          );
+        });
+        break;  // Break the loop since we successfully placed a circle
+      }
+    }
   }
 
   @override
@@ -253,6 +309,13 @@ class _GoalCategoryState extends State<GoalCategory> {
                           ),
                         ],
                       ),
+
+                      Stack(
+                        children: [
+                          _addCircle(Allgoal![0]["goals"])
+                        ],
+                      ),
+
                       SizedBox(
                         height: AppDimensions.height10(context) * 48.9,
                         width: AppDimensions.height10(context) * 38,

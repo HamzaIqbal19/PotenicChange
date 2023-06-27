@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/AllGoals.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalCategory.dart';
+import 'package:potenic_app/Screen/CreateGoal/random_circle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
@@ -57,6 +58,9 @@ class _CategoriesState extends State<Categories> {
       print("error");
     });
   }
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -156,132 +160,140 @@ class _CategoriesState extends State<Categories> {
                     SizedBox(
                       height: AppDimensions.height10(context) * 6.7,
                     ),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 14.0,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: min(
-                            4,
-                            goalCategories!
-                                .length), // ensure itemCount doesn't exceed 4 or length of list
-                        itemBuilder: (context, index) {
-                          return Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 2.0,
-                                  ),
-                                  AnimatedScaleButton(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute2(
-                                          true,
-                                          exitPage: Categories(),
-                                          enterPage: GoalCategory(
-                                            "Category Name",
-                                            goalCategories?[index]["name"],
-                                            goalCategories?[index]["id"],
-                                          ),
-                                        ),
-                                      );
-                                      print(
-                                          '${goalCategories![index]["name"]}${goalCategories![index]["id"]}');
-                                    },
-                                    child: circles(
-                                        circle_text: goalCategories![index]
-                                            ["name"],
-                                        circle_color1: 0xFFFC854F,
-                                        circle_color2: 0xFFFAA960,
-                                        circle_border: 3.0,
-                                        circle_bordercolor: 0xFFFFFFFF,
-                                        circle_height:
-                                            AppDimensions.height10(context) *
-                                                13.4,
-                                        circle_width:
-                                            AppDimensions.height10(context) *
-                                                13.4,
-                                        textfont:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        textcolor: 0xFFFFFFFF),
-                                  )
-                                ],
-                              ),
-                            ],
-                          );
-                        },
-                      ),
+
+                    Stack(
+                      children: [
+
+                        RandomCircles(),
+
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 30, top: 20.0),
-                      child: SizedBox(
-                        height: AppDimensions.height10(context) * 14.0,
-                        child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: max(4, goalCategories!.length - 4),
-                            itemBuilder: ((context, index) {
-                              return Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: AppDimensions.height10(context) *
-                                            2.0,
-                                      ),
-                                      AnimatedScaleButton(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            FadePageRoute2(
-                                              true,
-                                              exitPage: Categories(),
-                                              enterPage: GoalCategory(
-                                                  "Category Name",
-                                                  goalCategories![index + 4]
-                                                      ["name"],
-                                                  goalCategories![index + 4]
-                                                      ["id"]),
-                                            ),
-                                          );
-                                        },
-                                        child: circles(
-                                            circle_text:
-                                                goalCategories![index + 4]
-                                                    ["name"],
-                                            circle_color1: 0xFFFC854F,
-                                            circle_color2: 0xFFFAA960,
-                                            circle_border: 3.0,
-                                            circle_bordercolor: 0xFFFFFFFF,
-                                            circle_height:
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    13.4,
-                                            circle_width:
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    13.4,
-                                            textfont: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            textcolor: 0xFFFFFFFF),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              );
-                            })),
-                      ),
-                    ),
+                    // SizedBox(
+                    //   height: AppDimensions.height10(context) * 14.0,
+                    //   child: ListView.builder(
+                    //     scrollDirection: Axis.horizontal,
+                    //     itemCount: min(
+                    //         4,
+                    //         goalCategories!
+                    //             .length), // ensure itemCount doesn't exceed 4 or length of list
+                    //     itemBuilder: (context, index) {
+                    //       return Column(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: [
+                    //           Row(
+                    //             mainAxisAlignment: MainAxisAlignment.start,
+                    //             children: [
+                    //               SizedBox(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 2.0,
+                    //               ),
+                    //               AnimatedScaleButton(
+                    //                 onTap: () {
+                    //                   Navigator.push(
+                    //                     context,
+                    //                     FadePageRoute2(
+                    //                       true,
+                    //                       exitPage: Categories(),
+                    //                       enterPage: GoalCategory(
+                    //                         "Category Name",
+                    //                         goalCategories?[index]["name"],
+                    //                         goalCategories?[index]["id"],
+                    //                       ),
+                    //                     ),
+                    //                   );
+                    //                   print(
+                    //                       '${goalCategories![index]["name"]}${goalCategories![index]["id"]}');
+                    //                 },
+                    //                 child: circles(
+                    //                     circle_text: goalCategories![index]
+                    //                         ["name"],
+                    //                     circle_color1: 0xFFFC854F,
+                    //                     circle_color2: 0xFFFAA960,
+                    //                     circle_border: 3.0,
+                    //                     circle_bordercolor: 0xFFFFFFFF,
+                    //                     circle_height:
+                    //                         AppDimensions.height10(context) *
+                    //                             13.4,
+                    //                     circle_width:
+                    //                         AppDimensions.height10(context) *
+                    //                             13.4,
+                    //                     textfont:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.6,
+                    //                     textcolor: 0xFFFFFFFF),
+                    //               )
+                    //             ],
+                    //           ),
+                    //         ],
+                    //       );
+                    //     },
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 30, top: 20.0),
+                    //   child: SizedBox(
+                    //     height: AppDimensions.height10(context) * 14.0,
+                    //     child: ListView.builder(
+                    //         scrollDirection: Axis.horizontal,
+                    //         itemCount: max(4, goalCategories!.length - 4),
+                    //         itemBuilder: ((context, index) {
+                    //           return Column(
+                    //             mainAxisAlignment:
+                    //                 MainAxisAlignment.spaceEvenly,
+                    //             crossAxisAlignment: CrossAxisAlignment.start,
+                    //             children: [
+                    //               Row(
+                    //                 mainAxisAlignment: MainAxisAlignment.start,
+                    //                 children: [
+                    //                   SizedBox(
+                    //                     width: AppDimensions.height10(context) *
+                    //                         2.0,
+                    //                   ),
+                    //                   AnimatedScaleButton(
+                    //                     onTap: () {
+                    //                       Navigator.push(
+                    //                         context,
+                    //                         FadePageRoute2(
+                    //                           true,
+                    //                           exitPage: Categories(),
+                    //                           enterPage: GoalCategory(
+                    //                               "Category Name",
+                    //                               goalCategories![index + 4]
+                    //                                   ["name"],
+                    //                               goalCategories![index + 4]
+                    //                                   ["id"]),
+                    //                         ),
+                    //                       );
+                    //                     },
+                    //                     child: circles(
+                    //                         circle_text:
+                    //                             goalCategories![index + 4]
+                    //                                 ["name"],
+                    //                         circle_color1: 0xFFFC854F,
+                    //                         circle_color2: 0xFFFAA960,
+                    //                         circle_border: 3.0,
+                    //                         circle_bordercolor: 0xFFFFFFFF,
+                    //                         circle_height:
+                    //                             AppDimensions.height10(
+                    //                                     context) *
+                    //                                 13.4,
+                    //                         circle_width:
+                    //                             AppDimensions.height10(
+                    //                                     context) *
+                    //                                 13.4,
+                    //                         textfont: AppDimensions.height10(
+                    //                                 context) *
+                    //                             1.6,
+                    //                         textcolor: 0xFFFFFFFF),
+                    //                   )
+                    //                 ],
+                    //               ),
+                    //             ],
+                    //           );
+                    //         })),
+                    //   ),
+                    // ),
                     SizedBox(
                       height: AppDimensions.height10(context) * 11.6,
                     ),
