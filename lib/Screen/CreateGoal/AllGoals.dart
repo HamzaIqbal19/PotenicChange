@@ -408,12 +408,14 @@ class _AllGoalsState extends State<AllGoals> {
                                                             goalNamesAndCategories![
                                                                 index]['id'],
                                                             goalNamesAndCategories![
-                                                                            0][
+                                                                            index]
+                                                                        [
                                                                         "goals"]
                                                                     [index1]
                                                                 ["goalName"],
                                                             goalNamesAndCategories![
-                                                                    0]["goals"]
+                                                                        index]
+                                                                    ["goals"]
                                                                 [index1]["id"]);
                                                       },
                                                       child: circles(
