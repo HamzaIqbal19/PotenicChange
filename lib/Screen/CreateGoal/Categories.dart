@@ -59,9 +59,6 @@ class _CategoriesState extends State<Categories> {
     });
   }
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,9 +160,7 @@ class _CategoriesState extends State<Categories> {
 
                     Stack(
                       children: [
-
                         RandomCircles(),
-
                       ],
                     ),
                     // SizedBox(
@@ -294,6 +289,7 @@ class _CategoriesState extends State<Categories> {
                     //         })),
                     //   ),
                     // ),
+
                     SizedBox(
                       height: AppDimensions.height10(context) * 11.6,
                     ),
@@ -306,7 +302,6 @@ class _CategoriesState extends State<Categories> {
                           ),
                         );
                       },
-
                       child: circles(
                           circle_text: "View all \n goals",
                           circle_color1: 0xFFFC854F,

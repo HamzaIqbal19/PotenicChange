@@ -346,6 +346,10 @@ class _GoalNameState extends State<GoalName> {
                 Container(
                   height: AppDimensions.height10(context) * 10.5,
                   width: AppDimensions.height10(context) * 36.0,
+                  padding: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 2.0,
+                      right: AppDimensions.height10(context) * 0.4,
+                      left: AppDimensions.height10(context) * 2.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
@@ -355,6 +359,7 @@ class _GoalNameState extends State<GoalName> {
                     expands: true,
                     maxLines: null,
                     minLines: null,
+                    maxLength: 50,
                     textAlignVertical: TextAlignVertical.top,
                     //  key: _formkey1,
                     style: TextStyle(
@@ -363,6 +368,7 @@ class _GoalNameState extends State<GoalName> {
                         height: AppDimensions.height10(context) * 0.14,
                         color: const Color(0xFFFA9934)),
                     decoration: InputDecoration(
+                        contentPadding: EdgeInsets.zero,
                         hintText: "Control my anger",
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.4,

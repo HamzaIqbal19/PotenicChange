@@ -19,15 +19,24 @@ class PracticeRoutine extends StatefulWidget {
 class _PracticeRoutineState extends State<PracticeRoutine> {
   bool buttonActive = false;
   int Count = 0;
-  Map<String, Map<String, String>> timesPerDay = {
-    'Monday': {'start': '', 'end': ''},
-    'Tuesday': {'start': '', 'end': ''},
-    'Wednesday': {'start': '', 'end': ''},
-    'Thursday': {'start': '', 'end': ''},
-    'Friday': {'start': '', 'end': ''},
-    'Saturday': {'start': '', 'end': ''},
-    'Sunday': {'start': '', 'end': ''}
-  };
+  // Map<String, Map<String, String>> timesPerDay = {
+  //   'Monday': {'start': '', 'end': ''},
+  //   'Tuesday': {'start': '', 'end': ''},
+  //   'Wednesday': {'start': '', 'end': ''},
+  //   'Thursday': {'start': '', 'end': ''},
+  //   'Friday': {'start': '', 'end': ''},
+  //   'Saturday': {'start': '', 'end': ''},
+  //   'Sunday': {'start': '', 'end': ''}
+  // };
+  List<Map<String, dynamic>> timesPerDay = [
+    {'day': 'Monday', 'start': '', 'end': ''},
+    {'day': 'Tuesday', 'start': '', 'end': ''},
+    {'day': 'Wednesday', 'start': '', 'end': ''},
+    {'day': 'Thursday', 'start': '', 'end': ''},
+    {'day': 'Friday', 'start': '', 'end': ''},
+    {'day': 'Saturday', 'start': '', 'end': ''},
+    {'day': 'Sunday', 'start': '', 'end': ''}
+  ];
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   var mygoal;
@@ -255,73 +264,164 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       schedule_card(
-                        //  key: Key(timesPerDay[0]['key']),
+                        key: Key(timesPerDay[0]['day']),
                         days: 'Monday',
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
                           });
                         },
+                        onChangedStart: (String value) {
+                          setState(() {
+                            timesPerDay[0]['start'] =
+                                value; // Update the start time in the list
+                          });
+                        },
+                        onChangedEnd: (String value) {
+                          setState(() {
+                            timesPerDay[0]['end'] =
+                                value; // Update the end time in the list
+                          });
+                        },
                       ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 1.6,
                       ),
-                      schedule_card(
-                        //  key: Key(timesPerDay[1]['key']),
-                        days: 'Tuesday',
-                        onCountChanged: (Count) {
+                      GestureDetector(
+                        onTap: () {
                           setState(() {
-                            Count++;
+                            timesPerDay[0]['day'] = 'monday';
                           });
                         },
+                        child: schedule_card(
+                          key: Key(timesPerDay[1]['day']),
+                          days: 'Tuesday',
+                          onCountChanged: (Count) {
+                            setState(() {
+                              Count++;
+                            });
+                          },
+                          onChangedStart: (String value) {
+                            setState(() {
+                              timesPerDay[0]['start'] =
+                                  value; // Update the start time in the list
+                            });
+                          },
+                          onChangedEnd: (String value) {
+                            setState(() {
+                              timesPerDay[0]['end'] =
+                                  value; // Update the end time in the list
+                            });
+                          },
+                        ),
                       ),
                       SizedBox(height: AppDimensions.height10(context) * 1.6),
                       schedule_card(
-                        //  key: Key(timesPerDay[2]['key']),
+                        key: Key(timesPerDay[2]['day']),
                         days: 'Wednesday',
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
                           });
                         },
+                        onChangedStart: (String value) {
+                          setState(() {
+                            timesPerDay[0]['start'] =
+                                value; // Update the start time in the list
+                          });
+                        },
+                        onChangedEnd: (String value) {
+                          setState(() {
+                            timesPerDay[0]['end'] =
+                                value; // Update the end time in the list
+                          });
+                        },
                       ),
                       SizedBox(height: AppDimensions.height10(context) * 1.6),
                       schedule_card(
-                        // key: Key(timesPerDay[3]['key']),
+                        key: Key(timesPerDay[3]['day']),
                         days: 'Thursday',
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
                           });
                         },
+                        onChangedStart: (String value) {
+                          setState(() {
+                            timesPerDay[0]['start'] =
+                                value; // Update the start time in the list
+                          });
+                        },
+                        onChangedEnd: (String value) {
+                          setState(() {
+                            timesPerDay[0]['end'] =
+                                value; // Update the end time in the list
+                          });
+                        },
                       ),
                       SizedBox(height: AppDimensions.height10(context) * 1.6),
                       schedule_card(
-                        // key: Key(timesPerDay[4]['key']),
+                        key: Key(timesPerDay[4]['day']),
                         days: 'Friday',
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
                           });
                         },
+                        onChangedStart: (String value) {
+                          setState(() {
+                            timesPerDay[0]['start'] =
+                                value; // Update the start time in the list
+                          });
+                        },
+                        onChangedEnd: (String value) {
+                          setState(() {
+                            timesPerDay[0]['end'] =
+                                value; // Update the end time in the list
+                          });
+                        },
                       ),
                       SizedBox(height: AppDimensions.height10(context) * 1.6),
                       schedule_card(
-                        //key: Key(timesPerDay[5]['key']),
+                        key: Key(timesPerDay[5]['day']),
                         days: 'Saturday',
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
                           });
                         },
+                        onChangedStart: (String value) {
+                          setState(() {
+                            timesPerDay[0]['start'] =
+                                value; // Update the start time in the list
+                          });
+                        },
+                        onChangedEnd: (String value) {
+                          setState(() {
+                            timesPerDay[0]['end'] =
+                                value; // Update the end time in the list
+                          });
+                        },
                       ),
                       SizedBox(height: AppDimensions.height10(context) * 1.6),
                       schedule_card(
-                        // key: Key(timesPerDay[6]['key']),
+                        key: Key(timesPerDay[6]['day']),
                         days: 'Sunday',
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
+                          });
+                        },
+                        onChangedStart: (String value) {
+                          setState(() {
+                            timesPerDay[0]['start'] =
+                                value; // Update the start time in the list
+                          });
+                        },
+                        onChangedEnd: (String value) {
+                          setState(() {
+                            timesPerDay[0]['end'] =
+                                value; // Update the end time in the list
                           });
                         },
                       ),
@@ -346,7 +446,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                               enterPage: PracticeReminder(),
                             ),
                           );
-                        } else {}
+                        } else {
+                          print(timesPerDay[0][day]);
+                        }
                         // print("successfull${widget.pracTitle}");
                       },
                       child: Container(

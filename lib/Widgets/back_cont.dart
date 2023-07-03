@@ -70,7 +70,7 @@ class _inner_textState extends State<inner_text> {
       width: AppDimensions.height10(context) * 36.0,
       padding: EdgeInsets.only(
           top: AppDimensions.height10(context) * 1,
-          bottom: 1,
+          bottom: AppDimensions.height10(context) * 0.5,
           left: AppDimensions.height10(context) * 2,
           right: AppDimensions.height10(context) * 2.0),
       decoration: BoxDecoration(
@@ -237,30 +237,39 @@ class _inner_textState extends State<inner_text> {
                   : Container()
             ],
           ),
-          SizedBox(
-            height: AppDimensions.height10(context) * 0.9,
-          ),
+          // SizedBox(
+          //   height: AppDimensions.height10(context) * 0.9,
+          // ),
           // SizedBox(
           //   height: AppDimensions.height10(context) * 0.9,
           // ),
           Container(
               height: AppDimensions.height10(context) * 6.3,
               width: AppDimensions.height10(context) * 32.0,
-              child: CupertinoTextField(
+              child: TextFormField(
                 onChanged: widget.onChanged,
                 maxLength: widget.length,
-                // suffix: Text('/200'),
-                suffixMode: OverlayVisibilityMode.editing,
-                placeholder: widget.placeHolder,
-                placeholderStyle: TextStyle(
-                    height: AppDimensions.height10(context) * 0.15,
-                    fontSize: AppDimensions.height10(context) * 1.6,
-                    fontWeight: FontWeight.w500,
-                    color: _focusNode.hasFocus
-                        ? const Color(0xFFFFFFFF)
-                        : const Color(0xFF828282)),
+                maxLines: null,
+                minLines: null,
+                expands: true,
+
+                decoration: InputDecoration(
+                    contentPadding: EdgeInsets.zero,
+                    hintText: widget.placeHolder,
+                    hintStyle: TextStyle(
+                        height: AppDimensions.height10(context) * 0.15,
+                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontWeight: FontWeight.w500,
+                        color: _focusNode.hasFocus
+                            ? const Color(0xFFFFFFFF)
+                            : const Color(0xFF828282)),
+                    focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent)),
+                    enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.transparent))),
+
                 controller: body_text,
-                maxLines: 4,
+                // maxLines: 4,
                 focusNode: _focusNode,
                 style: TextStyle(
                     //  height: AppDimensions.height10(context) * 0.15,
@@ -268,9 +277,6 @@ class _inner_textState extends State<inner_text> {
                     fontFamily: "Laila",
                     height: AppDimensions.height10(context) * 0.14,
                     color: const Color(0xFFFFFFFF)),
-                decoration: const BoxDecoration(
-                  color: Colors.transparent,
-                ),
               )),
         ],
       ),

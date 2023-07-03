@@ -21,6 +21,7 @@ class PracticeName extends StatefulWidget {
 class _PracticeNameState extends State<PracticeName> {
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
+  var practice = TextEditingController();
 
   @override
   void initState() {
@@ -37,7 +38,7 @@ class _PracticeNameState extends State<PracticeName> {
     var practice_Name = prefs.getString('pracName');
     setState(() {
       mygoal.text = my_goal!;
-      practiceName.text = practice_Name!;
+      practice.text = practice_Name!;
     });
   }
 
@@ -162,7 +163,7 @@ class _PracticeNameState extends State<PracticeName> {
                     Container(
                       child: Center(
                         child: Text(
-                          "${practiceName.text.toString()}",
+                          "${practice.text.toString()}",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -215,8 +216,9 @@ class _PracticeNameState extends State<PracticeName> {
                   width: AppDimensions.height10(context) * 36.0,
                   padding: EdgeInsets.only(
                     left: AppDimensions.height10(context) * 2.0,
-                    // top: AppDimensions.height10(context) * 2,
-                    bottom: AppDimensions.height10(context) * 1.0,
+                    top: AppDimensions.height10(context) * 1.0,
+                    right: AppDimensions.height10(context) * 0.5,
+                    bottom: AppDimensions.height10(context) * 0.5,
                   ),
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -233,12 +235,11 @@ class _PracticeNameState extends State<PracticeName> {
                           fontWeight: FontWeight.w500,
                           color: const Color(0xFFFA9934)),
                       decoration: InputDecoration(
-                          counterText: "",
                           counterStyle: TextStyle(
                             height: double.minPositive,
                           ),
                           contentPadding: EdgeInsets.zero,
-                          hintText: "${practiceName.text.toString()}",
+                          hintText: "${practice.text.toString()}",
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10(context) * 2.4,
                               fontWeight: FontWeight.w500,

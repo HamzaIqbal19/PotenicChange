@@ -91,69 +91,77 @@ class _scheduleState extends State<schedule> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          schedule_card(
-            //  key: Key(timesPerDay[0]['key']),
-            days: 'Monday',
-            onCountChanged: widget.onCountChanged,
-          ),
-          SizedBox(
-            height: AppDimensions.height10(context) * 1.6,
-          ),
-          schedule_card(
-            //  key: Key(timesPerDay[1]['key']),
-            days: 'Tuesday',
-            onCountChanged: widget.onCountChanged,
-          ),
-          SizedBox(height: AppDimensions.height10(context) * 1.6),
-          schedule_card(
-            //  key: Key(timesPerDay[2]['key']),
-            days: 'Wednesday',
-            onCountChanged: widget.onCountChanged,
-          ),
-          SizedBox(height: AppDimensions.height10(context) * 1.6),
-          schedule_card(
-            // key: Key(timesPerDay[3]['key']),
-            days: 'Thursday',
-            onCountChanged: widget.onCountChanged,
-          ),
-          SizedBox(height: AppDimensions.height10(context) * 1.6),
-          schedule_card(
-            // key: Key(timesPerDay[4]['key']),
-            days: 'Friday',
-            onCountChanged: widget.onCountChanged,
-          ),
-          SizedBox(height: AppDimensions.height10(context) * 1.6),
-          schedule_card(
-            //key: Key(timesPerDay[5]['key']),
-            days: 'Saturday',
-            onCountChanged: widget.onCountChanged,
-          ),
-          SizedBox(height: AppDimensions.height10(context) * 1.6),
-          schedule_card(
-            // key: Key(timesPerDay[6]['key']),
-            days: 'Sunday',
-            onCountChanged: widget.onCountChanged,
-          ),
-          SizedBox(height: AppDimensions.height10(context) * 1.6),
-        ],
-      ),
-    );
+        padding: const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
+        child:
+            //  Column(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: <Widget>[
+            //     schedule_card(
+            //       //  key: Key(timesPerDay[0]['key']),
+            //       days: 'Monday',
+            //       onCountChanged: widget.onCountChanged,
+            //     ),
+            //     SizedBox(
+            //       height: AppDimensions.height10(context) * 1.6,
+            //     ),
+            //     schedule_card(
+            //       //  key: Key(timesPerDay[1]['key']),
+            //       days: 'Tuesday',
+            //       onCountChanged: widget.onCountChanged,
+            //     ),
+            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
+            //     schedule_card(
+            //       //  key: Key(timesPerDay[2]['key']),
+            //       days: 'Wednesday',
+            //       onCountChanged: widget.onCountChanged,
+            //     ),
+            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
+            //     schedule_card(
+            //       // key: Key(timesPerDay[3]['key']),
+            //       days: 'Thursday',
+            //       onCountChanged: widget.onCountChanged,
+            //     ),
+            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
+            //     schedule_card(
+            //       // key: Key(timesPerDay[4]['key']),
+            //       days: 'Friday',
+            //       onCountChanged: widget.onCountChanged,
+            //     ),
+            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
+            //     schedule_card(
+            //       //key: Key(timesPerDay[5]['key']),
+            //       days: 'Saturday',
+            //       onCountChanged: widget.onCountChanged,
+            //     ),
+            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
+            //     schedule_card(
+            //       // key: Key(timesPerDay[6]['key']),
+            //       days: 'Sunday',
+            //       onCountChanged: widget.onCountChanged,
+            //     ),
+            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
+            //   ],
+            // ),
+            Container());
   }
 }
 
 class schedule_card extends StatefulWidget {
   final String days;
   final ValueChanged<int> onCountChanged;
+  final ValueChanged<String> onChangedStart;
+  final ValueChanged<String> onChangedEnd;
 
-  schedule_card({Key? key, required this.days, required this.onCountChanged});
+  schedule_card(
+      {Key? key,
+      required this.days,
+      required this.onCountChanged,
+      required this.onChangedStart,
+      required this.onChangedEnd});
 
   @override
   State<schedule_card> createState() =>
-      _schedule_cardState(days, onCountChanged);
+      _schedule_cardState(days, onCountChanged, onChangedStart, onChangedEnd);
 }
 
 class _schedule_cardState extends State<schedule_card> {
@@ -168,9 +176,13 @@ class _schedule_cardState extends State<schedule_card> {
     }
   }
 
+  final ValueChanged<String> onChangedStart;
+  final ValueChanged<String> onChangedEnd;
+
   final ValueChanged<int> onCountChanged;
 
-  _schedule_cardState(this.days_name, this.onCountChanged);
+  _schedule_cardState(this.days_name, this.onCountChanged, this.onChangedStart,
+      this.onChangedEnd);
 
   @override
   Widget build(BuildContext context) {
@@ -234,14 +246,14 @@ class _schedule_cardState extends State<schedule_card> {
                                           _globalKey.currentState?.expand();
                                           start_time =
                                               "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                          end_time =
-                                              "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                          final SharedPreferences prefs =
-                                              await _prefs;
-                                          var Start_Time = prefs.setString(
-                                              'startTime', '$start_time');
-                                          var End_Time = prefs.setString(
-                                              'endTime', '$end_time');
+                                          // end_time =
+                                          //     "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                          // final SharedPreferences prefs =
+                                          //     await _prefs;
+                                          // var Start_Time = prefs.setString(
+                                          //     'startTime', '$start_time');
+                                          // var End_Time = prefs.setString(
+                                          //     'endTime', '$end_time');
 
                                           Done = Done;
                                           print("Done:$Done");
@@ -288,8 +300,9 @@ class _schedule_cardState extends State<schedule_card> {
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
-                        const startTimerState(
+                        startTimerState(
                           text: ' 1) Time: ',
+                          onChanged: (String value) {},
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
@@ -326,8 +339,11 @@ class _schedule_cardState extends State<schedule_card> {
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Row(
                       children: [
-                        const endTimerState(
+                        endTimerState(
                           text: '2) Time: ',
+                          onChanged: (String value) {
+                            setState(() {});
+                          },
                         ),
                         Padding(
                             padding: const EdgeInsets.only(left: 8.0),
@@ -369,10 +385,12 @@ class _schedule_cardState extends State<schedule_card> {
 
 class startTimerState extends StatefulWidget {
   final String text;
+  final ValueChanged<String> onChanged;
 
   const startTimerState({
     super.key,
     required this.text,
+    required this.onChanged,
   });
 
   @override
@@ -445,6 +463,7 @@ class _startTimerStateState extends State<startTimerState> {
                               start_time =
                                   "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
                               // date.hour.toString();
+                              widget.onChanged(start_time);
                               day = selectedDay;
                               hour = selectedHour;
                               minute = selectedMinute;
@@ -476,8 +495,9 @@ class _startTimerStateState extends State<startTimerState> {
 
 class endTimerState extends StatefulWidget {
   final String text;
+  final ValueChanged<String> onChanged;
 
-  const endTimerState({super.key, required this.text});
+  const endTimerState({super.key, required this.text, required this.onChanged});
 
   @override
   State<endTimerState> createState() => _endTimerStateState(text);
@@ -549,6 +569,7 @@ class _endTimerStateState extends State<endTimerState> {
                               end_time =
                                   "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
                               // date.hour.toString();
+                              widget.onChanged(start_time);
                               endday = selectedDay;
                               endhour = selectedHour;
                               endminute = selectedMinute;
