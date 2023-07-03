@@ -228,6 +228,10 @@ class _PracticeNameState extends State<PracticeName> {
                       minLines: null,
                       maxLength: 80,
                       controller: practiceName,
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 2.4,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFFFA9934)),
                       decoration: InputDecoration(
                           counterText: "",
                           counterStyle: TextStyle(

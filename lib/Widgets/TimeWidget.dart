@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:potenic_app/API/PracticeModal.dart';
 import 'package:potenic_app/Widgets/DateTimeBottomSheet.dart';
 import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -28,10 +31,63 @@ String endperiod = '';
 
 bool Done = false;
 
-class schedule extends StatelessWidget {
+class schedule extends StatefulWidget {
   final ValueChanged<int> onCountChanged;
 
   schedule({required this.onCountChanged});
+
+  @override
+  State<schedule> createState() => _scheduleState();
+}
+
+class _scheduleState extends State<schedule> {
+  @override
+  void initState() {
+    prac();
+    super.initState();
+  }
+
+  void prac() {
+    String jsonStr = '''
+  {
+    "name": "Sample Practice",
+    "routine": true,
+    "days": [
+      {
+        "day": "Monday",
+        "startTime": "9:00 AM",
+        "endTime": "5:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "startTime": "8:30 AM",
+        "endTime": "4:30 PM"
+      }
+    ]
+  }
+  ''';
+
+    Map<String, dynamic> jsonData = json.decode(jsonStr);
+    Practice practice = Practice.fromJson(jsonData);
+
+    print(practice.name); // Output: Sample Practice
+    print(practice.routine); // Output: true
+    print(practice.days.length); // Output: 2
+
+    for (var day in practice.days) {
+      print(day['day']); // Output: Monday, Tuesday
+      print(day['startTime']); // Output: 9:00 AM, 8:30 AM
+      print(day['endTime']); // Output: 5:00 PM, 4:30 PM
+    }
+
+    // To convert the object back to JSON
+    Map<String, dynamic> toJsonData = practice.toJson();
+    String jsonString = json.encode(toJsonData);
+    print(jsonString);
+  }
+
+  List<Map<String, dynamic>> timesPerDay = [];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -40,40 +96,47 @@ class schedule extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           schedule_card(
+            //  key: Key(timesPerDay[0]['key']),
             days: 'Monday',
-            onCountChanged: onCountChanged,
+            onCountChanged: widget.onCountChanged,
           ),
           SizedBox(
             height: AppDimensions.height10(context) * 1.6,
           ),
           schedule_card(
+            //  key: Key(timesPerDay[1]['key']),
             days: 'Tuesday',
-            onCountChanged: onCountChanged,
+            onCountChanged: widget.onCountChanged,
           ),
           SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
+            //  key: Key(timesPerDay[2]['key']),
             days: 'Wednesday',
-            onCountChanged: onCountChanged,
+            onCountChanged: widget.onCountChanged,
           ),
           SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
+            // key: Key(timesPerDay[3]['key']),
             days: 'Thursday',
-            onCountChanged: onCountChanged,
+            onCountChanged: widget.onCountChanged,
           ),
           SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
+            // key: Key(timesPerDay[4]['key']),
             days: 'Friday',
-            onCountChanged: onCountChanged,
+            onCountChanged: widget.onCountChanged,
           ),
           SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
+            //key: Key(timesPerDay[5]['key']),
             days: 'Saturday',
-            onCountChanged: onCountChanged,
+            onCountChanged: widget.onCountChanged,
           ),
           SizedBox(height: AppDimensions.height10(context) * 1.6),
           schedule_card(
+            // key: Key(timesPerDay[6]['key']),
             days: 'Sunday',
-            onCountChanged: onCountChanged,
+            onCountChanged: widget.onCountChanged,
           ),
           SizedBox(height: AppDimensions.height10(context) * 1.6),
         ],
@@ -86,7 +149,7 @@ class schedule_card extends StatefulWidget {
   final String days;
   final ValueChanged<int> onCountChanged;
 
-  schedule_card({super.key, required this.days, required this.onCountChanged});
+  schedule_card({Key? key, required this.days, required this.onCountChanged});
 
   @override
   State<schedule_card> createState() =>
@@ -94,16 +157,6 @@ class schedule_card extends StatefulWidget {
 }
 
 class _schedule_cardState extends State<schedule_card> {
-  Map<String, Map<String, String>> timesPerDay = {
-    'Monday': {'start': '', 'end': ''},
-    'Tuesday': {'start': '', 'end': ''},
-    'Wednesday': {'start': '', 'end': ''},
-    'Thursday': {'start': '', 'end': ''},
-    'Friday': {'start': '', 'end': ''},
-    'Saturday': {'start': '', 'end': ''},
-    'Sunday': {'start': '', 'end': ''}
-  };
-
   final String days_name;
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
   void removeSelectedDay(String day) {

@@ -42,30 +42,22 @@
 class Practice {
   String name;
   bool routine;
-  List<Map<String, Map<String, String>>> days;
-  List<Map<String, String>> startTime;
-  List<Map<String, String>> endTime;
+  List<Map<String, dynamic>> days;
 
-  Practice(
-      {required this.name,
-      required this.routine,
-      required this.days,
-      required this.startTime,
-      required this.endTime});
+  Practice({
+    required this.name,
+    required this.routine,
+    required this.days,
+  });
 
   factory Practice.fromJson(Map<String, dynamic> json) {
     return Practice(
-        name: json['name'],
-        routine: json['routine'],
-        days: (json['days'] as List)
-            .map((item) => Map<String, Map<String, String>>.from(item))
-            .toList(),
-        startTime: (json['startTime'] as List)
-            .map((item) => Map<String, String>.from(item))
-            .toList(),
-        endTime: (json['endTime'] as List)
-            .map((item) => Map<String, String>.from(item))
-            .toList());
+      name: json['name'],
+      routine: json['routine'],
+      days: (json['days'] as List)
+          .map((item) => Map<String, dynamic>.from(item))
+          .toList(),
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -73,8 +65,6 @@ class Practice {
       'name': name,
       'routine': routine,
       'days': days,
-      'startTime': startTime,
-      'endTime': endTime,
     };
   }
 }

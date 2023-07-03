@@ -346,21 +346,21 @@ class _GoalNameState extends State<GoalName> {
                 Container(
                   height: AppDimensions.height10(context) * 10.5,
                   width: AppDimensions.height10(context) * 36.0,
-                  padding: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 2,
-                      bottom: AppDimensions.height10(context) * 4.8,
-                      left: AppDimensions.height10(context) * 0.0,
-                      right: AppDimensions.height10(context) * 0.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.white, width: 2),
                       borderRadius: BorderRadius.all(Radius.circular(
                           AppDimensions.height10(context) * 1.8))),
                   child: TextFormField(
+                    expands: true,
+                    maxLines: null,
+                    minLines: null,
+                    textAlignVertical: TextAlignVertical.top,
                     //  key: _formkey1,
                     style: TextStyle(
                         fontSize: AppDimensions.height10(context) * 2.4,
                         fontWeight: FontWeight.w500,
+                        height: AppDimensions.height10(context) * 0.14,
                         color: const Color(0xFFFA9934)),
                     decoration: InputDecoration(
                         hintText: "Control my anger",

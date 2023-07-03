@@ -165,14 +165,14 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
-                        child: GestureDetector(
+                        child: AnimatedScaleButton(
                           onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   FadePageRoute(
-                            //     page: PracticeReview(),
-                            //   ),
-                            // );
+                            Navigator.push(
+                              context,
+                              FadePageRoute(
+                                page: PracticeReview(),
+                              ),
+                            );
                           },
                           child: Image(
                             image: const AssetImage(
@@ -203,11 +203,11 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                       )),
                   AnimatedScaleButton(
                     onTap: () {
-                      // Navigator.pushReplacement(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => ActivateStar(),
-                      //     ));
+                      Navigator.pushReplacement(
+                          context,
+                          FadePageRoute(
+                            page: ActivateStar(),
+                          ));
                     },
                     child: Container(
                       height: AppDimensions.height10(context) * 5,

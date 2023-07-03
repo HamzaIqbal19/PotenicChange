@@ -274,7 +274,10 @@ class _VisualisingState extends State<Visualising> {
                                 height: 44,
                                 width: double.infinity,
                                 child: TextButton(
-                                  onPressed: () {
+                                  onPressed: () async {
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    var goalwhy = prefs.remove('route');
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
@@ -603,7 +606,9 @@ class _VisualisingState extends State<Visualising> {
                           ),
                         )),
                     AnimatedScaleButton(
-                      onTap: () {
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+                        var goalwhy = prefs.remove('route');
                         goalVisualising[0]['text'] != ""
                             ? updateGoalReason(goalVisualising)
                             : Container();

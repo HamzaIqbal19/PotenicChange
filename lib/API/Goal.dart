@@ -325,6 +325,41 @@ class AdminGoal {
     }
   }
 
+  Future updateUserGoalColor(color) async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_num = prefs.getInt('goal_num');
+    var Accestoken = prefs.getString("usertoken");
+
+    //int UserGoalId = 12;
+    print("request: Update");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var body = jsonEncode({
+      "color": "$color",
+    });
+
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/userGoal/$goal_num'),
+        headers: headers,
+        body: body);
+    print("request: Update");
+    print('=====>$request.statusCode');
+    print(request.body);
+    if (request.statusCode == 200) {
+      // print("$request.statusCode");
+      print("request: Update successful");
+      var jsonData = jsonDecode(request.body);
+      print("Result: $jsonData");
+      return true;
+    } else {
+      print("Update failed");
+      // client.close();
+      return false;
+    }
+  }
+
   static Future getUserGoal() async {
     // var goalName;
 

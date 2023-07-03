@@ -22,6 +22,13 @@ class StarReview extends StatefulWidget {
 }
 
 class _StarReviewState extends State<StarReview> {
+  bool color1 = false;
+  bool color2 = false;
+  bool color3 = false;
+  bool color4 = false;
+  bool color5 = false;
+  bool color6 = false;
+
   Future<List<String>>? _goalNamesFuture;
   var goalName;
   var reason;
@@ -128,7 +135,7 @@ class _StarReviewState extends State<StarReview> {
                 ),
           Loading == false
               ? SingleChildScrollView(
-                  reverse: true,
+                  //reverse: true,
                   physics: ClampingScrollPhysics(),
                   child: Column(
                     children: [
@@ -163,7 +170,7 @@ class _StarReviewState extends State<StarReview> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 0.7,
                       ),
-                      Container(
+                      SizedBox(
                         height: AppDimensions.height10(context) * 2.2,
                         width: AppDimensions.height10(context) * 23.9,
                         child: Center(
@@ -255,7 +262,7 @@ class _StarReviewState extends State<StarReview> {
                                       height:
                                           AppDimensions.height10(context) * 0.5,
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 2.3,
                                       // width: AppDimensions.height10(context) *
@@ -286,13 +293,9 @@ class _StarReviewState extends State<StarReview> {
                                       width: AppDimensions.height10(context) *
                                           36.0,
                                       padding: EdgeInsets.only(
-                                          top: AppDimensions.height10(context) *
-                                              2,
-                                          bottom: 1,
-                                          left: AppDimensions.height10(context),
-                                          right:
-                                              AppDimensions.height10(context) *
-                                                  6.0),
+                                        top: AppDimensions.height10(context) *
+                                            1.3,
+                                      ),
                                       decoration: BoxDecoration(
                                           gradient: _focusNode.hasFocus
                                               ? const LinearGradient(
@@ -321,11 +324,17 @@ class _StarReviewState extends State<StarReview> {
                                       child: Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                               height: AppDimensions.height10(
                                                       context) *
                                                   3.6,
+                                              margin: EdgeInsets.only(
+                                                  left: AppDimensions.height10(
+                                                          context) *
+                                                      2.0),
                                               // width: AppDimensions.height10(
                                               //         context) *
                                               //     26.9,
@@ -352,7 +361,7 @@ class _StarReviewState extends State<StarReview> {
                                       height:
                                           AppDimensions.height10(context) * 2.0,
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 2.2,
                                       width: AppDimensions.height10(context) *
@@ -374,18 +383,497 @@ class _StarReviewState extends State<StarReview> {
                                       height:
                                           AppDimensions.height10(context) * 1.6,
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height: AppDimensions.height10(context) *
                                           12.6,
                                       width: AppDimensions.height10(context) *
-                                          20.1,
-                                      // color: Colors.blue,
-                                      decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                              "assets/images/selectcolor.webp"),
-                                          fit: BoxFit.fitHeight,
-                                        ),
+                                          22.1,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SizedBox(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                6.0,
+                                            child: Row(
+                                              children: [
+                                                AnimatedScaleButton(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      color1 = true;
+                                                      color2 = false;
+                                                      color3 = false;
+                                                      color4 = false;
+                                                      color5 = false;
+                                                      color6 = false;
+                                                    });
+                                                    if (color1 == true) {
+                                                      AdminGoal()
+                                                          .updateUserGoalColor(
+                                                              '1')
+                                                          .then((response) {
+                                                        if (response == true) {
+                                                          print("Success");
+                                                        } else {
+                                                          print("Failure");
+                                                        }
+                                                      }).catchError((error) {
+                                                        print("error");
+                                                      });
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    padding: EdgeInsets.all(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.2),
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                          color: color1
+                                                              ? Color(
+                                                                  0xFFE69662)
+                                                              : Colors
+                                                                  .transparent,
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.3),
+                                                    ),
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      //   color: Colors.blue,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              "assets/images/red_gradient.webp"),
+                                                          fit: BoxFit.fitHeight,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      2.0,
+                                                ),
+                                                AnimatedScaleButton(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      color1 = false;
+                                                      color2 = true;
+                                                      color3 = false;
+                                                      color4 = false;
+                                                      color5 = false;
+                                                      color6 = false;
+                                                    });
+                                                    if (color2 == true) {
+                                                      // #FFFEE8, #F9B410
+                                                      AdminGoal()
+                                                          .updateUserGoalColor(
+                                                              '2')
+                                                          .then((response) {
+                                                        if (response == true) {
+                                                          print("Success");
+                                                        } else {
+                                                          print("Failure");
+                                                        }
+                                                      }).catchError((error) {
+                                                        print("error");
+                                                      });
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    padding: EdgeInsets.all(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.2),
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                          color: color2
+                                                              ? Color(
+                                                                  0xFFE69662)
+                                                              : Colors
+                                                                  .transparent,
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.3),
+                                                    ),
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      //   color: Colors.blue,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              "assets/images/orange_moon.webp"),
+                                                          fit: BoxFit.fitHeight,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      2.0,
+                                                ),
+                                                AnimatedScaleButton(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      color1 = false;
+                                                      color2 = false;
+                                                      color3 = true;
+                                                      color4 = false;
+                                                      color5 = false;
+                                                      color6 = false;
+                                                    });
+                                                    if (color3 == true) {
+                                                      // #FFFFFF, #DEDEDE
+                                                      AdminGoal()
+                                                          .updateUserGoalColor(
+                                                              '3')
+                                                          .then((response) {
+                                                        if (response == true) {
+                                                          print("Success");
+                                                        } else {
+                                                          print("Failure");
+                                                        }
+                                                      }).catchError((error) {
+                                                        print("error");
+                                                      });
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    padding: EdgeInsets.all(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.2),
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                          color: color3
+                                                              ? Color(
+                                                                  0xFFE69662)
+                                                              : Colors
+                                                                  .transparent,
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.3),
+                                                    ),
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      //   color: Colors.blue,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              "assets/images/lightGrey_gradient.webp"),
+                                                          fit: BoxFit.fitHeight,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                6.0,
+                                            child: Row(
+                                              children: [
+                                                AnimatedScaleButton(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      color1 = false;
+                                                      color2 = false;
+                                                      color3 = false;
+                                                      color4 = true;
+                                                      color5 = false;
+                                                      color6 = false;
+                                                    });
+                                                    if (color4 == true) {
+                                                      // #FFFFFF, #CAD2F8
+                                                      AdminGoal()
+                                                          .updateUserGoalColor(
+                                                              '4')
+                                                          .then((response) {
+                                                        if (response == true) {
+                                                          print("Success");
+                                                        } else {
+                                                          print("Failure");
+                                                        }
+                                                      }).catchError((error) {
+                                                        print("error");
+                                                      });
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    padding: EdgeInsets.all(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.2),
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                          color: color4
+                                                              ? Color(
+                                                                  0xFFE69662)
+                                                              : Colors
+                                                                  .transparent,
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.3),
+                                                    ),
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      //   color: Colors.blue,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              "assets/images/lightBlue_gradient.webp"),
+                                                          fit: BoxFit.fitHeight,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      2.0,
+                                                ),
+                                                AnimatedScaleButton(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      color1 = false;
+                                                      color2 = false;
+                                                      color3 = false;
+                                                      color4 = false;
+                                                      color5 = true;
+                                                      color6 = false;
+                                                    });
+                                                    if (color5 == true) {
+                                                      // #FFFFFF, #9CAAF8
+                                                      AdminGoal()
+                                                          .updateUserGoalColor(
+                                                              '5')
+                                                          .then((response) {
+                                                        if (response == true) {
+                                                          print("Success");
+                                                        } else {
+                                                          print("Failure");
+                                                        }
+                                                      }).catchError((error) {
+                                                        print("error");
+                                                      });
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    padding: EdgeInsets.all(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.2),
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                          color: color5
+                                                              ? Color(
+                                                                  0xFFE69662)
+                                                              : Colors
+                                                                  .transparent,
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.3),
+                                                    ),
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      //   color: Colors.blue,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              "assets/images/medBlue_gradient.webp"),
+                                                          fit: BoxFit.fitHeight,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      2.0,
+                                                ),
+                                                AnimatedScaleButton(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      color1 = false;
+                                                      color2 = false;
+                                                      color3 = false;
+                                                      color4 = false;
+                                                      color5 = false;
+                                                      color6 = true;
+                                                    });
+                                                    if (color6 == true) {
+                                                      // #C6CFF0, #6181F2
+                                                      AdminGoal()
+                                                          .updateUserGoalColor(
+                                                              '6')
+                                                          .then((response) {
+                                                        if (response == true) {
+                                                          print("Success");
+                                                        } else {
+                                                          print("Failure");
+                                                        }
+                                                      }).catchError((error) {
+                                                        print("error");
+                                                      });
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6.0,
+                                                    padding: EdgeInsets.all(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.2),
+                                                    decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                          color: color6
+                                                              ? Color(
+                                                                  0xFFE69662)
+                                                              : Colors
+                                                                  .transparent,
+                                                          width: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.3),
+                                                    ),
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          5.0,
+                                                      //   color: Colors.blue,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                          image: AssetImage(
+                                                              "assets/images/Blue_gradient.webp"),
+                                                          fit: BoxFit.fitHeight,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -428,7 +916,7 @@ class _StarReviewState extends State<StarReview> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          GestureDetector(
+                                          AnimatedScaleButton(
                                             onTap: () {
                                               print('hello world');
                                               // AdminGoal().getUserGoal();
@@ -453,7 +941,7 @@ class _StarReviewState extends State<StarReview> {
                                             ),
                                           ),
                                           // SizedBox(width: ),
-                                          GestureDetector(
+                                          AnimatedScaleButton(
                                             onTap: () {
                                               Navigator.push(
                                                 context,
@@ -494,7 +982,7 @@ class _StarReviewState extends State<StarReview> {
                                             AppDimensions.height10(context) *
                                                 0.5,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
@@ -643,7 +1131,7 @@ class _StarReviewState extends State<StarReview> {
                                             AppDimensions.height10(context) *
                                                 0.5,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.4,
@@ -774,7 +1262,7 @@ class _StarReviewState extends State<StarReview> {
                                             AppDimensions.height10(context) *
                                                 0.5,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.4,
@@ -833,7 +1321,7 @@ class _StarReviewState extends State<StarReview> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Container(
+                          SizedBox(
                               // color: Colors.blue,
                               width: AppDimensions.height10(context) * 5.0,
                               height: AppDimensions.height10(context) * 5.0,
@@ -850,7 +1338,7 @@ class _StarReviewState extends State<StarReview> {
                           AnimatedScaleButton(
                             onTap: () => showDialog<String>(
                               context: context,
-                              builder: (BuildContext context) => Container(
+                              builder: (BuildContext context) => SizedBox(
                                 width: AppDimensions.height10(context) * 27.0,
                                 height: AppDimensions.height10(context) * 24.6,
                                 child: AlertDialog(
@@ -969,7 +1457,7 @@ class _StarReviewState extends State<StarReview> {
                                             ),
                                           ),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height:
                                               AppDimensions.height10(context) *
                                                   4.4,
@@ -1152,7 +1640,7 @@ class _inner_text1State extends State<inner_text1> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
               height: AppDimensions.height10(context) * 3.6,
               width: AppDimensions.height10(context) * 26.9,
               child: Text("Control my anger",

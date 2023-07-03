@@ -265,14 +265,17 @@ class _goalwhyState extends State<GoalWhy> {
                                 height: 44,
                                 width: double.infinity,
                                 child: TextButton(
-                                  onPressed: () {
+                                  onPressed: () async {
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    var goalwhy = prefs.remove('route');
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
                                         true,
                                         exitPage: GoalWhy(),
                                         enterPage:
-                                            const HomeScreen(login: false),
+                                            const HomeScreen(login: true),
                                       ),
                                     );
                                   },

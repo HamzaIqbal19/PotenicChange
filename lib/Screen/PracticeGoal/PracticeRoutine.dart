@@ -248,12 +248,87 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.1,
                 ),
-                Container(child: schedule(onCountChanged: (int count) {
-                  setState(() {
-                    Count = count;
-                  });
-                  print("Updated count: $count");
-                })),
+                Container(
+                  padding: const EdgeInsets.only(
+                      top: 25, left: 13, right: 5, bottom: 5),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      schedule_card(
+                        //  key: Key(timesPerDay[0]['key']),
+                        days: 'Monday',
+                        onCountChanged: (Count) {
+                          setState(() {
+                            Count++;
+                          });
+                        },
+                      ),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 1.6,
+                      ),
+                      schedule_card(
+                        //  key: Key(timesPerDay[1]['key']),
+                        days: 'Tuesday',
+                        onCountChanged: (Count) {
+                          setState(() {
+                            Count++;
+                          });
+                        },
+                      ),
+                      SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      schedule_card(
+                        //  key: Key(timesPerDay[2]['key']),
+                        days: 'Wednesday',
+                        onCountChanged: (Count) {
+                          setState(() {
+                            Count++;
+                          });
+                        },
+                      ),
+                      SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      schedule_card(
+                        // key: Key(timesPerDay[3]['key']),
+                        days: 'Thursday',
+                        onCountChanged: (Count) {
+                          setState(() {
+                            Count++;
+                          });
+                        },
+                      ),
+                      SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      schedule_card(
+                        // key: Key(timesPerDay[4]['key']),
+                        days: 'Friday',
+                        onCountChanged: (Count) {
+                          setState(() {
+                            Count++;
+                          });
+                        },
+                      ),
+                      SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      schedule_card(
+                        //key: Key(timesPerDay[5]['key']),
+                        days: 'Saturday',
+                        onCountChanged: (Count) {
+                          setState(() {
+                            Count++;
+                          });
+                        },
+                      ),
+                      SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      schedule_card(
+                        // key: Key(timesPerDay[6]['key']),
+                        days: 'Sunday',
+                        onCountChanged: (Count) {
+                          setState(() {
+                            Count++;
+                          });
+                        },
+                      ),
+                      SizedBox(height: AppDimensions.height10(context) * 1.6),
+                    ],
+                  ),
+                ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 6.85,
                 ),

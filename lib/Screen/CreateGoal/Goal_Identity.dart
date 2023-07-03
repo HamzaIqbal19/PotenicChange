@@ -274,14 +274,17 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                 height: 44,
                                 width: double.infinity,
                                 child: TextButton(
-                                  onPressed: () {
+                                  onPressed: () async {
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    var goalwhy = prefs.remove('route');
                                     Navigator.push(
                                       context,
                                       FadePageRoute2(
                                         true,
                                         exitPage: const Goal_Identity(),
                                         enterPage:
-                                            const HomeScreen(login: false),
+                                            const HomeScreen(login: true),
                                       ),
                                     );
                                   },

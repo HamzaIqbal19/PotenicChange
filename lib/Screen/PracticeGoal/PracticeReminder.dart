@@ -181,7 +181,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF156F6D),
+                            color: const Color(0xFF156F6D),
                             fontSize: AppDimensions.height10(context) * 2.0,
                           ),
                         ),
@@ -314,7 +314,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                       actionsPadding: EdgeInsets.zero,
                                       titlePadding: EdgeInsets.zero,
                                       title: Container(
-                                        margin: EdgeInsets.only(
+                                        margin: const EdgeInsets.only(
                                             top: 19,
                                             right: 16,
                                             left: 16,
@@ -366,7 +366,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                             Container(
                                               height: 42,
                                               width: double.infinity,
-                                              color: Color(0xFF007AFF),
+                                              color: const Color(0xFF007AFF),
                                               child: TextButton(
                                                 onPressed: () {
                                                   setState(() {
@@ -443,7 +443,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            height: AppDimensions.height10(context) * 5.1,
+                            // height: AppDimensions.height10(context) * 5.1,
                             width: AppDimensions.height10(context) * 34.5,
                             padding: EdgeInsets.only(
                                 right: AppDimensions.height10(context) * 2.0,
@@ -564,7 +564,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            height: AppDimensions.height10(context) * 6.8,
+                            // height: AppDimensions.height10(context) * 6.8,
                             width: AppDimensions.height10(context) * 34.5,
                             padding: EdgeInsets.only(
                                 right: AppDimensions.height10(context) * 2.0,
@@ -606,8 +606,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         var reminder = prefs.setBool('pracReminder', radio1);
                         //add Id
                         PracticeGoalApi()
-                            .userAddPractice(practiceName, radio1, "8",
-                                "Monday", '7:00 am', '12:00 am', 2)
+                            .userAddPractice(practiceName, radio1, "Monday",
+                                '7:00 am', '12:00 am')
                             .then((response) {
                           print('$response');
                           if (response == true) {
@@ -620,7 +620,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               context,
                               FadePageRoute2(
                                 true,
-                                exitPage: PracticeReminder(),
+                                exitPage: const PracticeReminder(),
                                 enterPage: const PracticeFinished(),
                               ),
                             );
