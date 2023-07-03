@@ -1,14 +1,23 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/GoalModel.dart';
+import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../API/Goal.dart';
+import '../../Widgets/fading.dart';
 import 'Loaders/AllGolas_shimmer.dart';
 
 class AllGoals extends StatefulWidget {
-  const AllGoals({Key? key}) : super(key: key);
+  const AllGoals({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<AllGoals> createState() => _AllGoalsState();
@@ -48,6 +57,66 @@ class _AllGoalsState extends State<AllGoals> {
       });
       print("error");
     });
+  }
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  Future getUserId(int categoryid, goalname, goalid) async {
+    final SharedPreferences prefs = await _prefs;
+    var userId = prefs.getInt("userid");
+
+    saveGoalToPrefs(userId!, categoryid, goalname, goalid);
+  }
+
+  Future<void> saveGoalToPrefs(
+      var userId, var categoryId, var goalName, var goalId) async {
+    final SharedPreferences prefs = await _prefs;
+    var GoalName = prefs.setString('goalName', goalName);
+    var usergoalId = prefs.setInt("goalId", goalId);
+    Goal goal = Goal(
+      name: goalName,
+      reason: [
+        {"key": "reason1", "text": "This is reason 1"},
+      ],
+      identityStatement: [
+        {"key": "reason1", "text": "This is reason 1"},
+      ],
+      visualizingYourSelf: [
+        {"key": "reason1", "text": "This is reason 1"},
+      ],
+      userId: userId,
+      goalId: goalId,
+      goalCategoryId: categoryId,
+    );
+    String jsonString =
+        jsonEncode(goal.toJson()); // converting object to json string
+    prefs.setString('goal', jsonString);
+    print('====================');
+    var userGoalId = prefs.setInt('goalId', goalId);
+    print('====================');
+    print('====================$userGoalId');
+
+    getGoal();
+  }
+
+  Future<Goal> getGoal() async {
+    final prefs = await SharedPreferences.getInstance();
+    print("GoalId:${prefs.getInt("goalId")}");
+    String? jsonString = prefs.getString('goal');
+
+    if (jsonString != null) {
+      Map<String, dynamic> jsonMap = json.decode(jsonString);
+      print("Goal===============>$jsonString");
+      Navigator.push(
+        context,
+        FadePageRoute(
+          page: GoalName(),
+        ),
+      );
+      return Goal.fromJson(jsonMap);
+    }
+
+    throw Exception('No goal found in local storage');
   }
 
   TextEditingController _searchController = TextEditingController();
@@ -279,29 +348,31 @@ class _AllGoalsState extends State<AllGoals> {
                                             (goalNamesAndCategories![index]["goals"]
                                                 .length)
                                         : (goalNamesAndCategories![index]["goals"].length <=
-                                                7)
+                                                5)
                                             ? AppDimensions.height10(context) *
-                                                10.0 *
-                                                (goalNamesAndCategories![index]["goals"]
+                                                11.0 *
+                                                (goalNamesAndCategories![index]
+                                                        ["goals"]
                                                     .length)
                                             : (goalNamesAndCategories![index]["goals"].length <=
-                                                    18)
+                                                    7)
                                                 ? AppDimensions.height10(context) *
-                                                    8.6 *
+                                                    10.2 *
                                                     (goalNamesAndCategories![index]
                                                             ["goals"]
                                                         .length)
-                                                : (goalNamesAndCategories![index]["goals"].length <=
+                                                : (goalNamesAndCategories![index]
+                                                                ["goals"]
+                                                            .length <=
                                                         8)
                                                     ? AppDimensions.height10(context) *
-                                                        6.9 *
+                                                        9.2 *
                                                         (goalNamesAndCategories![index]
                                                                 ["goals"]
                                                             .length)
-                                                    : AppDimensions.height10(context) *
-                                                            12.4 *
-                                                            (goalNamesAndCategories![index]["goals"].length) -
-                                                        250,
+                                                    : (goalNamesAndCategories![index]["goals"].length <= 18)
+                                                        ? AppDimensions.height10(context) * 8.6 * (goalNamesAndCategories![index]["goals"].length)
+                                                        : AppDimensions.height10(context) * 12.4 * (goalNamesAndCategories![index]["goals"].length) - 250,
                                     width: AppDimensions.height10(context) * 38,
                                     child: GridView.builder(
                                         shrinkWrap: false,
@@ -331,35 +402,47 @@ class _AllGoalsState extends State<AllGoals> {
                                                       MainAxisAlignment
                                                           .spaceEvenly,
                                                   children: [
-                                                    circles(
-                                                        circle_text:
+                                                    AnimatedScaleButton(
+                                                      onTap: () {
+                                                        getUserId(
                                                             goalNamesAndCategories![
-                                                                            index]
-                                                                        [
+                                                                index]['id'],
+                                                            goalNamesAndCategories![
+                                                                            0][
                                                                         "goals"]
-                                                                    [index1][
-                                                                "goalName"],
-                                                        circle_color1:
-                                                            0xFFFFFFFF,
-                                                        circle_color2:
-                                                            0xFFFFFFFF,
-                                                        circle_border: 3.0,
-                                                        circle_bordercolor:
-                                                            0xFFEE8E6F,
-                                                        circle_height:
-                                                            AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                13.4,
-                                                        circle_width:
-                                                            AppDimensions.height10(
-                                                                    context) *
-                                                                13.4,
-                                                        textfont: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.6,
-                                                        textcolor: 0xFFFA9934),
+                                                                    [index1]
+                                                                ["goalName"],
+                                                            goalNamesAndCategories![
+                                                                    0]["goals"]
+                                                                [index1]["id"]);
+                                                      },
+                                                      child: circles(
+                                                          circle_text: goalNamesAndCategories![
+                                                                      index]
+                                                                  ["goals"][index1]
+                                                              ["goalName"],
+                                                          circle_color1:
+                                                              0xFFFFFFFF,
+                                                          circle_color2:
+                                                              0xFFFFFFFF,
+                                                          circle_border: 3.0,
+                                                          circle_bordercolor:
+                                                              0xFFEE8E6F,
+                                                          circle_height:
+                                                              AppDimensions.height10(
+                                                                      context) *
+                                                                  13.4,
+                                                          circle_width:
+                                                              AppDimensions.height10(
+                                                                      context) *
+                                                                  13.4,
+                                                          textfont: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.6,
+                                                          textcolor:
+                                                              0xFFFA9934),
+                                                    ),
                                                   ],
                                                 ),
                                               ]));

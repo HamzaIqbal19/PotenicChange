@@ -19,15 +19,7 @@ class PracticeRoutine extends StatefulWidget {
 class _PracticeRoutineState extends State<PracticeRoutine> {
   bool buttonActive = false;
   int Count = 0;
-  // Map<String, Map<String, String>> timesPerDay = {
-  //   'Monday': {'start': '', 'end': ''},
-  //   'Tuesday': {'start': '', 'end': ''},
-  //   'Wednesday': {'start': '', 'end': ''},
-  //   'Thursday': {'start': '', 'end': ''},
-  //   'Friday': {'start': '', 'end': ''},
-  //   'Saturday': {'start': '', 'end': ''},
-  //   'Sunday': {'start': '', 'end': ''}
-  // };
+
   List<Map<String, dynamic>> timesPerDay = [
     {'day': 'Monday', 'start': '', 'end': ''},
     {'day': 'Tuesday', 'start': '', 'end': ''},
@@ -130,7 +122,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
             ),
           ),
           SingleChildScrollView(
-            reverse: true,
             physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
@@ -266,22 +257,24 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       schedule_card(
                         key: Key(timesPerDay[0]['day']),
                         days: 'Monday',
+                        onChangedStart: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                    (day) => day['day'] == 'Monday')['start'] =
+                                value;
+                          });
+                        },
+                        onChangedEnd: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                (day) => day['day'] == 'Monday')['end'] = value;
+                          });
+                        },
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
                           });
-                        },
-                        onChangedStart: (String value) {
-                          setState(() {
-                            timesPerDay[0]['start'] =
-                                value; // Update the start time in the list
-                          });
-                        },
-                        onChangedEnd: (String value) {
-                          setState(() {
-                            timesPerDay[0]['end'] =
-                                value; // Update the end time in the list
-                          });
+                          print(Count);
                         },
                       ),
                       SizedBox(
@@ -290,27 +283,28 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       GestureDetector(
                         onTap: () {
                           setState(() {
-                            timesPerDay[0]['day'] = 'monday';
+                            timesPerDay[1]['day'] = 'Tuesday';
                           });
                         },
                         child: schedule_card(
                           key: Key(timesPerDay[1]['day']),
                           days: 'Tuesday',
+                          onChangedStart: (value) {
+                            setState(() {
+                              timesPerDay.firstWhere((day) =>
+                                  day['day'] == 'Tuesday')['start'] = value;
+                            });
+                          },
+                          onChangedEnd: (value) {
+                            setState(() {
+                              timesPerDay.firstWhere(
+                                      (day) => day['day'] == 'Tuesday')['end'] =
+                                  value;
+                            });
+                          },
                           onCountChanged: (Count) {
                             setState(() {
                               Count++;
-                            });
-                          },
-                          onChangedStart: (String value) {
-                            setState(() {
-                              timesPerDay[0]['start'] =
-                                  value; // Update the start time in the list
-                            });
-                          },
-                          onChangedEnd: (String value) {
-                            setState(() {
-                              timesPerDay[0]['end'] =
-                                  value; // Update the end time in the list
                             });
                           },
                         ),
@@ -319,21 +313,22 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       schedule_card(
                         key: Key(timesPerDay[2]['day']),
                         days: 'Wednesday',
+                        onChangedStart: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere((day) =>
+                                day['day'] == 'Wednesday')['start'] = value;
+                          });
+                        },
+                        onChangedEnd: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                    (day) => day['day'] == 'Wednesday')['end'] =
+                                value;
+                          });
+                        },
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
-                          });
-                        },
-                        onChangedStart: (String value) {
-                          setState(() {
-                            timesPerDay[0]['start'] =
-                                value; // Update the start time in the list
-                          });
-                        },
-                        onChangedEnd: (String value) {
-                          setState(() {
-                            timesPerDay[0]['end'] =
-                                value; // Update the end time in the list
                           });
                         },
                       ),
@@ -341,21 +336,22 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       schedule_card(
                         key: Key(timesPerDay[3]['day']),
                         days: 'Thursday',
+                        onChangedStart: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere((day) =>
+                                day['day'] == 'Thursday')['start'] = value;
+                          });
+                        },
+                        onChangedEnd: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                    (day) => day['day'] == 'Thursday')['end'] =
+                                value;
+                          });
+                        },
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
-                          });
-                        },
-                        onChangedStart: (String value) {
-                          setState(() {
-                            timesPerDay[0]['start'] =
-                                value; // Update the start time in the list
-                          });
-                        },
-                        onChangedEnd: (String value) {
-                          setState(() {
-                            timesPerDay[0]['end'] =
-                                value; // Update the end time in the list
                           });
                         },
                       ),
@@ -363,21 +359,22 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       schedule_card(
                         key: Key(timesPerDay[4]['day']),
                         days: 'Friday',
+                        onChangedStart: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                    (day) => day['day'] == 'Friday')['start'] =
+                                value;
+                          });
+                        },
+                        onChangedEnd: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                (day) => day['day'] == 'Friday')['end'] = value;
+                          });
+                        },
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
-                          });
-                        },
-                        onChangedStart: (String value) {
-                          setState(() {
-                            timesPerDay[0]['start'] =
-                                value; // Update the start time in the list
-                          });
-                        },
-                        onChangedEnd: (String value) {
-                          setState(() {
-                            timesPerDay[0]['end'] =
-                                value; // Update the end time in the list
                           });
                         },
                       ),
@@ -385,21 +382,22 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       schedule_card(
                         key: Key(timesPerDay[5]['day']),
                         days: 'Saturday',
+                        onChangedStart: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere((day) =>
+                                day['day'] == 'Saturday')['start'] = value;
+                          });
+                        },
+                        onChangedEnd: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                    (day) => day['day'] == 'Saturday')['end'] =
+                                value;
+                          });
+                        },
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
-                          });
-                        },
-                        onChangedStart: (String value) {
-                          setState(() {
-                            timesPerDay[0]['start'] =
-                                value; // Update the start time in the list
-                          });
-                        },
-                        onChangedEnd: (String value) {
-                          setState(() {
-                            timesPerDay[0]['end'] =
-                                value; // Update the end time in the list
                           });
                         },
                       ),
@@ -407,21 +405,22 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       schedule_card(
                         key: Key(timesPerDay[6]['day']),
                         days: 'Sunday',
+                        onChangedStart: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                    (day) => day['day'] == 'Sunday')['start'] =
+                                value;
+                          });
+                        },
+                        onChangedEnd: (value) {
+                          setState(() {
+                            timesPerDay.firstWhere(
+                                (day) => day['day'] == 'Sunday')['end'] = value;
+                          });
+                        },
                         onCountChanged: (Count) {
                           setState(() {
                             Count++;
-                          });
-                        },
-                        onChangedStart: (String value) {
-                          setState(() {
-                            timesPerDay[0]['start'] =
-                                value; // Update the start time in the list
-                          });
-                        },
-                        onChangedEnd: (String value) {
-                          setState(() {
-                            timesPerDay[0]['end'] =
-                                value; // Update the end time in the list
                           });
                         },
                       ),
@@ -438,6 +437,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     AnimatedScaleButton(
                       onTap: () {
                         if (count >= 3) {
+                          print(timesPerDay[6]['start']);
+                          print(timesPerDay[6]['end']);
+                          print(timesPerDay[6]['day']);
                           Navigator.pushReplacement(
                             context,
                             FadePageRoute2(

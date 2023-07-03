@@ -10,8 +10,6 @@ import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-String start_time = '00:00';
-String end_time = '07:00';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 String? minutes;
@@ -160,12 +158,16 @@ class schedule_card extends StatefulWidget {
       required this.onChangedEnd});
 
   @override
-  State<schedule_card> createState() =>
-      _schedule_cardState(days, onCountChanged, onChangedStart, onChangedEnd);
+  State<schedule_card> createState() => _schedule_cardState(
+        days,
+        onCountChanged,
+      );
 }
 
 class _schedule_cardState extends State<schedule_card> {
   final String days_name;
+  String start_time = '00:00';
+  String end_time = '07:00';
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
   void removeSelectedDay(String day) {
     if (count > 0) {
@@ -176,13 +178,35 @@ class _schedule_cardState extends State<schedule_card> {
     }
   }
 
-  final ValueChanged<String> onChangedStart;
-  final ValueChanged<String> onChangedEnd;
+  // final ValueChanged<String> onChangedStart;
+  // final ValueChanged<String> onChangedEnd;
 
   final ValueChanged<int> onCountChanged;
+  void onChangedStart(String value) {
+    setState(() {
+      start_time = value;
+      // timesPerDay.firstWhere((day) => day['day'] == days_name)['start'] = value;
+    });
+    print(value);
+  }
 
-  _schedule_cardState(this.days_name, this.onCountChanged, this.onChangedStart,
-      this.onChangedEnd);
+  void onChangedEnd(String value) {
+    setState(() {
+      end_time = value;
+      // timesPerDay.firstWhere((day) => day['day'] == days_name)['end'] = value;
+    });
+    print(value);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  _schedule_cardState(
+    this.days_name,
+    this.onCountChanged,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -244,8 +268,8 @@ class _schedule_cardState extends State<schedule_card> {
                                           _globalKey.currentState?.expand();
                                           _globalKey.currentState?.expand();
                                           _globalKey.currentState?.expand();
-                                          start_time =
-                                              "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                          // start_time =
+                                          //     "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
                                           // end_time =
                                           //     "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
                                           // final SharedPreferences prefs =
@@ -302,7 +326,17 @@ class _schedule_cardState extends State<schedule_card> {
                       children: [
                         startTimerState(
                           text: ' 1) Time: ',
-                          onChanged: (String value) {},
+                          onChanged: (value) {
+                            setState(() {
+                              start_time = value;
+                            });
+                            widget.onChangedStart(value);
+                          },
+                          onChangedStart: (String value) {
+                            setState(() {
+                              start_time = value;
+                            });
+                          },
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
@@ -341,8 +375,16 @@ class _schedule_cardState extends State<schedule_card> {
                       children: [
                         endTimerState(
                           text: '2) Time: ',
-                          onChanged: (String value) {
-                            setState(() {});
+                          onChanged: (value) {
+                            setState(() {
+                              end_time = value;
+                            });
+                          },
+                          onChangedEnd: (String value) {
+                            setState(() {
+                              end_time = value;
+                            });
+                            widget.onChangedEnd(value);
                           },
                         ),
                         Padding(
@@ -386,11 +428,13 @@ class _schedule_cardState extends State<schedule_card> {
 class startTimerState extends StatefulWidget {
   final String text;
   final ValueChanged<String> onChanged;
+  final ValueChanged<String> onChangedStart;
 
   const startTimerState({
     super.key,
     required this.text,
     required this.onChanged,
+    required this.onChangedStart,
   });
 
   @override
@@ -459,16 +503,21 @@ class _startTimerStateState extends State<startTimerState> {
                         return MyListWheelForm(
                           onSelectionChanged: (selectedDay, selectedHour,
                               selectedMinute, selectedPeriod, Done) {
+                            String startTime =
+                                "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                            widget.onChanged(startTime);
+                            widget.onChangedStart(
+                                startTime); // Pass the selected value to the onChanged callback
                             setState(() {
-                              start_time =
-                                  "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
-                              // date.hour.toString();
-                              widget.onChanged(start_time);
+                              start_time = startTime;
+
                               day = selectedDay;
                               hour = selectedHour;
                               minute = selectedMinute;
                               period = selectedPeriod;
                             });
+                            Done = true;
+                            widget.onChanged(start_time);
                           },
                         );
                       },
@@ -496,8 +545,13 @@ class _startTimerStateState extends State<startTimerState> {
 class endTimerState extends StatefulWidget {
   final String text;
   final ValueChanged<String> onChanged;
+  final ValueChanged<String> onChangedEnd;
 
-  const endTimerState({super.key, required this.text, required this.onChanged});
+  const endTimerState(
+      {super.key,
+      required this.text,
+      required this.onChanged,
+      required this.onChangedEnd});
 
   @override
   State<endTimerState> createState() => _endTimerStateState(text);
@@ -565,16 +619,19 @@ class _endTimerStateState extends State<endTimerState> {
                         return MyListWheelForm(
                           onSelectionChanged: (selectedDay, selectedHour,
                               selectedMinute, selectedPeriod, Done) {
+                            String endTime =
+                                "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                            widget.onChanged(
+                                endTime); // Pass the selected value to the onChanged callback
                             setState(() {
-                              end_time =
-                                  "$selectedHour: $selectedMinute ${selectedPeriod.toLowerCase()}";
-                              // date.hour.toString();
-                              widget.onChanged(start_time);
+                              end_time = endTime;
+
                               endday = selectedDay;
                               endhour = selectedHour;
                               endminute = selectedMinute;
                               endperiod = selectedPeriod;
                             });
+                            widget.onChangedEnd(end_time);
                           },
                         );
                       },
