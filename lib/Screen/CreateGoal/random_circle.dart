@@ -4,6 +4,7 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalCategory.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 
+import '../../Widgets/fading.dart';
 import '../../Widgets/fading2.dart';
 import '../../utils/app_dimensions.dart';
 import 'Categories.dart';
@@ -159,10 +160,8 @@ class Circles extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              FadePageRoute2(
-                true,
-                exitPage: Categories(),
-                enterPage: GoalCategory(
+              FadePageRoute(
+                page: GoalCategory(
                   "Category Name",
                   circle_text,
                   circle_id,

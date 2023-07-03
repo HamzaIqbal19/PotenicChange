@@ -297,8 +297,8 @@ class _CategoriesState extends State<Categories> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => AllGoals(),
+                          FadePageRoute(
+                            page: AllGoals(),
                           ),
                         );
                       },
