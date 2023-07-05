@@ -22,11 +22,15 @@ class GoalName extends StatefulWidget {
   State<GoalName> createState() => _GoalNameState();
 }
 
+
 class _GoalNameState extends State<GoalName> {
+ String goalCategory="";
+  String goalName="";
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  _GoalNameState();
+  // _GoalNameState();
 
   final mygoal = TextEditingController();
+
 
   @override
   void initState() {
@@ -41,8 +45,17 @@ class _GoalNameState extends State<GoalName> {
   getGoalName() async {
     print("hello world1224");
     final SharedPreferences prefs = await _prefs;
-    var goalName = prefs.getString("goalName");
+
+
+    setState(() {
+      goalName = prefs.getString("goalName")!;
+      goalCategory=prefs.getString("GoalCategory")!;
+    });
+
     mygoal.text = goalName!;
+    print("mygoal.text:${mygoal.text}");
+    print("goalName:$goalName");
+
   }
 
   // @override
@@ -284,10 +297,13 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
+                  width: AppDimensions.height10(context)*25.5,
                   child: Center(
                     child: Text(
-                      "Control my anger",
+
+                      goalName!,
                       style: TextStyle(
+                        overflow:TextOverflow.ellipsis,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
@@ -315,7 +331,7 @@ class _GoalNameState extends State<GoalName> {
                 Container(
                   child: Center(
                     child: Text(
-                      dropdownValue,
+                      goalCategory!,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
@@ -369,7 +385,7 @@ class _GoalNameState extends State<GoalName> {
                         color: const Color(0xFFFA9934)),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.zero,
-                        hintText: "Control my anger",
+                        // hintText: "Control my anger",
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.4,
                             fontWeight: FontWeight.w500,

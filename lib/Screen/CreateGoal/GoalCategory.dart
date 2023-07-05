@@ -63,6 +63,7 @@ class _GoalCategoryState extends State<GoalCategory> {
       var userId, var categoryId, var goalName, var goalId) async {
     final SharedPreferences prefs = await _prefs;
     var GoalName = prefs.setString('goalName', goalName);
+    var GoalCategory=prefs.setString("GoalCategory", widget.Circletitle);
     var usergoalId = prefs.setInt("goalId", goalId);
     Goal goal = Goal(
       name: goalName,

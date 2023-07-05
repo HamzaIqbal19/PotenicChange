@@ -28,15 +28,30 @@ class _VisualisingState extends State<Visualising> {
   //closing the focus
   final FocusNode blankNode = FocusNode();
   bool Loading = false;
+  String goalName="";
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   @override
   void initState() {
     super.initState();
+    getGoalName();
     // Add one element to the list when the screen is initialized.
     goalVisualising.add({
       'key': 'Reason ${goalVisualising.length}',
       'text': '',
     });
+  }
+
+  getGoalName() async {
+
+    final SharedPreferences prefs = await _prefs;
+
+
+    setState(() {
+      goalName = prefs.getString("goalName")!;
+
+    });
+    print("goalName:$goalName");
+
   }
 
   int item = 1;
@@ -370,7 +385,7 @@ class _VisualisingState extends State<Visualising> {
                 Container(
                   child: Center(
                     child: Text(
-                      "Control my anger",
+                      goalName,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,

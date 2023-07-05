@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
+import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
+import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,16 +30,31 @@ class Goal_Identity extends StatefulWidget {
 class _Goal_IdentityState extends State<Goal_Identity> {
   List<Map<String, String>> myIdentity = [];
   //closing the focus
+  String goalName="";
   final FocusNode blankNode = FocusNode();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   @override
   void initState() {
     super.initState();
+    getGoalName();
     // Add one element to the list when the screen is initialized.
     myIdentity.add({
       'key': 'Reason ${myIdentity.length}',
       'text': '',
     });
+  }
+
+  getGoalName() async {
+
+    final SharedPreferences prefs = await _prefs;
+
+
+    setState(() {
+      goalName = prefs.getString("goalName")!;
+
+    });
+    print("goalName:$goalName");
+
   }
 
   int item = 1;
@@ -370,7 +387,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 Container(
                   child: Center(
                     child: Text(
-                      "Control my anger",
+                      goalName,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,

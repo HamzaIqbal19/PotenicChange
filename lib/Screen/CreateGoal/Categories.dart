@@ -27,6 +27,7 @@ class Categories extends StatefulWidget {
 class _CategoriesState extends State<Categories> {
   Future<List<String>>? _goalNamesFuture;
   List<Map<String, dynamic>>? goalCategories;
+  ScrollController scrollController = ScrollController();
   late int count;
   bool Loading = true;
 
@@ -158,137 +159,240 @@ class _CategoriesState extends State<Categories> {
                       height: AppDimensions.height10(context) * 6.7,
                     ),
 
-                    Stack(
-                      children: [
-                        RandomCircles(),
-                      ],
+                    // Stack(
+                    //   children: [
+                    //     RandomCircles(),
+                    //   ],
+                    // ),
+
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 14.0,
+
+                      // child: Listener(
+
+                        // This callback is triggered whenever the user drags their finger
+                        // onPointerMove: (details) {
+                        //   // This is the global position of the finger on the screen
+                        //   double globalPositionX = details.position.dx;
+                        //
+                        //   // This is the width of the screen
+                        //   double screenWidth = MediaQuery.of(context).size.width;
+                        //
+                        //   // This is the threshold distance from the edge of the ListView. If the user's finger is
+                        //   // within this distance, the ListView should start scrolling
+                        //   double threshold = 100;
+                        //
+                        //   // Calculate the distance from the user's finger to the left and right edges of the ListView
+                        //   double distanceToLeft = globalPositionX;
+                        //   double distanceToRight = screenWidth - globalPositionX;
+                        //   // print("object:${distanceToLeft > threshold}");
+                        //   if (distanceToLeft <100) {
+                        //     print("IF distanceToLeft:$distanceToLeft,threshold:$threshold");
+                        //     // If the user's finger is near the left edge of the ListView, scroll to the left
+                        //     scrollController.jumpTo(scrollController.offset + 5);
+                        //   } else if (distanceToRight > 150) {
+                        //     print("ELSE IF distanceToLeft:$distanceToLeft,threshold:$threshold");
+                        //     // If the user's finger is near the right edge of the ListView, scroll to the right
+                        //     scrollController.jumpTo(scrollController.offset - 5);
+                        //   }
+                        // },
+                        // onPointerDown: ,
+                        child: ListView.builder(
+                          controller: scrollController,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: min(4, goalCategories!.length),
+                          itemBuilder: (context, index) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width:
+                                          AppDimensions.height10(context) * 2.0,
+                                    ),
+                                    DragTarget<Map<String, dynamic>>(
+                                      builder: (context, candidateData,
+                                          rejectedData) {
+                                        return LongPressDraggable<Map<String, dynamic>>(
+                                        data: goalCategories![index],
+                                          child: AnimatedScaleButton(
+                                            onTap: (){
+                                              Navigator.push(
+                                                context,
+                                                FadePageRoute(
+                                                  page: GoalCategory(
+                                                    "Category Name",
+                                                    goalCategories![index]["name"] ,
+                                                    goalCategories![index]["id"],
+                                                  ),
+                                                ),
+                                              );
+                                            },
+
+                                            child:circles(
+                                              circle_text:
+                                                  goalCategories![index]
+                                                      ["name"],
+                                              circle_color1: 0xFFFC854F,
+                                              circle_color2: 0xFFFAA960,
+                                              circle_border: 3.0,
+                                              circle_bordercolor: 0xFFFFFFFF,
+                                              circle_height:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              circle_width:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              textfont: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              textcolor: 0xFFFFFFFF),),
+                                          feedback: circles(
+                                              circle_text:
+                                                  goalCategories![index]
+                                                      ["name"],
+                                              circle_color1: 0xFFFC854F,
+                                              circle_color2: 0xFFFAA960,
+                                              circle_border: 3.0,
+                                              circle_bordercolor: 0xFFFFFFFF,
+                                              circle_height:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              circle_width:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              textfont: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              textcolor: 0xFFFFFFFF),
+                                          childWhenDragging:
+                                              Container(), // empty container when dragging
+                                        );
+                                      },
+
+                                      onWillAccept: (data) =>
+                                          true, // Always accept for this demo
+                                      onAccept: (data) {
+                                        setState(() {
+                                          // Swap the two items in the list
+                                          int indexData = goalCategories!
+                                              .indexWhere((element) =>
+                                                  element["id"] == data["id"]);
+                                          var temp = goalCategories![index];
+                                          goalCategories![index] =
+                                              goalCategories![indexData];
+                                          goalCategories![indexData] = temp;
+                                        });
+                                      },
+                                    )
+                                  ],
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+    // )listner
                     ),
-                    // SizedBox(
-                    //   height: AppDimensions.height10(context) * 14.0,
-                    //   child: ListView.builder(
-                    //     scrollDirection: Axis.horizontal,
-                    //     itemCount: min(
-                    //         4,
-                    //         goalCategories!
-                    //             .length), // ensure itemCount doesn't exceed 4 or length of list
-                    //     itemBuilder: (context, index) {
-                    //       return Column(
-                    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           Row(
-                    //             mainAxisAlignment: MainAxisAlignment.start,
-                    //             children: [
-                    //               SizedBox(
-                    //                 width:
-                    //                     AppDimensions.height10(context) * 2.0,
-                    //               ),
-                    //               AnimatedScaleButton(
-                    //                 onTap: () {
-                    //                   Navigator.push(
-                    //                     context,
-                    //                     FadePageRoute2(
-                    //                       true,
-                    //                       exitPage: Categories(),
-                    //                       enterPage: GoalCategory(
-                    //                         "Category Name",
-                    //                         goalCategories?[index]["name"],
-                    //                         goalCategories?[index]["id"],
-                    //                       ),
-                    //                     ),
-                    //                   );
-                    //                   print(
-                    //                       '${goalCategories![index]["name"]}${goalCategories![index]["id"]}');
-                    //                 },
-                    //                 child: circles(
-                    //                     circle_text: goalCategories![index]
-                    //                         ["name"],
-                    //                     circle_color1: 0xFFFC854F,
-                    //                     circle_color2: 0xFFFAA960,
-                    //                     circle_border: 3.0,
-                    //                     circle_bordercolor: 0xFFFFFFFF,
-                    //                     circle_height:
-                    //                         AppDimensions.height10(context) *
-                    //                             13.4,
-                    //                     circle_width:
-                    //                         AppDimensions.height10(context) *
-                    //                             13.4,
-                    //                     textfont:
-                    //                         AppDimensions.height10(context) *
-                    //                             1.6,
-                    //                     textcolor: 0xFFFFFFFF),
-                    //               )
-                    //             ],
-                    //           ),
-                    //         ],
-                    //       );
-                    //     },
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(left: 30, top: 20.0),
-                    //   child: SizedBox(
-                    //     height: AppDimensions.height10(context) * 14.0,
-                    //     child: ListView.builder(
-                    //         scrollDirection: Axis.horizontal,
-                    //         itemCount: max(4, goalCategories!.length - 4),
-                    //         itemBuilder: ((context, index) {
-                    //           return Column(
-                    //             mainAxisAlignment:
-                    //                 MainAxisAlignment.spaceEvenly,
-                    //             crossAxisAlignment: CrossAxisAlignment.start,
-                    //             children: [
-                    //               Row(
-                    //                 mainAxisAlignment: MainAxisAlignment.start,
-                    //                 children: [
-                    //                   SizedBox(
-                    //                     width: AppDimensions.height10(context) *
-                    //                         2.0,
-                    //                   ),
-                    //                   AnimatedScaleButton(
-                    //                     onTap: () {
-                    //                       Navigator.push(
-                    //                         context,
-                    //                         FadePageRoute2(
-                    //                           true,
-                    //                           exitPage: Categories(),
-                    //                           enterPage: GoalCategory(
-                    //                               "Category Name",
-                    //                               goalCategories![index + 4]
-                    //                                   ["name"],
-                    //                               goalCategories![index + 4]
-                    //                                   ["id"]),
-                    //                         ),
-                    //                       );
-                    //                     },
-                    //                     child: circles(
-                    //                         circle_text:
-                    //                             goalCategories![index + 4]
-                    //                                 ["name"],
-                    //                         circle_color1: 0xFFFC854F,
-                    //                         circle_color2: 0xFFFAA960,
-                    //                         circle_border: 3.0,
-                    //                         circle_bordercolor: 0xFFFFFFFF,
-                    //                         circle_height:
-                    //                             AppDimensions.height10(
-                    //                                     context) *
-                    //                                 13.4,
-                    //                         circle_width:
-                    //                             AppDimensions.height10(
-                    //                                     context) *
-                    //                                 13.4,
-                    //                         textfont: AppDimensions.height10(
-                    //                                 context) *
-                    //                             1.6,
-                    //                         textcolor: 0xFFFFFFFF),
-                    //                   )
-                    //                 ],
-                    //               ),
-                    //             ],
-                    //           );
-                    //         })),
-                    //   ),
-                    // ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 0, top: 20.0),
+                      child: SizedBox(
+                        height: AppDimensions.height10(context) * 14.0,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: min(4, goalCategories!.length - 4),
+                          itemBuilder: (context, index) {
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width:
+                                          AppDimensions.height10(context) * 2.0,
+                                    ),
+                                    DragTarget<Map<String, dynamic>>(
+                                      builder: (context, candidateData,
+                                          rejectedData) {
+                                        return LongPressDraggable<Map<String, dynamic>>(
+                                        data: goalCategories![index + 4],
+                                          child: circles(
+                                              circle_text:
+                                                  goalCategories![index + 4]
+                                                      ["name"],
+                                              circle_color1: 0xFFFC854F,
+                                              circle_color2: 0xFFFAA960,
+                                              circle_border: 3.0,
+                                              circle_bordercolor: 0xFFFFFFFF,
+                                              circle_height:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              circle_width:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              textfont: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              textcolor: 0xFFFFFFFF),
+                                          feedback: circles(
+                                              circle_text:
+                                                  goalCategories![index + 4]
+                                                      ["name"],
+                                              circle_color1: 0xFFFC854F,
+                                              circle_color2: 0xFFFAA960,
+                                              circle_border: 3.0,
+                                              circle_bordercolor: 0xFFFFFFFF,
+                                              circle_height:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              circle_width:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      13.4,
+                                              textfont: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              textcolor: 0xFFFFFFFF),
+                                          childWhenDragging:
+                                              Container(), // empty container when dragging
+                                        );
+                                      },
+
+                                      onWillAccept: (data) =>
+                                          true, // Always accept for this demo
+                                      onAccept: (data) {
+                                        setState(() {
+                                          // Swap the two items in the list
+                                          int indexData = goalCategories!
+                                              .indexWhere((element) =>
+                                                  element["id"] == data["id"]);
+                                          var temp = goalCategories![index+4];
+                                          goalCategories![index+4] =
+                                              goalCategories![indexData+4];
+                                          goalCategories![indexData+4] = temp;
+                                        });
+                                      },
+                                    )
+                                  ],
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                    ),
 
                     SizedBox(
                       height: AppDimensions.height10(context) * 11.6,

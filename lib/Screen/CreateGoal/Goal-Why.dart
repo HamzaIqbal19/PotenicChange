@@ -27,12 +27,14 @@ class GoalWhy extends StatefulWidget {
 
 class _goalwhyState extends State<GoalWhy> {
   List<Map<String, String>> myTextFields = [];
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   //closing the focus
   final FocusNode blankNode = FocusNode();
-
+  String goalName="";
   @override
   void initState() {
     super.initState();
+    getGoalName();
     // Add one element to the list when the screen is initialized.
     myTextFields.add({
       'key': 'Reason ${myTextFields.length}',
@@ -40,8 +42,21 @@ class _goalwhyState extends State<GoalWhy> {
     });
   }
 
+  getGoalName() async {
+
+    final SharedPreferences prefs = await _prefs;
+
+
+    setState(() {
+      goalName = prefs.getString("goalName")!;
+
+    });
+    print("goalName:$goalName");
+
+  }
+
   int item = 1;
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
   void handleTextChanged(int index, String newValue) {
     setState(() {
       myTextFields[index]['text'] = newValue;
@@ -110,6 +125,7 @@ class _goalwhyState extends State<GoalWhy> {
   Future<Goal> getGoal() async {
     print("hello world");
     final prefs = await SharedPreferences.getInstance();
+    goalName = prefs.getString("goalName")!;
     String? jsonString = prefs.getString('goal');
     print(jsonString);
 
@@ -346,7 +362,7 @@ class _goalwhyState extends State<GoalWhy> {
                       top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
-                      "Star Creation 5/5",
+                      "Star Creation 3/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -361,7 +377,7 @@ class _goalwhyState extends State<GoalWhy> {
                 Container(
                   child: Center(
                     child: Text(
-                      "Control my anger",
+                      goalName,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,

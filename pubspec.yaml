@@ -52,6 +52,7 @@ dependencies:
   flutter_spinkit: ^5.2.0
   email_validator: ^2.1.17
   flutter_datetime_picker: ^1.5.1
+  flutter_reorderable_list:
   flutter_offline: ^2.1.0
   overlay_tooltip: ^0.2.2
   super_tooltip: ^1.0.1
