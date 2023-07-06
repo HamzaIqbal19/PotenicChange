@@ -30,7 +30,7 @@ class Goal_Identity extends StatefulWidget {
 class _Goal_IdentityState extends State<Goal_Identity> {
   List<Map<String, String>> myIdentity = [];
   //closing the focus
-  String goalName="";
+  String goalName = "";
   final FocusNode blankNode = FocusNode();
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   @override
@@ -45,16 +45,12 @@ class _Goal_IdentityState extends State<Goal_Identity> {
   }
 
   getGoalName() async {
-
     final SharedPreferences prefs = await _prefs;
-
 
     setState(() {
       goalName = prefs.getString("goalName")!;
-
     });
     print("goalName:$goalName");
-
   }
 
   int item = 1;
@@ -385,9 +381,12 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: AppDimensions.height10(context) * 1.0),
                   child: Center(
                     child: Text(
                       goalName,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -545,34 +544,45 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       child: Align(
                         //alignment: Alignment.bottomCenter,
                         alignment: item == 1
-                            ? const Alignment(0.01, 1.3)
-                            : const Alignment(0.01, 1.17),
+                            ? const Alignment(0.01, 1.4)
+                            : const Alignment(0.01, 1.21),
                         //heightFactor: 0.5,
-                        child: Container(
-                          height: AppDimensions.height10(context) * 4.7,
-                          width: AppDimensions.height10(context) * 4.7,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [Color(0xFFB1B8FF), Color(0xFFC5CAFF)]),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 4, left: 4, right: 4, bottom: 4),
-                            child: AnimatedScaleButton(
-                                onTap: () {
-                                  increment();
-                                  setState(() {
-                                    myIdentity.add({
-                                      'key':
-                                          'Identity ${myIdentity.length.toString()}',
-                                      'text': '',
-                                    });
-                                  });
-                                  print("=============>Pressed");
-                                },
+                        child: AnimatedScaleButton(
+                          onTap: () {
+                            increment();
+                            setState(() {
+                              myIdentity.add({
+                                'key':
+                                    'Identity ${myIdentity.length.toString()}',
+                                'text': '',
+                              });
+                            });
+                            print("=============>Pressed");
+                          },
+                          child: Container(
+                            height: AppDimensions.height10(context) * 5.7,
+                            width: AppDimensions.height10(context) * 5.7,
+                            padding: EdgeInsets.all(
+                                AppDimensions.height10(context) * 0.5),
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.transparent),
+                            child: Container(
+                              height: AppDimensions.height10(context) * 4.7,
+                              width: AppDimensions.height10(context) * 4.7,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFB1B8FF),
+                                      Color(0xFFC5CAFF)
+                                    ]),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 4, left: 4, right: 4, bottom: 4),
                                 child: Container(
                                   color: Colors.transparent,
                                   child: Image.asset(
@@ -582,7 +592,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                     width:
                                         AppDimensions.height10(context) * 4.7,
                                   ),
-                                )),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),

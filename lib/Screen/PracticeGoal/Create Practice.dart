@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -44,25 +46,30 @@ class _CreatePracticeState extends State<CreatePractice> {
     mygoal = goalName!;
   }
 
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 5), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
+  }
+
   void _fetchPracticeNames() {
     PracticeGoalApi.getPractice().then((response) {
       if (response.length != 0) {
         setState(() {
-          Loading = false;
-
           practiceName = response;
         });
+        loadData();
         print("responseName:$practiceName");
       } else {
-        setState(() {
-          Loading = false;
-        });
+        loadData();
         print("response:$response");
       }
     }).catchError((error) {
-      setState(() {
-        Loading = false;
-      });
+      loadData();
       print("error");
     });
   }
@@ -399,9 +406,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                           padding: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.5,
                               bottom: AppDimensions.height10(context) * 0.5),
-                          child: GestureDetector(
+                          child: AnimatedScaleButton(
                             onTap: () {
-                              bottom_sheet(context);
+                              bottom_sheet(context, mygoal);
                             },
                             child: Image.asset(
                               'assets/images/Add.webp',

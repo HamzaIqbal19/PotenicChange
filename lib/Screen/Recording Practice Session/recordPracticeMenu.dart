@@ -1,19 +1,85 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
 import '../Goal Evaluation/practice_score.dart';
 
-class practiceMenu extends StatelessWidget {
+class practiceMenu extends StatefulWidget {
   final bool goal_eval;
-  const practiceMenu({super.key, required this.goal_eval});
+  final String goalName;
+  final String pracName;
+  final String pracColor;
+  final String color;
+  const practiceMenu(
+      {super.key,
+      required this.goal_eval,
+      required this.goalName,
+      required this.pracName,
+      required this.pracColor,
+      required this.color});
+
+  @override
+  State<practiceMenu> createState() => _practiceMenuState();
+}
+
+class _practiceMenuState extends State<practiceMenu> {
+  String goalName = "";
+  String identity = "";
+  String pracName = "";
+  bool Loader = true;
+  var pracColor;
+  var color;
+
+  // Future<Timer> loadData() async {
+  //   return Timer(const Duration(seconds: 5), onDoneLoading);
+  // }
+
+  // void onDoneLoading() {
+  //   setState(() {
+  //     Loader = false;
+  //   });
+  // }
+
+  void _fetchGoalNames() async {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          goalName = response["name"];
+          identity = response["identityStatement"][0]["text"];
+          color = response["color"];
+          pracName = response["userPractices"][0]["name"];
+          pracColor = response["userPractices"][0]["color"];
+        });
+        // loadData();
+      } else {
+        setState(() {
+          //Loading = false;
+        });
+      }
+    }).catchError((error) {
+      setState(() {
+        // Loading = false;
+      });
+      print("error");
+    });
+  }
+
+  @override
+  initState() {
+    super.initState();
+    _fetchGoalNames();
+    // Initialize AnimationController
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +149,8 @@ class practiceMenu extends StatelessWidget {
                         Container(
                           height: AppDimensions.height10(context) * 2.4,
                           child: Text(
-                            'Control my anger',
+                            widget.goalName,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 color: Colors.white,
                                 height: AppDimensions.height10(context) * 0.12,
@@ -92,7 +159,7 @@ class practiceMenu extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 21.0,
+                          //width: AppDimensions.height10(context) * 2.0,
                           height: AppDimensions.height10(context) * 9.3,
                           // color: Colors.amber,
                           margin: EdgeInsets.only(
@@ -101,40 +168,66 @@ class practiceMenu extends StatelessWidget {
                           child: Stack(
                             children: [
                               Align(
-                                alignment: const Alignment(-1, 0),
+                                alignment: const Alignment(-0.55, -0.3),
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 8.36,
-                                  height: AppDimensions.height10(context) * 9.3,
-                                  decoration: const BoxDecoration(
+                                  width: AppDimensions.height10(context) * 6.56,
+                                  height:
+                                      AppDimensions.height10(context) * 6.56,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
                                     // color: Colors.amber,
                                     image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/image3.webp'),
-                                        fit: BoxFit.cover),
+                                        image: AssetImage(widget.color == '1'
+                                            ? "assets/images/red_gradient.webp"
+                                            : widget.color == '2'
+                                                ? 'assets/images/orange_moon.webp'
+                                                : widget.color == '3'
+                                                    ? "assets/images/lightGrey_gradient.webp"
+                                                    : widget.color == '4'
+                                                        ? "assets/images/lightBlue_gradient.webp"
+                                                        : widget.color == '5'
+                                                            ? "assets/images/medBlue_gradient.webp"
+                                                            : widget.color ==
+                                                                    '6'
+                                                                ? "assets/images/Blue_gradient.webp"
+                                                                : 'assets/images/orange_moon.webp'),
+                                        fit: BoxFit.contain),
                                   ),
                                 ),
                               ),
                               Align(
-                                alignment: const Alignment(-0.495, -0.2),
+                                alignment: const Alignment(-0.395, -0.2),
                                 child: Container(
                                   height: AppDimensions.height10(context) * 4.1,
                                   width: AppDimensions.height10(context) * 4.06,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      gradient: RadialGradient(colors: [
-                                        Color(0xFFB3F0D1),
-                                        Color(0xFF1A481C)
-                                      ])),
+                                      image: DecorationImage(
+                                          image: AssetImage(widget.pracColor ==
+                                                  '1'
+                                              ? "assets/images/Ellipse orange.webp"
+                                              : widget.pracColor == '2'
+                                                  ? 'assets/images/Ellipse 158.webp'
+                                                  : widget.pracColor == '3'
+                                                      ? "assets/images/Ellipse 157.webp"
+                                                      : widget.pracColor == '4'
+                                                          ? "assets/images/Ellipse light-blue.webp"
+                                                          : widget.pracColor ==
+                                                                  '5'
+                                                              ? "assets/images/Ellipse blue.webp"
+                                                              : 'assets/images/Ellipse 158.webp'),
+                                          fit: BoxFit.cover)),
                                 ),
                               ),
                               Align(
-                                alignment: const Alignment(0.7, -0.3),
+                                alignment: const Alignment(1.5, -0.3),
                                 child: Container(
-                                  width: AppDimensions.height10(context) * 10.6,
+                                  width: AppDimensions.height10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
-                                    'Meditation',
+                                    widget.pracName,
                                     style: TextStyle(
+                                        overflow: TextOverflow.ellipsis,
                                         color: const Color(0xff156F6D),
                                         fontSize:
                                             AppDimensions.height10(context) *
@@ -170,40 +263,49 @@ class practiceMenu extends StatelessWidget {
                         bottom: AppDimensions.height10(context) * 1.6),
                     child: Column(
                       children: [
-                        Container(
-                          width: AppDimensions.height10(context) * 7.0,
-                          height: AppDimensions.height10(context) * 7.0,
-                          decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color(0xffFCC10D),
-                                    Color(0xffFDA210),
-                                  ]),
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10(context) * 13.9)),
-                              border: Border.all(
-                                  width: AppDimensions.height10(context) * 0.3,
-                                  color: Colors.white)),
-                          child: Center(
-                              child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const emotions(
-                                    summary: false,
-                                  )));
-                            },
-                            child: Icon(
-                              Icons.add_task,
-                              color: Colors.white,
-                              // fill: AppDimensions.height10(context) * 0.10,
-                              size: AppDimensions.height10(context) * 2.8,
+                        AnimatedScaleButton(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                FadePageRoute2(true,
+                                    exitPage: practiceMenu(
+                                        goal_eval: false,
+                                        goalName: widget.goalName,
+                                        pracName: widget.pracName,
+                                        pracColor: widget.pracColor,
+                                        color: widget.color),
+                                    enterPage: emotions(
+                                      summary: false,
+                                      pracName: widget.pracName,
+                                    )));
+                          },
+                          child: Container(
+                            width: AppDimensions.height10(context) * 7.0,
+                            height: AppDimensions.height10(context) * 7.0,
+                            decoration: BoxDecoration(
+                                gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xffFCC10D),
+                                      Color(0xffFDA210),
+                                    ]),
+                                shape: BoxShape.rectangle,
+                                borderRadius: BorderRadius.all(Radius.circular(
+                                    AppDimensions.height10(context) * 13.9)),
+                                border: Border.all(
+                                    width:
+                                        AppDimensions.height10(context) * 0.3,
+                                    color: Colors.white)),
+                            child: Center(
+                              child: Icon(
+                                Icons.add_task,
+                                color: Colors.white,
+                                // fill: AppDimensions.height10(context) * 0.10,
+                                size: AppDimensions.height10(context) * 2.8,
+                              ),
                             ),
-                          )),
+                          ),
                         ),
                         Container(
                           // color: Colors.red,
@@ -239,12 +341,12 @@ class practiceMenu extends StatelessWidget {
                         top: AppDimensions.height10(context) * 2.2),
                     child: Stack(children: [
                       Align(
-                        alignment: const Alignment(1, -1.3),
-                        child: IconButton(
-                            onPressed: () {
-                              info_sheet(context);
+                        alignment: const Alignment(1, -1.125),
+                        child: AnimatedScaleButton(
+                            onTap: () {
+                              //info_sheet(context);
                             },
-                            icon: Image.asset(
+                            child: Image.asset(
                               'assets/images/ic_info_outline.webp',
                               height: AppDimensions.height10(context) * 3.0,
                               width: AppDimensions.height10(context) * 3.0,
@@ -254,13 +356,13 @@ class practiceMenu extends StatelessWidget {
                         alignment: const Alignment(0, -1),
                         child: Container(
                           width: AppDimensions.height10(context) * 36.0,
-                          height: goal_eval
+                          height: widget.goal_eval
                               ? AppDimensions.height10(context) * 24.7
                               : AppDimensions.height10(context) * 18.8,
                           child: Column(
                             children: [
                               Container(
-                                height: goal_eval
+                                height: widget.goal_eval
                                     ? AppDimensions.height10(context) * 5.9
                                     : AppDimensions.height10(context) * 4.4,
                                 width: AppDimensions.height10(context) * 36.0,
@@ -282,7 +384,7 @@ class practiceMenu extends StatelessWidget {
                                           color: const Color(0xfff5f5f5)),
                                     ),
                                   ),
-                                  goal_eval
+                                  widget.goal_eval
                                       ? Container(
                                           height:
                                               AppDimensions.height10(context) *
@@ -307,7 +409,7 @@ class practiceMenu extends StatelessWidget {
                                     height:
                                         AppDimensions.height10(context) * 1.7,
                                     margin: EdgeInsets.only(
-                                        top: goal_eval
+                                        top: widget.goal_eval
                                             ? AppDimensions.height10(context) *
                                                 0.3
                                             : AppDimensions.height10(context) *
@@ -327,7 +429,7 @@ class practiceMenu extends StatelessWidget {
                                                 color: const Color(0xfff5f5f5)),
                                             children: [
                                           TextSpan(
-                                              text: goal_eval
+                                              text: widget.goal_eval
                                                   ? 'Next assessment is in'
                                                   : 'You can evaluate your progress in '),
                                           const TextSpan(
@@ -345,41 +447,45 @@ class practiceMenu extends StatelessWidget {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 1.2),
-                                    child: GestureDetector(
+                                    child: AnimatedScaleButton(
                                       onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const progress_report()));
+                                        // Navigator.push(
+                                        //     context,
+                                        //     FadePageRoute(
+                                        //         page: const progress_report()));
                                       },
                                       child: button_feilds(
                                         feild_text: 'Progress report',
-                                        icon_viible: goal_eval ? true : false,
+                                        icon_viible:
+                                            widget.goal_eval ? true : false,
                                         text_color: 0xff646464,
-                                        feild_text_2:
-                                            goal_eval ? ' DD/MMM/YY' : '',
+                                        feild_text_2: widget.goal_eval
+                                            ? ' DD/MMM/YY'
+                                            : '',
                                         text_color_2: 0xff8EA1B1,
                                         feild_text_3: '',
                                         feild_text_4: '',
                                       ),
                                     ),
                                   ),
-                                  GestureDetector(
+                                  AnimatedScaleButton(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const prac_score()));
+                                      // Navigator.push(
+                                      //     context,
+                                      //     FadePageRoute(
+                                      //         page: const prac_score()));
                                     },
                                     child: button_feilds(
-                                      feild_text: goal_eval
+                                      feild_text: widget.goal_eval
                                           ? 'Evaluation level '
                                           : 'Practice score ',
-                                      icon_viible: goal_eval ? true : false,
+                                      icon_viible:
+                                          widget.goal_eval ? true : false,
                                       text_color: 0xff646464,
                                       feild_text_2: '(',
                                       text_color_2: 0xff8EA1B1,
-                                      feild_text_3: goal_eval ? '2' : '-',
+                                      feild_text_3:
+                                          widget.goal_eval ? '2' : '-',
                                       feild_text_4: '/5)',
                                     ),
                                   )
@@ -405,10 +511,10 @@ class practiceMenu extends StatelessWidget {
                         top: AppDimensions.height10(context) * 3.0),
                     child: Column(
                       children: [
-                        GestureDetector(
+                        AnimatedScaleButton(
                           onTap: () {
-                            Navigator.push(context,
-                                FadePageRoute(page: const practice_progress()));
+                            // Navigator.push(context,
+                            //     FadePageRoute(page: const practice_progress()));
                           },
                           child: const button_feilds(
                             feild_text: 'View practice progress',
@@ -424,35 +530,41 @@ class practiceMenu extends StatelessWidget {
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.0,
                               top: AppDimensions.height10(context) * 1.0),
-                          child: const button_feilds(
-                            feild_text: 'View practice settings',
-                            icon_viible: true,
-                            text_color: 0xff646464,
-                            feild_text_2: '',
-                            text_color_2: 0xffEA1B1,
-                            feild_text_3: '',
-                            feild_text_4: '',
+                          child: AnimatedScaleButton(
+                            onTap: () {},
+                            child: const button_feilds(
+                              feild_text: 'View practice settings',
+                              icon_viible: true,
+                              text_color: 0xff646464,
+                              feild_text_2: '',
+                              text_color_2: 0xffEA1B1,
+                              feild_text_3: '',
+                              feild_text_4: '',
+                            ),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.0),
-                          child: const button_feilds(
-                            feild_text: 'Veiw upcoming schedules',
-                            icon_viible: true,
-                            text_color: 0xff646464,
-                            feild_text_2: '',
-                            text_color_2: 0xffEA1B1,
-                            feild_text_3: '',
-                            feild_text_4: '',
+                          child: AnimatedScaleButton(
+                            onTap: () {},
+                            child: const button_feilds(
+                              feild_text: 'Veiw upcoming schedules',
+                              icon_viible: true,
+                              text_color: 0xff646464,
+                              feild_text_2: '',
+                              text_color_2: 0xffEA1B1,
+                              feild_text_3: '',
+                              feild_text_4: '',
+                            ),
                           ),
                         ),
-                        GestureDetector(
+                        AnimatedScaleButton(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const practice_assesment()));
+                            // Navigator.push(
+                            //     context,
+                            //     FadePageRoute(
+                            //         page: const practice_assesment()));
                           },
                           child: const button_feilds(
                             feild_text: 'Practice assesment history',
@@ -528,7 +640,7 @@ void info_sheet(context) {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
                   top: Radius.circular(AppDimensions.height10(context) * 2.0)),
-              color: Color(0xFFF5F5F5)),
+              color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
@@ -538,8 +650,8 @@ void info_sheet(context) {
               Container(
                 //color: Colors.amber,
                 // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
-                alignment: Alignment(1, 0),
-                child: GestureDetector(
+                alignment: const Alignment(1, 0),
+                child: AnimatedScaleButton(
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -549,7 +661,7 @@ void info_sheet(context) {
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.5,
                         right: AppDimensions.height10(context) * 1.5),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             image:
@@ -579,7 +691,7 @@ void info_sheet(context) {
                       fontSize: AppDimensions.height10(context) * 2.8,
                       letterSpacing: AppDimensions.height10(context) * 0.2,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF437296)),
+                      color: const Color(0xFF437296)),
                 ),
               ),
               Container(
@@ -596,17 +708,17 @@ void info_sheet(context) {
                           height: AppDimensions.height10(context) * 0.15,
                           //  letterSpacing: AppDimensions.height10(context),
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF437296)),
+                          color: const Color(0xFF437296)),
                       children: [
-                        TextSpan(
+                        const TextSpan(
                             text:
                                 'For each practice, you can evaluate your last 20 active days, and asses it to see if it is working for you or not.\n\n'),
-                        TextSpan(
+                        const TextSpan(
                             text: 'Practice Assessment ',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
-                        TextSpan(
+                        const TextSpan(
                             text:
                                 'is broken down into two main\nsections:\n\n'),
                         TextSpan(
@@ -614,13 +726,13 @@ void info_sheet(context) {
                             style: TextStyle(
                                 fontSize:
                                     AppDimensions.height10(context) * 1.5)),
-                        TextSpan(text: 'See your '),
-                        TextSpan(
+                        const TextSpan(text: 'See your '),
+                        const TextSpan(
                             text: 'overall practice progress',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
-                        TextSpan(
+                        const TextSpan(
                             text:
                                 ', gain visibility on\nhow your personal development journey is going and\nwhether you’re making any progress to towards your\ngoal.\n\n'),
                         TextSpan(
@@ -628,13 +740,13 @@ void info_sheet(context) {
                             style: TextStyle(
                                 fontSize:
                                     AppDimensions.height10(context) * 1.5)),
-                        TextSpan(text: 'Here you can'),
-                        TextSpan(
+                        const TextSpan(text: 'Here you can'),
+                        const TextSpan(
                             text: ' assess your practice effectiveness ',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
-                        TextSpan(text: 'based on our scoring criteria.')
+                        const TextSpan(text: 'based on our scoring criteria.')
                       ]),
                 ),
               ),

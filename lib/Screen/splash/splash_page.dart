@@ -7,6 +7,7 @@ import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -44,6 +45,19 @@ class SplashPageState extends State<SplashPage> {
   }
 
   Future loadData() async {
+    // Navigator.push(
+    //   context,
+    //   FadePageRoute(
+    //     page: dashBoard(
+    //       saved: false,
+    //       helpful_tips: false,
+    //       membership: true,
+    //       dashboard_ctrl: false,
+    //       cancel: false,
+    //       trial: false,
+    //     ),
+    //   ),
+    //);
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var SessionToken = prefs.getString("refreshtoken");

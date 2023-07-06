@@ -22,15 +22,13 @@ class GoalName extends StatefulWidget {
   State<GoalName> createState() => _GoalNameState();
 }
 
-
 class _GoalNameState extends State<GoalName> {
- String goalCategory="";
-  String goalName="";
+  String goalCategory = "";
+  String goalName = "";
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   // _GoalNameState();
 
   final mygoal = TextEditingController();
-
 
   @override
   void initState() {
@@ -46,16 +44,14 @@ class _GoalNameState extends State<GoalName> {
     print("hello world1224");
     final SharedPreferences prefs = await _prefs;
 
-
     setState(() {
       goalName = prefs.getString("goalName")!;
-      goalCategory=prefs.getString("GoalCategory")!;
+      goalCategory = prefs.getString("GoalCategory")!;
     });
 
     mygoal.text = goalName!;
     print("mygoal.text:${mygoal.text}");
     print("goalName:$goalName");
-
   }
 
   // @override
@@ -88,13 +84,7 @@ class _GoalNameState extends State<GoalName> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    FadePageRoute3(
-                      enterPage: Categories(),
-                      exitPage: GoalName(),
-                    ),
-                  );
+                  Navigator.pop(context);
                   // Add code for performing close action
                 },
               ),
@@ -297,13 +287,13 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  width: AppDimensions.height10(context)*25.5,
+                  padding: EdgeInsets.symmetric(
+                      horizontal: AppDimensions.height10(context) * 2.0),
                   child: Center(
                     child: Text(
-
                       goalName!,
                       style: TextStyle(
-                        overflow:TextOverflow.ellipsis,
+                        overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
@@ -326,7 +316,7 @@ class _GoalNameState extends State<GoalName> {
                       fit: BoxFit.contain,
                     )),
                 SizedBox(
-                  height: AppDimensions.height10(context) * 4.6,
+                  height: AppDimensions.height10(context) * 3.4,
                 ),
                 Container(
                   child: Center(
@@ -344,7 +334,7 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10(context) * 1.0,
                 ),
                 Container(
-                  height: AppDimensions.height10(context) * 7.5,
+                  height: AppDimensions.height10(context) * 2.8,
                   width: AppDimensions.height10(context) * 24.4,
                   child: Center(
                     child: Text(
@@ -364,7 +354,8 @@ class _GoalNameState extends State<GoalName> {
                   width: AppDimensions.height10(context) * 36.0,
                   padding: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 2.0,
-                      right: AppDimensions.height10(context) * 0.4,
+                      right: AppDimensions.height10(context) * 0.6,
+                      bottom: AppDimensions.height10(context) * 0.4,
                       left: AppDimensions.height10(context) * 2.0),
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -464,7 +455,7 @@ class _GoalNameState extends State<GoalName> {
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10(context) * 26.3,
+                        height: AppDimensions.height10(context) * 29.3,
                       )
                     : SizedBox(
                         height: AppDimensions.height10(context) * 9.6,
@@ -527,7 +518,7 @@ class _GoalNameState extends State<GoalName> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10(context) * 2.5,
+                  height: AppDimensions.height10(context) * 1.0,
                 ),
                 Padding(
                     padding: EdgeInsets.only(

@@ -121,12 +121,13 @@ class record_session extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 past_session
-                                    ? Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: emotions(summary: false)))
-                                    : Navigator.push(context,
-                                        FadePageRoute(page: PracticeReview()));
+                                // ? Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: emotions(summary: false)))
+                                :
+                                Navigator.push(context,
+                                    FadePageRoute(page: PracticeReview()));
                               },
                               child: Container(
                                 height: AppDimensions.height10(context) * 13.8,

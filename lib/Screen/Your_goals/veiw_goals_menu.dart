@@ -504,12 +504,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const practiceMenu(
-                                      goal_eval: false,
-                                    )));
+                                // Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: const practiceMenu(
+                                //       goal_eval: false,
+                                //     )));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,

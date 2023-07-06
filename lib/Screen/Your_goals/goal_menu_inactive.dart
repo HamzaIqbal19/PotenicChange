@@ -496,12 +496,12 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const practiceMenu(
-                                      goal_eval: true,
-                                    )));
+                                // Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: const practiceMenu(
+                                //       goal_eval: true,
+                                //     )));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 13.8,
@@ -579,12 +579,12 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     )
                   : GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const practiceMenu(
-                              goal_eval: true,
-                            )));
+                        // Navigator.push(
+                        //     context,
+                        //     FadePageRoute(
+                        //         page: const practiceMenu(
+                        //       goal_eval: true,
+                        //     )));
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 13.8,

@@ -394,12 +394,12 @@ class reviw_habit_dashBoard extends StatelessWidget {
                       alignment: const Alignment(-0.2, 0.8),
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              FadePageRoute(
-                                  page: const practiceMenu(
-                                goal_eval: false,
-                              )));
+                          // Navigator.push(
+                          //     context,
+                          //     FadePageRoute(
+                          //         page: const practiceMenu(
+                          //       goal_eval: false,
+                          //     )));
                         },
                         child: Container(
                           height: AppDimensions.height10(context) * 13.8,

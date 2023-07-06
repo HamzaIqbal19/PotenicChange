@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -38,23 +39,28 @@ class _AllGoalsState extends State<AllGoals> {
     _fetchGoalNamessAndCategories();
   }
 
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 5), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
+  }
+
   void _fetchGoalNamessAndCategories() {
     AdminGoal.getAllGoalAndCategories().then((response) {
       if (response.length != 0) {
         setState(() {
           goalNamesAndCategories = response;
-
-          Loading = false;
         });
+        loadData();
       } else {
-        setState(() {
-          Loading = false;
-        });
+        loadData();
       }
     }).catchError((error) {
-      setState(() {
-        Loading = false;
-      });
+      loadData();
       print("error");
     });
   }

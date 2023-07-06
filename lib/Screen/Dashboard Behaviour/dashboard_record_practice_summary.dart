@@ -276,12 +276,12 @@ class _record_summaryState extends State<record_summary> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              FadePageRoute(
-                                  page: const emotions(
-                                summary: true,
-                              )));
+                          // Navigator.push(
+                          //     context,
+                          //     FadePageRoute(
+                          //         page: const emotions(
+                          //       summary: true,
+                          //     )));
                         },
                         child: Container(
                             height: AppDimensions.height10(context) * 2.8,

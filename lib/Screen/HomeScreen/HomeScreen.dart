@@ -172,9 +172,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                 bottom: 19,
                                                 left: 16,
                                                 right: 16),
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.8,
+                                            // height: AppDimensions.height10(
+                                            //         context) *
+                                            //     4.8,
                                             width: 238,
                                             child: Text(
                                               "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               style: TextStyle(
                                                 height: AppDimensions.height10(
                                                         context) *
-                                                    0.15,
+                                                    0.14,
                                                 fontSize:
                                                     AppDimensions.height10(
                                                             context) *

@@ -30,7 +30,7 @@ class _goalwhyState extends State<GoalWhy> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   //closing the focus
   final FocusNode blankNode = FocusNode();
-  String goalName="";
+  String goalName = "";
   @override
   void initState() {
     super.initState();
@@ -43,16 +43,12 @@ class _goalwhyState extends State<GoalWhy> {
   }
 
   getGoalName() async {
-
     final SharedPreferences prefs = await _prefs;
-
 
     setState(() {
       goalName = prefs.getString("goalName")!;
-
     });
     print("goalName:$goalName");
-
   }
 
   int item = 1;
@@ -375,9 +371,12 @@ class _goalwhyState extends State<GoalWhy> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: AppDimensions.height10(context) * 1.0),
                   child: Center(
                     child: Text(
                       goalName,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -535,8 +534,8 @@ class _goalwhyState extends State<GoalWhy> {
                       child: Align(
                         //alignment: Alignment.bottomCenter,
                         alignment: item == 1
-                            ? const Alignment(0.01, 1.3)
-                            : const Alignment(0.01, 1.17),
+                            ? const Alignment(0.01, 1.4)
+                            : const Alignment(0.01, 1.21),
                         //heightFactor: 0.5,
                         child: AnimatedScaleButton(
                           onTap: () {
@@ -551,27 +550,38 @@ class _goalwhyState extends State<GoalWhy> {
                             print("=============>Pressed");
                           },
                           child: Container(
-                            height: AppDimensions.height10(context) * 4.7,
-                            width: AppDimensions.height10(context) * 4.7,
+                            height: AppDimensions.height10(context) * 5.7,
+                            width: AppDimensions.height10(context) * 5.7,
+                            padding: EdgeInsets.all(
+                                AppDimensions.height10(context) * 0.5),
                             decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color(0xFFB1B8FF),
-                                    Color(0xFFC5CAFF)
-                                  ]),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 4, left: 4, right: 4, bottom: 4),
-                              child: Container(
-                                color: Colors.transparent,
-                                child: Image.asset(
-                                  'assets/images/Addgoal.webp',
-                                  height: AppDimensions.height10(context) * 4.7,
-                                  width: AppDimensions.height10(context) * 4.7,
+                                shape: BoxShape.circle,
+                                color: Colors.transparent),
+                            child: Container(
+                              height: AppDimensions.height10(context) * 4.7,
+                              width: AppDimensions.height10(context) * 4.7,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFB1B8FF),
+                                      Color(0xFFC5CAFF)
+                                    ]),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 4, left: 4, right: 4, bottom: 4),
+                                child: Container(
+                                  color: Colors.transparent,
+                                  child: Image.asset(
+                                    'assets/images/Addgoal.webp',
+                                    height:
+                                        AppDimensions.height10(context) * 4.7,
+                                    width:
+                                        AppDimensions.height10(context) * 4.7,
+                                  ),
                                 ),
                               ),
                             ),

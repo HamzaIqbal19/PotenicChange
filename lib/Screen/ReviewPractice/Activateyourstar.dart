@@ -1,7 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/review_habits_dashboard/dashboard.dart';
+import 'package:potenic_app/Screen/ReviewPractice/loader/activateStar_shimmer.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -13,6 +20,74 @@ class ActivateStar extends StatefulWidget {
 }
 
 class _ActivateStarState extends State<ActivateStar> {
+  var goalName;
+  var identity;
+  var color;
+  String pracName = "";
+  var pracColor;
+  bool Loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchGoalNames();
+  }
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 5), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
+  }
+
+  void _fetchGoalNames() async {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          goalName = response["name"];
+          color = response["color"];
+          identity = response["identityStatement"][0]["text"];
+        });
+        _fetchPracticeNames();
+      } else {
+        loadData();
+      }
+    }).catchError((error) {
+      loadData();
+      print("error");
+    });
+  }
+
+  void _fetchPracticeNames() async {
+    PracticeGoalApi.getUserPractice().then((response) {
+      if (response.length != 0) {
+        print("---------------------------------");
+        setState(() {
+          pracName = response["name"];
+          pracColor = response["color"];
+        });
+        loadData();
+        print("---------------------------------");
+        print("response123:$pracName");
+        print("response123:$pracColor");
+      } else {
+        loadData();
+        print("response:$response");
+      }
+    }).catchError((error) {
+      loadData();
+      print("hell");
+    });
+
+    // setState(() {
+    //   goalName = AdminGoal().getUserGoal();
+    // });
+    // print('GoalName: $goalName');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,153 +153,318 @@ class _ActivateStarState extends State<ActivateStar> {
               ),
             ),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: AppDimensions.height10(context) * 8.9,
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 28.3,
-                height: AppDimensions.height10(context) * 7.2,
-                // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
-                child: Center(
-                  child: GradientText(
-                    "Activate your star ",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      // color: Colors.white,
-                      fontSize: AppDimensions.height10(context) * 3,
+          Loading == false
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 8.9,
                     ),
-                    colors: [
-                      const Color(0xFFFFFFFF),
-                      const Color(0xFFFFFFFF).withOpacity(0.90),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 2.5,
-              ),
-              Container(
-                  // color: Colors.black,
-                  height: AppDimensions.height10(context) * 13.2,
-                  width: AppDimensions.height10(context) * 35.7,
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Center(
-                          child: Text(
-                            "I desire to grow and improve my identity. By activating my star, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.8,
+                    SizedBox(
+                      width: AppDimensions.height10(context) * 28.3,
+                      height: AppDimensions.height10(context) * 7.2,
+                      // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
+                      child: Center(
+                        child: GradientText(
+                          "Activate your star ",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            // color: Colors.white,
+                            fontSize: AppDimensions.height10(context) * 3,
+                          ),
+                          colors: [
+                            const Color(0xFFFFFFFF),
+                            const Color(0xFFFFFFFF).withOpacity(0.90),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 2.5,
+                    ),
+                    SizedBox(
+                        // color: Colors.black,
+                        height: AppDimensions.height10(context) * 13.2,
+                        width: AppDimensions.height10(context) * 35.7,
+                        child: Column(
+                          children: [
+                            Container(
+                              child: Center(
+                                child: Text(
+                                  "I desire to grow and improve my identity. By activating my star, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 3.6,
+                    ),
+                    Stack(
+                      children: [
+                        Container(
+                          height: AppDimensions.height10(context) * 38.1,
+                          width: AppDimensions.height10(context) * 38.1,
+                          padding: EdgeInsets.all(
+                              AppDimensions.height10(context) * 3.5),
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/anger_5.webp'))),
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 4.0),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: AssetImage('$color' == '1'
+                                        ? "assets/images/red_gradient.webp"
+                                        : '$color' == '2'
+                                            ? 'assets/images/orange_moon.webp'
+                                            : '$color' == '3'
+                                                ? "assets/images/lightGrey_gradient.webp"
+                                                : '$color' == '4'
+                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                    : '$color' == '5'
+                                                        ? "assets/images/medBlue_gradient.webp"
+                                                        : '$color' == '6'
+                                                            ? "assets/images/Blue_gradient.webp"
+                                                            : 'assets/images/orange_moon.webp'))),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 4.9,
+                                ),
+                                Container(
+                                  width: AppDimensions.height10(context) * 24.0,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppDimensions.height10(context) *
+                                              2.0),
+                                  child: Text(
+                                    goalName,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.14,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xff5B74A6)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 1.0,
+                                ),
+                                Text('"$identity"',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.6,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xff5B74A6))),
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 2.0,
+                                ),
+                                Text('Review',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.14,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xff5B74A6)))
+                              ],
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  )),
-              SizedBox(
-                height: AppDimensions.height10(context) * 3.6,
-              ),
-              Stack(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      login_sheet(context);
-                    },
-                    child: Container(
-                      child: Image(
-                        image: const AssetImage(
-                            'assets/images/angerwithoutreview.webp'),
-                        height: AppDimensions.height10(context) * 38.1,
-                        width: AppDimensions.height10(context) * 35.3,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Align(
-                      // alignment: Alignment.bottomCenter,
-                      alignment: Alignment(
-                          0.01, AppDimensions.height10(context) * 0.016 + 0.9),
-                      //heightFactor: 0.5,
-                      child: Container(
-                        // height: AppDimensions.height10(context)*17.5,
-                        // width:  AppDimensions.height10(context)*17.5,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              FadePageRoute(
-                                page: const dashBoard(
-                                  saved: false,
-                                  helpful_tips: false,
-                                  membership: true,
-                                  dashboard_ctrl: false,
-                                  cancel: false,
-                                  trial: false,
-                                ),
+                        Positioned(
+                          top: 0,
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: Align(
+                            // alignment: Alignment.bottomCenter,
+                            alignment: Alignment(0.01,
+                                AppDimensions.height10(context) * 0.016 + 0.9),
+                            //heightFactor: 0.5,
+                            child: Container(
+                              // height: AppDimensions.height10(context)*17.5,
+                              // width:  AppDimensions.height10(context)*17.5,
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
                               ),
-                            );
-                            dashboard_sheet(context);
-                          },
-                          child: Image(
-                            image:
-                                const AssetImage('assets/images/Asfinger.webp'),
-                            height: AppDimensions.height10(context) * 16.0,
-                            width: AppDimensions.height10(context) * 16.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: AppDimensions.height10(context) * 1.1,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                      // color: Colors.black,
+                              child: AnimatedScaleButton(
+                                onTap: () {
+                                  AdminGoal()
+                                      .updateUserGoalStatus('active')
+                                      .then((response) {
+                                    if (response == true) {
+                                      print("Success");
 
-                      height: AppDimensions.height10(context) * 5.4,
-                      width: AppDimensions.height10(context) * 27.4,
-                      child: Column(
-                        children: [
-                          Container(
-                            child: Center(
-                              child: Text(
-                                "To begin your journey\npress and hold here.  ",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute2(
+                                          true,
+                                          exitPage: const ActivateStar(),
+                                          enterPage: const dashBoard(
+                                            saved: false,
+                                            helpful_tips: false,
+                                            membership: true,
+                                            dashboard_ctrl: false,
+                                            cancel: false,
+                                            trial: false,
+                                          ),
+                                        ),
+                                      );
+                                    } else {
+                                      print("Failure");
+                                      // const ScaffoldMessenger(
+                                      //     child: Text('Goal status not changed'));
+                                    }
+                                  }).catchError((error) {
+                                    print("error");
+                                  });
+
+                                  //  dashboard_sheet(context);
+                                },
+                                child: Container(
+                                  width: AppDimensions.height10(context) * 16,
+                                  height: AppDimensions.height10(context) * 16,
+                                  padding: EdgeInsets.all(
+                                      AppDimensions.height10(context) * 0.5),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  0.3,
+                                          color: Colors.white)),
+                                  child: Container(
+                                    height:
+                                        AppDimensions.height10(context) * 14.7,
+                                    width:
+                                        AppDimensions.height10(context) * 14.7,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                      image: AssetImage('$pracColor' == '1'
+                                          ? "assets/images/Ellipse orange.webp"
+                                          : '$pracColor' == '2'
+                                              ? 'assets/images/Ellipse 158.webp'
+                                              : '$pracColor' == '3'
+                                                  ? "assets/images/Ellipse 157.webp"
+                                                  : '$pracColor' == '4'
+                                                      ? "assets/images/Ellipse light-blue.webp"
+                                                      : '$pracColor' == '5'
+                                                          ? "assets/images/Ellipse blue.webp"
+                                                          : 'assets/images/Ellipse 158.webp'),
+                                    )),
+                                    child: Column(
+                                      children: [
+                                        SizedBox(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.1,
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      2.0),
+                                          // width:
+                                          //     AppDimensions.height10(context) * 12.8,
+
+                                          child: Text(
+                                            pracName,
+                                            textAlign: TextAlign.center,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                color: const Color(0xFFFBFBFB),
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.8,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.1,
+                                        ),
+                                        Image(
+                                          image: const AssetImage(
+                                              'assets/images/ic_fingerprint.webp'),
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  6.0,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  6.0,
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ],
-                      )),
-                ],
-              ),
-            ],
-          )
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 1.1,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(
+                            // color: Colors.black,
+
+                            height: AppDimensions.height10(context) * 5.4,
+                            width: AppDimensions.height10(context) * 27.4,
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Center(
+                                    child: Text(
+                                      "To begin your journey\npress and hold here.  ",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                      ],
+                    ),
+                  ],
+                )
+              : activateStar_shimmer()
         ],
       ),
     );
@@ -438,7 +678,7 @@ void login_sheet(context) {
                             fontWeight: FontWeight.w400,
                             color: const Color(0xFF437296),
                           ),
-                          children: [
+                          children: const [
                             TextSpan(text: 'In order to '),
                             TextSpan(
                                 text: 'activate your star ',
@@ -472,7 +712,7 @@ void login_sheet(context) {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 5.0),
-                          color: Color(0xFFFBFBFB)),
+                          color: const Color(0xFFFBFBFB)),
                       child: Center(
                         child: Text(
                           'I’m new here',
@@ -490,7 +730,7 @@ void login_sheet(context) {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 5.0),
-                          color: Color(0xFF5A4D73)),
+                          color: const Color(0xFF5A4D73)),
                       child: Center(
                         child: Text(
                           'Log in',

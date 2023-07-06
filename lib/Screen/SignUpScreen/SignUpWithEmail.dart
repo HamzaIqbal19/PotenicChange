@@ -628,8 +628,12 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                             Loading = false;
                           });
                           if (response["statusCode"] == 200) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response["message"])));
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                              response["message"],
+                              style:
+                                  TextStyle(color: Colors.red.withOpacity(0.8)),
+                            )));
                             Navigator.push(
                               context,
                               FadePageRoute(
@@ -647,19 +651,32 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                             });
                             print(userExist.length);
 
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response["message"])));
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                              response["message"],
+                              style:
+                                  TextStyle(color: Colors.red.withOpacity(0.8)),
+                            )));
                           } else {
                             print('===========');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(response["message"])));
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                              response["message"],
+                              style:
+                                  TextStyle(color: Colors.red.withOpacity(0.8)),
+                            )));
                           }
                         }).catchError((error) {
                           setState(() {
                             Loading = false;
                           });
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('error')));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                              'error',
+                              style:
+                                  TextStyle(color: Colors.red.withOpacity(0.8)),
+                            ),
+                          ));
 
                           print("error");
                         }).whenComplete(() {
@@ -675,7 +692,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                           Loading = false;
                         });
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text('User Agreement it not checked')));
+                            content: Text(
+                          'User Agreement is not checked',
+                          style: TextStyle(color: Colors.red.withOpacity(0.8)),
+                        )));
                       }
                     },
                     child: Transform.scale(

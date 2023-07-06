@@ -27,14 +27,14 @@ class BottomSheet extends StatelessWidget {
       child: ElevatedButton(
         child: const Text('BottomSheet'),
         onPressed: () {
-          bottom_sheet(context);
+          bottom_sheet(context, '');
         },
       ),
     );
   }
 }
 
-void bottom_sheet(context) {
+void bottom_sheet(context, String goal) {
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
@@ -60,10 +60,10 @@ void bottom_sheet(context) {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
-                  height: AppDimensions.height10(context) * 6.3,
+                  //height: AppDimensions.height10(context) * 6.3,
                   width: AppDimensions.height10(context) * 35.5,
                   child: Text(
-                    'Create a new practice \n for ‘Control My Anger’ goal ',
+                    'Create a new practice \n for ‘$goal’ goal ',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: const Color(0xFF464646),

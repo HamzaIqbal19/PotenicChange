@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
 
@@ -63,7 +64,7 @@ class _GoalCategoryState extends State<GoalCategory> {
       var userId, var categoryId, var goalName, var goalId) async {
     final SharedPreferences prefs = await _prefs;
     var GoalName = prefs.setString('goalName', goalName);
-    var GoalCategory=prefs.setString("GoalCategory", widget.Circletitle);
+    var GoalCategory = prefs.setString("GoalCategory", widget.Circletitle);
     var usergoalId = prefs.setInt("goalId", goalId);
     Goal goal = Goal(
       name: goalName,
@@ -111,23 +112,29 @@ class _GoalCategoryState extends State<GoalCategory> {
     throw Exception('No goal found in local storage');
   }
 
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 5), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
+  }
+
   void _fetchgetAllGoal() {
     AdminGoal.getAllGoal(widget.id).then((response) {
       if (response.length != 0) {
         setState(() {
-          Loading = false;
           goalNamesAndCategories = response;
           Allgoal = response;
         });
+        loadData();
       } else {
-        setState(() {
-          Loading = false;
-        });
+        loadData();
       }
     }).catchError((error) {
-      setState(() {
-        Loading = false;
-      });
+      loadData();
       print("error");
     });
   }

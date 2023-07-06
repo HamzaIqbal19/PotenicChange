@@ -39,6 +39,7 @@ class _PracticeNameState extends State<PracticeName> {
     setState(() {
       mygoal.text = my_goal!;
       practice.text = practice_Name!;
+      practiceName.text = practice_Name!;
     });
   }
 
@@ -239,7 +240,7 @@ class _PracticeNameState extends State<PracticeName> {
                             height: double.minPositive,
                           ),
                           contentPadding: EdgeInsets.zero,
-                          hintText: "${practice.text.toString()}",
+                          // hintText: "${practice.text.toString()}",
                           hintStyle: TextStyle(
                               fontSize: AppDimensions.height10(context) * 2.4,
                               fontWeight: FontWeight.w500,
@@ -325,7 +326,10 @@ class _PracticeNameState extends State<PracticeName> {
                           fit: BoxFit.contain,
                         )),
                     AnimatedScaleButton(
-                      onTap: () {
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+                        var goal_Name = prefs.setString(
+                            'pracName', '${practiceName.text.toString()}');
                         Navigator.push(
                           context,
                           FadePageRoute2(

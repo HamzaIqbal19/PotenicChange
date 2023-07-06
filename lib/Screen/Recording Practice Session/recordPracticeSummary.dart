@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -20,6 +24,72 @@ class _practice_summaryState extends State<practice_summary> {
   String date_time = 'Now';
   String time = 'Am';
   String day = '';
+
+  String goalName = "";
+  String identity = "";
+  String pracName = "";
+  var pracColor;
+  var color;
+
+  String Before = "";
+  String After = "";
+  String Feedback = "";
+  String Session = "";
+
+  void _fetchGoalNames() async {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          // Loading = false;
+          goalName = response["name"];
+          identity = response["identityStatement"][0]["text"];
+          color = response["color"];
+          pracName = response["userPractices"][0]["name"];
+          pracColor = response["userPractices"][0]["color"];
+        });
+      } else {
+        setState(() {
+          //Loading = false;
+        });
+      }
+    }).catchError((error) {
+      setState(() {
+        // Loading = false;
+      });
+      print("error");
+    });
+
+    RecordingPractice.getUserPracticeRecord().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          Before = response['recording']['feelingsBeforeSession'];
+          After = response['recording']['feelingsAfterSession'];
+          Feedback = response['recording']['practiceFeedback'];
+          Session = response['recording']['practiceSummary'];
+        });
+        print(Before);
+        print(After);
+        print(Feedback);
+        print(Session);
+        //print(response);
+      }
+    });
+
+    // setState(() {
+    //   goalName = AdminGoal().getUserGoal();
+    // });
+    // print('GoalName: $goalName');
+  }
+
+  late AnimationController controller;
+  //late Animation<double> opacityAnimation;
+
+  @override
+  initState() {
+    super.initState();
+    _fetchGoalNames();
+    // Initialize AnimationController
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,33 +176,52 @@ class _practice_summaryState extends State<practice_summary> {
                 //color: Colors.amber,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 2.4),
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                     // color: const Color(0xff7c94b6),
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage('assets/images/orange_moon.webp'),
+                        image: AssetImage('$color' == '1'
+                            ? "assets/images/red_gradient.webp"
+                            : '$color' == '2'
+                                ? 'assets/images/orange_moon.webp'
+                                : '$color' == '3'
+                                    ? "assets/images/lightGrey_gradient.webp"
+                                    : '$color' == '4'
+                                        ? "assets/images/lightBlue_gradient.webp"
+                                        : '$color' == '5'
+                                            ? "assets/images/medBlue_gradient.webp"
+                                            : '$color' == '6'
+                                                ? "assets/images/Blue_gradient.webp"
+                                                : 'assets/images/orange_moon.webp'),
                         colorFilter: ColorFilter.mode(
                             Color.fromRGBO(0, 0, 0, 0.5), BlendMode.dstATop),
                         fit: BoxFit.cover)),
                 child: Stack(children: [
                   Align(
                       alignment: const Alignment(0, -0.65),
-                      child: Text(
-                        'Control my anger',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 2.0,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xff5B74A6)),
+                      child: Container(
+                        width: AppDimensions.height10(context) * 24.0,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: AppDimensions.height10(context) * 2.0),
+                        child: Text(
+                          goalName,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontWeight: FontWeight.w600,
+                              height: AppDimensions.height10(context) * 0.14,
+                              color: const Color(0xff5B74A6)),
+                        ),
                       )),
                   Align(
-                    alignment: const Alignment(0, -0.35),
-                    child: Text(
-                        '“I am someone who is in\n control of my anger”',
+                    alignment: const Alignment(0, -0.25),
+                    child: Text('"$identity"',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
                             fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w400,
+                            height: AppDimensions.height10(context) * 0.14,
                             color: const Color(0xff5B74A6))),
                   ),
                   Align(
@@ -142,40 +231,30 @@ class _practice_summaryState extends State<practice_summary> {
                       width: AppDimensions.height10(context) * 13.8,
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(
-                              width: 5, color: const Color(0xFF52855E)),
-                          gradient: const RadialGradient(
-                            // radius: 0.5,
-                            colors: <Color>[
-                              Color(0xFFDFF8EB), // yellow sun
-                              Color(0xFFA3B6A4), // blue sky
-                            ],
-                          )),
-                      child: Stack(children: [
-                        Center(
-                            child: Text(
-                          'Meditation',
-                          style: TextStyle(
-                              color: const Color(0xff1A481C),
-                              fontSize: AppDimensions.height10(context) * 1.8,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Laila'),
-                        )),
-                        Align(
-                            alignment: const Alignment(0, 1.3),
-                            child: Container(
-                                height: AppDimensions.height10(context) * 2.9,
-                                width: AppDimensions.height10(context) * 2.9,
-                                padding: EdgeInsets.all(
-                                    AppDimensions.height10(context) * 0.7),
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color(0xFF52855E)),
-                                child: const ImageIcon(
-                                  AssetImage('assets/images/tick_icon.webp'),
-                                  color: Color(0xFFFFFFFF),
-                                )))
-                      ]),
+                          // border: Border.all(
+                          //     width: 5, color: const Color(0xFF52855E)),
+                          image: DecorationImage(
+                              image: AssetImage('$pracColor' == '1'
+                                  ? "assets/images/Practice_Completed_2.webp"
+                                  : '$pracColor' == '2'
+                                      ? 'assets/images/Practice_Completed_2.webp'
+                                      : '$pracColor' == '3'
+                                          ? "assets/images/Practice_Completed_3.webp"
+                                          : '$pracColor' == '4'
+                                              ? "assets/images/Practice_Completed_4.webp"
+                                              : '$pracColor' == '5'
+                                                  ? "assets/images/Practice_Completed_4.webp"
+                                                  : 'assets/images/Practice_Completed_2.webp'))),
+                      child: Center(
+                          child: Text(
+                        pracName,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: const Color(0xff1A481C),
+                            fontSize: AppDimensions.height10(context) * 1.8,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Laila'),
+                      )),
                     ),
                   ),
                 ]),
@@ -234,9 +313,9 @@ class _practice_summaryState extends State<practice_summary> {
                                 }
                               });
                               setState(() => date_time =
-                                  " ${day}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                                  " ${day}:${newDateTime.hour}:${newDateTime.minute}:$time");
                               print(
-                                  "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:${time}");
+                                  "${newDateTime.weekday}:${newDateTime.hour}:${newDateTime.minute}:$time");
                             }
                           }));
                     },
@@ -256,7 +335,7 @@ class _practice_summaryState extends State<practice_summary> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
+                      SizedBox(
                           //margin: EdgeInsets.only(left: 92, right: 66),
                           height: AppDimensions.height10(context) * 2.6,
                           width: AppDimensions.height10(context) * 21.0,
@@ -294,14 +373,14 @@ class _practice_summaryState extends State<practice_summary> {
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
-                        children: [
-                          const TextSpan(
+                        children: const [
+                          TextSpan(
                             text: 'How did you feel',
                           ),
-                          const TextSpan(
+                          TextSpan(
                               text: '\nbefore',
                               style: TextStyle(color: Color(0xff8C648A))),
-                          const TextSpan(
+                          TextSpan(
                             text: ' your practice?',
                           ),
                         ])),
@@ -325,7 +404,18 @@ class _practice_summaryState extends State<practice_summary> {
                 child: Stack(children: [
                   Center(
                     child: Text(
-                      'I felt good',
+                      Before == '1'
+                          ? 'I felt very\nlow &\ndemotivated'
+                          : Before == '2'
+                              ? 'I felt slightly\nirritated, not\nfussed really'
+                              : Before == '3'
+                                  ? 'I felt good'
+                                  : Before == '4'
+                                      ? 'Motivated and \nready to start'
+                                      : Before == '5'
+                                          ? "Great, could'nt \nwait to started!"
+                                          : 'I felt good',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.6,
                           fontWeight: FontWeight.w500,
@@ -335,18 +425,19 @@ class _practice_summaryState extends State<practice_summary> {
                   ),
                   Align(
                     alignment: const Alignment(0, 0.8),
-                    child: GestureDetector(
+                    child: AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                             context,
                             FadePageRoute(
-                                page: const emotions(
+                                page: emotions(
                               summary: true,
+                              pracName: pracName,
                             )));
                       },
                       child: Container(
-                          height: AppDimensions.height10(context) * 2.0,
-                          width: AppDimensions.height10(context) * 2.0,
+                          height: AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.height10(context) * 2.4,
                           padding: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.4),
                           decoration: BoxDecoration(
@@ -378,14 +469,14 @@ class _practice_summaryState extends State<practice_summary> {
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
-                        children: [
-                          const TextSpan(
+                        children: const [
+                          TextSpan(
                             text: 'How do you feel',
                           ),
-                          const TextSpan(
+                          TextSpan(
                               text: '\nafter',
                               style: TextStyle(color: Color(0xff8C648A))),
-                          const TextSpan(
+                          TextSpan(
                             text: ' your practice?',
                           ),
                         ])),
@@ -409,7 +500,17 @@ class _practice_summaryState extends State<practice_summary> {
                 child: Stack(children: [
                   Center(
                     child: Text(
-                      'I feel focused\n& good',
+                      After == '1'
+                          ? 'I feel very low\n& irritated'
+                          : After == '2'
+                              ? 'I feel alright,\n but slightly\ndown'
+                              : After == '3'
+                                  ? 'I feel ok'
+                                  : After == '4'
+                                      ? 'I feel focused\n& good'
+                                      : After == '5'
+                                          ? 'I feel excited\nand good in\nmyself'
+                                          : 'I feel focused\n& good',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.6,
@@ -420,7 +521,7 @@ class _practice_summaryState extends State<practice_summary> {
                   ),
                   Align(
                     alignment: const Alignment(0, 0.8),
-                    child: GestureDetector(
+                    child: AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                             context,
@@ -430,8 +531,8 @@ class _practice_summaryState extends State<practice_summary> {
                             )));
                       },
                       child: Container(
-                          height: AppDimensions.height10(context) * 2.0,
-                          width: AppDimensions.height10(context) * 2.0,
+                          height: AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.height10(context) * 2.4,
                           padding: EdgeInsets.all(
                               AppDimensions.height10(context) * 0.4),
                           decoration: BoxDecoration(
@@ -449,7 +550,7 @@ class _practice_summaryState extends State<practice_summary> {
               ),
               Container(
                 width: AppDimensions.height10(context) * 36.0,
-                height: AppDimensions.height10(context) * 7.3,
+                // height: AppDimensions.height10(context) * 7.3,
                 margin:
                     EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 decoration: BoxDecoration(
@@ -464,7 +565,7 @@ class _practice_summaryState extends State<practice_summary> {
                   height: AppDimensions.height10(context) * 3.8,
                   width: AppDimensions.height10(context) * 32.0,
                   child: Text(
-                    'This session works for me, it clears my head and makes me feel positive :)',
+                    Feedback,
                     style: TextStyle(
                         color: const Color(0xff646464),
                         fontSize: AppDimensions.height10(context) * 1.6,
@@ -509,7 +610,17 @@ class _practice_summaryState extends State<practice_summary> {
                 child: Stack(children: [
                   Center(
                     child: Text(
-                      'Good, I liked\nit',
+                      Session == '1'
+                          ? 'Hated it'
+                          : Session == '2'
+                              ? 'Found it\ndifficult'
+                              : Session == '3'
+                                  ? 'Had distractins,\nit was hard to\nfocus'
+                                  : Session == '4'
+                                      ? 'It was ok'
+                                      : Session == '5'
+                                          ? 'Good, I liked\nit'
+                                          : 'Great,\nin the zone.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.6,
@@ -520,7 +631,7 @@ class _practice_summaryState extends State<practice_summary> {
                   ),
                   Align(
                     alignment: const Alignment(0, 0.8),
-                    child: GestureDetector(
+                    child: AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                             context,
@@ -530,8 +641,8 @@ class _practice_summaryState extends State<practice_summary> {
                             )));
                       },
                       child: Container(
-                        height: AppDimensions.height10(context) * 2.0,
-                        width: AppDimensions.height10(context) * 2.0,
+                        height: AppDimensions.height10(context) * 2.4,
+                        width: AppDimensions.height10(context) * 2.4,
                         padding: EdgeInsets.all(
                             AppDimensions.height10(context) * 0.4),
                         decoration: BoxDecoration(
@@ -555,79 +666,90 @@ class _practice_summaryState extends State<practice_summary> {
                     EdgeInsets.only(top: AppDimensions.height10(context) * 6.4),
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Container(
-                      height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 15.7,
-                      margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.4),
-                      decoration: BoxDecoration(
-                        color: const Color(0xff464646),
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 5.0),
-                      ),
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left:
-                                        AppDimensions.height10(context) * 0.8),
-                                child: Text(
-                                  'Delete',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w700,
-                                  ),
+                  AnimatedScaleButton(
+                    onTap: () {
+                      RecordingPractice().deleteUserRecording().then((value) {
+                        if (value == true) {
+                          print('Api call success');
+                        } else {
+                          print('Api failed');
+                        }
+                      });
+                    },
+                    child: Container(
+                        height: AppDimensions.height10(context) * 5.0,
+                        width: AppDimensions.height10(context) * 15.7,
+                        margin: EdgeInsets.only(
+                            right: AppDimensions.height10(context) * 1.4),
+                        decoration: BoxDecoration(
+                          color: const Color(0xff464646),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 5.0),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.delete,
+                              color: Colors.white,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 0.8),
+                              child: Text(
+                                'Delete',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                            ],
-                          ))),
-                  Container(
-                      height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 21.2,
-                      decoration: BoxDecoration(
-                        gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xffFCC10D),
-                            Color(0xffFDA210),
-                          ],
-                        ),
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 5.0),
-                      ),
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const dashBoard(
-                                  helpful_tips: false,
-                                  dashboard_ctrl: false,
-                                  membership: true,
-                                  trial: false,
-                                  cancel: false,
-                                  saved: true,
-                                )));
-                          },
-                          child: Text(
-                            'Save Practice',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.6,
-                              fontWeight: FontWeight.w600,
                             ),
-                          )))
+                          ],
+                        )),
+                  ),
+                  AnimatedScaleButton(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          FadePageRoute2(true,
+                              exitPage: const practice_summary(),
+                              enterPage: const dashBoard(
+                                helpful_tips: false,
+                                dashboard_ctrl: false,
+                                membership: true,
+                                trial: false,
+                                cancel: false,
+                                saved: true,
+                              )));
+                    },
+                    child: Container(
+                        height: AppDimensions.height10(context) * 5.0,
+                        width: AppDimensions.height10(context) * 21.2,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xffFCC10D),
+                              Color(0xffFDA210),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 5.0),
+                        ),
+                        child: Center(
+                            child: Text(
+                          'Save Practice',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ))),
+                  )
                 ]),
               ),
               Container(

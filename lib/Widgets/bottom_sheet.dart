@@ -15,7 +15,7 @@ List<String> categories = [
   'Self Control',
   'Overcome Insecurities',
   'Self-Care',
-  'Life Style',
+  'Life-Style',
   'Sprituality And Mindfulness',
   'Family And Friends',
   'Personal Growth',
@@ -87,9 +87,11 @@ void bottom_sheet(context, int id) {
                       color: const Color.fromARGB(209, 250, 154, 52),
                     ),
                     decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 3.0),
                         filled: true,
                         fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
-                        hintText: "  Enter your goal name ",
+                        hintText: "Enter your goal name ",
                         hintStyle: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: AppDimensions.height10(context) * 2.4,

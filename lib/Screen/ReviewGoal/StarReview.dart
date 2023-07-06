@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -36,6 +38,7 @@ class _StarReviewState extends State<StarReview> {
   var reason3;
   var identity;
   var visualize;
+  var color;
   bool Loading = true;
   late FocusNode _focusNode;
   @override
@@ -56,6 +59,7 @@ class _StarReviewState extends State<StarReview> {
           Loading = false;
           goalName = response["name"];
           reason = response["reason"][0]["text"];
+          color = response["color"];
           identity = response["identityStatement"][0]["text"];
           visualize = response["visualizingYourSelf"][0]["text"];
           reason2 = response["reason"][1]["text"];
@@ -93,7 +97,7 @@ class _StarReviewState extends State<StarReview> {
             ? Text(
                 "Review goal details",
                 style: TextStyle(
-                    color: Color(0xFF5B74A6),
+                    color: const Color(0xFF5B74A6),
                     fontWeight: FontWeight.w600,
                     fontSize: AppDimensions.height10(context) * 2.0),
               )
@@ -112,7 +116,6 @@ class _StarReviewState extends State<StarReview> {
                   ),
                   onPressed: () {
                     Navigator.pop(context);
-
                     // Add code for performing close action
                   },
                 )
@@ -136,22 +139,47 @@ class _StarReviewState extends State<StarReview> {
           Loading == false
               ? SingleChildScrollView(
                   //reverse: true,
-                  physics: ClampingScrollPhysics(),
+                  physics: const ClampingScrollPhysics(),
                   child: Column(
                     children: [
                       SizedBox(
                         height: AppDimensions.height10(context) * 9.2,
                       ),
                       Container(
-                          width: AppDimensions.height10(context) * 10.4,
-                          height: AppDimensions.height10(context) * 11.2,
-                          padding: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 1.5,
-                              right: AppDimensions.height10(context) * 1.5),
-                          child: Image.asset(
-                            "assets/images/image3.webp",
-                            fit: BoxFit.contain,
-                          )),
+                        width: AppDimensions.height10(context) * 10.2,
+                        height: AppDimensions.height10(context) * 11.2,
+                        padding: EdgeInsets.only(
+                            bottom: AppDimensions.height10(context) * 1.0),
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image:
+                                    AssetImage("assets/images/anger_5.webp"))),
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0,
+                              right: AppDimensions.height10(context) * 2.0),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage('$color' == '1' ||
+                                          color1 == true
+                                      ? "assets/images/red_gradient.webp"
+                                      : '$color' == '2' || color2 == true
+                                          ? 'assets/images/orange_moon.webp'
+                                          : '$color' == '3' || color3 == true
+                                              ? "assets/images/lightGrey_gradient.webp"
+                                              : '$color' == '4' ||
+                                                      color4 == true
+                                                  ? "assets/images/lightBlue_gradient.webp"
+                                                  : '$color' == '5' ||
+                                                          color5 == true
+                                                      ? "assets/images/medBlue_gradient.webp"
+                                                      : '$color' == '6' ||
+                                                              color6 == true
+                                                          ? "assets/images/Blue_gradient.webp"
+                                                          : 'assets/images/orange_moon.webp'))),
+                        ),
+                      ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 0.6,
                       ),
@@ -161,7 +189,7 @@ class _StarReviewState extends State<StarReview> {
                             "Star Details",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFF437296),
+                              color: const Color(0xFF437296),
                               fontSize: AppDimensions.height10(context) * 3.0,
                             ),
                           ),
@@ -440,7 +468,7 @@ class _StarReviewState extends State<StarReview> {
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                           color: color1
-                                                              ? Color(
+                                                              ? const Color(
                                                                   0xFFE69662)
                                                               : Colors
                                                                   .transparent,
@@ -519,7 +547,7 @@ class _StarReviewState extends State<StarReview> {
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                           color: color2
-                                                              ? Color(
+                                                              ? const Color(
                                                                   0xFFE69662)
                                                               : Colors
                                                                   .transparent,
@@ -598,7 +626,7 @@ class _StarReviewState extends State<StarReview> {
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                           color: color3
-                                                              ? Color(
+                                                              ? const Color(
                                                                   0xFFE69662)
                                                               : Colors
                                                                   .transparent,
@@ -681,7 +709,7 @@ class _StarReviewState extends State<StarReview> {
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                           color: color4
-                                                              ? Color(
+                                                              ? const Color(
                                                                   0xFFE69662)
                                                               : Colors
                                                                   .transparent,
@@ -760,7 +788,7 @@ class _StarReviewState extends State<StarReview> {
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                           color: color5
-                                                              ? Color(
+                                                              ? const Color(
                                                                   0xFFE69662)
                                                               : Colors
                                                                   .transparent,
@@ -839,7 +867,7 @@ class _StarReviewState extends State<StarReview> {
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                           color: color6
-                                                              ? Color(
+                                                              ? const Color(
                                                                   0xFFE69662)
                                                               : Colors
                                                                   .transparent,
@@ -886,7 +914,7 @@ class _StarReviewState extends State<StarReview> {
                       ),
                       Container(
                           width: AppDimensions.height10(context) * 38.2,
-                          height: AppDimensions.height10(context) * 49.9,
+                          // height: AppDimensions.height10(context) * 49.9,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
@@ -898,153 +926,252 @@ class _StarReviewState extends State<StarReview> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: AppDimensions.height10(context) * 49.5,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          AnimatedScaleButton(
-                                            onTap: () {
-                                              print('hello world');
-                                              // AdminGoal().getUserGoal();
-                                              print("Admin");
-                                            },
-                                            child: Container(
+                                height: AppDimensions.height10(context) * 50.5,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.0,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AnimatedScaleButton(
+                                          onTap: () {
+                                            print('hello world');
+                                            // AdminGoal().getUserGoal();
+                                            print("Admin");
+                                          },
+                                          child: Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.7,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                30.5,
+
+                                            // color: Colors.blue,
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/reviewsearch.webp"),
+                                                fit: BoxFit.fitHeight,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        // SizedBox(width: ),
+                                        AnimatedScaleButton(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              FadePageRoute2(
+                                                true,
+                                                exitPage: const StarReview(),
+                                                enterPage:
+                                                    const StarReviewWhy(),
+                                              ),
+                                            );
+                                          },
+                                          child: Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+
+                                            // color: Colors.blue,
+                                            margin: EdgeInsets.only(
+                                              bottom: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                            ),
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/btnedit.webp"),
+                                                fit: BoxFit.fitHeight,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 0.5,
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.2,
+                                      width:
+                                          AppDimensions.height10(context) * 24,
+                                      child: Center(
+                                        child: Text(
+                                          "Your reasons ‘Why’",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
                                               height: AppDimensions.height10(
                                                       context) *
-                                                  3.7,
-                                              width: AppDimensions.height10(
+                                                  0.12,
+                                              fontSize: AppDimensions.height10(
                                                       context) *
+                                                  2.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFF5B74A6)),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.3,
+                                    ),
+                                    inner_text(
+                                      'Reason 1',
+                                      reason != null
+                                          ? '$reason'
+                                          : 'I want to achieve this goal to be in control\nof my anger and to regain control of my\nlife.',
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 1.0,
+                                    ),
+                                    inner_text(
+                                      'Reason 2',
+                                      reason2 != null
+                                          ? '$reason2'
+                                          : 'I want to be closer and respect my wife\nand children.',
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 1.0,
+                                    ),
+                                    inner_text(
+                                      'Reason 3',
+                                      reason3 != null
+                                          ? '$reason3'
+                                          : 'I don’t want my anger to hold me back\nfrom enjoying life.',
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 3.1,
+                      ),
+                      Container(
+                          width: AppDimensions.height10(context) * 38.2,
+                          // height: AppDimensions.height10(context) * 24.4,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: Colors.white,
+                                  width: AppDimensions.height10(context) * 0.2),
+                              borderRadius: BorderRadius.all(Radius.circular(
+                                  AppDimensions.height10(context) * 1.8))),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: AppDimensions.height10(context) * 24,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.0,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.7,
+                                          width:
+                                              AppDimensions.height10(context) *
                                                   30.5,
 
-                                              // color: Colors.blue,
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/reviewsearch.webp"),
-                                                  fit: BoxFit.fitHeight,
-                                                ),
-                                              ),
+                                          // color: Colors.blue,
+                                          decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/images/reviewsearch.webp"),
+                                              fit: BoxFit.fitHeight,
                                             ),
                                           ),
-                                          // SizedBox(width: ),
-                                          AnimatedScaleButton(
-                                            onTap: () {
-                                              Navigator.push(
-                                                context,
-                                                FadePageRoute2(
-                                                  true,
-                                                  exitPage: StarReview(),
-                                                  enterPage: StarReviewWhy(),
-                                                ),
-                                              );
-                                            },
-                                            child: Container(
+                                        ),
+                                        // SizedBox(width: ),
+                                        Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.0,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  3.0,
+
+                                          // color: Colors.blue,
+                                          margin: EdgeInsets.only(
+                                            bottom: AppDimensions.height10(
+                                                    context) *
+                                                1.5,
+                                          ),
+                                          decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/images/btnedit.webp"),
+                                              fit: BoxFit.fitHeight,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 0.5,
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.4,
+                                      width: AppDimensions.height10(context) *
+                                          30.9,
+                                      child: Center(
+                                        child: Text(
+                                          "Your New identity Statement",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
                                               height: AppDimensions.height10(
                                                       context) *
-                                                  3.0,
-                                              width: AppDimensions.height10(
+                                                  0.12,
+                                              fontSize: AppDimensions.height10(
                                                       context) *
-                                                  3.0,
-
-                                              // color: Colors.blue,
-                                              margin: EdgeInsets.only(
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    1.5,
-                                              ),
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/btnedit.webp"),
-                                                  fit: BoxFit.fitHeight,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.5,
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.2,
-                                        width: AppDimensions.height10(context) *
-                                            24,
-                                        child: Center(
-                                          child: Text(
-                                            "Your reasons ‘Why’",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.12,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xFF5B74A6)),
-                                          ),
+                                                  2.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFF5B74A6)),
                                         ),
                                       ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.3,
-                                      ),
-                                      inner_text(
-                                        'Reason 1',
-                                        reason != null
-                                            ? '$reason'
-                                            : 'I want to achieve this goal to be in control\nof my anger and to regain control of my\nlife.',
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.0,
-                                      ),
-                                      inner_text(
-                                        'Reason 2',
-                                        reason2 != null
-                                            ? '$reason2'
-                                            : 'I want to be closer and respect my wife\nand children.',
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.0,
-                                      ),
-                                      inner_text(
-                                        'Reason 3',
-                                        reason3 != null
-                                            ? '$reason3'
-                                            : 'I don’t want my anger to hold me back\nfrom enjoying life.',
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.3,
+                                    ),
+                                    inner_text(
+                                        'Statement 1',
+                                        identity != null
+                                            ? "$identity"
+                                            : 'I am someone who is in control of my\nanger'),
+                                  ],
                                 ),
                               ),
                             ],
@@ -1054,7 +1181,7 @@ class _StarReviewState extends State<StarReview> {
                       ),
                       Container(
                           width: AppDimensions.height10(context) * 38.2,
-                          height: AppDimensions.height10(context) * 24.4,
+                          //height: AppDimensions.height10(context) * 24.4,
                           decoration: BoxDecoration(
                               color: Colors.white,
                               border: Border.all(
@@ -1067,246 +1194,97 @@ class _StarReviewState extends State<StarReview> {
                             children: [
                               SizedBox(
                                 height: AppDimensions.height10(context) * 24,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                30.5,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.0,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.7,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  30.5,
 
-                                            // color: Colors.blue,
-                                            decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/reviewsearch.webp"),
-                                                fit: BoxFit.fitHeight,
-                                              ),
+                                          // color: Colors.blue,
+                                          decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/images/reviewsearch.webp"),
+                                              fit: BoxFit.fitHeight,
                                             ),
-                                          ),
-                                          // SizedBox(width: ),
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-
-                                            // color: Colors.blue,
-                                            margin: EdgeInsets.only(
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
-                                            ),
-                                            decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/btnedit.webp"),
-                                                fit: BoxFit.fitHeight,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.5,
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.4,
-                                        width: AppDimensions.height10(context) *
-                                            30.9,
-                                        child: Center(
-                                          child: Text(
-                                            "Your New identity Statement",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.12,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xFF5B74A6)),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.3,
-                                      ),
-                                      inner_text(
-                                          'Statement 1',
-                                          identity != null
-                                              ? "$identity"
-                                              : 'I am someone who is in control of my\nanger'),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.0,
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 3.1,
-                      ),
-                      Container(
-                          width: AppDimensions.height10(context) * 38.2,
-                          height: AppDimensions.height10(context) * 24.4,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                  color: Colors.white,
-                                  width: AppDimensions.height10(context) * 0.2),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10(context) * 1.8))),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: AppDimensions.height10(context) * 24,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.7,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                30.5,
+                                        // SizedBox(width: ),
+                                        Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.0,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  3.0,
 
-                                            // color: Colors.blue,
-                                            decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/reviewsearch.webp"),
-                                                fit: BoxFit.fitHeight,
-                                              ),
-                                            ),
-                                          ),
-                                          // SizedBox(width: ),
-                                          Container(
-                                            height: AppDimensions.height10(
+                                          // color: Colors.blue,
+                                          margin: EdgeInsets.only(
+                                            bottom: AppDimensions.height10(
                                                     context) *
-                                                3.0,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-
-                                            // color: Colors.blue,
-                                            margin: EdgeInsets.only(
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
-                                            ),
-                                            decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/btnedit.webp"),
-                                                fit: BoxFit.fitHeight,
-                                              ),
-                                            ),
+                                                1.5,
                                           ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.5,
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.4,
-                                        width: AppDimensions.height10(context) *
-                                            30.9,
-                                        child: Center(
-                                          child: Text(
-                                            "Your ‘New self’",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.12,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xFF5B74A6)),
+                                          decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/images/btnedit.webp"),
+                                              fit: BoxFit.fitHeight,
+                                            ),
                                           ),
                                         ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 0.5,
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.4,
+                                      width: AppDimensions.height10(context) *
+                                          30.9,
+                                      child: Center(
+                                        child: Text(
+                                          "Your ‘New self’",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.12,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFF5B74A6)),
+                                        ),
                                       ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.3,
-                                      ),
-                                      inner_text(
-                                          'Statement 1',
-                                          visualize != null
-                                              ? "$visualize"
-                                              : "I picture myself talking more calmly to\nmy wife when she has made a mistake. "),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.0,
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 2.3,
+                                    ),
+                                    inner_text(
+                                        'Statement 1',
+                                        visualize != null
+                                            ? "$visualize"
+                                            : "I picture myself talking more calmly to\nmy wife when she has made a mistake. "),
+                                  ],
                                 ),
                               ),
                             ],
@@ -1476,7 +1454,7 @@ class _StarReviewState extends State<StarReview> {
                                                       context,
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            HomeScreen(
+                                                            const HomeScreen(
                                                           login: true,
                                                         ),
                                                       ));
@@ -1575,7 +1553,7 @@ class _StarReviewState extends State<StarReview> {
                     ],
                   ),
                 )
-              : Center(
+              : const Center(
                   child: SpinKitFadingCircle(
                     color: Color(0xFFB1B8FF),
                     size: 80,
