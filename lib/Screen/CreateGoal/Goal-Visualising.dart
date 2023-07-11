@@ -47,7 +47,7 @@ class _VisualisingState extends State<Visualising> {
     setState(() {
       goalName = prefs.getString("goalName")!;
     });
-    print("goalName:$goalName");
+    print("====================>goalName:$goalName");
   }
 
   int item = 1;
@@ -379,8 +379,7 @@ class _VisualisingState extends State<Visualising> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: AppDimensions.height10(context) * 1.0),
+                  width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
                       goalName,
@@ -565,9 +564,6 @@ class _VisualisingState extends State<Visualising> {
                             width: AppDimensions.height10(context) * 5.7,
                             padding: EdgeInsets.all(
                                 AppDimensions.height10(context) * 0.5),
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.transparent),
                             child: Container(
                               height: AppDimensions.height10(context) * 4.7,
                               width: AppDimensions.height10(context) * 4.7,
@@ -585,14 +581,14 @@ class _VisualisingState extends State<Visualising> {
                                 padding: const EdgeInsets.only(
                                     top: 4, left: 4, right: 4, bottom: 4),
                                 child: Container(
-                                  color: Colors.transparent,
-                                  child: Image.asset(
-                                    'assets/images/Addgoal.webp',
-                                    height:
-                                        AppDimensions.height10(context) * 4.7,
-                                    width:
-                                        AppDimensions.height10(context) * 4.7,
-                                  ),
+                                  height: AppDimensions.height10(context) * 4.7,
+                                  width: AppDimensions.height10(context) * 4.7,
+                                  decoration: const BoxDecoration(
+                                      //color: Colors.transparent,
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/Addgoal.webp'),
+                                          fit: BoxFit.contain)),
                                 ),
                               ),
                             ),
@@ -604,20 +600,13 @@ class _VisualisingState extends State<Visualising> {
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10(context) * 12.2,
-                      )
-                    : SizedBox(
-                        height: AppDimensions.height10(context) * 5.0,
-                      ),
-                MediaQuery.of(context).viewInsets.bottom == 0
-                    ? SizedBox(
-                        height: AppDimensions.height10(context) * 12.2,
+                        height: AppDimensions.height10(context) * 24.4,
                       )
                     : SizedBox(
                         height: AppDimensions.height10(context) * 5.0,
                       ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                         // color: Colors.blue,
@@ -632,6 +621,9 @@ class _VisualisingState extends State<Visualising> {
                             fit: BoxFit.contain,
                           ),
                         )),
+                    SizedBox(
+                      width: AppDimensions.height10(context) * 2.0,
+                    ),
                     AnimatedScaleButton(
                       onTap: () async {
                         final SharedPreferences prefs = await _prefs;

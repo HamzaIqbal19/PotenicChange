@@ -85,6 +85,8 @@ class _scheduleState extends State<schedule> {
   }
 
   List<Map<String, dynamic>> timesPerDay = [];
+  String start_time = '00:00';
+  String end_time = '07:00';
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +157,8 @@ class schedule_card extends StatefulWidget {
       required this.days,
       required this.onCountChanged,
       required this.onChangedStart,
-      required this.onChangedEnd});
+      required this.onChangedEnd})
+      : super(key: key);
 
   @override
   State<schedule_card> createState() => _schedule_cardState(
@@ -166,8 +169,7 @@ class schedule_card extends StatefulWidget {
 
 class _schedule_cardState extends State<schedule_card> {
   final String days_name;
-  String start_time = '00:00';
-  String end_time = '07:00';
+
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
   void removeSelectedDay(String day) {
     if (count > 0) {
@@ -184,7 +186,7 @@ class _schedule_cardState extends State<schedule_card> {
   final ValueChanged<int> onCountChanged;
   void onChangedStart(String value) {
     setState(() {
-      start_time = value;
+      //start_time = value;
       // timesPerDay.firstWhere((day) => day['day'] == days_name)['start'] = value;
     });
     print(value);
@@ -192,7 +194,7 @@ class _schedule_cardState extends State<schedule_card> {
 
   void onChangedEnd(String value) {
     setState(() {
-      end_time = value;
+      //end_time = value;
       // timesPerDay.firstWhere((day) => day['day'] == days_name)['end'] = value;
     });
     print(value);
@@ -266,26 +268,33 @@ class _schedule_cardState extends State<schedule_card> {
                                         if (Done) {
                                           selectedDays.add(days_name);
                                           _globalKey.currentState?.expand();
-                                          _globalKey.currentState?.expand();
-                                          _globalKey.currentState?.expand();
-                                          // start_time =
-                                          //     "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                          // end_time =
-                                          //     "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                          // final SharedPreferences prefs =
-                                          //     await _prefs;
-                                          // var Start_Time = prefs.setString(
-                                          //     'startTime', '$start_time');
-                                          // var End_Time = prefs.setString(
-                                          //     'endTime', '$end_time');
+                                          // _globalKey.currentState?.expand();
+                                          // _globalKey.currentState?.expand();
+                                          setState(() {
+                                            start_time =
+                                                "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                          });
+
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          var Start_Time = prefs.setString(
+                                              'startTime', '$start_time');
+                                          var End_Time = prefs.setString(
+                                              'endTime', '$end_time');
 
                                           Done = Done;
                                           print("Done:$Done");
                                           if (Done == true) {
                                             _globalKey.currentState?.expand();
+                                            setState(() {
+                                              setState(() {
+                                                start_time =
+                                                    "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                              });
+                                            });
                                             count = count + 1;
                                             onCountChanged(count);
-                                            Navigator.pop(context);
+                                            // Navigator.pop(context);
                                           }
                                         }
                                         // date.hour.toString();

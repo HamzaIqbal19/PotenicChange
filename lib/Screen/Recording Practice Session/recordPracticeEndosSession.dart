@@ -19,11 +19,12 @@ class endofSession extends StatefulWidget {
   State<endofSession> createState() => _endofSessionState();
 }
 
+int sessionEnd = 0;
+
 class _endofSessionState extends State<endofSession> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   String pracName = "";
-  int sessionEnd = 0;
 
   var emotions;
   var afterSession;
@@ -34,33 +35,17 @@ class _endofSessionState extends State<endofSession> {
   void initState() {
     onLoad();
     super.initState();
-    _fetchGoalNames();
+    _fetchPracticeNames();
   }
 
-  void _fetchGoalNames() async {
-    AdminGoal.getUserGoal().then((response) {
-      if (response.length != 0) {
-        setState(() {
-          // Loading = false;
+  void _fetchPracticeNames() async {
+    final SharedPreferences prefs = await _prefs;
+    var Name = prefs.getString('pracName');
 
-          pracName = response["userPractices"][0]["name"];
-        });
-      } else {
-        setState(() {
-          //Loading = false;
-        });
-      }
-    }).catchError((error) {
-      setState(() {
-        // Loading = false;
-      });
-      print("error");
+    setState(() {
+      pracName = '$Name';
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
+    onLoad();
   }
 
   void onLoad() async {

@@ -40,11 +40,20 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
   var token;
   var accountFlag;
   var sessionRoute;
+  int catId = 0;
 
   @override
   void initState() {
     super.initState();
   }
+
+  // fetchCategoryId() async {
+  //   final SharedPreferences prefs = await _prefs;
+  //   int category = prefs.getInt('goalCategoryId');
+  //   setState(() {
+  //     catId = category;
+  //   });
+  // }
 
   // final contractAddress = "0xaBE2ec3a68A15a382BcDC93499Ab751D3d954BB2";
 
@@ -117,7 +126,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GoalName(),
+                          builder: (context) => GoalName(catId),
                         ),
                       );
                     } else if (widget.route == "goalVisualising" &&

@@ -1,7 +1,10 @@
+import 'dart:convert';
+import 'package:get/get.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/MyServices/API.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -14,19 +17,81 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 List<String> categories = [
   'Self Control',
   'Overcome Insecurities',
-  'Self-Care',
-  'Life-Style',
-  'Sprituality And Mindfulness',
-  'Family And Friends',
+  'Selfcare',
+  'Lifestyle',
+  'Spirituality and Mindfulness',
+  'Family and Friends',
   'Personal Growth',
-  'Love And Relationship'
+  'Love and Relationship'
 ];
 String dropdownValue = categories.first;
 
-final goalName = TextEditingController();
+Future getUserId(int categoryid, goalname, goalid) async {
+  final SharedPreferences prefs = await _prefs;
+  var userId = prefs.getInt("userid");
 
-void bottom_sheet(context, int id) {
+  saveGoalToPrefs(userId!, categoryid, goalname, goalid);
+}
+
+Future<void> saveGoalToPrefs(
+    var userId, var categoryId, var goalName, var goalId) async {
+  final SharedPreferences prefs = await _prefs;
+  var GoalName = prefs.setString('goalName', goalName);
+  //var GoalCategory = prefs.setString("GoalCategory", widget.Circletitle);
+  var usergoalId = prefs.setInt("goalId", goalId);
+  Goal goal = Goal(
+    name: goalName,
+    reason: [
+      {"key": "reason1", "text": "This is reason 1"},
+    ],
+    identityStatement: [
+      {"key": "reason1", "text": "This is reason 1"},
+    ],
+    visualizingYourSelf: [
+      {"key": "reason1", "text": "This is reason 1"},
+    ],
+    userId: userId,
+    goalId: goalId,
+    goalCategoryId: categoryId,
+  );
+  String jsonString =
+      jsonEncode(goal.toJson()); // converting object to json string
+  prefs.setString('goal', jsonString);
+  print('====================');
+  var userGoalId = prefs.setInt('goalId', goalId);
+  print('====================');
+  print('====================$userGoalId');
+
+  getGoal();
+}
+
+Future<Goal> getGoal() async {
+  final prefs = await SharedPreferences.getInstance();
+  print("GoalId:${prefs.getInt("goalId")}");
+  String? jsonString = prefs.getString('goal');
+
+  if (jsonString != null) {
+    Map<String, dynamic> jsonMap = json.decode(jsonString);
+    print("Goal===============>$jsonString");
+    // Navigator.push(
+    //   context,
+    //   FadePageRoute(
+    //     page: GoalName(),
+    //   ),
+    // );
+    return Goal.fromJson(jsonMap);
+  }
+
+  throw Exception('No goal found in local storage');
+}
+
+int index = 0;
+//late int goalId;
+
+void bottom_sheet(context) {
+  final goalName = TextEditingController();
   final _formkey = GlobalKey<FormState>();
+
   showModalBottomSheet<void>(
     context: context,
     isScrollControlled: true,
@@ -151,26 +216,54 @@ void bottom_sheet(context, int id) {
               Container(
                 height: AppDimensions.height10(context) * 5,
                 width: AppDimensions.height10(context) * 25.4,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                      AppDimensions.height10(context) * 5.0),
-                  gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                ),
+                decoration: goalName.text.toString() != ""
+                    ? BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
+                        gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
+                      )
+                    : BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xFFFCC10D).withOpacity(0.3),
+                              Color(0xFFFDA210).withOpacity(0.3)
+                            ]),
+                      ),
                 child: TextButton(
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
-                        final SharedPreferences prefs = await _prefs;
-                        var goal_Name = prefs.setString(
-                            'goalName', '${goalName.text.toString()}');
-                        Navigator.push(
-                          context,
-                          FadePageRoute(
-                            page: GoalName(),
-                          ),
-                        );
+                        // final SharedPreferences prefs = await _prefs;
+                        // var goal_Name = prefs.setString(
+                        //     'goalName', '${goalName.text.toString()}');
+                        // print('${goalName.text.toString()}');
+                        print(goalName.text.toString());
+                        print(index);
+                        AdminGoal()
+                            .addNewGoal('${goalName.text.toString()}', index)
+                            .then((response) async {
+                          print(response);
+                          final SharedPreferences prefs = await _prefs;
+                          var goal_Name = prefs.setString(
+                              'goalName', '${goalName.text.toString()}');
+
+                          var goalId = response["result"]["id"];
+                          getUserId(
+                              index, '${goalName.text.toString()}', goalId);
+
+                          Navigator.push(
+                            context,
+                            FadePageRoute(
+                              page: GoalName(index),
+                            ),
+                          );
+                        });
                       }
                     },
                     child: Text(
@@ -252,6 +345,7 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
               //  height: AppDimensions.height10(context) * 9.0,
               child: DropdownButton2<String>(
                 value: dropdownValue,
+
                 isExpanded: true,
                 iconStyleData: IconStyleData(
                     iconSize: AppDimensions.height10(context) * 4.0,
@@ -265,8 +359,10 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
                     color: const Color.fromARGB(209, 250, 154, 52)),
                 onChanged: (String? value) {
                   // This is called when the user selects an item.
+
                   setState(() {
                     dropdownValue = value!;
+                    index = categories.indexOf(value);
                   });
                 },
                 dropdownStyleData: DropdownStyleData(
@@ -275,6 +371,9 @@ class _DropdownButtonExampleState extends State<DropdownButtonExample> {
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 2.0))),
                 items: categories.map<DropdownMenuItem<String>>((String value) {
+                  // setState(() {
+                  //   index =
+                  // });
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),

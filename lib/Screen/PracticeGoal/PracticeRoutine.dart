@@ -29,29 +29,32 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
     {'day': 'Saturday', 'start': '', 'end': ''},
     {'day': 'Sunday', 'start': '', 'end': ''}
   ];
-
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  var mygoal;
-  var practiceName = "";
+  var mygoal = TextEditingController();
+  var practiceName = TextEditingController();
+  var practice = TextEditingController();
+  var color;
 
   @override
   void initState() {
     getGoalName();
-    setState(() {
-      count = 0;
-    });
     super.initState();
   }
+
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   getGoalName() async {
     print("hello world1224");
     final SharedPreferences prefs = await _prefs;
     var my_goal = prefs.getString("goalName");
     var practice_Name = prefs.getString('pracName');
+    var goalColor = prefs.getString('goalColor');
     setState(() {
-      mygoal = my_goal!;
-      practiceName = practice_Name!;
+      color = goalColor;
+      mygoal.text = my_goal!;
+      practice.text = practice_Name!;
+      practiceName.text = practice_Name!;
     });
+    print('=======================>$color');
   }
 
   @override
@@ -143,9 +146,10 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
+                  width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
-                      mygoal,
+                      "${mygoal.text.toString()}",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -162,23 +166,65 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 1.0,
-                            right: AppDimensions.height10(context) * 1.0),
-                        width: AppDimensions.height10(context) * 10.4,
-                        height: AppDimensions.height10(context) * 11.2,
-                        child: Image.asset(
-                          "assets/images/createprac.webp",
-                          fit: BoxFit.contain,
-                        )),
+                      width: AppDimensions.height10(context) * 7.9,
+                      height: AppDimensions.height10(context) * 7.9,
+                      // color: Colors.amber,
+
+                      // color: Colors.blue,
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const Alignment(-3, 0),
+                            child: Container(
+                              width: AppDimensions.height10(context) * 7.9,
+                              height: AppDimensions.height10(context) * 7.9,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                // color: Colors.amber,
+                                image: DecorationImage(
+                                    image: AssetImage(color == '1'
+                                        ? "assets/images/red_gradient.webp"
+                                        : color == '2'
+                                            ? 'assets/images/orange_moon.webp'
+                                            : color == '3'
+                                                ? "assets/images/lightGrey_gradient.webp"
+                                                : color == '4'
+                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                    : color == '5'
+                                                        ? "assets/images/medBlue_gradient.webp"
+                                                        : color == '6'
+                                                            ? "assets/images/Blue_gradient.webp"
+                                                            : 'assets/images/orange_moon.webp'),
+                                    fit: BoxFit.contain),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const Alignment(1.5, 0),
+                            child: Container(
+                              height: AppDimensions.height10(context) * 4.9,
+                              width: AppDimensions.height10(context) * 4.9,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/Ellipse 158.webp'),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Container(
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 1.5),
                       child: Center(
                         child: Text(
-                          practiceName,
+                          "${practice.text.toString()}",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xFF156F6D),
+                            color: Color(0xFF156F6D),
                             fontSize: AppDimensions.height10(context) * 2.0,
                           ),
                         ),
@@ -254,177 +300,211 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      schedule_card(
-                        key: Key(timesPerDay[0]['day']),
-                        days: 'Monday',
-                        onChangedStart: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                    (day) => day['day'] == 'Monday')['start'] =
-                                value;
-                          });
-                        },
-                        onChangedEnd: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                (day) => day['day'] == 'Monday')['end'] = value;
-                          });
-                        },
-                        onCountChanged: (Count) {
-                          setState(() {
-                            Count++;
-                          });
-                          print(Count);
-                        },
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 1.6,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            timesPerDay[1]['day'] = 'Tuesday';
-                          });
-                        },
-                        child: schedule_card(
-                          key: Key(timesPerDay[1]['day']),
-                          days: 'Tuesday',
-                          onChangedStart: (value) {
-                            setState(() {
-                              timesPerDay.firstWhere((day) =>
-                                  day['day'] == 'Tuesday')['start'] = value;
-                            });
-                          },
-                          onChangedEnd: (value) {
-                            setState(() {
-                              timesPerDay.firstWhere(
-                                      (day) => day['day'] == 'Tuesday')['end'] =
-                                  value;
-                            });
-                          },
-                          onCountChanged: (Count) {
-                            setState(() {
-                              Count++;
-                            });
-                          },
-                        ),
-                      ),
-                      SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      schedule_card(
-                        key: Key(timesPerDay[2]['day']),
-                        days: 'Wednesday',
-                        onChangedStart: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere((day) =>
-                                day['day'] == 'Wednesday')['start'] = value;
-                          });
-                        },
-                        onChangedEnd: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                    (day) => day['day'] == 'Wednesday')['end'] =
-                                value;
-                          });
-                        },
-                        onCountChanged: (Count) {
-                          setState(() {
-                            Count++;
-                          });
-                        },
-                      ),
-                      SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      schedule_card(
-                        key: Key(timesPerDay[3]['day']),
-                        days: 'Thursday',
-                        onChangedStart: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere((day) =>
-                                day['day'] == 'Thursday')['start'] = value;
-                          });
-                        },
-                        onChangedEnd: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                    (day) => day['day'] == 'Thursday')['end'] =
-                                value;
-                          });
-                        },
-                        onCountChanged: (Count) {
-                          setState(() {
-                            Count++;
-                          });
-                        },
-                      ),
-                      SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      schedule_card(
-                        key: Key(timesPerDay[4]['day']),
-                        days: 'Friday',
-                        onChangedStart: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                    (day) => day['day'] == 'Friday')['start'] =
-                                value;
-                          });
-                        },
-                        onChangedEnd: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                (day) => day['day'] == 'Friday')['end'] = value;
-                          });
-                        },
-                        onCountChanged: (Count) {
-                          setState(() {
-                            Count++;
-                          });
-                        },
-                      ),
-                      SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      schedule_card(
-                        key: Key(timesPerDay[5]['day']),
-                        days: 'Saturday',
-                        onChangedStart: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere((day) =>
-                                day['day'] == 'Saturday')['start'] = value;
-                          });
-                        },
-                        onChangedEnd: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                    (day) => day['day'] == 'Saturday')['end'] =
-                                value;
-                          });
-                        },
-                        onCountChanged: (Count) {
-                          setState(() {
-                            Count++;
-                          });
-                        },
-                      ),
-                      SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      schedule_card(
-                        key: Key(timesPerDay[6]['day']),
-                        days: 'Sunday',
-                        onChangedStart: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                    (day) => day['day'] == 'Sunday')['start'] =
-                                value;
-                          });
-                        },
-                        onChangedEnd: (value) {
-                          setState(() {
-                            timesPerDay.firstWhere(
-                                (day) => day['day'] == 'Sunday')['end'] = value;
-                          });
-                        },
-                        onCountChanged: (Count) {
-                          setState(() {
-                            Count++;
-                          });
-                        },
-                      ),
-                      SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      ListView.builder(
+                          itemCount: timesPerDay.length,
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: ((context, index) {
+                            return Column(
+                              children: [
+                                schedule_card(
+                                  key: Key(timesPerDay[index]['day']!),
+                                  days: '${timesPerDay[index]['day']}',
+                                  onChangedStart: (value) {
+                                    setState(() {
+                                      timesPerDay.firstWhere((day) =>
+                                              day['day'] ==
+                                              '${timesPerDay[index]}')[
+                                          'start'] = value;
+                                    });
+                                  },
+                                  onChangedEnd: (value) {
+                                    setState(() {
+                                      timesPerDay.firstWhere((day) =>
+                                              day['day'] ==
+                                              '${timesPerDay[index]}')['end'] =
+                                          value;
+                                    });
+                                  },
+                                  onCountChanged: (Count) {
+                                    setState(() {
+                                      Count++;
+                                    });
+                                    print(Count);
+                                  },
+                                ),
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 1.6,
+                                ),
+                              ],
+                            );
+                          })),
+                      // schedule_card(
+                      //   key: Key(timesPerDay[0]['day']!),
+                      //   days: 'Monday',
+                      //   onChangedStart: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //               (day) => day['day'] == 'Monday')['start'] =
+                      //           value;
+                      //     });
+                      //   },
+                      //   onChangedEnd: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //           (day) => day['day'] == 'Monday')['end'] = value;
+                      //     });
+                      //   },
+                      //   onCountChanged: (Count) {
+                      //     setState(() {
+                      //       Count++;
+                      //     });
+                      //     print(Count);
+                      //   },
+                      // ),
+                      // SizedBox(
+                      //   height: AppDimensions.height10(context) * 1.6,
+                      // ),
+                      // schedule_card(
+                      //   key: Key(timesPerDay[1]['day']!),
+                      //   days: 'Tuesday',
+                      //   onChangedStart: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //               (day) => day['day'] == 'Tuesday')['start'] =
+                      //           value;
+                      //     });
+                      //   },
+                      //   onChangedEnd: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //               (day) => day['day'] == 'Tuesday')['end'] =
+                      //           value;
+                      //     });
+                      //   },
+                      //   onCountChanged: (Count) {
+                      //     setState(() {
+                      //       Count++;
+                      //     });
+                      //   },
+                      // ),
+                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      // schedule_card(
+                      //   key: Key(timesPerDay[2]['day']!),
+                      //   days: 'Wednesday',
+                      //   onChangedStart: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere((day) =>
+                      //           day['day'] == 'Wednesday')['start'] = value;
+                      //     });
+                      //   },
+                      //   onChangedEnd: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //               (day) => day['day'] == 'Wednesday')['end'] =
+                      //           value;
+                      //     });
+                      //   },
+                      //   onCountChanged: (Count) {
+                      //     setState(() {
+                      //       Count++;
+                      //     });
+                      //   },
+                      // ),
+                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      // schedule_card(
+                      //   key: Key(timesPerDay[3]['day']!),
+                      //   days: 'Thursday',
+                      //   onChangedStart: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere((day) =>
+                      //           day['day'] == 'Thursday')['start'] = value;
+                      //     });
+                      //   },
+                      //   onChangedEnd: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //               (day) => day['day'] == 'Thursday')['end'] =
+                      //           value;
+                      //     });
+                      //   },
+                      //   onCountChanged: (Count) {
+                      //     setState(() {
+                      //       Count++;
+                      //     });
+                      //   },
+                      // ),
+                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      // schedule_card(
+                      //   key: Key(timesPerDay[4]['day']!),
+                      //   days: 'Friday',
+                      //   onChangedStart: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //               (day) => day['day'] == 'Friday')['start'] =
+                      //           value;
+                      //     });
+                      //   },
+                      //   onChangedEnd: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //           (day) => day['day'] == 'Friday')['end'] = value;
+                      //     });
+                      //   },
+                      //   onCountChanged: (Count) {
+                      //     setState(() {
+                      //       Count++;
+                      //     });
+                      //   },
+                      // ),
+                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      // schedule_card(
+                      //   key: Key(timesPerDay[5]['day']!),
+                      //   days: 'Saturday',
+                      //   onChangedStart: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere((day) =>
+                      //           day['day'] == 'Saturday')['start'] = value;
+                      //     });
+                      //   },
+                      //   onChangedEnd: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //               (day) => day['day'] == 'Saturday')['end'] =
+                      //           value;
+                      //     });
+                      //   },
+                      //   onCountChanged: (Count) {
+                      //     setState(() {
+                      //       Count++;
+                      //     });
+                      //   },
+                      // ),
+                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
+                      // schedule_card(
+                      //   key: Key(timesPerDay[6]['day']!),
+                      //   days: timesPerDay[6]['day'],
+                      //   onChangedStart: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //               (day) => day['day'] == 'Sunday')['start'] =
+                      //           value;
+                      //     });
+                      //   },
+                      //   onChangedEnd: (value) {
+                      //     setState(() {
+                      //       timesPerDay.firstWhere(
+                      //           (day) => day['day'] == 'Sunday')['end'] = value;
+                      //     });
+                      //   },
+                      //   onCountChanged: (Count) {
+                      //     setState(() {
+                      //       Count++;
+                      //     });
+                      //   },
+                      // ),
+                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
                     ],
                   ),
                 ),

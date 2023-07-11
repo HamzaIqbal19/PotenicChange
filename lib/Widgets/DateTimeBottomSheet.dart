@@ -78,7 +78,8 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                         });
                         widget.onSelectionChanged(
                             day, hour, minute, period, Done);
-                        Navigator.pop(context);
+
+                        // Navigator.pop(context);
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 2.9,
@@ -105,7 +106,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                         });
                         widget.onSelectionChanged(
                             day, hour, minute, period, Done);
-                        Navigator.pop(context);
+                        //Navigator.pop(context);
                       },
                       child: Container(
                         // width: AppDimensions.height10(context) * 3.7,

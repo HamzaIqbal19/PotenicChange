@@ -323,16 +323,20 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                         BorderSide(color: Colors.transparent))),
                             controller: emailController,
                             validator: (val) {
-                              if (val == null ||
-                                  val == "" ||
-                                  !EmailValidator.validate(val)) {
-                                setState(() {
-                                  errorEmail = true;
-                                });
-                              } else {
-                                setState(() {
-                                  errorEmail = false;
-                                });
+                              if (val != null && val.isNotEmpty) {
+                                val = val.trim();
+
+                                if (val == null ||
+                                    !EmailValidator.validate(val) ||
+                                    val == "") {
+                                  setState(() {
+                                    errorEmail = true;
+                                  });
+                                } else {
+                                  setState(() {
+                                    errorEmail = false;
+                                  });
+                                }
                               }
                             },
                           ),
@@ -619,7 +623,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         Authentication()
                             .registerApi(
                           '${nameController.text.toString()}',
-                          '${emailController.text.toString()}',
+                          '${emailController.text.toString().trim()}',
                           '${passwordController.text.toString()}',
                         )
                             .then((response) {

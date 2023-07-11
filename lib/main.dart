@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App',
+      title: 'Potenic',
       theme: ThemeData(primarySwatch: Colors.grey, fontFamily: "Laila"),
       builder: (context, child) {
         return MediaQuery(

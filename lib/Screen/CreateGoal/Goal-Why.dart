@@ -187,8 +187,11 @@ class _goalwhyState extends State<GoalWhy> {
                     context: context,
                     builder: (BuildContext context) => Container(
                       width: AppDimensions.height10(context) * 27.0,
-                      height: AppDimensions.height10(context) * 21.0,
+                      height: AppDimensions.height10(context) * 22.0,
                       child: AlertDialog(
+                        // shape: RoundedRectangleBorder(
+                        //     borderRadius: BorderRadius.circular(
+                        //         AppDimensions.height10(context) * 1.4)),
                         contentPadding: EdgeInsets.zero,
                         actionsPadding: EdgeInsets.zero,
                         titlePadding: EdgeInsets.zero,
@@ -371,8 +374,7 @@ class _goalwhyState extends State<GoalWhy> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: AppDimensions.height10(context) * 1.0),
+                  width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
                       goalName,
@@ -593,13 +595,13 @@ class _goalwhyState extends State<GoalWhy> {
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10(context) * 12.2,
+                        height: AppDimensions.height10(context) * 26.7,
                       )
                     : SizedBox(
                         height: AppDimensions.height10(context) * 5.0,
                       ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                         // color: Colors.blue,
@@ -614,6 +616,9 @@ class _goalwhyState extends State<GoalWhy> {
                             fit: BoxFit.contain,
                           ),
                         )),
+                    SizedBox(
+                      width: AppDimensions.height10(context) * 2.0,
+                    ),
                     AnimatedScaleButton(
                       onTap: () {
                         print('===================>${myTextFields[0]['text']}');

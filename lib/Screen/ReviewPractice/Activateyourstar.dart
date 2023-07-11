@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
@@ -34,7 +35,7 @@ class _ActivateStarState extends State<ActivateStar> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 5), onDoneLoading);
+    return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
@@ -216,10 +217,10 @@ class _ActivateStarState extends State<ActivateStar> {
                           width: AppDimensions.height10(context) * 38.1,
                           padding: EdgeInsets.all(
                               AppDimensions.height10(context) * 3.5),
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/anger_5.webp'))),
+                          // decoration: const BoxDecoration(
+                          //     image: DecorationImage(
+                          //         image: AssetImage(
+                          //             'assets/images/anger_5.webp'))),
                           child: Container(
                             margin: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 4.0),
@@ -240,10 +241,8 @@ class _ActivateStarState extends State<ActivateStar> {
                                                             ? "assets/images/Blue_gradient.webp"
                                                             : 'assets/images/orange_moon.webp'))),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 4.9,
-                                ),
                                 Container(
                                   width: AppDimensions.height10(context) * 24.0,
                                   padding: EdgeInsets.symmetric(
@@ -253,6 +252,8 @@ class _ActivateStarState extends State<ActivateStar> {
                                   child: Text(
                                     goalName,
                                     textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
                                     style: TextStyle(
                                         fontSize:
                                             AppDimensions.height10(context) *
@@ -267,15 +268,25 @@ class _ActivateStarState extends State<ActivateStar> {
                                 SizedBox(
                                   height: AppDimensions.height10(context) * 1.0,
                                 ),
-                                Text('"$identity"',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontStyle: FontStyle.italic,
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xff5B74A6))),
+                                Container(
+                                  width: AppDimensions.height10(context) * 22.0,
+                                  //height: AppDimensions.height10(context)*4.0,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppDimensions.height10(context) *
+                                              2.0),
+                                  child: Text('"$identity"',
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.italic,
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff5B74A6))),
+                                ),
                                 SizedBox(
                                   height: AppDimensions.height10(context) * 2.0,
                                 ),
@@ -290,7 +301,10 @@ class _ActivateStarState extends State<ActivateStar> {
                                             AppDimensions.height10(context) *
                                                 0.14,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xff5B74A6)))
+                                        color: const Color(0xff5B74A6))),
+                                SizedBox(
+                                  height: AppDimensions.height10(context) * 2,
+                                )
                               ],
                             ),
                           ),
@@ -336,11 +350,10 @@ class _ActivateStarState extends State<ActivateStar> {
                                       );
                                     } else {
                                       print("Failure");
+
                                       // const ScaffoldMessenger(
                                       //     child: Text('Goal status not changed'));
                                     }
-                                  }).catchError((error) {
-                                    print("error");
                                   });
 
                                   //  dashboard_sheet(context);
@@ -464,7 +477,12 @@ class _ActivateStarState extends State<ActivateStar> {
                     ),
                   ],
                 )
-              : activateStar_shimmer()
+              : const Center(
+                  child: SpinKitFadingCircle(
+                    color: Color(0xFFB1B8FF),
+                    size: 80,
+                  ),
+                )
         ],
       ),
     );

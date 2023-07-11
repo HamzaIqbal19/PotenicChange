@@ -6,6 +6,7 @@ import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,7 +41,7 @@ class _AllGoalsState extends State<AllGoals> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 5), onDoneLoading);
+    return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
@@ -116,7 +117,7 @@ class _AllGoalsState extends State<AllGoals> {
       Navigator.push(
         context,
         FadePageRoute(
-          page: GoalName(),
+          page: GoalName(4),
         ),
       );
       return Goal.fromJson(jsonMap);
@@ -378,7 +379,7 @@ class _AllGoalsState extends State<AllGoals> {
                                                             .length)
                                                     : (goalNamesAndCategories![index]["goals"].length <= 18)
                                                         ? AppDimensions.height10(context) * 8.6 * (goalNamesAndCategories![index]["goals"].length)
-                                                        : AppDimensions.height10(context) * 12.4 * (goalNamesAndCategories![index]["goals"].length) - 250,
+                                                        : AppDimensions.height10(context) * 7.4 * (goalNamesAndCategories![index]["goals"].length) - 250,
                                     width: AppDimensions.height10(context) * 38,
                                     child: GridView.builder(
                                         shrinkWrap: false,
@@ -515,9 +516,6 @@ class _AllGoalsState extends State<AllGoals> {
                                           AppDimensions.height10(context) * 1.5,
                                       height:
                                           AppDimensions.height10(context) * 1.5,
-
-                                      // fit: BoxFit.contain,
-                                      // fit: BoxFit.contain,
                                     ),
                                     suffixIcon: Image.asset(
                                       'assets/images/cancel.webp',
@@ -525,10 +523,13 @@ class _AllGoalsState extends State<AllGoals> {
                                           AppDimensions.height10(context) * 2.3,
                                       height:
                                           AppDimensions.height10(context) * 2.3,
-
                                       // fit: BoxFit.contain,
                                     ),
                                     hintText: "Search",
+                                    hintStyle: TextStyle(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.14),
                                     focusedBorder: const OutlineInputBorder(
                                         borderSide: BorderSide(
                                             color: Colors.transparent)),
@@ -566,17 +567,22 @@ class _AllGoalsState extends State<AllGoals> {
                   children: [
                     Row(
                       children: [
-                        Container(
-                          width: AppDimensions.height10(context) * 4.7,
-                          height: AppDimensions.height10(context) * 4.7,
-                          padding: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 0.5,
-                              bottom: AppDimensions.height10(context) * 0.5),
-                          child: Image.asset(
-                            'assets/images/Add.webp',
+                        AnimatedScaleButton(
+                          onTap: () {
+                            bottom_sheet(context);
+                          },
+                          child: Container(
                             width: AppDimensions.height10(context) * 4.7,
                             height: AppDimensions.height10(context) * 4.7,
-                            fit: BoxFit.contain,
+                            padding: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 0.5,
+                                bottom: AppDimensions.height10(context) * 0.5),
+                            child: Image.asset(
+                              'assets/images/Add.webp',
+                              width: AppDimensions.height10(context) * 4.7,
+                              height: AppDimensions.height10(context) * 4.7,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                         SizedBox(

@@ -32,33 +32,16 @@ class _feelingsAfterState extends State<feelingsAfter> {
   @override
   void initState() {
     super.initState();
-    _fetchGoalNames();
+    _fetchPracticeNames();
   }
 
-  void _fetchGoalNames() async {
-    AdminGoal.getUserGoal().then((response) {
-      if (response.length != 0) {
-        setState(() {
-          // Loading = false;
+  void _fetchPracticeNames() async {
+    final SharedPreferences prefs = await _prefs;
+    var Name = prefs.getString('pracName');
 
-          pracName = response["userPractices"][0]["name"];
-        });
-      } else {
-        setState(() {
-          //Loading = false;
-        });
-      }
-    }).catchError((error) {
-      setState(() {
-        // Loading = false;
-      });
-      print("error");
+    setState(() {
+      pracName = '$Name';
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
   }
 
   @override
@@ -85,7 +68,16 @@ class _feelingsAfterState extends State<feelingsAfter> {
             leading: Center(
               child: IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      FadePageRoute3(
+                        exitPage: const feelingsAfter(summary: false),
+                        enterPage: emotions(
+                          summary: false,
+                          pracName: pracName,
+                        ),
+                      ),
+                    );
                   },
                   icon: Image.asset(
                     'assets/images/Back.webp',

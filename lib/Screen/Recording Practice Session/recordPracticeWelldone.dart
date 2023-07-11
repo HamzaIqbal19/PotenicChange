@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
@@ -24,39 +25,24 @@ class welldone_splashState extends State<welldone_splash> {
 
   @override
   void initState() {
-    loadData();
     super.initState();
-    _fetchGoalNames();
+    _fetchPracticeNames();
   }
 
-  void _fetchGoalNames() async {
-    AdminGoal.getUserGoal().then((response) {
-      if (response.length != 0) {
-        setState(() {
-          // Loading = false;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-          pracName = response["userPractices"][0]["name"];
-        });
-      } else {
-        setState(() {
-          //Loading = false;
-        });
-      }
-    }).catchError((error) {
-      setState(() {
-        // Loading = false;
-      });
-      print("error");
+  void _fetchPracticeNames() async {
+    final SharedPreferences prefs = await _prefs;
+    var Name = prefs.getString('pracName');
+
+    setState(() {
+      pracName = '$Name';
     });
-
-    // setState(() {
-    //   goalName = AdminGoal().getUserGoal();
-    // });
-    // print('GoalName: $goalName');
+    loadData();
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 10), onDoneLoading);
+    return Timer(const Duration(seconds: 5), onDoneLoading);
   }
 
   onDoneLoading() async {

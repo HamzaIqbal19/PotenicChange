@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Loaders/create_practice_shimmer.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/loaders/dashboard_shimmer.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 // import 'package:simple_tooltip/simple_tooltip.dart';
@@ -18,6 +20,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/bottom_navigation.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 import '../../API/Practice.dart';
@@ -46,13 +49,13 @@ class dashBoard extends StatefulWidget {
 class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   String goalName = "";
   String identity = "";
-  String pracName = "";
-  var pracColor;
-  var color;
+  var pracName = "";
+  var pracColor = '0';
+  var color = '0';
   bool Loader = true;
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 5), onDoneLoading);
+    return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
@@ -69,17 +72,17 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
           identity = response["identityStatement"][0]["text"];
           color = response["color"];
         });
+        print("===================");
         _fetchPracticeNames();
+        print("===================");
       } else {
-        setState(() {
-          //Loading = false;
-        });
+        loadData();
       }
     }).catchError((error) {
-      setState(() {
-        // Loading = false;
-      });
+      loadData();
       print("error");
+    }).whenComplete(() {
+      loadData();
     });
 
     // setState(() {
@@ -96,10 +99,11 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
           pracName = response["name"];
           pracColor = response["color"];
         });
-        loadData();
+
         print("---------------------------------");
         print("response123:$pracName");
         print("response123:$pracColor");
+        loadData();
       } else {
         loadData();
         print("response:$response");
@@ -107,6 +111,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
     }).catchError((error) {
       loadData();
       print("hell");
+    }).whenComplete(() {
+      loadData();
     });
 
     // setState(() {
@@ -250,22 +256,38 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                           ],
                         ),
                       ),
-                      Container(
-                        height: AppDimensions.height10(context) * 3.0,
-                        width: AppDimensions.height10(context) * 3.0,
-                        padding: EdgeInsets.all(
-                            AppDimensions.height10(context) * 0.6),
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 10.6),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.transparent,
-                            border: Border.all(
-                                width: AppDimensions.height10(context) * 0.2,
-                                color: Colors.white)),
-                        child: const ImageIcon(
-                          AssetImage('assets/images/edit_icon.webp'),
-                          color: Colors.white,
+                      AnimatedScaleButton(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              FadePageRoute3(
+                                  enterPage: const practice_summary(),
+                                  exitPage: const dashBoard(
+                                    helpful_tips: false,
+                                    dashboard_ctrl: false,
+                                    membership: true,
+                                    trial: false,
+                                    cancel: false,
+                                    saved: true,
+                                  )));
+                        },
+                        child: Container(
+                          height: AppDimensions.height10(context) * 3.0,
+                          width: AppDimensions.height10(context) * 3.0,
+                          padding: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.6),
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 10.6),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.transparent,
+                              border: Border.all(
+                                  width: AppDimensions.height10(context) * 0.2,
+                                  color: Colors.white)),
+                          child: const ImageIcon(
+                            AssetImage('assets/images/edit_icon.webp'),
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
@@ -281,7 +303,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
         body: GestureDetector(
           onTap: () {
             if (widget.saved == true) {
-              __share_experience(context);
+              __share_experience(
+                  context, goalName, identity, color, pracColor, pracName);
             }
           },
           child: Container(
@@ -791,7 +814,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                         context,
                                                         FadePageRoute(
                                                             page:
-                                                                congratulations()));
+                                                                const congratulations()));
                                                   },
                                                   child: Container(
                                                     height:
@@ -848,19 +871,17 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                         decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
-                                                image: AssetImage('$color' ==
-                                                        '1'
+                                                image: AssetImage(color == '1'
                                                     ? "assets/images/red_gradient.webp"
-                                                    : '$color' == '2'
+                                                    : color == '2'
                                                         ? 'assets/images/orange_moon.webp'
-                                                        : '$color' == '3'
+                                                        : color == '3'
                                                             ? "assets/images/lightGrey_gradient.webp"
-                                                            : '$color' == '4'
+                                                            : color == '4'
                                                                 ? "assets/images/lightBlue_gradient.webp"
-                                                                : '$color' ==
-                                                                        '5'
+                                                                : color == '5'
                                                                     ? "assets/images/medBlue_gradient.webp"
-                                                                    : '$color' ==
+                                                                    : color ==
                                                                             '6'
                                                                         ? "assets/images/Blue_gradient.webp"
                                                                         : 'assets/images/orange_moon.webp'),
@@ -923,7 +944,11 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                       child: AnimatedScaleButton(
                                         onTap: () {
                                           widget.saved
-                                              ? Container()
+                                              ? Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const view_goals(
+                                                          missed: false)))
                                               : Navigator.push(
                                                   context,
                                                   FadePageRoute2(true,
@@ -964,19 +989,32 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                               //color: Colors.amber,
                                               shape: BoxShape.circle,
                                               image: DecorationImage(
-                                                  image: AssetImage(widget.saved
-                                                      ? 'assets/images/Meditation Completed.webp'
-                                                      : '$pracColor' == '1'
+                                                  image: widget.saved
+                                                      ? AssetImage(pracColor ==
+                                                              '1'
+                                                          ? "assets/images/Practice_Completed_1.webp"
+                                                          : pracColor == '2'
+                                                              ? 'assets/images/Practice_Completed_2.webp'
+                                                              : pracColor == '3'
+                                                                  ? "assets/images/Practice_Completed_3.webp"
+                                                                  : pracColor ==
+                                                                          '4'
+                                                                      ? "assets/images/Practice_Completed_4.webp"
+                                                                      : pracColor ==
+                                                                              '5'
+                                                                          ? "assets/images/Practice_Completed_4.webp"
+                                                                          : 'assets/images/Practice_Completed_1.webp')
+                                                      : AssetImage(pracColor ==
+                                                              '1'
                                                           ? "assets/images/Ellipse orange.webp"
-                                                          : '$pracColor' == '2'
+                                                          : pracColor == '2'
                                                               ? 'assets/images/Ellipse 158.webp'
-                                                              : '$pracColor' ==
-                                                                      '3'
+                                                              : pracColor == '3'
                                                                   ? "assets/images/Ellipse 157.webp"
-                                                                  : '$pracColor' ==
+                                                                  : pracColor ==
                                                                           '4'
                                                                       ? "assets/images/Ellipse light-blue.webp"
-                                                                      : '$pracColor' ==
+                                                                      : pracColor ==
                                                                               '5'
                                                                           ? "assets/images/Ellipse blue.webp"
                                                                           : 'assets/images/Ellipse 158.webp'),
@@ -985,7 +1023,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                       : BoxFit.cover)),
                                           child: Center(
                                             child: Text(
-                                              widget.saved ? '' : pracName,
+                                              pracName,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   color: Colors.white,
@@ -1484,7 +1522,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
 
                       if (_showOverlay && widget.helpful_tips == true)
                         FutureBuilder(
-                            future: Future.delayed(Duration(milliseconds: 200)),
+                            future: Future.delayed(
+                                const Duration(milliseconds: 200)),
                             builder: (c, s) =>
                                 s.connectionState == ConnectionState.done
                                     ? Align(
@@ -2069,14 +2108,15 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                       )
                                     : Container()),
                     ])
-                  : DashBoard_shimmer(),
+                  : const DashBoard_shimmer(),
             ),
           ),
         ));
   }
 }
 
-void __share_experience(context) {
+void __share_experience(context, String goalName, String identity, String color,
+    String pracColor, String pracName) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -2098,7 +2138,7 @@ void __share_experience(context) {
           decoration: BoxDecoration(
               borderRadius:
                   BorderRadius.circular(AppDimensions.height10(context) * 2.0),
-              color: Color(0xFFD9B4B4)),
+              color: const Color(0xFFD9B4B4)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
             //  mainAxisAlignment: MainAxisAlignment.start,
@@ -2109,7 +2149,7 @@ void __share_experience(context) {
                 //color: Colors.amber,
                 // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
                 alignment: const Alignment(1, 0),
-                child: GestureDetector(
+                child: AnimatedScaleButton(
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -2171,34 +2211,58 @@ void __share_experience(context) {
                     child: Container(
                       width: AppDimensions.height10(context) * 24.8,
                       height: AppDimensions.height10(context) * 24.8,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                           image: DecorationImage(
-                              image:
-                                  AssetImage('assets/images/orange_moon.webp'),
+                              image: AssetImage(color == '1'
+                                  ? "assets/images/red_gradient.webp"
+                                  : color == '2'
+                                      ? 'assets/images/orange_moon.webp'
+                                      : color == '3'
+                                          ? "assets/images/lightGrey_gradient.webp"
+                                          : color == '4'
+                                              ? "assets/images/lightBlue_gradient.webp"
+                                              : color == '5'
+                                                  ? "assets/images/medBlue_gradient.webp"
+                                                  : color == '6'
+                                                      ? "assets/images/Blue_gradient.webp"
+                                                      : 'assets/images/orange_moon.webp'),
                               fit: BoxFit.cover)),
                       child: Stack(
                         children: [
                           Align(
-                              alignment: const Alignment(0, -0.5),
-                              child: Text(
-                                'Control my anger',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xff5B74A6)),
+                              alignment: const Alignment(0, -0.7),
+                              child: Container(
+                                width: AppDimensions.height10(context) * 24.0,
+                                padding: EdgeInsets.symmetric(
+                                    horizontal:
+                                        AppDimensions.height10(context) * 2.0),
+                                child: Text(
+                                  goalName,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 2.0,
+                                      height: AppDimensions.height10(context) *
+                                          0.14,
+                                      fontWeight: FontWeight.w600,
+                                      color: const Color(0xff5B74A6)),
+                                ),
                               )),
                           Align(
-                            alignment: const Alignment(0, -0.2),
-                            child: Text(
-                                '“I am someone who is in\n control of my anger”',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xff5B74A6))),
+                            alignment: const Alignment(0, -0.3),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      AppDimensions.height10(context) * 2.0),
+                              child: Text(identity,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xff5B74A6))),
+                            ),
                           )
                         ],
                       ),
@@ -2211,12 +2275,31 @@ void __share_experience(context) {
                       child: Container(
                         height: AppDimensions.height10(context) * 14.8,
                         width: AppDimensions.height10(context) * 14.8,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                             //color: Colors.amber,
                             image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/Meditation Completed.webp'),
+                                image: AssetImage(pracColor == '1'
+                                    ? "assets/images/Practice_Completed_1.webp"
+                                    : pracColor == '2'
+                                        ? 'assets/images/Practice_Completed_2.webp'
+                                        : pracColor == '3'
+                                            ? "assets/images/Practice_Completed_3.webp"
+                                            : pracColor == '4'
+                                                ? "assets/images/Practice_Completed_4.webp"
+                                                : pracColor == '5'
+                                                    ? "assets/images/Practice_Completed_4.webp"
+                                                    : 'assets/images/Practice_Completed_1.webp'),
                                 fit: BoxFit.contain)),
+                        child: Center(
+                          child: Text(
+                            pracName,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ),
                       ),
                     ),
                   ),

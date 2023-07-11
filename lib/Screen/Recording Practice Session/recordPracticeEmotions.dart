@@ -16,6 +16,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
 
+int pracEmotions = 0;
+
 class emotions extends StatefulWidget {
   final bool summary;
   final String pracName;
@@ -28,7 +30,7 @@ class emotions extends StatefulWidget {
 class _emotionsState extends State<emotions> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  int pracEmotions = 0;
+  //int pracEmotions = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -591,6 +593,8 @@ class _emotionsState extends State<emotions> {
                                 final SharedPreferences prefs = await _prefs;
                                 var emotionResult =
                                     prefs.setInt('emotions', pracEmotions);
+                                var newPrac = prefs.setString(
+                                    'pracName', widget.pracName);
                                 print("======================>$pracEmotions");
                                 if (widget.summary == true) {
                                   RecordingPractice()

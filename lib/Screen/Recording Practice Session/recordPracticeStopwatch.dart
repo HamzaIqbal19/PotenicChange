@@ -3,12 +3,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/cuoertinoTimer.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:timer_count_down/timer_controller.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 
 import '../../utils/app_dimensions.dart';
 
-class clocks extends StatelessWidget {
+class clocks extends StatefulWidget {
   const clocks({super.key});
+
+  @override
+  State<clocks> createState() => _clocksState();
+}
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+class _clocksState extends State<clocks> {
+  String pracName = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchPracticeNames();
+  }
+
+  void _fetchPracticeNames() async {
+    final SharedPreferences prefs = await _prefs;
+    var Name = prefs.getString('pracName');
+
+    setState(() {
+      pracName = '$Name';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +83,14 @@ class clocks extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: AppDimensions.height10(context) * 18.6,
+                // width: AppDimensions.height10(context) * 18.6,
                 height: AppDimensions.height10(context) * 2.4,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 10.5,
                     top: AppDimensions.height10(context) * 4.6),
                 alignment: Alignment.center,
                 child: Text(
-                  'Meditation Session',
+                  pracName,
                   style: TextStyle(
                       fontSize: AppDimensions.height10(context) * 2.0,
                       fontWeight: FontWeight.w600,
@@ -89,58 +118,63 @@ class clocks extends StatelessWidget {
                 height: AppDimensions.height10(context) * 6.0,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Container(
-                      height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 10.6,
-                      margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.0),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 5.0),
-                          border:
-                              Border.all(width: 2, color: Color(0xffFA9934))),
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                                FadePageRoute(page: (welldone_splash())));
-                          },
-                          child: Text(
-                            'Skip',
-                            style: TextStyle(
-                                color: Color(0xffFA9934),
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w600),
-                          ))),
-                  Container(
-                      height: AppDimensions.height10(context) * 5.0,
-                      width: AppDimensions.height10(context) * 20.7,
-                      decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xffFCC10D),
-                              Color(0xffFDA210),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 5.0),
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.2,
-                              color: Colors.transparent)),
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.push(context,
-                                FadePageRoute(page: (welldone_splash())));
-                          },
+                  AnimatedScaleButton(
+                    onTap: () {
+                      Navigator.push(
+                          context, FadePageRoute(page: (welldone_splash())));
+                    },
+                    child: Container(
+                        height: AppDimensions.height10(context) * 5.0,
+                        width: AppDimensions.height10(context) * 10.6,
+                        margin: EdgeInsets.only(
+                            right: AppDimensions.height10(context) * 1.0),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 5.0),
+                            border:
+                                Border.all(width: 2, color: Color(0xffFA9934))),
+                        child: Center(
+                            child: Text(
+                          'Skip',
+                          style: TextStyle(
+                              color: Color(0xffFA9934),
+                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontWeight: FontWeight.w600),
+                        ))),
+                  ),
+                  AnimatedScaleButton(
+                    onTap: () {
+                      Navigator.push(
+                          context, FadePageRoute(page: (welldone_splash())));
+                    },
+                    child: Container(
+                        height: AppDimensions.height10(context) * 5.0,
+                        width: AppDimensions.height10(context) * 20.7,
+                        decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color(0xffFCC10D),
+                                Color(0xffFDA210),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 5.0),
+                            border: Border.all(
+                                width: AppDimensions.height10(context) * 0.2,
+                                color: Colors.transparent)),
+                        child: Center(
                           child: Text(
                             'Finished Practice',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: AppDimensions.height10(context) * 1.6,
                                 fontWeight: FontWeight.w600),
-                          )))
+                          ),
+                        )),
+                  )
                 ]),
               ),
             ],
@@ -164,6 +198,10 @@ class _watch_timeState extends State<watch_time> {
   String duration = '00:00';
   String duration_min = '00';
   String duration_sec = '00';
+  final CountdownController _controller =
+      new CountdownController(autoStart: true);
+
+  final _timeControl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -286,9 +324,35 @@ class _watch_timeState extends State<watch_time> {
               //timer
               Align(
                 alignment: Alignment(0, -0.4),
-                child: Container(
+                child: AnimatedScaleButton(
+                  onTap: () {
+                    // Navigator.push(context,
+                    //     FadePageRoute(page: countTimer(title: 'Timer')));
+                  },
+                  // child: Countdown(
+                  //   controller: _controller,
+                  //   seconds: 10,
+                  //   build: (_, double time) => TextField(
+                  //     controller: _timeControl,
+                  //     decoration: InputDecoration(hintText: time.toString()),
+                  //     style: TextStyle(
+                  //         color: Colors.white,
+                  //         fontSize: AppDimensions.height10(context) * 4.6,
+                  //         fontWeight: FontWeight.w300),
+                  //   ),
+                  //   interval: Duration(milliseconds: 100),
+                  //   onFinished: () {
+                  //     ScaffoldMessenger.of(context).showSnackBar(
+                  //       SnackBar(
+                  //         content: Text('Timer is done!'),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                  child: Container(
                     height: AppDimensions.height10(context) * 7.2,
                     width: AppDimensions.height10(context) * 12.8,
+                    // color: Colors.red,
                     child: Center(
                       child: Container(
                           decoration: clock_state
@@ -300,49 +364,35 @@ class _watch_timeState extends State<watch_time> {
                                   linePosition: LinePosition.bottom,
                                   color: Colors.white,
                                   dash: [2, 2]),
-                          child:
-                              // clock_state
-                              //     ?
-                              //
-                              Text(
+                          child: Text(
                             duration,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: AppDimensions.height10(context) * 4.6,
                                 fontWeight: FontWeight.w300),
-                          )
-
-                          // : TextFieldTapRegion(
-                          //     onTapInside: (event) {
-                          //       showCupertinoModalPopup<void>(
-                          //           context: context,
-                          //           builder: (BuildContext context) {
-                          //             return _buildContainer(timerPicker());
-                          //           });
-                          //     },
-                          //     child: Text(duration,
-                          //         style: TextStyle(
-                          //             color: Colors.white,
-                          //             fontSize: AppDimensions.height10(context) * 4.6,
-                          //             fontWeight: FontWeight.w300))),
-                          ),
-                    )),
+                          )),
+                    ),
+                  ),
+                ),
               ),
               //play button
               Positioned(
                 right: AppDimensions.height10(context) * 9.7,
                 left: AppDimensions.height10(context) * 9.7,
                 bottom: AppDimensions.height10(context) * 2.0,
-                child: InkWell(
+                child: AnimatedScaleButton(
                   onTap: () {
-                    setState(() {
-                      button_text = 'Stop';
-                    });
-                  },
-                  onTapCancel: () {
-                    setState(() {
-                      button_text = 'Start';
-                    });
+                    if (button_text == 'start') {
+                      _controller.start();
+                      setState(() {
+                        button_text = 'Stop';
+                      });
+                    } else {
+                      _controller.pause();
+                      setState(() {
+                        button_text = 'start';
+                      });
+                    }
                   },
                   child: Container(
                     height: AppDimensions.height10(context) * 9.1,
@@ -394,11 +444,12 @@ class _watch_timeState extends State<watch_time> {
               Positioned(
                 right: AppDimensions.height10(context) * 2.7,
                 bottom: AppDimensions.height10(context) * 5.6,
-                child: GestureDetector(
+                child: AnimatedScaleButton(
                   onTap: () {
                     setState(() {
                       duration = '00:00';
                     });
+                    _controller.restart();
                   },
                   child: Container(
                     height: AppDimensions.height10(context) * 5.6,
@@ -439,10 +490,9 @@ class _watch_timeState extends State<watch_time> {
   Widget timerPicker() {
     return CupertinoTimerPicker(
       mode: CupertinoTimerPickerMode.ms,
-      //  minuteInterval: 1,
-      // secondInterval: 1,
-      // initialTimerDuration: initialTimer,
-
+      minuteInterval: 1,
+      secondInterval: 1,
+      initialTimerDuration: Duration.zero,
       onTimerDurationChanged: (Duration changeTimer) {
         setState(() {
           //initialTimer = changeTimer;

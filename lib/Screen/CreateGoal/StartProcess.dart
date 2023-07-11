@@ -261,7 +261,7 @@ class _StartProcessState extends State<StartProcess> {
                     ),
                   ),
                   SizedBox(
-                    height: AppDimensions.height10(context) * 1.7,
+                    height: AppDimensions.height10(context) * 3.7,
                   ),
                   AnimatedScaleButton(
                     onTap: () {

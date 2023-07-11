@@ -56,7 +56,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
       description:
           'Potenic is a self-growth \n transformational app for personal\n development enthusiasts, who:',
       subDescription:
-          '-are on the journey already using self-development tools \n-need clarity on progress \n - struggle to stay focused \n - desire to reach a \n consistent level of self- \n fulfilment.',
+          '- are on the journey already using self-development tools \n- need clarity on progress \n - struggle to stay focused \n - desire to reach a \n consistent level of self- \n fulfilment.',
       image1: "",
       backbutton: false,
       description2: "",
@@ -88,7 +88,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         mainTitle: "Introduction",
         logo: 'assets/images/logo.webp',
         index: 3,
-        title: 'Evaluate the tools you’re already using',
+        title: 'Evaluate the tools\nyou’re already using',
         description:
             'Assess the tools and practices you’re \n using, discover the ones that are \n working for you, and eliminate the \n others that don’t serve you.',
         subDescription: '',

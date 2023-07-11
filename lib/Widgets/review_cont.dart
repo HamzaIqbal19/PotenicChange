@@ -25,8 +25,6 @@ class _reviewboxState extends State<reviewbox> {
   Future<List<String>>? _goalNamesFuture;
 
   var reason;
-  var reason2;
-  var reason3;
 
   @override
   void initState() {
@@ -39,9 +37,9 @@ class _reviewboxState extends State<reviewbox> {
       if (response.length != 0) {
         setState(() {
           Loading = false;
-          reason = response["reason"][0]['text'];
-          reason2 = response["reason"][1]['text'];
-          reason3 = response["reason"][2]['text'];
+          reason = response["reason"];
+          // reason2 = response["reason"][1]['text'];
+          // reason3 = response["reason"][2]['text'];
         });
       } else {
         print("response:$response");
@@ -77,122 +75,60 @@ class _reviewboxState extends State<reviewbox> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 2.4,
                       ),
-                      inner_text('Reason 1',
-                          bodyText: reason2 != null
-                              ? '$reason'
-                              : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
-                          delete: false),
-                      Container(
-                        padding: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 23.6),
-                        child: Row(
-                          children: [
-                            Center(
-                              child: Text(
-                                "Character count:",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF464646),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
+                      ListView.builder(
+                          itemCount: reason.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (context, index) {
+                            return Column(children: [
+                              inner_text(
+                                'Reason ${index + 1}',
+                                bodyText: '${reason[index]['text']}',
+                                delete: index != 0 ? true : false,
+                              ),
+                              SizedBox(
+                                height: AppDimensions.height10(context),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 2.0,
+                                    right:
+                                        AppDimensions.height10(context) * 23.6),
+                                child: Row(
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        "Character count:",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        "200",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
-                            Center(
-                              child: Text(
-                                "200",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: const Color(0xFF464646),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
-                                ),
+                              SizedBox(
+                                height: AppDimensions.height10(context) * 2.8,
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.8,
-                      ),
-                      inner_text("Reason 2",
-                          bodyText: reason != null
-                              ? '$reason2'
-                              : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
-                          delete: true),
-                      Container(
-                        padding: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 23.6),
-                        child: Row(
-                          children: [
-                            Center(
-                              child: Text(
-                                "Character count:",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF464646),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: Text(
-                                "200",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: const Color(0xFF464646),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.8,
-                      ),
-                      inner_text(
-                        "Reason 3",
-                        bodyText: reason3 != null
-                            ? '$reason3'
-                            : 'I want to achieve this goal to be in control of my anger and to regain control of my life.',
-                        delete: true,
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 23.6),
-                        child: Row(
-                          children: [
-                            Center(
-                              child: Text(
-                                "Character count:",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF464646),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
-                                ),
-                              ),
-                            ),
-                            Center(
-                              child: Text(
-                                "200",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: const Color(0xFF464646),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.3,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                            ]);
+                          }),
                     ],
                   ),
                 ),

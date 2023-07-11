@@ -103,7 +103,7 @@ class _GoalCategoryState extends State<GoalCategory> {
       Navigator.push(
         context,
         FadePageRoute(
-          page: GoalName(),
+          page: GoalName(widget.id),
         ),
       );
       return Goal.fromJson(jsonMap);
@@ -113,7 +113,7 @@ class _GoalCategoryState extends State<GoalCategory> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 5), onDoneLoading);
+    return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
@@ -292,10 +292,13 @@ class _GoalCategoryState extends State<GoalCategory> {
                           ],
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(
-                              horizontal:
-                                  AppDimensions.height10(context) * 2.0),
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 2.0,
+                              bottom: AppDimensions.height10(context) * 8.0,
+                              left: AppDimensions.height10(context) * 2.0,
+                              right: AppDimensions.height10(context) * 2.0),
                           child: GridView.builder(
+                              padding: EdgeInsets.zero,
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               gridDelegate:
@@ -465,9 +468,9 @@ class _GoalCategoryState extends State<GoalCategory> {
                             padding: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 0.5,
                                 bottom: AppDimensions.height10(context) * 0.5),
-                            child: GestureDetector(
+                            child: AnimatedScaleButton(
                               onTap: () {
-                                bottom_sheet(context, widget.id);
+                                bottom_sheet(context);
                               },
                               child: Image.asset(
                                 'assets/images/Add.webp',

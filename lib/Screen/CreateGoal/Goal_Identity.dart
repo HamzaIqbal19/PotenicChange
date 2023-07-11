@@ -381,8 +381,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: AppDimensions.height10(context) * 1.0),
+                  width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
                       goalName,
@@ -603,13 +602,13 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? SizedBox(
-                        height: AppDimensions.height10(context) * 12.2,
+                        height: AppDimensions.height10(context) * 24.4,
                       )
                     : SizedBox(
                         height: AppDimensions.height10(context) * 5.0,
                       ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                         // color: Colors.blue,
@@ -624,6 +623,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             fit: BoxFit.contain,
                           ),
                         )),
+                    SizedBox(
+                      width: AppDimensions.height10(context) * 2.0,
+                    ),
                     AnimatedScaleButton(
                       onTap: () {
                         updateGoalReason(myIdentity);

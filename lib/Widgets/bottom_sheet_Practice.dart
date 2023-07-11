@@ -150,8 +150,8 @@ void bottom_sheet(context, String goal) {
                       onPressed: () async {
                         final SharedPreferences prefs = await _prefs;
                         var pracName = prefs.setString(
-                            'goalName', '${goalName.text.toString()}');
-                        Navigator.pushReplacement(
+                            'pracName', '${goalName.text.toString()}');
+                        Navigator.push(
                             context,
                             FadePageRoute2(true,
                                 exitPage: CreatePractice(),

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
@@ -16,7 +17,8 @@ import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 
 class GoalName extends StatefulWidget {
-  GoalName();
+  final int catId;
+  const GoalName(this.catId, {super.key});
 
   @override
   State<GoalName> createState() => _GoalNameState();
@@ -25,6 +27,8 @@ class GoalName extends StatefulWidget {
 class _GoalNameState extends State<GoalName> {
   String goalCategory = "";
   String goalName = "";
+  var id;
+
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   // _GoalNameState();
 
@@ -43,15 +47,76 @@ class _GoalNameState extends State<GoalName> {
   getGoalName() async {
     print("hello world1224");
     final SharedPreferences prefs = await _prefs;
-
+    var catId = prefs.setInt('goalCategoryId', widget.catId);
     setState(() {
       goalName = prefs.getString("goalName")!;
       goalCategory = prefs.getString("GoalCategory")!;
+
+      id = prefs.getInt("goalId");
     });
 
     mygoal.text = goalName!;
     print("mygoal.text:${mygoal.text}");
     print("goalName:$goalName");
+  }
+
+  Future getUserId(String goalname, goalId) async {
+    final SharedPreferences prefs = await _prefs;
+    var userId = prefs.getInt("userid");
+
+    saveGoalToPrefs(userId!, widget.catId, goalname, goalId);
+  }
+
+  Future<void> saveGoalToPrefs(
+      var userId, var categoryId, var goalName, var goalId) async {
+    final SharedPreferences prefs = await _prefs;
+    var GoalName = prefs.setString('goalName', goalName);
+    //var GoalCategory = prefs.setString("GoalCategory", widget.Circletitle);
+    var usergoalId = prefs.setInt("goalId", goalId);
+    Goal goal = Goal(
+      name: goalName,
+      reason: [
+        {"key": "reason1", "text": "This is reason 1"},
+      ],
+      identityStatement: [
+        {"key": "reason1", "text": "This is reason 1"},
+      ],
+      visualizingYourSelf: [
+        {"key": "reason1", "text": "This is reason 1"},
+      ],
+      userId: userId,
+      goalId: goalId,
+      goalCategoryId: categoryId,
+    );
+    String jsonString =
+        jsonEncode(goal.toJson()); // converting object to json string
+    prefs.setString('goal', jsonString);
+    print('====================');
+    var userGoalId = prefs.setInt('goalId', goalId);
+    print('====================');
+    print('====================$userGoalId');
+
+    getGoal();
+  }
+
+  Future<Goal> getGoal() async {
+    final prefs = await SharedPreferences.getInstance();
+    print("GoalId:${prefs.getInt("goalId")}");
+    String? jsonString = prefs.getString('goal');
+
+    if (jsonString != null) {
+      Map<String, dynamic> jsonMap = json.decode(jsonString);
+      print("Goal===============>$jsonString");
+      // Navigator.push(
+      //   context,
+      //   FadePageRoute(
+      //     page: GoalName(),
+      //   ),
+      // );
+      return Goal.fromJson(jsonMap);
+    }
+
+    throw Exception('No goal found in local storage');
   }
 
   // @override
@@ -163,7 +228,7 @@ class _GoalNameState extends State<GoalName> {
                                     Navigator.push(
                                       context,
                                       FadePageRoute3(
-                                        exitPage: GoalName(),
+                                        exitPage: GoalName(widget.catId),
                                         enterPage:
                                             const HomeScreenProgressSaved(
                                           login: true,
@@ -202,7 +267,7 @@ class _GoalNameState extends State<GoalName> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: GoalName(),
+                                        exitPage: GoalName(widget.catId),
                                         enterPage:
                                             const HomeScreen(login: true),
                                       ),
@@ -287,8 +352,7 @@ class _GoalNameState extends State<GoalName> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: AppDimensions.height10(context) * 2.0),
+                  width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
                       goalName!,
@@ -321,7 +385,7 @@ class _GoalNameState extends State<GoalName> {
                 Container(
                   child: Center(
                     child: Text(
-                      goalCategory!,
+                      'Goal Name',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
@@ -376,7 +440,7 @@ class _GoalNameState extends State<GoalName> {
                         color: const Color(0xFFFA9934)),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.zero,
-                        // hintText: "Control my anger",
+                        hintText: goalName,
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.4,
                             fontWeight: FontWeight.w500,
@@ -478,17 +542,51 @@ class _GoalNameState extends State<GoalName> {
                         )),
                     AnimatedScaleButton(
                       onTap: () async {
-                        final SharedPreferences prefs = await _prefs;
-                        var goal_Name = prefs.setString(
-                            'goalName', '${mygoal.text.toString()}');
-                        Navigator.push(
-                          context,
-                          FadePageRoute2(
-                            true,
-                            exitPage: GoalName(),
-                            enterPage: GoalWhy(),
-                          ),
-                        );
+                        if (goalName != mygoal.text) {
+                          print('=====================> GoalName Changed');
+
+                          print(
+                              '=====================> GoalName Change Api called');
+
+                          AdminGoal()
+                              .addNewGoal(mygoal.text.toString(), widget.catId)
+                              .then((response) async {
+                            print(response);
+                            final SharedPreferences prefs = await _prefs;
+                            var goal_Name = prefs.setString(
+                                'goalName', '${mygoal.text.toString()}');
+
+                            var goal = response["result"]["id"];
+
+                            print(goal);
+                            getUserId(mygoal.text.toString(), goal);
+
+                            Navigator.push(
+                              context,
+                              FadePageRoute2(
+                                true,
+                                exitPage: GoalName(widget.catId),
+                                enterPage: GoalWhy(),
+                              ),
+                            );
+                          });
+                        } else {
+                          print('=====================>');
+                          print(mygoal.text.toString());
+                          final SharedPreferences prefs = await _prefs;
+                          var newGoalName = prefs.setString(
+                              'goalName', mygoal.text.toString());
+                          getUserId(mygoal.text.toString(), id);
+
+                          Navigator.push(
+                            context,
+                            FadePageRoute2(
+                              true,
+                              exitPage: GoalName(widget.catId),
+                              enterPage: GoalWhy(),
+                            ),
+                          );
+                        }
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,

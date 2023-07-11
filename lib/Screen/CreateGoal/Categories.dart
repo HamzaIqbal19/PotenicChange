@@ -38,7 +38,7 @@ class _CategoriesState extends State<Categories> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 5), onDoneLoading);
+    return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
@@ -315,6 +315,7 @@ class _CategoriesState extends State<Categories> {
                           scrollDirection: Axis.horizontal,
                           itemCount: min(4, goalCategories!.length - 4),
                           itemBuilder: (context, index) {
+                            final dataIndex = index + 4;
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -331,7 +332,7 @@ class _CategoriesState extends State<Categories> {
                                           rejectedData) {
                                         return LongPressDraggable<
                                             Map<String, dynamic>>(
-                                          data: goalCategories![index + 4],
+                                          data: goalCategories![dataIndex],
                                           child: AnimatedScaleButton(
                                             onTap: () {
                                               Navigator.push(
@@ -339,9 +340,9 @@ class _CategoriesState extends State<Categories> {
                                                 FadePageRoute(
                                                   page: GoalCategory(
                                                     "Category Name",
-                                                    goalCategories![index + 4]
+                                                    goalCategories![dataIndex]
                                                         ["name"],
-                                                    goalCategories![index + 4]
+                                                    goalCategories![dataIndex]
                                                         ["id"],
                                                   ),
                                                 ),
@@ -349,7 +350,7 @@ class _CategoriesState extends State<Categories> {
                                             },
                                             child: circles(
                                                 circle_text:
-                                                    goalCategories![index + 4]
+                                                    goalCategories![dataIndex]
                                                         ["name"],
                                                 circle_color1: 0xFFFC854F,
                                                 circle_color2: 0xFFFAA960,
@@ -370,7 +371,7 @@ class _CategoriesState extends State<Categories> {
                                           ),
                                           feedback: circles(
                                               circle_text:
-                                                  goalCategories![index + 4]
+                                                  goalCategories![dataIndex]
                                                       ["name"],
                                               circle_color1: 0xFFFC854F,
                                               circle_color2: 0xFFFAA960,
@@ -401,10 +402,10 @@ class _CategoriesState extends State<Categories> {
                                           int indexData = goalCategories!
                                               .indexWhere((element) =>
                                                   element["id"] == data["id"]);
-                                          var temp = goalCategories![index + 4];
-                                          goalCategories![index + 4] =
-                                              goalCategories![indexData + 4];
-                                          goalCategories![indexData + 4] = temp;
+                                          var temp = goalCategories![dataIndex];
+                                          goalCategories![dataIndex] =
+                                              goalCategories![indexData];
+                                          goalCategories![indexData] = temp;
                                         });
                                       },
                                     )

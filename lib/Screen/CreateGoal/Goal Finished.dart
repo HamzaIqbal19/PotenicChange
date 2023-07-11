@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Loaders/goal_finished_shimmer.dart';
 import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
@@ -36,7 +37,7 @@ class _GoalFinishedState extends State<GoalFinished> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 5), onDoneLoading);
+    return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
@@ -53,6 +54,7 @@ class _GoalFinishedState extends State<GoalFinished> {
           color = response["color"];
           identity = response["identityStatement"][0]["text"];
         });
+        print(goalName);
         loadData();
       } else {
         setState(() {
@@ -69,285 +71,309 @@ class _GoalFinishedState extends State<GoalFinished> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        extendBodyBehindAppBar: true,
-        resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          elevation: 0,
-          centerTitle: true,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+          extendBodyBehindAppBar: true,
+          resizeToAvoidBottomInset: false,
           backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: true,
-          leading: Center(
-            // alignment: Alignment.center,
-            child: IconButton(
-              icon: Image.asset(
-                'assets/images/Back.webp',
-                width: AppDimensions.height10(context) * 3,
-                height: AppDimensions.height10(context) * 3,
-                fit: BoxFit.contain,
-              ),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    FadePageRoute3(
-                        enterPage: StartProcess(), exitPage: GoalFinished()));
-              },
-            ),
-          ),
-          actions: [
-            Center(
+          appBar: AppBar(
+            elevation: 0,
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: true,
+            leading: Center(
               // alignment: Alignment.center,
               child: IconButton(
                 icon: Image.asset(
-                  'assets/images/Close.webp',
-                  width: AppDimensions.height10(context) * 3.0,
-                  height: AppDimensions.height10(context) * 3.0,
+                  'assets/images/Back.webp',
+                  width: AppDimensions.height10(context) * 3,
+                  height: AppDimensions.height10(context) * 3,
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                  // Navigator.pushReplacement(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => HomeScreen(),
-                  //   ),
-                  // );
-                  // Add code for performing close action
+                  Navigator.push(
+                      context,
+                      FadePageRoute3(
+                          enterPage: StartProcess(), exitPage: GoalFinished()));
                 },
               ),
             ),
-          ],
-        ),
-        body: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/finalGoal.webp"),
-                  fit: BoxFit.cover,
+            actions: [
+              Center(
+                // alignment: Alignment.center,
+                child: IconButton(
+                  icon: Image.asset(
+                    'assets/images/Close.webp',
+                    width: AppDimensions.height10(context) * 3.0,
+                    height: AppDimensions.height10(context) * 3.0,
+                    fit: BoxFit.contain,
+                  ),
+                  onPressed: () {
+                    // Navigator.pushReplacement(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => HomeScreen(),
+                    //   ),
+                    // );
+                    // Add code for performing close action
+                  },
                 ),
               ),
-            ),
-            Loading == false
-                ? Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 10),
-                        child: Center(
-                          child: GradientText(
-                            "Star Created!",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              // color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 3,
+            ],
+          ),
+          body: Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/finalGoal.webp"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Loading == false
+                  ? Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 10),
+                          child: Center(
+                            child: GradientText(
+                              "Star Created!",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                // color: Colors.white,
+                                fontSize: AppDimensions.height10(context) * 3,
+                              ),
+                              colors: const [
+                                Color(0xFFFA9934),
+                                Color(0xFFEDD15E),
+                              ],
                             ),
-                            colors: const [
-                              Color(0xFFFA9934),
-                              Color(0xFFEDD15E),
-                            ],
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.0,
-                      ),
-                      Container(
-                          // color: Colors.black,
-                          height: AppDimensions.height10(context) * 21.8,
-                          width: AppDimensions.height10(context) * 34.0,
-                          child: Column(
-                            children: [
-                              Container(
-                                child: Center(
-                                  child: Text(
-                                    "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not  working, you can change it to another \n practice. ",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                      fontFamily: "LaiLa",
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 2.0,
+                        ),
+                        Container(
+                            // color: Colors.black,
+                            height: AppDimensions.height10(context) * 21.8,
+                            width: AppDimensions.height10(context) * 34.0,
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Center(
+                                    child: Text(
+                                      "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not  working, you can change it to another \n practice. ",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
+                                        fontFamily: "LaiLa",
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                        Stack(
+                          children: [
+                            AnimatedScaleButton(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  FadePageRoute2(
+                                    true,
+                                    exitPage: GoalFinished(),
+                                    enterPage: const StarReview(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: AppDimensions.height10(context) * 38.1,
+                                width: AppDimensions.height10(context) * 38.1,
+                                padding: EdgeInsets.all(
+                                    AppDimensions.height10(context) * 3.5),
+                                // decoration: const BoxDecoration(
+                                //     image: DecorationImage(
+                                //         image: AssetImage(
+                                //             'assets/images/anger_5.webp'))),
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      bottom: AppDimensions.height10(context) *
+                                          4.0),
+                                  padding: EdgeInsets.only(
+                                      bottom: AppDimensions.height10(context) *
+                                          10.0),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                          image: AssetImage('$color' == '1'
+                                              ? "assets/images/red_gradient.webp"
+                                              : '$color' == '2'
+                                                  ? 'assets/images/orange_moon.webp'
+                                                  : '$color' == '3'
+                                                      ? "assets/images/lightGrey_gradient.webp"
+                                                      : '$color' == '4'
+                                                          ? "assets/images/lightBlue_gradient.webp"
+                                                          : '$color' == '5'
+                                                              ? "assets/images/medBlue_gradient.webp"
+                                                              : '$color' == '6'
+                                                                  ? "assets/images/Blue_gradient.webp"
+                                                                  : 'assets/images/orange_moon.webp'))),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        width: AppDimensions.height10(context) *
+                                            24.0,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: AppDimensions.height10(
+                                                    context) *
+                                                2.0),
+                                        child: Text(
+                                          goalName,
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.14,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xff5B74A6)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.0,
+                                      ),
+                                      SizedBox(
+                                        width: AppDimensions.height10(context) *
+                                            22.0,
+                                        child: Text('"$identity"',
+                                            maxLines: 2,
+                                            textAlign: TextAlign.center,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.6,
+                                                fontWeight: FontWeight.w400,
+                                                color:
+                                                    const Color(0xff5B74A6))),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.0,
+                                      ),
+                                      Text('Review',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.14,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xff5B74A6)))
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              top: 0,
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child: Align(
+                                // alignment: Alignment.bottomCenter,
+                                alignment: Alignment(
+                                    0.01,
+                                    AppDimensions.height10(context) * 0.015 +
+                                        1),
+                                //heightFactor: 0.5,
+                                child: Container(
+                                  height:
+                                      AppDimensions.height10(context) * 17.5,
+                                  width: AppDimensions.height10(context) * 17.5,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: AnimatedScaleButton(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute2(
+                                          true,
+                                          exitPage: GoalFinished(),
+                                          enterPage: const CreatePractice(),
+                                        ),
+                                      );
+                                    },
+                                    child: Image(
+                                      image: const AssetImage(
+                                          'assets/images/practice.webp'),
+                                      height: AppDimensions.height10(context) *
+                                          17.5,
+                                      width: AppDimensions.height10(context) *
+                                          17.5,
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          )),
-                      Stack(
-                        children: [
-                          AnimatedScaleButton(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                FadePageRoute2(
-                                  true,
-                                  exitPage: GoalFinished(),
-                                  enterPage: const StarReview(),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 38.1,
-                              width: AppDimensions.height10(context) * 38.1,
-                              padding: EdgeInsets.all(
-                                  AppDimensions.height10(context) * 3.5),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/anger_5.webp'))),
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensions.height10(context) * 4.0),
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: AssetImage('$color' == '1'
-                                            ? "assets/images/red_gradient.webp"
-                                            : '$color' == '2'
-                                                ? 'assets/images/orange_moon.webp'
-                                                : '$color' == '3'
-                                                    ? "assets/images/lightGrey_gradient.webp"
-                                                    : '$color' == '4'
-                                                        ? "assets/images/lightBlue_gradient.webp"
-                                                        : '$color' == '5'
-                                                            ? "assets/images/medBlue_gradient.webp"
-                                                            : '$color' == '6'
-                                                                ? "assets/images/Blue_gradient.webp"
-                                                                : 'assets/images/orange_moon.webp'))),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 4.9,
-                                    ),
-                                    Container(
-                                      width: AppDimensions.height10(context) *
-                                          24.0,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              AppDimensions.height10(context) *
-                                                  2.0),
-                                      child: Text(
-                                        goalName,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.14,
-                                            fontWeight: FontWeight.w600,
-                                            color: const Color(0xff5B74A6)),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 1.0,
-                                    ),
-                                    Text('"$identity"',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontStyle: FontStyle.italic,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xff5B74A6))),
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 2.0,
-                                    ),
-                                    Text('Review',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.14,
-                                            fontWeight: FontWeight.w600,
-                                            color: const Color(0xff5B74A6)))
-                                  ],
-                                ),
-                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 6.16,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 1.6,
                             ),
-                          ),
-                          Positioned(
-                            top: 0,
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            child: Align(
-                              // alignment: Alignment.bottomCenter,
-                              alignment: Alignment(0.01,
-                                  AppDimensions.height10(context) * 0.015 + 1),
-                              //heightFactor: 0.5,
-                              child: Container(
-                                height: AppDimensions.height10(context) * 17.5,
-                                width: AppDimensions.height10(context) * 17.5,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
+                            Container(
+                                // color: Colors.blue,
+                                width: AppDimensions.height10(context) * 5.0,
+                                height: AppDimensions.height10(context) * 5.0,
                                 child: AnimatedScaleButton(
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute2(
-                                        true,
-                                        exitPage: GoalFinished(),
-                                        enterPage: const CreatePractice(),
-                                      ),
-                                    );
+                                    //  signupSheet(context, "Sign up / login", "login");
                                   },
-                                  child: Image(
-                                    image: const AssetImage(
-                                        'assets/images/practice.webp'),
-                                    height:
-                                        AppDimensions.height10(context) * 17.5,
-                                    width:
-                                        AppDimensions.height10(context) * 17.5,
+                                  child: Image.asset(
+                                    "assets/images/Moreactions.webp",
+                                    fit: BoxFit.contain,
                                   ),
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
+                                )),
+                          ],
+                        )
+                      ],
+                    )
+                  : const Center(
+                      child: SpinKitFadingCircle(
+                        color: Color(0xFFB1B8FF),
+                        size: 80,
                       ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 6.16,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 1.6,
-                          ),
-                          Container(
-                              // color: Colors.blue,
-                              width: AppDimensions.height10(context) * 5.0,
-                              height: AppDimensions.height10(context) * 5.0,
-                              child: AnimatedScaleButton(
-                                onTap: () {
-                                  //  signupSheet(context, "Sign up / login", "login");
-                                },
-                                child: Image.asset(
-                                  "assets/images/Moreactions.webp",
-                                  fit: BoxFit.contain,
-                                ),
-                              )),
-                        ],
-                      )
-                    ],
-                  )
-                : goalFinished_shimmer(),
-          ],
-        ));
+                    )
+            ],
+          )),
+    );
   }
 }

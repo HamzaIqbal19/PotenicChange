@@ -252,6 +252,43 @@ class AdminGoal {
 
 */
 
+  Future addNewGoal(goalName, goalCategoryId) async {
+    final SharedPreferences prefs = await _prefs;
+    var accessToken = prefs.getString("usertoken");
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken'
+    };
+    var Body = json.encode({
+      "goalName": "$goalName",
+      "goalCategoryId": "$goalCategoryId",
+    });
+
+    var request = await client.post(
+        Uri.parse('${URL.BASE_URL}api/goal/add-goal'),
+        headers: headers,
+        body: Body);
+
+    var responses = jsonDecode(request.body);
+
+    if (request.statusCode == 200) {
+      final SharedPreferences prefs = await _prefs;
+      print("response for api call:${responses}");
+      print("response:${responses['message']}");
+      print('${responses['result']['id']}');
+      var goal_num = prefs.setInt("goal_num", responses["result"]["id"]);
+      print('$goal_num');
+      return responses;
+    } else {
+      //client.close();
+
+      // print("response:${}");
+      print("request==========>$request");
+      return responses;
+    }
+  }
+
   Future userAddGoal(var goal) async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
@@ -286,7 +323,7 @@ class AdminGoal {
     }
   }
 
-  Future updateUserGoal(reason) async {
+  Future updateUserGoal(category, key, reason) async {
     final SharedPreferences prefs = await _prefs;
     var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
@@ -298,8 +335,8 @@ class AdminGoal {
       'x-access-token': '$Accestoken'
     };
     var body = jsonEncode({
-      "reason": [
-        {"text": "$reason"}
+      "$category": [
+        {"key": 'Reason $key', "text": "$reason"}
       ],
     });
     // var userGoalId = prefs.getInt('goalId');

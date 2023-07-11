@@ -368,6 +368,7 @@ class OnboardingPageState extends State<OnboardingPage>
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
+                      letterSpacing: AppDimensions.height10(context) * 0.13,
                       color: page.descripColor,
                       fontSize: AppDimensions.height10(context) * 2.0,
                     ),

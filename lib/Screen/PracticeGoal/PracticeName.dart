@@ -22,6 +22,7 @@ class _PracticeNameState extends State<PracticeName> {
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
   var practice = TextEditingController();
+  var color;
 
   @override
   void initState() {
@@ -36,11 +37,14 @@ class _PracticeNameState extends State<PracticeName> {
     final SharedPreferences prefs = await _prefs;
     var my_goal = prefs.getString("goalName");
     var practice_Name = prefs.getString('pracName');
+    var goalColor = prefs.getString('goalColor');
     setState(() {
+      color = goalColor;
       mygoal.text = my_goal!;
       practice.text = practice_Name!;
       practiceName.text = practice_Name!;
     });
+    print('=======================>$color');
   }
 
   @override
@@ -133,9 +137,11 @@ class _PracticeNameState extends State<PracticeName> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
+                  width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
                       "${mygoal.text.toString()}",
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -152,16 +158,58 @@ class _PracticeNameState extends State<PracticeName> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 1.0,
-                            right: AppDimensions.height10(context) * 1.0),
-                        width: AppDimensions.height10(context) * 10.4,
-                        height: AppDimensions.height10(context) * 11.2,
-                        child: Image.asset(
-                          "assets/images/createprac.webp",
-                          fit: BoxFit.contain,
-                        )),
+                      width: AppDimensions.height10(context) * 7.9,
+                      height: AppDimensions.height10(context) * 7.9,
+                      // color: Colors.amber,
+
+                      // color: Colors.blue,
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const Alignment(-3, 0),
+                            child: Container(
+                              width: AppDimensions.height10(context) * 7.9,
+                              height: AppDimensions.height10(context) * 7.9,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                // color: Colors.amber,
+                                image: DecorationImage(
+                                    image: AssetImage(color == '1'
+                                        ? "assets/images/red_gradient.webp"
+                                        : color == '2'
+                                            ? 'assets/images/orange_moon.webp'
+                                            : color == '3'
+                                                ? "assets/images/lightGrey_gradient.webp"
+                                                : color == '4'
+                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                    : color == '5'
+                                                        ? "assets/images/medBlue_gradient.webp"
+                                                        : color == '6'
+                                                            ? "assets/images/Blue_gradient.webp"
+                                                            : 'assets/images/orange_moon.webp'),
+                                    fit: BoxFit.contain),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const Alignment(1.5, 0),
+                            child: Container(
+                              height: AppDimensions.height10(context) * 4.9,
+                              width: AppDimensions.height10(context) * 4.9,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/Ellipse 158.webp'),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Container(
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 1.5),
                       child: Center(
                         child: Text(
                           "${practice.text.toString()}",
@@ -177,7 +225,7 @@ class _PracticeNameState extends State<PracticeName> {
                   ],
                 ),
                 SizedBox(
-                  height: AppDimensions.height10(context) * 1.6,
+                  height: AppDimensions.height10(context) * 7.1,
                 ),
                 Container(
                   child: Center(

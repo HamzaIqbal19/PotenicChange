@@ -28,8 +28,10 @@ class _PracticeReminderState extends State<PracticeReminder> {
   var Start_time;
   var End_time;
 
-  var mygoal;
-  var practiceName;
+  var mygoal = TextEditingController();
+  var practiceName = TextEditingController();
+  var practice = TextEditingController();
+  var color;
 
   @override
   void initState() {
@@ -44,10 +46,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
     final SharedPreferences prefs = await _prefs;
     var my_goal = prefs.getString("goalName");
     var practice_Name = prefs.getString('pracName');
+    var goalColor = prefs.getString('goalColor');
     setState(() {
-      mygoal = my_goal!;
-      practiceName = practice_Name!;
+      color = goalColor;
+      mygoal.text = my_goal!;
+      practice.text = practice_Name!;
+      practiceName.text = practice_Name!;
     });
+    print('=======================>$color');
   }
 
   Future getData() async {
@@ -146,9 +152,10 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   height: AppDimensions.height10(context) * 0.5,
                 ),
                 Container(
+                  width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
-                      mygoal,
+                      "${mygoal.text.toString()}",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -165,23 +172,65 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        width: AppDimensions.height10(context) * 7.9,
-                        height: AppDimensions.height10(context) * 7.9,
-                        padding: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.6,
-                        ),
-                        child: Image.asset(
-                          "assets/images/createprac.webp",
-                          fit: BoxFit.contain,
-                        )),
+                      width: AppDimensions.height10(context) * 7.9,
+                      height: AppDimensions.height10(context) * 7.9,
+                      // color: Colors.amber,
+
+                      // color: Colors.blue,
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const Alignment(-3, 0),
+                            child: Container(
+                              width: AppDimensions.height10(context) * 7.9,
+                              height: AppDimensions.height10(context) * 7.9,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                // color: Colors.amber,
+                                image: DecorationImage(
+                                    image: AssetImage(color == '1'
+                                        ? "assets/images/red_gradient.webp"
+                                        : color == '2'
+                                            ? 'assets/images/orange_moon.webp'
+                                            : color == '3'
+                                                ? "assets/images/lightGrey_gradient.webp"
+                                                : color == '4'
+                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                    : color == '5'
+                                                        ? "assets/images/medBlue_gradient.webp"
+                                                        : color == '6'
+                                                            ? "assets/images/Blue_gradient.webp"
+                                                            : 'assets/images/orange_moon.webp'),
+                                    fit: BoxFit.contain),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const Alignment(1.5, 0),
+                            child: Container(
+                              height: AppDimensions.height10(context) * 4.9,
+                              width: AppDimensions.height10(context) * 4.9,
+                              decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/Ellipse 158.webp'),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Container(
+                      margin: EdgeInsets.only(
+                          left: AppDimensions.height10(context) * 1.5),
                       child: Center(
                         child: Text(
-                          practiceName,
+                          "${practice.text.toString()}",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xFF156F6D),
+                            color: Color(0xFF156F6D),
                             fontSize: AppDimensions.height10(context) * 2.0,
                           ),
                         ),
@@ -310,6 +359,10 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     height:
                                         AppDimensions.height10(context) * 18.8,
                                     child: AlertDialog(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                              AppDimensions.height10(context) *
+                                                  1.4)),
                                       contentPadding: EdgeInsets.zero,
                                       actionsPadding: EdgeInsets.zero,
                                       titlePadding: EdgeInsets.zero,
@@ -606,8 +659,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         var reminder = prefs.setBool('pracReminder', radio1);
                         //add Id
                         PracticeGoalApi()
-                            .userAddPractice(practiceName, radio1, "Monday",
-                                '7:00 am', '12:00 am')
+                            .userAddPractice('${practiceName.text.toString()}',
+                                radio1, "Monday", '7:00 am', '12:00 am')
                             .then((response) {
                           print('$response');
                           if (response == true) {
