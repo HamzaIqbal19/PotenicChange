@@ -25,6 +25,7 @@ class Visualising extends StatefulWidget {
 
 class _VisualisingState extends State<Visualising> {
   List<Map<String, String>> goalVisualising = [];
+  int index1 = 0;
   //closing the focus
   final FocusNode blankNode = FocusNode();
   bool Loading = false;
@@ -55,6 +56,7 @@ class _VisualisingState extends State<Visualising> {
   void handleTextChanged(int index, String newValue) {
     setState(() {
       goalVisualising[index]['text'] = newValue;
+      index1 = index;
     });
     print(goalVisualising);
   }
@@ -447,12 +449,14 @@ class _VisualisingState extends State<Visualising> {
                 Container(
                   width: AppDimensions.height10(context) * 38.2,
                   height: item == 1
-                      ? AppDimensions.height10(context) * 21.0
-                      : AppDimensions.height10(context) * 34.0,
+                      ? AppDimensions.height10(context) * 22.0
+                      : AppDimensions.height10(context) * 36.0,
                   child: Stack(children: [
                     Container(
                       // width: AppDimensions.height10(context) * 38.2,
                       //height: AppDimensions.height10(context) * 33.0,
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensions.height10(context) * 2.3),
                       padding: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.1,
                       ),
@@ -542,54 +546,50 @@ class _VisualisingState extends State<Visualising> {
                       left: 0,
                       right: 0,
                       child: Align(
-                        //alignment: Alignment.bottomCenter,
-                        alignment: item == 1
-                            ? const Alignment(0.01, 1.4)
-                            : const Alignment(0.01, 1.21),
+                        alignment: Alignment.bottomCenter,
+                        // alignment: item == 1
+                        //     ? const Alignment(0.01, 1.4)
+                        //     : const Alignment(0.01, 1.21),
                         //heightFactor: 0.5,
                         child: AnimatedScaleButton(
                           onTap: () {
-                            increment();
-                            setState(() {
-                              goalVisualising.add({
-                                'key':
-                                    'Identity ${goalVisualising.length.toString()}',
-                                'text': '',
+                            if (goalVisualising[index1]['text'] != "") {
+                              increment();
+                              setState(() {
+                                goalVisualising.add({
+                                  'key':
+                                      'Identity ${goalVisualising.length.toString()}',
+                                  'text': '',
+                                });
                               });
-                            });
-                            print("=============>Pressed");
+                              print("=============>Pressed");
+                            }
                           },
                           child: Container(
-                            height: AppDimensions.height10(context) * 5.7,
-                            width: AppDimensions.height10(context) * 5.7,
-                            padding: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.5),
-                            child: Container(
-                              height: AppDimensions.height10(context) * 4.7,
-                              width: AppDimensions.height10(context) * 4.7,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xFFB1B8FF),
-                                      Color(0xFFC5CAFF)
-                                    ]),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 4, left: 4, right: 4, bottom: 4),
-                                child: Container(
-                                  height: AppDimensions.height10(context) * 4.7,
-                                  width: AppDimensions.height10(context) * 4.7,
-                                  decoration: const BoxDecoration(
-                                      //color: Colors.transparent,
-                                      image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/images/Addgoal.webp'),
-                                          fit: BoxFit.contain)),
-                                ),
+                            height: AppDimensions.height10(context) * 4.7,
+                            width: AppDimensions.height10(context) * 4.7,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xFFB1B8FF),
+                                    Color(0xFFC5CAFF)
+                                  ]),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 4, left: 4, right: 4, bottom: 4),
+                              child: Container(
+                                height: AppDimensions.height10(context) * 4.7,
+                                width: AppDimensions.height10(context) * 4.7,
+                                decoration: const BoxDecoration(
+                                    //color: Colors.transparent,
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Addgoal.webp'),
+                                        fit: BoxFit.contain)),
                               ),
                             ),
                           ),
@@ -628,14 +628,14 @@ class _VisualisingState extends State<Visualising> {
                       onTap: () async {
                         final SharedPreferences prefs = await _prefs;
                         var goalwhy = prefs.remove('route');
-                        goalVisualising[0]['text'] != ""
+                        goalVisualising[index1]['text'] != ""
                             ? updateGoalReason(goalVisualising)
                             : Container();
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
-                        decoration: goalVisualising[0]['text'] != ""
+                        decoration: goalVisualising[index1]['text'] != ""
                             ? BoxDecoration(
                                 border: Border.all(color: Colors.transparent),
                                 gradient: const LinearGradient(

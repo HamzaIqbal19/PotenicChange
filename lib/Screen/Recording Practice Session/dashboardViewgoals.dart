@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/PracticeGoal/Loaders/create_practice_shimmer.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/loaders/dashboard_shimmer.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -79,10 +78,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
         loadData();
       }
     }).catchError((error) {
-      loadData();
+      // loadData();
       print("error");
     }).whenComplete(() {
-      loadData();
+      // loadData();
     });
 
     // setState(() {
@@ -97,6 +96,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
         print("---------------------------------");
         setState(() {
           pracName = response["name"];
+        });
+        setState(() {
           pracColor = response["color"];
         });
 
@@ -245,7 +246,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                               //width: AppDimensions.height10(context) * 6.9,
                               height: AppDimensions.height10(context) * 2.2,
                               child: Text(
-                                'Meditation Practice',
+                                pracName,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 1.8,

@@ -121,6 +121,8 @@ class align_circles extends StatelessWidget {
           child: Container(
             height: AppDimensions.height10(context) * 13.8,
             width: AppDimensions.height10(context) * 13.8,
+            padding: EdgeInsets.symmetric(
+                horizontal: AppDimensions.height10(context)),
             decoration: BoxDecoration(
                 //color: Colors.amber,
                 image: DecorationImage(
@@ -129,29 +131,14 @@ class align_circles extends StatelessWidget {
               Center(
                   child: Text(
                 s_circle_text,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color(s_circle_text_col),
                     fontSize: AppDimensions.height10(context) * 1.8,
                     fontWeight: FontWeight.w500),
               )),
-              Container(
-                child: enable_icon
-                    ? Align(
-                        alignment: const Alignment(0, 1.25),
-                        child: Container(
-                            height: AppDimensions.height10(context) * 2.9,
-                            width: AppDimensions.height10(context) * 2.9,
-                            padding: const EdgeInsets.all(7),
-                            decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Color(0xff52855E)),
-                            child: const ImageIcon(
-                              AssetImage('assets/images/tick_icon.webp'),
-                              color: Color(0xffFFFFFF),
-                            )))
-                    : Container(),
-              )
             ]),
           ),
         ),

@@ -48,6 +48,18 @@ class routinecommitment extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
+            schedule_card(
+              days: 'Saturday',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            schedule_card(
+              days: 'Sunday',
+            ),
+            SizedBox(
+              height: 10,
+            ),
           ],
         ),
       ),
@@ -205,7 +217,6 @@ class _startTimerStateState extends State<startTimerState> {
                   child: Icon(
                     Icons.arrow_drop_down,
                     color: Color.fromRGBO(250, 153, 52, 1),
-                    size: 35,
                   )),
             ),
           )
@@ -288,7 +299,6 @@ class _endTimerStateState extends State<endTimerState> {
                   child: Icon(
                     Icons.arrow_drop_down,
                     color: Color.fromRGBO(250, 153, 52, 1),
-                    size: 35,
                   )),
             ),
           )

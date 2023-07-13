@@ -135,7 +135,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   Widget _buildText(BuildContext context, String text, double fontSize,
       FontWeight fontWeight) {
     return Container(
-      height: AppDimensions.height10(context) * 3.9,
+      height: AppDimensions.height10(context) * 4.4,
       child: Text(
         text,
         textAlign: TextAlign.center,
@@ -157,9 +157,8 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
 
   Widget _buildButtonSection(BuildContext context) {
     return Container(
-      height: AppDimensions.height10(context) * 20 + 2,
+      height: AppDimensions.height10(context) * 21.1,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AnimatedScaleButton(
@@ -208,8 +207,14 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               ),
             ),
           ),
+          SizedBox(
+            height: AppDimensions.height10(context) * 2,
+          ),
           _buildOutlinedButtonWithImage(context, 'assets/images/Google.webp',
               'Sign in with Google', () {}, Colors.white, Colors.black45),
+          SizedBox(
+            height: AppDimensions.height10(context) * 2,
+          ),
           _buildOutlinedButtonWithImage(context, 'assets/images/fb.webp',
               'Sign up with Facebook', () {}, Color(0xFF1877F2), Colors.white),
         ],

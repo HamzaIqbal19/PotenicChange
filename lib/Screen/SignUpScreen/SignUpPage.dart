@@ -156,9 +156,8 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                     )),
                 SizedBox(height: AppDimensions.height10(context) * 4.8),
                 Container(
-                  height: AppDimensions.height10(context) * 20 + 2,
+                  height: AppDimensions.height10(context) * 21.1,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       AnimatedScaleButton(
@@ -210,6 +209,9 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 2,
+                      ),
                       Container(
                         height: AppDimensions.height10(context) * 5.5,
                         width: AppDimensions.height10(context) * 34.1,
@@ -245,6 +247,9 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 2,
                       ),
                       Container(
                         height: AppDimensions.height10(context) * 5.5,

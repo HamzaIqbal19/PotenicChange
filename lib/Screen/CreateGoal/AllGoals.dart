@@ -348,41 +348,13 @@ class _AllGoalsState extends State<AllGoals> {
                                         AppDimensions.height10(context) * 3.0,
                                   ),
                                   Container(
-                                    height: (goalNamesAndCategories![index]["goals"].length <=
-                                            2)
-                                        ? AppDimensions.height10(context) *
-                                            20.0 *
-                                            (goalNamesAndCategories![index]["goals"]
-                                                .length)
-                                        : (goalNamesAndCategories![index]["goals"].length <=
-                                                5)
-                                            ? AppDimensions.height10(context) *
-                                                11.0 *
-                                                (goalNamesAndCategories![index]
-                                                        ["goals"]
-                                                    .length)
-                                            : (goalNamesAndCategories![index]["goals"].length <=
-                                                    7)
-                                                ? AppDimensions.height10(context) *
-                                                    10.2 *
-                                                    (goalNamesAndCategories![index]
-                                                            ["goals"]
-                                                        .length)
-                                                : (goalNamesAndCategories![index]
-                                                                ["goals"]
-                                                            .length <=
-                                                        8)
-                                                    ? AppDimensions.height10(context) *
-                                                        9.2 *
-                                                        (goalNamesAndCategories![index]
-                                                                ["goals"]
-                                                            .length)
-                                                    : (goalNamesAndCategories![index]["goals"].length <= 18)
-                                                        ? AppDimensions.height10(context) * 8.6 * (goalNamesAndCategories![index]["goals"].length)
-                                                        : AppDimensions.height10(context) * 7.4 * (goalNamesAndCategories![index]["goals"].length) - 250,
                                     width: AppDimensions.height10(context) * 38,
+                                    padding: EdgeInsets.only(
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                3.1),
                                     child: GridView.builder(
-                                        shrinkWrap: false,
+                                        shrinkWrap: true,
                                         physics:
                                             const NeverScrollableScrollPhysics(),
                                         gridDelegate:

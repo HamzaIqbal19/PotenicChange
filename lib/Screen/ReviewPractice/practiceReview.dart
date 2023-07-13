@@ -922,7 +922,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                         ),
                         Container(
                             width: AppDimensions.height10(context) * 38.2,
-                            height: AppDimensions.height10(context) * 91.3,
+                            // height: AppDimensions.height10(context) * 91.3,
                             decoration: BoxDecoration(
                                 color: const Color(0xFFFBFBFB),
                                 border: Border.all(
@@ -935,137 +935,131 @@ class _PracticeReviewState extends State<PracticeReview> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height:
-                                      AppDimensions.height10(context) * 90.3,
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.0,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  3.7,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  28.0,
-                                              margin: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      2.5),
-
-                                              // color: Colors.blue,
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/reviewsearch.webp"),
-                                                  fit: BoxFit.fitHeight,
-                                                ),
-                                              ),
-                                            ),
-                                            // SizedBox(width: ),
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  3.0,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  3.0,
-
-                                              // color: Colors.blue,
-                                              margin: EdgeInsets.only(
-                                                bottom: AppDimensions.height10(
+                                  // height:
+                                  //     AppDimensions.height10(context) * 90.3,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.0,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.7,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                28.0,
+                                            margin: EdgeInsets.only(
+                                                left: AppDimensions.height10(
                                                         context) *
-                                                    1.5,
+                                                    2.5),
+
+                                            // color: Colors.blue,
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/reviewsearch.webp"),
+                                                fit: BoxFit.fitHeight,
                                               ),
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/btnedit.webp"),
-                                                  fit: BoxFit.fitHeight,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  0.5,
-                                        ),
-                                        Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  23.9,
-                                          child: Center(
-                                            child: Text(
-                                              "Your routine commitment",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  color:
-                                                      const Color(0xFF5B74A6)),
                                             ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.9,
-                                        ),
-                                        Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  0.5,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  6.1,
-                                          decoration: BoxDecoration(
-                                              color: const Color(0xFF437296),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.5))),
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
+                                          // SizedBox(width: ),
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+
+                                            // color: Colors.blue,
+                                            margin: EdgeInsets.only(
+                                              bottom: AppDimensions.height10(
+                                                      context) *
                                                   1.5,
+                                            ),
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/btnedit.webp"),
+                                                fit: BoxFit.fitHeight,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.5,
+                                      ),
+                                      Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.2,
+                                        width: AppDimensions.height10(context) *
+                                            23.9,
+                                        child: Center(
+                                          child: Text(
+                                            "Your routine commitment",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xFF5B74A6)),
+                                          ),
                                         ),
-                                        Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  89.5,
-                                          child: routinecommitment(),
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.6,
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.9,
+                                      ),
+                                      Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.5,
+                                        width: AppDimensions.height10(context) *
+                                            6.1,
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFF437296),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.5))),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                      ),
+                                      SingleChildScrollView(
+                                        // height:
+                                        //     AppDimensions.height10(context) *
+                                        //         89.5,
+                                        child: routinecommitment(),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.6,
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -1088,279 +1082,266 @@ class _PracticeReviewState extends State<PracticeReview> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  height: AppDimensions.height10(context) * 29,
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.0,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  3.7,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  28.0,
-                                              margin: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      2.5),
-
-                                              // color: Colors.blue,
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/reviewsearch.webp"),
-                                                  fit: BoxFit.fitHeight,
-                                                ),
-                                              ),
-                                            ),
-                                            // SizedBox(width: ),
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  3.0,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  3.0,
-
-                                              // color: Colors.blue,
-                                              margin: EdgeInsets.only(
-                                                bottom: AppDimensions.height10(
+                                  //height: AppDimensions.height10(context) * 29,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.0,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.7,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                28.0,
+                                            margin: EdgeInsets.only(
+                                                left: AppDimensions.height10(
                                                         context) *
-                                                    1.5,
+                                                    2.5),
+
+                                            // color: Colors.blue,
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/reviewsearch.webp"),
+                                                fit: BoxFit.fitHeight,
                                               ),
-                                              decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                  image: AssetImage(
-                                                      "assets/images/btnedit.webp"),
-                                                  fit: BoxFit.fitHeight,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  0.5,
-                                        ),
-                                        Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.4,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  38.4,
-                                          child: Center(
-                                            child: Text(
-                                              "Your Reminders",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  color:
-                                                      const Color(0xFF5B74A6)),
                                             ),
                                           ),
+                                          // SizedBox(width: ),
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                3.0,
+
+                                            // color: Colors.blue,
+                                            margin: EdgeInsets.only(
+                                              bottom: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                            ),
+                                            decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                image: AssetImage(
+                                                    "assets/images/btnedit.webp"),
+                                                fit: BoxFit.fitHeight,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.5,
+                                      ),
+                                      Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.4,
+                                        width: AppDimensions.height10(context) *
+                                            38.4,
+                                        child: Center(
+                                          child: Text(
+                                            "Your Reminders",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.0,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xFF5B74A6)),
+                                          ),
                                         ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.3,
-                                        ),
-                                        Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  17.0,
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  36.4,
-                                          // padding:  EdgeInsets.only(top: AppDimensions.height10(context)*2, bottom: AppDimensions.height10(context)*4.8, left: AppDimensions.height10(context)*2.0,right: AppDimensions.height10(context)*3.5),
-                                          decoration: BoxDecoration(
-                                              // color: Colors.white,
-                                              gradient: const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Color(0xFFE8776D),
-                                                    Color(0xFFEF939D),
-                                                    Color(0xFFD6C4C6)
-                                                  ]),
-                                              border: Border.all(
-                                                  color: Colors.white,
-                                                  width: 0),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.3,
+                                      ),
+                                      Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                17.0,
+                                        width: AppDimensions.height10(context) *
+                                            36.4,
+                                        // padding:  EdgeInsets.only(top: AppDimensions.height10(context)*2, bottom: AppDimensions.height10(context)*4.8, left: AppDimensions.height10(context)*2.0,right: AppDimensions.height10(context)*3.5),
+                                        decoration: BoxDecoration(
+                                            // color: Colors.white,
+                                            gradient: const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xFFE8776D),
+                                                  Color(0xFFEF939D),
+                                                  Color(0xFFD6C4C6)
+                                                ]),
+                                            border: Border.all(
+                                                color: Colors.white, width: 0),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.0))),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  2.4,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  // color: Colors.blue,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      25.9,
+                                                  height:
                                                       AppDimensions.height10(
                                                               context) *
-                                                          2.0))),
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.4,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    // color: Colors.blue,
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            25.9,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            3.6,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceAround,
-                                                      children: [
-                                                        Container(
-                                                            width: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                3.5,
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                3.5,
-                                                            child: Image.asset(
-                                                              reminder
-                                                                  ? "assets/images/notifications.webp"
-                                                                  : "assets/images/notificationsoff.webp",
-                                                              fit: BoxFit
-                                                                  .contain,
-                                                            )),
-                                                        Container(
+                                                          3.6,
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceAround,
+                                                    children: [
+                                                      Container(
                                                           width: AppDimensions
                                                                   .height10(
                                                                       context) *
-                                                              20.4,
+                                                              3.5,
                                                           height: AppDimensions
                                                                   .height10(
                                                                       context) *
-                                                              2.4,
-                                                          child: Text(
+                                                              3.5,
+                                                          child: Image.asset(
                                                             reminder
-                                                                ? "Yes, remind me"
-                                                                : "No, don’t remind me",
-                                                            style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontFamily:
-                                                                  "Laila",
-                                                              color: const Color(
-                                                                  0xFFFFFFFF),
-                                                              fontSize: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  2.0,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  GestureDetector(
-                                                    onTap: () {},
-                                                    child: Container(
-                                                        // color: Colors.red,
+                                                                ? "assets/images/notifications.webp"
+                                                                : "assets/images/notificationsoff.webp",
+                                                            fit: BoxFit.contain,
+                                                          )),
+                                                      Container(
                                                         width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            3.3,
+                                                            20.4,
                                                         height: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            3.3,
-                                                        child: Image.asset(reminder
-                                                            ? "assets/images/uncheckradio.webp"
-                                                            : "assets/images/circle.webp")),
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    3.0,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Container(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            5.1,
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            34.5,
-                                                    padding: EdgeInsets.only(
-                                                        right: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0,
-                                                        left: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7),
-                                                    child: Text(
-                                                      "We will check in with you to remind you about your practices. You would be able to customise your notifications later in your Account Settings. ",
-                                                      style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        fontFamily:
-                                                            "Laila-Regular",
-                                                        color: const Color(
-                                                            0xFFFFFFFF),
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.4,
+                                                            2.4,
+                                                        child: Text(
+                                                          reminder
+                                                              ? "Yes, remind me"
+                                                              : "No, don’t remind me",
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontFamily: "Laila",
+                                                            color: const Color(
+                                                                0xFFFFFFFF),
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                          ),
+                                                        ),
                                                       ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {},
+                                                  child: Container(
+                                                      // color: Colors.red,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.3,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.3,
+                                                      child: Image.asset(reminder
+                                                          ? "assets/images/uncheckradio.webp"
+                                                          : "assets/images/circle.webp")),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  3.0,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          5.1,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      34.5,
+                                                  padding: EdgeInsets.only(
+                                                      right: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.0,
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.7),
+                                                  child: Text(
+                                                    "We will check in with you to remind you about your practices. You would be able to customise your notifications later in your Account Settings. ",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontFamily:
+                                                          "Laila-Regular",
+                                                      color: const Color(
+                                                          0xFFFFFFFF),
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.4,
                                                     ),
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -1445,7 +1426,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                 )),
 
                                             TextSpan(
-                                                text: 'this goal?',
+                                                text: 'this practice?',
                                                 style: TextStyle(
                                                   color:
                                                       const Color(0xFF000000),

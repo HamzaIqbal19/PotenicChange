@@ -16,8 +16,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
 
-int pracEmotions = 0;
-
 class emotions extends StatefulWidget {
   final bool summary;
   final String pracName;
@@ -28,6 +26,7 @@ class emotions extends StatefulWidget {
 }
 
 class _emotionsState extends State<emotions> {
+  int pracEmotions = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   //int pracEmotions = 0;
@@ -558,10 +557,12 @@ class _emotionsState extends State<emotions> {
                         children: [
                           AnimatedScaleButton(
                             onTap: () {
-                              widget.summary
-                                  ? Navigator.pop(context)
-                                  : Navigator.push(context,
-                                      FadePageRoute(page: const clocks()));
+                              if (pracEmotions != 0) {
+                                widget.summary
+                                    ? Navigator.pop(context)
+                                    : Navigator.push(
+                                        context, FadePageRoute(page: clocks()));
+                              }
                             },
                             child: Container(
                                 height: AppDimensions.height10(context) * 5.0,

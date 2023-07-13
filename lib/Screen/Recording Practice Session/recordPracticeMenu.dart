@@ -220,7 +220,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                 ),
                               ),
                               Align(
-                                alignment: const Alignment(1.5, -0.3),
+                                alignment: const Alignment(1.6, -0.3),
                                 child: Container(
                                   width: AppDimensions.height10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 2.4,
@@ -242,19 +242,6 @@ class _practiceMenuState extends State<practiceMenu> {
                       ],
                     ),
                   ),
-                  // Container(
-                  //   width: AppDimensions.height10(context) * 32.0,
-                  //   height: AppDimensions.height10(context) * 2.6,
-                  //   margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 2.7),
-                  //   child: Text(
-                  //     'What do you want to do?',
-                  //     textAlign: TextAlign.center,
-                  //     style: TextStyle(
-                  //         fontSize: AppDimensions.height10(context) * 2.2,
-                  //         fontWeight: FontWeight.w600,
-                  //         color: const Color(0xff437296)),
-                  //   ),
-                  // ),
                   Container(
                     width: AppDimensions.height10(context) * 9.36,
                     height: AppDimensions.height10(context) * 12.0,

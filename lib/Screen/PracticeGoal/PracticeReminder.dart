@@ -25,6 +25,7 @@ class PracticeReminder extends StatefulWidget {
 class _PracticeReminderState extends State<PracticeReminder> {
   bool radio1 = false;
   bool radio2 = false;
+  bool reminderSelected = false;
   var Start_time;
   var End_time;
 
@@ -156,6 +157,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   child: Center(
                     child: Text(
                       "${mygoal.text.toString()}",
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
@@ -230,7 +232,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF156F6D),
+                            color: const Color(0xFF156F6D),
                             fontSize: AppDimensions.height10(context) * 2.0,
                           ),
                         ),
@@ -349,6 +351,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               if (radio1 == true) {
                                 setState(() {
                                   radio1 = false;
+                                  reminderSelected = false;
                                 });
                               } else if (radio1 == false) {
                                 showDialog<String>(
@@ -425,6 +428,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                                   setState(() {
                                                     radio1 = true;
                                                     radio2 = false;
+                                                    reminderSelected = true;
                                                   });
                                                   Navigator.pop(context);
                                                 },
@@ -586,13 +590,14 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               if (radio2 == false) {
                                 setState(() {
                                   radio2 = true;
-                                  radio2 = true;
+
                                   radio1 = false;
+                                  reminderSelected = true;
                                 });
                               } else {
                                 setState(() {
                                   radio2 = false;
-                                  radio2 = false;
+                                  reminderSelected = false;
                                 });
                               }
                             },
@@ -655,34 +660,40 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         )),
                     AnimatedScaleButton(
                       onTap: () async {
-                        final SharedPreferences prefs = await _prefs;
-                        var reminder = prefs.setBool('pracReminder', radio1);
-                        //add Id
-                        PracticeGoalApi()
-                            .userAddPractice('${practiceName.text.toString()}',
-                                radio1, "Monday", '7:00 am', '12:00 am')
-                            .then((response) {
-                          print('$response');
-                          if (response == true) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content:
-                                        Text("Practice Added Successfully!!")));
-                            print('========Done');
-                            Navigator.pushReplacement(
-                              context,
-                              FadePageRoute2(
-                                true,
-                                exitPage: const PracticeReminder(),
-                                enterPage: const PracticeFinished(),
-                              ),
-                            );
-                          } else if (response == false) {
-                            print('Api call failed');
-                          }
-                        }).catchError((error) {
-                          print('===>adasd');
-                        });
+                        if (reminderSelected == true) {
+                          final SharedPreferences prefs = await _prefs;
+                          var reminder = prefs.setBool('pracReminder', radio1);
+                          //add Id
+                          PracticeGoalApi()
+                              .userAddPractice(
+                                  '${practiceName.text.toString()}',
+                                  radio1,
+                                  "Monday",
+                                  '7:00 am',
+                                  '12:00 am')
+                              .then((response) {
+                            print('$response');
+                            if (response == true) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          "Practice Added Successfully!!")));
+                              print('========Done');
+                              Navigator.pushReplacement(
+                                context,
+                                FadePageRoute2(
+                                  true,
+                                  exitPage: const PracticeReminder(),
+                                  enterPage: const PracticeFinished(),
+                                ),
+                              );
+                            } else if (response == false) {
+                              print('Api call failed');
+                            }
+                          }).catchError((error) {
+                            print('===>adasd');
+                          });
+                        }
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
@@ -690,10 +701,18 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),
-                          gradient: const LinearGradient(
+                          gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
+                              colors: reminderSelected
+                                  ? [
+                                      const Color(0xFFFCC10D),
+                                      const Color(0xFFFDA210)
+                                    ]
+                                  : [
+                                      const Color(0xFFFCC10D).withOpacity(0.5),
+                                      const Color(0xFFFDA210).withOpacity(0.5)
+                                    ]),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(50.0)),
                         ),

@@ -103,16 +103,6 @@ class _StarReviewState extends State<StarReview> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           elevation: 0,
-          centerTitle: true,
-          title: Loading == false
-              ? Text(
-                  "Review goal details",
-                  style: TextStyle(
-                      color: const Color(0xFF5B74A6),
-                      fontWeight: FontWeight.w600,
-                      fontSize: AppDimensions.height10(context) * 2.0),
-                )
-              : Container(),
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: true,
           leading: Center(
@@ -156,7 +146,17 @@ class _StarReviewState extends State<StarReview> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: AppDimensions.height10(context) * 9.2,
+                          height: AppDimensions.height10(context) * 5.5,
+                        ),
+                        Text(
+                          "Review goal details",
+                          style: TextStyle(
+                              color: const Color(0xFF5B74A6),
+                              fontWeight: FontWeight.w600,
+                              fontSize: AppDimensions.height10(context) * 2.0),
+                        ),
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 2.0,
                         ),
                         Container(
                           width: AppDimensions.height10(context) * 10.2,
@@ -1866,6 +1866,7 @@ class _inner_textState extends State<inner_text> {
                   bottom: AppDimensions.height10(context) * 2.4),
               width: AppDimensions.height10(context) * 32.0,
               child: CupertinoTextField(
+                readOnly: true,
                 placeholder: widget.panel_Text,
                 placeholderStyle: TextStyle(
                     fontSize: AppDimensions.height10(context) * 1.6,

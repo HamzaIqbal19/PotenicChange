@@ -246,7 +246,8 @@ void bottom_sheet(context) {
                         print(goalName.text.toString());
                         print(index);
                         AdminGoal()
-                            .addNewGoal('${goalName.text.toString()}', index)
+                            .addNewGoal(
+                                '${goalName.text.toString()}', index + 1)
                             .then((response) async {
                           print(response);
                           final SharedPreferences prefs = await _prefs;

@@ -487,4 +487,33 @@ class AdminGoal {
       return false;
     }
   }
+
+  static Future getUserGoalByDay(Day) async {
+    // var goalName;
+
+    final SharedPreferences prefs = await _prefs;
+    var goal_num = prefs.getInt('goal_num');
+    var Accestoken = prefs.getString("usertoken");
+
+    var userId = prefs.getInt('userid');
+    // print('$userGoalId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var response = await http.get(
+      Uri.parse(
+          '${URL.BASE_URL}api/userGoal/userGoals-by-day/$userId?day=$Day'),
+      headers: headers,
+    );
+    // print('===========$userGoalId');
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return (jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
 }

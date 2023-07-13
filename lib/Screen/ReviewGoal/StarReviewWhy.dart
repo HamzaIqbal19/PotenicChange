@@ -186,144 +186,134 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 3.4,
                       ),
-                      Positioned(
-                        top: 0,
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: Stack(children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                                width: AppDimensions.height10(context) * 38.2,
-                                // height: AppDimensions.height10(context) * 52.1,
-                                decoration: BoxDecoration(
+                      Stack(children: [
+                        Container(
+                            width: AppDimensions.height10(context) * 38.2,
+                            // height: AppDimensions.height10(context) * 52.1,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
                                     color: Colors.white,
-                                    border: Border.all(
-                                        color: Colors.white,
-                                        width: AppDimensions.height10(context) *
-                                            0.2),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            AppDimensions.height10(context) *
-                                                1.8))),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    SizedBox(
-                                      // height:
-                                      //     AppDimensions.height10(context) * 50.1,
-                                      child: SingleChildScrollView(
-                                        scrollDirection: Axis.vertical,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.4,
-                                            ),
-                                            ListView.builder(
-                                                itemCount: widget
-                                                            .updatedCategory ==
-                                                        1
-                                                    ? reason.length
-                                                    : widget.updatedCategory ==
-                                                            2
-                                                        ? identity.length
-                                                        : visualize.length,
-                                                physics:
-                                                    const NeverScrollableScrollPhysics(),
-                                                shrinkWrap: true,
-                                                padding: EdgeInsets.zero,
-                                                itemBuilder: (context, index) {
-                                                  return Column(children: [
-                                                    inner_text(
-                                                      widget.updatedCategory ==
-                                                              1
-                                                          ? 'Reason ${index + 1}'
-                                                          : 'Statement ${index + 1}',
-                                                      bodyText: widget
-                                                                  .updatedCategory ==
-                                                              1
-                                                          ? '${reason[index]['text']}'
-                                                          : widget.updatedCategory ==
-                                                                  2
-                                                              ? '${identity[index]['text']}'
-                                                              : '${visualize[index]['text']}',
-                                                      delete: index != 0
-                                                          ? true
-                                                          : false,
-                                                    ),
-                                                    SizedBox(
-                                                      height: AppDimensions
-                                                          .height10(context),
-                                                    ),
-                                                    Container(
-                                                      padding: EdgeInsets.only(
-                                                          left: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              2.0,
-                                                          right: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              23.6),
-                                                      child: Row(
-                                                        children: [
-                                                          Center(
-                                                            child: Text(
-                                                              "Character count:",
-                                                              style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: const Color(
-                                                                    0xFF464646),
-                                                                fontSize: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    1.3,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Center(
-                                                            child: Text(
-                                                              "200",
-                                                              style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w700,
-                                                                color: const Color(
-                                                                    0xFF464646),
-                                                                fontSize: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    1.3,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: AppDimensions
+                                    width:
+                                        AppDimensions.height10(context) * 0.2),
+                                borderRadius: BorderRadius.all(Radius.circular(
+                                    AppDimensions.height10(context) * 1.8))),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                SizedBox(
+                                  // height:
+                                  //     AppDimensions.height10(context) * 50.1,
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.vertical,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        SizedBox(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                        ListView.builder(
+                                            itemCount: widget.updatedCategory ==
+                                                    1
+                                                ? reason.length
+                                                : widget.updatedCategory == 2
+                                                    ? identity.length
+                                                    : visualize.length,
+                                            physics:
+                                                const NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            padding: EdgeInsets.zero,
+                                            itemBuilder: (context, index) {
+                                              return Column(children: [
+                                                inner_text(
+                                                  widget.updatedCategory == 1
+                                                      ? 'Reason ${index + 1}'
+                                                      : 'Statement ${index + 1}',
+                                                  bodyText: widget
+                                                              .updatedCategory ==
+                                                          1
+                                                      ? '${reason[index]['text']}'
+                                                      : widget.updatedCategory ==
+                                                              2
+                                                          ? '${identity[index]['text']}'
+                                                          : '${visualize[index]['text']}',
+                                                  delete:
+                                                      index != 0 ? true : false,
+                                                ),
+                                                SizedBox(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                          context),
+                                                ),
+                                                Container(
+                                                  padding: EdgeInsets.only(
+                                                      left: AppDimensions
                                                               .height10(
                                                                   context) *
+                                                          2.0,
+                                                      right: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          23.6),
+                                                  child: Row(
+                                                    children: [
+                                                      Center(
+                                                        child: Text(
+                                                          "Character count:",
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: const Color(
+                                                                0xFF464646),
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.3,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Center(
+                                                        child: Text(
+                                                          "200",
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            color: const Color(
+                                                                0xFF464646),
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.3,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           2.8,
-                                                    ),
-                                                  ]);
-                                                }),
-                                          ],
-                                        ),
-                                      ),
+                                                ),
+                                              ]);
+                                            }),
+                                      ],
                                     ),
-                                  ],
-                                )),
-                          ),
-                          Align(
+                                  ),
+                                ),
+                              ],
+                            )),
+                        Positioned(
+                          top: 0,
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
                             // alignment: Alignment(0.01, 10.355),
                             //heightFactor: 0.5,
                             child: Container(
@@ -354,9 +344,9 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                                 ),
                               ),
                             ),
-                          )
-                        ]),
-                      ),
+                          ),
+                        )
+                      ]),
                       MediaQuery.of(context).viewInsets.bottom == 0
                           ? SizedBox(
                               height: AppDimensions.height10(context) * 7.2,
@@ -520,7 +510,7 @@ class _inner_textState extends State<inner_text> {
       height: AppDimensions.height10(context) * 11.0,
       width: AppDimensions.height10(context) * 36.0,
       padding: EdgeInsets.only(
-          top: AppDimensions.height10(context) * 2,
+          top: AppDimensions.height10(context) * 1.3,
           bottom: 1,
           left: AppDimensions.height10(context) * 2,
           right: AppDimensions.height10(context) * 2.0),
@@ -679,7 +669,7 @@ class _inner_textState extends State<inner_text> {
               height: AppDimensions.height10(context) * 5.3,
               width: AppDimensions.height10(context) * 32.0,
               child: CupertinoTextField(
-                placeholder: widget.bodyText,
+                //  placeholder: widget.bodyText,
                 placeholderStyle: TextStyle(
                     fontSize: AppDimensions.height10(context) * 1.6,
                     fontWeight: FontWeight.w500,

@@ -150,6 +150,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   child: Center(
                     child: Text(
                       "${mygoal.text.toString()}",
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Colors.white,

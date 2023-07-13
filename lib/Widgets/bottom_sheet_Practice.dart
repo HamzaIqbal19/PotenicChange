@@ -79,6 +79,7 @@ void bottom_sheet(context, String goal) {
                   width: AppDimensions.height10(context) * 36.0,
                   child: TextField(
                     controller: goalName,
+                    maxLength: 80,
                     style: const TextStyle(
                       fontWeight: FontWeight.w600,
                       fontSize: 24,

@@ -27,6 +27,7 @@ class GoalWhy extends StatefulWidget {
 
 class _goalwhyState extends State<GoalWhy> {
   List<Map<String, String>> myTextFields = [];
+  int index1 = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   //closing the focus
   final FocusNode blankNode = FocusNode();
@@ -56,6 +57,7 @@ class _goalwhyState extends State<GoalWhy> {
   void handleTextChanged(int index, String newValue) {
     setState(() {
       myTextFields[index]['text'] = newValue;
+      index1 = index;
     });
     print(myTextFields);
   }
@@ -438,94 +440,101 @@ class _goalwhyState extends State<GoalWhy> {
                 Container(
                   width: AppDimensions.height10(context) * 38.2,
                   height: item == 1
-                      ? AppDimensions.height10(context) * 21.0
-                      : AppDimensions.height10(context) * 34.0,
+                      ? AppDimensions.height10(context) * 22.0
+                      : AppDimensions.height10(context) * 36.0,
+                  // color: Colors.amber,
                   child: Stack(children: [
-                    Container(
-                      // width: AppDimensions.height10(context) * 38.2,
-                      //height: AppDimensions.height10(context) * 33.0,
-                      padding: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.1,
-                      ),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                              color: Colors.white,
-                              width: AppDimensions.height10(context) * 0.2),
-                          borderRadius: BorderRadius.all(Radius.circular(
-                              AppDimensions.height10(context) * 1.8))),
-                      child: ListView.builder(
-                        itemCount: myTextFields.length,
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (BuildContext context, index) {
-                          return Column(children: [
-                            inner_text(
-                              key: Key(myTextFields[index]['key']!),
-                              delete: true,
-                              head_text: "Reason ${index + 1}",
-                              body_text: myTextFields[index]['text']!,
-                              length: 200,
-                              onChanged: (newText) {
-                                setState(() {
-                                  myTextFields[index]['text'] = newText;
-                                });
-                                handleTextChanged(index, newText);
-                              },
-                              onDelete: () => handleDelete(index),
-                              index: index,
-                              placeHolder:
-                                  'I want to achieve this goal because...',
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.5,
-                                  bottom:
-                                      AppDimensions.height10(context) * 1.3),
-                              child: Row(
-                                children: [
-                                  Center(
-                                    child: Text(
-                                      "Character count: ",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFF464646),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.3,
-                                      ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Text(
-                                      "200",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xFF464646),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.3,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    height:
-                                        AppDimensions.height10(context) * 0.3,
-                                    width:
-                                        AppDimensions.height10(context) * 4.0,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            0.5,
-                                        left: AppDimensions.height10(context) *
-                                            4.0),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF282828)
-                                            .withOpacity(0.2)),
-                                  )
-                                ],
+                    ClipPath(
+                      //clipper: OvalBottomBorderClipper(57),
+                      child: Container(
+                        // width: AppDimensions.height10(context) * 38.2,
+                        //height: AppDimensions.height10(context) * 33.0,
+                        margin: EdgeInsets.only(
+                            bottom: AppDimensions.height10(context) * 2.3),
+                        padding: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.1,
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                                color: Colors.white,
+                                width: AppDimensions.height10(context) * 0.2),
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                AppDimensions.height10(context) * 1.8))),
+                        child: ListView.builder(
+                          itemCount: myTextFields.length,
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (BuildContext context, index) {
+                            return Column(children: [
+                              inner_text(
+                                key: Key(myTextFields[index]['key']!),
+                                delete: true,
+                                head_text: "Reason ${index + 1}",
+                                body_text: myTextFields[index]['text']!,
+                                length: 200,
+                                onChanged: (newText) {
+                                  setState(() {
+                                    myTextFields[index]['text'] = newText;
+                                  });
+                                  handleTextChanged(index, newText);
+                                },
+                                onDelete: () => handleDelete(index),
+                                index: index,
+                                placeHolder:
+                                    'I want to achieve this goal because...',
                               ),
-                            )
-                          ]);
-                        },
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 1.5,
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.3),
+                                child: Row(
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        "Character count: ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        "200",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height:
+                                          AppDimensions.height10(context) * 0.3,
+                                      width:
+                                          AppDimensions.height10(context) * 4.0,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              0.5,
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  4.0),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xFF282828)
+                                              .withOpacity(0.2)),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ]);
+                          },
+                        ),
                       ),
                     ),
                     Positioned(
@@ -534,56 +543,48 @@ class _goalwhyState extends State<GoalWhy> {
                       left: 0,
                       right: 0,
                       child: Align(
-                        //alignment: Alignment.bottomCenter,
-                        alignment: item == 1
-                            ? const Alignment(0.01, 1.4)
-                            : const Alignment(0.01, 1.21),
+                        alignment: Alignment.bottomCenter,
+                        // alignment: item == 1
+                        //     ? const Alignment(0.01, 1.35)
+                        //     : const Alignment(0.01, 1.25),
                         //heightFactor: 0.5,
                         child: AnimatedScaleButton(
                           onTap: () {
-                            increment();
-                            setState(() {
-                              myTextFields.add({
-                                'key':
-                                    'Reason ${myTextFields.length.toString()}',
-                                'text': '',
+                            if (myTextFields[index1]['text'] != "") {
+                              increment();
+                              setState(() {
+                                myTextFields.add({
+                                  'key':
+                                      'Reason ${myTextFields.length.toString()}',
+                                  'text': '',
+                                });
                               });
-                            });
-                            print("=============>Pressed");
+                              print("=============>Pressed");
+                            }
                           },
                           child: Container(
-                            height: AppDimensions.height10(context) * 5.7,
-                            width: AppDimensions.height10(context) * 5.7,
-                            padding: EdgeInsets.all(
-                                AppDimensions.height10(context) * 0.5),
+                            height: AppDimensions.height10(context) * 4.7,
+                            width: AppDimensions.height10(context) * 4.7,
                             decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.transparent),
-                            child: Container(
-                              height: AppDimensions.height10(context) * 4.7,
-                              width: AppDimensions.height10(context) * 4.7,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xFFB1B8FF),
-                                      Color(0xFFC5CAFF)
-                                    ]),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 4, left: 4, right: 4, bottom: 4),
-                                child: Container(
-                                  color: Colors.transparent,
-                                  child: Image.asset(
-                                    'assets/images/Addgoal.webp',
-                                    height:
-                                        AppDimensions.height10(context) * 4.7,
-                                    width:
-                                        AppDimensions.height10(context) * 4.7,
-                                  ),
+                              shape: BoxShape.circle,
+                              // color: Colors.orange,
+                              gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xFFB1B8FF),
+                                    Color(0xFFC5CAFF)
+                                  ]),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 4, left: 4, right: 4, bottom: 4),
+                              child: Container(
+                                color: Colors.transparent,
+                                child: Image.asset(
+                                  'assets/images/Addgoal.webp',
+                                  height: AppDimensions.height10(context) * 4.7,
+                                  width: AppDimensions.height10(context) * 4.7,
                                 ),
                               ),
                             ),
@@ -621,13 +622,14 @@ class _goalwhyState extends State<GoalWhy> {
                     ),
                     AnimatedScaleButton(
                       onTap: () {
-                        print('===================>${myTextFields[0]['text']}');
+                        print(
+                            '===================>${myTextFields[index1]['text']}');
                         updateGoalReason(myTextFields);
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
-                        decoration: myTextFields[0]['text'] != ""
+                        decoration: myTextFields[index1]['text'] != ""
                             ? BoxDecoration(
                                 // color: Color(0xFFFF7D50),
                                 border: Border.all(color: Colors.transparent),
@@ -652,7 +654,7 @@ class _goalwhyState extends State<GoalWhy> {
                           child: Text(
                             "Next",
                             style: TextStyle(
-                              color: myTextFields[0]['text'] != ""
+                              color: myTextFields[index1]['text'] != ""
                                   ? Colors.white
                                   : Colors.white.withOpacity(0.5),
                               fontSize: AppDimensions.height10(context) * 1.6,
@@ -674,6 +676,103 @@ class _goalwhyState extends State<GoalWhy> {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+// class OvalBottomBorderClipper extends CustomClipper<Path> {
+//   final double clipHeight;
+
+//   OvalBottomBorderClipper(this.clipHeight);
+
+//   @override
+//   Path getClip(Size size) {
+//     final path = Path();
+//     final height = size.height;
+//     final width = size.width;
+
+//     // Define the oval shape path
+//     path.moveTo(0, height);
+//     path.lineTo(0, height - clipHeight);
+//     path.quadraticBezierTo(
+//         width * 0.5, height - (clipHeight / 2), width, height - clipHeight);
+//     path.lineTo(width, height);
+
+//     return path;
+//   }
+
+//   @override
+//   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+//     return false;
+//   }
+// }
+
+class ClipPainter extends CustomPainter {
+  final CustomClipper<Path> clipper;
+
+  ClipPainter(this.clipper);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint();
+    // paint.color = Colors.blue[800];
+    paint.style = PaintingStyle.fill;
+    canvas.drawPath(clipper.getClip(size), paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
+  }
+}
+
+class ArcClipper extends CustomClipper<Path> {
+  ArcClipper(this.height);
+
+  ///The height of the arc
+  final double height;
+
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+
+    path.moveTo(0.0, height);
+    path.quadraticBezierTo(
+        size.width / 2, size.height * 0.2, size.width, size.height - height);
+    path.lineTo(size.width, 0.0);
+    path.lineTo(0.0, 0.0);
+
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    ArcClipper oldie = oldClipper as ArcClipper;
+    return height != oldie.height;
+  }
+}
+
+class Arc extends StatelessWidget {
+  final double height;
+  final Widget child;
+  const Arc({
+    required this.height,
+    required this.child,
+  });
+
+  /// The widget which one of [edge]s is going to be clippddddded as arc
+
+  @override
+  Widget build(BuildContext context) {
+    var clipper = ArcClipper(height);
+    return CustomPaint(
+      painter: ClipPainter(clipper),
+      child: ClipPath(
+        clipper: clipper,
+        child: child,
       ),
     );
   }
