@@ -147,15 +147,20 @@ class _practiceMenuState extends State<practiceMenu> {
                           ),
                         ),
                         Container(
-                          height: AppDimensions.height10(context) * 2.4,
-                          child: Text(
-                            widget.goalName,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                color: Colors.white,
-                                height: AppDimensions.height10(context) * 0.12,
-                                fontSize: AppDimensions.height10(context) * 2.0,
-                                fontWeight: FontWeight.w600),
+                          width: AppDimensions.height10(context) * 30,
+                          child: Center(
+                            child: Text(
+                              widget.goalName,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  height:
+                                      AppDimensions.height10(context) * 0.12,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.0,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ),
                         ),
                         Container(
@@ -205,17 +210,17 @@ class _practiceMenuState extends State<practiceMenu> {
                                       image: DecorationImage(
                                           image: AssetImage(widget.pracColor ==
                                                   '1'
-                                              ? "assets/images/Ellipse orange.webp"
+                                              ? "assets/images/Ellipse orange_wb.webp"
                                               : widget.pracColor == '2'
-                                                  ? 'assets/images/Ellipse 158.webp'
+                                                  ? 'assets/images/Ellipse 158_wb.webp'
                                                   : widget.pracColor == '3'
-                                                      ? "assets/images/Ellipse 157.webp"
+                                                      ? "assets/images/Ellipse 157_wb.webp"
                                                       : widget.pracColor == '4'
-                                                          ? "assets/images/Ellipse light-blue.webp"
+                                                          ? "assets/images/Ellipse light-blue_wb.webp"
                                                           : widget.pracColor ==
                                                                   '5'
-                                                              ? "assets/images/Ellipse blue.webp"
-                                                              : 'assets/images/Ellipse 158.webp'),
+                                                              ? "assets/images/Ellipse blue_wb.webp"
+                                                              : 'assets/images/Ellipse 158_wb.webp'),
                                           fit: BoxFit.cover)),
                                 ),
                               ),
@@ -226,8 +231,8 @@ class _practiceMenuState extends State<practiceMenu> {
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
                                     widget.pracName,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                        overflow: TextOverflow.ellipsis,
                                         color: const Color(0xff156F6D),
                                         fontSize:
                                             AppDimensions.height10(context) *

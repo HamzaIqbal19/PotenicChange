@@ -489,13 +489,21 @@ class _AllGoalsState extends State<AllGoals> {
                                       height:
                                           AppDimensions.height10(context) * 1.5,
                                     ),
-                                    suffixIcon: Image.asset(
-                                      'assets/images/cancel.webp',
-                                      width:
-                                          AppDimensions.height10(context) * 2.3,
-                                      height:
-                                          AppDimensions.height10(context) * 2.3,
-                                      // fit: BoxFit.contain,
+                                    suffixIcon: AnimatedScaleButton(
+                                      onTap: () {
+                                        searchText = '';
+                                        _searchGoals('');
+                                        _searchController.clear();
+                                      },
+                                      child: Image.asset(
+                                        'assets/images/cancel.webp',
+                                        width: AppDimensions.height10(context) *
+                                            2.3,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.3,
+                                        // fit: BoxFit.contain,
+                                      ),
                                     ),
                                     hintText: "Search",
                                     hintStyle: TextStyle(
@@ -517,6 +525,8 @@ class _AllGoalsState extends State<AllGoals> {
                       onTap: () {
                         setState(() {
                           SearchIcon = false;
+                          _searchGoals('');
+                          _searchController.clear();
                         });
                       },
                       child: Text(

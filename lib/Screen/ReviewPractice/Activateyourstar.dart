@@ -288,7 +288,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                           color: const Color(0xff5B74A6))),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10(context) * 2.0,
+                                  height: AppDimensions.height10(context) * 1.0,
                                 ),
                                 Text('Review',
                                     textAlign: TextAlign.center,
@@ -302,9 +302,6 @@ class _ActivateStarState extends State<ActivateStar> {
                                                 0.14,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xff5B74A6))),
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 2,
-                                )
                               ],
                             ),
                           ),

@@ -140,7 +140,7 @@ class _PracticeNameState extends State<PracticeName> {
                   width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
-                      "${mygoal.text.toString()}",
+                      mygoal.text.toString(),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -200,7 +200,7 @@ class _PracticeNameState extends State<PracticeName> {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Ellipse 158.webp'),
+                                          'assets/images/Ellipse 158_wb.webp'),
                                       fit: BoxFit.cover)),
                             ),
                           ),
@@ -208,17 +208,16 @@ class _PracticeNameState extends State<PracticeName> {
                       ),
                     ),
                     Container(
+                      width: AppDimensions.height10(context) * 20,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.5),
-                      child: Center(
-                        child: Text(
-                          "${practice.text.toString()}",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF156F6D),
-                            fontSize: AppDimensions.height10(context) * 2.0,
-                          ),
+                      child: Text(
+                        practice.text.toString(),
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF156F6D),
+                          fontSize: AppDimensions.height10(context) * 2.0,
                         ),
                       ),
                     ),
@@ -377,7 +376,7 @@ class _PracticeNameState extends State<PracticeName> {
                       onTap: () async {
                         final SharedPreferences prefs = await _prefs;
                         var goal_Name = prefs.setString(
-                            'pracName', '${practiceName.text.toString()}');
+                            'pracName', practiceName.text.toString());
                         Navigator.push(
                           context,
                           FadePageRoute2(

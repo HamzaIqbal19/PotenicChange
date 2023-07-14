@@ -82,15 +82,16 @@ class menu_behaviour extends StatelessWidget {
                           fontWeight: FontWeight.w600),
                     ),
                     Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: AppDimensions.height10(context) * 3),
-                      child: Text(
-                        goalName,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 2.0,
-                            fontWeight: FontWeight.w600),
+                      width: AppDimensions.height10(context) * 30,
+                      child: Center(
+                        child: Text(
+                          goalName,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ),
                     Container(
@@ -102,15 +103,26 @@ class menu_behaviour extends StatelessWidget {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const Alignment(-1, 0),
+                            alignment: const Alignment(-0.84, -0.32),
                             child: Container(
-                              width: AppDimensions.height10(context) * 10.4,
-                              height: AppDimensions.height10(context) * 11.2,
-                              decoration: const BoxDecoration(
+                              width: AppDimensions.height10(context) * 7.9,
+                              height: AppDimensions.height10(context) * 7.9,
+                              decoration: BoxDecoration(
                                 // color: Colors.amber,
                                 image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Group 9398.webp'),
+                                    image: AssetImage(goalColor == '1'
+                                        ? "assets/images/red_gradient.webp"
+                                        : goalColor == '2'
+                                            ? 'assets/images/orange_moon.webp'
+                                            : goalColor == '3'
+                                                ? "assets/images/lightGrey_gradient.webp"
+                                                : goalColor == '4'
+                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                    : goalColor == '5'
+                                                        ? "assets/images/medBlue_gradient.webp"
+                                                        : goalColor == '6'
+                                                            ? "assets/images/Blue_gradient.webp"
+                                                            : 'assets/images/orange_moon.webp'),
                                     fit: BoxFit.contain),
                               ),
                             ),
@@ -171,6 +183,7 @@ class menu_behaviour extends StatelessWidget {
                                   Text(
                                     pracName,
                                     textAlign: TextAlign.left,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         color: const Color(0xffffffff),
                                         fontSize:

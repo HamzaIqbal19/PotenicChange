@@ -317,7 +317,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                     ),
                                     SizedBox(
                                       height:
-                                          AppDimensions.height10(context) * 2.0,
+                                          AppDimensions.height10(context) * 1.0,
                                     ),
                                     Text('Review',
                                         textAlign: TextAlign.center,
@@ -394,10 +394,12 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                           Container(
                                             width: AppDimensions.height10(
                                                     context) *
-                                                13.8,
+                                                11.8,
                                             child: Text(
                                               pracName,
                                               textAlign: TextAlign.center,
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   color:
                                                       const Color(0xFFFBFBFB),

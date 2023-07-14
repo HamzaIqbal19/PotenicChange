@@ -27,7 +27,7 @@ class GoalWhy extends StatefulWidget {
 
 class _goalwhyState extends State<GoalWhy> {
   List<Map<String, String>> myTextFields = [];
-  int index1 = 0;
+
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   //closing the focus
   final FocusNode blankNode = FocusNode();
@@ -57,7 +57,6 @@ class _goalwhyState extends State<GoalWhy> {
   void handleTextChanged(int index, String newValue) {
     setState(() {
       myTextFields[index]['text'] = newValue;
-      index1 = index;
     });
     print(myTextFields);
   }
@@ -550,17 +549,15 @@ class _goalwhyState extends State<GoalWhy> {
                         //heightFactor: 0.5,
                         child: AnimatedScaleButton(
                           onTap: () {
-                            if (myTextFields[index1]['text'] != "") {
-                              increment();
-                              setState(() {
-                                myTextFields.add({
-                                  'key':
-                                      'Reason ${myTextFields.length.toString()}',
-                                  'text': '',
-                                });
+                            increment();
+                            setState(() {
+                              myTextFields.add({
+                                'key':
+                                    'Reason ${myTextFields.length.toString()}',
+                                'text': '',
                               });
-                              print("=============>Pressed");
-                            }
+                            });
+                            print("=============>Pressed");
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 4.7,
@@ -622,14 +619,13 @@ class _goalwhyState extends State<GoalWhy> {
                     ),
                     AnimatedScaleButton(
                       onTap: () {
-                        print(
-                            '===================>${myTextFields[index1]['text']}');
+                        print('===================>${myTextFields[0]['text']}');
                         updateGoalReason(myTextFields);
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
-                        decoration: myTextFields[index1]['text'] != ""
+                        decoration: myTextFields[0]['text'] != ""
                             ? BoxDecoration(
                                 // color: Color(0xFFFF7D50),
                                 border: Border.all(color: Colors.transparent),
@@ -654,7 +650,7 @@ class _goalwhyState extends State<GoalWhy> {
                           child: Text(
                             "Next",
                             style: TextStyle(
-                              color: myTextFields[index1]['text'] != ""
+                              color: myTextFields[0]['text'] != ""
                                   ? Colors.white
                                   : Colors.white.withOpacity(0.5),
                               fontSize: AppDimensions.height10(context) * 1.6,

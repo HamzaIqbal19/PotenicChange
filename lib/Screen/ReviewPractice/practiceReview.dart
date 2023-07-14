@@ -192,10 +192,12 @@ class _PracticeReviewState extends State<PracticeReview> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 0.0,
                         ),
-                        Container(
+                        SizedBox(
+                          width: AppDimensions.height10(context) * 30,
                           child: Center(
                             child: Text(
                               goalName,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFF5B74A6),
@@ -247,34 +249,34 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 alignment: const Alignment(-0.355, -0.2),
                                 child: Container(
                                   height: AppDimensions.height10(context) * 4.1,
-                                  width: AppDimensions.height10(context) * 4.06,
+                                  width: AppDimensions.height10(context) * 4.1,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
                                           image: AssetImage('$pracColor' ==
                                                       '1' ||
                                                   color1 == true
-                                              ? "assets/images/Ellipse orange.webp"
+                                              ? "assets/images/Ellipse orange_wb.webp"
                                               : '$pracColor' == '2' ||
                                                       color2 == true
-                                                  ? 'assets/images/Ellipse 158.webp'
+                                                  ? 'assets/images/Ellipse 158_wb.webp'
                                                   : '$pracColor' == '3' ||
                                                           color3 == true
-                                                      ? "assets/images/Ellipse 157.webp"
+                                                      ? "assets/images/Ellipse 157_wb.webp"
                                                       : '$pracColor' == '4' ||
                                                               color4 == true
-                                                          ? "assets/images/Ellipse light-blue.webp"
+                                                          ? "assets/images/Ellipse light-blue_wb.webp"
                                                           : '$pracColor' ==
                                                                       '5' ||
                                                                   color5 == true
-                                                              ? "assets/images/Ellipse blue.webp"
-                                                              : 'assets/images/Ellipse 158.webp'),
+                                                              ? "assets/images/Ellipse blue_wb.webp"
+                                                              : 'assets/images/Ellipse 158_wb.webp'),
                                           fit: BoxFit.cover)),
                                 ),
                               ),
                               Align(
                                 alignment: const Alignment(0.55, -0.28),
-                                child: Container(
+                                child: SizedBox(
                                   width: AppDimensions.height10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 2.4,
                                   child: Text(
@@ -311,7 +313,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 0.7,
                         ),
-                        Container(
+                        SizedBox(
                           height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.height10(context) * 23.9,
                           child: Center(
@@ -413,7 +415,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             AppDimensions.height10(context) *
                                                 0.5,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
@@ -444,7 +446,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             AppDimensions.height10(context) *
                                                 2.0,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
@@ -555,9 +557,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           image:
                                                               DecorationImage(
                                                             image: AssetImage(
-                                                                "assets/images/Ellipse orange.webp"),
-                                                            fit: BoxFit
-                                                                .fitHeight,
+                                                                "assets/images/Ellipse orange_wb.webp"),
+                                                            fit: BoxFit.cover,
                                                           ),
                                                         ),
                                                       ),
@@ -640,9 +641,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           image:
                                                               DecorationImage(
                                                             image: AssetImage(
-                                                                "assets/images/Ellipse 158.webp"),
-                                                            fit: BoxFit
-                                                                .fitHeight,
+                                                                "assets/images/Ellipse 158_wb.webp"),
+                                                            fit: BoxFit.cover,
                                                           ),
                                                         ),
                                                       ),
@@ -725,9 +725,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           image:
                                                               DecorationImage(
                                                             image: AssetImage(
-                                                                "assets/images/Ellipse 157.webp"),
-                                                            fit: BoxFit
-                                                                .fitHeight,
+                                                                "assets/images/Ellipse 157_wb.webp"),
+                                                            fit: BoxFit.cover,
                                                           ),
                                                         ),
                                                       ),
@@ -813,9 +812,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           image:
                                                               DecorationImage(
                                                             image: AssetImage(
-                                                                "assets/images/Ellipse light-blue.webp"),
-                                                            fit: BoxFit
-                                                                .fitHeight,
+                                                                "assets/images/Ellipse light-blue_wb.webp"),
+                                                            fit: BoxFit.cover,
                                                           ),
                                                         ),
                                                       ),
@@ -898,9 +896,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                           image:
                                                               DecorationImage(
                                                             image: AssetImage(
-                                                                "assets/images/Ellipse blue.webp"),
-                                                            fit: BoxFit
-                                                                .fitHeight,
+                                                                "assets/images/Ellipse blue_wb.webp"),
+                                                            fit: BoxFit.cover,
                                                           ),
                                                         ),
                                                       ),
@@ -1004,7 +1001,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             AppDimensions.height10(context) *
                                                 0.5,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
@@ -1150,7 +1147,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             AppDimensions.height10(context) *
                                                 0.5,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.4,
@@ -1216,7 +1213,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Container(
+                                                SizedBox(
                                                   // color: Colors.blue,
                                                   width: AppDimensions.height10(
                                                           context) *
@@ -1230,7 +1227,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         MainAxisAlignment
                                                             .spaceAround,
                                                     children: [
-                                                      Container(
+                                                      SizedBox(
                                                           width: AppDimensions
                                                                   .height10(
                                                                       context) *
@@ -1245,7 +1242,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                                 : "assets/images/notificationsoff.webp",
                                                             fit: BoxFit.contain,
                                                           )),
-                                                      Container(
+                                                      SizedBox(
                                                         width: AppDimensions
                                                                 .height10(
                                                                     context) *
@@ -1276,7 +1273,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {},
-                                                  child: Container(
+                                                  child: SizedBox(
                                                       // color: Colors.red,
                                                       width: AppDimensions
                                                               .height10(
@@ -1356,7 +1353,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
+                            SizedBox(
                                 // color: Colors.blue,
                                 width: AppDimensions.height10(context) * 5.0,
                                 height: AppDimensions.height10(context) * 5.0,
@@ -1370,7 +1367,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 curve: Curves.easeInOut,
                                 duration: const Duration(seconds: 1),
                                 context: context,
-                                builder: (BuildContext context) => Container(
+                                builder: (BuildContext context) => SizedBox(
                                   width: AppDimensions.height10(context) * 27.0,
                                   height:
                                       AppDimensions.height10(context) * 24.6,
@@ -1502,7 +1499,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                               ),
                                             ),
                                           ),
-                                          Container(
+                                          SizedBox(
                                             height: AppDimensions.height10(
                                                     context) *
                                                 4.4,
@@ -1672,7 +1669,7 @@ class _inner_text1State extends State<inner_text1> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
               height: AppDimensions.height10(context) * 3.6,
               width: AppDimensions.height10(context) * 26.9,
               child: Text("${widget.circle_text}",

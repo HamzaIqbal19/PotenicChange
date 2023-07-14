@@ -25,7 +25,7 @@ class Visualising extends StatefulWidget {
 
 class _VisualisingState extends State<Visualising> {
   List<Map<String, String>> goalVisualising = [];
-  int index1 = 0;
+
   //closing the focus
   final FocusNode blankNode = FocusNode();
   bool Loading = false;
@@ -56,7 +56,6 @@ class _VisualisingState extends State<Visualising> {
   void handleTextChanged(int index, String newValue) {
     setState(() {
       goalVisualising[index]['text'] = newValue;
-      index1 = index;
     });
     print(goalVisualising);
   }
@@ -553,17 +552,15 @@ class _VisualisingState extends State<Visualising> {
                         //heightFactor: 0.5,
                         child: AnimatedScaleButton(
                           onTap: () {
-                            if (goalVisualising[index1]['text'] != "") {
-                              increment();
-                              setState(() {
-                                goalVisualising.add({
-                                  'key':
-                                      'Identity ${goalVisualising.length.toString()}',
-                                  'text': '',
-                                });
+                            increment();
+                            setState(() {
+                              goalVisualising.add({
+                                'key':
+                                    'Identity ${goalVisualising.length.toString()}',
+                                'text': '',
                               });
-                              print("=============>Pressed");
-                            }
+                            });
+                            print("=============>Pressed");
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 4.7,
@@ -628,14 +625,14 @@ class _VisualisingState extends State<Visualising> {
                       onTap: () async {
                         final SharedPreferences prefs = await _prefs;
                         var goalwhy = prefs.remove('route');
-                        goalVisualising[index1]['text'] != ""
+                        goalVisualising[0]['text'] != ""
                             ? updateGoalReason(goalVisualising)
                             : Container();
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
-                        decoration: goalVisualising[index1]['text'] != ""
+                        decoration: goalVisualising[0]['text'] != ""
                             ? BoxDecoration(
                                 border: Border.all(color: Colors.transparent),
                                 gradient: const LinearGradient(

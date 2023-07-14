@@ -19,11 +19,9 @@ class endofSession extends StatefulWidget {
   State<endofSession> createState() => _endofSessionState();
 }
 
-int sessionEnd = 0;
-
 class _endofSessionState extends State<endofSession> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-
+  int sessionEnd = 0;
   String pracName = "";
 
   var emotions;
@@ -102,7 +100,7 @@ class _endofSessionState extends State<endofSession> {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                //width: AppDimensions.height10(context) * 18.6,
+                width: AppDimensions.height10(context) * 30.0,
                 height: AppDimensions.height10(context) * 2.4,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 10.5,
@@ -607,13 +605,18 @@ class _endofSessionState extends State<endofSession> {
                     margin: EdgeInsets.only(
                         bottom: AppDimensions.height10(context) * 6.3),
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
+                      gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xffFCC10D),
-                            Color(0xffFDA210),
-                          ]),
+                          colors: sessionEnd != 0
+                              ? [
+                                  const Color(0xffFCC10D),
+                                  const Color(0xffFDA210),
+                                ]
+                              : [
+                                  const Color(0xffFCC10D).withOpacity(0.5),
+                                  const Color(0xffFDA210).withOpacity(0.5),
+                                ]),
                       borderRadius: BorderRadius.circular(
                           AppDimensions.height10(context) * 5.0),
                     ),

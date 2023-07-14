@@ -9,140 +9,7 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-
-String? minutes;
-String? hours;
-
-List<String> selectedDays = []; // Declare the selectedDays list here
 int count = 0;
-String day = '';
-String hour = '';
-String minute = '';
-String period = '';
-
-String endday = '';
-String endhour = '';
-String endminute = minute;
-String endperiod = '';
-
-bool Done = false;
-
-class schedule extends StatefulWidget {
-  final ValueChanged<int> onCountChanged;
-
-  schedule({required this.onCountChanged});
-
-  @override
-  State<schedule> createState() => _scheduleState();
-}
-
-class _scheduleState extends State<schedule> {
-  @override
-  void initState() {
-    prac();
-    super.initState();
-  }
-
-  void prac() {
-    String jsonStr = '''
-  {
-    "name": "Sample Practice",
-    "routine": true,
-    "days": [
-      {
-        "day": "Monday",
-        "startTime": "9:00 AM",
-        "endTime": "5:00 PM"
-      },
-      {
-        "day": "Tuesday",
-        "startTime": "8:30 AM",
-        "endTime": "4:30 PM"
-      }
-    ]
-  }
-  ''';
-
-    Map<String, dynamic> jsonData = json.decode(jsonStr);
-    Practice practice = Practice.fromJson(jsonData);
-
-    print(practice.name); // Output: Sample Practice
-    print(practice.routine); // Output: true
-    print(practice.days.length); // Output: 2
-
-    for (var day in practice.days) {
-      print(day['day']); // Output: Monday, Tuesday
-      print(day['startTime']); // Output: 9:00 AM, 8:30 AM
-      print(day['endTime']); // Output: 5:00 PM, 4:30 PM
-    }
-
-    // To convert the object back to JSON
-    Map<String, dynamic> toJsonData = practice.toJson();
-    String jsonString = json.encode(toJsonData);
-    print(jsonString);
-  }
-
-  List<Map<String, dynamic>> timesPerDay = [];
-  String start_time = '00:00';
-  String end_time = '07:00';
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
-        child:
-            //  Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: <Widget>[
-            //     schedule_card(
-            //       //  key: Key(timesPerDay[0]['key']),
-            //       days: 'Monday',
-            //       onCountChanged: widget.onCountChanged,
-            //     ),
-            //     SizedBox(
-            //       height: AppDimensions.height10(context) * 1.6,
-            //     ),
-            //     schedule_card(
-            //       //  key: Key(timesPerDay[1]['key']),
-            //       days: 'Tuesday',
-            //       onCountChanged: widget.onCountChanged,
-            //     ),
-            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
-            //     schedule_card(
-            //       //  key: Key(timesPerDay[2]['key']),
-            //       days: 'Wednesday',
-            //       onCountChanged: widget.onCountChanged,
-            //     ),
-            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
-            //     schedule_card(
-            //       // key: Key(timesPerDay[3]['key']),
-            //       days: 'Thursday',
-            //       onCountChanged: widget.onCountChanged,
-            //     ),
-            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
-            //     schedule_card(
-            //       // key: Key(timesPerDay[4]['key']),
-            //       days: 'Friday',
-            //       onCountChanged: widget.onCountChanged,
-            //     ),
-            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
-            //     schedule_card(
-            //       //key: Key(timesPerDay[5]['key']),
-            //       days: 'Saturday',
-            //       onCountChanged: widget.onCountChanged,
-            //     ),
-            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
-            //     schedule_card(
-            //       // key: Key(timesPerDay[6]['key']),
-            //       days: 'Sunday',
-            //       onCountChanged: widget.onCountChanged,
-            //     ),
-            //     SizedBox(height: AppDimensions.height10(context) * 1.6),
-            //   ],
-            // ),
-            Container());
-  }
-}
 
 class schedule_card extends StatefulWidget {
   final String days;
@@ -166,6 +33,22 @@ class schedule_card extends StatefulWidget {
 }
 
 class _schedule_cardState extends State<schedule_card> {
+  String? minutes;
+  String? hours;
+
+  List<String> selectedDays = []; // Declare the selectedDays list here
+
+  String day = '';
+  String hour = '';
+  String minute = '';
+  String period = '';
+
+  String endday = '';
+  String endhour = '';
+
+  String endperiod = '';
+
+  bool Done = false;
   final String days_name;
 
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
@@ -257,6 +140,7 @@ class _schedule_cardState extends State<schedule_card> {
                                 context: context,
                                 builder: (context) {
                                   return MyListWheelForm(
+                                    key: Key("$widget.key"),
                                     onSelectionChanged: (selectedDay,
                                         selectedHour,
                                         selectedMinute,
@@ -266,19 +150,19 @@ class _schedule_cardState extends State<schedule_card> {
                                         if (Done) {
                                           selectedDays.add(days_name);
                                           _globalKey.currentState?.expand();
-                                          // _globalKey.currentState?.expand();
-                                          // _globalKey.currentState?.expand();
+                                          _globalKey.currentState?.expand();
+                                          _globalKey.currentState?.expand();
                                           setState(() {
                                             start_time =
                                                 "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
                                           });
 
-                                          final SharedPreferences prefs =
-                                              await _prefs;
-                                          var Start_Time = prefs.setString(
-                                              'startTime', '$start_time');
-                                          var End_Time = prefs.setString(
-                                              'endTime', '$end_time');
+                                          // final SharedPreferences prefs =
+                                          //     await _prefs;
+                                          // var Start_Time = prefs.setString(
+                                          //     'startTime', '$start_time');
+                                          // var End_Time = prefs.setString(
+                                          //     'endTime', '$end_time');
 
                                           Done = Done;
                                           print("Done:$Done");
@@ -287,12 +171,13 @@ class _schedule_cardState extends State<schedule_card> {
                                             setState(() {
                                               setState(() {
                                                 start_time =
-                                                    "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                                    "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                               });
                                             });
                                             count = count + 1;
                                             onCountChanged(count);
-                                            // Navigator.pop(context);
+                                            _globalKey.currentState?.expand();
+                                            Navigator.pop(context);
                                           }
                                         }
                                         // date.hour.toString();
@@ -301,11 +186,11 @@ class _schedule_cardState extends State<schedule_card> {
                                         minute = selectedMinute;
                                         endday = selectedDay;
                                         endhour = selectedHour;
-                                        endminute = selectedMinute;
 
                                         period = selectedPeriod;
                                         endperiod = selectedPeriod;
                                       });
+                                      //_globalKey.currentState?.collapse();
                                     },
                                   );
                                 },
@@ -332,6 +217,7 @@ class _schedule_cardState extends State<schedule_card> {
                     child: Row(
                       children: [
                         startTimerState(
+                          key: Key("$widget.key"),
                           text: ' 1) Time: ',
                           onChanged: (value) {
                             setState(() {
@@ -381,6 +267,7 @@ class _schedule_cardState extends State<schedule_card> {
                     child: Row(
                       children: [
                         endTimerState(
+                          key: Key("$widget.key"),
                           text: '2) Time: ',
                           onChanged: (value) {
                             setState(() {
@@ -434,21 +321,38 @@ class _schedule_cardState extends State<schedule_card> {
 
 class startTimerState extends StatefulWidget {
   final String text;
+
   final ValueChanged<String> onChanged;
   final ValueChanged<String> onChangedStart;
 
   const startTimerState({
-    super.key,
+    Key? key,
     required this.text,
     required this.onChanged,
     required this.onChangedStart,
-  });
+  }) : super(key: key);
 
   @override
   State<startTimerState> createState() => _startTimerStateState(text);
 }
 
 class _startTimerStateState extends State<startTimerState> {
+  String? minutes;
+  String? hours;
+
+  List<String> selectedDays = []; // Declare the selectedDays list here
+
+  String day = '';
+  String hour = '';
+  String minute = '';
+  String period = '';
+
+  String endday = '';
+  String endhour = '';
+
+  String endperiod = '';
+
+  bool Done = false;
   endTime() {
     return start_time;
   }
@@ -508,10 +412,11 @@ class _startTimerStateState extends State<startTimerState> {
                       context: context,
                       builder: (context) {
                         return MyListWheelForm(
+                          key: Key("$widget.key"),
                           onSelectionChanged: (selectedDay, selectedHour,
                               selectedMinute, selectedPeriod, Done) {
                             String startTime =
-                                "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                             widget.onChanged(startTime);
                             widget.onChangedStart(
                                 startTime); // Pass the selected value to the onChanged callback
@@ -522,9 +427,12 @@ class _startTimerStateState extends State<startTimerState> {
                               hour = selectedHour;
                               minute = selectedMinute;
                               period = selectedPeriod;
+                              Done = true;
                             });
                             Done = true;
+
                             widget.onChanged(start_time);
+                            Navigator.pop(context);
                           },
                         );
                       },
@@ -555,16 +463,33 @@ class endTimerState extends StatefulWidget {
   final ValueChanged<String> onChangedEnd;
 
   const endTimerState(
-      {super.key,
+      {Key? key,
       required this.text,
       required this.onChanged,
-      required this.onChangedEnd});
+      required this.onChangedEnd})
+      : super(key: key);
 
   @override
   State<endTimerState> createState() => _endTimerStateState(text);
 }
 
 class _endTimerStateState extends State<endTimerState> {
+  String? minutes;
+  String? hours;
+
+  List<String> selectedDays = []; // Declare the selectedDays list here
+
+  String day = '';
+  String hour = '';
+  String minute = '';
+  String period = '';
+
+  String endday = '';
+  String endhour = '';
+
+  String endperiod = '';
+
+  bool Done = false;
   endTime() {
     return end_time;
   }
@@ -624,10 +549,11 @@ class _endTimerStateState extends State<endTimerState> {
                       context: context,
                       builder: (context) {
                         return MyListWheelForm(
+                          key: Key('$widget.key'),
                           onSelectionChanged: (selectedDay, selectedHour,
                               selectedMinute, selectedPeriod, Done) {
                             String endTime =
-                                "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                             widget.onChanged(
                                 endTime); // Pass the selected value to the onChanged callback
                             setState(() {
@@ -635,10 +561,11 @@ class _endTimerStateState extends State<endTimerState> {
 
                               endday = selectedDay;
                               endhour = selectedHour;
-                              endminute = selectedMinute;
+
                               endperiod = selectedPeriod;
                             });
                             widget.onChangedEnd(end_time);
+                            Navigator.pop(context);
                           },
                         );
                       },

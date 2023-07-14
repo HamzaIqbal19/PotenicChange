@@ -84,14 +84,14 @@ class _clocksState extends State<clocks> {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                // width: AppDimensions.height10(context) * 18.6,
-                height: AppDimensions.height10(context) * 2.4,
+                width: AppDimensions.height10(context) * 30,
                 margin: EdgeInsets.only(
                     bottom: AppDimensions.height10(context) * 10.5,
-                    top: AppDimensions.height10(context) * 4.6),
+                    top: AppDimensions.height10(context) * 5.0),
                 alignment: Alignment.center,
                 child: Text(
                   pracName,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                       fontSize: AppDimensions.height10(context) * 2.0,
                       fontWeight: FontWeight.w600,

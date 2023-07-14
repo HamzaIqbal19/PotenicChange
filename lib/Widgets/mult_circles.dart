@@ -128,17 +128,22 @@ class align_circles extends StatelessWidget {
                 image: DecorationImage(
                     image: AssetImage(asset_2), fit: BoxFit.contain)),
             child: Stack(children: [
-              Center(
-                  child: Text(
-                s_circle_text,
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Color(s_circle_text_col),
-                    fontSize: AppDimensions.height10(context) * 1.8,
-                    fontWeight: FontWeight.w500),
-              )),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppDimensions.height10(context),
+                ),
+                child: Center(
+                    child: Text(
+                  s_circle_text,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(s_circle_text_col),
+                      fontSize: AppDimensions.height10(context) * 1.8,
+                      fontWeight: FontWeight.w500),
+                )),
+              ),
             ]),
           ),
         ),

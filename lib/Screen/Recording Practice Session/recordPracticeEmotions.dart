@@ -186,11 +186,10 @@ class _emotionsState extends State<emotions> {
                 //crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
-                    // width: AppDimensions.height10(context) * 18.6,
-                    height: AppDimensions.height10(context) * 2.4,
+                    width: AppDimensions.height10(context) * 30,
                     margin: EdgeInsets.only(
                         bottom: AppDimensions.height10(context) * 10.5,
-                        top: AppDimensions.height10(context) * 4.6),
+                        top: AppDimensions.height10(context) * 5.0),
                     alignment: Alignment.center,
                     child: Text(
                       widget.pracName,
@@ -560,8 +559,8 @@ class _emotionsState extends State<emotions> {
                               if (pracEmotions != 0) {
                                 widget.summary
                                     ? Navigator.pop(context)
-                                    : Navigator.push(
-                                        context, FadePageRoute(page: clocks()));
+                                    : Navigator.push(context,
+                                        FadePageRoute(page: const clocks()));
                               }
                             },
                             child: Container(
@@ -571,7 +570,9 @@ class _emotionsState extends State<emotions> {
                                     right:
                                         AppDimensions.height10(context) * 1.2),
                                 decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: pracEmotions != 0
+                                        ? Colors.white
+                                        : Colors.white.withOpacity(0.5),
                                     borderRadius: BorderRadius.circular(
                                         AppDimensions.height10(context) * 5.0),
                                     border: Border.all(
@@ -624,13 +625,20 @@ class _emotionsState extends State<emotions> {
                               height: AppDimensions.height10(context) * 5.0,
                               width: AppDimensions.height10(context) * 17.0,
                               decoration: BoxDecoration(
-                                gradient: const LinearGradient(
+                                gradient: LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
-                                  colors: [
-                                    Color(0xffFCC10D),
-                                    Color(0xffFDA210),
-                                  ],
+                                  colors: pracEmotions != 0
+                                      ? [
+                                          const Color(0xffFCC10D),
+                                          const Color(0xffFDA210),
+                                        ]
+                                      : [
+                                          const Color(0xffFCC10D)
+                                              .withOpacity(0.5),
+                                          const Color(0xffFDA210)
+                                              .withOpacity(0.5),
+                                        ],
                                 ),
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10(context) * 5.0),

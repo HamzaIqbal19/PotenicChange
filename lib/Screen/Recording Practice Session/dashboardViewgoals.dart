@@ -71,9 +71,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
           identity = response["identityStatement"][0]["text"];
           color = response["color"];
         });
-        print("===================");
-        _fetchPracticeNames();
-        print("===================");
+
+        loadData();
       } else {
         loadData();
       }
@@ -81,7 +80,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
       // loadData();
       print("error");
     }).whenComplete(() {
-      // loadData();
+      loadData();
     });
 
     // setState(() {
@@ -104,17 +103,12 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
         print("---------------------------------");
         print("response123:$pracName");
         print("response123:$pracColor");
-        loadData();
       } else {
-        loadData();
         print("response:$response");
       }
     }).catchError((error) {
-      loadData();
       print("hell");
-    }).whenComplete(() {
-      loadData();
-    });
+    }).whenComplete(() {});
 
     // setState(() {
     //   goalName = AdminGoal().getUserGoal();
@@ -128,6 +122,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   @override
   initState() {
     super.initState();
+    _fetchPracticeNames();
     _fetchGoalNames();
     // Initialize AnimationController
     initController();
@@ -869,7 +864,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 26.8,
                                         padding: EdgeInsets.all(
                                             AppDimensions.height10(context) *
-                                                0.6),
+                                                3),
                                         decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
@@ -888,55 +883,53 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                                         ? "assets/images/Blue_gradient.webp"
                                                                         : 'assets/images/orange_moon.webp'),
                                                 fit: BoxFit.cover)),
-                                        child: Stack(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
-                                            Align(
-                                                alignment:
-                                                    const Alignment(0, -0.5),
-                                                child: Container(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      24.0,
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.0),
-                                                  child: Text(
-                                                    goalName,
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
+                                            Container(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  24.0,
+                                              // padding: EdgeInsets.symmetric(
+                                              //     horizontal:
+                                              //         AppDimensions.height10(
+                                              //                 context) *
+                                              //             2.0),
+                                              child: Text(
+                                                goalName,
+                                                textAlign: TextAlign.center,
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             2.0,
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
                                                             0.14,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color: const Color(
-                                                            0xff5B74A6)),
-                                                  ),
-                                                )),
-                                            Align(
-                                              alignment:
-                                                  const Alignment(0, -0.2),
-                                              child: Text('"$identity"',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontStyle:
-                                                          FontStyle.italic,
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.6,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: const Color(
-                                                          0xff5B74A6))),
-                                            )
+                                                    fontWeight: FontWeight.w600,
+                                                    color: const Color(
+                                                        0xff5B74A6)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: AppDimensions.height10(
+                                                  context),
+                                            ),
+                                            Text('"$identity"',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontStyle: FontStyle.italic,
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.6,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: const Color(
+                                                        0xff5B74A6))),
                                           ],
                                         ),
                                       ),
@@ -986,7 +979,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                   13.8,
                                           padding: EdgeInsets.all(
                                               AppDimensions.height10(context) *
-                                                  0.3),
+                                                  1.2),
                                           decoration: BoxDecoration(
                                               //color: Colors.amber,
                                               shape: BoxShape.circle,
@@ -1027,6 +1020,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                             child: Text(
                                               pracName,
                                               textAlign: TextAlign.center,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 3,
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize:

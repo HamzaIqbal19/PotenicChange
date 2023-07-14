@@ -6,7 +6,16 @@ import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
 
 class missed_Menu extends StatelessWidget {
-  const missed_Menu({super.key});
+  final String goalName;
+  final String pracName;
+  final String goalColor;
+  final String pracColor;
+  const missed_Menu(
+      {super.key,
+      required this.goalName,
+      required this.pracName,
+      required this.goalColor,
+      required this.pracColor});
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +77,18 @@ class missed_Menu extends StatelessWidget {
                           fontSize: AppDimensions.height10(context) * 2.0,
                           fontWeight: FontWeight.w600),
                     ),
-                    Text(
-                      'Control my anger',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 2.0,
-                          fontWeight: FontWeight.w600),
+                    Container(
+                      width: AppDimensions.height10(context) * 30,
+                      child: Center(
+                        child: Text(
+                          goalName,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: AppDimensions.height10(context) * 2.0,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
                     ),
                     Container(
                       width: AppDimensions.height10(context) * 40.0,
@@ -84,15 +99,26 @@ class missed_Menu extends StatelessWidget {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const Alignment(-1, 0),
+                            alignment: const Alignment(-0.84, -0.32),
                             child: Container(
-                              width: AppDimensions.height10(context) * 10.4,
-                              height: AppDimensions.height10(context) * 11.2,
-                              decoration: const BoxDecoration(
+                              width: AppDimensions.height10(context) * 7.9,
+                              height: AppDimensions.height10(context) * 7.9,
+                              decoration: BoxDecoration(
                                 // color: Colors.amber,
                                 image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Group 9398.webp'),
+                                    image: AssetImage(goalColor == '1'
+                                        ? "assets/images/red_gradient.webp"
+                                        : goalColor == '2'
+                                            ? 'assets/images/orange_moon.webp'
+                                            : goalColor == '3'
+                                                ? "assets/images/lightGrey_gradient.webp"
+                                                : goalColor == '4'
+                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                    : goalColor == '5'
+                                                        ? "assets/images/medBlue_gradient.webp"
+                                                        : goalColor == '6'
+                                                            ? "assets/images/Blue_gradient.webp"
+                                                            : 'assets/images/orange_moon.webp'),
                                     fit: BoxFit.contain),
                               ),
                             ),
@@ -102,11 +128,20 @@ class missed_Menu extends StatelessWidget {
                             child: Container(
                               height: AppDimensions.height10(context) * 5.0,
                               width: AppDimensions.height10(context) * 4.6,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                   //color: Colors.amber,
                                   image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Med Habit Practice (1).webp'),
+                                      image: AssetImage(pracColor == '1'
+                                          ? "assets/images/Missed_1.webp"
+                                          : pracColor == '2'
+                                              ? 'assets/images/Missed_2.webp'
+                                              : pracColor == '3'
+                                                  ? "assets/images/Missed_3.webp"
+                                                  : pracColor == '4'
+                                                      ? "assets/images/Missed_4.webp"
+                                                      : pracColor == '5'
+                                                          ? "assets/images/Missed_4.webp"
+                                                          : 'assets/images/Missed_1.webp'),
                                       fit: BoxFit.contain)),
                             ),
                           ),
@@ -120,8 +155,9 @@ class missed_Menu extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Count temper episodes ',
+                                    pracName,
                                     textAlign: TextAlign.left,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         color: const Color(0xffffffff),
                                         fontSize:

@@ -415,14 +415,22 @@ class _GoalCategoryState extends State<GoalCategory> {
                                             AppDimensions.height10(context) *
                                                 1.5,
                                       ),
-                                      suffixIcon: Image.asset(
-                                        'assets/images/cancel.webp',
-                                        width: AppDimensions.height10(context) *
-                                            2.3,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.3,
-                                        // fit: BoxFit.contain,
+                                      suffixIcon: AnimatedScaleButton(
+                                        onTap: () {
+                                          _searchController.clear();
+                                          searchText = '';
+                                          _searchGoals('', widget.id);
+                                        },
+                                        child: Image.asset(
+                                          'assets/images/cancel.webp',
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.3,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.3,
+                                          // fit: BoxFit.contain,
+                                        ),
                                       ),
                                       hintText: "Search",
                                       focusedBorder: const OutlineInputBorder(
@@ -440,6 +448,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                         onTap: () {
                           setState(() {
                             SearchIcon = false;
+                            _searchController.clear();
                           });
                         },
                         child: Text(

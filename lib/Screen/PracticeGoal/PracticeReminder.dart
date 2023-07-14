@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -12,6 +14,7 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -28,6 +31,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
   bool reminderSelected = false;
   var Start_time;
   var End_time;
+
+  String currentDay = DateFormat('EEEE').format(DateTime.now());
 
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
@@ -57,10 +62,25 @@ class _PracticeReminderState extends State<PracticeReminder> {
     print('=======================>$color');
   }
 
-  Future getData() async {
-    final SharedPreferences prefs = await _prefs;
-    Start_time = prefs.getString('startTime');
-    End_time = prefs.getString('endTime');
+  Future<List<Map<String, dynamic>>> loadTimesPerDay() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Retrieve the JSON-encoded string from shared preferences
+    String? timesPerDayJson = prefs.getString('timesPerDay');
+
+    if (timesPerDayJson != null) {
+      // Convert the string back to a list of maps
+      List<dynamic> decodedList = json.decode(timesPerDayJson);
+
+      // Cast each map in the list to Map<String, dynamic>
+      List<Map<String, dynamic>> loadedList =
+          decodedList.map((item) => Map<String, dynamic>.from(item)).toList();
+
+      return loadedList;
+    } else {
+      // If the value is not found, return an empty list
+      return [];
+    }
   }
 
   @override
@@ -156,7 +176,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
-                      "${mygoal.text.toString()}",
+                      mygoal.text.toString(),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -216,7 +236,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Ellipse 158.webp'),
+                                          'assets/images/Ellipse 158_wb.webp'),
                                       fit: BoxFit.cover)),
                             ),
                           ),
@@ -224,17 +244,16 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       ),
                     ),
                     Container(
+                      width: AppDimensions.height10(context) * 20.0,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.5),
-                      child: Center(
-                        child: Text(
-                          "${practice.text.toString()}",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF156F6D),
-                            fontSize: AppDimensions.height10(context) * 2.0,
-                          ),
+                      child: Text(
+                        practice.text.toString(),
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFF156F6D),
+                          fontSize: AppDimensions.height10(context) * 2.0,
                         ),
                       ),
                     ),
@@ -493,7 +512,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         ],
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 3.0,
+                        height: AppDimensions.height10(context) * 2.1,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -511,7 +530,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontFamily: "Laila",
-                                height: AppDimensions.height10(context) * 0.12,
+                                height: AppDimensions.height10(context) * 0.14,
                                 color: const Color(0xFFFFFFFF),
                                 fontSize: AppDimensions.height10(context) * 1.6,
                               ),
@@ -612,10 +631,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         ],
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 1.5,
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 1.5,
+                        height: AppDimensions.height10(context) * 1.1,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -633,7 +649,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontFamily: "Laila",
-                                height: AppDimensions.height10(context) * 0.12,
+                                height: AppDimensions.height10(context) * 0.14,
                                 color: const Color(0xFFFFFFFF),
                                 fontSize: AppDimensions.height10(context) * 1.6,
                               ),
@@ -661,16 +677,18 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     AnimatedScaleButton(
                       onTap: () async {
                         if (reminderSelected == true) {
+                          List<Map<String, dynamic>> loadedTimesPerDay =
+                              await loadTimesPerDay();
                           final SharedPreferences prefs = await _prefs;
+
                           var reminder = prefs.setBool('pracReminder', radio1);
                           //add Id
                           PracticeGoalApi()
                               .userAddPractice(
-                                  '${practiceName.text.toString()}',
-                                  radio1,
-                                  "Monday",
-                                  '7:00 am',
-                                  '12:00 am')
+                            practiceName.text.toString(),
+                            radio1,
+                            loadedTimesPerDay,
+                          )
                               .then((response) {
                             print('$response');
                             if (response == true) {
@@ -692,6 +710,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             }
                           }).catchError((error) {
                             print('===>adasd');
+                          }).whenComplete(() {
+                            print('--------------Comp');
                           });
                         }
                       },

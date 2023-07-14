@@ -29,7 +29,7 @@ class Goal_Identity extends StatefulWidget {
 // ignore: camel_case_types
 class _Goal_IdentityState extends State<Goal_Identity> {
   List<Map<String, String>> myIdentity = [];
-  int index1 = 0;
+
   //closing the focus
   String goalName = "";
   final FocusNode blankNode = FocusNode();
@@ -59,7 +59,6 @@ class _Goal_IdentityState extends State<Goal_Identity> {
   void handleTextChanged(int index, String newValue) {
     setState(() {
       myIdentity[index]['text'] = newValue;
-      index1 = index;
     });
     print(myIdentity);
   }
@@ -552,17 +551,15 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                         //heightFactor: 0.5,
                         child: AnimatedScaleButton(
                           onTap: () {
-                            if (myIdentity[index1]['text'] != "") {
-                              increment();
-                              setState(() {
-                                myIdentity.add({
-                                  'key':
-                                      'Identity ${myIdentity.length.toString()}',
-                                  'text': '',
-                                });
+                            increment();
+                            setState(() {
+                              myIdentity.add({
+                                'key':
+                                    'Identity ${myIdentity.length.toString()}',
+                                'text': '',
                               });
-                              print("=============>Pressed");
-                            }
+                            });
+                            print("=============>Pressed");
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 4.7,
@@ -638,7 +635,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
-                        decoration: myIdentity[index1]['text'] != ""
+                        decoration: myIdentity[0]['text'] != ""
                             ? BoxDecoration(
                                 // color: Color(0xFFFF7D50),
                                 border: Border.all(color: Colors.transparent),
@@ -663,7 +660,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           child: Text(
                             "Next",
                             style: TextStyle(
-                              color: myIdentity[index1]['text'] != ""
+                              color: myIdentity[0]['text'] != ""
                                   ? Colors.white
                                   : Colors.white.withOpacity(0.5),
                               fontSize: AppDimensions.height10(context) * 1.6,

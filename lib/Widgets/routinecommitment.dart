@@ -2,14 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-String start_time = '00:00';
-String end_time = '07:00';
+String start_time = '11:11 am';
+String end_time = '07:00 pm';
 String? minutes;
 String? hours;
 
-class routinecommitment extends StatelessWidget {
+class routinecommitment extends StatefulWidget {
+  @override
+  State<routinecommitment> createState() => _routinecommitmentState();
+}
+
+class _routinecommitmentState extends State<routinecommitment> {
+  var pracDetails;
+  @override
+  void initState() {
+    super.initState();
+    _fetchPracticeDetails();
+  }
+
+  void _fetchPracticeDetails() async {
+    PracticeGoalApi.getUserPractice().then((response) {
+      if (response.length != 0) {
+        print("---------------------------------");
+        setState(() {
+          pracDetails = response;
+        });
+        print('$pracDetails');
+      } else {
+        print("response:$response");
+      }
+    }).catchError((error) {
+      print("hell");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,44 +49,58 @@ class routinecommitment extends StatelessWidget {
           children: <Widget>[
             schedule_card(
               days: 'Monday',
+              endTime: pracDetails['schedule'][0]['endtime'],
+              startTime: pracDetails['schedule'][0]['starttime'],
             ),
             SizedBox(
               height: AppDimensions.height10(context) * 1.0,
             ),
             schedule_card(
               days: 'Tuesday',
+              endTime: pracDetails['schedule'][1]['endtime'],
+              startTime: pracDetails['schedule'][1]['starttime'],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             schedule_card(
               days: 'Wednesday',
+              endTime: pracDetails['schedule'][2]['endtime'],
+              startTime: pracDetails['schedule'][2]['starttime'],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             schedule_card(
               days: 'Thursday',
+              endTime: pracDetails['schedule'][3]['endtime'],
+              startTime: pracDetails['schedule'][3]['starttime'],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             schedule_card(
               days: 'Friday',
+              endTime: pracDetails['schedule'][4]['endtime'],
+              startTime: pracDetails['schedule'][4]['starttime'],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             schedule_card(
               days: 'Saturday',
+              endTime: pracDetails['schedule'][5]['endtime'],
+              startTime: pracDetails['schedule'][5]['starttime'],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             schedule_card(
               days: 'Sunday',
+              endTime: pracDetails['schedule'][6]['endtime'],
+              startTime: pracDetails['schedule'][6]['starttime'],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ],
@@ -69,18 +112,22 @@ class routinecommitment extends StatelessWidget {
 
 class schedule_card extends StatefulWidget {
   final String days;
+  final String startTime;
+  final String endTime;
 
-  const schedule_card({super.key, required this.days});
+  const schedule_card(
+      {Key? key,
+      required this.days,
+      required this.startTime,
+      required this.endTime})
+      : super(key: key);
 
   @override
-  State<schedule_card> createState() => _schedule_cardState(days);
+  State<schedule_card> createState() => _schedule_cardState();
 }
 
 class _schedule_cardState extends State<schedule_card> {
-  final String days_name;
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
-
-  _schedule_cardState(this.days_name);
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +147,7 @@ class _schedule_cardState extends State<schedule_card> {
                   shape: BoxShape.rectangle,
                 ),
                 title: Text(
-                  days_name,
+                  widget.days,
                   style: const TextStyle(
                       color: Color.fromRGBO(67, 114, 150, 1),
                       fontWeight: FontWeight.w600,
@@ -114,7 +161,9 @@ class _schedule_cardState extends State<schedule_card> {
                     child: Row(
                       children: [
                         startTimerState(
+                          key: Key("$widget.key"),
                           text: ' 1) Time: ',
+                          startTime: widget.startTime,
                         ),
                       ],
                     ),
@@ -125,8 +174,10 @@ class _schedule_cardState extends State<schedule_card> {
                     padding: const EdgeInsets.only(left: 0.0, bottom: 10),
                     child: Row(
                       children: [
-                        const endTimerState(
+                        endTimerState(
+                          key: Key("$widget.key"),
                           text: '1) Time: ',
+                          endTime: widget.endTime,
                         ),
                       ],
                     ),
@@ -143,11 +194,13 @@ class _schedule_cardState extends State<schedule_card> {
 
 class startTimerState extends StatefulWidget {
   final String text;
+  final String startTime;
 
   const startTimerState({
-    super.key,
+    Key? key,
     required this.text,
-  });
+    required this.startTime,
+  }) : super(key: key);
 
   @override
   State<startTimerState> createState() => _startTimerStateState(text);
@@ -164,7 +217,7 @@ class _startTimerStateState extends State<startTimerState> {
       width: AppDimensions.height10(context) * 31.6,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
-          color: Color(0xFFF6F6F6),
+          color: const Color(0xFFF6F6F6),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Row(
@@ -185,7 +238,7 @@ class _startTimerStateState extends State<startTimerState> {
               Container(
                 width: 162,
                 child: Text(
-                  start_time,
+                  widget.startTime,
                   style: const TextStyle(
                     color: Color.fromRGBO(250, 153, 52, 1),
                     fontSize: 16,
@@ -203,18 +256,18 @@ class _startTimerStateState extends State<startTimerState> {
                   elevation: 0,
                   backgroundColor: Colors.transparent,
                   onPressed: () {
-                    DatePicker.showTime12hPicker(context,
-                        showTitleActions: true, onChanged: (date) {
-                      hours = date.hour.toString();
-                      minutes = date.minute.toString();
-                    }, onConfirm: (date) {
-                      setState(() {
-                        start_time = '${hours} : ${minutes}';
-                      });
-                      ;
-                    }, currentTime: DateTime.now());
+                    // DatePicker.showTime12hPicker(context,
+                    //     showTitleActions: true, onChanged: (date) {
+                    //   hours = date.hour.toString();
+                    //   minutes = date.minute.toString();
+                    // }, onConfirm: (date) {
+                    //   setState(() {
+                    //     start_time = '${hours} : ${minutes}';
+                    //   });
+                    //   ;
+                    // }, currentTime: DateTime.now());
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_drop_down,
                     color: Color.fromRGBO(250, 153, 52, 1),
                   )),
@@ -228,8 +281,10 @@ class _startTimerStateState extends State<startTimerState> {
 
 class endTimerState extends StatefulWidget {
   final String text;
+  final String endTime;
 
-  const endTimerState({super.key, required this.text});
+  const endTimerState({Key? key, required this.text, required this.endTime})
+      : super(key: key);
 
   @override
   State<endTimerState> createState() => _endTimerStateState(text);
@@ -246,7 +301,7 @@ class _endTimerStateState extends State<endTimerState> {
       width: AppDimensions.height10(context) * 31.6,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
-          color: Color(0xFFF6F6F6),
+          color: const Color(0xFFF6F6F6),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: Row(
@@ -267,7 +322,7 @@ class _endTimerStateState extends State<endTimerState> {
               Container(
                 width: 162,
                 child: Text(
-                  end_time,
+                  widget.endTime,
                   style: const TextStyle(
                     color: Color.fromRGBO(250, 153, 52, 1),
                     fontSize: 16,
@@ -285,18 +340,18 @@ class _endTimerStateState extends State<endTimerState> {
                   elevation: 0,
                   backgroundColor: Colors.transparent,
                   onPressed: () {
-                    DatePicker.showTime12hPicker(context,
-                        showTitleActions: true, onChanged: (date) {
-                      hours = date.hour.toString();
-                      minutes = date.minute.toString();
-                    }, onConfirm: (date) {
-                      setState(() {
-                        start_time = '${hours} : ${minutes}';
-                      });
-                      ;
-                    }, currentTime: DateTime.now());
+                    // DatePicker.showTime12hPicker(context,
+                    //     showTitleActions: true, onChanged: (date) {
+                    //   hours = date.hour.toString();
+                    //   minutes = date.minute.toString();
+                    // }, onConfirm: (date) {
+                    //   setState(() {
+                    //     start_time = '${hours} : ${minutes}';
+                    //   });
+                    //   ;
+                    // }, currentTime: DateTime.now());
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.arrow_drop_down,
                     color: Color.fromRGBO(250, 153, 52, 1),
                   )),

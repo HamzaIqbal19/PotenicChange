@@ -7,7 +7,8 @@ class MyListWheelForm extends StatefulWidget {
           String day, String hour, String minute, String period, bool Done)
       onSelectionChanged;
 
-  MyListWheelForm({required this.onSelectionChanged});
+  MyListWheelForm({Key? key, required this.onSelectionChanged})
+      : super(key: key);
 
   @override
   _MyListWheelFormState createState() => _MyListWheelFormState();
@@ -33,7 +34,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
   List<String> _hours = List<String>.generate(12, (i) => (i + 1).toString());
   List<String> _minutes =
       List<String>.generate(60, (i) => i.toString().padLeft(2, '0'));
-  List<String> _periods = ['AM', 'PM'];
+  List<String> _periods = [' AM', ' PM'];
 
   @override
   Widget build(BuildContext context) {

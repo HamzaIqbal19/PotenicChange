@@ -75,11 +75,16 @@ class welldone_splashState extends State<welldone_splash> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,
+          centerTitle: true,
           title: Container(
             margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.3),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppDimensions.height10(context) * 3,
+            ),
             child: Center(
                 child: Text(
               pracName,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                   fontSize: AppDimensions.height10(context) * 2.0,
                   fontWeight: FontWeight.w600,

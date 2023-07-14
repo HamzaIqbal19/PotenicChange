@@ -115,7 +115,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
               //crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  //width: AppDimensions.height10(context) * 18.6,
+                  width: AppDimensions.height10(context) * 30,
                   height: AppDimensions.height10(context) * 2.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 5.0),
@@ -681,13 +681,18 @@ class next_botton extends StatelessWidget {
           width: AppDimensions.height10(context) * 25.4,
           // margin: EdgeInsets.only(bottom: 62, top: 46),
           decoration: BoxDecoration(
-            gradient: const LinearGradient(
+            gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xffFCC10D),
-                  Color(0xffFDA210),
-                ]),
+                colors: EmotionsAfter != 0
+                    ? [
+                        const Color(0xffFCC10D),
+                        const Color(0xffFDA210),
+                      ]
+                    : [
+                        const Color(0xffFCC10D).withOpacity(0.5),
+                        const Color(0xffFDA210).withOpacity(0.5),
+                      ]),
             borderRadius:
                 BorderRadius.circular(AppDimensions.height10(context) * 5.0),
           ),

@@ -82,7 +82,6 @@ class _practice_summaryState extends State<practice_summary> {
           identity = response["identityStatement"][0]["text"];
           color = response["color"];
         });
-        _fetchPracticeNames();
       } else {
         loadData();
       }
@@ -99,6 +98,7 @@ class _practice_summaryState extends State<practice_summary> {
           Feedback = response['recording']['practiceFeedback'];
           Session = response['recording']['practiceSummary'];
         });
+        loadData();
         print(Before);
         print(After);
         print(Feedback);
@@ -119,7 +119,10 @@ class _practice_summaryState extends State<practice_summary> {
   @override
   initState() {
     super.initState();
+
     _fetchGoalNames();
+    _fetchPracticeNames();
+
     // Initialize AnimationController
   }
 
@@ -232,7 +235,7 @@ class _practice_summaryState extends State<practice_summary> {
                               fit: BoxFit.cover)),
                       child: Stack(children: [
                         Align(
-                            alignment: const Alignment(0, -0.65),
+                            alignment: const Alignment(0, -0.55),
                             child: Container(
                               width: AppDimensions.height10(context) * 24.0,
                               padding: EdgeInsets.symmetric(
@@ -241,6 +244,8 @@ class _practice_summaryState extends State<practice_summary> {
                               child: Text(
                                 goalName,
                                 textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 2.0,
@@ -251,23 +256,29 @@ class _practice_summaryState extends State<practice_summary> {
                               ),
                             )),
                         Align(
-                          alignment: const Alignment(0, -0.25),
-                          child: Text('"$identity"',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontStyle: FontStyle.italic,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w400,
-                                  height:
-                                      AppDimensions.height10(context) * 0.14,
-                                  color: const Color(0xff5B74A6))),
+                          alignment: const Alignment(0, -0.15),
+                          child: Container(
+                            child: Text('"$identity"',
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
+                                    fontWeight: FontWeight.w400,
+                                    height:
+                                        AppDimensions.height10(context) * 0.14,
+                                    color: const Color(0xff5B74A6))),
+                          ),
                         ),
                         Align(
                           alignment: const Alignment(0, 0.975),
                           child: Container(
                             height: AppDimensions.height10(context) * 13.8,
                             width: AppDimensions.height10(context) * 13.8,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: AppDimensions.height10(context)),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 // border: Border.all(
@@ -287,6 +298,8 @@ class _practice_summaryState extends State<practice_summary> {
                             child: Center(
                                 child: Text(
                               pracName,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: const Color(0xff1A481C),
@@ -594,6 +607,8 @@ class _practice_summaryState extends State<practice_summary> {
                       // height: AppDimensions.height10(context) * 7.3,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
+                      // padding: EdgeInsets.only(
+                      //     bottom: AppDimensions.height10(context)),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               AppDimensions.height10(context) * 2.0),
@@ -601,9 +616,9 @@ class _practice_summaryState extends State<practice_summary> {
                       child: Container(
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.4,
+                            bottom: AppDimensions.height10(context) * 0.5,
                             left: AppDimensions.height10(context) * 2.0,
                             right: AppDimensions.height10(context) * 2.0),
-                        height: AppDimensions.height10(context) * 3.8,
                         width: AppDimensions.height10(context) * 32.0,
                         child: Text(
                           Feedback,

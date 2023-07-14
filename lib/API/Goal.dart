@@ -152,7 +152,7 @@ class AdminGoal {
   Future<List<Map<String, dynamic>>> searchAllGoal(String searchvalue) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
-
+    //String characters = ;
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken',
@@ -323,7 +323,7 @@ class AdminGoal {
     }
   }
 
-  Future updateUserGoal(category, key, reason) async {
+  Future updateUserGoal(category, reason) async {
     final SharedPreferences prefs = await _prefs;
     var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
@@ -334,11 +334,7 @@ class AdminGoal {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
-    var body = jsonEncode({
-      "$category": [
-        {"key": 'Reason $key', "text": "$reason"}
-      ],
-    });
+    var body = jsonEncode({"$category": reason});
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
 

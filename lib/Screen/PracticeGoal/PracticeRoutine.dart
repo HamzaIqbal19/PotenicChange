@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
@@ -21,18 +23,29 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
   int Count = 0;
 
   List<Map<String, dynamic>> timesPerDay = [
-    {'day': 'Monday', 'start': '', 'end': ''},
-    {'day': 'Tuesday', 'start': '', 'end': ''},
-    {'day': 'Wednesday', 'start': '', 'end': ''},
-    {'day': 'Thursday', 'start': '', 'end': ''},
-    {'day': 'Friday', 'start': '', 'end': ''},
-    {'day': 'Saturday', 'start': '', 'end': ''},
-    {'day': 'Sunday', 'start': '', 'end': ''}
+    {'day': 'Monday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
+    {'day': 'Tuesday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
+    {'day': 'Wednesday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
+    {'day': 'Thursday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
+    {'day': 'Friday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
+    {'day': 'Saturday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
+    {'day': 'Sunday', 'starttime': '11:11 am', 'endtime': '7:00 pm'}
   ];
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
   var practice = TextEditingController();
   var color;
+  int index1 = 0;
+
+  Future<void> saveTimesPerDay(List<Map<String, dynamic>> timesPerDay) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // Convert the list to a JSON-encoded string
+    String timesPerDayJson = json.encode(timesPerDay);
+
+    // Save the string to shared preferences
+    await prefs.setString('timesPerDay', timesPerDayJson);
+  }
 
   @override
   void initState() {
@@ -145,11 +158,11 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 0.5,
                 ),
-                Container(
+                SizedBox(
                   width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
-                      "${mygoal.text.toString()}",
+                      mygoal.text.toString(),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -166,7 +179,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: AppDimensions.height10(context) * 7.9,
                       height: AppDimensions.height10(context) * 7.9,
                       // color: Colors.amber,
@@ -217,17 +230,16 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       ),
                     ),
                     Container(
+                      width: AppDimensions.height10(context) * 20.0,
                       margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 1.5),
-                      child: Center(
-                        child: Text(
-                          "${practice.text.toString()}",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF156F6D),
-                            fontSize: AppDimensions.height10(context) * 2.0,
-                          ),
+                      child: Text(
+                        practice.text.toString(),
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFF156F6D),
+                          fontSize: AppDimensions.height10(context) * 2.0,
                         ),
                       ),
                     ),
@@ -236,7 +248,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.3,
                 ),
-                Container(
+                SizedBox(
                   height: AppDimensions.height10(context) * 3.4,
                   width: AppDimensions.height10(context) * 36.4,
                   child: Center(
@@ -257,7 +269,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       height: AppDimensions.height10(context) * 8.6,
                       width: AppDimensions.height10(context) * 37.2,
                       child: Center(
@@ -280,11 +292,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                         AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
                                   )),
-                              // can add more TextSpans here...
-
-                              // can add more TextSpans here...
-
-                              // can add more TextSpans here...
                             ],
                           ),
                         ),
@@ -310,27 +317,28 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             return Column(
                               children: [
                                 schedule_card(
-                                  key: Key(timesPerDay[index]['day']!),
+                                  key: Key('$index'),
                                   days: '${timesPerDay[index]['day']}',
                                   onChangedStart: (value) {
+                                    print(value);
+                                    //  print(timesPerDay[index]['day']);
                                     setState(() {
-                                      timesPerDay.firstWhere((day) =>
-                                              day['day'] ==
-                                              '${timesPerDay[index]}')[
-                                          'start'] = value;
+                                      timesPerDay[index]['starttime'] = value;
+                                      index1 = index;
                                     });
                                   },
                                   onChangedEnd: (value) {
+                                    print(value);
                                     setState(() {
-                                      timesPerDay.firstWhere((day) =>
-                                              day['day'] ==
-                                              '${timesPerDay[index]}')['end'] =
-                                          value;
+                                      timesPerDay[index]['endtime'] = value;
+
+                                      index1 = index;
                                     });
                                   },
-                                  onCountChanged: (Count) {
+                                  onCountChanged: (value) {
                                     setState(() {
-                                      Count++;
+                                      Count = value;
+                                      index1 = index;
                                     });
                                     print(Count);
                                   },
@@ -341,171 +349,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                               ],
                             );
                           })),
-                      // schedule_card(
-                      //   key: Key(timesPerDay[0]['day']!),
-                      //   days: 'Monday',
-                      //   onChangedStart: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //               (day) => day['day'] == 'Monday')['start'] =
-                      //           value;
-                      //     });
-                      //   },
-                      //   onChangedEnd: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //           (day) => day['day'] == 'Monday')['end'] = value;
-                      //     });
-                      //   },
-                      //   onCountChanged: (Count) {
-                      //     setState(() {
-                      //       Count++;
-                      //     });
-                      //     print(Count);
-                      //   },
-                      // ),
-                      // SizedBox(
-                      //   height: AppDimensions.height10(context) * 1.6,
-                      // ),
-                      // schedule_card(
-                      //   key: Key(timesPerDay[1]['day']!),
-                      //   days: 'Tuesday',
-                      //   onChangedStart: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //               (day) => day['day'] == 'Tuesday')['start'] =
-                      //           value;
-                      //     });
-                      //   },
-                      //   onChangedEnd: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //               (day) => day['day'] == 'Tuesday')['end'] =
-                      //           value;
-                      //     });
-                      //   },
-                      //   onCountChanged: (Count) {
-                      //     setState(() {
-                      //       Count++;
-                      //     });
-                      //   },
-                      // ),
-                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      // schedule_card(
-                      //   key: Key(timesPerDay[2]['day']!),
-                      //   days: 'Wednesday',
-                      //   onChangedStart: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere((day) =>
-                      //           day['day'] == 'Wednesday')['start'] = value;
-                      //     });
-                      //   },
-                      //   onChangedEnd: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //               (day) => day['day'] == 'Wednesday')['end'] =
-                      //           value;
-                      //     });
-                      //   },
-                      //   onCountChanged: (Count) {
-                      //     setState(() {
-                      //       Count++;
-                      //     });
-                      //   },
-                      // ),
-                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      // schedule_card(
-                      //   key: Key(timesPerDay[3]['day']!),
-                      //   days: 'Thursday',
-                      //   onChangedStart: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere((day) =>
-                      //           day['day'] == 'Thursday')['start'] = value;
-                      //     });
-                      //   },
-                      //   onChangedEnd: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //               (day) => day['day'] == 'Thursday')['end'] =
-                      //           value;
-                      //     });
-                      //   },
-                      //   onCountChanged: (Count) {
-                      //     setState(() {
-                      //       Count++;
-                      //     });
-                      //   },
-                      // ),
-                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      // schedule_card(
-                      //   key: Key(timesPerDay[4]['day']!),
-                      //   days: 'Friday',
-                      //   onChangedStart: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //               (day) => day['day'] == 'Friday')['start'] =
-                      //           value;
-                      //     });
-                      //   },
-                      //   onChangedEnd: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //           (day) => day['day'] == 'Friday')['end'] = value;
-                      //     });
-                      //   },
-                      //   onCountChanged: (Count) {
-                      //     setState(() {
-                      //       Count++;
-                      //     });
-                      //   },
-                      // ),
-                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      // schedule_card(
-                      //   key: Key(timesPerDay[5]['day']!),
-                      //   days: 'Saturday',
-                      //   onChangedStart: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere((day) =>
-                      //           day['day'] == 'Saturday')['start'] = value;
-                      //     });
-                      //   },
-                      //   onChangedEnd: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //               (day) => day['day'] == 'Saturday')['end'] =
-                      //           value;
-                      //     });
-                      //   },
-                      //   onCountChanged: (Count) {
-                      //     setState(() {
-                      //       Count++;
-                      //     });
-                      //   },
-                      // ),
-                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
-                      // schedule_card(
-                      //   key: Key(timesPerDay[6]['day']!),
-                      //   days: timesPerDay[6]['day'],
-                      //   onChangedStart: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //               (day) => day['day'] == 'Sunday')['start'] =
-                      //           value;
-                      //     });
-                      //   },
-                      //   onChangedEnd: (value) {
-                      //     setState(() {
-                      //       timesPerDay.firstWhere(
-                      //           (day) => day['day'] == 'Sunday')['end'] = value;
-                      //     });
-                      //   },
-                      //   onCountChanged: (Count) {
-                      //     setState(() {
-                      //       Count++;
-                      //     });
-                      //   },
-                      // ),
-                      // SizedBox(height: AppDimensions.height10(context) * 1.6),
                     ],
                   ),
                 ),
@@ -516,8 +359,11 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     AnimatedScaleButton(
-                      onTap: () {
+                      onTap: () async {
+                        print(timesPerDay);
                         if (count >= 3) {
+                          saveTimesPerDay(timesPerDay);
+
                           print(timesPerDay[6]['start']);
                           print(timesPerDay[6]['end']);
                           print(timesPerDay[6]['day']);
@@ -525,14 +371,13 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             context,
                             FadePageRoute2(
                               true,
-                              exitPage: CreatePractice(),
-                              enterPage: PracticeReminder(),
+                              exitPage: const CreatePractice(),
+                              enterPage: const PracticeReminder(),
                             ),
                           );
                         } else {
-                          print(timesPerDay[0][day]);
+                          print(timesPerDay[index1]);
                         }
-                        // print("successfull${widget.pracTitle}");
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,

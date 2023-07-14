@@ -101,10 +101,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              FadePageRoute(page: const veiw_all_goals_menu()));
-                        },
+                        // onTap: () {
+                        //   Navigator.push(context,
+                        //       FadePageRoute(page: const veiw_all_goals_menu()));
+                        // },
                         child: Container(
                           width: AppDimensions.height10(context) * 33.4,
                           height: AppDimensions.height10(context) * 5.0,
@@ -205,39 +205,39 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    if (widget.membership == true) {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const Subscription()));
-                                    } else if (widget.trial == true) {
-                                      print(widget.cancel);
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: widget.cancel
-                                                  ? const dashBoard(
-                                                      saved: false,
-                                                      helpful_tips: false,
-                                                      dashboard_ctrl: true,
-                                                      membership: true,
-                                                      trial: false,
-                                                      cancel: false)
-                                                  : const dashBoard(
-                                                      saved: false,
-                                                      helpful_tips: false,
-                                                      dashboard_ctrl: true,
-                                                      membership: false,
-                                                      trial: true,
-                                                      cancel: true)));
+                                    // if (widget.membership == true) {
+                                    //   Navigator.push(
+                                    //       context,
+                                    //       FadePageRoute(
+                                    //           page: const Subscription()));
+                                    // } else if (widget.trial == true) {
+                                    //   print(widget.cancel);
+                                    //   Navigator.push(
+                                    //       context,
+                                    //       FadePageRoute(
+                                    //           page: widget.cancel
+                                    //               ? const dashBoard(
+                                    //                   saved: false,
+                                    //                   helpful_tips: false,
+                                    //                   dashboard_ctrl: true,
+                                    //                   membership: true,
+                                    //                   trial: false,
+                                    //                   cancel: false)
+                                    //               : const dashBoard(
+                                    //                   saved: false,
+                                    //                   helpful_tips: false,
+                                    //                   dashboard_ctrl: true,
+                                    //                   membership: false,
+                                    //                   trial: true,
+                                    //                   cancel: true)));
 
-                                      _canceled_plan(context);
-                                    } else {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const Subscription()));
-                                    }
+                                    //   _canceled_plan(context);
+                                    // } else {
+                                    //   Navigator.push(
+                                    //       context,
+                                    //       FadePageRoute(
+                                    //           page: const Subscription()));
+                                    // }
                                   },
                                   child: SizedBox(
                                       width: AppDimensions.height10(context) *
@@ -339,7 +339,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.pop(context);
-                                community_sheet(context);
+                                // community_sheet(context);
                               },
                               child: SizedBox(
                                 width: AppDimensions.height10(context) * 20.6,
@@ -372,8 +372,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context, FadePageRoute(page: const Settings()));
+                          // Navigator.push(
+                          //     context, FadePageRoute(page: const Settings()));
                         },
                         child: SizedBox(
                           width: AppDimensions.height10(context) * 33.4,
@@ -562,10 +562,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const veiw_all_goals_menu()));
+                                // Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: const veiw_all_goals_menu()));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -618,10 +618,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const hurdles_splash()));
+                                // Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: const hurdles_splash()));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -674,12 +674,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const inspiration_motivation(
-                                      goal_delete: false,
-                                    )));
+                                // Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: const inspiration_motivation(
+                                //       goal_delete: false,
+                                //     )));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -732,14 +732,14 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const goal_menu_inactive(
-                                      premium: true,
-                                      isActive: true,
-                                      goal_evaluation: true,
-                                    )));
+                                // Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: const goal_menu_inactive(
+                                //       premium: true,
+                                //       isActive: true,
+                                //       goal_evaluation: true,
+                                //     )));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -792,8 +792,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context,
-                                    FadePageRoute(page: const prac_score()));
+                                // Navigator.push(context,
+                                //     FadePageRoute(page: const prac_score()));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -847,7 +847,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.pop(context);
-                                community_sheet(context);
+                                //community_sheet(context);
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -900,8 +900,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context,
-                                    FadePageRoute(page: const timeline()));
+                                // Navigator.push(context,
+                                //     FadePageRoute(page: const timeline()));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -954,10 +954,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const congratulations()));
+                                // Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: const congratulations()));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -1010,10 +1010,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const message_center()));
+                                // Navigator.push(
+                                //     context,
+                                //     FadePageRoute(
+                                //         page: const message_center()));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -1066,8 +1066,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(context,
-                                    FadePageRoute(page: const Settings()));
+                                // Navigator.push(context,
+                                //     FadePageRoute(page: const Settings()));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -1237,10 +1237,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const Subscription()));
+                                      // Navigator.push(
+                                      //     context,
+                                      //     FadePageRoute(
+                                      //         page: const Subscription()));
                                     },
                                     child: SizedBox(
                                       width: AppDimensions.height10(context) *

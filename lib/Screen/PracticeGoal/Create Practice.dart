@@ -43,6 +43,7 @@ class _CreatePracticeState extends State<CreatePractice> {
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  TextEditingController _searchController = TextEditingController();
 
   getGoalName() async {
     print("hello world1224");
@@ -221,6 +222,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                           child: Text(
                             mygoal,
                             overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
@@ -278,7 +280,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                         image: AssetImage(
-                                            'assets/images/Ellipse 158.webp'),
+                                            'assets/images/Ellipse 158_wb.webp'),
                                         fit: BoxFit.cover)),
                               ),
                             ),
@@ -421,6 +423,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                     AppDimensions.height10(context)))),
                             child: Center(
                               child: TextFormField(
+                                  controller: _searchController,
                                   onChanged: (value) {
                                     print("value:$value");
 
@@ -442,14 +445,22 @@ class _CreatePracticeState extends State<CreatePractice> {
                                         // fit: BoxFit.contain,
                                         // fit: BoxFit.contain,
                                       ),
-                                      suffixIcon: Image.asset(
-                                        'assets/images/cancel.webp',
-                                        width: AppDimensions.height10(context) *
-                                            2.3,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.3,
-                                        // fit: BoxFit.contain,
+                                      suffixIcon: AnimatedScaleButton(
+                                        onTap: () {
+                                          _searchController.clear();
+                                          _searchPractice('');
+                                          searchText = '';
+                                        },
+                                        child: Image.asset(
+                                          'assets/images/cancel.webp',
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.3,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.3,
+                                          // fit: BoxFit.contain,
+                                        ),
                                       ),
                                       hintText: "Search",
                                       focusedBorder: const OutlineInputBorder(
@@ -465,10 +476,13 @@ class _CreatePracticeState extends State<CreatePractice> {
                       // fit: BoxFit.contain,
                       // fit: BoxFit.contain,
 
-                      GestureDetector(
+                      AnimatedScaleButton(
                         onTap: () {
                           setState(() {
                             SearchIcon = false;
+                            _searchPractice('');
+                            _searchController.clear();
+                            searchText = '';
                           });
                         },
                         child: Text(
@@ -501,7 +515,15 @@ class _CreatePracticeState extends State<CreatePractice> {
                                 bottom: AppDimensions.height10(context) * 0.5),
                             child: AnimatedScaleButton(
                               onTap: () {
+                                // if (mygoal.length > 20) {
+                                //   setState(() {
+                                //     var mygoalName =
+                                //         mygoal.subString(0, 9) + '...';
+                                //   });
+                                //   bottom_sheet(context, mygoal);
+                                // } else {
                                 bottom_sheet(context, mygoal);
+                                //}
                               },
                               child: Image.asset(
                                 'assets/images/Add.webp',

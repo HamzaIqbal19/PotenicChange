@@ -206,9 +206,9 @@ class _GoalFinishedState extends State<GoalFinished> {
                                   margin: EdgeInsets.only(
                                       bottom: AppDimensions.height10(context) *
                                           4.0),
-                                  padding: EdgeInsets.only(
-                                      bottom: AppDimensions.height10(context) *
-                                          10.0),
+                                  // padding: EdgeInsets.only(
+                                  //     bottom: AppDimensions.height10(context) *
+                                  //         10.0),
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       image: DecorationImage(
@@ -226,7 +226,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                                                   ? "assets/images/Blue_gradient.webp"
                                                                   : 'assets/images/orange_moon.webp'))),
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
                                         width: AppDimensions.height10(context) *
@@ -276,7 +276,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) *
-                                                2.0,
+                                                1.0,
                                       ),
                                       Text('Review',
                                           textAlign: TextAlign.center,
