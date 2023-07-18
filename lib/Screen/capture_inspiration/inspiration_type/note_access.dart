@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
@@ -17,6 +19,27 @@ class note_info extends StatefulWidget {
 }
 
 class _note_infoState extends State<note_info> {
+  var inspirationDetails;
+
+  void _fetchInspiration() {
+    InspirationApi().getInspirationById().then((response) {
+      if (response.statusCode == 200) {
+        setState(() {
+          inspirationDetails = response['inspiration'];
+        });
+        return inspirationDetails;
+      }
+
+      // return null;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchInspiration();
+  }
+
   @override
   Widget build(BuildContext context) {
     bool link_state = false;
@@ -631,6 +654,402 @@ class _note_infoState extends State<note_info> {
                                     FadePageRoute(
                                         page: inspiraton_goals(
                                             data_saved: false)));
+                          },
+                          child: Container(
+                            height: AppDimensions.height10(context) * 6.0,
+                            width: AppDimensions.height10(context) * 37.5,
+                            margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0,
+                              right: AppDimensions.height10(context) * 1.9,
+                              // bottom: AppDimensions.height10(context) * 1.0
+                            ),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 1, color: const Color(0xFF464646)),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  width: AppDimensions.height10(context) * 23.9,
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10(context) *
+                                          1.99),
+                                  child: GestureDetector(
+                                      onTap: () {},
+                                      child: Text(
+                                        '00 impacted goals',
+                                        style: TextStyle(
+                                          color: const Color(0xFF646464),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      )),
+                                ),
+                                Container(
+                                    width:
+                                        AppDimensions.height10(context) * 2.4,
+                                    height:
+                                        AppDimensions.height10(context) * 1.39,
+                                    margin: EdgeInsets.only(
+                                        right: AppDimensions.height10(context) *
+                                            2.391),
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Image.asset(
+                                        'assets/images/BTN Back.webp',
+                                        //width: AppDimensions.height10(context) * 2.6,
+                                        //height: AppDimensions.height10(context) * 2.6,
+                                        color: const Color(0xFF646464),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ))
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ]),
+            ),
+          )),
+    );
+  }
+}
+
+class noteSaved extends StatefulWidget {
+  const noteSaved({super.key});
+
+  @override
+  State<noteSaved> createState() => _noteSavedState();
+}
+
+class _noteSavedState extends State<noteSaved> {
+  TextEditingController title = TextEditingController();
+  TextEditingController statement = TextEditingController();
+  TextEditingController hastags = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    bool link_state = false;
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        color: const Color(0xffC4C4C4),
+      ),
+      bottomNavigationBar: BottomAppBar(
+          color: const Color(0xffC4C4C4),
+          shape: const CircularNotchedRectangle(),
+          child: Container(
+            //  height: AppDimensions.height10(context) * 84.8,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(children: [
+                Container(
+                  // width: AppDimensions.height10(context) * 41.1,
+                  height: AppDimensions.height10(context) * 5.1,
+                  // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.4),
+                  decoration: BoxDecoration(
+                      color: const Color(0xffF5F5F5).withOpacity(0.8),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(
+                              AppDimensions.height10(context) * 1.0),
+                          topRight: Radius.circular(
+                              AppDimensions.height10(context) * 1.0))),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 3.3,
+                          margin: EdgeInsets.only(
+                              right: AppDimensions.height10(context) * 4.9),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Back',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff007AFF)),
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: SizedBox(
+                            height: AppDimensions.height10(context) * 2.2,
+                            width: AppDimensions.height10(context) * 23.1,
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Create note inspiration',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.7,
+                                        fontWeight: FontWeight.w700,
+                                        color: const Color(0xff282828)),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        AnimatedScaleButton(
+                          onTap: () {
+                            InspirationApi()
+                                .addInspiration(
+                                    2,
+                                    " ",
+                                    title.text.toString(),
+                                    ['#tags'],
+                                    " ",
+                                    true,
+                                    statement.text.toString(),
+                                    19)
+                                .then((response) {
+                              if (response.statusCode == 200) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const note_info(
+                                      note_saved: true,
+                                      type_switch: 1,
+                                    )));
+                                print('----------------');
+
+                                print(response);
+                              }
+
+                              // return null;
+                            });
+                          },
+                          child: Container(
+                            height: AppDimensions.height10(context) * 2.2,
+                            width: AppDimensions.height10(context) * 4.3,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 4.9),
+                            child: Text(
+                              'Create',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.5,
+                                  fontWeight: FontWeight.w400,
+                                  color:
+                                      const Color(0xff007AFF).withOpacity(0.4)),
+                            ),
+                          ),
+                        )
+                      ]),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Container(
+                    height: AppDimensions.height10(context) * 79.7,
+                    width: double.infinity,
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        Container(
+                          height: AppDimensions.height10(context) * 2.1,
+                          width: AppDimensions.height10(context) * 30.5,
+                          alignment: Alignment.centerLeft,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0,
+                              right: AppDimensions.height10(context) * 8.9,
+                              top: AppDimensions.height10(context) * 3.2),
+                          child: Column(children: [
+                            Text(
+                              'Title',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.5,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff828282)),
+                            ),
+                          ]),
+                        ),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          height: AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.height10(context) * 30.5,
+                          //color: Colors.amber,
+                          margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 0,
+                            right: AppDimensions.height10(context) * 10.0,
+                            // top: widget.note_saved
+                            //     ? AppDimensions.height10(context) * 0
+                            //     : AppDimensions.height10(context) * 1.0
+                          ),
+                          child: TextField(
+                            controller: title,
+                            textAlignVertical: TextAlignVertical.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.7,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xff282828)),
+                            decoration: InputDecoration(
+                                contentPadding: EdgeInsets.fromLTRB(
+                                    AppDimensions.height10(context) * 1.5,
+                                    AppDimensions.height10(context) * 0.4,
+                                    AppDimensions.height10(context) * 0.2,
+                                    0),
+                                hintText: 'Give your inspiration a title',
+                                hintStyle: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.7,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xff828282)),
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent))),
+                          ),
+                        ),
+                        Container(
+                          height: AppDimensions.height10(context) * 2.1,
+                          width: AppDimensions.height10(context) * 30.5,
+                          alignment: Alignment.centerLeft,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0,
+                              right: AppDimensions.height10(context) * 8.9,
+                              top: AppDimensions.height10(context) * 3.9),
+                          child: Text(
+                            'Description',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.5,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff828282)),
+                          ),
+                        ),
+                        Container(
+                          // height: widget.note_saved
+                          //     ? AppDimensions.height10(context) * 39.0
+                          //     : AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.height10(context) * 30.5,
+                          // color: Colors.amber,
+                          margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 0,
+                            right: AppDimensions.height10(context) * 10.0,
+                            // top: widget.note_saved
+                            //     ? AppDimensions.height10(context) * 0
+                            //     : AppDimensions.height10(context) * 1.0
+                          ),
+                          child: SizedBox(
+                            height: AppDimensions.height10(context) * 2.4,
+                            width: AppDimensions.height10(context) * 37.5,
+                            child: TextField(
+                              controller: statement,
+                              textAlignVertical: TextAlignVertical.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff282828)),
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.fromLTRB(
+                                      AppDimensions.height10(context) * 1.5,
+                                      AppDimensions.height10(context) * 0.4,
+                                      0,
+                                      0),
+                                  hintText: 'Say more about this inspiration ',
+                                  hintStyle: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff828282)),
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent))),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: AppDimensions.height10(context) * 2.1,
+                          width: AppDimensions.height10(context) * 30.5,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0,
+                              right: AppDimensions.height10(context) * 8.9,
+                              top: AppDimensions.height10(context) * 3.9),
+                          child: Text(
+                            'Tags',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.5,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff828282)),
+                          ),
+                        ),
+                        Container(
+                          height: AppDimensions.height10(context) * 2.4,
+                          width: AppDimensions.height10(context) * 30.5,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 0,
+                              right: AppDimensions.height10(context) * 10.0,
+                              top: AppDimensions.height10(context) * 1.0),
+                          child: TextField(
+                            controller: hastags,
+                            textAlignVertical: TextAlignVertical.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff282828)),
+                            decoration: InputDecoration(
+                                contentPadding: EdgeInsets.fromLTRB(
+                                    AppDimensions.height10(context) * 1.6,
+                                    AppDimensions.height10(context) * 0.4,
+                                    0,
+                                    0),
+                                hintText: 'Add #hashtag',
+                                hintStyle: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.7,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xff828282)),
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent))),
+                          ),
+                        ),
+                        Container(
+                          height: AppDimensions.height10(context) * 2.1,
+                          width: AppDimensions.height10(context) * 30.5,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 2.0,
+                              right: AppDimensions.height10(context) * 8.9,
+                              top: AppDimensions.height10(context) * 3.9),
+                          child: Text(
+                            'Attached goals',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.5,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff828282)),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: inspiraton_goals(data_saved: false)));
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 6.0,

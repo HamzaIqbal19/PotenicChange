@@ -1,6 +1,8 @@
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -16,6 +18,28 @@ class hurdles_goal_impact extends StatefulWidget {
 }
 
 class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
+  var goals = [];
+  void _fetchUserGoal() {
+    AdminGoal.getUserGoalByUserId().then((response) {
+      setState(() {
+        goals = response;
+      });
+    });
+  }
+
+  _newFunction() {
+    for (int i = 0; i >= goals.length; i++) {
+      print('====================');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserGoal();
+    _newFunction();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

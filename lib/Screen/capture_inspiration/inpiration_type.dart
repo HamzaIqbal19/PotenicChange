@@ -4,14 +4,23 @@ import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_acc
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:dotted_border/dotted_border.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 
-class inspiration_type extends StatelessWidget {
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+class inspiration_type extends StatefulWidget {
   const inspiration_type({super.key});
 
+  @override
+  State<inspiration_type> createState() => _inspiration_typeState();
+}
+
+class _inspiration_typeState extends State<inspiration_type> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,72 +132,73 @@ class inspiration_type extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 13.3,
-                      height: AppDimensions.height10(context) * 13.3,
-                      margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.4,
-                          left: AppDimensions.height10(context) * 4.0),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          //borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/Image_Subtract.webp'),
-                              fit: BoxFit.cover)),
+                    AnimatedScaleButton(
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+
+                        var hurdleId = prefs.setInt('hurdleId', 1);
+                        Navigator.push(
+                            context, FadePageRoute(page: const photo_pop_up()));
+                      },
                       child: Container(
-                        margin: EdgeInsets.all(
-                            AppDimensions.height10(context) * 0.758),
+                        width: AppDimensions.height10(context) * 13.3,
+                        height: AppDimensions.height10(context) * 13.3,
+                        margin: EdgeInsets.only(
+                            right: AppDimensions.height10(context) * 1.4,
+                            left: AppDimensions.height10(context) * 4.0),
                         decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          // borderRadius: BorderRadius.circular(5)
-                        ),
-                        child: DottedBorder(
-                            borderType: BorderType.Circle,
-                            color: Colors.white,
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 3.032,
-                                    height:
-                                        AppDimensions.height10(context) * 3.032,
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                0.68),
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/image_icon.webp'))),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                1.0),
-                                    child: Text(
-                                      'Image',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
+                            shape: BoxShape.circle,
+                            //borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/Image_Subtract.webp'),
+                                fit: BoxFit.cover)),
+                        child: Container(
+                          margin: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.758),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            // borderRadius: BorderRadius.circular(5)
+                          ),
+                          child: DottedBorder(
+                              borderType: BorderType.Circle,
+                              color: Colors.white,
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          3.032,
+                                      height: AppDimensions.height10(context) *
+                                          3.032,
+                                      margin: EdgeInsets.only(
+                                          bottom:
                                               AppDimensions.height10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
+                                                  0.68),
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/image_icon.webp'))),
                                     ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const photo_pop_up()));
-                                    },
-                                    child: Container(
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  1.0),
+                                      child: Text(
+                                        'Image',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    Container(
                                       width: AppDimensions.height10(context) *
                                           2.122,
                                       height: AppDimensions.height10(context) *
@@ -203,80 +213,78 @@ class inspiration_type extends StatelessWidget {
                                               image: AssetImage(
                                                   'assets/images/Addgoal.webp'))),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )),
+                                  ],
+                                ),
+                              )),
+                        ),
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.height10(context) * 13.3,
-                      height: AppDimensions.height10(context) * 13.3,
-                      margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.4),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/Video_Subtract.webp'),
-                              fit: BoxFit.cover)),
+                    AnimatedScaleButton(
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+
+                        var hurdleId = prefs.setInt('hurdleId', 2);
+                        Navigator.push(
+                            context, FadePageRoute(page: const noteSaved()));
+                      },
                       child: Container(
-                        margin: EdgeInsets.all(
-                            AppDimensions.height10(context) * 0.758),
+                        width: AppDimensions.height10(context) * 13.3,
+                        height: AppDimensions.height10(context) * 13.3,
+                        margin: EdgeInsets.only(
+                            right: AppDimensions.height10(context) * 1.4),
                         decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: DottedBorder(
-                            borderType: BorderType.Circle,
-                            color: Colors.white,
-                            radius: Radius.circular(
-                                AppDimensions.height10(context) * 1.5),
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 3.032,
-                                    height:
-                                        AppDimensions.height10(context) * 3.032,
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                0.68),
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/note_icon.webp'))),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                1.0),
-                                    child: Text(
-                                      'Notes',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/Video_Subtract.webp'),
+                                fit: BoxFit.cover)),
+                        child: Container(
+                          margin: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.758),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: DottedBorder(
+                              borderType: BorderType.Circle,
+                              color: Colors.white,
+                              radius: Radius.circular(
+                                  AppDimensions.height10(context) * 1.5),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          3.032,
+                                      height: AppDimensions.height10(context) *
+                                          3.032,
+                                      margin: EdgeInsets.only(
+                                          bottom:
                                               AppDimensions.height10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
+                                                  0.68),
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/note_icon.webp'))),
                                     ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const note_info(
-                                            note_saved: false,
-                                            type_switch: 1,
-                                          )));
-                                    },
-                                    child: Container(
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  1.0),
+                                      child: Text(
+                                        'Notes',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    Container(
                                       width: AppDimensions.height10(context) *
                                           2.122,
                                       height: AppDimensions.height10(context) *
@@ -291,78 +299,79 @@ class inspiration_type extends StatelessWidget {
                                               image: AssetImage(
                                                   'assets/images/Addgoal.webp'))),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )),
+                                  ],
+                                ),
+                              )),
+                        ),
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.height10(context) * 13.3,
-                      height: AppDimensions.height10(context) * 13.3,
-                      margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 1.4),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/Image_Subtract.webp'),
-                              fit: BoxFit.cover)),
+                    AnimatedScaleButton(
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+
+                        var hurdleId = prefs.setInt('hurdleId', 4);
+                        Navigator.push(
+                            context, FadePageRoute(page: const link_info()));
+                      },
                       child: Container(
-                        margin: EdgeInsets.all(
-                            AppDimensions.height10(context) * 0.758),
+                        width: AppDimensions.height10(context) * 13.3,
+                        height: AppDimensions.height10(context) * 13.3,
+                        margin: EdgeInsets.only(
+                            right: AppDimensions.height10(context) * 1.4),
                         decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: DottedBorder(
-                            borderType: BorderType.Circle,
-                            radius: Radius.circular(
-                                AppDimensions.height10(context) * 1.5),
-                            // dashPattern: [10, 10],
-                            color: Colors.white,
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 3.032,
-                                    height:
-                                        AppDimensions.height10(context) * 3.032,
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                0.68),
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/link_icon.webp'))),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                1.0),
-                                    child: Text(
-                                      'Link to connect',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/Image_Subtract.webp'),
+                                fit: BoxFit.cover)),
+                        child: Container(
+                          margin: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.758),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: DottedBorder(
+                              borderType: BorderType.Circle,
+                              radius: Radius.circular(
+                                  AppDimensions.height10(context) * 1.5),
+                              // dashPattern: [10, 10],
+                              color: Colors.white,
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          3.032,
+                                      height: AppDimensions.height10(context) *
+                                          3.032,
+                                      margin: EdgeInsets.only(
+                                          bottom:
                                               AppDimensions.height10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
+                                                  0.68),
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/link_icon.webp'))),
                                     ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const link_info()));
-                                    },
-                                    child: Container(
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  1.0),
+                                      child: Text(
+                                        'Link to connect',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    Container(
                                       width: AppDimensions.height10(context) *
                                           2.122,
                                       height: AppDimensions.height10(context) *
@@ -377,77 +386,78 @@ class inspiration_type extends StatelessWidget {
                                               image: AssetImage(
                                                   'assets/images/Addgoal.webp'))),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )),
+                                  ],
+                                ),
+                              )),
+                        ),
                       ),
                     ),
-                    Container(
-                      width: AppDimensions.height10(context) * 13.3,
-                      height: AppDimensions.height10(context) * 13.30,
-                      margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 0.7),
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/Video_Subtract.webp'),
-                              fit: BoxFit.cover)),
+                    AnimatedScaleButton(
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+
+                        var hurdleId = prefs.setInt('hurdleId', 3);
+                        Navigator.push(
+                            context, FadePageRoute(page: const video_info()));
+                      },
                       child: Container(
-                        margin: EdgeInsets.all(
-                            AppDimensions.height10(context) * 0.758),
+                        width: AppDimensions.height10(context) * 13.3,
+                        height: AppDimensions.height10(context) * 13.30,
+                        margin: EdgeInsets.only(
+                            right: AppDimensions.height10(context) * 0.7),
                         decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: DottedBorder(
-                            borderType: BorderType.Circle,
-                            color: Colors.white,
-                            radius: Radius.circular(
-                                AppDimensions.height10(context) * 1.5),
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 3.032,
-                                    height:
-                                        AppDimensions.height10(context) * 3.032,
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                0.68),
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/video_icon.webp'))),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                1.0),
-                                    child: Text(
-                                      'Video link',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/Video_Subtract.webp'),
+                                fit: BoxFit.cover)),
+                        child: Container(
+                          margin: EdgeInsets.all(
+                              AppDimensions.height10(context) * 0.758),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: DottedBorder(
+                              borderType: BorderType.Circle,
+                              color: Colors.white,
+                              radius: Radius.circular(
+                                  AppDimensions.height10(context) * 1.5),
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          3.032,
+                                      height: AppDimensions.height10(context) *
+                                          3.032,
+                                      margin: EdgeInsets.only(
+                                          bottom:
                                               AppDimensions.height10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white),
+                                                  0.68),
+                                      decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/video_icon.webp'))),
                                     ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const video_info()));
-                                    },
-                                    child: Container(
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                          bottom:
+                                              AppDimensions.height10(context) *
+                                                  1.0),
+                                      child: Text(
+                                        'Video link',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    Container(
                                       width: AppDimensions.height10(context) *
                                           2.122,
                                       height: AppDimensions.height10(context) *
@@ -462,10 +472,10 @@ class inspiration_type extends StatelessWidget {
                                               image: AssetImage(
                                                   'assets/images/Addgoal.webp'))),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )),
+                                  ],
+                                ),
+                              )),
+                        ),
                       ),
                     ),
                   ],

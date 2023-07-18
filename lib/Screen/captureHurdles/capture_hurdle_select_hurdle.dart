@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class select_hurdle extends StatefulWidget {
   const select_hurdle({super.key});
@@ -14,6 +19,30 @@ class select_hurdle extends StatefulWidget {
 }
 
 class _select_hurdleState extends State<select_hurdle> {
+  var hurdlesList;
+  void _fetchHurdle() async {
+    Hurdles().getAllHurdles().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          hurdlesList = response['hurdle'];
+        });
+        return response;
+      } else {
+        return response.statusCode;
+      }
+    }).catchError((error) {
+      print("error");
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print(
+        "---------------------------------------------------------------------");
+    _fetchHurdle();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,161 +139,79 @@ class _select_hurdleState extends State<select_hurdle> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.9),
-            child: Row(
-              children: [
-                Container(
-                  width: AppDimensions.height10(context) * 14.1,
-                  height: AppDimensions.height10(context) * 14.1,
-                  margin: EdgeInsets.only(
-                    left: AppDimensions.height10(context) * 5.1,
-                    right: AppDimensions.height10(context) * 4.5,
+            height: AppDimensions.height10(context) * 45.6,
+            //width: AppDimensions.height10(context) * 30.6,
+            margin: EdgeInsets.only(top: AppDimensions.height10(context) * 3.9),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppDimensions.height10(context) * 4),
+            child: SingleChildScrollView(
+              child: GridView.builder(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 3.5 / 3, // Two items in each row
+
+                    mainAxisSpacing: 1.0,
+                    crossAxisSpacing: 0.1,
                   ),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(width: 2, color: Colors.white)),
-                  padding:
-                      EdgeInsets.all(AppDimensions.height10(context) * 0.5),
-                  child: Container(
-                    height: AppDimensions.height10(context) * 13.1,
-                    width: AppDimensions.height10(context) * 13.1,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                            width: AppDimensions.height10(context) * 0.1,
-                            color: Colors.white),
-                        gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [Color(0xffBE3FC6), Color(0xff642445)])),
-                    child: Center(
-                      child: Text(
-                        'People /\n person',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.6,
-                            fontWeight: FontWeight.w500),
+                  itemCount: hurdlesList.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: AppDimensions.height10(context) * 41.9,
+                      // padding: EdgeInsets.symmetric(
+                      //     horizontal: AppDimensions.height10(context) * 5),
+                      child: AnimatedScaleButton(
+                        onTap: () async {
+                          final SharedPreferences prefs = await _prefs;
+                          var hurdleName = prefs.setString(
+                              'hurdleName', hurdlesList[index]['hurdleName']);
+                          var hurdleId = prefs.setInt(
+                              'hurdleId', hurdlesList[index]['id']);
+                        },
+                        child: Container(
+                          height: AppDimensions.height10(context) * 13.1,
+                          width: AppDimensions.height10(context) * 13.1,
+                          // padding: EdgeInsets,
+                          margin: EdgeInsets.only(
+                              // right: AppDimensions.height10(context) * 22.9,
+                              // left: AppDimensions.height10(context) * 5.1,
+                              bottom: AppDimensions.height10(context) * 1.9),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                  width: AppDimensions.height10(context) * 0.1,
+                                  color: Colors.white),
+                              gradient: const LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Color(0xffBE3FC6),
+                                    Color(0xff642445)
+                                  ])),
+                          child: Center(
+                            child: Text(
+                              hurdlesList[index]['hurdleName'],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: AppDimensions.height10(context) * 13.1,
-                  width: AppDimensions.height10(context) * 13.1,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          width: AppDimensions.height10(context) * 0.1,
-                          color: Colors.white),
-                      gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Color(0xffBE3FC6), Color(0xff642445)])),
-                  child: Center(
-                    child: Text(
-                      'Negative\nthought',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.6,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(
-                left: AppDimensions.height10(context) * 5.8,
-                right: AppDimensions.height10(context) * 5.1,
-                top: AppDimensions.height10(context) * 1.0,
-                bottom: AppDimensions.height10(context) * 2.0),
-            child: Row(children: [
-              Container(
-                height: AppDimensions.height10(context) * 13.1,
-                width: AppDimensions.height10(context) * 13.1,
-                margin: EdgeInsets.only(
-                  right: AppDimensions.height10(context) * 4.5,
-                ),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                        width: AppDimensions.height10(context) * 0.1,
-                        color: Colors.white),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xffBE3FC6), Color(0xff642445)])),
-                child: Center(
-                  child: Text(
-                    'Place',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.6,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
-              Container(
-                height: AppDimensions.height10(context) * 13.1,
-                width: AppDimensions.height10(context) * 13.1,
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                        width: AppDimensions.height10(context) * 0.1,
-                        color: Colors.white),
-                    gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xffBE3FC6), Color(0xff642445)])),
-                child: Center(
-                  child: Text(
-                    'Event',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: AppDimensions.height10(context) * 1.6,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
-              ),
-            ]),
-          ),
-          Container(
-            height: AppDimensions.height10(context) * 13.1,
-            width: AppDimensions.height10(context) * 13.1,
-            margin: EdgeInsets.only(
-              right: AppDimensions.height10(context) * 22.9,
-              left: AppDimensions.height10(context) * 5.1,
-            ),
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                    width: AppDimensions.height10(context) * 0.1,
-                    color: Colors.white),
-                gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xffBE3FC6), Color(0xff642445)])),
-            child: Center(
-              child: Text(
-                'Other',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: AppDimensions.height10(context) * 1.6,
-                    fontWeight: FontWeight.w500),
-              ),
+                    );
+                  }),
             ),
           ),
           Container(
             width: AppDimensions.height10(context) * 25.4,
             height: AppDimensions.height10(context) * 5.0,
             margin: EdgeInsets.only(
-                top: AppDimensions.height10(context) * 8.2,
+                //top: AppDimensions.height10(context) * 8.2,
                 bottom: AppDimensions.height10(context) * 2.6),
             decoration: BoxDecoration(
               gradient: const LinearGradient(

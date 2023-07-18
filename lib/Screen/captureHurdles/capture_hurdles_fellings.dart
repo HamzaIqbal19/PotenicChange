@@ -1,9 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class felling_hurdles extends StatefulWidget {
   const felling_hurdles({super.key});
@@ -13,6 +22,33 @@ class felling_hurdles extends StatefulWidget {
 }
 
 class _felling_hurdlesState extends State<felling_hurdles> {
+  List<String> statements = [];
+  String? hurdleName;
+  String? hurdleStatement;
+  int? hurdleId;
+
+  void _getHurdleDetail() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      hurdleName = prefs.getString('hurdleName');
+      hurdleStatement = prefs.getString('hurdleStatement');
+      hurdleId = prefs.getInt('hurdleId');
+    });
+    print(hurdleName);
+  }
+
+  TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    statements.add('text');
+    _getHurdleDetail();
+    print(hurdleId);
+    print(hurdleName);
+    print(hurdleStatement);
+  }
+
   int circle_state = 1;
   @override
   Widget build(BuildContext context) {
@@ -153,9 +189,17 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                     child: Center(
                                       child: TextField(
                                         maxLength: 100,
+                                        // controller: controller,
                                         expands: true,
                                         maxLines: null,
                                         minLines: null,
+                                        onChanged: (newText) {
+                                          setState(() {
+                                            statements[circle_state - 1] =
+                                                newText;
+                                          });
+                                          print(newText);
+                                        },
                                         scrollPhysics:
                                             const ClampingScrollPhysics(),
                                         decoration: InputDecoration(
@@ -234,6 +278,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                         ],
                         GestureDetector(
                           onTap: () {
+                            statements.add('text');
                             setState(() {
                               circle_state = circle_state + 1;
                             });
@@ -269,41 +314,60 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     ),
                   ),
                 ),
-                Container(
-                    height: AppDimensions.height10(context) * 5.0,
-                    width: AppDimensions.height10(context) * 16.7,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.0,
-                        bottom: AppDimensions.height10(context) * 1.0),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xffFCC10D),
-                          Color(0xffFDA210),
-                        ],
+                AnimatedScaleButton(
+                  onTap: () async {
+                    print(statements);
+                    print(hurdleId);
+                    print(hurdleName);
+                    print(hurdleStatement);
+                    Hurdles()
+                        .addHurdle(hurdleName!, hurdleStatement!, statements,
+                            hurdleId!, 99)
+                        .then((response) async {
+                      final SharedPreferences prefs = await _prefs;
+                      var userHurdleId = prefs.setInt(
+                          'userHurdleId', response['result']['id']);
+                      print(response['result']['id']);
+
+                      if (response.length != 0) {
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const summary_hurdles(
+                              delete_hurdle: false,
+                            )));
+                      }
+                    });
+                    ;
+                  },
+                  child: Container(
+                      height: AppDimensions.height10(context) * 5.0,
+                      width: AppDimensions.height10(context) * 16.7,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.0,
+                          bottom: AppDimensions.height10(context) * 1.0),
+                      decoration: BoxDecoration(
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color(0xffFCC10D),
+                            Color(0xffFDA210),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
                       ),
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
-                    ),
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              FadePageRoute(
-                                  page: const summary_hurdles(
-                                delete_hurdle: false,
-                              )));
-                        },
-                        child: Text(
-                          'Next',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.6,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Poppins'),
-                        ))),
+                      child: Center(
+                          child: Text(
+                        'Next',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: AppDimensions.height10(context) * 1.6,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins'),
+                      ))),
+                ),
                 MediaQuery.of(context).viewInsets.bottom == 0
                     ? Container(
                         width: AppDimensions.height10(context) * 17.0,

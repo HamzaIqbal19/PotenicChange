@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';

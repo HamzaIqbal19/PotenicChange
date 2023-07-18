@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class landing_hurdles extends StatefulWidget {
   const landing_hurdles({super.key});
@@ -14,6 +19,30 @@ class landing_hurdles extends StatefulWidget {
 }
 
 class _landing_hurdlesState extends State<landing_hurdles> {
+  var hurdlesList;
+  void _fetchHurdle() async {
+    Hurdles().getAllUserHurdles().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          hurdlesList = response['hurdle'];
+        });
+        return response;
+      } else {
+        return response.statusCode;
+      }
+    }).catchError((error) {
+      print("error");
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print(
+        "---------------------------------------------------------------------");
+    _fetchHurdle();
+  }
+
   bool deleted = false;
   @override
   final List<String> _statements = [
@@ -642,236 +671,111 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                   ),
                 ),
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            FadePageRoute(page: const hurdle_menu()),
-                          );
-                        },
-                        child: Container(
-                          width: AppDimensions.height10(context) * 17.6,
-                          height: AppDimensions.height10(context) * 18.207,
-                          margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 21.942,
-                            left: AppDimensions.height10(context) * 3.106,
-                            // right: AppDimensions.height10(context) * 18.6
-                          ),
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/black_hole.webp'))),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.height10(context) * 7.1,
-                                height: AppDimensions.height10(context) * 1.9,
-                                child: Text(
-                                  'Husband',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.6,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                              Container(
-                                // width: AppDimensions.height10(context) * 1571,
-                                // height: AppDimensions.height10(context) * 1.7,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 0.6),
-                                child: Text(
-                                  'Makes a mistake',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.4,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+              Container(
+                height: AppDimensions.height10(context) * 45,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 14),
+                child: SingleChildScrollView(
+                  child: GridView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.only(
+                        top: 0,
+                        bottom: AppDimensions.height10(context) * 5,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            FadePageRoute(page: const hurdle_menu()),
-                          );
-                        },
-                        child: Container(
-                          width: AppDimensions.height10(context) * 17.6,
-                          height: AppDimensions.height10(context) * 18.207,
-                          margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 21.942,
-                            left: AppDimensions.height10(context) * 3.106,
-                            //right: AppDimensions.height10(context) * 18.6
-                          ),
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/black_hole.webp'))),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                //width: AppDimensions.height10(context) * 7.1,
-                                height: AppDimensions.height10(context) * 1.9,
-                                child: Text(
-                                  'Negative thought',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      height: AppDimensions.height10(context) *
-                                          0.15,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.6,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                              Container(
-                                // width: AppDimensions.height10(context) * 1571,
-                                // height: AppDimensions.height10(context) * 1.7,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 0.6),
-                                child: Text(
-                                  'I don’t deserve to be\nhappy',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.4,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 3.5 / 3, // Two items in each row
+
+                        mainAxisSpacing: 1.0,
+                        crossAxisSpacing: 0.1,
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            FadePageRoute(page: const hurdle_menu()),
-                          );
-                        },
-                        child: Container(
-                          width: AppDimensions.height10(context) * 17.6,
-                          height: AppDimensions.height10(context) * 18.207,
-                          margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 1.367,
-                            left: AppDimensions.height10(context) * 3.106,
-                            // right: AppDimensions.height10(context) * 18.6
-                          ),
-                          decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/black_hole.webp'))),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                //width: AppDimensions.height10(context) * 7.1,
-                                height: AppDimensions.height10(context) * 1.9,
-                                child: Text(
-                                  'Past Event',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.6,
-                                      fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                              Container(
-                                // width: AppDimensions.height10(context) * 1571,
-                                // height: AppDimensions.height10(context) * 1.7,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 0.6),
-                                child: Text(
-                                  'My first husband left\nme and the children for\nanother woman',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.4,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                      deleted
-                          ? Container()
-                          : GestureDetector(
-                              child: Container(
-                                width: AppDimensions.height10(context) * 17.6,
-                                height:
-                                    AppDimensions.height10(context) * 18.207,
-                                margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 1.367,
-                                  left: AppDimensions.height10(context) * 3.106,
-                                  //right: AppDimensions.height10(context) * 18.6
-                                ),
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: AssetImage(
-                                            'assets/images/black_hole.webp'))),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width:
-                                          AppDimensions.height10(context) * 7.1,
-                                      height:
-                                          AppDimensions.height10(context) * 1.9,
-                                      child: Text(
-                                        'Wine bar',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            fontWeight: FontWeight.w700),
-                                      ),
+                      itemCount: hurdlesList.length,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                AnimatedScaleButton(
+                                  onTap: () async {
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+
+                                    var hurdleId = prefs.setInt('userHurdleId',
+                                        hurdlesList[index]['id']);
+                                    Navigator.push(
+                                      context,
+                                      FadePageRoute(page: const hurdle_menu()),
+                                    );
+                                  },
+                                  child: Container(
+                                    width:
+                                        AppDimensions.height10(context) * 17.6,
+                                    height: AppDimensions.height10(context) *
+                                        18.207,
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            AppDimensions.height10(context)),
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/black_hole.webp'))),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        SizedBox(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  7.1,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.9,
+                                          child: Text(
+                                            hurdlesList[index]['hurdleName'],
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.6,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.6),
+                                          child: Text(
+                                            hurdlesList[index]
+                                                ['triggerStatment'],
+                                            textAlign: TextAlign.center,
+                                            maxLines: 4,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.4,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                        )
+                                      ],
                                     ),
-                                    Container(
-                                      // width: AppDimensions.height10(context) * 1571,
-                                      // height: AppDimensions.height10(context) * 1.7,
-                                      margin: EdgeInsets.only(
-                                          top: AppDimensions.height10(context) *
-                                              0.6),
-                                      child: Text(
-                                        'Drinking too much\nmakes me more\nagressive',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.4,
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    )
-                                  ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
-                    ],
-                  ),
-                ],
+                          ],
+                        );
+                      }),
+                ),
               )
             ],
           )),
@@ -879,8 +783,37 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   }
 }
 
-class hurdle_menu extends StatelessWidget {
+class hurdle_menu extends StatefulWidget {
   const hurdle_menu({super.key});
+
+  @override
+  State<hurdle_menu> createState() => _hurdle_menuState();
+}
+
+class _hurdle_menuState extends State<hurdle_menu> {
+  var hurdlesSummary;
+
+  void _fetchHurdleSummary() async {
+    Hurdles().getHurdleById().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          hurdlesSummary = response['hurdle'];
+        });
+        print(hurdlesSummary["id"]);
+        return response;
+      } else {
+        return response.statusCode;
+      }
+    }).catchError((error) {
+      print("error");
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchHurdleSummary();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -925,12 +858,14 @@ class hurdle_menu extends StatelessWidget {
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+              height: AppDimensions.height10(context) * 11.255,
+            ),
             Container(
               width: AppDimensions.height10(context) * 17.62,
               height: AppDimensions.height10(context) * 17.33,
-              margin: EdgeInsets.only(
-                top: AppDimensions.height10(context) * 11.255,
-              ),
+              padding: EdgeInsets.symmetric(
+                  horizontal: AppDimensions.height10(context)),
               decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
@@ -939,10 +874,13 @@ class hurdle_menu extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: AppDimensions.height10(context) * 7.1,
-                    height: AppDimensions.height10(context) * 1.9,
+                    // width: AppDimensions.height10(context) * 7.1,
+                    // height: AppDimensions.height10(context) * 1.9,
                     child: Text(
-                      'Husband',
+                      hurdlesSummary['hurdleName'],
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: AppDimensions.height10(context) * 1.6,
@@ -950,12 +888,14 @@ class hurdle_menu extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    width: AppDimensions.height10(context) * 7.471,
-                    height: AppDimensions.height10(context) * 4.38,
+                    // width: AppDimensions.height10(context) * 7.471,
+                    // height: AppDimensions.height10(context) * 4.38,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 0.773),
                     child: Text(
-                      'Makes a\nmistake',
+                      hurdlesSummary['triggerStatment'],
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Colors.white,
@@ -966,11 +906,14 @@ class hurdle_menu extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(
+              height: AppDimensions.height10(context) * 7.313,
+            ),
             Container(
               width: AppDimensions.height10(context) * 32.0,
               height: AppDimensions.height10(context) * 2.6,
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10(context) * 7.313),
+              // margin:
+              //     EdgeInsets.only(top: AppDimensions.height10(context) * 7.313),
               child: Center(
                   child: Text(
                 'What do you want to do?',
@@ -989,7 +932,7 @@ class hurdle_menu extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  GestureDetector(
+                  AnimatedScaleButton(
                     onTap: () {
                       Navigator.push(
                         context,
@@ -1016,17 +959,14 @@ class hurdle_menu extends StatelessWidget {
                             height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 1.99),
-                            child: GestureDetector(
-                                onTap: () {},
-                                child: Text(
-                                  'View/Edit details',
-                                  style: TextStyle(
-                                    color: const Color(0xFF646464),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.8,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                )),
+                            child: Text(
+                              'View/Edit details',
+                              style: TextStyle(
+                                color: const Color(0xFF646464),
+                                fontSize: AppDimensions.height10(context) * 1.8,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                           Container(
                               width: AppDimensions.height10(context) * 2.4,
@@ -1034,14 +974,11 @@ class hurdle_menu extends StatelessWidget {
                               margin: EdgeInsets.only(
                                   right:
                                       AppDimensions.height10(context) * 2.391),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.webp',
-                                  //width: AppDimensions.height10(context) * 2.6,
-                                  //height: AppDimensions.height10(context) * 2.6,
-                                  fit: BoxFit.cover,
-                                ),
+                              child: Image.asset(
+                                'assets/images/BTN Back.webp',
+                                //width: AppDimensions.height10(context) * 2.6,
+                                //height: AppDimensions.height10(context) * 2.6,
+                                fit: BoxFit.cover,
                               ))
                         ],
                       ),
@@ -1096,7 +1033,10 @@ class hurdle_menu extends StatelessWidget {
                       ],
                     ),
                   ),
-                  GestureDetector(
+                  AnimatedScaleButton(
+                    onTap: () {
+                      Hurdles().deleteUserHurdle(hurdlesSummary['id']);
+                    },
                     child: Container(
                       width: AppDimensions.height10(context) * 36.0,
                       height: AppDimensions.height10(context) * 6.0,

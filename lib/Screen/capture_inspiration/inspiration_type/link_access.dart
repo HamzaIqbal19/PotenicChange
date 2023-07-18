@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../utils/app_dimensions.dart';
 import '../capture_inpirations_goals.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class link_info extends StatefulWidget {
   const link_info({super.key});
@@ -13,6 +17,10 @@ class link_info extends StatefulWidget {
 }
 
 class _link_infoState extends State<link_info> {
+  TextEditingController link = TextEditingController();
+  TextEditingController statement = TextEditingController();
+  TextEditingController author = TextEditingController();
+  TextEditingController hastags = TextEditingController();
   @override
   Widget build(BuildContext context) {
     bool link_state = false;
@@ -76,11 +84,30 @@ class _link_infoState extends State<link_info> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          FadePageRoute(
-                              page: const note_info(
-                                  note_saved: true, type_switch: 2)));
+                      print('----------------');
+                      InspirationApi()
+                          .addInspiration(
+                              4,
+                              " ",
+                              author.text.toString(),
+                              ['#tags'],
+                              link.text.toString(),
+                              true,
+                              statement.text.toString(),
+                              19)
+                          .then((response) {
+                        if (response.length != 0) {
+                          print('----------------');
+
+                          print(response);
+                        }
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const note_info(
+                                    note_saved: true, type_switch: 2)));
+                        // return null;
+                      });
                     },
                     child: Container(
                       height: AppDimensions.height10(context) * 2.2,
@@ -129,6 +156,7 @@ class _link_infoState extends State<link_info> {
                             right: AppDimensions.height10(context) * 5.0,
                           ),
                           child: TextFormField(
+                            controller: link,
                             onEditingComplete: () {
                               setState(() {
                                 link_state = true;
@@ -256,6 +284,7 @@ class _link_infoState extends State<link_info> {
                         right: AppDimensions.height10(context) * 10.0,
                       ),
                       child: TextField(
+                        controller: statement,
                         textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.7,
@@ -303,6 +332,7 @@ class _link_infoState extends State<link_info> {
                         right: AppDimensions.height10(context) * 10.0,
                       ),
                       child: TextField(
+                        controller: author,
                         textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.7,
@@ -351,6 +381,7 @@ class _link_infoState extends State<link_info> {
                         right: AppDimensions.height10(context) * 10.0,
                       ),
                       child: TextField(
+                        controller: hastags,
                         textAlignVertical: TextAlignVertical.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,

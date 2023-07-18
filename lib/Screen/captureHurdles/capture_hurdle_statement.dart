@@ -1,10 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class hurdle_statement extends StatefulWidget {
   const hurdle_statement({super.key});
@@ -14,6 +20,24 @@ class hurdle_statement extends StatefulWidget {
 }
 
 class _hurdle_statementState extends State<hurdle_statement> {
+  String? hurdleName;
+
+  TextEditingController controller = TextEditingController();
+  void _getHurdleName() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      hurdleName = prefs.getString('hurdleName');
+    });
+    print(hurdleName);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _getHurdleName();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,6 +140,8 @@ class _hurdle_statementState extends State<hurdle_statement> {
                       height: AppDimensions.height10(context) * 13.9,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 3.177),
+                      padding:
+                          EdgeInsets.all(AppDimensions.height10(context) * 0.6),
                       decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -123,7 +149,10 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                   AssetImage('assets/images/black_hole.webp'))),
                       child: Center(
                         child: Text(
-                          'Husband',
+                          hurdleName!,
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 3,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10(context) * 1.4,
@@ -183,6 +212,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                   child: Center(
                                     child: TextFormField(
                                       maxLength: 150,
+                                      controller: controller,
                                       style: TextStyle(
                                           decoration: TextDecoration.none,
                                           decorationThickness: 0,
@@ -261,40 +291,45 @@ class _hurdle_statementState extends State<hurdle_statement> {
                         : SizedBox(
                             height: AppDimensions.height10(context) * 3.0,
                           ),
-                    Container(
-                        height: AppDimensions.height10(context) * 5.0,
-                        width: AppDimensions.height10(context) * 25.4,
-                        margin: EdgeInsets.only(
-                            bottom:
-                                MediaQuery.of(context).viewInsets.bottom == 0
-                                    ? AppDimensions.height10(context) * 2.6
-                                    : AppDimensions.height10(context) * 1.0),
-                        decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Color(0xffFCC10D),
-                              Color(0xffFDA210),
-                            ],
+                    AnimatedScaleButton(
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+                        var statement = prefs.setString(
+                            'hurdleStatement', controller.text.toString());
+
+                        Navigator.push(context,
+                            FadePageRoute(page: const felling_hurdles()));
+                      },
+                      child: Container(
+                          height: AppDimensions.height10(context) * 5.0,
+                          width: AppDimensions.height10(context) * 25.4,
+                          margin: EdgeInsets.only(
+                              bottom:
+                                  MediaQuery.of(context).viewInsets.bottom == 0
+                                      ? AppDimensions.height10(context) * 2.6
+                                      : AppDimensions.height10(context) * 1.0),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Color(0xffFCC10D),
+                                Color(0xffFDA210),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 5.0),
                           ),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 5.0),
-                        ),
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.push(context,
-                                  FadePageRoute(page: const felling_hurdles()));
-                            },
-                            child: Text(
-                              'Next',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Poppins'),
-                            ))),
+                          child: Center(
+                              child: Text(
+                            'Next',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Poppins'),
+                          ))),
+                    ),
                     MediaQuery.of(context).viewInsets.bottom == 0
                         ? Container(
                             width: AppDimensions.height10(context) * 17.0,

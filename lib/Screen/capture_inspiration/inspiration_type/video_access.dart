@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/InpirationApi.dart';
 
 import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
@@ -13,6 +14,9 @@ class video_info extends StatefulWidget {
 }
 
 class _video_infoState extends State<video_info> {
+  TextEditingController link = TextEditingController();
+  TextEditingController statement = TextEditingController();
+  TextEditingController hastags = TextEditingController();
   @override
   Widget build(BuildContext context) {
     bool link_state = false;
@@ -76,11 +80,28 @@ class _video_infoState extends State<video_info> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          FadePageRoute(
-                              page: const note_info(
-                                  note_saved: true, type_switch: 3)));
+                      InspirationApi()
+                          .addInspiration(
+                              3,
+                              " ",
+                              "",
+                              ['#tags'],
+                              link.text.toString(),
+                              true,
+                              statement.text.toString(),
+                              19)
+                          .then((response) {
+                        if (response.length != 0) {
+                          print('----------------');
+
+                          print(response);
+                        }
+                      });
+                      // Navigator.push(
+                      //     context,
+                      //     FadePageRoute(
+                      //         page: const note_info(
+                      //             note_saved: true, type_switch: 3)));
                     },
                     child: Container(
                       height: AppDimensions.height10(context) * 2.2,
@@ -135,6 +156,7 @@ class _video_infoState extends State<video_info> {
                                 link_state = true;
                               });
                             },
+                            controller: link,
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.7,
@@ -258,6 +280,7 @@ class _video_infoState extends State<video_info> {
                         // top: AppDimensions.height10(context) * 1.0
                       ),
                       child: TextField(
+                        controller: statement,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,
@@ -305,6 +328,7 @@ class _video_infoState extends State<video_info> {
                         //top: AppDimensions.height10(context) * 1.0
                       ),
                       child: TextField(
+                        controller: hastags,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.7,
                             fontWeight: FontWeight.w400,

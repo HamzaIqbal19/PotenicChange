@@ -336,7 +336,7 @@ class _practiceMenuState extends State<practiceMenu> {
                         alignment: const Alignment(1, -1.125),
                         child: AnimatedScaleButton(
                             onTap: () {
-                              //info_sheet(context);
+                              info_sheet(context);
                             },
                             child: Image.asset(
                               'assets/images/ic_info_outline.webp',

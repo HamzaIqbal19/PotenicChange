@@ -97,12 +97,12 @@ class Navigation_BarState extends State<Navigation_Bar> {
           BottomNavigationBarItem(
               icon: AnimatedScaleButton(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     FadePageRoute(
-                  //         page: const inspiration_motivation(
-                  //       goal_delete: false,
-                  //     )));
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const inspiration_motivation(
+                        goal_delete: false,
+                      )));
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 6.0,
@@ -129,8 +129,8 @@ class Navigation_BarState extends State<Navigation_Bar> {
           BottomNavigationBarItem(
               icon: AnimatedScaleButton(
                 onTap: () {
-                  // Navigator.push(
-                  //     context, FadePageRoute(page: const hurdles_splash()));
+                  Navigator.push(
+                      context, FadePageRoute(page: const hurdles_splash()));
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 6.0,
