@@ -30,13 +30,13 @@ class InspirationApi {
     };
     var Body = json.encode({
       "inspirationId": "$inspirationId",
-      "file": "$file",
-      "title": "$title",
+      "file": file,
+      "title": title,
       "hashTags": hashTags,
       "visibility": "$visibility",
-      "destinationLink": "destinationLink",
+      "destinationLink": destinationLink,
       "userGoalId": "$userGoalId",
-      "description": "$description",
+      "description": description,
     });
     print(Body);
 
@@ -100,16 +100,17 @@ class InspirationApi {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken',
     };
-
+    print('-=--=----===-==');
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userInspiration/$userInspirationId'),
+      Uri.parse('${URL.BASE_URL}api/userInspiration/52'),
       headers: headers,
     );
 
     if (response.statusCode == 200) {
+      print('------------------------------------------------');
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
-
+      print(jsonData['inspiration']['title']);
       return jsonData;
     } else {
       print(

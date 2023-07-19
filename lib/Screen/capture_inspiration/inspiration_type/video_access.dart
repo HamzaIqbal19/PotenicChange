@@ -84,7 +84,7 @@ class _video_infoState extends State<video_info> {
                           .addInspiration(
                               3,
                               " ",
-                              "",
+                              " ",
                               ['#tags'],
                               link.text.toString(),
                               true,
@@ -93,15 +93,14 @@ class _video_infoState extends State<video_info> {
                           .then((response) {
                         if (response.length != 0) {
                           print('----------------');
-
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const note_info(
+                                      note_saved: true, type_switch: 3)));
                           print(response);
                         }
                       });
-                      // Navigator.push(
-                      //     context,
-                      //     FadePageRoute(
-                      //         page: const note_info(
-                      //             note_saved: true, type_switch: 3)));
                     },
                     child: Container(
                       height: AppDimensions.height10(context) * 2.2,
@@ -123,310 +122,329 @@ class _video_infoState extends State<video_info> {
                 height: AppDimensions.height10(context) * 79.7,
                 width: double.infinity,
                 color: Colors.white,
-                child: Column(
-                  children: [
-                    Container(
-                      height: AppDimensions.height10(context) * 2.1,
-                      width: AppDimensions.height10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 3.2),
-                      child: Text(
-                        'Video Destination Link',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.5,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff828282)),
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          height: AppDimensions.height10(context) * 2.4,
-                          width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 1.5,
-                            right: AppDimensions.height10(context) * 5.0,
-                            //top: AppDimensions.height10(context) * 1.0
-                          ),
-                          child: TextFormField(
-                            onEditingComplete: () {
-                              setState(() {
-                                link_state = true;
-                              });
-                            },
-                            controller: link,
-                            textAlignVertical: TextAlignVertical.center,
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff282828)),
-                            decoration: InputDecoration(
-                                contentPadding: EdgeInsets.fromLTRB(
-                                    AppDimensions.height10(context) * 1.4,
-                                    AppDimensions.height10(context) * 0,
-                                    0,
-                                    0),
-                                hintText: 'Add a link',
-                                hintStyle: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.7,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xff828282)),
-                                focusedBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent)),
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.transparent))),
-                          ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      Container(
+                        height: AppDimensions.height10(context) * 2.1,
+                        width: AppDimensions.height10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 2.0,
+                            right: AppDimensions.height10(context) * 8.9,
+                            top: AppDimensions.height10(context) * 3.2),
+                        child: Text(
+                          'Video Destination Link',
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff828282)),
                         ),
-                        link_state
-                            ? Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) => link_editer()));
-                                    },
-                                    child: Container(
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            // height: AppDimensions.height10(context) * 2.4,
+                            width: AppDimensions.height10(context) * 30.5,
+                            margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 1.5,
+                              right: AppDimensions.height10(context) * 5.0,
+                              //top: AppDimensions.height10(context) * 1.0
+                            ),
+                            child: TextFormField(
+                              onEditingComplete: () {
+                                setState(() {
+                                  link_state = true;
+                                });
+                              },
+                              controller: link,
+                              maxLines: null,
+                              minLines: null,
+                              textAlignVertical: TextAlignVertical.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff282828)),
+                              decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.fromLTRB(
+                                      AppDimensions.height10(context) * 1.4,
+                                      AppDimensions.height10(context) * 0,
+                                      0,
+                                      0),
+                                  hintText: 'Add a link',
+                                  hintStyle: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.7,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xff828282)),
+                                  focusedBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent)),
+                                  enabledBorder: const OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Colors.transparent))),
+                            ),
+                          ),
+                          link_state
+                              ? Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) => link_editer()));
+                                      },
+                                      child: Container(
+                                        width: AppDimensions.height10(context) *
+                                            2.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.5,
+                                        // margin: EdgeInsets.only(
+                                        //     right: AppDimensions.height10(context) * 0.8),
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.black,
+                                        ),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                          size:
+                                              AppDimensions.height10(context) *
+                                                  2,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
                                       width:
-                                          AppDimensions.height10(context) * 2.5,
+                                          AppDimensions.height10(context) * 3.0,
                                       height:
-                                          AppDimensions.height10(context) * 2.5,
-                                      // margin: EdgeInsets.only(
-                                      //     right: AppDimensions.height10(context) * 0.8),
+                                          AppDimensions.height10(context) * 3.0,
+                                      margin: EdgeInsets.only(
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  2.0),
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.black,
                                       ),
                                       child: Icon(
-                                        Icons.add,
+                                        Icons.delete,
                                         color: Colors.white,
                                         size:
                                             AppDimensions.height10(context) * 2,
                                       ),
-                                    ),
-                                  ),
-                                  Container(
+                                    )
+                                  ],
+                                )
+                              : GestureDetector(
+                                  onTap: () {
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => link_editer()));
+                                  },
+                                  child: Container(
                                     width:
                                         AppDimensions.height10(context) * 3.0,
                                     height:
                                         AppDimensions.height10(context) * 3.0,
-                                    margin: EdgeInsets.only(
-                                        right: AppDimensions.height10(context) *
-                                            2.0),
+                                    // margin: EdgeInsets.only(
+                                    //     left: AppDimensions.height10(context) * 3.0),
                                     decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                       color: Colors.black,
                                     ),
                                     child: Icon(
-                                      Icons.delete,
+                                      Icons.add,
                                       color: Colors.white,
                                       size: AppDimensions.height10(context) * 2,
                                     ),
-                                  )
-                                ],
-                              )
-                            : GestureDetector(
-                                onTap: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //         builder: (context) => link_editer()));
-                                },
-                                child: Container(
-                                  width: AppDimensions.height10(context) * 3.0,
-                                  height: AppDimensions.height10(context) * 3.0,
-                                  // margin: EdgeInsets.only(
-                                  //     left: AppDimensions.height10(context) * 3.0),
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.black,
-                                  ),
-                                  child: Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                    size: AppDimensions.height10(context) * 2,
                                   ),
                                 ),
-                              ),
-                      ],
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 2.1,
-                      width: AppDimensions.height10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 3.9),
-                      child: Text(
-                        'Why is it inspirational to you',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.5,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff828282)),
+                        ],
                       ),
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.height10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                        //left: AppDimensions.height10(context) * 2.0,
-                        right: AppDimensions.height10(context) * 10.0,
-                        // top: AppDimensions.height10(context) * 1.0
-                      ),
-                      child: TextField(
-                        controller: statement,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.7,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff282828)),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(
-                                AppDimensions.height10(context) * 1.6,
-                                AppDimensions.height10(context) * 0.4,
-                                0,
-                                0),
-                            hintText: 'Say more about this inspiration ',
-                            hintStyle: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff828282)),
-                            focusedBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent)),
-                            enabledBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent))),
-                      ),
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 2.1,
-                      width: AppDimensions.height10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 3.9),
-                      child: Text(
-                        'Tags',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.5,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff828282)),
-                      ),
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.height10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                        // left: AppDimensions.height10(context) * 2.0,
-                        right: AppDimensions.height10(context) * 10.0,
-                        //top: AppDimensions.height10(context) * 1.0
-                      ),
-                      child: TextField(
-                        controller: hastags,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.7,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff282828)),
-                        decoration: InputDecoration(
-                            contentPadding: EdgeInsets.fromLTRB(
-                                AppDimensions.height10(context) * 1.6,
-                                AppDimensions.height10(context) * 0,
-                                0,
-                                0),
-                            hintText: 'Add #hashtag',
-                            hintStyle: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff828282)),
-                            focusedBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent)),
-                            enabledBorder: const OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.transparent))),
-                      ),
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 2.1,
-                      width: AppDimensions.height10(context) * 30.5,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 3.9),
-                      child: Text(
-                        'Attached goals',
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.5,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff828282)),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: inspiraton_goals(data_saved: false)));
-                      },
-                      child: Container(
-                        height: AppDimensions.height10(context) * 6.0,
-                        width: AppDimensions.height10(context) * 37.5,
+                      Container(
+                        height: AppDimensions.height10(context) * 2.1,
+                        width: AppDimensions.height10(context) * 30.5,
                         margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 1.9,
-                        ),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                width: 1, color: const Color(0xFF464646)),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: AppDimensions.height10(context) * 23.9,
-                              height: AppDimensions.height10(context) * 2.2,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.99),
-                              child: GestureDetector(
-                                  onTap: () {},
-                                  child: Text(
-                                    '00 impacted goals',
-                                    style: TextStyle(
-                                      color: const Color(0xFF646464),
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  )),
-                            ),
-                            Container(
-                                width: AppDimensions.height10(context) * 2.4,
-                                height: AppDimensions.height10(context) * 1.39,
-                                margin: EdgeInsets.only(
-                                    right: AppDimensions.height10(context) *
-                                        2.391),
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Image.asset(
-                                    'assets/images/BTN Back.webp',
-                                    //width: AppDimensions.height10(context) * 2.6,
-                                    //height: AppDimensions.height10(context) * 2.6,
-                                    color: const Color(0xFF646464),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ))
-                          ],
+                            left: AppDimensions.height10(context) * 2.0,
+                            right: AppDimensions.height10(context) * 8.9,
+                            top: AppDimensions.height10(context) * 3.9),
+                        child: Text(
+                          'Why is it inspirational to you',
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff828282)),
                         ),
                       ),
-                    ),
-                  ],
+                      Container(
+                        // height: AppDimensions.height10(context) * 2.4,
+                        width: AppDimensions.height10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                          //left: AppDimensions.height10(context) * 2.0,
+                          right: AppDimensions.height10(context) * 10.0,
+                          // top: AppDimensions.height10(context) * 1.0
+                        ),
+                        child: TextField(
+                          controller: statement,
+                          maxLines: null,
+                          minLines: null,
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff282828)),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.fromLTRB(
+                                  AppDimensions.height10(context) * 1.6,
+                                  AppDimensions.height10(context) * 0.4,
+                                  0,
+                                  0),
+                              hintText: 'Say more about this inspiration ',
+                              hintStyle: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff828282)),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent))),
+                        ),
+                      ),
+                      Container(
+                        height: AppDimensions.height10(context) * 2.1,
+                        width: AppDimensions.height10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 2.0,
+                            right: AppDimensions.height10(context) * 8.9,
+                            top: AppDimensions.height10(context) * 3.9),
+                        child: Text(
+                          'Tags',
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff828282)),
+                        ),
+                      ),
+                      Container(
+                        height: AppDimensions.height10(context) * 2.4,
+                        width: AppDimensions.height10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                          // left: AppDimensions.height10(context) * 2.0,
+                          right: AppDimensions.height10(context) * 10.0,
+                          //top: AppDimensions.height10(context) * 1.0
+                        ),
+                        child: TextField(
+                          controller: hastags,
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff282828)),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.fromLTRB(
+                                  AppDimensions.height10(context) * 1.6,
+                                  AppDimensions.height10(context) * 0,
+                                  0,
+                                  0),
+                              hintText: 'Add #hashtag',
+                              hintStyle: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
+                                  fontWeight: FontWeight.w500,
+                                  color: const Color(0xff828282)),
+                              focusedBorder: const OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent)),
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.transparent))),
+                        ),
+                      ),
+                      Container(
+                        height: AppDimensions.height10(context) * 2.1,
+                        width: AppDimensions.height10(context) * 30.5,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 2.0,
+                            right: AppDimensions.height10(context) * 8.9,
+                            top: AppDimensions.height10(context) * 3.9),
+                        child: Text(
+                          'Attached goals',
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.5,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff828282)),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: inspiraton_goals(data_saved: false)));
+                        },
+                        child: Container(
+                          height: AppDimensions.height10(context) * 6.0,
+                          width: AppDimensions.height10(context) * 37.5,
+                          margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 2.0,
+                            right: AppDimensions.height10(context) * 1.9,
+                          ),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  width: 1, color: const Color(0xFF464646)),
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 2.0)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: AppDimensions.height10(context) * 23.9,
+                                height: AppDimensions.height10(context) * 2.2,
+                                margin: EdgeInsets.only(
+                                    left:
+                                        AppDimensions.height10(context) * 1.99),
+                                child: GestureDetector(
+                                    onTap: () {},
+                                    child: Text(
+                                      '00 impacted goals',
+                                      style: TextStyle(
+                                        color: const Color(0xFF646464),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    )),
+                              ),
+                              Container(
+                                  width: AppDimensions.height10(context) * 2.4,
+                                  height:
+                                      AppDimensions.height10(context) * 1.39,
+                                  margin: EdgeInsets.only(
+                                      right: AppDimensions.height10(context) *
+                                          2.391),
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Image.asset(
+                                      'assets/images/BTN Back.webp',
+                                      //width: AppDimensions.height10(context) * 2.6,
+                                      //height: AppDimensions.height10(context) * 2.6,
+                                      color: const Color(0xFF646464),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ]),
