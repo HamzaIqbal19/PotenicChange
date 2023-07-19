@@ -250,7 +250,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                           AppDimensions.height10(context) *
                                               2.0),
                                   child: Text(
-                                    goalName,
+                                    "$goalName",
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
@@ -290,6 +290,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                 SizedBox(
                                   height: AppDimensions.height10(context) * 1.0,
                                 ),
+                                /*
                                 Text('Review',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
@@ -302,6 +303,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                                 0.14,
                                         fontWeight: FontWeight.w600,
                                         color: const Color(0xff5B74A6))),
+                             */
                               ],
                             ),
                           ),

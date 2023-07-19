@@ -208,19 +208,29 @@ class _PracticeNameState extends State<PracticeName> {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 20,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 1.5),
-                      child: Text(
-                        practice.text.toString(),
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF156F6D),
-                          fontSize: AppDimensions.height10(context) * 2.0,
-                        ),
-                      ),
-                    ),
+                        width: AppDimensions.height10(context) * 22,
+                        margin: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 1.5),
+                        child: practice.text.toString().length > 25
+                            ? Text(
+                                practice.text.toString(),
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xFF156F6D),
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.0,
+                                ),
+                              )
+                            : Text(
+                                practice.text.toString(),
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xFF156F6D),
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.0,
+                                ),
+                              )),
                   ],
                 ),
                 SizedBox(

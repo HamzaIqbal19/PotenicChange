@@ -158,7 +158,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                         ),
                         Container(
                             // color: Colors.black,
-                            height: AppDimensions.height10(context) * 21.8,
+                            // height: AppDimensions.height10(context) * 21.8,
                             width: AppDimensions.height10(context) * 34.0,
                             child: Column(
                               children: [
@@ -228,56 +228,80 @@ class _GoalFinishedState extends State<GoalFinished> {
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.5,
+                                      ),
                                       Container(
+                                        //  color: Colors.red,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                9.0,
                                         width: AppDimensions.height10(context) *
                                             24.0,
                                         padding: EdgeInsets.symmetric(
                                             horizontal: AppDimensions.height10(
                                                     context) *
                                                 2.0),
-                                        child: Text(
-                                          goalName,
-                                          textAlign: TextAlign.center,
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 2,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "$goalName",
+                                              textAlign: TextAlign.center,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.0,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color:
+                                                      const Color(0xff5B74A6)),
+                                            ),
+                                            SizedBox(
                                               height: AppDimensions.height10(
                                                       context) *
-                                                  0.14,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xff5B74A6)),
+                                                  0.3,
+                                            ),
+                                            Container(
+                                              //  color: Colors.green,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  4.0,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  22.0,
+                                              child: Text('"$identity"',
+                                                  maxLines: 2,
+                                                  textAlign: TextAlign.center,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontStyle:
+                                                          FontStyle.italic,
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.6,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xff5B74A6))),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.0,
-                                      ),
-                                      SizedBox(
-                                        width: AppDimensions.height10(context) *
-                                            22.0,
-                                        child: Text('"$identity"',
-                                            maxLines: 2,
-                                            textAlign: TextAlign.center,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                fontStyle: FontStyle.italic,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.6,
-                                                fontWeight: FontWeight.w400,
-                                                color:
-                                                    const Color(0xff5B74A6))),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.0,
-                                      ),
+                                      // SizedBox(
+                                      //   height:
+                                      //       AppDimensions.height10(context) *
+                                      //           0.8,
+                                      // ),
                                       Text('Review',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
@@ -290,7 +314,12 @@ class _GoalFinishedState extends State<GoalFinished> {
                                                       context) *
                                                   0.14,
                                               fontWeight: FontWeight.w600,
-                                              color: const Color(0xff5B74A6)))
+                                              color: const Color(0xff5B74A6))),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.3,
+                                      )
                                     ],
                                   ),
                                 ),

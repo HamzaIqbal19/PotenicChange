@@ -15,6 +15,13 @@ List<String> categories = [
   'Self Control',
   'Relationship'
 ];
+int getMaxCharacters() {
+  return 80;
+}
+
+int getCurrentCharacters() {
+  return goalName.text.length;
+}
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -70,7 +77,9 @@ void bottom_sheet(context, String goal) {
                       width: AppDimensions.height10(context) * 36.0,
                       child: TextField(
                         controller: goalName,
-                        maxLength: 80,
+                        // maxLength: 80,
+                        maxLength: getMaxCharacters(),
+
                         onChanged: (value) {
                           setState(() {
                             enable = true;
@@ -97,16 +106,16 @@ void bottom_sheet(context, String goal) {
                                     width: 3, color: Colors.transparent))),
                       ),
                     ),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 1,
-                    ),
+                    // SizedBox(
+                    //   height: AppDimensions.height10(context) * 1,
+                    // ),
                     Container(
                       height: AppDimensions.height10(context) * 2,
                       padding: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 4.0),
                       child: Row(
-                        children: const [
-                          Center(
+                        children: [
+                          const Center(
                             child: Text(
                               "Character count:",
                               style: TextStyle(
@@ -118,8 +127,8 @@ void bottom_sheet(context, String goal) {
                           ),
                           Center(
                             child: Text(
-                              "80",
-                              style: TextStyle(
+                              "${getMaxCharacters() - getCurrentCharacters()}/80",
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w700,
                                 color: Color.fromARGB(209, 250, 154, 52),
                                 fontSize: 13,
@@ -129,6 +138,7 @@ void bottom_sheet(context, String goal) {
                         ],
                       ),
                     ),
+
                     SizedBox(
                       height: AppDimensions.height10(context) * 3.0,
                     ),
