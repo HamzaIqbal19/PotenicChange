@@ -23,11 +23,14 @@ class _note_infoState extends State<note_info> {
 
   void _fetchInspiration() {
     InspirationApi().getInspirationById().then((response) {
-      if (response.statusCode == 200) {
+      print('Res=====================');
+      if (response.length != 0) {
         setState(() {
-          inspirationDetails = response['inspiration'];
+          inspirationDetails = response;
         });
-        return inspirationDetails;
+        print(inspirationDetails['inspiration']['title']);
+
+        return response;
       }
 
       // return null;
@@ -143,17 +146,14 @@ class _note_infoState extends State<note_info> {
                             ),
                           ),
                         ),
-                        GestureDetector(
+                        AnimatedScaleButton(
                           onTap: () {
-                            if (widget.note_saved == false) {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const note_info(
-                                    note_saved: true,
-                                    type_switch: 1,
-                                  )));
-                            }
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const inspiration_landing(
+                                        muliple_insp: true,
+                                        is_Updated: false)));
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 2.2,
@@ -182,6 +182,7 @@ class _note_infoState extends State<note_info> {
                     width: double.infinity,
                     color: Colors.white,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           height: AppDimensions.height10(context) * 2.1,
@@ -244,10 +245,12 @@ class _note_infoState extends State<note_info> {
                           ),
                           child: widget.note_saved
                               ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     if (widget.type_switch == 1) ...[
                                       Text(
-                                        'Lorem ipsum dolor\nsit amet, consectetur adipiscing elit. ',
+                                        inspirationDetails['inspiration']
+                                            ['title'],
                                         style: TextStyle(
                                             height: 1.5,
                                             fontSize: AppDimensions.height10(
@@ -262,7 +265,8 @@ class _note_infoState extends State<note_info> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'https://www.nirandfar.com/\ndistractions/',
+                                            inspirationDetails['inspiration']
+                                                ['destinationLink'],
                                             style: TextStyle(
                                                 height: 1.5,
                                                 decoration:
@@ -311,7 +315,8 @@ class _note_infoState extends State<note_info> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            'https://www.youtube.com/watch?\nv=btPJPFnesV4',
+                                            inspirationDetails['inspiration']
+                                                ['destinationLink'],
                                             style: TextStyle(
                                                 height: 1.5,
                                                 decoration:
@@ -391,9 +396,10 @@ class _note_infoState extends State<note_info> {
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 8.9,
+                              // right: AppDimensions.height10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               if (widget.type_switch == 1) ...[
                                 Text(
@@ -430,25 +436,29 @@ class _note_infoState extends State<note_info> {
                           // height: widget.note_saved
                           //     ? AppDimensions.height10(context) * 39.0
                           //     : AppDimensions.height10(context) * 2.4,
+
                           width: AppDimensions.height10(context) * 30.5,
                           // color: Colors.amber,
                           margin: EdgeInsets.only(
                             left: widget.note_saved
                                 ? AppDimensions.height10(context) * 2.0
                                 : AppDimensions.height10(context) * 0,
-                            right: widget.note_saved
-                                ? AppDimensions.height10(context) * 8.9
-                                : AppDimensions.height10(context) * 10.0,
+                            // right: widget.note_saved
+                            //     ? AppDimensions.height10(context) * 8.9
+                            //     : AppDimensions.height10(context) * 10.0,
                             // top: widget.note_saved
                             //     ? AppDimensions.height10(context) * 0
                             //     : AppDimensions.height10(context) * 1.0
                           ),
                           child: widget.note_saved
                               ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     if (widget.type_switch == 1) ...[
                                       Text(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aen`qean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. Pellentesque non pellentesque diam. Nulla interdum condimentum lorem ac interdum. Quisque tristique lacinia malesuada. Sed sed mattis orci, id pulvinar elit. Donec semper libero quis mauris rutrum, sit amet posuere lacus sodales. Donec a suscipit dolor. Vivamus ut tempus neque. ',
+                                        inspirationDetails['inspiration']
+                                            ['description'],
+                                        // textAlign: TextAlign.left,
                                         style: TextStyle(
                                             height: 1.5,
                                             fontSize: AppDimensions.height10(
@@ -459,7 +469,8 @@ class _note_infoState extends State<note_info> {
                                       ),
                                     ] else if (widget.type_switch == 2) ...[
                                       Text(
-                                        'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit. Nulla eu\nvestibulum est, ut rhoncus ligula.\nAenean quis ultrices odio. Nullam\neleifend eu lectus non tincidunt.\nPhasellus sed nibh pulvinar, ultrices\naugue viverra, varius neque.Mauris sollicitudin hendrerit libero, eu\ntempus leo ultricies quis. Proin\nhendrerit leo leo, eget hendrerit\nipsum accumsan at. Mauris id ipsum\nfeugiat, vestibulum nibh sit amet,\nscelerisque ex. Cras congue sagittis\ncondimentum. ',
+                                        inspirationDetails['inspiration']
+                                            ['description'],
                                         style: TextStyle(
                                             height: 1.5,
                                             fontSize: AppDimensions.height10(
@@ -470,7 +481,8 @@ class _note_infoState extends State<note_info> {
                                       ),
                                     ] else if (widget.type_switch == 3) ...[
                                       Text(
-                                        'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit. Nulla eu\nvestibulum est, ut rhoncus ligula.\nAenean quis ultrices odio. Nullam\neleifend eu lectus non tincidunt.\nPhasellus sed nibh pulvinar, ultrices\naugue viverra, varius neque.Mauris sollicitudin hendrerit libero, eu\ntempus leo ultricies quis. Proin\nhendrerit leo leo, eget hendrerit\nipsum accumsan at. Mauris id ipsum\nfeugiat, vestibulum nibh sit amet,\nscelerisque ex. Cras congue sagittis\ncondimentum. ',
+                                        inspirationDetails['inspiration']
+                                            ['description'],
                                         style: TextStyle(
                                             height: 1.5,
                                             fontSize: AppDimensions.height10(
@@ -589,7 +601,8 @@ class _note_infoState extends State<note_info> {
                                   : AppDimensions.height10(context) * 1.0),
                           child: widget.note_saved
                               ? Text(
-                                  'Add #hashtag',
+                                  inspirationDetails['inspiration']['hashTags']
+                                      [0],
                                   style: TextStyle(
                                       color: const Color(0xFF282828),
                                       fontSize:
@@ -853,13 +866,14 @@ class _noteSavedState extends State<noteSaved> {
                         )
                       ]),
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Container(
-                    height: AppDimensions.height10(context) * 79.7,
-                    width: double.infinity,
-                    color: Colors.white,
+                Container(
+                  height: AppDimensions.height10(context) * 79.7,
+                  width: double.infinity,
+                  color: Colors.white,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           height: AppDimensions.height10(context) * 2.1,
@@ -869,28 +883,25 @@ class _noteSavedState extends State<noteSaved> {
                               left: AppDimensions.height10(context) * 2.0,
                               right: AppDimensions.height10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.2),
-                          child: Column(children: [
-                            Text(
-                              'Title',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.5,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff828282)),
-                            ),
-                          ]),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Title',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.5,
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xff828282)),
+                                ),
+                              ]),
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
                           height: AppDimensions.height10(context) * 2.4,
                           width: AppDimensions.height10(context) * 30.5,
-                          //color: Colors.amber,
                           margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 0,
-                            right: AppDimensions.height10(context) * 10.0,
-                            // top: widget.note_saved
-                            //     ? AppDimensions.height10(context) * 0
-                            //     : AppDimensions.height10(context) * 1.0
+                            left: AppDimensions.height10(context) * 0.6,
                           ),
                           child: TextField(
                             controller: title,
@@ -925,7 +936,6 @@ class _noteSavedState extends State<noteSaved> {
                           alignment: Alignment.centerLeft,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
                             'Description',
@@ -936,48 +946,33 @@ class _noteSavedState extends State<noteSaved> {
                           ),
                         ),
                         Container(
-                          // height: widget.note_saved
-                          //     ? AppDimensions.height10(context) * 39.0
-                          //     : AppDimensions.height10(context) * 2.4,
                           width: AppDimensions.height10(context) * 30.5,
-                          // color: Colors.amber,
                           margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 0,
-                            right: AppDimensions.height10(context) * 10.0,
-                            // top: widget.note_saved
-                            //     ? AppDimensions.height10(context) * 0
-                            //     : AppDimensions.height10(context) * 1.0
+                            left: AppDimensions.height10(context) * 2.0,
                           ),
-                          child: SizedBox(
-                            height: AppDimensions.height10(context) * 2.4,
-                            width: AppDimensions.height10(context) * 37.5,
-                            child: TextField(
-                              controller: statement,
-                              textAlignVertical: TextAlignVertical.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff282828)),
-                              decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.fromLTRB(
-                                      AppDimensions.height10(context) * 1.5,
-                                      AppDimensions.height10(context) * 0.4,
-                                      0,
-                                      0),
-                                  hintText: 'Say more about this inspiration ',
-                                  hintStyle: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.7,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color(0xff828282)),
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent)),
-                                  enabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent))),
-                            ),
+                          child: TextFormField(
+                            textAlignVertical: TextAlignVertical.top,
+                            controller: statement,
+                            maxLines: null,
+                            minLines: null,
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff282828)),
+                            decoration: InputDecoration(
+                                contentPadding: EdgeInsets.zero,
+                                hintText: 'Say more about this inspiration ',
+                                hintStyle: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.7,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xff828282)),
+                                focusedBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent)),
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent))),
                           ),
                         ),
                         Container(
@@ -999,7 +994,7 @@ class _noteSavedState extends State<noteSaved> {
                           height: AppDimensions.height10(context) * 2.4,
                           width: AppDimensions.height10(context) * 30.5,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0,
+                              left: AppDimensions.height10(context) * 0.6,
                               right: AppDimensions.height10(context) * 10.0,
                               top: AppDimensions.height10(context) * 1.0),
                           child: TextField(
