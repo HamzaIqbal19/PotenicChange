@@ -654,7 +654,9 @@ class _VisualisingState extends State<Visualising> {
                               ),
                         child: Center(
                           child: Text(
-                            "Next",
+                            goalVisualising[0]['text'] != ""
+                                ? "Create your goal"
+                                : "Next",
                             style: TextStyle(
                               color: goalVisualising[0]['text'] != ""
                                   ? Colors.white

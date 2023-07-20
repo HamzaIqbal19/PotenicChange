@@ -16,6 +16,7 @@ import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
 import '../../Widgets/mult_circles.dart';
 import '../../utils/app_dimensions.dart';
+import 'calender_bottom_sheet.dart';
 import 'menu_dashboard_behaviour.dart';
 
 class view_goals extends StatefulWidget {
@@ -93,6 +94,14 @@ class _view_goalsState extends State<view_goals> {
                   ),
                   GestureDetector(
                     onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return CalendarBottomSheet();
+                        },
+                      );
+
+                      /*
                       showModalBottomSheet(
                           context: context,
                           builder: (BuildContext context) {
@@ -184,6 +193,7 @@ class _view_goalsState extends State<view_goals> {
                               ),
                             );
                           });
+                   */
                     },
                     child: Container(
                       margin: EdgeInsets.only(

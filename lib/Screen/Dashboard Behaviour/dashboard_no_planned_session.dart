@@ -15,6 +15,8 @@ import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import 'package:intl/intl.dart';
 
+import 'calender_bottom_sheet.dart';
+
 class no_planned_session extends StatefulWidget {
   final bool missed;
   const no_planned_session({super.key, required this.missed});
@@ -74,32 +76,58 @@ class _no_planned_sessionState extends State<no_planned_session> {
             actions: [
               Row(
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.32),
-                    child: Image.asset(
-                      'assets/images/Asset 10 2.webp',
-                      height: AppDimensions.height10(context) * 4.0,
-                      width: AppDimensions.height10(context) * 3.977,
-                      fit: BoxFit.contain,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          FadePageRoute(page: view_goals(missed: false)));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.32),
+                      child: Image.asset(
+                        'assets/images/Asset 10 2.webp',
+                        height: AppDimensions.height10(context) * 4.0,
+                        width: AppDimensions.height10(context) * 3.977,
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.7),
-                    child: Image.asset(
-                      'assets/images/Add goal.webp',
-                      height: AppDimensions.height10(context) * 2.0,
-                      width: AppDimensions.height10(context) * 2.1,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: record_session(
+                            past_session: true,
+                          )));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.7),
+                      child: Image.asset(
+                        'assets/images/Add goal.webp',
+                        height: AppDimensions.height10(context) * 2.0,
+                        width: AppDimensions.height10(context) * 2.1,
+                      ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.32),
-                    child: Image.asset(
-                      'assets/images/calendar_month_black_24dp 1.webp',
-                      height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.height10(context) * 2.4,
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return CalendarBottomSheet();
+                        },
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.32),
+                      child: Image.asset(
+                        'assets/images/calendar_month_black_24dp 1.webp',
+                        height: AppDimensions.height10(context) * 2.4,
+                        width: AppDimensions.height10(context) * 2.4,
+                      ),
                     ),
                   ),
                 ],

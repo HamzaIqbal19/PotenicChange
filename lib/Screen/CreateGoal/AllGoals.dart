@@ -106,6 +106,13 @@ class _AllGoalsState extends State<AllGoals> {
     getGoal();
   }
 
+  String capitalizeFirstLetter(String text) {
+    if (text == null || text.isEmpty) {
+      return '';
+    }
+    return text[0].toUpperCase() + text.substring(1);
+  }
+
   Future<Goal> getGoal() async {
     final prefs = await SharedPreferences.getInstance();
     print("GoalId:${prefs.getInt("goalId")}");
@@ -329,8 +336,10 @@ class _AllGoalsState extends State<AllGoals> {
                                             AppDimensions.height10(context) *
                                                 2.4,
                                         child: Text(
-                                          goalNamesAndCategories![index]
-                                              ["name"],
+                                          capitalizeFirstLetter(
+                                            goalNamesAndCategories![index]
+                                                ["name"],
+                                          ),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -382,26 +391,31 @@ class _AllGoalsState extends State<AllGoals> {
                                                           .spaceEvenly,
                                                   children: [
                                                     AnimatedScaleButton(
-                                                      onTap: () {
-                                                        getUserId(
-                                                            goalNamesAndCategories![
-                                                                index]['id'],
+                                                        onTap: () {
+                                                          getUserId(
+                                                              goalNamesAndCategories![
+                                                                  index]['id'],
+                                                              goalNamesAndCategories![
+                                                                          index]
+                                                                      [
+                                                                      "goals"][index1]
+                                                                  ["goalName"],
+                                                              goalNamesAndCategories![
+                                                                          index]
+                                                                      ["goals"][
+                                                                  index1]["id"]);
+                                                        },
+                                                        child: circles(
+                                                          circle_text:
+                                                              capitalizeFirstLetter(
                                                             goalNamesAndCategories![
                                                                             index]
                                                                         [
                                                                         "goals"]
-                                                                    [index1]
-                                                                ["goalName"],
-                                                            goalNamesAndCategories![
-                                                                        index]
-                                                                    ["goals"]
-                                                                [index1]["id"]);
-                                                      },
-                                                      child: circles(
-                                                          circle_text: goalNamesAndCategories![
-                                                                      index]
-                                                                  ["goals"][index1]
-                                                              ["goalName"],
+                                                                    [
+                                                                    index1]["goalName"]
+                                                                .toString(),
+                                                          ),
                                                           circle_color1:
                                                               0xFFFFFFFF,
                                                           circle_color2:
@@ -410,20 +424,21 @@ class _AllGoalsState extends State<AllGoals> {
                                                           circle_bordercolor:
                                                               0xFFEE8E6F,
                                                           circle_height:
-                                                              AppDimensions.height10(
-                                                                      context) *
+                                                              AppDimensions
+                                                                      .height10(
+                                                                          context) *
                                                                   13.4,
                                                           circle_width:
-                                                              AppDimensions.height10(
-                                                                      context) *
+                                                              AppDimensions
+                                                                      .height10(
+                                                                          context) *
                                                                   13.4,
                                                           textfont: AppDimensions
                                                                   .height10(
                                                                       context) *
                                                               1.6,
-                                                          textcolor:
-                                                              0xFFFA9934),
-                                                    ),
+                                                          textcolor: 0xFFFA9934,
+                                                        )),
                                                   ],
                                                 ),
                                               ]));
@@ -454,158 +469,169 @@ class _AllGoalsState extends State<AllGoals> {
           width: AppDimensions.height10(context) * 41.4,
 
           child: SearchIcon == true
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: AppDimensions.height10(context) * 3.6,
-                          width: AppDimensions.height10(context) * 31.3,
-                          padding: const EdgeInsets.all(6.0),
-                          decoration: BoxDecoration(
-                              color: const Color(0xFF767680).withOpacity(0.12),
-                              border: Border.all(color: Colors.white, width: 2),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10(context)))),
-                          child: Center(
-                            child: TextFormField(
-                                controller: _searchController,
-                                onChanged: (value) {
-                                  print("value:$value");
+              ? Container(
+                  color: Colors.transparent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: AppDimensions.height10(context) * 3.6,
+                            width: AppDimensions.height10(context) * 31.3,
+                            padding: const EdgeInsets.all(6.0),
+                            decoration: BoxDecoration(
+                                color:
+                                    const Color(0xFF767680).withOpacity(0.12),
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                                borderRadius: BorderRadius.all(Radius.circular(
+                                    AppDimensions.height10(context)))),
+                            child: Center(
+                              child: TextFormField(
+                                  controller: _searchController,
+                                  onChanged: (value) {
+                                    print("value:$value");
 
-                                  setState(() {
-                                    searchText = value;
-                                    _searchGoals(value);
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.all(0.0),
-                                    prefixIcon: Image.asset(
-                                      'assets/images/Light.webp',
-                                      width:
-                                          AppDimensions.height10(context) * 1.5,
-                                      height:
-                                          AppDimensions.height10(context) * 1.5,
-                                    ),
-                                    suffixIcon: AnimatedScaleButton(
-                                      onTap: () {
-                                        searchText = '';
-                                        _searchGoals('');
-                                        _searchController.clear();
-                                      },
-                                      child: Image.asset(
-                                        'assets/images/cancel.webp',
+                                    setState(() {
+                                      searchText = value;
+                                      _searchGoals(value);
+                                    });
+                                  },
+                                  decoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.all(0.0),
+                                      prefixIcon: Image.asset(
+                                        'assets/images/Light.webp',
                                         width: AppDimensions.height10(context) *
-                                            2.3,
+                                            1.5,
                                         height:
                                             AppDimensions.height10(context) *
-                                                2.3,
-                                        // fit: BoxFit.contain,
+                                                1.5,
                                       ),
-                                    ),
-                                    hintText: "Search",
-                                    hintStyle: TextStyle(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.14),
-                                    focusedBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.transparent)),
-                                    enabledBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.transparent)))),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          SearchIcon = false;
-                          _searchGoals('');
-                          _searchController.clear();
-                        });
-                      },
-                      child: Text(
-                        "Cancel",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.7,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xFF007AFF),
-                        ),
-                      ),
-                    ),
-
-                    //const Padding(padding: EdgeInsets.all(10))
-                  ],
-                )
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        AnimatedScaleButton(
-                          onTap: () {
-                            bottom_sheet(context);
-                          },
-                          child: Container(
-                            width: AppDimensions.height10(context) * 4.7,
-                            height: AppDimensions.height10(context) * 4.7,
-                            padding: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.5,
-                                bottom: AppDimensions.height10(context) * 0.5),
-                            child: Image.asset(
-                              'assets/images/Add.webp',
-                              width: AppDimensions.height10(context) * 4.7,
-                              height: AppDimensions.height10(context) * 4.7,
-                              fit: BoxFit.contain,
+                                      suffixIcon: AnimatedScaleButton(
+                                        onTap: () {
+                                          searchText = '';
+                                          _searchGoals('');
+                                          _searchController.clear();
+                                        },
+                                        child: Image.asset(
+                                          'assets/images/cancel.webp',
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.3,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.3,
+                                          // fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                      hintText: "Search",
+                                      hintStyle: TextStyle(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  0.14),
+                                      focusedBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent)),
+                                      enabledBorder: const OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.transparent)))),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: AppDimensions.height10(context) * 0.5,
-                        ),
-                        Text(
-                          'Create a new goal! ',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: const Color(0xFFFA9934),
-                            // fontFamily: ,
-                            fontSize: AppDimensions.height10(context) * 1.6,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
 
-                    Container(
-                      width: AppDimensions.height10(context) * 4.7,
-                      height: AppDimensions.height10(context) * 4.7,
-                      padding: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.5,
-                          bottom: AppDimensions.height10(context) * 0.5),
-                      child: GestureDetector(
+                      GestureDetector(
                         onTap: () {
                           setState(() {
-                            SearchIcon = true;
+                            SearchIcon = false;
+                            _searchGoals('');
+                            _searchController.clear();
                           });
                         },
-                        child: Image.asset(
-                          'assets/images/Search.webp',
-                          width: AppDimensions.height10(context) * 5,
-                          height: AppDimensions.height10(context) * 5,
-                          fit: BoxFit.contain,
+                        child: Text(
+                          "Cancel",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.7,
+                            fontWeight: FontWeight.w400,
+                            color: const Color(0xFF007AFF),
+                          ),
                         ),
                       ),
-                    ),
 
-                    //const Padding(padding: EdgeInsets.all(10))
-                  ],
+                      //const Padding(padding: EdgeInsets.all(10))
+                    ],
+                  ),
+                )
+              : Container(
+                  color: Colors.transparent,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          AnimatedScaleButton(
+                            onTap: () {
+                              bottom_sheet(context);
+                            },
+                            child: Container(
+                              width: AppDimensions.height10(context) * 4.7,
+                              height: AppDimensions.height10(context) * 4.7,
+                              padding: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 0.5,
+                                  bottom:
+                                      AppDimensions.height10(context) * 0.5),
+                              child: Image.asset(
+                                'assets/images/Add.webp',
+                                width: AppDimensions.height10(context) * 4.7,
+                                height: AppDimensions.height10(context) * 4.7,
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: AppDimensions.height10(context) * 0.5,
+                          ),
+                          Text(
+                            'Create a new goal! ',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: const Color(0xFFFA9934),
+                              // fontFamily: ,
+                              fontSize: AppDimensions.height10(context) * 1.6,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      Container(
+                        width: AppDimensions.height10(context) * 4.7,
+                        height: AppDimensions.height10(context) * 4.7,
+                        padding: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.5,
+                            bottom: AppDimensions.height10(context) * 0.5),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              SearchIcon = true;
+                            });
+                          },
+                          child: Image.asset(
+                            'assets/images/Search.webp',
+                            width: AppDimensions.height10(context) * 5,
+                            height: AppDimensions.height10(context) * 5,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
+
+                      //const Padding(padding: EdgeInsets.all(10))
+                    ],
+                  ),
                 ),
         ),
       ),

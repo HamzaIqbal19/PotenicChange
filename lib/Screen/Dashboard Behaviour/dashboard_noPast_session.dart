@@ -15,6 +15,7 @@ import 'package:potenic_app/Widgets/mult_circles.dart';
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import 'calender_bottom_sheet.dart';
 
 class no_past_session extends StatefulWidget {
   final bool missed;
@@ -109,13 +110,23 @@ class _no_past_sessionState extends State<no_past_session> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.32),
-                    child: Image.asset(
-                      'assets/images/calendar_month_black_24dp 1.webp',
-                      height: AppDimensions.height10(context) * 2.4,
-                      width: AppDimensions.height10(context) * 2.4,
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return CalendarBottomSheet();
+                        },
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                          right: AppDimensions.height10(context) * 1.32),
+                      child: Image.asset(
+                        'assets/images/calendar_month_black_24dp 1.webp',
+                        height: AppDimensions.height10(context) * 2.4,
+                        width: AppDimensions.height10(context) * 2.4,
+                      ),
                     ),
                   ),
                 ],
@@ -1069,26 +1080,26 @@ class _no_past_sessionState extends State<no_past_session> {
                                                                 context,
                                                                 FadePageRoute(
                                                                     page:
-                                                                         missed_Menu(goalColor:
-                                                                  allGoals[
+                                                                        missed_Menu(
+                                                                  goalColor: allGoals[
                                                                           index]
                                                                       ['color'],
-                                                              goalName:
-                                                                  allGoals[
+                                                                  goalName: allGoals[
                                                                           index]
                                                                       ['name'],
-                                                              pracColor: allGoals[
-                                                                          index]
+                                                                  pracColor: allGoals[index]
+                                                                              [
+                                                                              'userPractices']
+                                                                          [
+                                                                          index1]
+                                                                      ['color'],
+                                                                  pracName: allGoals[
+                                                                              index]
+                                                                          [
+                                                                          'userPractices']
                                                                       [
-                                                                      'userPractices']
-                                                                  [
-                                                                  index1]['color'],
-                                                              pracName: allGoals[
-                                                                          index]
-                                                                      [
-                                                                      'userPractices']
-                                                                  [
-                                                                  index1]['name'],)));
+                                                                      index1]['name'],
+                                                                )));
                                                           } else {
                                                             Navigator.push(
                                                                 context,

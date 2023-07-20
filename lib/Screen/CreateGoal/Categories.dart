@@ -37,6 +37,13 @@ class _CategoriesState extends State<Categories> {
     _fetchGoalNames();
   }
 
+  String capitalizeFirstLetter(String text) {
+    if (text == null || text.isEmpty) {
+      return '';
+    }
+    return text[0].toUpperCase() + text.substring(1);
+  }
+
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
@@ -241,8 +248,9 @@ class _CategoriesState extends State<Categories> {
                                           },
                                           child: circles(
                                               circle_text:
-                                                  goalCategories![index]
-                                                      ["name"],
+                                                  capitalizeFirstLetter(
+                                                      goalCategories![index]
+                                                          ["name"]),
                                               circle_color1: 0xFFFC854F,
                                               circle_color2: 0xFFFAA960,
                                               circle_border: 3.0,
@@ -350,8 +358,10 @@ class _CategoriesState extends State<Categories> {
                                             },
                                             child: circles(
                                                 circle_text:
-                                                    goalCategories![dataIndex]
-                                                        ["name"],
+                                                    capitalizeFirstLetter(
+                                                  goalCategories![dataIndex]
+                                                      ["name"],
+                                                ),
                                                 circle_color1: 0xFFFC854F,
                                                 circle_color2: 0xFFFAA960,
                                                 circle_border: 3.0,
