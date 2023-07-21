@@ -18,6 +18,13 @@ class PracticeName extends StatefulWidget {
   State<PracticeName> createState() => _PracticeNameState();
 }
 
+String capitalizeFirstLetter(String text) {
+  if (text == null || text.isEmpty) {
+    return '';
+  }
+  return text[0].toUpperCase() + text.substring(1);
+}
+
 class _PracticeNameState extends State<PracticeName> {
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
@@ -42,7 +49,7 @@ class _PracticeNameState extends State<PracticeName> {
       color = goalColor;
       mygoal.text = my_goal!;
       practice.text = practice_Name!;
-      practiceName.text = practice_Name!;
+      practiceName.text = capitalizeFirstLetter(practice_Name!);
     });
     print('=======================>$color');
   }
@@ -213,7 +220,9 @@ class _PracticeNameState extends State<PracticeName> {
                             left: AppDimensions.height10(context) * 1.5),
                         child: practice.text.toString().length > 25
                             ? Text(
-                                practice.text.toString(),
+                                capitalizeFirstLetter(
+                                  practice.text.toString(),
+                                ),
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -223,7 +232,9 @@ class _PracticeNameState extends State<PracticeName> {
                                 ),
                               )
                             : Text(
-                                practice.text.toString(),
+                                capitalizeFirstLetter(
+                                  practice.text.toString(),
+                                ),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xFF156F6D),

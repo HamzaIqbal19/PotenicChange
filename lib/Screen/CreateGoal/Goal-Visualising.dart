@@ -180,7 +180,7 @@ class _VisualisingState extends State<Visualising> {
                 ),
                 onPressed: () {
                   Navigator.pop(context, true);
-                  Navigator.pop(context, true);
+
                   // Add code for performing close action
                 },
               ),

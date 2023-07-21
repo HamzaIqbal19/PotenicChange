@@ -322,6 +322,44 @@ class AdminGoal {
       return false;
     }
   }
+/*
+  Future<bool> updateUserGoal(String category, List<String> reasons) async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_num = prefs.getInt('goal_num');
+    var accessToken = prefs.getString("usertoken");
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken',
+    };
+
+    var reasonObjects = reasons.map((reason) => {"text": reason}).toList();
+    var body = jsonEncode({category: reasonObjects});
+
+    try {
+      var response = await client.put(
+        Uri.parse('${URL.BASE_URL}api/userGoal/$goal_num'),
+        headers: headers,
+        body: body,
+      );
+      print("Requent body: ${response.body}");
+
+      if (response.statusCode == 200) {
+        print("Update successful");
+        var jsonData = jsonDecode(response.body);
+        print("Result: $jsonData");
+        print("Respone body: ${response.body}");
+        return true;
+      } else {
+        print("Update failed");
+        return false;
+      }
+    } catch (error) {
+      print("Error during update: $error");
+      return false;
+    }
+  }
+*/
 
   Future updateUserGoal(category, reason) async {
     final SharedPreferences prefs = await _prefs;
