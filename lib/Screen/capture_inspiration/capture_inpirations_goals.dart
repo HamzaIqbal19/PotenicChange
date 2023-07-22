@@ -1,8 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:potenic_app/API/Goal.dart';
 
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';
@@ -17,6 +22,51 @@ class inspiraton_goals extends StatefulWidget {
 }
 
 class _inspiraton_goalsState extends State<inspiraton_goals> {
+  var goals = [];
+  int selectBox = -1;
+  int selectinActive = -1;
+  bool selectAll = false;
+  List<Map<String, dynamic>> Active = [];
+  List<Map<String, dynamic>> inActive = [];
+  bool Loading = true;
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
+  }
+
+  void _fetchUserGoal() {
+    AdminGoal.getUserGoalByUserId().then((response) {
+      setState(() {
+        goals = response;
+      });
+      loadData();
+      _newFunction();
+    });
+  }
+
+  _newFunction() {
+    print('FunctionCalled');
+    for (int i = 0; i <= goals.length; i++) {
+      if (goals[i]['isActive'] == true) {
+        Active.add(goals[i]);
+      } else {
+        inActive.add(goals[i]);
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserGoal();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -230,436 +280,496 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
           ]),
       extendBodyBehindAppBar: true,
       body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/bg_inpiration_purple.webp'),
-                  colorFilter: ColorFilter.mode(
-                      Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
-                  fit: BoxFit.cover)),
-          child: Column(children: [
-            Container(
-              width: AppDimensions.height10(context) * 36.0,
-              height: AppDimensions.height10(context) * 67.9,
-              margin: EdgeInsets.only(
-                  top: AppDimensions.height10(context) * 9.3,
-                  left: AppDimensions.height10(context) * 3.0,
-                  right: AppDimensions.height10(context) * 2.4),
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: AppDimensions.height10(context) * 34.3,
-                        height: AppDimensions.height10(context) * 7.3,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 8.7),
-                        child: Center(
-                          //Text alingment changes
-                          child: GradientText(
-                            'Which goals is the\ninspiration for?',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              height: 1.2,
-                              fontSize: AppDimensions.height10(context) * 2.8,
-                              fontWeight: FontWeight.w700,
+        width: double.infinity,
+        height: double.infinity,
+        // margin: EdgeInsets.only(top: AppDimensions.height10(context) * 6.0),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/bg_inpiration_purple.webp'),
+                colorFilter: ColorFilter.mode(
+                    Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
+                fit: BoxFit.cover)),
+        child: Loading == false
+            ? Column(children: [
+                Container(
+                  // width: AppDimensions.height10(context) * 36.0,
+                  height: AppDimensions.height10(context) * 67.9,
+                  margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 9.3,
+                    // left: AppDimensions.height10(context) * 3.0,
+                    // right: AppDimensions.height10(context) * 2.4
+                  ),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: AppDimensions.height10(context) * 34.3,
+                            height: AppDimensions.height10(context) * 7.3,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 8.7),
+                            child: Center(
+                              //Text alingment changes
+                              child: GradientText(
+                                'Which goals is the\ninspiration for?',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  height: 1.2,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.8,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                                colors: const [
+                                  Color(0xffFA9934),
+                                  Color(0xffEDD15E)
+                                ],
+                              ),
                             ),
-                            colors: const [
-                              Color(0xffFA9934),
-                              Color(0xffEDD15E)
-                            ],
                           ),
-                        ),
-                      ),
-                      Container(
-                        width: AppDimensions.height10(context) * 14.1,
-                        height: AppDimensions.height10(context) * 14.1,
+                          AnimatedScaleButton(
+                            onTap: () {
+                              if (selectAll == false) {
+                                setState(() {
+                                  selectAll = true;
+                                  selectBox = -1;
+                                  selectinActive = -1;
+                                });
+                              } else if (selectAll == true) {
+                                setState(() {
+                                  selectAll = false;
+                                  selectinActive = -1;
+                                  selectBox = -1;
+                                });
+                              }
+                            },
+                            child: Container(
+                              width: AppDimensions.height10(context) * 14.1,
+                              height: AppDimensions.height10(context) * 14.1,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 2.1,
+                                  right: AppDimensions.height10(context) * 19.8,
+                                  top: AppDimensions.height10(context) * 2.9),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      width: 2,
+                                      color: selectAll == true
+                                          ? Colors.white
+                                          : Colors.transparent)),
+                              padding: EdgeInsets.all(
+                                  AppDimensions.height10(context) * 0.5),
+                              child: Container(
+                                height: AppDimensions.height10(context) * 13.1,
+                                width: AppDimensions.height10(context) * 13.1,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                        width: AppDimensions.height10(context) *
+                                            0.1,
+                                        color: Colors.white),
+                                    gradient: const LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Color(0xffBE3FC6),
+                                          Color(0xff642445)
+                                        ])),
+                                child: Center(
+                                  child: Text(
+                                    'All goals',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.6,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 12.4,
+                            height: AppDimensions.height10(context) * 2.4,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10(context) * 21.2,
+                                left: AppDimensions.height10(context) * 2.8,
+                                top: AppDimensions.height10(context) * 2.0),
+                            child: Center(
+                              child: Text(
+                                'Active Goals',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 6,
+                                top: AppDimensions.height10(context) * 1.0,
+                                right: AppDimensions.height10(context) * 3,
+                                bottom: AppDimensions.height10(context) * 2.0),
+                            child: GridView.builder(
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio:
+                                      3.5 / 3, // Two items in each row
+
+                                  mainAxisSpacing: 9.0,
+                                  crossAxisSpacing: 3,
+                                ),
+                                itemCount: Active.length,
+                                itemBuilder: ((context, index) {
+                                  return AnimatedScaleButton(
+                                    onTap: () {
+                                      setState(() {
+                                        selectAll = false;
+                                        selectinActive = index;
+                                        selectBox = -1;
+                                      });
+                                      print(selectAll);
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  3),
+                                      height: selectinActive == index ||
+                                              selectAll == true
+                                          ? AppDimensions.height10(context) *
+                                              14.1
+                                          : AppDimensions.height10(context) *
+                                              13.1,
+                                      width: selectinActive == index ||
+                                              selectAll == true
+                                          ? AppDimensions.height10(context) *
+                                              14.1
+                                          : AppDimensions.height10(context) *
+                                              13.1,
+                                      padding: EdgeInsets.all(
+                                          AppDimensions.height10(context) *
+                                              0.8),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            width: selectinActive == index ||
+                                                    selectAll == true
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    0.2
+                                                : 0,
+                                            color: selectinActive == index ||
+                                                    selectAll == true
+                                                ? Colors.white
+                                                : Colors.transparent),
+                                      ),
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                13.1,
+                                        width: AppDimensions.height10(context) *
+                                            13.1,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: AppDimensions.height10(
+                                                    context) *
+                                                0.8),
+                                        // margin: EdgeInsets.only(
+                                        //   right:
+                                        //       AppDimensions.height10(context) * 4.5,
+                                        // ),
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    0.1,
+                                                color: Colors.white),
+                                            gradient: const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xffBE3FC6),
+                                                  Color(0xff642445)
+                                                ])),
+                                        child: Center(
+                                          child: Text(
+                                            Active[index]['name'],
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.6,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 13.7,
+                            height: AppDimensions.height10(context) * 2.4,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10(context) * 19.5,
+                                left: AppDimensions.height10(context) * 2.8),
+                            child: Center(
+                              child: Text(
+                                'Inactive Goals',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.0,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.2,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 6,
+                                top: AppDimensions.height10(context) * 1.0,
+                                right: AppDimensions.height10(context) * 3,
+                                bottom: AppDimensions.height10(context) * 2.0),
+                            child: GridView.builder(
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio:
+                                      3.5 / 3, // Two items in each row
+
+                                  mainAxisSpacing: 9.0,
+                                  crossAxisSpacing: 3,
+                                ),
+                                itemCount: inActive.length,
+                                itemBuilder: ((context, index) {
+                                  return AnimatedScaleButton(
+                                    onTap: () {
+                                      setState(() {
+                                        selectBox = index;
+                                        selectinActive = -1;
+                                        selectAll = false;
+                                      });
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  3),
+                                      height: selectBox == index ||
+                                              selectAll == true
+                                          ? AppDimensions.height10(context) *
+                                              14.1
+                                          : AppDimensions.height10(context) *
+                                              13.1,
+                                      width: selectBox == index ||
+                                              selectAll == true
+                                          ? AppDimensions.height10(context) *
+                                              14.1
+                                          : AppDimensions.height10(context) *
+                                              13.1,
+                                      padding: EdgeInsets.all(
+                                          AppDimensions.height10(context) *
+                                              0.8),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            width: selectBox == index ||
+                                                    selectAll == true
+                                                ? AppDimensions.height10(
+                                                        context) *
+                                                    0.2
+                                                : 0,
+                                            color: selectBox == index ||
+                                                    selectAll == true
+                                                ? Colors.white
+                                                : Colors.transparent),
+                                      ),
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                13.1,
+                                        width: AppDimensions.height10(context) *
+                                            13.1,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: AppDimensions.height10(
+                                                    context) *
+                                                1.2),
+                                        // margin: EdgeInsets.only(
+                                        //   right: AppDimensions.height10(context) *
+                                        //       4.5,
+                                        // ),
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    0.1,
+                                                color: Colors.white),
+                                            gradient: const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xffBE3FC6),
+                                                  Color(0xff642445)
+                                                ])),
+                                        child: Center(
+                                          child: Text(
+                                            inActive[index]['name'],
+                                            maxLines: 3,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.6,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })),
+                          ),
+                        ]),
+                  ),
+                ),
+                widget.data_saved
+                    ? Container(
+                        width: AppDimensions.height10(context) * 34.2,
+                        height: AppDimensions.height10(context) * 5.0,
                         margin: EdgeInsets.only(
-                            left: AppDimensions.height10(context) * 2.1,
-                            right: AppDimensions.height10(context) * 19.8,
-                            top: AppDimensions.height10(context) * 2.9),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(width: 2, color: Colors.white)),
-                        padding: EdgeInsets.all(
-                            AppDimensions.height10(context) * 0.5),
-                        child: Container(
-                          height: AppDimensions.height10(context) * 13.1,
-                          width: AppDimensions.height10(context) * 13.1,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                  width: AppDimensions.height10(context) * 0.1,
-                                  color: Colors.white),
-                              gradient: const LinearGradient(
+                            top: AppDimensions.height10(context) * 3.3,
+                            bottom: AppDimensions.height10(context) * 3.6),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: AppDimensions.height10(context) * 12.8,
+                              height: AppDimensions.height10(context) * 5.0,
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                border: Border.all(
+                                    width: 1,
+                                    color: const Color(0xFFFFFFFF)
+                                        .withOpacity(0.5)),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 5.0),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Reset',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.6,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white.withOpacity(0.5)),
+                                  )),
+                            ),
+                            Container(
+                              width: AppDimensions.height10(context) * 20.4,
+                              height: AppDimensions.height10(context) * 5.0,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
                                   begin: Alignment.topCenter,
                                   end: Alignment.bottomCenter,
                                   colors: [
-                                    Color(0xffBE3FC6),
-                                    Color(0xff642445)
-                                  ])),
-                          child: Center(
+                                    const Color(0xffFCC10D).withOpacity(0.5),
+                                    const Color(0xffFDA210).withOpacity(0.5),
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 5.0),
+                              ),
+                              child: TextButton(
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Save',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.6,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white.withOpacity(0.5)),
+                                  )),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Container(
+                        width: AppDimensions.height10(context) * 25.4,
+                        height: AppDimensions.height10(context) * 5.0,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 3.3,
+                            bottom: AppDimensions.height10(context) * 2.6),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xffFCC10D),
+                              Color(0xffFDA210),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 5.0),
+                        ),
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                FadePageRoute(page: const inspiration_type()),
+                              );
+                            },
                             child: Text(
-                              'All goals',
+                              '(5/5 goals selected) Next',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Colors.white,
                                   fontSize:
                                       AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
+                            )),
                       ),
-                      Container(
-                        width: AppDimensions.height10(context) * 12.4,
-                        height: AppDimensions.height10(context) * 2.4,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 21.2,
-                            left: AppDimensions.height10(context) * 2.8,
-                            top: AppDimensions.height10(context) * 2.0),
-                        child: Center(
-                          child: Text(
-                            'Active Goals',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.0,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 2.7,
-                            left: AppDimensions.height10(context) * 2.6,
-                            top: AppDimensions.height10(context) * 1.0,
-                            bottom: AppDimensions.height10(context) * 2.0),
-                        child: Row(children: [
-                          Container(
-                            height: AppDimensions.height10(context) * 13.1,
-                            width: AppDimensions.height10(context) * 13.1,
-                            margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 4.5,
-                            ),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: Colors.white),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xffBE3FC6),
-                                      Color(0xff642445)
-                                    ])),
-                            child: Center(
-                              child: Text(
-                                'Anger\nmanagement',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: AppDimensions.height10(context) * 13.1,
-                            width: AppDimensions.height10(context) * 13.1,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: Colors.white),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xffBE3FC6),
-                                      Color(0xff642445)
-                                    ])),
-                            child: Center(
-                              child: Text(
-                                'Become More\nConfident',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                        ]),
-                      ),
-                      Container(
-                        width: AppDimensions.height10(context) * 13.7,
-                        height: AppDimensions.height10(context) * 2.4,
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 19.5,
-                            left: AppDimensions.height10(context) * 2.8),
-                        child: Center(
-                          child: Text(
-                            'Inactive Goals',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 2.0,
-                                fontWeight: FontWeight.w600,
-                                height: 1.2,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 2.7,
-                            left: AppDimensions.height10(context) * 2.6,
-                            top: AppDimensions.height10(context) * 2.0,
-                            bottom: AppDimensions.height10(context) * 0.7),
-                        child: Row(children: [
-                          Container(
-                            height: AppDimensions.height10(context) * 13.1,
-                            width: AppDimensions.height10(context) * 13.1,
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 4.5),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: Colors.white),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xffBE3FC6),
-                                      Color(0xff642445)
-                                    ])),
-                            child: Center(
-                              child: Text(
-                                '[Goal 3]',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: AppDimensions.height10(context) * 13.1,
-                            width: AppDimensions.height10(context) * 13.1,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: Colors.white),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xffBE3FC6),
-                                      Color(0xff642445)
-                                    ])),
-                            child: Center(
-                              child: Text(
-                                '[Goal 4]',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                        ]),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 2.7,
-                          left: AppDimensions.height10(context) * 2.6,
-                        ),
-                        child: Row(children: [
-                          Container(
-                            height: AppDimensions.height10(context) * 13.1,
-                            width: AppDimensions.height10(context) * 13.1,
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.height10(context) * 4.5),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: Colors.white),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xffBE3FC6),
-                                      Color(0xff642445)
-                                    ])),
-                            child: Center(
-                              child: Text(
-                                '[Goal 3]',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: AppDimensions.height10(context) * 13.1,
-                            width: AppDimensions.height10(context) * 13.1,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width:
-                                        AppDimensions.height10(context) * 0.1,
-                                    color: Colors.white),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xffBE3FC6),
-                                      Color(0xff642445)
-                                    ])),
-                            child: Center(
-                              child: Text(
-                                '[Goal 4]',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                        ]),
-                      ),
-                    ]),
-              ),
-            ),
-            widget.data_saved
-                ? Container(
-                    width: AppDimensions.height10(context) * 34.2,
-                    height: AppDimensions.height10(context) * 5.0,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 3.3,
-                        bottom: AppDimensions.height10(context) * 3.6),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: AppDimensions.height10(context) * 12.8,
-                          height: AppDimensions.height10(context) * 5.0,
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            border: Border.all(
-                                width: 1,
-                                color:
-                                    const Color(0xFFFFFFFF).withOpacity(0.5)),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 5.0),
-                          ),
-                          child: TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'Reset',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white.withOpacity(0.5)),
-                              )),
-                        ),
-                        Container(
-                          width: AppDimensions.height10(context) * 20.4,
-                          height: AppDimensions.height10(context) * 5.0,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                const Color(0xffFCC10D).withOpacity(0.5),
-                                const Color(0xffFDA210).withOpacity(0.5),
-                              ],
-                            ),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 5.0),
-                          ),
-                          child: TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                'Save',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white.withOpacity(0.5)),
-                              )),
-                        ),
-                      ],
-                    ),
-                  )
-                : Container(
-                    width: AppDimensions.height10(context) * 25.4,
-                    height: AppDimensions.height10(context) * 5.0,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 3.3,
-                        bottom: AppDimensions.height10(context) * 2.6),
-                    decoration: BoxDecoration(
-                      gradient: const LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xffFCC10D),
-                          Color(0xffFDA210),
-                        ],
-                      ),
+                Container(
+                  width: AppDimensions.height10(context) * 17.0,
+                  height: AppDimensions.height10(context) * 0.5,
+                  // margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.0),
+                  decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
-                    ),
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            FadePageRoute(page: const inspiration_type()),
-                          );
-                        },
-                        child: Text(
-                          '(5/5 goals selected) Next',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.6,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
-                        )),
-                  ),
-            Container(
-              width: AppDimensions.height10(context) * 17.0,
-              height: AppDimensions.height10(context) * 0.5,
-              // margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 1.0),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                      AppDimensions.height10(context) * 2.0),
-                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-            )
-          ])),
+                          AppDimensions.height10(context) * 2.0),
+                      color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                )
+              ])
+            : const Center(
+                child: SpinKitFadingCircle(
+                  color: Color(0xFFB1B8FF),
+                  size: 80,
+                ),
+              ),
+      ),
     );
   }
 }

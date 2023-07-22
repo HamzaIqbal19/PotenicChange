@@ -581,16 +581,17 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                           ),
                         ),
                       ),
-                      GestureDetector(
+                      AnimatedScaleButton(
+                        onTap: () {},
                         child: Container(
-                          width: AppDimensions.height10(context) * 3.9,
+                          //width: AppDimensions.height10(context) * 3.9,
                           height: AppDimensions.height10(context) * 3.4,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1.0,
-                              right: AppDimensions.height10(context) * 3.0),
+                              right: AppDimensions.height10(context) * 7.0),
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'Clec',
+                            'Clear All',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.4,
                                 fontWeight: FontWeight.w400,
@@ -885,6 +886,17 @@ class hurdle_menu extends StatefulWidget {
 
 class _hurdle_menuState extends State<hurdle_menu> {
   var hurdlesSummary;
+  bool Loading = true;
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
+  }
 
   void _fetchHurdleSummary() async {
     Hurdles().getHurdleById().then((response) {
@@ -893,6 +905,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
           hurdlesSummary = response['hurdle'];
         });
         print(hurdlesSummary["id"]);
+        loadData();
         return response;
       } else {
         return response.statusCode;
@@ -948,235 +961,251 @@ class _hurdle_menuState extends State<hurdle_menu> {
           image: AssetImage('assets/images/practicebackground.webp'),
           fit: BoxFit.cover,
         )),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: AppDimensions.height10(context) * 11.255,
-            ),
-            Container(
-              width: AppDimensions.height10(context) * 17.62,
-              height: AppDimensions.height10(context) * 17.33,
-              padding: EdgeInsets.symmetric(
-                  horizontal: AppDimensions.height10(context)),
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/black_hole.webp'))),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Loading == false
+            ? Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    // width: AppDimensions.height10(context) * 7.1,
-                    // height: AppDimensions.height10(context) * 1.9,
-                    child: Text(
-                      hurdlesSummary['hurdleName'],
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.6,
-                          fontWeight: FontWeight.w700),
-                    ),
+                    height: AppDimensions.height10(context) * 11.255,
                   ),
                   Container(
-                    // width: AppDimensions.height10(context) * 7.471,
-                    // height: AppDimensions.height10(context) * 4.38,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 0.773),
-                    child: Text(
-                      hurdlesSummary['triggerStatment'],
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: AppDimensions.height10(context) * 1.4,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: AppDimensions.height10(context) * 7.313,
-            ),
-            Container(
-              width: AppDimensions.height10(context) * 32.0,
-              height: AppDimensions.height10(context) * 2.6,
-              // margin:
-              //     EdgeInsets.only(top: AppDimensions.height10(context) * 7.313),
-              child: Center(
-                  child: Text(
-                'What do you want to do?',
-                style: TextStyle(
-                    fontSize: AppDimensions.height10(context) * 2.2,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white),
-              )),
-            ),
-            Container(
-              width: AppDimensions.height10(context) * 36.0,
-              height: AppDimensions.height10(context) * 21.5,
-              margin: EdgeInsets.only(
-                top: AppDimensions.height10(context) * 3.4,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  AnimatedScaleButton(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        FadePageRoute(
-                            page: const summary_hurdles(
-                          delete_hurdle: true,
-                        )),
-                      );
-                    },
-                    child: Container(
-                      width: AppDimensions.height10(context) * 36.0,
-                      height: AppDimensions.height10(context) * 6.0,
-                      margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10(context) * 1.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0),
-                          color: Colors.white),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 23.9,
-                            height: AppDimensions.height10(context) * 2.2,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 1.99),
-                            child: Text(
-                              'View/Edit details',
-                              style: TextStyle(
-                                color: const Color(0xFF646464),
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ),
-                          Container(
-                              width: AppDimensions.height10(context) * 2.4,
-                              height: AppDimensions.height10(context) * 1.39,
-                              margin: EdgeInsets.only(
-                                  right:
-                                      AppDimensions.height10(context) * 2.391),
-                              child: Image.asset(
-                                'assets/images/BTN Back.webp',
-                                //width: AppDimensions.height10(context) * 2.6,
-                                //height: AppDimensions.height10(context) * 2.6,
-                                fit: BoxFit.cover,
-                              ))
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: AppDimensions.height10(context) * 17.0,
-                    height: AppDimensions.height10(context) * 0.5,
-                    margin: EdgeInsets.only(
-                        bottom: AppDimensions.height10(context) * 1.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 2.0),
-                        color: Colors.white),
-                  ),
-                  Container(
-                    width: AppDimensions.height10(context) * 36.0,
-                    height: AppDimensions.height10(context) * 6.0,
-                    margin: EdgeInsets.only(
-                        bottom: AppDimensions.height10(context) * 1.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 2.0),
-                        color: Colors.white),
-                    child: Row(
+                    width: AppDimensions.height10(context) * 17.62,
+                    height: AppDimensions.height10(context) * 17.33,
+                    padding: EdgeInsets.symmetric(
+                        horizontal: AppDimensions.height10(context)),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image:
+                                AssetImage('assets/images/black_hole.webp'))),
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          width: AppDimensions.height10(context) * 2.4,
-                          height: AppDimensions.height10(context) * 2.4,
-                          margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 0.5,
-                          ),
-                          child: const Icon(
-                            Icons.share,
-                            color: Color(0xff646464),
-                          ),
-                        ),
                         SizedBox(
-                          width: AppDimensions.height10(context) * 5.0,
-                          height: AppDimensions.height10(context) * 2.2,
-                          child: Center(
-                              child: Text(
-                            'Share',
+                          // width: AppDimensions.height10(context) * 7.1,
+                          // height: AppDimensions.height10(context) * 1.9,
+                          child: Text(
+                            hurdlesSummary['hurdleName'],
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xFF646464)),
-                          )),
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontWeight: FontWeight.w700),
+                          ),
                         ),
+                        Container(
+                          // width: AppDimensions.height10(context) * 7.471,
+                          // height: AppDimensions.height10(context) * 4.38,
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 0.773),
+                          child: Text(
+                            hurdlesSummary['triggerStatment'],
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        )
                       ],
                     ),
                   ),
-                  AnimatedScaleButton(
-                    onTap: () {
-                      Hurdles().deleteUserHurdle(hurdlesSummary['id']);
-                    },
-                    child: Container(
-                      width: AppDimensions.height10(context) * 36.0,
-                      height: AppDimensions.height10(context) * 6.0,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.1,
-                              color: const Color(0xFFFFFFFF)),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0),
-                          color: const Color(0xff464646)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 2.4,
-                            height: AppDimensions.height10(context) * 2.4,
-                            margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 0.5,
-                            ),
-                            child: const Icon(
-                              Icons.delete,
-                              color: Color(0XFFFFFFFF),
-                            ),
-                          ),
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 5.3,
-                            height: AppDimensions.height10(context) * 2.2,
-                            child: Center(
-                                child: Text(
-                              'Delete',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xffffffff)),
-                            )),
-                          ),
-                        ],
-                      ),
-                    ),
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 7.313,
                   ),
+                  Container(
+                    width: AppDimensions.height10(context) * 32.0,
+                    height: AppDimensions.height10(context) * 2.6,
+                    // margin:
+                    //     EdgeInsets.only(top: AppDimensions.height10(context) * 7.313),
+                    child: Center(
+                        child: Text(
+                      'What do you want to do?',
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 2.2,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    )),
+                  ),
+                  Container(
+                    width: AppDimensions.height10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 21.5,
+                    margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 3.4,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AnimatedScaleButton(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const summary_hurdles(
+                                delete_hurdle: true,
+                              )),
+                            );
+                          },
+                          child: Container(
+                            width: AppDimensions.height10(context) * 36.0,
+                            height: AppDimensions.height10(context) * 6.0,
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 1.0),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                                color: Colors.white),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  width: AppDimensions.height10(context) * 23.9,
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10(context) *
+                                          1.99),
+                                  child: Text(
+                                    'View/Edit details',
+                                    style: TextStyle(
+                                      color: const Color(0xFF646464),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                    width:
+                                        AppDimensions.height10(context) * 2.4,
+                                    height:
+                                        AppDimensions.height10(context) * 1.39,
+                                    margin: EdgeInsets.only(
+                                        right: AppDimensions.height10(context) *
+                                            2.391),
+                                    child: Image.asset(
+                                      'assets/images/BTN Back.webp',
+                                      //width: AppDimensions.height10(context) * 2.6,
+                                      //height: AppDimensions.height10(context) * 2.6,
+                                      fit: BoxFit.cover,
+                                    ))
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: AppDimensions.height10(context) * 17.0,
+                          height: AppDimensions.height10(context) * 0.5,
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10(context) * 1.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 2.0),
+                              color: Colors.white),
+                        ),
+                        Container(
+                          width: AppDimensions.height10(context) * 36.0,
+                          height: AppDimensions.height10(context) * 6.0,
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10(context) * 1.0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 2.0),
+                              color: Colors.white),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: AppDimensions.height10(context) * 2.4,
+                                height: AppDimensions.height10(context) * 2.4,
+                                margin: EdgeInsets.only(
+                                  right: AppDimensions.height10(context) * 0.5,
+                                ),
+                                child: const Icon(
+                                  Icons.share,
+                                  color: Color(0xff646464),
+                                ),
+                              ),
+                              SizedBox(
+                                width: AppDimensions.height10(context) * 5.0,
+                                height: AppDimensions.height10(context) * 2.2,
+                                child: Center(
+                                    child: Text(
+                                  'Share',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFF646464)),
+                                )),
+                              ),
+                            ],
+                          ),
+                        ),
+                        AnimatedScaleButton(
+                          onTap: () {
+                            Hurdles().deleteUserHurdle(hurdlesSummary['id']);
+                          },
+                          child: Container(
+                            width: AppDimensions.height10(context) * 36.0,
+                            height: AppDimensions.height10(context) * 6.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width:
+                                        AppDimensions.height10(context) * 0.1,
+                                    color: const Color(0xFFFFFFFF)),
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                                color: const Color(0xff464646)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: AppDimensions.height10(context) * 2.4,
+                                  height: AppDimensions.height10(context) * 2.4,
+                                  margin: EdgeInsets.only(
+                                    right:
+                                        AppDimensions.height10(context) * 0.5,
+                                  ),
+                                  child: const Icon(
+                                    Icons.delete,
+                                    color: Color(0XFFFFFFFF),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: AppDimensions.height10(context) * 5.3,
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  child: Center(
+                                      child: Text(
+                                    'Delete',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xffffffff)),
+                                  )),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
+              )
+            : const Center(
+                child: SpinKitFadingCircle(
+                  color: Color(0xFFB1B8FF),
+                  size: 80,
+                ),
               ),
-            )
-          ],
-        ),
       ),
     );
   }

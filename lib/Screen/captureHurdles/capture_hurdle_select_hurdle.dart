@@ -15,7 +15,8 @@ import '../../utils/app_dimensions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class select_hurdle extends StatefulWidget {
-  const select_hurdle({super.key});
+  final bool update;
+  const select_hurdle({super.key, required this.update});
 
   @override
   State<select_hurdle> createState() => _select_hurdleState();
@@ -173,8 +174,8 @@ class _select_hurdleState extends State<select_hurdle> {
                             crossAxisCount: 2,
                             childAspectRatio: 3.5 / 3, // Two items in each row
 
-                            mainAxisSpacing: 1.0,
-                            crossAxisSpacing: 0.1,
+                            mainAxisSpacing: 6.5,
+                            crossAxisSpacing: 3,
                           ),
                           itemCount: hurdlesList.length,
                           itemBuilder: (context, index) {
@@ -192,6 +193,10 @@ class _select_hurdleState extends State<select_hurdle> {
                                   setState(() {
                                     selectBox = index;
                                   });
+                                  if (widget.update == true) {
+                                    Hurdles().updateHurdle(
+                                        'hurdleId', hurdlesList[index]['id']);
+                                  }
                                 },
                                 child: Container(
                                   height: selectBox == index
@@ -218,11 +223,6 @@ class _select_hurdleState extends State<select_hurdle> {
                                         AppDimensions.height10(context) * 13.1,
                                     width:
                                         AppDimensions.height10(context) * 13.1,
-                                    // padding: EdgeInsets,
-                                    // margin: EdgeInsets.only(
-                                    //     // right: AppDimensions.height10(context) * 22.9,
-                                    //     // left: AppDimensions.height10(context) * 5.1,
-                                    //     bottom: AppDimensions.height10(context) * 1.9),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
@@ -282,12 +282,20 @@ class _select_hurdleState extends State<select_hurdle> {
                     child: TextButton(
                         onPressed: () {
                           if (selectBox != -1) {
-                            Navigator.push(context,
-                                FadePageRoute(page: const hurdle_name()));
+                            widget.update == false
+                                ? Navigator.push(context,
+                                    FadePageRoute(page: const hurdle_name()))
+                                : Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const summary_hurdles(
+                                      delete_hurdle: true,
+                                    )),
+                                  );
                           }
                         },
                         child: Text(
-                          'Next',
+                          widget.update ? 'Update summary' : 'Next',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.6,

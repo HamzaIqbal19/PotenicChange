@@ -151,5 +151,39 @@ class Hurdles {
     }
   }
 
+  Future updateHurdle(destination, update) async {
+    final SharedPreferences prefs = await _prefs;
+    //var goal_num = prefs.getInt('goal_num');
+    var Accestoken = prefs.getString("usertoken");
+    var hurldeId = prefs.getInt('userHurdleId');
 
+    //int UserGoalId = 12;
+    print("request: Update");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var body = jsonEncode({"$destination": "$update"});
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
+
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/userHurdle/$hurldeId'),
+        headers: headers,
+        body: body);
+    print("request: Update");
+    print('=====>$request.statusCode');
+    print(request.body);
+    if (request.statusCode == 200) {
+      // print("$request.statusCode");
+      print("request: Update successful");
+      var jsonData = jsonDecode(request.body);
+      print("Result: $jsonData");
+      return true;
+    } else {
+      print("Update failed");
+      // client.close();
+      return false;
+    }
+  }
 }
