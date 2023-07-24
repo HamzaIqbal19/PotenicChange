@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
@@ -38,6 +39,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
   var practiceName = TextEditingController();
   var practice = TextEditingController();
   var color;
+  bool Loader = false;
 
   @override
   void initState() {
@@ -684,82 +686,102 @@ class _PracticeReminderState extends State<PracticeReminder> {
                           "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
-                    AnimatedScaleButton(
-                      onTap: () async {
-                        if (reminderSelected == true) {
-                          List<Map<String, dynamic>> loadedTimesPerDay =
-                              await loadTimesPerDay();
-                          final SharedPreferences prefs = await _prefs;
+                    Stack(alignment: Alignment.center, children: [
+                      AnimatedScaleButton(
+                        onTap: () async {
+                          if (reminderSelected == true) {
+                            setState(() {
+                              Loader =
+                                  true; // Show loader when the API call starts
+                            });
 
-                          var reminder = prefs.setBool('pracReminder', radio1);
-                          //add Id
-                          PracticeGoalApi()
-                              .userAddPractice(
-                            practiceName.text.toString(),
-                            radio1,
-                            loadedTimesPerDay,
-                          )
-                              .then((response) {
-                            print('$response');
-                            if (response == true) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text(
-                                          "Practice Added Successfully!!")));
-                              print('========Done');
-                              Navigator.pushReplacement(
-                                context,
-                                FadePageRoute2(
-                                  true,
-                                  exitPage: const PracticeReminder(),
-                                  enterPage: const PracticeFinished(),
-                                ),
-                              );
-                            } else if (response == false) {
-                              print('Api call failed');
-                            }
-                          }).catchError((error) {
-                            print('===>adasd');
-                          }).whenComplete(() {
-                            print('--------------Comp');
-                          });
-                        }
-                      },
-                      child: Container(
-                        height: AppDimensions.height10(context) * 5,
-                        width: AppDimensions.height10(context) * 31.3,
-                        decoration: BoxDecoration(
-                          // color: Color(0xFFFF7D50),
-                          border: Border.all(color: Colors.transparent),
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: reminderSelected
-                                  ? [
-                                      const Color(0xFFFCC10D),
-                                      const Color(0xFFFDA210)
-                                    ]
-                                  : [
-                                      const Color(0xFFFCC10D).withOpacity(0.5),
-                                      const Color(0xFFFDA210).withOpacity(0.5)
-                                    ]),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(50.0)),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Finished",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Laila",
-                              // height: AppDimensions.height10(context) *0.1,
-                              fontSize: AppDimensions.height10(context) * 2.0,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            List<Map<String, dynamic>> loadedTimesPerDay =
+                                await loadTimesPerDay();
+                            final SharedPreferences prefs = await _prefs;
+
+                            var reminder =
+                                prefs.setBool('pracReminder', radio1);
+                            //add Id
+                            PracticeGoalApi()
+                                .userAddPractice(
+                              practiceName.text.toString(),
+                              radio1,
+                              loadedTimesPerDay,
+                            )
+                                .then((response) {
+                              print('$response');
+                              if (response == true) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            "Practice Added Successfully!!")));
+                                print('========Done');
+                                Navigator.pushReplacement(
+                                  context,
+                                  FadePageRoute2(
+                                    true,
+                                    exitPage: const PracticeReminder(),
+                                    enterPage: const PracticeFinished(),
+                                  ),
+                                );
+                              } else if (response == false) {
+                                print('Api call failed');
+                              }
+                            }).catchError((error) {
+                              print('===>adasd');
+                            }).whenComplete(() {
+                              setState(() {
+                                Loader =
+                                    false; // Hide loader when the API call completes
+                              });
+                              print('--------------Comp');
+                            });
+                          }
+                        },
+                        child: Container(
+                          height: AppDimensions.height10(context) * 5,
+                          width: AppDimensions.height10(context) * 31.3,
+                          decoration: BoxDecoration(
+                            // color: Color(0xFFFF7D50),
+                            border: Border.all(color: Colors.transparent),
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: reminderSelected
+                                    ? [
+                                        const Color(0xFFFCC10D),
+                                        const Color(0xFFFDA210)
+                                      ]
+                                    : [
+                                        const Color(0xFFFCC10D)
+                                            .withOpacity(0.5),
+                                        const Color(0xFFFDA210).withOpacity(0.5)
+                                      ]),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(50.0)),
+                          ),
+                          child: Center(
+                            child: Loader
+                                ? SpinKitThreeBounce(
+                                    color: const Color(0xFF8C648A),
+                                    // delay: Duration(milliseconds: 0),
+                                    size: AppDimensions.height10(context) * 3.5,
+                                  )
+                                : Text(
+                                    "Finished",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: "Laila",
+                                      // height: AppDimensions.height10(context) *0.1,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 2.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
                           ),
                         ),
                       ),
-                    ),
+                    ]),
                   ],
                 ),
                 SizedBox(
