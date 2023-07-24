@@ -41,6 +41,7 @@ class Hurdles {
       thoughtsAndFeelings, int hurdleId, userGoalId) async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
+    var UserId = prefs.getInt('userid');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -50,8 +51,9 @@ class Hurdles {
       "hurdleName": "$hurdleName",
       "triggerStatment": "$triggerStatment",
       "thoughtsAndFeelings": thoughtsAndFeelings,
-      "userGoalId": "$userGoalId",
+      "userGoalId": userGoalId,
       "hurdleId": "$hurdleId",
+      "userId": UserId
     });
 
     var request = await client.post(
@@ -104,6 +106,7 @@ class Hurdles {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var hurldeId = prefs.getInt('userHurdleId');
+    print(hurldeId);
 
     var headers = {
       'Content-Type': 'application/json',
@@ -122,13 +125,15 @@ class Hurdles {
       return jsonData;
     } else {
       print(
-          'Failed to fetch hurdle names Request failed with status: ${response.statusCode}');
+          'Failed to  hurdle names Request failed with status: ${response.statusCode}');
     }
   }
 
-  Future getAllUserHurdles() async {
+  Future getUserHurdles() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
+    var UserId = prefs.getInt('userid');
+    print('$UserId');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -136,7 +141,7 @@ class Hurdles {
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userHurdle/all-usersHurdles'),
+      Uri.parse('${URL.BASE_URL}api/userHurdle/hurdle-by-user-id/$UserId'),
       headers: headers,
     );
 
@@ -147,7 +152,7 @@ class Hurdles {
       return jsonData;
     } else {
       print(
-          'Failed to fetch hurdle names Request failed with status: ${response.statusCode}');
+          'Failed to fetch hurdle names by user id Request failed with status: ${response.statusCode}');
     }
   }
 

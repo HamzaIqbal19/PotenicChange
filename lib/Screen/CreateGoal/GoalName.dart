@@ -28,6 +28,12 @@ class _GoalNameState extends State<GoalName> {
   String goalCategory = "";
   String goalName = "";
   var id;
+  String capitalizeFirstLetter(String text) {
+    if (text == null || text.isEmpty) {
+      return '';
+    }
+    return text[0].toUpperCase() + text.substring(1);
+  }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   // _GoalNameState();
@@ -55,7 +61,7 @@ class _GoalNameState extends State<GoalName> {
       id = prefs.getInt("goalId");
     });
 
-    mygoal.text = goalName!;
+    mygoal.text = capitalizeFirstLetter(goalName!);
     print("mygoal.text:${mygoal.text}");
     print("goalName:$goalName");
   }
@@ -355,7 +361,7 @@ class _GoalNameState extends State<GoalName> {
                   width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
-                      goalName!,
+                      capitalizeFirstLetter(goalName!),
                       style: TextStyle(
                         overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w600,
@@ -440,7 +446,7 @@ class _GoalNameState extends State<GoalName> {
                         color: const Color(0xFFFA9934)),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.zero,
-                        hintText: goalName,
+                        hintText: "",
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.4,
                             fontWeight: FontWeight.w500,

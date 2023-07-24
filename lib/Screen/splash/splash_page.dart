@@ -99,6 +99,7 @@ class SplashPageState extends State<SplashPage> {
               .showSnackBar(SnackBar(content: Text(response["message"])));
         }
       }).catchError((error) {
+        //onDoneLoading();
         print("error");
       }).whenComplete(() {
         onDoneLoading();

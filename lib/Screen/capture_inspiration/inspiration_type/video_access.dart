@@ -89,7 +89,7 @@ class _video_infoState extends State<video_info> {
                               link.text.toString(),
                               true,
                               statement.text.toString(),
-                              19)
+                              [1])
                           .then((response) {
                         if (response.length != 0) {
                           print('----------------');
@@ -164,9 +164,10 @@ class _video_infoState extends State<video_info> {
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.7,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   color: const Color(0xff282828)),
                               decoration: InputDecoration(
+                                  isCollapsed: true,
                                   contentPadding: EdgeInsets.fromLTRB(
                                       AppDimensions.height10(context) * 1.4,
                                       AppDimensions.height10(context) * 0,
@@ -295,9 +296,10 @@ class _video_infoState extends State<video_info> {
                           minLines: null,
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
+                              isCollapsed: true,
                               contentPadding: EdgeInsets.fromLTRB(
                                   AppDimensions.height10(context) * 1.6,
                                   AppDimensions.height10(context) * 0.4,
@@ -333,7 +335,7 @@ class _video_infoState extends State<video_info> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10(context) * 2.4,
+                        //height: AppDimensions.height10(context) * 2.4,
                         width: AppDimensions.height10(context) * 30.5,
                         margin: EdgeInsets.only(
                           // left: AppDimensions.height10(context) * 2.0,
@@ -344,9 +346,10 @@ class _video_infoState extends State<video_info> {
                           controller: hastags,
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
+                              isCollapsed: true,
                               contentPadding: EdgeInsets.fromLTRB(
                                   AppDimensions.height10(context) * 1.6,
                                   AppDimensions.height10(context) * 0,

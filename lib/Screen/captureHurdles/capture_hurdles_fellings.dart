@@ -320,10 +320,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     print(hurdleId);
                     print(hurdleName);
                     print(hurdleStatement);
-                    Hurdles()
-                        .addHurdle(hurdleName!, hurdleStatement!, statements,
-                            hurdleId!, 99)
-                        .then((response) async {
+                    Hurdles().addHurdle(hurdleName!, hurdleStatement!,
+                        statements, hurdleId!, [1]).then((response) async {
                       final SharedPreferences prefs = await _prefs;
                       var userHurdleId = prefs.setInt(
                           'userHurdleId', response['result']['id']);

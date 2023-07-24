@@ -127,7 +127,7 @@ void bottom_sheet(context, String goal) {
                           ),
                           Center(
                             child: Text(
-                              "${getMaxCharacters() - getCurrentCharacters()}/80",
+                              "${getCurrentCharacters()}/80",
                               style: const TextStyle(
                                 fontWeight: FontWeight.w700,
                                 color: Color.fromARGB(209, 250, 154, 52),

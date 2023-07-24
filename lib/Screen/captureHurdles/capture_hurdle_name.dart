@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,7 +11,8 @@ import '../../utils/app_dimensions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class hurdle_name extends StatefulWidget {
-  const hurdle_name({super.key});
+  final bool update;
+  const hurdle_name({super.key, required this.update});
 
   @override
   State<hurdle_name> createState() => _hurdle_nameState();
@@ -302,12 +304,27 @@ class _hurdle_nameState extends State<hurdle_name> {
                           ),
                     AnimatedScaleButton(
                       onTap: () async {
-                        final SharedPreferences prefs = await _prefs;
-                        var Name = prefs.setString(
-                            'hurdleName', controller.text.toString());
-                        if (button_state == true) {
-                          Navigator.push(context,
-                              FadePageRoute(page: const hurdle_statement()));
+                        if (widget.update == true) {
+                          Hurdles().updateHurdle(
+                              'hurdleName', controller.text.toString());
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: hurdle_statement(
+                                update: widget.update,
+                              )));
+                        } else {
+                          final SharedPreferences prefs = await _prefs;
+                          var Name = prefs.setString(
+                              'hurdleName', controller.text.toString());
+                          if (button_state == true) {
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: hurdle_statement(
+                                  update: widget.update,
+                                )));
+                          }
                         }
                       },
                       child: Container(

@@ -300,11 +300,11 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                 fontWeight: FontWeight.w600,
                                                 color: const Color(0xff5B74A6)),
                                           ),
-                                          // SizedBox(
-                                          //   height: AppDimensions.height10(
-                                          //           context) *
-                                          //       1.0,
-                                          // ),
+                                          SizedBox(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.3,
+                                          ),
                                           Container(
                                             // color: Colors.green,
                                             height: AppDimensions.height10(

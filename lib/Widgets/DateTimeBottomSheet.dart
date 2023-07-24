@@ -21,15 +21,15 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
   String period = "am";
   bool Done = false;
 
-  List<String> _days = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday'
-  ];
+  // List<String> _days = [
+  //   'Monday',
+  //   'Tuesday',
+  //   'Wednesday',
+  //   'Thursday',
+  //   'Friday',
+  //   'Saturday',
+  //   'Sunday'
+  // ];
 
   List<String> _hours = List<String>.generate(12, (i) => (i + 1).toString());
   List<String> _minutes =
@@ -135,10 +135,10 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: AppDimensions.height10(context) * 13.5,
-                  child: listWheelScrollViewBuilder(_days, "Day"),
-                ),
+                // Container(
+                //   width: AppDimensions.height10(context) * 13.5,
+                //   child: listWheelScrollViewBuilder(_days, "Day"),
+                // ),
                 SizedBox(width: AppDimensions.height10(context) * 6.0),
                 Container(
                   width: AppDimensions.height10(context) * 3.0,

@@ -255,7 +255,8 @@ void bottom_sheet(context) {
                         ),
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 3.0),
+                                left: AppDimensions.height10(context) * 3.0,
+                                right: AppDimensions.height10(context) * 3.0),
                             filled: true,
                             fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
                             hintText: "Enter your goal name ",

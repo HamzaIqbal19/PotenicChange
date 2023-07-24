@@ -41,10 +41,10 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   }
 
   void _fetchHurdle() async {
-    Hurdles().getAllUserHurdles().then((response) {
+    Hurdles().getUserHurdles().then((response) {
       if (response.length != 0) {
         setState(() {
-          hurdlesList = response['hurdle'];
+          hurdlesList = response;
         });
         _fetchUserGoal();
         _fetchAllHurdle();
@@ -54,7 +54,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
         return response.statusCode;
       }
     }).catchError((error) {
-      print("error");
+      print("Hello world error");
     });
   }
 
@@ -71,7 +71,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
         return response.statusCode;
       }
     }).catchError((error) {
-      print("error");
+      print("Hell error");
     });
   }
 
@@ -92,7 +92,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   }
 
   _newFunctionForHurdle() {
-    print('FunctionCalled');
+    print('Second FunctionCalled');
     for (int i = 0; i <= hurdlesListName.length; i++) {
       hurdleName.add(hurdlesListName[i]['hurdleName']);
     }
@@ -108,20 +108,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
 
   bool deleted = false;
   @override
-  final List<String> _statements = [
-    'All ',
-    'People / person ',
-    'Negative thought  ',
-    'Place  ',
-    'Event ',
-  ];
-  final List<String> _goals = [
-    'All ',
-    'Goal name 1',
-    'Goal name 2 ',
-    'Goal name 3 ',
-    'Practice name 1 (goal name)',
-  ];
   int _selectedTag = 0;
   int _Goal_Index = 0;
   String _selected_activity = 'All';
@@ -1148,7 +1134,14 @@ class _hurdle_menuState extends State<hurdle_menu> {
                         ),
                         AnimatedScaleButton(
                           onTap: () {
-                            Hurdles().deleteUserHurdle(hurdlesSummary['id']);
+                            Hurdles()
+                                .deleteUserHurdle(hurdlesSummary['id'])
+                                .then((response) {
+                              if (response == true) {
+                                Navigator.push(context,
+                                    FadePageRoute(page: landing_hurdles()));
+                              }
+                            });
                           },
                           child: Container(
                             width: AppDimensions.height10(context) * 36.0,

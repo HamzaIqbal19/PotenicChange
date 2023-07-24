@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Hurdles.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
@@ -177,23 +178,34 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                           ),
                           Align(
                             alignment: const Alignment(0, 0.8),
-                            child: Container(
-                                height: AppDimensions.height10(context) * 3.0,
-                                width: AppDimensions.height10(context) * 3.0,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 2.1),
-                                padding: EdgeInsets.all(
-                                    AppDimensions.height10(context) * 0.5),
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.transparent,
-                                    border: Border.all(
-                                        width: 1, color: Colors.white)),
-                                child: const ImageIcon(
-                                  AssetImage('assets/images/edit_icon.webp'),
-                                  color: Colors.white,
-                                  //size: 10,
-                                )),
+                            child: AnimatedScaleButton(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: hurdle_name(
+                                      update: true,
+                                    )));
+                              },
+                              child: Container(
+                                  height: AppDimensions.height10(context) * 3.0,
+                                  width: AppDimensions.height10(context) * 3.0,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          2.1),
+                                  padding: EdgeInsets.all(
+                                      AppDimensions.height10(context) * 0.5),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.transparent,
+                                      border: Border.all(
+                                          width: 1, color: Colors.white)),
+                                  child: const ImageIcon(
+                                    AssetImage('assets/images/edit_icon.webp'),
+                                    color: Colors.white,
+                                    //size: 10,
+                                  )),
+                            ),
                           ),
                         ],
                       ),

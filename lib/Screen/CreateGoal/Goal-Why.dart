@@ -199,7 +199,7 @@ class _goalwhyState extends State<GoalWhy> {
                         title: Container(
                           margin: const EdgeInsets.only(
                               top: 19, right: 16, left: 16, bottom: 2),
-                          height: AppDimensions.height10(context) * 2.2,
+                          height: AppDimensions.height10(context) * 2.5,
                           width: AppDimensions.height10(context) * 23.8,
                           child: const Text(
                             "Exit onboarding?",

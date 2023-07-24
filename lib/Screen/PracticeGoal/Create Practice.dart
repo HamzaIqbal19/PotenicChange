@@ -402,177 +402,187 @@ class _CreatePracticeState extends State<CreatePractice> {
                 right: AppDimensions.height10(context) * 2.2),
             height: AppDimensions.height10(context) * 7.0,
             width: AppDimensions.height10(context) * 41.4,
-
             child: SearchIcon == true
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: AppDimensions.height10(context) * 3.6,
-                            width: AppDimensions.height10(context) * 31.3,
-                            padding: const EdgeInsets.all(5.0),
-                            decoration: BoxDecoration(
-                                color:
-                                    const Color(0xFF767680).withOpacity(0.12),
-                                border:
-                                    Border.all(color: Colors.white, width: 2),
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10(context)))),
-                            child: Center(
-                              child: TextFormField(
-                                  controller: _searchController,
-                                  onChanged: (value) {
-                                    print("value:$value");
+                ? Container(
+                    color: Colors.transparent,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: AppDimensions.height10(context) * 3.6,
+                              width: AppDimensions.height10(context) * 31.3,
+                              padding: const EdgeInsets.all(5.0),
+                              decoration: BoxDecoration(
+                                  color:
+                                      const Color(0xFF767680).withOpacity(0.12),
+                                  border:
+                                      Border.all(color: Colors.white, width: 2),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(
+                                          AppDimensions.height10(context)))),
+                              child: Center(
+                                child: TextFormField(
+                                    controller: _searchController,
+                                    onChanged: (value) {
+                                      print("value:$value");
 
-                                    setState(() {
-                                      searchText = value;
-                                      _searchPractice(value);
-                                    });
-                                  },
-                                  decoration: InputDecoration(
-                                      contentPadding: const EdgeInsets.all(0.0),
-                                      prefixIcon: Image.asset(
-                                        'assets/images/Light.webp',
-                                        width: AppDimensions.height10(context) *
-                                            1.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-
-                                        // fit: BoxFit.contain,
-                                        // fit: BoxFit.contain,
-                                      ),
-                                      suffixIcon: AnimatedScaleButton(
-                                        onTap: () {
-                                          _searchController.clear();
-                                          _searchPractice('');
-                                          searchText = '';
-                                        },
-                                        child: Image.asset(
-                                          'assets/images/cancel.webp',
+                                      setState(() {
+                                        searchText = value;
+                                        _searchPractice(value);
+                                      });
+                                    },
+                                    decoration: InputDecoration(
+                                        contentPadding:
+                                            const EdgeInsets.all(0.0),
+                                        prefixIcon: Image.asset(
+                                          'assets/images/Light.webp',
                                           width:
                                               AppDimensions.height10(context) *
-                                                  2.3,
+                                                  1.5,
                                           height:
                                               AppDimensions.height10(context) *
-                                                  2.3,
+                                                  1.5,
+
+                                          // fit: BoxFit.contain,
                                           // fit: BoxFit.contain,
                                         ),
-                                      ),
-                                      hintText: "Search",
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)))),
+                                        suffixIcon: AnimatedScaleButton(
+                                          onTap: () {
+                                            _searchController.clear();
+                                            _searchPractice('');
+                                            searchText = '';
+                                          },
+                                          child: Image.asset(
+                                            'assets/images/cancel.webp',
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                2.3,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.3,
+                                            // fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                        hintText: "Search",
+                                        focusedBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent)),
+                                        enabledBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.transparent)))),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // fit: BoxFit.contain,
+                        // fit: BoxFit.contain,
+
+                        AnimatedScaleButton(
+                          onTap: () {
+                            setState(() {
+                              SearchIcon = false;
+                              _searchPractice('');
+                              _searchController.clear();
+                              searchText = '';
+                            });
+                          },
+                          child: Text(
+                            "Cancel",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xFF007AFF),
                             ),
                           ),
-                        ],
-                      ),
-                      // fit: BoxFit.contain,
-                      // fit: BoxFit.contain,
-
-                      AnimatedScaleButton(
-                        onTap: () {
-                          setState(() {
-                            SearchIcon = false;
-                            _searchPractice('');
-                            _searchController.clear();
-                            searchText = '';
-                          });
-                        },
-                        child: Text(
-                          "Cancel",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.7,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xFF007AFF),
-                          ),
                         ),
-                      ),
 
-                      //const Padding(padding: EdgeInsets.all(10))
-                    ],
+                        //const Padding(padding: EdgeInsets.all(10))
+                      ],
+                    ),
                   )
                 //const Padding(padding: EdgeInsets.all(10))
 
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: AppDimensions.height10(context) * 4.7,
-                            height: AppDimensions.height10(context) * 4.7,
-                            padding: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.5,
-                                bottom: AppDimensions.height10(context) * 0.5),
-                            child: AnimatedScaleButton(
-                              onTap: () {
-                                // if (mygoal.length > 20) {
-                                //   setState(() {
-                                //     var mygoalName =
-                                //         mygoal.subString(0, 9) + '...';
-                                //   });
-                                //   bottom_sheet(context, mygoal);
-                                // } else {
-                                bottom_sheet(context, mygoal);
-                                //}
-                              },
-                              child: Image.asset(
-                                'assets/images/Add.webp',
-                                width: AppDimensions.height10(context) * 4.7,
-                                height: AppDimensions.height10(context) * 4.7,
-                                fit: BoxFit.contain,
+                : Container(
+                    color: Colors.transparent,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              width: AppDimensions.height10(context) * 4.7,
+                              height: AppDimensions.height10(context) * 4.7,
+                              padding: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 0.5,
+                                  bottom:
+                                      AppDimensions.height10(context) * 0.5),
+                              child: AnimatedScaleButton(
+                                onTap: () {
+                                  // if (mygoal.length > 20) {
+                                  //   setState(() {
+                                  //     var mygoalName =
+                                  //         mygoal.subString(0, 9) + '...';
+                                  //   });
+                                  //   bottom_sheet(context, mygoal);
+                                  // } else {
+                                  bottom_sheet(context, mygoal);
+                                  //}
+                                },
+                                child: Image.asset(
+                                  'assets/images/Add.webp',
+                                  width: AppDimensions.height10(context) * 4.7,
+                                  height: AppDimensions.height10(context) * 4.7,
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 0.5,
-                          ),
-                          Text(
-                            'Create a new practice! ',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: const Color(0xFFFA9934),
-                              // fontFamily: ,
-                              fontSize: AppDimensions.height10(context) * 1.6,
-                              fontWeight: FontWeight.w500,
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 0.5,
+                            ),
+                            Text(
+                              'Create a new practice! ',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: const Color(0xFFFA9934),
+                                // fontFamily: ,
+                                fontSize: AppDimensions.height10(context) * 1.6,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        Container(
+                          width: AppDimensions.height10(context) * 4.7,
+                          height: AppDimensions.height10(context) * 4.7,
+                          padding: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 0.5,
+                              bottom: AppDimensions.height10(context) * 0.5),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                SearchIcon = true;
+                              });
+                            },
+                            child: Image.asset(
+                              'assets/images/Search.webp',
+                              width: AppDimensions.height10(context) * 5,
+                              height: AppDimensions.height10(context) * 5,
+                              fit: BoxFit.contain,
                             ),
                           ),
-                        ],
-                      ),
-
-                      Container(
-                        width: AppDimensions.height10(context) * 4.7,
-                        height: AppDimensions.height10(context) * 4.7,
-                        padding: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 0.5,
-                            bottom: AppDimensions.height10(context) * 0.5),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              SearchIcon = true;
-                            });
-                          },
-                          child: Image.asset(
-                            'assets/images/Search.webp',
-                            width: AppDimensions.height10(context) * 5,
-                            height: AppDimensions.height10(context) * 5,
-                            fit: BoxFit.contain,
-                          ),
                         ),
-                      ),
 
-                      //const Padding(padding: EdgeInsets.all(10))
-                    ],
+                        //const Padding(padding: EdgeInsets.all(10))
+                      ],
+                    ),
                   ),
+
             //const Padding(padding: EdgeInsets.all(10))
           ),
         ),

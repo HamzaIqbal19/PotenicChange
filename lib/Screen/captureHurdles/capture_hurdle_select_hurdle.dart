@@ -283,8 +283,12 @@ class _select_hurdleState extends State<select_hurdle> {
                         onPressed: () {
                           if (selectBox != -1) {
                             widget.update == false
-                                ? Navigator.push(context,
-                                    FadePageRoute(page: const hurdle_name()))
+                                ? Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: hurdle_name(
+                                      update: false,
+                                    )))
                                 : Navigator.push(
                                     context,
                                     FadePageRoute(
