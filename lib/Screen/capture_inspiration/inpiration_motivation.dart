@@ -119,7 +119,6 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       context,
                       FadePageRoute(
                           page: const inspiration_landing(
-                        muliple_insp: true,
                         is_Updated: false,
                       )),
                     );

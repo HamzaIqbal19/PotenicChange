@@ -446,7 +446,7 @@ class _GoalNameState extends State<GoalName> {
                         color: const Color(0xFFFA9934)),
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.zero,
-                        hintText: capitalizeFirstLetter(goalName),
+                        hintText: "",
                         hintStyle: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.4,
                             fontWeight: FontWeight.w500,

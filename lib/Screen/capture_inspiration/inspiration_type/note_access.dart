@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -20,6 +23,16 @@ class note_info extends StatefulWidget {
 
 class _note_infoState extends State<note_info> {
   var inspirationDetails;
+  bool Loading = true;
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
+  }
 
   void _fetchInspiration() {
     InspirationApi().getInspirationById().then((response) {
@@ -28,8 +41,9 @@ class _note_infoState extends State<note_info> {
         setState(() {
           inspirationDetails = response;
         });
+        loadData();
         print(inspirationDetails['inspiration']['title']);
-
+        print("1212312312321321");
         return response;
       }
 
@@ -152,7 +166,6 @@ class _note_infoState extends State<note_info> {
                                 context,
                                 FadePageRoute(
                                     page: const inspiration_landing(
-                                        muliple_insp: true,
                                         is_Updated: false)));
                           },
                           child: Container(
@@ -181,552 +194,646 @@ class _note_infoState extends State<note_info> {
                     height: AppDimensions.height10(context) * 79.7,
                     width: double.infinity,
                     color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
-                          alignment: Alignment.centerLeft,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 8.9,
-                              top: AppDimensions.height10(context) * 3.2),
-                          child: Column(children: [
-                            if (widget.type_switch == 3) ...[
-                              Text(
-                                'Video Destination Link',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.5,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xff828282)),
-                              ),
-                            ] else if (widget.type_switch == 2) ...[
-                              Text(
-                                'Content Destination Link',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.5,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xff828282)),
-                              ),
-                            ] else ...[
-                              Text(
-                                'Title',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.5,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xff828282)),
-                              ),
-                            ],
-                          ]),
-                        ),
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          height: widget.note_saved
-                              ? AppDimensions.height10(context) * 4.8
-                              : AppDimensions.height10(context) * 2.4,
-                          width: widget.note_saved
-                              ? AppDimensions.height10(context) * 37.5
-                              : AppDimensions.height10(context) * 30.5,
-                          //color: Colors.amber,
-                          margin: EdgeInsets.only(
-                            left: widget.note_saved
-                                ? AppDimensions.height10(context) * 2.0
-                                : AppDimensions.height10(context) * 0,
-                            right: widget.note_saved
-                                ? AppDimensions.height10(context) * 1.9
-                                : AppDimensions.height10(context) * 10.0,
-                            // top: widget.note_saved
-                            //     ? AppDimensions.height10(context) * 0
-                            //     : AppDimensions.height10(context) * 1.0
-                          ),
-                          child: widget.note_saved
-                              ? Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    if (widget.type_switch == 1) ...[
-                                      Text(
-                                        inspirationDetails['inspiration']
-                                            ['title'],
-                                        style: TextStyle(
-                                            height: 1.5,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0xFF464646)),
-                                      ),
-                                    ] else if (widget.type_switch == 2) ...[
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            inspirationDetails['inspiration']
-                                                ['destinationLink'],
-                                            style: TextStyle(
-                                                height: 1.5,
-                                                decoration:
-                                                    TextDecoration.underline,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.7,
-                                                fontWeight: FontWeight.w500,
-                                                color: const Color(0xFF464646)),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    0.45),
-                                            child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  2.5,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.5,
-                                              margin: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      1.0),
-                                              decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.black,
-                                              ),
-                                              child: Icon(
-                                                Icons.delete,
-                                                color: Colors.white,
-                                                size: AppDimensions.height10(
-                                                        context) *
-                                                    2,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ] else if (widget.type_switch == 3) ...[
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            inspirationDetails['inspiration']
-                                                ['destinationLink'],
-                                            style: TextStyle(
-                                                height: 1.5,
-                                                decoration:
-                                                    TextDecoration.underline,
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.7,
-                                                fontWeight: FontWeight.w500,
-                                                color: const Color(0xFF464646)),
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    0.45),
-                                            child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  2.5,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.5,
-                                              margin: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      1.0),
-                                              decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                color: Colors.black,
-                                              ),
-                                              child: Icon(
-                                                Icons.delete,
-                                                color: Colors.white,
-                                                size: AppDimensions.height10(
-                                                        context) *
-                                                    2,
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      )
-                                    ]
-                                  ],
-                                )
-                              : TextField(
-                                  textAlignVertical: TextAlignVertical.center,
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.7,
-                                      fontWeight: FontWeight.w500,
-                                      color: const Color(0xff282828)),
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.fromLTRB(
-                                          AppDimensions.height10(context) * 1.5,
-                                          AppDimensions.height10(context) * 0.4,
-                                          AppDimensions.height10(context) * 0.2,
-                                          0),
-                                      hintText: 'Give your inspiration a title',
-                                      hintStyle: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.7,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xff828282)),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent))),
-                                ),
-                        ),
-                        Container(
-                          height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
-                          alignment: Alignment.centerLeft,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              // right: AppDimensions.height10(context) * 8.9,
-                              top: AppDimensions.height10(context) * 3.9),
-                          child: Column(
+                    child: Loading == false
+                        ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              if (widget.type_switch == 1) ...[
-                                Text(
-                                  'Description',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.5,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xff828282)),
+                              Container(
+                                height: AppDimensions.height10(context) * 2.1,
+                                width: AppDimensions.height10(context) * 30.5,
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 2.0,
+                                    right:
+                                        AppDimensions.height10(context) * 8.9,
+                                    top: AppDimensions.height10(context) * 3.2),
+                                child: Column(children: [
+                                  if (widget.type_switch == 3) ...[
+                                    Text(
+                                      'Video Destination Link',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.5,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
+                                  ] else if (widget.type_switch == 2) ...[
+                                    Text(
+                                      'Content Destination Link',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.5,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
+                                  ] else ...[
+                                    Text(
+                                      'Title',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.5,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
+                                  ],
+                                ]),
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                // height: widget.note_saved
+                                //     ? AppDimensions.height10(context) * 4.8
+                                //     : AppDimensions.height10(context) * 2.4,
+                                width: widget.note_saved
+                                    ? AppDimensions.height10(context) * 37.5
+                                    : AppDimensions.height10(context) * 30.5,
+                                //color: Colors.amber,
+                                margin: EdgeInsets.only(
+                                  left: widget.note_saved
+                                      ? AppDimensions.height10(context) * 2.0
+                                      : AppDimensions.height10(context) * 0,
+                                  right: widget.note_saved
+                                      ? AppDimensions.height10(context) * 1.9
+                                      : AppDimensions.height10(context) * 10.0,
+                                  // top: widget.note_saved
+                                  //     ? AppDimensions.height10(context) * 0
+                                  //     : AppDimensions.height10(context) * 1.0
                                 ),
-                              ] else if (widget.type_switch == 2) ...[
-                                Text(
-                                  'Why is it inspirational to you',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.5,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xff828282)),
-                                ),
-                              ] else if (widget.type_switch == 3) ...[
-                                Text(
-                                  'What it means to me',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.5,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xff828282)),
-                                ),
-                              ]
-                            ],
-                          ),
-                        ),
-                        Container(
-                          // height: widget.note_saved
-                          //     ? AppDimensions.height10(context) * 39.0
-                          //     : AppDimensions.height10(context) * 2.4,
-
-                          width: AppDimensions.height10(context) * 30.5,
-                          // color: Colors.amber,
-                          margin: EdgeInsets.only(
-                            left: widget.note_saved
-                                ? AppDimensions.height10(context) * 2.0
-                                : AppDimensions.height10(context) * 0,
-                            // right: widget.note_saved
-                            //     ? AppDimensions.height10(context) * 8.9
-                            //     : AppDimensions.height10(context) * 10.0,
-                            // top: widget.note_saved
-                            //     ? AppDimensions.height10(context) * 0
-                            //     : AppDimensions.height10(context) * 1.0
-                          ),
-                          child: widget.note_saved
-                              ? Column(
+                                child: widget.note_saved
+                                    ? Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          if (widget.type_switch == 1) ...[
+                                            Text(
+                                              inspirationDetails['inspiration']
+                                                  ['title'],
+                                              style: TextStyle(
+                                                  height: 1.5,
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.7,
+                                                  fontWeight: FontWeight.w500,
+                                                  color:
+                                                      const Color(0xFF464646)),
+                                            ),
+                                          ] else if (widget.type_switch ==
+                                              2) ...[
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  inspirationDetails[
+                                                          'inspiration']
+                                                      ['destinationLink'],
+                                                  style: TextStyle(
+                                                      height: 1.5,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.7,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: const Color(
+                                                          0xFF464646)),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      bottom: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.45),
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.5,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.5,
+                                                    margin: EdgeInsets.only(
+                                                        left: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0),
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: Colors.black,
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.delete,
+                                                      color: Colors.white,
+                                                      size: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2,
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ] else if (widget.type_switch ==
+                                              3) ...[
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  inspirationDetails[
+                                                          'inspiration']
+                                                      ['destinationLink'],
+                                                  style: TextStyle(
+                                                      height: 1.5,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.7,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: const Color(
+                                                          0xFF464646)),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      bottom: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.45),
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.5,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.5,
+                                                    margin: EdgeInsets.only(
+                                                        left: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0),
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      color: Colors.black,
+                                                    ),
+                                                    child: Icon(
+                                                      Icons.delete,
+                                                      color: Colors.white,
+                                                      size: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2,
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            )
+                                          ]
+                                        ],
+                                      )
+                                    : TextField(
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.7,
+                                            fontWeight: FontWeight.w500,
+                                            color: const Color(0xff282828)),
+                                        decoration: InputDecoration(
+                                            contentPadding: EdgeInsets.fromLTRB(
+                                                AppDimensions.height10(context) *
+                                                    1.5,
+                                                AppDimensions.height10(context) *
+                                                    0.4,
+                                                AppDimensions.height10(context) *
+                                                    0.2,
+                                                0),
+                                            hintText:
+                                                'Give your inspiration a title',
+                                            hintStyle: TextStyle(
+                                                fontSize: AppDimensions.height10(
+                                                        context) *
+                                                    1.7,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff828282)),
+                                            focusedBorder: const OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: Colors.transparent)),
+                                            enabledBorder:
+                                                const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent))),
+                                      ),
+                              ),
+                              Container(
+                                height: AppDimensions.height10(context) * 2.1,
+                                width: AppDimensions.height10(context) * 30.5,
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 2.0,
+                                    // right: AppDimensions.height10(context) * 8.9,
+                                    top: AppDimensions.height10(context) * 3.9),
+                                child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     if (widget.type_switch == 1) ...[
                                       Text(
-                                        inspirationDetails['inspiration']
-                                            ['description'],
-                                        // textAlign: TextAlign.left,
+                                        'Description',
                                         style: TextStyle(
-                                            height: 1.5,
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.7,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0xFF464646)),
+                                                1.5,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xff828282)),
                                       ),
                                     ] else if (widget.type_switch == 2) ...[
                                       Text(
-                                        inspirationDetails['inspiration']
-                                            ['description'],
+                                        'Why is it inspirational to you',
                                         style: TextStyle(
-                                            height: 1.5,
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.7,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0xFF464646)),
+                                                1.5,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xff828282)),
                                       ),
                                     ] else if (widget.type_switch == 3) ...[
                                       Text(
-                                        inspirationDetails['inspiration']
-                                            ['description'],
+                                        'What it means to me',
                                         style: TextStyle(
-                                            height: 1.5,
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.7,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0xFF464646)),
+                                                1.5,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xff828282)),
                                       ),
                                     ]
                                   ],
-                                )
-                              : SizedBox(
-                                  height: widget.note_saved
-                                      ? AppDimensions.height10(context) * 39.0
-                                      : AppDimensions.height10(context) * 2.4,
-                                  width: AppDimensions.height10(context) * 37.5,
-                                  child: TextField(
-                                    textAlignVertical: TextAlignVertical.center,
+                                ),
+                              ),
+                              Container(
+                                // height: widget.note_saved
+                                //     ? AppDimensions.height10(context) * 39.0
+                                //     : AppDimensions.height10(context) * 2.4,
+
+                                width: AppDimensions.height10(context) * 30.5,
+                                // color: Colors.amber,
+                                margin: EdgeInsets.only(
+                                  left: widget.note_saved
+                                      ? AppDimensions.height10(context) * 2.0
+                                      : AppDimensions.height10(context) * 0,
+                                  // right: widget.note_saved
+                                  //     ? AppDimensions.height10(context) * 8.9
+                                  //     : AppDimensions.height10(context) * 10.0,
+                                  // top: widget.note_saved
+                                  //     ? AppDimensions.height10(context) * 0
+                                  //     : AppDimensions.height10(context) * 1.0
+                                ),
+                                child: widget.note_saved
+                                    ? Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          if (widget.type_switch == 1) ...[
+                                            Text(
+                                              inspirationDetails['inspiration']
+                                                  ['description'],
+                                              // textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                  height: 1.5,
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.7,
+                                                  fontWeight: FontWeight.w500,
+                                                  color:
+                                                      const Color(0xFF464646)),
+                                            ),
+                                          ] else if (widget.type_switch ==
+                                              2) ...[
+                                            Text(
+                                              inspirationDetails['inspiration']
+                                                  ['description'],
+                                              style: TextStyle(
+                                                  height: 1.5,
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.7,
+                                                  fontWeight: FontWeight.w500,
+                                                  color:
+                                                      const Color(0xFF464646)),
+                                            ),
+                                          ] else if (widget.type_switch ==
+                                              3) ...[
+                                            Text(
+                                              inspirationDetails['inspiration']
+                                                  ['description'],
+                                              style: TextStyle(
+                                                  height: 1.5,
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.7,
+                                                  fontWeight: FontWeight.w500,
+                                                  color:
+                                                      const Color(0xFF464646)),
+                                            ),
+                                          ]
+                                        ],
+                                      )
+                                    : SizedBox(
+                                        height: widget.note_saved
+                                            ? AppDimensions.height10(context) *
+                                                39.0
+                                            : AppDimensions.height10(context) *
+                                                2.4,
+                                        width: AppDimensions.height10(context) *
+                                            37.5,
+                                        child: TextField(
+                                          textAlignVertical:
+                                              TextAlignVertical.center,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xff282828)),
+                                          decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.fromLTRB(
+                                                  AppDimensions.height10(context) *
+                                                      1.5,
+                                                  AppDimensions.height10(context) *
+                                                      0.4,
+                                                  0,
+                                                  0),
+                                              hintText:
+                                                  'Say more about this inspiration ',
+                                              hintStyle: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10(context) *
+                                                          1.7,
+                                                  fontWeight: FontWeight.w500,
+                                                  color:
+                                                      const Color(0xff828282)),
+                                              focusedBorder:
+                                                  const OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors
+                                                              .transparent)),
+                                              enabledBorder:
+                                                  const OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.transparent))),
+                                        ),
+                                      ),
+                              ),
+                              if (widget.type_switch == 2) ...[
+                                Container(
+                                  height: AppDimensions.height10(context) * 2.1,
+                                  width: AppDimensions.height10(context) * 30.5,
+                                  margin: EdgeInsets.only(
+                                      left:
+                                          AppDimensions.height10(context) * 2.0,
+                                      right:
+                                          AppDimensions.height10(context) * 8.9,
+                                      top: AppDimensions.height10(context) *
+                                          3.0),
+                                  child: Text(
+                                    'Content Author',
                                     style: TextStyle(
                                         fontSize:
                                             AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xff282828)),
-                                    decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.fromLTRB(
-                                            AppDimensions.height10(context) *
                                                 1.5,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xff828282)),
+                                  ),
+                                )
+                              ] else ...[
+                                Container()
+                              ],
+                              if (widget.type_switch == 2) ...[
+                                Container(
+                                  height: AppDimensions.height10(context) * 2.4,
+                                  width: AppDimensions.height10(context) * 30.5,
+                                  //  color: Colors.grey,
+                                  margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 2.0,
+                                    right:
+                                        AppDimensions.height10(context) * 8.9,
+                                  ),
+                                  child: Text(
+                                    inspirationDetails['inspiration']['file'],
+                                    style: TextStyle(
+                                        color: const Color(0xFF282828),
+                                        fontSize:
                                             AppDimensions.height10(context) *
-                                                0.4,
-                                            0,
-                                            0),
-                                        hintText:
-                                            'Say more about this inspiration ',
-                                        hintStyle: TextStyle(
+                                                1.7,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                )
+                              ],
+                              Container(
+                                height: AppDimensions.height10(context) * 2.1,
+                                width: AppDimensions.height10(context) * 30.5,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 2.0,
+                                    right:
+                                        AppDimensions.height10(context) * 8.9,
+                                    top: AppDimensions.height10(context) * 3.9),
+                                child: Text(
+                                  'Tags',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.5,
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xff828282)),
+                                ),
+                              ),
+                              Container(
+                                height: AppDimensions.height10(context) * 2.4,
+                                width: AppDimensions.height10(context) * 30.5,
+                                margin: EdgeInsets.only(
+                                    left: widget.note_saved
+                                        ? AppDimensions.height10(context) * 2.0
+                                        : AppDimensions.height10(context) * 0,
+                                    right: widget.note_saved
+                                        ? AppDimensions.height10(context) * 8.9
+                                        : AppDimensions.height10(context) *
+                                            10.0,
+                                    top: widget.note_saved
+                                        ? AppDimensions.height10(context) * 0
+                                        : AppDimensions.height10(context) *
+                                            1.0),
+                                child: widget.note_saved
+                                    ? Text(
+                                        inspirationDetails['inspiration']
+                                            ['hashTags'][0],
+                                        style: TextStyle(
+                                            color: const Color(0xFF282828),
                                             fontSize: AppDimensions.height10(
                                                     context) *
                                                 1.7,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0xff828282)),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent))),
+                                            fontWeight: FontWeight.w500),
+                                      )
+                                    : TextField(
+                                        textAlignVertical:
+                                            TextAlignVertical.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xff282828)),
+                                        decoration: InputDecoration(
+                                            contentPadding: EdgeInsets.fromLTRB(
+                                                AppDimensions.height10(context) *
+                                                    1.6,
+                                                AppDimensions.height10(context) *
+                                                    0.4,
+                                                0,
+                                                0),
+                                            hintText: 'Add #hashtag',
+                                            hintStyle: TextStyle(
+                                                fontSize: AppDimensions.height10(
+                                                        context) *
+                                                    1.7,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xff828282)),
+                                            focusedBorder: const OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                    color: Colors.transparent)),
+                                            enabledBorder:
+                                                const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors
+                                                            .transparent))),
+                                      ),
+                              ),
+                              Container(
+                                height: AppDimensions.height10(context) * 2.1,
+                                width: AppDimensions.height10(context) * 30.5,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 2.0,
+                                    right:
+                                        AppDimensions.height10(context) * 8.9,
+                                    top: AppDimensions.height10(context) * 3.9),
+                                child: Text(
+                                  'Attached goals',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.5,
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xff828282)),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  widget.note_saved
+                                      ? Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const inspiration_landing(
+                                            is_Updated: false,
+                                          )))
+                                      : Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: inspiraton_goals(
+                                                  data_saved: false)));
+                                },
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 6.0,
+                                  width: AppDimensions.height10(context) * 37.5,
+                                  margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 2.0,
+                                    right:
+                                        AppDimensions.height10(context) * 1.9,
+                                    // bottom: AppDimensions.height10(context) * 1.0
+                                  ),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1,
+                                          color: const Color(0xFF464646)),
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              2.0)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        width: AppDimensions.height10(context) *
+                                            23.9,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.2,
+                                        margin: EdgeInsets.only(
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                1.99),
+                                        child: GestureDetector(
+                                            onTap: () {},
+                                            child: Text(
+                                              '00 impacted goals',
+                                              style: TextStyle(
+                                                color: const Color(0xFF646464),
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.8,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            )),
+                                      ),
+                                      Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  2.4,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.39,
+                                          margin: EdgeInsets.only(
+                                              right: AppDimensions.height10(
+                                                      context) *
+                                                  2.391),
+                                          child: GestureDetector(
+                                            onTap: () {},
+                                            child: Image.asset(
+                                              'assets/images/BTN Back.webp',
+                                              //width: AppDimensions.height10(context) * 2.6,
+                                              //height: AppDimensions.height10(context) * 2.6,
+                                              color: const Color(0xFF646464),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ))
+                                    ],
                                   ),
                                 ),
-                        ),
-                        if (widget.type_switch == 2) ...[
-                          Container(
-                            height: AppDimensions.height10(context) * 2.1,
-                            width: AppDimensions.height10(context) * 30.5,
-                            margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 2.0,
-                                right: AppDimensions.height10(context) * 8.9,
-                                top: AppDimensions.height10(context) * 3.0),
-                            child: Text(
-                              'Content Author',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.5,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff828282)),
-                            ),
+                              ),
+                            ],
                           )
-                        ] else ...[
-                          Container()
-                        ],
-                        if (widget.type_switch == 2) ...[
-                          Container(
-                            height: AppDimensions.height10(context) * 2.4,
-                            width: AppDimensions.height10(context) * 30.5,
-                            //  color: Colors.grey,
-                            margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 8.9,
-                            ),
-                            child: Text(
-                              'Author name',
-                              style: TextStyle(
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.7,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          )
-                        ],
-                        Container(
-                          height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 8.9,
-                              top: AppDimensions.height10(context) * 3.9),
-                          child: Text(
-                            'Tags',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff828282)),
-                          ),
-                        ),
-                        Container(
-                          height: AppDimensions.height10(context) * 2.4,
-                          width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                              left: widget.note_saved
-                                  ? AppDimensions.height10(context) * 2.0
-                                  : AppDimensions.height10(context) * 0,
-                              right: widget.note_saved
-                                  ? AppDimensions.height10(context) * 8.9
-                                  : AppDimensions.height10(context) * 10.0,
-                              top: widget.note_saved
-                                  ? AppDimensions.height10(context) * 0
-                                  : AppDimensions.height10(context) * 1.0),
-                          child: widget.note_saved
-                              ? Text(
-                                  inspirationDetails['inspiration']['hashTags']
-                                      [0],
-                                  style: TextStyle(
-                                      color: const Color(0xFF282828),
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.7,
-                                      fontWeight: FontWeight.w500),
-                                )
-                              : TextField(
-                                  textAlignVertical: TextAlignVertical.center,
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.6,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xff282828)),
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.fromLTRB(
-                                          AppDimensions.height10(context) * 1.6,
-                                          AppDimensions.height10(context) * 0.4,
-                                          0,
-                                          0),
-                                      hintText: 'Add #hashtag',
-                                      hintStyle: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.7,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xff828282)),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent))),
-                                ),
-                        ),
-                        Container(
-                          height: AppDimensions.height10(context) * 2.1,
-                          width: AppDimensions.height10(context) * 30.5,
-                          margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 8.9,
-                              top: AppDimensions.height10(context) * 3.9),
-                          child: Text(
-                            'Attached goals',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.5,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff828282)),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            widget.note_saved
-                                ? Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const inspiration_landing(
-                                      muliple_insp: true,
-                                      is_Updated: false,
-                                    )))
-                                : Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: inspiraton_goals(
-                                            data_saved: false)));
-                          },
-                          child: Container(
-                            height: AppDimensions.height10(context) * 6.0,
-                            width: AppDimensions.height10(context) * 37.5,
-                            margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 2.0,
-                              right: AppDimensions.height10(context) * 1.9,
-                              // bottom: AppDimensions.height10(context) * 1.0
-                            ),
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    width: 1, color: const Color(0xFF464646)),
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 2.0)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  width: AppDimensions.height10(context) * 23.9,
-                                  height: AppDimensions.height10(context) * 2.2,
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          1.99),
-                                  child: GestureDetector(
-                                      onTap: () {},
-                                      child: Text(
-                                        '00 impacted goals',
-                                        style: TextStyle(
-                                          color: const Color(0xFF646464),
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )),
-                                ),
-                                Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.39,
-                                    margin: EdgeInsets.only(
-                                        right: AppDimensions.height10(context) *
-                                            2.391),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        color: const Color(0xFF646464),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
+                        : const Center(
+                            child: SpinKitFadingCircle(
+                              color: Color(0xFFB1B8FF),
+                              size: 80,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
                   ),
                 )
               ]),
@@ -830,7 +937,7 @@ class _noteSavedState extends State<noteSaved> {
                                     " ",
                                     true,
                                     statement.text.toString(),
-                                    19)
+                                    [19])
                                 .then((response) {
                               if (response.statusCode == 200) {
                                 Navigator.push(
@@ -956,11 +1063,12 @@ class _noteSavedState extends State<noteSaved> {
                             maxLines: null,
                             minLines: null,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w400,
+                                fontSize: AppDimensions.height10(context) * 1.7,
+                                fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
                                 contentPadding: EdgeInsets.zero,
+                                isCollapsed: true,
                                 hintText: 'Say more about this inspiration ',
                                 hintStyle: TextStyle(
                                     fontSize:
@@ -994,15 +1102,16 @@ class _noteSavedState extends State<noteSaved> {
                           height: AppDimensions.height10(context) * 2.4,
                           width: AppDimensions.height10(context) * 30.5,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.6,
-                              right: AppDimensions.height10(context) * 10.0,
-                              top: AppDimensions.height10(context) * 1.0),
+                            left: AppDimensions.height10(context) * 0.6,
+                            right: AppDimensions.height10(context) * 10.0,
+                            // top: AppDimensions.height10(context) * 1.0
+                          ),
                           child: TextField(
                             controller: hastags,
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w400,
+                                fontSize: AppDimensions.height10(context) * 1.7,
+                                fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
                                 contentPadding: EdgeInsets.fromLTRB(

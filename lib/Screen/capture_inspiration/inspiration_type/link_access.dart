@@ -84,28 +84,30 @@ class _link_infoState extends State<link_info> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      print('----------------');
+                      print('LINK----------------');
+                      print(link.text.toString());
                       InspirationApi()
                           .addInspiration(
                               4,
-                              " ",
                               author.text.toString(),
+                              " ",
                               ['#tags'],
                               link.text.toString(),
                               true,
                               statement.text.toString(),
-                              19)
+                              [1])
                           .then((response) {
                         if (response.length != 0) {
                           print('----------------');
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const note_info(
+                                      note_saved: true, type_switch: 2)));
 
                           print(response);
                         }
-                        Navigator.push(
-                            context,
-                            FadePageRoute(
-                                page: const note_info(
-                                    note_saved: true, type_switch: 2)));
+
                         // return null;
                       });
                     },
@@ -156,7 +158,7 @@ class _link_infoState extends State<link_info> {
                             //height: AppDimensions.height10(context) * 2.4,
                             width: AppDimensions.height10(context) * 30.5,
                             margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.6,
+                              left: AppDimensions.height10(context) * 0.65,
                               right: AppDimensions.height10(context) * 5.0,
                             ),
                             child: TextFormField(
@@ -173,9 +175,10 @@ class _link_infoState extends State<link_info> {
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.7,
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   color: const Color(0xff282828)),
                               decoration: InputDecoration(
+                                  isCollapsed: true,
                                   contentPadding: EdgeInsets.fromLTRB(
                                       AppDimensions.height10(context) * 1.4,
                                       0,
@@ -303,9 +306,10 @@ class _link_infoState extends State<link_info> {
                           textAlignVertical: TextAlignVertical.center,
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
+                              isCollapsed: true,
                               contentPadding: EdgeInsets.fromLTRB(
                                   AppDimensions.height10(context) * 1.6,
                                   AppDimensions.height10(context) * 0.4,
@@ -341,20 +345,21 @@ class _link_infoState extends State<link_info> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10(context) * 2.4,
+                        //height: AppDimensions.height10(context) * 2.4,
                         width: AppDimensions.height10(context) * 30.5,
                         margin: EdgeInsets.only(
-                          // left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 10.0,
+                          left: AppDimensions.height10(context) * 0.6,
+                          // right: AppDimensions.height10(context) * 1.0,
                         ),
                         child: TextField(
                           controller: author,
                           textAlignVertical: TextAlignVertical.center,
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.7,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w500,
                               color: const Color(0xff282828)),
                           decoration: InputDecoration(
+                              isCollapsed: true,
                               contentPadding: EdgeInsets.fromLTRB(
                                   AppDimensions.height10(context) * 1.6,
                                   AppDimensions.height10(context) * 0.4,
@@ -391,20 +396,20 @@ class _link_infoState extends State<link_info> {
                         ),
                       ),
                       Container(
-                        height: AppDimensions.height10(context) * 2.4,
+                        //height: AppDimensions.height10(context) * 2.4,
                         width: AppDimensions.height10(context) * 30.5,
                         margin: EdgeInsets.only(
-                          // left: AppDimensions.height10(context) * 2.0,
-                          right: AppDimensions.height10(context) * 10.0,
+                          left: AppDimensions.height10(context) * 0.6,
                         ),
                         child: TextField(
                           controller: hastags,
                           textAlignVertical: TextAlignVertical.center,
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.6,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xff282828)),
+                              fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 80, 33, 33)),
                           decoration: InputDecoration(
+                              isCollapsed: true,
                               contentPadding: EdgeInsets.fromLTRB(
                                   AppDimensions.height10(context) * 1.6,
                                   AppDimensions.height10(context) * 0,

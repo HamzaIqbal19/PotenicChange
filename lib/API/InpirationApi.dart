@@ -23,6 +23,7 @@ class InspirationApi {
       userGoalId) async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
+    var UserId = prefs.getInt('userid');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -35,8 +36,9 @@ class InspirationApi {
       "hashTags": hashTags,
       "visibility": "$visibility",
       "destinationLink": destinationLink,
-      "userGoalId": "$userGoalId",
+      "userGoalId": userGoalId,
       "description": description,
+      "userId": UserId
     });
     print(Body);
 
@@ -54,7 +56,7 @@ class InspirationApi {
 
       print(responses['result']['id']);
 
-      return request;
+      return responses;
     } else {
       //client.close();
 
@@ -64,9 +66,52 @@ class InspirationApi {
     }
   }
 
-  Future deleteUserHurdle(userInspirationId) async {
+  Future updateInspiration(String title, hashTags, String destinationLink,
+      String description, String file) async {
     final SharedPreferences prefs = await _prefs;
+    //var goal_num = prefs.getInt('goal_num');
+    var Accestoken = prefs.getString("usertoken");
+    var userInspirationId = prefs.getInt('userInspirationId');
 
+    //int UserGoalId = 12;
+    print("request: Update");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var body = jsonEncode({
+      "title": title,
+      "hashTags": hashTags,
+      "destinationLink": destinationLink,
+      "description": description,
+      "file": file,
+    });
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
+
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/userInspiration/$userInspirationId'),
+        headers: headers,
+        body: body);
+    print("request: Update");
+    print('=====>$request.statusCode');
+    print(request.body);
+    if (request.statusCode == 200) {
+      // print("$request.statusCode");
+      print("request: Update successful");
+      var jsonData = jsonDecode(request.body);
+      print("Result: $jsonData");
+      return true;
+    } else {
+      print("Update failed");
+      // client.close();
+      return false;
+    }
+  }
+
+  Future deleteUserInspiraton() async {
+    final SharedPreferences prefs = await _prefs;
+    var userInspirationId = prefs.getInt('userInspirationId');
     var Accestoken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
@@ -102,7 +147,7 @@ class InspirationApi {
     };
     print('-=--=----===-==');
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userInspiration/52'),
+      Uri.parse('${URL.BASE_URL}api/userInspiration/$userInspirationId'),
       headers: headers,
     );
 
@@ -118,9 +163,10 @@ class InspirationApi {
     }
   }
 
-  Future getAllUserInspiration() async {
+  Future getUserInspiration() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
+    var UserId = prefs.getInt('userid');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -128,7 +174,8 @@ class InspirationApi {
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/userInspiration/userInspirationId'),
+      Uri.parse(
+          '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
       headers: headers,
     );
 

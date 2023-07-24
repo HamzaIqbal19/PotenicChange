@@ -646,7 +646,10 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          FadePageRoute(page: const select_hurdle()),
+                          FadePageRoute(
+                              page: const select_hurdle(
+                            update: false,
+                          )),
                         );
                       },
                       child: Text(

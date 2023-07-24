@@ -1,16 +1,59 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:potenic_app/API/InpirationApi.dart';
 
 import '../../utils/app_dimensions.dart';
 
 class veiw_details extends StatefulWidget {
-  final int type_switch;
-  const veiw_details({super.key, required this.type_switch});
+  const veiw_details({
+    super.key,
+  });
 
   @override
   State<veiw_details> createState() => _veiw_detailsState();
 }
 
 class _veiw_detailsState extends State<veiw_details> {
+  var inspirationDetails;
+
+  bool Loading = true;
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loading = false;
+    });
+  }
+
+  void _fetchInspiration() {
+    InspirationApi().getInspirationById().then((response) {
+      print('Res=====================');
+      if (response.length != 0) {
+        setState(() {
+          inspirationDetails = response;
+        });
+        loadData();
+        print(inspirationDetails['inspiration']['title']);
+
+        return response;
+      }
+
+      // return null;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchInspiration();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,100 +76,129 @@ class _veiw_detailsState extends State<veiw_details> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
-                image: widget.type_switch == 4
-                    ? const AssetImage('assets/images/video_image.webp')
-                    : const AssetImage(
-                        'assets/images/bg_inpiration_purple.webp'),
-                colorFilter: const ColorFilter.mode(
+                image: AssetImage('assets/images/bg_inpiration_purple.webp'),
+                colorFilter: ColorFilter.mode(
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
-        child: Stack(
-          children: [
-            if (widget.type_switch == 1) ...[
-              Container(
+        child: Loading == false
+            ? Container(
                 width: double.infinity,
-                //color: Colors.amber,
-                child: Container(
-                  width: AppDimensions.height10(context) * 34.7,
-                  height: AppDimensions.height10(context) * 36.188,
-                  margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 12.0,
-                    left: AppDimensions.height10(context) * 3.4,
-                    right: AppDimensions.height10(context) * 3.4,
-                  ),
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image:
-                              AssetImage('assets/images/selected_image.webp'),
-                          fit: BoxFit.cover)),
-                ),
-              ),
-            ] else if (widget.type_switch == 2) ...[
-              Container(
-                width: double.infinity,
-                // color: Colors.amber,
-                child: Container(
-                  width: AppDimensions.height10(context) * 37.7,
-                  height: AppDimensions.height10(context) * 24.7,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 11.50,
-                    left: AppDimensions.height10(context) * 1.8,
-                    right: AppDimensions.height10(context) * 1.8,
-                  ),
-                  decoration: const BoxDecoration(
-                      //  color: Colors.amber,
-                      image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/distraction content.webp'),
-                          fit: BoxFit.cover)),
-                ),
-              ),
-            ] else if (widget.type_switch == 4) ...[
-              Container(
-                alignment: Alignment.center,
-//IT'S HEIGHT IS SET SO BACKGROUND DOES'NT BECOME VISIBLE
-                // width: AppDimensions.height10(context) * 41.4,
-                // margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 20.0),
-                height: AppDimensions.height10(context) * 44.5,
-                decoration: const BoxDecoration(
+                height: double.infinity,
+                decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/images/video_image.webp'),
+                        image: inspirationDetails['inspiration']
+                                    ['inspirationId'] ==
+                                4
+                            ? const AssetImage('assets/images/video_image.webp')
+                            : const AssetImage(
+                                'assets/images/bg_inpiration_purple.webp'),
+                        colorFilter: const ColorFilter.mode(
+                            Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                         fit: BoxFit.cover)),
-                child: Center(
-                  child: SizedBox(
-                    width: AppDimensions.height10(context) * 8.6,
-                    height: AppDimensions.height10(context) * 8.6,
-                    child: Image.asset('assets/images/play_button.webp'),
-                  ),
-                ),
-              ),
-            ] else if (widget.type_switch == 3) ...[
-              Container(
-                // width: AppDimensions.height10(context) * 34.7,
-                height: AppDimensions.height10(context) * 52.5,
+                child: Stack(
+                  children: [
+                    if (inspirationDetails['inspiration']['inspirationId'] ==
+                        1) ...[
+                      Container(
+                        width: double.infinity,
+                        //color: Colors.amber,
+                        child: Container(
+                          width: AppDimensions.height10(context) * 34.7,
+                          height: AppDimensions.height10(context) * 36.188,
+                          margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 12.0,
+                            left: AppDimensions.height10(context) * 3.4,
+                            right: AppDimensions.height10(context) * 3.4,
+                          ),
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: FileImage(File(
+                                      inspirationDetails['inspiration']
+                                          ['file'])),
+                                  fit: BoxFit.cover)),
+                        ),
+                      ),
+                    ] else if (inspirationDetails['inspiration']
+                            ['inspirationId'] ==
+                        2) ...[
+                      Container(
+                        width: double.infinity,
+                        // color: Colors.amber,
+                        child: Container(
+                          width: AppDimensions.height10(context) * 37.7,
+                          height: AppDimensions.height10(context) * 24.7,
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 11.50,
+                            left: AppDimensions.height10(context) * 1.8,
+                            right: AppDimensions.height10(context) * 1.8,
+                          ),
+                          decoration: const BoxDecoration(
+                              //  color: Colors.amber,
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/distraction content.webp'),
+                                  fit: BoxFit.cover)),
+                        ),
+                      ),
+                    ] else if (inspirationDetails['inspiration']
+                            ['inspirationId'] ==
+                        4) ...[
+                      Container(
+                        alignment: Alignment.center,
+                        //IT'S HEIGHT IS SET SO BACKGROUND DOES'NT BECOME VISIBLE
+                        // width: AppDimensions.height10(context) * 41.4,
+                        // margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 20.0),
+                        height: AppDimensions.height10(context) * 44.5,
+                        decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/video_image.webp'),
+                                fit: BoxFit.cover)),
+                        child: Center(
+                          child: SizedBox(
+                            width: AppDimensions.height10(context) * 8.6,
+                            height: AppDimensions.height10(context) * 8.6,
+                            child:
+                                Image.asset('assets/images/play_button.webp'),
+                          ),
+                        ),
+                      ),
+                    ] else if (inspirationDetails['inspiration']
+                            ['inspirationId'] ==
+                        3) ...[
+                      Container(
+                        // width: AppDimensions.height10(context) * 34.7,
+                        height: AppDimensions.height10(context) * 52.5,
 
-                decoration: const BoxDecoration(
-                  gradient: RadialGradient(
-                      colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
+                        decoration: const BoxDecoration(
+                          gradient: RadialGradient(
+                              colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
+                        ),
+                        child: Center(
+                          child: Text(
+                            inspirationDetails['inspiration']['description'],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                height: AppDimensions.height10(context) * 0.15,
+                                fontSize: AppDimensions.height10(context) * 2.4,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xFFFFFFFF)),
+                          ),
+                        ),
+                      ),
+                    ]
+                  ],
                 ),
-                child: Center(
-                  child: Text(
-                    'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        height: AppDimensions.height10(context) * 0.15,
-                        fontSize: AppDimensions.height10(context) * 2.4,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xFFFFFFFF)),
-                  ),
+              )
+            : const Center(
+                child: SpinKitFadingCircle(
+                  color: Color(0xFFB1B8FF),
+                  size: 80,
                 ),
               ),
-            ]
-          ],
-        ),
       ),
       extendBody: true,
       bottomNavigationBar: BottomAppBar(
@@ -134,9 +206,9 @@ class _veiw_detailsState extends State<veiw_details> {
         elevation: 0,
         child: Container(
           //should change according to screen
-          height: widget.type_switch == 1
+          height: inspirationDetails['inspiration']['inspirationId'] == 1
               ? AppDimensions.height10(context) * 38.465
-              : widget.type_switch == 2
+              : inspirationDetails['inspiration']['inspirationId'] == 2
                   ? AppDimensions.height10(context) * 52.465
                   : AppDimensions.height10(context) * 48.465,
           decoration: BoxDecoration(
@@ -185,9 +257,11 @@ class _veiw_detailsState extends State<veiw_details> {
                           top: AppDimensions.height10(context) * 0.3),
                       child: Column(
                         children: [
-                          if (widget.type_switch == 1) ...[
+                          if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              1) ...[
                             Text(
-                              'Nir Eyal',
+                              inspirationDetails['inspiration']['title'],
                               style: TextStyle(
                                   height: 1.5,
                                   color: const Color(0xFF282828),
@@ -195,9 +269,11 @@ class _veiw_detailsState extends State<veiw_details> {
                                       AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
-                          ] else if (widget.type_switch == 2) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              2) ...[
                             Text(
-                              'Learn How To Avoid Distraction In A World\nThat Is Full Of It',
+                              inspirationDetails['inspiration']['title'],
                               style: TextStyle(
                                   height: 1.5,
                                   color: const Color(0xFF282828),
@@ -205,9 +281,11 @@ class _veiw_detailsState extends State<veiw_details> {
                                       AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
-                          ] else if (widget.type_switch == 4) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              4) ...[
                             Text(
-                              'Survivors:  Music Eye Of The Tiger ',
+                              inspirationDetails['inspiration']['title'],
                               style: TextStyle(
                                   height: 1.5,
                                   color: const Color(0xFF282828),
@@ -215,9 +293,11 @@ class _veiw_detailsState extends State<veiw_details> {
                                       AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
-                          ] else if (widget.type_switch == 3) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              3) ...[
                             Text(
-                              'Lorem ipsum dolor\nsit amet, consectetur adipiscing elit. ',
+                              inspirationDetails['inspiration']['title'],
                               style: TextStyle(
                                   height: 1.5,
                                   color: const Color(0xFF282828),
@@ -230,7 +310,8 @@ class _veiw_detailsState extends State<veiw_details> {
                       )),
                   Column(
                     children: [
-                      if (widget.type_switch == 4) ...[
+                      if (inspirationDetails['inspiration']['inspirationId'] ==
+                          4) ...[
                         Container(
                           height: AppDimensions.height10(context) * 3.0,
                           width: AppDimensions.height10(context) * 25.3,
@@ -253,7 +334,9 @@ class _veiw_detailsState extends State<veiw_details> {
                             ),
                           ),
                         ),
-                      ] else if (widget.type_switch == 3) ...[
+                      ] else if (inspirationDetails['inspiration']
+                              ['inspirationId'] ==
+                          3) ...[
                         Container(),
                       ] else ...[
                         Container(
@@ -291,7 +374,9 @@ class _veiw_detailsState extends State<veiw_details> {
                           top: AppDimensions.height10(context) * 2.0),
                       child: Column(
                         children: [
-                          if (widget.type_switch == 1) ...[
+                          if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              1) ...[
                             Text(
                               'Description',
                               style: TextStyle(
@@ -300,7 +385,9 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
-                          ] else if (widget.type_switch == 2) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              2) ...[
                             Text(
                               'Why is it inspirational to you',
                               style: TextStyle(
@@ -309,7 +396,9 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
-                          ] else if (widget.type_switch == 4) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              4) ...[
                             Text(
                               'What it means to me',
                               style: TextStyle(
@@ -318,7 +407,9 @@ class _veiw_detailsState extends State<veiw_details> {
                                   fontWeight: FontWeight.w400,
                                   color: const Color(0xff828282)),
                             ),
-                          ] else if (widget.type_switch == 3) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              3) ...[
                             Text(
                               'Description',
                               style: TextStyle(
@@ -340,9 +431,11 @@ class _veiw_detailsState extends State<veiw_details> {
                           top: AppDimensions.height10(context) * 0.2),
                       child: Column(
                         children: [
-                          if (widget.type_switch == 1) ...[
+                          if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              1) ...[
                             Text(
-                              'Behavioural Coach',
+                              inspirationDetails['inspiration']['description'],
                               style: TextStyle(
                                   height: 1.5,
                                   color: const Color(0xFF282828),
@@ -350,9 +443,11 @@ class _veiw_detailsState extends State<veiw_details> {
                                       AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
-                          ] else if (widget.type_switch == 2) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              2) ...[
                             Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. ',
+                              inspirationDetails['inspiration']['description'],
                               style: TextStyle(
                                   height: 1.5,
                                   color: const Color(0xFF282828),
@@ -360,9 +455,11 @@ class _veiw_detailsState extends State<veiw_details> {
                                       AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
-                          ] else if (widget.type_switch == 3) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              3) ...[
                             Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. Mauris sollicitudin hendrerit libero, eu tempus leo ultricies quis. Proin hendrerit leo leo, eget hendrerit ipsum accumsan at. Mauris id ipsum feugiat, vestibulum nibh sit amet, scelerisque ex. Cras congue sagittis condimentum. Pellentesque non pellentesque diam. Nulla interdum condimentum lorem ac interdum. Quisque tristique lacinia malesuada. Sed sed mattis orci, id pulvinar elit. Donec semper libero quis mauris rutrum, sit amet posuere lacus sodales. Donec a suscipit dolor. Vivamus ut tempus neque. ',
+                              inspirationDetails['inspiration']['description'],
                               style: TextStyle(
                                   height: 1.5,
                                   color: const Color(0xFF282828),
@@ -370,9 +467,11 @@ class _veiw_detailsState extends State<veiw_details> {
                                       AppDimensions.height10(context) * 1.6,
                                   fontWeight: FontWeight.w500),
                             ),
-                          ] else if (widget.type_switch == 4) ...[
+                          ] else if (inspirationDetails['inspiration']
+                                  ['inspirationId'] ==
+                              4) ...[
                             Text(
-                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu vestibulum est, ut rhoncus ligula. Aenean quis ultrices odio. Nullam eleifend eu lectus non tincidunt. Phasellus sed nibh pulvinar, ultrices augue viverra, varius neque. ',
+                              inspirationDetails['inspiration']['description'],
                               style: TextStyle(
                                   height: 1.5,
                                   color: const Color(0xFF282828),

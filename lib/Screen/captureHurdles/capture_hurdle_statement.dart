@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -13,7 +14,8 @@ import '../../utils/app_dimensions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class hurdle_statement extends StatefulWidget {
-  const hurdle_statement({super.key});
+  final bool update;
+  const hurdle_statement({super.key, required this.update});
 
   @override
   State<hurdle_statement> createState() => _hurdle_statementState();
@@ -293,12 +295,27 @@ class _hurdle_statementState extends State<hurdle_statement> {
                           ),
                     AnimatedScaleButton(
                       onTap: () async {
-                        final SharedPreferences prefs = await _prefs;
-                        var statement = prefs.setString(
-                            'hurdleStatement', controller.text.toString());
+                        if (widget.update == true) {
+                          Hurdles()
+                              .updateHurdle(
+                                  "triggerStatment", controller.text.toString())
+                              .then((response) {
+                            if (response == true) {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: summary_hurdles(
+                                          delete_hurdle: false)));
+                            }
+                          });
+                        } else {
+                          final SharedPreferences prefs = await _prefs;
+                          var statement = prefs.setString(
+                              'hurdleStatement', controller.text.toString());
 
-                        Navigator.push(context,
-                            FadePageRoute(page: const felling_hurdles()));
+                          Navigator.push(context,
+                              FadePageRoute(page: const felling_hurdles()));
+                        }
                       },
                       child: Container(
                           height: AppDimensions.height10(context) * 5.0,
@@ -322,7 +339,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                           ),
                           child: Center(
                               child: Text(
-                            'Next',
+                            widget.update ? 'Update Summary' : 'Next',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: AppDimensions.height10(context) * 1.6,
