@@ -1,10 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 import '../capture_inpirations_goals.dart';
 import 'note_access.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class video_info extends StatefulWidget {
   const video_info({super.key});
@@ -17,6 +22,27 @@ class _video_infoState extends State<video_info> {
   TextEditingController link = TextEditingController();
   TextEditingController statement = TextEditingController();
   TextEditingController hastags = TextEditingController();
+  List selectedGoals = [];
+  List<String> tagList = [];
+
+  void getInspiration() async {
+    final SharedPreferences prefs = await _prefs;
+    final encodedGoals = prefs.getString('selected_goals_inspiration');
+    if (encodedGoals != null) {
+      List decodedGoals = List.from(json.decode(encodedGoals));
+      setState(() {
+        selectedGoals = decodedGoals;
+      });
+      print('SelectedGoals==============================$selectedGoals');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getInspiration();
+  }
+
   @override
   Widget build(BuildContext context) {
     bool link_state = false;
@@ -85,11 +111,11 @@ class _video_infoState extends State<video_info> {
                               3,
                               " ",
                               " ",
-                              ['#tags'],
+                              tagList,
                               link.text.toString(),
                               true,
                               statement.text.toString(),
-                              [1])
+                              selectedGoals)
                           .then((response) {
                         if (response.length != 0) {
                           print('----------------');
@@ -344,6 +370,19 @@ class _video_infoState extends State<video_info> {
                         ),
                         child: TextField(
                           controller: hastags,
+                          onChanged: (text) {
+                            List<String> words = text.split(' ');
+
+                            List<String> tags = words
+                                .where((word) => word.startsWith('#'))
+                                .toList();
+
+                            tagList.clear();
+
+                            tagList.addAll(tags.toSet());
+
+                            print(tagList);
+                          },
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.7,
                               fontWeight: FontWeight.w500,
@@ -415,7 +454,7 @@ class _video_infoState extends State<video_info> {
                                 child: GestureDetector(
                                     onTap: () {},
                                     child: Text(
-                                      '00 impacted goals',
+                                      '${selectedGoals.length} impacted goals',
                                       style: TextStyle(
                                         color: const Color(0xFF646464),
                                         fontSize:

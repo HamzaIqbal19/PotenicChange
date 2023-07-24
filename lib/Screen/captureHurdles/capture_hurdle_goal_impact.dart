@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
@@ -11,10 +12,13 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.d
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class hurdles_goal_impact extends StatefulWidget {
   const hurdles_goal_impact({super.key});
@@ -27,10 +31,23 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
   var goals = [];
   int selectBox = -1;
   int selectinActive = -1;
+  List<int> selectedIndices = [];
+  List<int> selectedInActiveIndices = [];
   bool selectAll = false;
   List<Map<String, dynamic>> Active = [];
   List<Map<String, dynamic>> inActive = [];
+  List selectedGoals = [];
+  List multiGoals = [];
+  List allgoalsSelected = [];
   bool Loading = true;
+
+  Future<void> saveGoalsToSharedPreferences(List goals) async {
+    final SharedPreferences prefs = await _prefs;
+    final encodedGoals = json.encode(goals);
+    prefs.setString('selected_goals', encodedGoals);
+    print('Sved to prefs ');
+    print(allgoalsSelected);
+  }
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -57,8 +74,10 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
     for (int i = 0; i <= goals.length; i++) {
       if (goals[i]['isActive'] == true) {
         Active.add(goals[i]);
+        allgoalsSelected.add(goals[i]['id']);
       } else {
         inActive.add(goals[i]);
+        allgoalsSelected.add(goals[i]['id']);
       }
     }
   }
@@ -302,18 +321,28 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           ),
                           AnimatedScaleButton(
                             onTap: () {
+                              print("Called");
                               if (selectAll == false) {
                                 setState(() {
                                   selectAll = true;
                                   selectBox = -1;
                                   selectinActive = -1;
+                                  selectedIndices.clear();
+                                  selectedInActiveIndices.clear();
                                 });
+
+                                print(allgoalsSelected);
                               } else if (selectAll == true) {
                                 setState(() {
                                   selectAll = false;
                                   selectinActive = -1;
                                   selectBox = -1;
+                                  selectedIndices.clear();
+                                  selectedInActiveIndices.clear();
+                                  selectedGoals.clear();
+                                  multiGoals.clear();
                                 });
+                                print(selectedGoals);
                               }
                             },
                             child: Container(
@@ -405,24 +434,36 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   return AnimatedScaleButton(
                                     onTap: () {
                                       setState(() {
-                                        selectAll = false;
-                                        selectinActive = index;
-                                        selectBox = -1;
+                                        if (selectedIndices.contains(index)) {
+                                          multiGoals
+                                              .remove(Active[index]['id']);
+                                          selectedIndices.remove(index);
+                                        } else {
+                                          selectedIndices.add(index);
+                                          multiGoals.add(Active[index]['id']);
+                                        }
                                       });
-                                      print(selectAll);
+                                      setState(() {
+                                        selectAll = false;
+                                        //selectinActive = index;
+                                        // selectBox = -1;
+                                        // selectedGoals
+                                        //     .add(Active[index]['goalId']);
+                                      });
+                                      print(selectedGoals);
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
                                           right:
                                               AppDimensions.height10(context) *
                                                   3),
-                                      height: selectinActive == index ||
+                                      height: selectedIndices.contains(index) ||
                                               selectAll == true
                                           ? AppDimensions.height10(context) *
                                               14.1
                                           : AppDimensions.height10(context) *
                                               13.1,
-                                      width: selectinActive == index ||
+                                      width: selectedIndices.contains(index) ||
                                               selectAll == true
                                           ? AppDimensions.height10(context) *
                                               14.1
@@ -434,13 +475,15 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                            width: selectinActive == index ||
+                                            width: selectedIndices
+                                                        .contains(index) ||
                                                     selectAll == true
                                                 ? AppDimensions.height10(
                                                         context) *
                                                     0.2
                                                 : 0,
-                                            color: selectinActive == index ||
+                                            color: selectedIndices
+                                                        .contains(index) ||
                                                     selectAll == true
                                                 ? Colors.white
                                                 : Colors.transparent),
@@ -534,23 +577,39 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                   return AnimatedScaleButton(
                                     onTap: () {
                                       setState(() {
-                                        selectBox = index;
-                                        selectinActive = -1;
-                                        selectAll = false;
+                                        if (selectedInActiveIndices
+                                            .contains(index)) {
+                                          multiGoals
+                                              .remove(inActive[index]['id']);
+                                          selectedInActiveIndices.remove(index);
+                                        } else {
+                                          multiGoals.add(inActive[index]['id']);
+                                          selectedInActiveIndices.add(index);
+                                        }
                                       });
+                                      setState(() {
+                                        //selectBox = index;
+                                        // selectinActive = -1;
+                                        selectAll = false;
+                                        // selectedGoals
+                                        //     .add(inActive[index]['goalId']);
+                                      });
+                                      print(selectedGoals);
                                     },
                                     child: Container(
                                       margin: EdgeInsets.only(
                                           right:
                                               AppDimensions.height10(context) *
                                                   3),
-                                      height: selectBox == index ||
+                                      height: selectedInActiveIndices
+                                                  .contains(index) ||
                                               selectAll == true
                                           ? AppDimensions.height10(context) *
                                               14.1
                                           : AppDimensions.height10(context) *
                                               13.1,
-                                      width: selectBox == index ||
+                                      width: selectedInActiveIndices
+                                                  .contains(index) ||
                                               selectAll == true
                                           ? AppDimensions.height10(context) *
                                               14.1
@@ -562,13 +621,15 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                            width: selectBox == index ||
+                                            width: selectedInActiveIndices
+                                                        .contains(index) ||
                                                     selectAll == true
                                                 ? AppDimensions.height10(
                                                         context) *
                                                     0.2
                                                 : 0,
-                                            color: selectBox == index ||
+                                            color: selectedInActiveIndices
+                                                        .contains(index) ||
                                                     selectAll == true
                                                 ? Colors.white
                                                 : Colors.transparent),
@@ -624,26 +685,11 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                         ]),
                   ),
                 ),
-                Container(
-                  width: AppDimensions.height10(context) * 25.4,
-                  height: AppDimensions.height10(context) * 5.0,
-                  margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 3.3,
-                      bottom: AppDimensions.height10(context) * 2.6),
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0xffFCC10D),
-                        Color(0xffFDA210),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(
-                        AppDimensions.height10(context) * 5.0),
-                  ),
-                  child: TextButton(
-                      onPressed: () {
+                AnimatedScaleButton(
+                  onTap: () {
+                    if (selectAll == true || multiGoals.length != 0) {
+                      if (selectAll == true) {
+                        saveGoalsToSharedPreferences(allgoalsSelected);
                         Navigator.push(
                           context,
                           FadePageRoute(
@@ -651,15 +697,53 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                             update: false,
                           )),
                         );
-                      },
-                      child: Text(
-                        '(5/5 goals selected) Next',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: AppDimensions.height10(context) * 1.6,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
-                      )),
+                      } else {
+                        saveGoalsToSharedPreferences(multiGoals);
+                        print(multiGoals);
+                        Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const select_hurdle(
+                            update: false,
+                          )),
+                        );
+                      }
+                    }
+                  },
+                  child: Container(
+                    width: AppDimensions.height10(context) * 25.4,
+                    height: AppDimensions.height10(context) * 5.0,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 3.3,
+                        bottom: AppDimensions.height10(context) * 2.6),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          selectAll == true || multiGoals.length != 0
+                              ? Color(0xffFCC10D)
+                              : Color(0xffFCC10D).withOpacity(0.5),
+                          selectAll == true || multiGoals.length != 0
+                              ? Color(0xffFDA210)
+                              : Color(0xffFDA210).withOpacity(0.5),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(
+                          AppDimensions.height10(context) * 5.0),
+                    ),
+                    child: Center(
+                        child: Text(
+                      selectAll == true
+                          ? '(${allgoalsSelected.length}/${allgoalsSelected.length} goals selected) Next'
+                          : '(${multiGoals.length}/${allgoalsSelected.length} goals selected) Next',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white),
+                    )),
+                  ),
                 ),
                 Container(
                   width: AppDimensions.height10(context) * 17.0,

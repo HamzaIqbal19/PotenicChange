@@ -234,6 +234,20 @@ class photo_info extends StatefulWidget {
 class _photo_infoState extends State<photo_info> {
   var image;
   String? imageLink;
+  List selectedGoals = [];
+  List<String> tagList = [];
+
+  void getInspiration() async {
+    final SharedPreferences prefs = await _prefs;
+    final encodedGoals = prefs.getString('selected_goals_inspiration');
+    if (encodedGoals != null) {
+      List decodedGoals = List.from(json.decode(encodedGoals));
+      setState(() {
+        selectedGoals = decodedGoals;
+      });
+      print('SelectedGoals==============================$selectedGoals');
+    }
+  }
 
   void getImage() async {
     final SharedPreferences prefs = await _prefs;
@@ -267,6 +281,7 @@ class _photo_infoState extends State<photo_info> {
     super.initState();
     getImage();
     getImageLink();
+    getInspiration();
   }
 
   @override
@@ -360,11 +375,11 @@ class _photo_infoState extends State<photo_info> {
                                                       1,
                                                       image,
                                                       title.text.toString(),
-                                                      ['#tags'],
+                                                      tagList,
                                                       link.text.toString(),
                                                       true,
                                                       statement.text.toString(),
-                                                      [19])
+                                                      selectedGoals)
                                                   .then((response) {
                                                   if (response.length != 0) {
                                                     print(
@@ -1012,6 +1027,19 @@ class _photo_infoState extends State<photo_info> {
                                 ),
                                 child: TextField(
                                   controller: hastags,
+                                  onChanged: (text) {
+                                    List<String> words = text.split(' ');
+
+                                    List<String> tags = words
+                                        .where((word) => word.startsWith('#'))
+                                        .toList();
+
+                                    tagList.clear();
+
+                                    tagList.addAll(tags.toSet());
+
+                                    print(tagList);
+                                  },
                                   textAlignVertical: TextAlignVertical.center,
                                   style: TextStyle(
                                       fontSize:
@@ -1107,7 +1135,7 @@ class _photo_infoState extends State<photo_info> {
                                         child: GestureDetector(
                                             onTap: () {},
                                             child: Text(
-                                              '00 impacted goals',
+                                              '${selectedGoals.length} impacted goals',
                                               style: TextStyle(
                                                 fontFamily: 'laila',
                                                 color: const Color(0xFF646464),

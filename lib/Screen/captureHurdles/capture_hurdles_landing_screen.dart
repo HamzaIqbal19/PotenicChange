@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Hurdles.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -28,7 +30,11 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   List hurdleName = [];
   bool Loading = true;
   var goals = [];
+  int search = 0;
+  int goalId = 0;
+  int hurdleId = 0;
   List goalName = [];
+  var allHurdle;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -45,6 +51,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
       if (response.length != 0) {
         setState(() {
           hurdlesList = response;
+          allHurdle = response;
         });
         _fetchUserGoal();
         _fetchAllHurdle();
@@ -55,6 +62,18 @@ class _landing_hurdlesState extends State<landing_hurdles> {
       }
     }).catchError((error) {
       print("Hello world error");
+    });
+  }
+
+  void filterTerm(searchTerm, goalId) {
+    Hurdles().filterUserHurdles(searchTerm, goalId).then((response) {
+      print(searchTerm);
+      if (response.length != 0) {
+        setState(() {
+          hurdlesList = response;
+        });
+        print(hurdlesList);
+      }
     });
   }
 
@@ -95,6 +114,8 @@ class _landing_hurdlesState extends State<landing_hurdles> {
     print('Second FunctionCalled');
     for (int i = 0; i <= hurdlesListName.length; i++) {
       hurdleName.add(hurdlesListName[i]['hurdleName']);
+      print('HURDLE LIST NAME');
+      print(hurdlesListName[i]['id']);
     }
   }
 
@@ -246,7 +267,11 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                     setState(() {
                                                       _selected_goal =
                                                           goalName[_Goal_Index];
+                                                      goalId =
+                                                          goals[index]['id'];
                                                     });
+                                                    filterTerm(hurdleId,
+                                                        goals[index]['id']);
 
                                                     Navigator.pop(context);
                                                   },
@@ -442,11 +467,28 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                 ),
                                                 GestureDetector(
                                                   onTap: () {
+                                                    print(
+                                                        '=============HrurdleID============');
+                                                    print(hurdlesList[
+                                                            _selectedTag]
+                                                        ['hurdleId']);
                                                     setState(() {
                                                       _selected_activity =
                                                           hurdleName[
                                                               _selectedTag];
+                                                      hurdleId =
+                                                          hurdlesListName[
+                                                                  _selectedTag]
+                                                              ['id'];
+                                                      // search = hurdlesList[
+                                                      //         _selectedTag]
+                                                      //     ['hurdleId'];
                                                     });
+                                                    filterTerm(
+                                                        hurdlesListName[
+                                                            _selectedTag]['id'],
+                                                        goalId);
+
                                                     print('asf');
                                                     Navigator.pop(context);
                                                   },
@@ -568,7 +610,15 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                         ),
                       ),
                       AnimatedScaleButton(
-                        onTap: () {},
+                        onTap: () {
+                          setState(() {
+                            hurdlesList = allHurdle;
+                            hurdleId = 0;
+                            goalId = 0;
+                            _selected_activity = "All";
+                            _selected_goal = 'All';
+                          });
+                        },
                         child: Container(
                           //width: AppDimensions.height10(context) * 3.9,
                           height: AppDimensions.height10(context) * 3.4,
@@ -804,8 +854,9 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                               context) *
                                                           1.9,
                                                   child: Text(
-                                                    hurdlesList[index]
-                                                        ['hurdleName'],
+                                                    capitalizeFirstLetter(
+                                                        hurdlesList[index]
+                                                            ['hurdleName']),
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                         color: Colors.white,
@@ -824,8 +875,9 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                                   context) *
                                                           0.6),
                                                   child: Text(
-                                                    hurdlesList[index]
-                                                        ['triggerStatment'],
+                                                    capitalizeFirstLetter(
+                                                        hurdlesList[index][
+                                                            'triggerStatment']),
                                                     textAlign: TextAlign.center,
                                                     maxLines: 4,
                                                     overflow:

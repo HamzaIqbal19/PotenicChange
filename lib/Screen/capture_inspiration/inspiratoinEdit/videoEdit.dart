@@ -32,6 +32,7 @@ class video_EditState extends State<videoEdit> {
   TextEditingController statement = TextEditingController();
   TextEditingController hastags = TextEditingController();
   TextEditingController title = TextEditingController();
+  List<String> tagList = [];
 
   bool Loading = true;
   Future<Timer> loadData() async {
@@ -55,7 +56,10 @@ class video_EditState extends State<videoEdit> {
         title.text = inspirationDetails['inspiration']['title'];
         file.text = inspirationDetails['inspiration']['file'];
         statement.text = inspirationDetails['inspiration']['description'];
-        hastags.text = inspirationDetails['inspiration']['hashTags'][0];
+        hastags.text = inspirationDetails['inspiration']['hashTags']
+            .toString()
+            .replaceAll('[', '')
+            .replaceAll(']', '');
         loadData();
 
         print("1212312312321321");
@@ -256,7 +260,7 @@ class video_EditState extends State<videoEdit> {
                                                         .updateInspiration(
                                                             title.text
                                                                 .toString(),
-                                                            ['tag'],
+                                                            tagList,
                                                             link.text
                                                                 .toString(),
                                                             statement.text
@@ -615,6 +619,19 @@ class video_EditState extends State<videoEdit> {
                                 ),
                                 child: TextFormField(
                                   controller: hastags,
+                                  onChanged: (text) {
+                                    List<String> words = text.split(' ');
+
+                                    List<String> tags = words
+                                        .where((word) => word.startsWith('#'))
+                                        .toList();
+
+                                    tagList.clear();
+
+                                    tagList.addAll(tags.toSet());
+
+                                    print(tagList);
+                                  },
                                   textAlignVertical: TextAlignVertical.center,
                                   style: TextStyle(
                                       fontSize:

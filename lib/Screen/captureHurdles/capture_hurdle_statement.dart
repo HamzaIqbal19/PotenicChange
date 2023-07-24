@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Hurdles.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -151,7 +152,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                   AssetImage('assets/images/black_hole.webp'))),
                       child: Center(
                         child: Text(
-                          hurdleName!,
+                          capitalizeFirstLetter(hurdleName!),
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 3,

@@ -26,10 +26,13 @@ class inspiration_landing extends StatefulWidget {
 
 class _inspiration_landingState extends State<inspiration_landing> {
   var InspirationList;
-
+  var InspirationAll;
+  List<String> tagNames = [];
   bool Loading = true;
   var goals = [];
   List goalName = [];
+  int goalId = 0;
+  String selectionTag = '';
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -41,15 +44,28 @@ class _inspiration_landingState extends State<inspiration_landing> {
     });
   }
 
+  void filterInspiratonByTag(search, id) {
+    InspirationApi().filterUserInspiration(search, id).then((response) {
+      if (response.length != 0) {
+        setState(() {
+          InspirationList = response;
+        });
+      }
+    });
+  }
+
   void _fetchInspiraion() async {
     InspirationApi().getUserInspiration().then((response) {
       if (response.length != 0) {
         setState(() {
           InspirationList = response;
+          InspirationAll = response;
         });
+
         _fetchUserGoal();
 
         loadData();
+        _getTagNames();
         return response;
       } else {
         return response.statusCode;
@@ -73,6 +89,22 @@ class _inspiration_landingState extends State<inspiration_landing> {
     for (int i = 0; i <= goals.length; i++) {
       goalName.add(goals[i]['name']);
     }
+  }
+
+  _getTagNames() {
+    print('Tag function called');
+    for (int i = 0; i <= InspirationList.length; i++) {
+      if (InspirationList[i]['hashTags'].toString().length >= 3) {
+        tagNames.add(InspirationList[i]['hashTags']
+            .toString()
+            .replaceAll('[', ' ')
+            .replaceAll(']', ' '));
+      }
+
+      //tagNames.add(InspirationList[i]['hashTags'].toString());
+    }
+    print('TAGNAMES=====================');
+    print(tagNames);
   }
 
   @override
@@ -336,520 +368,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 )
                               ]),
                             );
-                          }))
-                      // widget.muliple_insp
-                      //     ? Container(
-                      //         //  color: Colors.red,
-                      //         // height: AppDimensions.height10(context) * 47.0,
-                      //         margin: EdgeInsets.only(
-                      //             top: AppDimensions.height10(context) * 2.4,
-                      //             bottom: AppDimensions.height10(context) * 2.5),
-                      //         child: Row(
-                      //           children: [
-                      //             Container(
-                      //               width: AppDimensions.height10(context) * 16.7,
-                      //               //  height: AppDimensions.height10(context) * 71.0,
-                      //               margin: EdgeInsets.only(
-                      //                   left: AppDimensions.height10(context) * 3.0),
-
-                      //               child: Column(
-                      //                 children: [
-                      //                   GestureDetector(
-                      //                     onTap: () {},
-                      //                     child: SizedBox(
-                      //                       width:
-                      //                           AppDimensions.height10(context) * 16.7,
-                      //                       height:
-                      //                           AppDimensions.height10(context) * 22,
-                      //                       child: Column(children: [
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   16.7,
-                      //                           decoration: const BoxDecoration(
-                      //                               shape: BoxShape.circle,
-                      //                               image: DecorationImage(
-                      //                                   image: AssetImage(
-                      //                                       'assets/images/Rectangle 10.webp'),
-                      //                                   fit: BoxFit.cover)),
-                      //                         ),
-                      //                         Container(
-                      //                           // width: AppDimensions.height10(context) * 16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   1.9,
-                      //                           margin: EdgeInsets.only(
-                      //                               top: AppDimensions.height10(
-                      //                                       context) *
-                      //                                   0.5),
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Feelings and thoughts',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.4,
-                      //                                 fontWeight: FontWeight.w600,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         ),
-                      //                         SizedBox(
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.0,
-                      //                                 fontWeight: FontWeight.w400,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         )
-                      //                       ]),
-                      //                     ),
-                      //                   ),
-                      //                   GestureDetector(
-                      //                     onTap: () {},
-                      //                     child: Container(
-                      //                       width:
-                      //                           AppDimensions.height10(context) * 16.7,
-                      //                       height:
-                      //                           AppDimensions.height10(context) * 22,
-                      //                       margin: EdgeInsets.only(
-                      //                           top: AppDimensions.height10(context) *
-                      //                               3.0,
-                      //                           bottom:
-                      //                               AppDimensions.height10(context) *
-                      //                                   3.0),
-                      //                       child: Column(children: [
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   16.7,
-                      //                           decoration: const BoxDecoration(
-                      //                               color: Color(0xFFD9D9D9),
-                      //                               shape: BoxShape.circle,
-                      //                               image: DecorationImage(
-                      //                                   image: AssetImage(
-                      //                                       'assets/images/image 65.webp'))),
-                      //                         ),
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   1.9,
-                      //                           margin: EdgeInsets.only(
-                      //                               top: AppDimensions.height10(
-                      //                                       context) *
-                      //                                   0.5),
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Quote',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.4,
-                      //                                 fontWeight: FontWeight.w600,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         ),
-                      //                         SizedBox(
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.0,
-                      //                                 fontWeight: FontWeight.w400,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         )
-                      //                       ]),
-                      //                     ),
-                      //                   ),
-                      //                   GestureDetector(
-                      //                     onTap: () {
-                      //                       Navigator.push(
-                      //                         context,
-                      //                         FadePageRoute(
-                      //                             page: const record_inspiration(
-                      //                           type_switch: 2,
-                      //                         )),
-                      //                       );
-                      //                     },
-                      //                     child: Container(
-                      //                       width:
-                      //                           AppDimensions.height10(context) * 16.7,
-                      //                       height:
-                      //                           AppDimensions.height10(context) * 22,
-                      //                       margin: EdgeInsets.only(
-                      //                           bottom:
-                      //                               AppDimensions.height10(context) *
-                      //                                   3.0),
-                      //                       child: Column(children: [
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   16.7,
-                      //                           decoration: const BoxDecoration(
-                      //                             color: Color(0xFFD9D9D9),
-                      //                             shape: BoxShape.circle,
-                      //                             gradient: RadialGradient(colors: [
-                      //                               Color(0xFFE9A594),
-                      //                               Color(0xFFEEBEB2)
-                      //                             ]),
-                      //                           ),
-                      //                           child: Center(
-                      //                             child: Text(
-                      //                               'Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. ',
-                      //                               textAlign: TextAlign.center,
-                      //                               style: TextStyle(
-                      //                                   fontSize:
-                      //                                       AppDimensions.height10(
-                      //                                               context) *
-                      //                                           1.4,
-                      //                                   fontWeight: FontWeight.w400,
-                      //                                   color: const Color(0xFFFFFFFF)),
-                      //                             ),
-                      //                           ),
-                      //                         ),
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   1.9,
-                      //                           margin: EdgeInsets.only(
-                      //                               top: AppDimensions.height10(
-                      //                                       context) *
-                      //                                   0.5),
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Quote',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.4,
-                      //                                 fontWeight: FontWeight.w600,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         ),
-                      //                         SizedBox(
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit....',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.0,
-                      //                                 fontWeight: FontWeight.w400,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         )
-                      //                       ]),
-                      //                     ),
-                      //                   ),
-                      //                   SizedBox(
-                      //                     height: AppDimensions.height10(context) * 3.0,
-                      //                   )
-                      //                 ],
-                      //               ),
-                      //             ),
-                      //             Container(
-                      //               // color: Colors.amber,
-                      //               width: AppDimensions.height10(context) * 16.7,
-
-                      //               //height: AppDimensions.height10(context) * 71.0,
-                      //               margin: EdgeInsets.only(
-                      //                   left: AppDimensions.height10(context) * 3.0,
-                      //                   top: AppDimensions.height10(context) * 7.0),
-                      //               child: Column(
-                      //                 children: [
-                      //                   GestureDetector(
-                      //                     onTap: () {
-                      //                       Navigator.push(
-                      //                         context,
-                      //                         FadePageRoute(
-                      //                             page: const record_inspiration(
-                      //                           type_switch: 3,
-                      //                         )),
-                      //                       );
-                      //                     },
-                      //                     child: SizedBox(
-                      //                       width:
-                      //                           AppDimensions.height10(context) * 16.7,
-                      //                       height:
-                      //                           AppDimensions.height10(context) * 21.2,
-                      //                       child: Column(children: [
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   16.7,
-                      //                           decoration: const BoxDecoration(
-                      //                               color: Color(0xFFD9D9D9),
-                      //                               shape: BoxShape.circle,
-                      //                               image: DecorationImage(
-                      //                                   image: AssetImage(
-                      //                                       'assets/images/video_play.webp'),
-                      //                                   fit: BoxFit.cover)),
-                      //                         ),
-                      //                         Container(
-                      //                           // width: AppDimensions.height10(context) * 16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   1.9,
-                      //                           margin: EdgeInsets.only(
-                      //                               top: AppDimensions.height10(
-                      //                                       context) *
-                      //                                   0.5),
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Music Eye Of The Tiger ',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.4,
-                      //                                 fontWeight: FontWeight.w600,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         ),
-                      //                         SizedBox(
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Survivors',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.0,
-                      //                                 fontWeight: FontWeight.w400,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         )
-                      //                       ]),
-                      //                     ),
-                      //                   ),
-                      //                   GestureDetector(
-                      //                     onTap: () {
-                      //                       Navigator.push(
-                      //                         context,
-                      //                         FadePageRoute(
-                      //                             page: const record_inspiration(
-                      //                           type_switch: 1,
-                      //                         )),
-                      //                       );
-                      //                     },
-                      //                     child: Container(
-                      //                       width:
-                      //                           AppDimensions.height10(context) * 16.7,
-                      //                       height:
-                      //                           AppDimensions.height10(context) * 21.2,
-                      //                       margin: EdgeInsets.only(
-                      //                           top: AppDimensions.height10(context) *
-                      //                               3.0,
-                      //                           bottom:
-                      //                               AppDimensions.height10(context) *
-                      //                                   3.0),
-                      //                       child: Column(children: [
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   16.7,
-                      //                           decoration: const BoxDecoration(
-                      //                               shape: BoxShape.circle,
-                      //                               image: DecorationImage(
-                      //                                   image: AssetImage(
-                      //                                       'assets/images/sir_nyal.webp'))),
-                      //                         ),
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   1.9,
-                      //                           margin: EdgeInsets.only(
-                      //                               top: AppDimensions.height10(
-                      //                                       context) *
-                      //                                   0.5),
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Influencer',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.4,
-                      //                                 fontWeight: FontWeight.w600,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         ),
-                      //                         SizedBox(
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Nir Eyal',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.0,
-                      //                                 fontWeight: FontWeight.w400,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         )
-                      //                       ]),
-                      //                     ),
-                      //                   ),
-                      //                   GestureDetector(
-                      //                     onTap: () {
-                      //                       Navigator.push(
-                      //                         context,
-                      //                         FadePageRoute(
-                      //                             page: const record_inspiration(
-                      //                           type_switch: 4,
-                      //                         )),
-                      //                       );
-                      //                     },
-                      //                     child: Container(
-                      //                       width:
-                      //                           AppDimensions.height10(context) * 16.7,
-                      //                       height:
-                      //                           AppDimensions.height10(context) * 22,
-                      //                       margin: EdgeInsets.only(
-                      //                           bottom:
-                      //                               AppDimensions.height10(context) *
-                      //                                   3.0),
-                      //                       child: Column(children: [
-                      //                         Container(
-                      //                           width: AppDimensions.height10(context) *
-                      //                               16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   16.7,
-                      //                           decoration: const BoxDecoration(
-                      //                               shape: BoxShape.circle,
-                      //                               color: Color(0xFFD9D9D9),
-                      //                               image: DecorationImage(
-                      //                                   image: AssetImage(
-                      //                                       'assets/images/distraction content.webp'))),
-                      //                         ),
-                      //                         Container(
-                      //                           // width: AppDimensions.height10(context) * 16.7,
-                      //                           height:
-                      //                               AppDimensions.height10(context) *
-                      //                                   1.9,
-                      //                           margin: EdgeInsets.only(
-                      //                               top: AppDimensions.height10(
-                      //                                       context) *
-                      //                                   0.5),
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Content',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.4,
-                      //                                 fontWeight: FontWeight.w600,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         ),
-                      //                         SizedBox(
-                      //                           child: Center(
-                      //                               child: Text(
-                      //                             'Learn How To Avoid Distraction In A\nWorld That Is Full Of It.',
-                      //                             style: TextStyle(
-                      //                                 fontSize: AppDimensions.height10(
-                      //                                         context) *
-                      //                                     1.0,
-                      //                                 fontWeight: FontWeight.w400,
-                      //                                 color: const Color(0xFFFFFFFF)),
-                      //                           )),
-                      //                         )
-                      //                       ]),
-                      //                     ),
-                      //                   ),
-                      //                   SizedBox(
-                      //                     height: AppDimensions.height10(context) * 3.0,
-                      //                   )
-                      //                 ],
-                      //               ),
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       )
-                      //     : GestureDetector(
-                      //         onTap: () {
-                      //           widget.is_Updated
-                      //               ? NavigatorState()
-                      //               : Navigator.push(
-                      //                   context,
-                      //                   FadePageRoute(
-                      //                       page: const record_inspiration(
-                      //                     type_switch: 1,
-                      //                   )),
-                      //                 );
-                      //         },
-                      //         child: Container(
-                      //           width: AppDimensions.height10(context) * 16.7,
-                      //           height: AppDimensions.height10(context) * 21.2,
-                      //           margin: EdgeInsets.only(
-                      //             top: AppDimensions.height10(context) * 5.3,
-                      //             right: AppDimensions.height10(context) * 21.7,
-                      //             left: AppDimensions.height10(context) * 3.0,
-                      //           ),
-                      //           child: Column(children: [
-                      //             Container(
-                      //               width: AppDimensions.height10(context) * 16.7,
-                      //               height: AppDimensions.height10(context) * 16.7,
-                      //               decoration: const BoxDecoration(
-                      //                   shape: BoxShape.circle,
-                      //                   color: Color(0xFFD9D9D9),
-                      //                   image: DecorationImage(
-                      //                       image: AssetImage(
-                      //                           'assets/images/sir_nyal.webp'),
-                      //                       fit: BoxFit.cover)),
-                      //             ),
-                      //             Container(
-                      //               width: AppDimensions.height10(context) * 16.7,
-                      //               height: AppDimensions.height10(context) * 1.9,
-                      //               margin: EdgeInsets.only(
-                      //                   top: AppDimensions.height10(context) * 0.5),
-                      //               child: Center(
-                      //                   child: Text(
-                      //                 'Influencer',
-                      //                 style: TextStyle(
-                      //                     fontSize:
-                      //                         AppDimensions.height10(context) * 1.4,
-                      //                     fontWeight: FontWeight.w600,
-                      //                     color: const Color(0xFFFFFFFF)),
-                      //               )),
-                      //             ),
-                      //             SizedBox(
-                      //               child: Center(
-                      //                   child: Text(
-                      //                 'Nir Eyal',
-                      //                 style: TextStyle(
-                      //                     fontSize:
-                      //                         AppDimensions.height10(context) * 1.0,
-                      //                     fontWeight: FontWeight.w400,
-                      //                     color: const Color(0xFFFFFFFF)),
-                      //               )),
-                      //             )
-                      //           ]),
-                      //         ),
-                      //       ),
-                      ,
-                      // widget.muliple_insp
-                      //     ? Container()
-                      //     :
+                          })),
                       widget.is_Updated
                           ? Container(
                               width: AppDimensions.height10(context) * 38.259,
@@ -1105,7 +624,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                         _selected_goal =
                                                             goalName[
                                                                 _Goal_Index];
+                                                        goalId =
+                                                            goals[_Goal_Index]
+                                                                ['id'];
                                                       });
+                                                      filterInspiratonByTag(
+                                                          selectionTag,
+                                                          goals[_Goal_Index]
+                                                              ['id']);
 
                                                       Navigator.pop(context);
                                                     },
@@ -1310,8 +836,20 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                     onTap: () {
                                                       setState(() {
                                                         _selected_activity =
-                                                            _tags[_selectedTag];
+                                                            tagNames[
+                                                                _selectedTag];
+                                                        selectionTag = tagNames[
+                                                                _selectedTag]
+                                                            .toString()
+                                                            .trim();
                                                       });
+                                                      print(tagNames[
+                                                          _selectedTag]);
+                                                      filterInspiratonByTag(
+                                                          tagNames[_selectedTag]
+                                                              .toString()
+                                                              .trim(),
+                                                          goalId);
                                                       print('asf');
                                                       Navigator.pop(context);
                                                     },
@@ -1343,7 +881,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                 magnification: 1.2,
                                                 useMagnifier:
                                                     true, // Set the height of each statement
-                                                children: _tags
+                                                children: tagNames
                                                     .map((statement) =>
                                                         Text(statement,
                                                             style: TextStyle(
@@ -1441,6 +979,15 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           ),
                         ),
                         GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              InspirationList = InspirationAll;
+                              selectionTag = '';
+                              goalId = 0;
+                              _selected_activity = 'All';
+                              _selected_goal = "All";
+                            });
+                          },
                           child: Container(
                             width: AppDimensions.height10(context) * 3.9,
                             height: AppDimensions.height10(context) * 3.4,
@@ -1449,7 +996,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                 right: AppDimensions.height10(context) * 3.0),
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              'Clec',
+                              'Clear',
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.4,

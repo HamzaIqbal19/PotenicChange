@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
@@ -21,6 +23,27 @@ class _link_infoState extends State<link_info> {
   TextEditingController statement = TextEditingController();
   TextEditingController author = TextEditingController();
   TextEditingController hastags = TextEditingController();
+  List selectedGoals = [];
+  List<String> tagList = [];
+
+  void getInspiration() async {
+    final SharedPreferences prefs = await _prefs;
+    final encodedGoals = prefs.getString('selected_goals_inspiration');
+    if (encodedGoals != null) {
+      List decodedGoals = List.from(json.decode(encodedGoals));
+      setState(() {
+        selectedGoals = decodedGoals;
+      });
+      print('SelectedGoals==============================$selectedGoals');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getInspiration();
+  }
+
   @override
   Widget build(BuildContext context) {
     bool link_state = false;
@@ -91,11 +114,11 @@ class _link_infoState extends State<link_info> {
                               4,
                               author.text.toString(),
                               " ",
-                              ['#tags'],
+                              tagList,
                               link.text.toString(),
                               true,
                               statement.text.toString(),
-                              [1])
+                              selectedGoals)
                           .then((response) {
                         if (response.length != 0) {
                           print('----------------');
@@ -155,11 +178,11 @@ class _link_infoState extends State<link_info> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            //height: AppDimensions.height10(context) * 2.4,
                             width: AppDimensions.height10(context) * 30.5,
                             margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 0.65,
+                              left: AppDimensions.height10(context) * 1.5,
                               right: AppDimensions.height10(context) * 5.0,
+                              //top: AppDimensions.height10(context) * 1.0
                             ),
                             child: TextFormField(
                               controller: link,
@@ -171,7 +194,7 @@ class _link_infoState extends State<link_info> {
                                   link_state = true;
                                 });
                               },
-                              textAlignVertical: TextAlignVertical.top,
+                              textAlignVertical: TextAlignVertical.center,
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.7,
@@ -180,7 +203,7 @@ class _link_infoState extends State<link_info> {
                               decoration: InputDecoration(
                                   isCollapsed: true,
                                   contentPadding: EdgeInsets.fromLTRB(
-                                      AppDimensions.height10(context) * 1.4,
+                                      AppDimensions.height10(context) * 0.9,
                                       0,
                                       0,
                                       0),
@@ -401,7 +424,20 @@ class _link_infoState extends State<link_info> {
                         margin: EdgeInsets.only(
                           left: AppDimensions.height10(context) * 0.6,
                         ),
-                        child: TextField(
+                        child: TextFormField(
+                          onChanged: (text) {
+                            List<String> words = text.split(' ');
+
+                            List<String> tags = words
+                                .where((word) => word.startsWith('#'))
+                                .toList();
+
+                            tagList.clear();
+
+                            tagList.addAll(tags.toSet());
+
+                            print(tagList);
+                          },
                           controller: hastags,
                           textAlignVertical: TextAlignVertical.center,
                           style: TextStyle(
@@ -476,7 +512,7 @@ class _link_infoState extends State<link_info> {
                                 child: GestureDetector(
                                     onTap: () {},
                                     child: Text(
-                                      '00 impacted goals',
+                                      '${selectedGoals.length} impacted goals',
                                       style: TextStyle(
                                         color: const Color(0xFF646464),
                                         fontSize:

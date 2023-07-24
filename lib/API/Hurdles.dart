@@ -55,7 +55,7 @@ class Hurdles {
       "hurdleId": "$hurdleId",
       "userId": UserId
     });
-
+    print(Body);
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/userHurdle/add-hurdle'),
         headers: headers,
@@ -156,6 +156,39 @@ class Hurdles {
     }
   }
 
+  Future filterUserHurdles(filterTerm, goalId) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var UserId = prefs.getInt('userid');
+    print('$UserId');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken',
+    };
+
+    var response = await http.get(
+      Uri.parse(goalId != 0 && filterTerm != 0
+          ? '${URL.BASE_URL}api/userHurdle/hurdle-by-user-id/$UserId?hurdleId=$filterTerm&userGoalId=$goalId'
+          : filterTerm != 0 && goalId == 0
+              ? '${URL.BASE_URL}api/userHurdle/hurdle-by-user-id/$UserId?hurdleId=$filterTerm'
+              : goalId != 0 && filterTerm == 0
+                  ? '${URL.BASE_URL}api/userHurdle/hurdle-by-user-id/$UserId?userGoalId=$goalId'
+                  : '${URL.BASE_URL}api/userHurdle/hurdle-by-user-id/$UserId'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return jsonData;
+    } else {
+      print(
+          'Failed to fetch hurdle names by user id Request failed with status: ${response.statusCode}');
+    }
+  }
+
   Future updateHurdle(destination, update) async {
     final SharedPreferences prefs = await _prefs;
     //var goal_num = prefs.getInt('goal_num');
@@ -191,4 +224,32 @@ class Hurdles {
       return false;
     }
   }
+
+  // Future getHurdleByGoalId() async {
+  //   final SharedPreferences prefs = await _prefs;
+  //   var Accestoken = prefs.getString("usertoken");
+
+  //  // print(hurldeId);
+
+  //   var headers = {
+  //     'Content-Type': 'application/json',
+  //     'x-access-token': '$Accestoken',
+  //   };
+
+  //   var response = await http.get(
+  //     Uri.parse('${URL.BASE_URL}api/userHurdle/$hurldeId'),
+  //     headers: headers,
+  //   );
+
+  //   if (response.statusCode == 200) {
+  //     var jsonData = jsonDecode(response.body);
+  //     print("Result:$jsonData");
+
+  //     return jsonData;
+  //   } else {
+  //     print(
+  //         'Failed to  hurdle names Request failed with status: ${response.statusCode}');
+  //   }
+  // }
+
 }

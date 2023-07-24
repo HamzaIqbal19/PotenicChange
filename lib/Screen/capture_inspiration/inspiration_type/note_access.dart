@@ -1,14 +1,18 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 import '../capture_inpirations_goals.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class note_info extends StatefulWidget {
   final int type_switch;
@@ -683,7 +687,10 @@ class _note_infoState extends State<note_info> {
                                 child: widget.note_saved
                                     ? Text(
                                         inspirationDetails['inspiration']
-                                            ['hashTags'][0],
+                                                ['hashTags']
+                                            .toString()
+                                            .replaceAll('[', '')
+                                            .replaceAll(']', ''),
                                         style: TextStyle(
                                             color: const Color(0xFF282828),
                                             fontSize: AppDimensions.height10(
@@ -790,7 +797,7 @@ class _note_infoState extends State<note_info> {
                                         child: GestureDetector(
                                             onTap: () {},
                                             child: Text(
-                                              '00 impacted goals',
+                                              '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
                                               style: TextStyle(
                                                 color: const Color(0xFF646464),
                                                 fontSize:
@@ -854,6 +861,27 @@ class _noteSavedState extends State<noteSaved> {
   TextEditingController title = TextEditingController();
   TextEditingController statement = TextEditingController();
   TextEditingController hastags = TextEditingController();
+  List selectedGoals = [];
+  List<String> tagList = [];
+
+  void getInspiration() async {
+    final SharedPreferences prefs = await _prefs;
+    final encodedGoals = prefs.getString('selected_goals_inspiration');
+    if (encodedGoals != null) {
+      List decodedGoals = List.from(json.decode(encodedGoals));
+      setState(() {
+        selectedGoals = decodedGoals;
+      });
+      print('SelectedGoals==============================$selectedGoals');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getInspiration();
+  }
+
   @override
   Widget build(BuildContext context) {
     bool link_state = false;
@@ -933,13 +961,13 @@ class _noteSavedState extends State<noteSaved> {
                                     2,
                                     " ",
                                     title.text.toString(),
-                                    ['#tags'],
+                                    tagList,
                                     " ",
                                     true,
                                     statement.text.toString(),
-                                    [19])
+                                    selectedGoals)
                                 .then((response) {
-                              if (response.statusCode == 200) {
+                              if (response.length != 0) {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
@@ -966,8 +994,7 @@ class _noteSavedState extends State<noteSaved> {
                                   fontSize:
                                       AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
-                                  color:
-                                      const Color(0xff007AFF).withOpacity(0.4)),
+                                  color: Color(0xff007AFF).withOpacity(0.4)),
                             ),
                           ),
                         )
@@ -1010,7 +1037,7 @@ class _noteSavedState extends State<noteSaved> {
                           margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 0.6,
                           ),
-                          child: TextField(
+                          child: TextFormField(
                             controller: title,
                             textAlignVertical: TextAlignVertical.center,
                             style: TextStyle(
@@ -1106,9 +1133,25 @@ class _noteSavedState extends State<noteSaved> {
                             right: AppDimensions.height10(context) * 10.0,
                             // top: AppDimensions.height10(context) * 1.0
                           ),
-                          child: TextField(
+                          child: TextFormField(
                             controller: hastags,
                             textAlignVertical: TextAlignVertical.center,
+                            onChanged: (text) {
+                              List<String> words = text.split(' ');
+
+                              // Filter the words to find the ones that start with '#'
+                              List<String> tags = words
+                                  .where((word) => word.startsWith('#'))
+                                  .toList();
+
+                              // Add the unique tags to the tagsList
+                              tagList.clear();
+
+                              // Add the unique tags to the tagsList
+                              tagList.addAll(tags.toSet());
+
+                              print(tagList);
+                            },
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
@@ -1180,7 +1223,7 @@ class _noteSavedState extends State<noteSaved> {
                                   child: GestureDetector(
                                       onTap: () {},
                                       child: Text(
-                                        '00 impacted goals',
+                                        '${selectedGoals.length} impacted goals',
                                         style: TextStyle(
                                           color: const Color(0xFF646464),
                                           fontSize:

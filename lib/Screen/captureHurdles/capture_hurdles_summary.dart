@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Hurdles.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
@@ -142,7 +143,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                   //width: AppDimensions.height10(context) * 7.1,
                                   // height: AppDimensions.height10(context) * 1.9,
                                   child: Text(
-                                    hurdlesSummary['hurdleName'],
+                                    capitalizeFirstLetter(
+                                        hurdlesSummary['hurdleName']),
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
@@ -161,7 +163,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                       top: AppDimensions.height10(context) *
                                           0.6),
                                   child: Text(
-                                    hurdlesSummary['triggerStatment'],
+                                    capitalizeFirstLetter(
+                                        hurdlesSummary['triggerStatment']),
                                     textAlign: TextAlign.center,
                                     maxLines: 3,
                                     overflow: TextOverflow.ellipsis,
@@ -323,7 +326,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             child: GestureDetector(
                                 onTap: () {},
                                 child: Text(
-                                  '00 impacted goals',
+                                  '${hurdlesSummary['userGoalId'].length} impacted goals',
                                   style: TextStyle(
                                     color: const Color(0xFF646464),
                                     fontSize:

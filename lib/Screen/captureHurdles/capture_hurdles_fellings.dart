@@ -24,17 +24,27 @@ class felling_hurdles extends StatefulWidget {
 class _felling_hurdlesState extends State<felling_hurdles> {
   List<String> statements = [];
   String? hurdleName;
+  List selectedGoals = [];
   String? hurdleStatement;
   int? hurdleId;
 
   void _getHurdleDetail() async {
     final SharedPreferences prefs = await _prefs;
+
     setState(() {
       hurdleName = prefs.getString('hurdleName');
       hurdleStatement = prefs.getString('hurdleStatement');
       hurdleId = prefs.getInt('hurdleId');
     });
-    print(hurdleName);
+
+    final encodedGoals = prefs.getString('selected_goals');
+    if (encodedGoals != null) {
+      List decodedGoals = List.from(json.decode(encodedGoals));
+      setState(() {
+        selectedGoals = decodedGoals;
+      });
+      print('SelectedGoals==============================$selectedGoals');
+    }
   }
 
   TextEditingController controller = TextEditingController();
@@ -319,9 +329,13 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                     print(statements);
                     print(hurdleId);
                     print(hurdleName);
+
+                    print('Selected goals $selectedGoals');
                     print(hurdleStatement);
-                    Hurdles().addHurdle(hurdleName!, hurdleStatement!,
-                        statements, hurdleId!, [1]).then((response) async {
+                    Hurdles()
+                        .addHurdle(hurdleName!, hurdleStatement!, statements,
+                            hurdleId!, selectedGoals)
+                        .then((response) async {
                       final SharedPreferences prefs = await _prefs;
                       var userHurdleId = prefs.setInt(
                           'userHurdleId', response['result']['id']);

@@ -186,7 +186,39 @@ class InspirationApi {
       return jsonData;
     } else {
       print(
-          'Failed to fetch hurdle names Request failed with status: ${response.statusCode}');
+          'Failed to fetch inspiration names Request failed with status: ${response.statusCode}');
+    }
+  }
+
+  Future filterUserInspiration(tag, goalId) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var UserId = prefs.getInt('userid');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken',
+    };
+
+    var response = await http.get(
+      Uri.parse(goalId != 0 && tag.length != 0
+          ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag&userGoalId=$goalId'
+          : tag.length != 0
+              ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?tag=$tag'
+              : goalId != 0
+                  ? '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId?userGoalId=$goalId'
+                  : '${URL.BASE_URL}api/userInspiration/inspiration-by-userId/$UserId'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return jsonData;
+    } else {
+      print(
+          'Failed to fetch inspiration names Request failed with status: ${response.statusCode}');
     }
   }
 }
