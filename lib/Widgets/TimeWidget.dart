@@ -13,12 +13,16 @@ int count = 0;
 
 class schedule_card extends StatefulWidget {
   final String days;
+  String startTime;
+  String endTime;
   final ValueChanged<int> onCountChanged;
   final ValueChanged<String> onChangedStart;
   final ValueChanged<String> onChangedEnd;
 
   schedule_card(
       {Key? key,
+      required this.startTime,
+      required this.endTime,
       required this.days,
       required this.onCountChanged,
       required this.onChangedStart,
@@ -140,7 +144,7 @@ class _schedule_cardState extends State<schedule_card> {
                                 context: context,
                                 builder: (context) {
                                   return MyListWheelForm(
-                                    key: Key("$widget.key"),
+                                    key: Key("${widget.key}"),
                                     onSelectionChanged: (selectedDay,
                                         selectedHour,
                                         selectedMinute,
@@ -219,6 +223,7 @@ class _schedule_cardState extends State<schedule_card> {
                         startTimerState(
                           key: Key("$widget.key"),
                           text: ' 1) Time: ',
+                          start_Time: widget.startTime,
                           onChanged: (value) {
                             setState(() {
                               start_time = value;
@@ -245,7 +250,7 @@ class _schedule_cardState extends State<schedule_card> {
                                 backgroundColor: Colors.transparent,
                                 onPressed: () {
                                   setState(() {
-                                    start_time = '00:00';
+                                    widget.startTime = '00:00';
                                     removeSelectedDay(days_name);
                                   });
                                   _globalKey.currentState?.collapse();
@@ -269,6 +274,7 @@ class _schedule_cardState extends State<schedule_card> {
                         endTimerState(
                           key: Key("$widget.key"),
                           text: '2) Time: ',
+                          endTime: widget.endTime,
                           onChanged: (value) {
                             setState(() {
                               end_time = value;
@@ -295,7 +301,7 @@ class _schedule_cardState extends State<schedule_card> {
                                   backgroundColor: Colors.transparent,
                                   onPressed: () {
                                     setState(() {
-                                      end_time = '00:00';
+                                      widget.endTime = '00:00';
                                       removeSelectedDay(days_name);
                                     });
                                     _globalKey.currentState?.collapse();
@@ -321,12 +327,14 @@ class _schedule_cardState extends State<schedule_card> {
 
 class startTimerState extends StatefulWidget {
   final String text;
+  final String start_Time;
 
   final ValueChanged<String> onChanged;
   final ValueChanged<String> onChangedStart;
 
   const startTimerState({
     Key? key,
+    required this.start_Time,
     required this.text,
     required this.onChanged,
     required this.onChangedStart,
@@ -353,9 +361,9 @@ class _startTimerStateState extends State<startTimerState> {
   String endperiod = '';
 
   bool Done = false;
-  endTime() {
-    return start_time;
-  }
+  // endTime() {
+  //   return start_time;
+  // }
 
   String text_state;
 
@@ -388,7 +396,7 @@ class _startTimerStateState extends State<startTimerState> {
               Container(
                 width: AppDimensions.height10(context) * 17.2,
                 child: Text(
-                  start_time,
+                  widget.start_Time,
                   style: TextStyle(
                     color: const Color.fromRGBO(250, 153, 52, 1),
                     fontSize: AppDimensions.height10(context) * 1.6,
@@ -459,11 +467,13 @@ class _startTimerStateState extends State<startTimerState> {
 
 class endTimerState extends StatefulWidget {
   final String text;
+  final String endTime;
   final ValueChanged<String> onChanged;
   final ValueChanged<String> onChangedEnd;
 
   const endTimerState(
       {Key? key,
+      required this.endTime,
       required this.text,
       required this.onChanged,
       required this.onChangedEnd})
@@ -490,9 +500,9 @@ class _endTimerStateState extends State<endTimerState> {
   String endperiod = '';
 
   bool Done = false;
-  endTime() {
-    return end_time;
-  }
+  // endTime() {
+  //   return end_time;
+  // }
 
   String text_state;
 
@@ -525,7 +535,7 @@ class _endTimerStateState extends State<endTimerState> {
               Container(
                 width: AppDimensions.height10(context) * 16.2,
                 child: Text(
-                  end_time,
+                  widget.endTime,
                   style: TextStyle(
                     color: Color.fromRGBO(250, 153, 52, 1),
                     fontSize: AppDimensions.height10(context) * 1.6,
@@ -549,7 +559,7 @@ class _endTimerStateState extends State<endTimerState> {
                       context: context,
                       builder: (context) {
                         return MyListWheelForm(
-                          key: Key('$widget.key'),
+                          key: Key('${widget.key}'),
                           onSelectionChanged: (selectedDay, selectedHour,
                               selectedMinute, selectedPeriod, Done) {
                             String endTime =

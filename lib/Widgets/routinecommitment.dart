@@ -161,7 +161,7 @@ class _schedule_cardState extends State<schedule_card> {
                     child: Row(
                       children: [
                         startTimerState(
-                          key: Key("$widget.key"),
+                          key: Key("${widget.key}"),
                           text: ' 1) Time: ',
                           startTime: widget.startTime,
                         ),
@@ -175,7 +175,7 @@ class _schedule_cardState extends State<schedule_card> {
                     child: Row(
                       children: [
                         endTimerState(
-                          key: Key("$widget.key"),
+                          key: Key("${widget.key}"),
                           text: '1) Time: ',
                           endTime: widget.endTime,
                         ),

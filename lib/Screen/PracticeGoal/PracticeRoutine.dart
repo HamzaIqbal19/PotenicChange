@@ -23,14 +23,31 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
   int Count = 0;
 
   List<Map<String, dynamic>> timesPerDay = [
-    {'day': 'Monday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
-    {'day': 'Tuesday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
-    {'day': 'Wednesday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
-    {'day': 'Thursday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
-    {'day': 'Friday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
-    {'day': 'Saturday', 'starttime': '11:11 am', 'endtime': '7:00 pm'},
-    {'day': 'Sunday', 'starttime': '11:11 am', 'endtime': '7:00 pm'}
+    {'day': 'Monday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
+    {'day': 'Tuesday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
+    {'day': 'Wednesday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
+    {'day': 'Thursday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
+    {'day': 'Friday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
+    {'day': 'Saturday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
+    {'day': 'Sunday', 'starttime': '9:00 am', 'endtime': '7:00 pm'}
   ];
+  List<String> selectedDay = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+  List<Map<String, dynamic>> selectedDays = [];
+
+  void timeAdd() {
+    timesPerDay.add({
+      'day': 'Monday',
+    });
+  }
+
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
   var practice = TextEditingController();
@@ -328,10 +345,18 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                               children: [
                                 schedule_card(
                                   key: Key('$index'),
-                                  days: '${timesPerDay[index]['day']}',
+                                  // days: '${timesPerDay[index]['day']}',
+                                  days: '${selectedDay[index]}',
+
+                                  startTime:
+                                      "${timesPerDay[index]['starttime']}",
+                                  endTime: "${timesPerDay[index]['endtime']}",
                                   onChangedStart: (value) {
                                     print(value);
                                     //  print(timesPerDay[index]['day']);
+                                    print(
+                                        "Start index printing${timesPerDay[index]}");
+
                                     setState(() {
                                       timesPerDay[index]['starttime'] = value;
                                       index1 = index;
@@ -339,6 +364,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                   },
                                   onChangedEnd: (value) {
                                     print(value);
+                                    print(
+                                        "End index printing${timesPerDay[index]}");
+
                                     setState(() {
                                       timesPerDay[index]['endtime'] = value;
 
@@ -346,11 +374,30 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                     });
                                   },
                                   onCountChanged: (value) {
-                                    setState(() {
-                                      Count = value;
-                                      index1 = index;
-                                    });
-                                    print(Count);
+                                    // Clear the existing selectedDays list
+                                    // selectedDays.clear();
+                                    bool isAlreadySelected = selectedDays
+                                        .contains(timesPerDay[index]);
+
+                                    // Add the selected day to selectedDays list based on the index
+                                    if (isAlreadySelected) {
+                                      print(
+                                          "The list is alredy exist in object");
+                                      // If it's already selected, remove it from the list
+                                      // selectedDays.remove(timesPerDay[index]);
+                                    } else {
+                                      // If it's not already selected, add it to the list
+                                      selectedDays.add(timesPerDay[index]);
+                                      setState(() {
+                                        Count = value;
+                                        index1 = index;
+                                      });
+
+                                      print("counter incress: $Count");
+                                    }
+
+                                    print('Selected Days:');
+                                    print(selectedDays);
                                   },
                                 ),
                                 SizedBox(
@@ -372,7 +419,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       onTap: () async {
                         print(timesPerDay);
                         if (count >= 3) {
-                          saveTimesPerDay(timesPerDay);
+                          saveTimesPerDay(selectedDays);
 
                           print(timesPerDay[6]['start']);
                           print(timesPerDay[6]['end']);
