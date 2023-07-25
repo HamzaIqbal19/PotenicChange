@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Hurdles.dart';
@@ -28,14 +29,14 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   var hurdlesList;
   var hurdlesListName;
   List hurdleName = [];
-  bool Loading = true;
+
   var goals = [];
   int search = 0;
   int goalId = 0;
   int hurdleId = 0;
   List goalName = [];
   var allHurdle;
-
+  bool Loading = true;
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
@@ -1023,7 +1024,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                           // width: AppDimensions.height10(context) * 7.1,
                           // height: AppDimensions.height10(context) * 1.9,
                           child: Text(
-                            hurdlesSummary['hurdleName'],
+                            capitalizeFirstLetter(hurdlesSummary['hurdleName']),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             textAlign: TextAlign.center,
@@ -1039,7 +1040,8 @@ class _hurdle_menuState extends State<hurdle_menu> {
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 0.773),
                           child: Text(
-                            hurdlesSummary['triggerStatment'],
+                            capitalizeFirstLetter(
+                                hurdlesSummary['triggerStatment']),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 3,
                             textAlign: TextAlign.center,
@@ -1186,14 +1188,190 @@ class _hurdle_menuState extends State<hurdle_menu> {
                         ),
                         AnimatedScaleButton(
                           onTap: () {
-                            Hurdles()
-                                .deleteUserHurdle(hurdlesSummary['id'])
-                                .then((response) {
-                              if (response == true) {
-                                Navigator.push(context,
-                                    FadePageRoute(page: landing_hurdles()));
-                              }
-                            });
+                            return showAnimatedDialog(
+                                animationType: DialogTransitionType.fadeScale,
+                                curve: Curves.easeInOut,
+                                duration: Duration(seconds: 1),
+                                context: context,
+                                builder: (BuildContext context) => SizedBox(
+                                      width: AppDimensions.height10(context) *
+                                          27.0,
+                                      height: AppDimensions.height10(context) *
+                                          21.4,
+                                      child: AlertDialog(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                                AppDimensions.height10(
+                                                        context) *
+                                                    1.4)),
+                                        contentPadding: EdgeInsets.zero,
+                                        actionsPadding: EdgeInsets.zero,
+                                        titlePadding: EdgeInsets.zero,
+                                        title: Container(
+                                            margin: EdgeInsets.only(
+                                                top: AppDimensions.height10(context) *
+                                                    1.9,
+                                                right: AppDimensions.height10(context) *
+                                                    1.6,
+                                                left: AppDimensions.height10(context) *
+                                                    1.6,
+                                                bottom:
+                                                    AppDimensions.height10(context) *
+                                                        0.2),
+                                            height:
+                                                AppDimensions.height10(context) *
+                                                    4.4,
+                                            width: AppDimensions.height10(context) *
+                                                23.8,
+                                            child: RichText(
+                                                textAlign: TextAlign.center,
+                                                text: TextSpan(
+                                                    style: TextStyle(
+                                                        fontSize:
+                                                            AppDimensions.height10(context) *
+                                                                1.7,
+                                                        fontWeight: FontWeight.w400,
+                                                        color: const Color(0xFF000000)),
+                                                    children: const [
+                                                      TextSpan(
+                                                          text:
+                                                              'Are you sure you want\nto'),
+                                                      TextSpan(
+                                                        text: ' delete ',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w700),
+                                                      ),
+                                                      TextSpan(
+                                                          text: 'this hurdle?')
+                                                    ]))),
+                                        content: Container(
+                                          margin: EdgeInsets.only(
+                                              bottom:
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      1.5,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              right: AppDimensions.height10(
+                                                      context) *
+                                                  1.6),
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.4,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  23.8,
+                                          child: Text(
+                                            "By clicking 'Yes' you confirm that this\nhurdle will be deleted permanently. ",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              color: const Color(0xFF000000),
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.3,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          Column(
+                                            children: [
+                                              SizedBox(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.1,
+                                                child: Divider(
+                                                  color: const Color(0XFF3C3C43)
+                                                      .withOpacity(0.29),
+                                                ),
+                                              ),
+                                              Container(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.2,
+                                                width: double.infinity,
+                                                color: const Color(0xFF007AFF),
+                                                child: TextButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                    'No',
+                                                    style: TextStyle(
+                                                        color: const Color(
+                                                            0xFFFFFFFF),
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.7,
+                                                        fontFamily: "Laila",
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.1,
+                                                child: Divider(
+                                                  color: const Color(0XFF3C3C43)
+                                                      .withOpacity(0.29),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.4,
+                                                width: double.infinity,
+                                                child: TextButton(
+                                                  onPressed: () {
+                                                    Hurdles()
+                                                        .deleteUserHurdle(
+                                                            hurdlesSummary[
+                                                                'id'])
+                                                        .then((response) {
+                                                      if (response == true) {
+                                                        Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    landing_hurdles()));
+                                                      }
+                                                    });
+                                                  },
+                                                  child: Text(
+                                                    'Yes',
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.7,
+                                                        fontFamily: "Laila",
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: const Color(
+                                                            0xFF007AFF)),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.1,
+                                                child: Divider(
+                                                  color: const Color(0XFF3C3C43)
+                                                      .withOpacity(0.29),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ));
                           },
                           child: Container(
                             width: AppDimensions.height10(context) * 36.0,

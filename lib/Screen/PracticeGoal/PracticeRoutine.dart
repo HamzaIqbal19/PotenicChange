@@ -42,12 +42,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
   ];
   List<Map<String, dynamic>> selectedDays = [];
 
-  void timeAdd() {
-    timesPerDay.add({
-      'day': 'Monday',
-    });
-  }
-
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
   var practice = TextEditingController();

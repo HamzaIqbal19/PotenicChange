@@ -53,12 +53,31 @@ class _select_hurdleState extends State<select_hurdle> {
     });
   }
 
+  void _fetchHurdleSummary() async {
+    Hurdles().getHurdleById().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          selectBox = response['hurdle']['hurdleId'];
+        });
+        loadData();
+        return response;
+      } else {
+        return response.statusCode;
+      }
+    }).catchError((error) {
+      print("error");
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     print(
         "---------------------------------------------------------------------");
     _fetchHurdle();
+    if (widget.update == true) {
+      _fetchHurdleSummary();
+    }
   }
 
   @override

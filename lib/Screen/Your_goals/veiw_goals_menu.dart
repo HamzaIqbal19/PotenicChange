@@ -618,10 +618,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //     context,
-                                //     FadePageRoute(
-                                //         page: const hurdles_splash()));
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const hurdles_splash()));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -674,12 +674,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //     context,
-                                //     FadePageRoute(
-                                //         page: const inspiration_motivation(
-                                //       goal_delete: false,
-                                //     )));
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const inspiration_motivation(
+                                      goal_delete: false,
+                                    )));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,
@@ -732,14 +732,14 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //     context,
-                                //     FadePageRoute(
-                                //         page: const goal_menu_inactive(
-                                //       premium: true,
-                                //       isActive: true,
-                                //       goal_evaluation: true,
-                                //     )));
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const goal_menu_inactive(
+                                      premium: true,
+                                      isActive: true,
+                                      goal_evaluation: true,
+                                    )));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,

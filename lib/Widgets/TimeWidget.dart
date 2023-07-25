@@ -177,7 +177,9 @@ class _schedule_cardState extends State<schedule_card> {
                                                 start_time =
                                                     "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                               });
+                                              widget.onChangedStart(start_time);
                                             });
+                                            // onChangedStart(start_time);
                                             count = count + 1;
                                             onCountChanged(count);
                                             _globalKey.currentState?.expand();

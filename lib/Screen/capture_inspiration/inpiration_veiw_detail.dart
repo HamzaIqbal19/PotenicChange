@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../utils/app_dimensions.dart';
 
@@ -38,8 +40,9 @@ class _veiw_detailsState extends State<veiw_details> {
         setState(() {
           inspirationDetails = response;
         });
-        loadData();
+
         print(inspirationDetails['inspiration']['title']);
+        loadData();
 
         return response;
       }
@@ -145,7 +148,7 @@ class _veiw_detailsState extends State<veiw_details> {
                       ),
                     ] else if (inspirationDetails['inspiration']
                             ['inspirationId'] ==
-                        4) ...[
+                        3) ...[
                       Container(
                         alignment: Alignment.center,
                         //IT'S HEIGHT IS SET SO BACKGROUND DOES'NT BECOME VISIBLE
@@ -168,7 +171,7 @@ class _veiw_detailsState extends State<veiw_details> {
                       ),
                     ] else if (inspirationDetails['inspiration']
                             ['inspirationId'] ==
-                        3) ...[
+                        4) ...[
                       Container(
                         // width: AppDimensions.height10(context) * 34.7,
                         height: AppDimensions.height10(context) * 52.5,
@@ -201,397 +204,476 @@ class _veiw_detailsState extends State<veiw_details> {
               ),
       ),
       extendBody: true,
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.transparent,
-        elevation: 0,
-        child: Container(
-          //should change according to screen
-          height: inspirationDetails['inspiration']['inspirationId'] == 1
-              ? AppDimensions.height10(context) * 38.465
-              : inspirationDetails['inspiration']['inspirationId'] == 2
-                  ? AppDimensions.height10(context) * 52.465
-                  : AppDimensions.height10(context) * 48.465,
-          decoration: BoxDecoration(
-            color: const Color(0xFFFFFFFF),
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(AppDimensions.height10(context) * 4.0),
-                topRight:
-                    Radius.circular(AppDimensions.height10(context) * 4.0)),
-          ),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            //reverse: true,
-            child: Container(
-              // height: widget.type_switch == 3
-              //     ? AppDimensions.height10(context) * 70.2
-              //     : widget.type_switch == 1
-              //         ? AppDimensions.height10(context) * 38.465
-              //         : AppDimensions.height10(context) * 60.2,
-              child: Column(
-                children: [
-                  Container(
-                    height: AppDimensions.height10(context) * 2.1,
-                    width: AppDimensions.height10(context) * 30.5,
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 3.6,
-                        right: AppDimensions.height10(context) * 8.9,
-                        top: AppDimensions.height10(context) * 3.4),
-                    child: Text(
-                      'Title',
-                      style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 1.4,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff828282),
-                      ),
-                    ),
+      bottomNavigationBar: Loading == false
+          ? BottomAppBar(
+              color: Colors.transparent,
+              elevation: 0,
+              child: Container(
+                  //should change according to screen
+                  height: inspirationDetails['inspiration']['inspirationId'] ==
+                          1
+                      ? AppDimensions.height10(context) * 38.465
+                      : inspirationDetails['inspiration']['inspirationId'] == 2
+                          ? AppDimensions.height10(context) * 52.465
+                          : AppDimensions.height10(context) * 48.465,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFFFFFFF),
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(
+                            AppDimensions.height10(context) * 4.0),
+                        topRight: Radius.circular(
+                            AppDimensions.height10(context) * 4.0)),
                   ),
-                  Container(
-                      // height: AppDimensions.height10(context) * 2.4,
-                      // width: AppDimensions.height10(context) * 30.5,
-                      alignment: Alignment.centerLeft,
-                      // color: Colors.amber,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 3.6,
-                          right: AppDimensions.height10(context) * 9.0,
-                          top: AppDimensions.height10(context) * 0.3),
-                      child: Column(
-                        children: [
-                          if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              1) ...[
-                            Text(
-                              inspirationDetails['inspiration']['title'],
-                              style: TextStyle(
-                                  height: 1.5,
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              2) ...[
-                            Text(
-                              inspirationDetails['inspiration']['title'],
-                              style: TextStyle(
-                                  height: 1.5,
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              4) ...[
-                            Text(
-                              inspirationDetails['inspiration']['title'],
-                              style: TextStyle(
-                                  height: 1.5,
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              3) ...[
-                            Text(
-                              inspirationDetails['inspiration']['title'],
-                              style: TextStyle(
-                                  height: 1.5,
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ]
-                        ],
-                      )),
-                  Column(
-                    children: [
-                      if (inspirationDetails['inspiration']['inspirationId'] ==
-                          4) ...[
-                        Container(
-                          height: AppDimensions.height10(context) * 3.0,
-                          width: AppDimensions.height10(context) * 25.3,
-                          margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 10.0,
-                              top: AppDimensions.height10(context) * 1.0),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  width: 1, color: const Color(0xFF282828)),
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 2.0)),
-                          child: Center(
-                            child: Text(
-                              'Listen from this website',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xFF646464)),
-                            ),
-                          ),
-                        ),
-                      ] else if (inspirationDetails['inspiration']
-                              ['inspirationId'] ==
-                          3) ...[
-                        Container(),
-                      ] else ...[
-                        Container(
-                          height: AppDimensions.height10(context) * 3.0,
-                          width: AppDimensions.height10(context) * 15.0,
-                          margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 21.0,
-                              top: AppDimensions.height10(context) * 1.0),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  width: 1, color: const Color(0xFF282828)),
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 2.0)),
-                          child: Center(
-                            child: Text(
-                              'Visit website',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xFF646464)),
-                            ),
-                          ),
-                        ),
-                      ]
-                    ],
-                  ),
-                  Container(
-                      // height: AppDimensions.height10(context) * 2.1,
-                      // width: AppDimensions.height10(context) * 30.5,
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 3.6,
-                          right: AppDimensions.height10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 2.0),
-                      child: Column(
-                        children: [
-                          if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              1) ...[
-                            Text(
-                              'Description',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff828282)),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              2) ...[
-                            Text(
-                              'Why is it inspirational to you',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff828282)),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              4) ...[
-                            Text(
-                              'What it means to me',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff828282)),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              3) ...[
-                            Text(
-                              'Description',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff828282)),
-                            ),
-                          ]
-                        ],
-                      )),
-                  Container(
-                      // height: AppDimensions.height10(context) * 2.4,
-                      // width: AppDimensions.height10(context) * 30.5,
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 3.6,
-                          right: AppDimensions.height10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 0.2),
-                      child: Column(
-                        children: [
-                          if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              1) ...[
-                            Text(
-                              inspirationDetails['inspiration']['description'],
-                              style: TextStyle(
-                                  height: 1.5,
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              2) ...[
-                            Text(
-                              inspirationDetails['inspiration']['description'],
-                              style: TextStyle(
-                                  height: 1.5,
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              3) ...[
-                            Text(
-                              inspirationDetails['inspiration']['description'],
-                              style: TextStyle(
-                                  height: 1.5,
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ] else if (inspirationDetails['inspiration']
-                                  ['inspirationId'] ==
-                              4) ...[
-                            Text(
-                              inspirationDetails['inspiration']['description'],
-                              style: TextStyle(
-                                  height: 1.5,
-                                  color: const Color(0xFF282828),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ]
-                        ],
-                      )),
-                  Container(
-                    height: AppDimensions.height10(context) * 2.1,
-                    width: AppDimensions.height10(context) * 30.5,
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 3.6,
-                        right: AppDimensions.height10(context) * 8.9,
-                        top: AppDimensions.height10(context) * 2.0),
-                    child: Text(
-                      'Tags',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.4,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff828282)),
-                    ),
-                  ),
-                  Container(
-                      // height: AppDimensions.height10(context) * 2.4,
-                      // width: AppDimensions.height10(context) * 30.5,
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 3.6,
-                          right: AppDimensions.height10(context) * 8.9,
-                          top: AppDimensions.height10(context) * 0.2),
-                      child: Text(
-                        '#tag1 #tag2',
-                        style: TextStyle(
-                            height: 1.5,
-                            color: const Color(0xFF282828),
-                            fontSize: AppDimensions.height10(context) * 1.6,
-                            fontWeight: FontWeight.w500),
-                      )),
-                  Container(
-                    height: AppDimensions.height10(context) * 2.1,
-                    width: AppDimensions.height10(context) * 30.5,
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 3.6,
-                        right: AppDimensions.height10(context) * 8.9,
-                        top: AppDimensions.height10(context) * 2.0),
-                    child: Text(
-                      'Attached goals',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.4,
-                          fontWeight: FontWeight.w400,
-                          color: const Color(0xff828282)),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {},
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    //reverse: true,
                     child: Container(
-                      height: AppDimensions.height10(context) * 6.0,
-                      width: AppDimensions.height10(context) * 37.5,
-                      margin: EdgeInsets.only(
-                          bottom: AppDimensions.height10(context) * 1.0,
-                          left: AppDimensions.height10(context) * 2.2,
-                          right: AppDimensions.height10(context) * 1.7,
-                          top: AppDimensions.height10(context) * 0.5),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: 1, color: const Color(0xFF464646)),
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // height: widget.type_switch == 3
+                      //     ? AppDimensions.height10(context) * 70.2
+                      //     : widget.type_switch == 1
+                      //         ? AppDimensions.height10(context) * 38.465
+                      //         : AppDimensions.height10(context) * 60.2,
+                      child: Column(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 23.9,
-                            height: AppDimensions.height10(context) * 2.2,
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
+                            alignment: Alignment.centerLeft,
                             margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 1.99,
+                                left: AppDimensions.height10(context) * 3.6,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 3.4),
+                            child: Text(
+                              'Title',
+                              style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 1.4,
+                                fontWeight: FontWeight.w400,
+                                color: const Color(0xff828282),
+                              ),
                             ),
-                            child: GestureDetector(
-                                onTap: () {},
-                                child: Text(
-                                  '00 impacted goals',
-                                  style: TextStyle(
-                                    color: const Color(0xFF646464),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.8,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                )),
                           ),
                           Container(
-                              width: AppDimensions.height10(context) * 2.4,
-                              height: AppDimensions.height10(context) * 1.39,
+                              // height: AppDimensions.height10(context) * 2.4,
+                              // width: AppDimensions.height10(context) * 30.5,
+                              alignment: Alignment.centerLeft,
+                              // color: Colors.amber,
                               margin: EdgeInsets.only(
-                                  right:
-                                      AppDimensions.height10(context) * 2.391),
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Image.asset(
-                                  'assets/images/BTN Back.webp',
-                                  //width: AppDimensions.height10(context) * 2.6,
-                                  //height: AppDimensions.height10(context) * 2.6,
-                                  color: const Color(0xFF646464),
-                                  fit: BoxFit.cover,
+                                  left: AppDimensions.height10(context) * 3.6,
+                                  right: AppDimensions.height10(context) * 9.0,
+                                  top: AppDimensions.height10(context) * 0.3),
+                              child: Column(
+                                children: [
+                                  if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      1) ...[
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['title'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      2) ...[
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['title'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      4) ...[
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['title'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      3) ...[
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['title'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ]
+                                ],
+                              )),
+                          Column(
+                            children: [
+                              if (inspirationDetails['inspiration']
+                                      ['inspirationId'] ==
+                                  3) ...[
+                                AnimatedScaleButton(
+                                  onTap: () async {
+                                    var url = inspirationDetails['inspiration']
+                                        ['destinationLink'];
+                                    if (await canLaunchUrlString(url)) {
+                                      await launchUrlString(url);
+                                    } else {
+                                      throw 'Could not launch $url';
+                                    }
+                                  },
+                                  child: Container(
+                                    height:
+                                        AppDimensions.height10(context) * 3.0,
+                                    width:
+                                        AppDimensions.height10(context) * 25.3,
+                                    margin: EdgeInsets.only(
+                                        right: AppDimensions.height10(context) *
+                                            10.0,
+                                        top: AppDimensions.height10(context) *
+                                            1.0),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 1,
+                                            color: const Color(0xFF282828)),
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10(context) *
+                                                2.0)),
+                                    child: Center(
+                                      child: Text(
+                                        'Listen from this website',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            fontWeight: FontWeight.w500,
+                                            color: const Color(0xFF646464)),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ))
+                              ] else if (inspirationDetails['inspiration']
+                                      ['inspirationId'] ==
+                                  4) ...[
+                                Container(),
+                              ] else ...[
+                                AnimatedScaleButton(
+                                  onTap: () async {
+                                    var url = inspirationDetails['inspiration']
+                                        ['destinationLink'];
+                                    if (await canLaunchUrlString(url)) {
+                                      await launchUrlString(url);
+                                    } else {
+                                      throw 'Could not launch $url';
+                                    }
+                                  },
+                                  child: Container(
+                                    height:
+                                        AppDimensions.height10(context) * 3.0,
+                                    width:
+                                        AppDimensions.height10(context) * 15.0,
+                                    margin: EdgeInsets.only(
+                                        right: AppDimensions.height10(context) *
+                                            21.0,
+                                        top: AppDimensions.height10(context) *
+                                            1.0),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 1,
+                                            color: const Color(0xFF282828)),
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10(context) *
+                                                2.0)),
+                                    child: Center(
+                                      child: Text(
+                                        'Visit website',
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            fontWeight: FontWeight.w500,
+                                            color: const Color(0xFF646464)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ]
+                            ],
+                          ),
+                          Container(
+                              // height: AppDimensions.height10(context) * 2.1,
+                              // width: AppDimensions.height10(context) * 30.5,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 3.6,
+                                  right: AppDimensions.height10(context) * 8.9,
+                                  top: AppDimensions.height10(context) * 2.0),
+                              child: Column(
+                                children: [
+                                  if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      1) ...[
+                                    Text(
+                                      'Description',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.4,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      2) ...[
+                                    Text(
+                                      'Why is it inspirational to you',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.4,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      4) ...[
+                                    Text(
+                                      'What it means to me',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.4,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      3) ...[
+                                    Text(
+                                      'Description',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.4,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xff828282)),
+                                    ),
+                                  ]
+                                ],
+                              )),
+                          Container(
+                              // height: AppDimensions.height10(context) * 2.4,
+                              // width: AppDimensions.height10(context) * 30.5,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 3.6,
+                                  right: AppDimensions.height10(context) * 8.9,
+                                  top: AppDimensions.height10(context) * 0.2),
+                              child: Column(
+                                children: [
+                                  if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      1) ...[
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['description'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      2) ...[
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['description'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      3) ...[
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['description'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ] else if (inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      4) ...[
+                                    Text(
+                                      inspirationDetails['inspiration']
+                                          ['description'],
+                                      style: TextStyle(
+                                          height: 1.5,
+                                          color: const Color(0xFF282828),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ]
+                                ],
+                              )),
+                          Container(
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 3.6,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 2.0),
+                            child: Text(
+                              'Tags',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff828282)),
+                            ),
+                          ),
+                          Container(
+                              // height: AppDimensions.height10(context) * 2.4,
+                              // width: AppDimensions.height10(context) * 30.5,
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 3.6,
+                                  right: AppDimensions.height10(context) * 8.9,
+                                  top: AppDimensions.height10(context) * 0.2),
+                              child: Text(
+                                inspirationDetails['inspiration']['hashTags']
+                                    .toString()
+                                    .replaceAll('[', '')
+                                    .replaceAll(']', ''),
+                                style: TextStyle(
+                                    height: 1.5,
+                                    color: const Color(0xFF282828),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
+                                    fontWeight: FontWeight.w500),
+                              )),
+                          Container(
+                            height: AppDimensions.height10(context) * 2.1,
+                            width: AppDimensions.height10(context) * 30.5,
+                            alignment: Alignment.centerLeft,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 3.6,
+                                right: AppDimensions.height10(context) * 8.9,
+                                top: AppDimensions.height10(context) * 2.0),
+                            child: Text(
+                              'Attached goals',
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff828282)),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: AppDimensions.height10(context) * 6.0,
+                              width: AppDimensions.height10(context) * 37.5,
+                              margin: EdgeInsets.only(
+                                  bottom: AppDimensions.height10(context) * 1.0,
+                                  left: AppDimensions.height10(context) * 2.2,
+                                  right: AppDimensions.height10(context) * 1.7,
+                                  top: AppDimensions.height10(context) * 0.5),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1, color: const Color(0xFF464646)),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0)),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width:
+                                        AppDimensions.height10(context) * 23.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    margin: EdgeInsets.only(
+                                      left: AppDimensions.height10(context) *
+                                          1.99,
+                                    ),
+                                    child: GestureDetector(
+                                        onTap: () {},
+                                        child: Text(
+                                          '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
+                                          style: TextStyle(
+                                            color: const Color(0xFF646464),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        )),
+                                  ),
+                                  Container(
+                                      width:
+                                          AppDimensions.height10(context) * 2.4,
+                                      height: AppDimensions.height10(context) *
+                                          1.39,
+                                      margin: EdgeInsets.only(
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  2.391),
+                                      child: GestureDetector(
+                                        onTap: () {},
+                                        child: Image.asset(
+                                          'assets/images/BTN Back.webp',
+                                          //width: AppDimensions.height10(context) * 2.6,
+                                          //height: AppDimensions.height10(context) * 2.6,
+                                          color: const Color(0xFF646464),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ))
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
-                  ),
-                ],
+                  )),
+            )
+          : const Center(
+              child: SpinKitFadingCircle(
+                color: Color(0xFFB1B8FF),
+                size: 80,
               ),
             ),
-          ),
-        ),
-      ),
     );
   }
 }
