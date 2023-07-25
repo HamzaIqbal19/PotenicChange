@@ -42,67 +42,87 @@ class _routinecommitmentState extends State<routinecommitment> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 25, left: 13, right: 5, bottom: 5),
+      padding: const EdgeInsets.only(left: 13, right: 5, bottom: 5),
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            schedule_card(
-              days: 'Monday',
-              endTime: pracDetails['schedule'][0]['endtime'],
-              startTime: pracDetails['schedule'][0]['starttime'],
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
+              itemCount:
+                  pracDetails != null ? pracDetails['schedule'].length : 0,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 1.0,
+                  ),
+                  child: schedule_card(
+                    days: pracDetails['schedule'][index]['day'],
+                    endTime: pracDetails['schedule'][index]['endtime'],
+                    startTime: pracDetails['schedule'][index]['starttime'],
+                  ),
+                );
+              },
             ),
-            SizedBox(
-              height: AppDimensions.height10(context) * 1.0,
-            ),
-            schedule_card(
-              days: 'Tuesday',
-              endTime: pracDetails['schedule'][1]['endtime'],
-              startTime: pracDetails['schedule'][1]['starttime'],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            schedule_card(
-              days: 'Wednesday',
-              endTime: pracDetails['schedule'][2]['endtime'],
-              startTime: pracDetails['schedule'][2]['starttime'],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            schedule_card(
-              days: 'Thursday',
-              endTime: pracDetails['schedule'][3]['endtime'],
-              startTime: pracDetails['schedule'][3]['starttime'],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            schedule_card(
-              days: 'Friday',
-              endTime: pracDetails['schedule'][4]['endtime'],
-              startTime: pracDetails['schedule'][4]['starttime'],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            schedule_card(
-              days: 'Saturday',
-              endTime: pracDetails['schedule'][5]['endtime'],
-              startTime: pracDetails['schedule'][5]['starttime'],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            schedule_card(
-              days: 'Sunday',
-              endTime: pracDetails['schedule'][6]['endtime'],
-              startTime: pracDetails['schedule'][6]['starttime'],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
+            // schedule_card(
+            //   days: 'Monday',
+            //   endTime: pracDetails['schedule'][0]['endtime'],
+            //   startTime: pracDetails['schedule'][0]['starttime'],
+            // ),
+            // SizedBox(
+            //   height: AppDimensions.height10(context) * 1.0,
+            // ),
+            // schedule_card(
+            //   days: 'Tuesday',
+            //   endTime: pracDetails['schedule'][1]['endtime'],
+            //   startTime: pracDetails['schedule'][1]['starttime'],
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // schedule_card(
+            //   days: 'Wednesday',
+            //   endTime: pracDetails['schedule'][2]['endtime'],
+            //   startTime: pracDetails['schedule'][2]['starttime'],
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // schedule_card(
+            //   days: 'Thursday',
+            //   endTime: pracDetails['schedule'][3]['endtime'],
+            //   startTime: pracDetails['schedule'][3]['starttime'],
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // schedule_card(
+            //   days: 'Friday',
+            //   endTime: pracDetails['schedule'][4]['endtime'],
+            //   startTime: pracDetails['schedule'][4]['starttime'],
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // schedule_card(
+            //   days: 'Saturday',
+            //   endTime: pracDetails['schedule'][5]['endtime'],
+            //   startTime: pracDetails['schedule'][5]['starttime'],
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
+            // schedule_card(
+            //   days: 'Sunday',
+            //   endTime: pracDetails['schedule'][6]['endtime'],
+            //   startTime: pracDetails['schedule'][6]['starttime'],
+            // ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
           ],
         ),
       ),
