@@ -104,7 +104,7 @@ class _clocksState extends State<clocks> {
                 alignment: Alignment.center,
                 // margin: EdgeInsets.only(bottom: 86),
                 child: Text(
-                  'Do you need a timer for\nyour practice?',
+                  'You can use our timer to\nrecord your paractice',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.12,
@@ -115,10 +115,11 @@ class _clocksState extends State<clocks> {
               ),
               Container(child: watch_time()),
               Container(
-                width: AppDimensions.height10(context) * 32.5,
+                width: AppDimensions.height10(context) * 25.4,
                 height: AppDimensions.height10(context) * 6.0,
                 child:
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  /*
                   AnimatedScaleButton(
                     onTap: () {
                       Navigator.push(
@@ -144,6 +145,7 @@ class _clocksState extends State<clocks> {
                               fontWeight: FontWeight.w600),
                         ))),
                   ),
+                  */
                   AnimatedScaleButton(
                     onTap: () {
                       Navigator.push(
@@ -168,7 +170,7 @@ class _clocksState extends State<clocks> {
                                 color: Colors.transparent)),
                         child: Center(
                           child: Text(
-                            'Finished Practice',
+                            'Next',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: AppDimensions.height10(context) * 1.6,
@@ -198,7 +200,7 @@ class _watch_timeState extends State<watch_time> {
   bool clock_state = true;
 
   Stopwatch _stopwatch = Stopwatch();
-  late Timer _timer;
+  Timer? _timer;
   String _elapsedTime = "00:00";
   int _seconds = 00;
   int _minutes = 05;
@@ -269,13 +271,17 @@ class _watch_timeState extends State<watch_time> {
   }
 
   void _stopStopwatch() {
-    _stopwatch.stop();
-    _timer.cancel();
+    if (_timer != null) {
+      _stopwatch.stop();
+      _timer!.cancel();
+    }
   }
 
   void _resetStopwatch() {
-    _stopwatch.reset();
-    _timer.cancel();
+    if (_timer != null) {
+      _stopwatch.reset();
+      _timer!.cancel();
+    }
     setState(() {
       _elapsedTime = "00:00";
     });
@@ -428,13 +434,22 @@ class _watch_timeState extends State<watch_time> {
                                         AppDimensions.height10(context) * 4.6,
                                     fontWeight: FontWeight.w300),
                               )
-                            : Text(
-                                '${_minutes.toString().padLeft(2, '0')}:${_seconds.toString().padLeft(2, '0')}',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.height10(context) * 4.6,
-                                    fontWeight: FontWeight.w300),
+                            : GestureDetector(
+                                onTap: () {
+                                  showCupertinoModalPopup<void>(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return _buildContainer(timerPicker());
+                                      });
+                                },
+                                child: Text(
+                                  '${_minutes.toString().padLeft(2, '0')}:${_seconds.toString().padLeft(2, '0')}',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 4.6,
+                                      fontWeight: FontWeight.w300),
+                                ),
                               )),
                   ),
                 ),
@@ -565,5 +580,89 @@ class _watch_timeState extends State<watch_time> {
         ),
       )
     ]);
+  }
+
+  // Function to create the timerPicker widget
+  Widget timerPicker() {
+    return CupertinoTimerPicker(
+      mode: CupertinoTimerPickerMode.ms,
+      initialTimerDuration:
+          Duration(hours: _hours, minutes: _minutes, seconds: _seconds),
+      onTimerDurationChanged: (Duration changeTimer) {
+        setState(() {
+          _hours = changeTimer.inHours;
+          _minutes = changeTimer.inMinutes.remainder(60);
+          _seconds = changeTimer.inSeconds.remainder(60);
+        });
+      },
+    );
+  }
+
+  // Function to build the container for the timerPicker
+  Widget _buildContainer(Widget picker) {
+    return Container(
+      height: AppDimensions.height10(context) * 30.3,
+      padding: EdgeInsets.only(top: 6),
+      color: CupertinoColors.white,
+      child: Column(
+        children: [
+          Container(
+            height: AppDimensions.height10(context) * 3.8,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff2F80ED),
+                    ),
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // When the "Done" button is pressed, update the timer values
+                    setState(() {
+                      // No need for _selectedMinutes and _selectedSeconds
+                      // The values are directly updated in _minutes and _seconds
+                    });
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    'Done',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff2F80ED),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+            height: 1,
+          ),
+          DefaultTextStyle(
+            style: const TextStyle(
+              color: CupertinoColors.black,
+              fontSize: 22.0,
+            ),
+            child: GestureDetector(
+              onTap: () {},
+              child: SafeArea(
+                top: false,
+                child: picker,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

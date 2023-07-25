@@ -111,20 +111,20 @@ class welldone_splashState extends State<welldone_splash> {
                   right: AppDimensions.height10(context) * 2.7),
               child: Column(
                 children: [
-                  Container(
-                    child: Text(
-                      'Well Done!',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 3.0,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          fontFamily: 'laila'),
-                    ),
-                  ),
+                  // Container(
+                  //   child: Text(
+                  //     'Well Done!',
+                  //     style: TextStyle(
+                  //         fontSize: AppDimensions.height10(context) * 3.0,
+                  //         fontWeight: FontWeight.w700,
+                  //         color: Colors.white,
+                  //         fontFamily: 'laila'),
+                  //   ),
+                  // ),
                   Container(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0),
-                    child: Text('Now, let’s record your\npractice.',
+                    child: Text('Let\'s continue recording\n your practice.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.8,

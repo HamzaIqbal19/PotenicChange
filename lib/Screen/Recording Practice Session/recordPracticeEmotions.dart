@@ -554,41 +554,42 @@ class _emotionsState extends State<emotions> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          AnimatedScaleButton(
-                            onTap: () {
-                              if (pracEmotions != 0) {
-                                widget.summary
-                                    ? Navigator.pop(context)
-                                    : Navigator.push(context,
-                                        FadePageRoute(page: const clocks()));
-                              }
-                            },
-                            child: Container(
-                                height: AppDimensions.height10(context) * 5.0,
-                                width: AppDimensions.height10(context) * 14.3,
-                                margin: EdgeInsets.only(
-                                    right:
-                                        AppDimensions.height10(context) * 1.2),
-                                decoration: BoxDecoration(
-                                    color: pracEmotions != 0
-                                        ? Colors.white
-                                        : Colors.white.withOpacity(0.5),
-                                    borderRadius: BorderRadius.circular(
-                                        AppDimensions.height10(context) * 5.0),
-                                    border: Border.all(
-                                        width: AppDimensions.height10(context) *
-                                            0.2,
-                                        color: const Color(0xffFA9934))),
-                                child: Center(
-                                    child: Text(
-                                  widget.summary ? 'Cancel' : 'Use Timer',
-                                  style: TextStyle(
-                                      color: const Color(0xffFA9934),
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.6,
-                                      fontWeight: FontWeight.w600),
-                                ))),
-                          ),
+                          // AnimatedScaleButton(
+                          //   onTap: () {
+                          //     if (pracEmotions != 0) {
+                          //       widget.summary
+                          //           ? Navigator.pop(context)
+                          //           : Navigator.push(context,
+                          //               FadePageRoute(page: const clocks()));
+                          //     }
+                          //   },
+                          //   child: Container(
+                          //       height: AppDimensions.height10(context) * 5.0,
+                          //       width: AppDimensions.height10(context) * 14.3,
+                          //       margin: EdgeInsets.only(
+                          //           right:
+                          //               AppDimensions.height10(context) * 1.2),
+                          //       decoration: BoxDecoration(
+                          //           color: pracEmotions != 0
+                          //               ? Colors.white
+                          //               : Colors.white.withOpacity(0.5),
+                          //           borderRadius: BorderRadius.circular(
+                          //               AppDimensions.height10(context) * 5.0),
+                          //           border: Border.all(
+                          //               width: AppDimensions.height10(context) *
+                          //                   0.2,
+                          //               color: const Color(0xffFA9934))),
+                          //       child: Center(
+                          //           child: Text(
+                          //         widget.summary ? 'Cancel' : 'Use Timer',
+                          //         style: TextStyle(
+                          //             color: const Color(0xffFA9934),
+                          //             fontSize:
+                          //                 AppDimensions.height10(context) * 1.6,
+                          //             fontWeight: FontWeight.w600),
+                          //       ))),
+                          // ),
+
                           AnimatedScaleButton(
                             onTap: () async {
                               if (pracEmotions != 0) {
@@ -614,16 +615,22 @@ class _emotionsState extends State<emotions> {
                                     }
                                   });
                                 } else {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const welldone_splash()));
+                                  Navigator.push(context,
+                                      FadePageRoute(page: const clocks()));
                                 }
                               }
                             },
+                            // onTap: () {
+                            //   if (pracEmotions != 0) {
+                            //     widget.summary
+                            //         ? Navigator.pop(context)
+                            //         : Navigator.push(context,
+                            //             FadePageRoute(page: const clocks()));
+                            //   }
+
                             child: Container(
                               height: AppDimensions.height10(context) * 5.0,
-                              width: AppDimensions.height10(context) * 17.0,
+                              width: AppDimensions.height10(context) * 25.4,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -655,7 +662,7 @@ class _emotionsState extends State<emotions> {
                                             fontWeight: FontWeight.w600),
                                       )
                                     : Text(
-                                        'Finished practice',
+                                        'Next',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: AppDimensions.height10(

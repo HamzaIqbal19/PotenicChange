@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
@@ -448,15 +449,15 @@ class _practice_summaryState extends State<practice_summary> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.white),
-                          color: Before == 1
+                          color: Before == "1"
                               ? Color(0xff546096)
-                              : Before == 2
+                              : Before == "2"
                                   ? Color(0xff7291A0)
-                                  : Before == 3
+                                  : Before == "3"
                                       ? const Color(0xffE1C44F)
-                                      : Before == 4
+                                      : Before == "4"
                                           ? Color(0xffFA9458)
-                                          : Before == 5
+                                          : Before == "5"
                                               ? Color(0xffFA9458)
                                               : Color(0xffFA9458)),
                       child: Stack(children: [
@@ -548,13 +549,17 @@ class _practice_summaryState extends State<practice_summary> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.white),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color(0xffFA8552),
-                                Color(0xffFAA960),
-                              ])),
+                          color: After == "1"
+                              ? Color(0xff546096)
+                              : After == "2"
+                                  ? Color(0xff7291A0)
+                                  : After == "3"
+                                      ? const Color(0xffE1C44F)
+                                      : After == "4"
+                                          ? Color(0xffFA9458)
+                                          : After == "5"
+                                              ? Color(0xffFA9458)
+                                              : Color(0xffFA9458)),
                       child: Stack(children: [
                         Center(
                           child: Text(
@@ -729,17 +734,240 @@ class _practice_summaryState extends State<practice_summary> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             AnimatedScaleButton(
+                              // onTap: () {
+
                               onTap: () {
-                                RecordingPractice()
-                                    .deleteUserRecording()
-                                    .then((value) {
-                                  if (value == true) {
-                                    print('Api call success');
-                                  } else {
-                                    print('Api failed');
-                                  }
-                                });
+                                return showAnimatedDialog(
+                                    animationType:
+                                        DialogTransitionType.fadeScale,
+                                    curve: Curves.easeInOut,
+                                    duration: Duration(seconds: 1),
+                                    context: context,
+                                    builder: (BuildContext context) => SizedBox(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  27.0,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  21.4,
+                                          child: AlertDialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.4)),
+                                            contentPadding: EdgeInsets.zero,
+                                            actionsPadding: EdgeInsets.zero,
+                                            titlePadding: EdgeInsets.zero,
+                                            title: Container(
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(context) *
+                                                        1.9,
+                                                    right: AppDimensions.height10(context) *
+                                                        1.6,
+                                                    left: AppDimensions.height10(context) *
+                                                        1.6,
+                                                    bottom: AppDimensions.height10(context) *
+                                                        0.2),
+                                                height:
+                                                    AppDimensions.height10(context) *
+                                                        4.4,
+                                                width:
+                                                    AppDimensions.height10(context) *
+                                                        23.8,
+                                                child: RichText(
+                                                    textAlign: TextAlign.center,
+                                                    text: TextSpan(
+                                                        style: TextStyle(
+                                                            fontSize:
+                                                                AppDimensions.height10(context) *
+                                                                    1.7,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: const Color(0xFF000000)),
+                                                        children: const [
+                                                          TextSpan(
+                                                              text:
+                                                                  'Are you sure you want\nto'),
+                                                          TextSpan(
+                                                            text: ' delete ',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w700),
+                                                          ),
+                                                          TextSpan(
+                                                              text:
+                                                                  'this recording?')
+                                                        ]))),
+                                            content: Container(
+                                              margin: EdgeInsets.only(
+                                                  bottom: AppDimensions
+                                                          .height10(context) *
+                                                      1.5,
+                                                  left: AppDimensions.height10(
+                                                          context) *
+                                                      1.6,
+                                                  right: AppDimensions.height10(
+                                                          context) *
+                                                      1.6),
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  3.4,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  23.8,
+                                              child: Text(
+                                                "By clicking 'Yes' you confirm that this\nrecording will be deleted permanently. ",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color:
+                                                      const Color(0xFF000000),
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.3,
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                              ),
+                                            ),
+                                            actions: <Widget>[
+                                              Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.1,
+                                                    child: Divider(
+                                                      color: const Color(
+                                                              0XFF3C3C43)
+                                                          .withOpacity(0.29),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.2,
+                                                    width: double.infinity,
+                                                    color:
+                                                        const Color(0xFF007AFF),
+                                                    child: TextButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                        'No',
+                                                        style: TextStyle(
+                                                            color: const Color(
+                                                                0xFFFFFFFF),
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.7,
+                                                            fontFamily: "Laila",
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.1,
+                                                    child: Divider(
+                                                      color: const Color(
+                                                              0XFF3C3C43)
+                                                          .withOpacity(0.29),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            4.4,
+                                                    width: double.infinity,
+                                                    child: TextButton(
+                                                      onPressed: () {
+                                                        RecordingPractice()
+                                                            .deleteUserRecording()
+                                                            .then((value) {
+                                                          if (value == true) {
+                                                            Navigator.push(
+                                                                context,
+                                                                FadePageRoute(
+                                                                  page:
+                                                                      dashBoard(
+                                                                    saved:
+                                                                        false,
+                                                                    helpful_tips:
+                                                                        false,
+                                                                    membership:
+                                                                        true,
+                                                                    dashboard_ctrl:
+                                                                        false,
+                                                                    cancel:
+                                                                        false,
+                                                                    trial:
+                                                                        false,
+                                                                  ),
+                                                                ));
+
+                                                            print(
+                                                                'Api call success');
+                                                          } else {
+                                                            print('Api failed');
+                                                          }
+                                                        });
+                                                      },
+                                                      child: Text(
+                                                        'Yes',
+                                                        style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.7,
+                                                            fontFamily: "Laila",
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            color: const Color(
+                                                                0xFF007AFF)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.1,
+                                                    child: Divider(
+                                                      color: const Color(
+                                                              0XFF3C3C43)
+                                                          .withOpacity(0.29),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ));
                               },
+
+                              //   RecordingPractice()
+                              //       .deleteUserRecording()
+                              //       .then((value) {
+                              //     if (value == true) {
+                              //       print('Api call success');
+                              //     } else {
+                              //       print('Api failed');
+                              //     }
+                              //   });
+                              // },
+
                               child: Container(
                                   height: AppDimensions.height10(context) * 5.0,
                                   width: AppDimensions.height10(context) * 15.7,
