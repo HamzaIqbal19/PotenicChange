@@ -448,13 +448,17 @@ class _practice_summaryState extends State<practice_summary> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.white),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color(0xffFA8552),
-                                Color(0xffFAA960),
-                              ])),
+                          color: Before == 1
+                              ? Color(0xff546096)
+                              : Before == 2
+                                  ? Color(0xff7291A0)
+                                  : Before == 3
+                                      ? const Color(0xffE1C44F)
+                                      : Before == 4
+                                          ? Color(0xffFA9458)
+                                          : Before == 5
+                                              ? Color(0xffFA9458)
+                                              : Color(0xffFA9458)),
                       child: Stack(children: [
                         Center(
                           child: Text(

@@ -21,9 +21,12 @@ import 'package:potenic_app/Widgets/bottom_navigation.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Practice.dart';
 import '../../Widgets/custom_tool_tip.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class dashBoard extends StatefulWidget {
   final bool helpful_tips;
@@ -64,14 +67,17 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   }
 
   void _fetchGoalNames() async {
+    final SharedPreferences prefs = await _prefs;
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
           goalName = response["name"];
+
           identity = response["identityStatement"][0]["text"];
           color = response["color"];
         });
 
+        var goalId = prefs.setInt('goal_num', response["id"]);
         loadData();
       } else {
         loadData();
@@ -856,172 +862,189 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                 : Stack(children: [
                                     Align(
                                       alignment: Alignment.topRight,
-                                      child: Container(
-                                        width: AppDimensions.height10(context) *
-                                            26.8,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                26.8,
-                                        padding: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
-                                                3),
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                                image: AssetImage(color == '1'
-                                                    ? "assets/images/red_gradient.webp"
-                                                    : color == '2'
-                                                        ? 'assets/images/orange_moon.webp'
-                                                        : color == '3'
-                                                            ? "assets/images/lightGrey_gradient.webp"
-                                                            : color == '4'
-                                                                ? "assets/images/lightBlue_gradient.webp"
-                                                                : color == '5'
-                                                                    ? "assets/images/medBlue_gradient.webp"
-                                                                    : color ==
-                                                                            '6'
-                                                                        ? "assets/images/Blue_gradient.webp"
-                                                                        : 'assets/images/orange_moon.webp'),
-                                                fit: BoxFit.cover)),
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.5,
-                                            ),
-                                            Container(
-                                              // color: Colors.red,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  9.0,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  24.0,
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.0),
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    "$goalName",
-                                                    textAlign: TextAlign.center,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    maxLines: 2,
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            2.0,
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            0.14,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color: const Color(
-                                                            0xff5B74A6)),
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.3,
-                                                  ),
-                                                  Container(
-                                                    // color: Colors.green,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            4.0,
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            22.0,
-                                                    child: Text('"$identity"',
-                                                        maxLines: 2,
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style: TextStyle(
-                                                            fontStyle: FontStyle
-                                                                .italic,
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.6,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            color: const Color(
-                                                                0xff5B74A6))),
-                                                  ),
-                                                ],
+                                      child: AnimatedScaleButton(
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page:
+                                                      const goal_menu_inactive(
+                                                premium: true,
+                                                isActive: true,
+                                                goal_evaluation: true,
+                                              )));
+                                        },
+                                        child: Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  26.8,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  26.8,
+                                          padding: EdgeInsets.all(
+                                              AppDimensions.height10(context) *
+                                                  3),
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              image: DecorationImage(
+                                                  image: AssetImage(color == '1'
+                                                      ? "assets/images/red_gradient.webp"
+                                                      : color == '2'
+                                                          ? 'assets/images/orange_moon.webp'
+                                                          : color == '3'
+                                                              ? "assets/images/lightGrey_gradient.webp"
+                                                              : color == '4'
+                                                                  ? "assets/images/lightBlue_gradient.webp"
+                                                                  : color == '5'
+                                                                      ? "assets/images/medBlue_gradient.webp"
+                                                                      : color ==
+                                                                              '6'
+                                                                          ? "assets/images/Blue_gradient.webp"
+                                                                          : 'assets/images/orange_moon.webp'),
+                                                  fit: BoxFit.cover)),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              SizedBox(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    2.5,
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.3,
-                                            )
-                                          ],
-                                        ),
+                                              Container(
+                                                // color: Colors.red,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    9.0,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    24.0,
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0),
+                                                child: Column(
+                                                  children: [
+                                                    Text(
+                                                      "$goalName",
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              2.0,
+                                                          height: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              0.14,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color: const Color(
+                                                              0xff5B74A6)),
+                                                    ),
+                                                    SizedBox(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.3,
+                                                    ),
+                                                    Container(
+                                                      // color: Colors.green,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          4.0,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          22.0,
+                                                      child: Text('"$identity"',
+                                                          maxLines: 2,
+                                                          textAlign: TextAlign
+                                                              .center,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          style: TextStyle(
+                                                              fontStyle:
+                                                                  FontStyle
+                                                                      .italic,
+                                                              fontSize: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.6,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              color: const Color(
+                                                                  0xff5B74A6))),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.3,
+                                              )
+                                            ],
+                                          ),
 
-                                        /*Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  24.0,
-                                              // padding: EdgeInsets.symmetric(
-                                              //     horizontal:
-                                              //         AppDimensions.height10(
-                                              //                 context) *
-                                              //             2.0),
-                                              child: Text(
-                                                goalName,
-                                                textAlign: TextAlign.center,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.14,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: const Color(
-                                                        0xff5B74A6)),
+                                          /*Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    24.0,
+                                                // padding: EdgeInsets.symmetric(
+                                                //     horizontal:
+                                                //         AppDimensions.height10(
+                                                //                 context) *
+                                                //             2.0),
+                                                child: Text(
+                                                  goalName,
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 2,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontSize:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              2.0,
+                                                      height:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              0.14,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: const Color(
+                                                          0xff5B74A6)),
+                                                ),
                                               ),
-                                            ),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                  context),
-                                            ),
-                                            Text('"$identity"',
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    fontStyle: FontStyle.italic,
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.6,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: const Color(
-                                                        0xff5B74A6))),
-                                          ],
+                                              SizedBox(
+                                                height: AppDimensions.height10(
+                                                    context),
+                                              ),
+                                              Text('"$identity"',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontStyle: FontStyle.italic,
+                                                      fontSize:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              1.6,
+                                                      fontWeight: FontWeight.w400,
+                                                      color: const Color(
+                                                          0xff5B74A6))),
+                                            ],
+                                          ),
+                                          */
                                         ),
-                                        */
                                       ),
                                     ),
                                     Align(

@@ -1,6 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -23,6 +26,43 @@ class your_why extends StatefulWidget {
 class _your_whyState extends State<your_why> {
   bool select_item = true;
   bool bt_visible = false;
+  bool Loader = true;
+  var goalDetails;
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loader = false;
+    });
+  }
+
+  void _fetchGoalDetails() {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          goalDetails = response;
+        });
+        loadData();
+        print(response);
+      } else {
+        loadData();
+      }
+    }).catchError((error) {
+      // loadData();
+      print("error");
+    }).whenComplete(() {
+      loadData();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchGoalDetails();
+  }
 
   @override
   Widget build(BuildContext context) {

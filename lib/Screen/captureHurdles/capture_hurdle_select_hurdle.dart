@@ -208,13 +208,13 @@ class _select_hurdleState extends State<select_hurdle> {
                                   var hurdleName = prefs.setString('hurdleName',
                                       hurdlesList[index]['hurdleName']);
                                   var hurdleId = prefs.setInt(
-                                      'hurdleId', hurdlesList[index]['id']);
+                                      'hurdleId', hurdlesList[index - 1]['id']);
                                   setState(() {
                                     selectBox = index;
                                   });
                                   if (widget.update == true) {
-                                    Hurdles().updateHurdle(
-                                        'hurdleId', hurdlesList[index]['id']);
+                                    Hurdles().updateHurdle('hurdleId',
+                                        hurdlesList[index - 1]['id']);
                                   }
                                 },
                                 child: Container(

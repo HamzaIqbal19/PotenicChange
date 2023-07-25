@@ -1,6 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
@@ -15,17 +20,50 @@ class multiple_goal_inactive extends StatefulWidget {
 }
 
 class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
-  bool status1 = true;
-  bool status2 = true;
-  bool status3 = true;
-  bool status4 = false;
-  bool status5 = true;
-  bool color1 = true;
-  bool color2 = true;
-  bool color3 = true;
-  bool color4 = false;
-  bool color5 = true;
+  bool status = true;
+
+  bool color = true;
+
   bool bt_switch = false;
+
+  bool Loader = true;
+  var goalDetails;
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(seconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loader = false;
+    });
+  }
+
+  void _fetchGoalDetails() {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          goalDetails = response;
+        });
+        loadData();
+        print(response);
+      } else {
+        loadData();
+      }
+    }).catchError((error) {
+      // loadData();
+      print("error");
+    }).whenComplete(() {
+      loadData();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchGoalDetails();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,1090 +147,1436 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         )),
         width: double.infinity,
         height: double.infinity,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              Container(
-                width: AppDimensions.height10(context) * 27.8,
-                height: AppDimensions.height10(context) * 3.6,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 11.0),
-                child: Center(
-                  child: Text(
-                    'Control My Anger',
-                    style: TextStyle(
-                        fontSize: AppDimensions.height10(context) * 3.0,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0xFFFFFFFF)),
-                  ),
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 18.0,
-                height: AppDimensions.height10(context) * 2.2,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.9),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Status: ',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 1.8,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFFFFFFFF)),
-                    ),
-                    widget.isActive
-                        ? Text(
-                            'Active',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w700,
-                                color: const Color(0xFF156F6D)),
-                          )
-                        : Text(
-                            'Inactive',
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w700,
-                                color: const Color(0xFFDE7A11)),
-                          )
-                  ],
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 26.8,
-                height: AppDimensions.height10(context) * 11.4,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.3),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Loader == false
+            ? SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 11.4,
-                      height: AppDimensions.height10(context) * 11.4,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
-                      child: Column(
+                      width: AppDimensions.height10(context) * 30.8,
+                      // color: Colors.amber,
+                      height: AppDimensions.height10(context) * 3.6,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 11.0),
+                      child: Center(
+                        child: Text(
+                          goalDetails['name'],
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 3.0,
+                              fontWeight: FontWeight.w700,
+                              color: const Color(0xFFFFFFFF)),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.height10(context) * 18.0,
+                      height: AppDimensions.height10(context) * 2.2,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 0.9),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 9.3,
-                            height: AppDimensions.height10(context) * 3.4,
-                            child: Text(
-                              'No. of\nActive days',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  height:
-                                      AppDimensions.height10(context) * 0.15,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF437296)),
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 6.3,
-                            height: AppDimensions.height10(context) * 3.3,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.8),
-                            child: Text(
-                              '21',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.8,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xFF464646)),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 11.4,
-                      height: AppDimensions.height10(context) * 11.4,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle, color: Color(0xFFFFFFFF)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 9.3,
-                            height: AppDimensions.height10(context) * 3.4,
-                            child: Text(
-                              'Goal\nLevel',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF437296)),
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 6.3,
-                            height: AppDimensions.height10(context) * 3.3,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  '2',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 2.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: const Color(0xFF464646)),
-                                ),
-                                Text(
-                                  '/5',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.0,
-                                      fontWeight: FontWeight.w300,
-                                      color: const Color(0xFF464646)),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                  width: AppDimensions.height10(context) * 37.2,
-                  height: AppDimensions.height10(context) * 2.9,
-                  margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 3.8),
-                  child: Center(
-                    child: Text(
-                      'Assign up to 5 practices:',
-                      style: TextStyle(
-                          fontSize: AppDimensions.height10(context) * 2.4,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xFFFFFFFF)),
-                    ),
-                  )),
-              Container(
-                //  width: AppDimensions.height10(context) * 41.8,
-                height: AppDimensions.height10(context) * 10.0,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.7),
-                decoration: BoxDecoration(
-                    color:
-                        color1 ? Colors.transparent : const Color(0xFF828282),
-                    border: const Border(
-                        top: BorderSide(color: Color(0xFFFFFFFF), width: 1),
-                        bottom:
-                            BorderSide(color: Color(0xFFFFFFFF), width: 1))),
-                child: Row(
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 5.4,
-                      height: AppDimensions.height10(context) * 5.4,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.5),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.15,
-                              color: const Color(0xFFFBFBFB)),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image: AssetImage('assets/images/Ellipse 158.webp'),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 18.6,
-                      height: AppDimensions.height10(context) * 4.9,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 9.2,
-                            height: AppDimensions.height10(context) * 2.2,
-                            child: Text(
-                              'Meditation',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFFFFFF)),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 2.7,
-                            child: Row(
-                              children: [
-                                Text('21',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFBFBFB))),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          0.4),
-                                  child: Text('/20 active days',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w500,
-                                          // fontFamily: 'Poppins',
-                                          color: const Color(0xFFF6F6F6))),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    bt_switch
-                        ? GestureDetector(
-                            onTap: () => showAnimatedDialog(
-                                animationType: DialogTransitionType.fadeScale,
-                                curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    showDeleteAlert(context)),
-                            child: Container(
-                              width: AppDimensions.height10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 1.6,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 10.6),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/bin.webp'))),
-                            ),
-                          )
-                        : SizedBox(
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: FlutterSwitch(
-                                    width:
-                                        AppDimensions.height10(context) * 6.2,
-                                    height:
-                                        AppDimensions.height10(context) * 3.4,
-                                    valueFontSize: 12.0,
-                                    toggleSize: 18.0,
-                                    activeColor: const Color(0xFFFA9934),
-                                    inactiveColor: const Color(0xFF2F3A4B),
-                                    value: status1,
-                                    onToggle: (val) {
-                                      setState(() {
-                                        status1 = val;
-                                        color1 = val;
-                                      });
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.31,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            2.0),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        color: const Color(0xFFFFFFFF),
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          )
-                  ],
-                ),
-              ),
-              Container(
-                //  width: AppDimensions.height10(context) * 41.8,
-                height: AppDimensions.height10(context) * 10.0,
-                decoration: BoxDecoration(
-                    color:
-                        color2 ? Colors.transparent : const Color(0xFF828282),
-                    border: const Border(
-                        bottom:
-                            BorderSide(color: Color(0xFFFFFFFF), width: 1))),
-                child: Row(
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 5.4,
-                      height: AppDimensions.height10(context) * 5.4,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.5),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.15,
-                              color: const Color(0xFFFBFBFB)),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image:
-                                AssetImage('assets/images/Ellipse purple.webp'),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 18.6,
-                      height: AppDimensions.height10(context) * 4.9,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            //width: AppDimensions.height10(context) * 9.2,
-                            height: AppDimensions.height10(context) * 2.2,
-                            child: Text(
-                              'Count down',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFFFFFF)),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 2.7,
-                            child: Row(
-                              children: [
-                                Text('21',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFBFBFB))),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          0.4),
-                                  child: Text('/20 active days',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w500,
-                                          // fontFamily: 'Poppins',
-                                          color: const Color(0xFFF6F6F6))),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    bt_switch
-                        ? GestureDetector(
-                            onTap: () => showAnimatedDialog(
-                                animationType: DialogTransitionType.fadeScale,
-                                curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    showDeleteAlert(context)),
-                            child: Container(
-                              width: AppDimensions.height10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 1.6,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 10.6),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/bin.webp'))),
-                            ),
-                          )
-                        : SizedBox(
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: FlutterSwitch(
-                                    width:
-                                        AppDimensions.height10(context) * 6.2,
-                                    height:
-                                        AppDimensions.height10(context) * 3.4,
-                                    valueFontSize: 12.0,
-                                    toggleSize: 18.0,
-                                    activeColor: const Color(0xFFFA9934),
-                                    inactiveColor: const Color(0xFF2F3A4B),
-                                    value: status2,
-                                    onToggle: (val) {
-                                      setState(() {
-                                        status2 = val;
-                                        color2 = val;
-                                      });
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.31,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            2.0),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        color: const Color(0xFFFFFFFF),
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          )
-                  ],
-                ),
-              ),
-              Container(
-                //  width: AppDimensions.height10(context) * 41.8,
-                height: AppDimensions.height10(context) * 10.0,
-                decoration: BoxDecoration(
-                    color:
-                        color3 ? Colors.transparent : const Color(0xFF828282),
-                    border: const Border(
-                        bottom:
-                            BorderSide(color: Color(0xFFFFFFFF), width: 1))),
-                child: Row(
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 5.4,
-                      height: AppDimensions.height10(context) * 5.4,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.5),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.15,
-                              color: const Color(0xFFFBFBFB)),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image:
-                                AssetImage('assets/images/Ellipse orange.webp'),
-                            fit: BoxFit.contain,
-                          )),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 18.6,
-                      height: AppDimensions.height10(context) * 7.2,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 12.6,
-                            height: AppDimensions.height10(context) * 4.5,
-                            child: Text(
-                              'Count temper\nepisodes',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFFFFFF)),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 2.7,
-                            child: Row(
-                              children: [
-                                Text('21',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFBFBFB))),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          0.4),
-                                  child: Text('/20 active days',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w500,
-                                          // fontFamily: 'Poppins',
-                                          color: const Color(0xFFF6F6F6))),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    bt_switch
-                        ? GestureDetector(
-                            onTap: () => showAnimatedDialog(
-                                animationType: DialogTransitionType.fadeScale,
-                                curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    showDeleteAlert(context)),
-                            child: Container(
-                              width: AppDimensions.height10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 1.6,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 10.6),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/bin.webp'))),
-                            ),
-                          )
-                        : SizedBox(
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: FlutterSwitch(
-                                    width:
-                                        AppDimensions.height10(context) * 6.2,
-                                    height:
-                                        AppDimensions.height10(context) * 3.4,
-                                    valueFontSize: 12.0,
-                                    toggleSize: 18.0,
-                                    activeColor: const Color(0xFFFA9934),
-                                    inactiveColor: const Color(0xFF2F3A4B),
-                                    value: status3,
-                                    onToggle: (val) {
-                                      setState(() {
-                                        status3 = val;
-                                        color3 = val;
-                                      });
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.31,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            2.0),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        color: const Color(0xFFFFFFFF),
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          )
-                  ],
-                ),
-              ),
-              Container(
-                //   width: AppDimensions.height10(context) * 41.8,
-                height: AppDimensions.height10(context) * 10.0,
-                decoration: BoxDecoration(
-                    color:
-                        color4 ? Colors.transparent : const Color(0xFF828282),
-                    border: const Border(
-                        bottom:
-                            BorderSide(color: Color(0xFFFFFFFF), width: 1))),
-                child: Row(
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 5.4,
-                      height: AppDimensions.height10(context) * 5.4,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.5),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.15,
-                              color: const Color(0xFFFBFBFB)),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image: AssetImage('assets/images/Ellipse 158.webp'),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 18.6,
-                      height: AppDimensions.height10(context) * 4.9,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 9.2,
-                            height: AppDimensions.height10(context) * 2.2,
-                            child: Text(
-                              'Meditation',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFFFFFF)),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 2.7,
-                            child: Row(
-                              children: [
-                                Text('21',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFBFBFB))),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          0.4),
-                                  child: Text('/20 active days',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w500,
-                                          // fontFamily: 'Poppins',
-                                          color: const Color(0xFFF6F6F6))),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    bt_switch
-                        ? GestureDetector(
-                            onTap: () => showAnimatedDialog(
-                                animationType: DialogTransitionType.fadeScale,
-                                curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    showDeleteAlert(context)),
-                            child: Container(
-                              width: AppDimensions.height10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 1.6,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 10.6),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/bin.webp'))),
-                            ),
-                          )
-                        : SizedBox(
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: FlutterSwitch(
-                                    width:
-                                        AppDimensions.height10(context) * 6.2,
-                                    height:
-                                        AppDimensions.height10(context) * 3.4,
-                                    valueFontSize: 12.0,
-                                    toggleSize: 18.0,
-                                    activeColor: const Color(0xFFFA9934),
-                                    inactiveColor: const Color(0xFF2F3A4B),
-                                    value: status4,
-                                    onToggle: (val) {
-                                      setState(() {
-                                        status4 = val;
-                                        color4 = val;
-                                      });
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.31,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            2.0),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        color: const Color(0xFFFFFFFF),
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          )
-                  ],
-                ),
-              ),
-              Container(
-                //  width: AppDimensions.height10(context) * 41.8,
-                height: AppDimensions.height10(context) * 10.0,
-                decoration: BoxDecoration(
-                    color:
-                        color5 ? Colors.transparent : const Color(0xFF828282),
-                    border: const Border(
-                        bottom:
-                            BorderSide(color: Color(0xFFFFFFFF), width: 1))),
-                child: Row(
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 5.4,
-                      height: AppDimensions.height10(context) * 5.4,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.5),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.15,
-                              color: const Color(0xFFFBFBFB)),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image:
-                                AssetImage('assets/images/Ellipse blue.webp'),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 18.6,
-                      height: AppDimensions.height10(context) * 4.9,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 12.6,
-                            height: AppDimensions.height10(context) * 2.2,
-                            child: Text(
-                              'Mirror Practice',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFFFFFF)),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 2.7,
-                            child: Row(
-                              children: [
-                                Text('21',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFBFBFB))),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          0.4),
-                                  child: Text('/20 active days',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w500,
-                                          // fontFamily: 'Poppins',
-                                          color: const Color(0xFFF6F6F6))),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    bt_switch
-                        ? GestureDetector(
-                            onTap: () => showAnimatedDialog(
-                                animationType: DialogTransitionType.fadeScale,
-                                curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    showDeleteAlert(context)),
-                            child: Container(
-                              width: AppDimensions.height10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 1.6,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 10.6),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/bin.webp'))),
-                            ),
-                          )
-                        : SizedBox(
-                            child: Row(
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: FlutterSwitch(
-                                    width:
-                                        AppDimensions.height10(context) * 6.2,
-                                    height:
-                                        AppDimensions.height10(context) * 3.4,
-                                    valueFontSize: 12.0,
-                                    toggleSize: 18.0,
-                                    activeColor: const Color(0xFFFA9934),
-                                    inactiveColor: const Color(0xFF2F3A4B),
-                                    value: status5,
-                                    onToggle: (val) {
-                                      setState(() {
-                                        status5 = val;
-                                        color5 = val;
-                                      });
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                    width:
-                                        AppDimensions.height10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.31,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            2.0),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        color: const Color(0xFFFFFFFF),
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          )
-                  ],
-                ),
-              ),
-              Container(
-                //  width: AppDimensions.height10(context) * 41.8,
-                height: AppDimensions.height10(context) * 10.0,
-                decoration: const BoxDecoration(
-                    color: Color(0xFF828282),
-                    border: Border(
-                        bottom:
-                            BorderSide(color: Color(0xFFFFFFFF), width: 1))),
-                child: Row(
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 5.4,
-                      height: AppDimensions.height10(context) * 5.4,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 2.5),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              width: AppDimensions.height10(context) * 0.15,
-                              color: const Color(0xFFFBFBFB)),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image: AssetImage('assets/images/Ellipse 158.webp'),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 18.6,
-                      height: AppDimensions.height10(context) * 4.9,
-                      margin: EdgeInsets.only(
-                          left: AppDimensions.height10(context) * 0.8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 9.2,
-                            height: AppDimensions.height10(context) * 2.2,
-                            child: Text(
-                              'Meditation',
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFFFFFFFF)),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 2.7,
-                            child: Row(
-                              children: [
-                                Text('21',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFBFBFB))),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          0.4),
-                                  child: Text('/20 active days',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          fontWeight: FontWeight.w500,
-                                          // fontFamily: 'Poppins',
-                                          color: const Color(0xFFF6F6F6))),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    bt_switch
-                        ? GestureDetector(
-                            onTap: () => showAnimatedDialog(
-                                animationType: DialogTransitionType.fadeScale,
-                                curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    showDeleteAlert(context)),
-                            child: Container(
-                              width: AppDimensions.height10(context) * 1.4,
-                              height: AppDimensions.height10(context) * 1.6,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 10.6),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/bin.webp'))),
-                            ),
-                          )
-                        : Row(
-                            children: [
-                              Container(
-                                  width: AppDimensions.height10(context) * 7.2,
-                                  height: AppDimensions.height10(context) * 3.4,
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: Center(
-                                    child: Text(
-                                      'Incomplete',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xFFFFFFFF)),
-                                    ),
-                                  )),
-                              Container(
-                                  width: AppDimensions.height10(context) * 2.4,
-                                  height:
-                                      AppDimensions.height10(context) * 1.31,
-                                  margin: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: GestureDetector(
-                                    onTap: () {},
-                                    child: Image.asset(
-                                      'assets/images/BTN Back.webp',
-                                      color: const Color(0xFFFFFFFF),
-                                      //width: AppDimensions.height10(context) * 2.6,
-                                      //height: AppDimensions.height10(context) * 2.6,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )),
-                            ],
-                          )
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context, FadePageRoute(page: const CreatePractice()));
-                },
-                child: Container(
-                  width: AppDimensions.height10(context) * 13.4,
-                  height: AppDimensions.height10(context) * 13.4,
-                  margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 5.0,
-                      bottom: AppDimensions.height10(context) * 38.9),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          width: AppDimensions.height10(context) * 0.3,
-                          color: const Color(0xFFFFFFFF))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        // width: AppDimensions.height10(context) * 5.8,
-                        height: AppDimensions.height10(context) * 5.8,
-                        child: Center(
-                          child: Text(
-                            'Add new\npractice',
-                            textAlign: TextAlign.center,
+                          Text(
+                            'Status: ',
                             style: TextStyle(
-                                height: AppDimensions.height10(context) * 0.15,
                                 fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xFFFFFFFF)),
                           ),
+                          widget.isActive
+                              ? Text(
+                                  capitalizeFirstLetter(
+                                      goalDetails['goalStatus']),
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w700,
+                                      color: const Color(0xFF156F6D)),
+                                )
+                              : Text(
+                                  capitalizeFirstLetter(
+                                      goalDetails['goalStatus']),
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w700,
+                                      color: const Color(0xFFDE7A11)),
+                                )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.height10(context) * 26.8,
+                      height: AppDimensions.height10(context) * 11.4,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 3.3),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: AppDimensions.height10(context) * 11.4,
+                            height: AppDimensions.height10(context) * 11.4,
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xFFFFFFFF)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.height10(context) * 9.3,
+                                  height: AppDimensions.height10(context) * 3.4,
+                                  child: Text(
+                                    'No. of\nActive days',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.15,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xFF437296)),
+                                  ),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10(context) * 6.3,
+                                  height: AppDimensions.height10(context) * 3.3,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          0.8),
+                                  child: Text(
+                                    '21',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFF464646)),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 11.4,
+                            height: AppDimensions.height10(context) * 11.4,
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xFFFFFFFF)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.height10(context) * 9.3,
+                                  height: AppDimensions.height10(context) * 3.4,
+                                  child: Text(
+                                    'Goal\nLevel',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xFF437296)),
+                                  ),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10(context) * 6.3,
+                                  height: AppDimensions.height10(context) * 3.3,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          0.8),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        '2',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                2.0,
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xFF464646)),
+                                      ),
+                                      Text(
+                                        '/5',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.0,
+                                            fontWeight: FontWeight.w300,
+                                            color: const Color(0xFF464646)),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                        width: AppDimensions.height10(context) * 37.2,
+                        height: AppDimensions.height10(context) * 2.9,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 3.8),
+                        child: Center(
+                          child: Text(
+                            'Assign up to 5 practices:',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 2.4,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xFFFFFFFF)),
+                          ),
+                        )),
+                    ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        itemCount: goalDetails['userPractices'].length,
+                        itemBuilder: ((context, index) {
+                          return Container(
+                            //  width: AppDimensions.height10(context) * 41.8,
+                            height: AppDimensions.height10(context) * 10.0,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.7),
+                            decoration: BoxDecoration(
+                                color: color
+                                    ? Colors.transparent
+                                    : const Color(0xFF828282),
+                                border: const Border(
+                                    top: BorderSide(
+                                        color: Color(0xFFFFFFFF), width: 1),
+                                    bottom: BorderSide(
+                                        color: Color(0xFFFFFFFF), width: 1))),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: AppDimensions.height10(context) * 5.4,
+                                  height: AppDimensions.height10(context) * 5.4,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10(context) *
+                                          2.5),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  0.15,
+                                          color: const Color(0xFFFBFBFB)),
+                                      shape: BoxShape.circle,
+                                      image: DecorationImage(
+                                        image: AssetImage(goalDetails['userPractices']
+                                                    [index]['color'] ==
+                                                '1'
+                                            ? "assets/images/Ellipse orange_wb.webp"
+                                            : goalDetails['userPractices']
+                                                        [index]['color'] ==
+                                                    '2'
+                                                ? 'assets/images/Ellipse 158_wb.webp'
+                                                : goalDetails['userPractices']
+                                                            [index]['color'] ==
+                                                        '3'
+                                                    ? "assets/images/Ellipse 157_wb.webp"
+                                                    : goalDetails['userPractices']
+                                                                    [index]
+                                                                ['color'] ==
+                                                            '4'
+                                                        ? "assets/images/Ellipse light-blue_wb.webp"
+                                                        : goalDetails['userPractices']
+                                                                        [index]
+                                                                    ['color'] ==
+                                                                '5'
+                                                            ? "assets/images/Ellipse blue_wb.webp"
+                                                            : 'assets/images/Ellipse 158_wb.webp'),
+                                        fit: BoxFit.cover,
+                                      )),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10(context) * 18.6,
+                                  height: AppDimensions.height10(context) * 4.9,
+                                  margin: EdgeInsets.only(
+                                      left: AppDimensions.height10(context) *
+                                          0.8),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        // width: AppDimensions.height10(context) *
+                                        //     9.2,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.2,
+                                        child: Text(
+                                          goalDetails['userPractices'][index]
+                                              ['name'],
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.8,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFFFFFFFF)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                2.7,
+                                        child: Row(
+                                          children: [
+                                            Text('21',
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: const Color(
+                                                        0xFFFBFBFB))),
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  top: AppDimensions.height10(
+                                                          context) *
+                                                      0.4),
+                                              child: Text('/20 active days',
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.3,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      // fontFamily: 'Poppins',
+                                                      color: const Color(
+                                                          0xFFF6F6F6))),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                bt_switch
+                                    ? GestureDetector(
+                                        onTap: () => showAnimatedDialog(
+                                            animationType:
+                                                DialogTransitionType.fadeScale,
+                                            curve: Curves.easeInOut,
+                                            duration: Duration(seconds: 1),
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                showDeleteAlert(context)),
+                                        child: Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  1.4,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  1.6,
+                                          margin: EdgeInsets.only(
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  10.6),
+                                          decoration: const BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/bin.webp'))),
+                                        ),
+                                      )
+                                    : SizedBox(
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.only(
+                                                  left: AppDimensions.height10(
+                                                          context) *
+                                                      2.0),
+                                              child: FlutterSwitch(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    6.2,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    3.4,
+                                                valueFontSize: 12.0,
+                                                toggleSize: 18.0,
+                                                activeColor:
+                                                    const Color(0xFFFA9934),
+                                                inactiveColor:
+                                                    const Color(0xFF2F3A4B),
+                                                value: status,
+                                                onToggle: (val) {
+                                                  setState(() {
+                                                    status = val;
+                                                    color = val;
+                                                  });
+                                                },
+                                              ),
+                                            ),
+                                            Container(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    2.4,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    1.31,
+                                                margin: EdgeInsets.only(
+                                                    left:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0),
+                                                child: GestureDetector(
+                                                  onTap: () {},
+                                                  child: Image.asset(
+                                                    'assets/images/BTN Back.webp',
+                                                    color:
+                                                        const Color(0xFFFFFFFF),
+                                                    //width: AppDimensions.height10(context) * 2.6,
+                                                    //height: AppDimensions.height10(context) * 2.6,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                )),
+                                          ],
+                                        ),
+                                      )
+                              ],
+                            ),
+                          );
+                        })),
+                    // Container(
+                    //   //  width: AppDimensions.height10(context) * 41.8,
+                    //   height: AppDimensions.height10(context) * 10.0,
+                    //   margin: EdgeInsets.only(
+                    //       top: AppDimensions.height10(context) * 1.7),
+                    //   decoration: BoxDecoration(
+                    //       color: color1
+                    //           ? Colors.transparent
+                    //           : const Color(0xFF828282),
+                    //       border: const Border(
+                    //           top: BorderSide(
+                    //               color: Color(0xFFFFFFFF), width: 1),
+                    //           bottom: BorderSide(
+                    //               color: Color(0xFFFFFFFF), width: 1))),
+                    //   child: Row(
+                    //     children: [
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 5.4,
+                    //         height: AppDimensions.height10(context) * 5.4,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 2.5),
+                    //         decoration: BoxDecoration(
+                    //             border: Border.all(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 0.15,
+                    //                 color: const Color(0xFFFBFBFB)),
+                    //             shape: BoxShape.circle,
+                    //             image: const DecorationImage(
+                    //               image: AssetImage(
+                    //                   'assets/images/Ellipse 158.webp'),
+                    //               fit: BoxFit.cover,
+                    //             )),
+                    //       ),
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 18.6,
+                    //         height: AppDimensions.height10(context) * 4.9,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 0.8),
+                    //         child: Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: [
+                    //             SizedBox(
+                    //               width: AppDimensions.height10(context) * 9.2,
+                    //               height: AppDimensions.height10(context) * 2.2,
+                    //               child: Text(
+                    //                 'Meditation',
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.8,
+                    //                     fontWeight: FontWeight.w600,
+                    //                     color: const Color(0xFFFFFFFF)),
+                    //               ),
+                    //             ),
+                    //             SizedBox(
+                    //               height: AppDimensions.height10(context) * 2.7,
+                    //               child: Row(
+                    //                 children: [
+                    //                   Text('21',
+                    //                       style: TextStyle(
+                    //                           fontSize: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0,
+                    //                           fontWeight: FontWeight.w600,
+                    //                           color: const Color(0xFFFBFBFB))),
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         top: AppDimensions.height10(
+                    //                                 context) *
+                    //                             0.4),
+                    //                     child: Text('/20 active days',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     1.3,
+                    //                             fontWeight: FontWeight.w500,
+                    //                             // fontFamily: 'Poppins',
+                    //                             color:
+                    //                                 const Color(0xFFF6F6F6))),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       bt_switch
+                    //           ? GestureDetector(
+                    //               onTap: () => showAnimatedDialog(
+                    //                   animationType:
+                    //                       DialogTransitionType.fadeScale,
+                    //                   curve: Curves.easeInOut,
+                    //                   duration: Duration(seconds: 1),
+                    //                   context: context,
+                    //                   builder: (BuildContext context) =>
+                    //                       showDeleteAlert(context)),
+                    //               child: Container(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 1.4,
+                    //                 height:
+                    //                     AppDimensions.height10(context) * 1.6,
+                    //                 margin: EdgeInsets.only(
+                    //                     left: AppDimensions.height10(context) *
+                    //                         10.6),
+                    //                 decoration: const BoxDecoration(
+                    //                     image: DecorationImage(
+                    //                         image: AssetImage(
+                    //                             'assets/images/bin.webp'))),
+                    //               ),
+                    //             )
+                    //           : SizedBox(
+                    //               child: Row(
+                    //                 children: [
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         left: AppDimensions.height10(
+                    //                                 context) *
+                    //                             2.0),
+                    //                     child: FlutterSwitch(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               6.2,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               3.4,
+                    //                       valueFontSize: 12.0,
+                    //                       toggleSize: 18.0,
+                    //                       activeColor: const Color(0xFFFA9934),
+                    //                       inactiveColor:
+                    //                           const Color(0xFF2F3A4B),
+                    //                       value: status1,
+                    //                       onToggle: (val) {
+                    //                         setState(() {
+                    //                           status1 = val;
+                    //                           color1 = val;
+                    //                         });
+                    //                       },
+                    //                     ),
+                    //                   ),
+                    //                   Container(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               2.4,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               1.31,
+                    //                       margin: EdgeInsets.only(
+                    //                           left: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0),
+                    //                       child: GestureDetector(
+                    //                         onTap: () {},
+                    //                         child: Image.asset(
+                    //                           'assets/images/BTN Back.webp',
+                    //                           color: const Color(0xFFFFFFFF),
+                    //                           //width: AppDimensions.height10(context) * 2.6,
+                    //                           //height: AppDimensions.height10(context) * 2.6,
+                    //                           fit: BoxFit.cover,
+                    //                         ),
+                    //                       )),
+                    //                 ],
+                    //               ),
+                    //             )
+                    //     ],
+                    //   ),
+                    // ),
+                    // Container(
+                    //   //  width: AppDimensions.height10(context) * 41.8,
+                    //   height: AppDimensions.height10(context) * 10.0,
+                    //   decoration: BoxDecoration(
+                    //       color: color2
+                    //           ? Colors.transparent
+                    //           : const Color(0xFF828282),
+                    //       border: const Border(
+                    //           bottom: BorderSide(
+                    //               color: Color(0xFFFFFFFF), width: 1))),
+                    //   child: Row(
+                    //     children: [
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 5.4,
+                    //         height: AppDimensions.height10(context) * 5.4,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 2.5),
+                    //         decoration: BoxDecoration(
+                    //             border: Border.all(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 0.15,
+                    //                 color: const Color(0xFFFBFBFB)),
+                    //             shape: BoxShape.circle,
+                    //             image: const DecorationImage(
+                    //               image: AssetImage(
+                    //                   'assets/images/Ellipse purple.webp'),
+                    //               fit: BoxFit.cover,
+                    //             )),
+                    //       ),
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 18.6,
+                    //         height: AppDimensions.height10(context) * 4.9,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 0.8),
+                    //         child: Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: [
+                    //             SizedBox(
+                    //               //width: AppDimensions.height10(context) * 9.2,
+                    //               height: AppDimensions.height10(context) * 2.2,
+                    //               child: Text(
+                    //                 'Count down',
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.8,
+                    //                     fontWeight: FontWeight.w600,
+                    //                     color: const Color(0xFFFFFFFF)),
+                    //               ),
+                    //             ),
+                    //             SizedBox(
+                    //               height: AppDimensions.height10(context) * 2.7,
+                    //               child: Row(
+                    //                 children: [
+                    //                   Text('21',
+                    //                       style: TextStyle(
+                    //                           fontSize: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0,
+                    //                           fontWeight: FontWeight.w600,
+                    //                           color: const Color(0xFFFBFBFB))),
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         top: AppDimensions.height10(
+                    //                                 context) *
+                    //                             0.4),
+                    //                     child: Text('/20 active days',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     1.3,
+                    //                             fontWeight: FontWeight.w500,
+                    //                             // fontFamily: 'Poppins',
+                    //                             color:
+                    //                                 const Color(0xFFF6F6F6))),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       bt_switch
+                    //           ? GestureDetector(
+                    //               onTap: () => showAnimatedDialog(
+                    //                   animationType:
+                    //                       DialogTransitionType.fadeScale,
+                    //                   curve: Curves.easeInOut,
+                    //                   duration: Duration(seconds: 1),
+                    //                   context: context,
+                    //                   builder: (BuildContext context) =>
+                    //                       showDeleteAlert(context)),
+                    //               child: Container(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 1.4,
+                    //                 height:
+                    //                     AppDimensions.height10(context) * 1.6,
+                    //                 margin: EdgeInsets.only(
+                    //                     left: AppDimensions.height10(context) *
+                    //                         10.6),
+                    //                 decoration: const BoxDecoration(
+                    //                     image: DecorationImage(
+                    //                         image: AssetImage(
+                    //                             'assets/images/bin.webp'))),
+                    //               ),
+                    //             )
+                    //           : SizedBox(
+                    //               child: Row(
+                    //                 children: [
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         left: AppDimensions.height10(
+                    //                                 context) *
+                    //                             2.0),
+                    //                     child: FlutterSwitch(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               6.2,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               3.4,
+                    //                       valueFontSize: 12.0,
+                    //                       toggleSize: 18.0,
+                    //                       activeColor: const Color(0xFFFA9934),
+                    //                       inactiveColor:
+                    //                           const Color(0xFF2F3A4B),
+                    //                       value: status2,
+                    //                       onToggle: (val) {
+                    //                         setState(() {
+                    //                           status2 = val;
+                    //                           color2 = val;
+                    //                         });
+                    //                       },
+                    //                     ),
+                    //                   ),
+                    //                   Container(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               2.4,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               1.31,
+                    //                       margin: EdgeInsets.only(
+                    //                           left: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0),
+                    //                       child: GestureDetector(
+                    //                         onTap: () {},
+                    //                         child: Image.asset(
+                    //                           'assets/images/BTN Back.webp',
+                    //                           color: const Color(0xFFFFFFFF),
+                    //                           //width: AppDimensions.height10(context) * 2.6,
+                    //                           //height: AppDimensions.height10(context) * 2.6,
+                    //                           fit: BoxFit.cover,
+                    //                         ),
+                    //                       )),
+                    //                 ],
+                    //               ),
+                    //             )
+                    //     ],
+                    //   ),
+                    // ),
+                    // Container(
+                    //   //  width: AppDimensions.height10(context) * 41.8,
+                    //   height: AppDimensions.height10(context) * 10.0,
+                    //   decoration: BoxDecoration(
+                    //       color: color3
+                    //           ? Colors.transparent
+                    //           : const Color(0xFF828282),
+                    //       border: const Border(
+                    //           bottom: BorderSide(
+                    //               color: Color(0xFFFFFFFF), width: 1))),
+                    //   child: Row(
+                    //     children: [
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 5.4,
+                    //         height: AppDimensions.height10(context) * 5.4,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 2.5),
+                    //         decoration: BoxDecoration(
+                    //             border: Border.all(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 0.15,
+                    //                 color: const Color(0xFFFBFBFB)),
+                    //             shape: BoxShape.circle,
+                    //             image: const DecorationImage(
+                    //               image: AssetImage(
+                    //                   'assets/images/Ellipse orange.webp'),
+                    //               fit: BoxFit.contain,
+                    //             )),
+                    //       ),
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 18.6,
+                    //         height: AppDimensions.height10(context) * 7.2,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 0.8),
+                    //         child: Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: [
+                    //             SizedBox(
+                    //               width: AppDimensions.height10(context) * 12.6,
+                    //               height: AppDimensions.height10(context) * 4.5,
+                    //               child: Text(
+                    //                 'Count temper\nepisodes',
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.8,
+                    //                     fontWeight: FontWeight.w600,
+                    //                     color: const Color(0xFFFFFFFF)),
+                    //               ),
+                    //             ),
+                    //             SizedBox(
+                    //               height: AppDimensions.height10(context) * 2.7,
+                    //               child: Row(
+                    //                 children: [
+                    //                   Text('21',
+                    //                       style: TextStyle(
+                    //                           fontSize: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0,
+                    //                           fontWeight: FontWeight.w600,
+                    //                           color: const Color(0xFFFBFBFB))),
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         top: AppDimensions.height10(
+                    //                                 context) *
+                    //                             0.4),
+                    //                     child: Text('/20 active days',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     1.3,
+                    //                             fontWeight: FontWeight.w500,
+                    //                             // fontFamily: 'Poppins',
+                    //                             color:
+                    //                                 const Color(0xFFF6F6F6))),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       bt_switch
+                    //           ? GestureDetector(
+                    //               onTap: () => showAnimatedDialog(
+                    //                   animationType:
+                    //                       DialogTransitionType.fadeScale,
+                    //                   curve: Curves.easeInOut,
+                    //                   duration: Duration(seconds: 1),
+                    //                   context: context,
+                    //                   builder: (BuildContext context) =>
+                    //                       showDeleteAlert(context)),
+                    //               child: Container(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 1.4,
+                    //                 height:
+                    //                     AppDimensions.height10(context) * 1.6,
+                    //                 margin: EdgeInsets.only(
+                    //                     left: AppDimensions.height10(context) *
+                    //                         10.6),
+                    //                 decoration: const BoxDecoration(
+                    //                     image: DecorationImage(
+                    //                         image: AssetImage(
+                    //                             'assets/images/bin.webp'))),
+                    //               ),
+                    //             )
+                    //           : SizedBox(
+                    //               child: Row(
+                    //                 children: [
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         left: AppDimensions.height10(
+                    //                                 context) *
+                    //                             2.0),
+                    //                     child: FlutterSwitch(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               6.2,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               3.4,
+                    //                       valueFontSize: 12.0,
+                    //                       toggleSize: 18.0,
+                    //                       activeColor: const Color(0xFFFA9934),
+                    //                       inactiveColor:
+                    //                           const Color(0xFF2F3A4B),
+                    //                       value: status3,
+                    //                       onToggle: (val) {
+                    //                         setState(() {
+                    //                           status3 = val;
+                    //                           color3 = val;
+                    //                         });
+                    //                       },
+                    //                     ),
+                    //                   ),
+                    //                   Container(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               2.4,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               1.31,
+                    //                       margin: EdgeInsets.only(
+                    //                           left: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0),
+                    //                       child: GestureDetector(
+                    //                         onTap: () {},
+                    //                         child: Image.asset(
+                    //                           'assets/images/BTN Back.webp',
+                    //                           color: const Color(0xFFFFFFFF),
+                    //                           //width: AppDimensions.height10(context) * 2.6,
+                    //                           //height: AppDimensions.height10(context) * 2.6,
+                    //                           fit: BoxFit.cover,
+                    //                         ),
+                    //                       )),
+                    //                 ],
+                    //               ),
+                    //             )
+                    //     ],
+                    //   ),
+                    // ),
+                    // Container(
+                    //   //   width: AppDimensions.height10(context) * 41.8,
+                    //   height: AppDimensions.height10(context) * 10.0,
+                    //   decoration: BoxDecoration(
+                    //       color: color4
+                    //           ? Colors.transparent
+                    //           : const Color(0xFF828282),
+                    //       border: const Border(
+                    //           bottom: BorderSide(
+                    //               color: Color(0xFFFFFFFF), width: 1))),
+                    //   child: Row(
+                    //     children: [
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 5.4,
+                    //         height: AppDimensions.height10(context) * 5.4,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 2.5),
+                    //         decoration: BoxDecoration(
+                    //             border: Border.all(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 0.15,
+                    //                 color: const Color(0xFFFBFBFB)),
+                    //             shape: BoxShape.circle,
+                    //             image: const DecorationImage(
+                    //               image: AssetImage(
+                    //                   'assets/images/Ellipse 158.webp'),
+                    //               fit: BoxFit.cover,
+                    //             )),
+                    //       ),
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 18.6,
+                    //         height: AppDimensions.height10(context) * 4.9,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 0.8),
+                    //         child: Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: [
+                    //             SizedBox(
+                    //               width: AppDimensions.height10(context) * 9.2,
+                    //               height: AppDimensions.height10(context) * 2.2,
+                    //               child: Text(
+                    //                 'Meditation',
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.8,
+                    //                     fontWeight: FontWeight.w600,
+                    //                     color: const Color(0xFFFFFFFF)),
+                    //               ),
+                    //             ),
+                    //             SizedBox(
+                    //               height: AppDimensions.height10(context) * 2.7,
+                    //               child: Row(
+                    //                 children: [
+                    //                   Text('21',
+                    //                       style: TextStyle(
+                    //                           fontSize: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0,
+                    //                           fontWeight: FontWeight.w600,
+                    //                           color: const Color(0xFFFBFBFB))),
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         top: AppDimensions.height10(
+                    //                                 context) *
+                    //                             0.4),
+                    //                     child: Text('/20 active days',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     1.3,
+                    //                             fontWeight: FontWeight.w500,
+                    //                             // fontFamily: 'Poppins',
+                    //                             color:
+                    //                                 const Color(0xFFF6F6F6))),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       bt_switch
+                    //           ? GestureDetector(
+                    //               onTap: () => showAnimatedDialog(
+                    //                   animationType:
+                    //                       DialogTransitionType.fadeScale,
+                    //                   curve: Curves.easeInOut,
+                    //                   duration: Duration(seconds: 1),
+                    //                   context: context,
+                    //                   builder: (BuildContext context) =>
+                    //                       showDeleteAlert(context)),
+                    //               child: Container(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 1.4,
+                    //                 height:
+                    //                     AppDimensions.height10(context) * 1.6,
+                    //                 margin: EdgeInsets.only(
+                    //                     left: AppDimensions.height10(context) *
+                    //                         10.6),
+                    //                 decoration: const BoxDecoration(
+                    //                     image: DecorationImage(
+                    //                         image: AssetImage(
+                    //                             'assets/images/bin.webp'))),
+                    //               ),
+                    //             )
+                    //           : SizedBox(
+                    //               child: Row(
+                    //                 children: [
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         left: AppDimensions.height10(
+                    //                                 context) *
+                    //                             2.0),
+                    //                     child: FlutterSwitch(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               6.2,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               3.4,
+                    //                       valueFontSize: 12.0,
+                    //                       toggleSize: 18.0,
+                    //                       activeColor: const Color(0xFFFA9934),
+                    //                       inactiveColor:
+                    //                           const Color(0xFF2F3A4B),
+                    //                       value: status4,
+                    //                       onToggle: (val) {
+                    //                         setState(() {
+                    //                           status4 = val;
+                    //                           color4 = val;
+                    //                         });
+                    //                       },
+                    //                     ),
+                    //                   ),
+                    //                   Container(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               2.4,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               1.31,
+                    //                       margin: EdgeInsets.only(
+                    //                           left: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0),
+                    //                       child: GestureDetector(
+                    //                         onTap: () {},
+                    //                         child: Image.asset(
+                    //                           'assets/images/BTN Back.webp',
+                    //                           color: const Color(0xFFFFFFFF),
+                    //                           //width: AppDimensions.height10(context) * 2.6,
+                    //                           //height: AppDimensions.height10(context) * 2.6,
+                    //                           fit: BoxFit.cover,
+                    //                         ),
+                    //                       )),
+                    //                 ],
+                    //               ),
+                    //             )
+                    //     ],
+                    //   ),
+                    // ),
+                    // Container(
+                    //   //  width: AppDimensions.height10(context) * 41.8,
+                    //   height: AppDimensions.height10(context) * 10.0,
+                    //   decoration: BoxDecoration(
+                    //       color: color5
+                    //           ? Colors.transparent
+                    //           : const Color(0xFF828282),
+                    //       border: const Border(
+                    //           bottom: BorderSide(
+                    //               color: Color(0xFFFFFFFF), width: 1))),
+                    //   child: Row(
+                    //     children: [
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 5.4,
+                    //         height: AppDimensions.height10(context) * 5.4,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 2.5),
+                    //         decoration: BoxDecoration(
+                    //             border: Border.all(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 0.15,
+                    //                 color: const Color(0xFFFBFBFB)),
+                    //             shape: BoxShape.circle,
+                    //             image: const DecorationImage(
+                    //               image: AssetImage(
+                    //                   'assets/images/Ellipse blue.webp'),
+                    //               fit: BoxFit.cover,
+                    //             )),
+                    //       ),
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 18.6,
+                    //         height: AppDimensions.height10(context) * 4.9,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 0.8),
+                    //         child: Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: [
+                    //             SizedBox(
+                    //               width: AppDimensions.height10(context) * 12.6,
+                    //               height: AppDimensions.height10(context) * 2.2,
+                    //               child: Text(
+                    //                 'Mirror Practice',
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.8,
+                    //                     fontWeight: FontWeight.w600,
+                    //                     color: const Color(0xFFFFFFFF)),
+                    //               ),
+                    //             ),
+                    //             SizedBox(
+                    //               height: AppDimensions.height10(context) * 2.7,
+                    //               child: Row(
+                    //                 children: [
+                    //                   Text('21',
+                    //                       style: TextStyle(
+                    //                           fontSize: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0,
+                    //                           fontWeight: FontWeight.w600,
+                    //                           color: const Color(0xFFFBFBFB))),
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         top: AppDimensions.height10(
+                    //                                 context) *
+                    //                             0.4),
+                    //                     child: Text('/20 active days',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     1.3,
+                    //                             fontWeight: FontWeight.w500,
+                    //                             // fontFamily: 'Poppins',
+                    //                             color:
+                    //                                 const Color(0xFFF6F6F6))),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       bt_switch
+                    //           ? GestureDetector(
+                    //               onTap: () => showAnimatedDialog(
+                    //                   animationType:
+                    //                       DialogTransitionType.fadeScale,
+                    //                   curve: Curves.easeInOut,
+                    //                   duration: Duration(seconds: 1),
+                    //                   context: context,
+                    //                   builder: (BuildContext context) =>
+                    //                       showDeleteAlert(context)),
+                    //               child: Container(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 1.4,
+                    //                 height:
+                    //                     AppDimensions.height10(context) * 1.6,
+                    //                 margin: EdgeInsets.only(
+                    //                     left: AppDimensions.height10(context) *
+                    //                         10.6),
+                    //                 decoration: const BoxDecoration(
+                    //                     image: DecorationImage(
+                    //                         image: AssetImage(
+                    //                             'assets/images/bin.webp'))),
+                    //               ),
+                    //             )
+                    //           : SizedBox(
+                    //               child: Row(
+                    //                 children: [
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         left: AppDimensions.height10(
+                    //                                 context) *
+                    //                             2.0),
+                    //                     child: FlutterSwitch(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               6.2,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               3.4,
+                    //                       valueFontSize: 12.0,
+                    //                       toggleSize: 18.0,
+                    //                       activeColor: const Color(0xFFFA9934),
+                    //                       inactiveColor:
+                    //                           const Color(0xFF2F3A4B),
+                    //                       value: status5,
+                    //                       onToggle: (val) {
+                    //                         setState(() {
+                    //                           status5 = val;
+                    //                           color5 = val;
+                    //                         });
+                    //                       },
+                    //                     ),
+                    //                   ),
+                    //                   Container(
+                    //                       width:
+                    //                           AppDimensions.height10(context) *
+                    //                               2.4,
+                    //                       height:
+                    //                           AppDimensions.height10(context) *
+                    //                               1.31,
+                    //                       margin: EdgeInsets.only(
+                    //                           left: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0),
+                    //                       child: GestureDetector(
+                    //                         onTap: () {},
+                    //                         child: Image.asset(
+                    //                           'assets/images/BTN Back.webp',
+                    //                           color: const Color(0xFFFFFFFF),
+                    //                           //width: AppDimensions.height10(context) * 2.6,
+                    //                           //height: AppDimensions.height10(context) * 2.6,
+                    //                           fit: BoxFit.cover,
+                    //                         ),
+                    //                       )),
+                    //                 ],
+                    //               ),
+                    //             )
+                    //     ],
+                    //   ),
+                    // ),
+                    // Container(
+                    //   //  width: AppDimensions.height10(context) * 41.8,
+                    //   height: AppDimensions.height10(context) * 10.0,
+                    //   decoration: const BoxDecoration(
+                    //       color: Color(0xFF828282),
+                    //       border: Border(
+                    //           bottom: BorderSide(
+                    //               color: Color(0xFFFFFFFF), width: 1))),
+                    //   child: Row(
+                    //     children: [
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 5.4,
+                    //         height: AppDimensions.height10(context) * 5.4,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 2.5),
+                    //         decoration: BoxDecoration(
+                    //             border: Border.all(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 0.15,
+                    //                 color: const Color(0xFFFBFBFB)),
+                    //             shape: BoxShape.circle,
+                    //             image: const DecorationImage(
+                    //               image: AssetImage(
+                    //                   'assets/images/Ellipse 158.webp'),
+                    //               fit: BoxFit.cover,
+                    //             )),
+                    //       ),
+                    //       Container(
+                    //         width: AppDimensions.height10(context) * 18.6,
+                    //         height: AppDimensions.height10(context) * 4.9,
+                    //         margin: EdgeInsets.only(
+                    //             left: AppDimensions.height10(context) * 0.8),
+                    //         child: Column(
+                    //           crossAxisAlignment: CrossAxisAlignment.start,
+                    //           children: [
+                    //             SizedBox(
+                    //               width: AppDimensions.height10(context) * 9.2,
+                    //               height: AppDimensions.height10(context) * 2.2,
+                    //               child: Text(
+                    //                 'Meditation',
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.8,
+                    //                     fontWeight: FontWeight.w600,
+                    //                     color: const Color(0xFFFFFFFF)),
+                    //               ),
+                    //             ),
+                    //             SizedBox(
+                    //               height: AppDimensions.height10(context) * 2.7,
+                    //               child: Row(
+                    //                 children: [
+                    //                   Text('21',
+                    //                       style: TextStyle(
+                    //                           fontSize: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.0,
+                    //                           fontWeight: FontWeight.w600,
+                    //                           color: const Color(0xFFFBFBFB))),
+                    //                   Container(
+                    //                     margin: EdgeInsets.only(
+                    //                         top: AppDimensions.height10(
+                    //                                 context) *
+                    //                             0.4),
+                    //                     child: Text('/20 active days',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     1.3,
+                    //                             fontWeight: FontWeight.w500,
+                    //                             // fontFamily: 'Poppins',
+                    //                             color:
+                    //                                 const Color(0xFFF6F6F6))),
+                    //                   ),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //       bt_switch
+                    //           ? GestureDetector(
+                    //               onTap: () => showAnimatedDialog(
+                    //                   animationType:
+                    //                       DialogTransitionType.fadeScale,
+                    //                   curve: Curves.easeInOut,
+                    //                   duration: Duration(seconds: 1),
+                    //                   context: context,
+                    //                   builder: (BuildContext context) =>
+                    //                       showDeleteAlert(context)),
+                    //               child: Container(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 1.4,
+                    //                 height:
+                    //                     AppDimensions.height10(context) * 1.6,
+                    //                 margin: EdgeInsets.only(
+                    //                     left: AppDimensions.height10(context) *
+                    //                         10.6),
+                    //                 decoration: const BoxDecoration(
+                    //                     image: DecorationImage(
+                    //                         image: AssetImage(
+                    //                             'assets/images/bin.webp'))),
+                    //               ),
+                    //             )
+                    //           : Row(
+                    //               children: [
+                    //                 Container(
+                    //                     width: AppDimensions.height10(context) *
+                    //                         7.2,
+                    //                     height:
+                    //                         AppDimensions.height10(context) *
+                    //                             3.4,
+                    //                     margin: EdgeInsets.only(
+                    //                         left: AppDimensions.height10(
+                    //                                 context) *
+                    //                             2.0),
+                    //                     child: Center(
+                    //                       child: Text(
+                    //                         'Incomplete',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     1.4,
+                    //                             fontWeight: FontWeight.w400,
+                    //                             color: const Color(0xFFFFFFFF)),
+                    //                       ),
+                    //                     )),
+                    //                 Container(
+                    //                     width: AppDimensions.height10(context) *
+                    //                         2.4,
+                    //                     height:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.31,
+                    //                     margin: EdgeInsets.only(
+                    //                         left: AppDimensions.height10(
+                    //                                 context) *
+                    //                             2.0),
+                    //                     child: GestureDetector(
+                    //                       onTap: () {},
+                    //                       child: Image.asset(
+                    //                         'assets/images/BTN Back.webp',
+                    //                         color: const Color(0xFFFFFFFF),
+                    //                         //width: AppDimensions.height10(context) * 2.6,
+                    //                         //height: AppDimensions.height10(context) * 2.6,
+                    //                         fit: BoxFit.cover,
+                    //                       ),
+                    //                     )),
+                    //               ],
+                    //             )
+                    //     ],
+                    //   ),
+                    // ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context,
+                            FadePageRoute(page: const CreatePractice()));
+                      },
+                      child: Container(
+                        width: AppDimensions.height10(context) * 13.4,
+                        height: AppDimensions.height10(context) * 13.4,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 5.0,
+                            bottom: AppDimensions.height10(context) * 38.9),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                                width: AppDimensions.height10(context) * 0.3,
+                                color: const Color(0xFFFFFFFF))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              // width: AppDimensions.height10(context) * 5.8,
+                              height: AppDimensions.height10(context) * 5.8,
+                              child: Center(
+                                child: Text(
+                                  'Add new\npractice',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      height: AppDimensions.height10(context) *
+                                          0.15,
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFFFFFFFF)),
+                                ),
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/images/Addgoal.webp',
+                              width: AppDimensions.height10(context) * 2.3,
+                              height: AppDimensions.height10(context) * 2.3,
+                            )
+                          ],
                         ),
                       ),
-                      Image.asset(
-                        'assets/images/Addgoal.webp',
-                        width: AppDimensions.height10(context) * 2.3,
-                        height: AppDimensions.height10(context) * 2.3,
-                      )
-                    ],
-                  ),
+                    ),
+                  ],
+                ),
+              )
+            : const Center(
+                child: SpinKitFadingCircle(
+                  color: Color(0xFFB1B8FF),
+                  size: 80,
                 ),
               ),
-            ],
-          ),
-        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: SizedBox(

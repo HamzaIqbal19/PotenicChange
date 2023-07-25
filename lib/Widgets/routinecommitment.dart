@@ -163,6 +163,8 @@ class _schedule_cardState extends State<schedule_card> {
               child: AdvanceExpansionTile(
                 key: _globalKey,
                 initiallyExpanded: true,
+                disabled: true,
+                hideIcon: true,
                 decoration: const BoxDecoration(
                   shape: BoxShape.rectangle,
                 ),
@@ -269,30 +271,30 @@ class _startTimerStateState extends State<startTimerState> {
               ),
             ],
           ),
-          Container(
-            width: AppDimensions.height10(context) * 2.4,
-            child: Center(
-              child: FloatingActionButton(
-                  elevation: 0,
-                  backgroundColor: Colors.transparent,
-                  onPressed: () {
-                    // DatePicker.showTime12hPicker(context,
-                    //     showTitleActions: true, onChanged: (date) {
-                    //   hours = date.hour.toString();
-                    //   minutes = date.minute.toString();
-                    // }, onConfirm: (date) {
-                    //   setState(() {
-                    //     start_time = '${hours} : ${minutes}';
-                    //   });
-                    //   ;
-                    // }, currentTime: DateTime.now());
-                  },
-                  child: const Icon(
-                    Icons.arrow_drop_down,
-                    color: Color.fromRGBO(250, 153, 52, 1),
-                  )),
-            ),
-          )
+          // Container(
+          //   width: AppDimensions.height10(context) * 2.4,
+          //   child: Center(
+          //     child: FloatingActionButton(
+          //         elevation: 0,
+          //         backgroundColor: Colors.transparent,
+          //         onPressed: () {
+          //           // DatePicker.showTime12hPicker(context,
+          //           //     showTitleActions: true, onChanged: (date) {
+          //           //   hours = date.hour.toString();
+          //           //   minutes = date.minute.toString();
+          //           // }, onConfirm: (date) {
+          //           //   setState(() {
+          //           //     start_time = '${hours} : ${minutes}';
+          //           //   });
+          //           //   ;
+          //           // }, currentTime: DateTime.now());
+          //         },
+          //         child: const Icon(
+          //           Icons.arrow_drop_down,
+          //           color: Color.fromRGBO(250, 153, 52, 1),
+          //         )),
+          //   ),
+          // )
         ],
       ),
     );
@@ -353,30 +355,30 @@ class _endTimerStateState extends State<endTimerState> {
               ),
             ],
           ),
-          Container(
-            width: AppDimensions.height10(context) * 2.4,
-            child: Center(
-              child: FloatingActionButton(
-                  elevation: 0,
-                  backgroundColor: Colors.transparent,
-                  onPressed: () {
-                    // DatePicker.showTime12hPicker(context,
-                    //     showTitleActions: true, onChanged: (date) {
-                    //   hours = date.hour.toString();
-                    //   minutes = date.minute.toString();
-                    // }, onConfirm: (date) {
-                    //   setState(() {
-                    //     start_time = '${hours} : ${minutes}';
-                    //   });
-                    //   ;
-                    // }, currentTime: DateTime.now());
-                  },
-                  child: const Icon(
-                    Icons.arrow_drop_down,
-                    color: Color.fromRGBO(250, 153, 52, 1),
-                  )),
-            ),
-          )
+          // Container(
+          //   width: AppDimensions.height10(context) * 2.4,
+          //   child: Center(
+          //     child: FloatingActionButton(
+          //         elevation: 0,
+          //         backgroundColor: Colors.transparent,
+          //         onPressed: () {
+          //           // DatePicker.showTime12hPicker(context,
+          //           //     showTitleActions: true, onChanged: (date) {
+          //           //   hours = date.hour.toString();
+          //           //   minutes = date.minute.toString();
+          //           // }, onConfirm: (date) {
+          //           //   setState(() {
+          //           //     start_time = '${hours} : ${minutes}';
+          //           //   });
+          //           //   ;
+          //           // }, currentTime: DateTime.now());
+          //         },
+          //         child: const Icon(
+          //           Icons.arrow_drop_down,
+          //           color: Color.fromRGBO(250, 153, 52, 1),
+          //         )),
+          //   ),
+          // )
         ],
       ),
     );
