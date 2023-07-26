@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
@@ -277,11 +278,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             ? const Alignment(0, -0.1)
                                             : const Alignment(0, -0.07),
                                         child: Text(
-                                          widget.premium
-                                              ? goal_level == 0
-                                                  ? '-'
-                                                  : '$goal_level'
-                                              : '-',
+                                          goalDetails['goalLevel'] == 0
+                                              ? '-'
+                                              : goalDetails['goalLevel']
+                                                  .toString(),
                                           style: TextStyle(
                                               fontSize: widget.premium
                                                   ? goal_level == 0
@@ -529,28 +529,39 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             AppDimensions.height10(context) *
                                                 1.8,
                                         fontWeight: FontWeight.w500,
-                                        color: widget.isActive
+                                        color: goalDetails['goalStatus'] ==
+                                                "active"
                                             ? const Color(0xFF156F6D)
                                             : const Color(0xFFDE7A11)),
                                   ),
                                   widget.isActive
                                       ? Text(
-                                          'Active',
+                                          capitalizeFirstLetter(
+                                              goalDetails['goalStatus']),
                                           style: TextStyle(
                                               fontSize: AppDimensions.height10(
                                                       context) *
                                                   1.8,
                                               fontWeight: FontWeight.w700,
-                                              color: const Color(0xFF156F6D)),
+                                              color: goalDetails[
+                                                          'goalStatus'] ==
+                                                      "active"
+                                                  ? const Color(0xFF156F6D)
+                                                  : const Color(0xFFDE7A11)),
                                         )
                                       : Text(
-                                          'Inactive',
+                                          capitalizeFirstLetter(
+                                              goalDetails['goalStatus']),
                                           style: TextStyle(
                                               fontSize: AppDimensions.height10(
                                                       context) *
                                                   1.8,
                                               fontWeight: FontWeight.w700,
-                                              color: const Color(0xFFDE7A11)),
+                                              color: goalDetails[
+                                                          'goalStatus'] ==
+                                                      "active"
+                                                  ? const Color(0xFF156F6D)
+                                                  : const Color(0xFFDE7A11)),
                                         )
                                 ],
                               ),

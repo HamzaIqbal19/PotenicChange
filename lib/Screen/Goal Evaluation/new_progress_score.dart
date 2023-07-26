@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria_impact.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 
@@ -38,7 +39,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
   var goalDetails;
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 1), onDoneLoading);
+    return Timer(const Duration(milliseconds: 1), onDoneLoading);
   }
 
   void onDoneLoading() {
@@ -470,9 +471,11 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       shape: BoxShape.circle,
 
                                       image: DecorationImage(
-                                        image: AssetImage(goal_level == 2
+                                        image: AssetImage(goalDetails[
+                                                    'goalLevel'] ==
+                                                2
                                             ? 'assets/images/Nebula pie 2.webp'
-                                            : goal_level == 3
+                                            : goalDetails['goalLevel'] == 3
                                                 ? 'assets/images/Nebula pie 3.webp'
                                                 : "assets/images/Nebula Pie.webp"),
                                       ),
@@ -524,9 +527,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             children: [
                                               SizedBox(
                                                 child: Text(
-                                                  goal_level == 0
+                                                  goalDetails['goalLevel'] == 0
                                                       ? '-'
-                                                      : '$goal_level',
+                                                      : goalDetails['goalLevel']
+                                                          .toString(),
                                                   textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
@@ -689,7 +693,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                   context,
                                   FadePageRoute(
                                       page: const your_why(
-                                    criteria: 1,
+                                    destination: 'reason',
                                     saved: false,
                                   )));
                             },
@@ -708,42 +712,65 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               goal_: goal_level,
                             ),
                           ),
-                          goal_criteria(
-                            criteria: 'Goal Criteria 2',
-                            identity: 'Your new identity',
-                            text_span_1: 'I’m making small steps\ntowards my ',
-                            text_span_2: 'new identity',
-                            text_span_3: '',
-                            margin_top: 1.0,
-                            border: color_fill_2 ? true : false,
-                            colors: color_fill_2 ? 0xFF : 0xFFFBFBFB,
-                            text_color: color_fill_2 ? 0xFFFBFBFB : 0xFF646464,
-                            goal_: goal_level,
-                          ),
-                          goal_criteria(
-                              criteria: 'Goal Criteria 3',
-                              identity: 'Your vision for\nnew self',
-                              text_span_1:
-                                  'I’m making small steps\ntowards my ',
-                              text_span_2: 'vision',
-                              text_span_3: '',
-                              goal_: goal_level,
-                              border: color_fill_1 ? true : false,
-                              colors: color_fill_1 ? 0xFF : 0xFFFBFBFB,
-                              text_color:
-                                  color_fill_1 ? 0xFFFBFBFB : 0xFF646464,
-                              margin_top: 1.0),
                           GestureDetector(
                             onTap: () {
-                              if (index_color == 3) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const your_why(
-                                      criteria: 4,
-                                      saved: false,
-                                    )));
-                              }
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const your_why(
+                                    destination: 'identityStatement',
+                                    saved: false,
+                                  )));
+                            },
+                            child: goal_criteria(
+                              criteria: 'Goal Criteria 2',
+                              identity: 'Your new identity',
+                              text_span_1:
+                                  'I’m making small steps\ntowards my ',
+                              text_span_2: 'new identity',
+                              text_span_3: '',
+                              margin_top: 1.0,
+                              border: color_fill_2 ? true : false,
+                              colors: color_fill_2 ? 0xFF : 0xFFFBFBFB,
+                              text_color:
+                                  color_fill_2 ? 0xFFFBFBFB : 0xFF646464,
+                              goal_: goal_level,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const your_why(
+                                    destination: 'visualizingYourSelf',
+                                    saved: false,
+                                  )));
+                            },
+                            child: goal_criteria(
+                                criteria: 'Goal Criteria 3',
+                                identity: 'Your vision for\nnew self',
+                                text_span_1:
+                                    'I’m making small steps\ntowards my ',
+                                text_span_2: 'vision',
+                                text_span_3: '',
+                                goal_: goal_level,
+                                border: color_fill_1 ? true : false,
+                                colors: color_fill_1 ? 0xFF : 0xFFFBFBFB,
+                                text_color:
+                                    color_fill_1 ? 0xFFFBFBFB : 0xFF646464,
+                                margin_top: 1.0),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              // if (index_color == 3) {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const your_impact(
+                                    saved: false,
+                                  )));
+                              //}
                             },
                             child: goal_criteria(
                                 criteria: 'Goal Criteria 4',

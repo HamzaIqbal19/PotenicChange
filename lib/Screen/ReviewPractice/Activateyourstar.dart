@@ -347,6 +347,22 @@ class _ActivateStarState extends State<ActivateStar> {
                                           ),
                                         ),
                                       );
+                                    } else if (response == 400) {
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute2(
+                                          true,
+                                          exitPage: const ActivateStar(),
+                                          enterPage: const dashBoard(
+                                            saved: false,
+                                            helpful_tips: false,
+                                            membership: true,
+                                            dashboard_ctrl: false,
+                                            cancel: false,
+                                            trial: false,
+                                          ),
+                                        ),
+                                      );
                                     } else {
                                       print("Failure");
 

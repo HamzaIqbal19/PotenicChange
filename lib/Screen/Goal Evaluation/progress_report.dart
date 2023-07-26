@@ -1,6 +1,10 @@
 // ignore_for_file: camel_case_types
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Widgets/circle_container.dart';
 import 'package:potenic_app/Widgets/circle_dates.dart';
 import 'package:potenic_app/Widgets/menu_buttons.dart';
@@ -8,8 +12,52 @@ import 'package:potenic_app/Widgets/menu_buttons.dart';
 import '../../Widgets/calender.dart';
 import '../../utils/app_dimensions.dart';
 
-class progress_report extends StatelessWidget {
+class progress_report extends StatefulWidget {
   const progress_report({super.key});
+
+  @override
+  State<progress_report> createState() => _progress_reportState();
+}
+
+class _progress_reportState extends State<progress_report> {
+  bool Loader = true;
+  var goalDetails;
+
+  Future<Timer> loadData() async {
+    return Timer(const Duration(milliseconds: 1), onDoneLoading);
+  }
+
+  void onDoneLoading() {
+    setState(() {
+      Loader = false;
+    });
+  }
+
+  void _fetchGoalDetails() {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          goalDetails = response;
+        });
+
+        loadData();
+        print(response);
+      } else {
+        loadData();
+      }
+    }).catchError((error) {
+      // loadData();
+      print("error");
+    }).whenComplete(() {
+      loadData();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchGoalDetails();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,522 +87,648 @@ class progress_report extends StatelessWidget {
         )),
         width: double.infinity,
         height: double.infinity,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              Container(
-                width: AppDimensions.height10(context) * 40.872,
-                height: AppDimensions.height10(context) * 11.0,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 11.1,
-                    right: AppDimensions.height10(context) * 10.7),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(
-                            AppDimensions.height10(context) * 2.0),
-                        bottomRight: Radius.circular(
-                            AppDimensions.height10(context) * 2.0)),
-                    gradient: const LinearGradient(
-                        colors: [Color(0xFF91698C), Color(0xFFC19CA7)])),
-                child: Container(
-                  width: AppDimensions.height10(context) * 24.3,
-                  height: AppDimensions.height10(context) * 7.0,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 2.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        width: AppDimensions.height10(context) * 24.3,
-                        height: AppDimensions.height10(context) * 2.6,
-                        child: Text(
-                          'Practice progress report',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
-                              height: AppDimensions.height10(context) * 0.12,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFFFFFFFF)),
-                        ),
-                      ),
-                      Container(
-                        width: AppDimensions.height10(context) * 3.3,
-                        height: AppDimensions.height10(context) * 0.2,
-                        margin: EdgeInsets.only(
-                            bottom: AppDimensions.height10(context) * 1.7,
-                            top: AppDimensions.height10(context) * 0.45),
-                        decoration:
-                            const BoxDecoration(color: Color(0xFFFFFFFF)),
-                      ),
-                      SizedBox(
-                        width: AppDimensions.height10(context) * 10.1,
-                        height: AppDimensions.height10(context) * 2.4,
-                        child: Text(
-                          'Meditation',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
-                              height: AppDimensions.height10(context) * 0.12,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xFFFFFFFF)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 31.7,
-                height: AppDimensions.height10(context) * 3.6,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 5.0),
-                child: Text(
-                  'Congratulations!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 3.0,
-                      height: 1.2,
-                      fontWeight: FontWeight.w700,
-                      color: const Color(0xFF437296)),
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 35.0,
-                height: AppDimensions.height10(context) * 5.0,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.7),
-                child: Text(
-                  'You have been consistently doing\nyour practice for 20 active days ',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.0,
-                      height: 1.2,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFF437296)),
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 35.0,
-                height: AppDimensions.height10(context) * 3.3,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.5),
-                child: Text(
-                  //we will give duration of 20 days
-                  'from [dd/mmm/yy] to [dd/mmm/yy]',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 1.6,
-                      height: 1.2,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xFF437296)),
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 25.5,
-                height: AppDimensions.height10(context) * 3.9,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.9),
-                child: Text(
-                  'You are a rockstar! :)',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.2,
-                      height: 1.2,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFF437296)),
-                ),
-              ),
-              SizedBox(
-                width: AppDimensions.height10(context) * 29.0,
-                height: AppDimensions.height10(context) * 11.2,
-                child: Row(
+        child: Loader == false
+            ? SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
                   children: [
                     Container(
-                      width: AppDimensions.height10(context) * 10.4,
-                      height: AppDimensions.height10(context) * 11.2,
+                      width: AppDimensions.height10(context) * 40.872,
+                      height: AppDimensions.height10(context) * 11.0,
                       margin: EdgeInsets.only(
-                          right: AppDimensions.height10(context) * 0.7),
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/images/orange_flair.webp'))),
-                      child: Align(
-                        alignment: const Alignment(0.7, 0.4),
-                        child: Container(
-                          width: AppDimensions.height10(context) * 4.9,
-                          height: AppDimensions.height10(context) * 4.9,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                width: AppDimensions.height10(context) * 0.2,
-                                color: const Color(0xFFFFFFFF),
+                          top: AppDimensions.height10(context) * 11.1,
+                          right: AppDimensions.height10(context) * 10.7),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(
+                                  AppDimensions.height10(context) * 2.0),
+                              bottomRight: Radius.circular(
+                                  AppDimensions.height10(context) * 2.0)),
+                          gradient: const LinearGradient(
+                              colors: [Color(0xFF91698C), Color(0xFFC19CA7)])),
+                      child: Container(
+                        width: AppDimensions.height10(context) * 24.3,
+                        height: AppDimensions.height10(context) * 7.0,
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 2.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 24.3,
+                              height: AppDimensions.height10(context) * 2.6,
+                              child: Text(
+                                'Practice progress report',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.0,
+                                    height:
+                                        AppDimensions.height10(context) * 0.12,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFFFFFFFF)),
                               ),
-                              image: const DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/Ellipse 158.webp'))),
+                            ),
+                            Container(
+                              width: AppDimensions.height10(context) * 3.3,
+                              height: AppDimensions.height10(context) * 0.2,
+                              margin: EdgeInsets.only(
+                                  bottom: AppDimensions.height10(context) * 1.7,
+                                  top: AppDimensions.height10(context) * 0.45),
+                              decoration:
+                                  const BoxDecoration(color: Color(0xFFFFFFFF)),
+                            ),
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 10.1,
+                              height: AppDimensions.height10(context) * 2.4,
+                              child: Text(
+                                'Meditation',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.0,
+                                    height:
+                                        AppDimensions.height10(context) * 0.12,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xFFFFFFFF)),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
+                    Container(
+                      width: AppDimensions.height10(context) * 31.7,
+                      height: AppDimensions.height10(context) * 3.6,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 5.0),
+                      child: Text(
+                        'Congratulations!',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 3.0,
+                            height: 1.2,
+                            fontWeight: FontWeight.w700,
+                            color: const Color(0xFF437296)),
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.height10(context) * 35.0,
+                      height: AppDimensions.height10(context) * 5.0,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 2.7),
+                      child: Text(
+                        'You have been consistently doing\nyour practice for 20 active days ',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 2.0,
+                            height: 1.2,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF437296)),
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.height10(context) * 35.0,
+                      height: AppDimensions.height10(context) * 3.3,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 0.5),
+                      child: Text(
+                        //we will give duration of 20 days
+                        'from [dd/mmm/yy] to [dd/mmm/yy]',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 1.6,
+                            height: 1.2,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFF437296)),
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.height10(context) * 25.5,
+                      height: AppDimensions.height10(context) * 3.9,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.9),
+                      child: Text(
+                        'You are a rockstar! :)',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 2.2,
+                            height: 1.2,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF437296)),
+                      ),
+                    ),
                     SizedBox(
-                      width: AppDimensions.height10(context) * 17.9,
-                      height: AppDimensions.height10(context) * 5.9,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      width: AppDimensions.height10(context) * 29.0,
+                      height: AppDimensions.height10(context) * 11.2,
+                      child: Row(
                         children: [
                           Container(
-                            width: AppDimensions.height10(context) * 17.9,
-                            height: AppDimensions.height10(context) * 3.0,
+                            width: AppDimensions.height10(context) * 10.4,
+                            height: AppDimensions.height10(context) * 11.2,
                             margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10(context) * 0.1),
-                            child: Text(
-                              'Control my anger',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.0,
-                                  height: 1.2,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF437296)),
+                                right: AppDimensions.height10(context) * 0.7),
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/orange_flair.webp'))),
+                            child: Align(
+                              alignment: const Alignment(0.7, 0.4),
+                              child: Container(
+                                width: AppDimensions.height10(context) * 4.9,
+                                height: AppDimensions.height10(context) * 4.9,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      width:
+                                          AppDimensions.height10(context) * 0.2,
+                                      color: const Color(0xFFFFFFFF),
+                                    ),
+                                    image: const DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/Ellipse 158.webp'))),
+                              ),
                             ),
                           ),
                           SizedBox(
                             width: AppDimensions.height10(context) * 17.9,
-                            height: AppDimensions.height10(context) * 2.7,
-                            child: Text(
-                              'Meditation ',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  height: 1.2,
-                                  fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF156F6D)),
+                            height: AppDimensions.height10(context) * 5.9,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: AppDimensions.height10(context) * 17.9,
+                                  height: AppDimensions.height10(context) * 3.0,
+                                  margin: EdgeInsets.only(
+                                      bottom: AppDimensions.height10(context) *
+                                          0.1),
+                                  child: Text(
+                                    'Control my anger',
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                2.0,
+                                        height: 1.2,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xFF437296)),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: AppDimensions.height10(context) * 17.9,
+                                  height: AppDimensions.height10(context) * 2.7,
+                                  child: Text(
+                                    'Meditation ',
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        height: 1.2,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xFF156F6D)),
+                                  ),
+                                )
+                              ],
                             ),
                           )
                         ],
                       ),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                // width: AppDimensions.height10(context) * 2.1,
-                //height: AppDimensions.height10(context) * 4.3,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-                child: Image.asset(
-                  'assets/images/Arrow.webp',
-                  width: AppDimensions.height10(context) * 4.1,
-                  height: AppDimensions.height10(context) * 4.3,
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                //padding: EdgeInsets.all(0),
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.7),
-                height: AppDimensions.height10(context) * 63.3,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/pro_report_bg#2.webp'),
-                        fit: BoxFit.cover)),
-                child: Column(
-                  children: [
+                    ),
                     Container(
-                      width: AppDimensions.height10(context) * 27.4,
-                      height: AppDimensions.height10(context) * 2.9,
+                      // width: AppDimensions.height10(context) * 2.1,
+                      //height: AppDimensions.height10(context) * 4.3,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 2.0),
+                      child: Image.asset(
+                        'assets/images/Arrow.webp',
+                        width: AppDimensions.height10(context) * 4.1,
+                        height: AppDimensions.height10(context) * 4.3,
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      //padding: EdgeInsets.all(0),
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 2.7),
+                      height: AppDimensions.height10(context) * 63.3,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/images/pro_report_bg#2.webp'),
+                              fit: BoxFit.cover)),
+                      child: Column(
+                        children: [
+                          Container(
+                            width: AppDimensions.height10(context) * 27.4,
+                            height: AppDimensions.height10(context) * 2.9,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 7.0),
+                            child: Text(
+                              'New identity statement',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.4,
+                                  height: 1.2,
+                                  fontWeight: FontWeight.w600,
+                                  color: const Color(0xFFFFFFFF)),
+                            ),
+                          ),
+                          SizedBox(
+                            width: AppDimensions.height10(context) * 35.6,
+                            height: AppDimensions.height10(context) * 10.9,
+                            child: Stack(
+                              children: [
+                                Align(
+                                  alignment: const Alignment(-0.875, -0.5),
+                                  child: Container(
+                                    width:
+                                        AppDimensions.height10(context) * 2.5,
+                                    height:
+                                        AppDimensions.height10(context) * 1.6,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/colon.webp'),
+                                          fit: BoxFit.contain),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: const Alignment(1, 0),
+                                  child: Container(
+                                    width:
+                                        AppDimensions.height10(context) * 34.7,
+                                    height:
+                                        AppDimensions.height10(context) * 10.9,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) *
+                                            1.9),
+
+                                    ///color: Colors.amber,
+                                    child: Center(
+                                      child: Text(
+                                        "I am in control of my anger, and I see\nmyself as a calm individual who acts level\nheaded in tense situations...",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontStyle: FontStyle.italic,
+                                            // height: AppDimensions.height10(context) * 0.15,
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.7,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xFFFFFFFF)),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: AppDimensions.height10(context) * 30.517,
+                            margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 3.0,
+                              // left: AppDimensions.height10(context) * 2.7
+                            ),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  Container(
+                                    width: AppDimensions.height10(context) *
+                                        33.153,
+                                    height: AppDimensions.height10(context) *
+                                        30.517,
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            2.8098,
+                                        right: AppDimensions.height10(context) *
+                                            1.098),
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/Rectangle 148.webp'))),
+                                  ),
+                                  Container(
+                                    width: AppDimensions.height10(context) *
+                                        33.153,
+                                    height: AppDimensions.height10(context) *
+                                        30.517,
+                                    margin: EdgeInsets.only(
+                                        right: AppDimensions.height10(context) *
+                                            1.098),
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/images/Rectangle 178.webp'))),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.height10(context) * 27.2,
+                      height: AppDimensions.height10(context) * 5.369,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 7.0),
                       child: Text(
-                        'New identity statement',
+                        'You have completed 20 active days of practice!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.4,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xFFFFFFFF)),
+                            color: const Color(0xFF437296)),
                       ),
                     ),
-                    SizedBox(
-                      width: AppDimensions.height10(context) * 35.6,
-                      height: AppDimensions.height10(context) * 10.9,
-                      child: Stack(
+                    Container(
+                      width: AppDimensions.height10(context) * 38.5,
+                      height: AppDimensions.height10(context) * 84.569,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 3.7),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          color: const Color(0xFFFFFFFF)),
+                      child: Column(
                         children: [
-                          Align(
-                            alignment: const Alignment(-0.875, -0.5),
-                            child: Container(
-                              width: AppDimensions.height10(context) * 2.5,
-                              height: AppDimensions.height10(context) * 1.6,
-                              decoration: const BoxDecoration(
+                          Container(
+                            height: AppDimensions.height10(context) * 24.8,
+                            // color: Colors.amber,
+                            margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 4.6,
+                            ),
+                            decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/colon.webp'),
-                                    fit: BoxFit.contain),
-                              ),
+                                    image: AssetImage(
+                                        'assets/images/Group 9458.webp'))),
+                          ),
+                          Container(
+                            height: AppDimensions.height10(context) * 8.0,
+                            width: AppDimensions.height10(context) * 23,
+                            child: Center(
+                              child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                      style: TextStyle(
+                                        fontFamily: 'laila',
+                                        height: 1.2,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.4,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFF5B74A6),
+                                      ),
+                                      children: const [
+                                        TextSpan(
+                                            text:
+                                                'You have completed this\nover '),
+                                        TextSpan(
+                                            text: '2 months',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w700))
+                                      ])),
                             ),
                           ),
-                          Align(
-                            alignment: const Alignment(1, 0),
-                            child: Container(
-                              width: AppDimensions.height10(context) * 34.7,
-                              height: AppDimensions.height10(context) * 10.9,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 1.9),
-
-                              ///color: Colors.amber,
-                              child: Center(
-                                child: Text(
-                                  "I am in control of my anger, and I see\nmyself as a calm individual who acts level\nheaded in tense situations...",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      // height: AppDimensions.height10(context) * 0.15,
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.7,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xFFFFFFFF)),
-                                ),
-                              ),
-                            ),
-                          )
+                          Container(
+                              height: AppDimensions.height10(context) * 46.8,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0)),
+                              child: CalendarWithRadioButtons(
+                                status: true,
+                              )),
                         ],
                       ),
                     ),
                     Container(
-                      height: AppDimensions.height10(context) * 30.517,
+                      // width: AppDimensions.height10(context) * 2.1,
+                      //height: AppDimensions.height10(context) * 4.3,
                       margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 3.0,
-                        // left: AppDimensions.height10(context) * 2.7
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Container(
-                              width: AppDimensions.height10(context) * 33.153,
-                              height: AppDimensions.height10(context) * 30.517,
-                              margin: EdgeInsets.only(
-                                  left:
-                                      AppDimensions.height10(context) * 2.8098,
-                                  right:
-                                      AppDimensions.height10(context) * 1.098),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Rectangle 148.webp'))),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 33.153,
-                              height: AppDimensions.height10(context) * 30.517,
-                              margin: EdgeInsets.only(
-                                  right:
-                                      AppDimensions.height10(context) * 1.098),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/images/Rectangle 178.webp'))),
-                            )
-                          ],
-                        ),
+                          top: AppDimensions.height10(context) * 3.7),
+                      child: Image.asset(
+                        'assets/images/Arrow.webp',
+                        width: AppDimensions.height10(context) * 4.1,
+                        height: AppDimensions.height10(context) * 4.3,
                       ),
                     ),
-                  ],
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 27.2,
-                height: AppDimensions.height10(context) * 5.369,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 7.0),
-                child: Text(
-                  'You have completed 20 active days of practice!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.4,
-                      height: 1.2,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFF437296)),
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 38.5,
-                height: AppDimensions.height10(context) * 84.569,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        AppDimensions.height10(context) * 2.0),
-                    color: const Color(0xFFFFFFFF)),
-                child: Column(
-                  children: [
                     Container(
-                      height: AppDimensions.height10(context) * 24.8,
-                      // color: Colors.amber,
+                      width: AppDimensions.height10(context) * 27.2,
+                      height: AppDimensions.height10(context) * 8.5,
                       margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 4.6,
-                      ),
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image:
-                                  AssetImage('assets/images/Group 9458.webp'))),
-                    ),
-                    Container(
-                      height: AppDimensions.height10(context) * 8.0,
-                      width: AppDimensions.height10(context) * 23,
-                      child: Center(
-                        child: RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                                style: TextStyle(
-                                  fontFamily: 'laila',
-                                  height: 1.2,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.4,
-                                  fontWeight: FontWeight.w500,
-                                  color: const Color(0xFF5B74A6),
-                                ),
-                                children: const [
-                                  TextSpan(
-                                      text: 'You have completed this\nover '),
-                                  TextSpan(
-                                      text: '2 months',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w700))
-                                ])),
+                          top: AppDimensions.height10(context) * 4.0),
+                      child: Text(
+                        'This is how you felt\nimplementing your new\npractice',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: AppDimensions.height10(context) * 2.4,
+                            height: 1.2,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFF437296)),
                       ),
                     ),
-                    Container(
-                        height: AppDimensions.height10(context) * 46.8,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0)),
-                        child: CalendarWithRadioButtons(
-                          status: true,
-                        )),
-                  ],
-                ),
-              ),
-              Container(
-                // width: AppDimensions.height10(context) * 2.1,
-                //height: AppDimensions.height10(context) * 4.3,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
-                child: Image.asset(
-                  'assets/images/Arrow.webp',
-                  width: AppDimensions.height10(context) * 4.1,
-                  height: AppDimensions.height10(context) * 4.3,
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 27.2,
-                height: AppDimensions.height10(context) * 8.5,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
-                child: Text(
-                  'This is how you felt\nimplementing your new\npractice',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensions.height10(context) * 2.4,
-                      height: 1.2,
-                      fontWeight: FontWeight.w600,
-                      color: const Color(0xFF437296)),
-                ),
-              ),
-              Container(
-                width: AppDimensions.height10(context) * 38.2,
-                height: AppDimensions.height10(context) * 147.8,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        AppDimensions.height10(context) * 2.0),
-                    color: const Color(0xFFFFFFFF)),
-                child: Column(
-                  children: [
                     Container(
                       width: AppDimensions.height10(context) * 38.2,
-                      height: AppDimensions.height10(context) * 55.7,
+                      height: AppDimensions.height10(context) * 147.8,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 4.0),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                          ),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color(0xFFEDF1FA),
-                                Color(0xFFFCD9C3),
-                                Color(0xFFFAB2A3),
-                                Color(0xFFEB9FA3)
-                              ])),
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          color: const Color(0xFFFFFFFF)),
                       child: Column(
                         children: [
                           Container(
-                              width: AppDimensions.height10(context) * 20.0,
-                              height: AppDimensions.height10(context) * 20.0,
-                              margin: EdgeInsets.only(
-                                  bottom: AppDimensions.height10(context) * 3.0,
-                                  top: AppDimensions.height10(context) * 4.0),
-                              child: const CircularFormation(
-                                size: 150,
-                                circleColor: Colors.transparent,
-                                outerCircleColors: [
-                                  Color(0xFFE1C44F),
-                                  Color(0xFF7291A0),
-                                  Color(0xFF7291A0),
-                                  Color(0xFF7291A0),
-                                  Color(0xFF546096),
-                                  Color(0xFFFF6C2C),
-                                  Color(0xFFFF6C2C),
-                                  Color(0xFFFF6C2C),
-                                  Color(0xFFFF6C2C),
-                                  Color(0xFFFF6C2C),
-                                  Color(0xFFFF6C2C),
-                                  Color(0xFFFA9458),
-                                  Color(0xFFFA9458),
-                                  Color(0xFFFA9458),
-                                  Color(0xFFFA9458),
-                                  Color(0xFFFA9458),
-                                  Color(0xFFE1C44F),
-                                  Color(0xFFE1C44F),
-                                  Color(0xFFE1C44F),
-                                  Color(0xFFE1C44F),
-                                  // Add more colors as needed
-                                ],
-                              )),
-                          Container(
-                            width: AppDimensions.height10(context) * 8.4,
-                            height: AppDimensions.height10(context) * 0.2,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.9),
-                            color: const Color(0xFFF5F5F5),
-                          ),
-                          Container(
-                            width: AppDimensions.height10(context) * 30.9,
-                            height: AppDimensions.height10(context) * 2.2,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 3.0),
-                            child: Center(
-                              child: Text(
-                                'Majority of the time',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.8,
-                                    fontWeight: FontWeight.w600,
-                                    color: const Color(0xFFFE6624)),
-                              ),
+                            width: AppDimensions.height10(context) * 38.2,
+                            height: AppDimensions.height10(context) * 55.7,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                ),
+                                gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFEDF1FA),
+                                      Color(0xFFFCD9C3),
+                                      Color(0xFFFAB2A3),
+                                      Color(0xFFEB9FA3)
+                                    ])),
+                            child: Column(
+                              children: [
+                                Container(
+                                    width:
+                                        AppDimensions.height10(context) * 20.0,
+                                    height:
+                                        AppDimensions.height10(context) * 20.0,
+                                    margin: EdgeInsets.only(
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                3.0,
+                                        top: AppDimensions.height10(context) *
+                                            4.0),
+                                    child: const CircularFormation(
+                                      size: 150,
+                                      circleColor: Colors.transparent,
+                                      outerCircleColors: [
+                                        Color(0xFFE1C44F),
+                                        Color(0xFF7291A0),
+                                        Color(0xFF7291A0),
+                                        Color(0xFF7291A0),
+                                        Color(0xFF546096),
+                                        Color(0xFFFF6C2C),
+                                        Color(0xFFFF6C2C),
+                                        Color(0xFFFF6C2C),
+                                        Color(0xFFFF6C2C),
+                                        Color(0xFFFF6C2C),
+                                        Color(0xFFFF6C2C),
+                                        Color(0xFFFA9458),
+                                        Color(0xFFFA9458),
+                                        Color(0xFFFA9458),
+                                        Color(0xFFFA9458),
+                                        Color(0xFFFA9458),
+                                        Color(0xFFE1C44F),
+                                        Color(0xFFE1C44F),
+                                        Color(0xFFE1C44F),
+                                        Color(0xFFE1C44F),
+                                        // Add more colors as needed
+                                      ],
+                                    )),
+                                Container(
+                                  width: AppDimensions.height10(context) * 8.4,
+                                  height: AppDimensions.height10(context) * 0.2,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          0.9),
+                                  color: const Color(0xFFF5F5F5),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10(context) * 30.9,
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          3.0),
+                                  child: Center(
+                                    child: Text(
+                                      'Majority of the time',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w600,
+                                          color: const Color(0xFFFE6624)),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10(context) * 30.9,
+                                  height: AppDimensions.height10(context) * 6.8,
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          1.0),
+                                  child: Center(
+                                    child: Text(
+                                      '“I feel excited and\ngood in myself”',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  0.15,
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  2.8,
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xFFFF6C2C)),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          1.2),
+                                  child: RichText(
+                                      text: TextSpan(
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  4.5,
+                                              fontFamily: 'laila',
+                                              height: 1.2,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xFFFF6C2C)),
+                                          children: [
+                                        const TextSpan(text: '6'),
+                                        TextSpan(
+                                            text: 'x',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.0))
+                                      ])),
+                                ),
+                                SizedBox(
+                                  width: AppDimensions.height10(context) * 10.5,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: List.generate(
+                                      5, // Replace 5 with the number of containers you want to create
+                                      (index) => Container(
+                                        width: AppDimensions.height10(context) *
+                                            1.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        margin: EdgeInsets.all(
+                                            AppDimensions.height10(context) *
+                                                0.3),
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xFFFF6C2C),
+                                            shape: BoxShape.circle),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: AppDimensions.height10(context) * 10.5,
+                                  //height: AppDimensions.height10(context) * 1.5,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: List.generate(
+                                      1, // Replace 5 with the number of containers you want to create
+                                      (index) => Container(
+                                        width: AppDimensions.height10(context) *
+                                            1.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        margin: EdgeInsets.all(
+                                            AppDimensions.height10(context) *
+                                                0.3),
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xFFFF6C2C),
+                                            shape: BoxShape.circle),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              ],
                             ),
                           ),
                           Container(
                             width: AppDimensions.height10(context) * 30.9,
                             height: AppDimensions.height10(context) * 6.8,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.0),
+                                top: AppDimensions.height10(context) * 4.0),
                             child: Center(
                               child: Text(
-                                '“I feel excited and\ngood in myself”',
+                                '“I feel focused and\nmotivated”',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     height:
@@ -562,7 +736,7 @@ class progress_report extends StatelessWidget {
                                     fontSize:
                                         AppDimensions.height10(context) * 2.8,
                                     fontWeight: FontWeight.w700,
-                                    color: const Color(0xFFFF6C2C)),
+                                    color: const Color(0xFFFA9458)),
                               ),
                             ),
                           ),
@@ -578,9 +752,9 @@ class progress_report extends StatelessWidget {
                                         fontFamily: 'laila',
                                         height: 1.2,
                                         fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFF6C2C)),
+                                        color: const Color(0xFFFA9458)),
                                     children: [
-                                  const TextSpan(text: '6'),
+                                  const TextSpan(text: '5'),
                                   TextSpan(
                                       text: 'x',
                                       style: TextStyle(
@@ -598,392 +772,342 @@ class progress_report extends StatelessWidget {
                                 (index) => Container(
                                   width: AppDimensions.height10(context) * 1.5,
                                   height: AppDimensions.height10(context) * 1.5,
-                                  margin: EdgeInsets.all(
-                                      AppDimensions.height10(context) * 0.3),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppDimensions.height10(context) *
+                                              0.3),
                                   decoration: const BoxDecoration(
-                                      color: Color(0xFFFF6C2C),
+                                      color: Color(0xFFFA9458),
                                       shape: BoxShape.circle),
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(
+                          Container(
+                            width: AppDimensions.height10(context) * 8.4,
+                            height: AppDimensions.height10(context) * 0.2,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            color: const Color(0xFFBDBDBD),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 17.7,
+                            height: AppDimensions.height10(context) * 3.4,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            child: Center(
+                              child: Text(
+                                '“I feel ok”',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.8,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFFE1C44F)),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.5),
+                            child: RichText(
+                                text: TextSpan(
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                4.5,
+                                        fontFamily: 'laila',
+                                        height: 1.2,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFFE1C44F)),
+                                    children: [
+                                  const TextSpan(text: '5'),
+                                  TextSpan(
+                                      text: 'x',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  2.0))
+                                ])),
+                          ),
+                          Container(
                             width: AppDimensions.height10(context) * 10.5,
-                            //height: AppDimensions.height10(context) * 1.5,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.2),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
+                              children: List.generate(
+                                5, // Replace 5 with the number of containers you want to create
+                                (index) => Container(
+                                  width: AppDimensions.height10(context) * 1.5,
+                                  height: AppDimensions.height10(context) * 1.5,
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppDimensions.height10(context) *
+                                              0.3),
+                                  decoration: const BoxDecoration(
+                                      color: Color(0xFFE1C44F),
+                                      shape: BoxShape.circle),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 8.4,
+                            height: AppDimensions.height10(context) * 0.2,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            color: const Color(0xFFBDBDBD),
+                          ),
+                          Container(
+                            // width: AppDimensions.height10(context) * 17.7,
+                            height: AppDimensions.height10(context) * 6.8,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            child: Center(
+                              child: Text(
+                                '“I feel alright, but\nslightly down”',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    height:
+                                        AppDimensions.height10(context) * 0.15,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.8,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFF7291A0)),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.2),
+                            child: RichText(
+                                text: TextSpan(
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                4.5,
+                                        fontFamily: 'laila',
+                                        height: 1.2,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF7291A0)),
+                                    children: [
+                                  const TextSpan(text: '3'),
+                                  TextSpan(
+                                      text: 'x',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  2.0))
+                                ])),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 10.5,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.2),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                3, // Replace 5 with the number of containers you want to create
+                                (index) => Container(
+                                  width: AppDimensions.height10(context) * 1.5,
+                                  height: AppDimensions.height10(context) * 1.5,
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppDimensions.height10(context) *
+                                              0.3),
+                                  decoration: const BoxDecoration(
+                                      color: Color(0xFF7291A0),
+                                      shape: BoxShape.circle),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 8.4,
+                            height: AppDimensions.height10(context) * 0.2,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            color: const Color(0xFFBDBDBD),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 34.1,
+                            //height: AppDimensions.height10(context) * 3.4,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            child: Center(
+                              child: Text(
+                                '“I feel very low\n& irritated”',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    height:
+                                        AppDimensions.height10(context) * 0.15,
+                                    fontSize:
+                                        AppDimensions.height10(context) * 2.8,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFF546096)),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 0.8),
+                            child: RichText(
+                                text: TextSpan(
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                4.5,
+                                        fontFamily: 'laila',
+                                        height: 1.2,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xFF546096)),
+                                    children: [
+                                  const TextSpan(text: '1'),
+                                  TextSpan(
+                                      text: 'x',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  2.0))
+                                ])),
+                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 10.5,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.2),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: List.generate(
                                 1, // Replace 5 with the number of containers you want to create
                                 (index) => Container(
                                   width: AppDimensions.height10(context) * 1.5,
                                   height: AppDimensions.height10(context) * 1.5,
-                                  margin: EdgeInsets.all(
-                                      AppDimensions.height10(context) * 0.3),
+                                  margin: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppDimensions.height10(context) *
+                                              0.3),
                                   decoration: const BoxDecoration(
-                                      color: Color(0xFFFF6C2C),
+                                      color: Color(0xFF546096),
                                       shape: BoxShape.circle),
                                 ),
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
                     Container(
-                      width: AppDimensions.height10(context) * 30.9,
-                      height: AppDimensions.height10(context) * 6.8,
+                      width: double.infinity,
+                      height: AppDimensions.height10(context) * 22.9,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      child: Center(
-                        child: Text(
-                          '“I feel focused and\nmotivated”',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              height: AppDimensions.height10(context) * 0.15,
-                              fontSize: AppDimensions.height10(context) * 2.8,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFFFA9458)),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.2),
-                      child: RichText(
-                          text: TextSpan(
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 4.5,
-                                  fontFamily: 'laila',
-                                  height: 1.2,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFFFA9458)),
-                              children: [
-                            const TextSpan(text: '5'),
-                            TextSpan(
-                                text: 'x',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.0))
-                          ])),
-                    ),
-                    SizedBox(
-                      width: AppDimensions.height10(context) * 10.5,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: List.generate(
-                          5, // Replace 5 with the number of containers you want to create
-                          (index) => Container(
-                            width: AppDimensions.height10(context) * 1.5,
-                            height: AppDimensions.height10(context) * 1.5,
-                            margin: EdgeInsets.symmetric(
-                                horizontal:
-                                    AppDimensions.height10(context) * 0.3),
-                            decoration: const BoxDecoration(
-                                color: Color(0xFFFA9458),
-                                shape: BoxShape.circle),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 8.4,
-                      height: AppDimensions.height10(context) * 0.2,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      color: const Color(0xFFBDBDBD),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 17.7,
-                      height: AppDimensions.height10(context) * 3.4,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      child: Center(
-                        child: Text(
-                          '“I feel ok”',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.8,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFFE1C44F)),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.5),
-                      child: RichText(
-                          text: TextSpan(
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 4.5,
-                                  fontFamily: 'laila',
-                                  height: 1.2,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFFE1C44F)),
-                              children: [
-                            const TextSpan(text: '5'),
-                            TextSpan(
-                                text: 'x',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.0))
-                          ])),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 10.5,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: List.generate(
-                          5, // Replace 5 with the number of containers you want to create
-                          (index) => Container(
-                            width: AppDimensions.height10(context) * 1.5,
-                            height: AppDimensions.height10(context) * 1.5,
-                            margin: EdgeInsets.symmetric(
-                                horizontal:
-                                    AppDimensions.height10(context) * 0.3),
-                            decoration: const BoxDecoration(
-                                color: Color(0xFFE1C44F),
-                                shape: BoxShape.circle),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 8.4,
-                      height: AppDimensions.height10(context) * 0.2,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      color: const Color(0xFFBDBDBD),
-                    ),
-                    Container(
-                      // width: AppDimensions.height10(context) * 17.7,
-                      height: AppDimensions.height10(context) * 6.8,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      child: Center(
-                        child: Text(
-                          '“I feel alright, but\nslightly down”',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              height: AppDimensions.height10(context) * 0.15,
-                              fontSize: AppDimensions.height10(context) * 2.8,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFF7291A0)),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.2),
-                      child: RichText(
-                          text: TextSpan(
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 4.5,
-                                  fontFamily: 'laila',
-                                  height: 1.2,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF7291A0)),
-                              children: [
-                            const TextSpan(text: '3'),
-                            TextSpan(
-                                text: 'x',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.0))
-                          ])),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 10.5,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          3, // Replace 5 with the number of containers you want to create
-                          (index) => Container(
-                            width: AppDimensions.height10(context) * 1.5,
-                            height: AppDimensions.height10(context) * 1.5,
-                            margin: EdgeInsets.symmetric(
-                                horizontal:
-                                    AppDimensions.height10(context) * 0.3),
-                            decoration: const BoxDecoration(
-                                color: Color(0xFF7291A0),
-                                shape: BoxShape.circle),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 8.4,
-                      height: AppDimensions.height10(context) * 0.2,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      color: const Color(0xFFBDBDBD),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 34.1,
-                      //height: AppDimensions.height10(context) * 3.4,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      child: Center(
-                        child: Text(
-                          '“I feel very low\n& irritated”',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              height: AppDimensions.height10(context) * 0.15,
-                              fontSize: AppDimensions.height10(context) * 2.8,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFF546096)),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.8),
-                      child: RichText(
-                          text: TextSpan(
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensions.height10(context) * 4.5,
-                                  fontFamily: 'laila',
-                                  height: 1.2,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF546096)),
-                              children: [
-                            const TextSpan(text: '1'),
-                            TextSpan(
-                                text: 'x',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 2.0))
-                          ])),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 10.5,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 1.2),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          1, // Replace 5 with the number of containers you want to create
-                          (index) => Container(
-                            width: AppDimensions.height10(context) * 1.5,
-                            height: AppDimensions.height10(context) * 1.5,
-                            margin: EdgeInsets.symmetric(
-                                horizontal:
-                                    AppDimensions.height10(context) * 0.3),
-                            decoration: const BoxDecoration(
-                                color: Color(0xFF546096),
-                                shape: BoxShape.circle),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: AppDimensions.height10(context) * 22.9,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 12.1),
-                decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: [Color(0xFF91698C), Color(0xFFC19CA7)])),
-                child: Container(
-                  width: AppDimensions.height10(context) * 36.0,
-                  height: AppDimensions.height10(context) * 16.9,
-                  margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 2.0),
-                  child: Column(
-                    children: [
-                      SizedBox(
+                          top: AppDimensions.height10(context) * 12.1),
+                      decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [Color(0xFF91698C), Color(0xFFC19CA7)])),
+                      child: Container(
                         width: AppDimensions.height10(context) * 36.0,
-                        height: AppDimensions.height10(context) * 1.9,
-                        child: Text(
-                          'Practice Assessment',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.6,
-                              height: 1.2,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFFF5F5F5)),
-                        ),
-                      ),
-                      Container(
-                        width: AppDimensions.height10(context) * 35.0,
-                        height: AppDimensions.height10(context) * 1.8,
+                        height: AppDimensions.height10(context) * 16.9,
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 0.8,
-                            bottom: AppDimensions.height10(context) * 1.2),
-                        child: Text(
-                          'Your latest 20 active day evaluation.',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 1.4,
-                              height: 1.2,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xFFF5F5F5)),
-                        ),
-                      ),
-                      const button_feilds(
-                        feild_text: 'Practice score ',
-                        icon_viible: true,
-                        text_color: 0xff646464,
-                        feild_text_2: '(',
-                        text_color_2: 0xff8EA1B1,
-                        feild_text_3: '2',
-                        feild_text_4: '/5)',
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          //report(context);
-                        },
-                        child: Container(
-                          width: AppDimensions.height10(context) * 36.0,
-                          height: AppDimensions.height10(context) * 6.0,
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 1.2),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                width: AppDimensions.height10(context) * 0.1,
-                                color: const Color(0xFFFFFFFF)),
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                          ),
-                          child: Center(
-                            child: Container(
-                              //  width: AppDimensions.height10(context) * 7.2,
-                              height: AppDimensions.height10(context) * 2.1,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 0.2),
-                              child: Center(
-                                child: Text(
-                                  'Exit report',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 1.8,
-                                      height: 1.2,
-                                      fontWeight: FontWeight.w600,
-                                      color: const Color(0xFFFFFFFF)),
-                                ),
+                            top: AppDimensions.height10(context) * 2.0),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.height10(context) * 36.0,
+                              height: AppDimensions.height10(context) * 1.9,
+                              child: Text(
+                                'Practice Assessment',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
+                                    height: 1.2,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xFFF5F5F5)),
                               ),
                             ),
-                          ),
+                            Container(
+                              width: AppDimensions.height10(context) * 35.0,
+                              height: AppDimensions.height10(context) * 1.8,
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 0.8,
+                                  bottom:
+                                      AppDimensions.height10(context) * 1.2),
+                              child: Text(
+                                'Your latest 20 active day evaluation.',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.4,
+                                    height: 1.2,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xFFF5F5F5)),
+                              ),
+                            ),
+                            const button_feilds(
+                              feild_text: 'Practice score ',
+                              icon_viible: true,
+                              text_color: 0xff646464,
+                              feild_text_2: '(',
+                              text_color_2: 0xff8EA1B1,
+                              feild_text_3: '2',
+                              feild_text_4: '/5)',
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                //report(context);
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 36.0,
+                                height: AppDimensions.height10(context) * 6.0,
+                                margin: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) * 1.2),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width:
+                                          AppDimensions.height10(context) * 0.1,
+                                      color: const Color(0xFFFFFFFF)),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                ),
+                                child: Center(
+                                  child: Container(
+                                    //  width: AppDimensions.height10(context) * 7.2,
+                                    height:
+                                        AppDimensions.height10(context) * 2.1,
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) *
+                                            0.2),
+                                    child: Center(
+                                      child: Text(
+                                        'Exit report',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            height: 1.2,
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xFFFFFFFF)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    )
+                  ],
                 ),
               )
-            ],
-          ),
-        ),
+            : const Center(
+                child: SpinKitFadingCircle(
+                  color: Color(0xFFB1B8FF),
+                  size: 80,
+                ),
+              ),
       ),
     );
   }
