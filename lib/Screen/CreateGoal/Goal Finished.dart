@@ -95,7 +95,8 @@ class _GoalFinishedState extends State<GoalFinished> {
                   Navigator.push(
                       context,
                       FadePageRoute3(
-                          enterPage: StartProcess(), exitPage: GoalFinished()));
+                          enterPage: const StartProcess(),
+                          exitPage: const GoalFinished()));
                 },
               ),
             ),
@@ -188,8 +189,10 @@ class _GoalFinishedState extends State<GoalFinished> {
                                   context,
                                   FadePageRoute2(
                                     true,
-                                    exitPage: GoalFinished(),
-                                    enterPage: const StarReview(),
+                                    exitPage: const GoalFinished(),
+                                    enterPage: const StarReview(
+                                      route: 'goal',
+                                    ),
                                   ),
                                 );
                               },
@@ -234,10 +237,10 @@ class _GoalFinishedState extends State<GoalFinished> {
                                                 2.5,
                                       ),
                                       Container(
-                                        //  color: Colors.red,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                9.0,
+                                        //color: Colors.red,
+                                        // height:
+                                        //     AppDimensions.height10(context) *
+                                        //         9.0,
                                         width: AppDimensions.height10(context) *
                                             24.0,
                                         padding: EdgeInsets.symmetric(
@@ -250,7 +253,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                               "$goalName",
                                               textAlign: TextAlign.center,
                                               overflow: TextOverflow.ellipsis,
-                                              maxLines: 2,
+                                              maxLines: 1,
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10(
@@ -270,7 +273,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                                   0.3,
                                             ),
                                             Container(
-                                              //  color: Colors.green,
+                                              // color: Colors.green,
                                               height: AppDimensions.height10(
                                                       context) *
                                                   4.0,
@@ -297,11 +300,11 @@ class _GoalFinishedState extends State<GoalFinished> {
                                           ],
                                         ),
                                       ),
-                                      // SizedBox(
-                                      //   height:
-                                      //       AppDimensions.height10(context) *
-                                      //           0.8,
-                                      // ),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.1,
+                                      ),
                                       Text('Review',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
@@ -350,7 +353,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                         context,
                                         FadePageRoute2(
                                           true,
-                                          exitPage: GoalFinished(),
+                                          exitPage: const GoalFinished(),
                                           enterPage: const CreatePractice(),
                                         ),
                                       );

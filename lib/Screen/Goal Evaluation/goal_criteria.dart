@@ -5,8 +5,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
@@ -30,7 +32,7 @@ class _your_whyState extends State<your_why> {
     'I’m not\nmaking any\nprogress',
     'I’m making\nsmall steps\nforward',
     'I’m making\nconsiderable\nsteps forward',
-    "I am almost\nthere",
+    "I’m almost\nthere",
     "I’m definitely\nliving my why"
   ];
   // List<int?> selectedOptions = List.generate(3, (_) => null);
@@ -927,11 +929,11 @@ class _your_whyState extends State<your_why> {
                                     ),
                                   ),
                                 ),
-                                GestureDetector(
+                                AnimatedScaleButton(
                                   onTap: () {
-                                    if (selectedItemIndexesOuter![0] != -1 &&
-                                        selectedItemIndexesOuter![1] != -1 &&
-                                        selectedItemIndexesOuter![2] != -1) {
+                                    if (selectedItemIndexesOuter!
+                                            .contains(-1) ==
+                                        false) {
                                       showAnimatedDialog(
                                           context: context,
                                           animationType: DialogTransitionType
@@ -1083,6 +1085,15 @@ class _your_whyState extends State<your_why> {
                                                                     goalDetails[
                                                                             widget.destination]
                                                                         .length);
+                                                                goalEvaluationApi().addGoalEvaluation(
+                                                                    sum +
+                                                                        goalDetails[widget.destination]
+                                                                            .length,
+                                                                    0,
+                                                                    0,
+                                                                    0,
+                                                                    goalDetails[
+                                                                        'id']);
                                                                 // Navigator.push(
                                                                 //     context,
                                                                 //     FadePageRoute(

@@ -195,7 +195,9 @@ void bottom_sheet(context, String goal) {
                                 color:
                                     const Color.fromARGB(209, 250, 154, 52))),
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                             child: const Text(
                               'Cancel',
                               style: TextStyle(

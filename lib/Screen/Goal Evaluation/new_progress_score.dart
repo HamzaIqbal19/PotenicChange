@@ -620,9 +620,26 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                 index_color == 3 ||
                                                         index_color == 1
                                                     ? 'Score needed!'
-                                                    : index_color == 4
-                                                        ? 'Incomplete scores below!'
-                                                        : "I'm making small steps forward",
+                                                    : goalDetails[
+                                                                'goalLevel'] ==
+                                                            2
+                                                        ? "I'm making small steps\nforward"
+                                                        : goalDetails[
+                                                                    'goalLevel'] ==
+                                                                1
+                                                            ? 'I’m not making any progress'
+                                                            : goalDetails[
+                                                                        'goalLevel'] ==
+                                                                    3
+                                                                ? 'I’m making considerable steps forward'
+                                                                : goalDetails[
+                                                                            'goalLevel'] ==
+                                                                        4
+                                                                    ? "I’m almost there"
+                                                                    : goalDetails['goalLevel'] ==
+                                                                            5
+                                                                        ? "I’m definitely living my why"
+                                                                        : "Score needed",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize:

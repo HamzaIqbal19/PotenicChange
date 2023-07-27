@@ -288,6 +288,7 @@ class _photo_infoState extends State<photo_info> {
   Widget build(BuildContext context) {
     bool link_state = false;
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -1095,11 +1096,13 @@ class _photo_infoState extends State<photo_info> {
                                           FadePageRoute(
                                               page: const inspiraton_goals(
                                             data_saved: true,
+                                            route: 'photo_create',
                                           )))
                                       : Navigator.push(
                                           context,
                                           FadePageRoute(
                                               page: inspiraton_goals(
+                                                  route: 'photo_create',
                                                   data_saved: false)));
                                 },
                                 child: Container(

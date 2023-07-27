@@ -308,7 +308,7 @@ class AdminGoal {
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      print("response for api call:${responses}");
+
       print("response:${responses['message']}");
       print('${responses['result']['id']}');
       var goal_num = prefs.setInt("goal_num", responses["result"]["id"]);
@@ -316,7 +316,7 @@ class AdminGoal {
       return true;
     } else {
       //client.close();
-
+      print(request.statusCode);
       // print("response:${}");
       print("request==========>$request");
       return false;
@@ -551,7 +551,8 @@ class AdminGoal {
 
       return (jsonData);
     } else {
-      throw Exception('Failed to fetch goal names');
+      // throw Exception('Failed to fetch goal names');
+      return false;
     }
   }
 

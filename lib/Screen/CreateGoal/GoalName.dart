@@ -57,28 +57,30 @@ class _GoalNameState extends State<GoalName> {
     setState(() {
       goalName = prefs.getString("goalName")!;
       goalCategory = prefs.getString("GoalCategory")!;
-
+      mygoal.text = capitalizeFirstLetter(prefs.getString("goalName")!);
       id = prefs.getInt("goalId");
     });
 
-    mygoal.text = capitalizeFirstLetter(goalName!);
     print("mygoal.text:${mygoal.text}");
     print("goalName:$goalName");
   }
 
-  Future getUserId(String goalname, goalId) async {
+  Future getUserId(String goalname) async {
     final SharedPreferences prefs = await _prefs;
     var userId = prefs.getInt("userid");
 
-    saveGoalToPrefs(userId!, widget.catId, goalname, goalId);
+    saveGoalToPrefs(userId!, widget.catId, goalname);
   }
 
   Future<void> saveGoalToPrefs(
-      var userId, var categoryId, var goalName, var goalId) async {
+    var userId,
+    var categoryId,
+    var goalName,
+  ) async {
     final SharedPreferences prefs = await _prefs;
     var GoalName = prefs.setString('goalName', goalName);
     //var GoalCategory = prefs.setString("GoalCategory", widget.Circletitle);
-    var usergoalId = prefs.setInt("goalId", goalId);
+
     Goal goal = Goal(
       name: goalName,
       reason: [
@@ -91,16 +93,11 @@ class _GoalNameState extends State<GoalName> {
         {"key": "reason1", "text": "This is reason 1"},
       ],
       userId: userId,
-      goalId: goalId,
       goalCategoryId: categoryId,
     );
     String jsonString =
         jsonEncode(goal.toJson()); // converting object to json string
     prefs.setString('goal', jsonString);
-    print('====================');
-    var userGoalId = prefs.setInt('goalId', goalId);
-    print('====================');
-    print('====================$userGoalId');
 
     getGoal();
   }
@@ -548,51 +545,26 @@ class _GoalNameState extends State<GoalName> {
                         )),
                     AnimatedScaleButton(
                       onTap: () async {
-                        if (goalName != mygoal.text) {
-                          print('=====================> GoalName Changed');
+                        getUserId(
+                          mygoal.text.toString(),
+                        );
 
-                          print(
-                              '=====================> GoalName Change Api called');
+                        print('=====================>');
+                        print(mygoal.text.toString());
+                        final SharedPreferences prefs = await _prefs;
 
-                          AdminGoal()
-                              .addNewGoal(mygoal.text.toString(), widget.catId)
-                              .then((response) async {
-                            print(response);
-                            final SharedPreferences prefs = await _prefs;
-                            var goal_Name = prefs.setString(
-                                'goalName', '${mygoal.text.toString()}');
+                        getUserId(
+                          mygoal.text.toString(),
+                        );
 
-                            var goal = response["result"]["id"];
-
-                            print(goal);
-                            getUserId(mygoal.text.toString(), goal);
-
-                            Navigator.push(
-                              context,
-                              FadePageRoute2(
-                                true,
-                                exitPage: GoalName(widget.catId),
-                                enterPage: GoalWhy(),
-                              ),
-                            );
-                          });
-                        } else {
-                          print('=====================>');
-                          print(mygoal.text.toString());
-                          final SharedPreferences prefs = await _prefs;
-                          var newGoalName = prefs.setString(
-                              'goalName', mygoal.text.toString());
-                          getUserId(mygoal.text.toString(), id);
-
-                          Navigator.push(
-                            context,
-                            FadePageRoute2(
-                              true,
-                              exitPage: GoalName(widget.catId),
-                              enterPage: GoalWhy(),
-                            ),
-                          );
-                        }
+                        Navigator.push(
+                          context,
+                          FadePageRoute2(
+                            true,
+                            exitPage: GoalName(widget.catId),
+                            enterPage: GoalWhy(),
+                          ),
+                        );
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,

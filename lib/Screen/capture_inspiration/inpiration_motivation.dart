@@ -80,6 +80,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           FadePageRoute(
                               page: (const inspiraton_goals(
                             data_saved: false,
+                            route: 'motivation',
                           ))),
                         );
                       },

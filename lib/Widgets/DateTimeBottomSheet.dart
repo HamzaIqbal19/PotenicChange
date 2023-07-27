@@ -130,29 +130,57 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
           ),
           Divider(
               height: AppDimensions.height10(context) * 0.1,
-              color: Color(0xFF828282)),
+              color: const Color(0xFF828282)),
           Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            child: Stack(
               children: [
-                // Container(
-                //   width: AppDimensions.height10(context) * 13.5,
-                //   child: listWheelScrollViewBuilder(_days, "Day"),
-                // ),
-                SizedBox(width: AppDimensions.height10(context) * 6.0),
-                Container(
-                  width: AppDimensions.height10(context) * 3.0,
-                  child: listWheelScrollViewBuilder(_hours, "Hour"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Container(
+                    //   width: AppDimensions.height10(context) * 13.5,
+                    //   child: listWheelScrollViewBuilder(_days, "Day"),
+                    // ),
+                    SizedBox(width: AppDimensions.height10(context) * 6.0),
+                    Container(
+                      width: AppDimensions.height10(context) * 3.0,
+                      child: listWheelScrollViewBuilder(_hours, "Hour"),
+                    ),
+                    SizedBox(width: AppDimensions.height10(context) * 4.6),
+                    Container(
+                      width: AppDimensions.height10(context) * 3.0,
+                      child: listWheelScrollViewBuilder(_minutes, "Minute"),
+                    ),
+                    SizedBox(width: AppDimensions.height10(context) * 4.6),
+                    Container(
+                      width: AppDimensions.height10(context) * 3.8,
+                      child: listWheelScrollViewBuilder(_periods, "Period"),
+                    ),
+                  ],
                 ),
-                SizedBox(width: AppDimensions.height10(context) * 4.6),
-                Container(
-                  width: AppDimensions.height10(context) * 3.0,
-                  child: listWheelScrollViewBuilder(_minutes, "Minute"),
+                Positioned(
+                  top: 80,
+                  right: 20,
+                  left: 20,
+                  child: Align(
+                    alignment: const Alignment(0, 0),
+                    child: Container(
+                        width: 400,
+                        height: 1,
+                        color: const Color(0xFF828282).withOpacity(0.5)),
+                  ),
                 ),
-                SizedBox(width: AppDimensions.height10(context) * 4.6),
-                Container(
-                  width: AppDimensions.height10(context) * 3.8,
-                  child: listWheelScrollViewBuilder(_periods, "Period"),
+                Positioned(
+                  top: 120,
+                  right: 20,
+                  left: 20,
+                  child: Align(
+                    alignment: Alignment(0, 0),
+                    child: Container(
+                        width: 400,
+                        height: 1,
+                        color: const Color(0xFF828282).withOpacity(0.5)),
+                  ),
                 ),
               ],
             ),
@@ -168,8 +196,8 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
       width: MediaQuery.of(context).size.width / 5,
       child: ListWheelScrollView.useDelegate(
         itemExtent: 30,
-        useMagnifier: false,
-        // magnification: 1.2,
+        useMagnifier: true,
+        magnification: 1.2,
         diameterRatio: 1.5,
         squeeze: 0.8,
         onSelectedItemChanged: (index) {

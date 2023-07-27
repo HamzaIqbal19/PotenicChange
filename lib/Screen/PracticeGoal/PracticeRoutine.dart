@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -239,7 +240,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                       image: AssetImage(
-                                          'assets/images/Ellipse 158.webp'),
+                                          'assets/images/Ellipse 158_wb.webp'),
                                       fit: BoxFit.cover)),
                             ),
                           ),
@@ -247,12 +248,15 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       ),
                     ),
                     Container(
-                        width: AppDimensions.height10(context) * 22,
+                        //width: AppDimensions.height10(context) * 22,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 1.5),
-                        child: practice.text.toString().length > 25
+                        child: practice.text.toString().length > 20
                             ? Text(
-                                practice.text.toString(),
+                                capitalizeFirstLetter(
+                                  practice.text.substring(0, 19) + '...',
+                                ),
+                                textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -262,7 +266,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                 ),
                               )
                             : Text(
-                                practice.text.toString(),
+                                capitalizeFirstLetter(
+                                  practice.text.toString(),
+                                ),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xFF156F6D),
@@ -432,6 +438,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                               enterPage: const PracticeReminder(),
                             ),
                           );
+                          setState(() {
+                            count = 0;
+                          });
                         } else {
                           print(timesPerDay[index1]);
                         }

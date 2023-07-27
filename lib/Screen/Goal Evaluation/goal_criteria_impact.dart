@@ -24,8 +24,16 @@ class your_impact extends StatefulWidget {
 }
 
 class _your_impactState extends State<your_impact> {
-  bool select_item = true;
+  List options = [
+    'I’m not\nmaking any\nprogress',
+    'I’m making\nsmall steps\nforward',
+    'I’m making\nconsiderable\nsteps forward',
+    "I’m almost\nthere",
+    "I’m definitely\nliving my why"
+  ];
+  int? select_item;
   bool bt_visible = false;
+  int? select_item_2;
   bool Loader = true;
   var goalDetails;
 
@@ -479,55 +487,16 @@ class _your_impactState extends State<your_impact> {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 3.0,
                           left: AppDimensions.height10(context) * 0.425),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: AppDimensions.height10(context) * 12.95,
-                              height: AppDimensions.height10(context) * 12.95,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFFFFFFFF),
-                                  border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.3,
-                                      color: const Color(0xFFEE8F70))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  3.2,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFA9934)),
-                                    ),
-                                  ),
-                                  Text(
-                                    'I’m not\nmaking any\nprogress',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFA9934)),
-                                  )
-                                ],
-                              ),
-                            ),
-                            GestureDetector(
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: options.length,
+                          itemBuilder: (BuildContext context, int index1) {
+                            return GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  select_item = true;
+                                  select_item = index1;
                                 });
                               },
                               child: Container(
@@ -544,132 +513,7 @@ class _your_impactState extends State<your_impact> {
                                         AppDimensions.height10(context) * 12.95,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        gradient: select_item
-                                            ? const LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                    Color(0XFFFA9934),
-                                                    Color(0xFFFA9934)
-                                                  ])
-                                            : const LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                    Color(0XFFFFFFFF),
-                                                    Color(0xFFFFFFFF)
-                                                  ]),
-                                        border: Border.all(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.3,
-                                            color: select_item
-                                                ? const Color(0xFFFFFFFF)
-                                                : const Color(0xFFEE8F70))),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          child: Text(
-                                            '2',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        3.2,
-                                                fontWeight: FontWeight.w500,
-                                                color: select_item
-                                                    ? const Color(0xFFFFFFFF)
-                                                    : const Color(0xFFFA9934)),
-                                          ),
-                                        ),
-                                        Text(
-                                          'I’m making\nsmall steps\nforward',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.4,
-                                              fontWeight: FontWeight.w400,
-                                              color: select_item
-                                                  ? const Color(0xFFFFFFFF)
-                                                  : const Color(0xFFFA9934)),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  select_item
-                                      ? Align(
-                                          alignment: const Alignment(0, 1.6),
-                                          child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                4.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.0,
-                                            padding: EdgeInsets.all(
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    0.2),
-                                            decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.1,
-                                                    color: const Color(
-                                                        0xFFFFFFFF))),
-                                            child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  2.4,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.4,
-                                              decoration: BoxDecoration(
-                                                  border: Border.all(
-                                                      width: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.1,
-                                                      color: const Color(
-                                                          0xFFFFFFFF)),
-                                                  shape: BoxShape.circle,
-                                                  image: const DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/images/circle_tick.webp'))),
-                                            ),
-                                          ),
-                                        )
-                                      : Container()
-                                ]),
-                              ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  select_item = false;
-                                  bt_visible = true;
-                                });
-                              },
-                              child: Container(
-                                width: AppDimensions.height10(context) * 12.95,
-                                height: AppDimensions.height10(context) * 12.95,
-                                margin: EdgeInsets.only(
-                                    right:
-                                        AppDimensions.height10(context) * 1.5),
-                                child: Stack(children: [
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 12.95,
-                                    height:
-                                        AppDimensions.height10(context) * 12.95,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        gradient: select_item
+                                        gradient: select_item != index1
                                             ? const LinearGradient(
                                                 begin: Alignment.topCenter,
                                                 end: Alignment.bottomCenter,
@@ -688,7 +532,7 @@ class _your_impactState extends State<your_impact> {
                                             width: AppDimensions.height10(
                                                     context) *
                                                 0.3,
-                                            color: select_item
+                                            color: select_item != index1
                                                 ? const Color(0xFFEE8F70)
                                                 : const Color(0xFFFFFFFF))),
                                     child: Column(
@@ -697,37 +541,37 @@ class _your_impactState extends State<your_impact> {
                                       children: [
                                         Container(
                                           child: Text(
-                                            '3',
+                                            '${index1 + 1}',
                                             style: TextStyle(
                                                 fontSize:
                                                     AppDimensions.height10(
                                                             context) *
                                                         3.2,
                                                 fontWeight: FontWeight.w500,
-                                                color: select_item
+                                                color: select_item != index1
                                                     ? const Color(0xFFFA9934)
                                                     : const Color(0xFFFFFFFF)),
                                           ),
                                         ),
                                         Text(
-                                          'I’m making\nconsiderable\nsteps forward',
+                                          options[index1],
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: AppDimensions.height10(
                                                       context) *
                                                   1.4,
                                               fontWeight: FontWeight.w400,
-                                              color: select_item
+                                              color: select_item != index1
                                                   ? const Color(0xFFFA9934)
                                                   : const Color(0xFFFFFFFF)),
                                         )
                                       ],
                                     ),
                                   ),
-                                  select_item
+                                  select_item != index1
                                       ? Container()
                                       : Align(
-                                          alignment: const Alignment(0, 1.6),
+                                          alignment: const Alignment(0, 0.8),
                                           child: Container(
                                             width: AppDimensions.height10(
                                                     context) *
@@ -772,88 +616,392 @@ class _your_impactState extends State<your_impact> {
                                         )
                                 ]),
                               ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 12.95,
-                              height: AppDimensions.height10(context) * 12.95,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFFFFFFFF),
-                                  border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.3,
-                                      color: const Color(0xFFEE8F70))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      '4',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  3.2,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFA9934)),
-                                    ),
-                                  ),
-                                  Text(
-                                    "I am almost\nthere",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFA9934)),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 12.95,
-                              height: AppDimensions.height10(context) * 12.95,
-                              // margin: EdgeInsets.only(right: AppDimensions.height10(context)*1.5),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFFFFFFFF),
-                                  border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.3,
-                                      color: const Color(0xFFEE8F70))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      '5',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  3.2,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFA9934)),
-                                    ),
-                                  ),
-                                  Text(
-                                    "II’m definitely\nliving my why",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFA9934)),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                            );
+                          }),
                     ),
+
+                    // Container(
+                    //   width: double.infinity,
+                    //   height: AppDimensions.height10(context) * 16.3,
+                    //   margin: EdgeInsets.only(
+                    //       top: AppDimensions.height10(context) * 3.0,
+                    //       left: AppDimensions.height10(context) * 0.425),
+                    //   child: SingleChildScrollView(
+                    //     scrollDirection: Axis.horizontal,
+                    //     child: Row(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       mainAxisAlignment: MainAxisAlignment.start,
+                    //       children: [
+                    //         Container(
+                    //           width: AppDimensions.height10(context) * 12.95,
+                    //           height: AppDimensions.height10(context) * 12.95,
+                    //           margin: EdgeInsets.only(
+                    //               right: AppDimensions.height10(context) * 1.5),
+                    //           decoration: BoxDecoration(
+                    //               shape: BoxShape.circle,
+                    //               color: const Color(0xFFFFFFFF),
+                    //               border: Border.all(
+                    //                   width:
+                    //                       AppDimensions.height10(context) * 0.3,
+                    //                   color: const Color(0xFFEE8F70))),
+                    //           child: Column(
+                    //             mainAxisAlignment: MainAxisAlignment.center,
+                    //             children: [
+                    //               Container(
+                    //                 child: Text(
+                    //                   '1',
+                    //                   style: TextStyle(
+                    //                       fontSize:
+                    //                           AppDimensions.height10(context) *
+                    //                               3.2,
+                    //                       fontWeight: FontWeight.w500,
+                    //                       color: const Color(0xFFFA9934)),
+                    //                 ),
+                    //               ),
+                    //               Text(
+                    //                 'I’m not\nmaking any\nprogress',
+                    //                 textAlign: TextAlign.center,
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.4,
+                    //                     fontWeight: FontWeight.w400,
+                    //                     color: const Color(0xFFFA9934)),
+                    //               )
+                    //             ],
+                    //           ),
+                    //         ),
+                    //         GestureDetector(
+                    //           onTap: () {
+                    //             setState(() {
+                    //               select_item = true;
+                    //             });
+                    //           },
+                    //           child: Container(
+                    //             width: AppDimensions.height10(context) * 12.95,
+                    //             height: AppDimensions.height10(context) * 12.95,
+                    //             margin: EdgeInsets.only(
+                    //                 right:
+                    //                     AppDimensions.height10(context) * 1.5),
+                    //             child: Stack(children: [
+                    //               Container(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 12.95,
+                    //                 height:
+                    //                     AppDimensions.height10(context) * 12.95,
+                    //                 decoration: BoxDecoration(
+                    //                     shape: BoxShape.circle,
+                    //                     gradient: select_item
+                    //                         ? const LinearGradient(
+                    //                             begin: Alignment.topCenter,
+                    //                             end: Alignment.bottomCenter,
+                    //                             colors: [
+                    //                                 Color(0XFFFA9934),
+                    //                                 Color(0xFFFA9934)
+                    //                               ])
+                    //                         : const LinearGradient(
+                    //                             begin: Alignment.topCenter,
+                    //                             end: Alignment.bottomCenter,
+                    //                             colors: [
+                    //                                 Color(0XFFFFFFFF),
+                    //                                 Color(0xFFFFFFFF)
+                    //                               ]),
+                    //                     border: Border.all(
+                    //                         width: AppDimensions.height10(
+                    //                                 context) *
+                    //                             0.3,
+                    //                         color: select_item
+                    //                             ? const Color(0xFFFFFFFF)
+                    //                             : const Color(0xFFEE8F70))),
+                    //                 child: Column(
+                    //                   mainAxisAlignment:
+                    //                       MainAxisAlignment.center,
+                    //                   children: [
+                    //                     Container(
+                    //                       child: Text(
+                    //                         '2',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     3.2,
+                    //                             fontWeight: FontWeight.w500,
+                    //                             color: select_item
+                    //                                 ? const Color(0xFFFFFFFF)
+                    //                                 : const Color(0xFFFA9934)),
+                    //                       ),
+                    //                     ),
+                    //                     Text(
+                    //                       'I’m making\nsmall steps\nforward',
+                    //                       textAlign: TextAlign.center,
+                    //                       style: TextStyle(
+                    //                           fontSize: AppDimensions.height10(
+                    //                                   context) *
+                    //                               1.4,
+                    //                           fontWeight: FontWeight.w400,
+                    //                           color: select_item
+                    //                               ? const Color(0xFFFFFFFF)
+                    //                               : const Color(0xFFFA9934)),
+                    //                     )
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //               select_item
+                    //                   ? Align(
+                    //                       alignment: const Alignment(0, 1.6),
+                    //                       child: Container(
+                    //                         width: AppDimensions.height10(
+                    //                                 context) *
+                    //                             4.0,
+                    //                         height: AppDimensions.height10(
+                    //                                 context) *
+                    //                             4.0,
+                    //                         padding: EdgeInsets.all(
+                    //                             AppDimensions.height10(
+                    //                                     context) *
+                    //                                 0.2),
+                    //                         decoration: BoxDecoration(
+                    //                             shape: BoxShape.circle,
+                    //                             border: Border.all(
+                    //                                 width:
+                    //                                     AppDimensions.height10(
+                    //                                             context) *
+                    //                                         0.1,
+                    //                                 color: const Color(
+                    //                                     0xFFFFFFFF))),
+                    //                         child: Container(
+                    //                           width: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.4,
+                    //                           height: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.4,
+                    //                           decoration: BoxDecoration(
+                    //                               border: Border.all(
+                    //                                   width: AppDimensions
+                    //                                           .height10(
+                    //                                               context) *
+                    //                                       0.1,
+                    //                                   color: const Color(
+                    //                                       0xFFFFFFFF)),
+                    //                               shape: BoxShape.circle,
+                    //                               image: const DecorationImage(
+                    //                                   image: AssetImage(
+                    //                                       'assets/images/circle_tick.webp'))),
+                    //                         ),
+                    //                       ),
+                    //                     )
+                    //                   : Container()
+                    //             ]),
+                    //           ),
+                    //         ),
+                    //         GestureDetector(
+                    //           onTap: () {
+                    //             setState(() {
+                    //               select_item = false;
+                    //               bt_visible = true;
+                    //             });
+                    //           },
+                    //           child: Container(
+                    //             width: AppDimensions.height10(context) * 12.95,
+                    //             height: AppDimensions.height10(context) * 12.95,
+                    //             margin: EdgeInsets.only(
+                    //                 right:
+                    //                     AppDimensions.height10(context) * 1.5),
+                    //             child: Stack(children: [
+                    //               Container(
+                    //                 width:
+                    //                     AppDimensions.height10(context) * 12.95,
+                    //                 height:
+                    //                     AppDimensions.height10(context) * 12.95,
+                    //                 decoration: BoxDecoration(
+                    //                     shape: BoxShape.circle,
+                    //                     gradient: select_item
+                    //                         ? const LinearGradient(
+                    //                             begin: Alignment.topCenter,
+                    //                             end: Alignment.bottomCenter,
+                    //                             colors: [
+                    //                                 Color(0XFFFFFFFF),
+                    //                                 Color(0xFFFFFFFF)
+                    //                               ])
+                    //                         : const LinearGradient(
+                    //                             begin: Alignment.topCenter,
+                    //                             end: Alignment.bottomCenter,
+                    //                             colors: [
+                    //                                 Color(0XFFFA9934),
+                    //                                 Color(0xFFFA9934)
+                    //                               ]),
+                    //                     border: Border.all(
+                    //                         width: AppDimensions.height10(
+                    //                                 context) *
+                    //                             0.3,
+                    //                         color: select_item
+                    //                             ? const Color(0xFFEE8F70)
+                    //                             : const Color(0xFFFFFFFF))),
+                    //                 child: Column(
+                    //                   mainAxisAlignment:
+                    //                       MainAxisAlignment.center,
+                    //                   children: [
+                    //                     Container(
+                    //                       child: Text(
+                    //                         '3',
+                    //                         style: TextStyle(
+                    //                             fontSize:
+                    //                                 AppDimensions.height10(
+                    //                                         context) *
+                    //                                     3.2,
+                    //                             fontWeight: FontWeight.w500,
+                    //                             color: select_item
+                    //                                 ? const Color(0xFFFA9934)
+                    //                                 : const Color(0xFFFFFFFF)),
+                    //                       ),
+                    //                     ),
+                    //                     Text(
+                    //                       'I’m making\nconsiderable\nsteps forward',
+                    //                       textAlign: TextAlign.center,
+                    //                       style: TextStyle(
+                    //                           fontSize: AppDimensions.height10(
+                    //                                   context) *
+                    //                               1.4,
+                    //                           fontWeight: FontWeight.w400,
+                    //                           color: select_item
+                    //                               ? const Color(0xFFFA9934)
+                    //                               : const Color(0xFFFFFFFF)),
+                    //                     )
+                    //                   ],
+                    //                 ),
+                    //               ),
+                    //               select_item
+                    //                   ? Container()
+                    //                   : Align(
+                    //                       alignment: const Alignment(0, 1.6),
+                    //                       child: Container(
+                    //                         width: AppDimensions.height10(
+                    //                                 context) *
+                    //                             4.0,
+                    //                         height: AppDimensions.height10(
+                    //                                 context) *
+                    //                             4.0,
+                    //                         padding: EdgeInsets.all(
+                    //                             AppDimensions.height10(
+                    //                                     context) *
+                    //                                 0.2),
+                    //                         decoration: BoxDecoration(
+                    //                             shape: BoxShape.circle,
+                    //                             border: Border.all(
+                    //                                 width:
+                    //                                     AppDimensions.height10(
+                    //                                             context) *
+                    //                                         0.1,
+                    //                                 color: const Color(
+                    //                                     0xFFFFFFFF))),
+                    //                         child: Container(
+                    //                           width: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.4,
+                    //                           height: AppDimensions.height10(
+                    //                                   context) *
+                    //                               2.4,
+                    //                           decoration: BoxDecoration(
+                    //                               border: Border.all(
+                    //                                   width: AppDimensions
+                    //                                           .height10(
+                    //                                               context) *
+                    //                                       0.1,
+                    //                                   color: const Color(
+                    //                                       0xFFFFFFFF)),
+                    //                               shape: BoxShape.circle,
+                    //                               image: const DecorationImage(
+                    //                                   image: AssetImage(
+                    //                                       'assets/images/circle_tick.webp'))),
+                    //                         ),
+                    //                       ),
+                    //                     )
+                    //             ]),
+                    //           ),
+                    //         ),
+                    //         Container(
+                    //           width: AppDimensions.height10(context) * 12.95,
+                    //           height: AppDimensions.height10(context) * 12.95,
+                    //           margin: EdgeInsets.only(
+                    //               right: AppDimensions.height10(context) * 1.5),
+                    //           decoration: BoxDecoration(
+                    //               shape: BoxShape.circle,
+                    //               color: const Color(0xFFFFFFFF),
+                    //               border: Border.all(
+                    //                   width:
+                    //                       AppDimensions.height10(context) * 0.3,
+                    //                   color: const Color(0xFFEE8F70))),
+                    //           child: Column(
+                    //             mainAxisAlignment: MainAxisAlignment.center,
+                    //             children: [
+                    //               Container(
+                    //                 child: Text(
+                    //                   '4',
+                    //                   style: TextStyle(
+                    //                       fontSize:
+                    //                           AppDimensions.height10(context) *
+                    //                               3.2,
+                    //                       fontWeight: FontWeight.w500,
+                    //                       color: const Color(0xFFFA9934)),
+                    //                 ),
+                    //               ),
+                    //               Text(
+                    //                 "I’m almost\nthere",
+                    //                 textAlign: TextAlign.center,
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.4,
+                    //                     fontWeight: FontWeight.w400,
+                    //                     color: const Color(0xFFFA9934)),
+                    //               )
+                    //             ],
+                    //           ),
+                    //         ),
+                    //         Container(
+                    //           width: AppDimensions.height10(context) * 12.95,
+                    //           height: AppDimensions.height10(context) * 12.95,
+                    //           // margin: EdgeInsets.only(right: AppDimensions.height10(context)*1.5),
+                    //           decoration: BoxDecoration(
+                    //               shape: BoxShape.circle,
+                    //               color: const Color(0xFFFFFFFF),
+                    //               border: Border.all(
+                    //                   width:
+                    //                       AppDimensions.height10(context) * 0.3,
+                    //                   color: const Color(0xFFEE8F70))),
+                    //           child: Column(
+                    //             mainAxisAlignment: MainAxisAlignment.center,
+                    //             children: [
+                    //               Container(
+                    //                 child: Text(
+                    //                   '5',
+                    //                   style: TextStyle(
+                    //                       fontSize:
+                    //                           AppDimensions.height10(context) *
+                    //                               3.2,
+                    //                       fontWeight: FontWeight.w500,
+                    //                       color: const Color(0xFFFA9934)),
+                    //                 ),
+                    //               ),
+                    //               Text(
+                    //                 "I’m definitely\nliving my why",
+                    //                 textAlign: TextAlign.center,
+                    //                 style: TextStyle(
+                    //                     fontSize:
+                    //                         AppDimensions.height10(context) *
+                    //                             1.4,
+                    //                     fontWeight: FontWeight.w400,
+                    //                     color: const Color(0xFFFA9934)),
+                    //               )
+                    //             ],
+                    //           ),
+                    //         )
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
+
                     Container(
                       width: AppDimensions.height10(context) * 7.2,
                       height: AppDimensions.height10(context) * 0.1,
@@ -909,261 +1057,139 @@ class _your_impactState extends State<your_impact> {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 3.0,
                           left: AppDimensions.height10(context) * 0.425),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              width: AppDimensions.height10(context) * 12.95,
-                              height: AppDimensions.height10(context) * 12.95,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFFFFFFFF),
-                                  border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.3,
-                                      color: const Color(0xFFEE8F70))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: options.length,
+                          itemBuilder: (BuildContext context, int index1) {
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  select_item_2 = index1;
+                                });
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 12.95,
+                                height: AppDimensions.height10(context) * 12.95,
+                                margin: EdgeInsets.only(
+                                    right:
+                                        AppDimensions.height10(context) * 1.5),
+                                child: Stack(children: [
                                   Container(
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  3.2,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFA9934)),
-                                    ),
-                                  ),
-                                  Text(
-                                    'I’m not\nmaking any\nprogress',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFA9934)),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 12.95,
-                              height: AppDimensions.height10(context) * 12.95,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.5),
-                              child: Stack(children: [
-                                Container(
-                                  width:
-                                      AppDimensions.height10(context) * 12.95,
-                                  height:
-                                      AppDimensions.height10(context) * 12.95,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0XFFFA9934),
-                                            Color(0xFFFA9934)
-                                            // const Color(0XFFFA9E71),
-                                            // const Color(0xFFFA9E71)
-                                          ]),
-                                      border: Border.all(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  0.3,
-                                          color: const Color(0xFFFFFFFF))),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        child: Text(
-                                          '2',
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  3.2,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xFFFFFFFF)),
-                                        ),
-                                      ),
-                                      Text(
-                                        'I’m making\nsmall steps\nforward',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.4,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xFFFFFFFF)),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Align(
-                                  alignment: const Alignment(0, 1.6),
-                                  child: Container(
                                     width:
-                                        AppDimensions.height10(context) * 4.0,
+                                        AppDimensions.height10(context) * 12.95,
                                     height:
-                                        AppDimensions.height10(context) * 4.0,
-                                    padding: EdgeInsets.all(
-                                        AppDimensions.height10(context) * 0.2),
+                                        AppDimensions.height10(context) * 12.95,
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
+                                        gradient: select_item_2 != index1
+                                            ? const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                    Color(0XFFFFFFFF),
+                                                    Color(0xFFFFFFFF)
+                                                  ])
+                                            : const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                    Color(0XFFFA9934),
+                                                    Color(0xFFFA9934)
+                                                  ]),
                                         border: Border.all(
                                             width: AppDimensions.height10(
                                                     context) *
-                                                0.1,
-                                            color: const Color(0xFFFFFFFF))),
-                                    child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 2.4,
-                                      height:
-                                          AppDimensions.height10(context) * 2.4,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
+                                                0.3,
+                                            color: select_item_2 != index1
+                                                ? const Color(0xFFEE8F70)
+                                                : const Color(0xFFFFFFFF))),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          child: Text(
+                                            '${index1 + 1}',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        3.2,
+                                                fontWeight: FontWeight.w500,
+                                                color: select_item_2 != index1
+                                                    ? const Color(0xFFFA9934)
+                                                    : const Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                        Text(
+                                          options[index1],
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w400,
+                                              color: select_item_2 != index1
+                                                  ? const Color(0xFFFA9934)
+                                                  : const Color(0xFFFFFFFF)),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  select_item_2 != index1
+                                      ? Container()
+                                      : Align(
+                                          alignment: const Alignment(0, 0.8),
+                                          child: Container(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                4.0,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                4.0,
+                                            padding: EdgeInsets.all(
+                                                AppDimensions.height10(
+                                                        context) *
+                                                    0.2),
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                border: Border.all(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.1,
+                                                    color: const Color(
+                                                        0xFFFFFFFF))),
+                                            child: Container(
                                               width: AppDimensions.height10(
                                                       context) *
-                                                  0.1,
-                                              color: const Color(0xFFFFFFFF)),
-                                          shape: BoxShape.circle,
-                                          image: const DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/circle_tick.webp'))),
-                                    ),
-                                  ),
-                                )
-                              ]),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 12.95,
-                              height: AppDimensions.height10(context) * 12.95,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFFFFFFFF),
-                                  border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.3,
-                                      color: const Color(0xFFEE8F70))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      '3',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  3.2,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFA9934)),
-                                    ),
-                                  ),
-                                  Text(
-                                    'I’m making\nconsiderable\nsteps forward',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFA9934)),
-                                  )
-                                ],
+                                                  2.4,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  2.4,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.1,
+                                                      color: const Color(
+                                                          0xFFFFFFFF)),
+                                                  shape: BoxShape.circle,
+                                                  image: const DecorationImage(
+                                                      image: AssetImage(
+                                                          'assets/images/circle_tick.webp'))),
+                                            ),
+                                          ),
+                                        )
+                                ]),
                               ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 12.95,
-                              height: AppDimensions.height10(context) * 12.95,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.height10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFFFFFFFF),
-                                  border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.3,
-                                      color: const Color(0xFFEE8F70))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      '4',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  3.2,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFA9934)),
-                                    ),
-                                  ),
-                                  Text(
-                                    'I am almost\nthere',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFA9934)),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 12.95,
-                              height: AppDimensions.height10(context) * 12.95,
-                              // margin: EdgeInsets.only(right: AppDimensions.height10(context)*1.5),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFFFFFFFF),
-                                  border: Border.all(
-                                      width:
-                                          AppDimensions.height10(context) * 0.3,
-                                      color: const Color(0xFFEE8F70))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Text(
-                                      '5',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  3.2,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFFFA9934)),
-                                    ),
-                                  ),
-                                  Text(
-                                    'I’m definitely\nliving my\nwhy',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFA9934)),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                            );
+                          }),
                     ),
+
                     widget.saved
                         ? Container(
                             width: AppDimensions.height10(context) * 38.259,

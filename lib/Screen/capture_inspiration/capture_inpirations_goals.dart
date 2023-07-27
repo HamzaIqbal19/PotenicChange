@@ -7,7 +7,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -19,7 +22,9 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class inspiraton_goals extends StatefulWidget {
   final bool data_saved;
-  const inspiraton_goals({super.key, required this.data_saved});
+  final String route;
+  const inspiraton_goals(
+      {super.key, required this.data_saved, required this.route});
 
   @override
   State<inspiraton_goals> createState() => _inspiraton_goalsState();
@@ -780,17 +785,99 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           if (selectAll == true || multiGoals.length != 0) {
                             if (selectAll == true) {
                               saveGoalsToSharedPreferences(allgoalsSelected);
-                              Navigator.push(
-                                context,
-                                FadePageRoute(page: const inspiration_type()),
-                              );
+                              widget.route == 'photo_create'
+                                  ? Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const photo_info(
+                                        edit_details: false,
+                                        image_detals: false,
+                                        image_save: false,
+                                        image_create: false,
+                                      )),
+                                    )
+                                  : widget.route == 'video_create'
+                                      ? Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const video_info()),
+                                        )
+                                      : widget.route == 'note_create'
+                                          ? Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page: const note_info(
+                                                note_saved: true,
+                                                type_switch: 1,
+                                              )),
+                                            )
+                                          : widget.route == 'note_saved'
+                                              ? Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const noteSaved()),
+                                                )
+                                              : widget.route == 'note_link'
+                                                  ? Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const link_info()),
+                                                    )
+                                                  : Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const inspiration_type()),
+                                                    );
                             } else {
                               saveGoalsToSharedPreferences(multiGoals);
                               print(multiGoals);
-                              Navigator.push(
-                                context,
-                                FadePageRoute(page: const inspiration_type()),
-                              );
+                              widget.route == 'photo_create'
+                                  ? Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const photo_info(
+                                        edit_details: false,
+                                        image_detals: false,
+                                        image_save: false,
+                                        image_create: false,
+                                      )),
+                                    )
+                                  : widget.route == 'video_create'
+                                      ? Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const video_info()),
+                                        )
+                                      : widget.route == 'note_create'
+                                          ? Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page: const note_info(
+                                                note_saved: true,
+                                                type_switch: 1,
+                                              )),
+                                            )
+                                          : widget.route == 'note_saved'
+                                              ? Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: const noteSaved()),
+                                                )
+                                              : widget.route == 'note_link'
+                                                  ? Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const link_info()),
+                                                    )
+                                                  : Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page:
+                                                              const inspiration_type()),
+                                                    );
                             }
                           }
                         },

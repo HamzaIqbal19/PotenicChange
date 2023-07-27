@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -265,11 +266,16 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
-                                          image: AssetImage(goal_level == 2
+                                          image: AssetImage(goalDetails[
+                                                      'goalLevel'] ==
+                                                  2
                                               ? 'assets/images/Nebula pie 2.webp'
-                                              : goal_level == 3
-                                                  ? 'assets/images/Nebula pie 3.webp'
-                                                  : "assets/images/Nebula Pie.webp"),
+                                              : goalDetails['goalLevel'] == 3
+                                                  ? 'assets/images/Nebula Pie 3.webp'
+                                                  : goalDetails['goalLevel'] ==
+                                                          4
+                                                      ? "assets/images/goal_level_4.webp"
+                                                      : "assets/images/Nebula Pie.webp"),
                                         ),
                                         // color: Colors.amber,
                                       ),
@@ -363,7 +369,25 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           alignment: Alignment.centerLeft,
                                           child: Text(
                                             widget.premium
-                                                ? "I'm making small steps\nforward"
+                                                ? goalDetails['goalLevel'] == 2
+                                                    ? "I'm making small steps\nforward"
+                                                    : goalDetails[
+                                                                'goalLevel'] ==
+                                                            1
+                                                        ? 'I’m not making any progress'
+                                                        : goalDetails[
+                                                                    'goalLevel'] ==
+                                                                3
+                                                            ? 'I’m making considerable steps forward'
+                                                            : goalDetails[
+                                                                        'goalLevel'] ==
+                                                                    4
+                                                                ? "I’m almost there"
+                                                                : goalDetails[
+                                                                            'goalLevel'] ==
+                                                                        5
+                                                                    ? "I’m definitely living my why"
+                                                                    : 'Score needed'
                                                 : 'Only available to Premium\nCustomers',
                                             style: TextStyle(
                                                 fontSize:
@@ -479,7 +503,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ],
                       ),
                     ),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         widget.isActive
                             ? widget.goal_evaluation
@@ -820,8 +844,12 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(context,
-                                  FadePageRoute(page: const StarReview()));
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const StarReview(
+                                    route: 'menu',
+                                  )));
                             },
                             child: Container(
                               width: AppDimensions.height10(context) * 36.0,

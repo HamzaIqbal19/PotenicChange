@@ -761,8 +761,10 @@ class _note_infoState extends State<note_info> {
                                       : Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: inspiraton_goals(
-                                                  data_saved: false)));
+                                              page: const inspiraton_goals(
+                                            data_saved: false,
+                                            route: 'note_create',
+                                          )));
                                 },
                                 child: Container(
                                   height: AppDimensions.height10(context) * 6.0,
@@ -994,7 +996,8 @@ class _noteSavedState extends State<noteSaved> {
                                   fontSize:
                                       AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff007AFF).withOpacity(0.4)),
+                                  color:
+                                      const Color(0xff007AFF).withOpacity(0.4)),
                             ),
                           ),
                         )
@@ -1196,7 +1199,10 @@ class _noteSavedState extends State<noteSaved> {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
-                                    page: inspiraton_goals(data_saved: false)));
+                                    page: const inspiraton_goals(
+                                  data_saved: false,
+                                  route: 'note_saved',
+                                )));
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 6.0,
