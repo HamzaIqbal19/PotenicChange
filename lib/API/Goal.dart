@@ -266,7 +266,7 @@ class AdminGoal {
     });
 
     var request = await client.post(
-        Uri.parse('${URL.BASE_URL}api/goal/add-goal'),
+        Uri.parse('${URL.BASE_URL}api/userGoal/add-user-goal'),
         headers: headers,
         body: Body);
 
@@ -308,7 +308,7 @@ class AdminGoal {
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      print("response for api call:${responses}");
+
       print("response:${responses['message']}");
       print('${responses['result']['id']}');
       var goal_num = prefs.setInt("goal_num", responses["result"]["id"]);
@@ -316,7 +316,7 @@ class AdminGoal {
       return true;
     } else {
       //client.close();
-
+      print(request.statusCode);
       // print("response:${}");
       print("request==========>$request");
       return false;
@@ -515,9 +515,13 @@ class AdminGoal {
       var jsonData = jsonDecode(request.body);
       print("Result: $jsonData");
       return true;
-    } else {
-      print("Update failed");
+    } else if (request.statusCode == 400) {
+      print("Maximum goal achieved");
+      print('STATUSCODE: ${request.statusCode}');
       // client.close();
+      return request.statusCode;
+    } else {
+      print('Update Failed');
       return false;
     }
   }
@@ -547,7 +551,8 @@ class AdminGoal {
 
       return (jsonData);
     } else {
-      throw Exception('Failed to fetch goal names');
+      // throw Exception('Failed to fetch goal names');
+      return false;
     }
   }
 

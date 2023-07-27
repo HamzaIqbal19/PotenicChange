@@ -26,19 +26,25 @@ List<String> categories = [
 ];
 String dropdownValue = categories.first;
 
-Future getUserId(int categoryid, goalname, goalid) async {
+Future getUserId(
+  int categoryid,
+  goalname,
+) async {
   final SharedPreferences prefs = await _prefs;
   var userId = prefs.getInt("userid");
 
-  saveGoalToPrefs(userId!, categoryid, goalname, goalid);
+  saveGoalToPrefs(userId!, categoryid, goalname);
 }
 
 Future<void> saveGoalToPrefs(
-    var userId, var categoryId, var goalName, var goalId) async {
+  var userId,
+  var categoryId,
+  var goalName,
+) async {
   final SharedPreferences prefs = await _prefs;
   var GoalName = prefs.setString('goalName', goalName);
   //var GoalCategory = prefs.setString("GoalCategory", widget.Circletitle);
-  var usergoalId = prefs.setInt("goalId", goalId);
+
   Goal goal = Goal(
     name: goalName,
     reason: [
@@ -51,23 +57,18 @@ Future<void> saveGoalToPrefs(
       {"key": "reason1", "text": "This is reason 1"},
     ],
     userId: userId,
-    goalId: goalId,
     goalCategoryId: categoryId,
   );
   String jsonString =
       jsonEncode(goal.toJson()); // converting object to json string
   prefs.setString('goal', jsonString);
-  print('====================');
-  var userGoalId = prefs.setInt('goalId', goalId);
-  print('====================');
-  print('====================$userGoalId');
 
   getGoal();
 }
 
 Future<Goal> getGoal() async {
   final prefs = await SharedPreferences.getInstance();
-  print("GoalId:${prefs.getInt("goalId")}");
+
   String? jsonString = prefs.getString('goal');
 
   if (jsonString != null) {
@@ -86,6 +87,7 @@ Future<Goal> getGoal() async {
 }
 
 int index = 0;
+int catId = 1;
 //late int goalId;
 
 void bottom_sheet(context) {
@@ -196,7 +198,8 @@ void bottom_sheet(context) {
 
                                 onChanged: (String? value) {
                                   // This is called when the user selects an item.
-
+                                  print('-------------------------');
+                                  print(index);
                                   setState(() {
                                     dropdownValue = value!;
                                     index = categories.indexOf(value);
@@ -346,33 +349,31 @@ void bottom_sheet(context) {
                           ),
                     child: TextButton(
                         onPressed: () async {
+                          setState(() {
+                            catId = index + 1;
+                          });
+                          print('Category');
+                          print(catId);
                           if (_formkey.currentState!.validate()) {
                             // final SharedPreferences prefs = await _prefs;
                             // var goal_Name = prefs.setString(
                             //     'goalName', '${goalName.text.toString()}');
                             // print('${goalName.text.toString()}');
+                            getUserId(catId, goalName.text.toString());
                             print(goalName.text.toString());
                             print(index);
-                            AdminGoal()
-                                .addNewGoal(
-                                    '${goalName.text.toString()}', index + 1)
-                                .then((response) async {
-                              print(response);
-                              final SharedPreferences prefs = await _prefs;
-                              var goal_Name = prefs.setString(
-                                  'goalName', '${goalName.text.toString()}');
+                            goalName.clear();
 
-                              var goalId = response["result"]["id"];
-                              getUserId(
-                                  index, '${goalName.text.toString()}', goalId);
+                            final SharedPreferences prefs = await _prefs;
+                            var goal_Name = prefs.setString(
+                                'goalName', '${goalName.text.toString()}');
 
-                              Navigator.push(
-                                context,
-                                FadePageRoute(
-                                  page: GoalName(index),
-                                ),
-                              );
-                            });
+                            Navigator.push(
+                              context,
+                              FadePageRoute(
+                                page: GoalName(catId),
+                              ),
+                            );
                           }
                         },
                         child: Text(

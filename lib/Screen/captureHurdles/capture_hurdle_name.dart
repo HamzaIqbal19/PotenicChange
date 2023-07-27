@@ -414,7 +414,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                       ? AppDimensions.height10(context) * 2.6
                                       : AppDimensions.height10(context) * 1.0),
                               decoration: BoxDecoration(
-                                gradient: button_state
+                                gradient: button_state || widget.update
                                     ? const LinearGradient(
                                         begin: Alignment.topCenter,
                                         end: Alignment.bottomCenter,
@@ -438,7 +438,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                               ),
                               child: Center(
                                 child: Text(
-                                  'Next',
+                                  widget.update ? 'Update Summary' : 'Next',
                                   style: TextStyle(
                                       color: button_state
                                           ? Color(0xFFFFFFFF)

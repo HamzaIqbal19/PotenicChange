@@ -428,7 +428,10 @@ class _video_infoState extends State<video_info> {
                           Navigator.push(
                               context,
                               FadePageRoute(
-                                  page: inspiraton_goals(data_saved: false)));
+                                  page: const inspiraton_goals(
+                                data_saved: false,
+                                route: 'video_create',
+                              )));
                         },
                         child: Container(
                           height: AppDimensions.height10(context) * 6.0,

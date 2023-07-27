@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
+import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
@@ -19,7 +20,8 @@ import '../../Widgets/fading2.dart';
 import '../HomeScreen/HomeScreen.dart';
 
 class StarReview extends StatefulWidget {
-  const StarReview({Key? key}) : super(key: key);
+  final String route;
+  const StarReview({Key? key, required this.route}) : super(key: key);
 
   @override
   State<StarReview> createState() => _StarReviewState();
@@ -87,12 +89,22 @@ class _StarReviewState extends State<StarReview> {
     // GoalReviewBg.webp
     return WillPopScope(
       onWillPop: () {
+        print('==============================');
+        print(widget.route);
         Navigator.push(
           context,
-          FadePageRoute3(
-            exitPage: const StarReview(),
-            enterPage: const GoalFinished(),
-          ),
+          widget.route == 'goal'
+              ? FadePageRoute3(
+                  exitPage: StarReview(
+                    route: widget.route,
+                  ),
+                  enterPage: const GoalFinished(),
+                )
+              : FadePageRoute3(
+                  exitPage: StarReview(
+                    route: widget.route,
+                  ),
+                  enterPage: const PracticeFinished()),
         );
 
         return Future.value(false);
@@ -117,10 +129,20 @@ class _StarReviewState extends State<StarReview> {
                     ),
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          FadePageRoute3(
-                              enterPage: const GoalFinished(),
-                              exitPage: const StarReview()));
+                        context,
+                        widget.route == 'goal'
+                            ? FadePageRoute3(
+                                exitPage: StarReview(
+                                  route: widget.route,
+                                ),
+                                enterPage: const GoalFinished(),
+                              )
+                            : FadePageRoute3(
+                                exitPage: StarReview(
+                                  route: widget.route,
+                                ),
+                                enterPage: const PracticeFinished()),
+                      );
                       //Navigator.pop(context);
 
                       // Add code for performing close action
@@ -1043,7 +1065,9 @@ class _StarReviewState extends State<StarReview> {
                                                 context,
                                                 FadePageRoute2(
                                                   true,
-                                                  exitPage: const StarReview(),
+                                                  exitPage: StarReview(
+                                                    route: widget.route,
+                                                  ),
                                                   enterPage:
                                                       const StarReviewWhy(
                                                     updatedCategory: 1,
@@ -1189,7 +1213,9 @@ class _StarReviewState extends State<StarReview> {
                                                 context,
                                                 FadePageRoute2(
                                                   true,
-                                                  exitPage: const StarReview(),
+                                                  exitPage: StarReview(
+                                                    route: widget.route,
+                                                  ),
                                                   enterPage:
                                                       const StarReviewWhy(
                                                     updatedCategory: 2,
@@ -1336,7 +1362,9 @@ class _StarReviewState extends State<StarReview> {
                                                 context,
                                                 FadePageRoute2(
                                                   true,
-                                                  exitPage: const StarReview(),
+                                                  exitPage: StarReview(
+                                                    route: widget.route,
+                                                  ),
                                                   enterPage:
                                                       const StarReviewWhy(
                                                     updatedCategory: 3,

@@ -7,6 +7,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
@@ -246,25 +247,30 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       ),
                     ),
                     Container(
-                        width: AppDimensions.height10(context) * 22,
+                        //width: AppDimensions.height10(context) * 22,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 1.5),
-                        child: practice.text.toString().length > 25
+                        child: practice.text.toString().length > 20
                             ? Text(
-                                practice.text.toString(),
+                                capitalizeFirstLetter(
+                                  practice.text.substring(0, 19) + '...',
+                                ),
+                                textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF156F6D),
+                                  color: Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),
                               )
                             : Text(
-                                practice.text.toString(),
+                                capitalizeFirstLetter(
+                                  practice.text.toString(),
+                                ),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: const Color(0xFF156F6D),
+                                  color: Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),

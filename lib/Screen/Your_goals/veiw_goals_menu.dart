@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 
@@ -847,7 +850,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.pop(context);
-                                //community_sheet(context);
+                                community_sheet(context);
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 33.4,

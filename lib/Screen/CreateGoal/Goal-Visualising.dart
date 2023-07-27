@@ -143,6 +143,7 @@ class _VisualisingState extends State<Visualising> {
           setState(() {
             Loading = false;
           });
+          return false;
           // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           //     content: Text("Your sign in details are incorrect, please try again!!")));
         }
@@ -249,7 +250,7 @@ class _VisualisingState extends State<Visualising> {
                                 color: Colors.white,
                                 child: TextButton(
                                   onPressed: () async {
-                                    updateGoalReason(goalVisualising);
+                                    // updateGoalReason(goalVisualising);
                                     final SharedPreferences prefs =
                                         await _prefs;
                                     var goalvisualising = prefs.setString(

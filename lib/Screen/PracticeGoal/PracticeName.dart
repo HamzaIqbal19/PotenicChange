@@ -215,14 +215,15 @@ class _PracticeNameState extends State<PracticeName> {
                       ),
                     ),
                     Container(
-                        width: AppDimensions.height10(context) * 22,
+                        //width: AppDimensions.height10(context) * 22,
                         margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 1.5),
-                        child: practice.text.toString().length > 25
+                        child: practice.text.toString().length > 20
                             ? Text(
                                 capitalizeFirstLetter(
-                                  practice.text.toString(),
+                                  practice.text.substring(0, 19) + '...',
                                 ),
+                                textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,

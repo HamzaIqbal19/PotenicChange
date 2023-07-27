@@ -231,14 +231,16 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         children: [
                           AnimatedScaleButton(
                             onTap: () {
-                              // Navigator.push(
-                              //   context,
-                              //   FadePageRoute2(
-                              //     true,
-                              //     exitPage: const PracticeFinished(),
-                              //     enterPage: const StarReview(),
-                              //   ),
-                              // );
+                              Navigator.push(
+                                context,
+                                FadePageRoute2(
+                                  true,
+                                  exitPage: const PracticeFinished(),
+                                  enterPage: const StarReview(
+                                    route: 'practice',
+                                  ),
+                                ),
+                              );
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 38.1,
@@ -253,6 +255,9 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 4.0),
+                                // padding: EdgeInsets.only(
+                                //     bottom: AppDimensions.height10(context) *
+                                //         10.0),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
@@ -312,12 +317,10 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                             width: AppDimensions.height10(
                                                     context) *
                                                 22.0,
-                                            //height: AppDimensions.height10(context)*4.0,
                                             child: Text('"$identity"',
                                                 // "“I am someone who is in control of my anger”",
                                                 textAlign: TextAlign.center,
                                                 overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
                                                 style: TextStyle(
                                                     fontStyle: FontStyle.italic,
                                                     fontSize:
@@ -349,7 +352,8 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                             fontWeight: FontWeight.w600,
                                             color: const Color(0xff5B74A6))),
                                     SizedBox(
-                                      height: AppDimensions.height10(context),
+                                      height:
+                                          AppDimensions.height10(context) * 4.3,
                                     )
                                   ],
                                 ),

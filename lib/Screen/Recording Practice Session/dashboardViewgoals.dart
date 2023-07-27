@@ -21,9 +21,12 @@ import 'package:potenic_app/Widgets/bottom_navigation.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Practice.dart';
 import '../../Widgets/custom_tool_tip.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class dashBoard extends StatefulWidget {
   final bool helpful_tips;
@@ -64,14 +67,17 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   }
 
   void _fetchGoalNames() async {
+    final SharedPreferences prefs = await _prefs;
     AdminGoal.getUserGoal().then((response) {
       if (response.length != 0) {
         setState(() {
           goalName = response["name"];
+
           identity = response["identityStatement"][0]["text"];
           color = response["color"];
         });
 
+        var goalId = prefs.setInt('goal_num', response["id"]);
         loadData();
       } else {
         loadData();

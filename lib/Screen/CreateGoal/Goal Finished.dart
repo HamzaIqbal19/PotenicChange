@@ -95,7 +95,8 @@ class _GoalFinishedState extends State<GoalFinished> {
                   Navigator.push(
                       context,
                       FadePageRoute3(
-                          enterPage: StartProcess(), exitPage: GoalFinished()));
+                          enterPage: const StartProcess(),
+                          exitPage: const GoalFinished()));
                 },
               ),
             ),
@@ -188,8 +189,10 @@ class _GoalFinishedState extends State<GoalFinished> {
                                   context,
                                   FadePageRoute2(
                                     true,
-                                    exitPage: GoalFinished(),
-                                    enterPage: const StarReview(),
+                                    exitPage: const GoalFinished(),
+                                    enterPage: const StarReview(
+                                      route: 'goal',
+                                    ),
                                   ),
                                 );
                               },
@@ -350,7 +353,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                         context,
                                         FadePageRoute2(
                                           true,
-                                          exitPage: GoalFinished(),
+                                          exitPage: const GoalFinished(),
                                           enterPage: const CreatePractice(),
                                         ),
                                       );

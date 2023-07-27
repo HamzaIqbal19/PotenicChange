@@ -486,7 +486,9 @@ class _link_infoState extends State<link_info> {
                               context,
                               FadePageRoute(
                                   page: const inspiraton_goals(
-                                      data_saved: false)));
+                                data_saved: false,
+                                route: 'note_link',
+                              )));
                         },
                         child: Container(
                           height: AppDimensions.height10(context) * 6.0,

@@ -169,9 +169,10 @@ class CalendarWithRadioButtons extends StatelessWidget {
           //color: status == 'completed'? Color(0xFF196F6E):status == 'missed'?Color(0xFFFE6624):Color(0xFFFFFFFF),
         ),
         child: TableCalendar(
+          availableGestures: AvailableGestures.none,
           firstDay: DateTime.utc(2021, 1, 1),
           lastDay: DateTime.utc(2030, 12, 31),
-          focusedDay: DateTime.now(),
+          focusedDay: DateTime(2023, 5),
           headerStyle: HeaderStyle(
             titleCentered: true,
             leftChevronIcon: const Icon(

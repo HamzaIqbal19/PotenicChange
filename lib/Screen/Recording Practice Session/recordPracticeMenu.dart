@@ -453,10 +453,10 @@ class _practiceMenuState extends State<practiceMenu> {
                                                 1.2),
                                     child: AnimatedScaleButton(
                                       onTap: () {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     FadePageRoute(
-                                        //         page: const progress_report()));
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const progress_report()));
                                       },
                                       child: button_feilds(
                                         feild_text: 'Progress report',
@@ -474,10 +474,10 @@ class _practiceMenuState extends State<practiceMenu> {
                                   ),
                                   AnimatedScaleButton(
                                     onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     FadePageRoute(
-                                      //         page: const prac_score()));
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const prac_score()));
                                     },
                                     child: button_feilds(
                                       feild_text: widget.goal_eval
@@ -517,8 +517,8 @@ class _practiceMenuState extends State<practiceMenu> {
                       children: [
                         AnimatedScaleButton(
                           onTap: () {
-                            // Navigator.push(context,
-                            //     FadePageRoute(page: const practice_progress()));
+                            Navigator.push(context,
+                                FadePageRoute(page: const practice_progress()));
                           },
                           child: const button_feilds(
                             feild_text: 'View practice progress',
@@ -565,10 +565,10 @@ class _practiceMenuState extends State<practiceMenu> {
                         ),
                         AnimatedScaleButton(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     FadePageRoute(
-                            //         page: const practice_assesment()));
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const practice_assesment()));
                           },
                           child: const button_feilds(
                             feild_text: 'Practice assesment history',
