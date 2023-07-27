@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
@@ -11,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import 'dashboardViewgoals.dart';
 
 bool note_check = false;
 int EmotionsAfter = 0;
@@ -63,41 +65,146 @@ class _feelingsAfterState extends State<feelingsAfter> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            leading: Center(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: Center(
+            child: IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    FadePageRoute3(
+                      exitPage: const feelingsAfter(summary: false),
+                      enterPage: emotions(
+                        summary: false,
+                        pracName: pracName,
+                      ),
+                    ),
+                  );
+                },
+                icon: Image.asset(
+                  'assets/images/Back.webp',
+                  width: AppDimensions.height10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
+                  fit: BoxFit.cover,
+                )),
+          ),
+          actions: [
+            Center(
               child: IconButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      FadePageRoute3(
-                        exitPage: const feelingsAfter(summary: false),
-                        enterPage: emotions(
-                          summary: false,
-                          pracName: pracName,
+                    showAnimatedDialog(
+                      animationType: DialogTransitionType.fadeScale,
+                      curve: Curves.easeInOut,
+                      duration: const Duration(seconds: 1),
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                        width: AppDimensions.height10(context) * 27.0,
+                        height: AppDimensions.height10(context) * 18.2,
+                        child: AlertDialog(
+                          contentPadding: EdgeInsets.zero,
+                          actionsPadding: EdgeInsets.zero,
+                          titlePadding: EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) * 1.4)),
+                          title: Container(
+                            margin: const EdgeInsets.only(
+                                top: 19, right: 16, left: 16, bottom: 2),
+                            height: AppDimensions.height10(context) * 2.2,
+                            width: AppDimensions.height10(context) * 23.8,
+                            child: Text(
+                              "Are you sure?",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: const Color(0xFF000000),
+                                fontSize: AppDimensions.height10(context) * 1.7,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          content: Container(
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 1.9,
+                                left: AppDimensions.height10(context) * 1.6,
+                                right: AppDimensions.height10(context) * 1.6),
+                            height: AppDimensions.height10(context) * 3.2,
+                            width: AppDimensions.height10(context) * 23.8,
+                            child: Text(
+                              "If you close it now, you will lose all your progress.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                height: AppDimensions.height10(context) * 0.15,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          actions: <Widget>[
+                            Column(
+                              children: [
+                                Container(
+                                  height: 42,
+                                  width: double.infinity,
+                                  color: const Color(0xFF007AFF),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      // if (widget.summary == false) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => dashBoard(
+                                                    saved: false,
+                                                    helpful_tips: false,
+                                                    membership: true,
+                                                    dashboard_ctrl: false,
+                                                    cancel: false,
+                                                    trial: false,
+                                                  )));
+                                      //}
+                                    },
+                                    child: const Text(
+                                      'Close',
+                                      style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 17,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  height: 44,
+                                  width: double.infinity,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text(
+                                      'Cancel',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xFF007AFF)),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     );
                   },
                   icon: Image.asset(
-                    'assets/images/Back.webp',
+                    'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
                     height: AppDimensions.height10(context) * 2.6,
                     fit: BoxFit.cover,
                   )),
-            ),
-            actions: [
-              Center(
-                child: IconButton(
-                    onPressed: () {},
-                    icon: Image.asset(
-                      'assets/images/Close.webp',
-                      width: AppDimensions.height10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.cover,
-                    )),
-              )
-            ]),
+            )
+          ],
+        ),
         extendBodyBehindAppBar: true,
         body: Container(
           decoration: const BoxDecoration(
@@ -678,7 +785,7 @@ class next_botton extends StatelessWidget {
       },
       child: Container(
           height: AppDimensions.height10(context) * 5.0,
-          width: AppDimensions.height10(context) * 25.4,
+          width: AppDimensions.width10(context) * 25.4,
           // margin: EdgeInsets.only(bottom: 62, top: 46),
           decoration: BoxDecoration(
             gradient: LinearGradient(

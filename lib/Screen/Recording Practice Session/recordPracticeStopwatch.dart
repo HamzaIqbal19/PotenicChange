@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
+import 'dashboardViewgoals.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -44,30 +46,135 @@ class _clocksState extends State<clocks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: Center(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Center(
+          child: IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                'assets/images/Back.webp',
+                width: AppDimensions.height10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.6,
+                fit: BoxFit.cover,
+              )),
+        ),
+        actions: [
+          Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showAnimatedDialog(
+                    animationType: DialogTransitionType.fadeScale,
+                    curve: Curves.easeInOut,
+                    duration: const Duration(seconds: 1),
+                    context: context,
+                    builder: (BuildContext context) => Container(
+                      width: AppDimensions.height10(context) * 27.0,
+                      height: AppDimensions.height10(context) * 18.2,
+                      child: AlertDialog(
+                        contentPadding: EdgeInsets.zero,
+                        actionsPadding: EdgeInsets.zero,
+                        titlePadding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 1.4)),
+                        title: Container(
+                          margin: const EdgeInsets.only(
+                              top: 19, right: 16, left: 16, bottom: 2),
+                          height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 23.8,
+                          child: Text(
+                            "Are you sure?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: const Color(0xFF000000),
+                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        content: Container(
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10(context) * 1.9,
+                              left: AppDimensions.height10(context) * 1.6,
+                              right: AppDimensions.height10(context) * 1.6),
+                          height: AppDimensions.height10(context) * 3.2,
+                          width: AppDimensions.height10(context) * 23.8,
+                          child: Text(
+                            "If you close it now, you will lose all your progress.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              height: AppDimensions.height10(context) * 0.15,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        actions: <Widget>[
+                          Column(
+                            children: [
+                              Container(
+                                height: 42,
+                                width: double.infinity,
+                                color: const Color(0xFF007AFF),
+                                child: TextButton(
+                                  onPressed: () {
+                                    // if (widget.summary == false) {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => dashBoard(
+                                                  saved: false,
+                                                  helpful_tips: false,
+                                                  membership: true,
+                                                  dashboard_ctrl: false,
+                                                  cancel: false,
+                                                  trial: false,
+                                                )));
+                                    //}
+                                  },
+                                  child: const Text(
+                                    'Close',
+                                    style: TextStyle(
+                                        color: Color(0xFFFFFFFF),
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 44,
+                                width: double.infinity,
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xFF007AFF)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
                 icon: Image.asset(
-                  'assets/images/Back.webp',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
-          ),
-          actions: [
-            Center(
-              child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
-                  )),
-            )
-          ]),
+          )
+        ],
+      ),
       extendBodyBehindAppBar: true,
       body: Container(
         decoration: const BoxDecoration(
@@ -462,7 +569,7 @@ class _watch_timeState extends State<watch_time> {
                 child: AnimatedScaleButton(
                   onTap: () {
                     if (clock_state == true) {
-                      if (button_text == 'Stop') {
+                      if (button_text == 'Pause') {
                         _stopStopwatch();
                         setState(() {
                           button_text = 'start';
@@ -470,7 +577,7 @@ class _watch_timeState extends State<watch_time> {
                       } else {
                         _startStopwatch();
                         setState(() {
-                          button_text = 'Stop';
+                          button_text = 'Pause';
                         });
                       }
                     } else {
@@ -482,7 +589,7 @@ class _watch_timeState extends State<watch_time> {
                       } else {
                         _startTimer();
                         setState(() {
-                          button_text = 'Stop';
+                          button_text = 'Pause';
                         });
                       }
                     }
@@ -503,17 +610,36 @@ class _watch_timeState extends State<watch_time> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.3,
-                                left: AppDimensions.height10(context) * 1.0),
-                            child: Image.asset(
-                              'assets/images/start_icon.webp',
-                              width: AppDimensions.height10(context) * 1.8,
-                              height: AppDimensions.height10(context) * 2.7,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                          button_text == "Pause"
+                              ? Container(
+                                  margin: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) * 0.3,
+                                    // left: AppDimensions.height10(context) *
+                                    //     1.0
+                                  ),
+                                  child: Image.asset(
+                                    'assets/images/stop_icon.png',
+                                    width:
+                                        AppDimensions.height10(context) * 2.7,
+                                    height:
+                                        AppDimensions.height10(context) * 2.7,
+                                    fit: BoxFit.cover,
+                                  ))
+                              : Container(
+                                  margin: EdgeInsets.only(
+                                      top:
+                                          AppDimensions.height10(context) * 0.3,
+                                      left: AppDimensions.height10(context) *
+                                          1.0),
+                                  child: Image.asset(
+                                    'assets/images/start_icon.webp',
+                                    width:
+                                        AppDimensions.height10(context) * 1.8,
+                                    height:
+                                        AppDimensions.height10(context) * 2.7,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                           Container(
                             width: AppDimensions.height10(context) * 3.5,
                             height: AppDimensions.height10(context) * 2.2,

@@ -253,7 +253,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                     "$goalName",
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
+                                    maxLines: 1,
                                     style: TextStyle(
                                         fontSize:
                                             AppDimensions.height10(context) *
@@ -266,7 +266,7 @@ class _ActivateStarState extends State<ActivateStar> {
                                   ),
                                 ),
                                 SizedBox(
-                                  height: AppDimensions.height10(context) * 1.0,
+                                  height: AppDimensions.height10(context) * 0.3,
                                 ),
                                 Container(
                                   width: AppDimensions.height10(context) * 22.0,
@@ -389,6 +389,8 @@ class _ActivateStarState extends State<ActivateStar> {
                                                           : 'assets/images/Ellipse 158.webp'),
                                     )),
                                     child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         SizedBox(
                                           height:

@@ -502,6 +502,8 @@ class _emotionsState extends State<emotions> {
                       ]),
                     ),
                   ),
+                  addNotes(state_: widget.summary),
+                  /*
                   Container(
                     width: AppDimensions.height10(context) * 7.6,
                     height: AppDimensions.height10(context) * 7.6,
@@ -548,6 +550,8 @@ class _emotionsState extends State<emotions> {
                       ],
                     ),
                   ),
+                 */
+
                   Container(
                     width: AppDimensions.height10(context) * 32.5,
                     height: AppDimensions.height10(context) * 6.0,
@@ -630,7 +634,7 @@ class _emotionsState extends State<emotions> {
 
                             child: Container(
                               height: AppDimensions.height10(context) * 5.0,
-                              width: AppDimensions.height10(context) * 25.4,
+                              width: AppDimensions.width10(context) * 25.4,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -716,6 +720,147 @@ class _emotionsState extends State<emotions> {
           ]),
         ),
       ),
+    );
+  }
+}
+
+class addNotes extends StatefulWidget {
+  final bool state_;
+  const addNotes({
+    super.key,
+    required this.state_,
+  });
+
+  @override
+  State<addNotes> createState() => _addNotesState();
+}
+
+class _addNotesState extends State<addNotes> {
+  int icon_color = 0xffffffff;
+  int back_color = 0x000000ff;
+  bool note_check = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: AppDimensions.height10(context) * 7.6,
+          height: AppDimensions.height10(context) * 7.6,
+          //margin: EdgeInsets.only(bottom: 113),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedScaleButton(
+                onTap: () {
+                  note_check
+                      ? setState(() {
+                          back_color = 0x000000ff;
+                          icon_color = 0xffffffff;
+                          note_check = false;
+                        })
+                      : setState(() {
+                          back_color = 0xffffffff;
+                          icon_color = 0xffFA9934;
+                          note_check = true;
+                          // icon_color = 0xffFA9934,
+                        });
+                },
+                child: Container(
+                  width: AppDimensions.height10(context) * 5.0,
+                  height: AppDimensions.height10(context) * 5.0,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(back_color),
+                      border: Border.all(
+                          width: AppDimensions.height10(context) * 0.2,
+                          color: Color(icon_color))),
+                  child: Container(
+                    height: AppDimensions.height10(context) * 2.7,
+                    width: AppDimensions.height10(context) * 2.7,
+                    margin: const EdgeInsets.only(left: 3),
+                    child: Center(
+                        child: Icon(
+                      Icons.edit_note,
+                      //size: 27,
+                      color: Color(icon_color),
+                    )),
+                  ),
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10(context) * 7.6,
+                height: AppDimensions.height10(context) * 1.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
+                child: Text(
+                  'Add Notes',
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10(context) * 1.6,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+            child: note_check
+                ? Container(
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.0,
+                        bottom: AppDimensions.height10(context) * 2.0),
+                    child: notes(
+                      state: widget.state_,
+                    ))
+                : SizedBox(
+                    height: AppDimensions.height10(context) * 11.1,
+                  )),
+      ],
+    );
+  }
+}
+
+class notes extends StatelessWidget {
+  final bool state;
+  const notes({super.key, required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: AppDimensions.height10(context) * 36.0,
+          // height: AppDimensions.height10(context) * 11.0,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                  Radius.circular(AppDimensions.height10(context) * 1.8)),
+              color: Colors.white),
+          child: Column(
+            children: [
+              Container(
+                child: TextField(
+                  // controller: feedback,
+                  maxLength: 200,
+                  maxLines: null,
+                  minLines: null,
+                  decoration: InputDecoration(
+                      hintText: 'Add notes here',
+                      hintStyle: TextStyle(
+                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xff646464),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent)),
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent))),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

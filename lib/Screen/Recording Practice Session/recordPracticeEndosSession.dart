@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
@@ -9,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import 'dashboardViewgoals.dart';
 
 class endofSession extends StatefulWidget {
   final bool summary;
@@ -60,30 +62,135 @@ class _endofSessionState extends State<endofSession> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: Center(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Center(
+          child: IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                'assets/images/Back.webp',
+                width: AppDimensions.height10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.6,
+                fit: BoxFit.cover,
+              )),
+        ),
+        actions: [
+          Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showAnimatedDialog(
+                    animationType: DialogTransitionType.fadeScale,
+                    curve: Curves.easeInOut,
+                    duration: const Duration(seconds: 1),
+                    context: context,
+                    builder: (BuildContext context) => Container(
+                      width: AppDimensions.height10(context) * 27.0,
+                      height: AppDimensions.height10(context) * 18.2,
+                      child: AlertDialog(
+                        contentPadding: EdgeInsets.zero,
+                        actionsPadding: EdgeInsets.zero,
+                        titlePadding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 1.4)),
+                        title: Container(
+                          margin: const EdgeInsets.only(
+                              top: 19, right: 16, left: 16, bottom: 2),
+                          height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 23.8,
+                          child: Text(
+                            "Are you sure?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: const Color(0xFF000000),
+                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        content: Container(
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10(context) * 1.9,
+                              left: AppDimensions.height10(context) * 1.6,
+                              right: AppDimensions.height10(context) * 1.6),
+                          height: AppDimensions.height10(context) * 3.2,
+                          width: AppDimensions.height10(context) * 23.8,
+                          child: Text(
+                            "If you close it now, you will lose all your progress.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              height: AppDimensions.height10(context) * 0.15,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        actions: <Widget>[
+                          Column(
+                            children: [
+                              Container(
+                                height: 42,
+                                width: double.infinity,
+                                color: const Color(0xFF007AFF),
+                                child: TextButton(
+                                  onPressed: () {
+                                    // if (widget.summary == false) {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => dashBoard(
+                                                  saved: false,
+                                                  helpful_tips: false,
+                                                  membership: true,
+                                                  dashboard_ctrl: false,
+                                                  cancel: false,
+                                                  trial: false,
+                                                )));
+                                    //}
+                                  },
+                                  child: const Text(
+                                    'Close',
+                                    style: TextStyle(
+                                        color: Color(0xFFFFFFFF),
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 44,
+                                width: double.infinity,
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xFF007AFF)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
                 icon: Image.asset(
-                  'assets/images/Back.webp',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
-          ),
-          actions: [
-            Center(
-              child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
-                  )),
-            )
-          ]),
+          )
+        ],
+      ),
       extendBodyBehindAppBar: true,
       body: Container(
         decoration: const BoxDecoration(
@@ -498,6 +605,8 @@ class _endofSessionState extends State<endofSession> {
                   ]),
                 ),
               ),
+              addNotes(state_: widget.summary),
+              /*
               Container(
                 width: AppDimensions.height10(context) * 7.6,
                 height: AppDimensions.height10(context) * 7.6,
@@ -508,7 +617,7 @@ class _endofSessionState extends State<endofSession> {
                   children: [
                     AnimatedScaleButton(
                       onTap: () {
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 5.0,
@@ -548,6 +657,8 @@ class _endofSessionState extends State<endofSession> {
                   ],
                 ),
               ),
+             */
+
               AnimatedScaleButton(
                 onTap: () {
                   if (sessionEnd != 0) {
@@ -634,6 +745,147 @@ class _endofSessionState extends State<endofSession> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class addNotes extends StatefulWidget {
+  final bool state_;
+  const addNotes({
+    super.key,
+    required this.state_,
+  });
+
+  @override
+  State<addNotes> createState() => _addNotesState();
+}
+
+class _addNotesState extends State<addNotes> {
+  int icon_color = 0xffffffff;
+  int back_color = 0x000000ff;
+  bool note_check = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: AppDimensions.height10(context) * 7.6,
+          height: AppDimensions.height10(context) * 7.6,
+          //margin: EdgeInsets.only(bottom: 113),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AnimatedScaleButton(
+                onTap: () {
+                  note_check
+                      ? setState(() {
+                          back_color = 0x000000ff;
+                          icon_color = 0xffffffff;
+                          note_check = false;
+                        })
+                      : setState(() {
+                          back_color = 0xffffffff;
+                          icon_color = 0xffFA9934;
+                          note_check = true;
+                          // icon_color = 0xffFA9934,
+                        });
+                },
+                child: Container(
+                  width: AppDimensions.height10(context) * 5.0,
+                  height: AppDimensions.height10(context) * 5.0,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(back_color),
+                      border: Border.all(
+                          width: AppDimensions.height10(context) * 0.2,
+                          color: Color(icon_color))),
+                  child: Container(
+                    height: AppDimensions.height10(context) * 2.7,
+                    width: AppDimensions.height10(context) * 2.7,
+                    margin: const EdgeInsets.only(left: 3),
+                    child: Center(
+                        child: Icon(
+                      Icons.edit_note,
+                      //size: 27,
+                      color: Color(icon_color),
+                    )),
+                  ),
+                ),
+              ),
+              Container(
+                width: AppDimensions.height10(context) * 7.6,
+                height: AppDimensions.height10(context) * 1.9,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.6),
+                child: Text(
+                  'Add Notes',
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10(context) * 1.6,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+            child: note_check
+                ? Container(
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.0,
+                        bottom: AppDimensions.height10(context) * 2.0),
+                    child: notes(
+                      state: widget.state_,
+                    ))
+                : SizedBox(
+                    height: AppDimensions.height10(context) * 11.1,
+                  )),
+      ],
+    );
+  }
+}
+
+class notes extends StatelessWidget {
+  final bool state;
+  const notes({super.key, required this.state});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: AppDimensions.height10(context) * 36.0,
+          // height: AppDimensions.height10(context) * 11.0,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(
+                  Radius.circular(AppDimensions.height10(context) * 1.8)),
+              color: Colors.white),
+          child: Column(
+            children: [
+              Container(
+                child: TextField(
+                  // controller: feedback,
+                  maxLength: 200,
+                  maxLines: null,
+                  minLines: null,
+                  decoration: InputDecoration(
+                      hintText: 'Add notes here',
+                      hintStyle: TextStyle(
+                        fontSize: AppDimensions.height10(context) * 1.6,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xff646464),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent)),
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.transparent))),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

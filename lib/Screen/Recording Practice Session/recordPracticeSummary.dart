@@ -131,32 +131,137 @@ class _practice_summaryState extends State<practice_summary> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: Center(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Center(
+          child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Image.asset(
+                'assets/images/Back.webp',
+                width: AppDimensions.height10(context) * 2.6,
+                height: AppDimensions.height10(context) * 2.6,
+                fit: BoxFit.cover,
+              )),
+        ),
+        actions: [
+          Center(
             child: IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  showAnimatedDialog(
+                    animationType: DialogTransitionType.fadeScale,
+                    curve: Curves.easeInOut,
+                    duration: const Duration(seconds: 1),
+                    context: context,
+                    builder: (BuildContext context) => Container(
+                      width: AppDimensions.height10(context) * 27.0,
+                      height: AppDimensions.height10(context) * 18.2,
+                      child: AlertDialog(
+                        contentPadding: EdgeInsets.zero,
+                        actionsPadding: EdgeInsets.zero,
+                        titlePadding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 1.4)),
+                        title: Container(
+                          margin: const EdgeInsets.only(
+                              top: 19, right: 16, left: 16, bottom: 2),
+                          height: AppDimensions.height10(context) * 2.2,
+                          width: AppDimensions.height10(context) * 23.8,
+                          child: Text(
+                            "Are you sure?",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: const Color(0xFF000000),
+                              fontSize: AppDimensions.height10(context) * 1.7,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        content: Container(
+                          margin: EdgeInsets.only(
+                              bottom: AppDimensions.height10(context) * 1.9,
+                              left: AppDimensions.height10(context) * 1.6,
+                              right: AppDimensions.height10(context) * 1.6),
+                          height: AppDimensions.height10(context) * 3.2,
+                          width: AppDimensions.height10(context) * 23.8,
+                          child: Text(
+                            "If you close it now, you will lose all your progress.",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              height: AppDimensions.height10(context) * 0.15,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        actions: <Widget>[
+                          Column(
+                            children: [
+                              Container(
+                                height: 42,
+                                width: double.infinity,
+                                color: const Color(0xFF007AFF),
+                                child: TextButton(
+                                  onPressed: () {
+                                    // if (widget.summary == false) {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) => const dashBoard(
+                                                  saved: false,
+                                                  helpful_tips: false,
+                                                  membership: true,
+                                                  dashboard_ctrl: false,
+                                                  cancel: false,
+                                                  trial: false,
+                                                )));
+                                    //}
+                                  },
+                                  child: const Text(
+                                    'Close',
+                                    style: TextStyle(
+                                        color: Color(0xFFFFFFFF),
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: 44,
+                                width: double.infinity,
+                                child: TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xFF007AFF)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
                 },
                 icon: Image.asset(
-                  'assets/images/Back.webp',
+                  'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
                   height: AppDimensions.height10(context) * 2.6,
                   fit: BoxFit.cover,
                 )),
-          ),
-          actions: [
-            Center(
-              child: IconButton(
-                  onPressed: () {},
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    width: AppDimensions.height10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.cover,
-                  )),
-            )
-          ]),
+          )
+        ],
+      ),
       extendBodyBehindAppBar: true,
       body: Container(
         width: double.infinity,
@@ -230,13 +335,13 @@ class _practice_summaryState extends State<practice_summary> {
                                                   : '$color' == '6'
                                                       ? "assets/images/Blue_gradient.webp"
                                                       : 'assets/images/orange_moon.webp'),
-                              colorFilter: ColorFilter.mode(
+                              colorFilter: const ColorFilter.mode(
                                   Color.fromRGBO(0, 0, 0, 0.5),
                                   BlendMode.dstATop),
                               fit: BoxFit.cover)),
                       child: Stack(children: [
                         Align(
-                            alignment: const Alignment(0, -0.55),
+                            alignment: const Alignment(0, -0.30),
                             child: Container(
                               width: AppDimensions.height10(context) * 24.0,
                               padding: EdgeInsets.symmetric(
@@ -246,7 +351,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 goalName,
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
-                                maxLines: 2,
+                                maxLines: 1,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 2.0,
@@ -257,8 +362,13 @@ class _practice_summaryState extends State<practice_summary> {
                               ),
                             )),
                         Align(
-                          alignment: const Alignment(0, -0.15),
+                          alignment: const Alignment(0, -0.08),
                           child: Container(
+                            padding: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.3,
+                                left: AppDimensions.width10(context) * 3.2,
+                                right: AppDimensions.width10(context) * 3.2),
+                            // color: Colors.red,
                             child: Text('"$identity"',
                                 textAlign: TextAlign.center,
                                 overflow: TextOverflow.ellipsis,
@@ -297,17 +407,22 @@ class _practice_summaryState extends State<practice_summary> {
                                                         ? "assets/images/Practice_Completed_4.webp"
                                                         : 'assets/images/Practice_Completed_2.webp'))),
                             child: Center(
-                                child: Text(
-                              pracName,
-                              maxLines: 3,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: const Color(0xff1A481C),
-                                  fontSize:
-                                      AppDimensions.height10(context) * 1.8,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'Laila'),
+                                child: Padding(
+                              padding: EdgeInsets.only(
+                                  left: AppDimensions.width10(context) * 1.2,
+                                  right: AppDimensions.width10(context) * 1.2),
+                              child: Text(
+                                pracName,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: const Color(0xff1A481C),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Laila'),
+                              ),
                             )),
                           ),
                         ),
@@ -462,24 +577,29 @@ class _practice_summaryState extends State<practice_summary> {
                                               : Color(0xffFA9458)),
                       child: Stack(children: [
                         Center(
-                          child: Text(
-                            Before == '1'
-                                ? 'I felt very\nlow &\ndemotivated'
-                                : Before == '2'
-                                    ? 'I felt slightly\nirritated, not\nfussed really'
-                                    : Before == '3'
-                                        ? 'I felt good'
-                                        : Before == '4'
-                                            ? 'Motivated and \nready to start'
-                                            : Before == '5'
-                                                ? "Great, could'nt \nwait to started!"
-                                                : 'I felt good',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontFamily: 'Laila'),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 0.5),
+                            child: Text(
+                              Before == '1'
+                                  ? 'I felt very\nlow &\ndemotivated'
+                                  : Before == '2'
+                                      ? 'I felt slightly\nirritated, not\nfussed really'
+                                      : Before == '3'
+                                          ? 'I felt good'
+                                          : Before == '4'
+                                              ? 'Motivated and \nready to start'
+                                              : Before == '5'
+                                                  ? "Great, could'nt \nwait to started!"
+                                                  : 'I felt good',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                  fontFamily: 'Laila'),
+                            ),
                           ),
                         ),
                         Align(
@@ -562,24 +682,29 @@ class _practice_summaryState extends State<practice_summary> {
                                               : Color(0xffFA9458)),
                       child: Stack(children: [
                         Center(
-                          child: Text(
-                            After == '1'
-                                ? 'I feel very low\n& irritated'
-                                : After == '2'
-                                    ? 'I feel alright,\n but slightly\ndown'
-                                    : After == '3'
-                                        ? 'I feel ok'
-                                        : After == '4'
-                                            ? 'I feel focused\n& good'
-                                            : After == '5'
-                                                ? 'I feel excited\nand good in\nmyself'
-                                                : 'I feel focused\n& good',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontFamily: 'Laila'),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 0.5),
+                            child: Text(
+                              After == '1'
+                                  ? 'I feel very low\n& irritated'
+                                  : After == '2'
+                                      ? 'I feel alright,\n but slightly\ndown'
+                                      : After == '3'
+                                          ? 'I feel ok'
+                                          : After == '4'
+                                              ? 'I feel focused\n& good'
+                                              : After == '5'
+                                                  ? 'I feel excited\nand good in\nmyself'
+                                                  : 'I feel focused\n& good',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                  fontFamily: 'Laila'),
+                            ),
                           ),
                         ),
                         Align(
@@ -674,24 +799,29 @@ class _practice_summaryState extends State<practice_summary> {
                           )),
                       child: Stack(children: [
                         Center(
-                          child: Text(
-                            Session == '1'
-                                ? 'Hated it'
-                                : Session == '2'
-                                    ? 'Found it\ndifficult'
-                                    : Session == '3'
-                                        ? 'Had distractins,\nit was hard to\nfocus'
-                                        : Session == '4'
-                                            ? 'It was ok'
-                                            : Session == '5'
-                                                ? 'Good, I liked\nit'
-                                                : 'Great,\nin the zone.',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.6,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                                fontFamily: 'Poppins'),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 0.5),
+                            child: Text(
+                              Session == '1'
+                                  ? 'Hated it'
+                                  : Session == '2'
+                                      ? 'Found it\ndifficult'
+                                      : Session == '3'
+                                          ? 'Had distractins,\nit was hard to\nfocus'
+                                          : Session == '4'
+                                              ? 'It was ok'
+                                              : Session == '5'
+                                                  ? 'Good, I liked\nit'
+                                                  : 'Great,\nin the zone.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  fontFamily: 'Poppins'),
+                            ),
                           ),
                         ),
                         Align(

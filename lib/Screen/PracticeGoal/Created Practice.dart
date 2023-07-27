@@ -274,8 +274,6 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                   children: [
                                     Container(
                                       // color: Colors.red,
-                                      height:
-                                          AppDimensions.height10(context) * 9.0,
                                       width: AppDimensions.height10(context) *
                                           24.0,
                                       padding: EdgeInsets.symmetric(
@@ -286,9 +284,10 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                         children: [
                                           Text(
                                             "$goalName",
+                                            //  "Control my anger",
                                             textAlign: TextAlign.center,
                                             overflow: TextOverflow.ellipsis,
-                                            maxLines: 2,
+                                            maxLines: 1,
                                             style: TextStyle(
                                                 fontSize:
                                                     AppDimensions.height10(
@@ -315,6 +314,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                 22.0,
                                             //height: AppDimensions.height10(context)*4.0,
                                             child: Text('"$identity"',
+                                                // "“I am someone who is in control of my anger”",
                                                 textAlign: TextAlign.center,
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 2,
@@ -331,10 +331,10 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                         ],
                                       ),
                                     ),
-                                    // SizedBox(
-                                    //   height:
-                                    //       AppDimensions.height10(context) * 1.0,
-                                    // ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 1.5,
+                                    ),
                                     Text('Review',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
@@ -401,52 +401,65 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                             : 'assets/images/Ellipse 158.webp'),
                                       )),
                                       child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
                                         children: [
-                                          SizedBox(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.1,
-                                          ),
                                           Container(
+                                            //color: Colors.red,
                                             width: AppDimensions.height10(
                                                     context) *
                                                 11.8,
-                                            child: Text(
-                                              pracName,
-                                              textAlign: TextAlign.center,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                  color:
-                                                      const Color(0xFFFBFBFB),
-                                                  fontSize:
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  pracName,
+                                                  //  "Meditation",
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      color: const Color(
+                                                          0xFFFBFBFB),
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.8,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                                SizedBox(
+                                                  height:
                                                       AppDimensions.height10(
                                                               context) *
-                                                          1.8,
-                                                  fontWeight: FontWeight.w500),
+                                                          1.0,
+                                                ),
+                                                Text('Review',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.0,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            0.14,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: const Color(
+                                                            0xFFFBFBFB))),
+                                              ],
                                             ),
                                           ),
                                           SizedBox(
                                             height: AppDimensions.height10(
                                                     context) *
-                                                1.0,
-                                          ),
-                                          Text('Review',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  decoration:
-                                                      TextDecoration.underline,
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.0,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.14,
-                                                  fontWeight: FontWeight.w600,
-                                                  color:
-                                                      const Color(0xFFFBFBFB)))
+                                                3.0,
+                                          )
                                         ],
                                       )),
                                 ),

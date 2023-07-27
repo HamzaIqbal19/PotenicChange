@@ -103,7 +103,9 @@ class _practiceMenuState extends State<practiceMenu> {
         actions: [
           Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon: Image.asset(
                   'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
@@ -229,16 +231,26 @@ class _practiceMenuState extends State<practiceMenu> {
                                 child: Container(
                                   width: AppDimensions.height10(context) * 20.6,
                                   height: AppDimensions.height10(context) * 2.4,
-                                  child: Text(
-                                    widget.pracName,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        color: const Color(0xff156F6D),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                2.0,
-                                        fontWeight: FontWeight.w600),
-                                  ),
+                                  child: widget.pracName.length > 20
+                                      ? Text(
+                                          widget.pracName,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              color: const Color(0xff156F6D),
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              fontWeight: FontWeight.w600),
+                                        )
+                                      : Text(
+                                          widget.pracName,
+                                          style: TextStyle(
+                                              color: const Color(0xff156F6D),
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              fontWeight: FontWeight.w600),
+                                        ),
                                 ),
                               ),
                             ],
@@ -628,10 +640,11 @@ void info_sheet(context) {
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
           width: AppDimensions.height10(context) * 41.4,
-          height: AppDimensions.height10(context) * 54.7,
+          height: AppDimensions.height10(context) * 57.7,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(AppDimensions.height10(context) * 2.0)),
+                top: Radius.circular(AppDimensions.height10(context) * 2.0),
+              ),
               color: const Color(0xFFF5F5F5)),
           child: Column(
             // alignment: AlignmentDirectional.topCenter,
@@ -689,9 +702,10 @@ void info_sheet(context) {
               Container(
                 width: AppDimensions.height10(context) * 36.7,
                 //height: AppDimensions.height10(context) * 26.9,
-                //  color: Colors.grey,
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
+                //color: Colors.grey,
+                margin: EdgeInsets.only(
+                  top: AppDimensions.height10(context) * 1.2,
+                ),
                 child: RichText(
                   text: TextSpan(
                       style: TextStyle(
