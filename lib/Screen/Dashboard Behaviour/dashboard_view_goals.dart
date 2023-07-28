@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_noPast_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_session.dart';
@@ -33,35 +34,58 @@ class _view_goalsState extends State<view_goals> {
   var allPractice;
   bool noActive = true;
   bool Loader = true;
+  String nextDayName =
+      DateFormat('EEEE').format(DateTime.now().add(Duration(days: 1)));
   String currentDay = DateFormat('EEEE').format(DateTime.now());
+  String previousDayName =
+      DateFormat('EEEE').format(DateTime.now().subtract(Duration(days: 1)));
+
+  String formattedDate = DateFormat('dd-MM').format(DateTime.now());
+  String previousDate =
+      DateFormat('dd-MM').format(DateTime.now().subtract(Duration(days: 1)));
+  String nextDate =
+      DateFormat('dd-MM').format(DateTime.now().add(Duration(days: 1)));
+
   @override
   void initState() {
+    print(currentDay);
     super.initState();
-    fetchGoalsByDay();
+    _fetchUserGoal();
+    //fetchGoalsByDay();
   }
 
-  void fetchGoalsByDay() {
-    AdminGoal.getUserGoalByDay(currentDay).then((response) {
-      if (response != "") {
-        print(response);
-        setState(() {
-          allGoals = response;
-          noActive = false;
-        });
-        loadData();
-      }
-      // else if (response == false) {
-      //   print(response);
-      //     loadData();
-      //   setState(() {
-      //     noActive = true;
-      //   });
-
-      // }
-      print('______________________________-----------------------');
-      //print(allGoals.length);
+  void _fetchUserGoal() {
+    AdminGoal.getUserGoalByUserId().then((response) {
+      setState(() {
+        allGoals = response;
+      });
+      loadData();
+      // _newFunction();
     });
   }
+
+  // void fetchGoalsByDay() {
+  //   AdminGoal.getUserGoalByDay(currentDay).then((response) {
+  //     if (response != "") {
+  //       print(response);
+  //       setState(() {
+  //         allGoals = response;
+  //         noActive = false;
+  //       });
+  //       loadData();
+  //     }
+  //     // else if (response == false) {
+  //     //   print(response);
+  //     //     loadData();
+  //     //   setState(() {
+  //     //     noActive = true;
+  //     //   });
+
+  //     // }
+  //     print('______________________________-----------------------');
+  //     //print(allGoals.length);
+  //   });
+  // }
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -289,7 +313,7 @@ class _view_goalsState extends State<view_goals> {
 
                                               // color: Colors.blue,
                                               child: Text(
-                                                'MON',
+                                                previousDayName.substring(0, 3),
                                                 style: TextStyle(
                                                     fontSize:
                                                         AppDimensions.height10(
@@ -307,7 +331,7 @@ class _view_goalsState extends State<view_goals> {
                                                   1.7,
                                               // color: Colors.amber,
                                               child: Text(
-                                                '02.06',
+                                                previousDate,
                                                 style: TextStyle(
                                                     color:
                                                         const Color(0xff5B74A6),
@@ -387,7 +411,7 @@ class _view_goalsState extends State<view_goals> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              'TUE',
+                                              currentDay.substring(0, 3),
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10(
@@ -398,7 +422,7 @@ class _view_goalsState extends State<view_goals> {
                                                       const Color(0xff5B74A6)),
                                             ),
                                             Text(
-                                              '02.07',
+                                              formattedDate,
                                               style: TextStyle(
                                                   color:
                                                       const Color(0xff5B74A6),
@@ -476,7 +500,7 @@ class _view_goalsState extends State<view_goals> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            'MON',
+                                            nextDayName.substring(0, 3),
                                             style: TextStyle(
                                                 fontSize:
                                                     AppDimensions.height10(
@@ -486,7 +510,7 @@ class _view_goalsState extends State<view_goals> {
                                                 color: const Color(0xff5B74A6)),
                                           ),
                                           Text(
-                                            '03.07',
+                                            nextDate,
                                             style: TextStyle(
                                                 fontSize:
                                                     AppDimensions.height10(

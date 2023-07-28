@@ -8,6 +8,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -310,7 +311,7 @@ class _watch_timeState extends State<watch_time> {
   Timer? _timer;
   String _elapsedTime = "00:00";
   int _seconds = 00;
-  int _minutes = 05;
+  int _minutes = 00;
   int _hours = 0;
 
   // The state of the timer (running or not)
@@ -361,7 +362,7 @@ class _watch_timeState extends State<watch_time> {
   void _cancelTimer() {
     setState(() {
       _hours = 0;
-      _minutes = 05;
+      _minutes = 00;
       _seconds = 00;
       _isRunning = false;
     });
@@ -647,6 +648,7 @@ class _watch_timeState extends State<watch_time> {
                                 top: AppDimensions.height10(context) * 0.5,
                                 left: AppDimensions.height10(context) * 0.5),
                             child: Text(button_text,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 1.4,
@@ -667,9 +669,14 @@ class _watch_timeState extends State<watch_time> {
                   onTap: () {
                     if (clock_state == true) {
                       _resetStopwatch();
-                      setState(() {});
+                      setState(() {
+                        button_text = 'start';
+                      });
                     } else {
                       _cancelTimer();
+                      setState(() {
+                        button_text = 'start';
+                      });
                     }
                   },
                   child: Container(
@@ -727,7 +734,7 @@ class _watch_timeState extends State<watch_time> {
   // Function to build the container for the timerPicker
   Widget _buildContainer(Widget picker) {
     return Container(
-      height: AppDimensions.height10(context) * 30.3,
+      height: AppDimensions.height10(context) * 30.5,
       padding: EdgeInsets.only(top: 6),
       color: CupertinoColors.white,
       child: Column(
@@ -739,6 +746,10 @@ class _watch_timeState extends State<watch_time> {
               children: [
                 TextButton(
                   onPressed: () {
+                    setState(() {
+                      _minutes = 00;
+                      _seconds = 00;
+                    });
                     Navigator.pop(context);
                   },
                   child: Text(

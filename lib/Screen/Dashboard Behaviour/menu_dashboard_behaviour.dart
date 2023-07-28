@@ -255,7 +255,7 @@ class menu_behaviour extends StatelessWidget {
                                     ))),
                           ),
                           Text(
-                            'Veiw/Edit',
+                            'View/Edit',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,

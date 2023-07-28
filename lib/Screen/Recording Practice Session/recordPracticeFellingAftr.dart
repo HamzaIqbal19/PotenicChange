@@ -18,6 +18,9 @@ bool note_check = false;
 int EmotionsAfter = 0;
 TextEditingController feedback = TextEditingController();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+var endSession;
+var afterSessionNotes;
+var emotionsNotes;
 
 class feelingsAfter extends StatefulWidget {
   final bool summary;
@@ -35,6 +38,19 @@ class _feelingsAfterState extends State<feelingsAfter> {
   void initState() {
     super.initState();
     _fetchPracticeNames();
+    onLoad();
+  }
+
+  var endSession;
+  var afterSessionNotes;
+  var emotionsNotes;
+  void onLoad() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      emotionsNotes = prefs.getString('emotionsFeedback');
+      endSession = prefs.getString('endSessionFeedback');
+    });
+    feedback.text = prefs.getString('sessionFeedback')!;
   }
 
   void _fetchPracticeNames() async {
@@ -735,83 +751,125 @@ class notes extends StatelessWidget {
   }
 }
 
-class next_botton extends StatelessWidget {
+class next_botton extends StatefulWidget {
   final bool state;
   const next_botton({super.key, required this.state});
 
   @override
+  State<next_botton> createState() => _next_bottonState();
+}
+
+class _next_bottonState extends State<next_botton> {
+  @override
   Widget build(BuildContext context) {
-    return AnimatedScaleButton(
-      onTap: () async {
-        if (EmotionsAfter != 0) {
-          final SharedPreferences prefs = await _prefs;
-          var emotionResult = prefs.setInt('afterSession', EmotionsAfter);
-          var afterSessionFeedback =
-              prefs.setString('sessionFeedback', '${feedback.text.toString()}');
-          print("======================>$EmotionsAfter");
-          print("================>${feedback.text.toString()}");
-          if (state == true) {
-            RecordingPractice()
-                .updateRecording("feelingsAfterSession", EmotionsAfter)
-                .then((value) {
-              if (value == true) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        widget.state
+            ? AnimatedScaleButton(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                    height: AppDimensions.height10(context) * 5.0,
+                    width: AppDimensions.height10(context) * 14.3,
+                    margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 1.2),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
+                        border: Border.all(
+                            width: AppDimensions.height10(context) * 0.2,
+                            color: const Color(0xffFA9934))),
+                    child: Center(
+                        child: Text(
+                      'Cancel',
+                      style: TextStyle(
+                          color: const Color(0xffFA9934),
+                          fontSize: AppDimensions.height10(context) * 1.6,
+                          fontWeight: FontWeight.w600),
+                    ))),
+              )
+            : Container(),
+        AnimatedScaleButton(
+          onTap: () async {
+            if (EmotionsAfter != 0) {
+              final SharedPreferences prefs = await _prefs;
+              var emotionResult = prefs.setInt('afterSession', EmotionsAfter);
+              var afterSessionFeedback = prefs.setString('sessionFeedback',
+                  feedback.text.isNotEmpty ? feedback.text.toString() : " ");
+              print("======================>$EmotionsAfter");
+              print("================>${feedback.text.toString()}");
+
+              if (widget.state == true) {
                 RecordingPractice()
-                    .updateRecording(
-                        'practiceFeedback', '${feedback.text.toString()}')
-                    .then((value) {
+                    .updateRecording("feelingsAfterSession", EmotionsAfter, [
+                  {
+                    "beforeNote": emotionsNotes,
+                    "afterNote": feedback.text.isNotEmpty
+                        ? feedback.text.toString()
+                        : " ",
+                    "endNote": endSession
+                  }
+                ]).then((value) {
                   if (value == true) {
-                    print('After updated');
                     Navigator.push(
                         context,
                         FadePageRoute2(true,
                             exitPage: const feelingsAfter(summary: true),
                             enterPage: const practice_summary()));
-                  } else {
-                    print('Update Failde');
                   }
                 });
+              } else {
+                Navigator.push(
+                    context,
+                    FadePageRoute2(true,
+                        exitPage: const feelingsAfter(summary: false),
+                        enterPage: const endofSession(
+                          summary: false,
+                        )));
               }
-            });
-          } else {
-            Navigator.push(
-                context,
-                FadePageRoute2(true,
-                    exitPage: const feelingsAfter(summary: false),
-                    enterPage: const endofSession(
-                      summary: false,
-                    )));
-          }
-        }
-      },
-      child: Container(
-          height: AppDimensions.height10(context) * 5.0,
-          width: AppDimensions.width10(context) * 25.4,
-          // margin: EdgeInsets.only(bottom: 62, top: 46),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: EmotionsAfter != 0
-                    ? [
-                        const Color(0xffFCC10D),
-                        const Color(0xffFDA210),
-                      ]
-                    : [
-                        const Color(0xffFCC10D).withOpacity(0.5),
-                        const Color(0xffFDA210).withOpacity(0.5),
-                      ]),
-            borderRadius:
-                BorderRadius.circular(AppDimensions.height10(context) * 5.0),
-          ),
-          child: Center(
-            child: Text(
-              state ? 'Update Summary' : 'Next',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: AppDimensions.height10(context) * 1.6,
-                  fontWeight: FontWeight.w600),
-            ),
-          )),
+              feedback.clear();
+              setState(() {
+                EmotionsAfter = 0;
+                note_check = false;
+              });
+            }
+          },
+          child: Container(
+              height: AppDimensions.height10(context) * 5.0,
+              width: widget.state
+                  ? AppDimensions.width10(context) * 21.0
+                  : AppDimensions.width10(context) * 25.4,
+              // margin: EdgeInsets.only(bottom: 62, top: 46),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: EmotionsAfter != 0
+                        ? [
+                            const Color(0xffFCC10D),
+                            const Color(0xffFDA210),
+                          ]
+                        : [
+                            const Color(0xffFCC10D).withOpacity(0.5),
+                            const Color(0xffFDA210).withOpacity(0.5),
+                          ]),
+                borderRadius: BorderRadius.circular(
+                    AppDimensions.height10(context) * 5.0),
+              ),
+              child: Center(
+                child: Text(
+                  widget.state ? 'Update Summary' : 'Next',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: AppDimensions.height10(context) * 1.6,
+                      fontWeight: FontWeight.w600),
+                ),
+              )),
+        ),
+      ],
     );
   }
 }

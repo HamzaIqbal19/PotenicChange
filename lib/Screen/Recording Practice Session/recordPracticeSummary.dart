@@ -41,6 +41,8 @@ class _practice_summaryState extends State<practice_summary> {
   String After = "";
   String Feedback = "";
   String Session = "";
+  String EmotionFeedback = "";
+  String SessionFeedBack = "";
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -93,10 +95,15 @@ class _practice_summaryState extends State<practice_summary> {
 
     RecordingPractice.getUserPracticeRecord().then((response) {
       if (response.length != 0) {
+        print('======================================================');
+        print(response['recording']['notes'][0]['afterNote']);
+        print(response);
         setState(() {
           Before = response['recording']['feelingsBeforeSession'];
           After = response['recording']['feelingsAfterSession'];
-          Feedback = response['recording']['practiceFeedback'];
+          Feedback = response['recording']['notes'][0]['afterNote'];
+          EmotionFeedback = response['recording']['notes'][0]['beforeNote'];
+          SessionFeedBack = response['recording']['notes'][0]['endNote'];
           Session = response['recording']['practiceSummary'];
         });
         loadData();
@@ -565,16 +572,16 @@ class _practice_summaryState extends State<practice_summary> {
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.white),
                           color: Before == "1"
-                              ? Color(0xff546096)
+                              ? const Color(0xff546096)
                               : Before == "2"
-                                  ? Color(0xff7291A0)
+                                  ? const Color(0xff7291A0)
                                   : Before == "3"
                                       ? const Color(0xffE1C44F)
                                       : Before == "4"
-                                          ? Color(0xffFA9458)
+                                          ? const Color(0xffFA9458)
                                           : Before == "5"
-                                              ? Color(0xffFA9458)
-                                              : Color(0xffFA9458)),
+                                              ? const Color(0xffFA9458)
+                                              : const Color(0xffFA9458)),
                       child: Stack(children: [
                         Center(
                           child: Padding(
@@ -596,6 +603,8 @@ class _practice_summaryState extends State<practice_summary> {
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.6,
+                                  height:
+                                      AppDimensions.height10(context) * 0.16,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.white,
                                   fontFamily: 'Laila'),
@@ -603,7 +612,7 @@ class _practice_summaryState extends State<practice_summary> {
                           ),
                         ),
                         Align(
-                          alignment: const Alignment(0, 0.8),
+                          alignment: const Alignment(0, 0.85),
                           child: AnimatedScaleButton(
                             onTap: () {
                               Navigator.push(
@@ -632,6 +641,39 @@ class _practice_summaryState extends State<practice_summary> {
                         )
                       ]),
                     ),
+                    EmotionFeedback != " "
+                        ? Container(
+                            width: AppDimensions.height10(context) * 36.0,
+                            // height: AppDimensions.height10(context) * 7.3,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            // padding: EdgeInsets.only(
+                            //     bottom: AppDimensions.height10(context)),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                                color: Colors.white),
+                            child: Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 1.4,
+                                  bottom: AppDimensions.height10(context) * 1.0,
+                                  left: AppDimensions.height10(context) * 2.0,
+                                  right: AppDimensions.height10(context) * 2.0),
+                              width: AppDimensions.height10(context) * 32.0,
+                              child: Text(
+                                EmotionFeedback,
+                                style: TextStyle(
+                                    color: const Color(0xff646464),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
+                                    fontWeight: FontWeight.w500,
+                                    height:
+                                        AppDimensions.height10(context) * 0.12,
+                                    fontFamily: 'Laila'),
+                              ),
+                            ),
+                          )
+                        : Container(),
                     Container(
                       width: AppDimensions.height10(context) * 32.6,
                       height: AppDimensions.height10(context) * 4.8,
@@ -670,16 +712,16 @@ class _practice_summaryState extends State<practice_summary> {
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.white),
                           color: After == "1"
-                              ? Color(0xff546096)
+                              ? const Color(0xff546096)
                               : After == "2"
-                                  ? Color(0xff7291A0)
+                                  ? const Color(0xff7291A0)
                                   : After == "3"
                                       ? const Color(0xffE1C44F)
                                       : After == "4"
-                                          ? Color(0xffFA9458)
+                                          ? const Color(0xffFA9458)
                                           : After == "5"
-                                              ? Color(0xffFA9458)
-                                              : Color(0xffFA9458)),
+                                              ? const Color(0xffFA9458)
+                                              : const Color(0xffFA9458)),
                       child: Stack(children: [
                         Center(
                           child: Padding(
@@ -701,6 +743,8 @@ class _practice_summaryState extends State<practice_summary> {
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.6,
+                                  height:
+                                      AppDimensions.height10(context) * 0.16,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.white,
                                   fontFamily: 'Laila'),
@@ -708,7 +752,7 @@ class _practice_summaryState extends State<practice_summary> {
                           ),
                         ),
                         Align(
-                          alignment: const Alignment(0, 0.8),
+                          alignment: const Alignment(0, 0.85),
                           child: AnimatedScaleButton(
                             onTap: () {
                               Navigator.push(
@@ -736,37 +780,40 @@ class _practice_summaryState extends State<practice_summary> {
                         )
                       ]),
                     ),
+                    Feedback != " "
+                        ? Container(
+                            width: AppDimensions.height10(context) * 36.0,
+                            // height: AppDimensions.height10(context) * 7.3,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            // padding: EdgeInsets.only(
+                            //     bottom: AppDimensions.height10(context)),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                                color: Colors.white),
+                            child: Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 1.4,
+                                  bottom: AppDimensions.height10(context) * 1.0,
+                                  left: AppDimensions.height10(context) * 2.0,
+                                  right: AppDimensions.height10(context) * 2.0),
+                              width: AppDimensions.height10(context) * 32.0,
+                              child: Text(
+                                Feedback,
+                                style: TextStyle(
+                                    color: const Color(0xff646464),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Laila'),
+                              ),
+                            ),
+                          )
+                        : Container(),
                     Container(
-                      width: AppDimensions.height10(context) * 36.0,
-                      // height: AppDimensions.height10(context) * 7.3,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      // padding: EdgeInsets.only(
-                      //     bottom: AppDimensions.height10(context)),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0),
-                          color: Colors.white),
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 1.4,
-                            bottom: AppDimensions.height10(context) * 0.5,
-                            left: AppDimensions.height10(context) * 2.0,
-                            right: AppDimensions.height10(context) * 2.0),
-                        width: AppDimensions.height10(context) * 32.0,
-                        child: Text(
-                          Feedback,
-                          style: TextStyle(
-                              color: const Color(0xff646464),
-                              fontSize: AppDimensions.height10(context) * 1.6,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Laila'),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 32.6,
-                      height: AppDimensions.height10(context) * 2.4,
+                      //swidth: AppDimensions.height10(context) * 32.6,
+                      // height: AppDimensions.height10(context) * 2.4,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 4.0),
                       child: Center(
@@ -776,6 +823,7 @@ class _practice_summaryState extends State<practice_summary> {
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 2.0,
                               fontWeight: FontWeight.w600,
+                              height: AppDimensions.height10(context) * 0.12,
                               color: Colors.white,
                               fontFamily: 'Laila'),
                         ),
@@ -818,14 +866,16 @@ class _practice_summaryState extends State<practice_summary> {
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.6,
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w500,
+                                  height:
+                                      AppDimensions.height10(context) * 0.16,
                                   color: Colors.white,
                                   fontFamily: 'Poppins'),
                             ),
                           ),
                         ),
                         Align(
-                          alignment: const Alignment(0, 0.8),
+                          alignment: const Alignment(0, 0.85),
                           child: AnimatedScaleButton(
                             onTap: () {
                               Navigator.push(
@@ -854,6 +904,37 @@ class _practice_summaryState extends State<practice_summary> {
                         )
                       ]),
                     ),
+                    SessionFeedBack != " "
+                        ? Container(
+                            width: AppDimensions.height10(context) * 36.0,
+                            // height: AppDimensions.height10(context) * 7.3,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 4.0),
+                            // padding: EdgeInsets.only(
+                            //     bottom: AppDimensions.height10(context)),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(
+                                    AppDimensions.height10(context) * 2.0),
+                                color: Colors.white),
+                            child: Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 1.4,
+                                  bottom: AppDimensions.height10(context) * 1.0,
+                                  left: AppDimensions.height10(context) * 2.0,
+                                  right: AppDimensions.height10(context) * 2.0),
+                              width: AppDimensions.height10(context) * 32.0,
+                              child: Text(
+                                SessionFeedBack,
+                                style: TextStyle(
+                                    color: const Color(0xff646464),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.6,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Laila'),
+                              ),
+                            ),
+                          )
+                        : Container(),
                     Container(
                       width: AppDimensions.height10(context) * 38.3,
                       height: AppDimensions.height10(context) * 5.0,
@@ -871,7 +952,7 @@ class _practice_summaryState extends State<practice_summary> {
                                     animationType:
                                         DialogTransitionType.fadeScale,
                                     curve: Curves.easeInOut,
-                                    duration: Duration(seconds: 1),
+                                    duration: const Duration(seconds: 1),
                                     context: context,
                                     builder: (BuildContext context) => SizedBox(
                                           width:
@@ -1031,7 +1112,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                                 context,
                                                                 FadePageRoute(
                                                                   page:
-                                                                      dashBoard(
+                                                                      const dashBoard(
                                                                     saved:
                                                                         false,
                                                                     helpful_tips:

@@ -25,11 +25,31 @@ class emotions extends StatefulWidget {
   State<emotions> createState() => _emotionsState();
 }
 
+TextEditingController feedback = TextEditingController();
+
 class _emotionsState extends State<emotions> {
   int pracEmotions = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   //int pracEmotions = 0;
+
+  var endSession;
+  var afterSessionNotes;
+  var emotionsNotes;
+  void onLoad() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      afterSessionNotes = prefs.getString('sessionFeedback');
+      endSession = prefs.getString('endSessionFeedback');
+    });
+    feedback.text = prefs.getString('emotionsFeedback')!;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    onLoad();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -553,47 +573,47 @@ class _emotionsState extends State<emotions> {
                  */
 
                   Container(
-                    width: AppDimensions.height10(context) * 32.5,
+                    //width: AppDimensions.height10(context) * 32.5,
                     height: AppDimensions.height10(context) * 6.0,
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // AnimatedScaleButton(
-                          //   onTap: () {
-                          //     if (pracEmotions != 0) {
-                          //       widget.summary
-                          //           ? Navigator.pop(context)
-                          //           : Navigator.push(context,
-                          //               FadePageRoute(page: const clocks()));
-                          //     }
-                          //   },
-                          //   child: Container(
-                          //       height: AppDimensions.height10(context) * 5.0,
-                          //       width: AppDimensions.height10(context) * 14.3,
-                          //       margin: EdgeInsets.only(
-                          //           right:
-                          //               AppDimensions.height10(context) * 1.2),
-                          //       decoration: BoxDecoration(
-                          //           color: pracEmotions != 0
-                          //               ? Colors.white
-                          //               : Colors.white.withOpacity(0.5),
-                          //           borderRadius: BorderRadius.circular(
-                          //               AppDimensions.height10(context) * 5.0),
-                          //           border: Border.all(
-                          //               width: AppDimensions.height10(context) *
-                          //                   0.2,
-                          //               color: const Color(0xffFA9934))),
-                          //       child: Center(
-                          //           child: Text(
-                          //         widget.summary ? 'Cancel' : 'Use Timer',
-                          //         style: TextStyle(
-                          //             color: const Color(0xffFA9934),
-                          //             fontSize:
-                          //                 AppDimensions.height10(context) * 1.6,
-                          //             fontWeight: FontWeight.w600),
-                          //       ))),
-                          // ),
-
+                          widget.summary
+                              ? AnimatedScaleButton(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Container(
+                                      height:
+                                          AppDimensions.height10(context) * 5.0,
+                                      width: AppDimensions.height10(context) *
+                                          14.3,
+                                      margin: EdgeInsets.only(
+                                          right:
+                                              AppDimensions.height10(context) *
+                                                  1.2),
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(
+                                              AppDimensions.height10(context) *
+                                                  5.0),
+                                          border: Border.all(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  0.2,
+                                              color: const Color(0xffFA9934))),
+                                      child: Center(
+                                          child: Text(
+                                        'Cancel',
+                                        style: TextStyle(
+                                            color: const Color(0xffFA9934),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.6,
+                                            fontWeight: FontWeight.w600),
+                                      ))),
+                                )
+                              : Container(),
                           AnimatedScaleButton(
                             onTap: () async {
                               if (pracEmotions != 0) {
@@ -603,11 +623,23 @@ class _emotionsState extends State<emotions> {
                                 var newPrac = prefs.setString(
                                     'pracName', widget.pracName);
                                 print("======================>$pracEmotions");
+                                var afterSessionFeedback = feedback
+                                        .text.isNotEmpty
+                                    ? prefs.setString('emotionsFeedback',
+                                        feedback.text.toString())
+                                    : prefs.setString('emotionsFeedback', " ");
+
                                 if (widget.summary == true) {
-                                  RecordingPractice()
-                                      .updateRecording(
-                                          'feelingsBeforeSession', pracEmotions)
-                                      .then((reaponse) {
+                                  RecordingPractice().updateRecording(
+                                      'feelingsBeforeSession', pracEmotions, [
+                                    {
+                                      "beforeNote": feedback.text.isNotEmpty
+                                          ? feedback.text.toString()
+                                          : " ",
+                                      "afterNote": afterSessionNotes,
+                                      "endNote": endSession
+                                    }
+                                  ]).then((reaponse) {
                                     if (reaponse == true) {
                                       print("Emotions Updated");
                                       Navigator.push(
@@ -623,6 +655,10 @@ class _emotionsState extends State<emotions> {
                                       FadePageRoute(page: const clocks()));
                                 }
                               }
+                              feedback.clear();
+                              setState(() {
+                                pracEmotions = 0;
+                              });
                             },
                             // onTap: () {
                             //   if (pracEmotions != 0) {
@@ -634,7 +670,9 @@ class _emotionsState extends State<emotions> {
 
                             child: Container(
                               height: AppDimensions.height10(context) * 5.0,
-                              width: AppDimensions.width10(context) * 25.4,
+                              width: widget.summary
+                                  ? AppDimensions.width10(context) * 21.0
+                                  : AppDimensions.width10(context) * 25.4,
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   begin: Alignment.topCenter,
@@ -840,7 +878,7 @@ class notes extends StatelessWidget {
             children: [
               Container(
                 child: TextField(
-                  // controller: feedback,
+                  controller: feedback,
                   maxLength: 200,
                   maxLines: null,
                   minLines: null,

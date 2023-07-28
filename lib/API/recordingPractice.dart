@@ -24,7 +24,7 @@ class RecordingPractice {
     var Body = json.encode({
       "feelingsBeforeSession": "$before",
       "feelingsAfterSession": "$after",
-      "practiceFeedback": "$feedback",
+      "notes": feedback,
       "practiceSummary": "$summary",
       "userId": userId,
       "userPracticeId": practiceId,
@@ -51,6 +51,7 @@ class RecordingPractice {
       var recording_id =
           prefs.setInt('recording_id', responses["result"]["id"]);
       print('Recording added');
+      print(responses);
 
       return true;
     } else {
@@ -89,7 +90,7 @@ class RecordingPractice {
     }
   }
 
-  Future updateRecording(destination, message) async {
+  Future updateRecording(destination, message, notes) async {
     final SharedPreferences prefs = await _prefs;
     //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
@@ -101,7 +102,10 @@ class RecordingPractice {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
-    var body = jsonEncode({"$destination": "$message"});
+    var body = jsonEncode({
+      "$destination": "$message",
+      "notes": notes,
+    });
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
 

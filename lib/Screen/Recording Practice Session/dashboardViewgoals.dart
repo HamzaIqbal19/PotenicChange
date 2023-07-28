@@ -12,6 +12,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 // import 'package:flutter_showcaseview/flutter_showcaseview.dart';
 
 // import 'package:flutter_offline/flutter_offline.dart';
+import 'package:intl/intl.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Goal_Achieved/congratulations.dart';
@@ -139,6 +140,18 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
     controller.dispose();
     super.dispose();
   }
+
+  String nextDayName =
+      DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 1)));
+  String currentDay = DateFormat('EEEE').format(DateTime.now());
+  String previousDayName = DateFormat('EEEE')
+      .format(DateTime.now().subtract(const Duration(days: 1)));
+
+  String formattedDate = DateFormat('dd-MM').format(DateTime.now());
+  String previousDate = DateFormat('dd-MM')
+      .format(DateTime.now().subtract(const Duration(days: 1)));
+  String nextDate =
+      DateFormat('dd-MM').format(DateTime.now().add(const Duration(days: 1)));
 
   void initController() {
     controller = BottomSheet.createAnimationController(this);
@@ -367,7 +380,8 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                               // crossAxisAlignment: CrossAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'MON',
+                                                  previousDayName.substring(
+                                                      0, 3),
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(
@@ -378,7 +392,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                       color: Colors.white),
                                                 ),
                                                 Text(
-                                                  '02.06',
+                                                  previousDate,
                                                   style: TextStyle(
                                                       color: Colors.white,
                                                       fontWeight:
@@ -474,7 +488,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     MainAxisAlignment.center,
                                                 children: [
                                                   Text(
-                                                    'TUE',
+                                                    currentDay.substring(0, 3),
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
                                                                 .height10(
@@ -486,7 +500,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                             0xff5B74A6)),
                                                   ),
                                                   Text(
-                                                    '02.07',
+                                                    formattedDate,
                                                     style: TextStyle(
                                                         color: const Color(
                                                             0xff5B74A6),
@@ -568,7 +582,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                'MON',
+                                                nextDayName.substring(0, 3),
                                                 style: TextStyle(
                                                     fontSize:
                                                         AppDimensions.height10(
@@ -578,9 +592,9 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                     color: const Color(
                                                         0xff5B74A6)),
                                               ),
-                                              const Text(
-                                                '03.07',
-                                                style: TextStyle(
+                                              Text(
+                                                nextDate,
+                                                style: const TextStyle(
                                                     color: Color(0xff5B74A6)),
                                               ),
                                               Container(

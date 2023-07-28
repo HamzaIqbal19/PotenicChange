@@ -28,7 +28,9 @@ class _endofSessionState extends State<endofSession> {
 
   var emotions;
   var afterSession;
-  var sessionFeedback;
+  var afterSessionNotes;
+  var emotionsNotes;
+  //var sessionFeedback;
   var prac_num;
 
   @override
@@ -48,14 +50,17 @@ class _endofSessionState extends State<endofSession> {
     onLoad();
   }
 
+  TextEditingController feedback = TextEditingController();
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
       prac_num = prefs.getInt("prac_num");
       emotions = prefs.getInt('emotions');
       afterSession = prefs.getInt('afterSession');
-      sessionFeedback = prefs.getString('sessionFeedback');
+      afterSessionNotes = prefs.getString('sessionFeedback');
+      emotionsNotes = prefs.getString('emotionsFeedback');
     });
+    feedback.text = prefs.getString('endSessionFeedback')!;
   }
 
   @override
@@ -138,7 +143,7 @@ class _endofSessionState extends State<endofSession> {
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (_) => dashBoard(
+                                            builder: (_) => const dashBoard(
                                                   saved: false,
                                                   helpful_tips: false,
                                                   membership: true,
@@ -659,87 +664,154 @@ class _endofSessionState extends State<endofSession> {
               ),
              */
 
-              AnimatedScaleButton(
-                onTap: () {
-                  if (sessionEnd != 0) {
-                    if (widget.summary == true) {
-                      RecordingPractice()
-                          .updateRecording('practiceSummary', sessionEnd)
-                          .then((value) {
-                        if (value == true) {
-                          print('Updated Summary');
-                          Navigator.push(
-                              context,
-                              FadePageRoute2(true,
-                                  exitPage: const endofSession(summary: true),
-                                  enterPage: const practice_summary()));
-                        } else {
-                          print('Update Failed');
+              Container(
+                margin: EdgeInsets.only(
+                    bottom: AppDimensions.height10(context) * 1.3),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    widget.summary
+                        ? AnimatedScaleButton(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Container(
+                                height: AppDimensions.height10(context) * 5.0,
+                                width: AppDimensions.height10(context) * 14.3,
+                                margin: EdgeInsets.only(
+                                    right:
+                                        AppDimensions.height10(context) * 1.2),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10(context) * 5.0),
+                                    border: Border.all(
+                                        width: AppDimensions.height10(context) *
+                                            0.2,
+                                        color: const Color(0xffFA9934))),
+                                child: Center(
+                                    child: Text(
+                                  'Cancel',
+                                  style: TextStyle(
+                                      color: const Color(0xffFA9934),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
+                                      fontWeight: FontWeight.w600),
+                                ))),
+                          )
+                        : Container(),
+                    AnimatedScaleButton(
+                      onTap: () async {
+                        if (sessionEnd != 0) {
+                          final SharedPreferences prefs = await _prefs;
+                          var afterSessionFeedback = feedback.text.isNotEmpty
+                              ? prefs.setString('endSessionFeedback',
+                                  feedback.text.toString())
+                              : prefs.setString('endSessionFeedback', " ");
+                          if (widget.summary == true) {
+                            RecordingPractice().updateRecording(
+                              'practiceSummary',
+                              sessionEnd,
+                              [
+                                {
+                                  "beforeNote": emotionsNotes,
+                                  "afterNote": afterSessionNotes,
+                                  "endNote": feedback.text.isNotEmpty
+                                      ? feedback.text.toString()
+                                      : " "
+                                }
+                              ],
+                            ).then((value) {
+                              if (value == true) {
+                                print('Updated Summary');
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute2(true,
+                                        exitPage:
+                                            const endofSession(summary: true),
+                                        enterPage: const practice_summary()));
+                              } else {
+                                print('Update Failed');
+                              }
+                            });
+                          } else {
+                            RecordingPractice()
+                                .userAddRecording(
+                              '$emotions',
+                              '$afterSession',
+                              [
+                                {
+                                  "beforeNote": emotionsNotes,
+                                  "afterNote": afterSessionNotes,
+                                  "endNote": feedback.text.isNotEmpty
+                                      ? feedback.text.toString()
+                                      : " "
+                                }
+                              ],
+                              '$sessionEnd',
+                              prac_num,
+                            )
+                                .then((response) {
+                              if (response == true) {
+                                print("Api called");
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text(
+                                            "Recording Added Successfully!!")));
+                                print('========Done');
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute2(true,
+                                        exitPage:
+                                            const endofSession(summary: false),
+                                        enterPage: const practice_summary()));
+                              } else if (response == false) {
+                                print('Api call failed');
+                              }
+                            }).catchError((error) {
+                              print('===>error');
+                            }).whenComplete(() {
+                              print('Completed');
+                            });
+                          }
                         }
-                      });
-                    } else {
-                      RecordingPractice()
-                          .userAddRecording(
-                        '$emotions',
-                        '$afterSession',
-                        sessionFeedback,
-                        '$sessionEnd',
-                        prac_num,
-                      )
-                          .then((response) {
-                        if (response == true) {
-                          print("Api called");
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content:
-                                      Text("Recording Added Successfully!!")));
-                          print('========Done');
-                          Navigator.push(
-                              context,
-                              FadePageRoute2(true,
-                                  exitPage: const endofSession(summary: false),
-                                  enterPage: const practice_summary()));
-                        } else if (response == false) {
-                          print('Api call failed');
-                        }
-                      }).catchError((error) {
-                        print('===>error');
-                      }).whenComplete(() {
-                        print('Completed');
-                      });
-                    }
-                  }
-                },
-                child: Container(
-                    height: AppDimensions.height10(context) * 5.0,
-                    width: AppDimensions.height10(context) * 25.4,
-                    margin: EdgeInsets.only(
-                        bottom: AppDimensions.height10(context) * 6.3),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: sessionEnd != 0
-                              ? [
-                                  const Color(0xffFCC10D),
-                                  const Color(0xffFDA210),
-                                ]
-                              : [
-                                  const Color(0xffFCC10D).withOpacity(0.5),
-                                  const Color(0xffFDA210).withOpacity(0.5),
-                                ]),
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
+                      },
+                      child: Container(
+                          height: AppDimensions.height10(context) * 5.0,
+                          width: widget.summary
+                              ? AppDimensions.height10(context) * 21.0
+                              : AppDimensions.height10(context) * 25.4,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: sessionEnd != 0
+                                    ? [
+                                        const Color(0xffFCC10D),
+                                        const Color(0xffFDA210),
+                                      ]
+                                    : [
+                                        const Color(0xffFCC10D)
+                                            .withOpacity(0.5),
+                                        const Color(0xffFDA210)
+                                            .withOpacity(0.5),
+                                      ]),
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 5.0),
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.summary ? 'Update Summary' : 'Summary',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                          )),
                     ),
-                    child: Center(
-                      child: Text(
-                        widget.summary ? 'Update Summary' : 'Summary',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: AppDimensions.height10(context) * 1.6,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    )),
+                  ],
+                ),
               )
             ],
           ),
@@ -865,7 +937,7 @@ class notes extends StatelessWidget {
             children: [
               Container(
                 child: TextField(
-                  // controller: feedback,
+                  controller: feedback,
                   maxLength: 200,
                   maxLines: null,
                   minLines: null,
