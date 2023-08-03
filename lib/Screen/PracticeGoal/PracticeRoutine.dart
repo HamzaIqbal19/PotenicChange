@@ -24,12 +24,12 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
   int Count = 0;
 
   List<Map<String, dynamic>> timesPerDay = [
-    {'day': 'Monday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
-    {'day': 'Tuesday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
-    {'day': 'Wednesday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
-    {'day': 'Thursday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
-    {'day': 'Friday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
-    {'day': 'Saturday', 'starttime': '9:00 am', 'endtime': '7:00 pm'},
+    {'day': 'Monday', 'time1': '9:00 am', 'time2': '7:00 pm'},
+    {'day': 'Tuesday', 'time1': '9:00 am', 'time2': '7:00 pm'},
+    {'day': 'Wednesday', 'time1': '9:00 am', 'time2': '7:00 pm'},
+    {'day': 'Thursday', 'time1': '9:00 am', 'time2': '7:00 pm'},
+    {'day': 'Friday', 'time1': '9:00 am', 'time2': '7:00 pm'},
+    {'day': 'Saturday', 'time1': '9:00 am', 'time2': '7:00 pm'},
     {'day': 'Sunday', 'starttime': '9:00 am', 'endtime': '7:00 pm'}
   ];
   List<String> selectedDay = [
@@ -354,9 +354,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                   // days: '${timesPerDay[index]['day']}',
                                   days: '${selectedDay[index]}',
 
-                                  startTime:
-                                      "${timesPerDay[index]['starttime']}",
-                                  endTime: "${timesPerDay[index]['endtime']}",
+                                  startTime: "${timesPerDay[index]['time1']}",
+                                  endTime: "${timesPerDay[index]['time2']}",
                                   onChangedStart: (value) {
                                     print(value);
                                     //  print(timesPerDay[index]['day']);
@@ -364,7 +363,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                         "Start index printing${timesPerDay[index]}");
 
                                     setState(() {
-                                      timesPerDay[index]['starttime'] = value;
+                                      timesPerDay[index]['time1'] = value;
                                       index1 = index;
                                     });
                                   },
@@ -374,7 +373,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                         "End index printing${timesPerDay[index]}");
 
                                     setState(() {
-                                      timesPerDay[index]['endtime'] = value;
+                                      timesPerDay[index]['time2'] = value;
 
                                       index1 = index;
                                     });

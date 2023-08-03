@@ -142,7 +142,7 @@ class _photo_EditState extends State<photo_Edit> {
                           showAnimatedDialog(
                               animationType: DialogTransitionType.fadeScale,
                               curve: Curves.easeInOut,
-                              duration: Duration(seconds: 1),
+                              duration: const Duration(seconds: 1),
                               context: context,
                               builder: (BuildContext context) => SizedBox(
                                     width:
@@ -249,10 +249,10 @@ class _photo_EditState extends State<photo_Edit> {
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(
-                                                              page:
-                                                                  inspiration_landing(
-                                                            is_Updated: true,
-                                                          )));
+                                                              page: const updatedLandingPage(
+                                                                  delete: false,
+                                                                  is_Updated:
+                                                                      true)));
                                                     }
                                                   });
                                                 },
@@ -759,7 +759,7 @@ class _photo_EditState extends State<photo_Edit> {
                                         Navigator.push(
                                             context,
                                             FadePageRoute(
-                                                page: inspiration_landing(
+                                                page: const inspiration_landing(
                                               is_Updated: false,
                                             )));
                                       },

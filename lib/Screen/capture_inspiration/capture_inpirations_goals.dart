@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
@@ -105,16 +106,23 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
               ? Center(
                   child: IconButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          FadePageRoute(
-                              page: const photo_info(
-                            edit_details: false,
-                            image_detals: true,
-                            image_save: true,
-                            image_create: true,
-                          )),
-                        );
+                        widget.route == 'landing'
+                            ? Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const inspiration_landing(
+                                        is_Updated: false)),
+                              )
+                            : Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const photo_info(
+                                  edit_details: false,
+                                  image_detals: true,
+                                  image_save: true,
+                                  image_create: true,
+                                )),
+                              );
                       },
                       icon: Image.asset(
                         'assets/images/Back.webp',

@@ -169,8 +169,8 @@ class _note_infoState extends State<note_info> {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
-                                    page: const inspiration_landing(
-                                        is_Updated: false)));
+                                    page: const updatedLandingPage(
+                                        delete: false, is_Updated: false)));
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 2.2,

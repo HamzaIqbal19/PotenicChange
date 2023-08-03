@@ -5,12 +5,10 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
-import '../capture_inpirations_goals.dart';
 
 class videoEdit extends StatefulWidget {
   final bool note;
@@ -157,7 +155,7 @@ class video_EditState extends State<videoEdit> {
                             showAnimatedDialog(
                                 animationType: DialogTransitionType.fadeScale,
                                 curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
                                       width: AppDimensions.height10(context) *
@@ -272,10 +270,11 @@ class video_EditState extends State<videoEdit> {
                                                         Navigator.push(
                                                             context,
                                                             FadePageRoute(
-                                                                page:
-                                                                    inspiration_landing(
-                                                              is_Updated: true,
-                                                            )));
+                                                                page: const updatedLandingPage(
+                                                                    delete:
+                                                                        false,
+                                                                    is_Updated:
+                                                                        true)));
                                                       }
                                                     });
                                                   },

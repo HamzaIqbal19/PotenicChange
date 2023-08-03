@@ -288,7 +288,7 @@ class _photo_infoState extends State<photo_info> {
   Widget build(BuildContext context) {
     bool link_state = false;
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      //resizeToAvoidBottomInset: true,
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -410,8 +410,8 @@ class _photo_infoState extends State<photo_info> {
                                                       DialogTransitionType
                                                           .fadeScale,
                                                   curve: Curves.easeInOut,
-                                                  duration:
-                                                      Duration(seconds: 1),
+                                                  duration: const Duration(
+                                                      seconds: 1),
                                                   context: context,
                                                   builder:
                                                       (BuildContext context) =>
@@ -710,6 +710,12 @@ class _photo_infoState extends State<photo_info> {
                                               page: const inspiration_landing(
                                             is_Updated: false,
                                           )));
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const updatedLandingPage(
+                                                  delete: false,
+                                                  is_Updated: true)));
                                     }
                                   });
                                 },
@@ -731,7 +737,7 @@ class _photo_infoState extends State<photo_info> {
                 color: Colors.white,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  reverse: true,
+                  //reverse: true,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -956,7 +962,8 @@ class _photo_infoState extends State<photo_info> {
                                                 Navigator.push(
                                                     context,
                                                     FadePageRoute(
-                                                        page: link_set()));
+                                                        page:
+                                                            const link_set()));
                                               },
                                               child: Container(
                                                 width: AppDimensions.height10(
@@ -1036,7 +1043,7 @@ class _photo_infoState extends State<photo_info> {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: link_set()));
+                                                    page: const link_set()));
                                           },
                                           child: Container(
                                             width: AppDimensions.height10(
@@ -1152,6 +1159,8 @@ class _photo_infoState extends State<photo_info> {
                                 width: AppDimensions.height10(context) * 30.5,
                                 margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 2.0,
+                                    bottom:
+                                        AppDimensions.height10(context) * 2.0,
                                     right:
                                         AppDimensions.height10(context) * 8.9,
                                     top: widget.image_detals
@@ -1180,7 +1189,7 @@ class _photo_infoState extends State<photo_info> {
                                       : Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: inspiraton_goals(
+                                              page: const inspiraton_goals(
                                                   route: 'photo_create',
                                                   data_saved: false)));
                                 },
@@ -1248,14 +1257,14 @@ class _photo_infoState extends State<photo_info> {
                                   ),
                                 ),
                               ),
-                              // SizedBox(
-                              //   height: MediaQuery.of(context)
-                              //               .viewInsets
-                              //               .bottom ==
-                              //           0
-                              //       ? AppDimensions.height10(context) * 5
-                              //       : AppDimensions.height10(context) * 23.0,
-                              // )
+                              SizedBox(
+                                height: MediaQuery.of(context)
+                                            .viewInsets
+                                            .bottom ==
+                                        0
+                                    ? AppDimensions.height10(context) * 5
+                                    : AppDimensions.height10(context) * 23.0,
+                              )
                             ]),
                       )
                     ],
