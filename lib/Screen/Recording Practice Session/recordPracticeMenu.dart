@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
+import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -281,6 +282,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                     enterPage: emotions(
                                       summary: false,
                                       pracName: widget.pracName,
+                                      record: false,
                                     )));
                           },
                           child: Container(
@@ -477,7 +479,9 @@ class _practiceMenuState extends State<practiceMenu> {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const prac_score()));
+                                              page: const prac_score(
+                                            saved: false,
+                                          )));
                                     },
                                     child: button_feilds(
                                       feild_text: widget.goal_eval
@@ -535,7 +539,10 @@ class _practiceMenuState extends State<practiceMenu> {
                               bottom: AppDimensions.height10(context) * 1.0,
                               top: AppDimensions.height10(context) * 1.0),
                           child: AnimatedScaleButton(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(context,
+                                  FadePageRoute(page: const PracticeReview()));
+                            },
                             child: const button_feilds(
                               feild_text: 'View practice settings',
                               icon_viible: true,

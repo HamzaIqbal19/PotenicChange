@@ -5,6 +5,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_new_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
@@ -83,6 +84,50 @@ class _summary_hurdlesState extends State<summary_hurdles> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: widget.delete_hurdle
+              ? Center(
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Image.asset(
+                        'assets/images/Back.webp',
+                        width: AppDimensions.height10(context) * 3.0,
+                        height: AppDimensions.height10(context) * 3.0,
+                        fit: BoxFit.cover,
+                      )),
+                )
+              : Container(),
+          actions: [
+            widget.delete_hurdle
+                ? Center(
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const dashBoard(
+                                saved: false,
+                                helpful_tips: false,
+                                membership: true,
+                                dashboard_ctrl: false,
+                                cancel: false,
+                                trial: false,
+                              )));
+                        },
+                        icon: Image.asset(
+                          'assets/images/Close.webp',
+                          width: AppDimensions.height10(context) * 2.6,
+                          height: AppDimensions.height10(context) * 2.6,
+                          fit: BoxFit.cover,
+                        )),
+                  )
+                : Container()
+          ]),
+      extendBodyBehindAppBar: true,
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -242,6 +287,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             return Container(
                               height: AppDimensions.height10(context) * 14.5,
                               width: AppDimensions.height10(context) * 14.5,
+                              padding: EdgeInsets.all(
+                                  AppDimensions.height10(context) * 2),
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                   gradient: LinearGradient(
@@ -255,6 +302,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                 child: Text(
                                   hurdlesSummary['thoughtsAndFeelings'][index],
                                   textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 4,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize:

@@ -6,6 +6,7 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_veiw_detail.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
@@ -141,6 +142,17 @@ class _record_inspirationState extends State<record_inspiration> {
                             height: AppDimensions.height10(context) * 16.7,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
+                                gradient: inspirationDetails['inspiration']
+                                            ['inspirationId'] ==
+                                        2
+                                    ? RadialGradient(colors: [
+                                        Color(0xFFE9A594),
+                                        Color(0xFFEEBEB2)
+                                      ])
+                                    : RadialGradient(colors: [
+                                        Color(0xFFD9D9D9),
+                                        Color(0xFFD9D9D9)
+                                      ]),
                                 image: inspirationDetails['inspiration']
                                             ['inspirationId'] ==
                                         1
@@ -150,17 +162,35 @@ class _record_inspirationState extends State<record_inspiration> {
                                                 ['file'])),
                                         fit: BoxFit.cover)
                                     : DecorationImage(
-                                        image: AssetImage(inspirationDetails[
-                                                        'inspiration']
-                                                    ['inspirationId'] ==
-                                                4
+                                        image: AssetImage(inspirationDetails['inspiration']['inspirationId'] == 4
                                             ? 'assets/images/distraction content.webp'
-                                            : inspirationDetails['inspiration']
-                                                        ['inspirationId'] ==
-                                                    3
+                                            : inspirationDetails['inspiration']['inspirationId'] == 3
                                                 ? 'assets/images/video_play.webp'
-                                                : 'assets/images/Rectangle 10.webp'),
+                                                : ''),
                                         fit: BoxFit.cover)),
+                            child: inspirationDetails['inspiration']
+                                        ['inspirationId'] ==
+                                    2
+                                ? SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 16.2,
+                                    height:
+                                        AppDimensions.height10(context) * 6.3,
+                                    child: Center(
+                                        child: Text(
+                                      inspirationDetails['inspiration']
+                                          ['description'],
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 3,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.4,
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFFFFFFFF)),
+                                    )),
+                                  )
+                                : Container(),
                           ),
                           Container(
                             width: AppDimensions.height10(context) * 16.7,
@@ -574,8 +604,8 @@ class _record_inspirationState extends State<record_inspiration> {
                                                             context,
                                                             FadePageRoute(
                                                                 page:
-                                                                    inspiration_landing(
-                                                              is_Updated: false,
+                                                                    inspiration_motivation(
+                                                              goal_delete: true,
                                                             )));
                                                       }
                                                     });

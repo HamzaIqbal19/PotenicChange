@@ -5,8 +5,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/goalEvaluation.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/circle_container.dart';
 import 'package:potenic_app/Widgets/circle_dates.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/menu_buttons.dart';
 
 import '../../Widgets/calender.dart';
@@ -22,6 +26,7 @@ class progress_report extends StatefulWidget {
 class _progress_reportState extends State<progress_report> {
   bool Loader = true;
   var goalDetails;
+  var report;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
@@ -39,6 +44,7 @@ class _progress_reportState extends State<progress_report> {
         setState(() {
           goalDetails = response;
         });
+        getReport();
 
         loadData();
         print(response);
@@ -50,6 +56,12 @@ class _progress_reportState extends State<progress_report> {
       print("error");
     }).whenComplete(() {
       loadData();
+    });
+  }
+
+  void getReport() {
+    PracticeEvaluation.getUserPracticeReportId().then((response) {
+      print(response);
     });
   }
 
@@ -1044,18 +1056,28 @@ class _progress_reportState extends State<progress_report> {
                                     color: const Color(0xFFF5F5F5)),
                               ),
                             ),
-                            const button_feilds(
-                              feild_text: 'Practice score ',
-                              icon_viible: true,
-                              text_color: 0xff646464,
-                              feild_text_2: '(',
-                              text_color_2: 0xff8EA1B1,
-                              feild_text_3: '2',
-                              feild_text_4: '/5)',
-                            ),
-                            GestureDetector(
+                            AnimatedScaleButton(
                               onTap: () {
-                                //report(context);
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: prac_score(
+                                      saved: false,
+                                    )));
+                              },
+                              child: const button_feilds(
+                                feild_text: 'Practice score ',
+                                icon_viible: true,
+                                text_color: 0xff646464,
+                                feild_text_2: '(',
+                                text_color_2: 0xff8EA1B1,
+                                feild_text_3: '2',
+                                feild_text_4: '/5)',
+                              ),
+                            ),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                report(context);
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 36.0,

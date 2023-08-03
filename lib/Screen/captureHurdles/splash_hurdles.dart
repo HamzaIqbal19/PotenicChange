@@ -1,12 +1,20 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class hurdles_splash extends StatefulWidget {
   const hurdles_splash({super.key});
@@ -18,6 +26,20 @@ class hurdles_splash extends StatefulWidget {
 }
 
 class hurdles_splashState extends State<hurdles_splash> {
+  var Route;
+
+  void getHurdleRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    Route = prefs.getString('HurdleRoute');
+    print(Route);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getHurdleRoute();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +51,19 @@ class hurdles_splashState extends State<hurdles_splash> {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        FadePageRoute(
+                            page: const dashBoard(
+                          saved: false,
+                          helpful_tips: false,
+                          membership: true,
+                          dashboard_ctrl: false,
+                          cancel: false,
+                          trial: false,
+                        )));
+                  },
                   icon: Image.asset(
                     'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
@@ -89,10 +123,38 @@ class hurdles_splashState extends State<hurdles_splash> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    FadePageRoute(page: const hurdles_goal_impact()),
-                  );
+                  if (Route == 'Impact') {
+                    Navigator.push(
+                      context,
+                      FadePageRoute(page: const hurdles_goal_impact()),
+                    );
+                  } else if (Route == 'Select') {
+                    Navigator.push(
+                      context,
+                      FadePageRoute(page: const select_hurdle(update: false)),
+                    );
+                  } else if (Route == 'Name') {
+                    Navigator.push(
+                      context,
+                      FadePageRoute(page: const hurdle_name(update: false)),
+                    );
+                  } else if (Route == 'Statements') {
+                    Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const hurdle_statement(update: false)),
+                    );
+                  } else if (Route == 'Feelings') {
+                    Navigator.push(
+                      context,
+                      FadePageRoute(page: const felling_hurdles()),
+                    );
+                  } else {
+                    Navigator.push(
+                      context,
+                      FadePageRoute(page: const hurdles_goal_impact()),
+                    );
+                  }
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 16.8,

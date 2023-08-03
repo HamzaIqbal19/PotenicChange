@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
@@ -225,7 +226,15 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             width: double.infinity,
                                             color: Colors.white,
                                             child: TextButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            inspiration_motivation(
+                                                                goal_delete:
+                                                                    false)));
+                                              },
                                               child: const Text(
                                                 'Exit & save progress',
                                                 style: TextStyle(
@@ -250,7 +259,15 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             height: 44,
                                             width: double.infinity,
                                             child: TextButton(
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page:
+                                                            inspiration_motivation(
+                                                                goal_delete:
+                                                                    false)));
+                                              },
                                               child: const Text(
                                                 'Exit & delete progress',
                                                 style: TextStyle(
@@ -724,58 +741,185 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: AppDimensions.height10(context) * 12.8,
-                              height: AppDimensions.height10(context) * 5.0,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                border: Border.all(
-                                    width: 1,
-                                    color: const Color(0xFFFFFFFF)
-                                        .withOpacity(0.5)),
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 5.0),
-                              ),
-                              child: TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Reset',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white.withOpacity(0.5)),
-                                  )),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 20.4,
-                              height: AppDimensions.height10(context) * 5.0,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    const Color(0xffFCC10D).withOpacity(0.5),
-                                    const Color(0xffFDA210).withOpacity(0.5),
-                                  ],
+                            AnimatedScaleButton(
+                              onTap: () {
+                                multiGoals.clear();
+                                selectedGoals.clear();
+                                selectedInActiveIndices.clear();
+                                selectedIndices.clear();
+                                setState(() {
+                                  selectAll = false;
+                                });
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 12.8,
+                                height: AppDimensions.height10(context) * 5.0,
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  border: Border.all(
+                                      width: 1,
+                                      color: const Color(0xFFFFFFFF)
+                                          .withOpacity(0.5)),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 5.0),
                                 ),
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 5.0),
+                                child: Center(
+                                    child: Text(
+                                  'Reset',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
+                                      fontWeight: FontWeight.w600,
+                                      color: selectAll == true ||
+                                              multiGoals.length != 0
+                                          ? Colors.white
+                                          : Colors.white.withOpacity(0.5)),
+                                )),
                               ),
-                              child: TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Save',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.6,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white.withOpacity(0.5)),
-                                  )),
+                            ),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                if (selectAll == true ||
+                                    multiGoals.length != 0) {
+                                  if (selectAll == true) {
+                                    saveGoalsToSharedPreferences(
+                                        allgoalsSelected);
+                                    widget.route == 'photo_create'
+                                        ? Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const photo_info(
+                                              edit_details: false,
+                                              image_detals: false,
+                                              image_save: false,
+                                              image_create: false,
+                                            )),
+                                          )
+                                        : widget.route == 'video_create'
+                                            ? Navigator.push(
+                                                context,
+                                                FadePageRoute(
+                                                    page: const video_info()),
+                                              )
+                                            : widget.route == 'note_create'
+                                                ? Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page: const note_info(
+                                                      note_saved: true,
+                                                      type_switch: 1,
+                                                    )),
+                                                  )
+                                                : widget.route == 'note_saved'
+                                                    ? Navigator.push(
+                                                        context,
+                                                        FadePageRoute(
+                                                            page:
+                                                                const noteSaved()),
+                                                      )
+                                                    : widget.route ==
+                                                            'note_link'
+                                                        ? Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const link_info()),
+                                                          )
+                                                        : Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const inspiration_type()),
+                                                          );
+                                  } else {
+                                    saveGoalsToSharedPreferences(multiGoals);
+                                    print(multiGoals);
+                                    widget.route == 'photo_create'
+                                        ? Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const photo_info(
+                                              edit_details: false,
+                                              image_detals: true,
+                                              image_save: false,
+                                              image_create: false,
+                                            )),
+                                          )
+                                        : widget.route == 'video_create'
+                                            ? Navigator.push(
+                                                context,
+                                                FadePageRoute(
+                                                    page: const video_info()),
+                                              )
+                                            : widget.route == 'note_create'
+                                                ? Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page: const note_info(
+                                                      note_saved: true,
+                                                      type_switch: 1,
+                                                    )),
+                                                  )
+                                                : widget.route == 'note_saved'
+                                                    ? Navigator.push(
+                                                        context,
+                                                        FadePageRoute(
+                                                            page:
+                                                                const noteSaved()),
+                                                      )
+                                                    : widget.route ==
+                                                            'note_link'
+                                                        ? Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const link_info()),
+                                                          )
+                                                        : Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const inspiration_type()),
+                                                          );
+                                  }
+                                }
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 20.4,
+                                height: AppDimensions.height10(context) * 5.0,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      selectAll == true ||
+                                              multiGoals.length != 0
+                                          ? Color(0xffFCC10D)
+                                          : Color(0xffFCC10D).withOpacity(0.5),
+                                      selectAll == true ||
+                                              multiGoals.length != 0
+                                          ? Color(0xffFDA210)
+                                          : Color(0xffFDA210).withOpacity(0.5),
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 5.0),
+                                ),
+                                child: Center(
+                                    child: Text(
+                                  'Save',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.6,
+                                      fontWeight: FontWeight.w600,
+                                      color: selectAll == true ||
+                                              multiGoals.length != 0
+                                          ? Colors.white
+                                          : Colors.white.withOpacity(0.5)),
+                                )),
+                              ),
                             ),
                           ],
                         ),

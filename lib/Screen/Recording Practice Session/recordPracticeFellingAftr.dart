@@ -46,10 +46,10 @@ class _feelingsAfterState extends State<feelingsAfter> {
   var emotionsNotes;
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
-    setState(() {
-      emotionsNotes = prefs.getString('emotionsFeedback');
-      endSession = prefs.getString('endSessionFeedback');
-    });
+
+    emotionsNotes = prefs.getString('emotionsFeedback');
+    endSession = prefs.getString('endSessionFeedback');
+
     feedback.text = prefs.getString('sessionFeedback')!;
   }
 
@@ -73,6 +73,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
             enterPage: emotions(
               summary: false,
               pracName: pracName,
+              record: false,
             ),
           ),
         );
@@ -93,6 +94,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                       enterPage: emotions(
                         summary: false,
                         pracName: pracName,
+                        record: false,
                       ),
                     ),
                   );
@@ -284,6 +286,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 2.8,
                                 fontWeight: FontWeight.w700,
+                                fontFamily: 'Laila',
                                 color: const Color(0xff8C648A)),
                           ),
                           TextSpan(
@@ -291,6 +294,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 2.8,
                                 fontWeight: FontWeight.w700,
+                                fontFamily: 'Laila',
                                 color: Colors.white),
                           ),
                         ]),
@@ -806,11 +810,12 @@ class _next_bottonState extends State<next_botton> {
                 RecordingPractice()
                     .updateRecording("feelingsAfterSession", EmotionsAfter, [
                   {
-                    "beforeNote": emotionsNotes,
+                    "beforeNote":
+                        emotionsNotes == null ? " " : emotionsNotes.toString(),
                     "afterNote": feedback.text.isNotEmpty
                         ? feedback.text.toString()
                         : " ",
-                    "endNote": endSession
+                    "endNote": endSession == null ? " " : endSession.toString()
                   }
                 ]).then((value) {
                   if (value == true) {

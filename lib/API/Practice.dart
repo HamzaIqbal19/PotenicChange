@@ -211,6 +211,34 @@ class PracticeGoalApi {
     }
   }
 
+  Future deleteUserPracticeById(id) async {
+    final SharedPreferences prefs = await _prefs;
+
+    // var prac_num = prefs.getInt('prac_num');
+    // print('$prac_num');
+
+    var Accestoken = prefs.getString("usertoken");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+
+    var request = await client.delete(
+        Uri.parse('${URL.BASE_URL}api/userPractice/$id'),
+        headers: headers);
+
+    var responses = jsonDecode(request.body);
+    print("Goal to be deleted");
+    if (request.statusCode == 200) {
+      print('object deleted');
+      return true;
+    } else {
+      return responses["message"];
+      // client.close();
+      // return responses["message"];
+    }
+  }
+
   Future updateUserPracticeColor(color) async {
     final SharedPreferences prefs = await _prefs;
     var prac_num = prefs.getInt('prac_num');
@@ -245,4 +273,138 @@ class PracticeGoalApi {
       return false;
     }
   }
+
+  static Future getUserPracticeByDay(Day) async {
+    // var goalName;
+
+    final SharedPreferences prefs = await _prefs;
+
+    var Accestoken = prefs.getString("usertoken");
+
+    var userId = prefs.getInt('userid');
+    // print('$userGoalId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var response = await http.get(
+      Uri.parse(
+          '${URL.BASE_URL}api/userPractice/userPractice-by-date/$userId?date=$Day'),
+      headers: headers,
+    );
+    // print('===========$userGoalId');
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return jsonData;
+    } else if (response.statusCode == 404) {
+      // throw Exception('Failed to fetch goal names');
+      return false;
+    }
+  }
+
+  Future updateUserPracticeStatus(status, id) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+
+    print("request: Update");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var body = jsonEncode({"goalStatus": "$status"});
+
+    var request = await client.put(
+        Uri.parse(
+            '${URL.BASE_URL}api/userPractice/change-user-practice-status-by-id/$id'),
+        headers: headers,
+        body: body);
+    print("request: Update");
+    print('=====>$request.statusCode');
+    print(request.body);
+    if (request.statusCode == 200) {
+      print("request: Update successful");
+      var jsonData = jsonDecode(request.body);
+      print("Result: $jsonData");
+      return true;
+    } else if (request.statusCode == 400) {
+      print("Maximum goal achieved");
+      print('STATUSCODE: ${request.statusCode}');
+
+      return request.statusCode;
+    } else {
+      print('STATUSCODE: ${request.statusCode}');
+      print('Update Failed');
+      return false;
+    }
+  }
+
+  static Future getUserPracticeById() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var prac_num = prefs.getInt("prac_score_id");
+
+    print('$prac_num');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/userPractice/$prac_num'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return (jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
+  // Future updateUserPracticeStatus(status, id) async {
+  //   final SharedPreferences prefs = await _prefs;
+
+  //   var Accestoken = prefs.getString("usertoken");
+
+  //   //int UserGoalId = 12;
+  //   print("request: Update");
+  //   var headers = {
+  //     'Content-Type': 'application/json',
+  //     'x-access-token': '$Accestoken'
+  //   };
+  //   var body = jsonEncode({"goalStatus": "$status"});
+  //   // var userGoalId = prefs.getInt('goalId');
+  //   // print('$userGoalId');
+
+  //   var request = await client.put(
+  //       Uri.parse(
+  //           '${URL.BASE_URL}api/userPractice/change-user-practice-status-by-id/$id'),
+  //       headers: headers,
+  //       body: body);
+  //   print("request: Update");
+  //   print('=====>$request.statusCode');
+  //   print(request.body);
+  //   if (request.statusCode == 200) {
+  //     // print("$request.statusCode");
+  //     print("request: Update successful");
+  //     var jsonData = jsonDecode(request.body);
+  //     print("Result: $jsonData");
+  //     return true;
+  //   } else if (request.statusCode == 400) {
+  //     print("Maximum goal achieved");
+  //     print('STATUSCODE: ${request.statusCode}');
+  //     // client.close();
+  //     return request.statusCode;
+  //   } else {
+  //     print('Update Failed');
+  //     return false;
+  //   }
+  // }
+
 }

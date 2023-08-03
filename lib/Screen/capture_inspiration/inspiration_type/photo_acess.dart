@@ -323,7 +323,14 @@ class _photo_infoState extends State<photo_info> {
                             right: AppDimensions.height10(context) * 4.9),
                         child: GestureDetector(
                           onTap: () {
-                            Navigator.pop(context);
+                            if (widget.image_detals == true) {
+                              Navigator.pop(context);
+                              title.clear();
+                              link.clear();
+                              statement.clear();
+                            } else {
+                              Navigator.pop(context);
+                            }
                           },
                           child: Text(
                             'Back',
@@ -637,8 +644,36 @@ class _photo_infoState extends State<photo_info> {
                                               color: const Color(0xff007AFF)),
                                         ),
                                       )
-                                    : GestureDetector(
-                                        onTap: () {},
+                                    : AnimatedScaleButton(
+                                        onTap: () {
+                                          InspirationApi()
+                                              .addInspiration(
+                                                  1,
+                                                  image,
+                                                  title.text.toString(),
+                                                  tagList,
+                                                  link.text.toString(),
+                                                  true,
+                                                  statement.text.toString(),
+                                                  selectedGoals)
+                                              .then((response) {
+                                            if (response.length != 0) {
+                                              print(
+                                                  'Success======================');
+                                              title.clear();
+                                              link.clear();
+                                              statement.clear();
+                                              hastags.clear();
+                                              Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page:
+                                                          const inspiration_landing(
+                                                    is_Updated: false,
+                                                  )));
+                                            }
+                                          });
+                                        },
                                         child: Text(
                                           'Create',
                                           style: TextStyle(
@@ -650,14 +685,42 @@ class _photo_infoState extends State<photo_info> {
                                         ),
                                       ),
                               )
-                            : Text(
-                                'Create',
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.5,
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xff007AFF)
-                                        .withOpacity(0.4)),
+                            : AnimatedScaleButton(
+                                onTap: () {
+                                  InspirationApi()
+                                      .addInspiration(
+                                          1,
+                                          image,
+                                          title.text.toString(),
+                                          tagList,
+                                          link.text.toString(),
+                                          true,
+                                          statement.text.toString(),
+                                          selectedGoals)
+                                      .then((response) {
+                                    if (response.length != 0) {
+                                      print('Success======================');
+                                      title.clear();
+                                      link.clear();
+                                      statement.clear();
+                                      hastags.clear();
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const inspiration_landing(
+                                            is_Updated: false,
+                                          )));
+                                    }
+                                  });
+                                },
+                                child: Text(
+                                  'Create',
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.5,
+                                      fontWeight: FontWeight.w400,
+                                      color: const Color(0xff007AFF)),
+                                ),
                               ),
                       )
                     ]),
@@ -668,6 +731,7 @@ class _photo_infoState extends State<photo_info> {
                 color: Colors.white,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
+                  reverse: true,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -698,10 +762,7 @@ class _photo_infoState extends State<photo_info> {
                                     left: AppDimensions.height10(context) * 2.0,
                                     right:
                                         AppDimensions.height10(context) * 8.9,
-                                    top: widget.image_detals
-                                        ? AppDimensions.height10(context) * 3.9
-                                        : AppDimensions.height10(context) *
-                                            3.9),
+                                    top: AppDimensions.height10(context) * 3.9),
                                 child: Text(
                                   'Title',
                                   style: TextStyle(
@@ -713,24 +774,27 @@ class _photo_infoState extends State<photo_info> {
                               ),
                               Container(
                                 alignment: Alignment.centerLeft,
-                                height: AppDimensions.height10(context) * 2.4,
-                                width: AppDimensions.height10(context) * 30.5,
+                                // height: AppDimensions.height10(context) * 2.4,
+
+                                //width: AppDimensions.height10(context) * 30.5,
                                 margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 0.6,
                                 ),
-                                child: TextField(
+                                child: TextFormField(
                                   controller: title,
-                                  textAlignVertical: TextAlignVertical.center,
+                                  maxLines: null,
+                                  textAlignVertical: TextAlignVertical.top,
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 1.7,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
+                                      isCollapsed: true,
                                       contentPadding: EdgeInsets.fromLTRB(
                                           AppDimensions.height10(context) * 1.5,
-                                          AppDimensions.height10(context) * 0.4,
-                                          AppDimensions.height10(context) * 0.2,
+                                          0,
+                                          AppDimensions.height10(context) * 4,
                                           0),
                                       hintText: 'Give your inspiration a title',
                                       hintStyle: TextStyle(
@@ -778,24 +842,27 @@ class _photo_infoState extends State<photo_info> {
                               ),
                               Container(
                                 alignment: Alignment.centerLeft,
-                                height: AppDimensions.height10(context) * 2.4,
-                                width: AppDimensions.height10(context) * 30.5,
+
+                                // height: AppDimensions.height10(context) * 2.4,
+                                // width: AppDimensions.height10(context) * 30.5,
                                 margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 0.6,
                                 ),
-                                child: TextField(
+                                child: TextFormField(
                                   controller: statement,
-                                  textAlignVertical: TextAlignVertical.center,
+                                  textAlignVertical: TextAlignVertical.top,
+                                  maxLines: null,
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 1.7,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
+                                      isCollapsed: true,
                                       contentPadding: EdgeInsets.fromLTRB(
                                           AppDimensions.height10(context) * 1.5,
-                                          AppDimensions.height10(context) * 0.4,
-                                          AppDimensions.height10(context) * 0.2,
+                                          0,
+                                          AppDimensions.height10(context) * 4,
                                           0),
                                       hintText:
                                           'Say more about this inspiration',
@@ -835,8 +902,8 @@ class _photo_infoState extends State<photo_info> {
                                 children: [
                                   Container(
                                     alignment: Alignment.centerLeft,
-                                    height:
-                                        AppDimensions.height10(context) * 2.4,
+                                    // height:
+                                    //     AppDimensions.height10(context) * 2.4,
                                     width:
                                         AppDimensions.height10(context) * 30.5,
                                     margin: EdgeInsets.only(
@@ -845,8 +912,9 @@ class _photo_infoState extends State<photo_info> {
                                     ),
                                     child: TextField(
                                       controller: link,
-                                      textAlignVertical:
-                                          TextAlignVertical.center,
+                                      scrollPadding: EdgeInsets.zero,
+                                      textAlignVertical: TextAlignVertical.top,
+                                      maxLines: null,
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
@@ -854,6 +922,7 @@ class _photo_infoState extends State<photo_info> {
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xff282828)),
                                       decoration: InputDecoration(
+                                          isCollapsed: true,
                                           contentPadding: EdgeInsets.fromLTRB(
                                               AppDimensions.height10(context) *
                                                   1.5,
@@ -882,7 +951,13 @@ class _photo_infoState extends State<photo_info> {
                                   widget.image_detals
                                       ? Row(
                                           children: [
-                                            GestureDetector(
+                                            AnimatedScaleButton(
+                                              onTap: () {
+                                                Navigator.push(
+                                                    context,
+                                                    FadePageRoute(
+                                                        page: link_set()));
+                                              },
                                               child: Container(
                                                 width: AppDimensions.height10(
                                                         context) *
@@ -1020,14 +1095,17 @@ class _photo_infoState extends State<photo_info> {
                                 ),
                               ),
                               Container(
-                                alignment: Alignment.centerLeft,
-                                height: AppDimensions.height10(context) * 2.4,
+                                //alignment: Alignment.centerLeft,
+                                // height: AppDimensions.height10(context) * 2.4,
+
                                 width: AppDimensions.height10(context) * 30.5,
                                 margin: EdgeInsets.only(
                                   left: AppDimensions.height10(context) * 0.6,
                                 ),
-                                child: TextField(
+                                child: TextFormField(
                                   controller: hastags,
+                                  maxLines: null,
+                                  scrollPadding: EdgeInsets.zero,
                                   onChanged: (text) {
                                     List<String> words = text.split(' ');
 
@@ -1041,13 +1119,14 @@ class _photo_infoState extends State<photo_info> {
 
                                     print(tagList);
                                   },
-                                  textAlignVertical: TextAlignVertical.center,
+                                  textAlignVertical: TextAlignVertical.top,
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 1.7,
                                       fontWeight: FontWeight.w500,
                                       color: const Color(0xff282828)),
                                   decoration: InputDecoration(
+                                      isCollapsed: true,
                                       contentPadding: EdgeInsets.fromLTRB(
                                           AppDimensions.height10(context) * 1.5,
                                           AppDimensions.height10(context) * 0.4,
@@ -1088,7 +1167,7 @@ class _photo_infoState extends State<photo_info> {
                                       color: const Color(0xff828282)),
                                 ),
                               ),
-                              GestureDetector(
+                              AnimatedScaleButton(
                                 onTap: () {
                                   widget.image_detals
                                       ? Navigator.push(
@@ -1135,20 +1214,17 @@ class _photo_infoState extends State<photo_info> {
                                             left: AppDimensions.height10(
                                                     context) *
                                                 1.99),
-                                        child: GestureDetector(
-                                            onTap: () {},
-                                            child: Text(
-                                              '${selectedGoals.length} impacted goals',
-                                              style: TextStyle(
-                                                fontFamily: 'laila',
-                                                color: const Color(0xFF646464),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            )),
+                                        child: Text(
+                                          '${selectedGoals.length} impacted goals',
+                                          style: TextStyle(
+                                            fontFamily: 'laila',
+                                            color: const Color(0xFF646464),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
                                       ),
                                       Container(
                                           width:
@@ -1161,20 +1237,25 @@ class _photo_infoState extends State<photo_info> {
                                               right: AppDimensions.height10(
                                                       context) *
                                                   2.391),
-                                          child: GestureDetector(
-                                            onTap: () {},
-                                            child: Image.asset(
-                                              'assets/images/BTN Back.webp',
-                                              //width: AppDimensions.height10(context) * 2.6,
-                                              //height: AppDimensions.height10(context) * 2.6,
-                                              color: const Color(0xFF646464),
-                                              fit: BoxFit.cover,
-                                            ),
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.webp',
+                                            //width: AppDimensions.height10(context) * 2.6,
+                                            //height: AppDimensions.height10(context) * 2.6,
+                                            color: const Color(0xFF646464),
+                                            fit: BoxFit.cover,
                                           ))
                                     ],
                                   ),
                                 ),
                               ),
+                              // SizedBox(
+                              //   height: MediaQuery.of(context)
+                              //               .viewInsets
+                              //               .bottom ==
+                              //           0
+                              //       ? AppDimensions.height10(context) * 5
+                              //       : AppDimensions.height10(context) * 23.0,
+                              // )
                             ]),
                       )
                     ],

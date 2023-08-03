@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../utils/app_dimensions.dart';
+import '../Recording Practice Session/dashboardViewgoals.dart';
 import 'inpiration_landing.dart';
 
 class inspiration_motivation extends StatefulWidget {
@@ -26,7 +28,19 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        FadePageRoute(
+                            page: const dashBoard(
+                          saved: false,
+                          helpful_tips: false,
+                          membership: true,
+                          dashboard_ctrl: false,
+                          cancel: false,
+                          trial: false,
+                        )));
+                  },
                   icon: Image.asset(
                     'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
@@ -73,7 +87,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           image: AssetImage(
                               'assets/images/Inspiration_center 1.webp'))),
                   child: Center(
-                    child: GestureDetector(
+                    child: AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                           context,
@@ -190,7 +204,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                                       'assets/images/circle_tick.webp'))),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 6.9,
+                          //width: AppDimensions.height10(context) * 6.9,
                           height: AppDimensions.height10(context) * 3.6,
                           margin: EdgeInsets.only(
                               left: AppDimensions.height10(context) * 1.232),
@@ -210,10 +224,10 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                                 ),
                               ),
                               SizedBox(
-                                width: AppDimensions.height10(context) * 6.9,
+                                // width: AppDimensions.height10(context) * 6.9,
                                 height: AppDimensions.height10(context) * 2.2,
                                 child: Text(
-                                  'Nir Eyal',
+                                  'Inspiration',
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 1.8,
@@ -228,7 +242,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           width: AppDimensions.height10(context) * 8.1,
                           height: AppDimensions.height10(context) * 6.0,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.height10(context) * 15.1),
+                              left: AppDimensions.height10(context) * 14.1),
                           decoration: BoxDecoration(
                             border: Border.all(
                                 color: const Color(0xFFFFFFFF), width: 1),
@@ -237,7 +251,7 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                           ),
                           child: Center(
                             child: Text(
-                              'Veiw',
+                              'Undo',
                               style: TextStyle(
                                   fontSize:
                                       AppDimensions.height10(context) * 1.8,

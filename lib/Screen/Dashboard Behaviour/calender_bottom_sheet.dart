@@ -3,7 +3,18 @@ import 'package:flutter/material.dart';
 
 import '../../utils/app_dimensions.dart';
 
-class CalendarBottomSheet extends StatelessWidget {
+class CalendarBottomSheet extends StatefulWidget {
+  final ValueChanged<int> onChangedStart;
+
+  const CalendarBottomSheet({super.key, required this.onChangedStart});
+  @override
+  State<CalendarBottomSheet> createState() => _CalendarBottomSheetState();
+}
+
+class _CalendarBottomSheetState extends State<CalendarBottomSheet> {
+  DateTime selectedDate = DateTime.now();
+  int numberOfDays = 0;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -47,6 +58,9 @@ class CalendarBottomSheet extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     // Perform your 'Done' action here
+
+                    widget.onChangedStart(numberOfDays);
+                    Navigator.pop(context);
                   },
                   child: Container(
                     width: AppDimensions.height10(context) * 3.7,
@@ -72,7 +86,13 @@ class CalendarBottomSheet extends StatelessWidget {
             height: AppDimensions.height10(context) * 26.0,
             child: CupertinoDatePicker(
               mode: CupertinoDatePickerMode.date,
-              onDateTimeChanged: (DateTime value) {},
+              onDateTimeChanged: (DateTime value) {
+                setState(() {
+                  final currentTime = DateTime.now();
+                  final difference = value.difference(currentTime);
+                  numberOfDays = difference.inDays;
+                });
+              },
             ),
           ),
         ],

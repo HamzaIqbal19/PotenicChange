@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
+import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
+import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
@@ -9,17 +15,39 @@ import '../Recording Practice Session/recordPracticeMenu.dart';
 import 'dashboard_view_goals.dart';
 import 'goal_menu_missed_session.dart';
 
-class menu_behaviour extends StatelessWidget {
-  final String goalName;
-  final String pracName;
-  final String goalColor;
-  final String pracColor;
-  const menu_behaviour(
-      {super.key,
-      required this.goalName,
-      required this.pracName,
-      required this.goalColor,
-      required this.pracColor});
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+class menu_behaviour extends StatefulWidget {
+  const menu_behaviour({
+    super.key,
+  });
+
+  @override
+  State<menu_behaviour> createState() => _menu_behaviourState();
+}
+
+class _menu_behaviourState extends State<menu_behaviour> {
+  String goalName = '';
+  String pracName = '';
+  String goalColor = '';
+  String pracColor = '';
+
+  void getRecorDetails() async {
+    final SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      goalName = prefs.getString('dash_goalName')!;
+      pracColor = prefs.getString('dash_pracColor')!;
+      pracName = prefs.getString('dash_pracName')!;
+      goalColor = prefs.getString('dash_goalName')!;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getRecorDetails();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -594,10 +622,9 @@ class menu_behaviour extends StatelessWidget {
                                                 1.4,
                                             fontWeight: FontWeight.w400,
                                             color: const Color(0xfff5f5f5)),
-                                        children: [
-                                      const TextSpan(
-                                          text: 'Next assessment is in'),
-                                      const TextSpan(
+                                        children: const [
+                                      TextSpan(text: 'Next assessment is in'),
+                                      TextSpan(
                                           text: ' -19 active days.',
                                           style: TextStyle(
                                               fontWeight: FontWeight.w700))
@@ -611,8 +638,13 @@ class menu_behaviour extends StatelessWidget {
                                 margin: EdgeInsets.only(
                                     bottom:
                                         AppDimensions.height10(context) * 1.2),
-                                child: GestureDetector(
-                                  onTap: () {},
+                                child: AnimatedScaleButton(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const progress_report()));
+                                  },
                                   child: const button_feilds(
                                     feild_text: 'Progress report',
                                     icon_viible: true,
@@ -624,8 +656,14 @@ class menu_behaviour extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () {},
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page:
+                                              const prac_score(saved: false)));
+                                },
                                 child: const button_feilds(
                                   feild_text: 'Evaluation level ',
                                   icon_viible: true,
@@ -658,34 +696,64 @@ class menu_behaviour extends StatelessWidget {
                     top: AppDimensions.height10(context) * 3.0),
                 child: Column(
                   children: [
-                    const button_feilds(
-                      feild_text: 'View practice progress',
-                      icon_viible: true,
-                      text_color: 0xff646464,
-                      feild_text_2: '',
-                      text_color_2: 0xffEA1B1,
-                      feild_text_3: '',
-                      feild_text_4: '',
+                    AnimatedScaleButton(
+                      onTap: () {
+                        Navigator.push(context,
+                            FadePageRoute(page: const practice_progress()));
+                      },
+                      child: const button_feilds(
+                        feild_text: 'View practice progress',
+                        icon_viible: true,
+                        text_color: 0xff646464,
+                        feild_text_2: '',
+                        text_color_2: 0xffEA1B1,
+                        feild_text_3: '',
+                        feild_text_4: '',
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.0,
                           top: AppDimensions.height10(context) * 1.0),
-                      child: const button_feilds(
-                        feild_text: 'View practice settings',
-                        icon_viible: true,
-                        text_color: 0xff646464,
-                        feild_text_2: '',
-                        text_color_2: 0xffEA1B1,
-                        feild_text_3: '',
-                        feild_text_4: '',
+                      child: AnimatedScaleButton(
+                        onTap: () {
+                          Navigator.push(context,
+                              FadePageRoute(page: const PracticeReview()));
+                        },
+                        child: const button_feilds(
+                          feild_text: 'View practice settings',
+                          icon_viible: true,
+                          text_color: 0xff646464,
+                          feild_text_2: '',
+                          text_color_2: 0xffEA1B1,
+                          feild_text_3: '',
+                          feild_text_4: '',
+                        ),
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.0),
+                      child: AnimatedScaleButton(
+                        onTap: () {},
+                        child: const button_feilds(
+                          feild_text: 'Veiw upcoming schedules',
+                          icon_viible: true,
+                          text_color: 0xff646464,
+                          feild_text_2: '',
+                          text_color_2: 0xffEA1B1,
+                          feild_text_3: '',
+                          feild_text_4: '',
+                        ),
+                      ),
+                    ),
+                    AnimatedScaleButton(
+                      onTap: () {
+                        Navigator.push(context,
+                            FadePageRoute(page: const practice_assesment()));
+                      },
                       child: const button_feilds(
-                        feild_text: 'Veiw upcoming schedules',
+                        feild_text: 'Practice assesment history',
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
@@ -693,15 +761,6 @@ class menu_behaviour extends StatelessWidget {
                         feild_text_3: '',
                         feild_text_4: '',
                       ),
-                    ),
-                    const button_feilds(
-                      feild_text: 'Practice assesment history',
-                      icon_viible: true,
-                      text_color: 0xff646464,
-                      feild_text_2: '',
-                      text_color_2: 0xffEA1B1,
-                      feild_text_3: '',
-                      feild_text_4: '',
                     )
                   ],
                 ),

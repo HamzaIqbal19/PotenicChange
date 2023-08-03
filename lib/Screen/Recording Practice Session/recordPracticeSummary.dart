@@ -621,6 +621,7 @@ class _practice_summaryState extends State<practice_summary> {
                                       page: emotions(
                                     summary: true,
                                     pracName: pracName,
+                                    record: false,
                                   )));
                             },
                             child: Container(

@@ -1,21 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/captureHurdles/captureHurdles_whatHurdles.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
 
-class missed_Menu extends StatelessWidget {
-  final String goalName;
-  final String pracName;
-  final String goalColor;
-  final String pracColor;
-  const missed_Menu(
-      {super.key,
-      required this.goalName,
-      required this.pracName,
-      required this.goalColor,
-      required this.pracColor});
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+class missed_Menu extends StatefulWidget {
+  const missed_Menu({
+    super.key,
+  });
+
+  @override
+  State<missed_Menu> createState() => _missed_MenuState();
+}
+
+class _missed_MenuState extends State<missed_Menu> {
+  String goalName = '';
+  String pracName = '';
+  String goalColor = '';
+  String pracColor = '';
+
+  void getRecorDetails() async {
+    final SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      goalName = prefs.getString('dash_goalName')!;
+      pracColor = prefs.getString('dash_pracColor')!;
+      pracName = prefs.getString('dash_pracName')!;
+      goalColor = prefs.getString('dash_goalName')!;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getRecorDetails();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -189,8 +216,11 @@ class missed_Menu extends StatelessWidget {
                 ),
               ),
 
-              GestureDetector(
-                onTap: () {},
+              AnimatedScaleButton(
+                onTap: () {
+                  Navigator.push(context,
+                      FadePageRoute(page: const view_goals(missed: false)));
+                },
                 child: Container(
                   width: AppDimensions.height10(context) * 9.36,
                   height: AppDimensions.height10(context) * 12.0,
@@ -269,7 +299,9 @@ class missed_Menu extends StatelessWidget {
                   Align(
                     alignment: const Alignment(1, -1.3),
                     child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          info_sheet(context);
+                        },
                         icon: Image.asset(
                           'assets/images/ic_info_outline.webp',
                           height: AppDimensions.height10(context) * 3.0,
@@ -330,10 +362,9 @@ class missed_Menu extends StatelessWidget {
                                                     context) *
                                                 0.15,
                                             color: const Color(0xfff5f5f5)),
-                                        children: [
-                                      const TextSpan(
-                                          text: 'Next assessment is in'),
-                                      const TextSpan(
+                                        children: const [
+                                      TextSpan(text: 'Next assessment is in'),
+                                      TextSpan(
                                           text: ' -19 active days.',
                                           style: TextStyle(
                                               fontWeight: FontWeight.w700))
@@ -343,12 +374,12 @@ class missed_Menu extends StatelessWidget {
                           ),
                           Column(
                             children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensions.height10(context) * 1.2),
-                                child: GestureDetector(
-                                  onTap: () {},
+                              AnimatedScaleButton(
+                                onTap: () {},
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      bottom: AppDimensions.height10(context) *
+                                          1.2),
                                   child: const button_feilds(
                                     feild_text: 'Progress report',
                                     icon_viible: true,
@@ -360,7 +391,7 @@ class missed_Menu extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              GestureDetector(
+                              AnimatedScaleButton(
                                 onTap: () {},
                                 child: const button_feilds(
                                   feild_text: 'Evaluation level ',
@@ -394,34 +425,55 @@ class missed_Menu extends StatelessWidget {
                     top: AppDimensions.height10(context) * 3.0),
                 child: Column(
                   children: [
-                    const button_feilds(
-                      feild_text: 'View practice progress',
-                      icon_viible: true,
-                      text_color: 0xff646464,
-                      feild_text_2: '',
-                      text_color_2: 0xff8EA1B1,
-                      feild_text_3: '',
-                      feild_text_4: '',
+                    AnimatedScaleButton(
+                      onTap: () {},
+                      child: const button_feilds(
+                        feild_text: 'View practice progress',
+                        icon_viible: true,
+                        text_color: 0xff646464,
+                        feild_text_2: '',
+                        text_color_2: 0xff8EA1B1,
+                        feild_text_3: '',
+                        feild_text_4: '',
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.0,
                           top: AppDimensions.height10(context) * 1.0),
-                      child: const button_feilds(
-                        feild_text: 'View practice settings',
-                        icon_viible: true,
-                        text_color: 0xff646464,
-                        feild_text_2: '',
-                        text_color_2: 0xffEA1B1,
-                        feild_text_3: '',
-                        feild_text_4: '',
+                      child: AnimatedScaleButton(
+                        onTap: () {},
+                        child: const button_feilds(
+                          feild_text: 'View practice settings',
+                          icon_viible: true,
+                          text_color: 0xff646464,
+                          feild_text_2: '',
+                          text_color_2: 0xffEA1B1,
+                          feild_text_3: '',
+                          feild_text_4: '',
+                        ),
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.0),
+                      child: AnimatedScaleButton(
+                        onTap: () {},
+                        child: const button_feilds(
+                          feild_text: 'Veiw upcoming schedules',
+                          icon_viible: true,
+                          text_color: 0xff646464,
+                          feild_text_2: '',
+                          text_color_2: 0xffEA1B1,
+                          feild_text_3: '',
+                          feild_text_4: '',
+                        ),
+                      ),
+                    ),
+                    AnimatedScaleButton(
+                      onTap: () {},
                       child: const button_feilds(
-                        feild_text: 'Veiw upcoming schedules',
+                        feild_text: 'Practice assesment history',
                         icon_viible: true,
                         text_color: 0xff646464,
                         feild_text_2: '',
@@ -429,15 +481,6 @@ class missed_Menu extends StatelessWidget {
                         feild_text_3: '',
                         feild_text_4: '',
                       ),
-                    ),
-                    const button_feilds(
-                      feild_text: 'Practice assesment history',
-                      icon_viible: true,
-                      text_color: 0xff646464,
-                      feild_text_2: '',
-                      text_color_2: 0xffEA1B1,
-                      feild_text_3: '',
-                      feild_text_4: '',
                     )
                   ],
                 ),

@@ -212,7 +212,7 @@ class _clocksState extends State<clocks> {
                 alignment: Alignment.center,
                 // margin: EdgeInsets.only(bottom: 86),
                 child: Text(
-                  'You can use our timer to\nrecord your paractice',
+                  'You can use our timer to\nrecord your practice',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensions.height10(context) * 0.12,

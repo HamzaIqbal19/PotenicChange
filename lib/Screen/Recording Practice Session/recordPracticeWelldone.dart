@@ -42,7 +42,7 @@ class welldone_splashState extends State<welldone_splash> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 5), onDoneLoading);
+    return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   onDoneLoading() async {

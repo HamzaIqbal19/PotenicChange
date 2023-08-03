@@ -58,7 +58,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
       // loadData();
       print("error");
     }).whenComplete(() {
-      loadData();
+      //loadData();
     });
   }
 

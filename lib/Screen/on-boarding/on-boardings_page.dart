@@ -178,7 +178,7 @@ class OnboardingPageState extends State<OnboardingPage>
                         exitPage: OnBoarding(),
                       ),
                     );
-                  } else if (Accestoken == "" || Routes == null) {
+                  } else if (Accestoken == "" || Routes.isEmpty) {
                     Navigator.pushReplacement(
                       context,
                       FadePageRoute2(

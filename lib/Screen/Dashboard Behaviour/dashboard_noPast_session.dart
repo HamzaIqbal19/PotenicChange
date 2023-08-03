@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_no_planned_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
@@ -12,10 +13,13 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behav
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/mult_circles.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import 'calender_bottom_sheet.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class no_past_session extends StatefulWidget {
   final bool missed;
@@ -34,24 +38,58 @@ class _no_past_sessionState extends State<no_past_session> {
 
   String previousDayName =
       DateFormat('EEEE').format(DateTime.now().subtract(Duration(days: 1)));
+  String nextDayName = DateFormat('EEEE')
+      .format(DateTime.now().subtract(const Duration(days: 2)));
+  String currentDay = DateFormat('EEEE').format(DateTime.now());
+
+  String formattdDate = DateFormat('dd-MM').format(DateTime.now());
+  String previousDate = DateFormat('dd-MM')
+      .format(DateTime.now().subtract(const Duration(days: 1)));
+  String nextDate = DateFormat('dd-MM')
+      .format(DateTime.now().subtract(const Duration(days: 2)));
   @override
   void initState() {
     super.initState();
-    fetchGoalsByDay();
+    fetchPracticeByDay();
   }
 
-  void fetchGoalsByDay() {
-    AdminGoal.getUserGoalByDay(previousDayName).then((response) {
-      if (response != "") {
-        print(response);
-        setState(() {
-          goals_empty = true;
-          allGoals = response;
-        });
+  // void fetchGoalsByDay() {
+  //   AdminGoal.getUserGoalByDay(previousDayName).then((response) {
+  //     if (response != "") {
+  //       print(response);
+  //       setState(() {
+  //         goals_empty = true;
+  //         allGoals = response;
+  //       });
+  //       loadData();
+  //     }
+  //     print('______________________________-----------------------');
+  //     print(allGoals.length);
+  //   });
+  // }
+
+  void fetchPracticeByDay() {
+    PracticeGoalApi.getUserPracticeByDay(previousDayName).then((response) {
+      print("Api Called");
+      print(response);
+      if (response == false) {
         loadData();
+        setState(() {
+          goals_empty = false;
+        });
+      } else if (response != false) {
+        setState(() {
+          allGoals = response['filteredUserPractices'];
+          goals_empty = true;
+        });
+        print('====================');
+        print(goals_empty);
+        print(allGoals.length);
+        loadData();
+        print('====================');
       }
       print('______________________________-----------------------');
-      print(allGoals.length);
+      //print(allGoals.length);
     });
   }
 
@@ -60,6 +98,7 @@ class _no_past_sessionState extends State<no_past_session> {
   }
 
   void onDoneLoading() {
+    print('Loading -----------------------------');
     setState(() {
       Loader = false;
     });
@@ -97,8 +136,9 @@ class _no_past_sessionState extends State<no_past_session> {
                           context,
                           FadePageRoute(
                               page: record_session(
-                            past_session: true,
-                          )));
+                                  past_session: true,
+                                  day: previousDayName,
+                                  id: allGoals[0]['userGoalId'])));
                     },
                     child: Container(
                       margin: EdgeInsets.only(
@@ -115,7 +155,8 @@ class _no_past_sessionState extends State<no_past_session> {
                       showModalBottomSheet(
                         context: context,
                         builder: (BuildContext context) {
-                          return CalendarBottomSheet();
+                          return Container();
+                          //CalendarBottomSheet();
                         },
                       );
                     },
@@ -135,7 +176,7 @@ class _no_past_sessionState extends State<no_past_session> {
         extendBodyBehindAppBar: true,
         extendBody: true,
         bottomNavigationBar: const Navigation_Bar(
-          bg_colored: true,
+          bg_colored: false,
           membership: true,
           cancel: false,
           trial: false,
@@ -197,7 +238,9 @@ class _no_past_sessionState extends State<no_past_session> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Text(
-                                              'MON',
+                                              nextDayName
+                                                  .substring(0, 3)
+                                                  .toUpperCase(),
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10(
@@ -208,7 +251,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                       const Color(0xff5B74A6)),
                                             ),
                                             Text(
-                                              '02.06',
+                                              nextDate,
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.height10(
@@ -307,7 +350,9 @@ class _no_past_sessionState extends State<no_past_session> {
                                                               .center,
                                                       children: [
                                                         Text(
-                                                          'TUE',
+                                                          previousDayName
+                                                              .substring(0, 3)
+                                                              .toUpperCase(),
                                                           style: TextStyle(
                                                               height: AppDimensions
                                                                       .height10(
@@ -324,7 +369,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                                   0xFFFBFBFB)),
                                                         ),
                                                         Text(
-                                                          '02.07',
+                                                          previousDate,
                                                           style: TextStyle(
                                                               height:
                                                                   AppDimensions
@@ -393,8 +438,8 @@ class _no_past_sessionState extends State<no_past_session> {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page: no_planned_session(
-                                                      missed: widget.missed)));
+                                                  page: const view_goals(
+                                                      missed: false)));
                                         },
                                         child: Container(
                                             height: AppDimensions.height10(
@@ -429,7 +474,9 @@ class _no_past_sessionState extends State<no_past_session> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'MON',
+                                                  currentDay
+                                                      .substring(0, 3)
+                                                      .toUpperCase(),
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(
@@ -441,7 +488,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                           0xff5B74A6)),
                                                 ),
                                                 Text(
-                                                  '03.07',
+                                                  formattdDate,
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(
@@ -546,9 +593,10 @@ class _no_past_sessionState extends State<no_past_session> {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const record_session(
-                                        past_session: true,
-                                      )));
+                                          page: record_session(
+                                              past_session: true,
+                                              day: previousDayName,
+                                              id: allGoals[0]['userGoalId'])));
                                 },
                                 child: Container(
                                   width: AppDimensions.height10(context) * 10.1,
@@ -666,7 +714,9 @@ class _no_past_sessionState extends State<no_past_session> {
 
                                                   // color: Colors.blue,
                                                   child: Text(
-                                                    'MON',
+                                                    nextDayName
+                                                        .substring(0, 3)
+                                                        .toUpperCase(),
                                                     style: TextStyle(
                                                         fontSize: AppDimensions
                                                                 .height10(
@@ -686,7 +736,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                           1.7,
                                                   // color: Colors.amber,
                                                   child: Text(
-                                                    '02.06',
+                                                    nextDate,
                                                     style: TextStyle(
                                                         color: const Color(
                                                             0xff5B74A6),
@@ -776,7 +826,9 @@ class _no_past_sessionState extends State<no_past_session> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'TUE',
+                                                  previousDayName
+                                                      .substring(0, 3)
+                                                      .toUpperCase(),
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(
@@ -788,7 +840,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                           0xff5B74A6)),
                                                 ),
                                                 Text(
-                                                  '02.07',
+                                                  previousDate,
                                                   style: TextStyle(
                                                       color: const Color(
                                                           0xff5B74A6),
@@ -873,7 +925,9 @@ class _no_past_sessionState extends State<no_past_session> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                'MON',
+                                                currentDay
+                                                    .substring(0, 3)
+                                                    .toUpperCase(),
                                                 style: TextStyle(
                                                     fontSize:
                                                         AppDimensions.height10(
@@ -884,7 +938,7 @@ class _no_past_sessionState extends State<no_past_session> {
                                                         0xff5B74A6)),
                                               ),
                                               Text(
-                                                '03.07',
+                                                formattdDate,
                                                 style: TextStyle(
                                                     fontSize:
                                                         AppDimensions.height10(
@@ -947,45 +1001,6 @@ class _no_past_sessionState extends State<no_past_session> {
                               scrollDirection: Axis.vertical,
                               child: Column(
                                 children: [
-                                  // Container(
-                                  //   width: AppDimensions.height10(context) * 35.6,
-                                  //   height: AppDimensions.height10(context) * 4.2,
-                                  //   margin: EdgeInsets.only(
-                                  //       left: AppDimensions.height10(context) * 2.4,
-                                  //       right: AppDimensions.height10(context) * 3.4,
-                                  //       top: AppDimensions.height10(context) * 1.1),
-                                  //   child: Column(children: [
-                                  //     Container(
-                                  //       alignment: Alignment.centerLeft,
-                                  //       child: Text(
-                                  //         '8:00',
-                                  //         style: TextStyle(
-                                  //           fontSize:
-                                  //               AppDimensions.height10(context) * 1.8,
-                                  //           fontWeight: FontWeight.w600,
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //     Divider(
-                                  //       height: AppDimensions.height10(context) * 0.2,
-                                  //       color: Colors.white,
-                                  //     ),
-                                  //     Container(
-                                  //       alignment: Alignment.centerLeft,
-                                  //       child: Text(
-                                  //         'AM',
-                                  //         style: TextStyle(
-                                  //           fontSize:
-                                  //               AppDimensions.height10(context) * 1.0,
-                                  //           fontWeight: FontWeight.w500,
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       ),
-                                  //     )
-                                  //   ]),
-                                  // ),
-
                                   ListView.builder(
                                       physics:
                                           const NeverScrollableScrollPhysics(),
@@ -993,12 +1008,6 @@ class _no_past_sessionState extends State<no_past_session> {
                                       shrinkWrap: true,
                                       padding: EdgeInsets.zero,
                                       itemBuilder: ((context, index) {
-                                        // setState(() {
-                                        //   allPractice =
-                                        //       allGoals[index]['userPractices'];
-                                        // });
-                                        // print('---------------------------');
-                                        // print(allPractice);
                                         return Column(
                                           children: [
                                             Container(
@@ -1023,7 +1032,10 @@ class _no_past_sessionState extends State<no_past_session> {
                                                   alignment:
                                                       Alignment.centerLeft,
                                                   child: Text(
-                                                    '8:00',
+                                                    allGoals[index]['schedule']
+                                                            [0]['startTime']
+                                                        .toString()
+                                                        .substring(0, 5),
                                                     style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(
@@ -1046,7 +1058,11 @@ class _no_past_sessionState extends State<no_past_session> {
                                                   alignment:
                                                       Alignment.centerLeft,
                                                   child: Text(
-                                                    'AM',
+                                                    allGoals[index]['schedule']
+                                                            [0]['startTime']
+                                                        .toString()
+                                                        .substring(5, 7)
+                                                        .toUpperCase(),
                                                     style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(
@@ -1057,452 +1073,172 @@ class _no_past_sessionState extends State<no_past_session> {
                                                       color: Colors.white,
                                                     ),
                                                   ),
-                                                )
+                                                ),
                                               ]),
                                             ),
-                                            ListView.builder(
-                                                physics:
-                                                    const NeverScrollableScrollPhysics(),
-                                                itemCount: allGoals[index]
-                                                        ['userPractices']
-                                                    .length,
-                                                shrinkWrap: true,
-                                                padding: EdgeInsets.zero,
-                                                itemBuilder:
-                                                    ((context, index1) {
-                                                  return Column(
-                                                    children: [
-                                                      AnimatedScaleButton(
-                                                        onTap: () {
-                                                          if (widget.missed ==
-                                                              true) {
-                                                            Navigator.push(
-                                                                context,
-                                                                FadePageRoute(
-                                                                    page:
-                                                                        missed_Menu(
-                                                                  goalColor: allGoals[
-                                                                          index]
-                                                                      ['color'],
-                                                                  goalName: allGoals[
-                                                                          index]
-                                                                      ['name'],
-                                                                  pracColor: allGoals[index]
-                                                                              [
-                                                                              'userPractices']
-                                                                          [
-                                                                          index1]
-                                                                      ['color'],
-                                                                  pracName: allGoals[
-                                                                              index]
-                                                                          [
-                                                                          'userPractices']
-                                                                      [
-                                                                      index1]['name'],
-                                                                )));
-                                                          } else {
-                                                            Navigator.push(
-                                                                context,
-                                                                FadePageRoute(
-                                                                    page:
-                                                                        menu_behaviour(
-                                                                  goalColor: allGoals[
-                                                                          index]
-                                                                      ['color'],
-                                                                  goalName: allGoals[
-                                                                          index]
-                                                                      ['name'],
-                                                                  pracColor: allGoals[index]
-                                                                              [
-                                                                              'userPractices']
-                                                                          [
-                                                                          index1]
-                                                                      ['color'],
-                                                                  pracName: allGoals[
-                                                                              index]
-                                                                          [
-                                                                          'userPractices']
-                                                                      [
-                                                                      index1]['name'],
-                                                                )));
-                                                          }
-                                                        },
-                                                        child: Center(
-                                                            child:
-                                                                align_circles(
-                                                          asset_1: allGoals[
-                                                                          index]
-                                                                      [
-                                                                      'color'] ==
-                                                                  '1'
-                                                              ? "assets/images/red_gradient.webp"
-                                                              : allGoals[index][
-                                                                          'color'] ==
-                                                                      '2'
-                                                                  ? 'assets/images/orange_moon.webp'
-                                                                  : allGoals[index]
-                                                                              [
-                                                                              'color'] ==
-                                                                          '3'
-                                                                      ? "assets/images/lightGrey_gradient.webp"
-                                                                      : allGoals[index]['color'] ==
-                                                                              '4'
-                                                                          ? "assets/images/lightBlue_gradient.webp"
-                                                                          : allGoals[index]['color'] == '5'
-                                                                              ? "assets/images/medBlue_gradient.webp"
-                                                                              : allGoals[index]['color'] == '6'
-                                                                                  ? "assets/images/Blue_gradient.webp"
-                                                                                  : 'assets/images/orange_moon.webp',
-                                                          s_circle_text: allGoals[
-                                                                      index][
-                                                                  'userPractices']
-                                                              [index1]['name'],
-                                                          asset_2: widget.missed
-                                                              ? allGoals[index]['userPractices']
-                                                                              [index1]
-                                                                          [
-                                                                          'color'] ==
-                                                                      '1'
-                                                                  ? 'assets/images/Missed_3.webp'
-                                                                  : allGoals[index]['userPractices'][index1]['color'] ==
-                                                                          '2'
-                                                                      ? 'assets/images/Missed_1.webp'
-                                                                      : allGoals[index]['userPractices'][index1]['color'] ==
-                                                                              '3'
-                                                                          ? "assets/images/Missed_2.webp"
-                                                                          : allGoals[index]['userPractices'][index1]['color'] ==
-                                                                                  '4'
-                                                                              ? "assets/images/Missed_4.webp"
-                                                                              : allGoals[index]['userPractices'][index1]['color'] ==
-                                                                                      '5'
-                                                                                  ? "assets/images/Missed_4.webp"
-                                                                                  : 'assets/images/Missed_1.webp'
-                                                              : allGoals[index]['userPractices']
-                                                                              [index1]
-                                                                          ['color'] ==
-                                                                      '1'
-                                                                  ? "assets/images/Practice_Completed_1.webp"
-                                                                  : allGoals[index]['userPractices'][index1]['color'] == '2'
-                                                                      ? 'assets/images/Practice_Completed_2.webp'
-                                                                      : allGoals[index]['userPractices'][index1]['color'] == '3'
-                                                                          ? "assets/images/Practice_Completed_3.webp"
-                                                                          : allGoals[index]['userPractices'][index1]['color'] == '4'
-                                                                              ? "assets/images/Practice_Completed_4.webp"
-                                                                              : allGoals[index]['userPractices'][index1]['color'] == '5'
-                                                                                  ? "assets/images/Practice_Completed_4.webp"
-                                                                                  : 'assets/images/Practice_Completed_1.webp',
-                                                          head_text:
-                                                              allGoals[index]
-                                                                  ['name'],
-                                                          body_text: allGoals[
-                                                                      index][
-                                                                  'identityStatement']
-                                                              [0]['text'],
-                                                          body_text_color:
-                                                              0xff5B74A6,
-                                                          head_text_color:
-                                                              0xff5B74A6,
-                                                          body_text_size:
-                                                              AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.6,
-                                                          head_text_size:
-                                                              AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  2.0,
-                                                          enable_icon:
-                                                              widget.missed
-                                                                  ? false
-                                                                  : true,
-                                                          is_right: false,
-                                                          s_circle_text_col:
-                                                              0xffFD6727,
-                                                        )),
-                                                      ),
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            3.0,
-                                                      )
-                                                    ],
-                                                  );
-                                                }))
+                                            Column(
+                                              children: [
+                                                AnimatedScaleButton(
+                                                  onTap: () async {
+                                                    final SharedPreferences
+                                                        prefs = await _prefs;
+                                                    var pracName =
+                                                        prefs.setString(
+                                                            'dash_pracName',
+                                                            allGoals[index]
+                                                                ['name']);
+                                                    var goalName =
+                                                        prefs.setString(
+                                                            'dash_goalName',
+                                                            allGoals[index]
+                                                                    ['userGoal']
+                                                                ['name']);
+                                                    var pracColor = allGoals[
+                                                                    index]
+                                                                ['color'] !=
+                                                            null
+                                                        ? prefs.setString(
+                                                            'dash_pracColor',
+                                                            allGoals[index]
+                                                                ['color'])
+                                                        : prefs.setString(
+                                                            'dash_pracColor',
+                                                            '0');
+                                                    var goalColor = allGoals[
+                                                                        index]
+                                                                    ['userGoal']
+                                                                ['color'] !=
+                                                            null
+                                                        ? prefs.setString(
+                                                            'dash_goalColor',
+                                                            allGoals[index]
+                                                                    ['userGoal']
+                                                                ['color'])
+                                                        : '0';
+                                                    if (widget.missed == true) {
+                                                      print("CON 2");
+                                                      Navigator.push(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page:
+                                                                  const missed_Menu()));
+                                                    } else {
+                                                      print("CON 1");
+                                                      print(
+                                                          "${allGoals[index]['color']}");
+                                                      Navigator.push(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page:
+                                                                  const menu_behaviour()));
+                                                    }
+                                                  },
+                                                  child: Center(
+                                                      child: align_circles(
+                                                    asset_1: allGoals[index]
+                                                                    ['userGoal']
+                                                                ['color'] ==
+                                                            1
+                                                        ? "assets/images/red_gradient.webp"
+                                                        : allGoals[index][
+                                                                        'userGoal']
+                                                                    ['color'] ==
+                                                                2
+                                                            ? 'assets/images/orange_moon.webp'
+                                                            : allGoals[index]
+                                                                            ['userGoal']
+                                                                        [
+                                                                        'color'] ==
+                                                                    3
+                                                                ? "assets/images/lightGrey_gradient.webp"
+                                                                : allGoals[index]['userGoal']
+                                                                            ['color'] ==
+                                                                        4
+                                                                    ? "assets/images/lightBlue_gradient.webp"
+                                                                    : allGoals[index]['userGoal']['color'] == 5
+                                                                        ? "assets/images/medBlue_gradient.webp"
+                                                                        : allGoals[index]['userGoal']['color'] == 6
+                                                                            ? "assets/images/Blue_gradient.webp"
+                                                                            : 'assets/images/orange_moon.webp',
+                                                    s_circle_text:
+                                                        allGoals[index]['name'],
+                                                    asset_2: widget.missed
+                                                        ? allGoals[index]
+                                                                    ['color'] ==
+                                                                1
+                                                            ? 'assets/images/Missed_3.webp'
+                                                            : allGoals[index][
+                                                                        'color'] ==
+                                                                    2
+                                                                ? 'assets/images/Missed_1.webp'
+                                                                : allGoals[index]
+                                                                            [
+                                                                            'color'] ==
+                                                                        3
+                                                                    ? "assets/images/Missed_2.webp"
+                                                                    : allGoals[index]['color'] ==
+                                                                            4
+                                                                        ? "assets/images/Missed_4.webp"
+                                                                        : allGoals[index]['color'] ==
+                                                                                5
+                                                                            ? "assets/images/Missed_4.webp"
+                                                                            : 'assets/images/Missed_2.webp'
+                                                        : allGoals[index]
+                                                                    ['color'] ==
+                                                                1
+                                                            ? "assets/images/Practice_Completed_1.webp"
+                                                            : allGoals[index][
+                                                                        'color'] ==
+                                                                    2
+                                                                ? 'assets/images/Practice_Completed_2.webp'
+                                                                : allGoals[index]
+                                                                            ['color'] ==
+                                                                        3
+                                                                    ? "assets/images/Practice_Completed_3.webp"
+                                                                    : allGoals[index]['color'] == 4
+                                                                        ? "assets/images/Practice_Completed_4.webp"
+                                                                        : allGoals[index]['color'] == 5
+                                                                            ? "assets/images/Practice_Completed_4.webp"
+                                                                            : 'assets/images/Practice_Completed_2.webp',
+                                                    head_text: allGoals[index]
+                                                        ['userGoal']['name'],
+                                                    body_text: allGoals[index]
+                                                                ['userGoal'][
+                                                            'identityStatement']
+                                                        [0]['text'],
+                                                    body_text_color: 0xff5B74A6,
+                                                    head_text_color: 0xff5B74A6,
+                                                    body_text_size:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.6,
+                                                    head_text_size:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.0,
+                                                    enable_icon: widget.missed
+                                                        ? false
+                                                        : true,
+                                                    is_right: false,
+                                                    s_circle_text_col:
+                                                        0xffFD6727,
+                                                  )),
+                                                ),
+                                                SizedBox(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          3.0,
+                                                )
+                                              ],
+                                            )
                                           ],
                                         );
                                       })),
-                                  // GestureDetector(
-                                  //   onTap: () {
-                                  //     if (widget.missed == true) {
-                                  //       Navigator.push(context,
-                                  //           FadePageRoute(page: const missed_Menu()));
-                                  //     } else {
-                                  //       Navigator.push(
-                                  //           context,
-                                  //           FadePageRoute(
-                                  //               page: const menu_behaviour()));
-                                  //     }
-                                  //   },
-                                  //   child: Center(
-                                  //       child: align_circles(
-                                  //     asset_1: 'assets/images/orange_moon.webp',
-                                  //     s_circle_text: 'Count\ntemper\nepisodes',
-                                  //     asset_2: widget.missed
-                                  //         ? 'assets/images/Med Habit Practice (1).webp'
-                                  //         : 'assets/images/Ellipse pearl_1.webp',
-                                  //     head_text: 'Control my anger',
-                                  //     body_text:
-                                  //         '“I am someone who is in\n control of my anger”',
-                                  //     body_text_color: 0xff5B74A6,
-                                  //     head_text_color: 0xff5B74A6,
-                                  //     body_text_size:
-                                  //         AppDimensions.height10(context) * 1.6,
-                                  //     head_text_size:
-                                  //         AppDimensions.height10(context) * 2.0,
-                                  //     enable_icon: widget.missed ? false : true,
-                                  //     is_right: false,
-                                  //     s_circle_text_col: 0xffFD6727,
-                                  //   )),
-                                  // ),
-                                  // Container(
-                                  //   width: AppDimensions.height10(context) * 35.6,
-                                  //   height: AppDimensions.height10(context) * 4.2,
-                                  //   margin: EdgeInsets.only(
-                                  //       left: AppDimensions.height10(context) * 2.4,
-                                  //       right: AppDimensions.height10(context) * 3.4,
-                                  //       top: AppDimensions.height10(context) * 1.1),
-                                  //   child: Column(children: [
-                                  //     Container(
-                                  //       alignment: Alignment.centerLeft,
-                                  //       child: Text(
-                                  //         '11:00',
-                                  //         style: TextStyle(
-                                  //           fontSize:
-                                  //               AppDimensions.height10(context) * 1.8,
-                                  //           fontWeight: FontWeight.w600,
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //     Divider(
-                                  //       height: AppDimensions.height10(context) * 0.2,
-                                  //       color: Colors.white,
-                                  //     ),
-                                  //     Container(
-                                  //       alignment: Alignment.centerLeft,
-                                  //       child: Text(
-                                  //         'AM',
-                                  //         style: TextStyle(
-                                  //           fontSize:
-                                  //               AppDimensions.height10(context) * 1.0,
-                                  //           fontWeight: FontWeight.w500,
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       ),
-                                  //     )
-                                  //   ]),
-                                  // ),
-                                  // Center(
-                                  //     child: align_circles(
-                                  //   asset_1: 'assets/images/orange_moon.webp',
-                                  //   s_circle_text: 'Count\ndown',
-                                  //   asset_2: 'assets/images/Ellipse purple.webp',
-                                  //   head_text: 'Control my anger',
-                                  //   body_text:
-                                  //       '“I am someone who is in\n control of my anger”',
-                                  //   body_text_color: 0xff5B74A6,
-                                  //   head_text_color: 0xff5B74A6,
-                                  //   body_text_size:
-                                  //       AppDimensions.height10(context) * 1.6,
-                                  //   head_text_size:
-                                  //       AppDimensions.height10(context) * 2.0,
-                                  //   enable_icon: false,
-                                  //   is_right: true,
-                                  //   s_circle_text_col: 0xffffffff,
-                                  // )),
-                                  // Center(
-                                  //     child: align_circles(
-                                  //   asset_1: 'assets/images/blue_sun.webp',
-                                  //   s_circle_text: 'Meditation',
-                                  //   asset_2: 'assets/images/Ellipse 158.webp',
-                                  //   head_text: 'Control my anger',
-                                  //   body_text:
-                                  //       '“I am someone who is in\n control of my anger”',
-                                  //   body_text_color: 0xff5B74A6,
-                                  //   head_text_color: 0xff5B74A6,
-                                  //   body_text_size:
-                                  //       AppDimensions.height10(context) * 1.6,
-                                  //   head_text_size:
-                                  //       AppDimensions.height10(context) * 2.0,
-                                  //   enable_icon: false,
-                                  //   is_right: false,
-                                  //   s_circle_text_col: 0xffFFFFFF,
-                                  // )),
-                                  // Container(
-                                  //   width: AppDimensions.height10(context) * 35.6,
-                                  //   height: AppDimensions.height10(context) * 4.2,
-                                  //   margin: EdgeInsets.only(
-                                  //       left: AppDimensions.height10(context) * 2.4,
-                                  //       right: AppDimensions.height10(context) * 3.4,
-                                  //       top: AppDimensions.height10(context) * 1.1),
-                                  //   child: Column(children: [
-                                  //     Container(
-                                  //       alignment: Alignment.centerLeft,
-                                  //       child: Text(
-                                  //         '1:00',
-                                  //         style: TextStyle(
-                                  //           fontSize:
-                                  //               AppDimensions.height10(context) * 1.8,
-                                  //           fontWeight: FontWeight.w600,
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //     Divider(
-                                  //       height: AppDimensions.height10(context) * 0.2,
-                                  //       color: Colors.white,
-                                  //     ),
-                                  //     Container(
-                                  //       alignment: Alignment.centerLeft,
-                                  //       child: Text(
-                                  //         'PM',
-                                  //         style: TextStyle(
-                                  //           fontSize:
-                                  //               AppDimensions.height10(context) * 1.0,
-                                  //           fontWeight: FontWeight.w500,
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       ),
-                                  //     )
-                                  //   ]),
-                                  // ),
-                                  // Center(
-                                  //     child: align_circles(
-                                  //   asset_1: 'assets/images/orange_moon.webp',
-                                  //   s_circle_text: 'Meditation',
-                                  //   asset_2: 'assets/images/Ellipse 158.webp',
-                                  //   head_text: 'Control my anger',
-                                  //   body_text:
-                                  //       '“I am someone who is in\n control of my anger”',
-                                  //   body_text_color: 0xff5B74A6,
-                                  //   head_text_color: 0xff5B74A6,
-                                  //   body_text_size:
-                                  //       AppDimensions.height10(context) * 1.6,
-                                  //   head_text_size:
-                                  //       AppDimensions.height10(context) * 2.0,
-                                  //   enable_icon: false,
-                                  //   is_right: false,
-                                  //   s_circle_text_col: 0xffFFFFFF,
-                                  // )),
-                                  // Container(
-                                  //   width: AppDimensions.height10(context) * 35.6,
-                                  //   height: AppDimensions.height10(context) * 4.2,
-                                  //   margin: const EdgeInsets.only(
-                                  //       left: 24, right: 34, top: 11),
-                                  //   child: Column(children: [
-                                  //     Container(
-                                  //       alignment: Alignment.centerLeft,
-                                  //       child: Text(
-                                  //         '6:00',
-                                  //         style: TextStyle(
-                                  //           fontSize:
-                                  //               AppDimensions.height10(context) * 1.8,
-                                  //           fontWeight: FontWeight.w600,
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //     Divider(
-                                  //       height: AppDimensions.height10(context) * 0.2,
-                                  //       color: Colors.white,
-                                  //     ),
-                                  //     Container(
-                                  //       alignment: Alignment.centerLeft,
-                                  //       child: Text(
-                                  //         'PM',
-                                  //         style: TextStyle(
-                                  //           fontSize:
-                                  //               AppDimensions.height10(context) * 1.0,
-                                  //           fontWeight: FontWeight.w500,
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       ),
-                                  //     )
-                                  //   ]),
-                                  // ),
-                                  // Center(
-                                  //     child: align_circles(
-                                  //   asset_1: 'assets/images/blue_sun.webp',
-                                  //   s_circle_text:
-                                  //       'Long Practice\nname needs to\ntruncate...',
-                                  //   asset_2: 'assets/images/Ellipse blue.webp',
-                                  //   head_text:
-                                  //       'Long Goal name needs to\ntruncate after 2 lines...',
-                                  //   body_text:
-                                  //       'Long statement needs to\ntruncate after 2 lines...',
-                                  //   body_text_color: 0xff5B74A6,
-                                  //   head_text_color: 0xff5B74A6,
-                                  //   body_text_size:
-                                  //       AppDimensions.height10(context) * 1.6,
-                                  //   head_text_size:
-                                  //       AppDimensions.height10(context) * 1.6,
-                                  //   enable_icon: false,
-                                  //   is_right: true,
-                                  //   s_circle_text_col: 0xffFFFFFF,
-                                  // )),
-                                  // Center(
-                                  //     child: align_circles(
-                                  //   asset_1: 'assets/images/blue_sun.webp',
-                                  //   s_circle_text: 'Talk to\nstrangers',
-                                  //   asset_2: 'assets/images/Ellipse light-blue.webp',
-                                  //   head_text: 'Be more confident:',
-                                  //   body_text:
-                                  //       'I am someone who is\nconfident in my abilities.',
-                                  //   body_text_color: 0xff5B74A6,
-                                  //   head_text_color: 0xff5B74A6,
-                                  //   body_text_size:
-                                  //       AppDimensions.height10(context) * 1.6,
-                                  //   head_text_size:
-                                  //       AppDimensions.height10(context) * 2.0,
-                                  //   enable_icon: false,
-                                  //   is_right: true,
-                                  //   s_circle_text_col: 0xffFFFFFF,
-                                  // )),
-                                  // Container(
-                                  //   margin: EdgeInsets.only(
-                                  //       top: AppDimensions.height10(context) * 10.8,
-                                  //       bottom: AppDimensions.height10(context) * 14.7),
-                                  //   height: AppDimensions.height10(context) * 14.1,
-                                  //   width: AppDimensions.height10(context) * 25.1,
-                                  //   child: Column(
-                                  //     mainAxisAlignment: MainAxisAlignment.center,
-                                  //     crossAxisAlignment: CrossAxisAlignment.center,
-                                  //     children: [
-                                  //       Text(
-                                  //         'No more scheduled sessions\nScroll to the next day',
-                                  //         style: TextStyle(
-                                  //             fontSize:
-                                  //                 AppDimensions.height10(context) * 1.8,
-                                  //             fontWeight: FontWeight.w700,
-                                  //             color: Colors.white),
-                                  //         textAlign: TextAlign.center,
-                                  //       ),
-                                  //       Container(
-                                  //         margin: EdgeInsets.only(
-                                  //             top: AppDimensions.height10(context) *
-                                  //                 1.7),
-                                  //         width: AppDimensions.height10(context) * 4.3,
-                                  //         height: AppDimensions.height10(context) * 2.1,
-                                  //         child: const ImageIcon(
-                                  //           AssetImage('assets/images/Arrow.webp'),
-                                  //           color: Colors.white,
-                                  //         ),
-                                  //       )
-                                  //     ],
-                                  //   ),
-                                  // )
+                                  Container(
+                                    height:
+                                        AppDimensions.height10(context) * 13,
+                                  )
                                 ],
                               ),
                             ),
@@ -1693,5 +1429,19 @@ class _no_past_sessionState extends State<no_past_session> {
                               : Container(),
                         ]))
                 : DashBoardBehaviour_shimmer()));
+  }
+}
+
+class noActivityOnDay extends StatefulWidget {
+  const noActivityOnDay({super.key});
+
+  @override
+  State<noActivityOnDay> createState() => _noActivityOnDayState();
+}
+
+class _noActivityOnDayState extends State<noActivityOnDay> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

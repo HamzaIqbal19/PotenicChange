@@ -458,6 +458,33 @@ class AdminGoal {
     }
   }
 
+  static Future getUserGoalById(Id) async {
+    // var goalName;
+
+    final SharedPreferences prefs = await _prefs;
+
+    var Accestoken = prefs.getString("usertoken");
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/userGoal/$Id'),
+      headers: headers,
+    );
+    // print('===========$userGoalId');
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return (jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
   Future deleteUserGoal() async {
     final SharedPreferences prefs = await _prefs;
     var goal_num = prefs.getInt('goal_num');

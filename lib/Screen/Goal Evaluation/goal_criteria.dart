@@ -45,6 +45,8 @@ class _your_whyState extends State<your_why> {
   bool Loader = true;
   var goalDetails;
   List<int>? selectedItemIndexesOuter;
+  final Map<String, dynamic> reasons = {};
+  final Map<String, dynamic> level = {};
 
   Future<Timer> loadData() async {
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
@@ -53,6 +55,12 @@ class _your_whyState extends State<your_why> {
   void onDoneLoading() {
     setState(() {
       Loader = false;
+    });
+  }
+
+  void _fetchGoalEvauation() {
+    goalEvaluationApi.getGoalEvaluation().then((response) {
+      print(response);
     });
   }
 
@@ -66,6 +74,7 @@ class _your_whyState extends State<your_why> {
           selectedItemIndexesOuter =
               List.filled(goalDetails[widget.destination].length, -1);
         });
+        _fetchGoalEvauation();
         loadData();
         print(response);
       } else {
@@ -359,7 +368,9 @@ class _your_whyState extends State<your_why> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        goalDetails['goalLevel'] == 0
+                                        goalDetails['goalEvaluations'][0]
+                                                    ["YourWay"] ==
+                                                0
                                             ? '-'
                                             : goalDetails['goalLevel']
                                                 .toString(),
@@ -547,7 +558,7 @@ class _your_whyState extends State<your_why> {
                                       itemCount: options.length,
                                       itemBuilder:
                                           (BuildContext context, int index1) {
-                                        return GestureDetector(
+                                        return AnimatedScaleButton(
                                           onTap: () {
                                             setState(() {
                                               selectedItemIndexesOuter![index] =
@@ -879,7 +890,8 @@ class _your_whyState extends State<your_why> {
                                                     context) *
                                                 1.6,
                                             fontWeight: FontWeight.w600,
-                                            color: bt_visible
+                                            color: selectedItemIndexesOuter! !=
+                                                    null
                                                 ? const Color(0xFFFA9934)
                                                 : const Color(0xFFFA9934)
                                                     .withOpacity(0.5)),
@@ -887,7 +899,7 @@ class _your_whyState extends State<your_why> {
                                     ),
                                   ),
                                 ),
-                                GestureDetector(
+                                AnimatedScaleButton(
                                   onTap: () => showAnimatedDialog(
                                     context: context,
                                     builder: (BuildContext context) {
@@ -921,7 +933,8 @@ class _your_whyState extends State<your_why> {
                                                     context) *
                                                 1.6,
                                             fontWeight: FontWeight.w600,
-                                            color: bt_visible
+                                            color: selectedItemIndexesOuter! !=
+                                                    null
                                                 ? const Color(0xFFFA9934)
                                                 : const Color(0xFFFA9934)
                                                     .withOpacity(0.5)),
@@ -1085,25 +1098,63 @@ class _your_whyState extends State<your_why> {
                                                                     goalDetails[
                                                                             widget.destination]
                                                                         .length);
-                                                                goalEvaluationApi().addGoalEvaluation(
-                                                                    sum +
+
+                                                                level[
+                                                                    'level'] = ((sum +
+                                                                            goalDetails[widget.destination]
+                                                                                .length) /
                                                                         goalDetails[widget.destination]
-                                                                            .length,
-                                                                    0,
-                                                                    0,
-                                                                    0,
-                                                                    goalDetails[
-                                                                        'id']);
-                                                                // Navigator.push(
-                                                                //     context,
-                                                                //     FadePageRoute(
-                                                                //         page:
-                                                                //             your_why(
-                                                                //       saved: true,
-                                                                //       destination:
-                                                                //           widget
-                                                                //               .destination,
-                                                                //     )));
+                                                                            .length)
+                                                                    .round();
+
+                                                                for (int i = 0;
+                                                                    i <
+                                                                        selectedItemIndexesOuter!
+                                                                            .length;
+                                                                    i++) {
+                                                                  reasons['reason ${i + 1}'] =
+                                                                      selectedItemIndexesOuter![
+                                                                          i];
+                                                                }
+                                                                print(level);
+                                                                goalEvaluationApi()
+                                                                    .updateEvaluation(
+                                                                  widget.destination ==
+                                                                          'reason'
+                                                                      ? "YourWay"
+                                                                      : widget.destination ==
+                                                                              'identityStatement'
+                                                                          ? "newIdentity"
+                                                                          : "visualisingYourSelf",
+                                                                  {
+                                                                    ...level,
+                                                                    ...reasons
+                                                                  },
+                                                                ).then((response) {
+                                                                  if (response ==
+                                                                      true) {
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        FadePageRoute(
+                                                                            page: your_why(
+                                                                          saved:
+                                                                              true,
+                                                                          destination:
+                                                                              widget.destination,
+                                                                        )));
+                                                                  }
+                                                                });
+                                                                // goalEvaluationApi()
+                                                                //     .addGoalEvaluation(
+                                                                //         "YourWay",
+                                                                //         {
+                                                                //           'level':
+                                                                //               sum + goalDetails[widget.destination].length,
+                                                                //           "reason 1":
+                                                                //               selectedItemIndexesOuter![0] + 1,
+                                                                //         },
+                                                                //         goalDetails[
+                                                                //             'id']);
                                                               },
                                                               child: Text(
                                                                 'Yes',
@@ -1196,25 +1247,26 @@ class _your_whyState extends State<your_why> {
                                         left: AppDimensions.height10(context) *
                                             1.0),
                                     decoration: BoxDecoration(
-                                      gradient: bt_visible
-                                          ? const LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xffFCC10D),
-                                                Color(0xffFDA210),
-                                              ],
-                                            )
-                                          : LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                const Color(0xffFCC10D)
-                                                    .withOpacity(0.5),
-                                                const Color(0xffFDA210)
-                                                    .withOpacity(0.5),
-                                              ],
-                                            ),
+                                      gradient:
+                                          selectedItemIndexesOuter! != null
+                                              ? const LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Color(0xffFCC10D),
+                                                    Color(0xffFDA210),
+                                                  ],
+                                                )
+                                              : LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    const Color(0xffFCC10D)
+                                                        .withOpacity(0.5),
+                                                    const Color(0xffFDA210)
+                                                        .withOpacity(0.5),
+                                                  ],
+                                                ),
                                       borderRadius: BorderRadius.circular(
                                           AppDimensions.height10(context) *
                                               5.0),
@@ -1228,7 +1280,8 @@ class _your_whyState extends State<your_why> {
                                                     context) *
                                                 1.6,
                                             fontWeight: FontWeight.w600,
-                                            color: bt_visible
+                                            color: selectedItemIndexesOuter! !=
+                                                    null
                                                 ? Colors.white
                                                 : Colors.white
                                                     .withOpacity(0.5)),

@@ -10,7 +10,7 @@ var client = SentryHttpClient();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class goalEvaluationApi {
-  Future addGoalEvaluation(why, identity, vision, impact, userGoalId) async {
+  Future addGoalEvaluation(destination, result, userGoalId) async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
     var UserId = prefs.getInt('userid');
@@ -19,14 +19,8 @@ class goalEvaluationApi {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
     };
-    var Body = json.encode({
-      "YourWay": why,
-      "newIdentity": identity,
-      "impactOnYourSelf": impact,
-      "visualisingYourSelf": vision,
-      "userGoalId": userGoalId,
-      "userId": UserId
-    });
+    var Body = json.encode(
+        {destination: result, "userGoalId": userGoalId, "userId": UserId});
     print(Body);
     var request = await client.post(
         Uri.parse('${URL.BASE_URL}api/goalEvaluation/add-goalEvaluation'),
@@ -47,11 +41,38 @@ class goalEvaluationApi {
     }
   }
 
+  static Future getGoalEvaluation() async {
+    // var goalName;
+
+    final SharedPreferences prefs = await _prefs;
+    var goal_eval = prefs.getInt('goal_eval_id');
+    var Accestoken = prefs.getString("usertoken");
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/goalEvaluation/$goal_eval'),
+      headers: headers,
+    );
+    // print('===========$userGoalId');
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return jsonData;
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
   Future updateEvaluation(destination, update) async {
     final SharedPreferences prefs = await _prefs;
     //var goal_num = prefs.getInt('goal_num');
     var Accestoken = prefs.getString("usertoken");
-    var hurldeId = prefs.getInt('userHurdleId');
+    var goal_eval = prefs.getInt('goal_eval_id');
 
     //int UserGoalId = 12;
     print("request: Update");
@@ -59,12 +80,12 @@ class goalEvaluationApi {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'
     };
-    var body = jsonEncode({"$destination": "$update"});
+    var body = jsonEncode({"$destination": update});
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
 
     var request = await client.put(
-        Uri.parse('${URL.BASE_URL}api/userHurdle/$hurldeId'),
+        Uri.parse('${URL.BASE_URL}api/goalEvaluation/$goal_eval'),
         headers: headers,
         body: body);
     print("request: Update");
@@ -80,6 +101,103 @@ class goalEvaluationApi {
       print("Update failed");
       // client.close();
       return false;
+    }
+  }
+}
+
+class PracticeEvaluation {
+  Future addPracticeEvaluation(q1, q2, q3, q4, pracId) async {
+    final SharedPreferences prefs = await _prefs;
+    var accessToken = prefs.getString("usertoken");
+    var UserId = prefs.getInt('userid');
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken'
+    };
+    var Body = json.encode({
+      "question1": q1,
+      "question2": q2,
+      "question3": q3,
+      "question4": q4,
+      "userPracticeId": pracId,
+      "userId": UserId
+    });
+    print(Body);
+    var request = await client.post(
+        Uri.parse(
+            '${URL.BASE_URL}api/practiceEvaluation/add-practiceEvaluation'),
+        headers: headers,
+        body: Body);
+
+    var responses = jsonDecode(request.body);
+    print(responses);
+
+    if (request.statusCode == 200) {
+      print("Practice evaluationId =================");
+      print(responses["result"]["id"]);
+      var prac_eval = prefs.setInt('prac_eval_id', responses["result"]["id"]);
+      return responses;
+    } else {
+      //client.close();
+
+      // print("response:${}");
+      print("request==========>$request");
+      return responses;
+    }
+  }
+
+  static Future getPracticeEvaluation() async {
+    // var goalName;
+
+    final SharedPreferences prefs = await _prefs;
+    var prac_eval = prefs.getInt('prac_eval_id');
+    var Accestoken = prefs.getString("usertoken");
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/practiceEvaluation/$prac_eval'),
+      headers: headers,
+    );
+    // print('===========$userGoalId');
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return jsonData;
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
+
+  static Future getUserPracticeReportId() async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var prac_num = prefs.getInt("prac_score_id");
+
+    print('$prac_num');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+
+    var response = await http.get(
+      Uri.parse(
+          '${URL.BASE_URL}api/userPractice/user_practice_report_by_id/$prac_num'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return (jsonData);
+    } else {
+      throw Exception('Failed to fetch goal names');
     }
   }
 }

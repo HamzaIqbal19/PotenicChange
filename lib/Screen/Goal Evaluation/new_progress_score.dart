@@ -5,12 +5,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria_impact.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class new_progress_score extends StatefulWidget {
   const new_progress_score({super.key});
@@ -28,7 +33,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
     '01 Oct 22 to 01 Nov 22 (3/5)  ',
     '01 Sep 22 to 01 Oct 22 (2/5)  ',
   ];
-  String activity_duration = 'From 01 Jan 23 to 01 Feb 23 ';
+  String activity_duration = '01 Jan 23 to 01 Feb 23 ';
   String _selected_activity = '';
   int index_color = 0;
   int goal_level = 2;
@@ -49,11 +54,18 @@ class _new_progress_scoreState extends State<new_progress_score> {
   }
 
   void _fetchGoalDetails() {
-    AdminGoal.getUserGoal().then((response) {
+    AdminGoal.getUserGoal().then((response) async {
+      final SharedPreferences prefs = await _prefs;
+
       if (response.length != 0) {
         setState(() {
           goalDetails = response;
         });
+        print("======================");
+
+        print(response["goalEvaluations"][0]["id"]);
+        var evaluationId =
+            prefs.setInt('goal_eval_id', response["goalEvaluations"][0]["id"]);
         loadData();
         print(response);
       } else {
@@ -704,7 +716,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
                               Navigator.push(
                                   context,
@@ -722,15 +734,34 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               text_span_2: 'why',
                               text_span_3: '',
                               margin_top: 0,
-                              border: color_fill_1 ? true : false,
-                              colors: color_fill_1 ? 0xFF : 0xFFFBFBFB,
-                              text_color:
-                                  color_fill_1 ? 0xFFFBFBFB : 0xFF646464,
-                              goal_: goal_level,
+                              border: goalDetails['goalEvaluations'][0]
+                                          ['YourWay']['level'] ==
+                                      null
+                                  ? true
+                                  : false,
+                              colors: goalDetails['goalEvaluations'][0]
+                                          ['YourWay']['level'] ==
+                                      null
+                                  ? 0xFF
+                                  : 0xFFFBFBFB,
+                              text_color: goalDetails['goalEvaluations'][0]
+                                          ['YourWay']['level'] ==
+                                      null
+                                  ? 0xFFFBFBFB
+                                  : 0xFF646464,
+                              goal_: goalDetails['goalEvaluations'][0]
+                                          ['YourWay']['level'] ==
+                                      null
+                                  ? "0"
+                                  : goalDetails['goalEvaluations'][0]['YourWay']
+                                          ['level']
+                                      .toString(),
                             ),
                           ),
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
+                              print(goalDetails['goalEvaluations'][0]
+                                  ['newIdentity']);
                               Navigator.push(
                                   context,
                                   FadePageRoute(
@@ -747,14 +778,32 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               text_span_2: 'new identity',
                               text_span_3: '',
                               margin_top: 1.0,
-                              border: color_fill_2 ? true : false,
-                              colors: color_fill_2 ? 0xFF : 0xFFFBFBFB,
-                              text_color:
-                                  color_fill_2 ? 0xFFFBFBFB : 0xFF646464,
-                              goal_: goal_level,
+                              border: goalDetails['goalEvaluations'][0]
+                                              ['newIdentity']['level']
+                                          .toString() ==
+                                      "null"
+                                  ? true
+                                  : false,
+                              colors: goalDetails['goalEvaluations'][0]
+                                          ['newIdentity'] ==
+                                      null
+                                  ? 0xFF
+                                  : 0xFFFBFBFB,
+                              text_color: goalDetails['goalEvaluations'][0]
+                                          ['newIdentity']['level'] ==
+                                      null
+                                  ? 0xFFFBFBFB
+                                  : 0xFF646464,
+                              goal_: goalDetails['goalEvaluations'][0]
+                                          ['newIdentity']['level'] ==
+                                      null
+                                  ? "0"
+                                  : goalDetails['goalEvaluations'][0]
+                                          ['newIdentity']['level']
+                                      .toString(),
                             ),
                           ),
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
                               Navigator.push(
                                   context,
@@ -771,14 +820,27 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                     'I’m making small steps\ntowards my ',
                                 text_span_2: 'vision',
                                 text_span_3: '',
-                                goal_: goal_level,
-                                border: color_fill_1 ? true : false,
-                                colors: color_fill_1 ? 0xFF : 0xFFFBFBFB,
-                                text_color:
-                                    color_fill_1 ? 0xFFFBFBFB : 0xFF646464,
+                                goal_: goalDetails['goalEvaluations'][0]
+                                            ['visualisingYourSelf']['level'] ==
+                                        null
+                                    ? "0"
+                                    : goalDetails['goalEvaluations'][0]
+                                            ['visualisingYourSelf']['level']
+                                        .toString(),
+                                border: goalDetails['goalEvaluations'][0]
+                                            ['visualisingYourSelf']['level'] ==
+                                        null
+                                    ? true
+                                    : false,
+                                colors: goalDetails['goalEvaluations'][0]
+                                            ['visualisingYourSelf']['level'] ==
+                                        null
+                                    ? 0xFF
+                                    : 0xFFFBFBFB,
+                                text_color: goalDetails['goalEvaluations'][0]['visualisingYourSelf']['level'] == null ? 0xFFFBFBFB : 0xFF646464,
                                 margin_top: 1.0),
                           ),
-                          GestureDetector(
+                          AnimatedScaleButton(
                             onTap: () {
                               // if (index_color == 3) {
                               Navigator.push(
@@ -795,11 +857,25 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                 text_span_1: 'It has ',
                                 text_span_2: 'little impact ',
                                 text_span_3: 'on\nmy life',
-                                border: color_fill_2 ? true : false,
-                                colors: color_fill_2 ? 0xFF : 0xFFFBFBFB,
-                                text_color:
-                                    color_fill_2 ? 0xFFFBFBFB : 0xFF646464,
-                                goal_: goal_level,
+                                border: goalDetails['goalEvaluations'][0]
+                                            ['impactOnYourSelf']['level'] ==
+                                        null
+                                    ? true
+                                    : false,
+                                colors: goalDetails['goalEvaluations'][0]
+                                            ['impactOnYourSelf']['level'] ==
+                                        null
+                                    ? 0xFF
+                                    : 0xFFFBFBFB,
+                                text_color: goalDetails['goalEvaluations'][0]
+                                            ['impactOnYourSelf']['level'] ==
+                                        null
+                                    ? 0xFFFBFBFB
+                                    : 0xFF646464,
+                                goal_: goalDetails['goalEvaluations'][0]['impactOnYourSelf']['level'] == null
+                                    ? "0"
+                                    : goalDetails['goalEvaluations'][0]['impactOnYourSelf']['level']
+                                        .toString(),
                                 margin_top: 1.0),
                           ),
                         ],
@@ -896,7 +972,7 @@ class goal_criteria extends StatelessWidget {
   final int colors;
   final bool border;
   final int text_color;
-  final int goal_;
+  final String goal_;
 
   const goal_criteria(
       {super.key,
@@ -1015,7 +1091,7 @@ class goal_criteria extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        goal_ == 0 ? '-' : '$goal_',
+                        goal_ == "0" || goal_ == "null" ? '-' : goal_,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 2.4,

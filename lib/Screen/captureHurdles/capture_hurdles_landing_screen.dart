@@ -143,7 +143,10 @@ class _landing_hurdlesState extends State<landing_hurdles> {
         actions: [
           Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context, FadePageRoute(page: hurdles_splash()));
+                },
                 icon: Image.asset(
                   'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
@@ -676,15 +679,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
             fit: BoxFit.cover,
           )),
           child: Loading == false
-              ? Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/capture_hurdles_landing_goals.webp'),
-                    fit: BoxFit.cover,
-                  )),
+              ? SingleChildScrollView(
                   child: Column(
                     children: [
                       GestureDetector(
@@ -702,210 +697,249 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                         },
                         child: Container(
                             width: AppDimensions.height10(context) * 34.3,
-                            height: AppDimensions.height10(context) * 8.2,
+                            height: AppDimensions.height10(context) * 34.2,
+                            decoration: const BoxDecoration(
+                                color: Colors.transparent,
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/Blackhole.webp'),
+                                  fit: BoxFit.cover,
+                                )),
                             margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 7.5,
-                            ),
+                                top: AppDimensions.height10(context) * 7.5,
+                                left: AppDimensions.height10(context) * 2),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                GradientText(
-                                  'My faced hurdles ',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 3.0,
-                                    fontWeight: FontWeight.w700,
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      right: AppDimensions.height10(context) *
+                                          2.0),
+                                  child: GradientText(
+                                    'My faced hurdles ',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.height10(context) * 3.0,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    colors: const [
+                                      Color(0xffFA9934),
+                                      Color(0xffEDD15E)
+                                    ],
                                   ),
-                                  colors: const [
-                                    Color(0xffFA9934),
-                                    Color(0xffEDD15E)
-                                  ],
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    GradientText(
-                                      '& obstacles ',
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      right: AppDimensions.height10(context) *
+                                          2.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      GradientText(
+                                        '& obstacles ',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  3.0,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                        colors: const [
+                                          Color(0xffFA9934),
+                                          Color(0xffEDD15E)
+                                        ],
+                                      ),
+                                      Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  3.0,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  3.0,
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: AssetImage(deleted
+                                                      ? 'assets/images/ic_info_outline_orange.webp'
+                                                      : 'assets/images/ic_info_outline.webp')))),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: AppDimensions.height10(context) * 9.8,
+                                  height: AppDimensions.height10(context) * 2.2,
+                                  margin: EdgeInsets.only(
+                                      right: AppDimensions.height10(context) *
+                                          2.0),
+                                  child: Text('New hurdle',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                3.0,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                      colors: const [
-                                        Color(0xffFA9934),
-                                        Color(0xffEDD15E)
-                                      ],
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                          fontFamily: 'laila')),
+                                ),
+                                AnimatedScaleButton(
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        FadePageRoute(page: hurdles_splash()));
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                        top: AppDimensions.height10(context) *
+                                            4.0,
+                                        right: AppDimensions.height10(context) *
+                                            2),
+                                    child: Icon(
+                                      Icons.add,
+                                      size:
+                                          AppDimensions.height10(context) * 5.6,
+                                      color: const Color(0xFFFFFFFF),
                                     ),
-                                    Container(
-                                        width: AppDimensions.height10(context) *
-                                            3.0,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                3.0,
-                                        decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(deleted
-                                                    ? 'assets/images/ic_info_outline_orange.webp'
-                                                    : 'assets/images/ic_info_outline.webp')))),
-                                  ],
-                                )
+                                  ),
+                                ),
                               ],
                             )),
                       ),
-                      Container(
-                        width: AppDimensions.height10(context) * 9.8,
-                        height: AppDimensions.height10(context) * 2.2,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 1.6,
-                            left: AppDimensions.height10(context) * 0.5),
-                        child: Text('New hurdle',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                                fontFamily: 'laila')),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 3.0,
-                              left: AppDimensions.height10(context) * 0.4),
-                          child: Icon(
-                            Icons.add,
-                            size: AppDimensions.height10(context) * 5.6,
-                            color: const Color(0xFFFFFFFF),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: AppDimensions.height10(context) * 45,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 14),
-                        child: SingleChildScrollView(
-                          child: GridView.builder(
-                              shrinkWrap: true,
-                              padding: EdgeInsets.only(
-                                top: 0,
-                                bottom: AppDimensions.height10(context) * 5,
-                              ),
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio:
-                                    3.5 / 3, // Two items in each row
+                      // Container(
+                      //   width: AppDimensions.height10(context) * 9.8,
+                      //   height: AppDimensions.height10(context) * 2.2,
+                      //   margin: EdgeInsets.only(
+                      //       // top: AppDimensions.height10(context) * 1.6,
+                      //       left: AppDimensions.height10(context) * 0.5),
+                      //   child: Text('New hurdle',
+                      //       textAlign: TextAlign.center,
+                      //       style: TextStyle(
+                      //           fontSize:
+                      //               AppDimensions.height10(context) * 1.8,
+                      //           fontWeight: FontWeight.w500,
+                      //           color: Colors.white,
+                      //           fontFamily: 'laila')),
+                      // ),
 
-                                mainAxisSpacing: 1.0,
-                                crossAxisSpacing: 0.1,
-                              ),
-                              itemCount: hurdlesList.length,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        AnimatedScaleButton(
-                                          onTap: () async {
-                                            final SharedPreferences prefs =
-                                                await _prefs;
+                      Container(
+                        //height: AppDimensions.height10(context) * 45,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 4,
+                            bottom: AppDimensions.height10(context) * 10),
+                        child: GridView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.only(
+                              top: 0,
+                              bottom: AppDimensions.height10(context) * 5,
+                            ),
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              childAspectRatio:
+                                  3.5 / 3, // Two items in each row
 
-                                            var hurdleId = prefs.setInt(
-                                                'userHurdleId',
-                                                hurdlesList[index]['id']);
-                                            Navigator.push(
-                                              context,
-                                              FadePageRoute(
-                                                  page: const hurdle_menu()),
-                                            );
-                                          },
-                                          child: Container(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                17.6,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                18.207,
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal:
-                                                    AppDimensions.height10(
-                                                        context)),
-                                            decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/black_hole.webp'))),
-                                            child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      7.1,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.9,
-                                                  child: Text(
-                                                    capitalizeFirstLetter(
-                                                        hurdlesList[index]
-                                                            ['hurdleName']),
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.6,
-                                                        fontWeight:
-                                                            FontWeight.w700),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      top: AppDimensions
+                              mainAxisSpacing: 1.0,
+                              crossAxisSpacing: 0.1,
+                            ),
+                            itemCount: hurdlesList.length,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      AnimatedScaleButton(
+                                        onTap: () async {
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+
+                                          var hurdleId = prefs.setInt(
+                                              'userHurdleId',
+                                              hurdlesList[index]['id']);
+                                          Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const hurdle_menu()),
+                                          );
+                                        },
+                                        child: Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  17.6,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  18.207,
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal:
+                                                  AppDimensions.height10(
+                                                      context)),
+                                          decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              image: DecorationImage(
+                                                  image: AssetImage(
+                                                      'assets/images/black_hole.webp'))),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              SizedBox(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    7.1,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    1.9,
+                                                child: Text(
+                                                  capitalizeFirstLetter(
+                                                      hurdlesList[index]
+                                                          ['hurdleName']),
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          0.6),
-                                                  child: Text(
-                                                    capitalizeFirstLetter(
-                                                        hurdlesList[index][
-                                                            'triggerStatment']),
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 4,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.4,
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
+                                                          1.6,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                    top: AppDimensions.height10(
+                                                            context) *
+                                                        0.6),
+                                                child: Text(
+                                                  capitalizeFirstLetter(
+                                                      hurdlesList[index]
+                                                          ['triggerStatment']),
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 4,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.4,
+                                                      fontWeight:
+                                                          FontWeight.w400),
+                                                ),
+                                              )
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ],
-                                );
-                              }),
-                        ),
-                      )
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              );
+                            }),
+                      ),
                     ],
-                  ))
+                  ),
+                )
               : const Center(
                   child: SpinKitFadingCircle(
                     color: Color(0xFFB1B8FF),
@@ -978,10 +1012,24 @@ class _hurdle_menuState extends State<hurdle_menu> {
           ),
         ),
         centerTitle: true,
+        leading: Center(
+          child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Image.asset(
+                'assets/images/Back.webp',
+                width: AppDimensions.height10(context) * 3.0,
+                height: AppDimensions.height10(context) * 3.0,
+                fit: BoxFit.cover,
+              )),
+        ),
         actions: [
           Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 icon: Image.asset(
                   'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
@@ -1010,8 +1058,8 @@ class _hurdle_menuState extends State<hurdle_menu> {
                   Container(
                     width: AppDimensions.height10(context) * 17.62,
                     height: AppDimensions.height10(context) * 17.33,
-                    padding: EdgeInsets.symmetric(
-                        horizontal: AppDimensions.height10(context)),
+                    padding:
+                        EdgeInsets.all(AppDimensions.height10(context) * 2),
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(

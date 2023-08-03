@@ -5,7 +5,9 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
@@ -45,20 +47,41 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
       if (goalDetails['userPractices'][index1]['status'] != 'Active' && val) {
         // Check if the totalItemsOn is less than 5 before incrementing
         if (totalItemsOn < 5) {
+          print("==========================");
+          print(goalDetails['userPractices'][index1]['id']);
+          PracticeGoalApi()
+              .updateUserPracticeStatus(
+                  'Active', goalDetails['userPractices'][index1]['id'])
+              .then((response) {
+            if (response == true) {
+              print("Status Updated");
+            }
+          });
           totalItemsOn++;
           print(
               totalItemsOn); // Increment the counter as the item is being switched on
         } else {
           print(totalItemsOn);
+
           // If totalItemsOn is already 5, prevent switching on the toggle
           return;
         }
       }
       // If the item is currently on and is being switched off
-      else if (goalDetails['userPractices'][index1]['status'] == "Active" &&
-          !val) {
+      else if (goalDetails['userPractices'][index1]['status'] != "Active" &&
+          val == false) {
+        print("==========================");
+        print(goalDetails['userPractices'][index1]['id']);
         totalItemsOn--;
-        goalDetails['userPractices'][index1]['status'] = val;
+        PracticeGoalApi()
+            .updateUserPracticeStatus(
+                'Inactive', goalDetails['userPractices'][index1]['id'])
+            .then((response) {
+          if (response == true) {
+            print("Status Updated");
+          }
+        });
+        // goalDetails['userPractices'][index1]['status'] = val;
         print(
             totalItemsOn); // Decrement the counter as the item is being switched off
       }
@@ -507,7 +530,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     ),
                                   ),
                                   bt_switch
-                                      ? GestureDetector(
+                                      ? AnimatedScaleButton(
                                           onTap: () => showAnimatedDialog(
                                               animationType:
                                                   DialogTransitionType
@@ -517,7 +540,11 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                   const Duration(seconds: 1),
                                               context: context,
                                               builder: (BuildContext context) =>
-                                                  showDeleteAlert(context)),
+                                                  showDeleteAlert(
+                                                      context,
+                                                      goalDetails[
+                                                              'userPractices']
+                                                          [index]['id'])),
                                           child: Container(
                                             width: AppDimensions.height10(
                                                     context) *
@@ -673,7 +700,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '4/5 items',
+                        '$totalItemsOn/5 items',
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
                             fontWeight: FontWeight.w700,
@@ -812,7 +839,17 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                   4.4,
                                           width: double.infinity,
                                           child: TextButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              AdminGoal()
+                                                  .updateUserGoalStatus(
+                                                      'Inactive')
+                                                  .then((response) {
+                                                if (response == true) {
+                                                  print("Goal Inactive");
+                                                  Navigator.pop(context);
+                                                }
+                                              });
+                                            },
                                             child: Text(
                                               'Yes',
                                               style: TextStyle(
@@ -971,7 +1008,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
 //   }
 // }
 
-Widget showDeleteAlert(BuildContext context) {
+Widget showDeleteAlert(BuildContext context, id) {
   return SizedBox(
     width: AppDimensions.height10(context) * 27.0,
     height: AppDimensions.height10(context) * 18.2,
@@ -1057,7 +1094,17 @@ Widget showDeleteAlert(BuildContext context) {
               height: AppDimensions.height10(context) * 4.4,
               width: double.infinity,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  PracticeGoalApi().deleteUserPracticeById(id).then((response) {
+                    if (response == true) {
+                      print("Practice deleted");
+                      Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: multiple_goal_inactive(isActive: false)));
+                    }
+                  });
+                },
                 child: Text(
                   'Yes',
                   style: TextStyle(

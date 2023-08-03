@@ -1,8 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Hurdles.dart';
+import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -34,6 +38,46 @@ class Navigation_BarState extends State<Navigation_Bar> {
   void _onItemTapped(int index) {
     setState(() {
       Navigation_Bar._selectedIndex = index;
+    });
+  }
+
+  void checkInspiraion() async {
+    InspirationApi()
+        .checkUserInspiration()
+        .then((response) {
+          if (response == true) {
+            Navigator.push(
+                context,
+                FadePageRoute(
+                    page: const inspiration_landing(is_Updated: false)));
+          } else if (response == false) {
+            Navigator.push(
+                context,
+                FadePageRoute(
+                    page: const inspiration_motivation(
+                  goal_delete: false,
+                )));
+            // print(response.statusCode);
+          }
+        })
+        .catchError((error) {})
+        .whenComplete(() {});
+  }
+
+  void checkHurdle() async {
+    Hurdles().checkUserHurdles().then((response) {
+      if (response == true) {
+        Navigator.push(
+          context,
+          FadePageRoute(page: const landing_hurdles()),
+        );
+
+        return response;
+      } else if (response == false) {
+        Navigator.push(context, FadePageRoute(page: const hurdles_splash()));
+      }
+    }).catchError((error) {
+      print("Hello world error");
     });
   }
 
@@ -97,12 +141,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
           BottomNavigationBarItem(
               icon: AnimatedScaleButton(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      FadePageRoute(
-                          page: const inspiration_motivation(
-                        goal_delete: false,
-                      )));
+                  checkInspiraion();
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 6.0,
@@ -129,8 +168,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
           BottomNavigationBarItem(
               icon: AnimatedScaleButton(
                 onTap: () {
-                  Navigator.push(
-                      context, FadePageRoute(page: const hurdles_splash()));
+                  checkHurdle();
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 6.0,

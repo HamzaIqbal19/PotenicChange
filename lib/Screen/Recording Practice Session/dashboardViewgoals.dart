@@ -97,19 +97,23 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   }
 
   void _fetchPracticeNames() async {
+    final SharedPreferences prefs = await _prefs;
     PracticeGoalApi.getUserPractice().then((response) {
+      print(response["id"]);
+      print("---------------------------------");
+      var pracId = prefs.setInt('prac_score_id', response["id"]);
+      print("---------------------------------");
       if (response.length != 0) {
-        print("---------------------------------");
         setState(() {
           pracName = response["name"];
-        });
-        setState(() {
           pracColor = response["color"];
         });
 
         print("---------------------------------");
-        print("response123:$pracName");
-        print("response123:$pracColor");
+
+        print(response["id"]);
+        print(pracName);
+        print(pracColor);
       } else {
         print("response:$response");
       }
@@ -140,6 +144,15 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
     controller.dispose();
     super.dispose();
   }
+
+  int removeDay = 0;
+
+  String getFormattedDate(int removeDay) {
+    return DateFormat('dd-MM')
+        .format(DateTime.now().subtract(Duration(days: removeDay)));
+  }
+
+//dateClass current = dateClass(removeDay)
 
   String nextDayName =
       DateFormat('EEEE').format(DateTime.now().add(const Duration(days: 1)));

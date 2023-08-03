@@ -30,6 +30,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
   List<String> tagNames = [];
   bool Loading = true;
   var goals = [];
+  bool noData = false;
   List goalName = [];
   int goalId = 0;
   String selectionTag = '';
@@ -62,16 +63,23 @@ class _inspiration_landingState extends State<inspiration_landing> {
           InspirationAll = response;
         });
 
-        _fetchUserGoal();
-
         loadData();
-        _getTagNames();
-        return response;
+        //  _getTagNames();
+        _fetchUserGoal();
       } else {
-        return response.statusCode;
+        print(response.statusCode);
       }
     }).catchError((error) {
-      print("Hello world error");
+      loadData();
+      print("Error");
+      setState(() {
+        noData = true;
+      });
+    }).whenComplete(() {
+      loadData();
+      setState(() {
+        //  noData = true;
+      });
     });
   }
 
@@ -94,17 +102,19 @@ class _inspiration_landingState extends State<inspiration_landing> {
   _getTagNames() {
     print('Tag function called');
     for (int i = 0; i <= InspirationList.length; i++) {
-      if (InspirationList[i]['hashTags'].toString().length >= 3) {
+      if (InspirationList[i]['hashTags']?.length != 0) {
         tagNames.add(InspirationList[i]['hashTags']
             .toString()
             .replaceAll('[', ' ')
             .replaceAll(']', ' '));
+      } else {
+        print("No tags");
       }
 
       //tagNames.add(InspirationList[i]['hashTags'].toString());
     }
     print('TAGNAMES=====================');
-    print(tagNames);
+    // print(tagNames);
   }
 
   @override
@@ -141,7 +151,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
           actions: [
             Center(
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        FadePageRoute(
+                            page: inspiration_motivation(
+                          goal_delete: false,
+                        )));
+                  },
                   icon: Image.asset(
                     'assets/images/Close.webp',
                     width: AppDimensions.height10(context) * 2.6,
@@ -175,23 +192,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                         child: Stack(
                           children: [
                             GestureDetector(
-                              onTap: () {
-                                // widget.muliple_insp
-                                //     ? Navigator.push(
-                                //         context,
-                                //         FadePageRoute(
-                                //             page: const inspiration_motivation(
-                                //                 goal_delete: false)),
-                                //       )
-                                //     :
-                                Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const inspiration_landing(
-                                    is_Updated: false,
-                                  )),
-                                );
-                              },
+                              onTap: () {},
                               child: SizedBox(
                                 width: AppDimensions.height10(context) * 34.3,
                                 height: AppDimensions.height10(context) * 7.3,
@@ -215,44 +216,58 @@ class _inspiration_landingState extends State<inspiration_landing> {
                             ),
                             Align(
                               alignment: const Alignment(0, 0.525),
-                              child: Container(
-                                width: AppDimensions.height10(context) * 16.43,
-                                height: AppDimensions.height10(context) * 16.43,
-                                decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                  opacity: 0.2,
-                                  image: AssetImage('assets/images/Star.webp'),
-                                )),
-                                child: Center(
-                                  child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 15.6,
-                                    height:
-                                        AppDimensions.height10(context) * 15.6,
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/Inspiration_center 1.webp'))),
-                                    child: Center(
-                                        child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 6.8,
-                                      height:
-                                          AppDimensions.height10(context) * 6.8,
+                              child: AnimatedScaleButton(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: inspiration_motivation(
+                                        goal_delete: false,
+                                      )));
+                                },
+                                child: Container(
+                                  width:
+                                      AppDimensions.height10(context) * 16.43,
+                                  height:
+                                      AppDimensions.height10(context) * 16.43,
+                                  decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                    opacity: 0.2,
+                                    image:
+                                        AssetImage('assets/images/Star.webp'),
+                                  )),
+                                  child: Center(
+                                    child: Container(
+                                      width: AppDimensions.height10(context) *
+                                          15.6,
+                                      height: AppDimensions.height10(context) *
+                                          15.6,
                                       decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Color(0xFFFFFFFF)),
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/Inspiration_center 1.webp'))),
                                       child: Center(
-                                          child: SizedBox(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  3.2,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  3.2,
-                                              child: Image.asset(
-                                                  'assets/images/plus.webp'))),
-                                    )),
+                                          child: Container(
+                                        width: AppDimensions.height10(context) *
+                                            6.8,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                6.8,
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Color(0xFFFFFFFF)),
+                                        child: Center(
+                                            child: SizedBox(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    3.2,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    3.2,
+                                                child: Image.asset(
+                                                    'assets/images/plus.webp'))),
+                                      )),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -275,228 +290,290 @@ class _inspiration_landingState extends State<inspiration_landing> {
                           ],
                         ),
                       ),
-                      GridView.builder(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.only(
-                              bottom: AppDimensions.height10(context) * 8.0),
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            // childAspectRatio: 3.5 / 3, // Two items in each row
+                      noData == false
+                          ? GridView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      AppDimensions.height10(context) * 8.0),
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                // childAspectRatio: 3.5 / 3, // Two items in each row
 
-                            mainAxisSpacing: 30,
-                            crossAxisSpacing: 0,
-                          ),
-                          itemCount: InspirationList.length,
-                          itemBuilder: ((context, index) {
-                            return Container(
-                              // color: Colors.red,
-                              width: AppDimensions.height10(context) * 16.7,
-                              height: AppDimensions.height10(context) * 30,
-                              child: Column(children: [
-                                AnimatedScaleButton(
-                                  onTap: () async {
-                                    final SharedPreferences prefs =
-                                        await _prefs;
+                                mainAxisSpacing: 30,
+                                crossAxisSpacing: 0,
+                              ),
+                              itemCount: InspirationList.length,
+                              itemBuilder: ((context, index) {
+                                return Container(
+                                  // color: Colors.red,
+                                  width: AppDimensions.height10(context) * 16.7,
+                                  height: AppDimensions.height10(context) * 30,
+                                  child: Column(children: [
+                                    AnimatedScaleButton(
+                                      onTap: () async {
+                                        final SharedPreferences prefs =
+                                            await _prefs;
 
-                                    var hurdleId = prefs.setInt(
-                                        'userInspirationId',
-                                        InspirationList[index]['id']);
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: record_inspiration()));
-                                  },
-                                  child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 16.7,
-                                    height:
-                                        AppDimensions.height10(context) * 16.7,
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        image: InspirationList[index]
+                                        var hurdleId = prefs.setInt(
+                                            'userInspirationId',
+                                            InspirationList[index]['id']);
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page:
+                                                    const record_inspiration()));
+                                      },
+                                      child: Container(
+                                        width: AppDimensions.height10(context) *
+                                            16.7,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                16.7,
+                                        decoration: BoxDecoration(
+                                            gradient: InspirationList[index]
+                                                        ['inspirationId'] ==
+                                                    2
+                                                ? RadialGradient(colors: [
+                                                    Color(0xFFE9A594),
+                                                    Color(0xFFEEBEB2)
+                                                  ])
+                                                : RadialGradient(colors: [
+                                                    Color(0xFFD9D9D9),
+                                                    Color(0xFFD9D9D9)
+                                                  ]),
+                                            shape: BoxShape.circle,
+                                            image: InspirationList[index]
+                                                        ['inspirationId'] ==
+                                                    1
+                                                ? DecorationImage(
+                                                    image: FileImage(File(
+                                                        InspirationList[index]
+                                                            ['file'])),
+                                                    fit: BoxFit.cover)
+                                                : DecorationImage(
+                                                    image: AssetImage(InspirationList[index]['inspirationId'] == 4
+                                                        ? 'assets/images/distraction content.webp'
+                                                        : InspirationList[index]['inspirationId'] == 3
+                                                            ? 'assets/images/video_play.webp'
+                                                            : ''),
+                                                    fit: BoxFit.cover)),
+                                        child: InspirationList[index]
                                                     ['inspirationId'] ==
-                                                1
-                                            ? DecorationImage(
-                                                image: FileImage(File(
-                                                    InspirationList[index]
-                                                        ['file'])),
-                                                fit: BoxFit.cover)
-                                            : DecorationImage(
-                                                image: AssetImage(InspirationList[
-                                                                index]
-                                                            ['inspirationId'] ==
-                                                        4
-                                                    ? 'assets/images/distraction content.webp'
-                                                    : InspirationList[index][
-                                                                'inspirationId'] ==
-                                                            3
-                                                        ? 'assets/images/video_play.webp'
-                                                        : 'assets/images/Rectangle 10.webp'),
-                                                fit: BoxFit.cover)),
-                                  ),
-                                ),
-                                Container(
-                                  // width: AppDimensions.height10(context) * 16.7,
-                                  //height: AppDimensions.height10(context) * 1.9,
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          0.2),
-                                  child: Center(
-                                      child: Text(
-                                    InspirationList[index]['title'],
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.4,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xFFFFFFFF)),
-                                  )),
-                                ),
-                                SizedBox(
-                                  child: Center(
-                                      child: Text(
-                                    InspirationList[index]['description'],
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.0,
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFFFFFFFF)),
-                                  )),
-                                )
-                              ]),
-                            );
-                          })),
-                      widget.is_Updated
-                          ? Container(
-                              width: AppDimensions.height10(context) * 38.259,
-                              height: AppDimensions.height10(context) * 9.707,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 12.0),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 2.0),
-                                  gradient: const LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Color(0xFFD4B7B9),
-                                        Color(0xFF91698C)
-                                      ])),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            1.261),
-                                    width:
-                                        AppDimensions.height10(context) * 4.437,
-                                    height:
-                                        AppDimensions.height10(context) * 4.437,
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/circle_tick.webp'))),
-                                  ),
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 6.9,
-                                    height:
-                                        AppDimensions.height10(context) * 3.6,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            1.232),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  4.6,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.4,
-                                          //   color: Colors.amber,
-                                          child: Text(
-                                            widget.is_Updated
-                                                ? 'Updated'
-                                                : 'SAVED',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.3,
-                                                fontWeight: FontWeight.w500,
-                                                color: const Color(0xFFFFFFFF)),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  6.9,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          child: Text(
-                                            'Nir Eyal',
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
-                                                fontWeight: FontWeight.w500,
-                                                color: const Color(0xFFFFFFFF)),
-                                          ),
-                                        ),
-                                      ],
+                                                2
+                                            ? SizedBox(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    16.2,
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    6.3,
+                                                child: Center(
+                                                    child: Text(
+                                                  InspirationList[index]
+                                                      ['description'],
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 3,
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.4,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xFFFFFFFF)),
+                                                )),
+                                              )
+                                            : Container(),
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 8.1,
-                                    height:
-                                        AppDimensions.height10(context) * 6.0,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            15.1),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: const Color(0xFFFFFFFF),
-                                          width: 1),
-                                      borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) *
-                                              2.0),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        'Veiw',
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          16.7,
+                                      //height: AppDimensions.height10(context) * 1.9,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              0.2),
+                                      child: Center(
+                                          child: Text(
+                                        InspirationList[index]['title'],
+                                        overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *
-                                                1.8,
-                                            fontWeight: FontWeight.w500,
+                                                1.4,
+                                            fontWeight: FontWeight.w600,
                                             color: const Color(0xFFFFFFFF)),
-                                      ),
+                                      )),
                                     ),
-                                  )
-                                ],
-                              ),
+                                    SizedBox(
+                                      width: AppDimensions.height10(context) *
+                                          18.7,
+                                      child: Center(
+                                          child: Text(
+                                        InspirationList[index]['description'],
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.0,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xFFFFFFFF)),
+                                      )),
+                                    )
+                                  ]),
+                                );
+                              }))
+                          : Container(
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 4.0),
+                              width: AppDimensions.height10(context) * 26,
+                              child: Center(
+                                  child: Text(
+                                'There are no recorded inspiration',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(0xFFFBFBFB),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 3),
+                              )),
+                            ),
+                      // widget.is_Updated
+                      //     ? Container(
+                      //         width: AppDimensions.height10(context) * 38.259,
+                      //         height: AppDimensions.height10(context) * 9.707,
+                      //         margin: EdgeInsets.only(
+                      //             top: AppDimensions.height10(context) * 12.0),
+                      //         decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(
+                      //                 AppDimensions.height10(context) * 2.0),
+                      //             gradient: const LinearGradient(
+                      //                 begin: Alignment.topCenter,
+                      //                 end: Alignment.bottomCenter,
+                      //                 colors: [
+                      //                   Color(0xFFD4B7B9),
+                      //                   Color(0xFF91698C)
+                      //                 ])),
+                      //         child: Row(
+                      //           crossAxisAlignment: CrossAxisAlignment.center,
+                      //           children: [
+                      //             Container(
+                      //               margin: EdgeInsets.only(
+                      //                   left: AppDimensions.height10(context) *
+                      //                       1.261),
+                      //               width:
+                      //                   AppDimensions.height10(context) * 4.437,
+                      //               height:
+                      //                   AppDimensions.height10(context) * 4.437,
+                      //               decoration: const BoxDecoration(
+                      //                   image: DecorationImage(
+                      //                       image: AssetImage(
+                      //                           'assets/images/circle_tick.webp'))),
+                      //             ),
+                      //             Container(
+                      //               width:
+                      //                   AppDimensions.height10(context) * 6.9,
+                      //               height:
+                      //                   AppDimensions.height10(context) * 3.6,
+                      //               margin: EdgeInsets.only(
+                      //                   left: AppDimensions.height10(context) *
+                      //                       1.232),
+                      //               child: Column(
+                      //                 crossAxisAlignment:
+                      //                     CrossAxisAlignment.start,
+                      //                 children: [
+                      //                   SizedBox(
+                      //                     width:
+                      //                         AppDimensions.height10(context) *
+                      //                             4.6,
+                      //                     height:
+                      //                         AppDimensions.height10(context) *
+                      //                             1.4,
+                      //                     //   color: Colors.amber,
+                      //                     child: Text(
+                      //                       widget.is_Updated
+                      //                           ? 'Updated'
+                      //                           : 'SAVED',
+                      //                       style: TextStyle(
+                      //                           fontSize:
+                      //                               AppDimensions.height10(
+                      //                                       context) *
+                      //                                   1.3,
+                      //                           fontWeight: FontWeight.w500,
+                      //                           color: const Color(0xFFFFFFFF)),
+                      //                     ),
+                      //                   ),
+                      //                   SizedBox(
+                      //                     width:
+                      //                         AppDimensions.height10(context) *
+                      //                             6.9,
+                      //                     height:
+                      //                         AppDimensions.height10(context) *
+                      //                             2.2,
+                      //                     child: Text(
+                      //                       'Nir Eyal',
+                      //                       style: TextStyle(
+                      //                           fontSize:
+                      //                               AppDimensions.height10(
+                      //                                       context) *
+                      //                                   1.8,
+                      //                           fontWeight: FontWeight.w500,
+                      //                           color: const Color(0xFFFFFFFF)),
+                      //                     ),
+                      //                   ),
+                      //                 ],
+                      //               ),
+                      //             ),
+                      //             Container(
+                      //               width:
+                      //                   AppDimensions.height10(context) * 8.1,
+                      //               height:
+                      //                   AppDimensions.height10(context) * 6.0,
+                      //               margin: EdgeInsets.only(
+                      //                   left: AppDimensions.height10(context) *
+                      //                       15.1),
+                      //               decoration: BoxDecoration(
+                      //                 border: Border.all(
+                      //                     color: const Color(0xFFFFFFFF),
+                      //                     width: 1),
+                      //                 borderRadius: BorderRadius.circular(
+                      //                     AppDimensions.height10(context) *
+                      //                         2.0),
+                      //               ),
+                      //               child: Center(
+                      //                 child: Text(
+                      //                   'Veiw',
+                      //                   style: TextStyle(
+                      //                       fontSize: AppDimensions.height10(
+                      //                               context) *
+                      //                           1.8,
+                      //                       fontWeight: FontWeight.w500,
+                      //                       color: const Color(0xFFFFFFFF)),
+                      //                 ),
+                      //               ),
+                      //             )
+                      //           ],
+                      //         ),
+                      //       )
+                      //     : Container(),
+                      noData == false
+                          ? Container(
+                              width: AppDimensions.height10(context) * 17.0,
+                              height: AppDimensions.height10(context) * 0.5,
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 0.29),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                  color:
+                                      const Color(0xFFFFFFFF).withOpacity(0.3)),
                             )
-                          : Container(),
-                      Container(
-                        width: AppDimensions.height10(context) * 17.0,
-                        height: AppDimensions.height10(context) * 0.5,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 0.29),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 2.0),
-                            color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                      )
+                          : Container()
                     ],
                   ))
               : const Center(
@@ -1349,4 +1426,19 @@ _showTagSheet(BuildContext context) {
       );
     },
   );
+}
+
+class updatedLandingPage extends StatefulWidget {
+  final bool delete;
+  const updatedLandingPage({super.key, required this.delete});
+
+  @override
+  State<updatedLandingPage> createState() => _updatedLandingPageState();
+}
+
+class _updatedLandingPageState extends State<updatedLandingPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }

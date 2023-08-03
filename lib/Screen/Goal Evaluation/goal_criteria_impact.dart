@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -1529,13 +1530,34 @@ class _your_impactState extends State<your_impact> {
                                                             0xFF007AFF),
                                                         child: TextButton(
                                                           onPressed: () {
-                                                            Navigator.push(
-                                                                context,
-                                                                FadePageRoute(
-                                                                    page:
-                                                                        const your_impact(
-                                                                  saved: true,
-                                                                )));
+                                                            int level =
+                                                                (select_item! +
+                                                                    select_item_2!);
+                                                            goalEvaluationApi()
+                                                                .updateEvaluation(
+                                                              "impactOnYourSelf",
+                                                              {
+                                                                "level":
+                                                                    (level / 2)
+                                                                        .round(),
+                                                                "currentImpact":
+                                                                    select_item,
+                                                                "currentEmotions":
+                                                                    select_item_2
+                                                              },
+                                                            ).then((response) {
+                                                              if (response ==
+                                                                  true) {
+                                                                Navigator.push(
+                                                                    context,
+                                                                    FadePageRoute(
+                                                                        page:
+                                                                            const your_impact(
+                                                                      saved:
+                                                                          true,
+                                                                    )));
+                                                              }
+                                                            });
                                                           },
                                                           child: Text(
                                                             'Yes',

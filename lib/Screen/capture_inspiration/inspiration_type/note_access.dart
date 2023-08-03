@@ -749,7 +749,7 @@ class _note_infoState extends State<note_info> {
                                       color: const Color(0xff828282)),
                                 ),
                               ),
-                              GestureDetector(
+                              AnimatedScaleButton(
                                 onTap: () {
                                   widget.note_saved
                                       ? Navigator.push(
@@ -796,19 +796,16 @@ class _note_infoState extends State<note_info> {
                                             left: AppDimensions.height10(
                                                     context) *
                                                 1.99),
-                                        child: GestureDetector(
-                                            onTap: () {},
-                                            child: Text(
-                                              '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
-                                              style: TextStyle(
-                                                color: const Color(0xFF646464),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            )),
+                                        child: Text(
+                                          '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
+                                          style: TextStyle(
+                                            color: const Color(0xFF646464),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
                                       ),
                                       Container(
                                           width:
@@ -821,20 +818,25 @@ class _note_infoState extends State<note_info> {
                                               right: AppDimensions.height10(
                                                       context) *
                                                   2.391),
-                                          child: GestureDetector(
-                                            onTap: () {},
-                                            child: Image.asset(
-                                              'assets/images/BTN Back.webp',
-                                              //width: AppDimensions.height10(context) * 2.6,
-                                              //height: AppDimensions.height10(context) * 2.6,
-                                              color: const Color(0xFF646464),
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ))
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.webp',
+                                            //width: AppDimensions.height10(context) * 2.6,
+                                            //height: AppDimensions.height10(context) * 2.6,
+                                            color: const Color(0xFF646464),
+                                            fit: BoxFit.cover,
+                                          )),
                                     ],
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                height: MediaQuery.of(context)
+                                            .viewInsets
+                                            .bottom ==
+                                        0
+                                    ? AppDimensions.height10(context) * 5
+                                    : AppDimensions.height10(context) * 23.0,
+                              )
                             ],
                           )
                         : const Center(
@@ -852,6 +854,10 @@ class _note_infoState extends State<note_info> {
   }
 }
 
+TextEditingController title = TextEditingController();
+TextEditingController statement = TextEditingController();
+TextEditingController hastags = TextEditingController();
+
 class noteSaved extends StatefulWidget {
   const noteSaved({super.key});
 
@@ -860,9 +866,6 @@ class noteSaved extends StatefulWidget {
 }
 
 class _noteSavedState extends State<noteSaved> {
-  TextEditingController title = TextEditingController();
-  TextEditingController statement = TextEditingController();
-  TextEditingController hastags = TextEditingController();
   List selectedGoals = [];
   List<String> tagList = [];
 
@@ -900,6 +903,7 @@ class _noteSavedState extends State<noteSaved> {
             //  height: AppDimensions.height10(context) * 84.8,
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
+              reverse: true,
               child: Column(children: [
                 Container(
                   // width: AppDimensions.height10(context) * 41.1,
@@ -923,6 +927,9 @@ class _noteSavedState extends State<noteSaved> {
                           child: GestureDetector(
                             onTap: () {
                               Navigator.pop(context);
+                              title.clear();
+                              tagList.clear();
+                              statement.clear();
                             },
                             child: Text(
                               'Back',
@@ -978,6 +985,9 @@ class _noteSavedState extends State<noteSaved> {
                                       type_switch: 1,
                                     )));
                                 print('----------------');
+                                title.clear();
+                                tagList.clear();
+                                statement.clear();
 
                                 print(response);
                               }
@@ -996,8 +1006,7 @@ class _noteSavedState extends State<noteSaved> {
                                   fontSize:
                                       AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
-                                  color:
-                                      const Color(0xff007AFF).withOpacity(0.4)),
+                                  color: const Color(0xff007AFF)),
                             ),
                           ),
                         )
@@ -1083,7 +1092,7 @@ class _noteSavedState extends State<noteSaved> {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.height10(context) * 30.5,
+                          //width: AppDimensions.height10(context) * 30.5,
                           margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 2.0,
                           ),
@@ -1097,7 +1106,8 @@ class _noteSavedState extends State<noteSaved> {
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
-                                contentPadding: EdgeInsets.zero,
+                                contentPadding: EdgeInsets.only(
+                                    right: AppDimensions.height10(context) * 4),
                                 isCollapsed: true,
                                 hintText: 'Say more about this inspiration ',
                                 hintStyle: TextStyle(
@@ -1129,8 +1139,8 @@ class _noteSavedState extends State<noteSaved> {
                           ),
                         ),
                         Container(
-                          height: AppDimensions.height10(context) * 2.4,
-                          width: AppDimensions.height10(context) * 30.5,
+                          // height: AppDimensions.height10(context) * 2.4,
+                          // width: AppDimensions.height10(context) * 30.5,
                           margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 0.6,
                             right: AppDimensions.height10(context) * 10.0,
@@ -1138,6 +1148,7 @@ class _noteSavedState extends State<noteSaved> {
                           ),
                           child: TextFormField(
                             controller: hastags,
+                            maxLines: null,
                             textAlignVertical: TextAlignVertical.center,
                             onChanged: (text) {
                               List<String> words = text.split(' ');
@@ -1160,6 +1171,7 @@ class _noteSavedState extends State<noteSaved> {
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
+                                isCollapsed: true,
                                 contentPadding: EdgeInsets.fromLTRB(
                                     AppDimensions.height10(context) * 1.6,
                                     AppDimensions.height10(context) * 0.4,
@@ -1194,7 +1206,7 @@ class _noteSavedState extends State<noteSaved> {
                                 color: const Color(0xff828282)),
                           ),
                         ),
-                        GestureDetector(
+                        AnimatedScaleButton(
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -1226,18 +1238,15 @@ class _noteSavedState extends State<noteSaved> {
                                   margin: EdgeInsets.only(
                                       left: AppDimensions.height10(context) *
                                           1.99),
-                                  child: GestureDetector(
-                                      onTap: () {},
-                                      child: Text(
-                                        '${selectedGoals.length} impacted goals',
-                                        style: TextStyle(
-                                          color: const Color(0xFF646464),
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )),
+                                  child: Text(
+                                    '${selectedGoals.length} impacted goals',
+                                    style: TextStyle(
+                                      color: const Color(0xFF646464),
+                                      fontSize:
+                                          AppDimensions.height10(context) * 1.8,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
                                 ),
                                 Container(
                                     width:
@@ -1247,15 +1256,12 @@ class _noteSavedState extends State<noteSaved> {
                                     margin: EdgeInsets.only(
                                         right: AppDimensions.height10(context) *
                                             2.391),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        color: const Color(0xFF646464),
-                                        fit: BoxFit.cover,
-                                      ),
+                                    child: Image.asset(
+                                      'assets/images/BTN Back.webp',
+                                      //width: AppDimensions.height10(context) * 2.6,
+                                      //height: AppDimensions.height10(context) * 2.6,
+                                      color: const Color(0xFF646464),
+                                      fit: BoxFit.cover,
                                     ))
                               ],
                             ),
@@ -1264,7 +1270,12 @@ class _noteSavedState extends State<noteSaved> {
                       ],
                     ),
                   ),
-                )
+                ),
+                // SizedBox(
+                //   height: MediaQuery.of(context).viewInsets.bottom == 0
+                //       ? AppDimensions.height10(context) * 0
+                //       : AppDimensions.height10(context) * 23.0,
+                // )
               ]),
             ),
           )),
