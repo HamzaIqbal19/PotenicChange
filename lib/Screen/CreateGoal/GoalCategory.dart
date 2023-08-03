@@ -110,7 +110,10 @@ class _GoalCategoryState extends State<GoalCategory> {
       Navigator.push(
         context,
         FadePageRoute(
-          page: GoalName(widget.id),
+          page: GoalName(
+            widget.id,
+            comingFromEditScreen: false,
+          ),
         ),
       );
       return Goal.fromJson(jsonMap);

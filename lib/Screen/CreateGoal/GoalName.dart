@@ -15,10 +15,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
+import '../ReviewGoal/StarReview.dart';
 
 class GoalName extends StatefulWidget {
   final int catId;
-  const GoalName(this.catId, {super.key});
+  final bool comingFromEditScreen;
+
+  const GoalName(this.catId, {required this.comingFromEditScreen, Key? key})
+      : super(key: key);
 
   @override
   State<GoalName> createState() => _GoalNameState();
@@ -231,7 +235,10 @@ class _GoalNameState extends State<GoalName> {
                                     Navigator.push(
                                       context,
                                       FadePageRoute3(
-                                        exitPage: GoalName(widget.catId),
+                                        exitPage: GoalName(
+                                          widget.catId,
+                                          comingFromEditScreen: false,
+                                        ),
                                         enterPage:
                                             const HomeScreenProgressSaved(
                                           login: true,
@@ -270,7 +277,10 @@ class _GoalNameState extends State<GoalName> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: GoalName(widget.catId),
+                                        exitPage: GoalName(
+                                          widget.catId,
+                                          comingFromEditScreen: false,
+                                        ),
                                         enterPage:
                                             const HomeScreen(login: true),
                                       ),
@@ -358,7 +368,7 @@ class _GoalNameState extends State<GoalName> {
                   width: AppDimensions.height10(context) * 30,
                   child: Center(
                     child: Text(
-                      capitalizeFirstLetter(goalName!),
+                      capitalizeFirstLetter(goalName),
                       style: TextStyle(
                         overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w600,
@@ -545,26 +555,49 @@ class _GoalNameState extends State<GoalName> {
                         )),
                     AnimatedScaleButton(
                       onTap: () async {
-                        getUserId(
-                          mygoal.text.toString(),
-                        );
+                        if (widget.comingFromEditScreen) {
+                          final SharedPreferences prefs = await _prefs;
+                          prefs.setString('goalName', mygoal.text);
+                          AdminGoal()
+                              .updateUserGoal('name', mygoal.text)
+                              .then((value) {
+                            if (value == true) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => StarReview(
+                                      route: 'goal',
+                                    ),
+                                  ));
+                            }
+                          });
+                          // Navigator.pop(context, mygoal.text);
+                        } else {
+                          getUserId(
+                            mygoal.text.toString(),
+                          );
 
-                        print('=====================>');
-                        print(mygoal.text.toString());
-                        final SharedPreferences prefs = await _prefs;
+                          print('=====================>');
+                          print(mygoal.text.toString());
+                          final SharedPreferences prefs = await _prefs;
 
-                        getUserId(
-                          mygoal.text.toString(),
-                        );
-
-                        Navigator.push(
-                          context,
-                          FadePageRoute2(
-                            true,
-                            exitPage: GoalName(widget.catId),
-                            enterPage: GoalWhy(),
-                          ),
-                        );
+                          // getUserId(
+                          //   mygoal.text.toString(),
+                          // );
+                          Navigator.push(
+                            context,
+                            FadePageRoute2(
+                              true,
+                              exitPage: GoalName(
+                                widget.catId,
+                                comingFromEditScreen: false,
+                              ),
+                              enterPage: GoalWhy(
+                                comingFromEditScreen: false,
+                              ),
+                            ),
+                          );
+                        }
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
@@ -581,7 +614,7 @@ class _GoalNameState extends State<GoalName> {
                         ),
                         child: Center(
                           child: Text(
-                            "Next",
+                            widget.comingFromEditScreen ? "Update" : "Next",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10(context) * 1.6,

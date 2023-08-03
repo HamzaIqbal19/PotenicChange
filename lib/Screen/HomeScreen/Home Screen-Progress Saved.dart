@@ -126,7 +126,10 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GoalName(catId),
+                          builder: (context) => GoalName(
+                            catId,
+                            comingFromEditScreen: false,
+                          ),
                         ),
                       );
                     } else if (widget.route == "goalVisualising" &&
@@ -134,7 +137,9 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Visualising(),
+                          builder: (context) => Visualising(
+                            comingFromEditScreen: false,
+                          ),
                         ),
                       );
                     } else if (widget.route == "GoalIdentity" &&
@@ -142,7 +147,9 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Goal_Identity(),
+                          builder: (context) => const Goal_Identity(
+                            comingFromEditScreen: false,
+                          ),
                         ),
                       );
                     } else if (widget.route == "goalWhy" &&
@@ -150,14 +157,18 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GoalWhy(),
+                          builder: (context) => GoalWhy(
+                            comingFromEditScreen: false,
+                          ),
                         ),
                       );
                     } else if (widget.route == "" && widget.login == true) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => GoalWhy(),
+                          builder: (context) => GoalWhy(
+                            comingFromEditScreen: false,
+                          ),
                         ),
                       );
                     } else {

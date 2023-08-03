@@ -15,9 +15,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
 import '../../Widgets/fading2.dart';
+import '../ReviewGoal/StarReview.dart';
 
 class Visualising extends StatefulWidget {
-  const Visualising({Key? key}) : super(key: key);
+  final bool comingFromEditScreen;
+
+  const Visualising({Key? key, required this.comingFromEditScreen})
+      : super(key: key);
 
   @override
   State<Visualising> createState() => _VisualisingState();
@@ -30,6 +34,8 @@ class _VisualisingState extends State<Visualising> {
   final FocusNode blankNode = FocusNode();
   bool Loading = false;
   String goalName = "";
+  var visualize;
+  int listReason = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   @override
   void initState() {
@@ -40,6 +46,33 @@ class _VisualisingState extends State<Visualising> {
       'key': 'Reason ${goalVisualising.length}',
       'text': '',
     });
+    _fetchGoalNames();
+  }
+
+  void _fetchGoalNames() async {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          Loading = false;
+          goalName = response["name"];
+          visualize = response["visualizingYourSelf"];
+        });
+      } else {
+        setState(() {
+          Loading = false;
+        });
+      }
+    }).catchError((error) {
+      setState(() {
+        Loading = false;
+      });
+      print("error");
+    });
+
+    // setState(() {
+    //   goalName = AdminGoal().getUserGoal();
+    // });
+    // print('GoalName: $goalName');
   }
 
   getGoalName() async {
@@ -66,18 +99,31 @@ class _VisualisingState extends State<Visualising> {
 
   void handleDelete(int index) {
     print('=========>dELETED');
-    setState(() {
-      // myTextFields[index]['text'].remove(index);
+    widget.comingFromEditScreen
+        ? setState(() {
+            // myTextFields[index]['text'].remove(index);
 
-      goalVisualising.removeAt(index);
+            visualize.removeAt(index);
 
-      for (int i = index + 1; i < goalVisualising.length; i++) {
-        goalVisualising[i]['key'] = i.toString();
+            for (int i = index + 1; i < visualize.length; i++) {
+              visualize[i]['key'] = i.toString();
 
-        // Assuming 'key' is the identifier you want to update.
-      }
-      //index--;
-    });
+              // Assuming 'key' is the identifier you want to update.
+            }
+            //index--;
+          })
+        : setState(() {
+            // myTextFields[index]['text'].remove(index);
+
+            goalVisualising.removeAt(index);
+
+            for (int i = index + 1; i < goalVisualising.length; i++) {
+              goalVisualising[i]['key'] = i.toString();
+
+              // Assuming 'key' is the identifier you want to update.
+            }
+            //index--;
+          });
     decrement();
     //closing the focus
     blankNode.requestFocus();
@@ -88,6 +134,10 @@ class _VisualisingState extends State<Visualising> {
 
   void increment() {
     item = item + 1;
+  }
+
+  void incrementEdit() {
+    listReason = listReason + 1;
   }
 
   Future<void> updateGoalReason(List<Map<String, String>> newReason) async {
@@ -135,7 +185,9 @@ class _VisualisingState extends State<Visualising> {
             context,
             FadePageRoute2(
               true,
-              exitPage: const Visualising(),
+              exitPage: Visualising(
+                comingFromEditScreen: false,
+              ),
               enterPage: const GoalFinished(),
             ),
           );
@@ -295,7 +347,9 @@ class _VisualisingState extends State<Visualising> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: const Visualising(),
+                                        exitPage: Visualising(
+                                          comingFromEditScreen: false,
+                                        ),
                                         enterPage:
                                             const HomeScreen(login: true),
                                       ),
@@ -351,9 +405,11 @@ class _VisualisingState extends State<Visualising> {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.webp"),
+                image: widget.comingFromEditScreen
+                    ? AssetImage("assets/images/GoalReviewBg.webp")
+                    : AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -368,10 +424,14 @@ class _VisualisingState extends State<Visualising> {
                       top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
-                      "Star Creation 5/5",
+                      widget.comingFromEditScreen
+                          ? "View and edit mode"
+                          : "Star Creation 5/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
@@ -388,7 +448,9 @@ class _VisualisingState extends State<Visualising> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
@@ -397,19 +459,23 @@ class _VisualisingState extends State<Visualising> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.0,
                 ),
-                Container(
-                    // color: Colors.blue,
-                    width: AppDimensions.height10(context) * 10.4,
-                    height: AppDimensions.height10(context) * 7.6,
-                    // color: Colors.blue,
+                widget.comingFromEditScreen
+                    ? SizedBox(
+                        height: AppDimensions.height10(context) * 3.5,
+                      )
+                    : Container(
+                        // color: Colors.blue,
+                        width: AppDimensions.height10(context) * 10.4,
+                        height: AppDimensions.height10(context) * 7.6,
+                        // color: Colors.blue,
 
-                    padding: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.5,
-                        right: AppDimensions.height10(context) * 1.5),
-                    child: Image.asset(
-                      "assets/images/image3.webp",
-                      fit: BoxFit.contain,
-                    )),
+                        padding: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 1.5,
+                            right: AppDimensions.height10(context) * 1.5),
+                        child: Image.asset(
+                          "assets/images/image3.webp",
+                          fit: BoxFit.contain,
+                        )),
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.0,
                 ),
@@ -419,7 +485,9 @@ class _VisualisingState extends State<Visualising> {
                       "Visualising Your New Self",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
@@ -439,7 +507,9 @@ class _VisualisingState extends State<Visualising> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFFFFFFFF)),
+                          color: widget.comingFromEditScreen
+                              ? Color(0xFF437296)
+                              : Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
@@ -468,75 +538,160 @@ class _VisualisingState extends State<Visualising> {
                           borderRadius: BorderRadius.all(Radius.circular(
                               AppDimensions.height10(context) * 1.8))),
                       child: ListView.builder(
-                        itemCount: goalVisualising.length,
+                        itemCount: widget.comingFromEditScreen
+                            ? (visualize?.length ?? 0)
+                            : goalVisualising.length,
                         padding: EdgeInsets.zero,
                         itemBuilder: (BuildContext context, index) {
-                          return Column(children: [
-                            inner_text(
-                              key: Key(goalVisualising[index]['key']!),
-                              delete: true,
-                              head_text: "${index + 1}. I picture myself.... ",
-                              body_text: goalVisualising[index]['text']!,
-                              length: 200,
-                              onChanged: (newText) {
-                                setState(() {
-                                  goalVisualising[index]['text'] = newText;
-                                });
-                                handleTextChanged(index, newText);
-                              },
-                              onDelete: () => handleDelete(index),
-                              index: index,
-                              placeHolder: '',
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.5,
-                                  bottom:
-                                      AppDimensions.height10(context) * 1.3),
-                              child: Row(
-                                children: [
-                                  Center(
-                                    child: Text(
-                                      "Character count: ",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFF464646),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.3,
-                                      ),
-                                    ),
-                                  ),
-                                  Center(
-                                    child: Text(
-                                      "200",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xFF464646),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.3,
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    height:
-                                        AppDimensions.height10(context) * 0.3,
-                                    width:
-                                        AppDimensions.height10(context) * 4.0,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            0.5,
-                                        left: AppDimensions.height10(context) *
-                                            4.0),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF282828)
-                                            .withOpacity(0.2)),
-                                  )
-                                ],
+                          if (widget.comingFromEditScreen) {
+                            if (visualize == null ||
+                                index >= visualize.length) {
+                              return Container(); // Return an empty container if the index is out of range.
+                            }
+                            return Column(children: [
+                              inner_text(
+                                key: Key(visualize[index]['key']!),
+                                delete: true,
+                                head_text:
+                                    "${index + 1}. I picture myself.... ",
+                                body_text: visualize[index]['text']!,
+                                length: 200,
+                                onChanged: (newText) {
+                                  setState(() {
+                                    visualize[index]['text'] = newText;
+                                  });
+                                  handleTextChanged(index, newText);
+                                },
+                                onDelete: () => handleDelete(index),
+                                index: index,
+                                placeHolder: '',
+                                comingFromEditScreen:
+                                    widget.comingFromEditScreen,
                               ),
-                            )
-                          ]);
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 1.5,
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.3),
+                                child: Row(
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        "Character count: ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        "200",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height:
+                                          AppDimensions.height10(context) * 0.3,
+                                      width:
+                                          AppDimensions.height10(context) * 4.0,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              0.5,
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  4.0),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xFF282828)
+                                              .withOpacity(0.2)),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ]);
+                          } else {
+                            if (index >= goalVisualising.length) {
+                              return Center();
+                            }
+                            return Column(children: [
+                              inner_text(
+                                key: Key(goalVisualising[index]['key']!),
+                                delete: true,
+                                head_text:
+                                    "${index + 1}. I picture myself.... ",
+                                body_text: goalVisualising[index]['text']!,
+                                length: 200,
+                                onChanged: (newText) {
+                                  setState(() {
+                                    goalVisualising[index]['text'] = newText;
+                                  });
+                                  handleTextChanged(index, newText);
+                                },
+                                onDelete: () => handleDelete(index),
+                                index: index,
+                                placeHolder: '',
+                                comingFromEditScreen: false,
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 1.5,
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.3),
+                                child: Row(
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        "Character count: ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                      ),
+                                    ),
+                                    Center(
+                                      child: Text(
+                                        "200",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          color: const Color(0xFF464646),
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.3,
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      height:
+                                          AppDimensions.height10(context) * 0.3,
+                                      width:
+                                          AppDimensions.height10(context) * 4.0,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              0.5,
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  4.0),
+                                      decoration: BoxDecoration(
+                                          color: const Color(0xFF282828)
+                                              .withOpacity(0.2)),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ]);
+                          }
                         },
                       ),
                     ),
@@ -589,13 +744,21 @@ class _VisualisingState extends State<Visualising> {
                             : AnimatedScaleButton(
                                 onTap: () {
                                   increment();
-                                  setState(() {
-                                    goalVisualising.add({
-                                      'key':
-                                          'Identity ${goalVisualising.length.toString()}',
-                                      'text': '',
-                                    });
-                                  });
+                                  widget.comingFromEditScreen
+                                      ? setState(() {
+                                          visualize.add({
+                                            'key':
+                                                'Reason ${visualize.length.toString()}',
+                                            'text': '',
+                                          });
+                                        })
+                                      : setState(() {
+                                          goalVisualising.add({
+                                            'key':
+                                                'Identity ${goalVisualising.length.toString()}',
+                                            'text': '',
+                                          });
+                                        });
                                   print("=============>Pressed");
                                 },
                                 child: Container(
@@ -643,29 +806,83 @@ class _VisualisingState extends State<Visualising> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                        // color: Colors.blue,
-                        width: AppDimensions.height10(context) * 5.0,
-                        height: AppDimensions.height10(context) * 5.0,
-                        child: AnimatedScaleButton(
-                          onTap: () {
-                            // signupSheet(context, "Sign up / login", "login");
-                          },
-                          child: Image.asset(
-                            "assets/images/Moreactions.webp",
-                            fit: BoxFit.contain,
-                          ),
-                        )),
+                    widget.comingFromEditScreen
+                        ? Container(
+                            width: AppDimensions.height10(context) * 10.0,
+                            height: AppDimensions.height10(context) * 5.0,
+                            decoration: goalVisualising[0]['text'] != ""
+                                ? BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                        Border.all(color: Color(0xffFA9934)),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  )
+                                : BoxDecoration(
+                                    // color: Color(0xFFFF7D50),
+                                    border: Border.all(
+                                        color: const Color(0xff282828)),
+                                    color: Colors.transparent,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  ),
+                            child: AnimatedScaleButton(
+                              onTap: () {
+                                //   signupSheet(context, "Sign up / login", "login");
+                              },
+                              child: Center(
+                                  child: Text(
+                                "Reset",
+                                style: TextStyle(
+                                    fontFamily: "Laila",
+                                    fontWeight: FontWeight.w600,
+                                    color: goalVisualising[0]['text'] != ""
+                                        ? Color(0xffFA9934)
+                                        : Color(0xff282828),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8),
+                              )),
+                            ))
+                        : Container(
+                            // color: Colors.blue,
+                            width: AppDimensions.height10(context) * 5.0,
+                            height: AppDimensions.height10(context) * 5.0,
+                            child: AnimatedScaleButton(
+                              onTap: () {
+                                // signupSheet(context, "Sign up / login", "login");
+                              },
+                              child: Image.asset(
+                                "assets/images/Moreactions.webp",
+                                fit: BoxFit.contain,
+                              ),
+                            )),
                     SizedBox(
                       width: AppDimensions.height10(context) * 2.0,
                     ),
                     AnimatedScaleButton(
                       onTap: () async {
-                        final SharedPreferences prefs = await _prefs;
-                        var goalwhy = prefs.remove('route');
-                        goalVisualising[0]['text'] != ""
-                            ? updateGoalReason(goalVisualising)
-                            : Container();
+                        if (widget.comingFromEditScreen) {
+                          print("Visualising Reason $visualize");
+                          AdminGoal()
+                              .updateUserGoal('visualizingYourSelf', visualize)
+                              .then((value) {
+                            if (value == true) {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                    page: const StarReview(
+                                      route: 'goal',
+                                    ),
+                                  ));
+                            }
+                          });
+                        } else {
+                          final SharedPreferences prefs = await _prefs;
+                          var goalwhy = prefs.remove('route');
+                          goalVisualising[0]['text'] != ""
+                              ? updateGoalReason(goalVisualising)
+                              : Container();
+                        }
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
@@ -690,7 +907,25 @@ class _VisualisingState extends State<Visualising> {
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(50.0)),
                               ),
-                        child: Center(
+                        child:
+                            //  widget.comingFromEditScreen
+                            //     ? Center(
+                            //         child: Text(
+                            //           visualize[0]['text'] != ""
+                            //               ? "Create your goal"
+                            //               : "Save",
+                            //           style: TextStyle(
+                            //             color: visualize[0]['text'] != ""
+                            //                 ? Colors.white
+                            //                 : Colors.white.withOpacity(0.5),
+                            //             fontSize:
+                            //                 AppDimensions.height10(context) * 1.6,
+                            //             fontWeight: FontWeight.w600,
+                            //           ),
+                            //         ),
+                            //       )
+                            //     :
+                            Center(
                           child: Text(
                             goalVisualising[0]['text'] != ""
                                 ? "Create your goal"
