@@ -9,6 +9,7 @@ class inner_text extends StatefulWidget {
   final bool delete;
   final int index;
   final int length;
+  final bool comingFromEditScreen;
 
   final ValueChanged<String> onChanged;
 
@@ -22,6 +23,7 @@ class inner_text extends StatefulWidget {
       required this.onDelete,
       required this.delete,
       required this.index,
+      required this.comingFromEditScreen,
       required this.placeHolder})
       : super(key: key);
 
@@ -100,9 +102,11 @@ class _inner_textState extends State<inner_text> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontFamily: "Laila",
-                        color: _focusNode.hasFocus
-                            ? const Color(0xFFFFFFFF)
-                            : const Color(0xFF828282),
+                        color: widget.comingFromEditScreen
+                            ? Colors.white
+                            : _focusNode.hasFocus
+                                ? const Color(0xFFFFFFFF)
+                                : const Color(0xFF828282),
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ))),
               widget.delete && widget.index != 0
@@ -258,9 +262,11 @@ class _inner_textState extends State<inner_text> {
                         height: AppDimensions.height10(context) * 0.15,
                         fontSize: AppDimensions.height10(context) * 1.6,
                         fontWeight: FontWeight.w500,
-                        color: _focusNode.hasFocus
-                            ? const Color(0xFFFFFFFF)
-                            : const Color(0xFF828282)),
+                        color: widget.comingFromEditScreen
+                            ? Colors.white
+                            : _focusNode.hasFocus
+                                ? const Color(0xFFFFFFFF)
+                                : const Color(0xFF828282)),
                     focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.transparent)),
                     enabledBorder: const OutlineInputBorder(

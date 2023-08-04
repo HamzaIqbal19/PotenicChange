@@ -17,6 +17,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
+import '../CreateGoal/Goal-Visualising.dart';
+import '../CreateGoal/Goal-Why.dart';
+import '../CreateGoal/GoalName.dart';
+import '../CreateGoal/Goal_Identity.dart';
 import '../HomeScreen/HomeScreen.dart';
 
 class StarReview extends StatefulWidget {
@@ -303,7 +307,20 @@ class _StarReviewState extends State<StarReview> {
                                           ),
                                           // SizedBox(width: ),
                                           AnimatedScaleButton(
-                                            onTap: () {},
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                FadePageRoute3(
+                                                  exitPage: StarReview(
+                                                    route: widget.route,
+                                                  ),
+                                                  enterPage: GoalName(
+                                                    catId,
+                                                    comingFromEditScreen: true,
+                                                  ),
+                                                ),
+                                              );
+                                            },
                                             child: Container(
                                               height: AppDimensions.height10(
                                                       context) *
@@ -1063,17 +1080,29 @@ class _StarReviewState extends State<StarReview> {
                                             onTap: () {
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute2(
-                                                  true,
+                                                FadePageRoute3(
                                                   exitPage: StarReview(
                                                     route: widget.route,
                                                   ),
-                                                  enterPage:
-                                                      const StarReviewWhy(
-                                                    updatedCategory: 1,
+                                                  enterPage: GoalWhy(
+                                                    // catId,
+                                                    comingFromEditScreen: true,
                                                   ),
                                                 ),
                                               );
+                                              // Navigator.push(
+                                              //   context,
+                                              //   FadePageRoute2(
+                                              //     true,
+                                              //     exitPage: StarReview(
+                                              //       route: widget.route,
+                                              //     ),
+                                              //     enterPage:
+                                              //         const StarReviewWhy(
+                                              //       updatedCategory: 1,
+                                              //     ),
+                                              //   ),
+                                              // );
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1141,7 +1170,7 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text('Reason ${index + 1}',
+                                              inner_text2('Reason ${index + 1}',
                                                   '${reason[index]['text']}'),
                                               SizedBox(
                                                 height: AppDimensions.height10(
@@ -1211,17 +1240,30 @@ class _StarReviewState extends State<StarReview> {
                                             onTap: () {
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute2(
-                                                  true,
+                                                FadePageRoute3(
                                                   exitPage: StarReview(
                                                     route: widget.route,
                                                   ),
-                                                  enterPage:
-                                                      const StarReviewWhy(
-                                                    updatedCategory: 2,
+                                                  enterPage: Goal_Identity(
+                                                    // catId,
+                                                    comingFromEditScreen: true,
                                                   ),
                                                 ),
                                               );
+
+                                              // Navigator.push(
+                                              //   context,
+                                              //   FadePageRoute2(
+                                              //     true,
+                                              //     exitPage: StarReview(
+                                              //       route: widget.route,
+                                              //     ),
+                                              //     enterPage:
+                                              //         const StarReviewWhy(
+                                              //       updatedCategory: 2,
+                                              //     ),
+                                              //   ),
+                                              // );
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1289,7 +1331,7 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text(
+                                              inner_text2(
                                                   'Statement ${index + 1}',
                                                   '${identity[index]['text']}'),
                                               SizedBox(
@@ -1358,19 +1400,34 @@ class _StarReviewState extends State<StarReview> {
                                           // SizedBox(width: ),
                                           AnimatedScaleButton(
                                             onTap: () {
+                                              print("New Self ");
+
                                               Navigator.push(
                                                 context,
-                                                FadePageRoute2(
-                                                  true,
+                                                FadePageRoute3(
                                                   exitPage: StarReview(
                                                     route: widget.route,
                                                   ),
-                                                  enterPage:
-                                                      const StarReviewWhy(
-                                                    updatedCategory: 3,
+                                                  enterPage: Visualising(
+                                                    // catId,
+                                                    comingFromEditScreen: true,
                                                   ),
                                                 ),
                                               );
+
+                                              // Navigator.push(
+                                              //   context,
+                                              //   FadePageRoute2(
+                                              //     true,
+                                              //     exitPage: StarReview(
+                                              //       route: widget.route,
+                                              //     ),
+                                              //     enterPage:
+                                              //         const StarReviewWhy(
+                                              //       updatedCategory: 3,
+                                              //     ),
+                                              //   ),
+                                              // );
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
@@ -1438,7 +1495,7 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text(
+                                              inner_text2(
                                                   'Statement ${index + 1}',
                                                   '${visualize[index]['text']}'),
                                               SizedBox(
@@ -1823,17 +1880,17 @@ class _inner_text1State extends State<inner_text1> {
   }
 }
 
-class inner_text extends StatefulWidget {
+class inner_text2 extends StatefulWidget {
   final String circle_text;
   final String panel_Text;
 
-  inner_text(this.circle_text, this.panel_Text, {super.key});
+  inner_text2(this.circle_text, this.panel_Text, {super.key});
 
   @override
-  State<inner_text> createState() => _inner_textState();
+  State<inner_text2> createState() => _inner_text2State();
 }
 
-class _inner_textState extends State<inner_text> {
+class _inner_text2State extends State<inner_text2> {
   final TextEditingController body_text = TextEditingController();
 
   final TextEditingController heading_text = TextEditingController();

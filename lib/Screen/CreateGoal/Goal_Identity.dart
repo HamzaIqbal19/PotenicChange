@@ -14,13 +14,17 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../API/Goal.dart';
 import '../../Widgets/SignupBottomSheet.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
+import '../ReviewGoal/StarReview.dart';
 
 // ignore: camel_case_types
 class Goal_Identity extends StatefulWidget {
-  const Goal_Identity({Key? key}) : super(key: key);
+  final bool comingFromEditScreen;
+  const Goal_Identity({Key? key, required this.comingFromEditScreen})
+      : super(key: key);
 
   @override
   State<Goal_Identity> createState() => _Goal_IdentityState();
@@ -29,6 +33,10 @@ class Goal_Identity extends StatefulWidget {
 // ignore: camel_case_types
 class _Goal_IdentityState extends State<Goal_Identity> {
   List<Map<String, String>> myIdentity = [];
+  var identity;
+  int listReason = 0;
+
+  bool Loading = true;
 
   //closing the focus
   String goalName = "";
@@ -43,6 +51,34 @@ class _Goal_IdentityState extends State<Goal_Identity> {
       'key': 'Reason ${myIdentity.length}',
       'text': '',
     });
+    _fetchGoalNames();
+  }
+
+  void _fetchGoalNames() async {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          Loading = false;
+          goalName = response["name"];
+          identity = response["identityStatement"];
+          listReason = response["identityStatement"].length;
+        });
+      } else {
+        setState(() {
+          Loading = false;
+        });
+      }
+    }).catchError((error) {
+      setState(() {
+        Loading = false;
+      });
+      print("error");
+    });
+
+    // setState(() {
+    //   goalName = AdminGoal().getUserGoal();
+    // });
+    // print('GoalName: $goalName');
   }
 
   getGoalName() async {
@@ -69,18 +105,31 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
   void handleDelete(int index) {
     print('=========>dELETED');
-    setState(() {
-      // myTextFields[index]['text'].remove(index);
+    widget.comingFromEditScreen
+        ? setState(() {
+            // myTextFields[index]['text'].remove(index);
 
-      myIdentity.removeAt(index);
+            identity.removeAt(index);
 
-      for (int i = index + 1; i < myIdentity.length; i++) {
-        myIdentity[i]['key'] = i.toString();
+            for (int i = index + 1; i < identity.length; i++) {
+              identity[i]['key'] = i.toString();
 
-        // Assuming 'key' is the identifier you want to update.
-      }
-      //index--;
-    });
+              // Assuming 'key' is the identifier you want to update.
+            }
+            //index--;
+          })
+        : setState(() {
+            // myTextFields[index]['text'].remove(index);
+
+            myIdentity.removeAt(index);
+
+            for (int i = index + 1; i < myIdentity.length; i++) {
+              myIdentity[i]['key'] = i.toString();
+
+              // Assuming 'key' is the identifier you want to update.
+            }
+            //index--;
+          });
     decrement();
     //closing the focus
     blankNode.requestFocus();
@@ -91,6 +140,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
   void increment() {
     item = item + 1;
+  }
+
+  void incrementEdit() {
+    listReason = listReason + 1;
   }
 
   Future<void> updateGoalReason(
@@ -137,8 +190,12 @@ class _Goal_IdentityState extends State<Goal_Identity> {
               context,
               FadePageRoute2(
                 true,
-                exitPage: const Goal_Identity(),
-                enterPage: const Visualising(),
+                exitPage: const Goal_Identity(
+                  comingFromEditScreen: false,
+                ),
+                enterPage: Visualising(
+                  comingFromEditScreen: false,
+                ),
               ),
             )
           : Container();
@@ -151,6 +208,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
   @override
   Widget build(BuildContext context) {
+    print("identity : $identity");
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
@@ -256,7 +314,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: const Goal_Identity(),
+                                        exitPage: const Goal_Identity(
+                                          comingFromEditScreen: false,
+                                        ),
                                         enterPage:
                                             const HomeScreenProgressSaved(
                                                 login: true,
@@ -296,7 +356,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: const Goal_Identity(),
+                                        exitPage: const Goal_Identity(
+                                          comingFromEditScreen: false,
+                                        ),
                                         enterPage:
                                             const HomeScreen(login: true),
                                       ),
@@ -352,9 +414,11 @@ class _Goal_IdentityState extends State<Goal_Identity> {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.webp"),
+                image: widget.comingFromEditScreen
+                    ? AssetImage("assets/images/GoalReviewBg.webp")
+                    : AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -369,10 +433,14 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
-                      "Star Creation 4/5",
+                      widget.comingFromEditScreen
+                          ? "View and edit mode"
+                          : "Star Creation 4/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
@@ -389,7 +457,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
@@ -398,17 +468,21 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.9,
                 ),
-                Container(
-                    // color: Colors.blue,
-                    width: AppDimensions.height10(context) * 10.4,
-                    height: AppDimensions.height10(context) * 7.6,
-                    padding: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.5,
-                        right: AppDimensions.height10(context) * 1.5),
-                    child: Image.asset(
-                      "assets/images/image3.webp",
-                      fit: BoxFit.contain,
-                    )),
+                widget.comingFromEditScreen
+                    ? SizedBox(
+                        height: AppDimensions.height10(context) * 3.5,
+                      )
+                    : Container(
+                        // color: Colors.blue,
+                        width: AppDimensions.height10(context) * 10.4,
+                        height: AppDimensions.height10(context) * 7.6,
+                        padding: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 1.5,
+                            right: AppDimensions.height10(context) * 1.5),
+                        child: Image.asset(
+                          "assets/images/image3.webp",
+                          fit: BoxFit.contain,
+                        )),
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.0,
                 ),
@@ -418,7 +492,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       "New Identity Statement",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
@@ -437,7 +513,9 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFFFFFFFF)),
+                          color: widget.comingFromEditScreen
+                              ? Color(0xFF437296)
+                              : Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
@@ -466,77 +544,171 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           borderRadius: BorderRadius.all(Radius.circular(
                               AppDimensions.height10(context) * 1.8))),
                       child: ListView.builder(
-                        itemCount: myIdentity.length,
-                        padding: EdgeInsets.zero,
-                        itemBuilder: (BuildContext context, index) {
-                          return Column(children: [
-                            inner_text(
-                              key: Key(myIdentity[index]['key']!),
-                              delete: true,
-                              head_text: "${index + 1}. I am someone who ",
-                              body_text: myIdentity[index]['text']!,
-                              length: 150,
-                              onChanged: (newText) {
-                                setState(() {
-                                  myIdentity[index]['text'] = newText;
-                                });
-                                handleTextChanged(index, newText);
-                              },
-                              onDelete: () => handleDelete(index),
-                              index: index,
-                              placeHolder: 'is in control of my anger....',
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.5,
-                                  bottom:
-                                      AppDimensions.height10(context) * 1.3),
-                              child: Row(
-                                children: [
-                                  Center(
-                                    child: Text(
-                                      "Character count: ",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        color: const Color(0xFF464646),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
+                          itemCount: widget.comingFromEditScreen
+                              ? (identity?.length ?? 0)
+                              : myIdentity.length,
+                          padding: EdgeInsets.zero,
+                          itemBuilder: (BuildContext context, index) {
+                            if (widget.comingFromEditScreen) {
+                              if (identity == null ||
+                                  index >= identity.length) {
+                                return Container(); // Return an empty container if the index is out of range.
+                              }
+                              return Column(children: [
+                                inner_text(
+                                  key: Key(identity[index]['key']),
+                                  delete: true,
+                                  head_text: "${index + 1}. I am someone who ",
+                                  body_text: identity[index]['text']!,
+                                  length: 150,
+                                  onChanged: (newText) {
+                                    setState(() {
+                                      identity[index]['text'] = newText;
+                                    });
+                                    handleTextChanged(index, newText);
+                                  },
+                                  onDelete: () => handleDelete(index),
+                                  index: index,
+                                  placeHolder: 'is in control of my anger....',
+                                  comingFromEditScreen:
+                                      widget.comingFromEditScreen,
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left:
+                                          AppDimensions.height10(context) * 1.5,
+                                      bottom: AppDimensions.height10(context) *
+                                          1.3),
+                                  child: Row(
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          "Character count: ",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xFF464646),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
                                                 1.3,
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      Center(
+                                        child: Text(
+                                          "150",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color(0xFF464646),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.3,
+                                        width: AppDimensions.height10(context) *
+                                            4.0,
+                                        margin: EdgeInsets.only(
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                0.5,
+                                            left: AppDimensions.height10(
+                                                    context) *
+                                                4.0),
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFF282828)
+                                                .withOpacity(0.2)),
+                                      )
+                                    ],
                                   ),
-                                  Center(
-                                    child: Text(
-                                      "150",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color(0xFF464646),
-                                        fontSize:
-                                            AppDimensions.height10(context) *
-                                                1.3,
-                                      ),
-                                    ),
+                                )
+                              ]);
+                            } else {
+                              if (index >= myIdentity.length) {
+                                return Container();
+                              }
+                              return Column(
+                                children: [
+                                  inner_text(
+                                    key: Key(myIdentity[index]['key']!),
+                                    delete: true,
+                                    head_text:
+                                        "${index + 1}. I am someone who ",
+                                    body_text: myIdentity[index]['text']!,
+                                    length: 150,
+                                    onChanged: (newText) {
+                                      setState(() {
+                                        myIdentity[index]['text'] = newText;
+                                      });
+                                      handleTextChanged(index, newText);
+                                    },
+                                    onDelete: () => handleDelete(index),
+                                    index: index,
+                                    placeHolder:
+                                        'is in control of my anger....',
+                                    comingFromEditScreen: false,
                                   ),
                                   Container(
-                                    height:
-                                        AppDimensions.height10(context) * 0.3,
-                                    width:
-                                        AppDimensions.height10(context) * 4.0,
                                     margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            0.5,
                                         left: AppDimensions.height10(context) *
-                                            4.0),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF282828)
-                                            .withOpacity(0.2)),
+                                            1.5,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.3),
+                                    child: Row(
+                                      children: [
+                                        Center(
+                                          child: Text(
+                                            "Character count: ",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xFF464646),
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.3,
+                                            ),
+                                          ),
+                                        ),
+                                        Center(
+                                          child: Text(
+                                            "150",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              color: const Color(0xFF464646),
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.3,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  0.3,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  4.0,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.5,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  4.0),
+                                          decoration: BoxDecoration(
+                                              color: const Color(0xFF282828)
+                                                  .withOpacity(0.2)),
+                                        )
+                                      ],
+                                    ),
                                   )
                                 ],
-                              ),
-                            )
-                          ]);
-                        },
-                      ),
+                              );
+                            }
+                          }),
                     ),
                     Positioned(
                       top: 0,
@@ -587,13 +759,21 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             : AnimatedScaleButton(
                                 onTap: () {
                                   increment();
-                                  setState(() {
-                                    myIdentity.add({
-                                      'key':
-                                          'Identity ${myIdentity.length.toString()}',
-                                      'text': '',
-                                    });
-                                  });
+                                  widget.comingFromEditScreen
+                                      ? setState(() {
+                                          identity.add({
+                                            'key':
+                                                'Reason ${identity.length.toString()}',
+                                            'text': '',
+                                          });
+                                        })
+                                      : setState(() {
+                                          myIdentity.add({
+                                            'key':
+                                                'Identity ${myIdentity.length.toString()}',
+                                            'text': '',
+                                          });
+                                        });
                                   print("=============>Pressed");
                                 },
                                 child: Container(
@@ -640,35 +820,89 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                        // color: Colors.blue,
-                        width: AppDimensions.height10(context) * 5.0,
-                        height: AppDimensions.height10(context) * 5.0,
-                        child: AnimatedScaleButton(
-                          onTap: () {
-                            //signupSheet(context, "Sign up / login", "login");
-                          },
-                          child: Image.asset(
-                            "assets/images/Moreactions.webp",
-                            fit: BoxFit.contain,
-                          ),
-                        )),
+                    widget.comingFromEditScreen
+                        ? Container(
+                            width: AppDimensions.height10(context) * 10.0,
+                            height: AppDimensions.height10(context) * 5.0,
+                            decoration: myIdentity[0]['text'] != ""
+                                ? BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                        Border.all(color: Color(0xffFA9934)),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  )
+                                : BoxDecoration(
+                                    // color: Color(0xFFFF7D50),
+                                    border: Border.all(
+                                        color: const Color(0xff282828)),
+                                    color: Colors.transparent,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  ),
+                            child: AnimatedScaleButton(
+                              onTap: () {
+                                //   signupSheet(context, "Sign up / login", "login");
+                              },
+                              child: Center(
+                                  child: Text(
+                                "Reset",
+                                style: TextStyle(
+                                    fontFamily: "Laila",
+                                    fontWeight: FontWeight.w600,
+                                    color: myIdentity[0]['text'] != ""
+                                        ? Color(0xffFA9934)
+                                        : Color(0xff282828),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8),
+                              )),
+                            ))
+                        : Container(
+                            // color: Colors.blue,
+                            width: AppDimensions.height10(context) * 5.0,
+                            height: AppDimensions.height10(context) * 5.0,
+                            child: AnimatedScaleButton(
+                              onTap: () {
+                                //signupSheet(context, "Sign up / login", "login");
+                              },
+                              child: Image.asset(
+                                "assets/images/Moreactions.webp",
+                                fit: BoxFit.contain,
+                              ),
+                            )),
                     SizedBox(
                       width: AppDimensions.height10(context) * 2.0,
                     ),
                     AnimatedScaleButton(
                       onTap: () {
-                        updateGoalReason(myIdentity);
-                        // myIdentity[0]['text'] != ""
-                        //     ? Navigator.push(
-                        //         context,
-                        //         FadePageRoute2(
-                        //           true,
-                        //           exitPage: const Goal_Identity(),
-                        //           enterPage: const Visualising(),
-                        //         ),
-                        //       )
-                        //     : Container();
+                        if (widget.comingFromEditScreen) {
+                          print("Printing Reason $identity");
+                          AdminGoal()
+                              .updateUserGoal('identityStatement', identity)
+                              .then((value) {
+                            if (value == true) {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                    page: const StarReview(
+                                      route: 'goal',
+                                    ),
+                                  ));
+                            }
+                          });
+                        } else {
+                          updateGoalReason(myIdentity);
+                          // myIdentity[0]['text'] != ""
+                          //     ? Navigator.push(
+                          //         context,
+                          //         FadePageRoute2(
+                          //           true,
+                          //           exitPage: const Goal_Identity(),
+                          //           enterPage: const Visualising(),
+                          //         ),
+                          //       )
+                          //     : Container();
+                        }
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
@@ -696,7 +930,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                               ),
                         child: Center(
                           child: Text(
-                            "Next",
+                            widget.comingFromEditScreen ? "Save" : "Next",
                             style: TextStyle(
                               color: myIdentity[0]['text'] != ""
                                   ? Colors.white

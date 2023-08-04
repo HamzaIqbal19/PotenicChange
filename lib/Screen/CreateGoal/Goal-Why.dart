@@ -13,13 +13,15 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../API/Goal.dart';
 import '../../Widgets/SignupBottomSheet.dart';
 import '../../Widgets/fading2.dart';
+import '../ReviewGoal/StarReview.dart';
 
 class GoalWhy extends StatefulWidget {
-  GoalWhy({
-    Key? key,
-  }) : super(key: key);
+  final bool comingFromEditScreen;
+
+  GoalWhy({Key? key, required this.comingFromEditScreen}) : super(key: key);
 
   @override
   _goalwhyState createState() => _goalwhyState();
@@ -32,6 +34,10 @@ class _goalwhyState extends State<GoalWhy> {
   //closing the focus
   final FocusNode blankNode = FocusNode();
   String goalName = "";
+  var reason;
+  bool Loading = true;
+  int listReason = 0;
+
   @override
   void initState() {
     super.initState();
@@ -41,6 +47,35 @@ class _goalwhyState extends State<GoalWhy> {
       'key': 'Reason ${myTextFields.length}',
       'text': '',
     });
+
+    _fetchGoalNames();
+  }
+
+  void _fetchGoalNames() async {
+    AdminGoal.getUserGoal().then((response) {
+      if (response.length != 0) {
+        setState(() {
+          Loading = false;
+          goalName = response["name"];
+          reason = response["reason"];
+          listReason = response["reason"].length;
+        });
+      } else {
+        setState(() {
+          Loading = false;
+        });
+      }
+    }).catchError((error) {
+      setState(() {
+        Loading = false;
+      });
+      print("error");
+    });
+
+    // setState(() {
+    //   goalName = AdminGoal().getUserGoal();
+    // });
+    // print('GoalName: $goalName');
   }
 
   getGoalName() async {
@@ -67,18 +102,32 @@ class _goalwhyState extends State<GoalWhy> {
 
   void handleDelete(int index) {
     print('=========>dELETED');
-    setState(() {
-      // myTextFields[index]['text'].remove(index);
 
-      myTextFields.removeAt(index);
+    widget.comingFromEditScreen
+        ? setState(() {
+            // myTextFields[index]['text'].remove(index);
 
-      for (int i = index + 1; i < myTextFields.length; i++) {
-        myTextFields[i]['key'] = i.toString();
+            reason.removeAt(index);
 
-        // Assuming 'key' is the identifier you want to update.
-      }
-      //index--;
-    });
+            for (int i = index + 1; i < reason.length; i++) {
+              reason[i]['key'] = i.toString();
+
+              // Assuming 'key' is the identifier you want to update.
+            }
+            //index--;
+          })
+        : setState(() {
+            // myTextFields[index]['text'].remove(index);
+
+            myTextFields.removeAt(index);
+
+            for (int i = index + 1; i < myTextFields.length; i++) {
+              myTextFields[i]['key'] = i.toString();
+
+              // Assuming 'key' is the identifier you want to update.
+            }
+            //index--;
+          });
     decrement();
     //closing the focus
     blankNode.requestFocus();
@@ -89,6 +138,10 @@ class _goalwhyState extends State<GoalWhy> {
 
   void increment() {
     item = item + 1;
+  }
+
+  void incrementEdit() {
+    listReason = listReason + 1;
   }
 
   Future<void> updateGoalReason(List<Map<String, String>> newReason) async {
@@ -134,8 +187,12 @@ class _goalwhyState extends State<GoalWhy> {
               context,
               FadePageRoute2(
                 true,
-                exitPage: GoalWhy(),
-                enterPage: const Goal_Identity(),
+                exitPage: GoalWhy(
+                  comingFromEditScreen: false,
+                ),
+                enterPage: const Goal_Identity(
+                  comingFromEditScreen: false,
+                ),
               ),
             )
           : Container();
@@ -250,7 +307,9 @@ class _goalwhyState extends State<GoalWhy> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: GoalWhy(),
+                                        exitPage: GoalWhy(
+                                          comingFromEditScreen: false,
+                                        ),
                                         enterPage:
                                             const HomeScreenProgressSaved(
                                           login: true,
@@ -289,7 +348,9 @@ class _goalwhyState extends State<GoalWhy> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: GoalWhy(),
+                                        exitPage: GoalWhy(
+                                          comingFromEditScreen: false,
+                                        ),
                                         enterPage:
                                             const HomeScreen(login: true),
                                       ),
@@ -345,9 +406,11 @@ class _goalwhyState extends State<GoalWhy> {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.webp"),
+                image: widget.comingFromEditScreen
+                    ? AssetImage("assets/images/GoalReviewBg.webp")
+                    : AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -362,10 +425,14 @@ class _goalwhyState extends State<GoalWhy> {
                       top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
-                      "Star Creation 3/5",
+                      widget.comingFromEditScreen
+                          ? "View and edit mode"
+                          : "Star Creation 3/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
@@ -382,7 +449,9 @@ class _goalwhyState extends State<GoalWhy> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
@@ -391,16 +460,20 @@ class _goalwhyState extends State<GoalWhy> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.0,
                 ),
-                Container(
-                    width: AppDimensions.height10(context) * 10.4,
-                    height: AppDimensions.height10(context) * 7.6,
-                    padding: EdgeInsets.only(
-                        left: AppDimensions.height10(context) * 1.5,
-                        right: AppDimensions.height10(context) * 1.5),
-                    child: Image.asset(
-                      "assets/images/image3.webp",
-                      fit: BoxFit.contain,
-                    )),
+                widget.comingFromEditScreen
+                    ? SizedBox(
+                        height: AppDimensions.height10(context) * 3.5,
+                      )
+                    : Container(
+                        width: AppDimensions.height10(context) * 10.4,
+                        height: AppDimensions.height10(context) * 7.6,
+                        padding: EdgeInsets.only(
+                            left: AppDimensions.height10(context) * 1.5,
+                            right: AppDimensions.height10(context) * 1.5),
+                        child: Image.asset(
+                          "assets/images/image3.webp",
+                          fit: BoxFit.contain,
+                        )),
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.0,
                 ),
@@ -410,7 +483,9 @@ class _goalwhyState extends State<GoalWhy> {
                       "The Why",
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xFF437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
@@ -429,7 +504,9 @@ class _goalwhyState extends State<GoalWhy> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFFFFFFFF)),
+                          color: widget.comingFromEditScreen
+                              ? Color(0xFF437296)
+                              : Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
@@ -460,78 +537,171 @@ class _goalwhyState extends State<GoalWhy> {
                                 width: AppDimensions.height10(context) * 0.2),
                             borderRadius: BorderRadius.all(Radius.circular(
                                 AppDimensions.height10(context) * 1.8))),
+
                         child: ListView.builder(
-                          itemCount: myTextFields.length,
+                          itemCount: widget.comingFromEditScreen
+                              ? (reason?.length ?? 0)
+                              : myTextFields.length,
                           padding: EdgeInsets.zero,
                           itemBuilder: (BuildContext context, index) {
-                            return Column(children: [
-                              inner_text(
-                                key: Key(myTextFields[index]['key']!),
-                                delete: true,
-                                head_text: "Reason ${index + 1}",
-                                body_text: myTextFields[index]['text']!,
-                                length: 200,
-                                onChanged: (newText) {
-                                  setState(() {
-                                    myTextFields[index]['text'] = newText;
-                                  });
-                                  handleTextChanged(index, newText);
-                                },
-                                onDelete: () => handleDelete(index),
-                                index: index,
-                                placeHolder:
-                                    'I want to achieve this goal because...',
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
+                            if (widget.comingFromEditScreen) {
+                              if (reason == null || index >= reason.length) {
+                                return Container(); // Return an empty container if the index is out of range.
+                              }
+                              return Column(children: [
+                                inner_text(
+                                  key: Key(reason[index]['key']),
+                                  delete: true,
+                                  head_text: "Reason ${index + 1}",
+                                  body_text: reason[index]['text'],
+                                  length: 200,
+                                  onChanged: (newText) {
+                                    setState(() {
+                                      reason[index]['text'] = newText;
+                                    });
+                                    handleTextChanged(index, newText);
+                                  },
+                                  onDelete: () => handleDelete(index),
+                                  index: index,
+                                  placeHolder:
+                                      'I want to achieve this goal because...',
+                                  comingFromEditScreen:
+                                      widget.comingFromEditScreen,
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
                                     left: AppDimensions.height10(context) * 1.5,
                                     bottom:
-                                        AppDimensions.height10(context) * 1.3),
-                                child: Row(
-                                  children: [
-                                    Center(
-                                      child: Text(
-                                        "Character count: ",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xFF464646),
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
+                                        AppDimensions.height10(context) * 1.3,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          "Character count: ",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xFF464646),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Center(
-                                      child: Text(
-                                        "200",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          color: const Color(0xFF464646),
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
+                                      Center(
+                                        child: Text(
+                                          "200",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color(0xFF464646),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Container(
-                                      height:
-                                          AppDimensions.height10(context) * 0.3,
-                                      width:
-                                          AppDimensions.height10(context) * 4.0,
-                                      margin: EdgeInsets.only(
+                                      Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.3,
+                                        width: AppDimensions.height10(context) *
+                                            4.0,
+                                        margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
                                               0.5,
                                           left:
                                               AppDimensions.height10(context) *
-                                                  4.0),
-                                      decoration: BoxDecoration(
+                                                  4.0,
+                                        ),
+                                        decoration: BoxDecoration(
                                           color: const Color(0xFF282828)
-                                              .withOpacity(0.2)),
-                                    )
-                                  ],
+                                              .withOpacity(0.2),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              )
-                            ]);
+                              ]);
+                            } else {
+                              // Use the myTextFields list.
+                              if (index >= myTextFields.length) {
+                                return Container(); // Return an empty container if the index is out of range.
+                              }
+                              return Column(children: [
+                                inner_text(
+                                  key: Key(myTextFields[index]['key']!),
+                                  delete: true,
+                                  head_text: "Reason ${index + 1}",
+                                  body_text: myTextFields[index]['text']!,
+                                  length: 200,
+                                  onChanged: (newText) {
+                                    setState(() {
+                                      myTextFields[index]['text'] = newText;
+                                    });
+                                    handleTextChanged(index, newText);
+                                  },
+                                  onDelete: () => handleDelete(index),
+                                  index: index,
+                                  placeHolder:
+                                      'I want to achieve this goal because...',
+                                  comingFromEditScreen:
+                                      widget.comingFromEditScreen,
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 1.5,
+                                    bottom:
+                                        AppDimensions.height10(context) * 1.3,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Center(
+                                        child: Text(
+                                          "Character count: ",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xFF464646),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                          ),
+                                        ),
+                                      ),
+                                      Center(
+                                        child: Text(
+                                          "200",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            color: const Color(0xFF464646),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.3,
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.3,
+                                        width: AppDimensions.height10(context) *
+                                            4.0,
+                                        margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              0.5,
+                                          left:
+                                              AppDimensions.height10(context) *
+                                                  4.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFF282828)
+                                              .withOpacity(0.2),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ]);
+                            }
                           },
                         ),
                       ),
@@ -582,16 +752,70 @@ class _goalwhyState extends State<GoalWhy> {
                                   ),
                                 ),
                               )
+                            // :
+                            // reason.length > 4
+                            //     ? AnimatedScaleButton(
+                            //         onTap: () {
+                            //           ScaffoldMessenger.of(context)
+                            //               .showSnackBar(
+                            //             const SnackBar(
+                            //               content: Text(
+                            //                   'You cannot add more than 5 items.'),
+                            //               duration: Duration(seconds: 3),
+                            //             ),
+                            //           );
+                            //         },
+                            //         child: Container(
+                            //           height:
+                            //               AppDimensions.height10(context) * 4.7,
+                            //           width:
+                            //               AppDimensions.height10(context) * 4.7,
+                            //           decoration: const BoxDecoration(
+                            //             shape: BoxShape.circle,
+                            //             color:
+                            //                 Color.fromARGB(189, 158, 158, 158),
+                            //           ),
+                            //           child: Padding(
+                            //             padding: const EdgeInsets.only(
+                            //                 top: 4,
+                            //                 left: 4,
+                            //                 right: 4,
+                            //                 bottom: 4),
+                            //             child: Container(
+                            //               color: Colors.transparent,
+                            //               child: Image.asset(
+                            //                 'assets/images/Addgoal.webp',
+                            //                 height: AppDimensions.height10(
+                            //                         context) *
+                            //                     4.7,
+                            //                 width: AppDimensions.height10(
+                            //                         context) *
+                            //                     4.7,
+                            //               ),
+                            //             ),
+                            //           ),
+                            //         ),
+                            //       )
+
                             : AnimatedScaleButton(
                                 onTap: () {
                                   increment();
-                                  setState(() {
-                                    myTextFields.add({
-                                      'key':
-                                          'Reason ${myTextFields.length.toString()}',
-                                      'text': '',
-                                    });
-                                  });
+
+                                  widget.comingFromEditScreen
+                                      ? setState(() {
+                                          reason.add({
+                                            'key':
+                                                'Reason ${reason.length.toString()}',
+                                            'text': '',
+                                          });
+                                        })
+                                      : setState(() {
+                                          myTextFields.add({
+                                            'key':
+                                                'Reason ${myTextFields.length.toString()}',
+                                            'text': '',
+                                          });
+                                        });
                                   print("=============>Pressed");
                                 },
                                 child: Container(
@@ -639,26 +863,82 @@ class _goalwhyState extends State<GoalWhy> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                        // color: Colors.blue,
-                        width: AppDimensions.height10(context) * 5.0,
-                        height: AppDimensions.height10(context) * 5.0,
-                        child: AnimatedScaleButton(
-                          onTap: () {
-                            //   signupSheet(context, "Sign up / login", "login");
-                          },
-                          child: Image.asset(
-                            "assets/images/Moreactions.webp",
-                            fit: BoxFit.contain,
-                          ),
-                        )),
+                    widget.comingFromEditScreen
+                        ? Container(
+                            width: AppDimensions.height10(context) * 10.0,
+                            height: AppDimensions.height10(context) * 5.0,
+                            decoration: myTextFields[0]['text'] != ""
+                                ? BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                        Border.all(color: Color(0xffFA9934)),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  )
+                                : BoxDecoration(
+                                    // color: Color(0xFFFF7D50),
+                                    border: Border.all(
+                                        color: const Color(0xff282828)),
+                                    color: Colors.transparent,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  ),
+                            child: AnimatedScaleButton(
+                              onTap: () {
+                                //   signupSheet(context, "Sign up / login", "login");
+                              },
+                              child: Center(
+                                  child: Text(
+                                "Reset",
+                                style: TextStyle(
+                                    fontFamily: "Laila",
+                                    fontWeight: FontWeight.w600,
+                                    color: myTextFields[0]['text'] != ""
+                                        ? Color(0xffFA9934)
+                                        : Color(0xff282828),
+                                    fontSize:
+                                        AppDimensions.height10(context) * 1.8),
+                              )),
+                            ))
+                        : Container(
+                            // color: Colors.blue,
+                            width: AppDimensions.height10(context) * 5.0,
+                            height: AppDimensions.height10(context) * 5.0,
+                            child: AnimatedScaleButton(
+                              onTap: () {
+                                //   signupSheet(context, "Sign up / login", "login");
+                              },
+                              child: Image.asset(
+                                "assets/images/Moreactions.webp",
+                                fit: BoxFit.contain,
+                              ),
+                            )),
                     SizedBox(
                       width: AppDimensions.height10(context) * 2.0,
                     ),
                     AnimatedScaleButton(
-                      onTap: () {
-                        print('===================>${myTextFields[0]['text']}');
-                        updateGoalReason(myTextFields);
+                      onTap: () async {
+                        if (widget.comingFromEditScreen) {
+                          print("Printing Reason $reason");
+
+                          AdminGoal()
+                              .updateUserGoal('reason', reason)
+                              .then((value) {
+                            if (value == true) {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                    page: const StarReview(
+                                      route: 'goal',
+                                    ),
+                                  ));
+                            }
+                          });
+                        } else {
+                          print(
+                              '===================>${myTextFields[0]['text']}');
+                          updateGoalReason(myTextFields);
+                        }
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
@@ -686,7 +966,7 @@ class _goalwhyState extends State<GoalWhy> {
                               ),
                         child: Center(
                           child: Text(
-                            "Next",
+                            widget.comingFromEditScreen ? "Save" : "Next",
                             style: TextStyle(
                               color: myTextFields[0]['text'] != ""
                                   ? Colors.white

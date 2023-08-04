@@ -371,7 +371,10 @@ void bottom_sheet(context) {
                             Navigator.push(
                               context,
                               FadePageRoute(
-                                page: GoalName(catId),
+                                page: GoalName(
+                                  catId,
+                                  comingFromEditScreen: false,
+                                ),
                               ),
                             );
                           }

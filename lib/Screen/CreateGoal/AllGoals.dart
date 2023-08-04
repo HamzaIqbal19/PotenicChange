@@ -124,7 +124,10 @@ class _AllGoalsState extends State<AllGoals> {
       Navigator.push(
         context,
         FadePageRoute(
-          page: GoalName(4),
+          page: GoalName(
+            4,
+            comingFromEditScreen: false,
+          ),
         ),
       );
       return Goal.fromJson(jsonMap);
