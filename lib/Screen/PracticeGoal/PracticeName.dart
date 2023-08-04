@@ -1,18 +1,23 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Goal.dart';
 
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../API/Practice.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
+import '../ReviewPractice/practiceReview.dart';
 
 class PracticeName extends StatefulWidget {
   // final String message;
 
-  PracticeName();
+  final bool comingFromEditScreen;
+
+  const PracticeName({super.key, required this.comingFromEditScreen});
 
   @override
   State<PracticeName> createState() => _PracticeNameState();
@@ -49,7 +54,7 @@ class _PracticeNameState extends State<PracticeName> {
       color = goalColor;
       mygoal.text = my_goal!;
       practice.text = practice_Name!;
-      practiceName.text = capitalizeFirstLetter(practice_Name!);
+      practiceName.text = capitalizeFirstLetter(practice_Name);
     });
     print('=======================>$color');
   }
@@ -114,9 +119,11 @@ class _PracticeNameState extends State<PracticeName> {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.webp"),
+                image: widget.comingFromEditScreen
+                    ? AssetImage("assets/images/GoalReviewBg.webp")
+                    : AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -131,10 +138,14 @@ class _PracticeNameState extends State<PracticeName> {
                       top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
-                      "Practice Creation 2/3",
+                      widget.comingFromEditScreen
+                          ? "View and edit mode"
+                          : "Practice Creation 2/3",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xff437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
@@ -151,7 +162,9 @@ class _PracticeNameState extends State<PracticeName> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xff437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
@@ -227,7 +240,9 @@ class _PracticeNameState extends State<PracticeName> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF156F6D),
+                                  color: widget.comingFromEditScreen
+                                      ? Color(0xff437296)
+                                      : Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),
@@ -255,7 +270,9 @@ class _PracticeNameState extends State<PracticeName> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xff437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
@@ -274,7 +291,9 @@ class _PracticeNameState extends State<PracticeName> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFFFFFFFF)),
+                          color: widget.comingFromEditScreen
+                              ? Color(0xff437296)
+                              : Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
@@ -386,6 +405,45 @@ class _PracticeNameState extends State<PracticeName> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    // widget.comingFromEditScreen
+                    //       ? Container(
+                    //           width: AppDimensions.height10(context) * 10.0,
+                    //           height: AppDimensions.height10(context) * 5.0,
+                    //           decoration: myTextFields[0]['text'] != ""
+                    //               ? BoxDecoration(
+                    //                   color: Colors.white,
+                    //                   border:
+                    //                       Border.all(color: Color(0xffFA9934)),
+                    //                   borderRadius: const BorderRadius.all(
+                    //                       Radius.circular(50.0)),
+                    //                 )
+                    //               : BoxDecoration(
+                    //                   // color: Color(0xFFFF7D50),
+                    //                   border: Border.all(
+                    //                       color: const Color(0xff282828)),
+                    //                   color: Colors.transparent,
+                    //                   borderRadius: const BorderRadius.all(
+                    //                       Radius.circular(50.0)),
+                    //                 ),
+                    //           child: AnimatedScaleButton(
+                    //             onTap: () {
+                    //               //   signupSheet(context, "Sign up / login", "login");
+                    //             },
+                    //             child: Center(
+                    //                 child: Text(
+                    //               "Reset",
+                    //               style: TextStyle(
+                    //                   fontFamily: "Laila",
+                    //                   fontWeight: FontWeight.w600,
+                    //                   color: myTextFields[0]['text'] != ""
+                    //                       ? Color(0xffFA9934)
+                    //                       : Color(0xff282828),
+                    //                   fontSize:
+                    //                       AppDimensions.height10(context) * 1.8),
+                    //             )),
+                    //           ))
+                    //       :
+
                     Container(
                         // color: Colors.blue,
                         width: AppDimensions.height10(context) * 5.0,
@@ -396,17 +454,37 @@ class _PracticeNameState extends State<PracticeName> {
                         )),
                     AnimatedScaleButton(
                       onTap: () async {
-                        final SharedPreferences prefs = await _prefs;
-                        var goal_Name = prefs.setString(
-                            'pracName', practiceName.text.toString());
-                        Navigator.push(
-                          context,
-                          FadePageRoute2(
-                            true,
-                            exitPage: PracticeName(),
-                            enterPage: PracticeRoutine(),
-                          ),
-                        );
+                        print("updating the practice $practiceName");
+                        if (widget.comingFromEditScreen) {
+                          final SharedPreferences prefs = await _prefs;
+                          var goal_Name = prefs.setString(
+                              'pracName', practiceName.text.toString());
+                          PracticeGoalApi()
+                              .updateUserPractice('name', practiceName.text)
+                              .then((value) {
+                            if (value == true) {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => PracticeReview(),
+                                  ));
+                            }
+                          });
+                        } else {
+                          final SharedPreferences prefs = await _prefs;
+                          var goal_Name = prefs.setString(
+                              'pracName', practiceName.text.toString());
+                          Navigator.push(
+                            context,
+                            FadePageRoute2(
+                              true,
+                              exitPage: PracticeName(
+                                comingFromEditScreen: false,
+                              ),
+                              enterPage: PracticeRoutine(),
+                            ),
+                          );
+                        }
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
@@ -423,7 +501,7 @@ class _PracticeNameState extends State<PracticeName> {
                         ),
                         child: Center(
                           child: Text(
-                            "Next",
+                            widget.comingFromEditScreen ? "Save" : "Next",
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: AppDimensions.height10(context) * 1.6,

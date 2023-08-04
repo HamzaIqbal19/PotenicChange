@@ -46,9 +46,6 @@ class _GoalNameState extends State<GoalName> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    // dropdownValue = widget.category;
-
     getGoalName();
     super.initState();
   }
@@ -335,9 +332,11 @@ class _GoalNameState extends State<GoalName> {
       body: Stack(
         children: [
           Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/Categories.webp"),
+                image: widget.comingFromEditScreen
+                    ? AssetImage("assets/images/GoalReviewBg.webp")
+                    : AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -352,10 +351,14 @@ class _GoalNameState extends State<GoalName> {
                       top: AppDimensions.height10(context) * 5.2),
                   child: Center(
                     child: Text(
-                      "Star Creation 2/5",
+                      widget.comingFromEditScreen
+                          ? "View and edit mode"
+                          : "Star Creation 2/5",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xff437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
                     ),
@@ -372,7 +375,9 @@ class _GoalNameState extends State<GoalName> {
                       style: TextStyle(
                         overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xff437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
                     ),
@@ -401,7 +406,9 @@ class _GoalNameState extends State<GoalName> {
                       'Goal Name',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xff437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.8,
                       ),
                     ),
@@ -419,7 +426,9 @@ class _GoalNameState extends State<GoalName> {
                       style: TextStyle(
                           fontSize: AppDimensions.height10(context) * 1.8,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xFFFFFFFF)),
+                          color: widget.comingFromEditScreen
+                              ? Color(0xff437296)
+                              : Color(0xFFFFFFFF)),
                     ),
                   ),
                 ),
@@ -493,7 +502,9 @@ class _GoalNameState extends State<GoalName> {
                           "Character count:",
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            color: Colors.white,
+                            color: widget.comingFromEditScreen
+                                ? Color(0xff437296)
+                                : Colors.white,
                             fontSize: AppDimensions.height10(context) * 1.4,
                           ),
                         ),
@@ -503,7 +514,9 @@ class _GoalNameState extends State<GoalName> {
                           "50",
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            color: Colors.white,
+                            color: widget.comingFromEditScreen
+                                ? Color(0xff437296)
+                                : Colors.white,
                             fontSize: AppDimensions.height10(context) * 1.4,
                           ),
                         ),
@@ -524,7 +537,9 @@ class _GoalNameState extends State<GoalName> {
                       "You can change the name of your goal later by going into your Dashboard.  ",
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                        color: widget.comingFromEditScreen
+                            ? Color(0xff437296)
+                            : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.6,
                       ),
                     ),
