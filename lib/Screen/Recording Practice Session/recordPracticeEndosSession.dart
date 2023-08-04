@@ -50,7 +50,7 @@ class _endofSessionState extends State<endofSession> {
     onLoad();
   }
 
-  TextEditingController feedback = TextEditingController();
+  TextEditingController feedback3 = TextEditingController();
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
@@ -724,6 +724,7 @@ class _endofSessionState extends State<endofSession> {
                             ).then((value) {
                               if (value == true) {
                                 print('Updated Summary');
+                                feedback.clear();
                                 Navigator.push(
                                     context,
                                     FadePageRoute2(true,
@@ -753,6 +754,7 @@ class _endofSessionState extends State<endofSession> {
                             )
                                 .then((response) {
                               if (response == true) {
+                                feedback.clear();
                                 print("Api called");
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(

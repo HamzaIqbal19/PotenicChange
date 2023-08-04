@@ -56,6 +56,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   var pracColor = '0';
   var color = '0';
   bool Loader = true;
+  var goalDetails;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -69,16 +70,19 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
 
   void _fetchGoalNames() async {
     final SharedPreferences prefs = await _prefs;
-    AdminGoal.getUserGoal().then((response) {
+    AdminGoal.getUserActiveGoal().then((response) {
+      print("Response: ==================== $response");
       if (response.length != 0) {
         setState(() {
-          goalName = response["name"];
+          goalDetails = response[0];
+          goalName = response[0]["name"];
 
-          identity = response["identityStatement"][0]["text"];
-          color = response["color"];
+          identity = response[0]["identityStatement"][0]["text"];
+          color = response[0]["color"] ?? 0;
         });
+        print(response);
 
-        var goalId = prefs.setInt('goal_num', response["id"]);
+        var goalId = prefs.setInt('goal_num', response[0]["id"]);
         loadData();
       } else {
         loadData();
@@ -1138,42 +1142,45 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                 shape: BoxShape.circle,
                                                 image: DecorationImage(
                                                     image: widget.saved
-                                                        ? AssetImage(pracColor ==
+                                                        ? AssetImage(goalDetails['userPractices'][0]
+                                                                    ['color'] ==
                                                                 '1'
                                                             ? "assets/images/Practice_Completed_1.webp"
-                                                            : pracColor == '2'
+                                                            : goalDetails['userPractices'][0]['color'] ==
+                                                                    '2'
                                                                 ? 'assets/images/Practice_Completed_2.webp'
-                                                                : pracColor ==
+                                                                : goalDetails['userPractices'][0]['color'] ==
                                                                         '3'
                                                                     ? "assets/images/Practice_Completed_3.webp"
-                                                                    : pracColor ==
+                                                                    : goalDetails['userPractices'][0]['color'] ==
                                                                             '4'
                                                                         ? "assets/images/Practice_Completed_4.webp"
-                                                                        : pracColor ==
+                                                                        : goalDetails['userPractices'][0]['color'] ==
                                                                                 '5'
                                                                             ? "assets/images/Practice_Completed_4.webp"
                                                                             : 'assets/images/Practice_Completed_1.webp')
-                                                        : AssetImage(pracColor ==
+                                                        : AssetImage(goalDetails['userPractices']
+                                                                        [0]
+                                                                    ['color'] ==
                                                                 '1'
                                                             ? "assets/images/Ellipse orange.webp"
-                                                            : pracColor == '2'
+                                                            : goalDetails['userPractices']
+                                                                            [0]
+                                                                        ['color'] ==
+                                                                    '2'
                                                                 ? 'assets/images/Ellipse 158.webp'
-                                                                : pracColor ==
-                                                                        '3'
+                                                                : goalDetails['userPractices'][0]['color'] == '3'
                                                                     ? "assets/images/Ellipse 157.webp"
-                                                                    : pracColor ==
-                                                                            '4'
+                                                                    : goalDetails['userPractices'][0]['color'] == '4'
                                                                         ? "assets/images/Ellipse light-blue.webp"
-                                                                        : pracColor ==
-                                                                                '5'
+                                                                        : goalDetails['userPractices'][0]['color'] == '5'
                                                                             ? "assets/images/Ellipse blue.webp"
                                                                             : 'assets/images/Ellipse 158.webp'),
-                                                    fit: widget.saved
-                                                        ? BoxFit.contain
-                                                        : BoxFit.cover)),
+                                                    fit: widget.saved ? BoxFit.contain : BoxFit.cover)),
                                             child: Center(
                                               child: Text(
-                                                pracName,
+                                                goalDetails['userPractices'][0]
+                                                    ['name'],
                                                 textAlign: TextAlign.center,
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 1,

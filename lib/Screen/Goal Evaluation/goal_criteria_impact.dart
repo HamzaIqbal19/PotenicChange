@@ -158,7 +158,9 @@ class _your_impactState extends State<your_impact> {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: new_progress_score()));
+                                              page: new_progress_score(
+                                            premium: true,
+                                          )));
                                     },
                                     child: Center(
                                       child: Text(

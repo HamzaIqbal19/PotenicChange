@@ -801,8 +801,11 @@ class _next_bottonState extends State<next_botton> {
             if (EmotionsAfter != 0) {
               final SharedPreferences prefs = await _prefs;
               var emotionResult = prefs.setInt('afterSession', EmotionsAfter);
-              var afterSessionFeedback = prefs.setString('sessionFeedback',
-                  feedback.text.isNotEmpty ? feedback.text.toString() : " ");
+              var afterSessionFeedback = prefs.setString(
+                  'sessionFeedback',
+                  feedback.text.toString().isNotEmpty
+                      ? feedback.text.toString()
+                      : " ");
               print("======================>$EmotionsAfter");
               print("================>${feedback.text.toString()}");
 
@@ -810,15 +813,15 @@ class _next_bottonState extends State<next_botton> {
                 RecordingPractice()
                     .updateRecording("feelingsAfterSession", EmotionsAfter, [
                   {
-                    "beforeNote":
-                        emotionsNotes == null ? " " : emotionsNotes.toString(),
-                    "afterNote": feedback.text.isNotEmpty
+                    "beforeNote": emotionsNotes == null ? " " : emotionsNotes,
+                    "afterNote": feedback.text.toString().isNotEmpty
                         ? feedback.text.toString()
                         : " ",
-                    "endNote": endSession == null ? " " : endSession.toString()
+                    "endNote": endSession == null ? " " : endSession
                   }
                 ]).then((value) {
                   if (value == true) {
+                    feedback.clear();
                     Navigator.push(
                         context,
                         FadePageRoute2(true,
@@ -827,6 +830,7 @@ class _next_bottonState extends State<next_botton> {
                   }
                 });
               } else {
+                feedback.clear();
                 Navigator.push(
                     context,
                     FadePageRoute2(true,

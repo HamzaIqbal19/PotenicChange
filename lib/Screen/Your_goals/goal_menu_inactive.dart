@@ -245,8 +245,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page:
-                                                  const new_progress_score()));
+                                              page: new_progress_score(
+                                            premium: widget.premium,
+                                          )));
                                     },
                                     child: Container(
                                       width: goal_level == 2

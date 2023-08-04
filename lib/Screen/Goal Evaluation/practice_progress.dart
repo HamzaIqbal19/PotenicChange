@@ -1849,6 +1849,7 @@ class _practice_progressState extends State<practice_progress> {
                         height: AppDimensions.height10(context) * 46.8,
                         child: CalendarWithRadioButtons(
                           status: false,
+                          dateStatus: {},
                         ),
                       )
                     ],

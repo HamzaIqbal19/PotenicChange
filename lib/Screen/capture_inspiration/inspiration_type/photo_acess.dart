@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -8,7 +10,9 @@ import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/imagepicker.dart/imagePicker.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
@@ -388,7 +392,7 @@ class _photo_infoState extends State<photo_info> {
                                                       true,
                                                       statement.text.toString(),
                                                       selectedGoals)
-                                                  .then((response) {
+                                                  .then((response) async {
                                                   if (response.length != 0) {
                                                     print(
                                                         'Success======================');
@@ -396,6 +400,13 @@ class _photo_infoState extends State<photo_info> {
                                                     link.clear();
                                                     statement.clear();
                                                     hastags.clear();
+                                                    // final SharedPreferences
+                                                    //     prefs = await _prefs;
+
+                                                    // var hurdleId = prefs.setInt(
+                                                    //     'userInspirationId',
+                                                    //     response[
+                                                    //         'inspirationId']);
                                                     Navigator.push(
                                                         context,
                                                         FadePageRoute(
@@ -715,7 +726,7 @@ class _photo_infoState extends State<photo_info> {
                                           FadePageRoute(
                                               page: const updatedLandingPage(
                                                   delete: false,
-                                                  is_Updated: true)));
+                                                  is_Updated: false)));
                                     }
                                   });
                                 },
@@ -737,7 +748,9 @@ class _photo_infoState extends State<photo_info> {
                 color: Colors.white,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  //reverse: true,
+                  reverse: MediaQuery.of(context).viewInsets.bottom == 0
+                      ? false
+                      : true,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -962,8 +975,9 @@ class _photo_infoState extends State<photo_info> {
                                                 Navigator.push(
                                                     context,
                                                     FadePageRoute(
-                                                        page:
-                                                            const link_set()));
+                                                        page: const link_set(
+                                                      route: 'image',
+                                                    )));
                                               },
                                               child: Container(
                                                 width: AppDimensions.height10(
@@ -1043,7 +1057,9 @@ class _photo_infoState extends State<photo_info> {
                                             Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: const link_set()));
+                                                    page: const link_set(
+                                                  route: 'image',
+                                                )));
                                           },
                                           child: Container(
                                             width: AppDimensions.height10(
@@ -1185,12 +1201,16 @@ class _photo_infoState extends State<photo_info> {
                                               page: const inspiraton_goals(
                                             data_saved: true,
                                             route: 'photo_create',
+                                            context: false,
+                                            note: false,
                                           )))
                                       : Navigator.push(
                                           context,
                                           FadePageRoute(
                                               page: const inspiraton_goals(
                                                   route: 'photo_create',
+                                                  context: false,
+                                                  note: false,
                                                   data_saved: false)));
                                 },
                                 child: Container(
@@ -1278,7 +1298,8 @@ class _photo_infoState extends State<photo_info> {
 }
 
 class link_set extends StatefulWidget {
-  const link_set({super.key});
+  final String route;
+  const link_set({super.key, required this.route});
 
   @override
   State<link_set> createState() => _link_setState();
@@ -1331,6 +1352,7 @@ class _link_setState extends State<link_set> {
                                 setState(() {
                                   link_bt = false;
                                 });
+                                linkController.clear();
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 3.0,
@@ -1459,15 +1481,32 @@ class _link_setState extends State<link_set> {
                                 var link = prefs.setString('ImageLink',
                                     linkController.text.toString());
                                 print(linkController.text.toString());
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const photo_info(
-                                      edit_details: false,
-                                      image_detals: true,
-                                      image_save: true,
-                                      image_create: true,
-                                    )));
+                                if (widget.route == 'image') {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const photo_info(
+                                        edit_details: false,
+                                        image_detals: true,
+                                        image_save: true,
+                                        image_create: true,
+                                      )));
+                                } else if (widget.route == 'link') {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const link_info(
+                                        link_state: true,
+                                      )));
+                                } else if (widget.route == 'video') {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const video_info(
+                                        link_state: true,
+                                      )));
+                                }
+                                linkController.clear();
                               },
                               child: Container(
                                 height: AppDimensions.height10(context) * 4.2,

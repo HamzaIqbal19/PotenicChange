@@ -3,45 +3,23 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class CalendarWithRadioButtons extends StatelessWidget {
+class CalendarWithRadioButtons extends StatefulWidget {
   final bool status;
+  final Map<DateTime, String> dateStatus;
+
+  const CalendarWithRadioButtons(
+      {super.key, required this.status, required this.dateStatus});
+
+  @override
+  State<CalendarWithRadioButtons> createState() =>
+      _CalendarWithRadioButtonsState();
+}
+
+class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
   // Define the static list of dates and their status
-  final Map<DateTime, String> dateStatus = {
-    DateTime(2023, 5, 1): 'null',
-    DateTime(2023, 5, 2): 'completed',
-    DateTime(2023, 5, 3): 'completed',
-    DateTime(2023, 5, 4): 'completed',
-    DateTime(2023, 5, 5): 'completed',
-    DateTime(2023, 5, 6): 'completed',
-    DateTime(2023, 5, 7): 'null',
-    DateTime(2023, 5, 8): 'null',
-    DateTime(2023, 5, 9): 'completed',
-    DateTime(2023, 5, 10): 'completed',
-    DateTime(2023, 5, 11): 'completed',
-    DateTime(2023, 5, 12): 'completed',
-    DateTime(2023, 5, 13): 'completed',
-    DateTime(2023, 5, 14): 'null',
-    DateTime(2023, 5, 15): 'null',
-    DateTime(2023, 5, 16): 'completed',
-    DateTime(2023, 5, 17): 'completed',
-    DateTime(2023, 5, 18): 'completed',
-    DateTime(2023, 5, 19): 'null',
-    DateTime(2023, 5, 20): 'completed',
-    DateTime(2023, 5, 21): 'null',
-    DateTime(2023, 5, 22): 'null',
-    DateTime(2023, 5, 23): 'completed',
-    DateTime(2023, 5, 24): 'completed',
-    DateTime(2023, 5, 25): 'completed',
-    DateTime(2023, 5, 26): 'completed',
-    DateTime(2023, 5, 27): 'completed',
-    DateTime(2023, 5, 28): 'null',
-    DateTime(2023, 5, 29): 'null',
-    DateTime(2023, 5, 30): 'completed',
-    DateTime(2023, 5, 31): 'completed',
-  };
 
   final Map<DateTime, String> missedStatus = {
-    DateTime(2023, 5, 1): 'completed',
+    DateTime(2023, 05, 1): 'completed',
     DateTime(2023, 5, 2): 'completed',
     DateTime(2023, 5, 3): 'completed',
     DateTime(2023, 5, 4): 'missed',
@@ -73,11 +51,10 @@ class CalendarWithRadioButtons extends StatelessWidget {
     DateTime(2023, 5, 30): 'null',
     DateTime(2023, 5, 31): 'missed',
   };
-  CalendarWithRadioButtons({super.key, required this.status});
 
   String? getStatus(DateTime date) {
-    if (status == true) {
-      return dateStatus[DateTime(date.year, date.month, date.day)];
+    if (widget.status == true) {
+      return widget.dateStatus[DateTime(date.year, date.month, date.day)];
     } else {
       return missedStatus[DateTime(date.year, date.month, date.day)];
     }
@@ -172,7 +149,7 @@ class CalendarWithRadioButtons extends StatelessWidget {
           availableGestures: AvailableGestures.none,
           firstDay: DateTime.utc(2021, 1, 1),
           lastDay: DateTime.utc(2030, 12, 31),
-          focusedDay: DateTime(2023, 5),
+          focusedDay: DateTime.now(),
           headerStyle: HeaderStyle(
             titleCentered: true,
             leftChevronIcon: const Icon(
@@ -210,3 +187,38 @@ class CalendarWithRadioButtons extends StatelessWidget {
     );
   }
 }
+
+
+//  {
+//     DateTime(2023, 5, 1): 'null',
+//     DateTime(2023, 5, 2): 'completed',
+//     DateTime(2023, 5, 3): 'completed',
+//     DateTime(2023, 5, 4): 'completed',
+//     DateTime(2023, 5, 5): 'completed',
+//     DateTime(2023, 5, 6): 'completed',
+//     DateTime(2023, 5, 7): 'null',
+//     DateTime(2023, 5, 8): 'null',
+//     DateTime(2023, 5, 9): 'completed',
+//     DateTime(2023, 5, 10): 'completed',
+//     DateTime(2023, 5, 11): 'completed',
+//     DateTime(2023, 5, 12): 'completed',
+//     DateTime(2023, 5, 13): 'completed',
+//     DateTime(2023, 5, 14): 'null',
+//     DateTime(2023, 5, 15): 'null',
+//     DateTime(2023, 5, 16): 'completed',
+//     DateTime(2023, 5, 17): 'completed',
+//     DateTime(2023, 5, 18): 'completed',
+//     DateTime(2023, 5, 19): 'null',
+//     DateTime(2023, 5, 20): 'completed',
+//     DateTime(2023, 5, 21): 'null',
+//     DateTime(2023, 5, 22): 'null',
+//     DateTime(2023, 5, 23): 'completed',
+//     DateTime(2023, 5, 24): 'completed',
+//     DateTime(2023, 5, 25): 'completed',
+//     DateTime(2023, 5, 26): 'completed',
+//     DateTime(2023, 5, 27): 'completed',
+//     DateTime(2023, 5, 28): 'null',
+//     DateTime(2023, 5, 29): 'null',
+//     DateTime(2023, 5, 30): 'completed',
+//     DateTime(2023, 5, 31): 'completed',
+//   };

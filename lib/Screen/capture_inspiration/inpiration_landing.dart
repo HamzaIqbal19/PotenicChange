@@ -225,6 +225,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       FadePageRoute(
                                           page: const inspiraton_goals(
                                               data_saved: false,
+                                              context: false, note: false,
                                               route: 'landing')));
                                 },
                                 child: Container(
@@ -365,10 +366,12 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                         child: InspirationList[index]
                                                     ['inspirationId'] ==
                                                 2
-                                            ? SizedBox(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    16.2,
+                                            ? Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.7),
                                                 height: AppDimensions.height10(
                                                         context) *
                                                     6.3,
@@ -379,6 +382,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   maxLines: 3,
+                                                  textAlign: TextAlign.center,
                                                   style: TextStyle(
                                                       fontSize: AppDimensions
                                                               .height10(
@@ -414,7 +418,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                     ),
                                     SizedBox(
                                       width: AppDimensions.height10(context) *
-                                          18.7,
+                                          15.7,
                                       child: Center(
                                           child: Text(
                                         InspirationList[index]['description'],
@@ -1463,12 +1467,18 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
         });
         loadData();
         print(inspirationDetails['inspiration']['title']);
-
-        return response;
+      } else {
+        print(response);
       }
 
       // return null;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchInspiration();
   }
 
   @override
@@ -1552,8 +1562,11 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                     context,
                                     FadePageRoute(
                                         page: const inspiraton_goals(
-                                            data_saved: false,
-                                            route: 'landing')));
+                                      data_saved: false,
+                                      route: 'landing',
+                                      context: false,
+                                      note: false,
+                                    )));
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 16.43,
@@ -1620,71 +1633,85 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                       // width: AppDimensions.height10(context) * 16.7,
                       //height: AppDimensions.height10(context) * 21.2,
                       margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 18.5,
                         top: AppDimensions.height10(context) * 4.3,
                       ),
                       child: Column(
                         children: [
                           Column(children: [
-                            Container(
-                              width: AppDimensions.height10(context) * 16.7,
-                              height: AppDimensions.height10(context) * 16.7,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  gradient: inspirationDetails['inspiration']
-                                              ['inspirationId'] ==
-                                          2
-                                      ? RadialGradient(colors: [
-                                          Color(0xFFE9A594),
-                                          Color(0xFFEEBEB2)
-                                        ])
-                                      : RadialGradient(colors: [
-                                          Color(0xFFD9D9D9),
-                                          Color(0xFFD9D9D9)
-                                        ]),
-                                  image: inspirationDetails['inspiration']
-                                              ['inspirationId'] ==
-                                          1
-                                      ? DecorationImage(
-                                          image: FileImage(File(
-                                              inspirationDetails['inspiration']
-                                                  ['file'])),
-                                          fit: BoxFit.cover)
-                                      : DecorationImage(
-                                          image: AssetImage(inspirationDetails['inspiration']['inspirationId'] == 4
-                                              ? 'assets/images/distraction content.webp'
-                                              : inspirationDetails['inspiration']['inspirationId'] == 3
-                                                  ? 'assets/images/video_play.webp'
-                                                  : ''),
-                                          fit: BoxFit.cover)),
-                              child: inspirationDetails['inspiration']
-                                          ['inspirationId'] ==
-                                      2
-                                  ? SizedBox(
-                                      width: AppDimensions.height10(context) *
-                                          16.2,
-                                      height:
-                                          AppDimensions.height10(context) * 6.3,
-                                      child: Center(
-                                          child: Text(
-                                        inspirationDetails['inspiration']
-                                            ['description'],
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 3,
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.4,
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xFFFFFFFF)),
-                                      )),
-                                    )
-                                  : Container(),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const record_inspiration()));
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 16.7,
+                                height: AppDimensions.height10(context) * 16.7,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    gradient: inspirationDetails['inspiration']
+                                                ['inspirationId'] ==
+                                            2
+                                        ? const RadialGradient(colors: [
+                                            Color(0xFFE9A594),
+                                            Color(0xFFEEBEB2)
+                                          ])
+                                        : const RadialGradient(colors: [
+                                            Color(0xFFD9D9D9),
+                                            Color(0xFFD9D9D9)
+                                          ]),
+                                    image: inspirationDetails['inspiration']
+                                                ['inspirationId'] ==
+                                            1
+                                        ? DecorationImage(
+                                            image: FileImage(File(
+                                                inspirationDetails['inspiration']
+                                                    ['file'])),
+                                            fit: BoxFit.cover)
+                                        : DecorationImage(
+                                            image: AssetImage(inspirationDetails['inspiration']['inspirationId'] == 4
+                                                ? 'assets/images/distraction content.webp'
+                                                : inspirationDetails['inspiration']['inspirationId'] == 3
+                                                    ? 'assets/images/video_play.webp'
+                                                    : ''),
+                                            fit: BoxFit.cover)),
+                                child: inspirationDetails['inspiration']
+                                            ['inspirationId'] ==
+                                        2
+                                    ? Container(
+                                        margin: EdgeInsets.all(
+                                            AppDimensions.height10(context) *
+                                                2.5),
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                6.3,
+                                        child: Center(
+                                            child: Text(
+                                          inspirationDetails['inspiration']
+                                              ['description'],
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
+                                          maxLines: 3,
+                                          style: TextStyle(
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.4,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xFFFFFFFF)),
+                                        )),
+                                      )
+                                    : Container(),
+                              ),
                             ),
                             Container(
                               width: AppDimensions.height10(context) * 16.7,
                               height: AppDimensions.height10(context) * 1.9,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 0.5),
+                                  top: AppDimensions.height10(context) * 0.5,
+                                  bottom:
+                                      AppDimensions.height10(context) * 0.2),
                               child: Center(
                                   child: Text(
                                 inspirationDetails['inspiration']['title'],
@@ -1695,17 +1722,27 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                     color: const Color(0xFFFFFFFF)),
                               )),
                             ),
-                            SizedBox(
-                              height: AppDimensions.height10(context) * 3.0,
+                            Container(
+                              // margin: EdgeInsets.symmetric(
+                              //     horizontal:
+                              //         AppDimensions.height10(context) * 0.5),
+                              //height: AppDimensions.height10(context) * 3.0,
+                              width: AppDimensions.height10(context) * 15.7,
                               child: Align(
                                   alignment: Alignment.topCenter,
                                   child: Text(
                                     inspirationDetails['inspiration']
                                         ['description'],
+                                    textAlign: TextAlign.center,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize:
                                             AppDimensions.height10(context) *
                                                 1.2,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                0.14,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFFFFFFFF)),
                                   )),
@@ -1729,6 +1766,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                               colors: [Color(0xFFD4B7B9), Color(0xFF91698C)])),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
                             margin: EdgeInsets.only(
@@ -1741,7 +1779,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                         'assets/images/circle_tick.webp'))),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 6.9,
+                            //width: AppDimensions.height10(context) * 6.9,
                             height: AppDimensions.height10(context) * 3.6,
                             margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 1.232),
@@ -1763,10 +1801,16 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 6.9,
+                                  width: AppDimensions.height10(context) * 16.9,
                                   height: AppDimensions.height10(context) * 2.2,
                                   child: Text(
-                                    'Nir Eyal',
+                                    inspirationDetails['inspiration']['title']
+                                            .toString()
+                                            .isEmpty
+                                        ? 'Inspiraion'
+                                        : inspirationDetails['inspiration']
+                                            ['title'],
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize:
                                             AppDimensions.height10(context) *
@@ -1782,7 +1826,8 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                             width: AppDimensions.height10(context) * 8.1,
                             height: AppDimensions.height10(context) * 6.0,
                             margin: EdgeInsets.only(
-                                left: AppDimensions.height10(context) * 15.1),
+                                left: AppDimensions.height10(context) * 5,
+                                right: AppDimensions.height10(context) * 1.23),
                             decoration: BoxDecoration(
                               border: Border.all(
                                   color: const Color(0xFFFFFFFF), width: 1),

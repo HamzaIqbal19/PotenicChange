@@ -37,12 +37,13 @@ class _practice_summaryState extends State<practice_summary> {
   var color = '0';
   bool Loading = true;
 
-  String Before = "";
-  String After = "";
-  String Feedback = "";
-  String Session = "";
+  int Before = 0;
+  int After = 0;
+  String Feedback = '';
+  int Session = 0;
   String EmotionFeedback = "";
   String SessionFeedBack = "";
+  var details;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -85,34 +86,14 @@ class _practice_summaryState extends State<practice_summary> {
           identity = response["identityStatement"][0]["text"];
           color = response["color"];
         });
+
+        loadData();
       } else {
         loadData();
       }
     }).catchError((error) {
-      loadData();
+      //  loadData();
       print("error");
-    });
-
-    RecordingPractice.getUserPracticeRecord().then((response) {
-      if (response.length != 0) {
-        print('======================================================');
-        print(response['recording']['notes'][0]['afterNote']);
-        print(response);
-        setState(() {
-          Before = response['recording']['feelingsBeforeSession'];
-          After = response['recording']['feelingsAfterSession'];
-          Feedback = response['recording']['notes'][0]['afterNote'];
-          EmotionFeedback = response['recording']['notes'][0]['beforeNote'];
-          SessionFeedBack = response['recording']['notes'][0]['endNote'];
-          Session = response['recording']['practiceSummary'];
-        });
-        loadData();
-        print(Before);
-        print(After);
-        print(Feedback);
-        print(Session);
-        //print(response);
-      }
     });
 
     // setState(() {
@@ -121,13 +102,39 @@ class _practice_summaryState extends State<practice_summary> {
     // print('GoalName: $goalName');
   }
 
+  void recording() {
+    RecordingPractice.getUserPracticeRecord().then((response) {
+      if (response.length != 0) {
+        print('======================================================');
+        print(response['recording']['notes'][0]['afterNote']);
+        print(response);
+        setState(() {
+          details = response;
+          Before = response['recording']['feelingsBeforeSession'];
+          After = response['recording']['feelingsAfterSession'];
+          Feedback = response['recording']['notes'][0]['afterNote'];
+          EmotionFeedback = response['recording']['notes'][0]['beforeNote'];
+          SessionFeedBack = response['recording']['notes'][0]['endNote'];
+          Session = response['recording']['practiceSummary'];
+        });
+        print("DEtails ======================================$details");
+        print(Before);
+        print(After);
+        print(Feedback);
+        print(Session);
+        //print(response);
+      }
+    });
+  }
+
   late AnimationController controller;
   //late Animation<double> opacityAnimation;
 
   @override
   initState() {
     super.initState();
-
+    recording();
+    print("Details++++++++++++++++++++$details");
     _fetchGoalNames();
     _fetchPracticeNames();
 
@@ -571,15 +578,15 @@ class _practice_summaryState extends State<practice_summary> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.white),
-                          color: Before == "1"
+                          color: Before == 1
                               ? const Color(0xff546096)
-                              : Before == "2"
+                              : Before == 2
                                   ? const Color(0xff7291A0)
-                                  : Before == "3"
+                                  : Before == 3
                                       ? const Color(0xffE1C44F)
-                                      : Before == "4"
+                                      : Before == 4
                                           ? const Color(0xffFA9458)
-                                          : Before == "5"
+                                          : Before == 5
                                               ? const Color(0xffFA9458)
                                               : const Color(0xffFA9458)),
                       child: Stack(children: [
@@ -588,15 +595,15 @@ class _practice_summaryState extends State<practice_summary> {
                             padding: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 0.5),
                             child: Text(
-                              Before == '1'
+                              Before == 1
                                   ? 'I felt very\nlow &\ndemotivated'
-                                  : Before == '2'
+                                  : Before == 2
                                       ? 'I felt slightly\nirritated, not\nfussed really'
-                                      : Before == '3'
+                                      : Before == 3
                                           ? 'I felt good'
-                                          : Before == '4'
+                                          : Before == 4
                                               ? 'Motivated and \nready to start'
-                                              : Before == '5'
+                                              : Before == 5
                                                   ? "Great, could'nt \nwait to started!"
                                                   : 'I felt good',
                               textAlign: TextAlign.center,
@@ -712,15 +719,15 @@ class _practice_summaryState extends State<practice_summary> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.white),
-                          color: After == "1"
+                          color: After == 1
                               ? const Color(0xff546096)
-                              : After == "2"
+                              : After == 2
                                   ? const Color(0xff7291A0)
-                                  : After == "3"
+                                  : After == 3
                                       ? const Color(0xffE1C44F)
-                                      : After == "4"
+                                      : After == 4
                                           ? const Color(0xffFA9458)
-                                          : After == "5"
+                                          : After == 5
                                               ? const Color(0xffFA9458)
                                               : const Color(0xffFA9458)),
                       child: Stack(children: [
@@ -729,15 +736,15 @@ class _practice_summaryState extends State<practice_summary> {
                             padding: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 0.5),
                             child: Text(
-                              After == '1'
+                              After == 1
                                   ? 'I feel very low\n& irritated'
-                                  : After == '2'
+                                  : After == 2
                                       ? 'I feel alright,\n but slightly\ndown'
-                                      : After == '3'
+                                      : After == 3
                                           ? 'I feel ok'
-                                          : After == '4'
+                                          : After == 4
                                               ? 'I feel focused\n& good'
-                                              : After == '5'
+                                              : After == 5
                                                   ? 'I feel excited\nand good in\nmyself'
                                                   : 'I feel focused\n& good',
                               textAlign: TextAlign.center,
@@ -801,7 +808,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   right: AppDimensions.height10(context) * 2.0),
                               width: AppDimensions.height10(context) * 32.0,
                               child: Text(
-                                Feedback,
+                                Feedback.toString(),
                                 style: TextStyle(
                                     color: const Color(0xff646464),
                                     fontSize:
@@ -852,15 +859,15 @@ class _practice_summaryState extends State<practice_summary> {
                             padding: EdgeInsets.only(
                                 bottom: AppDimensions.height10(context) * 0.5),
                             child: Text(
-                              Session == '1'
+                              Session == 1
                                   ? 'Hated it'
-                                  : Session == '2'
+                                  : Session == 2
                                       ? 'Found it\ndifficult'
-                                      : Session == '3'
+                                      : Session == 3
                                           ? 'Had distractins,\nit was hard to\nfocus'
-                                          : Session == '4'
+                                          : Session == 4
                                               ? 'It was ok'
-                                              : Session == '5'
+                                              : Session == 5
                                                   ? 'Good, I liked\nit'
                                                   : 'Great,\nin the zone.',
                               textAlign: TextAlign.center,

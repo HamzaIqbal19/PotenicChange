@@ -609,4 +609,31 @@ class AdminGoal {
       throw Exception('Failed to fetch goal names');
     }
   }
+
+  static Future getUserActiveGoal() async {
+    // var goalName;
+
+    final SharedPreferences prefs = await _prefs;
+    var userId = prefs.getInt('userid');
+    var Accestoken = prefs.getString("usertoken");
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var response = await http.get(
+      Uri.parse('${URL.BASE_URL}api/userGoal/user-active-goals/$userId'),
+      headers: headers,
+    );
+
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+      print("Result:$jsonData");
+
+      return jsonData;
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
 }

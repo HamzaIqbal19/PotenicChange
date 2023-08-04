@@ -95,6 +95,8 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                               page: (const inspiraton_goals(
                             data_saved: false,
                             route: 'motivation',
+                            context: false,
+                            note: false,
                           ))),
                         );
                       },

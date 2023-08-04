@@ -682,76 +682,73 @@ class _landing_hurdlesState extends State<landing_hurdles> {
               ? SingleChildScrollView(
                   child: Column(
                     children: [
-                      GestureDetector(
-                        onTap: () {
-                          if (deleted == false) {
-                            setState(() {
-                              deleted = true;
-                            });
-                          } else {
-                            Navigator.push(
-                              context,
-                              FadePageRoute(page: const hurdles_splash()),
-                            );
-                          }
-                        },
-                        child: Container(
-                            width: AppDimensions.height10(context) * 34.3,
-                            height: AppDimensions.height10(context) * 34.2,
-                            decoration: const BoxDecoration(
-                                color: Colors.transparent,
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/Blackhole.webp'),
-                                  fit: BoxFit.cover,
-                                )),
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 7.5,
-                                left: AppDimensions.height10(context) * 2),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: GradientText(
-                                    'My faced hurdles ',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.height10(context) * 3.0,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                    colors: const [
-                                      Color(0xffFA9934),
-                                      Color(0xffEDD15E)
-                                    ],
+                      Container(
+                          width: AppDimensions.height10(context) * 34.3,
+                          height: AppDimensions.height10(context) * 34.2,
+                          decoration: const BoxDecoration(
+                              color: Colors.transparent,
+                              image: DecorationImage(
+                                image:
+                                    AssetImage('assets/images/Blackhole.webp'),
+                                fit: BoxFit.cover,
+                              )),
+                          margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 7.5,
+                              left: AppDimensions.height10(context) * 2),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(
+                                    right:
+                                        AppDimensions.height10(context) * 2.0),
+                                child: GradientText(
+                                  'My faced hurdles ',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.height10(context) * 3.0,
+                                    fontWeight: FontWeight.w700,
                                   ),
+                                  colors: const [
+                                    Color(0xffFA9934),
+                                    Color(0xffEDD15E)
+                                  ],
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      GradientText(
-                                        '& obstacles ',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  3.0,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                        colors: const [
-                                          Color(0xffFA9934),
-                                          Color(0xffEDD15E)
-                                        ],
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(
+                                    right:
+                                        AppDimensions.height10(context) * 2.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    GradientText(
+                                      '& obstacles ',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                3.0,
+                                        fontWeight: FontWeight.w700,
                                       ),
-                                      Container(
+                                      colors: const [
+                                        Color(0xffFA9934),
+                                        Color(0xffEDD15E)
+                                      ],
+                                    ),
+                                    AnimatedScaleButton(
+                                      onTap: () {
+                                        if (deleted == false) {
+                                          setState(() {
+                                            deleted = true;
+                                          });
+                                        } else {
+                                          hurdle_sheet(context);
+                                        }
+                                      },
+                                      child: Container(
                                           width:
                                               AppDimensions.height10(context) *
                                                   3.0,
@@ -763,47 +760,46 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                   image: AssetImage(deleted
                                                       ? 'assets/images/ic_info_outline_orange.webp'
                                                       : 'assets/images/ic_info_outline.webp')))),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: AppDimensions.height10(context) * 9.8,
-                                  height: AppDimensions.height10(context) * 2.2,
-                                  margin: EdgeInsets.only(
-                                      right: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: Text('New hurdle',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white,
-                                          fontFamily: 'laila')),
-                                ),
-                                AnimatedScaleButton(
-                                  onTap: () {
-                                    Navigator.push(context,
-                                        FadePageRoute(page: hurdles_splash()));
-                                  },
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            4.0,
-                                        right: AppDimensions.height10(context) *
-                                            2),
-                                    child: Icon(
-                                      Icons.add,
-                                      size:
-                                          AppDimensions.height10(context) * 5.6,
-                                      color: const Color(0xFFFFFFFF),
                                     ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                width: AppDimensions.height10(context) * 9.8,
+                                height: AppDimensions.height10(context) * 2.2,
+                                margin: EdgeInsets.only(
+                                    right:
+                                        AppDimensions.height10(context) * 2.0),
+                                child: Text('New hurdle',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
+                                        fontFamily: 'laila')),
+                              ),
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  Navigator.push(context,
+                                      FadePageRoute(page: hurdles_splash()));
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      top:
+                                          AppDimensions.height10(context) * 4.0,
+                                      right:
+                                          AppDimensions.height10(context) * 2),
+                                  child: Icon(
+                                    Icons.add,
+                                    size: AppDimensions.height10(context) * 5.6,
+                                    color: const Color(0xFFFFFFFF),
                                   ),
                                 ),
-                              ],
-                            )),
-                      ),
+                              ),
+                            ],
+                          )),
                       // Container(
                       //   width: AppDimensions.height10(context) * 9.8,
                       //   height: AppDimensions.height10(context) * 2.2,
@@ -1785,5 +1781,103 @@ _showTagSheet(BuildContext context) {
         ),
       );
     },
+  );
+}
+
+void hurdle_sheet(context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+      top: Radius.circular(AppDimensions.height10(context) * 2.0),
+    )),
+    builder: (context) => Padding(
+      padding:
+          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+          width: AppDimensions.height10(context) * 41.5,
+          height: AppDimensions.height10(context) * 57.7,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(AppDimensions.height10(context) * 2.0),
+              ),
+              color: const Color(0xFFF5F5F5)),
+          child: Column(
+            // alignment: AlignmentDirectional.topCenter,
+            //  mainAxisAlignment: MainAxisAlignment.start,
+            //  crossAxisAlignment: CrossAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                //color: Colors.amber,
+                // margin: EdgeInsets.only(left: AppDimensions.height10(context) * 1.5),
+                alignment: const Alignment(1, 0),
+                child: AnimatedScaleButton(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    width: AppDimensions.height10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.5,
+                        right: AppDimensions.height10(context) * 1.5),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image:
+                                AssetImage('assets/images/Close_blue.webp'))),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 1.9,
+                    bottom: AppDimensions.height10(context) * 1.9),
+                child: Image.asset(
+                  'assets/images/potenic__icon.webp',
+                  width: AppDimensions.height10(context) * 8.202,
+                  height: AppDimensions.height10(context) * 11.2,
+                ),
+              ),
+              Container(
+                // width: AppDimensions.height10(context) * 28.7,
+                //height: AppDimensions.height10(context) * 3.4,
+                // color: Colors.amber,
+                alignment: Alignment.center,
+                //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 1.2),
+                child: Text(
+                  'My faced hurdles\n& obstacles',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10(context) * 3.0,
+                      height: AppDimensions.height10(context) * .16,
+                      letterSpacing: AppDimensions.height10(context) * 0.2,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF437296)),
+                ),
+              ),
+              Container(
+                //width: AppDimensions.height10(context) * 35.4,
+                //height: AppDimensions.height10(context) * 26.9,
+                //color: Colors.grey,
+                margin: EdgeInsets.only(
+                  top: AppDimensions.height10(context) * 1.2,
+                ),
+                child: Text(
+                  'This is your private space to capture any\nobstacles and hurdles that are coming your\nway.\n\nAt Potenic, our aim is to empower you to own\nyour personal development journey. We want\nyou to stay focused and this is why we also\nwant you to be prepared, so you can build a\nself-reliance and awareness.\n\nWhen you know and are ready to face your\nchallenges that could distract you of course,\nyou will be more prepared to deal with them.\nWith time, you will start seeing patterns (with\nthe help of Potenic app) and will be more aware\nof situations when you get triggered.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: AppDimensions.height10(context) * 1.6,
+                      height: AppDimensions.height10(context) * 0.14,
+                      letterSpacing: AppDimensions.height10(context) * 0.12,
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xFF437296)),
+                ),
+              ),
+            ],
+          )),
+    ),
   );
 }

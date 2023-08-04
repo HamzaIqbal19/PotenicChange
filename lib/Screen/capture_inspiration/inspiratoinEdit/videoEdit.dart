@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
+import 'package:potenic_app/Screen/capture_inspiration/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 
@@ -50,14 +51,26 @@ class video_EditState extends State<videoEdit> {
         setState(() {
           inspirationDetails = response;
         });
-        link.text = inspirationDetails['inspiration']['destinationLink'];
-        title.text = inspirationDetails['inspiration']['title'];
-        file.text = inspirationDetails['inspiration']['file'];
-        statement.text = inspirationDetails['inspiration']['description'];
-        hastags.text = inspirationDetails['inspiration']['hashTags']
-            .toString()
-            .replaceAll('[', '')
-            .replaceAll(']', '');
+        link.text = inspirationDetails['inspiration']['destinationLink']
+                .toString()
+                .isEmpty
+            ? ''
+            : inspirationDetails['inspiration']['destinationLink'];
+        title.text =
+            inspirationDetails['inspiration']['title'].toString().isEmpty
+                ? ''
+                : inspirationDetails['inspiration']['title'];
+        statement.text =
+            inspirationDetails['inspiration']['description'].toString().isEmpty
+                ? ''
+                : inspirationDetails['inspiration']['description'];
+        hastags.text = inspirationDetails['inspiration']['hashTags'].length != 0
+            ? inspirationDetails['inspiration']['hashTags']
+                .toString()
+                .replaceAll('[', '')
+                .replaceAll(']', '')
+            : '';
+
         loadData();
 
         print("1212312312321321");
@@ -676,13 +689,15 @@ class video_EditState extends State<videoEdit> {
                                       color: const Color(0xff828282)),
                                 ),
                               ),
-                              GestureDetector(
+                              AnimatedScaleButton(
                                 onTap: () {
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
-                                          page: const inspiration_landing(
-                                        is_Updated: false,
+                                          page:  inspiraton_goals(
+                                        data_saved: true,
+                                        context: widget.context, note: widget.note,
+                                        route: 'edit',
                                       )));
                                 },
                                 child: Container(
@@ -715,19 +730,16 @@ class video_EditState extends State<videoEdit> {
                                             left: AppDimensions.height10(
                                                     context) *
                                                 1.99),
-                                        child: GestureDetector(
-                                            onTap: () {},
-                                            child: Text(
-                                              '00 impacted goals',
-                                              style: TextStyle(
-                                                color: const Color(0xFF646464),
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        1.8,
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            )),
+                                        child: Text(
+                                          '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
+                                          style: TextStyle(
+                                            color: const Color(0xFF646464),
+                                            fontSize: AppDimensions.height10(
+                                                    context) *
+                                                1.8,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
                                       ),
                                       Container(
                                           width:
@@ -740,15 +752,12 @@ class video_EditState extends State<videoEdit> {
                                               right: AppDimensions.height10(
                                                       context) *
                                                   2.391),
-                                          child: GestureDetector(
-                                            onTap: () {},
-                                            child: Image.asset(
-                                              'assets/images/BTN Back.webp',
-                                              //width: AppDimensions.height10(context) * 2.6,
-                                              //height: AppDimensions.height10(context) * 2.6,
-                                              color: const Color(0xFF646464),
-                                              fit: BoxFit.cover,
-                                            ),
+                                          child: Image.asset(
+                                            'assets/images/BTN Back.webp',
+                                            //width: AppDimensions.height10(context) * 2.6,
+                                            //height: AppDimensions.height10(context) * 2.6,
+                                            color: const Color(0xFF646464),
+                                            fit: BoxFit.cover,
                                           ))
                                     ],
                                   ),

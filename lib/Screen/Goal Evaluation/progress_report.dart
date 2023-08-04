@@ -38,37 +38,63 @@ class _progress_reportState extends State<progress_report> {
     });
   }
 
-  void _fetchGoalDetails() {
-    AdminGoal.getUserGoal().then((response) {
-      if (response.length != 0) {
-        setState(() {
-          goalDetails = response;
-        });
-        getReport();
-
-        loadData();
-        print(response);
-      } else {
-        loadData();
-      }
-    }).catchError((error) {
-      // loadData();
-      print("error");
-    }).whenComplete(() {
-      loadData();
+  Map<DateTime, String> convertToFormattedProgress(
+      Map<String, String> practiceReport) {
+    practiceReport.forEach((dateString, status) {
+      DateTime date = DateTime.parse(dateString);
+      formattedProgress[date] = status;
     });
+    return formattedProgress;
   }
+
+  // void _fetchGoalDetails() {
+  //   AdminGoal.getUserGoal().then((response) {
+  //     if (response.length != 0) {
+  //       setState(() {
+  //         goalDetails = response;
+  //       });
+  //       getReport();
+
+  //       loadData();
+  //       print(response);
+  //     } else {
+  //       loadData();
+  //     }
+  //   }).catchError((error) {
+  //     // loadData();
+  //     print("error");
+  //   }).whenComplete(() {
+  //     loadData();
+  //   });
+  // }
+  Map<DateTime, String> formattedProgress = {};
 
   void getReport() {
     PracticeEvaluation.getUserPracticeReportId().then((response) {
-      print(response);
+      if (response.length != 0) {
+        print('===============================');
+        setState(() {
+          report = response['report'];
+        });
+        print('===============================');
+        loadData();
+        setState(() {
+          formattedProgress =
+              convertToFormattedProgress(report['practiceProgress']);
+        });
+
+        print(formattedProgress);
+        print('===============================');
+      }
+      //print(response);
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _fetchGoalDetails();
+    //_fetchGoalDetails();
+    getReport();
   }
 
   @override
@@ -474,7 +500,7 @@ class _progress_reportState extends State<progress_report> {
                             margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.6,
                             ),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
                                         'assets/images/Group 9458.webp'))),
@@ -513,6 +539,7 @@ class _progress_reportState extends State<progress_report> {
                                       AppDimensions.height10(context) * 2.0)),
                               child: CalendarWithRadioButtons(
                                 status: true,
+                                dateStatus: {},
                               )),
                         ],
                       ),
@@ -1061,7 +1088,7 @@ class _progress_reportState extends State<progress_report> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: prac_score(
+                                        page: const prac_score(
                                       saved: false,
                                     )));
                               },

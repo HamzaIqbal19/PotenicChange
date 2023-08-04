@@ -60,8 +60,8 @@ class _routinecommitmentState extends State<routinecommitment> {
                   ),
                   child: schedule_card(
                     days: pracDetails['schedule'][index]['day'],
-                    endTime: pracDetails['schedule'][index]['endtime'],
-                    startTime: pracDetails['schedule'][index]['starttime'],
+                    endTime: pracDetails['schedule'][index]['time2'],
+                    startTime: pracDetails['schedule'][index]['time1'],
                   ),
                 );
               },

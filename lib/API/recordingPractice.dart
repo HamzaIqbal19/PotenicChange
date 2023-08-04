@@ -106,6 +106,7 @@ class RecordingPractice {
       "$destination": "$message",
       "notes": notes,
     });
+    print(body);
     // var userGoalId = prefs.getInt('goalId');
     // print('$userGoalId');
 

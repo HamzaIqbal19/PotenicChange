@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/utils/app_constants.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class inner_text extends StatefulWidget {

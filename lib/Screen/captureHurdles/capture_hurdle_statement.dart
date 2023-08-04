@@ -349,7 +349,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                               capitalizeFirstLetter(hurdleName!),
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
-                              maxLines: 3,
+                              maxLines: 2,
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize:
@@ -405,16 +405,11 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  2.1,
-                                          top: AppDimensions.height10(context) *
-                                              0.5,
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  0.5),
-                                      height:
-                                          AppDimensions.height10(context) * 4.4,
+                                        left: AppDimensions.height10(context) *
+                                            2.1,
+                                      ),
+                                      // height:
+                                      //     AppDimensions.height10(context) * 4.4,
                                       // width: AppDimensions.height10(context) *
                                       //     30.5,
                                       child: Center(
@@ -433,6 +428,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xffB353C9)),
                                           decoration: InputDecoration(
+                                              isCollapsed: true,
                                               contentPadding: EdgeInsets.only(
                                                   right: AppDimensions.height10(
                                                       context)),

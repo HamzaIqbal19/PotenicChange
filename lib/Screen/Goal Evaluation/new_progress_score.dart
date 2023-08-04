@@ -18,7 +18,8 @@ import '../../utils/app_dimensions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class new_progress_score extends StatefulWidget {
-  const new_progress_score({super.key});
+  final bool premium;
+  const new_progress_score({super.key, required this.premium});
 
   @override
   State<new_progress_score> createState() => _new_progress_scoreState();
@@ -483,13 +484,14 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       shape: BoxShape.circle,
 
                                       image: DecorationImage(
-                                        image: AssetImage(goalDetails[
-                                                    'goalLevel'] ==
-                                                2
-                                            ? 'assets/images/Nebula pie 2.webp'
-                                            : goalDetails['goalLevel'] == 3
-                                                ? 'assets/images/Nebula pie 3.webp'
-                                                : "assets/images/Nebula Pie.webp"),
+                                        image: AssetImage(widget.premium ==
+                                                false
+                                            ? "assets/images/Nebula Pie.webp"
+                                            : goalDetails['goalLevel'] == 2
+                                                ? 'assets/images/Nebula pie 2.webp'
+                                                : goalDetails['goalLevel'] == 3
+                                                    ? 'assets/images/Nebula pie 3.webp'
+                                                    : "assets/images/Nebula Pie.webp"),
                                       ),
                                       // color: Colors.amber,
                                     ),
@@ -539,7 +541,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             children: [
                                               SizedBox(
                                                 child: Text(
-                                                  goalDetails['goalLevel'] == 0
+                                                  goalDetails['goalLevel'] ==
+                                                              0 ||
+                                                          widget.premium ==
+                                                              false
                                                       ? '-'
                                                       : goalDetails['goalLevel']
                                                           .toString(),
@@ -630,7 +635,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             child: Center(
                                               child: Text(
                                                 index_color == 3 ||
-                                                        index_color == 1
+                                                        index_color == 1 ||
+                                                        widget.premium == false
                                                     ? 'Score needed!'
                                                     : goalDetails[
                                                                 'goalLevel'] ==
@@ -718,13 +724,15 @@ class _new_progress_scoreState extends State<new_progress_score> {
                         children: [
                           AnimatedScaleButton(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const your_why(
-                                    destination: 'reason',
-                                    saved: false,
-                                  )));
+                              if (widget.premium == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const your_why(
+                                      destination: 'reason',
+                                      saved: false,
+                                    )));
+                              }
                             },
                             child: goal_criteria(
                               criteria: 'Goal Criteria 1',
@@ -734,41 +742,59 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               text_span_2: 'why',
                               text_span_3: '',
                               margin_top: 0,
-                              border: goalDetails['goalEvaluations'][0]
-                                          ['YourWay']['level'] ==
-                                      null
+                              border: goalDetails['goalLevel'] == 0 ||
+                                      widget.premium == false
                                   ? true
-                                  : false,
-                              colors: goalDetails['goalEvaluations'][0]
-                                          ['YourWay']['level'] ==
-                                      null
+                                  : goalDetails['goalEvaluations'][0]['YourWay']
+                                              ['level'] ==
+                                          null
+                                      ? true
+                                      : false,
+                              colors: goalDetails['goalLevel'] == 0 ||
+                                      widget.premium == false
                                   ? 0xFF
-                                  : 0xFFFBFBFB,
-                              text_color: goalDetails['goalEvaluations'][0]
-                                          ['YourWay']['level'] ==
-                                      null
+                                  : goalDetails['goalEvaluations'][0]
+                                              ['YourWay'] ==
+                                          null
+                                      ? 0xFF
+                                      : goalDetails['goalEvaluations'][0]
+                                                  ['YourWay']['level'] ==
+                                              null
+                                          ? 0xFF
+                                          : 0xFFFBFBFB,
+                              text_color: goalDetails['goalLevel'] == 0 ||
+                                      widget.premium == false
                                   ? 0xFFFBFBFB
-                                  : 0xFF646464,
-                              goal_: goalDetails['goalEvaluations'][0]
-                                          ['YourWay']['level'] ==
-                                      null
+                                  : goalDetails['goalEvaluations'][0]['YourWay']
+                                              ['level'] ==
+                                          null
+                                      ? 0xFFFBFBFB
+                                      : 0xFF646464,
+                              goal_: goalDetails['goalLevel'] == 0 ||
+                                      widget.premium == false
                                   ? "0"
                                   : goalDetails['goalEvaluations'][0]['YourWay']
-                                          ['level']
-                                      .toString(),
+                                              ['level'] ==
+                                          null
+                                      ? "0"
+                                      : goalDetails['goalEvaluations'][0]
+                                              ['YourWay']['level']
+                                          .toString(),
                             ),
                           ),
                           AnimatedScaleButton(
                             onTap: () {
                               print(goalDetails['goalEvaluations'][0]
                                   ['newIdentity']);
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const your_why(
-                                    destination: 'identityStatement',
-                                    saved: false,
-                                  )));
+                              if (widget.premium == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const your_why(
+                                      destination: 'identityStatement',
+                                      saved: false,
+                                    )));
+                              }
                             },
                             child: goal_criteria(
                               criteria: 'Goal Criteria 2',
@@ -778,40 +804,54 @@ class _new_progress_scoreState extends State<new_progress_score> {
                               text_span_2: 'new identity',
                               text_span_3: '',
                               margin_top: 1.0,
-                              border: goalDetails['goalEvaluations'][0]
-                                              ['newIdentity']['level']
-                                          .toString() ==
-                                      "null"
+                              border: goalDetails['goalLevel'] == 0 ||
+                                      widget.premium == false
                                   ? true
-                                  : false,
-                              colors: goalDetails['goalEvaluations'][0]
-                                          ['newIdentity'] ==
-                                      null
+                                  : goalDetails['goalEvaluations'][0]
+                                                  ['newIdentity']['level']
+                                              .toString() ==
+                                          "null"
+                                      ? true
+                                      : false,
+                              colors: goalDetails['goalLevel'] == 0 ||
+                                      widget.premium == false
                                   ? 0xFF
-                                  : 0xFFFBFBFB,
-                              text_color: goalDetails['goalEvaluations'][0]
-                                          ['newIdentity']['level'] ==
-                                      null
+                                  : goalDetails['goalEvaluations'][0]
+                                              ['newIdentity'] ==
+                                          null
+                                      ? 0xFF
+                                      : 0xFFFBFBFB,
+                              text_color: goalDetails['goalLevel'] == 0 ||
+                                      widget.premium == false
                                   ? 0xFFFBFBFB
-                                  : 0xFF646464,
-                              goal_: goalDetails['goalEvaluations'][0]
-                                          ['newIdentity']['level'] ==
-                                      null
+                                  : goalDetails['goalEvaluations'][0]
+                                              ['newIdentity']['level'] ==
+                                          null
+                                      ? 0xFFFBFBFB
+                                      : 0xFF646464,
+                              goal_: goalDetails['goalLevel'] == 0 ||
+                                      widget.premium == false
                                   ? "0"
                                   : goalDetails['goalEvaluations'][0]
-                                          ['newIdentity']['level']
-                                      .toString(),
+                                              ['newIdentity']['level'] ==
+                                          null
+                                      ? "0"
+                                      : goalDetails['goalEvaluations'][0]
+                                              ['newIdentity']['level']
+                                          .toString(),
                             ),
                           ),
                           AnimatedScaleButton(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const your_why(
-                                    destination: 'visualizingYourSelf',
-                                    saved: false,
-                                  )));
+                              if (widget.premium == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const your_why(
+                                      destination: 'visualizingYourSelf',
+                                      saved: false,
+                                    )));
+                              }
                             },
                             child: goal_criteria(
                                 criteria: 'Goal Criteria 3',
@@ -820,36 +860,50 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                     'I’m making small steps\ntowards my ',
                                 text_span_2: 'vision',
                                 text_span_3: '',
-                                goal_: goalDetails['goalEvaluations'][0]
-                                            ['visualisingYourSelf']['level'] ==
-                                        null
+                                goal_: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
                                     ? "0"
-                                    : goalDetails['goalEvaluations'][0]
-                                            ['visualisingYourSelf']['level']
-                                        .toString(),
-                                border: goalDetails['goalEvaluations'][0]
-                                            ['visualisingYourSelf']['level'] ==
-                                        null
+                                    : goalDetails['goalEvaluations'][0]['visualisingYourSelf']
+                                                ['level'] ==
+                                            null
+                                        ? "0"
+                                        : goalDetails['goalEvaluations'][0]
+                                                ['visualisingYourSelf']['level']
+                                            .toString(),
+                                border: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
                                     ? true
-                                    : false,
-                                colors: goalDetails['goalEvaluations'][0]
-                                            ['visualisingYourSelf']['level'] ==
-                                        null
+                                    : goalDetails['goalEvaluations'][0]
+                                                    ['visualisingYourSelf']
+                                                ['level'] ==
+                                            null
+                                        ? true
+                                        : false,
+                                colors: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
                                     ? 0xFF
-                                    : 0xFFFBFBFB,
-                                text_color: goalDetails['goalEvaluations'][0]['visualisingYourSelf']['level'] == null ? 0xFFFBFBFB : 0xFF646464,
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['visualisingYourSelf']['level'] ==
+                                            null
+                                        ? 0xFF
+                                        : 0xFFFBFBFB,
+                                text_color: goalDetails['goalLevel'] == 0 || widget.premium == false
+                                    ? 0xFFFBFBFB
+                                    : goalDetails['goalEvaluations'][0]['visualisingYourSelf']['level'] == null
+                                        ? 0xFFFBFBFB
+                                        : 0xFF646464,
                                 margin_top: 1.0),
                           ),
                           AnimatedScaleButton(
                             onTap: () {
-                              // if (index_color == 3) {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const your_impact(
-                                    saved: false,
-                                  )));
-                              //}
+                              if (widget.premium == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const your_impact(
+                                      saved: false,
+                                    )));
+                              }
                             },
                             child: goal_criteria(
                                 criteria: 'Goal Criteria 4',
@@ -857,25 +911,39 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                 text_span_1: 'It has ',
                                 text_span_2: 'little impact ',
                                 text_span_3: 'on\nmy life',
-                                border: goalDetails['goalEvaluations'][0]
-                                            ['impactOnYourSelf']['level'] ==
-                                        null
+                                border: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
                                     ? true
-                                    : false,
-                                colors: goalDetails['goalEvaluations'][0]
-                                            ['impactOnYourSelf']['level'] ==
-                                        null
+                                    : goalDetails['goalEvaluations'][0]['impactOnYourSelf']['level'] ==
+                                            null
+                                        ? true
+                                        : false,
+                                colors: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
                                     ? 0xFF
-                                    : 0xFFFBFBFB,
-                                text_color: goalDetails['goalEvaluations'][0]
-                                            ['impactOnYourSelf']['level'] ==
-                                        null
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['impactOnYourSelf']['level'] ==
+                                            null
+                                        ? 0xFF
+                                        : 0xFFFBFBFB,
+                                text_color: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
                                     ? 0xFFFBFBFB
-                                    : 0xFF646464,
-                                goal_: goalDetails['goalEvaluations'][0]['impactOnYourSelf']['level'] == null
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['impactOnYourSelf']['level'] ==
+                                            null
+                                        ? 0xFFFBFBFB
+                                        : 0xFF646464,
+                                goal_: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
                                     ? "0"
-                                    : goalDetails['goalEvaluations'][0]['impactOnYourSelf']['level']
-                                        .toString(),
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['impactOnYourSelf']['level'] ==
+                                            null
+                                        ? "0"
+                                        : goalDetails['goalEvaluations'][0]
+                                                ['impactOnYourSelf']['level']
+                                            .toString(),
                                 margin_top: 1.0),
                           ),
                         ],
@@ -903,61 +971,63 @@ class _new_progress_scoreState extends State<new_progress_score> {
               ),
       ),
       extendBody: true,
-      bottomNavigationBar: GestureDetector(
-        onTap: () {
-          Upgrade_sheet(context);
-        },
-        child: BottomAppBar(
-          elevation: 0,
-          color: Colors.transparent,
-          child: Container(
-            height: AppDimensions.height10(context) * 7.7,
-            width: AppDimensions.height10(context) * 41.4,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topLeft:
-                        Radius.circular(AppDimensions.height10(context) * 2.0),
-                    topRight:
-                        Radius.circular(AppDimensions.height10(context) * 2.0)),
-                color: const Color(0xFFF5F5F5)),
-            child: SizedBox(
-              // width: AppDimensions.height10(context) * 27.8,
-              height: AppDimensions.height10(context) * 3.4,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        right: AppDimensions.height10(context) * 1.0),
-                    // width: AppDimensions.height10(context) * 23.6,
-                    child: Text(
-                      'Upgrade to score ',
-                      style: TextStyle(
-                          color: const Color(0xFF437296),
-                          fontSize: AppDimensions.height10(context) * 2.8,
-                          fontWeight: FontWeight.w700),
+      bottomNavigationBar: widget.premium == true
+          ? Container()
+          : GestureDetector(
+              onTap: () {
+                Upgrade_sheet(context);
+              },
+              child: BottomAppBar(
+                elevation: 0,
+                color: Colors.transparent,
+                child: Container(
+                  height: AppDimensions.height10(context) * 7.7,
+                  width: AppDimensions.height10(context) * 41.4,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          topRight: Radius.circular(
+                              AppDimensions.height10(context) * 2.0)),
+                      color: const Color(0xFFF5F5F5)),
+                  child: SizedBox(
+                    // width: AppDimensions.height10(context) * 27.8,
+                    height: AppDimensions.height10(context) * 3.4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              right: AppDimensions.height10(context) * 1.0),
+                          // width: AppDimensions.height10(context) * 23.6,
+                          child: Text(
+                            'Upgrade to score ',
+                            style: TextStyle(
+                                color: const Color(0xFF437296),
+                                fontSize: AppDimensions.height10(context) * 2.8,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        Container(
+                          width: AppDimensions.height10(context) * 3.2,
+                          height: AppDimensions.height10(context) * 3.2,
+                          padding: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 1.1,
+                              left: AppDimensions.height10(context) * 0.6,
+                              right: AppDimensions.height10(context) * 0.6,
+                              bottom: AppDimensions.height10(context) * 0.9),
+                          decoration: const BoxDecoration(
+                              color: Color(0xFF437296), shape: BoxShape.circle),
+                          child: Image.asset(
+                            'assets/images/Arrow.webp',
+                          ),
+                        )
+                      ],
                     ),
                   ),
-                  Container(
-                    width: AppDimensions.height10(context) * 3.2,
-                    height: AppDimensions.height10(context) * 3.2,
-                    padding: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.1,
-                        left: AppDimensions.height10(context) * 0.6,
-                        right: AppDimensions.height10(context) * 0.6,
-                        bottom: AppDimensions.height10(context) * 0.9),
-                    decoration: const BoxDecoration(
-                        color: Color(0xFF437296), shape: BoxShape.circle),
-                    child: Image.asset(
-                      'assets/images/Arrow.webp',
-                    ),
-                  )
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      ),
     );
   }
 }

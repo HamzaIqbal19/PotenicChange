@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/captureHurdles/hurdle_positive_alternates/select_image.dart';
@@ -448,7 +450,11 @@ class _inspiration_typeState extends State<inspiration_type> {
 
                         var hurdleId = prefs.setInt('hurdleId', 4);
                         Navigator.push(
-                            context, FadePageRoute(page: const link_info()));
+                            context,
+                            FadePageRoute(
+                                page: const link_info(
+                              link_state: false,
+                            )));
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 13.3,
@@ -535,7 +541,9 @@ class _inspiration_typeState extends State<inspiration_type> {
 
                         var hurdleId = prefs.setInt('hurdleId', 3);
                         Navigator.push(
-                            context, FadePageRoute(page: const video_info()));
+                            context,
+                            FadePageRoute(
+                                page: const video_info(link_state: false)));
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 13.3,

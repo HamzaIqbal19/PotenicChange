@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,21 +13,36 @@ import '../capture_inpirations_goals.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-class link_info extends StatefulWidget {
-  const link_info({super.key});
-
-  @override
-  State<link_info> createState() => _link_infoState();
-}
-
 TextEditingController link = TextEditingController();
 TextEditingController statement = TextEditingController();
 TextEditingController author = TextEditingController();
 TextEditingController hastags = TextEditingController();
 
+class link_info extends StatefulWidget {
+  final bool link_state;
+  const link_info({super.key, required this.link_state});
+
+  @override
+  State<link_info> createState() => _link_infoState();
+}
+
 class _link_infoState extends State<link_info> {
   List selectedGoals = [];
   List<String> tagList = [];
+  String? imageLink;
+
+  void getImageLink() async {
+    final SharedPreferences prefs = await _prefs;
+
+    var imageLinked = prefs.getString('ImageLink');
+
+    setState(() {
+      imageLink = imageLinked;
+    });
+    print('---------------==============================$imageLink');
+
+    link.text = imageLink!;
+  }
 
   void getInspiration() async {
     final SharedPreferences prefs = await _prefs;
@@ -44,11 +60,12 @@ class _link_infoState extends State<link_info> {
   void initState() {
     super.initState();
     getInspiration();
+    getImageLink();
   }
 
   @override
   Widget build(BuildContext context) {
-    bool link_state = false;
+    // bool link_state = false;
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -61,7 +78,8 @@ class _link_infoState extends State<link_info> {
           child: Container(
             //height: AppDimensions.height10(context) * 84.8,
             child: SingleChildScrollView(
-              reverse: true,
+              reverse:
+                  MediaQuery.of(context).viewInsets.bottom == 0 ? false : true,
               child: Column(children: [
                 Container(
                   // width: AppDimensions.height10(context) * 41.1,
@@ -87,8 +105,8 @@ class _link_infoState extends State<link_info> {
                               Navigator.pop(context);
                               link.clear();
                               statement.clear();
-                              author.clear();
                               hastags.clear();
+                              author.clear();
                             },
                             child: Text(
                               'Back',
@@ -136,11 +154,12 @@ class _link_infoState extends State<link_info> {
                                 statement.clear();
                                 author.clear();
                                 hastags.clear();
+                                link.clear();
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const note_info(
-                                            note_saved: true, type_switch: 2)));
+                                        page: const updatedLandingPage(
+                                            delete: false, is_Updated: false)));
 
                                 print(response);
                               }
@@ -196,7 +215,7 @@ class _link_infoState extends State<link_info> {
                               width: AppDimensions.height10(context) * 30.5,
                               margin: EdgeInsets.only(
                                 left: AppDimensions.height10(context) * 1.5,
-                                right: AppDimensions.height10(context) * 5.0,
+                                right: AppDimensions.height10(context) * 1.0,
                                 //top: AppDimensions.height10(context) * 1.0
                               ),
                               child: TextFormField(
@@ -205,7 +224,7 @@ class _link_infoState extends State<link_info> {
                                 maxLines: null,
                                 onEditingComplete: () {
                                   setState(() {
-                                    link_state = true;
+                                    // link_state = true;
                                   });
                                 },
                                 textAlignVertical: TextAlignVertical.center,
@@ -236,74 +255,92 @@ class _link_infoState extends State<link_info> {
                                             color: Colors.transparent))),
                               ),
                             ),
-                            link_state
-                                ? Row(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) => link_editer()));
-                                        },
-                                        child: Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  2.5,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.5,
-                                          // margin: EdgeInsets.only(
-                                          //     right: AppDimensions.height10(context) * 0.8),
-                                          decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            color: Colors.black,
-                                          ),
-                                          child: Icon(
-                                            Icons.add,
-                                            color: Colors.white,
-                                            size: AppDimensions.height10(
+                            widget.link_state
+                                ? SizedBox(
+                                    // width: AppDimensions.height10(context) * 7,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        AnimatedScaleButton(
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                FadePageRoute(
+                                                    page: const link_set(
+                                                  route: 'link',
+                                                )));
+                                          },
+                                          child: Container(
+                                            width: AppDimensions.height10(
                                                     context) *
-                                                2,
+                                                2.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.5,
+                                            // margin: EdgeInsets.only(
+                                            //     right: AppDimensions.height10(context) * 0.8),
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.black,
+                                            ),
+                                            child: Icon(
+                                              Icons.add,
+                                              color: Colors.white,
+                                              size: AppDimensions.height10(
+                                                      context) *
+                                                  2,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Container(
-                                        width: AppDimensions.height10(context) *
-                                            3.0,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                3.0,
-                                        margin: EdgeInsets.only(
-                                            right: AppDimensions.height10(
+                                        AnimatedScaleButton(
+                                          onTap: () {
+                                            link.clear();
+                                          },
+                                          child: Container(
+                                            width: AppDimensions.height10(
                                                     context) *
-                                                2.0),
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Colors.black,
-                                        ),
-                                        child: const Icon(
-                                          Icons.delete,
-                                          color: Colors.white,
-                                          // size: AppDimensions.height10(context) * 1,
-                                        ),
-                                      )
-                                    ],
+                                                2.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                2.5,
+                                            margin: EdgeInsets.only(
+                                                left: AppDimensions.height10(
+                                                        context) *
+                                                    0.85),
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.black,
+                                            ),
+                                            child: Icon(
+                                              Icons.delete,
+                                              color: Colors.white,
+                                              size: AppDimensions.height10(
+                                                      context) *
+                                                  1.8,
+                                              // size: AppDimensions.height10(context) * 1,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   )
-                                : GestureDetector(
+                                : AnimatedScaleButton(
                                     onTap: () {
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) => link_editer()));
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const link_set(
+                                            route: 'link',
+                                          )));
                                     },
                                     child: Container(
                                       width:
-                                          AppDimensions.height10(context) * 3.0,
+                                          AppDimensions.height10(context) * 2.5,
                                       height:
-                                          AppDimensions.height10(context) * 3.0,
+                                          AppDimensions.height10(context) * 2.5,
                                       // margin: EdgeInsets.only(
-                                      //     left: AppDimensions.height10(context) * 3.0),
+                                      //     right: AppDimensions.height10(context) * 0.8),
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.black,
@@ -505,6 +542,8 @@ class _link_infoState extends State<link_info> {
                                 FadePageRoute(
                                     page: const inspiraton_goals(
                                   data_saved: false,
+                                  context: false,
+                                  note: false,
                                   route: 'note_link',
                                 )));
                           },

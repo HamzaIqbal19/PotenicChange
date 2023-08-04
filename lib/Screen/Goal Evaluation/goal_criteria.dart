@@ -179,7 +179,7 @@ class _your_whyState extends State<your_why> {
                                           context,
                                           FadePageRoute(
                                               page:
-                                                  const new_progress_score()));
+                                                  const new_progress_score(premium: true,)));
                                     },
                                     child: Center(
                                       child: Text(

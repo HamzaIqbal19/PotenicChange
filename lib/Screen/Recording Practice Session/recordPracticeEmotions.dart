@@ -641,8 +641,9 @@ class _emotionsState extends State<emotions> {
                                 var newPrac = prefs.setString(
                                     'pracName', widget.pracName);
                                 print("======================>$pracEmotions");
-                                var afterSessionFeedback = feedback
-                                        .text.isNotEmpty
+                                var afterSessionFeedback = feedback.text
+                                        .toString()
+                                        .isNotEmpty
                                     ? prefs.setString('emotionsFeedback',
                                         feedback.text.toString())
                                     : prefs.setString('emotionsFeedback', " ");
@@ -656,14 +657,14 @@ class _emotionsState extends State<emotions> {
                                           : " ",
                                       "afterNote": afterSessionNotes == null
                                           ? " "
-                                          : afterSessionNotes.toString(),
-                                      "endNote": endSession == null
-                                          ? " "
-                                          : endSession.toString()
+                                          : afterSessionNotes,
+                                      "endNote":
+                                          endSession == null ? " " : endSession
                                     }
                                   ]).then((reaponse) {
                                     if (reaponse == true) {
                                       print("Emotions Updated");
+                                      feedback.clear();
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
@@ -673,11 +674,12 @@ class _emotionsState extends State<emotions> {
                                     }
                                   });
                                 } else {
+                                  feedback.clear();
                                   Navigator.push(context,
                                       FadePageRoute(page: const clocks()));
                                 }
                               }
-                              feedback.clear();
+
                               setState(() {
                                 pracEmotions = 0;
                               });

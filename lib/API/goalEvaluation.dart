@@ -187,17 +187,17 @@ class PracticeEvaluation {
 
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/userPractice/user_practice_report_by_id/$prac_num'),
+          '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/5?howManyDays=20'),
       headers: headers,
     );
-
+    print(response.statusCode);
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
 
-      return (jsonData);
+      return jsonData;
     } else {
-      throw Exception('Failed to fetch goal names');
+      throw Exception('Failed to fetch practice report');
     }
   }
 }

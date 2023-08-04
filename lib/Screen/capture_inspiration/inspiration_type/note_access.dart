@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -764,6 +765,7 @@ class _note_infoState extends State<note_info> {
                                               page: const inspiraton_goals(
                                             data_saved: false,
                                             route: 'note_create',
+                                            context: false, note: false,
                                           )));
                                 },
                                 child: Container(
@@ -929,6 +931,7 @@ class _noteSavedState extends State<noteSaved> {
                               Navigator.pop(context);
                               title.clear();
                               tagList.clear();
+                              hastags.clear();
                               statement.clear();
                             },
                             child: Text(
@@ -980,13 +983,12 @@ class _noteSavedState extends State<noteSaved> {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
-                                        page: const note_info(
-                                      note_saved: true,
-                                      type_switch: 1,
-                                    )));
+                                        page: const updatedLandingPage(
+                                            delete: false, is_Updated: false)));
                                 print('----------------');
                                 title.clear();
                                 tagList.clear();
+                                hastags.clear();
                                 statement.clear();
 
                                 print(response);
@@ -1044,23 +1046,25 @@ class _noteSavedState extends State<noteSaved> {
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          height: AppDimensions.height10(context) * 2.4,
-                          width: AppDimensions.height10(context) * 30.5,
+                          // height: AppDimensions.height10(context) * 2.4,
+                          //width: AppDimensions.height10(context) * 30.5,
                           margin: EdgeInsets.only(
                             left: AppDimensions.height10(context) * 0.6,
                           ),
                           child: TextFormField(
                             controller: title,
                             textAlignVertical: TextAlignVertical.center,
+                            maxLines: null,
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.7,
                                 fontWeight: FontWeight.w500,
                                 color: const Color(0xff282828)),
                             decoration: InputDecoration(
+                                isCollapsed: true,
                                 contentPadding: EdgeInsets.fromLTRB(
                                     AppDimensions.height10(context) * 1.5,
                                     AppDimensions.height10(context) * 0.4,
-                                    AppDimensions.height10(context) * 0.2,
+                                    AppDimensions.height10(context) * 4,
                                     0),
                                 hintText: 'Give your inspiration a title',
                                 hintStyle: TextStyle(
@@ -1214,6 +1218,7 @@ class _noteSavedState extends State<noteSaved> {
                                     page: const inspiraton_goals(
                                   data_saved: false,
                                   route: 'note_saved',
+                                  context: false, note: false,
                                 )));
                           },
                           child: Container(

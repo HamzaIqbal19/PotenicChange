@@ -7,10 +7,13 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../Widgets/fading.dart';
 import '../../../utils/app_dimensions.dart';
 import '../capture_inpirations_goals.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class photo_Edit extends StatefulWidget {
   const photo_Edit({
@@ -47,13 +50,28 @@ class _photo_EditState extends State<photo_Edit> {
         setState(() {
           inspirationDetails = response;
         });
+        print(inspirationDetails);
+        print('1');
         setState(() {
-          image = inspirationDetails['inspiration']['file'];
+          image = inspirationDetails['inspiration']['file']!;
         });
-        link.text = inspirationDetails['inspiration']['destinationLink'];
-        title.text = inspirationDetails['inspiration']['title'];
-        statement.text = inspirationDetails['inspiration']['description'];
-        hastags.text = inspirationDetails['inspiration']['hashTags'];
+        print('2');
+        link.text = inspirationDetails['inspiration']['destinationLink']
+                .toString()
+                .isEmpty
+            ? ''
+            : inspirationDetails['inspiration']['destinationLink'];
+        title.text =
+            inspirationDetails['inspiration']['title'].toString().isEmpty
+                ? ''
+                : inspirationDetails['inspiration']['title'];
+        statement.text =
+            inspirationDetails['inspiration']['description'].toString().isEmpty
+                ? ''
+                : inspirationDetails['inspiration']['description'];
+        hastags.text = inspirationDetails['inspiration']['hashTags'].length != 0
+            ? inspirationDetails['inspiration']['hashTags']
+            : '';
         loadData();
         print(inspirationDetails['inspiration']['title']);
         print("1212312312321321");
@@ -244,15 +262,22 @@ class _photo_EditState extends State<photo_Edit> {
                                                           statement.text
                                                               .toString(),
                                                           ' ')
-                                                      .then((response) {
+                                                      .then((response) async {
                                                     if (response == true) {
+                                                      final SharedPreferences
+                                                          prefs = await _prefs;
+
+                                                      var hurdleId = prefs.setInt(
+                                                          'userInspirationId',
+                                                          inspirationDetails[
+                                                              'inspirationId']);
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(
                                                               page: const updatedLandingPage(
                                                                   delete: false,
                                                                   is_Updated:
-                                                                      true)));
+                                                                      false)));
                                                     }
                                                   });
                                                 },
@@ -754,13 +779,14 @@ class _photo_EditState extends State<photo_Edit> {
                                             color: const Color(0xff828282)),
                                       ),
                                     ),
-                                    GestureDetector(
+                                    AnimatedScaleButton(
                                       onTap: () {
                                         Navigator.push(
                                             context,
                                             FadePageRoute(
-                                                page: const inspiration_landing(
-                                              is_Updated: false,
+                                                page:  const inspiraton_goals(
+                                              data_saved: true,
+                                              route: 'photo_edit', context: false, note: false,
                                             )));
                                       },
                                       child: Container(
@@ -801,22 +827,19 @@ class _photo_EditState extends State<photo_Edit> {
                                                   left: AppDimensions.height10(
                                                           context) *
                                                       1.99),
-                                              child: GestureDetector(
-                                                  onTap: () {},
-                                                  child: Text(
-                                                    '00 impacted goals',
-                                                    style: TextStyle(
-                                                      fontFamily: 'laila',
-                                                      color: const Color(
-                                                          0xFF646464),
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
+                                              child: Text(
+                                                '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
+                                                style: TextStyle(
+                                                  fontFamily: 'laila',
+                                                  color:
+                                                      const Color(0xFF646464),
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
                                                           1.8,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  )),
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
                                             ),
                                             Container(
                                                 width: AppDimensions.height10(
@@ -830,16 +853,13 @@ class _photo_EditState extends State<photo_Edit> {
                                                         AppDimensions.height10(
                                                                 context) *
                                                             2.391),
-                                                child: GestureDetector(
-                                                  onTap: () {},
-                                                  child: Image.asset(
-                                                    'assets/images/BTN Back.webp',
-                                                    //width: AppDimensions.height10(context) * 2.6,
-                                                    //height: AppDimensions.height10(context) * 2.6,
-                                                    color:
-                                                        const Color(0xFF646464),
-                                                    fit: BoxFit.cover,
-                                                  ),
+                                                child: Image.asset(
+                                                  'assets/images/BTN Back.webp',
+                                                  //width: AppDimensions.height10(context) * 2.6,
+                                                  //height: AppDimensions.height10(context) * 2.6,
+                                                  color:
+                                                      const Color(0xFF646464),
+                                                  fit: BoxFit.cover,
                                                 ))
                                           ],
                                         ),

@@ -13,6 +13,8 @@ import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/link_acc
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/note_access.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/video_access.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inspiratoinEdit/photoEdit.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inspiratoinEdit/videoEdit.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -25,8 +27,14 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 class inspiraton_goals extends StatefulWidget {
   final bool data_saved;
   final String route;
+  final bool note;
+  final bool context;
   const inspiraton_goals(
-      {super.key, required this.data_saved, required this.route});
+      {super.key,
+      required this.data_saved,
+      required this.route,
+      required this.note,
+      required this.context});
 
   @override
   State<inspiraton_goals> createState() => _inspiraton_goalsState();
@@ -808,7 +816,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             ? Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: const video_info()),
+                                                    page: const video_info(
+                                                        link_state: false)),
                                               )
                                             : widget.route == 'note_create'
                                                 ? Navigator.push(
@@ -832,7 +841,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                             context,
                                                             FadePageRoute(
                                                                 page:
-                                                                    const link_info()),
+                                                                    const link_info(
+                                                              link_state: false,
+                                                            )),
                                                           )
                                                         : Navigator.push(
                                                             context,
@@ -858,7 +869,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             ? Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                    page: const video_info()),
+                                                    page: const video_info(
+                                                  link_state: false,
+                                                )),
                                               )
                                             : widget.route == 'note_create'
                                                 ? Navigator.push(
@@ -882,14 +895,48 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                             context,
                                                             FadePageRoute(
                                                                 page:
-                                                                    const link_info()),
+                                                                    const link_info(
+                                                              link_state: false,
+                                                            )),
                                                           )
-                                                        : Navigator.push(
-                                                            context,
-                                                            FadePageRoute(
-                                                                page:
-                                                                    const inspiration_type()),
-                                                          );
+                                                        : widget.route ==
+                                                                'note_link'
+                                                            ? Navigator.push(
+                                                                context,
+                                                                FadePageRoute(
+                                                                    page:
+                                                                        const link_info(
+                                                                  link_state:
+                                                                      false,
+                                                                )),
+                                                              )
+                                                            : widget.route ==
+                                                                    'edit'
+                                                                ? Navigator
+                                                                    .push(
+                                                                    context,
+                                                                    FadePageRoute(
+                                                                        page: videoEdit(
+                                                                            note:
+                                                                                widget.note,
+                                                                            context: widget.context)),
+                                                                  )
+                                                                : widget.route ==
+                                                                        'photo_edit'
+                                                                    ? Navigator
+                                                                        .push(
+                                                                        context,
+                                                                        FadePageRoute(
+                                                                            page:
+                                                                                const photo_Edit()),
+                                                                      )
+                                                                    : Navigator
+                                                                        .push(
+                                                                        context,
+                                                                        FadePageRoute(
+                                                                            page:
+                                                                                const inspiration_type()),
+                                                                      );
                                   }
                                 }
                               },
@@ -952,7 +999,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       ? Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const video_info()),
+                                              page: const video_info(
+                                                  link_state: false)),
                                         )
                                       : widget.route == 'note_create'
                                           ? Navigator.push(
@@ -973,8 +1021,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   ? Navigator.push(
                                                       context,
                                                       FadePageRoute(
-                                                          page:
-                                                              const link_info()),
+                                                          page: const link_info(
+                                                        link_state: false,
+                                                      )),
                                                     )
                                                   : Navigator.push(
                                                       context,
@@ -1000,7 +1049,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                       ? Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const video_info()),
+                                              page: const video_info(
+                                                  link_state: false)),
                                         )
                                       : widget.route == 'note_create'
                                           ? Navigator.push(
@@ -1021,8 +1071,9 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   ? Navigator.push(
                                                       context,
                                                       FadePageRoute(
-                                                          page:
-                                                              const link_info()),
+                                                          page: const link_info(
+                                                        link_state: false,
+                                                      )),
                                                     )
                                                   : Navigator.push(
                                                       context,

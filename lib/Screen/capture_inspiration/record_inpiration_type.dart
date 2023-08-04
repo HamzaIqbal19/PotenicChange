@@ -75,7 +75,12 @@ class _record_inspirationState extends State<record_inspiration> {
         actions: [
           Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const inspiration_landing(is_Updated: false)));
+                },
                 icon: Image.asset(
                   'assets/images/Close.webp',
                   width: AppDimensions.height10(context) * 2.6,
@@ -145,11 +150,11 @@ class _record_inspirationState extends State<record_inspiration> {
                                 gradient: inspirationDetails['inspiration']
                                             ['inspirationId'] ==
                                         2
-                                    ? RadialGradient(colors: [
+                                    ? const RadialGradient(colors: [
                                         Color(0xFFE9A594),
                                         Color(0xFFEEBEB2)
                                       ])
-                                    : RadialGradient(colors: [
+                                    : const RadialGradient(colors: [
                                         Color(0xFFD9D9D9),
                                         Color(0xFFD9D9D9)
                                       ]),
@@ -171,9 +176,11 @@ class _record_inspirationState extends State<record_inspiration> {
                             child: inspirationDetails['inspiration']
                                         ['inspirationId'] ==
                                     2
-                                ? SizedBox(
-                                    width:
-                                        AppDimensions.height10(context) * 16.2,
+                                ? Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal:
+                                            AppDimensions.height10(context) *
+                                                2),
                                     height:
                                         AppDimensions.height10(context) * 6.3,
                                     child: Center(
@@ -182,6 +189,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                           ['description'],
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 3,
+                                      textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.height10(context) *
@@ -196,7 +204,8 @@ class _record_inspirationState extends State<record_inspiration> {
                             width: AppDimensions.height10(context) * 16.7,
                             height: AppDimensions.height10(context) * 1.9,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 0.5),
+                                top: AppDimensions.height10(context) * 0.5,
+                                bottom: AppDimensions.height10(context) * 0.2),
                             child: Center(
                                 child: Text(
                               inspirationDetails['inspiration']['title'],
@@ -208,13 +217,19 @@ class _record_inspirationState extends State<record_inspiration> {
                             )),
                           ),
                           SizedBox(
-                            height: AppDimensions.height10(context) * 3.0,
+                            width: AppDimensions.height10(context) * 12.7,
+                            //height: AppDimensions.height10(context) * 3.0,
                             child: Align(
                                 alignment: Alignment.topCenter,
                                 child: Text(
                                   inspirationDetails['inspiration']
                                       ['description'],
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
+                                      height: AppDimensions.height10(context) *
+                                          0.14,
                                       fontSize:
                                           AppDimensions.height10(context) * 1.2,
                                       fontWeight: FontWeight.w400,
@@ -367,18 +382,16 @@ class _record_inspirationState extends State<record_inspiration> {
                                   margin: EdgeInsets.only(
                                       left: AppDimensions.height10(context) *
                                           1.99),
-                                  child: GestureDetector(
-                                      onTap: () {},
-                                      child: Text(
-                                        'Edit details',
-                                        style: TextStyle(
-                                          color: const Color(0xFF646464),
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      )),
+                                  child: Text(
+                                    'Edit details',
+                                    style: TextStyle(
+                                      color: const Color(0xFF646464),
+                                      fontSize:
+                                          AppDimensions.height10(context) *
+                                              1.8,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
                                 ),
                                 Container(
                                     width:
@@ -388,15 +401,12 @@ class _record_inspirationState extends State<record_inspiration> {
                                     margin: EdgeInsets.only(
                                         right: AppDimensions.height10(context) *
                                             2.391),
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        color: const Color(0xFF646464),
-                                        //width: AppDimensions.height10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        fit: BoxFit.cover,
-                                      ),
+                                    child: Image.asset(
+                                      'assets/images/BTN Back.webp',
+                                      color: const Color(0xFF646464),
+                                      //width: AppDimensions.height10(context) * 2.6,
+                                      //height: AppDimensions.height10(context) * 2.6,
+                                      fit: BoxFit.cover,
                                     ))
                               ],
                             ),
@@ -457,7 +467,7 @@ class _record_inspirationState extends State<record_inspiration> {
                             return showAnimatedDialog(
                                 animationType: DialogTransitionType.fadeScale,
                                 curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
                                       width: AppDimensions.height10(context) *
@@ -604,7 +614,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                                             context,
                                                             FadePageRoute(
                                                                 page:
-                                                                    inspiration_motivation(
+                                                                    const inspiration_motivation(
                                                               goal_delete: true,
                                                             )));
                                                       }
@@ -693,7 +703,7 @@ class _record_inspirationState extends State<record_inspiration> {
                     height: AppDimensions.height10(context) * 0.5,
                     //alignment: Alignment.bottomCenter,
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 18.0),
+                        top: AppDimensions.height10(context) * 17.5),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 2.0),

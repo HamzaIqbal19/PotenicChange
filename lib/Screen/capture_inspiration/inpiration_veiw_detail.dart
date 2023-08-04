@@ -181,16 +181,25 @@ class _veiw_detailsState extends State<veiw_details> {
                               colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
                         ),
                         child: Center(
-                          child: Text(
-                            inspirationDetails['inspiration']['description'],
-                            maxLines: 3,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                height: AppDimensions.height10(context) * 0.15,
-                                fontSize: AppDimensions.height10(context) * 2.4,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xFFFFFFFF)),
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              left: AppDimensions.height10(context) * 5,
+                              right: AppDimensions.height10(context) * 5,
+                              // bottom: AppDimensions.height10(context) * 3
+                            ),
+                            child: Text(
+                              inspirationDetails['inspiration']['description'],
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  height:
+                                      AppDimensions.height10(context) * 0.15,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.4,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xFFFFFFFF)),
+                            ),
                           ),
                         ),
                       ),

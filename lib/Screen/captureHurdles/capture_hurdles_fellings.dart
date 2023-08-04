@@ -29,13 +29,16 @@ class _felling_hurdlesState extends State<felling_hurdles> {
   List selectedGoals = [];
   String? hurdleStatement;
   int? hurdleId;
+  List<TextEditingController> controllers = [
+    TextEditingController(text: 'I feel')
+  ];
 
   int getMaxCharacters() {
     return 100;
   }
 
-  int getCurrentCharacters() {
-    return controller.text.length;
+  int getCurrentCharacters(index) {
+    return controllers[index].text.length;
   }
 
   void _getHurdleDetail() async {
@@ -57,18 +60,17 @@ class _felling_hurdlesState extends State<felling_hurdles> {
     }
   }
 
-  TextEditingController controller = TextEditingController();
+  // TextEditingController controller = TextEditingController();
   bool scroll = true;
 
   @override
   void initState() {
     super.initState();
-    statements.add('text');
+    statements.add('i feel');
     _getHurdleDetail();
     print(hurdleId);
     print(hurdleName);
     print(hurdleStatement);
-    controller.text = 'I feel ';
   }
 
   int circle_state = 1;
@@ -358,7 +360,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                   child: Center(
                                     child: TextFormField(
                                       maxLength: getMaxCharacters(),
-                                      controller: controller,
+                                      controller: controllers[i],
                                       expands: true,
                                       maxLines: null,
                                       minLines: null,
@@ -369,11 +371,12 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                           scroll = true;
                                         });
                                         if (!newText.startsWith("I feel ")) {
-                                          controller.text = "I feel ";
-                                          controller.selection =
+                                          controllers[i].text = "I feel ";
+                                          controllers[i].selection =
                                               TextSelection.fromPosition(
                                             TextPosition(
-                                                offset: controller.text.length),
+                                                offset:
+                                                    controllers[i].text.length),
                                           );
                                         }
 
@@ -383,11 +386,12 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                         // Check if the submitted text is empty
                                         if (submittedText.isEmpty) {
                                           // Replace it with "I feel " and move the cursor to the end
-                                          controller.text = "I feel ";
-                                          controller.selection =
+                                          controllers[i].text = "I feel ";
+                                          controllers[i].selection =
                                               TextSelection.fromPosition(
                                             TextPosition(
-                                                offset: controller.text.length),
+                                                offset:
+                                                    controllers[i].text.length),
                                           );
                                         }
                                       },
@@ -444,7 +448,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                         color: Colors.white),
                                   ),
                                   Text(
-                                    '${getCurrentCharacters()}/100',
+                                    '${getCurrentCharacters(i)}/100',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
@@ -470,7 +474,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                       ],
                       GestureDetector(
                         onTap: () {
-                          statements.add('text');
+                          statements.add('I feel');
                           setState(() {
                             circle_state = circle_state + 1;
                           });
