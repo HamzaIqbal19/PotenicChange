@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -99,8 +100,13 @@ class _note_infoState extends State<note_info> {
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 4.9),
                           child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
+                            onTap: () async {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const inspiration_type()));
+                              final SharedPreferences prefs = await _prefs;
+                              var remove = prefs.remove('ImageLink');
                             },
                             child: Text(
                               'Back',
@@ -166,12 +172,16 @@ class _note_infoState extends State<note_info> {
                           ),
                         ),
                         AnimatedScaleButton(
-                          onTap: () {
+                          onTap: () async {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
                                     page: const updatedLandingPage(
                                         delete: false, is_Updated: false)));
+                            Navigator.push(context,
+                                FadePageRoute(page: const inspiration_type()));
+                            final SharedPreferences prefs = await _prefs;
+                            var remove = prefs.remove('ImageLink');
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 2.2,
@@ -765,7 +775,8 @@ class _note_infoState extends State<note_info> {
                                               page: const inspiraton_goals(
                                             data_saved: false,
                                             route: 'note_create',
-                                            context: false, note: false,
+                                            context: false,
+                                            note: false,
                                           )));
                                 },
                                 child: Container(
@@ -927,12 +938,21 @@ class _noteSavedState extends State<noteSaved> {
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 4.9),
                           child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
+                            onTap: () async {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const inspiration_type()));
                               title.clear();
                               tagList.clear();
                               hastags.clear();
                               statement.clear();
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const inspiration_type()));
+                              final SharedPreferences prefs = await _prefs;
+                              var remove = prefs.remove('ImageLink');
                             },
                             child: Text(
                               'Back',
@@ -978,7 +998,7 @@ class _noteSavedState extends State<noteSaved> {
                                     true,
                                     statement.text.toString(),
                                     selectedGoals)
-                                .then((response) {
+                                .then((response) async {
                               if (response.length != 0) {
                                 Navigator.push(
                                     context,
@@ -990,6 +1010,12 @@ class _noteSavedState extends State<noteSaved> {
                                 tagList.clear();
                                 hastags.clear();
                                 statement.clear();
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const inspiration_type()));
+                                final SharedPreferences prefs = await _prefs;
+                                var remove = prefs.remove('ImageLink');
 
                                 print(response);
                               }
@@ -1218,7 +1244,8 @@ class _noteSavedState extends State<noteSaved> {
                                     page: const inspiraton_goals(
                                   data_saved: false,
                                   route: 'note_saved',
-                                  context: false, note: false,
+                                  context: false,
+                                  note: false,
                                 )));
                           },
                           child: Container(

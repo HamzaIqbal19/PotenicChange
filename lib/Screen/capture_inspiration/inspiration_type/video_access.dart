@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -98,11 +101,16 @@ class _video_infoState extends State<video_info> {
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 4.9),
                           child: GestureDetector(
-                            onTap: () {
+                            onTap: () async {
+                              final SharedPreferences prefs = await _prefs;
+                              var remove = prefs.remove('ImageLink');
                               link.clear();
                               statement.clear();
                               hastags.clear();
-                              Navigator.pop(context);
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const inspiration_type()));
                             },
                             child: Text(
                               'Back',
@@ -142,10 +150,12 @@ class _video_infoState extends State<video_info> {
                                     true,
                                     statement.text.toString(),
                                     selectedGoals)
-                                .then((response) {
+                                .then((response) async {
                               if (response.length != 0) {
                                 print('----------------');
                                 link.clear();
+                                final SharedPreferences prefs = await _prefs;
+                                var remove = prefs.remove('ImageLink');
                                 statement.clear();
                                 hastags.clear();
                                 Navigator.push(

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/capture_inspiration/inpiration_type.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -101,12 +102,17 @@ class _link_infoState extends State<link_info> {
                           margin: EdgeInsets.only(
                               right: AppDimensions.height10(context) * 4.0),
                           child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
+                            onTap: () async {
                               link.clear();
                               statement.clear();
                               hastags.clear();
                               author.clear();
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const inspiration_type()));
+                              final SharedPreferences prefs = await _prefs;
+                              var remove = prefs.remove('ImageLink');
                             },
                             child: Text(
                               'Back',
@@ -148,7 +154,7 @@ class _link_infoState extends State<link_info> {
                                     true,
                                     statement.text.toString(),
                                     selectedGoals)
-                                .then((response) {
+                                .then((response) async {
                               if (response.length != 0) {
                                 print('----------------');
                                 statement.clear();
@@ -160,6 +166,9 @@ class _link_infoState extends State<link_info> {
                                     FadePageRoute(
                                         page: const updatedLandingPage(
                                             delete: false, is_Updated: false)));
+
+                                final SharedPreferences prefs = await _prefs;
+                                var remove = prefs.remove('ImageLink');
 
                                 print(response);
                               }

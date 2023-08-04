@@ -14,6 +14,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import '../../utils/app_dimensions.dart';
+import '../Recording Practice Session/dashboardViewgoals.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -157,8 +158,13 @@ class _inspiration_landingState extends State<inspiration_landing> {
                     Navigator.push(
                         context,
                         FadePageRoute(
-                            page: const inspiration_motivation(
-                          goal_delete: false,
+                            page: const dashBoard(
+                          saved: false,
+                          helpful_tips: false,
+                          membership: true,
+                          dashboard_ctrl: false,
+                          cancel: false,
+                          trial: false,
                         )));
                   },
                   icon: Image.asset(
@@ -225,7 +231,8 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                       FadePageRoute(
                                           page: const inspiraton_goals(
                                               data_saved: false,
-                                              context: false, note: false,
+                                              context: false,
+                                              note: false,
                                               route: 'landing')));
                                 },
                                 child: Container(
@@ -1495,9 +1502,7 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                   Navigator.push(
                       context,
                       FadePageRoute(
-                          page: const inspiration_motivation(
-                        goal_delete: false,
-                      )));
+                          page: const inspiration_landing(is_Updated: false)));
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',

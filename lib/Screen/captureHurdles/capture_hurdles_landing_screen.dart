@@ -15,6 +15,7 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import '../Recording Practice Session/dashboardViewgoals.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
@@ -145,7 +146,17 @@ class _landing_hurdlesState extends State<landing_hurdles> {
             child: IconButton(
                 onPressed: () {
                   Navigator.push(
-                      context, FadePageRoute(page: hurdles_splash()));
+                      context,
+                      FadePageRoute(
+                        page: const dashBoard(
+                          saved: false,
+                          helpful_tips: false,
+                          membership: true,
+                          dashboard_ctrl: false,
+                          cancel: false,
+                          trial: false,
+                        ),
+                      ));
                 },
                 icon: Image.asset(
                   'assets/images/Close.webp',
