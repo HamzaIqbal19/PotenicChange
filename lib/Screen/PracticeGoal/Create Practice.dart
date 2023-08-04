@@ -351,7 +351,9 @@ class _CreatePracticeState extends State<CreatePractice> {
                                             FadePageRoute2(
                                               true,
                                               exitPage: const CreatePractice(),
-                                              enterPage: PracticeName(),
+                                              enterPage: PracticeName(
+                                                comingFromEditScreen: false,
+                                              ),
                                             ),
                                           );
 

@@ -18,6 +18,7 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Practice.dart';
+import '../PracticeGoal/PracticeName.dart';
 
 class PracticeReview extends StatefulWidget {
   const PracticeReview({Key? key}) : super(key: key);
@@ -385,26 +386,42 @@ class _PracticeReviewState extends State<PracticeReview> {
                                               ),
                                             ),
                                           ),
-                                          // SizedBox(width: ),
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
 
-                                            // color: Colors.blue,
-                                            margin: EdgeInsets.only(
-                                              bottom: AppDimensions.height10(
+                                          // SizedBox(width: ),
+
+                                          AnimatedScaleButton(
+                                            onTap: () {
+                                              print("new");
+                                              Navigator.push(
+                                                context,
+                                                FadePageRoute3(
+                                                  exitPage: PracticeReview(),
+                                                  enterPage: PracticeName(
+                                                    comingFromEditScreen: true,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            child: Container(
+                                              height: AppDimensions.height10(
                                                       context) *
-                                                  1.5,
-                                            ),
-                                            decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/btnedit.webp"),
-                                                fit: BoxFit.fitHeight,
+                                                  3.0,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  3.0,
+
+                                              // color: Colors.blue,
+                                              margin: EdgeInsets.only(
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    1.5,
+                                              ),
+                                              decoration: const BoxDecoration(
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/btnedit.webp"),
+                                                  fit: BoxFit.fitHeight,
+                                                ),
                                               ),
                                             ),
                                           ),

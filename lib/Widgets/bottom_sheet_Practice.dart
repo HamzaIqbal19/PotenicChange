@@ -171,7 +171,9 @@ void bottom_sheet(context, String goal) {
                                   context,
                                   FadePageRoute2(true,
                                       exitPage: const CreatePractice(),
-                                      enterPage: PracticeName()));
+                                      enterPage: PracticeName(
+                                        comingFromEditScreen: false,
+                                      )));
                             }
                           },
                           child: Text(
