@@ -175,7 +175,7 @@ class _StarReviewState extends State<StarReview> {
                           height: AppDimensions.height10(context) * 5.5,
                         ),
                         Text(
-                          "Review goal details",
+                          "Review",
                           style: TextStyle(
                               color: const Color(0xFF5B74A6),
                               fontWeight: FontWeight.w600,

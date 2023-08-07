@@ -314,11 +314,14 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             );
                           })),
                     ),
-                    GestureDetector(
+                    AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(
                           context,
-                          FadePageRoute(page: const felling_hurdles()),
+                          FadePageRoute(
+                              page: const felling_hurdles(
+                            update: true,
+                          )),
                         );
                       },
                       child: Container(

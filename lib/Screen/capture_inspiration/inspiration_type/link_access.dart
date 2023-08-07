@@ -147,12 +147,18 @@ class _link_infoState extends State<link_info> {
                             InspirationApi()
                                 .addInspiration(
                                     4,
-                                    author.text.toString(),
+                                    author.text.toString().isEmpty
+                                        ? " "
+                                        : author.text.toString(),
                                     " ",
-                                    tagList,
-                                    link.text.toString(),
+                                    tagList.isEmpty ? " " : tagList,
+                                    link.text.toString().isEmpty
+                                        ? " "
+                                        : link.text.toString(),
                                     true,
-                                    statement.text.toString(),
+                                    statement.text.toString().isEmpty
+                                        ? " "
+                                        : statement.text.toString(),
                                     selectedGoals)
                                 .then((response) async {
                               if (response.length != 0) {

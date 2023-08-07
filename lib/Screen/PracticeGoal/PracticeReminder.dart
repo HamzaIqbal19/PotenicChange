@@ -734,13 +734,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 print('Api call failed');
                               }
                             }).catchError((error) {
-                              print('===>adasd');
+                              print('===>Error');
                             }).whenComplete(() {
                               setState(() {
                                 Loader =
                                     false; // Hide loader when the API call completes
                               });
-                              print('--------------Comp');
                             });
                           }
                         },

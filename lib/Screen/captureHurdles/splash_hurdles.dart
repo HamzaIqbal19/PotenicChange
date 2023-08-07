@@ -147,7 +147,10 @@ class hurdles_splashState extends State<hurdles_splash> {
                   } else if (Route == 'Feelings') {
                     Navigator.push(
                       context,
-                      FadePageRoute(page: const felling_hurdles()),
+                      FadePageRoute(
+                          page: const felling_hurdles(
+                        update: false,
+                      )),
                     );
                   } else {
                     Navigator.push(

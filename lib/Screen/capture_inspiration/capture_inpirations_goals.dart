@@ -58,7 +58,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
     final SharedPreferences prefs = await _prefs;
     final encodedGoals = json.encode(goals);
     prefs.setString('selected_goals_inspiration', encodedGoals);
-    print('Sved to prefs ');
+    print('Saved to prefs ');
     print(allgoalsSelected);
   }
 
@@ -178,7 +178,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                         onPressed: () => showAnimatedDialog(
                             animationType: DialogTransitionType.fadeScale,
                             curve: Curves.easeInOut,
-                            duration: Duration(seconds: 1),
+                            duration: const Duration(seconds: 1),
                             context: context,
                             builder: (BuildContext context) => SizedBox(
                                   width: AppDimensions.height10(context) * 27.0,
@@ -242,14 +242,26 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             width: double.infinity,
                                             color: Colors.white,
                                             child: TextButton(
-                                              onPressed: () {
+                                              onPressed: () async {
+                                                if (selectAll == true) {
+                                                  saveGoalsToSharedPreferences(
+                                                      selectedGoals);
+                                                } else {
+                                                  saveGoalsToSharedPreferences(
+                                                      multiGoals);
+                                                }
                                                 Navigator.push(
                                                     context,
                                                     FadePageRoute(
                                                         page:
-                                                            inspiration_motivation(
+                                                            const inspiration_motivation(
                                                                 goal_delete:
                                                                     false)));
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var savedRoute = prefs.setString(
+                                                    'inspiration_saved_route',
+                                                    'goals_inspiration');
                                               },
                                               child: const Text(
                                                 'Exit & save progress',
@@ -275,14 +287,18 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             height: 44,
                                             width: double.infinity,
                                             child: TextButton(
-                                              onPressed: () {
+                                              onPressed: () async {
                                                 Navigator.push(
                                                     context,
                                                     FadePageRoute(
                                                         page:
-                                                            inspiration_motivation(
+                                                            const inspiration_motivation(
                                                                 goal_delete:
                                                                     false)));
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                var deleted = prefs.remove(
+                                                    'selected_goals_inspiration');
                                               },
                                               child: const Text(
                                                 'Exit & delete progress',
@@ -950,12 +966,14 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                     colors: [
                                       selectAll == true ||
                                               multiGoals.length != 0
-                                          ? Color(0xffFCC10D)
-                                          : Color(0xffFCC10D).withOpacity(0.5),
+                                          ? const Color(0xffFCC10D)
+                                          : const Color(0xffFCC10D)
+                                              .withOpacity(0.5),
                                       selectAll == true ||
                                               multiGoals.length != 0
-                                          ? Color(0xffFDA210)
-                                          : Color(0xffFDA210).withOpacity(0.5),
+                                          ? const Color(0xffFDA210)
+                                          : const Color(0xffFDA210)
+                                              .withOpacity(0.5),
                                     ],
                                   ),
                                   borderRadius: BorderRadius.circular(
@@ -1096,11 +1114,11 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               end: Alignment.bottomCenter,
                               colors: [
                                 selectAll == true || multiGoals.length != 0
-                                    ? Color(0xffFCC10D)
-                                    : Color(0xffFCC10D).withOpacity(0.5),
+                                    ? const Color(0xffFCC10D)
+                                    : const Color(0xffFCC10D).withOpacity(0.5),
                                 selectAll == true || multiGoals.length != 0
-                                    ? Color(0xffFDA210)
-                                    : Color(0xffFDA210).withOpacity(0.5),
+                                    ? const Color(0xffFDA210)
+                                    : const Color(0xffFDA210).withOpacity(0.5),
                               ],
                             ),
                             borderRadius: BorderRadius.circular(

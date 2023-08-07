@@ -213,6 +213,7 @@ class _CategoriesState extends State<Categories> {
                       child: ListView.builder(
                         controller: scrollController,
                         scrollDirection: Axis.horizontal,
+                        padding: EdgeInsets.zero,
                         itemCount: min(4, goalCategories!.length),
                         itemBuilder: (context, index) {
                           return Column(
@@ -321,6 +322,7 @@ class _CategoriesState extends State<Categories> {
                         height: AppDimensions.height10(context) * 14.0,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.zero,
                           itemCount: min(4, goalCategories!.length - 4),
                           itemBuilder: (context, index) {
                             final dataIndex = index + 4;

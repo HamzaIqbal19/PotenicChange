@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
+import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_goal_impact.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -793,8 +794,10 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                               ),
                               AnimatedScaleButton(
                                 onTap: () {
-                                  Navigator.push(context,
-                                      FadePageRoute(page: hurdles_splash()));
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const hurdles_goal_impact()));
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(
@@ -1246,7 +1249,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                             return showAnimatedDialog(
                                 animationType: DialogTransitionType.fadeScale,
                                 curve: Curves.easeInOut,
-                                duration: Duration(seconds: 1),
+                                duration: const Duration(seconds: 1),
                                 context: context,
                                 builder: (BuildContext context) => SizedBox(
                                       width: AppDimensions.height10(context) *
@@ -1394,7 +1397,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                                                             context,
                                                             FadePageRoute(
                                                                 page:
-                                                                    landing_hurdles()));
+                                                                    const landing_hurdles()));
                                                       }
                                                     });
                                                   },

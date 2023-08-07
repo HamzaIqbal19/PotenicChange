@@ -177,9 +177,9 @@ class PracticeEvaluation {
   static Future getUserPracticeReportId() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
-    var prac_num = prefs.getInt("prac_score_id");
+    // var prac_num = prefs.getInt("prac_score_id");
 
-    print('$prac_num');
+    // print('$prac_num');
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$Accestoken'

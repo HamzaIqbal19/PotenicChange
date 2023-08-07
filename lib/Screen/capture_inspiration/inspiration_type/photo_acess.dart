@@ -1320,6 +1320,8 @@ class link_set extends StatefulWidget {
 
 class _link_setState extends State<link_set> {
   final linkController = TextEditingController();
+  static final GlobalKey<FormState> key = GlobalKey<FormState>();
+
 
   bool link_bt = false;
   bool showKeyboardOverlay = false;
@@ -1432,6 +1434,7 @@ class _link_setState extends State<link_set> {
                                       //     top: AppDimensions.height10(context) * 1.5),
                                       child: TextFormField(
                                         controller: linkController,
+                                        key: key,
                                         onChanged: (value) {
                                           setState(() {
                                             link_bt = true;

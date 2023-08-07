@@ -60,6 +60,11 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
     }
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   IconData? getIcon(String? status) {
     switch (status) {
       case 'completed':

@@ -512,12 +512,15 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                 }
                               });
                             } else {
+                              Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const felling_hurdles(
+                                    update: false,
+                                  )));
                               final SharedPreferences prefs = await _prefs;
                               var statement = prefs.setString('hurdleStatement',
                                   controller.text.toString());
-
-                              Navigator.push(context,
-                                  FadePageRoute(page: const felling_hurdles()));
                             }
                           },
                           child: Container(

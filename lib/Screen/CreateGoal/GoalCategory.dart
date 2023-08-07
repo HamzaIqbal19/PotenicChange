@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
+import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -211,12 +212,14 @@ class _GoalCategoryState extends State<GoalCategory> {
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => HomeScreen(),
-                      //   ),
-                      // );
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                          page: const HomeScreen(
+                            login: true,
+                          ),
+                        ),
+                      );
                       // Add code for performing close action
                     },
                   ),

@@ -16,7 +16,7 @@ class MyListWheelForm extends StatefulWidget {
 
 class _MyListWheelFormState extends State<MyListWheelForm> {
   String day = "Monday";
-  String hour = "12";
+  String hour = "1";
   String minute = "00";
   String period = "am";
   bool Done = false;

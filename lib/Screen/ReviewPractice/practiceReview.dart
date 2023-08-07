@@ -97,7 +97,7 @@ class _PracticeReviewState extends State<PracticeReview> {
           pracName = response["name"];
           reminder = response["reminder"];
           pracColor = response["color"];
-          starttime = response["schedule"][0]['starttime'];
+          starttime = response["schedule"][0]['time1'];
         });
         loadData();
         print("---------------------------------");

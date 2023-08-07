@@ -30,7 +30,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
     {'day': 'Thursday', 'time1': '9:00 am', 'time2': '7:00 pm'},
     {'day': 'Friday', 'time1': '9:00 am', 'time2': '7:00 pm'},
     {'day': 'Saturday', 'time1': '9:00 am', 'time2': '7:00 pm'},
-    {'day': 'Sunday', 'starttime': '9:00 am', 'endtime': '7:00 pm'}
+    {'day': 'Sunday', 'time1': '9:00 am', 'time2': '7:00 pm'}
   ];
   List<String> selectedDay = [
     'Monday',

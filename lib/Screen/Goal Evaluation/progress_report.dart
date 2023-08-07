@@ -44,8 +44,11 @@ class _progress_reportState extends State<progress_report> {
       DateTime date = DateTime.parse(dateString);
       formattedProgress[date] = status;
     });
+
     return formattedProgress;
   }
+
+  Map<String, String> practiceProgress = {};
 
   // void _fetchGoalDetails() {
   //   AdminGoal.getUserGoal().then((response) {
@@ -76,15 +79,15 @@ class _progress_reportState extends State<progress_report> {
         setState(() {
           report = response['report'];
         });
-        print('===============================');
-        loadData();
-        setState(() {
-          formattedProgress =
-              convertToFormattedProgress(report['practiceProgress']);
-        });
 
-        print(formattedProgress);
-        print('===============================');
+        loadData();
+
+        print('Report===============================');
+        print(report);
+
+        // convertToFormattedProgress();
+
+        print('Done===============================');
       }
       //print(response);
     });
@@ -180,7 +183,7 @@ class _progress_reportState extends State<progress_report> {
                               width: AppDimensions.height10(context) * 10.1,
                               height: AppDimensions.height10(context) * 2.4,
                               child: Text(
-                                'Meditation',
+                                report['practice']["name"],
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 2.0,
@@ -231,7 +234,7 @@ class _progress_reportState extends State<progress_report> {
                           top: AppDimensions.height10(context) * 0.5),
                       child: Text(
                         //we will give duration of 20 days
-                        'from [dd/mmm/yy] to [dd/mmm/yy]',
+                        'from ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
@@ -294,14 +297,15 @@ class _progress_reportState extends State<progress_report> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  width: AppDimensions.height10(context) * 17.9,
+                                  // width: AppDimensions.height10(context) * 17.9,
                                   height: AppDimensions.height10(context) * 3.0,
                                   margin: EdgeInsets.only(
                                       bottom: AppDimensions.height10(context) *
                                           0.1),
                                   child: Text(
-                                    'Control my anger',
+                                    report['practice']["userGoal"]["name"],
                                     textAlign: TextAlign.start,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize:
                                             AppDimensions.height10(context) *
@@ -315,7 +319,7 @@ class _progress_reportState extends State<progress_report> {
                                   width: AppDimensions.height10(context) * 17.9,
                                   height: AppDimensions.height10(context) * 2.7,
                                   child: Text(
-                                    'Meditation ',
+                                    report['practice']["name"],
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                         fontSize:
@@ -406,7 +410,8 @@ class _progress_reportState extends State<progress_report> {
                                     ///color: Colors.amber,
                                     child: Center(
                                       child: Text(
-                                        "I am in control of my anger, and I see\nmyself as a calm individual who acts level\nheaded in tense situations...",
+                                        report['practice']["userGoal"]
+                                            ["identityStatement"][0]['text'],
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontStyle: FontStyle.italic,
@@ -538,9 +543,7 @@ class _progress_reportState extends State<progress_report> {
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10(context) * 2.0)),
                               child: CalendarWithRadioButtons(
-                                status: true,
-                                dateStatus: {},
-                              )),
+                                  status: true, dateStatus: formattedProgress)),
                         ],
                       ),
                     ),

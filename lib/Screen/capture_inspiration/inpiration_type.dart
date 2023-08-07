@@ -79,7 +79,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                   onPressed: () => showAnimatedDialog(
                       animationType: DialogTransitionType.fadeScale,
                       curve: Curves.easeInOut,
-                      duration: Duration(seconds: 1),
+                      duration: const Duration(seconds: 1),
                       context: context,
                       builder: (BuildContext context) => SizedBox(
                             width: AppDimensions.height10(context) * 27.0,
@@ -135,12 +135,18 @@ class _inspiration_typeState extends State<inspiration_type> {
                                       width: double.infinity,
                                       color: Colors.white,
                                       child: TextButton(
-                                        onPressed: () {
+                                        onPressed: () async {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page: inspiration_motivation(
-                                                      goal_delete: false)));
+                                                  page:
+                                                      const inspiration_motivation(
+                                                          goal_delete: false)));
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          var savedRoute = prefs.setString(
+                                              'inspiration_saved_route',
+                                              'type_inspiration');
                                         },
                                         child: const Text(
                                           'Exit & save progress',
@@ -164,12 +170,17 @@ class _inspiration_typeState extends State<inspiration_type> {
                                       height: 44,
                                       width: double.infinity,
                                       child: TextButton(
-                                        onPressed: () {
+                                        onPressed: () async {
                                           Navigator.push(
                                               context,
                                               FadePageRoute(
-                                                  page: inspiration_motivation(
-                                                      goal_delete: false)));
+                                                  page:
+                                                      const inspiration_motivation(
+                                                          goal_delete: false)));
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          var deleted = prefs.remove(
+                                              'selected_goals_inspiration');
                                         },
                                         child: const Text(
                                           'Exit & delete progress',
