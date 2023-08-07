@@ -8,6 +8,7 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
@@ -85,132 +86,149 @@ class _your_impactState extends State<your_impact> {
         leading: Center(
           child: IconButton(
               onPressed: () {
-                showAnimatedDialog(
-                    animationType: DialogTransitionType.fadeScale,
-                    curve: Curves.easeInOut,
-                    duration: Duration(seconds: 1),
-                    context: context,
-                    builder: (BuildContext context) => Container(
-                        width: AppDimensions.height10(context) * 27.0,
-                        height: AppDimensions.height10(context) * 18.2,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                AppDimensions.height10(context) * 1.4)),
-                        child: AlertDialog(
-                          shape: RoundedRectangleBorder(
+                if (widget.saved == false) {
+                  showAnimatedDialog(
+                      animationType: DialogTransitionType.fadeScale,
+                      curve: Curves.easeInOut,
+                      duration: const Duration(seconds: 1),
+                      context: context,
+                      builder: (BuildContext context) => Container(
+                          width: AppDimensions.height10(context) * 27.0,
+                          height: AppDimensions.height10(context) * 18.2,
+                          decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                   AppDimensions.height10(context) * 1.4)),
-                          contentPadding: EdgeInsets.zero,
-                          actionsPadding: EdgeInsets.zero,
-                          titlePadding: EdgeInsets.zero,
-                          title: Container(
-                            decoration: BoxDecoration(
+                          child: AlertDialog(
+                            shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                     AppDimensions.height10(context) * 1.4)),
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.9,
-                                right: AppDimensions.height10(context) * 1.6,
-                                left: AppDimensions.height10(context) * 1.6,
-                                bottom: AppDimensions.height10(context) * 0.2),
-                            height: AppDimensions.height10(context) * 2.2,
-                            width: AppDimensions.height10(context) * 23.8,
-                            child: Text(
-                              "Exit without saving changes?",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.7,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          content: Container(
-                            margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10(context) * 1.5,
-                                left: AppDimensions.height10(context) * 1.6,
-                                right: AppDimensions.height10(context) * 1.6),
-                            height: AppDimensions.height10(context) * 3.2,
-                            width: AppDimensions.height10(context) * 23.8,
-                            child: Text(
-                              "Are you sure you want to exit, all your\nchanges will be lost?",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.3,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          actions: <Widget>[
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 0.1,
-                                  child: Divider(
-                                    color: const Color(0XFF3C3C43)
-                                        .withOpacity(0.29),
-                                  ),
+                            contentPadding: EdgeInsets.zero,
+                            actionsPadding: EdgeInsets.zero,
+                            titlePadding: EdgeInsets.zero,
+                            title: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 1.4)),
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 1.9,
+                                  right: AppDimensions.height10(context) * 1.6,
+                                  left: AppDimensions.height10(context) * 1.6,
+                                  bottom:
+                                      AppDimensions.height10(context) * 0.2),
+                              height: AppDimensions.height10(context) * 2.2,
+                              width: AppDimensions.height10(context) * 23.8,
+                              child: Text(
+                                "Exit without saving changes?",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.7,
+                                  fontWeight: FontWeight.w400,
                                 ),
-                                Container(
-                                  height: AppDimensions.height10(context) * 4.2,
-                                  width: double.infinity,
-                                  color: const Color(0xFF007AFF),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: new_progress_score(
-                                            premium: true,
-                                          )));
-                                    },
-                                    child: Center(
+                              ),
+                            ),
+                            content: Container(
+                              margin: EdgeInsets.only(
+                                  bottom: AppDimensions.height10(context) * 1.5,
+                                  left: AppDimensions.height10(context) * 1.6,
+                                  right: AppDimensions.height10(context) * 1.6),
+                              height: AppDimensions.height10(context) * 3.2,
+                              width: AppDimensions.height10(context) * 23.8,
+                              child: Text(
+                                "Are you sure you want to exit, all your\nchanges will be lost?",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.3,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                            ),
+                            actions: <Widget>[
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    height:
+                                        AppDimensions.height10(context) * 0.1,
+                                    child: Divider(
+                                      color: const Color(0XFF3C3C43)
+                                          .withOpacity(0.29),
+                                    ),
+                                  ),
+                                  Container(
+                                    height:
+                                        AppDimensions.height10(context) * 4.2,
+                                    width: double.infinity,
+                                    color: const Color(0xFF007AFF),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const new_progress_score(
+                                              premium: true,
+                                            )));
+                                      },
+                                      child: Center(
+                                        child: Text(
+                                          'Yes',
+                                          style: TextStyle(
+                                              color: const Color(0xFFFFFFFF),
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
+                                              fontFamily: "Laila",
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height:
+                                        AppDimensions.height10(context) * 0.1,
+                                    child: Divider(
+                                      color: const Color(0XFF3C3C43)
+                                          .withOpacity(0.29),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height:
+                                        AppDimensions.height10(context) * 4.4,
+                                    width: double.infinity,
+                                    child: TextButton(
+                                      onPressed: () {},
                                       child: Text(
-                                        'Yes',
+                                        'Cancel',
                                         style: TextStyle(
-                                            color: const Color(0xFFFFFFFF),
                                             fontSize: AppDimensions.height10(
                                                     context) *
                                                 1.7,
                                             fontFamily: "Laila",
-                                            fontWeight: FontWeight.w400),
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xFF007AFF)),
                                       ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 0.1,
-                                  child: Divider(
-                                    color: const Color(0XFF3C3C43)
-                                        .withOpacity(0.29),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 4.4,
-                                  width: double.infinity,
-                                  child: TextButton(
-                                    onPressed: () {},
-                                    child: Text(
-                                      'Cancel',
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.7,
-                                          fontFamily: "Laila",
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xFF007AFF)),
+                                  SizedBox(
+                                    height:
+                                        AppDimensions.height10(context) * 0.1,
+                                    child: Divider(
+                                      color: const Color(0XFF3C3C43)
+                                          .withOpacity(0.29),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 0.1,
-                                  child: Divider(
-                                    color: const Color(0XFF3C3C43)
-                                        .withOpacity(0.29),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )));
+                                ],
+                              ),
+                            ],
+                          )));
+                } else {
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const new_progress_score(
+                        premium: true,
+                      )));
+                }
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
@@ -1272,11 +1290,9 @@ class _your_impactState extends State<your_impact> {
                                     ],
                                   ),
                                 ),
-                                GestureDetector(
+                                AnimatedScaleButton(
                                   onTap: () {
-                                    // setState(() {
-                                    //   saved = false;
-                                    // });
+                                    Navigator.pop(context);
                                   },
                                   child: Container(
                                     width:
@@ -1323,7 +1339,7 @@ class _your_impactState extends State<your_impact> {
                                       animationType:
                                           DialogTransitionType.fadeScale,
                                       curve: Curves.easeInOut,
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                       context: context,
                                       builder: (BuildContext context) =>
                                           showAlertBox(context)),
@@ -1347,10 +1363,14 @@ class _your_impactState extends State<your_impact> {
                                                     context) *
                                                 1.6,
                                             fontWeight: FontWeight.w600,
-                                            color: bt_visible
-                                                ? const Color(0xFFFA9934)
-                                                : const Color(0xFFFA9934)
-                                                    .withOpacity(0.5)),
+                                            color:
+                                                //  bt_visible
+                                                //     ?
+                                                const Color(0xFFFA9934)
+
+                                            // : const Color(0xFFFA9934)
+                                            //     .withOpacity(0.5)
+                                            ),
                                       ),
                                     ),
                                   ),
@@ -1364,7 +1384,7 @@ class _your_impactState extends State<your_impact> {
                                     animationType:
                                         DialogTransitionType.fadeScale,
                                     curve: Curves.easeInOut,
-                                    duration: Duration(seconds: 1),
+                                    duration: const Duration(seconds: 1),
                                   ),
                                   child: Container(
                                     width:
@@ -1389,10 +1409,14 @@ class _your_impactState extends State<your_impact> {
                                                     context) *
                                                 1.6,
                                             fontWeight: FontWeight.w600,
-                                            color: bt_visible
-                                                ? const Color(0xFFFA9934)
-                                                : const Color(0xFFFA9934)
-                                                    .withOpacity(0.5)),
+                                            color:
+                                                //  bt_visible
+                                                //     ?
+                                                const Color(0xFFFA9934)
+
+                                            // : const Color(0xFFFA9934)
+                                            //     .withOpacity(0.5)
+                                            ),
                                       ),
                                     ),
                                   ),
@@ -1403,7 +1427,7 @@ class _your_impactState extends State<your_impact> {
                                       animationType: DialogTransitionType
                                           .fadeScale,
                                       curve: Curves.easeInOut,
-                                      duration: Duration(seconds: 1),
+                                      duration: const Duration(seconds: 1),
                                       builder: (BuildContext context) =>
                                           Container(
                                               width: AppDimensions.height10(
@@ -1643,25 +1667,28 @@ class _your_impactState extends State<your_impact> {
                                         left: AppDimensions.height10(context) *
                                             1.0),
                                     decoration: BoxDecoration(
-                                      gradient: bt_visible
-                                          ? const LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xffFCC10D),
-                                                Color(0xffFDA210),
-                                              ],
-                                            )
-                                          : LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                const Color(0xffFCC10D)
-                                                    .withOpacity(0.5),
-                                                const Color(0xffFDA210)
-                                                    .withOpacity(0.5),
-                                              ],
-                                            ),
+                                      gradient:
+                                          //  bt_visible
+                                          //     ?
+                                          const LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Color(0xffFCC10D),
+                                          Color(0xffFDA210),
+                                        ],
+                                      ),
+                                      // :
+                                      // LinearGradient(
+                                      //     begin: Alignment.topCenter,
+                                      //     end: Alignment.bottomCenter,
+                                      //     colors: [
+                                      //       const Color(0xffFCC10D)
+                                      //           .withOpacity(0.5),
+                                      //       const Color(0xffFDA210)
+                                      //           .withOpacity(0.5),
+                                      //     ],
+                                      //   ),
                                       borderRadius: BorderRadius.circular(
                                           AppDimensions.height10(context) *
                                               5.0),
@@ -1675,10 +1702,14 @@ class _your_impactState extends State<your_impact> {
                                                     context) *
                                                 1.6,
                                             fontWeight: FontWeight.w600,
-                                            color: bt_visible
-                                                ? Colors.white
-                                                : Colors.white
-                                                    .withOpacity(0.5)),
+                                            color:
+                                                //  bt_visible
+                                                //     ?
+                                                Colors.white
+
+                                            // : Colors.white
+                                            //     .withOpacity(0.5)
+                                            ),
                                       ),
                                     ),
                                   ),

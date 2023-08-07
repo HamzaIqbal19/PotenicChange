@@ -28,7 +28,7 @@ class Circulardates extends StatelessWidget {
               numOuterCircles: outerCircleContainers.length,
             ),
           ),
-          Align(alignment: Alignment.center, child: centerContainer),
+          Align(alignment: Alignment(0, -0.5), child: centerContainer),
           Positioned.fill(
             child: Container(
               width: AppDimensions.height10(context) * 24.0,
@@ -46,8 +46,8 @@ class Circulardates extends StatelessWidget {
                     final offsetY = (size - 10) / 2 + radius * math.sin(angle);
 
                     return Positioned(
-                      left: offsetX,
-                      top: offsetY,
+                      left: offsetY,
+                      bottom: offsetX,
                       child: outerCircleContainers[index],
                     );
                   },

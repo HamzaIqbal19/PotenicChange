@@ -13,7 +13,8 @@ var client = SentryHttpClient();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class RecordingPractice {
-  Future userAddRecording(before, after, feedback, summary, practiceId) async {
+  Future userAddRecording(before, after, feedback, summary, practiceId,
+      timeSlot, recordingDate) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
     var userId = prefs.getInt('userid');
@@ -26,6 +27,8 @@ class RecordingPractice {
       "feelingsAfterSession": "$after",
       "notes": feedback,
       "practiceSummary": "$summary",
+      "timeSlot": timeSlot,
+      "recordingDate": recordingDate,
       "userId": userId,
       "userPracticeId": practiceId,
     });
@@ -153,6 +156,50 @@ class RecordingPractice {
       return responses["message"];
       // client.close();
       // return responses["message"];
+    }
+  }
+
+  Future updateRecordingStatus(status) async {
+    final SharedPreferences prefs = await _prefs;
+    //var goal_num = prefs.getInt('goal_num');
+    var Accestoken = prefs.getString("usertoken");
+    var recording_Time = prefs.getString('recording_Time1');
+    var Date = prefs.getString('recordDate');
+    var Id = prefs.getInt('prac_num');
+
+    //int UserGoalId = 12;
+    print("request: Update");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var body = jsonEncode({
+      "timeSlot": recording_Time,
+      "recordingDate": Date,
+      "recordingStatus": status,
+      "userPracticeId": Id
+    });
+    print(body);
+    // var userGoalId = prefs.getInt('goalId');
+    // print('$userGoalId');
+
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/recording/update-recording-status'),
+        headers: headers,
+        body: body);
+    print("request: Update");
+    print('=====>$request.statusCode');
+    print(request.body);
+    if (request.statusCode == 200) {
+      // print("$request.statusCode");
+      print("request: Update successful");
+      var jsonData = jsonDecode(request.body);
+      print("Result: $jsonData");
+      return true;
+    } else {
+      print("Update failed");
+      // client.close();
+      return false;
     }
   }
 }

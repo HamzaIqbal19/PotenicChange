@@ -53,6 +53,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
   String goalName = "";
   String identity = "";
   var pracName = "";
+  var pracDetails;
   var pracColor = '0';
   var color = '0';
   bool Loader = true;
@@ -111,8 +112,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
         setState(() {
           pracName = response["name"];
           pracColor = response["color"];
+          pracDetails = response;
         });
-
+        var time = prefs.setString(
+            'recording_Time1', response["schedule"][0]['time1'].toString());
         print("---------------------------------");
 
         print(response["id"]);
@@ -1091,7 +1094,7 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                       Align(
                                         alignment: const Alignment(0.9, 0.9),
                                         child: AnimatedScaleButton(
-                                          onTap: () {
+                                          onTap: () async {
                                             widget.saved
                                                 ? Navigator.push(
                                                     context,
@@ -1117,6 +1120,10 @@ class _dashBoardState extends State<dashBoard> with TickerProviderStateMixin {
                                                             pracColor:
                                                                 pracColor,
                                                             color: color)));
+                                            final SharedPreferences prefs =
+                                                await _prefs;
+                                            var dash_boardRoute = prefs.setBool(
+                                                'behaviour_route', false);
                                           },
                                           child: Container(
                                             height: widget.saved

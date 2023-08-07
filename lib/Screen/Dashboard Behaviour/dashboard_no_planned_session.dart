@@ -1090,8 +1090,11 @@ class _no_planned_sessionState extends State<no_planned_session> {
                                                       Navigator.push(
                                                           context,
                                                           FadePageRoute(
-                                                              page:
-                                                                  const missed_Menu()));
+                                                              page: missed_Menu(
+                                                            pracName:
+                                                                allGoals[index]
+                                                                    ['name'],
+                                                          )));
                                                     } else {
                                                       print("CON 1");
                                                       print(

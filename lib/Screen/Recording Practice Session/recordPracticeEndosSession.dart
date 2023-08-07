@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:intl/intl.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import 'dashboardViewgoals.dart';
@@ -25,11 +26,14 @@ class _endofSessionState extends State<endofSession> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int sessionEnd = 0;
   String pracName = "";
+  var behaviour_route;
 
+  var timeSlot;
   var emotions;
   var afterSession;
   var afterSessionNotes;
   var emotionsNotes;
+  var selected_date;
   //var sessionFeedback;
   var prac_num;
 
@@ -49,6 +53,7 @@ class _endofSessionState extends State<endofSession> {
     });
     onLoad();
   }
+  // String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
   TextEditingController feedback3 = TextEditingController();
   void onLoad() async {
@@ -59,6 +64,11 @@ class _endofSessionState extends State<endofSession> {
       afterSession = prefs.getInt('afterSession');
       afterSessionNotes = prefs.getString('sessionFeedback');
       emotionsNotes = prefs.getString('emotionsFeedback');
+      timeSlot = prefs.getString('recording_Time1');
+      behaviour_route = prefs.getBool('behaviour_route');
+      selected_date = prefs.getString('record_date') == null
+          ? ''
+          : prefs.getString('record_date');
     });
     feedback.text = prefs.getString('endSessionFeedback')!;
   }
@@ -139,19 +149,25 @@ class _endofSessionState extends State<endofSession> {
                                 color: const Color(0xFF007AFF),
                                 child: TextButton(
                                   onPressed: () {
-                                    // if (widget.summary == false) {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => const dashBoard(
-                                                  saved: false,
-                                                  helpful_tips: false,
-                                                  membership: true,
-                                                  dashboard_ctrl: false,
-                                                  cancel: false,
-                                                  trial: false,
-                                                )));
-                                    //}
+                                    if (behaviour_route == false) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          FadePageRoute(
+                                              page: const dashBoard(
+                                            saved: false,
+                                            helpful_tips: false,
+                                            membership: true,
+                                            dashboard_ctrl: false,
+                                            cancel: false,
+                                            trial: false,
+                                          )));
+                                    } else {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const view_goals(
+                                                  missed: false)));
+                                    }
                                   },
                                   child: const Text(
                                     'Close',
@@ -749,8 +765,12 @@ class _endofSessionState extends State<endofSession> {
                                       : " "
                                 }
                               ],
-                              '$sessionEnd',
                               prac_num,
+                              '$sessionEnd',
+                              timeSlot.toString(),
+                              selected_date == ' '
+                                  ? '2023-08-07'
+                                  : selected_date,
                             )
                                 .then((response) {
                               if (response == true) {
@@ -822,6 +842,8 @@ class _endofSessionState extends State<endofSession> {
     );
   }
 }
+
+class DateFormat {}
 
 class addNotes extends StatefulWidget {
   final bool state_;

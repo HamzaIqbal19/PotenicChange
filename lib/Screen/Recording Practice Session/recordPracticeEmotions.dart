@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/dashboardViewgoals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
@@ -35,6 +36,7 @@ TextEditingController feedback = TextEditingController();
 class _emotionsState extends State<emotions> {
   int pracEmotions = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  var behaviour_route;
 
   //int pracEmotions = 0;
 
@@ -46,7 +48,9 @@ class _emotionsState extends State<emotions> {
     setState(() {
       afterSessionNotes = prefs.getString('sessionFeedback');
       endSession = prefs.getString('endSessionFeedback');
+      behaviour_route = prefs.getBool('behaviour_route');
     });
+
     feedback.text = prefs.getString('emotionsFeedback')!;
   }
 
@@ -139,25 +143,33 @@ class _emotionsState extends State<emotions> {
                                         color: const Color(0xFF007AFF),
                                         child: TextButton(
                                           onPressed: () {
-                                            if (widget.summary == false) {
-                                              Navigator.pushReplacement(
+                                            if (behaviour_route == false) {
+                                              if (widget.summary == false) {
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    FadePageRoute3(
+                                                        enterPage:
+                                                            const dashBoard(
+                                                          saved: false,
+                                                          helpful_tips: false,
+                                                          membership: true,
+                                                          dashboard_ctrl: false,
+                                                          cancel: false,
+                                                          trial: false,
+                                                        ),
+                                                        exitPage: emotions(
+                                                          summary: false,
+                                                          pracName:
+                                                              widget.pracName,
+                                                          record: false,
+                                                        )));
+                                              }
+                                            } else {
+                                              Navigator.push(
                                                   context,
-                                                  FadePageRoute3(
-                                                      enterPage:
-                                                          const dashBoard(
-                                                        saved: false,
-                                                        helpful_tips: false,
-                                                        membership: true,
-                                                        dashboard_ctrl: false,
-                                                        cancel: false,
-                                                        trial: false,
-                                                      ),
-                                                      exitPage: emotions(
-                                                        summary: false,
-                                                        pracName:
-                                                            widget.pracName,
-                                                        record: false,
-                                                      )));
+                                                  FadePageRoute(
+                                                      page: const view_goals(
+                                                          missed: false)));
                                             }
                                           },
                                           child: const Text(

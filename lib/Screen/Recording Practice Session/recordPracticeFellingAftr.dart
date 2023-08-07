@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/recordingPractice.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
@@ -33,6 +34,7 @@ class feelingsAfter extends StatefulWidget {
 
 class _feelingsAfterState extends State<feelingsAfter> {
   String pracName = "";
+  var behaviour_route;
 
   @override
   void initState() {
@@ -49,7 +51,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
 
     emotionsNotes = prefs.getString('emotionsFeedback');
     endSession = prefs.getString('endSessionFeedback');
-
+    behaviour_route = prefs.getBool('behaviour_route');
     feedback.text = prefs.getString('sessionFeedback')!;
   }
 
@@ -166,19 +168,25 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                   color: const Color(0xFF007AFF),
                                   child: TextButton(
                                     onPressed: () {
-                                      // if (widget.summary == false) {
-                                      Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) => dashBoard(
-                                                    saved: false,
-                                                    helpful_tips: false,
-                                                    membership: true,
-                                                    dashboard_ctrl: false,
-                                                    cancel: false,
-                                                    trial: false,
-                                                  )));
-                                      //}
+                                      if (behaviour_route == false) {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            FadePageRoute(
+                                                page: const dashBoard(
+                                              saved: false,
+                                              helpful_tips: false,
+                                              membership: true,
+                                              dashboard_ctrl: false,
+                                              cancel: false,
+                                              trial: false,
+                                            )));
+                                      } else {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const view_goals(
+                                                    missed: false)));
+                                      }
                                     },
                                     child: const Text(
                                       'Close',

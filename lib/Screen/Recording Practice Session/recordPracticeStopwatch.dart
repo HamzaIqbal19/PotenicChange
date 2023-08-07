@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -25,6 +26,7 @@ class clocks extends StatefulWidget {
 
 class _clocksState extends State<clocks> {
   String pracName = "";
+  var behaviour_route;
 
   final _scrollController = ScrollController();
 
@@ -40,6 +42,7 @@ class _clocksState extends State<clocks> {
 
     setState(() {
       pracName = '$Name';
+      behaviour_route = prefs.getBool('behaviour_route');
     });
   }
 
@@ -51,7 +54,9 @@ class _clocksState extends State<clocks> {
         elevation: 0,
         leading: Center(
           child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+              },
               icon: Image.asset(
                 'assets/images/Back.webp',
                 width: AppDimensions.height10(context) * 2.6,
@@ -119,19 +124,25 @@ class _clocksState extends State<clocks> {
                                 color: const Color(0xFF007AFF),
                                 child: TextButton(
                                   onPressed: () {
-                                    // if (widget.summary == false) {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => dashBoard(
-                                                  saved: false,
-                                                  helpful_tips: false,
-                                                  membership: true,
-                                                  dashboard_ctrl: false,
-                                                  cancel: false,
-                                                  trial: false,
-                                                )));
-                                    //}
+                                    if (behaviour_route == false) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          FadePageRoute(
+                                              page: const dashBoard(
+                                            saved: false,
+                                            helpful_tips: false,
+                                            membership: true,
+                                            dashboard_ctrl: false,
+                                            cancel: false,
+                                            trial: false,
+                                          )));
+                                    } else {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const view_goals(
+                                                  missed: false)));
+                                    }
                                   },
                                   child: const Text(
                                     'Close',
@@ -221,7 +232,7 @@ class _clocksState extends State<clocks> {
                       color: Colors.white),
                 ),
               ),
-              Container(child: watch_time()),
+              Container(child: const watch_time()),
               Container(
                 width: AppDimensions.height10(context) * 25.4,
                 height: AppDimensions.height10(context) * 6.0,
@@ -256,8 +267,8 @@ class _clocksState extends State<clocks> {
                   */
                   AnimatedScaleButton(
                     onTap: () {
-                      Navigator.push(
-                          context, FadePageRoute(page: (welldone_splash())));
+                      Navigator.push(context,
+                          FadePageRoute(page: (const welldone_splash())));
                     },
                     child: Container(
                         height: AppDimensions.height10(context) * 5.0,
@@ -371,7 +382,7 @@ class _watch_timeState extends State<watch_time> {
 
   void _startStopwatch() {
     _stopwatch.start();
-    _timer = Timer.periodic(Duration(milliseconds: 10), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
       setState(() {
         _elapsedTime = _stopwatch.elapsed.toString().substring(2, 7);
       });
@@ -410,8 +421,9 @@ class _watch_timeState extends State<watch_time> {
                   border: Border(
                       bottom: BorderSide(
                           width: AppDimensions.height10(context) * 0.2,
-                          color:
-                              clock_state ? Color(0xff437296) : Colors.white))),
+                          color: clock_state
+                              ? const Color(0xff437296)
+                              : Colors.white))),
               child: Center(
                 child: TextButton(
                   onPressed: () {
@@ -431,7 +443,7 @@ class _watch_timeState extends State<watch_time> {
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xff437296)),
+                                color: const Color(0xff437296)),
                           ),
                         )
                       : Container(
@@ -454,8 +466,9 @@ class _watch_timeState extends State<watch_time> {
                   border: Border(
                       bottom: BorderSide(
                           width: AppDimensions.height10(context) * 0.2,
-                          color:
-                              clock_state ? Colors.white : Color(0xff437296)))),
+                          color: clock_state
+                              ? Colors.white
+                              : const Color(0xff437296)))),
               // padding: EdgeInsets.only(left: 10),
               child: Center(
                 child: TextButton(
@@ -485,7 +498,7 @@ class _watch_timeState extends State<watch_time> {
                                     fontSize:
                                         AppDimensions.height10(context) * 1.8,
                                     fontWeight: FontWeight.w700,
-                                    color: Color(0xff437296))),
+                                    color: const Color(0xff437296))),
                           )),
               ),
             )
@@ -517,7 +530,7 @@ class _watch_timeState extends State<watch_time> {
             children: [
               //timer
               Align(
-                alignment: Alignment(0, -0.4),
+                alignment: const Alignment(0, -0.4),
                 child: Container(
                   height: AppDimensions.height10(context) * 7.2,
                   width: AppDimensions.height10(context) * 12.8,
@@ -525,7 +538,7 @@ class _watch_timeState extends State<watch_time> {
                   child: Center(
                     child: Container(
                         decoration: clock_state
-                            ? BoxDecoration(
+                            ? const BoxDecoration(
                                 shape: BoxShape.rectangle,
                               )
                             : DottedDecoration(
@@ -603,7 +616,7 @@ class _watch_timeState extends State<watch_time> {
                         color: Colors.white,
                         border: Border.all(
                             width: AppDimensions.height10(context) * 0.5,
-                            color: Color(0xffFEBD0F))),
+                            color: const Color(0xffFEBD0F))),
                     child: Container(
                       height: AppDimensions.height10(context) * 7,
                       width: AppDimensions.height10(context) * 7,
@@ -653,7 +666,7 @@ class _watch_timeState extends State<watch_time> {
                                     fontSize:
                                         AppDimensions.height10(context) * 1.4,
                                     fontWeight: FontWeight.w500,
-                                    color: Color(0xffFFA511))),
+                                    color: const Color(0xffFFA511))),
                           )
                         ],
                       ),
@@ -687,21 +700,21 @@ class _watch_timeState extends State<watch_time> {
                         color: Colors.white,
                         border: Border.all(
                             width: 1,
-                            color: Color(0xffFEBD0F).withOpacity(0.5))),
+                            color: const Color(0xffFEBD0F).withOpacity(0.5))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.refresh,
                           size: AppDimensions.height10(context) * 1.8,
-                          color: Color(0xffFEAD10).withOpacity(0.5),
+                          color: const Color(0xffFEAD10).withOpacity(0.5),
                         ),
                         Text(
                           'Reset',
                           style: TextStyle(
                               fontSize: AppDimensions.height10(context) * 1.2,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xffFFA511).withOpacity(0.5)),
+                              color: const Color(0xffFFA511).withOpacity(0.5)),
                         )
                       ],
                     ),
@@ -735,7 +748,7 @@ class _watch_timeState extends State<watch_time> {
   Widget _buildContainer(Widget picker) {
     return Container(
       height: AppDimensions.height10(context) * 30.5,
-      padding: EdgeInsets.only(top: 6),
+      padding: const EdgeInsets.only(top: 6),
       color: CupertinoColors.white,
       child: Column(
         children: [
@@ -752,7 +765,7 @@ class _watch_timeState extends State<watch_time> {
                     });
                     Navigator.pop(context);
                   },
-                  child: Text(
+                  child: const Text(
                     'Cancel',
                     style: TextStyle(
                       fontSize: 14,
@@ -770,7 +783,7 @@ class _watch_timeState extends State<watch_time> {
                     });
                     Navigator.pop(context);
                   },
-                  child: Text(
+                  child: const Text(
                     'Done',
                     style: TextStyle(
                       fontSize: 14,
@@ -782,7 +795,7 @@ class _watch_timeState extends State<watch_time> {
               ],
             ),
           ),
-          Divider(
+          const Divider(
             height: 1,
           ),
           DefaultTextStyle(

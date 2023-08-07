@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/captureHurdles/captureHurdles_whatHurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -12,8 +13,10 @@ import '../../utils/app_dimensions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class missed_Menu extends StatefulWidget {
+  final String pracName;
   const missed_Menu({
     super.key,
+    required this.pracName,
   });
 
   @override
@@ -218,8 +221,13 @@ class _missed_MenuState extends State<missed_Menu> {
 
               AnimatedScaleButton(
                 onTap: () {
-                  Navigator.push(context,
-                      FadePageRoute(page: const view_goals(missed: false)));
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: emotions(
+                              summary: false,
+                              pracName: widget.pracName,
+                              record: false)));
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 9.36,

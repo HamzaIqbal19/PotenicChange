@@ -44,10 +44,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   }
 
   void _fetchGoalDetails() {
-    AdminGoal.getUserGoal().then((response) {
+    AdminGoal.getUserActiveGoal().then((response) {
       if (response.length != 0) {
         setState(() {
-          goalDetails = response;
+          goalDetails = response[0];
         });
         loadData();
         print(response);
@@ -269,12 +269,12 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         image: DecorationImage(
                                           image: AssetImage(goalDetails[
                                                       'goalLevel'] ==
-                                                  2
+                                                  "2"
                                               ? 'assets/images/Nebula pie 2.webp'
-                                              : goalDetails['goalLevel'] == 3
+                                              : goalDetails['goalLevel'] == "3"
                                                   ? 'assets/images/Nebula Pie 3.webp'
                                                   : goalDetails['goalLevel'] ==
-                                                          4
+                                                          "4"
                                                       ? "assets/images/goal_level_4.webp"
                                                       : "assets/images/Nebula Pie.webp"),
                                         ),
