@@ -14,6 +14,8 @@ import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../HomeScreen/HomeScreen.dart';
+
 class ActivateStar extends StatefulWidget {
   const ActivateStar({Key? key}) : super(key: key);
 
@@ -133,12 +135,14 @@ class _ActivateStarState extends State<ActivateStar> {
                 fit: BoxFit.contain,
               ),
               onPressed: () {
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => HomeScreen(),
-                //   ),
-                // );
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(
+                      login: true,
+                    ),
+                  ),
+                );
                 // Add code for performing close action
               },
             ),

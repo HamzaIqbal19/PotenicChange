@@ -9,7 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Practice.dart';
 import '../../Widgets/animatedButton.dart';
+import '../../Widgets/fading.dart';
 import '../../Widgets/fading2.dart';
+import '../HomeScreen/HomeScreen.dart';
 import '../ReviewPractice/practiceReview.dart';
 
 class PracticeName extends StatefulWidget {
@@ -104,6 +106,14 @@ class _PracticeNameState extends State<PracticeName> {
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute(
+                        page: const HomeScreen(
+                          login: true,
+                        ),
+                      ),
+                    );
                     // Navigator.pushReplacement(
                     //   context,
                     //   MaterialPageRoute(
@@ -403,7 +413,7 @@ class _PracticeNameState extends State<PracticeName> {
                         height: AppDimensions.height10(context) * 11.2,
                       ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // widget.comingFromEditScreen
                     //       ? Container(
@@ -452,6 +462,10 @@ class _PracticeNameState extends State<PracticeName> {
                           "assets/images/Moreactions.webp",
                           fit: BoxFit.contain,
                         )),
+                    SizedBox(
+                      width: AppDimensions.height10(context) * 2.0,
+                    ),
+
                     AnimatedScaleButton(
                       onTap: () async {
                         print("updating the practice $practiceName");
@@ -471,19 +485,21 @@ class _PracticeNameState extends State<PracticeName> {
                             }
                           });
                         } else {
-                          final SharedPreferences prefs = await _prefs;
-                          var goal_Name = prefs.setString(
-                              'pracName', practiceName.text.toString());
-                          Navigator.push(
-                            context,
-                            FadePageRoute2(
-                              true,
-                              exitPage: PracticeName(
-                                comingFromEditScreen: false,
+                          if (practiceName.text != '') {
+                            final SharedPreferences prefs = await _prefs;
+                            var goal_Name = prefs.setString(
+                                'pracName', practiceName.text.toString());
+                            Navigator.push(
+                              context,
+                              FadePageRoute2(
+                                true,
+                                exitPage: PracticeName(
+                                  comingFromEditScreen: false,
+                                ),
+                                enterPage: PracticeRoutine(),
                               ),
-                              enterPage: PracticeRoutine(),
-                            ),
-                          );
+                            );
+                          }
                         }
                       },
                       child: Container(

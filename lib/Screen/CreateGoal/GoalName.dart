@@ -182,7 +182,7 @@ class _GoalNameState extends State<GoalName> {
                                 AppDimensions.height10(context) * 1.4)),
                         title: Container(
                           margin: EdgeInsets.only(
-                              top: 19, right: 16, left: 16, bottom: 2),
+                              top: 19, right: 16, left: 16, bottom: 4),
                           height: AppDimensions.height10(context) * 2.2,
                           width: AppDimensions.height10(context) * 23.8,
                           child: const Text(
@@ -460,6 +460,7 @@ class _GoalNameState extends State<GoalName> {
                         fontWeight: FontWeight.w500,
                         height: AppDimensions.height10(context) * 0.14,
                         color: const Color(0xFFFA9934)),
+
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.zero,
                         hintText: "",
@@ -472,6 +473,10 @@ class _GoalNameState extends State<GoalName> {
                         enabledBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.transparent))),
                     controller: mygoal,
+                    onEditingComplete: () {
+                      setState(
+                          () {}); // This will trigger a re-build and update the condition
+                    },
                     validator: (val) {
                       if (val == null || val == "") {
                         return "Kindly Enter Goal Name";
@@ -553,7 +558,7 @@ class _GoalNameState extends State<GoalName> {
                         height: AppDimensions.height10(context) * 9.6,
                       ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
                         // color: Colors.blue,
@@ -568,6 +573,96 @@ class _GoalNameState extends State<GoalName> {
                             fit: BoxFit.contain,
                           ),
                         )),
+                    SizedBox(
+                      width: AppDimensions.height10(context) * 2.0,
+                    ),
+                    ValueListenableBuilder<TextEditingValue>(
+                      valueListenable: mygoal,
+                      builder: (context, value, child) {
+                        return AnimatedScaleButton(
+                          onTap: () async {
+                            if (widget.comingFromEditScreen) {
+                              final SharedPreferences prefs = await _prefs;
+                              prefs.setString('goalName', mygoal.text);
+                              AdminGoal()
+                                  .updateUserGoal('name', mygoal.text)
+                                  .then((value) {
+                                if (value == true) {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (_) => StarReview(
+                                          route: 'goal',
+                                        ),
+                                      ));
+                                }
+                              });
+                              // Navigator.pop(context, mygoal.text);
+                            } else {
+                              if (mygoal.text != "") {
+                                getUserId(
+                                  mygoal.text.toString(),
+                                );
+                                print('=====================>');
+                                print(mygoal.text.toString());
+                                final SharedPreferences prefs = await _prefs;
+
+                                // getUserId(
+                                //   mygoal.text.toString(),
+                                // );
+                                Navigator.push(
+                                  context,
+                                  FadePageRoute2(
+                                    true,
+                                    exitPage: GoalName(
+                                      widget.catId,
+                                      comingFromEditScreen: false,
+                                    ),
+                                    enterPage: GoalWhy(
+                                      comingFromEditScreen: false,
+                                    ),
+                                  ),
+                                );
+                              } else {}
+                            }
+                          },
+                          child: Container(
+                            height: AppDimensions.height10(context) * 5,
+                            width: AppDimensions.height10(context) * 31.3,
+                            decoration: value.text.isNotEmpty
+                                ? BoxDecoration(
+                                    gradient: const LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Color(0xFFFCC10D),
+                                          Color(0xFFFDA210)
+                                        ]),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  )
+                                : BoxDecoration(
+                                    color: const Color(0xFF282828)
+                                        .withOpacity(0.5),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  ),
+                            child: Center(
+                              child: Text(
+                                widget.comingFromEditScreen ? "Update" : "Next",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+/*
                     AnimatedScaleButton(
                       onTap: () async {
                         if (widget.comingFromEditScreen) {
@@ -588,9 +683,12 @@ class _GoalNameState extends State<GoalName> {
                           });
                           // Navigator.pop(context, mygoal.text);
                         } else {
-                          getUserId(
-                            mygoal.text.toString(),
-                          );
+                          if (mygoal.text != "") {
+                          } else {
+                            getUserId(
+                              mygoal.text.toString(),
+                            );
+                          }
 
                           print('=====================>');
                           print(mygoal.text.toString());
@@ -614,19 +712,31 @@ class _GoalNameState extends State<GoalName> {
                           );
                         }
                       },
+                     
                       child: Container(
                         height: AppDimensions.height10(context) * 5,
                         width: AppDimensions.height10(context) * 31.3,
-                        decoration: BoxDecoration(
-                          // color: Color(0xFFFF7D50),
-                          border: Border.all(color: Colors.transparent),
-                          gradient: const LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Color(0xFFFCC10D), Color(0xFFFDA210)]),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(50.0)),
-                        ),
+                        decoration: mygoal.text != ""
+                            ? BoxDecoration(
+                                // color: Color(0xFFFF7D50),
+                                border: Border.all(color: Colors.transparent),
+                                gradient: const LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFFCC10D),
+                                      Color(0xFFFDA210)
+                                    ]),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(50.0)),
+                              )
+                            : BoxDecoration(
+                                // color: Color(0xFFFF7D50),
+                                border: Border.all(color: Colors.transparent),
+                                color: const Color(0xFF282828).withOpacity(0.5),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(50.0)),
+                              ),
                         child: Center(
                           child: Text(
                             widget.comingFromEditScreen ? "Update" : "Next",
@@ -639,6 +749,7 @@ class _GoalNameState extends State<GoalName> {
                         ),
                       ),
                     ),
+                */
                   ],
                 ),
                 SizedBox(

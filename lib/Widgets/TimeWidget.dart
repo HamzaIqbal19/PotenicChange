@@ -253,9 +253,9 @@ class _schedule_cardState extends State<schedule_card> {
                                 onPressed: () {
                                   setState(() {
                                     widget.startTime = '00:00';
-                                    removeSelectedDay(days_name);
+                                    // removeSelectedDay(days_name);
                                   });
-                                  _globalKey.currentState?.collapse();
+                                  //   _globalKey.currentState?.collapse();
                                 },
                                 child: const Icon(
                                   Icons.delete,
@@ -303,10 +303,11 @@ class _schedule_cardState extends State<schedule_card> {
                                   backgroundColor: Colors.transparent,
                                   onPressed: () {
                                     setState(() {
-                                      widget.endTime = '00:00';
-                                      removeSelectedDay(days_name);
+                                      widget.endTime = null!;
+
+                                      //  removeSelectedDay(days_name);
                                     });
-                                    _globalKey.currentState?.collapse();
+                                    //  _globalKey.currentState?.collapse();
                                   },
                                   child: const Icon(
                                     Icons.delete,

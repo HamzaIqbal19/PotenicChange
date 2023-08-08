@@ -151,7 +151,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const HomeScreen(
-                        login: false,
+                        login: true,
                       ),
                     ),
                   );

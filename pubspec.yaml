@@ -69,6 +69,7 @@ dependencies:
   stop_watch_timer: ^3.0.0
   image_picker: ^1.0.1
   flutter_debounce: ^0.0.1
+  debounce_throttle: ^2.0.0
 
 
 

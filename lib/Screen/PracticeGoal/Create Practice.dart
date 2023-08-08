@@ -18,6 +18,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../API/Practice.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
+import '../HomeScreen/HomeScreen.dart';
 import 'Loaders/create_practice_shimmer.dart';
 
 class CreatePractice extends StatefulWidget {
@@ -173,6 +174,15 @@ class _CreatePracticeState extends State<CreatePractice> {
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                          page: const HomeScreen(
+                            login: true,
+                          ),
+                        ),
+                      );
+
                       // Navigator.pushReplacement(
                       //   context,
                       //   MaterialPageRoute(
