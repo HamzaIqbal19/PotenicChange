@@ -5,9 +5,9 @@ import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWithRadioButtons extends StatefulWidget {
   final bool status;
-  final Map<DateTime, String> dateStatus;
+  var dateStatus;
 
-  const CalendarWithRadioButtons(
+  CalendarWithRadioButtons(
       {super.key, required this.status, required this.dateStatus});
 
   @override
@@ -52,9 +52,19 @@ class _CalendarWithRadioButtonsState extends State<CalendarWithRadioButtons> {
     DateTime(2023, 5, 31): 'missed',
   };
 
+  Map<DateTime, String> convertToFormattedProgress(practiceProgress) {
+    Map<DateTime, String> formattedProgress = {};
+    practiceProgress.forEach((dateString, status) {
+      DateTime date = DateTime.parse(dateString);
+      formattedProgress[date] = status;
+    });
+    return formattedProgress;
+  }
+
   String? getStatus(DateTime date) {
     if (widget.status == true) {
-      return widget.dateStatus[DateTime(date.year, date.month, date.day)];
+      return convertToFormattedProgress(
+          widget.dateStatus)[DateTime(date.year, date.month, date.day)];
     } else {
       return missedStatus[DateTime(date.year, date.month, date.day)];
     }

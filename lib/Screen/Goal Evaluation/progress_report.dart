@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -25,8 +26,17 @@ class progress_report extends StatefulWidget {
 
 class _progress_reportState extends State<progress_report> {
   bool Loader = true;
+  bool noData = false;
   var goalDetails;
   var report;
+  Map<String, dynamic> practiceProgress = {};
+  int days = 20;
+  List<Color> outerColor = [];
+  int opt1 = 0;
+  int opt2 = 0;
+  int opt3 = 0;
+  int opt4 = 0;
+  int opt5 = 0;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(milliseconds: 1), onDoneLoading);
@@ -37,18 +47,6 @@ class _progress_reportState extends State<progress_report> {
       Loader = false;
     });
   }
-
-  Map<DateTime, String> convertToFormattedProgress(
-      Map<String, String> practiceReport) {
-    practiceReport.forEach((dateString, status) {
-      DateTime date = DateTime.parse(dateString);
-      formattedProgress[date] = status;
-    });
-
-    return formattedProgress;
-  }
-
-  Map<String, String> practiceProgress = {};
 
   // void _fetchGoalDetails() {
   //   AdminGoal.getUserGoal().then((response) {
@@ -70,19 +68,63 @@ class _progress_reportState extends State<progress_report> {
   //     loadData();
   //   });
   // }
-  Map<DateTime, String> formattedProgress = {};
 
   void getReport() {
-    PracticeEvaluation.getUserPracticeReportId().then((response) {
-      if (response.length != 0) {
+    PracticeEvaluation.getUserPracticeReportId(days).then((response) {
+      if (response == false) {
+        print(response);
+        setState(() {
+          noData = true;
+        });
+        loadData();
+      } else if (response.length != 0) {
         print('===============================');
         setState(() {
           report = response['report'];
         });
 
         loadData();
+        response['report']["howPracticeGoing"].forEach((date, value) {
+          if (value is int) {
+            if (value == 1) {
+              outerColor.add(const Color(0xFF546096));
+              setState(() {
+                opt1 = opt1 + 1;
+              });
+            } else if (value == 2) {
+              outerColor.add(const Color(0xFF7291A0));
+              setState(() {
+                opt2 = opt2 + 1;
+              });
+            } else if (value == 3) {
+              outerColor.add(const Color(0xFFE1C44F));
+              setState(() {
+                opt3 = opt3 + 1;
+              });
+            } else if (value == 4) {
+              outerColor.add(const Color(0xFFFA9458));
+              setState(() {
+                opt4 = opt4 + 1;
+              });
+            } else if (value == 5) {
+              outerColor.add(const Color(0xFFFF6C2C));
+              setState(() {
+                opt5 = opt5 + 1;
+              });
+            } else {
+              outerColor.add(const Color(0xFFFBFBFB));
+            }
+          }
+        });
 
+        practiceProgress = json.decode(response['report']['practiceProgress']);
         print('Report===============================');
+
+        // colorsAdd(response['report']['howPracticeGoing']);
+
+        print(outerColor);
+
+        print('Report==============================$outerColor');
         print(report);
 
         // convertToFormattedProgress();
@@ -90,6 +132,40 @@ class _progress_reportState extends State<progress_report> {
         print('Done===============================');
       }
       //print(response);
+    });
+  }
+
+  List<Widget> generateCircleContainers(BuildContext context, int count,
+      {bool hasImage = false}) {
+    return List.generate(count, (index) {
+      return Container(
+        width: AppDimensions.height10(context) * 2.3,
+        height: AppDimensions.height10(context) * 2.3,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: null,
+          image: DecorationImage(
+            image: AssetImage('assets/images/Tick_dates.webp'),
+          ),
+        ),
+      );
+    });
+  }
+
+  List<Widget> generateCircleEmptyContainers(
+    BuildContext context,
+    int count,
+  ) {
+    return List.generate(count, (index) {
+      return Container(
+        width: AppDimensions.height10(context) * 2.3,
+        height: AppDimensions.height10(context) * 2.3,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: Color(0xFFF2F2F2),
+          image: null,
+        ),
+      );
     });
   }
 
@@ -180,10 +256,13 @@ class _progress_reportState extends State<progress_report> {
                                   const BoxDecoration(color: Color(0xFFFFFFFF)),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 10.1,
+                              // width: AppDimensions.height10(context) * 10.1,
                               height: AppDimensions.height10(context) * 2.4,
                               child: Text(
-                                report['practice']["name"],
+                                noData == true
+                                    ? 'No data found'
+                                    : report['practice']["name"],
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 2.0,
@@ -234,7 +313,9 @@ class _progress_reportState extends State<progress_report> {
                           top: AppDimensions.height10(context) * 0.5),
                       child: Text(
                         //we will give duration of 20 days
-                        'from ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
+                        noData == true
+                            ? 'No data found'
+                            : 'from ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
@@ -303,7 +384,10 @@ class _progress_reportState extends State<progress_report> {
                                       bottom: AppDimensions.height10(context) *
                                           0.1),
                                   child: Text(
-                                    report['practice']["userGoal"]["name"],
+                                    noData == true
+                                        ? 'No data found'
+                                        : report['practice']["userGoal"]
+                                            ["name"],
                                     textAlign: TextAlign.start,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -319,7 +403,9 @@ class _progress_reportState extends State<progress_report> {
                                   width: AppDimensions.height10(context) * 17.9,
                                   height: AppDimensions.height10(context) * 2.7,
                                   child: Text(
-                                    report['practice']["name"],
+                                    noData == true
+                                        ? 'No data found'
+                                        : report['practice']["name"],
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                         fontSize:
@@ -410,8 +496,11 @@ class _progress_reportState extends State<progress_report> {
                                     ///color: Colors.amber,
                                     child: Center(
                                       child: Text(
-                                        report['practice']["userGoal"]
-                                            ["identityStatement"][0]['text'],
+                                        noData == true
+                                            ? 'No data found'
+                                            : report['practice']["userGoal"]
+                                                    ["identityStatement"][0]
+                                                ['text'],
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontStyle: FontStyle.italic,
@@ -499,16 +588,113 @@ class _progress_reportState extends State<progress_report> {
                           color: const Color(0xFFFFFFFF)),
                       child: Column(
                         children: [
-                          Container(
-                            height: AppDimensions.height10(context) * 24.8,
-                            // color: Colors.amber,
-                            margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 4.6,
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 5.0,
+                          ),
+                          Circulardates(
+                            size: AppDimensions.height10(context) * 24.0,
+                            outerCircleContainers: noData == true
+                                ? []
+                                : generateCircleEmptyContainers(
+                                        context,
+                                        20 -
+                                            practiceProgress
+                                                .containsValue('completed')
+                                                .toString()
+                                                .length) +
+                                    generateCircleContainers(
+                                        context,
+                                        practiceProgress
+                                            .containsValue('completed')
+                                            .toString()
+                                            .length),
+                            centerContainer: Container(
+                              height: AppDimensions.height10(context) * 18.6,
+                              width: AppDimensions.height10(context) * 9.3,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.height10(context) * 3.0),
+
+                              // color: Colors.amber,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 9.3,
+                                    height:
+                                        AppDimensions.height10(context) * 7.7,
+                                    child: Row(
+                                      children: [
+                                        SizedBox(
+                                          // margin: EdgeInsets.only(left: AppDimensions.height10(context)*1.0),
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  7.7,
+                                          child: Text(
+                                            noData == true
+                                                ? '-'
+                                                : '${practiceProgress.containsValue('completed').toString().length}',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        7.4,
+                                                color: const Color(0xFF156F6D),
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                        ),
+                                        Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  7.7,
+                                          alignment: Alignment.bottomCenter,
+                                          child: Text(
+                                            '/20',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        2.4,
+                                                color: const Color(0xFF646464),
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 9.3,
+                                    height:
+                                        AppDimensions.height10(context) * 2.3,
+                                    child: Text(
+                                      'Active days',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          color: const Color(0xFF156F6D),
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 9.3,
+                                    height:
+                                        AppDimensions.height10(context) * 2.3,
+                                    child: Text(
+                                      'completed!',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                          color: const Color(0xFF156F6D),
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
-                            decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/Group 9458.webp'))),
                           ),
                           Container(
                             height: AppDimensions.height10(context) * 8.0,
@@ -543,7 +729,31 @@ class _progress_reportState extends State<progress_report> {
                                   borderRadius: BorderRadius.circular(
                                       AppDimensions.height10(context) * 2.0)),
                               child: CalendarWithRadioButtons(
-                                  status: true, dateStatus: formattedProgress)),
+                                  status: true,
+                                  dateStatus: noData == true
+                                      ? {
+                                          "2023-07-18": "completed",
+                                          "2023-07-19": "completed",
+                                          "2023-07-20": "completed",
+                                          "2023-07-21": "completed",
+                                          "2023-07-22": "completed",
+                                          "2023-07-23": "completed",
+                                          "2023-07-24": "completed",
+                                          "2023-07-25": "completed",
+                                          "2023-07-26": "completed",
+                                          "2023-07-27": "completed",
+                                          "2023-07-28": "completed",
+                                          "2023-07-29": "completed",
+                                          "2023-07-30": "completed",
+                                          "2023-07-31": "missed",
+                                          "2023-08-01": "completed",
+                                          "2023-08-02": "completed",
+                                          "2023-08-03": "completed",
+                                          "2023-08-04": "completed",
+                                          "2023-08-05": "completed",
+                                          "2023-08-06": "missed"
+                                        }
+                                      : report['practiceProgress'])),
                         ],
                       ),
                     ),
@@ -614,33 +824,10 @@ class _progress_reportState extends State<progress_report> {
                                                 3.0,
                                         top: AppDimensions.height10(context) *
                                             4.0),
-                                    child: const CircularFormation(
-                                      size: 150,
-                                      circleColor: Colors.transparent,
-                                      outerCircleColors: [
-                                        Color(0xFFE1C44F),
-                                        Color(0xFF7291A0),
-                                        Color(0xFF7291A0),
-                                        Color(0xFF7291A0),
-                                        Color(0xFF546096),
-                                        Color(0xFFFF6C2C),
-                                        Color(0xFFFF6C2C),
-                                        Color(0xFFFF6C2C),
-                                        Color(0xFFFF6C2C),
-                                        Color(0xFFFF6C2C),
-                                        Color(0xFFFF6C2C),
-                                        Color(0xFFFA9458),
-                                        Color(0xFFFA9458),
-                                        Color(0xFFFA9458),
-                                        Color(0xFFFA9458),
-                                        Color(0xFFFA9458),
-                                        Color(0xFFE1C44F),
-                                        Color(0xFFE1C44F),
-                                        Color(0xFFE1C44F),
-                                        Color(0xFFE1C44F),
-                                        // Add more colors as needed
-                                      ],
-                                    )),
+                                    child: CircularFormation(
+                                        size: 150,
+                                        circleColor: Colors.transparent,
+                                        outerCircleColors: outerColor)),
                                 Container(
                                   width: AppDimensions.height10(context) * 8.4,
                                   height: AppDimensions.height10(context) * 0.2,
@@ -705,7 +892,7 @@ class _progress_reportState extends State<progress_report> {
                                               fontWeight: FontWeight.w400,
                                               color: const Color(0xFFFF6C2C)),
                                           children: [
-                                        const TextSpan(text: '6'),
+                                        TextSpan(text: '$opt5'),
                                         TextSpan(
                                             text: 'x',
                                             style: TextStyle(
@@ -716,11 +903,13 @@ class _progress_reportState extends State<progress_report> {
                                       ])),
                                 ),
                                 SizedBox(
-                                  width: AppDimensions.height10(context) * 10.5,
+                                  //width: AppDimensions.height10(context) * 10.5,
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: List.generate(
-                                      5, // Replace 5 with the number of containers you want to create
+                                      opt5 > 5
+                                          ? 5
+                                          : opt5, // Replace 5 with the number of containers you want to create
                                       (index) => Container(
                                         width: AppDimensions.height10(context) *
                                             1.5,
@@ -737,29 +926,36 @@ class _progress_reportState extends State<progress_report> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(
-                                  width: AppDimensions.height10(context) * 10.5,
-                                  //height: AppDimensions.height10(context) * 1.5,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: List.generate(
-                                      1, // Replace 5 with the number of containers you want to create
-                                      (index) => Container(
+                                opt5 > 5
+                                    ? SizedBox(
                                         width: AppDimensions.height10(context) *
-                                            1.5,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.5,
-                                        margin: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
-                                                0.3),
-                                        decoration: const BoxDecoration(
-                                            color: Color(0xFFFF6C2C),
-                                            shape: BoxShape.circle),
-                                      ),
-                                    ),
-                                  ),
-                                )
+                                            10.5,
+                                        //height: AppDimensions.height10(context) * 1.5,
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: List.generate(
+                                            opt5 -
+                                                5, // Replace 5 with the number of containers you want to create
+                                            (index) => Container(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  1.5,
+                                              margin: EdgeInsets.all(
+                                                  AppDimensions.height10(
+                                                          context) *
+                                                      0.3),
+                                              decoration: const BoxDecoration(
+                                                  color: Color(0xFFFF6C2C),
+                                                  shape: BoxShape.circle),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : Container()
                               ],
                             ),
                           ),
@@ -796,7 +992,7 @@ class _progress_reportState extends State<progress_report> {
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFFFA9458)),
                                     children: [
-                                  const TextSpan(text: '5'),
+                                  TextSpan(text: "$opt4"),
                                   TextSpan(
                                       text: 'x',
                                       style: TextStyle(
@@ -806,11 +1002,13 @@ class _progress_reportState extends State<progress_report> {
                                 ])),
                           ),
                           SizedBox(
-                            width: AppDimensions.height10(context) * 10.5,
+                            //width: AppDimensions.height10(context) * 10.5,
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: List.generate(
-                                5, // Replace 5 with the number of containers you want to create
+                                opt4 > 5
+                                    ? 5
+                                    : opt4, // Replace 5 with the number of containers you want to create
                                 (index) => Container(
                                   width: AppDimensions.height10(context) * 1.5,
                                   height: AppDimensions.height10(context) * 1.5,
@@ -825,6 +1023,32 @@ class _progress_reportState extends State<progress_report> {
                               ),
                             ),
                           ),
+                          opt4 > 5
+                              ? SizedBox(
+                                  width: AppDimensions.height10(context) * 10.5,
+                                  //height: AppDimensions.height10(context) * 1.5,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: List.generate(
+                                      opt4 -
+                                          5, // Replace 5 with the number of containers you want to create
+                                      (index) => Container(
+                                        width: AppDimensions.height10(context) *
+                                            1.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        margin: EdgeInsets.all(
+                                            AppDimensions.height10(context) *
+                                                0.3),
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xFFFA9458),
+                                            shape: BoxShape.circle),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container(),
                           Container(
                             width: AppDimensions.height10(context) * 8.4,
                             height: AppDimensions.height10(context) * 0.2,
@@ -863,7 +1087,7 @@ class _progress_reportState extends State<progress_report> {
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFFE1C44F)),
                                     children: [
-                                  const TextSpan(text: '5'),
+                                  TextSpan(text: '$opt3'),
                                   TextSpan(
                                       text: 'x',
                                       style: TextStyle(
@@ -873,13 +1097,15 @@ class _progress_reportState extends State<progress_report> {
                                 ])),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 10.5,
+                            // width: AppDimensions.height10(context) * 10.5,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.2),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: List.generate(
-                                5, // Replace 5 with the number of containers you want to create
+                                opt3 > 5
+                                    ? 5
+                                    : opt3, // Replace 5 with the number of containers you want to create
                                 (index) => Container(
                                   width: AppDimensions.height10(context) * 1.5,
                                   height: AppDimensions.height10(context) * 1.5,
@@ -894,6 +1120,32 @@ class _progress_reportState extends State<progress_report> {
                               ),
                             ),
                           ),
+                          opt3 > 5
+                              ? SizedBox(
+                                  width: AppDimensions.height10(context) * 10.5,
+                                  //height: AppDimensions.height10(context) * 1.5,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: List.generate(
+                                      opt3 -
+                                          5, // Replace 5 with the number of containers you want to create
+                                      (index) => Container(
+                                        width: AppDimensions.height10(context) *
+                                            1.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        margin: EdgeInsets.all(
+                                            AppDimensions.height10(context) *
+                                                0.3),
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xFFE1C44F),
+                                            shape: BoxShape.circle),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container(),
                           Container(
                             width: AppDimensions.height10(context) * 8.4,
                             height: AppDimensions.height10(context) * 0.2,
@@ -934,7 +1186,7 @@ class _progress_reportState extends State<progress_report> {
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF7291A0)),
                                     children: [
-                                  const TextSpan(text: '3'),
+                                  TextSpan(text: '$opt2'),
                                   TextSpan(
                                       text: 'x',
                                       style: TextStyle(
@@ -944,13 +1196,15 @@ class _progress_reportState extends State<progress_report> {
                                 ])),
                           ),
                           Container(
-                            width: AppDimensions.height10(context) * 10.5,
+                            //width: AppDimensions.height10(context) * 10.5,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 1.2),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: List.generate(
-                                3, // Replace 5 with the number of containers you want to create
+                                opt2 > 5
+                                    ? 5
+                                    : opt2, // Replace 5 with the number of containers you want to create
                                 (index) => Container(
                                   width: AppDimensions.height10(context) * 1.5,
                                   height: AppDimensions.height10(context) * 1.5,
@@ -965,6 +1219,32 @@ class _progress_reportState extends State<progress_report> {
                               ),
                             ),
                           ),
+                          opt2 > 5
+                              ? SizedBox(
+                                  width: AppDimensions.height10(context) * 10.5,
+                                  //height: AppDimensions.height10(context) * 1.5,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: List.generate(
+                                      opt2 -
+                                          5, // Replace 5 with the number of containers you want to create
+                                      (index) => Container(
+                                        width: AppDimensions.height10(context) *
+                                            1.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        margin: EdgeInsets.all(
+                                            AppDimensions.height10(context) *
+                                                0.3),
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xFF7291A0),
+                                            shape: BoxShape.circle),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container(),
                           Container(
                             width: AppDimensions.height10(context) * 8.4,
                             height: AppDimensions.height10(context) * 0.2,
@@ -1005,7 +1285,7 @@ class _progress_reportState extends State<progress_report> {
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFF546096)),
                                     children: [
-                                  const TextSpan(text: '1'),
+                                  TextSpan(text: '$opt1'),
                                   TextSpan(
                                       text: 'x',
                                       style: TextStyle(
@@ -1021,7 +1301,9 @@ class _progress_reportState extends State<progress_report> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: List.generate(
-                                1, // Replace 5 with the number of containers you want to create
+                                opt1 > 5
+                                    ? 5
+                                    : opt1, // Replace 5 with the number of containers you want to create
                                 (index) => Container(
                                   width: AppDimensions.height10(context) * 1.5,
                                   height: AppDimensions.height10(context) * 1.5,
@@ -1036,6 +1318,32 @@ class _progress_reportState extends State<progress_report> {
                               ),
                             ),
                           ),
+                          opt1 > 5
+                              ? SizedBox(
+                                  width: AppDimensions.height10(context) * 10.5,
+                                  //height: AppDimensions.height10(context) * 1.5,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: List.generate(
+                                      opt1 -
+                                          5, // Replace 5 with the number of containers you want to create
+                                      (index) => Container(
+                                        width: AppDimensions.height10(context) *
+                                            1.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                        margin: EdgeInsets.all(
+                                            AppDimensions.height10(context) *
+                                                0.3),
+                                        decoration: const BoxDecoration(
+                                            color: Color(0xFF546096),
+                                            shape: BoxShape.circle),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container()
                         ],
                       ),
                     ),
@@ -1095,19 +1403,22 @@ class _progress_reportState extends State<progress_report> {
                                       saved: false,
                                     )));
                               },
-                              child: const button_feilds(
+                              child: button_feilds(
                                 feild_text: 'Practice score ',
                                 icon_viible: true,
                                 text_color: 0xff646464,
                                 feild_text_2: '(',
                                 text_color_2: 0xff8EA1B1,
-                                feild_text_3: '2',
+                                feild_text_3: noData == true
+                                    ? '-'
+                                    : report['practice']["practiceLevel"]
+                                        .toString(),
                                 feild_text_4: '/5)',
                               ),
                             ),
                             AnimatedScaleButton(
                               onTap: () {
-                                report(context);
+                                Navigator.pop(context);
                               },
                               child: Container(
                                 width: AppDimensions.height10(context) * 36.0,

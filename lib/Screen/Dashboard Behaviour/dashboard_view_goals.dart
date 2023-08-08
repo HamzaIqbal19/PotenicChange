@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
@@ -169,9 +171,9 @@ class _view_goalsState extends State<view_goals> {
                           return CalendarBottomSheet(
                             onChangedStart: (int value) {
                               setState(() {
-                                current = value;
-                                next = value - 1;
-                                past = value + 1;
+                                current = -value;
+                                next = -value - 1;
+                                past = -value + 1;
                                 Loader = true;
                               });
                               fetchPracticeByDay();
@@ -680,250 +682,641 @@ class _view_goalsState extends State<view_goals> {
                                         // print(allPractice);
                                         return Column(
                                           children: [
-                                            Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  35.6,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.2,
-                                              margin: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      2.4,
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      3.4,
-                                                  top: AppDimensions.height10(
-                                                          context) *
-                                                      1.1),
-                                              child: Column(children: [
+                                            Column(
+                                              children: [
                                                 Container(
-                                                  alignment:
-                                                      Alignment.centerLeft,
-                                                  child: Text(
-                                                    allGoals[index]['schedule']
-                                                            [0]['time1']
-                                                        .toString()
-                                                        .substring(0, 5),
-                                                    style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.8,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Divider(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      35.6,
                                                   height:
                                                       AppDimensions.height10(
                                                               context) *
-                                                          0.2,
-                                                  color: Colors.white,
-                                                ),
-                                                Container(
-                                                  alignment:
-                                                      Alignment.centerLeft,
-                                                  child: Text(
-                                                    allGoals[index]['schedule']
-                                                            [0]['time1']
-                                                        .toString()
-                                                        .substring(5, 7)
-                                                        .toUpperCase(),
-                                                    style: TextStyle(
-                                                      fontSize: AppDimensions
+                                                          4.2,
+                                                  margin: EdgeInsets.only(
+                                                      left: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          1.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
+                                                          2.4,
+                                                      right: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          3.4,
+                                                      top: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.1),
+                                                  child: Column(children: [
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                        allGoals[index]
+                                                                    ['schedule']
+                                                                [0]['time1']
+                                                            .toString()
+                                                            .substring(0, 5),
+                                                        style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.8,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Divider(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.2,
                                                       color: Colors.white,
                                                     ),
-                                                  ),
+                                                    Container(
+                                                      alignment:
+                                                          Alignment.centerLeft,
+                                                      child: Text(
+                                                        allGoals[index]
+                                                                    ['schedule']
+                                                                [0]['time1']
+                                                            .toString()
+                                                            .substring(5, 7)
+                                                            .toUpperCase(),
+                                                        style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ]),
                                                 ),
-                                              ]),
-                                            ),
-                                            Column(
-                                              children: [
-                                                AnimatedScaleButton(
-                                                  onTap: () async {
-                                                    final SharedPreferences
-                                                        prefs = await _prefs;
-                                                    var pracName =
-                                                        prefs.setString(
-                                                            'dash_pracName',
+                                                Column(
+                                                  children: [
+                                                    AnimatedScaleButton(
+                                                      onTap: () async {
+                                                        final SharedPreferences
+                                                            prefs =
+                                                            await _prefs;
+                                                        var pracName =
+                                                            prefs.setString(
+                                                                'dash_pracName',
+                                                                allGoals[index]
+                                                                    ['name']);
+                                                        var pracId =
+                                                            prefs.setInt(
+                                                                'prac_num',
+                                                                allGoals[index]
+                                                                    ['id']);
+                                                        var time = prefs.setString(
+                                                            'recording_Time1',
                                                             allGoals[index]
-                                                                ['name']);
-                                                    var goalName =
-                                                        prefs.setString(
-                                                            'dash_goalName',
-                                                            allGoals[index]
-                                                                    ['userGoal']
-                                                                ['name']);
-                                                    var pracColor = allGoals[
-                                                                    index]
-                                                                ['color'] !=
-                                                            null
-                                                        ? prefs.setString(
-                                                            'dash_pracColor',
-                                                            allGoals[index]
-                                                                ['color'])
-                                                        : prefs.setString(
-                                                            'dash_pracColor',
-                                                            '0');
-                                                    var goalColor = allGoals[
+                                                                    ['schedule']
+                                                                [0]['time1']);
+                                                        var date =
+                                                            prefs.setString(
+                                                                'record_date',
+                                                                getFormattedDate(
+                                                                    current));
+                                                        var goalName =
+                                                            prefs.setString(
+                                                                'dash_goalName',
+                                                                allGoals[index][
+                                                                        'userGoal']
+                                                                    ['name']);
+                                                        var pracColor = allGoals[
                                                                         index]
-                                                                    ['userGoal']
-                                                                ['color'] !=
-                                                            null
-                                                        ? prefs.setString(
-                                                            'dash_goalColor',
-                                                            allGoals[index]
-                                                                    ['userGoal']
-                                                                ['color'])
-                                                        : '0';
-                                                    if (widget.missed == true) {
-                                                      print("CON 2");
-                                                      // ignore: use_build_context_synchronously
-                                                      Navigator.push(
-                                                          context,
-                                                          FadePageRoute(
-                                                              page:
-                                                                  practiceMenu(
+                                                                    ['color'] !=
+                                                                null
+                                                            ? prefs.setString(
+                                                                'dash_pracColor',
+                                                                allGoals[index]
+                                                                    ['color'])
+                                                            : prefs.setString(
+                                                                'dash_pracColor',
+                                                                '0');
+                                                        var goalColor = allGoals[
+                                                                            index]
+                                                                        [
+                                                                        'userGoal']
+                                                                    ['color'] !=
+                                                                null
+                                                            ? prefs.setString(
+                                                                'dash_goalColor',
+                                                                allGoals[index][
+                                                                        'userGoal']
+                                                                    ['color'])
+                                                            : '0';
+                                                        if (allGoals[index][
+                                                                'recordingStatusTime1'] ==
+                                                            "Not Started") {
+                                                          print("CON 2");
+                                                          // ignore: use_build_context_synchronously
+                                                          Navigator.push(
+                                                              context,
+                                                              FadePageRoute(
+                                                                  page: practiceMenu(
                                                                       goal_eval:
                                                                           false,
-                                                                      goalName:
-                                                                          '',
+                                                                      goalName: allGoals[index]
+                                                                              ['userGoal']
+                                                                          [
+                                                                          'name'],
                                                                       pracName:
-                                                                          '',
-                                                                      pracColor:
-                                                                          '',
-                                                                      color:
-                                                                          '')));
-                                                    } else {
-                                                      print("CON 1");
-                                                      print(
-                                                          "${allGoals[index]['color']}");
-                                                      // ignore: use_build_context_synchronously
-                                                      Navigator.push(
-                                                          context,
-                                                          FadePageRoute(
-                                                              page:
-                                                                  const menu_behaviour()));
-                                                    }
-                                                  },
-                                                  child: Center(
-                                                      child: align_circles(
-                                                    asset_1: allGoals[index]
-                                                                    ['userGoal']
-                                                                ['color'] ==
-                                                            1
-                                                        ? "assets/images/red_gradient.webp"
-                                                        : allGoals[index][
-                                                                        'userGoal']
+                                                                          allGoals[index]
+                                                                              [
+                                                                              'name'],
+                                                                      pracColor: allGoals[index]['color'] ==
+                                                                              null
+                                                                          ? "0"
+                                                                          : allGoals[index]['color']
+                                                                              .toString(),
+                                                                      color: allGoals[index]['userGoal']['color'] !=
+                                                                              null
+                                                                          ? allGoals[index]['userGoal']['color']
+                                                                              .toString()
+                                                                          : "0")));
+                                                        } else if (allGoals[
+                                                                    index][
+                                                                'recordingStatusTime1'] ==
+                                                            "missed") {
+                                                          print("CON 3");
+                                                          Navigator.push(
+                                                              context,
+                                                              FadePageRoute(
+                                                                  page:
+                                                                      missed_Menu(
+                                                                pracName:
+                                                                    allGoals[
+                                                                            index]
+                                                                        [
+                                                                        'name'],
+                                                              )));
+                                                        } else {
+                                                          print("CON 1");
+                                                          print(
+                                                              "${allGoals[index]['color']}");
+                                                          // ignore: use_build_context_synchronously
+                                                          Navigator.push(
+                                                              context,
+                                                              FadePageRoute(
+                                                                  page:
+                                                                      const menu_behaviour()));
+                                                        }
+                                                      },
+                                                      child: Center(
+                                                          child: align_circles(
+                                                        asset_1: allGoals[index]
+                                                                        ['userGoal']
                                                                     ['color'] ==
-                                                                2
-                                                            ? 'assets/images/orange_moon.webp'
+                                                                1
+                                                            ? "assets/images/red_gradient.webp"
                                                             : allGoals[index]
                                                                             ['userGoal']
                                                                         [
                                                                         'color'] ==
-                                                                    3
-                                                                ? "assets/images/lightGrey_gradient.webp"
-                                                                : allGoals[index]['userGoal']
-                                                                            ['color'] ==
-                                                                        4
-                                                                    ? "assets/images/lightBlue_gradient.webp"
-                                                                    : allGoals[index]['userGoal']['color'] == 5
-                                                                        ? "assets/images/medBlue_gradient.webp"
-                                                                        : allGoals[index]['userGoal']['color'] == 6
-                                                                            ? "assets/images/Blue_gradient.webp"
-                                                                            : 'assets/images/orange_moon.webp',
-                                                    s_circle_text:
-                                                        allGoals[index]['name'],
-                                                    asset_2: allGoals[index][
-                                                                'recordingStatus'] ==
-                                                            "missed"
-                                                        ? allGoals[index]
-                                                                    ['color'] ==
-                                                                1
-                                                            ? 'assets/images/Missed_3.webp'
-                                                            : allGoals[index][
-                                                                        'color'] ==
                                                                     2
-                                                                ? 'assets/images/Missed_1.webp'
-                                                                : allGoals[index]
+                                                                ? 'assets/images/orange_moon.webp'
+                                                                : allGoals[index]['userGoal']
                                                                             [
                                                                             'color'] ==
                                                                         3
-                                                                    ? "assets/images/Missed_2.webp"
-                                                                    : allGoals[index]['color'] ==
+                                                                    ? "assets/images/lightGrey_gradient.webp"
+                                                                    : allGoals[index]['userGoal']['color'] ==
                                                                             4
-                                                                        ? "assets/images/Missed_4.webp"
-                                                                        : allGoals[index]['color'] ==
+                                                                        ? "assets/images/lightBlue_gradient.webp"
+                                                                        : allGoals[index]['userGoal']['color'] ==
                                                                                 5
+                                                                            ? "assets/images/medBlue_gradient.webp"
+                                                                            : allGoals[index]['userGoal']['color'] == 6
+                                                                                ? "assets/images/Blue_gradient.webp"
+                                                                                : 'assets/images/orange_moon.webp',
+                                                        s_circle_text:
+                                                            allGoals[index]
+                                                                ['name'],
+                                                        asset_2: allGoals[index][
+                                                                    'recordingStatusTime1'] ==
+                                                                "missed"
+                                                            ? allGoals[index][
+                                                                        'color'] ==
+                                                                    1
+                                                                ? 'assets/images/Missed_3.webp'
+                                                                : allGoals[index]['color'] ==
+                                                                        2
+                                                                    ? 'assets/images/Missed_1.webp'
+                                                                    : allGoals[index]['color'] ==
+                                                                            3
+                                                                        ? "assets/images/Missed_2.webp"
+                                                                        : allGoals[index]['color'] ==
+                                                                                4
                                                                             ? "assets/images/Missed_4.webp"
-                                                                            : 'assets/images/Missed_2.webp'
-                                                        : allGoals[index]
-                                                                    ['recordingStatus'] ==
-                                                                "completed"
-                                                            ? allGoals[index]['color'] == 1
-                                                                ? "assets/images/Practice_Completed_1.webp"
-                                                                : allGoals[index]['color'] == 2
-                                                                    ? 'assets/images/Practice_Completed_2.webp'
-                                                                    : allGoals[index]['color'] == 3
-                                                                        ? "assets/images/Practice_Completed_3.webp"
-                                                                        : allGoals[index]['color'] == 4
-                                                                            ? "assets/images/Practice_Completed_4.webp"
-                                                                            : allGoals[index]['color'] == 5
+                                                                            : allGoals[index]['color'] ==
+                                                                                    5
+                                                                                ? "assets/images/Missed_4.webp"
+                                                                                : 'assets/images/Missed_2.webp'
+                                                            : allGoals[index][
+                                                                        'recordingStatusTime1'] ==
+                                                                    "completed"
+                                                                ? allGoals[index]
+                                                                            ['color'] ==
+                                                                        1
+                                                                    ? "assets/images/Practice_Completed_1.webp"
+                                                                    : allGoals[index]['color'] == 2
+                                                                        ? 'assets/images/Practice_Completed_2.webp'
+                                                                        : allGoals[index]['color'] == 3
+                                                                            ? "assets/images/Practice_Completed_3.webp"
+                                                                            : allGoals[index]['color'] == 4
                                                                                 ? "assets/images/Practice_Completed_4.webp"
-                                                                                : 'assets/images/Practice_Completed_2.webp'
-                                                            : allGoals[index]['color'] == 1
-                                                                ? "assets/images/Ellipse orange_wb.webp"
-                                                                : allGoals[index]['color'] == 2
-                                                                    ? 'assets/images/Ellipse 158_wb.webp'
-                                                                    : allGoals[index]['color'] == 3
-                                                                        ? "assets/images/Ellipse 157_wb.webp"
-                                                                        : allGoals[index]['color'] == 4
-                                                                            ? "assets/images/Ellipse light-blue_wb.webp"
-                                                                            : allGoals[index]['color'] == 5
-                                                                                ? "assets/images/Ellipse blue_wb.webp"
-                                                                                : 'assets/images/Ellipse 158_wb.webp',
-                                                    head_text: allGoals[index]
-                                                        ['userGoal']['name'],
-                                                    body_text: allGoals[index]
-                                                                ['userGoal'][
-                                                            'identityStatement']
-                                                        [0]['text'],
-                                                    body_text_color: 0xff5B74A6,
-                                                    head_text_color: 0xff5B74A6,
-                                                    body_text_size:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.6,
-                                                    head_text_size:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.0,
-                                                    enable_icon: widget.missed
-                                                        ? false
-                                                        : true,
-                                                    is_right: false,
-                                                    s_circle_text_col:
-                                                        0xffFD6727,
-                                                  )),
-                                                ),
-                                                SizedBox(
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
+                                                                                : allGoals[index]['color'] == 5
+                                                                                    ? "assets/images/Practice_Completed_4.webp"
+                                                                                    : 'assets/images/Practice_Completed_2.webp'
+                                                                : allGoals[index]['color'] == 1
+                                                                    ? "assets/images/Ellipse orange_wb.webp"
+                                                                    : allGoals[index]['color'] == 2
+                                                                        ? 'assets/images/Ellipse 158_wb.webp'
+                                                                        : allGoals[index]['color'] == 3
+                                                                            ? "assets/images/Ellipse 157_wb.webp"
+                                                                            : allGoals[index]['color'] == 4
+                                                                                ? "assets/images/Ellipse light-blue_wb.webp"
+                                                                                : allGoals[index]['color'] == 5
+                                                                                    ? "assets/images/Ellipse blue_wb.webp"
+                                                                                    : 'assets/images/Ellipse 158_wb.webp',
+                                                        head_text:
+                                                            allGoals[index]
+                                                                    ['userGoal']
+                                                                ['name'],
+                                                        body_text: allGoals[
+                                                                        index]
+                                                                    ['userGoal']
+                                                                [
+                                                                'identityStatement']
+                                                            [0]['text'],
+                                                        body_text_color:
+                                                            0xff5B74A6,
+                                                        head_text_color:
+                                                            0xff5B74A6,
+                                                        body_text_size:
+                                                            AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.6,
+                                                        head_text_size:
+                                                            AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                        enable_icon:
+                                                            widget.missed
+                                                                ? false
+                                                                : true,
+                                                        is_right: false,
+                                                        s_circle_text_col:
+                                                            allGoals[index][
+                                                                        'recordingStatusTime1'] ==
+                                                                    "missed"
+                                                                ? 0xffFD6727
+                                                                : 0xFFFBFBFB,
+                                                      )),
+                                                    ),
+                                                    SizedBox(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
                                                           3.0,
+                                                    )
+                                                  ],
                                                 )
                                               ],
-                                            )
+                                            ),
+                                            allGoals[index]['schedule'][0]
+                                                        ['time2']
+                                                    .toString()
+                                                    .isNotEmpty
+                                                ? Column(
+                                                    children: [
+                                                      Container(
+                                                        width: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            35.6,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            4.2,
+                                                        margin: EdgeInsets.only(
+                                                            left: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.4,
+                                                            right: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                3.4,
+                                                            top: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.1),
+                                                        child:
+                                                            Column(children: [
+                                                          Container(
+                                                            alignment: Alignment
+                                                                .centerLeft,
+                                                            child: Text(
+                                                              allGoals[index][
+                                                                          'schedule'][0]
+                                                                      ['time2']
+                                                                  .toString()
+                                                                  .substring(
+                                                                      0, 5),
+                                                              style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.8,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Divider(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.2,
+                                                            color: Colors.white,
+                                                          ),
+                                                          Container(
+                                                            alignment: Alignment
+                                                                .centerLeft,
+                                                            child: Text(
+                                                              allGoals[index][
+                                                                          'schedule'][0]
+                                                                      ['time2']
+                                                                  .toString()
+                                                                  .substring(
+                                                                      5, 7)
+                                                                  .toUpperCase(),
+                                                              style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ]),
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          AnimatedScaleButton(
+                                                            onTap: () async {
+                                                              final SharedPreferences
+                                                                  prefs =
+                                                                  await _prefs;
+                                                              var pracId =
+                                                                  prefs.setInt(
+                                                                      'prac_num',
+                                                                      allGoals[
+                                                                              index]
+                                                                          [
+                                                                          'id']);
+                                                              var pracName = prefs.setString(
+                                                                  'dash_pracName',
+                                                                  allGoals[
+                                                                          index]
+                                                                      ['name']);
+                                                              var goalName = prefs.setString(
+                                                                  'dash_goalName',
+                                                                  allGoals[index]
+                                                                          [
+                                                                          'userGoal']
+                                                                      ['name']);
+                                                              var date = prefs.setString(
+                                                                  'recordDate',
+                                                                  getFormattedDate(
+                                                                      current));
+                                                              var pracColor = allGoals[
+                                                                              index]
+                                                                          [
+                                                                          'color'] !=
+                                                                      null
+                                                                  ? prefs.setString(
+                                                                      'dash_pracColor',
+                                                                      allGoals[
+                                                                              index]
+                                                                          [
+                                                                          'color'])
+                                                                  : prefs.setString(
+                                                                      'dash_pracColor',
+                                                                      '0');
+                                                              var time = prefs.setString(
+                                                                  'recording_Time1',
+                                                                  allGoals[index]
+                                                                          [
+                                                                          'schedule'][0]
+                                                                      [
+                                                                      'time2']);
+                                                              var dash_boardRoute =
+                                                                  prefs.setBool(
+                                                                      'behaviour_route',
+                                                                      true);
+                                                              var goalColor = allGoals[index]
+                                                                              ['userGoal']
+                                                                          [
+                                                                          'color'] !=
+                                                                      null
+                                                                  ? prefs.setString(
+                                                                      'dash_goalColor',
+                                                                      allGoals[index]
+                                                                              [
+                                                                              'userGoal']
+                                                                          [
+                                                                          'color'])
+                                                                  : '0';
+                                                              if (allGoals[
+                                                                          index]
+                                                                      [
+                                                                      'recordingStatusTime2'] ==
+                                                                  "Not Started") {
+                                                                print("CON 2");
+                                                                // ignore: use_build_context_synchronously
+                                                                Navigator.push(
+                                                                    context,
+                                                                    FadePageRoute(
+                                                                        page: practiceMenu(
+                                                                            goal_eval:
+                                                                                false,
+                                                                            goalName: allGoals[index]['userGoal'][
+                                                                                'name'],
+                                                                            pracName: allGoals[index][
+                                                                                'name'],
+                                                                            pracColor: allGoals[index]['color'] == null
+                                                                                ? "0"
+                                                                                : allGoals[index]['color'].toString(),
+                                                                            color: allGoals[index]['userGoal']['color'] != null ? allGoals[index]['userGoal']['color'].toString() : "0")));
+                                                              } else if (allGoals[
+                                                                          index]
+                                                                      [
+                                                                      'recordingStatusTime2'] ==
+                                                                  "missed") {
+                                                                print("CON 3");
+                                                                Navigator.push(
+                                                                    context,
+                                                                    FadePageRoute(
+                                                                        page:
+                                                                            missed_Menu(
+                                                                      pracName:
+                                                                          allGoals[index]
+                                                                              [
+                                                                              'name'],
+                                                                    )));
+                                                              } else {
+                                                                print("CON 1");
+                                                                print(
+                                                                    "${allGoals[index]['color']}");
+                                                                // ignore: use_build_context_synchronously
+                                                                Navigator.push(
+                                                                    context,
+                                                                    FadePageRoute(
+                                                                        page:
+                                                                            const menu_behaviour()));
+                                                              }
+                                                            },
+                                                            child: Center(
+                                                                child:
+                                                                    align_circles(
+                                                              asset_1: allGoals[index]
+                                                                              [
+                                                                              'userGoal']
+                                                                          [
+                                                                          'color'] ==
+                                                                      1
+                                                                  ? "assets/images/red_gradient.webp"
+                                                                  : allGoals[index]['userGoal']
+                                                                              [
+                                                                              'color'] ==
+                                                                          2
+                                                                      ? 'assets/images/orange_moon.webp'
+                                                                      : allGoals[index]['userGoal']['color'] ==
+                                                                              3
+                                                                          ? "assets/images/lightGrey_gradient.webp"
+                                                                          : allGoals[index]['userGoal']['color'] == 4
+                                                                              ? "assets/images/lightBlue_gradient.webp"
+                                                                              : allGoals[index]['userGoal']['color'] == 5
+                                                                                  ? "assets/images/medBlue_gradient.webp"
+                                                                                  : allGoals[index]['userGoal']['color'] == 6
+                                                                                      ? "assets/images/Blue_gradient.webp"
+                                                                                      : 'assets/images/orange_moon.webp',
+                                                              s_circle_text:
+                                                                  allGoals[
+                                                                          index]
+                                                                      ['name'],
+                                                              asset_2: allGoals[
+                                                                              index]
+                                                                          [
+                                                                          'recordingStatusTime2'] ==
+                                                                      "missed"
+                                                                  ? allGoals[index]
+                                                                              [
+                                                                              'color'] ==
+                                                                          1
+                                                                      ? 'assets/images/Missed_3.webp'
+                                                                      : allGoals[index]['color'] ==
+                                                                              2
+                                                                          ? 'assets/images/Missed_1.webp'
+                                                                          : allGoals[index]['color'] == 3
+                                                                              ? "assets/images/Missed_2.webp"
+                                                                              : allGoals[index]['color'] == 4
+                                                                                  ? "assets/images/Missed_4.webp"
+                                                                                  : allGoals[index]['color'] == 5
+                                                                                      ? "assets/images/Missed_4.webp"
+                                                                                      : 'assets/images/Missed_2.webp'
+                                                                  : allGoals[index]['recordingStatusTime2'] == "completed"
+                                                                      ? allGoals[index]['color'] == 1
+                                                                          ? "assets/images/Practice_Completed_1.webp"
+                                                                          : allGoals[index]['color'] == 2
+                                                                              ? 'assets/images/Practice_Completed_2.webp'
+                                                                              : allGoals[index]['color'] == 3
+                                                                                  ? "assets/images/Practice_Completed_3.webp"
+                                                                                  : allGoals[index]['color'] == 4
+                                                                                      ? "assets/images/Practice_Completed_4.webp"
+                                                                                      : allGoals[index]['color'] == 5
+                                                                                          ? "assets/images/Practice_Completed_4.webp"
+                                                                                          : 'assets/images/Practice_Completed_2.webp'
+                                                                      : allGoals[index]['color'] == 1
+                                                                          ? "assets/images/Ellipse orange_wb.webp"
+                                                                          : allGoals[index]['color'] == 2
+                                                                              ? 'assets/images/Ellipse 158_wb.webp'
+                                                                              : allGoals[index]['color'] == 3
+                                                                                  ? "assets/images/Ellipse 157_wb.webp"
+                                                                                  : allGoals[index]['color'] == 4
+                                                                                      ? "assets/images/Ellipse light-blue_wb.webp"
+                                                                                      : allGoals[index]['color'] == 5
+                                                                                          ? "assets/images/Ellipse blue_wb.webp"
+                                                                                          : 'assets/images/Ellipse 158_wb.webp',
+                                                              head_text: allGoals[
+                                                                          index]
+                                                                      [
+                                                                      'userGoal']
+                                                                  ['name'],
+                                                              body_text: allGoals[
+                                                                          index]
+                                                                      [
+                                                                      'userGoal']
+                                                                  [
+                                                                  'identityStatement'][0]['text'],
+                                                              body_text_color:
+                                                                  0xff5B74A6,
+                                                              head_text_color:
+                                                                  0xff5B74A6,
+                                                              body_text_size:
+                                                                  AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      1.6,
+                                                              head_text_size:
+                                                                  AppDimensions
+                                                                          .height10(
+                                                                              context) *
+                                                                      2.0,
+                                                              enable_icon:
+                                                                  widget.missed
+                                                                      ? false
+                                                                      : true,
+                                                              is_right: false,
+                                                              s_circle_text_col:
+                                                                  allGoals[index]
+                                                                              [
+                                                                              'recordingStatusTime2'] ==
+                                                                          "missed"
+                                                                      ? 0xffFD6727
+                                                                      : 0xFFFBFBFB,
+                                                            )),
+                                                          ),
+                                                          SizedBox(
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                3.0,
+                                                          )
+                                                        ],
+                                                      )
+                                                    ],
+                                                  )
+                                                : Container()
                                           ],
                                         );
                                       })),
@@ -1189,7 +1582,8 @@ class _view_goalsState extends State<view_goals> {
                                                                 context) *
                                                             1.4,
                                                     fontWeight: FontWeight.w400,
-                                                    color: Color(0xff5B74A6)),
+                                                    color: const Color(
+                                                        0xff5B74A6)),
                                               ),
                                               Container(
                                                 height: AppDimensions.height10(
@@ -1434,7 +1828,8 @@ class _view_goalsState extends State<view_goals> {
                                                           1.4,
                                                       fontWeight:
                                                           FontWeight.w400,
-                                                      color: Color(0xff5B74A6)),
+                                                      color: const Color(
+                                                          0xff5B74A6)),
                                                 ),
                                                 Container(
                                                   height:

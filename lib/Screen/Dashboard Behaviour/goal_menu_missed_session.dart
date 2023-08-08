@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/captureHurdles/captureHurdles_whatHurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -8,12 +9,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/menu_buttons.dart';
 import '../../utils/app_dimensions.dart';
+import '../Goal Evaluation/practice_assesment_history.dart';
+import '../Goal Evaluation/practice_progress.dart';
+import '../Goal Evaluation/practice_score.dart';
+import '../Goal Evaluation/progress_report.dart';
+import '../ReviewPractice/practiceReview.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class missed_Menu extends StatefulWidget {
+  final String pracName;
   const missed_Menu({
     super.key,
+    required this.pracName,
   });
 
   @override
@@ -218,8 +226,13 @@ class _missed_MenuState extends State<missed_Menu> {
 
               AnimatedScaleButton(
                 onTap: () {
-                  Navigator.push(context,
-                      FadePageRoute(page: const view_goals(missed: false)));
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: emotions(
+                              summary: false,
+                              pracName: widget.pracName,
+                              record: false)));
                 },
                 child: Container(
                   width: AppDimensions.height10(context) * 9.36,
@@ -375,7 +388,12 @@ class _missed_MenuState extends State<missed_Menu> {
                           Column(
                             children: [
                               AnimatedScaleButton(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const progress_report()));
+                                },
                                 child: Container(
                                   margin: EdgeInsets.only(
                                       bottom: AppDimensions.height10(context) *
@@ -392,7 +410,13 @@ class _missed_MenuState extends State<missed_Menu> {
                                 ),
                               ),
                               AnimatedScaleButton(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page:
+                                              const prac_score(saved: false)));
+                                },
                                 child: const button_feilds(
                                   feild_text: 'Evaluation level ',
                                   icon_viible: true,
@@ -426,7 +450,10 @@ class _missed_MenuState extends State<missed_Menu> {
                 child: Column(
                   children: [
                     AnimatedScaleButton(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context,
+                            FadePageRoute(page: const practice_progress()));
+                      },
                       child: const button_feilds(
                         feild_text: 'View practice progress',
                         icon_viible: true,
@@ -442,7 +469,10 @@ class _missed_MenuState extends State<missed_Menu> {
                           bottom: AppDimensions.height10(context) * 1.0,
                           top: AppDimensions.height10(context) * 1.0),
                       child: AnimatedScaleButton(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context,
+                              FadePageRoute(page: const PracticeReview()));
+                        },
                         child: const button_feilds(
                           feild_text: 'View practice settings',
                           icon_viible: true,
@@ -458,7 +488,10 @@ class _missed_MenuState extends State<missed_Menu> {
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 1.0),
                       child: AnimatedScaleButton(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context,
+                              FadePageRoute(page: const practice_assesment()));
+                        },
                         child: const button_feilds(
                           feild_text: 'Veiw upcoming schedules',
                           icon_viible: true,

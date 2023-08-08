@@ -27,6 +27,7 @@ class new_progress_score extends StatefulWidget {
 
 class _new_progress_scoreState extends State<new_progress_score> {
   int _selectedIndex = 0;
+  int datesIndex = 0;
   final List<String> _statements = [
     '01 Jan 23 to 01 Feb 23 (2/5) ',
     '01 Dec 22 to 01 Jan 23 (-/5)  ',
@@ -34,6 +35,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
     '01 Oct 22 to 01 Nov 22 (3/5)  ',
     '01 Sep 22 to 01 Oct 22 (2/5)  ',
   ];
+  List<String> _dates = [];
   String activity_duration = '01 Jan 23 to 01 Feb 23 ';
   String _selected_activity = '';
   int index_color = 0;
@@ -55,18 +57,24 @@ class _new_progress_scoreState extends State<new_progress_score> {
   }
 
   void _fetchGoalDetails() {
-    AdminGoal.getUserGoal().then((response) async {
+    AdminGoal.getUserActiveGoal().then((response) async {
       final SharedPreferences prefs = await _prefs;
-
+      print(response[0]["goalLevel"]);
       if (response.length != 0) {
         setState(() {
-          goalDetails = response;
+          goalDetails = response[0];
         });
-        print("======================");
+        print(response[0]['goalEvaluations'].length);
+        print("ACTIVE DAY");
+        print(response[0]["goalEvaluations"][0]['activedate']);
+        for (int i = 0; i <= response[0]['goalEvaluations'].length; i++) {
+          print(response[0]["goalEvaluations"][i]['activedate'].toString());
+          _dates.add(" ${response[0]["goalEvaluations"][i]['activedate']}");
+        }
+        print("======================$_dates===============");
 
-        print(response["goalEvaluations"][0]["id"]);
-        var evaluationId =
-            prefs.setInt('goal_eval_id', response["goalEvaluations"][0]["id"]);
+        var evaluationId = prefs.setInt(
+            'goal_eval_id', response[0]["goalEvaluations"][0]["id"]);
         loadData();
         print(response);
       } else {
@@ -242,43 +250,41 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               ),
                                               GestureDetector(
                                                 onTap: () {
-                                                  if (_selectedIndex == 2) {
-                                                    setState(() {
-                                                      color_fill_1 = false;
-                                                      color_fill_2 = false;
-                                                      goal_level = 2;
-                                                    });
-                                                  } else if (_selectedIndex ==
-                                                      1) {
-                                                    color_fill_1 = true;
-                                                    color_fill_2 = true;
-                                                    goal_level = 0;
-                                                  } else if (_selectedIndex ==
-                                                      0) {
-                                                    color_fill_1 = true;
-                                                    color_fill_2 = true;
-                                                    goal_level = 0;
-                                                  } else if (_selectedIndex ==
-                                                      4) {
-                                                    color_fill_1 = false;
-                                                    color_fill_2 = true;
-                                                    goal_level = 0;
-                                                  } else {
-                                                    setState(() {
-                                                      goal_level = 0;
-                                                    });
-                                                  }
+                                                  // if (_selectedIndex == 2) {
+                                                  //   setState(() {
+                                                  //     color_fill_1 = false;
+                                                  //     color_fill_2 = false;
+                                                  //     goal_level = 2;
+                                                  //   });
+                                                  // } else if (_selectedIndex ==
+                                                  //     1) {
+                                                  //   color_fill_1 = true;
+                                                  //   color_fill_2 = true;
+                                                  //   goal_level = 0;
+                                                  // } else if (_selectedIndex ==
+                                                  //     0) {
+                                                  //   color_fill_1 = true;
+                                                  //   color_fill_2 = true;
+                                                  //   goal_level = 0;
+                                                  // } else if (_selectedIndex ==
+                                                  //     4) {
+                                                  //   color_fill_1 = false;
+                                                  //   color_fill_2 = true;
+                                                  //   goal_level = 0;
+                                                  // } else {
+                                                  //   setState(() {
+                                                  //     goal_level = 0;
+                                                  //   });
+                                                  // }
                                                   setState(() {
                                                     //activity_duration = _selected_activity;
                                                     activity_duration =
-                                                        _statements[
-                                                            _selectedIndex];
+                                                        _dates[_selectedIndex];
                                                     index_color =
                                                         _selectedIndex;
                                                   });
                                                   Navigator.of(context).pop(
-                                                      _statements[
-                                                          _selectedIndex]);
+                                                      _dates[_selectedIndex]);
                                                 },
                                                 child: Container(
                                                   width: AppDimensions.height10(
@@ -317,7 +323,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             magnification: 1.2,
                                             useMagnifier:
                                                 true, // Set the height of each statement
-                                            children: _statements
+                                            children: _dates
                                                 .map((statement) =>
                                                     Text(statement,
                                                         style: TextStyle(
@@ -746,7 +752,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       widget.premium == false
                                   ? true
                                   : goalDetails['goalEvaluations'][0]['YourWay']
-                                              ['level'] ==
+                                          //['level']
+                                          ==
                                           null
                                       ? true
                                       : false,
@@ -758,7 +765,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                           null
                                       ? 0xFF
                                       : goalDetails['goalEvaluations'][0]
-                                                  ['YourWay']['level'] ==
+                                                  ['YourWay']
+                                              //['level']
+                                              ==
                                               null
                                           ? 0xFF
                                           : 0xFFFBFBFB,
@@ -766,7 +775,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       widget.premium == false
                                   ? 0xFFFBFBFB
                                   : goalDetails['goalEvaluations'][0]['YourWay']
-                                              ['level'] ==
+                                          //['level']
+                                          ==
                                           null
                                       ? 0xFFFBFBFB
                                       : 0xFF646464,
@@ -774,8 +784,12 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       widget.premium == false
                                   ? "0"
                                   : goalDetails['goalEvaluations'][0]['YourWay']
-                                              ['level'] ==
-                                          null
+                                          .toString()
+                                          .isEmpty
+                                      //
+                                      // ['level']
+                                      // ==
+                                      // null
                                       ? "0"
                                       : goalDetails['goalEvaluations'][0]
                                               ['YourWay']['level']
@@ -808,9 +822,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       widget.premium == false
                                   ? true
                                   : goalDetails['goalEvaluations'][0]
-                                                  ['newIdentity']['level']
-                                              .toString() ==
-                                          "null"
+                                              ['newIdentity']
+                                          //['level']
+                                          ==
+                                          null
                                       ? true
                                       : false,
                               colors: goalDetails['goalLevel'] == 0 ||
@@ -825,7 +840,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       widget.premium == false
                                   ? 0xFFFBFBFB
                                   : goalDetails['goalEvaluations'][0]
-                                              ['newIdentity']['level'] ==
+                                              ['newIdentity']
+                                          // ['level']
+                                          ==
                                           null
                                       ? 0xFFFBFBFB
                                       : 0xFF646464,
@@ -833,7 +850,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       widget.premium == false
                                   ? "0"
                                   : goalDetails['goalEvaluations'][0]
-                                              ['newIdentity']['level'] ==
+                                              ['newIdentity']
+                                          //['level']
+                                          ==
                                           null
                                       ? "0"
                                       : goalDetails['goalEvaluations'][0]
@@ -863,8 +882,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                 goal_: goalDetails['goalLevel'] == 0 ||
                                         widget.premium == false
                                     ? "0"
-                                    : goalDetails['goalEvaluations'][0]['visualisingYourSelf']
-                                                ['level'] ==
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['visualisingYourSelf']
+                                            //['level']
+                                            ==
                                             null
                                         ? "0"
                                         : goalDetails['goalEvaluations'][0]
@@ -874,8 +895,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         widget.premium == false
                                     ? true
                                     : goalDetails['goalEvaluations'][0]
-                                                    ['visualisingYourSelf']
-                                                ['level'] ==
+                                                ['visualisingYourSelf']
+                                            //['level']
+                                            ==
                                             null
                                         ? true
                                         : false,
@@ -883,13 +905,20 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         widget.premium == false
                                     ? 0xFF
                                     : goalDetails['goalEvaluations'][0]
-                                                ['visualisingYourSelf']['level'] ==
+                                                ['visualisingYourSelf']
+                                            //['level']
+                                            ==
                                             null
                                         ? 0xFF
                                         : 0xFFFBFBFB,
-                                text_color: goalDetails['goalLevel'] == 0 || widget.premium == false
+                                text_color: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
                                     ? 0xFFFBFBFB
-                                    : goalDetails['goalEvaluations'][0]['visualisingYourSelf']['level'] == null
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['visualisingYourSelf']
+                                            //['level']
+                                            ==
+                                            null
                                         ? 0xFFFBFBFB
                                         : 0xFF646464,
                                 margin_top: 1.0),
@@ -914,7 +943,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                 border: goalDetails['goalLevel'] == 0 ||
                                         widget.premium == false
                                     ? true
-                                    : goalDetails['goalEvaluations'][0]['impactOnYourSelf']['level'] ==
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['impactOnYourSelf']
+                                            //['level']
+                                            ==
                                             null
                                         ? true
                                         : false,
@@ -922,7 +954,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         widget.premium == false
                                     ? 0xFF
                                     : goalDetails['goalEvaluations'][0]
-                                                ['impactOnYourSelf']['level'] ==
+                                                ['impactOnYourSelf']
+                                            //['level']
+                                            ==
                                             null
                                         ? 0xFF
                                         : 0xFFFBFBFB,
@@ -930,7 +964,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         widget.premium == false
                                     ? 0xFFFBFBFB
                                     : goalDetails['goalEvaluations'][0]
-                                                ['impactOnYourSelf']['level'] ==
+                                                ['impactOnYourSelf']
+                                            //['level']
+                                            ==
                                             null
                                         ? 0xFFFBFBFB
                                         : 0xFF646464,
@@ -938,7 +974,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                         widget.premium == false
                                     ? "0"
                                     : goalDetails['goalEvaluations'][0]
-                                                ['impactOnYourSelf']['level'] ==
+                                                ['impactOnYourSelf']
+                                            // ['level']
+                                            ==
                                             null
                                         ? "0"
                                         : goalDetails['goalEvaluations'][0]

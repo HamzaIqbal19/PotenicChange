@@ -15,8 +15,11 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class practice_summary extends StatefulWidget {
   const practice_summary({super.key});
@@ -29,6 +32,7 @@ class _practice_summaryState extends State<practice_summary> {
   String date_time = 'Now';
   String time = 'Am';
   String day = '';
+  var behaviour_route;
 
   String goalName = "";
   String identity = "";
@@ -44,6 +48,14 @@ class _practice_summaryState extends State<practice_summary> {
   String EmotionFeedback = "";
   String SessionFeedBack = "";
   var details;
+
+  void _fetchRoute() async {
+    final SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      behaviour_route = prefs.getBool('behaviour_route');
+    });
+  }
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -134,6 +146,7 @@ class _practice_summaryState extends State<practice_summary> {
   initState() {
     super.initState();
     recording();
+    _fetchRoute();
     print("Details++++++++++++++++++++$details");
     _fetchGoalNames();
     _fetchPracticeNames();
@@ -150,7 +163,22 @@ class _practice_summaryState extends State<practice_summary> {
         leading: Center(
           child: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                if (behaviour_route == false) {
+                  Navigator.pushReplacement(
+                      context,
+                      FadePageRoute(
+                          page: const dashBoard(
+                        saved: false,
+                        helpful_tips: false,
+                        membership: true,
+                        dashboard_ctrl: false,
+                        cancel: false,
+                        trial: false,
+                      )));
+                } else {
+                  Navigator.push(context,
+                      FadePageRoute(page: const view_goals(missed: false)));
+                }
               },
               icon: Image.asset(
                 'assets/images/Back.webp',
@@ -219,19 +247,25 @@ class _practice_summaryState extends State<practice_summary> {
                                 color: const Color(0xFF007AFF),
                                 child: TextButton(
                                   onPressed: () {
-                                    // if (widget.summary == false) {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => const dashBoard(
-                                                  saved: false,
-                                                  helpful_tips: false,
-                                                  membership: true,
-                                                  dashboard_ctrl: false,
-                                                  cancel: false,
-                                                  trial: false,
-                                                )));
-                                    //}
+                                    if (behaviour_route == false) {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          FadePageRoute(
+                                              page: const dashBoard(
+                                            saved: false,
+                                            helpful_tips: false,
+                                            membership: true,
+                                            dashboard_ctrl: false,
+                                            cancel: false,
+                                            trial: false,
+                                          )));
+                                    } else {
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const view_goals(
+                                                  missed: false)));
+                                    }
                                   },
                                   child: const Text(
                                     'Close',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_assesment_history.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
@@ -410,13 +411,20 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                 color: const Color(0xFF007AFF),
                                                 child: TextButton(
                                                   onPressed: () {
-                                                    Navigator.push(
-                                                        context,
-                                                        FadePageRoute(
-                                                            page:
-                                                                const view_goals(
-                                                          missed: true,
-                                                        )));
+                                                    RecordingPractice()
+                                                        .updateRecordingStatus(
+                                                            "missed")
+                                                        .then((response) {
+                                                      if (response == true) {
+                                                        Navigator.push(
+                                                            context,
+                                                            FadePageRoute(
+                                                                page:
+                                                                    const view_goals(
+                                                              missed: false,
+                                                            )));
+                                                      }
+                                                    });
                                                   },
                                                   child: Text(
                                                     'Yes',

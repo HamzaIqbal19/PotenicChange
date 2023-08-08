@@ -375,6 +375,43 @@ class PracticeGoalApi {
     }
   }
 
+  Future updateUserPractice_GoalStatus(status) async {
+    final SharedPreferences prefs = await _prefs;
+    var Accestoken = prefs.getString("usertoken");
+    var prac_num = prefs.getInt("prac_num");
+
+    print("request: Update");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$Accestoken'
+    };
+    var body = jsonEncode({"practiceStatus": "$status"});
+
+    var request = await client.put(
+        Uri.parse(
+            '${URL.BASE_URL}api/userPractice/active-user-practice-goal-by-id/$prac_num'),
+        headers: headers,
+        body: body);
+    print("request: Update");
+    print('=====>$request.statusCode');
+    print(request.body);
+    if (request.statusCode == 200) {
+      print("request: Update successful");
+      var jsonData = jsonDecode(request.body);
+      print("Result: $jsonData");
+      return true;
+    } else if (request.statusCode == 400) {
+      print("Maximum goal achieved");
+      print('STATUSCODE: ${request.statusCode}');
+
+      return request.statusCode;
+    } else {
+      print('STATUSCODE: ${request.statusCode}');
+      print('Update Failed');
+      return false;
+    }
+  }
+
   static Future getUserPracticeById() async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");

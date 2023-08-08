@@ -194,7 +194,7 @@ class _VisualisingState extends State<Visualising> {
             context,
             FadePageRoute2(
               true,
-              exitPage: Visualising(
+              exitPage: const Visualising(
                 comingFromEditScreen: false,
               ),
               enterPage: const GoalFinished(),
@@ -356,7 +356,7 @@ class _VisualisingState extends State<Visualising> {
                                       context,
                                       FadePageRoute2(
                                         true,
-                                        exitPage: Visualising(
+                                        exitPage: const Visualising(
                                           comingFromEditScreen: false,
                                         ),
                                         enterPage:
@@ -417,8 +417,8 @@ class _VisualisingState extends State<Visualising> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: widget.comingFromEditScreen
-                    ? AssetImage("assets/images/GoalReviewBg.webp")
-                    : AssetImage("assets/images/Categories.webp"),
+                    ? const AssetImage("assets/images/GoalReviewBg.webp")
+                    : const AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -440,7 +440,7 @@ class _VisualisingState extends State<Visualising> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
+                                  ? const Color(0xFF437296)
                                   : Colors.white,
                               fontSize: AppDimensions.height10(context) * 1.8,
                             ),
@@ -459,7 +459,7 @@ class _VisualisingState extends State<Visualising> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
+                                  ? const Color(0xFF437296)
                                   : Colors.white,
                               fontSize: AppDimensions.height10(context) * 2.2,
                             ),
@@ -496,7 +496,7 @@ class _VisualisingState extends State<Visualising> {
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
+                                  ? const Color(0xFF437296)
                                   : Colors.white,
                               fontSize: AppDimensions.height10(context) * 2.8,
                             ),
@@ -518,8 +518,8 @@ class _VisualisingState extends State<Visualising> {
                                 fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w600,
                                 color: widget.comingFromEditScreen
-                                    ? Color(0xFF437296)
-                                    : Color(0xFFFFFFFF)),
+                                    ? const Color(0xFF437296)
+                                    : const Color(0xFFFFFFFF)),
                           ),
                         ),
                       ),
@@ -643,7 +643,7 @@ class _VisualisingState extends State<Visualising> {
                                   ]);
                                 } else {
                                   if (index >= goalVisualising.length) {
-                                    return Center();
+                                    return const Center();
                                   }
                                   return Column(children: [
                                     inner_text(
@@ -981,7 +981,7 @@ class _VisualisingState extends State<Visualising> {
                                       ? BoxDecoration(
                                           color: Colors.white,
                                           border: Border.all(
-                                              color: Color(0xffFA9934)),
+                                              color: const Color(0xffFA9934)),
                                           borderRadius: const BorderRadius.all(
                                               Radius.circular(50.0)),
                                         )
@@ -1005,8 +1005,8 @@ class _VisualisingState extends State<Visualising> {
                                           fontWeight: FontWeight.w600,
                                           color:
                                               goalVisualising[0]['text'] != ""
-                                                  ? Color(0xffFA9934)
-                                                  : Color(0xff282828),
+                                                  ? const Color(0xffFA9934)
+                                                  : const Color(0xff282828),
                                           fontSize:
                                               AppDimensions.height10(context) *
                                                   1.8),

@@ -8,10 +8,13 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import '../PracticeGoal/Create Practice.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class multiple_goal_inactive extends StatefulWidget {
   final bool isActive;
@@ -90,10 +93,11 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
   }
 
   void _fetchGoalDetails() {
-    AdminGoal.getUserGoal().then((response) {
+    AdminGoal.getUserActiveGoal().then((response) {
+      print(response);
       if (response.length != 0) {
         setState(() {
-          goalDetails = response;
+          goalDetails = response[0];
         });
         loadData();
         print(response);
@@ -298,7 +302,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       top: AppDimensions.height10(context) *
                                           0.8),
                                   child: Text(
-                                    '21',
+                                    goalDetails['goalTotalActiveDays']
+                                        .toString(),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
@@ -344,7 +349,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        '2',
+                                        goalDetails['goalLevel'] == 0
+                                            ? '-'
+                                            : goalDetails['goalLevel']
+                                                .toString(),
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: AppDimensions.height10(
@@ -400,8 +408,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           itemCount: goalDetails['userPractices'].length,
                           itemBuilder: ((context, index) {
                             bool status = goalDetails['userPractices'][index]
-                                    ['status'] ??
-                                false;
+                                        ['status'] ==
+                                    'Active'
+                                ? true
+                                : false;
                             bool color = status;
                             return Container(
                               //  width: AppDimensions.height10(context) * 41.8,
@@ -627,8 +637,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             );
                           })),
                     ),
-                    GestureDetector(
-                      onTap: () {
+                    AnimatedScaleButton(
+                      onTap: () async {
+                        final SharedPreferences prefs = await _prefs;
+                        var goalName =
+                            prefs.setString('goalName', goalDetails['name']);
+                        var goalId =
+                            prefs.setInt('goal_num', goalDetails['id']);
                         Navigator.push(context,
                             FadePageRoute(page: const CreatePractice()));
                       },
@@ -718,7 +733,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                 ),
               ),
               widget.isActive
-                  ? GestureDetector(
+                  ? AnimatedScaleButton(
                       onTap: () => showAnimatedDialog(
                           animationType: DialogTransitionType.fadeScale,
                           curve: Curves.easeInOut,

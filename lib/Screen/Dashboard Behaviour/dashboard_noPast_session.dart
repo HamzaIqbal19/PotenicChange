@@ -1121,7 +1121,9 @@ class _no_past_sessionState extends State<no_past_session> {
                                                           context,
                                                           FadePageRoute(
                                                               page:
-                                                                  const missed_Menu()));
+                                                                  missed_Menu(pracName:  allGoals[index]
+                                                                              [
+                                                                              'name'],)));
                                                     } else {
                                                       print("CON 1");
                                                       print(

@@ -91,6 +91,8 @@ class align_circles extends StatelessWidget {
                           child: Text(
                             head_text,
                             textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
                             style: TextStyle(
                                 fontSize: head_text_size,
                                 height: AppDimensions.height10(context) * 0.15,
@@ -102,14 +104,20 @@ class align_circles extends StatelessWidget {
                     )),
                 Align(
                   alignment: const Alignment(0, -0.17),
-                  child: Text(body_text,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          height: AppDimensions.height10(context) * 0.15,
-                          fontSize: body_text_size,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.w400,
-                          color: Color(body_text_color))),
+                  child: Container(
+                    height: AppDimensions.height10(context) * 4.0,
+                    width: AppDimensions.height10(context) * 22.0,
+                    child: Text(body_text,
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            height: AppDimensions.height10(context) * 0.15,
+                            fontSize: body_text_size,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.w400,
+                            color: Color(body_text_color))),
+                  ),
                 )
               ],
             ),
@@ -133,15 +141,20 @@ class align_circles extends StatelessWidget {
                   horizontal: AppDimensions.height10(context),
                 ),
                 child: Center(
-                    child: Text(
-                  s_circle_text,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color(s_circle_text_col),
-                      fontSize: AppDimensions.height10(context) * 1.8,
-                      fontWeight: FontWeight.w500),
+                    child: SizedBox(
+                  //height: AppDimensions.height10(context) * 6.064,
+                  width: AppDimensions.height10(context) * 11.225,
+                  child: Text(
+                    s_circle_text,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(s_circle_text_col),
+                        height: AppDimensions.height10(context) * 0.14,
+                        fontSize: AppDimensions.height10(context) * 1.8,
+                        fontWeight: FontWeight.w500),
+                  ),
                 )),
               ),
             ]),
