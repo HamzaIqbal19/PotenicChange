@@ -196,7 +196,9 @@ class _your_impactState extends State<your_impact> {
                                         AppDimensions.height10(context) * 4.4,
                                     width: double.infinity,
                                     child: TextButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
                                       child: Text(
                                         'Cancel',
                                         style: TextStyle(
@@ -1559,6 +1561,10 @@ class _your_impactState extends State<your_impact> {
                                                             int level =
                                                                 (select_item! +
                                                                     select_item_2!);
+                                                            print(level);
+                                                            print(select_item!);
+                                                            print(
+                                                                select_item_2!);
                                                             goalEvaluationApi()
                                                                 .updateEvaluation(
                                                               "impactOnYourSelf",

@@ -66,9 +66,7 @@ class _endofSessionState extends State<endofSession> {
       emotionsNotes = prefs.getString('emotionsFeedback');
       timeSlot = prefs.getString('recording_Time1');
       behaviour_route = prefs.getBool('behaviour_route');
-      selected_date = prefs.getString('record_date') == null
-          ? ''
-          : prefs.getString('record_date');
+      selected_date = prefs.getString('record_date');
     });
     feedback.text = prefs.getString('endSessionFeedback')!;
   }
@@ -768,9 +766,9 @@ class _endofSessionState extends State<endofSession> {
                               prac_num,
                               '$sessionEnd',
                               timeSlot.toString(),
-                              selected_date == ' '
-                                  ? '2023-08-07'
-                                  : selected_date,
+                              selected_date.toString().isEmpty
+                                  ? '2023-08-08'
+                                  : selected_date.toString(),
                             )
                                 .then((response) {
                               if (response == true) {

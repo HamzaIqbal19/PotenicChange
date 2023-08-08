@@ -10,9 +10,12 @@ import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
 import '../Recording Practice Session/recordPracticeMenu.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class goal_menu_inactive extends StatefulWidget {
   final bool isActive;
@@ -44,11 +47,16 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   }
 
   void _fetchGoalDetails() {
-    AdminGoal.getUserActiveGoal().then((response) {
+    AdminGoal.getUserActiveGoal().then((response) async {
+      final SharedPreferences prefs = await _prefs;
+
       if (response.length != 0) {
         setState(() {
           goalDetails = response[0];
         });
+        var evalId = prefs.setInt(
+            'goal_eval_id', response[0]['goalEvaluations'][0]['id']);
+
         loadData();
         print(response);
       } else {
@@ -506,24 +514,11 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                     ),
                     AnimatedScaleButton(
                       onTap: () {
-                        widget.isActive
-                            ? widget.goal_evaluation
-                                ? Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const multiple_goal_inactive(
-                                            isActive: true)))
-                                : Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const goal_inactive(
-                                            isActive: true)))
-                            : Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const goal_inactive(
-                                  isActive: false,
-                                )));
+                        Navigator.push(
+                            context,
+                            FadePageRoute(
+                                page: const multiple_goal_inactive(
+                                    isActive: true)));
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 37.4,
@@ -621,10 +616,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ? Container(
                             height: AppDimensions.height10(context) * 18,
                             // width: AppDimensions.height10(context) * 45.4,
-                            // margin: EdgeInsets.only(
-                            //   top: AppDimensions.height10(context) * 3.0,
-                            //   //  left: AppDimensions.height10(context) * 2.6
-                            // ),
+                            margin: EdgeInsets.only(
+                                // top: AppDimensions.height10(context) * 0.2,
+                                // bottom: AppDimensions.height10(context) * 0.2,
+                                left: AppDimensions.height10(context) * 1.7),
                             // color: Colors.amber,
                             child: ListView.builder(
                                 // shrinkWrap: true,

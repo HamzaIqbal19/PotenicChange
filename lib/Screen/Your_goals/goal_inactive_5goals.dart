@@ -408,8 +408,10 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           itemCount: goalDetails['userPractices'].length,
                           itemBuilder: ((context, index) {
                             bool status = goalDetails['userPractices'][index]
-                                    ['status'] ??
-                                false;
+                                        ['status'] ==
+                                    'Active'
+                                ? true
+                                : false;
                             bool color = status;
                             return Container(
                               //  width: AppDimensions.height10(context) * 41.8,

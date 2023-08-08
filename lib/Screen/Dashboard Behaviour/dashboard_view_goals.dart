@@ -768,6 +768,11 @@ class _view_goalsState extends State<view_goals> {
                                                                 'dash_pracName',
                                                                 allGoals[index]
                                                                     ['name']);
+                                                        var pracId =
+                                                            prefs.setInt(
+                                                                'prac_num',
+                                                                allGoals[index]
+                                                                    ['id']);
                                                         var time = prefs.setString(
                                                             'recording_Time1',
                                                             allGoals[index]
@@ -845,9 +850,13 @@ class _view_goalsState extends State<view_goals> {
                                                               context,
                                                               FadePageRoute(
                                                                   page:
-                                                                       missed_Menu(pracName:  allGoals[index]
-                                                                              [
-                                                                              'name'],)));
+                                                                      missed_Menu(
+                                                                pracName:
+                                                                    allGoals[
+                                                                            index]
+                                                                        [
+                                                                        'name'],
+                                                              )));
                                                         } else {
                                                           print("CON 1");
                                                           print(
@@ -1168,9 +1177,12 @@ class _view_goalsState extends State<view_goals> {
                                                                     context,
                                                                     FadePageRoute(
                                                                         page:
-                                                                           missed_Menu(pracName:  allGoals[index]
+                                                                            missed_Menu(
+                                                                      pracName:
+                                                                          allGoals[index]
                                                                               [
-                                                                              'name'],)));
+                                                                              'name'],
+                                                                    )));
                                                               } else {
                                                                 print("CON 1");
                                                                 print(

@@ -26,6 +26,7 @@ class progress_report extends StatefulWidget {
 
 class _progress_reportState extends State<progress_report> {
   bool Loader = true;
+  bool noData = false;
   var goalDetails;
   var report;
   Map<String, dynamic> practiceProgress = {};
@@ -70,11 +71,19 @@ class _progress_reportState extends State<progress_report> {
 
   void getReport() {
     PracticeEvaluation.getUserPracticeReportId(days).then((response) {
-      if (response.length != 0) {
+      if (response == false) {
+        print(response);
+        setState(() {
+          noData = true;
+        });
+        loadData();
+      } else if (response.length != 0) {
         print('===============================');
         setState(() {
           report = response['report'];
         });
+
+        loadData();
         response['report']["howPracticeGoing"].forEach((date, value) {
           if (value is int) {
             if (value == 1) {
@@ -108,7 +117,6 @@ class _progress_reportState extends State<progress_report> {
           }
         });
 
-        loadData();
         practiceProgress = json.decode(response['report']['practiceProgress']);
         print('Report===============================');
 
@@ -248,10 +256,13 @@ class _progress_reportState extends State<progress_report> {
                                   const BoxDecoration(color: Color(0xFFFFFFFF)),
                             ),
                             SizedBox(
-                              width: AppDimensions.height10(context) * 10.1,
+                              // width: AppDimensions.height10(context) * 10.1,
                               height: AppDimensions.height10(context) * 2.4,
                               child: Text(
-                                report['practice']["name"],
+                                noData == true
+                                    ? 'No data found'
+                                    : report['practice']["name"],
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensions.height10(context) * 2.0,
@@ -302,7 +313,9 @@ class _progress_reportState extends State<progress_report> {
                           top: AppDimensions.height10(context) * 0.5),
                       child: Text(
                         //we will give duration of 20 days
-                        'from ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
+                        noData == true
+                            ? 'No data found'
+                            : 'from ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)} to ${report["practice"]["practiceActiveDate"].toString().substring(0, 10)}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: AppDimensions.height10(context) * 1.6,
@@ -371,7 +384,10 @@ class _progress_reportState extends State<progress_report> {
                                       bottom: AppDimensions.height10(context) *
                                           0.1),
                                   child: Text(
-                                    report['practice']["userGoal"]["name"],
+                                    noData == true
+                                        ? 'No data found'
+                                        : report['practice']["userGoal"]
+                                            ["name"],
                                     textAlign: TextAlign.start,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -387,7 +403,9 @@ class _progress_reportState extends State<progress_report> {
                                   width: AppDimensions.height10(context) * 17.9,
                                   height: AppDimensions.height10(context) * 2.7,
                                   child: Text(
-                                    report['practice']["name"],
+                                    noData == true
+                                        ? 'No data found'
+                                        : report['practice']["name"],
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                         fontSize:
@@ -478,8 +496,11 @@ class _progress_reportState extends State<progress_report> {
                                     ///color: Colors.amber,
                                     child: Center(
                                       child: Text(
-                                        report['practice']["userGoal"]
-                                            ["identityStatement"][0]['text'],
+                                        noData == true
+                                            ? 'No data found'
+                                            : report['practice']["userGoal"]
+                                                    ["identityStatement"][0]
+                                                ['text'],
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontStyle: FontStyle.italic,
@@ -572,8 +593,9 @@ class _progress_reportState extends State<progress_report> {
                           ),
                           Circulardates(
                             size: AppDimensions.height10(context) * 24.0,
-                            outerCircleContainers:
-                                generateCircleEmptyContainers(
+                            outerCircleContainers: noData == true
+                                ? []
+                                : generateCircleEmptyContainers(
                                         context,
                                         20 -
                                             practiceProgress
@@ -609,7 +631,9 @@ class _progress_reportState extends State<progress_report> {
                                               AppDimensions.height10(context) *
                                                   7.7,
                                           child: Text(
-                                            '${practiceProgress.containsValue('completed').toString().length}',
+                                            noData == true
+                                                ? '-'
+                                                : '${practiceProgress.containsValue('completed').toString().length}',
                                             style: TextStyle(
                                                 fontSize:
                                                     AppDimensions.height10(
@@ -706,7 +730,30 @@ class _progress_reportState extends State<progress_report> {
                                       AppDimensions.height10(context) * 2.0)),
                               child: CalendarWithRadioButtons(
                                   status: true,
-                                  dateStatus: report['practiceProgress'])),
+                                  dateStatus: noData == true
+                                      ? {
+                                          "2023-07-18": "completed",
+                                          "2023-07-19": "completed",
+                                          "2023-07-20": "completed",
+                                          "2023-07-21": "completed",
+                                          "2023-07-22": "completed",
+                                          "2023-07-23": "completed",
+                                          "2023-07-24": "completed",
+                                          "2023-07-25": "completed",
+                                          "2023-07-26": "completed",
+                                          "2023-07-27": "completed",
+                                          "2023-07-28": "completed",
+                                          "2023-07-29": "completed",
+                                          "2023-07-30": "completed",
+                                          "2023-07-31": "missed",
+                                          "2023-08-01": "completed",
+                                          "2023-08-02": "completed",
+                                          "2023-08-03": "completed",
+                                          "2023-08-04": "completed",
+                                          "2023-08-05": "completed",
+                                          "2023-08-06": "missed"
+                                        }
+                                      : report['practiceProgress'])),
                         ],
                       ),
                     ),
@@ -1362,9 +1409,10 @@ class _progress_reportState extends State<progress_report> {
                                 text_color: 0xff646464,
                                 feild_text_2: '(',
                                 text_color_2: 0xff8EA1B1,
-                                feild_text_3: report['practice']
-                                        ["practiceLevel"]
-                                    .toString(),
+                                feild_text_3: noData == true
+                                    ? '-'
+                                    : report['practice']["practiceLevel"]
+                                        .toString(),
                                 feild_text_4: '/5)',
                               ),
                             ),

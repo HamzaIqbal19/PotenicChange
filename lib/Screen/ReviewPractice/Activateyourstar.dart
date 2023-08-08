@@ -327,8 +327,8 @@ class _ActivateStarState extends State<ActivateStar> {
                               ),
                               child: AnimatedScaleButton(
                                 onTap: () {
-                                  AdminGoal()
-                                      .updateUserGoalStatus('active')
+                                  PracticeGoalApi()
+                                      .updateUserPractice_GoalStatus('active')
                                       .then((response) {
                                     if (response == true) {
                                       print("Success");

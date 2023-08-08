@@ -177,6 +177,7 @@ class PracticeEvaluation {
   static Future getUserPracticeReportId(days) async {
     final SharedPreferences prefs = await _prefs;
     var Accestoken = prefs.getString("usertoken");
+    var prac_num = prefs.getInt("prac_num");
     // var prac_num = prefs.getInt("prac_score_id");
 
     // print('$prac_num');
@@ -187,15 +188,19 @@ class PracticeEvaluation {
 
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/5?howManyDays=$days'),
+          '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/$prac_num?howManyDays=$days'),
       headers: headers,
     );
     print(response.statusCode);
+    print(prac_num);
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       print("Result:$jsonData");
 
       return response;
+    } else if (response.statusCode == 404) {
+      print('nOT fOUND');
+      return false;
     } else {
       throw Exception('Failed to fetch practice report');
     }

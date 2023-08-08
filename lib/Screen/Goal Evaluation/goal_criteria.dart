@@ -35,6 +35,7 @@ class _your_whyState extends State<your_why> {
     "I’m almost\nthere",
     "I’m definitely\nliving my why"
   ];
+  List<int>? selectedItemIndexesOuter;
   // List<int?> selectedOptions = List.generate(3, (_) => null);
 
   //int? selectedItemIndexOuter; // For the outer list
@@ -44,7 +45,7 @@ class _your_whyState extends State<your_why> {
   bool bt_visible = false;
   bool Loader = true;
   var goalDetails;
-  List<int>? selectedItemIndexesOuter;
+
   final Map<String, dynamic> reasons = {};
   final Map<String, dynamic> level = {};
 
@@ -358,7 +359,8 @@ class _your_whyState extends State<your_why> {
                                   width: AppDimensions.height10(context) * 0.1,
                                   color: const Color(0xFFFFFFFF)),
                               shape: BoxShape.circle,
-                              color: goalDetails['goalLevel'] == 0
+                              color: goalDetails['goalLevel'] == 0 ||
+                                      goalDetails['goalLevel'] == null
                                   ? Colors.transparent
                                   : const Color(0xFFFFFFFF),
                             ),
@@ -387,13 +389,12 @@ class _your_whyState extends State<your_why> {
                                     children: [
                                       Text(
                                         widget.destination == 'reason'
-                                            ? goalDetails['goalEvaluations'][0]
-                                                            ["YourWay"]
+                                            ? goalDetails['goalEvaluations'][0]["YourWay"]
                                                         .toString() ==
                                                     "null"
                                                 ? '-'
                                                 : goalDetails['goalEvaluations']
-                                                        [0]["YourWay"]
+                                                        [0]["YourWay"]['level']
                                                     .toString()
                                             : widget.destination ==
                                                     'identityStatement'
@@ -403,15 +404,15 @@ class _your_whyState extends State<your_why> {
                                                         "null"
                                                     ? '-'
                                                     : goalDetails['goalEvaluations']
-                                                            [0]["newIdentity"]
+                                                                [0]["newIdentity"]
+                                                            ['level']
                                                         .toString()
-                                                : goalDetails['goalEvaluations'][0]["visualisingYourSelf"]
+                                                : goalDetails['goalEvaluations'][0]
+                                                                ["visualisingYourSelf"]
                                                             .toString() ==
                                                         "null"
                                                     ? '-'
-                                                    : goalDetails['goalEvaluations'][0]
-                                                            ["visualisingYourSelf"]
-                                                        .toString(),
+                                                    : goalDetails['goalEvaluations'][0]["visualisingYourSelf"]['level'].toString(),
                                         // goalDetails['goalEvaluations'][0]
                                         //             ["YourWay"]['level']
                                         //         .toString()
@@ -1528,7 +1529,8 @@ Widget showSaveWithout(BuildContext context) {
               color: const Color(0xFF007AFF),
               child: GestureDetector(
                 onTap: () {
-                  // Navigator.pop(context);
+                  Navigator.pop(context);
+                  // selectedItemIndexesOuter!.clear();
                 },
                 child: Center(
                   child: Text(
