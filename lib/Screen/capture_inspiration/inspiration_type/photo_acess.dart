@@ -711,37 +711,46 @@ class _photo_infoState extends State<photo_info> {
                               )
                             : AnimatedScaleButton(
                                 onTap: () {
-                                  InspirationApi()
-                                      .addInspiration(
-                                          1,
-                                          image,
-                                          title.text.toString(),
-                                          tagList,
-                                          link.text.toString(),
-                                          true,
-                                          statement.text.toString(),
-                                          selectedGoals)
-                                      .then((response) {
-                                    if (response.length != 0) {
-                                      print('Success======================');
-                                      title.clear();
-                                      link.clear();
-                                      statement.clear();
-                                      hastags.clear();
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const inspiration_landing(
-                                            is_Updated: false,
-                                          )));
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const updatedLandingPage(
-                                                  delete: false,
-                                                  is_Updated: false)));
-                                    }
-                                  });
+                                  if (title.text.toString().isNotEmpty &&
+                                      statement.text.toString().isNotEmpty) {
+                                    InspirationApi()
+                                        .addInspiration(
+                                            1,
+                                            image,
+                                            title.text.toString(),
+                                            tagList,
+                                            link.text.toString(),
+                                            true,
+                                            statement.text.toString(),
+                                            selectedGoals)
+                                        .then((response) {
+                                      if (response.length != 0) {
+                                        print('Success======================');
+                                        title.clear();
+                                        link.clear();
+                                        statement.clear();
+                                        hastags.clear();
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const inspiration_landing(
+                                              is_Updated: false,
+                                            )));
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const updatedLandingPage(
+                                                    delete: false,
+                                                    is_Updated: false)));
+                                      }
+                                    });
+                                  } else {
+                                    print('empty');
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "Title or Inspiration is empty!!")));
+                                  }
                                 },
                                 child: Text(
                                   'Create',
@@ -749,7 +758,8 @@ class _photo_infoState extends State<photo_info> {
                                       fontSize:
                                           AppDimensions.height10(context) * 1.5,
                                       fontWeight: FontWeight.w400,
-                                      color: const Color(0xff007AFF)),
+                                      color: title.text.toString().isNotEmpty &&
+                                      statement.text.toString().isNotEmpty?const Color(0xff007AFF):const Color(0xff007AFF).withOpacity(0.5)),
                                 ),
                               ),
                       )
@@ -922,7 +932,7 @@ class _photo_infoState extends State<photo_info> {
                                         AppDimensions.height10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 4.0),
                                 child: Text(
-                                  'Destination website',
+                                  'Destination website (optional)',
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 1.5,
@@ -1122,7 +1132,7 @@ class _photo_infoState extends State<photo_info> {
                                         AppDimensions.height10(context) * 8.9,
                                     top: AppDimensions.height10(context) * 4.0),
                                 child: Text(
-                                  'Tags',
+                                  'Tags (optional)',
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.height10(context) * 1.5,
@@ -1321,7 +1331,6 @@ class link_set extends StatefulWidget {
 class _link_setState extends State<link_set> {
   final linkController = TextEditingController();
   static final GlobalKey<FormState> key = GlobalKey<FormState>();
-
 
   bool link_bt = false;
   bool showKeyboardOverlay = false;

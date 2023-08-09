@@ -54,6 +54,7 @@ class _practice_progressState extends State<practice_progress> {
           evaluation = response['report']['practice']['practiceEvaluations'];
         });
         loadData();
+        print(response['report']['practice']['practiceEvaluations']);
 
         print('Report===============================');
         print(report);
@@ -350,7 +351,7 @@ class _practice_progressState extends State<practice_progress> {
                                 ),
                               ),
                               Container(
-                                width: AppDimensions.height10(context) * 22.0,
+                                // width: AppDimensions.height10(context) * 22.0,
                                 height: AppDimensions.height10(context) * 8.8,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 1.0),
@@ -1111,7 +1112,9 @@ class _practice_progressState extends State<practice_progress> {
                                             TextSpan(
                                               text: noData == true
                                                   ? "0"
-                                                  : '${evaluation[0]['question1']}',
+                                                  : evaluation.length == 0
+                                                      ? '-'
+                                                      : '${evaluation[0]['question1']}',
                                               style: TextStyle(
                                                   color:
                                                       const Color(0xFFB695B7),
@@ -1165,9 +1168,11 @@ class _practice_progressState extends State<practice_progress> {
                                           children: List.generate(
                                             noData == true
                                                 ? 0
-                                                : int.parse(evaluation[0]
-                                                        ['question1']
-                                                    .toString()),
+                                                : evaluation.length == 0
+                                                    ? 0
+                                                    : int.parse(evaluation[0]
+                                                            ['question1']
+                                                        .toString()),
                                             (index) => Container(
                                               width: AppDimensions.height10(
                                                       context) *
@@ -1188,39 +1193,45 @@ class _practice_progressState extends State<practice_progress> {
                                         ),
                                         noData == true
                                             ? Container()
-                                            : Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: List.generate(
-                                                  5 -
-                                                      int.parse(evaluation[0]
-                                                              ['question1']
-                                                          .toString()),
-                                                  (index) => Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0,
-                                                    margin: EdgeInsets.only(
-                                                        right: AppDimensions
+                                            : evaluation.length == 0
+                                                ? Container()
+                                                : Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: List.generate(
+                                                      5 -
+                                                          int.parse(evaluation[
+                                                                      0]
+                                                                  ['question1']
+                                                              .toString()),
+                                                      (index) => Container(
+                                                        width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            0.5),
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                            width: 1,
-                                                            color: const Color(
-                                                                0xFFB695B7))),
+                                                            1.0,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0,
+                                                        margin: EdgeInsets.only(
+                                                            right: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.5),
+                                                        decoration: BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                                width: 1,
+                                                                color: const Color(
+                                                                    0xFFB695B7))),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ),
                                       ],
                                     ),
                                   )
@@ -1285,7 +1296,9 @@ class _practice_progressState extends State<practice_progress> {
                                             TextSpan(
                                               text: noData == true
                                                   ? '0'
-                                                  : '${evaluation[0]['question2']}',
+                                                  : evaluation.length == 0
+                                                      ? '-'
+                                                      : '${evaluation[0]['question2']}',
                                               style: TextStyle(
                                                   color:
                                                       const Color(0xFFB695B7),
@@ -1341,9 +1354,11 @@ class _practice_progressState extends State<practice_progress> {
                                           children: List.generate(
                                             noData == true
                                                 ? 0
-                                                : int.parse(evaluation[0]
-                                                        ['question2']
-                                                    .toString()),
+                                                : evaluation.length == 0
+                                                    ? 0
+                                                    : int.parse(evaluation[0]
+                                                            ['question2']
+                                                        .toString()),
                                             (index) => Container(
                                               width: AppDimensions.height10(
                                                       context) *
@@ -1364,39 +1379,45 @@ class _practice_progressState extends State<practice_progress> {
                                         ),
                                         noData == true
                                             ? Container()
-                                            : Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: List.generate(
-                                                  5 -
-                                                      int.parse(evaluation[0]
-                                                              ['question2']
-                                                          .toString()),
-                                                  (index) => Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0,
-                                                    margin: EdgeInsets.only(
-                                                        right: AppDimensions
+                                            : evaluation.length == 0
+                                                ? Container()
+                                                : Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: List.generate(
+                                                      5 -
+                                                          int.parse(evaluation[
+                                                                      0]
+                                                                  ['question2']
+                                                              .toString()),
+                                                      (index) => Container(
+                                                        width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            0.5),
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                            width: 1,
-                                                            color: const Color(
-                                                                0xFFB695B7))),
+                                                            1.0,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0,
+                                                        margin: EdgeInsets.only(
+                                                            right: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.5),
+                                                        decoration: BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                                width: 1,
+                                                                color: const Color(
+                                                                    0xFFB695B7))),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ),
                                       ],
                                     ),
                                   )
@@ -1461,7 +1482,9 @@ class _practice_progressState extends State<practice_progress> {
                                             TextSpan(
                                               text: noData == true
                                                   ? '0'
-                                                  : '${evaluation[0]['question3']}',
+                                                  : evaluation.length == 0
+                                                      ? '-'
+                                                      : '${evaluation[0]['question3']}',
                                               style: TextStyle(
                                                   color:
                                                       const Color(0xFFB695B7),
@@ -1517,9 +1540,11 @@ class _practice_progressState extends State<practice_progress> {
                                           children: List.generate(
                                             noData == true
                                                 ? 0
-                                                : int.parse(evaluation[0]
-                                                        ['question3']
-                                                    .toString()),
+                                                : evaluation.length == 0
+                                                    ? 0
+                                                    : int.parse(evaluation[0]
+                                                            ['question3']
+                                                        .toString()),
                                             (index) => Container(
                                               width: AppDimensions.height10(
                                                       context) *
@@ -1540,39 +1565,45 @@ class _practice_progressState extends State<practice_progress> {
                                         ),
                                         noData == true
                                             ? Container()
-                                            : Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: List.generate(
-                                                  5 -
-                                                      int.parse(evaluation[0]
-                                                              ['question3']
-                                                          .toString()),
-                                                  (index) => Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0,
-                                                    margin: EdgeInsets.only(
-                                                        right: AppDimensions
+                                            : evaluation.length == 0
+                                                ? Container()
+                                                : Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: List.generate(
+                                                      5 -
+                                                          int.parse(evaluation[
+                                                                      0]
+                                                                  ['question3']
+                                                              .toString()),
+                                                      (index) => Container(
+                                                        width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            0.5),
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                            width: 1,
-                                                            color: const Color(
-                                                                0xFFB695B7))),
+                                                            1.0,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0,
+                                                        margin: EdgeInsets.only(
+                                                            right: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.5),
+                                                        decoration: BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                                width: 1,
+                                                                color: const Color(
+                                                                    0xFFB695B7))),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ),
                                       ],
                                     ),
                                   )
@@ -1637,7 +1668,9 @@ class _practice_progressState extends State<practice_progress> {
                                             TextSpan(
                                               text: noData == true
                                                   ? '0'
-                                                  : '${evaluation[0]['question4']}',
+                                                  : evaluation.length == 0
+                                                      ? '-'
+                                                      : '${evaluation[0]['question4']}',
                                               style: TextStyle(
                                                   color:
                                                       const Color(0xFFB695B7),
@@ -1692,9 +1725,11 @@ class _practice_progressState extends State<practice_progress> {
                                           children: List.generate(
                                             noData == true
                                                 ? 0
-                                                : int.parse(evaluation[0]
-                                                        ['question4']
-                                                    .toString()),
+                                                : evaluation.length == 0
+                                                    ? 0
+                                                    : int.parse(evaluation[0]
+                                                            ['question4']
+                                                        .toString()),
                                             (index) => Container(
                                               width: AppDimensions.height10(
                                                       context) *
@@ -1715,39 +1750,45 @@ class _practice_progressState extends State<practice_progress> {
                                         ),
                                         noData == true
                                             ? Container()
-                                            : Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: List.generate(
-                                                  5 -
-                                                      int.parse(evaluation[0]
-                                                              ['question4']
-                                                          .toString()),
-                                                  (index) => Container(
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0,
-                                                    margin: EdgeInsets.only(
-                                                        right: AppDimensions
+                                            : evaluation.length == 0
+                                                ? Container()
+                                                : Row(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: List.generate(
+                                                      5 -
+                                                          int.parse(evaluation[
+                                                                      0]
+                                                                  ['question4']
+                                                              .toString()),
+                                                      (index) => Container(
+                                                        width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            0.5),
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                            width: 1,
-                                                            color: const Color(
-                                                                0xFFB695B7))),
+                                                            1.0,
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.0,
+                                                        margin: EdgeInsets.only(
+                                                            right: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.5),
+                                                        decoration: BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                                width: 1,
+                                                                color: const Color(
+                                                                    0xFFB695B7))),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ),
                                       ],
                                     ),
                                   ),

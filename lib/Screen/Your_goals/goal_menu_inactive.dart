@@ -632,6 +632,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         AppDimensions.height10(context) * 13.8,
                                     height:
                                         AppDimensions.height10(context) * 13.8,
+                                    padding: EdgeInsets.all(
+                                        AppDimensions.height10(context) * 0.8),
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context)),
                                     decoration: BoxDecoration(
@@ -669,6 +671,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                           goalDetails['userPractices'][index]
                                               ['name'],
                                           textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 3,
                                           style: TextStyle(
                                             fontSize: AppDimensions.height10(
                                                     context) *

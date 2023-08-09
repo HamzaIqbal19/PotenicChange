@@ -1560,7 +1560,8 @@ class _your_impactState extends State<your_impact> {
                                                           onPressed: () {
                                                             int level =
                                                                 (select_item! +
-                                                                    select_item_2!);
+                                                                    select_item_2! +
+                                                                    2);
                                                             print(level);
                                                             print(select_item!);
                                                             print(
@@ -1573,9 +1574,11 @@ class _your_impactState extends State<your_impact> {
                                                                     (level / 2)
                                                                         .round(),
                                                                 "currentImpact":
-                                                                    select_item,
+                                                                    (select_item! +
+                                                                        1),
                                                                 "currentEmotions":
-                                                                    select_item_2
+                                                                    (select_item_2! +
+                                                                        1)
                                                               },
                                                             ).then((response) {
                                                               if (response ==

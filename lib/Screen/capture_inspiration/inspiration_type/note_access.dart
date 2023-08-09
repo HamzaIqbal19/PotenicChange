@@ -988,40 +988,44 @@ class _noteSavedState extends State<noteSaved> {
                         ),
                         AnimatedScaleButton(
                           onTap: () {
-                            InspirationApi()
-                                .addInspiration(
-                                    2,
-                                    " ",
-                                    title.text.toString(),
-                                    tagList,
-                                    " ",
-                                    true,
-                                    statement.text.toString(),
-                                    selectedGoals)
-                                .then((response) async {
-                              if (response.length != 0) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const updatedLandingPage(
-                                            delete: false, is_Updated: false)));
-                                print('----------------');
-                                title.clear();
-                                tagList.clear();
-                                hastags.clear();
-                                statement.clear();
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const inspiration_type()));
-                                final SharedPreferences prefs = await _prefs;
-                                var remove = prefs.remove('ImageLink');
+                            if (title.text.toString().isNotEmpty &&
+                                statement.text.toString().isNotEmpty) {
+                              InspirationApi()
+                                  .addInspiration(
+                                      2,
+                                      " ",
+                                      title.text.toString(),
+                                      tagList,
+                                      " ",
+                                      true,
+                                      statement.text.toString(),
+                                      selectedGoals)
+                                  .then((response) async {
+                                if (response.length != 0) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const updatedLandingPage(
+                                              delete: false,
+                                              is_Updated: false)));
+                                  print('----------------');
+                                  title.clear();
+                                  tagList.clear();
+                                  hastags.clear();
+                                  statement.clear();
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const inspiration_type()));
+                                  final SharedPreferences prefs = await _prefs;
+                                  var remove = prefs.remove('ImageLink');
 
-                                print(response);
-                              }
+                                  print(response);
+                                }
 
-                              // return null;
-                            });
+                                // return null;
+                              });
+                            }
                           },
                           child: Container(
                             height: AppDimensions.height10(context) * 2.2,
@@ -1034,7 +1038,11 @@ class _noteSavedState extends State<noteSaved> {
                                   fontSize:
                                       AppDimensions.height10(context) * 1.5,
                                   fontWeight: FontWeight.w400,
-                                  color: const Color(0xff007AFF)),
+                                  color: title.text.toString().isNotEmpty &&
+                                          statement.text.toString().isNotEmpty
+                                      ? const Color(0xff007AFF)
+                                      : const Color(0xff007AFF)
+                                          .withOpacity(0.5)),
                             ),
                           ),
                         )
@@ -1161,7 +1169,7 @@ class _noteSavedState extends State<noteSaved> {
                               right: AppDimensions.height10(context) * 8.9,
                               top: AppDimensions.height10(context) * 3.9),
                           child: Text(
-                            'Tags',
+                            'Tags (optional)',
                             style: TextStyle(
                                 fontSize: AppDimensions.height10(context) * 1.5,
                                 fontWeight: FontWeight.w400,

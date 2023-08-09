@@ -149,9 +149,9 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(
-                        login: false,
+                    FadePageRoute(
+                      page: const HomeScreen(
+                        login: true,
                       ),
                     ),
                   );

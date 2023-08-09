@@ -7,6 +7,7 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReviewWhy.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -95,6 +96,27 @@ class _StarReviewState extends State<StarReview> {
       onWillPop: () {
         print('==============================');
         print(widget.route);
+        if (widget.route == 'goal') {
+          Navigator.push(context, FadePageRoute(page: const GoalFinished()));
+        } else if (widget.route == 'menu') {
+          Navigator.push(
+              context,
+              FadePageRoute(
+                  page: const goal_menu_inactive(
+                goal_evaluation: true,
+                isActive: true,
+                premium: true,
+              )));
+        } else {
+          Navigator.push(
+              context,
+              FadePageRoute3(
+                  exitPage: StarReview(
+                    route: widget.route,
+                  ),
+                  enterPage: const PracticeFinished()));
+        }
+
         Navigator.push(
           context,
           widget.route == 'goal'
@@ -104,11 +126,21 @@ class _StarReviewState extends State<StarReview> {
                   ),
                   enterPage: const GoalFinished(),
                 )
-              : FadePageRoute3(
-                  exitPage: StarReview(
-                    route: widget.route,
-                  ),
-                  enterPage: const PracticeFinished()),
+              : widget.route == 'menu'
+                  ? FadePageRoute3(
+                      exitPage: StarReview(
+                        route: widget.route,
+                      ),
+                      enterPage: const goal_menu_inactive(
+                        goal_evaluation: true,
+                        isActive: true,
+                        premium: true,
+                      ))
+                  : FadePageRoute3(
+                      exitPage: StarReview(
+                        route: widget.route,
+                      ),
+                      enterPage: const PracticeFinished()),
         );
 
         return Future.value(false);
@@ -1244,7 +1276,8 @@ class _StarReviewState extends State<StarReview> {
                                                   exitPage: StarReview(
                                                     route: widget.route,
                                                   ),
-                                                  enterPage: Goal_Identity(
+                                                  enterPage:
+                                                      const Goal_Identity(
                                                     // catId,
                                                     comingFromEditScreen: true,
                                                   ),
@@ -1408,7 +1441,7 @@ class _StarReviewState extends State<StarReview> {
                                                   exitPage: StarReview(
                                                     route: widget.route,
                                                   ),
-                                                  enterPage: Visualising(
+                                                  enterPage: const Visualising(
                                                     // catId,
                                                     comingFromEditScreen: true,
                                                   ),

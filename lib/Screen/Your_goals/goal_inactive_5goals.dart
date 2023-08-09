@@ -71,7 +71,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
         }
       }
       // If the item is currently on and is being switched off
-      else if (goalDetails['userPractices'][index1]['status'] != "Active" &&
+      else if (goalDetails['userPractices'][index1]['practiceStatus'] !=
+              "Active" &&
           val == false) {
         print("==========================");
         print(goalDetails['userPractices'][index1]['id']);
@@ -408,8 +409,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                           itemCount: goalDetails['userPractices'].length,
                           itemBuilder: ((context, index) {
                             bool status = goalDetails['userPractices'][index]
-                                        ['status'] ==
-                                    'Active'
+                                        ['practiceStatus'] ==
+                                    'active'
                                 ? true
                                 : false;
                             bool color = status;
@@ -595,10 +596,12 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                       const Color(0xFFFA9934),
                                                   inactiveColor:
                                                       const Color(0xFF2F3A4B),
-                                                  value: goalDetails[
-                                                              'userPractices']
-                                                          [index]['status'] ??
-                                                      false,
+                                                  value: goalDetails['userPractices']
+                                                                  [index][
+                                                              'practiceStatus'] ==
+                                                          'active'
+                                                      ? true
+                                                      : false,
                                                   onToggle: (val) => onToggleSwitch(
                                                       index,
                                                       val), // Call the onToggleSwitch function
