@@ -507,7 +507,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                               )),
                           AnimatedScaleButton(
                             onTap: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                   context,
                                   FadePageRoute(
                                     page: const ActivateStar(),

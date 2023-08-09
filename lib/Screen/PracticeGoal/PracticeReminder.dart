@@ -131,7 +131,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
             elevation: 0,
             centerTitle: true,
             backgroundColor: Colors.transparent,
-            automaticallyImplyLeading: false,
+            automaticallyImplyLeading: true,
             leading: Center(
               // alignment: Alignment.center,
               child: IconButton(

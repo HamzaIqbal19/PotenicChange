@@ -128,7 +128,7 @@ class _CreatePracticeState extends State<CreatePractice> {
             enterPage: const GoalFinished(),
           ),
         );
-        return Future.value(false);
+        return Future.value(true);
       },
       child: Scaffold(
         extendBodyBehindAppBar: true,

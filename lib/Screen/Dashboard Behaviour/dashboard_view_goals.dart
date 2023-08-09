@@ -171,9 +171,9 @@ class _view_goalsState extends State<view_goals> {
                           return CalendarBottomSheet(
                             onChangedStart: (int value) {
                               setState(() {
-                                current = -value;
-                                next = -value - 1;
-                                past = -value + 1;
+                                current = -value - 1;
+                                next = -value - 2;
+                                past = -value;
                                 Loader = true;
                               });
                               fetchPracticeByDay();
