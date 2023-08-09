@@ -19,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../API/Practice.dart';
 import '../PracticeGoal/PracticeName.dart';
+import '../PracticeGoal/PracticeReminder.dart';
 
 class PracticeReview extends StatefulWidget {
   const PracticeReview({Key? key}) : super(key: key);
@@ -27,14 +28,16 @@ class PracticeReview extends StatefulWidget {
   State<PracticeReview> createState() => _PracticeReviewState();
 }
 
+bool color1 = false;
+bool color2 = false;
+bool color3 = false;
+bool color4 = false;
+bool color5 = false;
+bool color6 = false;
+
 class _PracticeReviewState extends State<PracticeReview> {
   bool Loading = true;
-  bool color1 = false;
-  bool color2 = false;
-  bool color3 = false;
-  bool color4 = false;
-  bool color5 = false;
-  bool color6 = false;
+
   Future<List<String>>? _goalNamesFuture;
   var pracName;
   String goalName = '';
@@ -120,6 +123,7 @@ class _PracticeReviewState extends State<PracticeReview> {
 
   @override
   Widget build(BuildContext context) {
+    print("Reminder========> $reminder");
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
@@ -1135,25 +1139,39 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             ),
                                           ),
                                           // SizedBox(width: ),
-                                          Container(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
 
-                                            // color: Colors.blue,
-                                            margin: EdgeInsets.only(
-                                              bottom: AppDimensions.height10(
+                                          AnimatedScaleButton(
+                                            onTap: () {
+                                              Navigator.push(
+                                                context,
+                                                FadePageRoute3(
+                                                  exitPage: PracticeReview(),
+                                                  enterPage: PracticeReminder(
+                                                    comingFromEditScreen: true,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            child: Container(
+                                              height: AppDimensions.height10(
                                                       context) *
-                                                  1.5,
-                                            ),
-                                            decoration: const BoxDecoration(
-                                              image: DecorationImage(
-                                                image: AssetImage(
-                                                    "assets/images/btnedit.webp"),
-                                                fit: BoxFit.fitHeight,
+                                                  3.0,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  3.0,
+
+                                              // color: Colors.blue,
+                                              margin: EdgeInsets.only(
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    1.5,
+                                              ),
+                                              decoration: const BoxDecoration(
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/btnedit.webp"),
+                                                  fit: BoxFit.fitHeight,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -1300,9 +1318,13 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                               .height10(
                                                                   context) *
                                                           3.3,
-                                                      child: Image.asset(reminder
-                                                          ? "assets/images/uncheckradio.webp"
-                                                          : "assets/images/circle.webp")),
+                                                      child: Image.asset(
+                                                          // reminder ?
+                                                          "assets/images/uncheckradio.webp"
+
+                                                          //  : "assets/images/circle.webp"
+
+                                                          )),
                                                 ),
                                               ],
                                             ),
@@ -1689,7 +1711,9 @@ class _inner_text1State extends State<inner_text1> {
           SizedBox(
               height: AppDimensions.height10(context) * 3.6,
               width: AppDimensions.height10(context) * 26.9,
-              child: Text("${widget.circle_text}",
+              child: Text(
+                  overflow: TextOverflow.ellipsis,
+                  "${widget.circle_text}",
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     color: _focusNode.hasFocus

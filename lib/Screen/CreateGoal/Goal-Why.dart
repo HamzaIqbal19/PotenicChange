@@ -42,13 +42,14 @@ class _goalwhyState extends State<GoalWhy> {
   @override
   void initState() {
     super.initState();
+    // Add one element to the list when the screen is initialized.
     myTextFields.add({
       'key': 'Reason ${myTextFields.length}',
       'text': '',
     });
+
     if (widget.comingFromEditScreen == false) {
       getGoalName();
-      // Add one element to the list when the screen is initialized.
 
       setState(() {
         Loading = false;
@@ -410,648 +411,738 @@ class _goalwhyState extends State<GoalWhy> {
               ),
             ],
           )),
-      body: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: widget.comingFromEditScreen
-                    ? AssetImage("assets/images/GoalReviewBg.webp")
-                    : AssetImage("assets/images/Categories.webp"),
-                fit: BoxFit.cover,
-              ),
+      body: Stack(children: [
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: widget.comingFromEditScreen
+                  ? AssetImage("assets/images/GoalReviewBg.webp")
+                  : AssetImage("assets/images/Categories.webp"),
+              fit: BoxFit.cover,
             ),
           ),
-          Loading == false
-              ? SingleChildScrollView(
-                  reverse: true,
-                  physics: const ClampingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 5.2),
-                        child: Center(
-                          child: Text(
-                            widget.comingFromEditScreen
-                                ? "View and edit mode"
-                                : "Star Creation 3/5",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
-                                  : Colors.white,
-                              fontSize: AppDimensions.height10(context) * 1.8,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 0.5,
-                      ),
-                      Container(
-                        width: AppDimensions.height10(context) * 30,
-                        child: Center(
-                          child: Text(
-                            goalName,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
-                                  : Colors.white,
-                              fontSize: AppDimensions.height10(context) * 2.2,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 1.0,
-                      ),
-                      widget.comingFromEditScreen
-                          ? SizedBox(
-                              height: AppDimensions.height10(context) * 3.5,
-                            )
-                          : Container(
-                              width: AppDimensions.height10(context) * 10.4,
-                              height: AppDimensions.height10(context) * 7.6,
-                              padding: EdgeInsets.only(
-                                  left: AppDimensions.height10(context) * 1.5,
-                                  right: AppDimensions.height10(context) * 1.5),
-                              child: Image.asset(
-                                "assets/images/image3.webp",
-                                fit: BoxFit.contain,
-                              )),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 1.0,
-                      ),
-                      Container(
-                        child: Center(
-                          child: Text(
-                            "The Why",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              color: widget.comingFromEditScreen
-                                  ? Color(0xFF437296)
-                                  : Colors.white,
-                              fontSize: AppDimensions.height10(context) * 2.8,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 1.0,
-                      ),
-                      Container(
-                        // height: AppDimensions.height10(context) * 4.9,
-                        width: AppDimensions.height10(context) * 37.2,
-                        child: Center(
-                          child: Text(
-                            "Why pursuing this goal is important\nto you?",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: AppDimensions.height10(context) * 1.8,
-                                fontWeight: FontWeight.w600,
-                                color: widget.comingFromEditScreen
-                                    ? Color(0xFF437296)
-                                    : Color(0xFFFFFFFF)),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 3.4,
-                      ),
-                      Container(
-                        width: AppDimensions.height10(context) * 38.2,
-                        height: item == 1
-                            ? AppDimensions.height10(context) * 22.0
-                            : AppDimensions.height10(context) * 37.0,
-                        // color: Colors.amber,
-                        child: Stack(children: [
-                          ClipPath(
-                            //clipper: OvalBottomBorderClipper(57),
-                            child: Container(
-                              // width: AppDimensions.height10(context) * 38.2,
-                              //height: AppDimensions.height10(context) * 33.0,
-                              margin: EdgeInsets.only(
-                                  bottom:
-                                      AppDimensions.height10(context) * 2.3),
-                              padding: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.1,
-                              ),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                      color: Colors.white,
-                                      width: AppDimensions.height10(context) *
-                                          0.2),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          AppDimensions.height10(context) *
-                                              1.8))),
-
-                              child: ListView.builder(
-                                itemCount: widget.comingFromEditScreen
-                                    ? (reason?.length ?? 0)
-                                    : myTextFields.length,
-                                padding: EdgeInsets.zero,
-                                itemBuilder: (BuildContext context, index) {
-                                  if (widget.comingFromEditScreen) {
-                                    if (reason == null ||
-                                        index >= reason.length) {
-                                      return Container(); // Return an empty container if the index is out of range.
-                                    }
-                                    return Column(children: [
-                                      inner_text(
-                                        key: Key(reason[index]['key']),
-                                        delete: true,
-                                        head_text: "Reason ${index + 1}",
-                                        body_text: reason[index]['text'],
-                                        length: 200,
-                                        onChanged: (newText) {
-                                          setState(() {
-                                            reason[index]['text'] = newText;
-                                          });
-                                          handleTextChanged(index, newText);
-                                        },
-                                        onDelete: () => handleDelete(index),
-                                        index: index,
-                                        placeHolder:
-                                            'I want to achieve this goal because...',
-                                        comingFromEditScreen:
-                                            widget.comingFromEditScreen,
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  1.5,
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Center(
-                                              child: Text(
-                                                "Character count: ",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  color:
-                                                      const Color(0xFF464646),
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.3,
-                                                ),
-                                              ),
-                                            ),
-                                            Center(
-                                              child: Text(
-                                                "200",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w700,
-                                                  color:
-                                                      const Color(0xFF464646),
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.3,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.3,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    0.5,
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    4.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xFF282828)
-                                                    .withOpacity(0.2),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ]);
-                                  } else {
-                                    // Use the myTextFields list.
-                                    if (index >= myTextFields.length) {
-                                      return Container(); // Return an empty container if the index is out of range.
-                                    }
-                                    return Column(children: [
-                                      inner_text(
-                                        key: Key(myTextFields[index]['key']!),
-                                        delete: true,
-                                        head_text: "Reason ${index + 1}",
-                                        body_text: myTextFields[index]['text']!,
-                                        length: 200,
-                                        onChanged: (newText) {
-                                          setState(() {
-                                            myTextFields[index]['text'] =
-                                                newText;
-                                          });
-                                          handleTextChanged(index, newText);
-                                        },
-                                        onDelete: () => handleDelete(index),
-                                        index: index,
-                                        placeHolder:
-                                            'I want to achieve this goal because...',
-                                        comingFromEditScreen:
-                                            widget.comingFromEditScreen,
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  1.5,
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Center(
-                                              child: Text(
-                                                "Character count: ",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  color:
-                                                      const Color(0xFF464646),
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.3,
-                                                ),
-                                              ),
-                                            ),
-                                            Center(
-                                              child: Text(
-                                                "200",
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w700,
-                                                  color:
-                                                      const Color(0xFF464646),
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.3,
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.3,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              margin: EdgeInsets.only(
-                                                top: AppDimensions.height10(
-                                                        context) *
-                                                    0.5,
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    4.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xFF282828)
-                                                    .withOpacity(0.2),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ]);
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            top: 0,
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              // alignment: item == 1
-                              //     ? const Alignment(0.01, 1.35)
-                              //     : const Alignment(0.01, 1.25),
-                              //heightFactor: 0.5,
-                              child: myTextFields.length > 4
-                                  ? AnimatedScaleButton(
-                                      onTap: () {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                'You cannot add more than 5 items.'),
-                                            duration: Duration(seconds: 3),
-                                          ),
-                                        );
-                                      },
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.7,
-                                        width: AppDimensions.height10(context) *
-                                            4.7,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Color.fromARGB(
-                                              189, 158, 158, 158),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 4,
-                                              left: 4,
-                                              right: 4,
-                                              bottom: 4),
-                                          child: Container(
-                                            color: Colors.transparent,
-                                            child: Image.asset(
-                                              'assets/images/Addgoal.webp',
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.7,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  4.7,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  // :
-                                  // reason.length > 4
-                                  //     ? AnimatedScaleButton(
-                                  //         onTap: () {
-                                  //           ScaffoldMessenger.of(context)
-                                  //               .showSnackBar(
-                                  //             const SnackBar(
-                                  //               content: Text(
-                                  //                   'You cannot add more than 5 items.'),
-                                  //               duration: Duration(seconds: 3),
-                                  //             ),
-                                  //           );
-                                  //         },
-                                  //         child: Container(
-                                  //           height:
-                                  //               AppDimensions.height10(context) * 4.7,
-                                  //           width:
-                                  //               AppDimensions.height10(context) * 4.7,
-                                  //           decoration: const BoxDecoration(
-                                  //             shape: BoxShape.circle,
-                                  //             color:
-                                  //                 Color.fromARGB(189, 158, 158, 158),
-                                  //           ),
-                                  //           child: Padding(
-                                  //             padding: const EdgeInsets.only(
-                                  //                 top: 4,
-                                  //                 left: 4,
-                                  //                 right: 4,
-                                  //                 bottom: 4),
-                                  //             child: Container(
-                                  //               color: Colors.transparent,
-                                  //               child: Image.asset(
-                                  //                 'assets/images/Addgoal.webp',
-                                  //                 height: AppDimensions.height10(
-                                  //                         context) *
-                                  //                     4.7,
-                                  //                 width: AppDimensions.height10(
-                                  //                         context) *
-                                  //                     4.7,
-                                  //               ),
-                                  //             ),
-                                  //           ),
-                                  //         ),
-                                  //       )
-
-                                  : AnimatedScaleButton(
-                                      onTap: () {
-                                        increment();
-
-                                        widget.comingFromEditScreen
-                                            ? setState(() {
-                                                reason.add({
-                                                  'key':
-                                                      'Reason ${reason.length.toString()}',
-                                                  'text': '',
-                                                });
-                                              })
-                                            : setState(() {
-                                                myTextFields.add({
-                                                  'key':
-                                                      'Reason ${myTextFields.length.toString()}',
-                                                  'text': '',
-                                                });
-                                              });
-                                        print("=============>Pressed");
-                                      },
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.7,
-                                        width: AppDimensions.height10(context) *
-                                            4.7,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          // color: Colors.orange,
-                                          gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xFFB1B8FF),
-                                                Color(0xFFC5CAFF)
-                                              ]),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 4,
-                                              left: 4,
-                                              right: 4,
-                                              bottom: 4),
-                                          child: Container(
-                                            color: Colors.transparent,
-                                            child: Image.asset(
-                                              'assets/images/Addgoal.webp',
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.7,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  4.7,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                            ),
-                          )
-                        ]),
-                      ),
-                      MediaQuery.of(context).viewInsets.bottom == 0
-                          ? SizedBox(
-                              height: AppDimensions.height10(context) * 26.7,
-                            )
-                          : SizedBox(
-                              height: AppDimensions.height10(context) * 5.0,
-                            ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+        ),
+        Loading == false
+            ? SingleChildScrollView(
+                reverse: true,
+                physics: const ClampingScrollPhysics(),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 5.2),
+                      child: Center(
+                        child: Text(
                           widget.comingFromEditScreen
-                              ? Container(
-                                  width: AppDimensions.height10(context) * 10.0,
-                                  height: AppDimensions.height10(context) * 5.0,
-                                  decoration: myTextFields[0]['text'] != ""
-                                      ? BoxDecoration(
-                                          color: Colors.white,
-                                          border: Border.all(
-                                              color: Color(0xffFA9934)),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(50.0)),
-                                        )
-                                      : BoxDecoration(
-                                          // color: Color(0xFFFF7D50),
-                                          border: Border.all(
-                                              color: const Color(0xff282828)),
-                                          color: Colors.transparent,
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(50.0)),
-                                        ),
-                                  child: AnimatedScaleButton(
-                                    onTap: () {
-                                      //   signupSheet(context, "Sign up / login", "login");
-                                    },
-                                    child: Center(
-                                        child: Text(
-                                      "Reset",
-                                      style: TextStyle(
-                                          fontFamily: "Laila",
-                                          fontWeight: FontWeight.w600,
-                                          color: myTextFields[0]['text'] != ""
-                                              ? Color(0xffFA9934)
-                                              : Color(0xff282828),
-                                          fontSize:
-                                              AppDimensions.height10(context) *
-                                                  1.8),
-                                    )),
-                                  ))
-                              : Container(
-                                  // color: Colors.blue,
-                                  width: AppDimensions.height10(context) * 5.0,
-                                  height: AppDimensions.height10(context) * 5.0,
-                                  child: AnimatedScaleButton(
-                                    onTap: () {
-                                      //   signupSheet(context, "Sign up / login", "login");
-                                    },
-                                    child: Image.asset(
-                                      "assets/images/Moreactions.webp",
-                                      fit: BoxFit.contain,
-                                    ),
-                                  )),
-                          SizedBox(
-                            width: AppDimensions.height10(context) * 2.0,
+                              ? "View and edit mode"
+                              : "Star Creation 3/5",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: widget.comingFromEditScreen
+                                ? Color(0xFF437296)
+                                : Colors.white,
+                            fontSize: AppDimensions.height10(context) * 1.8,
                           ),
-                          AnimatedScaleButton(
-                            onTap: () async {
-                              if (widget.comingFromEditScreen) {
-                                print("Printing Reason $reason");
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 0.5,
+                    ),
+                    Container(
+                      width: AppDimensions.height10(context) * 30,
+                      child: Center(
+                        child: Text(
+                          goalName,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: widget.comingFromEditScreen
+                                ? Color(0xFF437296)
+                                : Colors.white,
+                            fontSize: AppDimensions.height10(context) * 2.2,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 1.0,
+                    ),
+                    widget.comingFromEditScreen
+                        ? SizedBox(
+                            height: AppDimensions.height10(context) * 3.5,
+                          )
+                        : Container(
+                            width: AppDimensions.height10(context) * 10.4,
+                            height: AppDimensions.height10(context) * 7.6,
+                            padding: EdgeInsets.only(
+                                left: AppDimensions.height10(context) * 1.5,
+                                right: AppDimensions.height10(context) * 1.5),
+                            child: Image.asset(
+                              "assets/images/image3.webp",
+                              fit: BoxFit.contain,
+                            )),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 1.0,
+                    ),
+                    Container(
+                      child: Center(
+                        child: Text(
+                          "The Why",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: widget.comingFromEditScreen
+                                ? Color(0xFF437296)
+                                : Colors.white,
+                            fontSize: AppDimensions.height10(context) * 2.8,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 1.0,
+                    ),
+                    Container(
+                      // height: AppDimensions.height10(context) * 4.9,
+                      width: AppDimensions.height10(context) * 37.2,
+                      child: Center(
+                        child: Text(
+                          "Why pursuing this goal is important\nto you?",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: AppDimensions.height10(context) * 1.8,
+                              fontWeight: FontWeight.w600,
+                              color: widget.comingFromEditScreen
+                                  ? Color(0xFF437296)
+                                  : Color(0xFFFFFFFF)),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 3.4,
+                    ),
+                    Container(
+                      width: AppDimensions.height10(context) * 38.2,
+                      height: widget.comingFromEditScreen
+                          ? reason.length == 1
+                              ? AppDimensions.height10(context) * 22.0
+                              : AppDimensions.height10(context) * 36.0
+                          : item == 1
+                              ? AppDimensions.height10(context) * 22.0
+                              : AppDimensions.height10(context) * 36.0,
+                      // color: Colors.amber,
+                      child: Stack(children: [
+                        ClipPath(
+                          //clipper: OvalBottomBorderClipper(57),
+                          child: Container(
+                            // width: AppDimensions.height10(context) * 38.2,
+                            //height: AppDimensions.height10(context) * 33.0,
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 2.3),
+                            padding: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 1.1,
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                    color: Colors.white,
+                                    width:
+                                        AppDimensions.height10(context) * 0.2),
+                                borderRadius: BorderRadius.all(Radius.circular(
+                                    AppDimensions.height10(context) * 1.8))),
 
-                                AdminGoal()
-                                    .updateUserGoal('reason', reason)
-                                    .then((value) {
-                                  if (value == true) {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                          page: const StarReview(
-                                            route: 'goal',
-                                          ),
-                                        ));
+                            child: ListView.builder(
+                              itemCount: widget.comingFromEditScreen
+                                  ? (reason?.length ?? 0)
+                                  : myTextFields.length,
+                              padding: EdgeInsets.zero,
+                              itemBuilder: (BuildContext context, index) {
+                                if (widget.comingFromEditScreen) {
+                                  if (reason == null ||
+                                      index >= reason.length) {
+                                    return Container(); // Return an empty container if the index is out of range.
                                   }
-                                });
-                              } else {
-                                print(
-                                    '===================>${myTextFields[0]['text']}');
-                                updateGoalReason(myTextFields);
-                              }
-                            },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: widget.comingFromEditScreen
-                                  ? AppDimensions.height10(context) * 26.2
-                                  : AppDimensions.height10(context) * 31.3,
-                              decoration: myTextFields[0]['text'] != ""
-                                  ? BoxDecoration(
-                                      // color: Color(0xFFFF7D50),
-                                      border:
-                                          Border.all(color: Colors.transparent),
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0xFFFCC10D),
-                                            Color(0xFFFDA210)
-                                          ]),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(50.0)),
-                                    )
-                                  : BoxDecoration(
-                                      // color: Color(0xFFFF7D50),
-                                      border:
-                                          Border.all(color: Colors.transparent),
-                                      color: const Color(0xFF282828)
-                                          .withOpacity(0.5),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(50.0)),
+                                  return Column(children: [
+                                    inner_text(
+                                      key: Key(reason[index]['key']),
+                                      delete: true,
+                                      head_text: "Reason ${index + 1}",
+                                      body_text: reason[index]['text'],
+                                      length: 200,
+                                      onChanged: (newText) {
+                                        setState(() {
+                                          reason[index]['text'] = newText;
+                                        });
+                                        handleTextChanged(index, newText);
+                                      },
+                                      onDelete: () => handleDelete(index),
+                                      index: index,
+                                      placeHolder:
+                                          'I want to achieve this goal because...',
+                                      comingFromEditScreen:
+                                          widget.comingFromEditScreen,
                                     ),
-                              child: Center(
-                                child: Text(
-                                  widget.comingFromEditScreen ? "Save" : "Next",
-                                  style: TextStyle(
-                                    color: myTextFields[0]['text'] != ""
-                                        ? Colors.white
-                                        : Colors.white.withOpacity(0.5),
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.6,
-                                    fontWeight: FontWeight.w600,
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            1.5,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.3,
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Center(
+                                            child: Text(
+                                              "Character count: ",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xFF464646),
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.3,
+                                              ),
+                                            ),
+                                          ),
+                                          Center(
+                                            child: Text(
+                                              "200",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                color: const Color(0xFF464646),
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.3,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.3,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                4.0,
+                                            margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.5,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  4.0,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFF282828)
+                                                  .withOpacity(0.2),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ]);
+                                } else {
+                                  // Use the myTextFields list.
+                                  if (index >= myTextFields.length) {
+                                    return Container(); // Return an empty container if the index is out of range.
+                                  }
+                                  return Column(children: [
+                                    inner_text(
+                                      key: Key(myTextFields[index]['key']!),
+                                      delete: true,
+                                      head_text: "Reason ${index + 1}",
+                                      body_text: myTextFields[index]['text']!,
+                                      length: 200,
+                                      onChanged: (newText) {
+                                        setState(() {
+                                          myTextFields[index]['text'] = newText;
+                                        });
+                                        handleTextChanged(index, newText);
+                                      },
+                                      onDelete: () => handleDelete(index),
+                                      index: index,
+                                      placeHolder:
+                                          'I want to achieve this goal because...',
+                                      comingFromEditScreen:
+                                          widget.comingFromEditScreen,
+                                    ),
+                                    Container(
+                                      margin: EdgeInsets.only(
+                                        left: AppDimensions.height10(context) *
+                                            1.5,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.3,
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          Center(
+                                            child: Text(
+                                              "Character count: ",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xFF464646),
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.3,
+                                              ),
+                                            ),
+                                          ),
+                                          Center(
+                                            child: Text(
+                                              "200",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                color: const Color(0xFF464646),
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.3,
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.3,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                4.0,
+                                            margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.5,
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  4.0,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFF282828)
+                                                  .withOpacity(0.2),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ]);
+                                }
+                              },
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            // alignment: item == 1
+                            //     ? const Alignment(0.01, 1.35)
+                            //     : const Alignment(0.01, 1.25),
+                            //heightFactor: 0.5,
+                            child: widget.comingFromEditScreen
+                                ? reason.length > 4
+                                    ? AnimatedScaleButton(
+                                        onTap: () {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                  'You cannot add more than 5 items.'),
+                                              duration: Duration(seconds: 3),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  4.7,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  4.7,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Color.fromARGB(
+                                                189, 158, 158, 158),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 4,
+                                                left: 4,
+                                                right: 4,
+                                                bottom: 4),
+                                            child: Container(
+                                              color: Colors.transparent,
+                                              child: Image.asset(
+                                                'assets/images/Addgoal.webp',
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : AnimatedScaleButton(
+                                        onTap: () {
+                                          increment();
+
+                                          widget.comingFromEditScreen
+                                              ? setState(() {
+                                                  reason.add({
+                                                    'key':
+                                                        'Reason ${reason.length.toString()}',
+                                                    'text': '',
+                                                  });
+                                                })
+                                              : setState(() {
+                                                  myTextFields.add({
+                                                    'key':
+                                                        'Reason ${myTextFields.length.toString()}',
+                                                    'text': '',
+                                                  });
+                                                });
+                                          print("=============>Pressed");
+                                        },
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  4.7,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  4.7,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            // color: Colors.orange,
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xFFB1B8FF),
+                                                  Color(0xFFC5CAFF)
+                                                ]),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 4,
+                                                left: 4,
+                                                right: 4,
+                                                bottom: 4),
+                                            child: Container(
+                                              color: Colors.transparent,
+                                              child: Image.asset(
+                                                'assets/images/Addgoal.webp',
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                : myTextFields.length > 4
+                                    ? AnimatedScaleButton(
+                                        onTap: () {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                  'You cannot add more than 5 items.'),
+                                              duration: Duration(seconds: 3),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  4.7,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  4.7,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Color.fromARGB(
+                                                189, 158, 158, 158),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 4,
+                                                left: 4,
+                                                right: 4,
+                                                bottom: 4),
+                                            child: Container(
+                                              color: Colors.transparent,
+                                              child: Image.asset(
+                                                'assets/images/Addgoal.webp',
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : AnimatedScaleButton(
+                                        onTap: () {
+                                          increment();
+
+                                          widget.comingFromEditScreen
+                                              ? setState(() {
+                                                  reason.add({
+                                                    'key':
+                                                        'Reason ${reason.length.toString()}',
+                                                    'text': '',
+                                                  });
+                                                })
+                                              : setState(() {
+                                                  myTextFields.add({
+                                                    'key':
+                                                        'Reason ${myTextFields.length.toString()}',
+                                                    'text': '',
+                                                  });
+                                                });
+                                          print("=============>Pressed");
+                                        },
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  4.7,
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  4.7,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            // color: Colors.orange,
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xFFB1B8FF),
+                                                  Color(0xFFC5CAFF)
+                                                ]),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 4,
+                                                left: 4,
+                                                right: 4,
+                                                bottom: 4),
+                                            child: Container(
+                                              color: Colors.transparent,
+                                              child: Image.asset(
+                                                'assets/images/Addgoal.webp',
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                          ),
+                        )
+                      ]),
+                    ),
+                    widget.comingFromEditScreen
+                        ? SizedBox(
+                            height: reason.length > 1
+                                ? AppDimensions.height10(context) * 14.5
+                                : AppDimensions.height10(context) * 26.0,
+                          )
+                        : MediaQuery.of(context).viewInsets.bottom == 0
+                            ? SizedBox(
+                                height: AppDimensions.height10(context) * 26.7,
+                              )
+                            : SizedBox(
+                                height: AppDimensions.height10(context) * 5.0,
+                              ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        widget.comingFromEditScreen
+                            ? Container(
+                                width: AppDimensions.height10(context) * 10.0,
+                                height: AppDimensions.height10(context) * 5.0,
+                                decoration: myTextFields[0]['text'] != ""
+                                    ? BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                            color: Color(0xffFA9934)),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(50.0)),
+                                      )
+                                    : BoxDecoration(
+                                        // color: Color(0xFFFF7D50),
+                                        border: Border.all(
+                                            color: const Color(0xff282828)),
+                                        color: Colors.transparent,
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(50.0)),
+                                      ),
+                                child: AnimatedScaleButton(
+                                  onTap: () {
+                                    //   signupSheet(context, "Sign up / login", "login");
+                                  },
+                                  child: Center(
+                                      child: Text(
+                                    "Reset",
+                                    style: TextStyle(
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w600,
+                                        color: myTextFields[0]['text'] != ""
+                                            ? Color(0xffFA9934)
+                                            : Color(0xff282828),
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8),
+                                  )),
+                                ))
+                            : Container(
+                                // color: Colors.blue,
+                                width: AppDimensions.height10(context) * 5.0,
+                                height: AppDimensions.height10(context) * 5.0,
+                                child: AnimatedScaleButton(
+                                  onTap: () {
+                                    //   signupSheet(context, "Sign up / login", "login");
+                                  },
+                                  child: Image.asset(
+                                    "assets/images/Moreactions.webp",
+                                    fit: BoxFit.contain,
                                   ),
+                                )),
+                        SizedBox(
+                          width: AppDimensions.height10(context) * 2.0,
+                        ),
+                        AnimatedScaleButton(
+                          onTap: () async {
+                            if (widget.comingFromEditScreen) {
+                              print("Printing Reason $reason");
+
+                              AdminGoal()
+                                  .updateUserGoal('reason', reason)
+                                  .then((value) {
+                                if (value == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                        page: const StarReview(
+                                          route: 'goal',
+                                        ),
+                                      ));
+                                }
+                              });
+                            } else {
+                              print(
+                                  '===================>${myTextFields[0]['text']}');
+                              updateGoalReason(myTextFields);
+                            }
+                          },
+                          child: Container(
+                            height: AppDimensions.height10(context) * 5,
+                            width: widget.comingFromEditScreen
+                                ? AppDimensions.height10(context) * 26.3
+                                : AppDimensions.height10(context) * 31.3,
+                            decoration: widget.comingFromEditScreen
+                                ? myTextFields[0]['text'] != ""
+                                    ? BoxDecoration(
+                                        // color: Color(0xFFFF7D50),
+                                        border: Border.all(
+                                            color: Colors.transparent),
+                                        gradient: const LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color(0xFFFCC10D),
+                                              Color(0xFFFDA210)
+                                            ]),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(50.0)),
+                                      )
+                                    : BoxDecoration(
+                                        // color: Color(0xFFFF7D50),
+                                        border: Border.all(
+                                            color: Colors.transparent),
+                                        color: const Color(0xFF282828)
+                                            .withOpacity(0.5),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(50.0)),
+                                      )
+                                : myTextFields[0]['text'] != ""
+                                    ? BoxDecoration(
+                                        // color: Color(0xFFFF7D50),
+                                        border: Border.all(
+                                            color: Colors.transparent),
+                                        gradient: const LinearGradient(
+                                            begin: Alignment.topCenter,
+                                            end: Alignment.bottomCenter,
+                                            colors: [
+                                              Color(0xFFFCC10D),
+                                              Color(0xFFFDA210)
+                                            ]),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(50.0)),
+                                      )
+                                    : BoxDecoration(
+                                        // color: Color(0xFFFF7D50),
+                                        border: Border.all(
+                                            color: Colors.transparent),
+                                        color: const Color(0xFF282828)
+                                            .withOpacity(0.5),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(50.0)),
+                                      ),
+                            child: Center(
+                              child: Text(
+                                widget.comingFromEditScreen ? "Save" : "Next",
+                                style: TextStyle(
+                                  color: widget.comingFromEditScreen
+                                      ? myTextFields[0]['text'] != ""
+                                          ? Colors.white
+                                          : Colors.white.withOpacity(0.5)
+                                      : myTextFields[0]['text'] != ""
+                                          ? Colors.white
+                                          : Colors.white.withOpacity(0.5),
+                                  fontSize:
+                                      AppDimensions.height10(context) * 1.6,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
                           ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.5,
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom))
-                    ],
-                  ),
-                )
-              : const Center(
-                  child: SpinKitFadingCircle(
-                    color: Color(0xFFB1B8FF),
-                    size: 80,
-                  ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: AppDimensions.height10(context) * 2.5,
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom))
+                  ],
                 ),
-        ],
-      ),
+              )
+            : const Center(
+                child: SpinKitFadingCircle(
+                  color: Color(0xFFB1B8FF),
+                  size: 80,
+                ),
+              ),
+      ]),
     );
   }
 }

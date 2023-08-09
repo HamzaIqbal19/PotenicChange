@@ -32,14 +32,14 @@ class StarReview extends StatefulWidget {
   State<StarReview> createState() => _StarReviewState();
 }
 
-class _StarReviewState extends State<StarReview> {
-  bool color1 = false;
-  bool color2 = false;
-  bool color3 = false;
-  bool color4 = false;
-  bool color5 = false;
-  bool color6 = false;
+bool color1 = false;
+bool color2 = false;
+bool color3 = false;
+bool color4 = false;
+bool color5 = false;
+bool color6 = false;
 
+class _StarReviewState extends State<StarReview> {
   Future<List<String>>? _goalNamesFuture;
   var goalName;
   var reason;
@@ -465,6 +465,8 @@ class _StarReviewState extends State<StarReview> {
                                                 //         context) *
                                                 //     26.9,
                                                 child: Text(
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                     goalName != null
                                                         ? "$goalName"
                                                         : "Control my anger",
@@ -1550,7 +1552,7 @@ class _StarReviewState extends State<StarReview> {
                                 height: AppDimensions.height10(context) * 5.0,
                               ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             SizedBox(
                                 // color: Colors.blue,

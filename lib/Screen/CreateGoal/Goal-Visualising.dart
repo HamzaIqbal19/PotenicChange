@@ -33,7 +33,7 @@ class _VisualisingState extends State<Visualising> {
 
   //closing the focus
   final FocusNode blankNode = FocusNode();
-  bool Loading = false;
+  bool Loading = true;
   String goalName = "";
   var visualize;
   int listReason = 0;
@@ -528,9 +528,13 @@ class _VisualisingState extends State<Visualising> {
                       ),
                       Container(
                         width: AppDimensions.height10(context) * 38.2,
-                        height: item == 1
-                            ? AppDimensions.height10(context) * 22.0
-                            : AppDimensions.height10(context) * 37.0,
+                        height: widget.comingFromEditScreen
+                            ? visualize.length == 1
+                                ? AppDimensions.height10(context) * 22.0
+                                : AppDimensions.height10(context) * 36.0
+                            : item == 1
+                                ? AppDimensions.height10(context) * 22.0
+                                : AppDimensions.height10(context) * 37.0,
                         child: Stack(children: [
                           Container(
                             // width: AppDimensions.height10(context) * 38.2,
@@ -735,92 +739,19 @@ class _VisualisingState extends State<Visualising> {
                               //     ? const Alignment(0.01, 1.4)
                               //     : const Alignment(0.01, 1.21),
                               //heightFactor: 0.5,
-                              child: goalVisualising.length > 2
-                                  ? AnimatedScaleButton(
-                                      onTap: () {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                'You cannot add more than 3 items.'),
-                                            duration: Duration(seconds: 3),
-                                          ),
-                                        );
-                                      },
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.7,
-                                        width: AppDimensions.height10(context) *
-                                            4.7,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: Color.fromARGB(
-                                              189, 158, 158, 158),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 4,
-                                              left: 4,
-                                              right: 4,
-                                              bottom: 4),
-                                          child: Container(
-                                            color: Colors.transparent,
-                                            child: Image.asset(
-                                              'assets/images/Addgoal.webp',
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.7,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  4.7,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  : AnimatedScaleButton(
-                                      onTap: () {
-                                        increment();
-                                        widget.comingFromEditScreen
-                                            ? setState(() {
-                                                visualize.add({
-                                                  'key':
-                                                      'Reason ${visualize.length.toString()}',
-                                                  'text': '',
-                                                });
-                                              })
-                                            : setState(() {
-                                                goalVisualising.add({
-                                                  'key':
-                                                      'Identity ${goalVisualising.length.toString()}',
-                                                  'text': '',
-                                                });
-                                              });
-                                        print("=============>Pressed");
-                                      },
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.7,
-                                        width: AppDimensions.height10(context) *
-                                            4.7,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          gradient: LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xFFB1B8FF),
-                                                Color(0xFFC5CAFF)
-                                              ]),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 4,
-                                              left: 4,
-                                              right: 4,
-                                              bottom: 4),
+                              child: widget.comingFromEditScreen
+                                  ? visualize.length > 2
+                                      ? AnimatedScaleButton(
+                                          onTap: () {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                    'You cannot add more than 3 items.'),
+                                                duration: Duration(seconds: 3),
+                                              ),
+                                            );
+                                          },
                                           child: Container(
                                             height: AppDimensions.height10(
                                                     context) *
@@ -829,26 +760,216 @@ class _VisualisingState extends State<Visualising> {
                                                     context) *
                                                 4.7,
                                             decoration: const BoxDecoration(
-                                                //color: Colors.transparent,
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/Addgoal.webp'),
-                                                    fit: BoxFit.contain)),
+                                              shape: BoxShape.circle,
+                                              color: Color.fromARGB(
+                                                  189, 158, 158, 158),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 4,
+                                                  left: 4,
+                                                  right: 4,
+                                                  bottom: 4),
+                                              child: Container(
+                                                color: Colors.transparent,
+                                                child: Image.asset(
+                                                  'assets/images/Addgoal.webp',
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.7,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.7,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      : AnimatedScaleButton(
+                                          onTap: () {
+                                            increment();
+                                            widget.comingFromEditScreen
+                                                ? setState(() {
+                                                    visualize.add({
+                                                      'key':
+                                                          'Reason ${visualize.length.toString()}',
+                                                      'text': '',
+                                                    });
+                                                  })
+                                                : setState(() {
+                                                    goalVisualising.add({
+                                                      'key':
+                                                          'Identity ${goalVisualising.length.toString()}',
+                                                      'text': '',
+                                                    });
+                                                  });
+                                            print("=============>Pressed");
+                                          },
+                                          child: Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                4.7,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                4.7,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              gradient: LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Color(0xFFB1B8FF),
+                                                    Color(0xFFC5CAFF)
+                                                  ]),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 4,
+                                                  left: 4,
+                                                  right: 4,
+                                                  bottom: 4),
+                                              child: Container(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                                decoration: const BoxDecoration(
+                                                    //color: Colors.transparent,
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            'assets/images/Addgoal.webp'),
+                                                        fit: BoxFit.contain)),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                  : goalVisualising.length > 2
+                                      ? AnimatedScaleButton(
+                                          onTap: () {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                    'You cannot add more than 3 items.'),
+                                                duration: Duration(seconds: 3),
+                                              ),
+                                            );
+                                          },
+                                          child: Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                4.7,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                4.7,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Color.fromARGB(
+                                                  189, 158, 158, 158),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 4,
+                                                  left: 4,
+                                                  right: 4,
+                                                  bottom: 4),
+                                              child: Container(
+                                                color: Colors.transparent,
+                                                child: Image.asset(
+                                                  'assets/images/Addgoal.webp',
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.7,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.7,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      : AnimatedScaleButton(
+                                          onTap: () {
+                                            increment();
+                                            widget.comingFromEditScreen
+                                                ? setState(() {
+                                                    visualize.add({
+                                                      'key':
+                                                          'Reason ${visualize.length.toString()}',
+                                                      'text': '',
+                                                    });
+                                                  })
+                                                : setState(() {
+                                                    goalVisualising.add({
+                                                      'key':
+                                                          'Identity ${goalVisualising.length.toString()}',
+                                                      'text': '',
+                                                    });
+                                                  });
+                                            print("=============>Pressed");
+                                          },
+                                          child: Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                4.7,
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                4.7,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              gradient: LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Color(0xFFB1B8FF),
+                                                    Color(0xFFC5CAFF)
+                                                  ]),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 4,
+                                                  left: 4,
+                                                  right: 4,
+                                                  bottom: 4),
+                                              child: Container(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    4.7,
+                                                decoration: const BoxDecoration(
+                                                    //color: Colors.transparent,
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            'assets/images/Addgoal.webp'),
+                                                        fit: BoxFit.contain)),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ),
                             ),
                           )
                         ]),
                       ),
-                      MediaQuery.of(context).viewInsets.bottom == 0
+                      widget.comingFromEditScreen
                           ? SizedBox(
-                              height: AppDimensions.height10(context) * 24.4,
+                              height: visualize.length > 1
+                                  ? AppDimensions.height10(context) * 14.5
+                                  : AppDimensions.height10(context) * 26.0,
                             )
-                          : SizedBox(
-                              height: AppDimensions.height10(context) * 5.0,
-                            ),
+                          : MediaQuery.of(context).viewInsets.bottom == 0
+                              ? SizedBox(
+                                  height:
+                                      AppDimensions.height10(context) * 24.4,
+                                )
+                              : SizedBox(
+                                  height: AppDimensions.height10(context) * 5.0,
+                                ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

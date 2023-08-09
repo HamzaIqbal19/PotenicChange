@@ -14,6 +14,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../API/Goal.dart';
 import '../../Widgets/fading.dart';
+import '../HomeScreen/HomeScreen.dart';
 import 'Loaders/AllGolas_shimmer.dart';
 
 class AllGoals extends StatefulWidget {
@@ -198,6 +199,14 @@ class _AllGoalsState extends State<AllGoals> {
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute(
+                        page: const HomeScreen(
+                          login: true,
+                        ),
+                      ),
+                    );
                     // Navigator.pushReplacement(
                     //   context,
                     //   MaterialPageRoute(

@@ -11,6 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
+import '../HomeScreen/HomeScreen.dart';
 
 class PracticeRoutine extends StatefulWidget {
   const PracticeRoutine({Key? key}) : super(key: key);
@@ -133,12 +134,14 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
-                    //   ),
-                    // );
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(
+                          login: true,
+                        ),
+                      ),
+                    );
                     // Add code for performing close action
                   },
                 ),
@@ -434,7 +437,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             FadePageRoute2(
                               true,
                               exitPage: const CreatePractice(),
-                              enterPage: const PracticeReminder(),
+                              enterPage: PracticeReminder(
+                                comingFromEditScreen: false,
+                              ),
                             ),
                           );
                           setState(() {

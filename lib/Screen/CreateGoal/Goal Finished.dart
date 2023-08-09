@@ -16,6 +16,7 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
+import '../HomeScreen/HomeScreen.dart';
 
 class GoalFinished extends StatefulWidget {
   const GoalFinished({Key? key}) : super(key: key);
@@ -111,6 +112,14 @@ class _GoalFinishedState extends State<GoalFinished> {
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute(
+                        page: const HomeScreen(
+                          login: true,
+                        ),
+                      ),
+                    );
                     // Navigator.pushReplacement(
                     //   context,
                     //   MaterialPageRoute(
