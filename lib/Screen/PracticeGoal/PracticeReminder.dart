@@ -18,6 +18,7 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
+import '../HomeScreen/HomeScreen.dart';
 import '../ReviewPractice/practiceReview.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -75,7 +76,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
   void initState() {
     getGoalName();
     super.initState();
-    _fetchPracticeDetails();
+    if (widget.comingFromEditScreen) {
+      _fetchPracticeDetails();
+    }
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -161,13 +164,107 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(
+                            login: true,
+                          ),
+                        ));
+
+                    // showDialog<String>(
+                    //   context: context,
+                    //   builder: (BuildContext context) => Container(
+                    //     width: AppDimensions.height10(context) * 27.0,
+                    //     height: AppDimensions.height10(context) * 15.8,
+                    //     child: AlertDialog(
+                    //       shape: RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.circular(
+                    //               AppDimensions.height10(context) * 1.4)),
+                    //       contentPadding: EdgeInsets.zero,
+                    //       actionsPadding: EdgeInsets.zero,
+                    //       titlePadding: EdgeInsets.zero,
+                    //       title: Container(
+                    //         margin: const EdgeInsets.only(
+                    //             top: 19, right: 16, left: 16, bottom: 0),
+                    //         height: AppDimensions.height10(context) * 2.4,
+                    //         width: AppDimensions.height10(context) * 23.8,
+                    //         child: Text(
+                    //           "Exit Practice?",
+                    //           textAlign: TextAlign.center,
+                    //           style: TextStyle(
+                    //             fontSize: AppDimensions.height10(context) * 1.7,
+                    //             fontWeight: FontWeight.w600,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       content: Container(
+                    //         margin: EdgeInsets.only(
+                    //             bottom: AppDimensions.height10(context) * 1.9,
+                    //             left: AppDimensions.height10(context) * 1.6,
+                    //             right: AppDimensions.height10(context) * 1.6),
+                    //         height: AppDimensions.height10(context) * 1.8,
+                    //         width: AppDimensions.height10(context) * 23.8,
+                    //         child: const Text(
+                    //           "Are you sure you want to exit?",
+                    //           textAlign: TextAlign.center,
+                    //           style: TextStyle(
+                    //             fontSize: 13,
+                    //             fontWeight: FontWeight.w400,
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       actions: <Widget>[
+                    //         Column(
+                    //           children: [
+                    //             Container(
+                    //               height: 42,
+                    //               width: double.infinity,
+                    //               color: const Color(0xFF007AFF),
+                    //               child: TextButton(
+                    //                 onPressed: () {
+                    //                   Navigator.pushReplacement(
+                    //                     context,
+                    //                     MaterialPageRoute(
+                    //                       builder: (context) => HomeScreen(
+                    //                         login: true,
+                    //                       ),
+                    //                     ),
+                    //                   );
+                    //                 },
+                    //                 child: const Text(
+                    //                   'Yes',
+                    //                   style: TextStyle(
+                    //                       color: Color(0xFFFFFFFF),
+                    //                       fontSize: 17,
+                    //                       fontFamily: "Laila",
+                    //                       fontWeight: FontWeight.w400),
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //             Container(
+                    //               height: 44,
+                    //               width: double.infinity,
+                    //               child: TextButton(
+                    //                 onPressed: () {
+                    //                   Navigator.pop(context);
+                    //                 },
+                    //                 child: const Text(
+                    //                   'No',
+                    //                   style: TextStyle(
+                    //                       fontSize: 17,
+                    //                       fontFamily: "Laila",
+                    //                       fontWeight: FontWeight.w400,
+                    //                       color: Color(0xFF007AFF)),
+                    //                 ),
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ],
+                    //     ),
                     //   ),
                     // );
-                    // Add code for performing close action
                   },
                 ),
               ),

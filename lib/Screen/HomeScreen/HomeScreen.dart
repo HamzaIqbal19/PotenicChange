@@ -415,8 +415,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           ),
                           AnimatedScaleButton(
                             onTap: () {
-                              signupSheet(
-                                  context, "Introduction", "OnBoarding");
+                              if (widget.login == false) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content:
+                                            Text("User is not logged in !!")));
+                              } else {
+                                signupSheet(
+                                    context, "Introduction", "OnBoarding");
+                              }
                             },
                             child: Container(
                               height: AppDimensions.height10(context) * 5,

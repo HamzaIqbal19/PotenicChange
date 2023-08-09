@@ -274,88 +274,101 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                             : '$color' == '6'
                                                                 ? "assets/images/Blue_gradient.webp"
                                                                 : 'assets/images/orange_moon.webp'))),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      // color: Colors.red,
-                                      width: AppDimensions.height10(context) *
-                                          24.0,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              AppDimensions.height10(context) *
-                                                  2.0),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            "$goalName",
-                                            //  "Control my anger",
-                                            textAlign: TextAlign.center,
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 1,
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensions.height10(
-                                                            context) *
-                                                        2.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.14,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xff5B74A6)),
-                                          ),
-                                          SizedBox(
-                                            height: AppDimensions.height10(
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      top: AppDimensions.height10(context) *
+                                          3.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        // color: Colors.red,
+                                        width: AppDimensions.height10(context) *
+                                            24.0,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: AppDimensions.height10(
                                                     context) *
-                                                0.3,
-                                          ),
-                                          Container(
-                                            // color: Colors.green,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.0,
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                22.0,
-                                            child: Text('"$identity"',
-                                                // "“I am someone who is in control of my anger”",
-                                                textAlign: TextAlign.center,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontStyle: FontStyle.italic,
-                                                    fontSize:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.6,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: const Color(
-                                                        0xff5B74A6))),
-                                          ),
-                                        ],
+                                                2.0),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "$goalName",
+                                              //  "Control my anger",
+                                              textAlign: TextAlign.center,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.0,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color:
+                                                      const Color(0xff5B74A6)),
+                                            ),
+                                            SizedBox(
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.3,
+                                            ),
+                                            Container(
+                                              // color: Colors.green,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  4.0,
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  22.0,
+                                              child: Text('"$identity"',
+                                                  // "“I am someone who is in control of my anger”",
+                                                  textAlign: TextAlign.center,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                  style: TextStyle(
+                                                      fontStyle:
+                                                          FontStyle.italic,
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.6,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xff5B74A6))),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 1.5,
-                                    ),
-                                    Text('Review',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.14,
-                                            fontWeight: FontWeight.w600,
-                                            color: const Color(0xff5B74A6))),
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 4.3,
-                                    )
-                                  ],
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.5,
+                                      ),
+                                      Text('Review',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  2.0,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.14,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xff5B74A6))),
+                                      SizedBox(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.3,
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -456,6 +469,12 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                                             FontWeight.w600,
                                                         color: const Color(
                                                             0xFFFBFBFB))),
+                                                SizedBox(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.5,
+                                                ),
                                               ],
                                             ),
                                           ),
