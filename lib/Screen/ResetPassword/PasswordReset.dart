@@ -191,17 +191,30 @@ class _PasswordResetState extends State<PasswordReset> {
                                   width: AppDimensions.height10(context) * 32,
                                   height: AppDimensions.height10(context) * 2.2,
                                   child: TextFormField(
-                                    decoration: const InputDecoration(
+                                    keyboardType: TextInputType.emailAddress,
+                                    style: TextStyle(
+                                        color: const Color(0xFF8C648A),
+                                        fontWeight: FontWeight.w600,
+                                        decoration: TextDecoration.none,
+                                        fontSize:
+                                            AppDimensions.height10(context) *
+                                                1.8),
+                                    decoration: InputDecoration(
                                         contentPadding: EdgeInsets.zero,
                                         floatingLabelBehavior:
                                             FloatingLabelBehavior.always,
                                         hintText: "JohnSmith@yahoo.com",
-                                        hintStyle:
-                                            TextStyle(color: Color(0xFF8C648A)),
-                                        focusedBorder: OutlineInputBorder(
+                                        hintStyle: TextStyle(
+                                          color: const Color(0xFF8C648A),
+                                          fontWeight: FontWeight.w600,
+                                          fontSize:
+                                              AppDimensions.height10(context) *
+                                                  1.8,
+                                        ),
+                                        focusedBorder: const OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.transparent)),
-                                        enabledBorder: OutlineInputBorder(
+                                        enabledBorder: const OutlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.transparent))),
                                     controller: email,

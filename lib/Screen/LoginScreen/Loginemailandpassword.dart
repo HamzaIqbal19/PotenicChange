@@ -40,7 +40,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
   bool errorEmail = false;
   bool errorPassword = false;
   bool credentials = false;
-  String PassowordError = "";
+  String PasswordError = "";
   String EmailError = "";
   late SharedPreferences _prefs;
   setEmail(email) async {
@@ -420,13 +420,13 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             ],
                           ),
                         ),
-                        PassowordError != ""
+                        PasswordError != ""
                             ? Container(
                                 padding: EdgeInsets.only(
                                     left:
                                         AppDimensions.height10(context) * 1.2),
                                 child: Text(
-                                  PassowordError,
+                                  PasswordError,
                                   style: TextStyle(
                                     color: const Color(0xFFFE6624),
                                     fontSize:
@@ -437,7 +437,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               )
                             : Container(),
                         SizedBox(
-                            height: PassowordError != ""
+                            height: PasswordError != ""
                                 ? AppDimensions.height10(context)
                                 : AppDimensions.height10(context) * 3),
                         Container(
@@ -535,7 +535,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                       setState(() {
                         Loading = true;
                         EmailError = "";
-                        PassowordError = "";
+                        PasswordError = "";
                       });
                       _controller.forward();
 
@@ -573,7 +573,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                             setState(() {
                               Loading = false;
                               EmailError = "";
-                              PassowordError = response["message"];
+                              PasswordError = response["message"];
                             });
 
                             ScaffoldMessenger.of(context).showSnackBar(

@@ -112,6 +112,10 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
+                  setState(() {
+                    count = 0;
+                  });
+
                   Navigator.pop(context);
                   // Navigator.pushReplacement(
                   //   context,
@@ -432,19 +436,17 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                           print(timesPerDay[6]['start']);
                           print(timesPerDay[6]['end']);
                           print(timesPerDay[6]['day']);
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
-                            FadePageRoute2(
-                              true,
-                              exitPage: const CreatePractice(),
-                              enterPage: PracticeReminder(
+                            FadePageRoute(
+                              page: PracticeReminder(
                                 comingFromEditScreen: false,
                               ),
                             ),
                           );
-                          setState(() {
-                            count = 0;
-                          });
+                          // setState(() {
+                          //   count = 0;
+                          // });
                         } else {
                           print(timesPerDay[index1]);
                         }
