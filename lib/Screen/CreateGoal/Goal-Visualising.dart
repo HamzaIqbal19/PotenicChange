@@ -8,6 +8,7 @@ import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -36,13 +37,14 @@ class _VisualisingState extends State<Visualising> {
   bool Loading = true;
   String goalName = "";
   var visualize;
+  String route = '';
   int listReason = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override
   void initState() {
     super.initState();
-
+    getRoute();
     // Add one element to the list when the screen is initialized.
     goalVisualising.add({
       'key': 'Reason ${goalVisualising.length}',
@@ -104,6 +106,16 @@ class _VisualisingState extends State<Visualising> {
 
   void decrement() {
     item = item - 1;
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   void handleDelete(int index) {
@@ -189,7 +201,7 @@ class _VisualisingState extends State<Visualising> {
           print("visualizeResponse: $response");
           // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           //     content: Text("User Login Successfully!!")));
-          await prefs.remove('goal');
+
           Navigator.push(
             context,
             FadePageRoute2(
@@ -200,6 +212,7 @@ class _VisualisingState extends State<Visualising> {
               enterPage: const GoalFinished(),
             ),
           );
+          await prefs.remove('goal');
         } else {
           setState(() {
             Loading = false;
@@ -312,10 +325,7 @@ class _VisualisingState extends State<Visualising> {
                                 child: TextButton(
                                   onPressed: () async {
                                     // updateGoalReason(goalVisualising);
-                                    final SharedPreferences prefs =
-                                        await _prefs;
-                                    var goalvisualising = prefs.setString(
-                                        'route', "goalVisualising");
+
                                     Navigator.push(
                                       context,
                                       FadePageRoute(
@@ -325,6 +335,10 @@ class _VisualisingState extends State<Visualising> {
                                         ),
                                       ),
                                     );
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    var goalvisualising = prefs.setString(
+                                        'route', "goalVisualising");
                                   },
                                   child: const Text(
                                     'Exit & save progress',
@@ -349,20 +363,30 @@ class _VisualisingState extends State<Visualising> {
                                 width: double.infinity,
                                 child: TextButton(
                                   onPressed: () async {
+                                    if (route == 'view_all_goals') {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          FadePageRoute(
+                                              page:
+                                                  const veiw_all_goals_menu()));
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute2(
+                                          true,
+                                          exitPage: const Visualising(
+                                            comingFromEditScreen: false,
+                                          ),
+                                          enterPage:
+                                              const HomeScreen(login: true),
+                                        ),
+                                      );
+                                    }
                                     final SharedPreferences prefs =
                                         await _prefs;
-                                    var goalwhy = prefs.remove('route');
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute2(
-                                        true,
-                                        exitPage: const Visualising(
-                                          comingFromEditScreen: false,
-                                        ),
-                                        enterPage:
-                                            const HomeScreen(login: true),
-                                      ),
-                                    );
+                                    await prefs.remove('goal');
+                                    await prefs.remove('goal_route');
+                                    await prefs.remove('route');
                                   },
                                   child: const Text(
                                     'Exit & delete progress',

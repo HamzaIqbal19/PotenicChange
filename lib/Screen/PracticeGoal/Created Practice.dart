@@ -10,14 +10,18 @@ import 'package:potenic_app/Screen/PracticeGoal/Loaders/created_practice_shimmer
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 import '../Recording Practice Session/dashboardViewgoals.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class PracticeFinished extends StatefulWidget {
   const PracticeFinished({Key? key}) : super(key: key);
@@ -32,11 +36,13 @@ class _PracticeFinishedState extends State<PracticeFinished> {
   var color;
   String pracName = "";
   var pracColor;
+  String route = '';
   bool Loading = true;
 
   @override
   void initState() {
     super.initState();
+    getRoute();
     _fetchGoalNames();
   }
 
@@ -66,6 +72,16 @@ class _PracticeFinishedState extends State<PracticeFinished> {
       loadData();
       print("error");
     });
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   void _fetchPracticeNames() async {
@@ -117,14 +133,22 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 height: AppDimensions.height10(context) * 3,
                 fit: BoxFit.contain,
               ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  FadePageRoute3(
-                    exitPage: const PracticeFinished(),
-                    enterPage: const CreatePractice(),
-                  ),
-                );
+              onPressed: () async {
+                if (route == 'view_all_goals') {
+                  Navigator.pushReplacement(context,
+                      FadePageRoute(page: const veiw_all_goals_menu()));
+                } else {
+                  Navigator.push(
+                    context,
+                    FadePageRoute3(
+                      exitPage: const PracticeFinished(),
+                      enterPage: const CreatePractice(),
+                    ),
+                  );
+                }
+                final SharedPreferences prefs = await _prefs;
+
+                await prefs.remove('route');
                 // Navigator.pop(context);
                 // Navigator.pushReplacement(
                 //   context,
@@ -147,14 +171,19 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                   fit: BoxFit.contain,
                 ),
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    FadePageRoute(
-                      page: const HomeScreen(
-                        login: true,
+                  if (route == 'view_all_goals') {
+                    Navigator.pushReplacement(context,
+                        FadePageRoute(page: const veiw_all_goals_menu()));
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute(
+                        page: const HomeScreen(
+                          login: true,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  }
                   // Add code for performing close action
                 },
               ),

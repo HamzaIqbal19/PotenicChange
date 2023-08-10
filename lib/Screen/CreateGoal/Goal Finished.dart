@@ -8,15 +8,19 @@ import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 import '../HomeScreen/HomeScreen.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class GoalFinished extends StatefulWidget {
   const GoalFinished({Key? key}) : super(key: key);
@@ -30,10 +34,12 @@ class _GoalFinishedState extends State<GoalFinished> {
   var identity;
   var color;
   bool Loading = true;
+  String route = '';
 
   @override
   void initState() {
     super.initState();
+    getRoute();
     _fetchGoalNames();
   }
 
@@ -68,6 +74,16 @@ class _GoalFinishedState extends State<GoalFinished> {
       });
       print("error");
     });
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   @override
@@ -112,14 +128,19 @@ class _GoalFinishedState extends State<GoalFinished> {
                     fit: BoxFit.contain,
                   ),
                   onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRoute(
-                        page: const HomeScreen(
-                          login: true,
+                    if (route == 'view_all_goals') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const veiw_all_goals_menu()));
+                    } else {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                          page: const HomeScreen(
+                            login: true,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
                     // Navigator.pushReplacement(
                     //   context,
                     //   MaterialPageRoute(

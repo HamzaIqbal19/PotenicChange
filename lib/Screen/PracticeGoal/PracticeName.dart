@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 
 import 'package:potenic_app/Screen/PracticeGoal/PracticeRoutine.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,11 +39,23 @@ class _PracticeNameState extends State<PracticeName> {
   var practiceName = TextEditingController();
   var practice = TextEditingController();
   var color;
+  String route = '';
 
   @override
   void initState() {
     getGoalName();
     super.initState();
+    getRoute();
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -105,15 +119,26 @@ class _PracticeNameState extends State<PracticeName> {
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRoute(
-                        page: const HomeScreen(
-                          login: true,
+                  onPressed: () async {
+                    if (route == 'view_all_goals') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const veiw_all_goals_menu()));
+                    } else if (route == 'view_all_goals_2') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const multiple_goal_inactive()));
+                    } else {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                          page: const HomeScreen(
+                            login: true,
+                          ),
                         ),
-                      ),
-                    );
+                      );
+                    }
+                    final SharedPreferences prefs = await _prefs;
+
+                    await prefs.remove('route');
                     // Navigator.pushReplacement(
                     //   context,
                     //   MaterialPageRoute(

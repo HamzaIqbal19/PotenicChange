@@ -7,6 +7,8 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet_Practice.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -34,12 +36,14 @@ class _CreatePracticeState extends State<CreatePractice> {
   String searchText = '';
   var mygoal;
   var color = '0';
+  String route = '';
 
   List<Map<String, dynamic>>? practiceName;
   @override
   void initState() {
     getGoalName();
     super.initState();
+    getRoute();
     _fetchPracticeNames();
   }
 
@@ -54,6 +58,16 @@ class _CreatePracticeState extends State<CreatePractice> {
     setState(() {
       mygoal = goalName!;
     });
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   Future<Timer> loadData() async {
@@ -120,14 +134,25 @@ class _CreatePracticeState extends State<CreatePractice> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
-        Navigator.push(
-          context,
-          FadePageRoute3(
-            exitPage: const CreatePractice(),
-            enterPage: const GoalFinished(),
-          ),
-        );
+      onWillPop: () async {
+        if (route == 'view_all_goals') {
+          Navigator.pushReplacement(
+              context, FadePageRoute(page: const veiw_all_goals_menu()));
+        } else if (route == 'view_all_goals_2') {
+          Navigator.pushReplacement(
+              context, FadePageRoute(page: const multiple_goal_inactive()));
+        } else {
+          Navigator.push(
+            context,
+            FadePageRoute3(
+              exitPage: const CreatePractice(),
+              enterPage: const GoalFinished(),
+            ),
+          );
+        }
+        final SharedPreferences prefs = await _prefs;
+
+        await prefs.remove('route');
         return Future.value(true);
       },
       child: Scaffold(
@@ -152,12 +177,23 @@ class _CreatePracticeState extends State<CreatePractice> {
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        FadePageRoute3(
-                            enterPage: GoalFinished(),
-                            exitPage: CreatePractice()));
+                  onPressed: () async {
+                    if (route == 'view_all_goals') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const veiw_all_goals_menu()));
+                    } else if (route == 'view_all_goals_2') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const multiple_goal_inactive()));
+                    } else {
+                      Navigator.push(
+                          context,
+                          FadePageRoute3(
+                              enterPage: GoalFinished(),
+                              exitPage: CreatePractice()));
+                    }
+                    final SharedPreferences prefs = await _prefs;
+
+                    await prefs.remove('route');
 
                     // Add code for performing close action
                   },
@@ -173,15 +209,23 @@ class _CreatePracticeState extends State<CreatePractice> {
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        FadePageRoute(
-                          page: const HomeScreen(
-                            login: true,
+                    onPressed: () async {
+                      if (route == 'view_all_goals') {
+                        Navigator.pushReplacement(context,
+                            FadePageRoute(page: const veiw_all_goals_menu()));
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          FadePageRoute(
+                            page: const HomeScreen(
+                              login: true,
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      }
+                      final SharedPreferences prefs = await _prefs;
+
+                      await prefs.remove('route');
 
                       // Navigator.pushReplacement(
                       //   context,

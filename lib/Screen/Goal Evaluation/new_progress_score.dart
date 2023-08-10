@@ -8,6 +8,7 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/goal_criteria_impact.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -56,25 +57,28 @@ class _new_progress_scoreState extends State<new_progress_score> {
     });
   }
 
-  void _fetchGoalDetails() {
-    AdminGoal.getUserActiveGoal().then((response) async {
-      final SharedPreferences prefs = await _prefs;
-      print(response[0]["goalLevel"]);
+  Future<void> _fetchGoalDetails() async {
+    final SharedPreferences prefs = await _prefs;
+
+    AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) async {
       if (response.length != 0) {
         setState(() {
-          goalDetails = response[0];
+          goalDetails = response;
         });
-        print(response[0]['goalEvaluations'].length);
+        // var evalId =
+        //     prefs.setInt('goal_eval_id', response['goalEvaluations'][0]['id']);
+        print(
+            "===================EVALUATION Length${response['goalEvaluations'].length}");
         print("ACTIVE DAY");
-        print(response[0]["goalEvaluations"][0]['activedate']);
-        for (int i = 0; i <= response[0]['goalEvaluations'].length; i++) {
-          print(response[0]["goalEvaluations"][i]['activedate'].toString());
-          _dates.add(" ${response[0]["goalEvaluations"][i]['activedate']}");
-        }
+        print(response["goalEvaluations"][0]['activedate']);
+        // for (int i = 0; i <= response['goalEvaluations'].length; i++) {
+        //   print(response["goalEvaluations"][i]['activedate'].toString());
+        //   _dates.add(" ${response["goalEvaluations"][i]['activedate']}");
+        // }
         print("======================$_dates===============");
 
-        var evaluationId = prefs.setInt(
-            'goal_eval_id', response[0]["goalEvaluations"][0]["id"]);
+        var evaluationId =
+            prefs.setInt('goal_eval_id', response["goalEvaluations"][0]["id"]);
         loadData();
         print(response);
       } else {
@@ -84,7 +88,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
       // loadData();
       print("error");
     }).whenComplete(() {
-      loadData();
+      //loadData();
     });
   }
 
@@ -96,976 +100,1018 @@ class _new_progress_scoreState extends State<new_progress_score> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
-          centerTitle: true,
-          leading: Center(
-            child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      FadePageRoute(
-                          page: const goal_menu_inactive(
-                              isActive: true,
-                              goal_evaluation: true,
-                              premium: true)));
-                },
-                icon: Image.asset(
-                  'assets/images/Back.webp',
-                  width: AppDimensions.height10(context) * 3.0,
-                  height: AppDimensions.height10(context) * 3.0,
-                  fit: BoxFit.cover,
-                )),
-          ),
-          actions: [
-            Center(
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.push(
+            context,
+            FadePageRoute(
+                page: const goal_menu_inactive(
+              goal_evaluation: false,
+              isActive: false,
+              premium: true,
+            )));
+        return Future.value(true);
+      },
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: false,
+            centerTitle: true,
+            leading: Center(
               child: IconButton(
                   onPressed: () {
-                    evaluation_sheet(context);
+                    Navigator.push(
+                        context,
+                        FadePageRoute(
+                            page: const goal_menu_inactive(
+                                isActive: true,
+                                goal_evaluation: true,
+                                premium: true)));
                   },
                   icon: Image.asset(
-                    'assets/images/ic_info_outline.webp',
+                    'assets/images/Back.webp',
                     width: AppDimensions.height10(context) * 3.0,
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.cover,
                   )),
             ),
-          ]),
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('assets/images/Mask Group.webp'),
-          fit: BoxFit.cover,
-        )),
-        width: double.infinity,
-        height: double.infinity,
-        child: Loader == false
-            ? SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: AppDimensions.height10(context) * 33.5,
-                      height: AppDimensions.height10(context) * 3.6,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 11.1),
-                      //color: Colors.amber,
-                      child: Center(
-                        child: Text(
-                          'Goal Level Evaluation',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 3.0,
-                              fontWeight: FontWeight.w700,
-                              color: const Color(0xFFFFFFFF)),
+            actions: [
+              Center(
+                child: IconButton(
+                    onPressed: () {
+                      evaluation_sheet(context);
+                    },
+                    icon: Image.asset(
+                      'assets/images/ic_info_outline.webp',
+                      width: AppDimensions.height10(context) * 3.0,
+                      height: AppDimensions.height10(context) * 3.0,
+                      fit: BoxFit.cover,
+                    )),
+              ),
+            ]),
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+            image: AssetImage('assets/images/Mask Group.webp'),
+            fit: BoxFit.cover,
+          )),
+          width: double.infinity,
+          height: double.infinity,
+          child: Loader == false
+              ? SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: AppDimensions.height10(context) * 33.5,
+                        height: AppDimensions.height10(context) * 3.6,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 11.1),
+                        //color: Colors.amber,
+                        child: Center(
+                          child: Text(
+                            'Goal Level Evaluation',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 3.0,
+                                fontWeight: FontWeight.w700,
+                                color: const Color(0xFFFFFFFF)),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      //width: AppDimensions.height10(context) * 22.6,
-                      height: AppDimensions.height10(context) * 2.4,
-                      //  color: Colors.grey,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.4),
-                      child: Center(
-                        child: Text(
-                          'For ‘${goalDetails['name']}’',
-                          style: TextStyle(
-                              fontSize: AppDimensions.height10(context) * 2.0,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xFFFFFFFF)),
+                      Container(
+                        //width: AppDimensions.height10(context) * 22.6,
+                        height: AppDimensions.height10(context) * 2.4,
+                        //  color: Colors.grey,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 0.4),
+                        child: Center(
+                          child: Text(
+                            'For ‘${goalDetails['name']}’',
+                            style: TextStyle(
+                                fontSize: AppDimensions.height10(context) * 2.0,
+                                fontWeight: FontWeight.w600,
+                                color: const Color(0xFFFFFFFF)),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 36.5,
-                      height: AppDimensions.height10(context) * 58.1,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 4.0),
-                      child: Stack(
-                        children: [
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: GestureDetector(
-                              onTap: () => showModalBottomSheet(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return SizedBox(
-                                    height: AppDimensions.height10(context) *
-                                        31.3, // Set the height of the bottom sheet
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.8,
-                                          decoration: BoxDecoration(
-                                              border: Border(
-                                                  bottom: BorderSide(
-                                                      color: const Color(
-                                                          0xFF828282),
-                                                      width: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.1))),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: [
-                                              GestureDetector(
-                                                onTap: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Container(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      5.0,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.1,
-                                                  margin: EdgeInsets.only(
-                                                      right: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.0),
-                                                  child: Text(
-                                                    'Cancel',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
+                      Container(
+                        width: AppDimensions.height10(context) * 36.5,
+                        height: AppDimensions.height10(context) * 58.1,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 4.0),
+                        child: Stack(
+                          children: [
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: GestureDetector(
+                                onTap: () => showModalBottomSheet(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return SizedBox(
+                                      height: AppDimensions.height10(context) *
+                                          31.3, // Set the height of the bottom sheet
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.8,
+                                            decoration: BoxDecoration(
+                                                border: Border(
+                                                    bottom: BorderSide(
+                                                        color: const Color(
+                                                            0xFF828282),
+                                                        width: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            1.4,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF2F80ED)),
-                                                  ),
-                                                ),
-                                              ),
-                                              GestureDetector(
-                                                onTap: () {
-                                                  // if (_selectedIndex == 2) {
-                                                  //   setState(() {
-                                                  //     color_fill_1 = false;
-                                                  //     color_fill_2 = false;
-                                                  //     goal_level = 2;
-                                                  //   });
-                                                  // } else if (_selectedIndex ==
-                                                  //     1) {
-                                                  //   color_fill_1 = true;
-                                                  //   color_fill_2 = true;
-                                                  //   goal_level = 0;
-                                                  // } else if (_selectedIndex ==
-                                                  //     0) {
-                                                  //   color_fill_1 = true;
-                                                  //   color_fill_2 = true;
-                                                  //   goal_level = 0;
-                                                  // } else if (_selectedIndex ==
-                                                  //     4) {
-                                                  //   color_fill_1 = false;
-                                                  //   color_fill_2 = true;
-                                                  //   goal_level = 0;
-                                                  // } else {
-                                                  //   setState(() {
-                                                  //     goal_level = 0;
-                                                  //   });
-                                                  // }
-                                                  setState(() {
-                                                    //activity_duration = _selected_activity;
-                                                    activity_duration =
-                                                        _dates[_selectedIndex];
-                                                    index_color =
-                                                        _selectedIndex;
-                                                  });
-                                                  Navigator.of(context).pop(
-                                                      _dates[_selectedIndex]);
-                                                },
-                                                child: Container(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      3.7,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.1,
-                                                  margin: EdgeInsets.only(
-                                                      right: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.9),
-                                                  child: Text(
-                                                    'Done',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
+                                                            0.1))),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            5.0,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.1,
+                                                    margin: EdgeInsets.only(
+                                                        right: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            1.4,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xFF2F80ED)),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: ListWheelScrollView(
-                                            itemExtent: 40,
-                                            magnification: 1.2,
-                                            useMagnifier:
-                                                true, // Set the height of each statement
-                                            children: _dates
-                                                .map((statement) =>
-                                                    Text(statement,
-                                                        style: TextStyle(
+                                                            2.0),
+                                                    child: Text(
+                                                      'Cancel',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
                                                           fontSize: AppDimensions
                                                                   .height10(
                                                                       context) *
-                                                              2.0,
+                                                              1.4,
                                                           fontWeight:
                                                               FontWeight.w400,
-                                                        )))
-                                                .toList(),
-                                            onSelectedItemChanged: (int index) {
-                                              setState(() {
-                                                _selectedIndex = index;
-                                                //activity_duration = _statements[_selectedIndex];
-                                                _selected_activity =
-                                                    _statements[_selectedIndex];
-                                              });
-                                            },
+                                                          color: const Color(
+                                                              0xFF2F80ED)),
+                                                    ),
+                                                  ),
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    // if (_selectedIndex == 2) {
+                                                    //   setState(() {
+                                                    //     color_fill_1 = false;
+                                                    //     color_fill_2 = false;
+                                                    //     goal_level = 2;
+                                                    //   });
+                                                    // } else if (_selectedIndex ==
+                                                    //     1) {
+                                                    //   color_fill_1 = true;
+                                                    //   color_fill_2 = true;
+                                                    //   goal_level = 0;
+                                                    // } else if (_selectedIndex ==
+                                                    //     0) {
+                                                    //   color_fill_1 = true;
+                                                    //   color_fill_2 = true;
+                                                    //   goal_level = 0;
+                                                    // } else if (_selectedIndex ==
+                                                    //     4) {
+                                                    //   color_fill_1 = false;
+                                                    //   color_fill_2 = true;
+                                                    //   goal_level = 0;
+                                                    // } else {
+                                                    //   setState(() {
+                                                    //     goal_level = 0;
+                                                    //   });
+                                                    // }
+                                                    setState(() {
+                                                      //activity_duration = _selected_activity;
+                                                      activity_duration =
+                                                          _dates[
+                                                              _selectedIndex];
+                                                      index_color =
+                                                          _selectedIndex;
+                                                    });
+                                                    Navigator.of(context).pop(
+                                                        _dates[_selectedIndex]);
+                                                  },
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            3.7,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.1,
+                                                    margin: EdgeInsets.only(
+                                                        right: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.9),
+                                                    child: Text(
+                                                      'Done',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              1.4,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: const Color(
+                                                              0xFF2F80ED)),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.6),
-                                      ],
-                                    ),
-                                  );
-                                  ;
-                                },
-                              ),
-                              child: Container(
-                                width: AppDimensions.height10(context) * 31.3,
-                                height: AppDimensions.height10(context) * 12.3,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: AppDimensions.height10(context) *
-                                            0.1,
-                                        color: const Color(0xFFFFFFFF)),
-                                    borderRadius: BorderRadius.circular(
-                                        AppDimensions.height10(context) * 1.8)),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      // width: AppDimensions.height10(context) * 30.3,
-                                      height: index_color == 1
-                                          ? AppDimensions.height10(context) *
-                                              4.4
-                                          : AppDimensions.height10(context) *
-                                              2.2,
-                                      // color: Colors.grey,
-                                      margin: EdgeInsets.only(
-                                          top: AppDimensions.height10(context) *
-                                              1.4),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        //crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          SizedBox(
-                                            //  width: AppDimensions.height10(context) * 25.2,
-                                            child: Text(
-                                              index_color == 1
-                                                  ? 'From $activity_duration\nMissing'
-                                                  : 'From $activity_duration',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.75,
-                                                  fontWeight: FontWeight.w600,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.12,
-                                                  color: index_color == 1
-                                                      ? Colors.red
-                                                      : const Color(
-                                                          0xFFFFFFFF)),
+                                          Expanded(
+                                            child: ListWheelScrollView(
+                                              itemExtent: 40,
+                                              magnification: 1.2,
+                                              useMagnifier:
+                                                  true, // Set the height of each statement
+                                              children: _dates
+                                                  .map((statement) =>
+                                                      Text(statement,
+                                                          style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                2.0,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                          )))
+                                                  .toList(),
+                                              onSelectedItemChanged:
+                                                  (int index) {
+                                                setState(() {
+                                                  _selectedIndex = index;
+                                                  //activity_duration = _statements[_selectedIndex];
+                                                  _selected_activity =
+                                                      _statements[
+                                                          _selectedIndex];
+                                                });
+                                              },
                                             ),
                                           ),
                                           SizedBox(
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                0.8,
-                                          ),
-                                          SizedBox(
-                                              // width: AppDimensions.height10(context) * 2.4,
-                                              // height: AppDimensions.height10(context) * 2.4,
-                                              // color: Colors.green,
-                                              child: Image.asset(
-                                            'assets/images/Polygon 9.webp',
-                                            width: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                1.7,
-                                          ))
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  3.6),
                                         ],
                                       ),
-                                    ),
-                                    Container(
-                                        width: AppDimensions.height10(context) *
-                                            23.7,
+                                    );
+                                    ;
+                                  },
+                                ),
+                                child: Container(
+                                  width: AppDimensions.height10(context) * 31.3,
+                                  height:
+                                      AppDimensions.height10(context) * 12.3,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  0.1,
+                                          color: const Color(0xFFFFFFFF)),
+                                      borderRadius: BorderRadius.circular(
+                                          AppDimensions.height10(context) *
+                                              1.8)),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        // width: AppDimensions.height10(context) * 30.3,
                                         height: index_color == 1
                                             ? AppDimensions.height10(context) *
-                                                5.4
+                                                4.4
                                             : AppDimensions.height10(context) *
-                                                7.1,
+                                                2.2,
+                                        // color: Colors.grey,
                                         margin: EdgeInsets.only(
                                             top: AppDimensions.height10(
                                                     context) *
-                                                0.7),
-                                        child: Text(
-                                          index_color == 1
-                                              ? 'Evaluate how close you\nwere to living your goal'
-                                              : 'This is how close you were\nto living your goal and\ndesired identity.',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.15,
-                                              fontSize: AppDimensions.height10(
-                                                      context) *
-                                                  1.8,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xFFFFFFFF)),
-                                        ))
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              width: AppDimensions.height10(context) * 36.5,
-                              height: AppDimensions.height10(context) * 52.0,
-                              decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        const Color(0xFFF9DCC0).withOpacity(0),
-                                        const Color(0XffFF7975).withOpacity(1)
-                                      ]),
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 2.0)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 20.0,
-                                    height:
-                                        AppDimensions.height10(context) * 20.0,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            10.9),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-
-                                      image: DecorationImage(
-                                        image: AssetImage(widget.premium ==
-                                                false
-                                            ? "assets/images/Nebula Pie.webp"
-                                            : goalDetails['goalLevel'] == 2
-                                                ? 'assets/images/Nebula pie 2.webp'
-                                                : goalDetails['goalLevel'] == 3
-                                                    ? 'assets/images/Nebula pie 3.webp'
-                                                    : "assets/images/Nebula Pie.webp"),
-                                      ),
-                                      // color: Colors.amber,
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  2.6,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.0,
-                                          child: Center(
-                                            child: Text(
-                                              'LEVEL',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.8,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      const Color(0xFF464646)),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          width:
-                                              AppDimensions.height10(context) *
-                                                  6.0,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  3.3,
-                                          // color: Colors.amber,
-                                          margin: EdgeInsets.only(
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  1.5),
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              SizedBox(
-                                                child: Text(
-                                                  goalDetails['goalLevel'] ==
-                                                              0 ||
-                                                          widget.premium ==
-                                                              false
-                                                      ? '-'
-                                                      : goalDetails['goalLevel']
-                                                          .toString(),
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.8,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: const Color(
-                                                          0xFF646464)),
-                                                ),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        0.7),
-                                                child: Text(
-                                                  '/5',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      letterSpacing:
-                                                          AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              -0.1,
-                                                      fontSize: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.0,
-                                                      fontWeight:
-                                                          FontWeight.w300,
-                                                      color: const Color(
-                                                          0xFF828282)),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 24.9,
-                                    height:
-                                        AppDimensions.height10(context) * 8.1,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            1.1),
-                                    child: Stack(
-                                      children: [
-                                        index_color == 3 ||
-                                                index_color == 1 ||
-                                                index_color == 4
-                                            ? Container()
-                                            : Align(
-                                                alignment: Alignment.topLeft,
-                                                child: Container(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      2.5,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.6,
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                    image: DecorationImage(
-                                                        image: AssetImage(
-                                                            'assets/images/colon.webp'),
-                                                        fit: BoxFit.contain),
-                                                  ),
-                                                ),
-                                              ),
-                                        Align(
-                                          alignment: const Alignment(0.5, 0),
-                                          child: SizedBox(
-                                            //  width: AppDimensions.height10(context) * 21.4,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                7.3,
-
-                                            //color: Colors.amber,
-                                            child: Center(
+                                                1.4),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          //crossAxisAlignment: CrossAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              //  width: AppDimensions.height10(context) * 25.2,
                                               child: Text(
-                                                index_color == 3 ||
-                                                        index_color == 1 ||
-                                                        widget.premium == false
-                                                    ? 'Score needed!'
-                                                    : goalDetails[
-                                                                'goalLevel'] ==
-                                                            2
-                                                        ? "I'm making small steps\nforward"
-                                                        : goalDetails[
-                                                                    'goalLevel'] ==
-                                                                1
-                                                            ? 'I’m not making any progress'
-                                                            : goalDetails[
-                                                                        'goalLevel'] ==
-                                                                    3
-                                                                ? 'I’m making considerable steps forward'
-                                                                : goalDetails[
-                                                                            'goalLevel'] ==
-                                                                        4
-                                                                    ? "I’m almost there"
-                                                                    : goalDetails['goalLevel'] ==
-                                                                            5
-                                                                        ? "I’m definitely living my why"
-                                                                        : "Score needed",
+                                                index_color == 1
+                                                    ? 'From $activity_duration\nMissing'
+                                                    : 'From $activity_duration',
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                     fontSize:
                                                         AppDimensions.height10(
                                                                 context) *
-                                                            2.0,
+                                                            1.75,
                                                     fontWeight: FontWeight.w600,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.12,
+                                                    color: index_color == 1
+                                                        ? Colors.red
+                                                        : const Color(
+                                                            0xFFFFFFFF)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  0.8,
+                                            ),
+                                            SizedBox(
+                                                // width: AppDimensions.height10(context) * 2.4,
+                                                // height: AppDimensions.height10(context) * 2.4,
+                                                // color: Colors.green,
+                                                child: Image.asset(
+                                              'assets/images/Polygon 9.webp',
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  1.7,
+                                            ))
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                          width:
+                                              AppDimensions.height10(context) *
+                                                  23.7,
+                                          height: index_color == 1
+                                              ? AppDimensions.height10(
+                                                      context) *
+                                                  5.4
+                                              : AppDimensions.height10(
+                                                      context) *
+                                                  7.1,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.7),
+                                          child: Text(
+                                            index_color == 1
+                                                ? 'Evaluate how close you\nwere to living your goal'
+                                                : 'This is how close you were\nto living your goal and\ndesired identity.',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                height: AppDimensions.height10(
+                                                        context) *
+                                                    0.15,
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.8,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0xFFFFFFFF)),
+                                          ))
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Container(
+                                width: AppDimensions.height10(context) * 36.5,
+                                height: AppDimensions.height10(context) * 52.0,
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          const Color(0xFFF9DCC0)
+                                              .withOpacity(0),
+                                          const Color(0XffFF7975).withOpacity(1)
+                                        ]),
+                                    borderRadius: BorderRadius.circular(
+                                        AppDimensions.height10(context) * 2.0)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          20.0,
+                                      height: AppDimensions.height10(context) *
+                                          20.0,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              10.9),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+
+                                        image: DecorationImage(
+                                          image: AssetImage(widget.premium ==
+                                                  false
+                                              ? "assets/images/Nebula Pie.webp"
+                                              : goalDetails['goalLevel'] == 2
+                                                  ? 'assets/images/Nebula pie 2.webp'
+                                                  : goalDetails['goalLevel'] ==
+                                                          3
+                                                      ? 'assets/images/Nebula pie 3.webp'
+                                                      : "assets/images/Nebula Pie.webp"),
+                                        ),
+                                        // color: Colors.amber,
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: AppDimensions.height10(
+                                                    context) *
+                                                2.6,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                1.0,
+                                            child: Center(
+                                              child: Text(
+                                                'LEVEL',
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            0.8,
+                                                    fontWeight: FontWeight.w500,
                                                     color: const Color(
-                                                        0xFFFFFFFF)),
+                                                        0xFF464646)),
                                               ),
                                             ),
                                           ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    width:
-                                        AppDimensions.height10(context) * 33.0,
-                                    height:
-                                        AppDimensions.height10(context) * 4.9,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            2.1),
-                                    child: Center(
-                                      child: Text(
-                                        'Please evaluate each criteria below to see\nyour goal level progress.',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: AppDimensions.height10(
+                                          Container(
+                                            width: AppDimensions.height10(
                                                     context) *
-                                                1.6,
-                                            color: const Color(0xFFFFFFFF)),
+                                                6.0,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.3,
+                                            // color: Colors.amber,
+                                            margin: EdgeInsets.only(
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    1.5),
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SizedBox(
+                                                  child: Text(
+                                                    goalDetails['goalLevel'] ==
+                                                                0 ||
+                                                            widget.premium ==
+                                                                false
+                                                        ? '-'
+                                                        : goalDetails[
+                                                                'goalLevel']
+                                                            .toString(),
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.8,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: const Color(
+                                                            0xFF646464)),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.7),
+                                                  child: Text(
+                                                    '/5',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        letterSpacing:
+                                                            AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                -0.1,
+                                                        fontSize: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.0,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        color: const Color(
+                                                            0xFF828282)),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    // width: AppDimensions.height10(context) * 2.1,
-                                    // height: AppDimensions.height10(context) * 4.3,
-                                    child: Image.asset(
-                                      'assets/images/Arrow.webp',
-                                      width:
-                                          AppDimensions.height10(context) * 4.1,
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          24.9,
                                       height:
-                                          AppDimensions.height10(context) * 4.1,
+                                          AppDimensions.height10(context) * 8.1,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              1.1),
+                                      child: Stack(
+                                        children: [
+                                          index_color == 3 ||
+                                                  index_color == 1 ||
+                                                  index_color == 4
+                                              ? Container()
+                                              : Align(
+                                                  alignment: Alignment.topLeft,
+                                                  child: Container(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            2.5,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.6,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      image: DecorationImage(
+                                                          image: AssetImage(
+                                                              'assets/images/colon.webp'),
+                                                          fit: BoxFit.contain),
+                                                    ),
+                                                  ),
+                                                ),
+                                          Align(
+                                            alignment: const Alignment(0.5, 0),
+                                            child: SizedBox(
+                                              //  width: AppDimensions.height10(context) * 21.4,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  7.3,
+
+                                              //color: Colors.amber,
+                                              child: Center(
+                                                child: Text(
+                                                  index_color == 3 ||
+                                                          index_color == 1 ||
+                                                          widget.premium ==
+                                                              false
+                                                      ? 'Score needed!'
+                                                      : goalDetails[
+                                                                  'goalLevel'] ==
+                                                              2
+                                                          ? "I'm making small steps\nforward"
+                                                          : goalDetails[
+                                                                      'goalLevel'] ==
+                                                                  1
+                                                              ? 'I’m not making any progress'
+                                                              : goalDetails[
+                                                                          'goalLevel'] ==
+                                                                      3
+                                                                  ? 'I’m making considerable steps forward'
+                                                                  : goalDetails[
+                                                                              'goalLevel'] ==
+                                                                          4
+                                                                      ? "I’m almost there"
+                                                                      : goalDetails['goalLevel'] ==
+                                                                              5
+                                                                          ? "I’m definitely living my why"
+                                                                          : "Score needed",
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      fontSize: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.0,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: const Color(
+                                                          0xFFFFFFFF)),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  )
-                                ],
+                                    Container(
+                                      width: AppDimensions.height10(context) *
+                                          33.0,
+                                      height:
+                                          AppDimensions.height10(context) * 4.9,
+                                      margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              2.1),
+                                      child: Center(
+                                        child: Text(
+                                          'Please evaluate each criteria below to see\nyour goal level progress.',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: AppDimensions.height10(
+                                                      context) *
+                                                  1.6,
+                                              color: const Color(0xFFFFFFFF)),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      // width: AppDimensions.height10(context) * 2.1,
+                                      // height: AppDimensions.height10(context) * 4.3,
+                                      child: Image.asset(
+                                        'assets/images/Arrow.webp',
+                                        width: AppDimensions.height10(context) *
+                                            4.1,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                4.1,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: AppDimensions.height10(context) * 44.1,
+                        height: AppDimensions.height10(context) * 67.2,
+                        // color: Colors.amberAccent,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 2.5),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            AnimatedScaleButton(
+                              onTap: () {
+                                if (widget.premium == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const your_why(
+                                        destination: 'reason',
+                                        saved: false,
+                                      )));
+                                }
+                              },
+                              child: goal_criteria(
+                                criteria: 'Goal Criteria 1',
+                                identity: 'Your Why’s',
+                                text_span_1:
+                                    'I’m making small steps\ntowards my ',
+                                text_span_2: 'why',
+                                text_span_3: '',
+                                margin_top: 0,
+                                border: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
+                                    ? true
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['YourWay']
+                                            //['level']
+                                            ==
+                                            null
+                                        ? true
+                                        : false,
+                                colors: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
+                                    ? 0xFF
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['YourWay'] ==
+                                            null
+                                        ? 0xFF
+                                        : goalDetails['goalEvaluations'][0]
+                                                    ['YourWay']
+                                                //['level']
+                                                ==
+                                                null
+                                            ? 0xFF
+                                            : 0xFFFBFBFB,
+                                text_color: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
+                                    ? 0xFFFBFBFB
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['YourWay']
+                                            //['level']
+                                            ==
+                                            null
+                                        ? 0xFFFBFBFB
+                                        : 0xFF646464,
+                                goal_: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
+                                    ? "0"
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['YourWay']
+                                            .toString()
+                                            .isEmpty
+                                        //
+                                        // ['level']
+                                        // ==
+                                        // null
+                                        ? "0"
+                                        : goalDetails['goalEvaluations'][0]
+                                                ['YourWay']['level']
+                                            .toString(),
                               ),
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 44.1,
-                      height: AppDimensions.height10(context) * 67.2,
-                      // color: Colors.amberAccent,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 2.5),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          AnimatedScaleButton(
-                            onTap: () {
-                              if (widget.premium == true) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const your_why(
-                                      destination: 'reason',
-                                      saved: false,
-                                    )));
-                              }
-                            },
-                            child: goal_criteria(
-                              criteria: 'Goal Criteria 1',
-                              identity: 'Your Why’s',
-                              text_span_1:
-                                  'I’m making small steps\ntowards my ',
-                              text_span_2: 'why',
-                              text_span_3: '',
-                              margin_top: 0,
-                              border: goalDetails['goalLevel'] == 0 ||
-                                      widget.premium == false
-                                  ? true
-                                  : goalDetails['goalEvaluations'][0]['YourWay']
-                                          //['level']
-                                          ==
-                                          null
+                            AnimatedScaleButton(
+                              onTap: () {
+                                print(goalDetails['goalEvaluations'][0]
+                                    ['newIdentity']);
+                                if (widget.premium == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const your_why(
+                                        destination: 'identityStatement',
+                                        saved: false,
+                                      )));
+                                }
+                              },
+                              child: goal_criteria(
+                                criteria: 'Goal Criteria 2',
+                                identity: 'Your new identity',
+                                text_span_1:
+                                    'I’m making small steps\ntowards my ',
+                                text_span_2: 'new identity',
+                                text_span_3: '',
+                                margin_top: 1.0,
+                                border: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
+                                    ? true
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['newIdentity']
+                                            //['level']
+                                            ==
+                                            null
+                                        ? true
+                                        : false,
+                                colors: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
+                                    ? 0xFF
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['newIdentity'] ==
+                                            null
+                                        ? 0xFF
+                                        : 0xFFFBFBFB,
+                                text_color: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
+                                    ? 0xFFFBFBFB
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['newIdentity']
+                                            // ['level']
+                                            ==
+                                            null
+                                        ? 0xFFFBFBFB
+                                        : 0xFF646464,
+                                goal_: goalDetails['goalLevel'] == 0 ||
+                                        widget.premium == false
+                                    ? "0"
+                                    : goalDetails['goalEvaluations'][0]
+                                                ['newIdentity']
+                                            //['level']
+                                            ==
+                                            null
+                                        ? "0"
+                                        : goalDetails['goalEvaluations'][0]
+                                                ['newIdentity']['level']
+                                            .toString(),
+                              ),
+                            ),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                if (widget.premium == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const your_why(
+                                        destination: 'visualizingYourSelf',
+                                        saved: false,
+                                      )));
+                                }
+                              },
+                              child: goal_criteria(
+                                  criteria: 'Goal Criteria 3',
+                                  identity: 'Your vision for\nnew self',
+                                  text_span_1:
+                                      'I’m making small steps\ntowards my ',
+                                  text_span_2: 'vision',
+                                  text_span_3: '',
+                                  goal_: goalDetails['goalLevel'] == 0 ||
+                                          widget.premium == false
+                                      ? "0"
+                                      : goalDetails['goalEvaluations'][0]
+                                                  ['visualisingYourSelf']
+                                              //['level']
+                                              ==
+                                              null
+                                          ? "0"
+                                          : goalDetails['goalEvaluations'][0]
+                                                      ['visualisingYourSelf']
+                                                  ['level']
+                                              .toString(),
+                                  border: goalDetails['goalLevel'] == 0 ||
+                                          widget.premium == false
                                       ? true
-                                      : false,
-                              colors: goalDetails['goalLevel'] == 0 ||
-                                      widget.premium == false
-                                  ? 0xFF
-                                  : goalDetails['goalEvaluations'][0]
-                                              ['YourWay'] ==
-                                          null
+                                      : goalDetails['goalEvaluations'][0]
+                                                  ['visualisingYourSelf']
+                                              //['level']
+                                              ==
+                                              null
+                                          ? true
+                                          : false,
+                                  colors: goalDetails['goalLevel'] == 0 ||
+                                          widget.premium == false
                                       ? 0xFF
                                       : goalDetails['goalEvaluations'][0]
-                                                  ['YourWay']
+                                                  ['visualisingYourSelf']
                                               //['level']
                                               ==
                                               null
                                           ? 0xFF
                                           : 0xFFFBFBFB,
-                              text_color: goalDetails['goalLevel'] == 0 ||
-                                      widget.premium == false
-                                  ? 0xFFFBFBFB
-                                  : goalDetails['goalEvaluations'][0]['YourWay']
-                                          //['level']
-                                          ==
-                                          null
+                                  text_color: goalDetails['goalLevel'] == 0 ||
+                                          widget.premium == false
                                       ? 0xFFFBFBFB
-                                      : 0xFF646464,
-                              goal_: goalDetails['goalLevel'] == 0 ||
-                                      widget.premium == false
-                                  ? "0"
-                                  : goalDetails['goalEvaluations'][0]['YourWay']
-                                          .toString()
-                                          .isEmpty
-                                      //
-                                      // ['level']
-                                      // ==
-                                      // null
-                                      ? "0"
                                       : goalDetails['goalEvaluations'][0]
-                                              ['YourWay']['level']
-                                          .toString(),
+                                                  ['visualisingYourSelf']
+                                              //['level']
+                                              ==
+                                              null
+                                          ? 0xFFFBFBFB
+                                          : 0xFF646464,
+                                  margin_top: 1.0),
                             ),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              print(goalDetails['goalEvaluations'][0]
-                                  ['newIdentity']);
-                              if (widget.premium == true) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const your_why(
-                                      destination: 'identityStatement',
-                                      saved: false,
-                                    )));
-                              }
-                            },
-                            child: goal_criteria(
-                              criteria: 'Goal Criteria 2',
-                              identity: 'Your new identity',
-                              text_span_1:
-                                  'I’m making small steps\ntowards my ',
-                              text_span_2: 'new identity',
-                              text_span_3: '',
-                              margin_top: 1.0,
-                              border: goalDetails['goalLevel'] == 0 ||
-                                      widget.premium == false
-                                  ? true
-                                  : goalDetails['goalEvaluations'][0]
-                                              ['newIdentity']
-                                          //['level']
-                                          ==
-                                          null
+                            AnimatedScaleButton(
+                              onTap: () {
+                                if (widget.premium == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const your_impact(
+                                        saved: false,
+                                      )));
+                                }
+                              },
+                              child: goal_criteria(
+                                  criteria: 'Goal Criteria 4',
+                                  identity: 'Impact on your\nlife',
+                                  text_span_1: 'It has ',
+                                  text_span_2: 'little impact ',
+                                  text_span_3: 'on\nmy life',
+                                  border: goalDetails['goalLevel'] == 0 ||
+                                          widget.premium == false
                                       ? true
-                                      : false,
-                              colors: goalDetails['goalLevel'] == 0 ||
-                                      widget.premium == false
-                                  ? 0xFF
-                                  : goalDetails['goalEvaluations'][0]
-                                              ['newIdentity'] ==
-                                          null
+                                      : goalDetails['goalEvaluations'][0]
+                                                  ['impactOnYourSelf']
+                                              //['level']
+                                              ==
+                                              null
+                                          ? true
+                                          : false,
+                                  colors: goalDetails['goalLevel'] == 0 ||
+                                          widget.premium == false
                                       ? 0xFF
-                                      : 0xFFFBFBFB,
-                              text_color: goalDetails['goalLevel'] == 0 ||
-                                      widget.premium == false
-                                  ? 0xFFFBFBFB
-                                  : goalDetails['goalEvaluations'][0]
-                                              ['newIdentity']
-                                          // ['level']
-                                          ==
-                                          null
+                                      : goalDetails['goalEvaluations'][0]
+                                                  ['impactOnYourSelf']
+                                              //['level']
+                                              ==
+                                              null
+                                          ? 0xFF
+                                          : 0xFFFBFBFB,
+                                  text_color: goalDetails['goalLevel'] == 0 ||
+                                          widget.premium == false
                                       ? 0xFFFBFBFB
-                                      : 0xFF646464,
-                              goal_: goalDetails['goalLevel'] == 0 ||
-                                      widget.premium == false
-                                  ? "0"
-                                  : goalDetails['goalEvaluations'][0]
-                                              ['newIdentity']
-                                          //['level']
-                                          ==
-                                          null
+                                      : goalDetails['goalEvaluations'][0]
+                                                  ['impactOnYourSelf']
+                                              //['level']
+                                              ==
+                                              null
+                                          ? 0xFFFBFBFB
+                                          : 0xFF646464,
+                                  goal_: goalDetails['goalLevel'] == 0 ||
+                                          widget.premium == false
                                       ? "0"
                                       : goalDetails['goalEvaluations'][0]
-                                              ['newIdentity']['level']
-                                          .toString(),
+                                                  ['impactOnYourSelf']
+                                              // ['level']
+                                              ==
+                                              null
+                                          ? "0"
+                                          : goalDetails['goalEvaluations'][0]
+                                                  ['impactOnYourSelf']['level']
+                                              .toString(),
+                                  margin_top: 1.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: AppDimensions.height10(context) * 17.0,
+                        height: AppDimensions.height10(context) * 0.5,
+                        margin: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 20.3,
+                            bottom: AppDimensions.height10(context) * 1.0),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            color: const Color(0xFFFFFFFF).withOpacity(0.3)),
+                      )
+                    ],
+                  ),
+                )
+              : const Center(
+                  child: SpinKitFadingCircle(
+                    color: Color(0xFFB1B8FF),
+                    size: 80,
+                  ),
+                ),
+        ),
+        extendBody: true,
+        bottomNavigationBar: widget.premium == true
+            ? Container()
+            : GestureDetector(
+                onTap: () {
+                  Upgrade_sheet(context);
+                },
+                child: BottomAppBar(
+                  elevation: 0,
+                  color: Colors.transparent,
+                  child: Container(
+                    height: AppDimensions.height10(context) * 7.7,
+                    width: AppDimensions.height10(context) * 41.4,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            topRight: Radius.circular(
+                                AppDimensions.height10(context) * 2.0)),
+                        color: const Color(0xFFF5F5F5)),
+                    child: SizedBox(
+                      // width: AppDimensions.height10(context) * 27.8,
+                      height: AppDimensions.height10(context) * 3.4,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10(context) * 1.0),
+                            // width: AppDimensions.height10(context) * 23.6,
+                            child: Text(
+                              'Upgrade to score ',
+                              style: TextStyle(
+                                  color: const Color(0xFF437296),
+                                  fontSize:
+                                      AppDimensions.height10(context) * 2.8,
+                                  fontWeight: FontWeight.w700),
                             ),
                           ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              if (widget.premium == true) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const your_why(
-                                      destination: 'visualizingYourSelf',
-                                      saved: false,
-                                    )));
-                              }
-                            },
-                            child: goal_criteria(
-                                criteria: 'Goal Criteria 3',
-                                identity: 'Your vision for\nnew self',
-                                text_span_1:
-                                    'I’m making small steps\ntowards my ',
-                                text_span_2: 'vision',
-                                text_span_3: '',
-                                goal_: goalDetails['goalLevel'] == 0 ||
-                                        widget.premium == false
-                                    ? "0"
-                                    : goalDetails['goalEvaluations'][0]
-                                                ['visualisingYourSelf']
-                                            //['level']
-                                            ==
-                                            null
-                                        ? "0"
-                                        : goalDetails['goalEvaluations'][0]
-                                                ['visualisingYourSelf']['level']
-                                            .toString(),
-                                border: goalDetails['goalLevel'] == 0 ||
-                                        widget.premium == false
-                                    ? true
-                                    : goalDetails['goalEvaluations'][0]
-                                                ['visualisingYourSelf']
-                                            //['level']
-                                            ==
-                                            null
-                                        ? true
-                                        : false,
-                                colors: goalDetails['goalLevel'] == 0 ||
-                                        widget.premium == false
-                                    ? 0xFF
-                                    : goalDetails['goalEvaluations'][0]
-                                                ['visualisingYourSelf']
-                                            //['level']
-                                            ==
-                                            null
-                                        ? 0xFF
-                                        : 0xFFFBFBFB,
-                                text_color: goalDetails['goalLevel'] == 0 ||
-                                        widget.premium == false
-                                    ? 0xFFFBFBFB
-                                    : goalDetails['goalEvaluations'][0]
-                                                ['visualisingYourSelf']
-                                            //['level']
-                                            ==
-                                            null
-                                        ? 0xFFFBFBFB
-                                        : 0xFF646464,
-                                margin_top: 1.0),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              if (widget.premium == true) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const your_impact(
-                                      saved: false,
-                                    )));
-                              }
-                            },
-                            child: goal_criteria(
-                                criteria: 'Goal Criteria 4',
-                                identity: 'Impact on your\nlife',
-                                text_span_1: 'It has ',
-                                text_span_2: 'little impact ',
-                                text_span_3: 'on\nmy life',
-                                border: goalDetails['goalLevel'] == 0 ||
-                                        widget.premium == false
-                                    ? true
-                                    : goalDetails['goalEvaluations'][0]
-                                                ['impactOnYourSelf']
-                                            //['level']
-                                            ==
-                                            null
-                                        ? true
-                                        : false,
-                                colors: goalDetails['goalLevel'] == 0 ||
-                                        widget.premium == false
-                                    ? 0xFF
-                                    : goalDetails['goalEvaluations'][0]
-                                                ['impactOnYourSelf']
-                                            //['level']
-                                            ==
-                                            null
-                                        ? 0xFF
-                                        : 0xFFFBFBFB,
-                                text_color: goalDetails['goalLevel'] == 0 ||
-                                        widget.premium == false
-                                    ? 0xFFFBFBFB
-                                    : goalDetails['goalEvaluations'][0]
-                                                ['impactOnYourSelf']
-                                            //['level']
-                                            ==
-                                            null
-                                        ? 0xFFFBFBFB
-                                        : 0xFF646464,
-                                goal_: goalDetails['goalLevel'] == 0 ||
-                                        widget.premium == false
-                                    ? "0"
-                                    : goalDetails['goalEvaluations'][0]
-                                                ['impactOnYourSelf']
-                                            // ['level']
-                                            ==
-                                            null
-                                        ? "0"
-                                        : goalDetails['goalEvaluations'][0]
-                                                ['impactOnYourSelf']['level']
-                                            .toString(),
-                                margin_top: 1.0),
-                          ),
+                          Container(
+                            width: AppDimensions.height10(context) * 3.2,
+                            height: AppDimensions.height10(context) * 3.2,
+                            padding: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 1.1,
+                                left: AppDimensions.height10(context) * 0.6,
+                                right: AppDimensions.height10(context) * 0.6,
+                                bottom: AppDimensions.height10(context) * 0.9),
+                            decoration: const BoxDecoration(
+                                color: Color(0xFF437296),
+                                shape: BoxShape.circle),
+                            child: Image.asset(
+                              'assets/images/Arrow.webp',
+                            ),
+                          )
                         ],
                       ),
-                    ),
-                    Container(
-                      width: AppDimensions.height10(context) * 17.0,
-                      height: AppDimensions.height10(context) * 0.5,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 20.3,
-                          bottom: AppDimensions.height10(context) * 1.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 2.0),
-                          color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-                    )
-                  ],
-                ),
-              )
-            : const Center(
-                child: SpinKitFadingCircle(
-                  color: Color(0xFFB1B8FF),
-                  size: 80,
-                ),
-              ),
-      ),
-      extendBody: true,
-      bottomNavigationBar: widget.premium == true
-          ? Container()
-          : GestureDetector(
-              onTap: () {
-                Upgrade_sheet(context);
-              },
-              child: BottomAppBar(
-                elevation: 0,
-                color: Colors.transparent,
-                child: Container(
-                  height: AppDimensions.height10(context) * 7.7,
-                  width: AppDimensions.height10(context) * 41.4,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(
-                              AppDimensions.height10(context) * 2.0),
-                          topRight: Radius.circular(
-                              AppDimensions.height10(context) * 2.0)),
-                      color: const Color(0xFFF5F5F5)),
-                  child: SizedBox(
-                    // width: AppDimensions.height10(context) * 27.8,
-                    height: AppDimensions.height10(context) * 3.4,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(
-                              right: AppDimensions.height10(context) * 1.0),
-                          // width: AppDimensions.height10(context) * 23.6,
-                          child: Text(
-                            'Upgrade to score ',
-                            style: TextStyle(
-                                color: const Color(0xFF437296),
-                                fontSize: AppDimensions.height10(context) * 2.8,
-                                fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                        Container(
-                          width: AppDimensions.height10(context) * 3.2,
-                          height: AppDimensions.height10(context) * 3.2,
-                          padding: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 1.1,
-                              left: AppDimensions.height10(context) * 0.6,
-                              right: AppDimensions.height10(context) * 0.6,
-                              bottom: AppDimensions.height10(context) * 0.9),
-                          decoration: const BoxDecoration(
-                              color: Color(0xFF437296), shape: BoxShape.circle),
-                          child: Image.asset(
-                            'assets/images/Arrow.webp',
-                          ),
-                        )
-                      ],
                     ),
                   ),
                 ),
               ),
-            ),
+      ),
     );
   }
 }

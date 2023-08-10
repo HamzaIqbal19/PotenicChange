@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
+import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
+
+final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class goal_prac_info extends StatelessWidget {
   const goal_prac_info({super.key});
@@ -26,7 +31,11 @@ class goal_prac_info extends StatelessWidget {
         actions: [
           Center(
             child: IconButton(
-                onPressed: () {},
+                onPressed: () async {
+                  Navigator.push(context, FadePageRoute(page: Categories()));
+                  final SharedPreferences prefs = await _prefs;
+                  var route = prefs.setString('goal_route', 'view_all_goals');
+                },
                 icon: Image.asset(
                   'assets/images/Addgoal.webp',
                   width: AppDimensions.height10(context) * 2.6,

@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
+import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
@@ -70,15 +72,27 @@ class _PracticeReminderState extends State<PracticeReminder> {
   var practiceName = TextEditingController();
   var practice = TextEditingController();
   var color;
+  String route = '';
   bool Loader = false;
 
   @override
   void initState() {
     getGoalName();
     super.initState();
+    getRoute();
     if (widget.comingFromEditScreen) {
       _fetchPracticeDetails();
     }
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -163,14 +177,25 @@ class _PracticeReminderState extends State<PracticeReminder> {
                     height: AppDimensions.height10(context) * 3.0,
                     fit: BoxFit.contain,
                   ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(
-                            login: true,
-                          ),
-                        ));
+                  onPressed: () async {
+                    if (route == 'view_all_goals') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const veiw_all_goals_menu()));
+                    } else if (route == 'view_all_goals_2') {
+                      Navigator.pushReplacement(context,
+                          FadePageRoute(page: const multiple_goal_inactive()));
+                    } else {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(
+                              login: true,
+                            ),
+                          ));
+                    }
+                    final SharedPreferences prefs = await _prefs;
+
+                    await prefs.remove('route');
 
                     // showDialog<String>(
                     //   context: context,
@@ -276,8 +301,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: widget.comingFromEditScreen
-                    ? AssetImage("assets/images/GoalReviewBg.webp")
-                    : AssetImage("assets/images/Categories.webp"),
+                    ? const AssetImage("assets/images/GoalReviewBg.webp")
+                    : const AssetImage("assets/images/Categories.webp"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -298,7 +323,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 1.8,
                       ),
@@ -317,7 +342,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.2,
                       ),
@@ -394,7 +419,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF156F6D),
+                                  color: const Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),
@@ -405,7 +430,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 ),
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xFF156F6D),
+                                  color: const Color(0xFF156F6D),
                                   fontSize:
                                       AppDimensions.height10(context) * 2.0,
                                 ),
@@ -425,7 +450,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontSize: AppDimensions.height10(context) * 2.8,
                       ),
@@ -448,7 +473,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                         color: widget.comingFromEditScreen
-                            ? Color(0xff437296)
+                            ? const Color(0xff437296)
                             : Colors.white,
                         fontFamily: 'Laila',
                         fontSize: AppDimensions.height10(context) * 1.8,
@@ -854,8 +879,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                     fontFamily: "Laila",
                                     fontWeight: FontWeight.w600,
                                     color: reminderSelected
-                                        ? Color(0xffFA9934)
-                                        : Color(0xff282828),
+                                        ? const Color(0xffFA9934)
+                                        : const Color(0xff282828),
                                     fontSize:
                                         AppDimensions.height10(context) * 1.8),
                               )),
@@ -901,8 +926,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                   print('========Done');
                                   Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (_) => PracticeReview(),
+                                      FadePageRoute(
+                                        page: const PracticeReview(),
                                       ));
                                 } else if (response == false) {
                                   print('Api call failed');
@@ -936,7 +961,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                 radio1,
                                 loadedTimesPerDay,
                               )
-                                  .then((response) {
+                                  .then((response) async {
                                 print('$response');
                                 if (response == true) {
                                   ScaffoldMessenger.of(context).showSnackBar(
@@ -944,16 +969,32 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                           content: Text(
                                               "Practice Added Successfully!!")));
                                   print('========Done');
-                                  Navigator.pushReplacement(
-                                    context,
-                                    FadePageRoute2(
-                                      true,
-                                      exitPage: PracticeReminder(
-                                        comingFromEditScreen: false,
+                                  if (route == 'view_all_goals') {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        FadePageRoute(
+                                            page: const veiw_all_goals_menu()));
+                                  } else if (route == 'view_all_goals_2') {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        FadePageRoute(
+                                            page:
+                                                const multiple_goal_inactive()));
+                                  } else {
+                                    Navigator.pushReplacement(
+                                      context,
+                                      FadePageRoute2(
+                                        true,
+                                        exitPage: const PracticeReminder(
+                                          comingFromEditScreen: false,
+                                        ),
+                                        enterPage: const PracticeFinished(),
                                       ),
-                                      enterPage: const PracticeFinished(),
-                                    ),
-                                  );
+                                    );
+                                  }
+                                  final SharedPreferences prefs = await _prefs;
+
+                                  await prefs.remove('route');
                                 } else if (response == false) {
                                   print('Api call failed');
                                 }

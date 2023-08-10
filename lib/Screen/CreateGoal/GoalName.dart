@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dar
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
 import '../ReviewGoal/StarReview.dart';
+import '../Your_goals/veiw_all_goals.dart';
 
 class GoalName extends StatefulWidget {
   final int catId;
@@ -31,6 +33,7 @@ class GoalName extends StatefulWidget {
 class _GoalNameState extends State<GoalName> {
   String goalCategory = "";
   String goalName = "";
+  String route = '';
   var id;
   String capitalizeFirstLetter(String text) {
     if (text == null || text.isEmpty) {
@@ -47,7 +50,18 @@ class _GoalNameState extends State<GoalName> {
   @override
   void initState() {
     getGoalName();
+    getRoute();
     super.initState();
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   //
@@ -225,10 +239,6 @@ class _GoalNameState extends State<GoalName> {
                                 color: Colors.white,
                                 child: TextButton(
                                   onPressed: () async {
-                                    final SharedPreferences prefs =
-                                        await _prefs;
-                                    var RouteName =
-                                        prefs.setString('route', "GoalName");
                                     Navigator.push(
                                       context,
                                       FadePageRoute3(
@@ -243,6 +253,10 @@ class _GoalNameState extends State<GoalName> {
                                         ),
                                       ),
                                     );
+
+                                    final SharedPreferences prefs =
+                                        await _prefs;
+                                    await prefs.setString('route', "GoalName");
                                   },
                                   child: const Text(
                                     'Exit & save progress',
@@ -267,21 +281,31 @@ class _GoalNameState extends State<GoalName> {
                                 width: double.infinity,
                                 child: TextButton(
                                   onPressed: () async {
+                                    if (route == 'view_all_goals') {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          FadePageRoute(
+                                              page:
+                                                  const veiw_all_goals_menu()));
+                                    } else {
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute2(
+                                          true,
+                                          exitPage: GoalName(
+                                            widget.catId,
+                                            comingFromEditScreen: false,
+                                          ),
+                                          enterPage:
+                                              const HomeScreen(login: true),
+                                        ),
+                                      );
+                                    }
                                     final SharedPreferences prefs =
                                         await _prefs;
                                     await prefs.remove('goal');
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute2(
-                                        true,
-                                        exitPage: GoalName(
-                                          widget.catId,
-                                          comingFromEditScreen: false,
-                                        ),
-                                        enterPage:
-                                            const HomeScreen(login: true),
-                                      ),
-                                    );
+                                    await prefs.remove('route');
+                                    await prefs.remove('goal_route');
                                   },
                                   child: const Text(
                                     'Exit & delete progress',

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -34,6 +35,7 @@ class GoalCategory extends StatefulWidget {
 class _GoalCategoryState extends State<GoalCategory> {
   bool SearchIcon = false;
   bool Loading = true;
+  String route = '';
   String searchText = ''; // Add this line
   final double overlapFactor = 0.85;
   final Random _random = Random();
@@ -50,7 +52,7 @@ class _GoalCategoryState extends State<GoalCategory> {
   @override
   void initState() {
     super.initState();
-
+    getRoute();
     _fetchgetAllGoal();
   }
 
@@ -93,6 +95,10 @@ class _GoalCategoryState extends State<GoalCategory> {
     getGoal();
   }
 
+  // Future<void> getRoute() async {
+
+  // }
+
   String capitalizeFirstLetter(String text) {
     if (text == null || text.isEmpty) {
       return '';
@@ -131,6 +137,16 @@ class _GoalCategoryState extends State<GoalCategory> {
     setState(() {
       Loading = false;
     });
+  }
+
+  Future<void> getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    var goal_route = prefs.getString('goal_route');
+    print("================Route=${prefs.getString('goal_route')}");
+    setState(() {
+      route = goal_route!;
+    });
+    print("================Route=$route");
   }
 
   void _fetchgetAllGoal() {
@@ -195,8 +211,9 @@ class _GoalCategoryState extends State<GoalCategory> {
                     height: AppDimensions.height10(context) * 3,
                     fit: BoxFit.contain,
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     Navigator.pop(context);
+
                     // Add code for performing close action
                   },
                 ),
@@ -211,15 +228,23 @@ class _GoalCategoryState extends State<GoalCategory> {
                       height: AppDimensions.height10(context) * 3.0,
                       fit: BoxFit.contain,
                     ),
-                    onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        FadePageRoute(
-                          page: const HomeScreen(
-                            login: true,
+                    onPressed: () async {
+                      if (route == 'view_all_goals') {
+                        Navigator.pushReplacement(context,
+                            FadePageRoute(page: const veiw_all_goals_menu()));
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          FadePageRoute(
+                            page: const HomeScreen(
+                              login: true,
+                            ),
                           ),
-                        ),
-                      );
+                        );
+                      }
+
+                      final SharedPreferences prefs = await _prefs;
+                      await prefs.remove('goal_route');
                       // Add code for performing close action
                     },
                   ),
