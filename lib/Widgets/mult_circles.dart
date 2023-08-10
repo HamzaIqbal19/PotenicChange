@@ -86,6 +86,7 @@ class align_circles extends StatelessWidget {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
+                              top: AppDimensions.height10(context) * 2.0,
                               bottom: AppDimensions.height10(context) * 0),
                           width: AppDimensions.height10(context) * 19.9,
                           child: Text(
@@ -103,7 +104,7 @@ class align_circles extends StatelessWidget {
                       ],
                     )),
                 Align(
-                  alignment: const Alignment(0, -0.17),
+                  alignment: const Alignment(0, -0.10),
                   child: Container(
                     height: AppDimensions.height10(context) * 4.0,
                     width: AppDimensions.height10(context) * 22.0,
