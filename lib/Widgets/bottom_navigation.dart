@@ -84,163 +84,189 @@ class Navigation_BarState extends State<Navigation_Bar> {
   @override
   Widget build(BuildContext context) {
     int index = 0;
-    return Container(
-      decoration: widget.bg_colored
-          ? const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter, end: Alignment.bottomCenter,
-                  //transform: GradientRotation(3.14159),
-                  colors: [Color(0xffD9B4B4), Color(0xffD9B4B4)]))
-          : const BoxDecoration(
-              shape: BoxShape.rectangle, color: Colors.transparent),
-      //height: 77,
-      width: AppDimensions.height10(context) * 30.5,
-      padding: EdgeInsets.only(
-          bottom: AppDimensions.height10(context) * 2.5,
+    return Stack(alignment: AlignmentDirectional.topStart, children: [
+      // Container(
+      //   decoration: widget.bg_colored
+      //       ? const BoxDecoration(
+      //           gradient: LinearGradient(
+      //               begin: Alignment.topCenter, end: Alignment.bottomCenter,
+      //               //transform: GradientRotation(3.14159),
+      //               colors: [Color(0xffD9B4B4), Color(0xffD9B4B4)]))
+      //       : const BoxDecoration(
+      //           shape: BoxShape.rectangle, color: Colors.transparent),
+      //   //height: 77,
+      //   // width: AppDimensions.height10(context) * 30.5,
+      //   padding: EdgeInsets.only(
+      //       bottom: AppDimensions.height10(context) * 2.5,
+      //       left: AppDimensions.height10(context) * 5.4,
+      //       right: AppDimensions.height10(context) * 5.4),
+      //   child:
+      Padding(
+        padding: EdgeInsets.only(
+          bottom: AppDimensions.height10(context) * 3.0,
           left: AppDimensions.height10(context) * 5.4,
-          right: AppDimensions.height10(context) * 5.4),
-      child: BottomNavigationBar(
-        //selectedIconTheme: null,
-        unselectedItemColor: const Color(0xff5B74A6),
-        fixedColor: const Color(0xff5B74A6),
-        type: BottomNavigationBarType.fixed,
-        elevation: 0,
-        landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
-        backgroundColor: Colors.transparent,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: AnimatedScaleButton(
-              onTap: () {
-                //  timeline_sheet(context);
-                // Navigator.push(context, FadePageRoute(page: const timeline()));
-              },
-              child: Container(
-                margin:
-                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-                width: AppDimensions.height10(context) * 4.0,
-                height: AppDimensions.height10(context) * 4.0,
-                child: Container(
-                    height: AppDimensions.height10(context) * 2.612,
-                    width: AppDimensions.height10(context) * 3.318,
+          right: AppDimensions.height10(context) * 5.4,
+        ),
+        child: Container(
+          decoration: const BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xffD9B4B4),
+                // color: Colors.red,
+                blurRadius: 20, // Adjust the blur radius as needed
+                spreadRadius: 2, // Adjust the spread radius as needed
+                offset: Offset(0, -5), // Adjust the offset as needed
+              ),
+            ],
+          ),
+          child: BottomNavigationBar(
+            //selectedIconTheme: null,
+            unselectedItemColor: const Color(0xff5B74A6),
+            fixedColor: const Color(0xff5B74A6),
+            type: BottomNavigationBarType.fixed,
+            elevation: 0,
+            landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
+            backgroundColor: Colors.transparent,
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: AnimatedScaleButton(
+                  onTap: () {
+                    //  timeline_sheet(context);
+                    // Navigator.push(context, FadePageRoute(page: const timeline()));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 2.0),
+                    width: AppDimensions.height10(context) * 4.0,
+                    height: AppDimensions.height10(context) * 4.0,
+                    child: Container(
+                        height: AppDimensions.height10(context) * 2.612,
+                        width: AppDimensions.height10(context) * 3.318,
+                        decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xff93ABD0),
+                                  Color(0xff8C648A)
+                                ])),
+                        padding: EdgeInsets.all(
+                            AppDimensions.height10(context) * 1.2),
+                        child: const ImageIcon(
+                          AssetImage('assets/images/timeline_icon.webp'),
+                          color: Colors.white,
+                        )),
+                  ),
+                ),
+                label: 'Timeline',
+              ),
+              BottomNavigationBarItem(
+                  icon: AnimatedScaleButton(
+                    onTap: () {
+                      checkInspiraion();
+                    },
+                    child: Container(
+                      width: AppDimensions.height10(context) * 6.0,
+                      height: AppDimensions.height10(context) * 6.0,
+                      //margin: EdgeInsets.only(right: 30),
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                      child: Container(
+                          height: AppDimensions.height10(context) * 1.889,
+                          width: AppDimensions.height10(context) * 2.444,
+                          padding: EdgeInsets.all(
+                              AppDimensions.height10(context) * 1.2),
+                          child: const ImageIcon(
+                            AssetImage('assets/images/insp (1).webp'),
+                            color: Colors.white,
+                          )),
+                    ),
+                  ),
+                  label: 'Inspiration'),
+              BottomNavigationBarItem(
+                  icon: AnimatedScaleButton(
+                    onTap: () {
+                      checkHurdle();
+                    },
+                    child: Container(
+                      width: AppDimensions.height10(context) * 6.0,
+                      height: AppDimensions.height10(context) * 6.0,
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
+                      child: Container(
+                        height: AppDimensions.height10(context) * 2.612,
+                        width: AppDimensions.height10(context) * 3.318,
+                        padding: EdgeInsets.all(
+                            AppDimensions.height10(context) * 1.2),
+                        child: const ImageIcon(
+                          AssetImage('assets/images/hurdle_icon.webp'),
+                          //size: ,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  label: 'Hurdle'),
+              BottomNavigationBarItem(
+                icon: AnimatedScaleButton(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        FadePageRoute(
+                            page: your_goals_menu(
+                          membership: widget.membership ? true : false,
+                          trial: widget.trial ? true : false,
+                          cancel: widget.cancel ? true : false,
+                        )));
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 2.0, right: 0),
+                    width: AppDimensions.height10(context) * 4.0,
+                    height: AppDimensions.height10(context) * 4.0,
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
                             colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
-                    padding:
-                        EdgeInsets.all(AppDimensions.height10(context) * 1.2),
-                    child: const ImageIcon(
-                      AssetImage('assets/images/timeline_icon.webp'),
-                      color: Colors.white,
-                    )),
-              ),
-            ),
-            label: 'Timeline',
-          ),
-          BottomNavigationBarItem(
-              icon: AnimatedScaleButton(
-                onTap: () {
-                  checkInspiraion();
-                },
-                child: Container(
-                  width: AppDimensions.height10(context) * 6.0,
-                  height: AppDimensions.height10(context) * 6.0,
-                  //margin: EdgeInsets.only(right: 30),
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
-                  child: Container(
-                      height: AppDimensions.height10(context) * 1.889,
-                      width: AppDimensions.height10(context) * 2.444,
-                      padding:
-                          EdgeInsets.all(AppDimensions.height10(context) * 1.2),
-                      child: const ImageIcon(
-                        AssetImage('assets/images/insp (1).webp'),
-                        color: Colors.white,
-                      )),
-                ),
-              ),
-              label: 'Inspiration'),
-          BottomNavigationBarItem(
-              icon: AnimatedScaleButton(
-                onTap: () {
-                  checkHurdle();
-                },
-                child: Container(
-                  width: AppDimensions.height10(context) * 6.0,
-                  height: AppDimensions.height10(context) * 6.0,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
-                  child: Container(
-                    height: AppDimensions.height10(context) * 2.612,
-                    width: AppDimensions.height10(context) * 3.318,
-                    padding:
-                        EdgeInsets.all(AppDimensions.height10(context) * 1.2),
-                    child: const ImageIcon(
-                      AssetImage('assets/images/hurdle_icon.webp'),
-                      //size: ,
-                      color: Colors.white,
-                    ),
+                    child: Container(
+                        height: AppDimensions.height10(context) * 1.889,
+                        width: AppDimensions.height10(context) * 2.444,
+                        padding: EdgeInsets.all(
+                            AppDimensions.height10(context) * 1.2),
+                        child: const ImageIcon(
+                          AssetImage('assets/images/menu_icon.webp'),
+                          color: Colors.white,
+                        )),
                   ),
                 ),
+                label: 'Menu',
               ),
-              label: 'Hurdle'),
-          BottomNavigationBarItem(
-            icon: AnimatedScaleButton(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    FadePageRoute(
-                        page: your_goals_menu(
-                      membership: widget.membership ? true : false,
-                      trial: widget.trial ? true : false,
-                      cancel: widget.cancel ? true : false,
-                    )));
-              },
-              child: Container(
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 2.0, right: 0),
-                width: AppDimensions.height10(context) * 4.0,
-                height: AppDimensions.height10(context) * 4.0,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [Color(0xff93ABD0), Color(0xff8C648A)])),
-                child: Container(
-                    height: AppDimensions.height10(context) * 1.889,
-                    width: AppDimensions.height10(context) * 2.444,
-                    padding:
-                        EdgeInsets.all(AppDimensions.height10(context) * 1.2),
-                    child: const ImageIcon(
-                      AssetImage('assets/images/menu_icon.webp'),
-                      color: Colors.white,
-                    )),
-              ),
+            ],
+            selectedLabelStyle: TextStyle(
+              fontSize: AppDimensions.height10(context) * 1.4,
+              fontWeight: FontWeight.w400,
             ),
-            label: 'Menu',
+            unselectedLabelStyle: TextStyle(
+              fontSize: AppDimensions.height10(context) * 1.4,
+              fontWeight: FontWeight.w400,
+            ),
+            currentIndex: index,
+            onTap: _onItemTapped,
           ),
-        ],
-        selectedLabelStyle: TextStyle(
-          fontSize: AppDimensions.height10(context) * 1.4,
-          fontWeight: FontWeight.w400,
         ),
-        unselectedLabelStyle: TextStyle(
-          fontSize: AppDimensions.height10(context) * 1.4,
-          fontWeight: FontWeight.w400,
-        ),
-        currentIndex: index,
-        onTap: _onItemTapped,
       ),
-    );
+      //  ),
+    ]);
   }
 }

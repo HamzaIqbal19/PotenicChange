@@ -10,6 +10,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import '../Your_goals/veiw_all_goals.dart';
 
 class record_session extends StatefulWidget {
   final bool past_session;
@@ -185,7 +186,7 @@ class _record_sessionState extends State<record_session> {
                                         SizedBox(
                                           height:
                                               AppDimensions.height10(context) *
-                                                  6.0,
+                                                  7.5,
                                         ),
                                         Text(
                                           allGoals['name'],
@@ -210,6 +211,8 @@ class _record_sessionState extends State<record_session> {
                                             allGoals['identityStatement'][0]
                                                 ['text'],
                                             textAlign: TextAlign.center,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 fontSize:
                                                     AppDimensions.height10(
@@ -321,10 +324,12 @@ class _record_sessionState extends State<record_session> {
                       ),
                     ),
                     AnimatedScaleButton(
-                      onTap: () {
-                        print(allGoals['userPractices'][0]['color']);
-                      },
-                      child: Container(
+                        onTap: () {
+                          Navigator.push(context,
+                              FadePageRoute(page: const veiw_all_goals_menu()));
+                          print(allGoals['userPractices'][0]['color']);
+                        },
+                        child: Container(
                           height: AppDimensions.height10(context) * 5.0,
                           width: AppDimensions.height10(context) * 24.3,
                           margin: EdgeInsets.only(
@@ -341,8 +346,7 @@ class _record_sessionState extends State<record_session> {
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 5.0),
                           ),
-                          child: TextButton(
-                            onPressed: () {},
+                          child: Center(
                             child: Text(
                               'View all goals',
                               style: TextStyle(
@@ -352,8 +356,8 @@ class _record_sessionState extends State<record_session> {
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'poppins'),
                             ),
-                          )),
-                    )
+                          ),
+                        )),
                   ],
                 )
               : practice_session_shimmer(),

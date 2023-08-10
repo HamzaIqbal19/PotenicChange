@@ -142,7 +142,35 @@ class _view_goalsState extends State<view_goals> {
             actions: [
               Row(
                 children: [
-                  GestureDetector(
+                  noActive == true
+                      ? AnimatedScaleButton(
+                          onTap: () {
+                            setState(() {
+                              Loader = true;
+                              current = 0;
+                              // past = past - 1;
+                              // next = next - 1;
+                            });
+
+                            print('$current');
+                            fetchPracticeByDay();
+
+                            // Navigator.push(context,
+                            //     FadePageRoute(page: view_goals(missed: false)));
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.height10(context) * 1.32),
+                            child: Image.asset(
+                              'assets/images/Asset 10 2.webp',
+                              height: AppDimensions.height10(context) * 4.0,
+                              width: AppDimensions.height10(context) * 3.977,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        )
+                      : SizedBox(),
+                  AnimatedScaleButton(
                     onTap: () {
                       Navigator.push(
                           context,
@@ -163,13 +191,14 @@ class _view_goalsState extends State<view_goals> {
                       ),
                     ),
                   ),
-                  GestureDetector(
+                  AnimatedScaleButton(
                     onTap: () {
                       showModalBottomSheet(
                         context: context,
                         builder: (BuildContext context) {
                           return CalendarBottomSheet(
                             onChangedStart: (int value) {
+                              print("Printing selected time $current");
                               setState(() {
                                 current = -value - 1;
                                 next = -value - 2;
@@ -294,6 +323,7 @@ class _view_goalsState extends State<view_goals> {
             ]),
         extendBodyBehindAppBar: true,
         extendBody: true,
+        backgroundColor: Color(0xffD9B4B4),
         bottomNavigationBar: const Navigation_Bar(
           bg_colored: true,
           membership: true,
@@ -316,7 +346,7 @@ class _view_goalsState extends State<view_goals> {
                         height: AppDimensions.height10(context) * 19.2,
                         child: Stack(children: [
                           SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
+                            scrollDirection: Axis.horizontal, 
                             child: SizedBox(
                               height: AppDimensions.height10(context) * 19.2,
                               width: AppDimensions.height10(context) * 45.7,
@@ -654,6 +684,8 @@ class _view_goalsState extends State<view_goals> {
                                           ))),
                                     ),
                                   ),
+                               
+                               
                                 ],
                               ),
                             ),
@@ -1329,7 +1361,7 @@ class _view_goalsState extends State<view_goals> {
                             ),
                           ),
                           Positioned(
-                              top: AppDimensions.height10(context) * 64.0,
+                              top: AppDimensions.height10(context) * 68.0,
                               left: AppDimensions.height10(context) * 1.3,
                               child: Container(
                                 width: AppDimensions.height10(context) * 4.5,
@@ -1519,9 +1551,10 @@ class _view_goalsState extends State<view_goals> {
                         child: SingleChildScrollView(
                             scrollDirection: Axis.vertical,
                             child: Column(children: [
-                              SizedBox(
+                              Container(
+                                //  color: Colors.red,
                                 height: AppDimensions.height10(context) * 19.2,
-                                width: AppDimensions.height10(context) * 39.2,
+                                // width: AppDimensions.height10(context) * 39.2,
                                 child: SingleChildScrollView(
                                   scrollDirection: Axis.horizontal,
                                   child: Row(
@@ -1921,8 +1954,16 @@ class _view_goalsState extends State<view_goals> {
                               SizedBox(
                                 height: AppDimensions.height10(context) * 1.4,
                               ),
-                              GestureDetector(
+                              AnimatedScaleButton(
                                 onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: record_session(
+                                        past_session: true,
+                                        day: getFormattedDay(current),
+                                        id: allGoals[0]['userGoalId'],
+                                      )));
                                   // Navigator.push(
                                   //     context,
                                   //     FadePageRoute(
