@@ -2370,7 +2370,7 @@ void __share_experience(context, String goalName, String identity, String color,
                       child: Stack(
                         children: [
                           Align(
-                              alignment: const Alignment(0, -0.7),
+                              alignment: const Alignment(0, -0.5),
                               child: Container(
                                 width: AppDimensions.height10(context) * 24.0,
                                 padding: EdgeInsets.symmetric(
@@ -2435,7 +2435,17 @@ void __share_experience(context, String goalName, String identity, String color,
                             pracName,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Colors.white,
+                                color: pracColor == "1"
+                                    ? Color(0XFFFC7133)
+                                    : pracColor == "2"
+                                        ? Color(0xFF1A481C)
+                                        : pracColor == "3"
+                                            ? Color(0xFF6D4B77)
+                                            : pracColor == "4"
+                                                ? Color(0xFF5C75A6)
+                                                : pracColor == "5"
+                                                    ? Color(0xFF315291)
+                                                    : Color(0xFF1FC7133),
                                 fontSize: AppDimensions.height10(context) * 1.8,
                                 fontWeight: FontWeight.w500),
                           ),

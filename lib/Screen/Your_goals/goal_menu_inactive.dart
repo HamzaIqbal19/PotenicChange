@@ -6,7 +6,6 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/new_progress_score.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
-import 'package:potenic_app/Screen/Your_goals/goal_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -46,16 +45,17 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
     });
   }
 
-  void _fetchGoalDetails() {
-    AdminGoal.getUserActiveGoal().then((response) async {
-      final SharedPreferences prefs = await _prefs;
+  Future<void> _fetchGoalDetails() async {
+    final SharedPreferences prefs = await _prefs;
 
+    AdminGoal.getUserGoalById(prefs.get('goal_num'))
+        .then((response) async {
       if (response.length != 0) {
         setState(() {
-          goalDetails = response[0];
+          goalDetails = response;
         });
-        var evalId = prefs.setInt(
-            'goal_eval_id', response[0]['goalEvaluations'][0]['id']);
+        // var evalId =
+        //     prefs.setInt('goal_eval_id', response['goalEvaluations'][0]['id']);
 
         loadData();
         print(response);
@@ -475,40 +475,48 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           ),
                           widget.goal_evaluation
                               ? Container()
-                              : Align(
-                                  alignment: const Alignment(-0.975, -1.275),
-                                  child: Container(
-                                    width:
-                                        AppDimensions.height10(context) * 11.9,
-                                    height:
-                                        AppDimensions.height10(context) * 2.9,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
+                              : goalDetails['goalLevel'] != 0 ||
+                                      goalDetails['goalLevel'] != null
+                                  ? Container()
+                                  : Align(
+                                      alignment:
+                                          const Alignment(-0.975, -1.275),
+                                      child: Container(
+                                        width: AppDimensions.height10(context) *
+                                            11.9,
+                                        height:
                                             AppDimensions.height10(context) *
-                                                2.0),
-                                        color: const Color(0xFFFFFFFF)),
-                                    child: Container(
-                                      margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
+                                                2.9,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                                AppDimensions.height10(
+                                                        context) *
+                                                    2.0),
+                                            color: const Color(0xFFFFFFFF)),
+                                        child: Container(
+                                          margin: EdgeInsets.only(
+                                              left: AppDimensions.height10(
+                                                      context) *
                                                   0.8,
-                                          top: AppDimensions.height10(context) *
-                                              0.5,
-                                          bottom:
-                                              AppDimensions.height10(context) *
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.5,
+                                              bottom: AppDimensions.height10(
+                                                      context) *
                                                   0.5),
-                                      child: Text(
-                                        'Score needed!',
-                                        style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            fontWeight: FontWeight.w600,
-                                            color: const Color(0xFF646464)),
+                                          child: Text(
+                                            'Score needed!',
+                                            style: TextStyle(
+                                                fontSize:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        1.6,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xFF646464)),
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                )
+                                    )
                         ],
                       ),
                     ),
@@ -517,8 +525,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         Navigator.push(
                             context,
                             FadePageRoute(
-                                page: const multiple_goal_inactive(
-                                    isActive: true)));
+                                page: const multiple_goal_inactive()));
                       },
                       child: Container(
                         width: AppDimensions.height10(context) * 37.4,
@@ -612,113 +619,77 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.0),
                     ),
-                    widget.goal_evaluation
-                        ? Container(
-                            height: AppDimensions.height10(context) * 18,
-                            // width: AppDimensions.height10(context) * 45.4,
-                            margin: EdgeInsets.only(
-                                // top: AppDimensions.height10(context) * 0.2,
-                                // bottom: AppDimensions.height10(context) * 0.2,
-                                left: AppDimensions.height10(context) * 1.7),
-                            // color: Colors.amber,
-                            child: ListView.builder(
-                                // shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                padding: EdgeInsets.zero,
-                                itemCount: goalDetails['userPractices'].length,
-                                itemBuilder: ((context, index) {
-                                  return Container(
-                                    width:
-                                        AppDimensions.height10(context) * 13.8,
-                                    height:
-                                        AppDimensions.height10(context) * 13.8,
-                                    padding: EdgeInsets.all(
-                                        AppDimensions.height10(context) * 0.8),
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context)),
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                      image: AssetImage(goalDetails['userPractices']
-                                                  [index]['color'] ==
-                                              '1'
-                                          ? "assets/images/Ellipse orange_wb.webp"
+                    SizedBox(
+                      child: Container(
+                        height: AppDimensions.height10(context) * 18,
+                        // width: AppDimensions.height10(context) * 45.4,
+
+                        // color: Colors.amber,
+                        child: ListView.builder(
+                            // shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    AppDimensions.height10(context) * 1.7),
+                            itemCount: goalDetails['userPractices'].length,
+                            itemBuilder: ((context, index) {
+                              return Container(
+                                width: AppDimensions.height10(context) * 13.8,
+                                height: AppDimensions.height10(context) * 13.8,
+                                padding: EdgeInsets.all(
+                                    AppDimensions.height10(context) * 0.8),
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context)),
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                  image: AssetImage(goalDetails['userPractices']
+                                              [index]['color'] ==
+                                          '1'
+                                      ? "assets/images/Ellipse orange_wb.webp"
+                                      : goalDetails['userPractices'][index]
+                                                  ['color'] ==
+                                              '2'
+                                          ? 'assets/images/Ellipse 158_wb.webp'
                                           : goalDetails['userPractices'][index]
                                                       ['color'] ==
-                                                  '2'
-                                              ? 'assets/images/Ellipse 158_wb.webp'
+                                                  '3'
+                                              ? "assets/images/Ellipse 157_wb.webp"
                                               : goalDetails['userPractices']
                                                           [index]['color'] ==
-                                                      '3'
-                                                  ? "assets/images/Ellipse 157_wb.webp"
+                                                      '4'
+                                                  ? "assets/images/Ellipse light-blue_wb.webp"
                                                   : goalDetails['userPractices']
                                                                   [index]
                                                               ['color'] ==
-                                                          '4'
-                                                      ? "assets/images/Ellipse light-blue_wb.webp"
-                                                      : goalDetails['userPractices']
-                                                                      [index]
-                                                                  ['color'] ==
-                                                              '5'
-                                                          ? "assets/images/Ellipse blue_wb.webp"
-                                                          : 'assets/images/Ellipse 158_wb.webp'),
-                                      fit: BoxFit.contain,
-                                    )),
-                                    child: Container(
-                                      padding: EdgeInsets.all(
-                                          AppDimensions.height10(context)),
-                                      child: Center(
-                                        child: Text(
-                                          goalDetails['userPractices'][index]
-                                              ['name'],
-                                          textAlign: TextAlign.center,
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 3,
-                                          style: TextStyle(
-                                            fontSize: AppDimensions.height10(
-                                                    context) *
+                                                          '5'
+                                                      ? "assets/images/Ellipse blue_wb.webp"
+                                                      : 'assets/images/Ellipse 158_wb.webp'),
+                                  fit: BoxFit.contain,
+                                )),
+                                child: Container(
+                                  padding: EdgeInsets.all(
+                                      AppDimensions.height10(context)),
+                                  child: Center(
+                                    child: Text(
+                                      goalDetails['userPractices'][index]
+                                          ['name'],
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 3,
+                                      style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.height10(context) *
                                                 1.8,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0xFFFFFFFF),
-                                          ),
-                                        ),
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF),
                                       ),
                                     ),
-                                  );
-                                })),
-                          )
-                        : GestureDetector(
-                            onTap: () {
-                              // Navigator.push(
-                              //     context,
-                              //     FadePageRoute(
-                              //         page: const practiceMenu(
-                              //       goal_eval: true,
-                              //     )));
-                            },
-                            child: Container(
-                              width: AppDimensions.height10(context) * 13.8,
-                              height: AppDimensions.height10(context) * 13.8,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 3.0),
-                              decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/Ellipse 158.webp'),
-                                fit: BoxFit.contain,
-                              )),
-                              child: Center(
-                                child: Text(
-                                  'Meditation',
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.height10(context) * 1.8,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xFFFFFFFF),
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
+                              );
+                            })),
+                      ),
+                    ),
                     Container(
                       width: double.infinity,
                       height: AppDimensions.height10(context) * 0.1,

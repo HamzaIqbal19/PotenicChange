@@ -104,10 +104,10 @@ class _your_goals_menuState extends State<your_goals_menu> {
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       GestureDetector(
-                        // onTap: () {
-                        //   Navigator.push(context,
-                        //       FadePageRoute(page: const veiw_all_goals_menu()));
-                        // },
+                        onTap: () {
+                          Navigator.push(context,
+                              FadePageRoute(page: const veiw_all_goals_menu()));
+                        },
                         child: Container(
                           width: AppDimensions.height10(context) * 33.4,
                           height: AppDimensions.height10(context) * 5.0,
