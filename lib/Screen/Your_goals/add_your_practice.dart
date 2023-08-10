@@ -154,13 +154,15 @@ class add_your_practice extends StatelessWidget {
             margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
           ),
           AnimatedScaleButton(
-            onTap: () {
+            onTap: () async {
               Navigator.push(
                   context,
                   FadePageRoute(
                       page: const StarReview(
                     route: 'add_your_practice',
                   )));
+              final SharedPreferences prefs = await _prefs;
+              var route = prefs.setString('goal_route', 'view_all_goals');
             },
             child: Container(
               width: AppDimensions.height10(context) * 36.4,

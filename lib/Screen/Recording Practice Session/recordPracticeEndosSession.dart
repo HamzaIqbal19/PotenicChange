@@ -35,13 +35,15 @@ class _endofSessionState extends State<endofSession> {
   var emotionsNotes;
   var selected_date;
   //var sessionFeedback;
-  var prac_num;
+  int prac_num = 0;
 
   @override
   void initState() {
     onLoad();
     super.initState();
     _fetchPracticeNames();
+    print(
+        "==============================$selected_date} ============$timeSlot");
   }
 
   void _fetchPracticeNames() async {
@@ -59,7 +61,7 @@ class _endofSessionState extends State<endofSession> {
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
-      prac_num = prefs.getInt("prac_num");
+      prac_num = prefs.getInt("prac_num")!;
       emotions = prefs.getInt('emotions');
       afterSession = prefs.getInt('afterSession');
       afterSessionNotes = prefs.getString('sessionFeedback');
@@ -69,6 +71,7 @@ class _endofSessionState extends State<endofSession> {
       selected_date = prefs.getString('record_date');
     });
     feedback.text = prefs.getString('endSessionFeedback')!;
+    print("=============================Practice num:$prac_num");
   }
 
   @override

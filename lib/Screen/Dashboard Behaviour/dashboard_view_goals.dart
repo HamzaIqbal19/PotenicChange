@@ -346,7 +346,7 @@ class _view_goalsState extends State<view_goals> {
                         height: AppDimensions.height10(context) * 19.2,
                         child: Stack(children: [
                           SingleChildScrollView(
-                            scrollDirection: Axis.horizontal, 
+                            scrollDirection: Axis.horizontal,
                             child: SizedBox(
                               height: AppDimensions.height10(context) * 19.2,
                               width: AppDimensions.height10(context) * 45.7,
@@ -684,8 +684,6 @@ class _view_goalsState extends State<view_goals> {
                                           ))),
                                     ),
                                   ),
-                               
-                               
                                 ],
                               ),
                             ),
@@ -805,6 +803,8 @@ class _view_goalsState extends State<view_goals> {
                                                                 'prac_num',
                                                                 allGoals[index]
                                                                     ['id']);
+                                                        print(
+                                                            "====================>PractiecId${allGoals[index]['id']}");
                                                         var time = prefs.setString(
                                                             'recording_Time1',
                                                             allGoals[index]
@@ -1007,12 +1007,30 @@ class _view_goalsState extends State<view_goals> {
                                                                 ? false
                                                                 : true,
                                                         is_right: false,
-                                                        s_circle_text_col:
-                                                            allGoals[index][
+                                                        s_circle_text_col: allGoals[
+                                                                            index]
+                                                                        [
                                                                         'recordingStatusTime1'] ==
-                                                                    "missed"
-                                                                ? 0xffFD6727
-                                                                : 0xFFFBFBFB,
+                                                                    "missed" ||
+                                                                allGoals[index][
+                                                                        'recordingStatusTime1'] ==
+                                                                    "Completed"
+                                                            ? allGoals[index][
+                                                                        'color'] ==
+                                                                    1
+                                                                ? 0XFFFC7133
+                                                                : allGoals[index]
+                                                                            ['color'] ==
+                                                                        2
+                                                                    ? 0xFF1A481C
+                                                                    : allGoals[index]['color'] == 3
+                                                                        ? 0xFF6D4B77
+                                                                        : allGoals[index]['color'] == 4
+                                                                            ? 0xFF5C75A6
+                                                                            : allGoals[index]['color'] == 5
+                                                                                ? 0xFF315291
+                                                                                : 0xFF1FC7133
+                                                            : 0xFFFBFBFB,
                                                       )),
                                                     ),
                                                     SizedBox(
@@ -1140,6 +1158,8 @@ class _view_goalsState extends State<view_goals> {
                                                                   'recordDate',
                                                                   getFormattedDate(
                                                                       current));
+                                                              print(
+                                                                  "====================>PractiecId${allGoals[index]['id']}");
                                                               var pracColor = allGoals[
                                                                               index]
                                                                           [
@@ -1329,13 +1349,30 @@ class _view_goalsState extends State<view_goals> {
                                                                       ? false
                                                                       : true,
                                                               is_right: false,
-                                                              s_circle_text_col:
-                                                                  allGoals[index]
+                                                              s_circle_text_col: allGoals[index]
                                                                               [
                                                                               'recordingStatusTime2'] ==
-                                                                          "missed"
-                                                                      ? 0xffFD6727
-                                                                      : 0xFFFBFBFB,
+                                                                          "missed" ||
+                                                                      allGoals[index]
+                                                                              [
+                                                                              'recordingStatusTime2'] ==
+                                                                          "Completed"
+                                                                  ? allGoals[index]
+                                                                              [
+                                                                              'color'] ==
+                                                                          1
+                                                                      ? 0XFFFC7133
+                                                                      : allGoals[index]['color'] ==
+                                                                              2
+                                                                          ? 0xFF1A481C
+                                                                          : allGoals[index]['color'] == 3
+                                                                              ? 0xFF6D4B77
+                                                                              : allGoals[index]['color'] == 4
+                                                                                  ? 0xFF5C75A6
+                                                                                  : allGoals[index]['color'] == 5
+                                                                                      ? 0xFF315291
+                                                                                      : 0xFF1FC7133
+                                                                  : 0xFFFBFBFB,
                                                             )),
                                                           ),
                                                           SizedBox(
