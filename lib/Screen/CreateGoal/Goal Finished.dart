@@ -218,7 +218,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                                 Navigator.push(
                                   context,
                                   FadePageRoute2(
-                                    true,
+                                    false,
                                     exitPage: const GoalFinished(),
                                     enterPage: const StarReview(
                                       route: 'goal',

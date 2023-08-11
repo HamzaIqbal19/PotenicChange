@@ -174,6 +174,7 @@ void bottom_sheet(context, String goal) {
                                       enterPage: PracticeName(
                                         comingFromEditScreen: false,
                                       )));
+                              goalName.clear();
                             }
                           },
                           child: Text(
